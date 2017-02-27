@@ -4,26 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.Net.IPAddress,System.Int32,System.Byte[])
-internalonly: False
----
-
----
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.String,System.Int32)
-internalonly: False
----
-
----
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.Net.IPAddress,System.Int32,System.Byte[],System.Net.NetworkInformation.PingOptions)
-internalonly: False
----
-
----
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.String,System.Int32,System.Byte[])
-internalonly: False
----
-
----
 uid: System.Net.NetworkInformation.Ping.SendAsync(System.String,System.Int32,System.Byte[],System.Object)
 internalonly: False
 ---
@@ -49,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.Net.IPAddress,System.Int32)
-internalonly: False
----
-
----
 uid: System.Net.NetworkInformation.Ping.PingCompleted
 internalonly: False
 ---
@@ -65,11 +40,6 @@ internalonly: False
 
 ---
 uid: System.Net.NetworkInformation.Ping.SendAsync(System.Net.IPAddress,System.Object)
-internalonly: False
----
-
----
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.String)
 internalonly: False
 ---
 
@@ -119,22 +89,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.Net.IPAddress)
-internalonly: False
----
-
----
 uid: System.Net.NetworkInformation.Ping.Dispose(System.Boolean)
 internalonly: False
 ---
 
 ---
 uid: System.Net.NetworkInformation.Ping.#ctor
-internalonly: False
----
-
----
-uid: System.Net.NetworkInformation.Ping.SendPingAsync(System.String,System.Int32,System.Byte[],System.Net.NetworkInformation.PingOptions)
 internalonly: False
 ---
 

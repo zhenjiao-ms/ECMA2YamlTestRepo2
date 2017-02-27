@@ -1,61 +1,55 @@
 using System;
+using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
-namespace IHelpServiceSample
-{
-    public class HelpDesigner : System.Windows.Forms.Design.ControlDesigner
+namespace ExampleComponent
+{	
+    // Provides an example component designer.
+    public class ExampleComponentDesigner : System.ComponentModel.Design.ComponentDesigner
     {
-        public HelpDesigner()
-        {			
+        public ExampleComponentDesigner()
+        {
         }
 
+        // This method provides an opportunity to perform processing when a designer is initialized.
+        // The component parameter is the component that the designer is associated with.
+        public override void Initialize(System.ComponentModel.IComponent component)
+        {
+            // Always call the base Initialize method in an override of this method.
+            base.Initialize(component);
+        }
+
+        // This method is invoked when the associated component is double-clicked.
+        public override void DoDefaultAction()
+        {
+            MessageBox.Show("The event handler for the default action was invoked.");
+        }
+
+        // This method provides designer verbs.
         public override System.ComponentModel.Design.DesignerVerbCollection Verbs
         {
             get
             {
-                return new DesignerVerbCollection( new DesignerVerb[] { 
-                        new DesignerVerb("Add IHelpService Help Keyword", new EventHandler(this.addKeyword)),
-                        new DesignerVerb("Remove IHelpService Help Keyword", new EventHandler(this.removeKeyword))
-                } );
+                return new DesignerVerbCollection( new DesignerVerb[] { new DesignerVerb("Example Designer Verb Command", new EventHandler(this.onVerb)) } );
             }
         }
-        
-        private void addKeyword(object sender, EventArgs e)
+
+        // Event handling method for the example designer verb
+        private void onVerb(object sender, EventArgs e)
         {
-            IHelpService hs = (IHelpService) this.Control.Site.GetService(typeof(IHelpService));			
-            hs.AddContextAttribute("keyword", "IHelpService", HelpKeywordType.F1Keyword);	
-        }
-        
-        private void removeKeyword(object sender, EventArgs e)
-        {
-            IHelpService hs = (IHelpService) this.Control.Site.GetService(typeof(IHelpService));			
-            hs.RemoveContextAttribute("keyword", "IHelpService");
+            MessageBox.Show("The event handler for the Example Designer Verb Command was invoked.");
         }
     }
 
-    [Designer(typeof(HelpDesigner))]
-    public class HelpTestControl : System.Windows.Forms.UserControl
-    {
-        public HelpTestControl()
+    // Provides an example component associated with the example component designer.
+    [DesignerAttribute(typeof(ExampleComponentDesigner), typeof(IDesigner))]
+    public class ExampleComponent : System.ComponentModel.Component
+    {		
+        public ExampleComponent()
         {
-            this.Size = new Size(320, 100);
-            this.BackColor = Color.White;
         }
-
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-        {			
-            Brush brush = new SolidBrush(Color.Blue);
-            e.Graphics.DrawString("IHelpService Example Designer Control", new Font( FontFamily.GenericMonospace, 10 ), brush, 5, 5);
-            e.Graphics.DrawString("Right-click this component for", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 25);
-            e.Graphics.DrawString("add/remove Help context keyword commands.", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 35);			
-            e.Graphics.DrawString("Press F1 while this component is", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 55);
-            e.Graphics.DrawString("selected to raise Help topics for", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 65);			
-            e.Graphics.DrawString("the current keyword or keywords", new Font( FontFamily.GenericMonospace, 8 ), brush, 5, 75);			
-        }		
     }
 }

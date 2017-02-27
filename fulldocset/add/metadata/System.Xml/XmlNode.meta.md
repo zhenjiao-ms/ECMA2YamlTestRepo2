@@ -54,11 +54,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Xml.XmlNode.PreviousText
-internalonly: False
----
-
----
 uid: System.Xml.XmlNode.Normalize
 internalonly: False
 ---

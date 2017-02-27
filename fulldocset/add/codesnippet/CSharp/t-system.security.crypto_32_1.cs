@@ -1,41 +1,108 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-
-class Alice
+class RSACSPSample
 {
-    public static void Main(string[] args)
+
+    static void Main()
     {
-        Bob bob = new Bob();
-        using (ECDsaCng dsa = new ECDsaCng())
+        try
         {
-            dsa.HashAlgorithm = CngAlgorithm.Sha256;
-             bob.key = dsa.Key.Export(CngKeyBlobFormat.EccPublicBlob);
+            //Create a UnicodeEncoder to convert between byte array and string.
+            UnicodeEncoding ByteConverter = new UnicodeEncoding();
 
-             byte[] data = new byte[] { 21, 5, 8, 12, 207 };
+            //Create byte arrays to hold original, encrypted, and decrypted data.
+            byte[] dataToEncrypt = ByteConverter.GetBytes("Data to Encrypt");
+            byte[] encryptedData;
+            byte[] decryptedData;
 
-             byte[] signature = dsa.SignData(data);
+            //Create a new instance of RSACryptoServiceProvider to generate
+            //public and private key data.
+            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+            {
 
-             bob.Receive(data, signature);
+                //Pass the data to ENCRYPT, the public key information 
+                //(using RSACryptoServiceProvider.ExportParameters(false),
+                //and a boolean flag specifying no OAEP padding.
+                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(false), false);
+
+                //Pass the data to DECRYPT, the private key information 
+                //(using RSACryptoServiceProvider.ExportParameters(true),
+                //and a boolean flag specifying no OAEP padding.
+                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(true), false);
+
+                //Display the decrypted plaintext to the console. 
+                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
             }
+        }
+        catch (ArgumentNullException)
+        {
+            //Catch this exception in case the encryption did
+            //not succeed.
+            Console.WriteLine("Encryption failed.");
+
+        }
     }
 
-
-}
-public class Bob 
-{
-    public byte[] key;
-
-    public void Receive(byte[] data, byte[] signature)
+    static public byte[] RSAEncrypt(byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
     {
-        using (ECDsaCng ecsdKey = new ECDsaCng(CngKey.Import(key, CngKeyBlobFormat.EccPublicBlob)))
+        try
         {
-            if (ecsdKey.VerifyData(data, signature))
-                Console.WriteLine("Data is good");
-            else
-                Console.WriteLine("Data is bad");
+            byte[] encryptedData;
+            //Create a new instance of RSACryptoServiceProvider.
+            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+            {
+
+                //Import the RSA Key information. This only needs
+                //toinclude the public key information.
+                RSA.ImportParameters(RSAKeyInfo);
+
+                //Encrypt the passed byte array and specify OAEP padding.  
+                //OAEP padding is only available on Microsoft Windows XP or
+                //later.  
+                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
+            }
+            return encryptedData;
         }
+        //Catch and display a CryptographicException  
+        //to the console.
+        catch (CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+
+            return null;
+        }
+
+    }
+
+    static public byte[] RSADecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+    {
+        try
+        {
+            byte[] decryptedData;
+            //Create a new instance of RSACryptoServiceProvider.
+            using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+            {
+                //Import the RSA Key information. This needs
+                //to include the private key information.
+                RSA.ImportParameters(RSAKeyInfo);
+
+                //Decrypt the passed byte array and specify OAEP padding.  
+                //OAEP padding is only available on Microsoft Windows XP or
+                //later.  
+                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
+            }
+            return decryptedData;
+        }
+        //Catch and display a CryptographicException  
+        //to the console.
+        catch (CryptographicException e)
+        {
+            Console.WriteLine(e.ToString());
+
+            return null;
+        }
+
     }
 }

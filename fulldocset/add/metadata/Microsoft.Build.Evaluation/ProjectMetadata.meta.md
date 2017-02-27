@@ -4,16 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Evaluation.ProjectMetadata.Location
-internalonly: False
----
-
----
-uid: Microsoft.Build.Evaluation.ProjectMetadata.ConditionLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Evaluation.ProjectMetadata.IsImported
 internalonly: False
 ---

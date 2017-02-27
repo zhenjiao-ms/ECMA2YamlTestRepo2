@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.Validation.ValidationErrorInfo.SourceReferenceId
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.Validation.ValidationErrorInfo.Id
 internalonly: False
 ---

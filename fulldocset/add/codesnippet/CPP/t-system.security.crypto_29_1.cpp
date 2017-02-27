@@ -1,125 +1,59 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
-#using <System.Security.dll>
-#using <System.Xml.dll>
-
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::Xml;
 using namespace System::Text;
-using namespace System::Xml;
-
-// Sign an XML file and save the signature in a new file.
-void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ RSAKey )
-{
-   
-   // Create a SignedXml object.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Assign the key to the SignedXml object.
-   signedXml->SigningKey = RSAKey;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   
-   // Add the passed URI to the reference object.
-   reference->Uri = URIString;
-   
-   // Add a transformation if the URI is an XML file.
-   if ( URIString->EndsWith( "xml" ) )
-   {
-      
-      // Add the reference to the SignedXml object.
-      signedXml->AddReference( reference );
-      
-      // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      KeyInfo^ keyInfo = gcnew KeyInfo;
-      keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(RSAKey) ) );
-      signedXml->KeyInfo = keyInfo;
-      
-      // Compute the signature.
-      signedXml->ComputeSignature();
-      
-      // Get the XML representation of the signature and save
-      // it to an XmlElement object.
-      XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-      
-      // Save the signed XML document to a file specified
-      // using the passed string.
-      XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
-      xmlDigitalSignature->WriteTo( xmltw );
-      xmltw->Close();
-   }
-}
-
-
-// Verify the signature of an XML file and return the result.
-Boolean VerifyDetachedSignature( String^ XmlSigFileName )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Load the passed XML file into the document.
-   xmlDocument->Load( XmlSigFileName );
-   
-   // Create a new SignedXMl object.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Find the S"Signature" node and create a new
-   // XmlNodeList object.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature();
-}
-
-
 int main()
 {
-   
-   // The URI to sign.
-   String^ resourceToSign = "http://www.microsoft.com";
-   
-   // The name of the file to which to save the XML signature.
-   String^ XmlFileName = "xmldsig.xml";
+   RSACryptoServiceProvider^ rsa = gcnew RSACryptoServiceProvider;
    try
    {
       
-      // Generate a signing key.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
-      Console::WriteLine( "Signing: {0}", resourceToSign );
+      // Note: In cases where a random key is generated,   
+      // a key container is not created until you call  
+      // a method that uses the key.  This example calls
+      // the Encrypt method before calling the
+      // CspKeyContainerInfo property so that a key
+      // container is created.  
+      // Create some data to encrypt and display it.
+      String^ data = L"Here is some data to encrypt.";
+      Console::WriteLine( L"Data to encrypt: {0}", data );
       
-      // Sign the detached resourceand save the signature in an XML file.
-      SignDetachedResource( resourceToSign, XmlFileName, Key );
-      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
+      // Convert the data to an array of bytes and 
+      // encrypt it.
+      array<Byte>^byteData = Encoding::ASCII->GetBytes( data );
+      array<Byte>^encData = rsa->Encrypt( byteData, false );
       
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
+      // Display the encrypted value.
+      Console::WriteLine( L"Encrypted Data: {0}", Encoding::ASCII->GetString( encData ) );
+      Console::WriteLine();
+      Console::WriteLine( L"CspKeyContainerInfo information:" );
+      Console::WriteLine();
       
-      //Verify the XML signature in the XML file.
-      bool result = VerifyDetachedSignature( XmlFileName );
+      // Create a new CspKeyContainerInfo object.
+      CspKeyContainerInfo^ keyInfo = rsa->CspKeyContainerInfo;
       
-      // Display the results of the signature verification to 
-      // the console.
-      if ( result )
-      {
-         Console::WriteLine( "The XML signature is valid." );
-      }
-      else
-      {
-         Console::WriteLine( "The XML signature is not valid." );
-      }
+      // Display the value of each property.
+      Console::WriteLine( L"Accessible property: {0}", keyInfo->Accessible );
+      Console::WriteLine( L"Exportable property: {0}", keyInfo->Exportable );
+      Console::WriteLine( L"HardwareDevice property: {0}", keyInfo->HardwareDevice );
+      Console::WriteLine( L"KeyContainerName property: {0}", keyInfo->KeyContainerName );
+      Console::WriteLine( L"KeyNumber property: {0}", keyInfo->KeyNumber );
+      Console::WriteLine( L"MachineKeyStore property: {0}", keyInfo->MachineKeyStore );
+      Console::WriteLine( L"Protected property: {0}", keyInfo->Protected );
+      Console::WriteLine( L"ProviderName property: {0}", keyInfo->ProviderName );
+      Console::WriteLine( L"ProviderType property: {0}", keyInfo->ProviderType );
+      Console::WriteLine( L"RandomlyGenerated property: {0}", keyInfo->RandomlyGenerated );
+      Console::WriteLine( L"Removable property: {0}", keyInfo->Removable );
+      Console::WriteLine( L"UniqueKeyContainerName property: {0}", keyInfo->UniqueKeyContainerName );
    }
-   catch ( CryptographicException^ e ) 
+   catch ( Exception^ e ) 
    {
-      Console::WriteLine( e->Message );
+      Console::WriteLine( e );
+   }
+   finally
+   {
+      
+      // Clear the key.
+      rsa->Clear();
    }
 
 }

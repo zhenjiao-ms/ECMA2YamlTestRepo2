@@ -1,10 +1,4 @@
-// Create a new, nondetached SignedCms message.
-SignedCms signedCms = new SignedCms();
-
-// encodedMessage is the encoded message received from 
-// the sender.
-signedCms.Decode(encodedMessage);
-
-// Verify the signature without validating the 
-// certificate.
-signedCms.CheckSignature(true);
+			// Create a new CipherData object.
+			CipherData cd = new CipherData();
+			// Assign a byte array to be the CipherValue. This is a byte array representing encrypted data.
+			cd.CipherValue = new byte[8];

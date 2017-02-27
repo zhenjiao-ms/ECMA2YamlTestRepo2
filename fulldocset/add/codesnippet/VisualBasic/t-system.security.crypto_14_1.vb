@@ -1,67 +1,116 @@
+'
+' This example signs a file specified by a URI 
+' using a detached signature. It then verifies  
+' the signed XML.
+'
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Windows.Forms
+Imports System.Security.Cryptography.Xml
+Imports System.Text
+Imports System.Xml
 
-Public Class HashDirectory
 
-    Public Shared Sub Main(ByVal args() As String)
-        Dim directory As String
-        If args.Length < 1 Then
-            Dim fdb As New FolderBrowserDialog
-            Dim dr As DialogResult = fdb.ShowDialog()
-            If (dr = DialogResult.OK) Then
-                directory = fdb.SelectedPath
-            Else
-                Console.WriteLine("No directory selected")
-                Return
-            End If
-        Else
-            directory = args(0)
-        End If
-        Try
-            ' Create a DirectoryInfo object representing the specified directory.
-            Dim dir As New DirectoryInfo(directory)
-            ' Get the FileInfo objects for every file in the directory.
-            Dim files As FileInfo() = dir.GetFiles()
-            ' Initialize a SHA256 hash object.
-            Dim mySHA256 As SHA256 = SHA256Managed.Create()
-            Dim hashValue() As Byte
-            ' Compute and print the hash values for each file in directory.
-            Dim fInfo As FileInfo
-            For Each fInfo In files
-                ' Create a fileStream for the file.
-                Dim fileStream As FileStream = fInfo.Open(FileMode.Open)
-                ' Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0
-                ' Compute the hash of the fileStream.
-                hashValue = mySHA256.ComputeHash(fileStream)
-                ' Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ")
-                ' Write the hash value to the Console.
-                PrintByteArray(hashValue)
-                ' Close the file.
-                fileStream.Close()
-            Next fInfo
-            Return
-        Catch DExc As DirectoryNotFoundException
-            Console.WriteLine("Error: The directory specified could not be found.")
-        Catch IOExc As IOException
-            Console.WriteLine("Error: A file in the directory could not be accessed.")
-        End Try
+Class XMLDSIGDetached
+   
+  
+   <STAThread()>  _
+   Overloads Shared Sub Main(args() As String)
+      ' The URI to sign.
+      Dim resourceToSign As String = "http://www.microsoft.com"
+      
+      ' The name of the file to which to save the XML signature.
+      Dim XmlFileName As String = "xmldsig.xml"
+      
+      Try
+         
+         ' Generate a DSA signing key.
+         Dim DSAKey As New DSACryptoServiceProvider()
+         
+         Console.WriteLine("Signing: {0}", resourceToSign)
+         
+         ' Sign the detached resourceand save the signature in an XML file.
+         SignDetachedResource(resourceToSign, XmlFileName, DSAKey)
+         
+         Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName)
+         
+         ' Verify the signature of the signed XML.
+         Console.WriteLine("Verifying signature...")
+         
+         'Verify the XML signature in the XML file.
+         Dim result As Boolean = VerifyDetachedSignature(XmlFileName)
+         
+         ' Display the results of the signature verification to 
+         ' the console.
+         If result Then
+            Console.WriteLine("The XML signature is valid.")
+         Else
+            Console.WriteLine("The XML signature is not valid.")
+         End If
+      Catch e As CryptographicException
+         Console.WriteLine(e.Message)
+      End Try 
+   End Sub 
+   
+   
+   
+   ' Sign an XML file and save the signature in a new file.
+   Public Shared Sub SignDetachedResource(URIString As String, XmlSigFileName As String, DSAKey As DSA)
+      ' Create a SignedXml object.
+      Dim signedXml As New SignedXml()
+      
+      ' Assign the DSA key to the SignedXml object.
+      signedXml.SigningKey = DSAKey
+      
+      ' Create a reference to be signed.
+      Dim reference As New Reference()
+      
+      ' Add the passed URI to the reference object.
+      reference.Uri = URIString
+      
+      ' Add the reference to the SignedXml object.
+      signedXml.AddReference(reference)
+      
+      ' Add a DSAKeyValue to the KeyInfo (optional; helps recipient find key to validate).
+      Dim keyInfo As New KeyInfo()
+      keyInfo.AddClause(New DSAKeyValue(CType(DSAKey, DSA)))
+      signedXml.KeyInfo = keyInfo
+      
+      ' Compute the signature.
+      signedXml.ComputeSignature()
+      
+      ' Get the XML representation of the signature and save
+      ' it to an XmlElement object.
+      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
+      
+      ' Save the signed XML document to a file specified
+      ' using the passed string.
+      Dim xmltw As New XmlTextWriter(XmlSigFileName, New UTF8Encoding(False))
+      xmlDigitalSignature.WriteTo(xmltw)
+      xmltw.Close()
+   End Sub 
+   
 
-    End Sub
+   ' Verify the signature of an XML file and return the result.
+   Public Shared Function VerifyDetachedSignature(XmlSigFileName As String) As [Boolean]
+      ' Create a new XML document.
+      Dim xmlDocument As New XmlDocument()
+      
+      ' Load the passed XML file into the document.
+      xmlDocument.Load(XmlSigFileName)
+      
+      ' Create a new SignedXMl object.
+      Dim signedXml As New SignedXml()
+      
+      ' Find the "Signature" node and create a new
+      ' XmlNodeList object.
+      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
+      
+      ' Load the signature node.
+      signedXml.LoadXml(CType(nodeList(0), XmlElement))
+      
+      ' Check the signature and return the result.
+      Return signedXml.CheckSignature()
+   End Function 
 
-    ' Print the byte array in a readable format.
-    Public Shared Sub PrintByteArray(ByVal array() As Byte)
-        Dim i As Integer
-        For i = 0 To array.Length - 1
-            Console.Write(String.Format("{0:X2}", array(i)))
-            If i Mod 4 = 3 Then
-                Console.Write(" ")
-            End If
-        Next i
-        Console.WriteLine()
 
-    End Sub 'PrintByteArray
 End Class

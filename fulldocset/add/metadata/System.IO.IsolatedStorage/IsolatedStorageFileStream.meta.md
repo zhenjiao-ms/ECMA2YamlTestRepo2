@@ -84,11 +84,6 @@ internalonly: False
 ---
 
 ---
-uid: System.IO.IsolatedStorage.IsolatedStorageFileStream.Lock(System.Int64,System.Int64)
-internalonly: False
----
-
----
 uid: System.IO.IsolatedStorage.IsolatedStorageFileStream.SafeFileHandle
 internalonly: False
 ---
@@ -120,11 +115,6 @@ internalonly: False
 
 ---
 uid: System.IO.IsolatedStorage.IsolatedStorageFileStream.Length
-internalonly: False
----
-
----
-uid: System.IO.IsolatedStorage.IsolatedStorageFileStream.Unlock(System.Int64,System.Int64)
 internalonly: False
 ---
 

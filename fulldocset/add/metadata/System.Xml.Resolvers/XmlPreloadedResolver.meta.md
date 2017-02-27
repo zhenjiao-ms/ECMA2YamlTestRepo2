@@ -77,8 +77,3 @@ internalonly: False
 uid: System.Xml.Resolvers.XmlPreloadedResolver.Remove(System.Uri)
 internalonly: False
 ---
-
----
-uid: System.Xml.Resolvers.XmlPreloadedResolver.GetEntityAsync(System.Uri,System.String,System.Type)
-internalonly: False
----

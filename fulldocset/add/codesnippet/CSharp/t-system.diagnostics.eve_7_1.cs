@@ -1,135 +1,71 @@
 using System;
-using System.Globalization;
+using System.Collections;
 using System.Diagnostics;
 
-namespace EventLogSamples
+class EventLogEntryCollection_Item
 {
-    class CreateSourceSample
+    public static void Main()
     {
-        [STAThread]
-        static void Main(string[] args)
+        try
         {
-            EventSourceCreationData mySourceData = new EventSourceCreationData("", "");
-            bool registerSource = true;
-
-            // Process input parameters.
-            if (args.Length > 0)
+            string myLogName = "MyNewLog";
+            // Check if the source exists.
+            if (!EventLog.SourceExists("MySource"))
             {
-                // Require at least the source name.
-
-                mySourceData.Source = args[0];
-
-                if (args.Length > 1)
-                {
-                    mySourceData.LogName = args[1];
-                }
-
-                if (args.Length > 2)
-                {
-                    mySourceData.MachineName = args[2];
-                }
-                if ((args.Length > 3) && (args[3].Length > 0))
-                {
-                    mySourceData.MessageResourceFile = args[3];
-                }
-            }
-            else 
-            {
-                // Display a syntax help message.
-                Console.WriteLine("Input:");
-                Console.WriteLine(" source [event log] [machine name] [resource file]");
-
-                registerSource = false;
-            }
-
-            // Set defaults for parameters missing input.
-            if (mySourceData.MachineName.Length == 0)
-            {
-                // Default to the local computer.
-                mySourceData.MachineName = ".";
-            }
-            if (mySourceData.LogName.Length == 0)
-            {
-                // Default to the Application log.
-                mySourceData.LogName = "Application";
-            }
-
-            // Determine if the source exists on the specified computer.
-            if (!EventLog.SourceExists(mySourceData.Source, 
-                                       mySourceData.MachineName))
-            {
-                // The source does not exist.  
-
-                // Verify that the message file exists
-                // and the event log is local.
-
-                if ((mySourceData.MessageResourceFile != null) &&
-                    (mySourceData.MessageResourceFile.Length > 0))
-                {
-                    if (mySourceData.MachineName == ".") 
-                    {
-                        if (!System.IO.File.Exists(mySourceData.MessageResourceFile))
-                        {
-                            Console.WriteLine("File {0} not found - message file not set for source.",
-                                mySourceData.MessageResourceFile);
-                            registerSource = false;
-                        }
-                    }
-                    else 
-                    {
-                        // For simplicity, do not allow setting the message
-                        // file for a remote event log.  To set the message
-                        // for a remote event log, and for source registration,
-                        // the file path should be specified with system-wide
-                        // environment variables that are valid on the remote
-                        // computer, such as
-                        // "%SystemRoot%\system32\myresource.dll".
-
-                        Console.WriteLine("Message resource file ignored for remote event log.");
-                        registerSource = false;
-                    }
-                }
+                // Create the source.
+                // An event log source should not be created and immediately used.
+                // There is a latency time to enable the source, it should be created
+                // prior to executing the application that uses the source.
+                // Execute this sample a second time to use the new source.
+                EventLog.CreateEventSource("MySource", myLogName);
+                Console.WriteLine("Creating EventSource");
+                Console.WriteLine("Exiting, execute the application a second time to use the source.");
+                // The source is created.  Exit the application to allow it to be registered.
+                return;
             }
             else
+                // Get the EventLog associated if the source exists.
+                myLogName = EventLog.LogNameFromSourceName("MySource", ".");
+
+            // Create an EventLog instance and assign its source.
+            EventLog myEventLog2 = new EventLog();
+            myEventLog2.Source = "MySource";
+            // Write an informational entry to the event log.
+            myEventLog2.WriteEntry("Successfully created a new Entry in the Log");
+            myEventLog2.Close();
+            // Create a new EventLog object.
+            EventLog myEventLog1 = new EventLog();
+            myEventLog1.Log = myLogName;
+
+            // Obtain the Log Entries of "MyNewLog".
+            EventLogEntryCollection myEventLogEntryCollection =
+               myEventLog1.Entries;
+            myEventLog1.Close();
+            Console.WriteLine("The number of entries in 'MyNewLog' = "
+               + myEventLogEntryCollection.Count);
+
+            // Display the 'Message' property of EventLogEntry.
+            for (int i = 0; i < myEventLogEntryCollection.Count; i++)
             {
-                // Do not register the source, it already exists.
-                registerSource = false;
-
-                // Get the event log corresponding to the existing source.
-                string sourceLog;
-                sourceLog = EventLog.LogNameFromSourceName(mySourceData.Source,
-                                mySourceData.MachineName);
-
-                // Determine if the event source is registered for the 
-                // specified log.
-
-                if (sourceLog.ToUpper(CultureInfo.InvariantCulture) != mySourceData.LogName.ToUpper(CultureInfo.InvariantCulture)) 
-                {
-                    // An existing source is registered 
-                    // to write to a different event log.
-                    Console.WriteLine("Warning: source {0} is already registered to write to event log {1}",
-                        mySourceData.Source, sourceLog);
-                }
-                else 
-                {
-                    // The source is already registered 
-                    // to write to the specified event log.
-
-                    Console.WriteLine("Source {0} already registered to write to event log {1}",
-                        mySourceData.Source, sourceLog);
-                }
+                Console.WriteLine("The Message of the EventLog is :"
+                   + myEventLogEntryCollection[i].Message);
             }
-        
 
-            if (registerSource)
+            // Copy the EventLog entries to Array of type EventLogEntry.
+            EventLogEntry[] myEventLogEntryArray =
+               new EventLogEntry[myEventLogEntryCollection.Count];
+            myEventLogEntryCollection.CopyTo(myEventLogEntryArray, 0);
+            IEnumerator myEnumerator = myEventLogEntryArray.GetEnumerator();
+            while (myEnumerator.MoveNext())
             {
-                // Register the new event source for the specified event log.
-
-                Console.WriteLine("Registering new source {0} for event log {1}.",
-                    mySourceData.Source, mySourceData.LogName);
-                EventLog.CreateEventSource(mySourceData);
-                Console.WriteLine("Event source was registered successfully!");
+                EventLogEntry myEventLogEntry = (EventLogEntry)myEnumerator.Current;
+                Console.WriteLine("The LocalTime the Event is generated is "
+                   + myEventLogEntry.TimeGenerated);
             }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception:{0}", e.Message);
         }
     }
 }

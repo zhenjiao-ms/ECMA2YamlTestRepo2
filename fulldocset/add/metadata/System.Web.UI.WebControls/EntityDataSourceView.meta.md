@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.EntityDataSourceView.#ctor(System.Web.UI.WebControls.EntityDataSource,System.String)
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.EntityDataSourceView.CanUpdate
 internalonly: False
 ---

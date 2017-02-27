@@ -1,4 +1,20 @@
-            Single s=3.402823E+10F;
-            string mySStr="3.402823E+10";
-            Console.WriteLine(TypeDescriptor.GetConverter(s).ConvertTo(s, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(s).ConvertFrom(mySStr));    
+using System;
+using System.Web.DynamicData;
+using System.ComponentModel.DataAnnotations;
+
+[MetadataType(typeof(CustomerMetaData))]
+public partial class Customer
+{
+
+   
+}
+
+
+public class CustomerMetaData
+{
+    // Apply RequiredAttribute
+    [Required(ErrorMessage = "Title is required.")]
+    public object Title;
+
+   
+}

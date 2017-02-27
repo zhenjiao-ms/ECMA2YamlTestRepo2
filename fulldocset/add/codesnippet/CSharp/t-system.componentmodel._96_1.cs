@@ -1,10 +1,16 @@
-[Description("The image associated with the control"),Category("Appearance")] 
- public Image MyImage {
-    get {
-       // Insert code here.
-       return image1;
-    }
-    set {
-       // Insert code here.
-    }
- }
+        [Category("Data")]
+        [Description("Indicates the source of data for the control.")]
+        [RefreshProperties(RefreshProperties.Repaint)]
+        [AttributeProvider(typeof(IListSource))]
+        public object DataSource
+        {
+            get
+            {
+                return this.dataGridView1.DataSource;
+            }
+
+            set
+            {
+                this.dataGridView1.DataSource = value;
+            }
+        }

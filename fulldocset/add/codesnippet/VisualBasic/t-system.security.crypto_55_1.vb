@@ -1,112 +1,66 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.X509Certificates
 
-Public Class HMACSHA256example
 
-    Public Shared Sub Main(ByVal Fileargs() As String)
-        Dim dataFile As String
-        Dim signedFile As String
-        'If no file names are specified, create them.
-        If Fileargs.Length < 2 Then
-            dataFile = "text.txt"
-            signedFile = "signedFile.enc"
 
-            If Not File.Exists(dataFile) Then
-                ' Create a file to write to.
-                Using sw As StreamWriter = File.CreateText(dataFile)
-                    sw.WriteLine("Here is a message to sign")
-                End Using
-            End If
+Class AsnEncodedDataSample
+   Shared msg As String
+   Shared Sub Main()
+      'The following example demonstrates the usage the AsnEncodedData classes.
+      ' Asn encoded data is read from the extensions of an X509 certificate.
+      Try
+         ' Open the certificate store.
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         ' Select one or more certificates to display extensions information.
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
+         
+         ' Create a new AsnEncodedDataCollection object.
+         Dim asncoll As New AsnEncodedDataCollection()
+         Dim i As Integer
+         For i = 0 To scollection.Count - 1
+            ' Display certificate information.
+	    msg = "Certificate name: "& scollection(i).GetName()
+            MsgBox(msg)
 
-        Else
-            dataFile = Fileargs(0)
-            signedFile = Fileargs(1)
-        End If
-        Try
-            ' Create a random key using a random number generator. This would be the
-            '  secret key shared by sender and receiver.
-            Dim secretkey() As Byte = New [Byte](63) {}
-            'RNGCryptoServiceProvider is an implementation of a random number generator.
-            Using rng As New RNGCryptoServiceProvider()
-                ' The array is now filled with cryptographically strong random bytes.
-                rng.GetBytes(secretkey)
+            ' Display extensions information.
+            Dim extension As X509Extension
+            For Each extension In  scollection(i).Extensions
+               ' Create an AsnEncodedData object using the extensions information.
+               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
+	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
+		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
+		& asndata.Format(True) & Environment.NewLine
+               MsgBox(msg)
+		
+               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+               asncoll.Add(asndata)
+            Next extension
+         Next i
+	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
+         MsgBox(msg)         
+         store.Close()
 
-                ' Use the secret key to encode the message file.
-                SignFile(secretkey, dataFile, signedFile)
-
-                ' Take the encoded file and decode
-                VerifyFile(secretkey, signedFile)
-            End Using
-        Catch e As IOException
-            Console.WriteLine("Error: File not found", e)
-        End Try
-
-    End Sub 'Main
-
-    ' Computes a keyed hash for a source file and creates a target file with the keyed hash
-    ' prepended to the contents of the source file. 
-    Public Shared Sub SignFile(ByVal key() As Byte, ByVal sourceFile As String, ByVal destFile As String)
-        ' Initialize the keyed hash object.
-        Using myhmac As New HMACSHA256(key)
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                Using outStream As New FileStream(destFile, FileMode.Create)
-                    ' Compute the hash of the input file.
-                    Dim hashValue As Byte() = myhmac.ComputeHash(inStream)
-                    ' Reset inStream to the beginning of the file.
-                    inStream.Position = 0
-                    ' Write the computed hash value to the output file.
-                    outStream.Write(hashValue, 0, hashValue.Length)
-                    ' Copy the contents of the sourceFile to the destFile.
-                    Dim bytesRead As Integer
-                    ' read 1K at a time
-                    Dim buffer(1023) As Byte
-                    Do
-                        ' Read from the wrapping CryptoStream.
-                        bytesRead = inStream.Read(buffer, 0, 1024)
-                        outStream.Write(buffer, 0, bytesRead)
-                    Loop While bytesRead > 0
-                End Using
-            End Using
-        End Using
-        Return
-
-    End Sub 'SignFile
-    ' end SignFile
-
-    ' Compares the key in the source file with a new key created for the data portion of the file. If the keys 
-    ' compare the data has not been tampered with.
-    Public Shared Function VerifyFile(ByVal key() As Byte, ByVal sourceFile As String) As Boolean
-        Dim err As Boolean = False
-        ' Initialize the keyed hash object. 
-        Using hmac As New HMACSHA256(key)
-            ' Create an array to hold the keyed hash value read from the file.
-            Dim storedHash(hmac.HashSize / 8) As Byte
-            ' Create a FileStream for the source file.
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                ' Read in the storedHash.
-                inStream.Read(storedHash, 0, storedHash.Length - 1)
-                ' Compute the hash of the remaining contents of the file.
-                ' The stream is properly positioned at the beginning of the content, 
-                ' immediately after the stored hash value.
-                Dim computedHash As Byte() = hmac.ComputeHash(inStream)
-                ' compare the computed hash with the stored value
-                Dim i As Integer
-                For i = 0 To storedHash.Length - 2
-                    If computedHash(i) <> storedHash(i) Then
-                        err = True
-                    End If
-                Next i
-            End Using
-        End Using
-        If err Then
-            Console.WriteLine("Hash values differ! Signed file has been tampered with!")
-            Return False
-        Else
-            Console.WriteLine("Hash values agree -- no tampering occurred.")
-            Return True
-        End If
-
-    End Function 'VerifyFile 
-End Class 'HMACSHA256example 'end VerifyFile
-'end class
+         'Create an enumerator for moving through the collection.
+         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
+         'You must execute a MoveNext() to get to the first item in the collection.
+         asne.MoveNext()
+         ' Write out AsnEncodedData in the collection.
+	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+	
+         
+         asne.MoveNext()
+	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+        
+         'Return index in the collection to the beginning.
+         asne.Reset()
+      Catch 
+         MsgBox("Information could not be written out for this certificate.")
+      End Try
+   End Sub 'Main
+End Class 'AsnEncodedDataSample

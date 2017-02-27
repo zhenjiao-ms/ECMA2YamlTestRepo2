@@ -1,23 +1,37 @@
+using namespace System;
+using namespace System::Runtime::InteropServices;
+
+// Have the CLR expose a class interface (derived from IDispatch)
+// for this type. COM clients can call the  members of this
+// class using the Invoke method from the IDispatch interface.
 [ClassInterface(ClassInterfaceType::AutoDispatch)]
-[ProgId("InteropSample.MyClass")]
-public ref class MyClass
+public ref class AClassUsableViaCOM
 {
 public:
-   MyClass(){}
+    AClassUsableViaCOM() 
+    { 
+    }
 
+public:
+    int Add(int x, int y)
+    {
+        return x + y;
+    }
 };
 
-int main()
+// The CLR does not expose a class interface for this type.
+// COM clients can call the members of this class using
+// the methods from the IComparable interface.
+[ClassInterface(ClassInterfaceType::None)]
+public ref class AnotherClassUsableViaCOM : public IComparable
 {
-   try
-   {
-      AttributeCollection^ attributes;
-      attributes = TypeDescriptor::GetAttributes( MyClass::typeid );
-      ProgIdAttribute^ progIdAttributeObj = dynamic_cast<ProgIdAttribute^>(attributes[ ProgIdAttribute::typeid ]);
-      Console::WriteLine( "ProgIdAttribute's value is set to : {0}", progIdAttributeObj->Value );
-   }
-   catch ( Exception^ e ) 
-   {
-      Console::WriteLine( "Exception : {0}", e->Message );
-   }
-}
+public:
+    AnotherClassUsableViaCOM() 
+    { 
+    }
+
+    virtual int CompareTo(Object^ o) = IComparable::CompareTo
+    {
+        return 0;
+    }
+};

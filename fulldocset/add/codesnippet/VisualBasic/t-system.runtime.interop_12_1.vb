@@ -1,15 +1,21 @@
-Imports System
-Imports System.Runtime.InteropServices
+   <ClassInterface(ClassInterfaceType.AutoDispatch), ProgId("InteropSample.MyClass")>  _
+   Public Class [MyClass]
+      
+      Public Sub New()
+      End Sub 'New
+   End Class '[MyClass]
 
-Public Class MyClassThatNeedsToRegister
-    
-    <ComRegisterFunctionAttribute()> Public Shared Sub _
-      RegisterFunction(t As Type)
-        'Insert code here.
-    End Sub
-    
-    <ComUnregisterFunctionAttribute()> Public Shared Sub _
-      UnregisterFunction(t As Type)
-        'Insert code here.
-    End Sub
-End Class
+   Class TestApplication
+      
+      Public Shared Sub Main()
+         Try
+            Dim attributes As AttributeCollection
+            attributes = TypeDescriptor.GetAttributes(GetType([MyClass]))
+            Dim progIdAttributeObj As ProgIdAttribute = CType(attributes(GetType(ProgIdAttribute)), ProgIdAttribute)
+            Console.WriteLine(("ProgIdAttribute's value is set to : " + progIdAttributeObj.Value))
+         Catch e As Exception
+            Console.WriteLine(("Exception : " + e.Message.ToString()))
+         End Try
+      End Sub 'Main
+   End Class 'TestApplication
+End Namespace 'InteropSample 

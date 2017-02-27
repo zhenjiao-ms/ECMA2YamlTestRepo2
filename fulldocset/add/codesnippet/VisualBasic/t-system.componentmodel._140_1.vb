@@ -1,4 +1,1 @@
-    <TypeConverter(GetType(MyClassConverter))> _
-    Public Class ClassA
-        ' Insert code here.
-    End Class 'MyClass
+'This data type is not supported in Visual Basic.

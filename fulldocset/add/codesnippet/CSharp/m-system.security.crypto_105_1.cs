@@ -1,64 +1,57 @@
-using System;
-using System.Security.Cryptography.Xml;
-using System.Xml;
-using System.IO;
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
+    {
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
 
-/// This sample used the EncryptedData class to create an encrypted data element
-/// and write it to an XML file. It demonstrates the use of CipherReference.
-namespace EncryptedDataSample
-{
-	class Sample1
-	{
-		[STAThread]
-		static void Main(string[] args)
-		{
-			//Create a URI string.
-			String uri = "http://www.woodgrovebank.com/document.xml";
-			// Create a Base64 transform. The input content retrieved from the
-			// URI should be Base64-decoded before other processing.
-			Transform base64 = new XmlDsigBase64Transform();
-			//Create a transform chain and add the transform to it.
-			TransformChain tc = new TransformChain();
-			tc.Add(base64);
-			//Create <CipherReference> information.
-			CipherReference reference = new CipherReference(uri, tc);
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
 
-			// Create a new CipherData object using the CipherReference information.
-			// Note that you cannot assign both a CipherReference and a CipherValue
-			// to a CipherData object.
-			CipherData cd = new CipherData(reference);
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
 
-			// Create a new EncryptedData object.
-			EncryptedData ed = new EncryptedData();
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
 
-			//Add an encryption method to the object.
-			ed.Id = "ED";
-			ed.EncryptionMethod = new EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc");
-			ed.CipherData = cd;
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key;
 
-			//Add key information to the object.
-			KeyInfo ki = new KeyInfo();
-			ki.AddClause(new KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"));
-			ed.KeyInfo = ki;
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+        reference.Uri = "";
 
-			// Create new XML document and put encrypted data into it.
-			XmlDocument doc = new XmlDocument();
-			XmlElement encryptionPropertyElement = (XmlElement)doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
-			EncryptionProperty ep = new EncryptionProperty(encryptionPropertyElement);
-			ed.AddProperty(ep);
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
 
-			// Output the resulting XML information into a file.
-			try
-			{
-				string path = @"c:\test\MyTest.xml";
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
 
-				File.WriteAllText(path, ed.GetXml().OuterXml);
-			}
-			catch (IOException e)
-			{
-				Console.WriteLine("File IO error. {0}", e);
-			}
+		
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
+        signedXml.KeyInfo = keyInfo;
 
-		}
-	}
-}
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+		
+		
+        if (doc.FirstChild is XmlDeclaration)  
+        {
+            doc.RemoveChild(doc.FirstChild);
+        }
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
+        doc.WriteTo(xmltw);
+        xmltw.Close();
+    }

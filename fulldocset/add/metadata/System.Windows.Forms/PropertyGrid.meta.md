@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.PropertyGrid.HelpBorderColor
-internalonly: False
----
-
----
 uid: System.Windows.Forms.PropertyGrid.OnEnabledChanged(System.EventArgs)
 internalonly: False
 ---
@@ -49,16 +44,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.PropertyGrid.CanShowVisualStyleGlyphs
-internalonly: False
----
-
----
-uid: System.Windows.Forms.PropertyGrid.SelectedItemWithFocusForeColor
-internalonly: False
----
-
----
 uid: System.Windows.Forms.PropertyGrid.OnHandleCreated(System.EventArgs)
 internalonly: False
 ---
@@ -75,16 +60,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.PropertyGrid.DefaultSize
-internalonly: False
----
-
----
-uid: System.Windows.Forms.PropertyGrid.SelectedItemWithFocusBackColor
-internalonly: False
----
-
----
-uid: System.Windows.Forms.PropertyGrid.SortByCategoryImage
 internalonly: False
 ---
 
@@ -120,11 +95,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.PropertyGrid.BackgroundImageChanged
-internalonly: False
----
-
----
-uid: System.Windows.Forms.PropertyGrid.CommandsBorderColor
 internalonly: False
 ---
 
@@ -259,11 +229,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.PropertyGrid.ViewBorderColor
-internalonly: False
----
-
----
 uid: System.Windows.Forms.PropertyGrid.PropertyTabChanged
 internalonly: False
 ---
@@ -354,11 +319,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.PropertyGrid.ShowPropertyPageImage
-internalonly: False
----
-
----
 uid: System.Windows.Forms.PropertyGrid.SelectedGridItem
 internalonly: False
 ---
@@ -389,17 +349,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.PropertyGrid.DisabledItemForeColor
-internalonly: False
----
-
----
 uid: System.Windows.Forms.PropertyGrid.KeyPress
-internalonly: False
----
-
----
-uid: System.Windows.Forms.PropertyGrid.CategorySplitterColor
 internalonly: False
 ---
 
@@ -425,11 +375,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.PropertyGrid.ExpandAllGridItems
-internalonly: False
----
-
----
-uid: System.Windows.Forms.PropertyGrid.SortByPropertyImage
 internalonly: False
 ---
 

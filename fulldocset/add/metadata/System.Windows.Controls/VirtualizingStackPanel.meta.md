@@ -39,11 +39,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.VirtualizingStackPanel.CanHierarchicallyScrollAndVirtualizeCore
-internalonly: False
----
-
----
 uid: System.Windows.Controls.VirtualizingStackPanel.PageUp
 internalonly: False
 ---
@@ -75,11 +70,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.VirtualizingStackPanel.BringIndexIntoView(System.Int32)
-internalonly: False
----
-
----
-uid: System.Windows.Controls.VirtualizingStackPanel.GetItemOffsetCore(System.Windows.UIElement)
 internalonly: False
 ---
 
@@ -135,11 +125,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.VirtualizingStackPanel.#ctor
-internalonly: False
----
-
----
-uid: System.Windows.Controls.VirtualizingStackPanel.ShouldItemsChangeAffectLayoutCore(System.Boolean,System.Windows.Controls.Primitives.ItemsChangedEventArgs)
 internalonly: False
 ---
 

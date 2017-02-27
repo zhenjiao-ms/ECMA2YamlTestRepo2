@@ -1,125 +1,100 @@
-Imports System
-Imports System.Collections
-Imports System.ComponentModel
-Imports System.ComponentModel.Design
-Imports System.Diagnostics
-Imports System.Drawing
-Imports System.Drawing.Design
-Imports System.Windows.Forms
-Imports System.Windows.Forms.Design
+	'This code segment implements the IContainer interface.  The code segment 
+	'containing the implementation of ISite and IComponent can be found in the documentation
+	'for those interfaces.
+	
+	'Implement the LibraryContainer using the IContainer interface.
 
-' This example contains an IRootDesigner that implements the IToolboxUser interface.
-' This example demonstrates how to enable the GetToolSupported method of an IToolboxUser
-' designer in order to disable specific toolbox items, and how to respond to the 
-' invocation of a ToolboxItem in the ToolPicked method of an IToolboxUser implementation.
-' This example component class demonstrates the associated IRootDesigner which 
-' implements the IToolboxUser interface. When designer view is invoked, Visual 
-' Studio .NET attempts to display a design mode view for the class at the top 
-' of a code file. This can sometimes fail when the class is one of multiple types 
-' in a code file, and has a DesignerAttribute associating it with an IRootDesigner. 
-' Placing a derived class at the top of the code file solves this problem. A 
-' derived class is not typically needed for this reason, except that placing the 
-' RootDesignedComponent class in another file is not a simple solution for a code 
-' example that is packaged in one segment of code.
+Class LibraryContainer
+    Implements IContainer
+    Private m_bookList As ArrayList
 
-Public Class RootViewSampleComponent
-    Inherits RootDesignedComponent
-End Class
+    Public Sub New()
+        m_bookList = New ArrayList()
+    End Sub
 
-' The following attribute associates the SampleRootDesigner with this example component.
-<DesignerAttribute(GetType(SampleRootDesigner), GetType(IRootDesigner))> _
-Public Class RootDesignedComponent
-    Inherits System.Windows.Forms.Control
-End Class
+    Public Sub Add(ByVal book As IComponent) Implements IContainer.Add
+        'The book will be added without creation of the ISite object.
+        m_bookList.Add(book)
+    End Sub
 
-' This example IRootDesigner implements the IToolboxUser interface and provides a 
-' Windows Forms view technology view for its associated component using an internal 
-' Control type.     
-' The following ToolboxItemFilterAttribute enables the GetToolSupported method of this
-' IToolboxUser designer to be queried to check for whether to enable or disable all 
-' ToolboxItems which create any components whose type name begins with "System.Windows.Forms".
-<ToolboxItemFilterAttribute("System.Windows.Forms", ToolboxItemFilterType.Custom)> _
-<System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
-Public Class SampleRootDesigner
-    Inherits ParentControlDesigner
-    Implements IRootDesigner, IToolboxUser
+    Public Sub Add(ByVal book As IComponent, ByVal ISNDNNum As String) Implements IContainer.Add
 
-    ' Member field of custom type RootDesignerView, a control that is shown in the 
-    ' design mode document window. This member is cached to reduce processing needed 
-    ' to recreate the view control on each call to GetView().
-    Private m_view As RootDesignerView
+        Dim i As Integer
+        Dim curObj As IComponent
 
-    ' This string array contains type names of components that should not be added to 
-    ' the component managed by this designer from the Toolbox.  Any ToolboxItems whose 
-    ' type name matches a type name in this array will be marked disabled according to  
-    ' the signal returned by the IToolboxUser.GetToolSupported method of this designer.
-    Private blockedTypeNames As String() = {"System.Windows.Forms.ListBox", "System.Windows.Forms.GroupBox"}
+        For i = 0 To m_bookList.Count - 1
+            curObj = CType(m_bookList(i), IComponent)
+            If curObj.Site IsNot Nothing Then
+                If (curObj.Site.Name.Equals(ISNDNNum)) Then
+                    Throw New SystemException("The ISBN number already exists in the container")
+                End If
+            End If
+        Next i
 
-    ' IRootDesigner.SupportedTechnologies is a required override for an IRootDesigner.
-    ' This designer provides a display using the Windows Forms view technology.
-    ReadOnly Property SupportedTechnologies() As ViewTechnology() Implements IRootDesigner.SupportedTechnologies
+        Dim data As ISBNSite = New ISBNSite(Me, book)
+        data.Name = ISNDNNum
+        book.Site = data
+        m_bookList.Add(book)
+
+    End Sub
+
+    Public Sub Remove(ByVal book As IComponent) Implements IContainer.Remove
+        Dim i As Integer
+        Dim curComp As BookComponent = CType(book, BookComponent)
+
+        For i = 0 To m_bookList.Count - 1
+            If (curComp.Equals(m_bookList(i)) = True) Then
+                m_bookList.RemoveAt(i)
+                Exit For
+            End If
+        Next i
+    End Sub
+
+
+    Public ReadOnly Property Components() As ComponentCollection Implements IContainer.Components
         Get
-            Return New ViewTechnology() {ViewTechnology.Default}
+            Dim datalist(m_bookList.Count - 1) As IComponent
+            
+            m_bookList.CopyTo(datalist)
+            Return New ComponentCollection(datalist)
         End Get
     End Property
 
-    ' This method returns an object that provides the view for this root designer. 
-    Function GetView(ByVal technology As ViewTechnology) As Object Implements IRootDesigner.GetView
-        ' If the design environment requests a view technology other than Windows 
-        ' Forms, this method throws an Argument Exception.
-        If technology <> ViewTechnology.Default Then
-            Throw New ArgumentException("An unsupported view technology was requested", "Unsupported view technology.")
-        End If
-
-        ' Creates the view object if it has not yet been initialized.
-        If m_view Is Nothing Then
-            m_view = New RootDesignerView(Me)
-        End If
-        Return m_view
-    End Function
-
-    ' This method can signal whether to enable or disable the specified
-    ' ToolboxItem when the component associated with this designer is selected.
-    Function GetToolSupported(ByVal tool As ToolboxItem) As Boolean Implements IToolboxUser.GetToolSupported
-        ' Search the blocked type names array for the type name of the tool
-        ' for which support for is being tested. Return false to indicate the
-        ' tool should be disabled when the associated component is selected.
+    Public Overridable Sub Dispose() Implements IDisposable.Dispose
         Dim i As Integer
-        For i = 0 To blockedTypeNames.Length - 1
-            If tool.TypeName = blockedTypeNames(i) Then
-                Return False
-            End If
-        Next i ' Return true to indicate support for the tool, if the type name of the
-        ' tool is not located in the blockedTypeNames string array.
-        Return True
-    End Function
+        For i = 0 To m_bookList.Count - 1
+            Dim curObj As IComponent = CType(m_bookList(i), IComponent)
+            curObj.Dispose()
+        Next i
 
-    ' This method can perform behavior when the specified tool has been invoked.
-    ' Invocation of a ToolboxItem typically creates a component or components, 
-    ' and adds any created components to the associated component.
-    Sub ToolPicked(ByVal tool As ToolboxItem) Implements IToolboxUser.ToolPicked
+        m_bookList.Clear()
     End Sub
 
-    ' This control provides a Windows Forms view technology view object that 
-    ' provides a display for the SampleRootDesigner.
-    <DesignerAttribute(GetType(ParentControlDesigner), GetType(IDesigner))> _
-    Friend Class RootDesignerView
-        Inherits Control
-        ' This field stores a reference to a designer.
-        Private m_designer As IDesigner
+    Public Shared Sub Main()
+        Dim cntrExmpl As LibraryContainer = New LibraryContainer()
 
-        Public Sub New(ByVal designer As IDesigner)
-            ' Performs basic control initialization.
-            m_designer = designer
-            BackColor = Color.Blue
-            Font = New Font(Font.FontFamily.Name, 24.0F)
-        End Sub
+        Try
+            Dim book1 As BookComponent = New BookComponent("Wizard's First Rule", "Terry Gooodkind")
+            cntrExmpl.Add(book1, "0812548051")
+            Dim book2 As BookComponent = New BookComponent("Stone of Tears", "Terry Gooodkind")
+            cntrExmpl.Add(book2, "0812548094")
+            Dim book3 As BookComponent = New BookComponent("Blood of the Fold", "Terry Gooodkind")
+            cntrExmpl.Add(book3, "0812551478")
+            Dim book4 As BookComponent = New BookComponent("The Soul of the Fire", "Terry Gooodkind")
+            'This will generate an exception, because the ISBN already exists in the container.
+            cntrExmpl.Add(book4, "0812551478")
+        Catch e As SystemException
+            Console.WriteLine("Error description: " + e.Message)
+        End Try
 
-        ' This method is called to draw the view for the SampleRootDesigner.
-        Protected Overrides Sub OnPaint(ByVal pe As PaintEventArgs)
-            MyBase.OnPaint(pe)
-            ' Draws the name of the component in large letters.
-            pe.Graphics.DrawString(m_designer.Component.Site.Name, Font, Brushes.Yellow, New RectangleF(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height))
-        End Sub
-    End Class
+        Dim datalist As ComponentCollection = cntrExmpl.Components
+        Dim denum As IEnumerator = datalist.GetEnumerator()
+
+        While (denum.MoveNext())
+            Dim cmp As BookComponent = CType(denum.Current, BookComponent)
+            Console.WriteLine("Book Title: " + cmp.Title)
+            Console.WriteLine("Book Author: " + cmp.Author)
+            Console.WriteLine("Book ISBN: " + cmp.Site.Name)
+        End While
+    End Sub
 End Class

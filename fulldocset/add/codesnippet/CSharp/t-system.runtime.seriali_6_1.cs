@@ -1,308 +1,309 @@
+// Note: You must compile this file using the C# /unsafe switch.
+using System;
+using System.IO;
+using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Runtime.InteropServices;
+using System.Security.Permissions;
 
-class program
+[assembly: SecurityPermission(
+SecurityAction.RequestMinimum, Execution = true)]
+// This class includes several Win32 interop definitions.
+internal class Win32
 {
+    public static readonly IntPtr InvalidHandleValue = new IntPtr(-1);
+    public const UInt32 FILE_MAP_WRITE = 2;
+    public const UInt32 PAGE_READWRITE = 0x04;
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr CreateFileMapping(IntPtr hFile,
+        IntPtr pAttributes, UInt32 flProtect,
+        UInt32 dwMaximumSizeHigh, UInt32 dwMaximumSizeLow, String pName);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr OpenFileMapping(UInt32 dwDesiredAccess,
+        Boolean bInheritHandle, String name);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern Boolean CloseHandle(IntPtr handle);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr MapViewOfFile(IntPtr hFileMappingObject,
+        UInt32 dwDesiredAccess,
+        UInt32 dwFileOffsetHigh, UInt32 dwFileOffsetLow,
+        IntPtr dwNumberOfBytesToMap);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern Boolean UnmapViewOfFile(IntPtr address);
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern Boolean DuplicateHandle(IntPtr hSourceProcessHandle,
+        IntPtr hSourceHandle,
+        IntPtr hTargetProcessHandle, ref IntPtr lpTargetHandle,
+        UInt32 dwDesiredAccess, Boolean bInheritHandle, UInt32 dwOptions);
+    public const UInt32 DUPLICATE_CLOSE_SOURCE = 0x00000001;
+    public const UInt32 DUPLICATE_SAME_ACCESS = 0x00000002;
+
+    [DllImport("Kernel32",CharSet=CharSet.Unicode)]
+    public static extern IntPtr GetCurrentProcess();
+}
+
+
+// This class wraps memory that can be simultaneously 
+// shared by multiple AppDomains and Processes.
+[Serializable]
+public sealed class SharedMemory : ISerializable, IDisposable
+{
+    // The handle and string that identify 
+    // the Windows file-mapping object.
+    private IntPtr m_hFileMap = IntPtr.Zero;
+    private String m_name;
+
+    // The address of the memory-mapped file-mapping object.
+    private IntPtr m_address;
+
+    public unsafe Byte* Address
+    {
+        get { return (Byte*)m_address; }
+    }
+
+    // The constructors.
+    public SharedMemory(Int32 size) : this(size, null) { }
+
+    public SharedMemory(Int32 size, String name)
+    {
+        m_hFileMap = Win32.CreateFileMapping(Win32.InvalidHandleValue,
+            IntPtr.Zero, Win32.PAGE_READWRITE,
+            0, unchecked((UInt32)size), name);
+        if (m_hFileMap == IntPtr.Zero)
+            throw new Exception("Could not create memory-mapped file.");
+        m_name = name;
+        m_address = Win32.MapViewOfFile(m_hFileMap, Win32.FILE_MAP_WRITE,
+            0, 0, IntPtr.Zero);
+    }
+
+    // The cleanup methods.
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+        Dispose(true);
+    }
+
+    private void Dispose(Boolean disposing)
+    {
+        Win32.UnmapViewOfFile(m_address);
+        Win32.CloseHandle(m_hFileMap);
+        m_address = IntPtr.Zero;
+        m_hFileMap = IntPtr.Zero;
+    }
+
+    ~SharedMemory()
+    {
+        Dispose(false);
+    }
+
+    // Private helper methods.
+    private static Boolean AllFlagsSet(Int32 flags, Int32 flagsToTest)
+    {
+        return (flags & flagsToTest) == flagsToTest;
+    }
+
+    private static Boolean AnyFlagsSet(Int32 flags, Int32 flagsToTest)
+    {
+        return (flags & flagsToTest) != 0;
+    }
+
+
+    // The security attribute demands that code that calls  
+    // this method have permission to perform serialization.
+    [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
+    void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        // The context's State member indicates
+        // where the object will be deserialized.
+
+        // A SharedMemory object cannot be serialized 
+        // to any of the following destinations.
+        const StreamingContextStates InvalidDestinations =
+                  StreamingContextStates.CrossMachine |
+                  StreamingContextStates.File |
+                  StreamingContextStates.Other |
+                  StreamingContextStates.Persistence |
+                  StreamingContextStates.Remoting;
+        if (AnyFlagsSet((Int32)context.State, (Int32)InvalidDestinations))
+            throw new SerializationException("The SharedMemory object " +
+                "cannot be serialized to any of the following streaming contexts: " +
+                InvalidDestinations);
+
+        const StreamingContextStates DeserializableByHandle =
+                  StreamingContextStates.Clone |
+            // The same process.
+                  StreamingContextStates.CrossAppDomain;
+        if (AnyFlagsSet((Int32)context.State, (Int32)DeserializableByHandle))
+            info.AddValue("hFileMap", m_hFileMap);
+
+        const StreamingContextStates DeserializableByName =
+            // The same computer.
+                  StreamingContextStates.CrossProcess;
+        if (AnyFlagsSet((Int32)context.State, (Int32)DeserializableByName))
+        {
+            if (m_name == null)
+                throw new SerializationException("The SharedMemory object " +
+                    "cannot be serialized CrossProcess because it was not constructed " +
+                    "with a String name.");
+            info.AddValue("name", m_name);
+        }
+    }
+
+
+    // The security attribute demands that code that calls  
+    // this method have permission to perform serialization.
+    [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
+    private SharedMemory(SerializationInfo info, StreamingContext context)
+    {
+        // The context's State member indicates 
+        // where the object was serialized from.
+
+        const StreamingContextStates InvalidSources =
+                  StreamingContextStates.CrossMachine |
+                  StreamingContextStates.File |
+                  StreamingContextStates.Other |
+                  StreamingContextStates.Persistence |
+                  StreamingContextStates.Remoting;
+        if (AnyFlagsSet((Int32)context.State, (Int32)InvalidSources))
+            throw new SerializationException("The SharedMemory object " +
+                "cannot be deserialized from any of the following stream contexts: " +
+                InvalidSources);
+
+        const StreamingContextStates SerializedByHandle =
+                  StreamingContextStates.Clone |
+            // The same process.
+                  StreamingContextStates.CrossAppDomain;
+        if (AnyFlagsSet((Int32)context.State, (Int32)SerializedByHandle))
+        {
+            try
+            {
+                Win32.DuplicateHandle(Win32.GetCurrentProcess(),
+                    (IntPtr)info.GetValue("hFileMap", typeof(IntPtr)),
+                    Win32.GetCurrentProcess(), ref m_hFileMap, 0, false,
+                    Win32.DUPLICATE_SAME_ACCESS);
+            }
+            catch (SerializationException)
+            {
+                throw new SerializationException("A SharedMemory was not serialized " +
+                    "using any of the following streaming contexts: " +
+                    SerializedByHandle);
+            }
+        }
+
+        const StreamingContextStates SerializedByName =
+            // The same computer.
+                  StreamingContextStates.CrossProcess;
+        if (AnyFlagsSet((Int32)context.State, (Int32)SerializedByName))
+        {
+            try
+            {
+                m_name = info.GetString("name");
+            }
+            catch (SerializationException)
+            {
+                throw new SerializationException("A SharedMemory object was not " +
+                    "serialized using any of the following streaming contexts: " +
+                    SerializedByName);
+            }
+            m_hFileMap = Win32.OpenFileMapping(Win32.FILE_MAP_WRITE, false, m_name);
+        }
+        if (m_hFileMap != IntPtr.Zero)
+        {
+            m_address = Win32.MapViewOfFile(m_hFileMap, Win32.FILE_MAP_WRITE,
+                0, 0, IntPtr.Zero);
+        }
+        else
+        {
+            throw new SerializationException("A SharedMemory object could not " +
+                "be deserialized.");
+        }
+    }
+}
+
+
+class App
+{
+    [STAThread]
     static void Main(string[] args)
     {
-        SerializeWithSurrogate("surrogateEmployee.xml");
-        DeserializeSurrogate("surrogateEmployee.xml");
-        // Create an XmlSchemaSet to hold schemas from the
-        // schema exporter. 
-        //XmlSchemaSet schemas = new XmlSchemaSet();
-        //ExportSchemas("surrogateEmployee.xml", ref schemas);
-        //// Pass the schemas to the importer.
-        //ImportSchemas(schemas);
-
+        Serialize();
+        Console.WriteLine();
+        Deserialize();
     }
 
-
-    static  DataContractSerializer CreateSurrogateSerializer()  
+    unsafe static void Serialize()
     {
-        // Create an instance of the DataContractSerializer. The 
-        // constructor demands a knownTypes and surrogate. 
-        // Create a Generic List for the knownTypes. 
-        List<Type> knownTypes = new List<Type>();
-        LegacyPersonTypeSurrogate surrogate = new LegacyPersonTypeSurrogate ();
-        DataContractSerializer surrogateSerializer = 
-            new DataContractSerializer(typeof(Employee), 
-           knownTypes, Int16.MaxValue, false, true, surrogate);
-        return surrogateSerializer;
-    }
+        // Create a hashtable of values that will eventually be serialized.
+        SharedMemory sm = new SharedMemory(1024, "JeffMemory");
+        for (Int32 x = 0; x < 100; x++)
+            *(sm.Address + x) = (Byte)x;
 
-    static void SerializeWithSurrogate(string filename )
-    {
-        // Create and populate an Employee instance.
-        Employee emp = new Employee();
-        emp.date_hired = new DateTime(1999, 10, 14);
-        emp.salary = 33000;
+        Byte[] b = new Byte[10];
+        for (Int32 x = 0; x < b.Length; x++) b[x] = *(sm.Address + x);
+        Console.WriteLine(BitConverter.ToString(b));
 
-        // Note that the Person class is a legacy XmlSerializable class
-        // without a DataContract.
-        emp.person = new Person();
-        emp.person.first_name = "Mike";
-        emp.person.last_name = "Ray";
-        emp.person.age = 44;
+        // To serialize the SharedMemory object, 
+        // you must first open a stream for writing. 
+        // Use a file stream here.
+        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
 
-        // Create a new writer. Then serialize with the 
-        // surrogate serializer.
-        FileStream  fs =new FileStream(filename, FileMode.Create);
-        DataContractSerializer surrogateSerializer = CreateSurrogateSerializer();
-        try{
-            surrogateSerializer.WriteObject(fs, emp);
-            Console.WriteLine("Serialization succeeded. ");
-            fs.Close();
-        }
-        catch (SerializationException exc )
-            {
-            Console.WriteLine(exc.Message);
-            }
-
-    }
-
-    static void DeserializeSurrogate( string filename )
-    {
-        // Create a new reader object.
-        FileStream fs2 = new FileStream(filename, FileMode.Open);
-        XmlDictionaryReader reader = 
-            XmlDictionaryReader.CreateTextReader(fs2, new XmlDictionaryReaderQuotas());
-
-        Console.WriteLine("Trying to deserialize with surrogate.");
+        // Construct a BinaryFormatter and tell it where 
+        // the objects will be serialized to.
+        BinaryFormatter formatter = new BinaryFormatter(null,
+            new StreamingContext(StreamingContextStates.CrossAppDomain));
         try
         {
-            DataContractSerializer surrogateSerializer = CreateSurrogateSerializer();
-            Employee newemp = (Employee) surrogateSerializer.ReadObject(reader, false);
-
-            reader.Close();
-            fs2.Close();
-
-            Console.WriteLine("Deserialization succeeded. \n\n");
-            Console.WriteLine("Deserialized Person data: \n\t {0} {1}",
-                    newemp.person.first_name, newemp.person.last_name);
-                Console.WriteLine("\t Age: {0} \n", newemp.person.age);
-            Console.WriteLine("\t Date Hired: {0}", newemp.date_hired.ToShortDateString());
-            Console.WriteLine("\t Salary: {0}", newemp.salary);
-            Console.WriteLine("Press Enter to end or continue");
-            Console.ReadLine();
+            formatter.Serialize(fs, sm);
         }
-        catch (SerializationException serEx  )
+        catch (SerializationException e)
         {
-            Console.WriteLine(serEx.Message);
-            Console.WriteLine(serEx.StackTrace);
-        }
-        
-    }
-
-    static void ExportSchemas(string filename , ref XmlSchemaSet schemas)
-{
-        Console.WriteLine("Now doing schema export.");
-        // The following code demonstrates schema export with a surrogate.
-        // The surrogate indicates how to export the non-DataContract Person type.
-        // Without the surrogate, schema export would fail.
-        XsdDataContractExporter xsdexp = new XsdDataContractExporter();
-        xsdexp.Options = new ExportOptions();
-        xsdexp.Options.DataContractSurrogate = new LegacyPersonTypeSurrogate();
-        xsdexp.Export(typeof(Employee));
-
-        // Write out the exported schema to a file.
-        using (FileStream fs3 = new FileStream("sample.xsd", FileMode.Create))
-        {
-            foreach (XmlSchema sch in xsdexp.Schemas.Schemas())
-            {
-                sch.Write(fs3);
-            }
-        } 
-    }
-
-    static void ImportSchemas(XmlSchemaSet schemas ){
-        Console.WriteLine("Now doing schema import.");
-        // The following code demonstrates schema import with 
-        // a surrogate. The surrogate is used to indicate that 
-        // the Person class already exists and that there is no 
-        // need to generate a new class when importing the
-        // PersonSurrogated data contract. If the surrogate 
-        // was not used, schema import would generate a 
-        // PersonSurrogated class, and the person field 
-        // of Employee would be imported as 
-        // PersonSurrogated and not Person.
-        XsdDataContractImporter xsdimp = new XsdDataContractImporter();
-        xsdimp.Options = new ImportOptions();
-        xsdimp.Options.DataContractSurrogate = new LegacyPersonTypeSurrogate();
-        xsdimp.Import(schemas);
-
-        // Write out the imported schema to a C-Sharp file.
-        // The code contains data contract types.
-        FileStream fs4 = new FileStream("sample.cs", FileMode.Create);
-        try
-        {
-            StreamWriter tw = new StreamWriter(fs4);
-            Microsoft.CSharp.CSharpCodeProvider cdp = new Microsoft.CSharp.CSharpCodeProvider();
-            cdp.GenerateCodeFromCompileUnit(xsdimp.CodeCompileUnit, tw, null);
-            tw.Flush();
+            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+            throw;
         }
         finally
         {
-            fs4.Dispose();
+            fs.Close();
         }
-        
-
-        Console.WriteLine( "\t  To see the results of schema export and import,");
-        Console.WriteLine(" see SAMPLE.XSD and SAMPLE.CS." );
-
-        Console.WriteLine(" Press ENTER to terminate the sample." );
-        Console.ReadLine();
     }
 
 
-}
-
-
-// This is the Employee (outer) type used in the sample.
-
-[DataContract()] 
-public class Employee
-{
-    [DataMember()] 
-    public DateTime date_hired ;
-
-    [DataMember()]
-public decimal salary ;
-
-    [DataMember()]
-    public Person person;
-}
-
-
-// This is the Person (inner) type used in the sample.
-// Note that it is a legacy XmlSerializable type and not a DataContract type.
-
-public class Person
-{
-    [XmlElement("FirstName")]
-    public string first_name ;
-
-    [XmlElement("LastName")]
-    public string last_name ;
-
-    [XmlAttribute("Age")]
-    public Int16 age ;
-
-    public Person()  {}   
-}
-
-// This is the surrogated version of the Person type
-// that will be used for its serialization/deserialization.
-
-[DataContract] class PersonSurrogated
-{
-    // xmlData will store the XML returned for a Person instance 
-    // by the XmlSerializer.
-    [DataMember()]
-    public string xmlData;
-
-}
-
- //This is the surrogate that substitutes PersonSurrogated for Person.
-public class LegacyPersonTypeSurrogate:IDataContractSurrogate
-{
-    public Type GetDataContractType(Type type) 
-{
-        Console.WriteLine("GetDataContractType invoked");
-        Console.WriteLine("\t type name: {0}", type.Name);
-        // "Person" will be serialized as "PersonSurrogated"
-        // This method is called during serialization,
-        // deserialization, and schema export.
-        if (typeof(Person).IsAssignableFrom(type)) 
-{
-Console.WriteLine("\t returning PersonSurrogated");
-            return typeof(PersonSurrogated);
-        }
-        return type;
-
-    }
-
-public object GetObjectToSerialize(object obj, Type targetType)
-{ 
-        Console.WriteLine("GetObjectToSerialize Invoked");
-        Console.WriteLine("\t type name: {0}", obj.ToString());
-        Console.WriteLine("\t target type: {0}", targetType.Name);
-        // This method is called on serialization.
-        // If Person is not being serialized...
-        if (obj is Person )
-        {
-            Console.WriteLine("\t returning PersonSurrogated");
-            // ... use the XmlSerializer to perform the actual serialization.
-            PersonSurrogated  ps = new PersonSurrogated();
-            XmlSerializer xs = new XmlSerializer(typeof(Person));
-            StringWriter sw = new StringWriter();
-            xs.Serialize(sw, (Person)obj );
-            ps.xmlData = sw.ToString();
-            return ps;
-        }
-        return obj;
-
-    }
-
-    public object GetDeserializedObject(Object obj , Type targetType) 
+    unsafe static void Deserialize()
     {
-        Console.WriteLine("GetDeserializedObject invoked");
-        // This method is called on deserialization.
-        // If PersonSurrogated is being deserialized...
-        if (obj is PersonSurrogated)
-            {
-                //... use the XmlSerializer to do the actual deserialization.
-                PersonSurrogated ps = (PersonSurrogated)obj;
-                XmlSerializer xs = new XmlSerializer(typeof(Person));
-                return (Person)xs.Deserialize(new StringReader(ps.xmlData));
-            }
-            return obj;
+        // Declare a SharedMemory reference.
+        SharedMemory sm = null;
 
-    }
-
-    public Type GetReferencedTypeOnImport(string typeName,
-        string typeNamespace, object customData)
-    {
-        Console.WriteLine("GetReferencedTypeOnImport invoked");
-        // This method is called on schema import.
-        // If a PersonSurrogated data contract is 
-        // in the specified namespace, do not create a new type for it 
-        // because there is already an existing type, "Person".
-        Console.WriteLine( "\t Type Name: {0}", typeName);
-        
-        if (typeName.Equals("PersonSurrogated") )
+        // Open the file containing the data that you want to deserialize.
+        FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
+        try
         {
-            Console.WriteLine("Returning Person");
-            return typeof(Person);
-        }        
-        return null;
-    }
+            BinaryFormatter formatter = new BinaryFormatter(null,
+                new StreamingContext(StreamingContextStates.CrossAppDomain));
 
-    public System.CodeDom.CodeTypeDeclaration ProcessImportedType(
-        System.CodeDom.CodeTypeDeclaration typeDeclaration, 
-        System.CodeDom.CodeCompileUnit compileUnit)
-    {
-        // Console.WriteLine("ProcessImportedType invoked")
-        // Not used in this sample.
-        // You could use this method to construct an entirely new CLR 
-        // type when a certain type is imported, or modify a 
-        // generated type in some way.
-        return typeDeclaration;
-    }
-
-
-
-        public object GetCustomDataToExport(Type clrType, Type dataContractType)
+            // Deserialize the SharedMemory object from the file and 
+            // assign the reference to the local variable.
+            sm = (SharedMemory)formatter.Deserialize(fs);
+        }
+        catch (SerializationException e)
         {
-            // Not used in this sample
-            return null;
+            Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+            throw;
+        }
+        finally
+        {
+            fs.Close();
         }
 
-        public object GetCustomDataToExport(System.Reflection.MemberInfo memberInfo, Type dataContractType)
-        {
-            // Not used in this sample
-            return null;
-        }
-
-        public void GetKnownCustomDataTypes(Collection<Type> customDataTypes)
-        {
-            // Not used in this sample
-        }
+        // To prove that the SharedMemory object deserialized correctly, 
+        // display some of its bytes to the console.
+        Byte[] b = new Byte[10];
+        for (Int32 x = 0; x < b.Length; x++) b[x] = *(sm.Address + x);
+        Console.WriteLine(BitConverter.ToString(b));
+    }
 }

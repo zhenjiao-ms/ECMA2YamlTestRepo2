@@ -14,16 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.SymbolStore.SymBinder.Dispose
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymBinder.Dispose(System.Boolean)
-internalonly: False
----
-
----
 uid: System.Diagnostics.SymbolStore.SymBinder.#ctor
 internalonly: False
 ---

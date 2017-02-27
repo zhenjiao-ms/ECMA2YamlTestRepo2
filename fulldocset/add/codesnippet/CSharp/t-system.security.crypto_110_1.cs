@@ -1,123 +1,212 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
-
 using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
 using System.Text;
-using System.Xml;
+using System.Security.Cryptography;
+using System.Runtime.Serialization;
 
-
-
-class XMLDSIGDetached
+class CryptographicExceptionMembers
 {
-	
     [STAThread]
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-    // The URI to sign.
-        string resourceToSign = "http://www.microsoft.com";
-		
-        // The name of the file to which to save the XML signature.
-        string XmlFileName = "xmldsig.xml";
-
-        try
-        {
-
-            // Generate a signing key.
-            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
-
-            Console.WriteLine("Signing: {0}", resourceToSign);
-
-            // Sign the detached resourceand save the signature in an XML file.
-            SignDetachedResource(resourceToSign, XmlFileName, Key);
-
-            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
-
-            // Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...");
-
-            //Verify the XML signature in the XML file.
-            bool result = VerifyDetachedSignature(XmlFileName);
-
-            // Display the results of the signature verification to 
-            // the console.
-            if(result)
-            {
-                Console.WriteLine("The XML signature is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The XML signature is not valid.");
-            }
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine(e.Message);
-
-        }
-		
+        CryptographicExceptionMembers testRun = 
+            new CryptographicExceptionMembers();
+        testRun.TestConstructors();
+        testRun.ShowProperties();
+        
+        Console.WriteLine("This sample ended successfully; " + 
+            " press Enter to exit.");
+        Console.ReadLine();
     }
 
-    // Sign an XML file and save the signature in a new file.
-    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
+    // Test each public implementation of the CryptographicException
+    // constructors.
+    private void TestConstructors()
     {
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml();
-
-        // Assign the key to the SignedXml object.
-        signedXml.SigningKey = Key;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-
-        // Add the passed URI to the reference object.
-        reference.Uri = URIString;
-		
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
-        signedXml.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
-        xmlDigitalSignature.WriteTo(xmltw);
-        xmltw.Close();
+        EmptyConstructor();
+        IntConstructor();
+        StringConstructor();
+        StringExceptionConstructor();
+        StringStringConstructor();
     }
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
-    {	
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
 
-        // Load the passed XML file into the document.
-        xmlDocument.Load(XmlSigFileName);
-	
-        // Create a new SignedXMl object.
-        SignedXml signedXml = new SignedXml();
+    private void EmptyConstructor()
+    {
+        // Construct a CryptographicException with no parameters.
+        CryptographicException cryptographicException =
+            new CryptographicException();
+        Console.WriteLine("Created an empty CryptographicException.");
+    }
 
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+    private void IntConstructor()
+    {
+        // Construct a CryptographicException using the error code for an
+        // unexpected operation exception.
+        int exceptionNumber = unchecked((int)0x80131431);
+        CryptographicException cryptographicException =
+            new CryptographicException(exceptionNumber);
+        Console.WriteLine("Created a CryptographicException with the " + 
+            "following error code: " + exceptionNumber);
+    }
 
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
+    private void StringConstructor()
+    {
+        // Construct a CryptographicException using a custom error message.
+        string errorMessage = ("Unexpected Operation exception.");
+        CryptographicException cryptographicException =
+            new CryptographicException(errorMessage);
+        Console.WriteLine("Created a CryptographicException with the " + 
+            "following error message: " + errorMessage);
+    }
 
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
+    private void StringExceptionConstructor()
+    {
+        // Construct a CryptographicException using a custom error message
+        // and an inner exception.
+        string errorMessage = ("The current operation is not supported.");
+        NullReferenceException nullException = new NullReferenceException();
+        CryptographicException cryptographicException = 
+            new CryptographicException(errorMessage, nullException);
+        Console.WriteLine("Created a CryptographicException with the " +
+            "following error message: " + errorMessage + 
+            " and the inner exception of " + nullException.ToString());
+    }
+
+    private void StringStringConstructor()
+    {
+        // Create a CryptographicException using a time format and a the 
+        // current date.
+        string dateFormat = "{0:t}";
+        string timeStamp = (DateTime.Now.ToString());
+        CryptographicException cryptographicException = 
+            new CryptographicException(dateFormat, timeStamp);
+        Console.WriteLine("Created a CryptographicException with (" +
+            dateFormat + ") as the format and (" + timeStamp + 
+            ") as the message.");
+    }
+
+    // Construct an invalid DSACryptoServiceProvider to throw a
+    // CryptographicException for introspection.
+    private void ShowProperties()
+    {
+        try 
+        {
+            // Create a DSACryptoServiceProvider with invalid provider type
+            // code to throw a CryptographicException exception.
+            CspParameters cspParams = new CspParameters(44);
+            DSACryptoServiceProvider DSAalg = 
+                new DSACryptoServiceProvider(cspParams);
+        }
+        catch (CryptographicException ex)
+        {
+            // Retrieve the link to the help file for the exception.
+            string helpLink = ex.HelpLink;
+            
+            // Retrieve the exception that caused the current
+            // CryptographicException exception.
+            System.Exception innerException = ex.InnerException;
+            string innerExceptionMessage = "";
+            if (innerException != null)
+            {
+                innerExceptionMessage = innerException.ToString();
+            }
+
+            // Retrieve the message that describes the exception.
+            string message = ex.Message;
+
+            // Retrieve the name of the application that caused the exception.
+            string exceptionSource = ex.Source;
+
+            // Retrieve the call stack at the time the exception occured.
+            string stackTrace = ex.StackTrace;
+
+            // Retrieve the method that threw the exception.
+            System.Reflection.MethodBase targetSite = ex.TargetSite;
+            string siteName = targetSite.Name;
+
+            // Retrieve the entire exception as a single string.
+            string entireException = ex.ToString();
+
+            // GetObjectData
+            setSerializationInfo(ref ex);
+
+            // Get the root exception that caused the current
+            // CryptographicException exception.
+            System.Exception baseException = ex.GetBaseException();
+            string baseExceptionMessage = "";
+            if (baseException != null)
+            {
+                baseExceptionMessage = baseException.Message;
+            }
+
+            Console.WriteLine("Caught an expected exception:");
+            Console.WriteLine(entireException);
+
+            Console.WriteLine("\n");
+            Console.WriteLine("Properties of the exception are as follows:");
+            Console.WriteLine("Message: " + message);
+            Console.WriteLine("Source: " + exceptionSource);
+            Console.WriteLine("Stack trace: " + stackTrace);
+            Console.WriteLine("Help link: " + helpLink);
+            Console.WriteLine("Target site's name: " + siteName);
+            Console.WriteLine("Base exception message: " + 
+                baseExceptionMessage);
+            Console.WriteLine("Inner exception message: " + 
+                innerExceptionMessage);
+
+        }
+    }
+
+    private void setSerializationInfo(ref CryptographicException ex)
+    {
+        // Insert information about the exception into a serialized object.
+        FormatterConverter formatConverter = new FormatterConverter();
+        SerializationInfo serializationInfo =
+            new SerializationInfo(ex.GetType(), formatConverter);
+        StreamingContext streamingContext =
+            new StreamingContext(StreamingContextStates.All);
+
+        ex.GetObjectData(serializationInfo,streamingContext);
     }
 }
+//
+// This sample produces the following output:
+//
+// Created an empty CryptographicException.
+// Created a CryptographicException with the following error code: -2146233295
+// Created a CryptographicException with the following error message: 
+// Unexpected Operation exception.
+// Created a CryptographicException with the following error message: The
+// current operation is not supported. and the inner exception of 
+// System.NullReferenceException: Object reference not set to an instance of
+// an object.
+// Created a CryptographicException with ({0:t}) as the format and (2/24/2004
+// 2:13:15 PM) as the message.
+// Caught an expected exception:
+// System.Security.Cryptography.CryptographicException: CryptoAPI
+// cryptographic service provider (CSP) for this implementation could not be
+// acquired. 
+//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(Int32
+// dwKeySize, CspParameters parameters)
+//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
+// CspParametersparameters)
+//  at CryptographicExceptionMembers.ShowProperties() in c:\inetpub\
+// vssolutions\test\testbuild\consoleapplication1\class1.cs:line 109
+//
+//
+// Properties of the exception are as follows:
+// Message: CryptoAPI cryptographic service provider (CSP) for this
+// implementation could not be acquired.
+// Source: mscorlib
+// Stack trace:    
+//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
+// Int32 dwKeySize, CspParameters parameters) 
+//  at System.Security.Cryptography.DSACryptoServiceProvider..ctor(
+// CspParameters parameters)
+//  at CryptographicExceptionMembers.ShowProperties() in c:\inetpub\
+// vssolutions\test\testbuild\consoleapplication1\class1.cs:line 109
+// Help link:
+// Target site's name: .ctor
+// Base exception message: CryptoAPI cryptographic service provider (CSP) for
+// this implementation could not be acquired.
+// Inner exception message:
+// This sample ended successfully;  press Enter to exit.

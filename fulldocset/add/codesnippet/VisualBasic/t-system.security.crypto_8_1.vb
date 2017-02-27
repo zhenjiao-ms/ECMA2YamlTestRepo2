@@ -1,112 +1,214 @@
 Imports System
-Imports System.IO
+Imports System.Xml
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
 
-Public Class MACTripleDESexample
 
-    Public Shared Sub Main(ByVal Fileargs() As String)
-        Dim dataFile As String
-        Dim signedFile As String
-        'If no file names are specified, create them.
-        If Fileargs.Length < 2 Then
-            dataFile = "text.txt"
-            signedFile = "signedFile.enc"
+Module Program
 
-            If Not File.Exists(dataFile) Then
-                ' Create a file to write to.
-                Using sw As StreamWriter = File.CreateText(dataFile)
-                    sw.WriteLine("Here is a message to sign")
-                End Using
-            End If
+    Sub Main(ByVal args() As String)
 
-        Else
-            dataFile = Fileargs(0)
-            signedFile = Fileargs(1)
-        End If
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
+
+        ' Load an XML file into the XmlDocument object.
         Try
-            ' Create a random key using a random number generator. This would be the
-            '  secret key shared by sender and receiver.
-            Dim secretkey() As Byte = New [Byte](23) {}
-            'RNGCryptoServiceProvider is an implementation of a random number generator.
-            Using rng As New RNGCryptoServiceProvider()
-                ' The array is now filled with cryptographically strong random bytes.
-                rng.GetBytes(secretkey)
-
-                ' Use the secret key to encode the message file.
-                SignFile(secretkey, dataFile, signedFile)
-
-                ' Take the encoded file and decode
-                VerifyFile(secretkey, signedFile)
-            End Using
-        Catch e As IOException
-            Console.WriteLine("Error: File not found", e)
+            xmlDoc.PreserveWhitespace = True
+            xmlDoc.Load("test.xml")
+        Catch e As Exception
+            Console.WriteLine(e.Message)
         End Try
+
+        ' Create a new RSA key.  This key will encrypt a symmetric key,
+        ' which will then be imbedded in the XML document.  
+        Dim rsaKey As New RSACryptoServiceProvider
+
+
+        Try
+            ' Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", "EncryptedElement1", rsaKey, "rsaKey")
+
+            ' Encrypt the "creditcard2" element.
+            Encrypt(xmlDoc, "creditcard2", "EncryptedElement2", rsaKey, "rsaKey")
+
+            ' Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlDoc.OuterXml)
+
+            ' Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey")
+
+            ' Display the encrypted XML to the console.
+            Console.WriteLine()
+            Console.WriteLine("Decrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlDoc.OuterXml)
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the RSA key.
+            rsaKey.Clear()
+        End Try
+
+        Console.ReadLine()
 
     End Sub 'Main
 
-    ' Computes a keyed hash for a source file and creates a target file with the keyed hash
-    ' prepended to the contents of the source file. 
-    Public Shared Sub SignFile(ByVal key() As Byte, ByVal sourceFile As String, ByVal destFile As String)
-        ' Initialize the keyed hash object.
-        Using myhmac As New MACTripleDES(key)
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                Using outStream As New FileStream(destFile, FileMode.Create)
-                    ' Compute the hash of the input file.
-                    Dim hashValue As Byte() = myhmac.ComputeHash(inStream)
-                    ' Reset inStream to the beginning of the file.
-                    inStream.Position = 0
-                    ' Write the computed hash value to the output file.
-                    outStream.Write(hashValue, 0, hashValue.Length)
-                    ' Copy the contents of the sourceFile to the destFile.
-                    Dim bytesRead As Integer
-                    ' read 1K at a time
-                    Dim buffer(1023) As Byte
-                    Do
-                        ' Read from the wrapping CryptoStream.
-                        bytesRead = inStream.Read(buffer, 0, 1024)
-                        outStream.Write(buffer, 0, bytesRead)
-                    Loop While bytesRead > 0
-                End Using
-            End Using
-        End Using
-        Return
+End Module 'Program
 
-    End Sub 'SignFile
-    ' end SignFile
 
-    ' Compares the key in the source file with a new key created for the data portion of the file. If the keys 
-    ' compare the data has not been tampered with.
-    Public Shared Function VerifyFile(ByVal key() As Byte, ByVal sourceFile As String) As Boolean
-        Dim err As Boolean = False
-        ' Initialize the keyed hash object. 
-        Using hmac As New MACTripleDES(key)
-            ' Create an array to hold the keyed hash value read from the file.
-            Dim storedHash(hmac.HashSize / 8) As Byte
-            ' Create a FileStream for the source file.
-            Using inStream As New FileStream(sourceFile, FileMode.Open)
-                ' Read in the storedHash.
-                inStream.Read(storedHash, 0, storedHash.Length - 1)
-                ' Compute the hash of the remaining contents of the file.
-                ' The stream is properly positioned at the beginning of the content, 
-                ' immediately after the stored hash value.
-                Dim computedHash As Byte() = hmac.ComputeHash(inStream)
-                ' compare the computed hash with the stored value
-                Dim i As Integer
-                For i = 0 To storedHash.Length - 2
-                    If computedHash(i) <> storedHash(i) Then
-                        err = True
-                    End If
-                Next i
-            End Using
-        End Using
-        If err Then
-            Console.WriteLine("Hash values differ! Signed file has been tampered with!")
-            Return False
-        Else
-            Console.WriteLine("Hash values agree -- no tampering occurred.")
-            Return True
+Module XMLEncryptionSubs
+
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptName As String, ByVal EncryptionElementID As String, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If ElementToEncryptName Is Nothing Then
+            Throw New ArgumentNullException("ElementToEncrypt")
+        End If
+        If EncryptionElementID Is Nothing Then
+            Throw New ArgumentNullException("EncryptionElementID")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Find the specified element in the XmlDocument
+        ' object and create a new XmlElemnt object.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptName)(0)
+
+
+        ' Throw an XmlException if the element was not found.
+        If elementToEncrypt Is Nothing Then
+            Throw New XmlException("The specified element was not found")
         End If
 
-    End Function 'VerifyFile 
-End Class 'MACTripleDESexample 'end VerifyFile
-'end class
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a new instance of the EncryptedXml class 
+        ' and use it to encrypt the XmlElement with the 
+        ' a new random symmetric key.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+
+        ' Create a 256 bit Rijndael key.
+        Dim sessionKey As New RijndaelManaged()
+        sessionKey.KeySize = 256
+
+        Dim eXml As New EncryptedXml()
+
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Construct an EncryptedData object and populate
+        ' it with the desired encryption information.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim edElement As New EncryptedData()
+        edElement.Type = EncryptedXml.XmlEncElementUrl
+        edElement.Id = EncryptionElementID
+
+        ' Create an EncryptionMethod element so that the 
+        ' receiver knows which algorithm to use for decryption.
+        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
+
+        ' Encrypt the session key and add it to an EncryptedKey element.
+        Dim ek As New EncryptedKey()
+
+        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
+
+        ek.CipherData = New CipherData(encryptedKey)
+
+        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+
+        ' Set the KeyInfo element to specify the
+        ' name of the RSA key.
+        ' Create a new KeyInfo element.
+        edElement.KeyInfo = New KeyInfo()
+
+        ' Create a new KeyInfoName element.
+        Dim kin As New KeyInfoName()
+
+        ' Specify a name for the key.
+        kin.Value = KeyName
+
+        ' Add the KeyInfoName element to the 
+        ' EncryptedKey object.
+        ek.KeyInfo.AddClause(kin)
+
+        ' Create a new DataReference element
+        ' for the KeyInfo element.  This optional
+        ' element specifies which EncryptedData 
+        ' uses this key.  An XML document can have
+        ' multiple EncryptedData elements that use
+        ' different keys.
+        Dim dRef As New DataReference()
+
+        ' Specify the EncryptedData URI. 
+        dRef.Uri = "#" + EncryptionElementID
+
+        ' Add the DataReference to the EncryptedKey.
+        ek.AddReference(dRef)
+
+        ' Add the encrypted key to the 
+        ' EncryptedData object.
+        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
+
+        ' Add the encrypted element data to the 
+        ' EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Replace the element from the original XmlDocument
+        ' object with the EncryptedData element.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
+
+    End Sub 'Encrypt
+
+
+    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(Doc)
+
+        ' Add a key-name mapping.
+        ' This method can only decrypt documents
+        ' that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg)
+
+        ' Decrypt the element.
+        exml.DecryptDocument()
+
+    End Sub 'Decrypt 
+End Module 'XMLEncryptionSubs
+
+
+' To run this sample, place the following XML
+' in a file called test.xml.  Put test.xml
+' in the same directory as your compiled program.
+' 
+'  <root>
+'     <creditcard xmlns="myNamespace" Id="tag1">
+'         <number>19834209</number>
+'         <expiry>02/02/2002</expiry>
+'     </creditcard>
+'     <creditcard2 xmlns="myNamespace" Id="tag2">
+'         <number>19834208</number>
+'         <expiry>02/02/2002</expiry>
+'     </creditcard2>
+' </root>

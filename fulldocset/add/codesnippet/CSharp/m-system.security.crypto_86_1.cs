@@ -1,56 +1,24 @@
-        // Expected XML schema:
-        //  <CustomCryptoKeyValue>
-        //      <ProviderName></ProviderName>
-        //      <KeyContainerName></KeyContainerName>
-        //      <KeyNumber></KeyNumber>
-        //      <ProviderType></ProviderType>
-        //  </CustomCryptoKeyValue>
-        public override void FromXmlString(string xmlString)
+        // The create function attempts to create a CustomCrypto object using
+        // the assembly name. This functionality requires modification of the
+        // machine.config file. Add the following section to the configuration
+        // element and modify the values of the cryptoClass to reflect what is
+        // installed in your machines GAC.
+        //<mscorlib>
+        //  <cryptographySettings>
+        //    <cryptoNameMapping>
+        //      <cryptoClasses>
+        //        <cryptoClass CustomCrypto="Contoso.CustomCrypto, 
+        //          CustomCrypto, 
+        //          Culture=neutral, 
+        //          PublicKeyToken=fdb9f9c4851028bf, 
+        //          Version=1.0.1448.27640" />
+        //      </cryptoClasses>
+        //      <nameEntry name="Contoso.CustomCrypto" class="CustomCrypto" />
+        //      <nameEntry name="CustomCrypto" class="CustomCrypto" />
+        //    </cryptoNameMapping>
+        //  </cryptographySettings>
+        //</mscorlib>
+        new static public CustomCrypto Create() 
         {
-            if (xmlString != null)
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(xmlString);
-                XmlNode firstNode = doc.FirstChild;
-                XmlNodeList nodeList;
-
-                // Assemble parameters from values in each XML element.
-                cspParameters = new CspParameters();
-
-                // KeyContainerName is optional.
-                nodeList = doc.GetElementsByTagName("KeyContainerName");
-                string keyName = nodeList.Item(0).InnerText;
-                if (keyName != null) 
-                {
-                    cspParameters.KeyContainerName = keyName;
-                }
-
-                // KeyNumber is optional.
-                nodeList = doc.GetElementsByTagName("KeyNumber");
-                string keyNumber = nodeList.Item(0).InnerText;
-                if (keyNumber != null) 
-                {
-                    cspParameters.KeyNumber = Int32.Parse(keyNumber);
-                }
-
-                // ProviderName is optional.
-                nodeList = doc.GetElementsByTagName("ProviderName");
-                string providerName = nodeList.Item(0).InnerText;
-                if (providerName != null) 
-                {
-                    cspParameters.ProviderName = providerName;
-                }
-
-                // ProviderType is optional.
-                nodeList = doc.GetElementsByTagName("ProviderType");
-                string providerType = nodeList.Item(0).InnerText;
-                if (providerType != null) 
-                {
-                    cspParameters.ProviderType = Int32.Parse(providerType);
-                }
-            }
-            else
-            {
-                throw new ArgumentNullException("xmlString");
-            }
+            return Create("CustomCrypto");
         }

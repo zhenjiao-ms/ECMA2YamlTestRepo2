@@ -1,10 +1,17 @@
-    <Bindable(True)> _
-    Public Property MyProperty() As Integer
-        Get
-            ' Insert code here.
-            Return 0
-        End Get
-        Set
-             ' Insert code here.
-        End Set
-    End Property
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+
+<MetadataType(GetType(CustomerMetadata))> _
+Partial Public Class Customer
+
+
+End Class
+
+Public Class CustomerMetadata
+
+    ' Add type information.
+    <DataType(DataType.EmailAddress)> _
+    Public EmailAddress As Object
+
+End Class

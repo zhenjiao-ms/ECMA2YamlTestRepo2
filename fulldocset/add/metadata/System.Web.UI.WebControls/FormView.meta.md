@@ -234,11 +234,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.FormView.DeleteMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.FormView.PagerTemplate
 internalonly: False
 ---
@@ -545,15 +540,5 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.FormView.FooterStyle
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.FormView.UpdateMethod
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.FormView.InsertMethod
 internalonly: False
 ---

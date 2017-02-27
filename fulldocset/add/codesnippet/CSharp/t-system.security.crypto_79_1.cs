@@ -1,43 +1,134 @@
 using System;
-using System.Security.Cryptography;
-using System.Security.Permissions;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
 
-class CertSelect
+public class HMACSHA512example
 {
-    static void Main()
+
+    public static void Main(string[] Fileargs)
     {
-        X509Store store = new X509Store("MY",StoreLocation.CurrentUser);
-        store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-
-        X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-        X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid,DateTime.Now,false);
-        X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag.MultiSelection);
-        Console.WriteLine("Number of certificates: {0}{1}",scollection.Count,Environment.NewLine);
-
-        foreach (X509Certificate2 x509 in scollection)
+        string dataFile;
+        string signedFile;
+        //If no file names are specified, create them.
+        if (Fileargs.Length < 2)
         {
-            try
+            dataFile = @"text.txt";
+            signedFile = "signedFile.enc";
+
+            if (!File.Exists(dataFile))
             {
-                byte[] rawdata = x509.RawData;
-                Console.WriteLine("Content Type: {0}{1}",X509Certificate2.GetCertContentType(rawdata),Environment.NewLine);
-                Console.WriteLine("Friendly Name: {0}{1}",x509.FriendlyName,Environment.NewLine);
-                Console.WriteLine("Certificate Verified?: {0}{1}",x509.Verify(),Environment.NewLine);
-                Console.WriteLine("Simple Name: {0}{1}",x509.GetNameInfo(X509NameType.SimpleName,true),Environment.NewLine);
-                Console.WriteLine("Signature Algorithm: {0}{1}",x509.SignatureAlgorithm.FriendlyName,Environment.NewLine);
-                Console.WriteLine("Private Key: {0}{1}",x509.PrivateKey.ToXmlString(false),Environment.NewLine);
-                Console.WriteLine("Public Key: {0}{1}",x509.PublicKey.Key.ToXmlString(false),Environment.NewLine);
-                Console.WriteLine("Certificate Archived?: {0}{1}",x509.Archived,Environment.NewLine);
-                Console.WriteLine("Length of Raw Data: {0}{1}",x509.RawData.Length,Environment.NewLine);
-                X509Certificate2UI.DisplayCertificate(x509);
-                x509.Reset();
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(dataFile))
+                {
+                    sw.WriteLine("Here is a message to sign");
+                }
             }
-            catch (CryptographicException)
+
+        }
+        else
+        {
+            dataFile = Fileargs[0];
+            signedFile = Fileargs[1];
+        }
+        try
+        {
+            // Create a random key using a random number generator. This would be the
+            //  secret key shared by sender and receiver.
+            byte[] secretkey = new Byte[64];
+            //RNGCryptoServiceProvider is an implementation of a random number generator.
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
             {
-                Console.WriteLine("Information could not be written out for this certificate.");
+                // The array is now filled with cryptographically strong random bytes.
+                rng.GetBytes(secretkey);
+
+                // Use the secret key to sign the message file.
+                SignFile(secretkey, dataFile, signedFile);
+
+                // Verify the signed file
+                VerifyFile(secretkey, signedFile);
             }
         }
-        store.Close();
-    }
-}
+        catch (IOException e)
+        {
+            Console.WriteLine("Error: File not found", e);
+        }
+
+    }  //end main
+    // Computes a keyed hash for a source file and creates a target file with the keyed hash
+    // prepended to the contents of the source file. 
+    public static void SignFile(byte[] key, String sourceFile, String destFile)
+    {
+        // Initialize the keyed hash object.
+        using (HMACSHA512 hmac = new HMACSHA512(key))
+        {
+            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
+            {
+                using (FileStream outStream = new FileStream(destFile, FileMode.Create))
+                {
+                    // Compute the hash of the input file.
+                    byte[] hashValue = hmac.ComputeHash(inStream);
+                    // Reset inStream to the beginning of the file.
+                    inStream.Position = 0;
+                    // Write the computed hash value to the output file.
+                    outStream.Write(hashValue, 0, hashValue.Length);
+                    // Copy the contents of the sourceFile to the destFile.
+                    int bytesRead;
+                    // read 1K at a time
+                    byte[] buffer = new byte[1024];
+                    do
+                    {
+                        // Read from the wrapping CryptoStream.
+                        bytesRead = inStream.Read(buffer, 0, 1024);
+                        outStream.Write(buffer, 0, bytesRead);
+                    } while (bytesRead > 0);
+                }
+            }
+        }
+        return;
+    } // end SignFile
+
+
+    // Compares the key in the source file with a new key created for the data portion of the file. If the keys 
+    // compare the data has not been tampered with.
+    public static bool VerifyFile(byte[] key, String sourceFile)
+    {
+        bool err = false;
+        // Initialize the keyed hash object. 
+        using (HMACSHA512 hmac = new HMACSHA512(key))
+        {
+            // Create an array to hold the keyed hash value read from the file.
+            byte[] storedHash = new byte[hmac.HashSize / 8];
+            // Create a FileStream for the source file.
+            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
+            {
+                // Read in the storedHash.
+                inStream.Read(storedHash, 0, storedHash.Length);
+                // Compute the hash of the remaining contents of the file.
+                // The stream is properly positioned at the beginning of the content, 
+                // immediately after the stored hash value.
+                byte[] computedHash = hmac.ComputeHash(inStream);
+                // compare the computed hash with the stored value
+
+                for (int i = 0; i < storedHash.Length; i++)
+                {
+                    if (computedHash[i] != storedHash[i])
+                    {
+                        err = true;
+                    }
+                }
+            }
+        }
+        if (err)
+        {
+            Console.WriteLine("Hash values differ! Signed file has been tampered with!");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Hash values agree -- no tampering occurred.");
+            return true;
+        }
+
+    } //end VerifyFile
+
+} //end class

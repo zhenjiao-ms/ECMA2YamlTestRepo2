@@ -1,20 +1,30 @@
-using namespace System;
-using namespace System::Reflection;
-using namespace System::Runtime::InteropServices;
-
-ref class ClassD
+public ref class CallBack
 {
 public:
-   static bool IsHiddenField( FieldInfo^ fi )
+   IntPtr Activate( IntPtr Aggregator )
    {
-      array<Object^>^FieldAttributes = fi->GetCustomAttributes( TypeLibVarAttribute::typeid, true );
-      if ( FieldAttributes->Length > 0 )
-      {
-         TypeLibVarAttribute^ tlv = dynamic_cast<TypeLibVarAttribute^>(FieldAttributes[ 0 ]);
-         TypeLibVarFlags flags = tlv->Value;
-         return (flags & TypeLibVarFlags::FHidden) != (TypeLibVarFlags)0;
-      }
+      ECFSRV32Lib::ObjectActivator^ oCOM = gcnew ECFSRV32Lib::ObjectActivator;
+      ECFSRV32Lib::IObjectActivator^ itf = dynamic_cast<ECFSRV32Lib::IObjectActivator^>(oCOM);
+      return (IntPtr)itf->CreateBaseComponent( (int)Aggregator );
+   }
+};
 
-      return false;
+//
+// The EcfInner class. First .NET class derived directly from COM class.
+//
+public ref class EcfInner: public ECFSRV32Lib::BaseComponent
+{
+private:
+   static CallBack^ callbackInner;
+   static void RegisterInner()
+   {
+      callbackInner = gcnew CallBack;
+      System::Runtime::InteropServices::ExtensibleClassFactory::RegisterObjectCreationCallback( gcnew System::Runtime::InteropServices::ObjectCreationDelegate( callbackInner, &CallBack::Activate ) );
+   }
+
+   //This is the static initializer.    
+   static EcfInner()
+   {
+      RegisterInner();
    }
 };

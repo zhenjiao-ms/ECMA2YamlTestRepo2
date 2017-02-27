@@ -99,11 +99,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditorProperty
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.View.ExpressionTextBox.ExplicitCommitProperty
 internalonly: False
 ---
@@ -159,11 +154,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditorOptionName
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.View.ExpressionTextBox.QuickInfoCommand
 internalonly: False
 ---
@@ -209,11 +199,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditor
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.View.ExpressionTextBox.ExpressionEditorService
 internalonly: False
 ---
@@ -235,11 +220,6 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.View.ExpressionTextBox.EditorLostLogicalFocusEvent
-internalonly: False
----
-
----
-uid: System.Activities.Presentation.View.ExpressionTextBox.RegisterExpressionActivityEditor(System.String,System.Type,System.Activities.Presentation.Expressions.CreateExpressionFromStringCallback)
 internalonly: False
 ---
 

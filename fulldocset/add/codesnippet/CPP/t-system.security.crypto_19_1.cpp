@@ -1,34 +1,52 @@
-void EncryptData( String^ inName, String^ outName, array<Byte>^rijnKey, array<Byte>^rijnIV )
+using namespace System;
+using namespace System::IO;
+using namespace System::Security::Cryptography;
+class MyMainClass
 {
-   
-   //Create the file streams to handle the input and output files.
-   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
-   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
-   fout->SetLength( 0 );
-   
-   //Create variables to help with read and write.
-   array<Byte>^bin = gcnew array<Byte>(100);
-   long rdlen = 0; //This is the total number of bytes written.
-
-   long totlen = (long)fin->Length; //This is the total length of the input file.
-
-   int len; //This is the number of bytes to be written at a time.
-
-   SymmetricAlgorithm^ rijn = SymmetricAlgorithm::Create(); //Creates the default implementation, which is RijndaelManaged.         
-
-   CryptoStream^ encStream = gcnew CryptoStream( fout,rijn->CreateEncryptor( rijnKey, rijnIV ),CryptoStreamMode::Write );
-   Console::WriteLine( "Encrypting..." );
-   
-   //Read from the input file, then encrypt and write to the output file.
-   while ( rdlen < totlen )
+public:
+   static void DecodeFromFile( String^ inFileName, String^ outFileName )
    {
-      len = fin->Read( bin, 0, 100 );
-      encStream->Write( bin, 0, len );
-      rdlen = rdlen + len;
-      Console::WriteLine( "{0} bytes processed", rdlen );
+      FromBase64Transform^ myTransform = gcnew FromBase64Transform( FromBase64TransformMode::IgnoreWhiteSpaces );
+      array<Byte>^myOutputBytes = gcnew array<Byte>(myTransform->OutputBlockSize);
+      
+      //Open the input and output files.
+      FileStream^ myInputFile = gcnew FileStream( inFileName,FileMode::Open,FileAccess::Read );
+      FileStream^ myOutputFile = gcnew FileStream( outFileName,FileMode::Create,FileAccess::Write );
+      
+      //Retrieve the file contents into a Byte array.
+      array<Byte>^myInputBytes = gcnew array<Byte>(myInputFile->Length);
+      myInputFile->Read( myInputBytes, 0, myInputBytes->Length );
+      
+      //Transform the data in chunks the size of InputBlockSize.
+      int i = 0;
+      while ( myInputBytes->Length - i > 4 )
+      {
+         myTransform->TransformBlock( myInputBytes, i, 4, myOutputBytes, 0 );
+         
+         /*myTransform->InputBlockSize*/
+         i += 4;
+         
+         /*myTransform->InputBlockSize*/
+         myOutputFile->Write( myOutputBytes, 0, myTransform->OutputBlockSize );
+      }
+
+      
+      //Transform the final block of data.
+      myOutputBytes = myTransform->TransformFinalBlock( myInputBytes, i, myInputBytes->Length - i );
+      myOutputFile->Write( myOutputBytes, 0, myOutputBytes->Length );
+      
+      //Free up any used resources.
+      myTransform->Clear();
+      myInputFile->Close();
+      myOutputFile->Close();
    }
 
-   encStream->Close();
-   fout->Close();
-   fin->Close();
+};
+
+int main()
+{
+   MyMainClass * m = new MyMainClass;
+   
+   //Insert your file names into this method call.
+   m->DecodeFromFile(  "c:\\encoded.txt",  "c:\\roundtrip.txt" );
 }

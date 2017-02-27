@@ -1,59 +1,31 @@
-#using <System.dll>
-#using <system.security.dll>
-
-using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
-int main()
+void EncryptData( String^ inName, String^ outName, array<Byte>^tdesKey, array<Byte>^tdesIV )
 {
-   try
-   {
-      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      for ( int i = 0; i < collection->Count; i++ )
-      {
-         System::Collections::IEnumerator^ myEnum = collection[ i ]->Extensions->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            X509Extension^ extension = safe_cast<X509Extension^>(myEnum->Current);
-            Console::WriteLine( L"{0}({1})", extension->Oid->FriendlyName, extension->Oid->Value );
-            if ( extension->Oid->FriendlyName == L"Key Usage" )
-            {
-               X509KeyUsageExtension^ ext = dynamic_cast<X509KeyUsageExtension^>(extension);
-               Console::WriteLine( ext->KeyUsages );
-            }
-            if ( extension->Oid->FriendlyName == L"Basic Constraints" )
-            {
-               X509BasicConstraintsExtension^ ext = dynamic_cast<X509BasicConstraintsExtension^>(extension);
-               Console::WriteLine( ext->CertificateAuthority );
-               Console::WriteLine( ext->HasPathLengthConstraint );
-               Console::WriteLine( ext->PathLengthConstraint );
-            }
-            if ( extension->Oid->FriendlyName == L"Subject Key Identifier" )
-            {
-               X509SubjectKeyIdentifierExtension^ ext = dynamic_cast<X509SubjectKeyIdentifierExtension^>(extension);
-               Console::WriteLine( ext->SubjectKeyIdentifier );
-            }
-            if ( extension->Oid->FriendlyName == L"Enhanced Key Usage" )
-            {
-               X509EnhancedKeyUsageExtension^ ext = dynamic_cast<X509EnhancedKeyUsageExtension^>(extension);
-               OidCollection^ oids = ext->EnhancedKeyUsages;
-               System::Collections::IEnumerator^ myEnum1 = oids->GetEnumerator();
-               while ( myEnum1->MoveNext() )
-               {
-                  Oid^ oid = safe_cast<Oid^>(myEnum1->Current);
-                  Console::WriteLine( L"{0}({1})", oid->FriendlyName, oid->Value );
-               }
-            }
-         }
+   
+   //Create the file streams to handle the input and output files.
+   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
+   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
+   fout->SetLength( 0 );
+   
+   //Create variables to help with read and write.
+   array<Byte>^bin = gcnew array<Byte>(100);
+   long rdlen = 0; //This is the total number of bytes written.
 
-      }
-      store->Close();
-   }
-   catch ( CryptographicException^ ) 
+   long totlen = (long)fin->Length; //This is the total length of the input file.
+
+   int len; //This is the number of bytes to be written at a time.
+
+   TripleDESCryptoServiceProvider^ tdes = gcnew TripleDESCryptoServiceProvider;
+   CryptoStream^ encStream = gcnew CryptoStream( fout,tdes->CreateEncryptor( tdesKey, tdesIV ),CryptoStreamMode::Write );
+   Console::WriteLine( "Encrypting..." );
+   
+   //Read from the input file, then encrypt and write to the output file.
+   while ( rdlen < totlen )
    {
-      Console::WriteLine( L"Information could not be written out for this certificate." );
+      len = fin->Read( bin, 0, 100 );
+      encStream->Write( bin, 0, len );
+      rdlen = rdlen + len;
+      Console::WriteLine( "{0} bytes processed", rdlen );
    }
 
+   encStream->Close();
 }

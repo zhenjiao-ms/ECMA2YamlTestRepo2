@@ -1,68 +1,220 @@
-//The following sample uses the Cryptography class to simulate the roll of a dice.
 
 using System;
-using System.IO;
-using System.Text;
+using System.Xml;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 
-class RNGCSP
+class Program
 {
-    private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
-    // Main method.
-    public static void Main()
+    static void Main(string[] args)
     {
-        const int totalRolls = 25000;
-        int[] results = new int[6];
 
-        // Roll the dice 25000 times and display
-        // the results to the console.
-        for (int x = 0; x < totalRolls; x++)
+        // Create an XmlDocument object.
+        XmlDocument xmlDoc = new XmlDocument();
+
+        // Load an XML file into the XmlDocument object.
+        try
         {
-            byte roll = RollDice((byte)results.Length);
-            results[roll - 1]++;
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load("test.xml");
         }
-        for (int i = 0; i < results.Length; ++i)
+        catch (Exception e)
         {
-            Console.WriteLine("{0}: {1} ({2:p1})", i + 1, results[i], (double)results[i] / (double)totalRolls);
+            Console.WriteLine(e.Message);
         }
-        rngCsp.Dispose();
+
+        // Create a new RSA key.  This key will encrypt a symmetric key,
+        // which will then be imbedded in the XML document.  
+        RSA rsaKey = new RSACryptoServiceProvider();
+
+
+        try
+        {
+            // Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", "EncryptedElement1", rsaKey, "rsaKey");
+
+            // Encrypt the "creditcard2" element.
+            Encrypt(xmlDoc, "creditcard2", "EncryptedElement2", rsaKey, "rsaKey");
+
+            // Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
+
+            // Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey");
+
+            // Display the encrypted XML to the console.
+            Console.WriteLine();
+            Console.WriteLine("Decrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            // Clear the RSA key.
+            rsaKey.Clear();
+        }
+
         Console.ReadLine();
+
+
     }
 
-    // This method simulates a roll of the dice. The input parameter is the
-    // number of sides of the dice.
-
-    public static byte RollDice(byte numberSides)
+    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, string EncryptionElementID, RSA Alg, string KeyName)
     {
-        if (numberSides <= 0)
-            throw new ArgumentOutOfRangeException("numberSides");
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (ElementToEncrypt == null)
+            throw new ArgumentNullException("ElementToEncrypt");
+        if (EncryptionElementID == null)
+            throw new ArgumentNullException("EncryptionElementID");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
+        if (KeyName == null)
+            throw new ArgumentNullException("KeyName");
 
-        // Create a byte array to hold the random value.
-        byte[] randomNumber = new byte[1];
-        do
+        ////////////////////////////////////////////////
+        // Find the specified element in the XmlDocument
+        // object and create a new XmlElemnt object.
+        ////////////////////////////////////////////////
+
+        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
+
+        // Throw an XmlException if the element was not found.
+        if (elementToEncrypt == null)
         {
-            // Fill the array with a random value.
-            rngCsp.GetBytes(randomNumber);
+            throw new XmlException("The specified element was not found");
+
         }
-        while (!IsFairRoll(randomNumber[0], numberSides));
-        // Return the random number mod the number
-        // of sides.  The possible values are zero-
-        // based, so we add one.
-        return (byte)((randomNumber[0] % numberSides) + 1);
+
+        //////////////////////////////////////////////////
+        // Create a new instance of the EncryptedXml class 
+        // and use it to encrypt the XmlElement with the 
+        // a new random symmetric key.
+        //////////////////////////////////////////////////
+
+        // Create a 256 bit Rijndael key.
+        RijndaelManaged sessionKey = new RijndaelManaged();
+        sessionKey.KeySize = 256;
+
+        EncryptedXml eXml = new EncryptedXml();
+
+        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
+
+        ////////////////////////////////////////////////
+        // Construct an EncryptedData object and populate
+        // it with the desired encryption information.
+        ////////////////////////////////////////////////
+
+
+        EncryptedData edElement = new EncryptedData();
+        edElement.Type = EncryptedXml.XmlEncElementUrl;
+        edElement.Id = EncryptionElementID;
+
+        // Create an EncryptionMethod element so that the 
+        // receiver knows which algorithm to use for decryption.
+
+        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
+
+        // Encrypt the session key and add it to an EncryptedKey element.
+        EncryptedKey ek = new EncryptedKey();
+
+        byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
+
+        ek.CipherData = new CipherData(encryptedKey);
+
+        ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
+
+        // Set the KeyInfo element to specify the
+        // name of the RSA key.
+
+        // Create a new KeyInfo element.
+        edElement.KeyInfo = new KeyInfo();
+
+        // Create a new KeyInfoName element.
+        KeyInfoName kin = new KeyInfoName();
+
+        // Specify a name for the key.
+        kin.Value = KeyName;
+
+        // Add the KeyInfoName element to the 
+        // EncryptedKey object.
+        ek.KeyInfo.AddClause(kin);
+
+        // Create a new DataReference element
+        // for the KeyInfo element.  This optional
+        // element specifies which EncryptedData 
+        // uses this key.  An XML document can have
+        // multiple EncryptedData elements that use
+        // different keys.
+        DataReference dRef = new DataReference();
+
+        // Specify the EncryptedData URI. 
+        dRef.Uri = "#" + EncryptionElementID;
+
+        // Add the DataReference to the EncryptedKey.
+        ek.AddReference(dRef);
+
+        // Add the encrypted key to the 
+        // EncryptedData object.
+
+        edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
+
+        // Add the encrypted element data to the 
+        // EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement;
+
+        ////////////////////////////////////////////////////
+        // Replace the element from the original XmlDocument
+        // object with the EncryptedData element.
+        ////////////////////////////////////////////////////
+
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
     }
 
-    private static bool IsFairRoll(byte roll, byte numSides)
+    public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
     {
-        // There are MaxValue / numSides full sets of numbers that can come up
-        // in a single byte.  For instance, if we have a 6 sided die, there are
-        // 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
-        int fullSetsOfValues = Byte.MaxValue / numSides;
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
+        if (KeyName == null)
+            throw new ArgumentNullException("KeyName");
 
-        // If the roll is within this range of fair values, then we let it continue.
-        // In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
-        // < rather than <= since the = portion allows through an extra 0 value).
-        // 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
-        // to use.
-        return roll < numSides * fullSetsOfValues;
+        // Create a new EncryptedXml object.
+        EncryptedXml exml = new EncryptedXml(Doc);
+
+        // Add a key-name mapping.
+        // This method can only decrypt documents
+        // that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg);
+
+        // Decrypt the element.
+        exml.DecryptDocument();
+
     }
+
 }
+
+// To run this sample, place the following XML
+// in a file called test.xml.  Put test.xml
+// in the same directory as your compiled program.
+// 
+//  <root>
+//     <creditcard xmlns="myNamespace" Id="tag1">
+//         <number>19834209</number>
+//         <expiry>02/02/2002</expiry>
+//     </creditcard>
+//     <creditcard2 xmlns="myNamespace" Id="tag2">
+//         <number>19834208</number>
+//         <expiry>02/02/2002</expiry>
+//     </creditcard2>
+// </root>

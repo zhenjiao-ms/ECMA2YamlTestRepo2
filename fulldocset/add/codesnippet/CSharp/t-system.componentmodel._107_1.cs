@@ -1,12 +1,20 @@
-    [DesignerSerializer(typeof(MyCodeDomSerializer), typeof(CodeDomSerializer))]
-    public class MyComponent : Component {
-        private string localProperty = "Component Property Value";
-        public string LocalProperty {
-            get {
-                return localProperty;
-            }
-            set {
-                localProperty = value;
-            }
-        }
-    }
+using System;
+using System.Web.DynamicData;
+using System.ComponentModel.DataAnnotations;
+
+
+[MetadataType(typeof(CustomerMetaData))]
+public partial class Customer
+{
+
+ 
+}
+
+public class CustomerMetaData
+{
+
+    // Add type information.
+    [DataType(DataType.EmailAddress)]
+    public object EmailAddress;
+
+}

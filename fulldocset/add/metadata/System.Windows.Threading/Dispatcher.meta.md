@@ -14,17 +14,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Threading.Dispatcher.Yield
-internalonly: False
----
-
----
 uid: System.Windows.Threading.Dispatcher.Invoke(System.Delegate,System.TimeSpan,System.Object[])
-internalonly: False
----
-
----
-uid: System.Windows.Threading.Dispatcher.InvokeAsync(System.Action,System.Windows.Threading.DispatcherPriority,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -89,11 +79,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Threading.Dispatcher.Invoke(System.Action,System.Windows.Threading.DispatcherPriority,System.Threading.CancellationToken)
-internalonly: False
----
-
----
 uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.Delegate)
 internalonly: False
 ---
@@ -120,11 +105,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Threading.Dispatcher.ShutdownStarted
-internalonly: False
----
-
----
-uid: System.Windows.Threading.Dispatcher.Yield(System.Windows.Threading.DispatcherPriority)
 internalonly: False
 ---
 
@@ -159,21 +139,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Threading.Dispatcher.Invoke(System.Action,System.Windows.Threading.DispatcherPriority)
-internalonly: False
----
-
----
-uid: System.Windows.Threading.Dispatcher.Invoke(System.Action)
-internalonly: False
----
-
----
-uid: System.Windows.Threading.Dispatcher.InvokeAsync(System.Action,System.Windows.Threading.DispatcherPriority)
-internalonly: False
----
-
----
 uid: System.Windows.Threading.Dispatcher.HasShutdownStarted
 internalonly: False
 ---
@@ -189,17 +154,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Threading.Dispatcher.InvokeAsync(System.Action)
-internalonly: False
----
-
----
 uid: System.Windows.Threading.Dispatcher.FromThread(System.Threading.Thread)
-internalonly: False
----
-
----
-uid: System.Windows.Threading.Dispatcher.Invoke(System.Action,System.Windows.Threading.DispatcherPriority,System.Threading.CancellationToken,System.TimeSpan)
 internalonly: False
 ---
 

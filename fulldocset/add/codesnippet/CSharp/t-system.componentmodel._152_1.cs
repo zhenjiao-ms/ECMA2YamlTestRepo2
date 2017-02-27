@@ -1,4 +1,11 @@
-            byte myUint = 5;
-            string myUStr = "2";
-            Console.WriteLine(TypeDescriptor.GetConverter(myUint).ConvertTo(myUint, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myUint).ConvertFrom(myUStr));    
+        // This example method creates a DesignerTransactionCloseEventArgs using the specified argument.
+        // Typically, this type of event args is created by a design mode subsystem.            
+        public DesignerTransactionCloseEventArgs CreateDesignerTransactionCloseEventArgs(bool commit)
+        {            
+            // Creates a component changed event args with the specified arguments.
+            DesignerTransactionCloseEventArgs args = new DesignerTransactionCloseEventArgs(commit, false);
+
+            // Whether the transaction has been committed:  args.TransactionCommitted
+            
+            return args;            
+        }

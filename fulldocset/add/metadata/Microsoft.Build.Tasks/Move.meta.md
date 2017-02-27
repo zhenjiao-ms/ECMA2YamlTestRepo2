@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Move.Cancel
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Move.OverwriteReadOnlyFiles
 internalonly: False
 ---

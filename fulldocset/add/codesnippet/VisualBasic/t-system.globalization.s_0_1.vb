@@ -1,103 +1,93 @@
-Imports System.Collections
-Imports System.Collections.Generic
 Imports System.Globalization
-Imports System.IO
-Imports System.Text
 
-Public Class Example : Implements IComparer
-   Private Const FILENAME As String = ".\Regions.dat"
-   
-   Private Structure Region
-      Friend Sub New(id As String, name As String)
-         Me.Id = id
-         Me.NativeName = name
-      End Sub
-      
-      Dim Id As String
-      Dim NativeName As String
-      
-      Public Overrides Function ToString() As String
-         Return Me.NativeName
-      End Function
-   End Structure
-   
-   Public Shared Sub Main()
-      Dim reindex As Boolean = False
-      
-      Dim regions() As Region
-      Dim ver As SortVersion = Nothing
+Public Module Example
+   Public Sub Main()
+      ' The Unicode code points specify Arabic base characters and 
+      ' combining character sequences.
+      Dim strCombining As String = ChrW(&H627) & ChrW(&h0655) + ChrW(&H650) & 
+              ChrW(&H64A) & ChrW(&H647) & ChrW(&H64E) & ChrW(&H627) & 
+              ChrW(&H628) & ChrW(&H64C)
 
-      ' If the data has not been saved, create it.
-      If Not File.Exists(FILENAME) Then 
-         regions = GenerateData()
-         ver = CultureInfo.CurrentCulture.CompareInfo.Version  
-         reindex = True
-      ' Retrieve the existing data.
-      Else
-         regions = RestoreData(ver)
-      End If
-
-      ' Determine whether the current ordering is valid; if not, reorder.
-      If reindex OrElse ver <> CultureInfo.CurrentCulture.CompareInfo.Version Then 
-         Array.Sort(regions, New Example())      
-         ' Save newly reordered data.
-         SaveData(regions)
-      End If
+      ' The Unicode code points specify private surrogate pairs.
+      Dim strSurrogates As String = Char.ConvertFromUtf32(&h10148) +
+                                    Char.ConvertFromUtf32(&h20026) + "a" +
+                                    Char.ConvertFromUtf32(&hF1001)
       
-      ' Continue with application...
+      EnumerateTextElements(strCombining)
+      EnumerateTextElements(strSurrogates)
    End Sub
 
-   Private Shared Function GenerateData() As Region()
-      Dim regions As New List(Of Region)()
+   Public Sub EnumerateTextElements(str As String)
+      ' Get the Enumerator.
+      Dim teEnum As TextElementEnumerator = Nothing      
 
-      For Each culture In CultureInfo.GetCultures(CultureTypes.AllCultures)
-         If culture.IsNeutralCulture Or culture.Equals(CultureInfo.InvariantCulture) Then Continue For
-            
-         Dim region As New RegionInfo(culture.Name)
-         regions.Add(New Region(region.Name, region.NativeName))
+      ' Parse the string using the ParseCombiningCharacters method.
+      Console.WriteLine()
+      Console.WriteLine("Parsing with ParseCombiningCharacters:")
+      Dim teIndices As Integer() = StringInfo.ParseCombiningCharacters(str)
+      
+      For i As Integer = 0 To teIndices.Length - 1
+         If i < teIndices.Length - 1 Then
+            Console.WriteLine("Text Element {0} ({1}..{2})= {3}", i, 
+               TEIndices(i), TEIndices((i + 1)) - 1, 
+               ShowHexValues(str.Substring(TEIndices(i), TEIndices((i + 1)) - 
+                             teIndices(i))))
+         Else
+            Console.WriteLine("Text Element {0} ({1}..{2})= {3}", i, 
+               teIndices(i), str.Length - 1, 
+               ShowHexValues(str.Substring(teIndices(i))))
+         End If
       Next
-      Return regions.ToArray()
-   End Function
-   
-   Private Shared Function RestoreData(ByRef ver As SortVersion) As Region()
-      Dim regions As New List(Of Region)
-      
-      Dim rdr As New BinaryReader(File.Open(FILENAME, FileMode.Open))
-      
-      Dim sortVer As Integer = rdr.ReadInt32
-      Dim sortId As Guid = Guid.Parse(rdr.ReadString())
-      ver = New SortVersion(sortVer, sortId)
-      
-      Dim id As String, name As String
-      Do While rdr.PeekChar <> -1
-         id = rdr.ReadString()
-         name = rdr.ReadString()
-         regions.Add(New Region(id, name))      
-      Loop
-      Return regions.ToArray()
-   End Function
-   
-   Private Shared Sub SaveData(regions As Region())
-      Dim ver As SortVersion = CultureInfo.CurrentCulture.CompareInfo.Version
+      Console.WriteLine()
 
-      Dim wrtr As New BinaryWriter(File.Open(FILENAME, FileMode.Create))
-      wrtr.Write(ver.FullVersion) 
-      wrtr.Write(ver.SortId.ToString()) 
-      
-      For Each region In regions
-         wrtr.Write(region.Id)
-         wrtr.Write(region.NativeName)
-      Next
-      wrtr.Close()
+      ' Parse the string with the GetTextElementEnumerator method.
+      Console.WriteLine("Parsing with TextElementEnumerator:")
+      teEnum = StringInfo.GetTextElementEnumerator(str)
+
+      Dim TECount As Integer = - 1
+
+      While teEnum.MoveNext()
+         ' Prints the current element.
+         ' Both GetTextElement() and Current retrieve the current
+         ' text element. The latter returns it as an Object.
+         TECount += 1
+         Console.WriteLine("Text Element {0} ({1}..{2})= {3}", teCount, 
+            teEnum.ElementIndex, teEnum.ElementIndex + 
+            teEnum.GetTextElement().Length - 1, ShowHexValues(CStr(teEnum.Current)))
+      End While
    End Sub
-
-   Private Function SortByNativeName(o1 As Object, o2 As Object) As Integer _
-           Implements IComparer.Compare
-        ' Assume that all conversions succeed.
-        Dim r1 As Region = CType(o1, Region)
-        Dim r2 As Region = CType(o2, Region)
-        
-        Return String.Compare(r1.NativeName, r2.NativeName, 
-                              StringComparison.CurrentCulture)         
+   
+   Private Function ShowHexValues(s As String) As String
+      Dim hexString As String = ""
+      For Each ch In s
+         hexString += String.Format("{0:X4} ", Convert.ToUInt16(ch))
+      Next
+      Return hexString
    End Function
-End Class
+End Module
+' The example displays the following output:
+'       Parsing with ParseCombiningCharacters:
+'       Text Element 0 (0..2)= 0627 0655 0650
+'       Text Element 1 (3..3)= 064A
+'       Text Element 2 (4..5)= 0647 064E
+'       Text Element 3 (6..6)= 0627
+'       Text Element 4 (7..8)= 0628 064C
+'       
+'       Parsing with TextElementEnumerator:
+'       Text Element 0 (0..2)= 0627 0655 0650
+'       Text Element 1 (3..3)= 064A
+'       Text Element 2 (4..5)= 0647 064E
+'       Text Element 3 (6..6)= 0627
+'       Text Element 4 (7..8)= 0628 064C
+'       
+'       Parsing with ParseCombiningCharacters:
+'       Text Element 0 (0..1)= D800 DD48
+'       Text Element 1 (2..3)= D840 DC26
+'       Text Element 2 (4..4)= 0061
+'       Text Element 3 (5..6)= DB84 DC01
+'       
+'       Parsing with TextElementEnumerator:
+'       Text Element 0 (0..1)= D800 DD48
+'       Text Element 1 (2..3)= D840 DC26
+'       Text Element 2 (4..4)= 0061
+'       Text Element 3 (5..6)= DB84 DC01

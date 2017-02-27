@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.Configuration.MachineKeySection.ApplicationName
-internalonly: False
----
-
----
 uid: System.Web.Configuration.MachineKeySection.ValidationKey
 internalonly: False
 ---
@@ -35,11 +30,6 @@ internalonly: False
 
 ---
 uid: System.Web.Configuration.MachineKeySection.ValidationAlgorithm
-internalonly: False
----
-
----
-uid: System.Web.Configuration.MachineKeySection.DataProtectorType
 internalonly: False
 ---
 

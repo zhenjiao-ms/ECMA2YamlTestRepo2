@@ -1,9 +1,37 @@
-    ' To allow a service to hand out instances of a DataProtector we demand unrestricted DataProtectionPermission 
-    ' in the constructor, but Assert the permission when ProviderProtect is called.  This is similar to FileStream
-    ' where access is checked at time of creation, not time of use.
-    <SecuritySafeCritical(), DataProtectionPermission(SecurityAction.Assert, ProtectData:=True)> _
-    Protected Overrides Function ProviderProtect(ByVal userData() As Byte) As Byte()
-        ' Delegate to ProtectedData
-        Return ProtectedData.Protect(userData, GetHashedPurpose(), Scope)
+        Public Overrides Function ToXmlString( _
+            ByVal includePrivateParameters As Boolean) As String
 
-    End Function 'ProviderProtect
+            Dim keyContainerName As String = ""
+            Dim keyNumber As String = ""
+            Dim providerName As String = ""
+            Dim providerType As String = ""
+
+            If Not cspParameters Is Nothing Then
+                keyContainerName = cspParameters.KeyContainerName
+                keyNumber = cspParameters.KeyNumber.ToString()
+                providerName = cspParameters.ProviderName
+                providerType = cspParameters.ProviderType.ToString()
+            End If
+
+            Dim xmlBuilder As New StringBuilder
+            xmlBuilder.Append("<CustomCryptoKeyValue>")
+
+            xmlBuilder.Append("<KeyContainerName>")
+            xmlBuilder.Append(keyContainerName)
+            xmlBuilder.Append("</KeyContainerName>")
+
+            xmlBuilder.Append("<KeyNumber>")
+            xmlBuilder.Append(keyNumber)
+            xmlBuilder.Append("</KeyNumber>")
+
+            xmlBuilder.Append("<ProviderName>")
+            xmlBuilder.Append(providerName)
+            xmlBuilder.Append("</ProviderName>")
+
+            xmlBuilder.Append("<ProviderType>")
+            xmlBuilder.Append(providerType)
+            xmlBuilder.Append("</ProviderType>")
+
+            xmlBuilder.Append("</CustomCryptoKeyValue>")
+            Return (xmlBuilder.ToString())
+        End Function

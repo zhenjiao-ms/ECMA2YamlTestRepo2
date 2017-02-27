@@ -144,11 +144,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Configuration.ConfigurationElement.HasContext
-internalonly: False
----
-
----
 uid: System.Configuration.ConfigurationElement.ElementInformation
 internalonly: False
 ---

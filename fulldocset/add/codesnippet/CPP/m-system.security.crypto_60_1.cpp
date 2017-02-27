@@ -1,169 +1,115 @@
-#using <System.dll>
-
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
-
-
-class RijndaelMemoryExample
+using namespace System::Text;
+using namespace System::IO;
+void EncryptTextToFile( String^ Data, String^ FileName, array<Byte>^Key, array<Byte>^IV )
 {
-public:
-    static array<Byte>^ encryptStringToBytes_AES(String^ plainText, array<Byte>^ Key, array<Byte>^ IV)
-    {
-        // Check arguments.
-        if (!plainText || plainText->Length <= 0)
-            throw gcnew ArgumentNullException("plainText");
-        if (!Key || Key->Length <= 0)
-            throw gcnew ArgumentNullException("Key");
-        if (!IV  || IV->Length <= 0)
-            throw gcnew ArgumentNullException("IV");
+   try
+   {
+      
+      // Create or open the specified file.
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
+      
+      // Create a new TripleDES object.
+      TripleDES^ tripleDESalg = TripleDES::Create();
+      
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,tripleDESalg->CreateEncryptor( Key, IV ),CryptoStreamMode::Write );
+      
+      // Create a StreamWriter using the CryptoStream.
+      StreamWriter^ sWriter = gcnew StreamWriter( cStream );
+      
+      // Write the data to the stream 
+      // to encrypt it.
+      sWriter->WriteLine( Data );
+      
+      // Close the streams and
+      // close the file.
+      sWriter->Close();
+      cStream->Close();
+      fStream->Close();
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file access error occurred: {0}", e->Message );
+   }
 
-        // Declare the streams used
-        // to encrypt to an in memory
-        // array of bytes.
-		MemoryStream^   msEncrypt;
-        CryptoStream^   csEncrypt;
-        StreamWriter^   swEncrypt;
+}
 
-        // Declare the RijndaelManaged object
-        // used to encrypt the data.
-        RijndaelManaged^ aesAlg;
+String^ DecryptTextFromFile( String^ FileName, array<Byte>^Key, array<Byte>^IV )
+{
+   try
+   {
+      
+      // Create or open the specified file. 
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
+      
+      // Create a new TripleDES object.
+      TripleDES^ tripleDESalg = TripleDES::Create();
+      
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,tripleDESalg->CreateDecryptor( Key, IV ),CryptoStreamMode::Read );
+      
+      // Create a StreamReader using the CryptoStream.
+      StreamReader^ sReader = gcnew StreamReader( cStream );
+      
+      // Read the data from the stream 
+      // to decrypt it.
+      String^ val = sReader->ReadLine();
+      
+      // Close the streams and
+      // close the file.
+      sReader->Close();
+      cStream->Close();
+      fStream->Close();
+      
+      // Return the string. 
+      return val;
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+      return nullptr;
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file access error occurred: {0}", e->Message );
+      return nullptr;
+   }
 
-        try
-        {
-            // Create a RijndaelManaged object
-            // with the specified key and IV.
-            aesAlg = gcnew RijndaelManaged();
-			aesAlg->Padding = PaddingMode::PKCS7;
-            aesAlg->Key = Key;
-            aesAlg->IV = IV;
-
-            // Create an encryptor to perform the stream transform.
-            ICryptoTransform^ encryptor = aesAlg->CreateEncryptor(aesAlg->Key, aesAlg->IV);
-
-            // Create the streams used for encryption.
-            msEncrypt = gcnew MemoryStream();
-			csEncrypt = gcnew CryptoStream(msEncrypt, encryptor, CryptoStreamMode::Write);
-            swEncrypt = gcnew StreamWriter(csEncrypt);
-
-            //Write all data to the stream.
-            swEncrypt->Write(plainText);
-			swEncrypt->Flush();
-			csEncrypt->FlushFinalBlock();
-			msEncrypt->Flush();
-        }
-        finally
-        {
-            // Clean things up.
-
-            // Close the streams.
-            if(swEncrypt)
-                swEncrypt->Close();
-            if (csEncrypt)
-                csEncrypt->Close();
-
-
-            // Clear the RijndaelManaged object.
-            if (aesAlg)
-                aesAlg->Clear();
-        }
-
-        // Return the encrypted bytes from the memory stream.
-        return msEncrypt->ToArray();
-    }
-
-    static String^ decryptStringFromBytes_AES(array<Byte>^ cipherText, array<Byte>^ Key, array<Byte>^ IV)
-    {
-        // Check arguments.
-        if (!cipherText || cipherText->Length <= 0)
-            throw gcnew ArgumentNullException("cipherText");
-        if (!Key || Key->Length <= 0)
-            throw gcnew ArgumentNullException("Key");
-        if (!IV || IV->Length <= 0)
-            throw gcnew ArgumentNullException("IV");
-
-        // TDeclare the streams used
-        // to decrypt to an in memory
-        // array of bytes.
-        MemoryStream^ msDecrypt;
-        CryptoStream^ csDecrypt;
-        StreamReader^ srDecrypt;
-
-        // Declare the RijndaelManaged object
-        // used to decrypt the data.
-        RijndaelManaged^ aesAlg;
-
-        // Declare the string used to hold
-        // the decrypted text.
-        String^ plaintext;
-
-        try
-        {
-            // Create a RijndaelManaged object
-            // with the specified key and IV.
-            aesAlg = gcnew RijndaelManaged();
-			aesAlg->Padding = PaddingMode::PKCS7;
-            aesAlg->Key = Key;
-            aesAlg->IV = IV;
-
-            // Create a decrytor to perform the stream transform.
-			ICryptoTransform^ decryptor = aesAlg->CreateDecryptor(aesAlg->Key, aesAlg->IV);
-
-            // Create the streams used for decryption.
-            msDecrypt = gcnew MemoryStream(cipherText);
-			csDecrypt = gcnew CryptoStream(msDecrypt, decryptor, CryptoStreamMode::Read);
-            srDecrypt = gcnew StreamReader(csDecrypt);
-
-            // Read the decrypted bytes from the decrypting stream
-            // and place them in a string.
-            plaintext = srDecrypt->ReadToEnd();
-        }
-        finally
-        {
-            // Clean things up.
-
-            // Close the streams.
-            if (srDecrypt)
-                srDecrypt->Close();
-            if (csDecrypt)
-                csDecrypt->Close();
-            if (msDecrypt)
-                msDecrypt->Close();
-
-            // Clear the RijndaelManaged object.
-            if (aesAlg)
-                aesAlg->Clear();
-        }
-
-        return plaintext;
-    }
-};
+}
 
 int main()
 {
-    try
-    {
-        String^ original = "Here is some data to encrypt!";
+   try
+   {
+      
+      // Create a new TripleDES object to generate a key
+      // and an initialization vector (IV).
+      TripleDES^ TripleDESalg = TripleDES::Create();
+      
+      // Create a string to encrypt.
+      String^ sData = "Here is some data to encrypt.";
+      String^ FileName = "CText.txt";
+      
+      // Encrypt text to a file using the file name, key, and IV.
+      EncryptTextToFile( sData, FileName, TripleDESalg->Key, TripleDESalg->IV );
+      
+      // Decrypt the text from a file using the file name, key, and IV.
+      String^ Final = DecryptTextFromFile( FileName, TripleDESalg->Key, TripleDESalg->IV );
+      
+      // Display the decrypted string to the console.
+      Console::WriteLine( Final );
+   }
+   catch ( Exception^ e ) 
+   {
+      Console::WriteLine( e->Message );
+   }
 
-        // Create a new instance of the RijndaelManaged
-        // class.  This generates a new key and initialization
-        // vector (IV).
-        RijndaelManaged^ myRijndael = gcnew RijndaelManaged();
-
-        // Encrypt the string to an array of bytes.
-		array<Byte>^ encrypted = RijndaelMemoryExample::encryptStringToBytes_AES(original, myRijndael->Key, myRijndael->IV);
-
-        // Decrypt the bytes to a string.
-        String^ roundtrip = RijndaelMemoryExample::decryptStringFromBytes_AES(encrypted, myRijndael->Key, myRijndael->IV);
-
-        //Display the original data and the decrypted data.
-		Console::WriteLine("Original:   {0}", original);
-		Console::WriteLine("Round Trip: {0}", roundtrip);
-    }
-    catch (Exception^ e)
-    {
-		Console::WriteLine("Error: {0}", e->Message);
-    }
-
-	return 0;
 }

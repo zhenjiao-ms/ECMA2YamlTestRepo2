@@ -1,12 +1,13 @@
-        // This example method creates a ComponentRenameEventArgs using the specified arguments.
-        // Typically, this type of event args is created by a design mode subsystem.  
-        public ComponentRenameEventArgs CreateComponentRenameEventArgs(object component, string oldName, string newName)
-        {
-            ComponentRenameEventArgs args = new ComponentRenameEventArgs(component, oldName, newName);
+private void Form1_Load(object sender, System.EventArgs e)
+{
+    textBox1.Text = "changed";
+    System.ComponentModel.TypeDescriptor.Refreshed += new
+    System.ComponentModel.RefreshEventHandler(OnRefresh);
+    System.ComponentModel.TypeDescriptor.GetProperties(textBox1);
+    System.ComponentModel.TypeDescriptor.Refresh(textBox1);
+}
 
-            // The component that was renamed:          args.Component
-            // The previous name of the component:      args.OldName
-            // The new name of the component:           args.NewName            
-
-            return args;
-        }
+protected static void OnRefresh(System.ComponentModel.RefreshEventArgs e)
+{
+    Console.WriteLine(e.ComponentChanged.ToString());
+}

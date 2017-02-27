@@ -14,16 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.BindingExpression.ResolvedSourcePropertyName
-internalonly: False
----
-
----
-uid: System.Windows.Data.BindingExpression.ResolvedSource
-internalonly: False
----
-
----
 uid: System.Windows.Data.BindingExpression.DataItem
 internalonly: False
 ---

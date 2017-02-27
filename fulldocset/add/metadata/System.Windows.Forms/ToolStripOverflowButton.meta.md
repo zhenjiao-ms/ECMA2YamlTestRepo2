@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.ToolStripOverflowButton.Dispose(System.Boolean)
-internalonly: False
----
-
----
 uid: System.Windows.Forms.ToolStripOverflowButton.GetPreferredSize(System.Drawing.Size)
 internalonly: False
 ---

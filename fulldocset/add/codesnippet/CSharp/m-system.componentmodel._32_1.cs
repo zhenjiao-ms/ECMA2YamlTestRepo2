@@ -1,14 +1,16 @@
- private void MyEnumerator() {
-    // Creates a new collection and assigns it the properties for button1.
-    PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(button1);
+private void MyEnumerator() {
+    // Creates a new collection and assigns it the attributes for button1.
+    AttributeCollection attributes;
+    attributes = TypeDescriptor.GetAttributes(button1);
  
-    // Creates an enumerator.
-    IEnumerator ie = properties.GetEnumerator();
+    // Creates an enumerator for the collection.
+    System.Collections.IEnumerator ie = attributes.GetEnumerator();
  
-    // Prints the name of each property in the collection.
-    Object myProperty;
+    // Prints the type of each attribute in the collection.
+    Object myAttribute;
     while(ie.MoveNext()==true) {
-       myProperty = ie.Current;
-       textBox1.Text += myProperty.ToString() + '\n';
+       myAttribute = ie.Current;
+       textBox1.Text += myAttribute.ToString();
+       textBox1.Text += '\n';
     }
  }

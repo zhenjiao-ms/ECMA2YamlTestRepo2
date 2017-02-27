@@ -1,13 +1,16 @@
-private void Form1_Load(object sender, System.EventArgs e)
-{
-    textBox1.Text = "changed";
-    System.ComponentModel.TypeDescriptor.Refreshed += new
-    System.ComponentModel.RefreshEventHandler(OnRefresh);
-    System.ComponentModel.TypeDescriptor.GetProperties(textBox1);
-    System.ComponentModel.TypeDescriptor.Refresh(textBox1);
-}
+        [Category("Data")]
+        [Description("Indicates the source of data for the control.")]
+        [RefreshProperties(RefreshProperties.Repaint)]
+        [AttributeProvider(typeof(IListSource))]
+        public object DataSource
+        {
+            get
+            {
+                return this.dataGridView1.DataSource;
+            }
 
-protected static void OnRefresh(System.ComponentModel.RefreshEventArgs e)
-{
-    Console.WriteLine(e.ComponentChanged.ToString());
-}
+            set
+            {
+                this.dataGridView1.DataSource = value;
+            }
+        }

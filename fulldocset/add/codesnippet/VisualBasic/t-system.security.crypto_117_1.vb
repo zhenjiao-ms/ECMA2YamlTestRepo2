@@ -1,71 +1,281 @@
 Imports System
+Imports System.Security.Cryptography
+Imports System.Security.Cryptography.X509Certificates
 Imports System.IO
 Imports System.Text
-Imports System.Security.Cryptography
 
 
+' To run this sample use the Certificate Creation Tool (Makecert.exe) to generate a test X.509 certificate and 
+' place it in the local user store. 
+' To generate an exchange key and make the key exportable run the following command from a Visual Studio command prompt: 
+'makecert -r -pe -n "CN=CERT_SIGN_TEST_CERT" -b 01/01/2010 -e 01/01/2012 -sky exchange -ss my
 
-Public Class rfc2898test
-    ' Generate a key k1 with password pwd1 and salt salt1.
-    ' Generate a key k2 with password pwd1 and salt salt1.
-    ' Encrypt data1 with key k1 using symmetric encryption, creating edata1.
-    ' Decrypt edata1 with key k2 using symmetric decryption, creating data2.
-    ' data2 should equal data1.
-    Private Const usageText As String = "Usage: RFC2898 <password>" + vbLf + "You must specify the password for encryption." + vbLf
+Class Program
 
-    Public Shared Sub Main(ByVal passwordargs() As String)
-        'If no file name is specified, write usage text.
-        If passwordargs.Length = 0 Then
-            Console.WriteLine(usageText)
-        Else
-            Dim pwd1 As String = passwordargs(0)
+    ' Path variables for source, encryption, and
+    ' decryption folders. Must end with a backslash.
+    Private Shared encrFolder As String = "C:\Encrypt\"
+    Private Shared decrFolder As String = "C:\Decrypt\"
+    Private Shared originalFile As String = "TestData.txt"
+    Private Shared encryptedFile As String = "TestData.enc"
 
-            Dim salt1(8) As Byte
-            Using rngCsp As New RNGCryptoServiceProvider()
-                rngCsp.GetBytes(salt1)
-            End Using
-            'data1 can be a string or contents of a file.
-            Dim data1 As String = "Some test data"
-            'The default iteration count is 1000 so the two methods use the same iteration count.
-            Dim myIterations As Integer = 1000
-            Try
-                Dim k1 As New Rfc2898DeriveBytes(pwd1, salt1, myIterations)
-                Dim k2 As New Rfc2898DeriveBytes(pwd1, salt1)
-                ' Encrypt the data.
-                Dim encAlg As TripleDES = TripleDES.Create()
-                encAlg.Key = k1.GetBytes(16)
-                Dim encryptionStream As New MemoryStream()
-                Dim encrypt As New CryptoStream(encryptionStream, encAlg.CreateEncryptor(), CryptoStreamMode.Write)
-                Dim utfD1 As Byte() = New System.Text.UTF8Encoding(False).GetBytes(data1)
-                encrypt.Write(utfD1, 0, utfD1.Length)
-                encrypt.FlushFinalBlock()
-                encrypt.Close()
-                Dim edata1 As Byte() = encryptionStream.ToArray()
-                k1.Reset()
 
-                ' Try to decrypt, thus showing it can be round-tripped.
-                Dim decAlg As TripleDES = TripleDES.Create()
-                decAlg.Key = k2.GetBytes(16)
-                decAlg.IV = encAlg.IV
-                Dim decryptionStreamBacking As New MemoryStream()
-                Dim decrypt As New CryptoStream(decryptionStreamBacking, decAlg.CreateDecryptor(), CryptoStreamMode.Write)
-                decrypt.Write(edata1, 0, edata1.Length)
-                decrypt.Flush()
-                decrypt.Close()
-                k2.Reset()
-                Dim data2 As String = New UTF8Encoding(False).GetString(decryptionStreamBacking.ToArray())
+    Shared Sub Main(ByVal args() As String)
 
-                If Not data1.Equals(data2) Then
-                    Console.WriteLine("Error: The two values are not equal.")
-                Else
-                    Console.WriteLine("The two values are equal.")
-                    Console.WriteLine("k1 iterations: {0}", k1.IterationCount)
-                    Console.WriteLine("k2 iterations: {0}", k2.IterationCount)
-                End If
-            Catch e As Exception
-                Console.WriteLine("Error: ", e)
-            End Try
+        ' Create an input file with test data.
+        Dim sw As StreamWriter = File.CreateText(originalFile)
+        sw.WriteLine("Test data to be encrypted")
+        sw.Close()
+
+        ' Get the certifcate to use to encrypt the key.
+        Dim cert As X509Certificate2 = GetCertificateFromStore("CN=CERT_SIGN_TEST_CERT")
+        If cert Is Nothing Then
+            Console.WriteLine("Certificatge 'CN=CERT_SIGN_TEST_CERT' not found.")
+            Console.ReadLine()
         End If
 
-    End Sub
-End Class
+
+        ' Encrypt the file using the public key from the certificate.
+        EncryptFile(originalFile, CType(cert.PublicKey.Key, RSACryptoServiceProvider))
+
+        ' Decrypt the file using the private key from the certificate.
+        DecryptFile(encryptedFile, CType(cert.PrivateKey, RSACryptoServiceProvider))
+
+        'Display the original data and the decrypted data.
+        Console.WriteLine("Original:   {0}", File.ReadAllText(originalFile))
+        Console.WriteLine("Round Trip: {0}", File.ReadAllText(decrFolder + originalFile))
+        Console.WriteLine("Press the Enter key to exit.")
+        Console.ReadLine()
+
+    End Sub 'Main
+
+    Private Shared Function GetCertificateFromStore(ByVal certName As String) As X509Certificate2
+        ' Get the certificate store for the current user.
+        Dim store As New X509Store(StoreLocation.CurrentUser)
+        Try
+            store.Open(OpenFlags.ReadOnly)
+
+            ' Place all certificates in an X509Certificate2Collection object.
+            Dim certCollection As X509Certificate2Collection = store.Certificates
+            ' If using a certificate with a trusted root you do not need to FindByTimeValid, instead use:
+            ' currentCerts.Find(X509FindType.FindBySubjectDistinguishedName, certName, true);
+            Dim currentCerts As X509Certificate2Collection = certCollection.Find(X509FindType.FindByTimeValid, DateTime.Now, False)
+            Dim signingCert As X509Certificate2Collection = currentCerts.Find(X509FindType.FindBySubjectDistinguishedName, certName, False)
+            If signingCert.Count = 0 Then
+                Return Nothing
+            End If ' Return the first certificate in the collection, has the right name and is current.
+            Return signingCert(0)
+        Finally
+            store.Close()
+        End Try
+
+
+    End Function 'GetCertificateFromStore
+
+    ' Encrypt a file using a public key.
+    Private Shared Sub EncryptFile(ByVal inFile As String, ByVal rsaPublicKey As RSACryptoServiceProvider)
+        Dim aesManaged As New AesManaged()
+        Try
+            ' Create instance of AesManaged for
+            ' symetric encryption of the data.
+            aesManaged.KeySize = 256
+            aesManaged.BlockSize = 128
+            aesManaged.Mode = CipherMode.CBC
+            Dim transform As ICryptoTransform = aesManaged.CreateEncryptor()
+            Try
+                Dim keyFormatter As New RSAPKCS1KeyExchangeFormatter(rsaPublicKey)
+                Dim keyEncrypted As Byte() = keyFormatter.CreateKeyExchange(aesManaged.Key, aesManaged.GetType())
+
+                ' Create byte arrays to contain
+                ' the length values of the key and IV.
+                Dim LenK(3) As Byte
+                Dim LenIV(3) As Byte
+
+                Dim lKey As Integer = keyEncrypted.Length
+                LenK = BitConverter.GetBytes(lKey)
+                Dim lIV As Integer = aesManaged.IV.Length
+                LenIV = BitConverter.GetBytes(lIV)
+
+                ' Write the following to the FileStream
+                ' for the encrypted file (outFs):
+                ' - length of the key
+                ' - length of the IV
+                ' - ecrypted key
+                ' - the IV
+                ' - the encrypted cipher content
+                Dim startFileName As Integer = inFile.LastIndexOf("\") + 1
+                ' Change the file's extension to ".enc"
+                Dim outFile As String = encrFolder + inFile.Substring(startFileName, inFile.LastIndexOf(".") - startFileName) + ".enc"
+                Directory.CreateDirectory(encrFolder)
+
+                Dim outFs As New FileStream(outFile, FileMode.Create)
+                Try
+
+                    outFs.Write(LenK, 0, 4)
+                    outFs.Write(LenIV, 0, 4)
+                    outFs.Write(keyEncrypted, 0, lKey)
+                    outFs.Write(aesManaged.IV, 0, lIV)
+
+                    ' Now write the cipher text using
+                    ' a CryptoStream for encrypting.
+                    Dim outStreamEncrypted As New CryptoStream(outFs, transform, CryptoStreamMode.Write)
+                    Try
+
+                        ' By encrypting a chunk at
+                        ' a time, you can save memory
+                        ' and accommodate large files.
+                        Dim count As Integer = 0
+                        Dim offset As Integer = 0
+
+                        ' blockSizeBytes can be any arbitrary size.
+                        Dim blockSizeBytes As Integer = aesManaged.BlockSize / 8
+                        Dim data(blockSizeBytes) As Byte
+                        Dim bytesRead As Integer = 0
+
+                        Dim inFs As New FileStream(inFile, FileMode.Open)
+                        Try
+                            Do
+                                count = inFs.Read(data, 0, blockSizeBytes)
+                                offset += count
+                                outStreamEncrypted.Write(data, 0, count)
+                                bytesRead += blockSizeBytes
+                            Loop While count > 0
+                            inFs.Close()
+                        Finally
+                            inFs.Dispose()
+                        End Try
+                        outStreamEncrypted.FlushFinalBlock()
+                        outStreamEncrypted.Close()
+                    Finally
+                        outStreamEncrypted.Dispose()
+                    End Try
+                    outFs.Close()
+                Finally
+                    outFs.Dispose()
+                End Try
+            Finally
+                transform.Dispose()
+            End Try
+        Finally
+            aesManaged.Dispose()
+        End Try
+
+    End Sub 'EncryptFile
+
+
+    ' Decrypt a file using a private key.
+    Private Shared Sub DecryptFile(ByVal inFile As String, ByVal rsaPrivateKey As RSACryptoServiceProvider)
+
+        ' Create instance of AesManaged for
+        ' symetric decryption of the data.
+        Dim aesManaged As New AesManaged()
+        Try
+            aesManaged.KeySize = 256
+            aesManaged.BlockSize = 128
+            aesManaged.Mode = CipherMode.CBC
+
+            ' Create byte arrays to get the length of
+            ' the encrypted key and IV.
+            ' These values were stored as 4 bytes each
+            ' at the beginning of the encrypted package.
+            Dim LenK() As Byte = New Byte(4 - 1) {}
+            Dim LenIV() As Byte = New Byte(4 - 1) {}
+
+            ' Consruct the file name for the decrypted file.
+            Dim outFile As String = decrFolder + inFile.Substring(0, inFile.LastIndexOf(".")) + ".txt"
+
+            ' Use FileStream objects to read the encrypted
+            ' file (inFs) and save the decrypted file (outFs).
+            Dim inFs As New FileStream(encrFolder + inFile, FileMode.Open)
+            Try
+
+                inFs.Seek(0, SeekOrigin.Begin)
+                inFs.Seek(0, SeekOrigin.Begin)
+                inFs.Read(LenK, 0, 3)
+                inFs.Seek(4, SeekOrigin.Begin)
+                inFs.Read(LenIV, 0, 3)
+
+                ' Convert the lengths to integer values.
+                Dim lengthK As Integer = BitConverter.ToInt32(LenK, 0)
+                Dim lengthIV As Integer = BitConverter.ToInt32(LenIV, 0)
+
+                ' Determine the start postition of
+                ' the ciphter text (startC)
+                ' and its length(lenC).
+                Dim startC As Integer = lengthK + lengthIV + 8
+                Dim lenC As Integer = (CType(inFs.Length, Integer) - startC)
+
+                ' Create the byte arrays for
+                ' the encrypted Rijndael key,
+                ' the IV, and the cipher text.
+                Dim KeyEncrypted() As Byte = New Byte(lengthK - 1) {}
+                Dim IV() As Byte = New Byte(lengthIV - 1) {}
+
+                ' Extract the key and IV
+                ' starting from index 8
+                ' after the length values.
+                inFs.Seek(8, SeekOrigin.Begin)
+                inFs.Read(KeyEncrypted, 0, lengthK)
+                inFs.Seek(8 + lengthK, SeekOrigin.Begin)
+                inFs.Read(IV, 0, lengthIV)
+                Directory.CreateDirectory(decrFolder)
+                ' Use RSACryptoServiceProvider
+                ' to decrypt the Rijndael key.
+                Dim KeyDecrypted As Byte() = rsaPrivateKey.Decrypt(KeyEncrypted, False)
+
+                ' Decrypt the key.
+                Dim transform As ICryptoTransform = aesManaged.CreateDecryptor(KeyDecrypted, IV)
+                ' Decrypt the cipher text from
+                ' from the FileSteam of the encrypted
+                ' file (inFs) into the FileStream
+                ' for the decrypted file (outFs).
+                Dim outFs As New FileStream(outFile, FileMode.Create)
+                Try
+                    ' Decrypt the cipher text from
+                    ' from the FileSteam of the encrypted
+                    ' file (inFs) into the FileStream
+                    ' for the decrypted file (outFs).
+
+                    Dim count As Integer = 0
+                    Dim offset As Integer = 0
+
+                    Dim blockSizeBytes As Integer = aesManaged.BlockSize / 8
+                    Dim data(blockSizeBytes) As Byte
+
+                    ' By decrypting a chunk a time,
+                    ' you can save memory and
+                    ' accommodate large files.
+                    ' Start at the beginning
+                    ' of the cipher text.
+                    inFs.Seek(startC, SeekOrigin.Begin)
+                    Dim outStreamDecrypted As New CryptoStream(outFs, transform, CryptoStreamMode.Write)
+                    Try
+                        Do
+                            count = inFs.Read(data, 0, blockSizeBytes)
+                            offset += count
+                            outStreamDecrypted.Write(data, 0, count)
+                        Loop While count > 0
+
+                        outStreamDecrypted.FlushFinalBlock()
+                        outStreamDecrypted.Close()
+                    Finally
+                        outStreamDecrypted.Dispose()
+                    End Try
+                    outFs.Close()
+                Finally
+                    outFs.Dispose()
+                End Try
+                inFs.Close()
+
+            Finally
+                inFs.Dispose()
+
+            End Try
+
+        Finally
+            aesManaged.Dispose()
+        End Try
+
+
+    End Sub 'DecryptFile 
+End Class 'Program

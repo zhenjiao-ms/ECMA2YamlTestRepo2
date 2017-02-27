@@ -1,12 +1,16 @@
-        ' This example method creates a ComponentChangedEventArgs using the specified arguments.
-        ' Typically, this type of event args is created by a design mode subsystem.            
-        Public Function CreateComponentChangedEventArgs(ByVal component As Object, ByVal member As MemberDescriptor, ByVal oldValue As Object, ByVal newValue As Object) As ComponentChangedEventArgs
-            ' Creates a component changed event args with the specified arguments.
-            Dim args As New ComponentChangedEventArgs(component, member, oldValue, newValue)
+        Public Sub LinkActiveDesignerEvent(ByVal eventService As IDesignerEventService)
+            ' Registers an event handler for the ActiveDesignerChanged event.
+            AddHandler eventService.ActiveDesignerChanged, AddressOf Me.OnActiveDesignerEvent
+        End Sub
 
-            ' The component that has changed:              args.Component
-            ' The member of the component that changed:    args.Member
-            ' The old value of the member:                 args.oldValue
-            ' The new value of the member:                 args.newValue
-            Return args
-        End Function
+        Private Sub OnActiveDesignerEvent(ByVal sender As Object, ByVal e As ActiveDesignerEventArgs)
+            ' Displays changed designer information on the console.            
+            If (e.NewDesigner.RootComponent.Site IsNot Nothing) Then
+                Console.WriteLine(("Name of the component of the new active designer: " + e.NewDesigner.RootComponent.Site.Name))
+            End If
+            Console.WriteLine(("Type of the component of the new active designer: " + e.NewDesigner.RootComponentClassName))
+            If (e.OldDesigner.RootComponent.Site IsNot Nothing) Then
+                Console.WriteLine(("Name of the component of the previously active designer: " + e.OldDesigner.RootComponent.Site.Name))
+            End If
+            Console.WriteLine(("Type of the component of the previously active designer: " + e.OldDesigner.RootComponentClassName))
+        End Sub

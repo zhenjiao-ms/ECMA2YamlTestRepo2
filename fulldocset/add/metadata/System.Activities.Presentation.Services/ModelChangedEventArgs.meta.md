@@ -22,8 +22,3 @@ internalonly: False
 uid: System.Activities.Presentation.Services.ModelChangedEventArgs.ItemsAdded
 internalonly: False
 ---
-
----
-uid: System.Activities.Presentation.Services.ModelChangedEventArgs.ModelChangeInfo
-internalonly: False
----

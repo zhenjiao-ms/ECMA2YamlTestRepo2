@@ -1,72 +1,57 @@
+Imports System
 Imports System.ComponentModel
+Imports System.Collections
+Imports System.ComponentModel.Design
 
-Public Class EmployeeListSource
-    Inherits Component
-    Implements IListSource
+'  This sample demonstrates a designer that adds menu commands
+'   to the design-time shortcut menu for a component.
+'
+'   To test this sample, build the code for the component as a class library, 
+'   add the resulting component to the toolbox, open a form in design mode, 
+'   and drag the component from the toolbox onto the form. 
+'
+'   The component should appear in the component tray beneath the form. 
+'   Right-click the component.  The verbs should appear in the shortcut menu.
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
-Public Sub New(ByVal Container As System.ComponentModel.IContainer)
-        MyClass.New()
+Namespace VBDesignerVerb
+    ' Associate MyDesigner with this component type using a DesignerAttribute
+    <Designer(GetType(MyDesigner))> _
+    Public Class Component1
+        Inherits System.ComponentModel.Component
+    End Class 
 
-        'Required for Windows.Forms Class Composition Designer support
-        Container.Add(Me)
 
-    End Sub
+    '  This is a designer class which provides designer verb menu commands for 
+    '  the associated component. This code is called by the design environment at design-time.    
+    Friend Class MyDesigner
+        Inherits ComponentDesigner
 
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Public Sub New()
-        MyBase.New()
+        Private m_Verbs As DesignerVerbCollection
 
-        'This call is required by the Component Designer.
-        InitializeComponent()
+        ' DesignerVerbCollection is overridden from ComponentDesigner
+        Public Overrides ReadOnly Property Verbs() As DesignerVerbCollection
+            Get
+                If m_Verbs Is Nothing Then
+                    ' Create and initialize the collection of verbs
+                    m_Verbs = New DesignerVerbCollection()
+                    m_Verbs.Add( New DesignerVerb("First Designer Verb", New EventHandler(AddressOf OnFirstItemSelected)) )
+                    m_Verbs.Add( New DesignerVerb("Second Designer Verb", New EventHandler(AddressOf OnSecondItemSelected)) )
+                End If
+                Return m_Verbs
+            End Get
+        End Property
 
-    End Sub
+        Sub New()
+        End Sub 
 
-    'Component overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing AndAlso components IsNot Nothing Then
-            components.Dispose()
-        End If
-        MyBase.Dispose(disposing)
-    End Sub
+        Private Sub OnFirstItemSelected(ByVal sender As Object, ByVal args As EventArgs)
+            ' Display a message
+            System.Windows.Forms.MessageBox.Show("The first designer verb was invoked.")
+        End Sub 
 
-    'Required by the Component Designer
-    Private components As System.ComponentModel.IContainer
-
-    'NOTE: The following procedure is required by the Component Designer
-    'It can be modified using the Component Designer.
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-    End Sub
-
-#Region "IListSource Members"
-
-    Public ReadOnly Property ContainsListCollection() As Boolean Implements System.ComponentModel.IListSource.ContainsListCollection
-        Get
-            Return False
-        End Get
-    End Property
-
-    Public Function GetList() As System.Collections.IList Implements System.ComponentModel.IListSource.GetList
-
-        Dim ble As New BindingList(Of Employee)
-
-        If Not Me.DesignMode Then
-            ble.Add(New Employee("Aaberg, Jesper", 26000000))
-            ble.Add(New Employee("Cajhen, Janko", 19600000))
-            ble.Add(New Employee("Furse, Kari", 19000000))
-            ble.Add(New Employee("Langhorn, Carl", 16000000))
-            ble.Add(New Employee("Todorov, Teodor", 15700000))
-            ble.Add(New Employee("Vereb�lyi, �gnes", 15700000))
-        End If
-
-        Return ble
-
-    End Function
-
-#End Region
-
-End Class
+        Private Sub OnSecondItemSelected(ByVal sender As Object, ByVal args As EventArgs)
+            ' Display a message
+            System.Windows.Forms.MessageBox.Show("The second designer verb was invoked.")
+        End Sub 
+    End Class 
+End Namespace

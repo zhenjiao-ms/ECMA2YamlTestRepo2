@@ -1,33 +1,34 @@
-#using <System.Xml.dll>
-#using <System.Security.dll>
-#using <System.dll>
-
-using namespace System;
-using namespace System::Security::Cryptography::Xml;
-using namespace System::Xml;
-using namespace System::IO;
-
-/// This sample used the GetXml method in the CipherReference class to 
-/// write the XML values for the CipherReference to the console.
-
-[STAThread]
-int main()
+void EncryptData( String^ inName, String^ outName, array<Byte>^rijnKey, array<Byte>^rijnIV )
 {
    
-   //Create a URI string.
-   String^ uri = "http://www.woodgrovebank.com/document.xml";
+   //Create the file streams to handle the input and output files.
+   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
+   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
+   fout->SetLength( 0 );
    
-   // Create a Base64 transform. The input content retrieved from the
-   // URI should be Base64-decoded before other processing.
-   Transform^ base64 = gcnew XmlDsigBase64Transform;
+   //Create variables to help with read and write.
+   array<Byte>^bin = gcnew array<Byte>(100);
+   long rdlen = 0; //This is the total number of bytes written.
+
+   long totlen = (long)fin->Length; //This is the total length of the input file.
+
+   int len; //This is the number of bytes to be written at a time.
+
+   SymmetricAlgorithm^ rijn = SymmetricAlgorithm::Create(); //Creates the default implementation, which is RijndaelManaged.         
+
+   CryptoStream^ encStream = gcnew CryptoStream( fout,rijn->CreateEncryptor( rijnKey, rijnIV ),CryptoStreamMode::Write );
+   Console::WriteLine( "Encrypting..." );
    
-   //Create a transform chain and add the transform to it.
-   TransformChain^ tc = gcnew TransformChain;
-   tc->Add( base64 );
-   
-   //Create <CipherReference> information.
-   CipherReference ^ reference = gcnew CipherReference( uri,tc );
-   
-   // Write the CipherReference value to the console.
-   Console::WriteLine( "Cipher Reference data: {0}", reference->GetXml()->OuterXml );
+   //Read from the input file, then encrypt and write to the output file.
+   while ( rdlen < totlen )
+   {
+      len = fin->Read( bin, 0, 100 );
+      encStream->Write( bin, 0, len );
+      rdlen = rdlen + len;
+      Console::WriteLine( "{0} bytes processed", rdlen );
+   }
+
+   encStream->Close();
+   fout->Close();
+   fin->Close();
 }

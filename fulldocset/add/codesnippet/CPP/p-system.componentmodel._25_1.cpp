@@ -1,9 +1,9 @@
-      // Gets the attributes for the property.
-      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
-
-      // Checks to see whether the property is read-only.
-      ReadOnlyAttribute^ myAttribute = dynamic_cast<ReadOnlyAttribute^>(attributes[ ReadOnlyAttribute::typeid ]);
-      if ( myAttribute->IsReadOnly )
-      {
-         // Insert code here.
-      }
+private:
+   void GetCount()
+   {
+      // Creates a new collection and assigns it the events for button1.
+      EventDescriptorCollection^ events = TypeDescriptor::GetEvents( button1 );
+      
+      // Prints the number of events on button1 in a text box.
+      textBox1->Text = events->Count.ToString();
+   }

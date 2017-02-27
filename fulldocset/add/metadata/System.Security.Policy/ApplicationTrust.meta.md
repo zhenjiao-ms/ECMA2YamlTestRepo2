@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Security.Policy.ApplicationTrust.Clone
-internalonly: False
----
-
----
 uid: System.Security.Policy.ApplicationTrust.Persist
 internalonly: False
 ---

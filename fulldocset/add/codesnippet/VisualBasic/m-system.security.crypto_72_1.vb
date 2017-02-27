@@ -1,66 +1,73 @@
 Imports System
+Imports System.IO
+Imports System.Text
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
 
 
 
-Class AsnEncodedDataSample
-   Shared msg As String
-   Shared Sub Main()
-      'The following example demonstrates the usage the AsnEncodedData classes.
-      ' Asn encoded data is read from the extensions of an X509 certificate.
-      Try
-         ' Open the certificate store.
-         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
-         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
-         ' Select one or more certificates to display extensions information.
-         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
-         
-         ' Create a new AsnEncodedDataCollection object.
-         Dim asncoll As New AsnEncodedDataCollection()
-         Dim i As Integer
-         For i = 0 To scollection.Count - 1
-            ' Display certificate information.
-	    msg = "Certificate name: "& scollection(i).GetName()
-            MsgBox(msg)
+Module Crypto
 
-            ' Display extensions information.
-            Dim extension As X509Extension
-            For Each extension In  scollection(i).Extensions
-               ' Create an AsnEncodedData object using the extensions information.
-               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
-	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
-		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
-		& asndata.Format(True) & Environment.NewLine
-               MsgBox(msg)
-		
-               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-               asncoll.Add(asndata)
-            Next extension
-         Next i
-	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
-         MsgBox(msg)         
-         store.Close()
+    Sub Main()
 
-         'Create an enumerator for moving through the collection.
-         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
-         'You must execute a MoveNext() to get to the first item in the collection.
-         asne.MoveNext()
-         ' Write out AsnEncodedData in the collection.
-	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
-	 MsgBox(msg)
-	
-         
-         asne.MoveNext()
-	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
-	 MsgBox(msg)
-        
-         'Return index in the collection to the beginning.
-         asne.Reset()
-      Catch 
-         MsgBox("Information could not be written out for this certificate.")
-      End Try
-   End Sub 'Main
-End Class 'AsnEncodedDataSample
+        ' Create a new instance of the RC2CryptoServiceProvider class
+        ' and automatically generate a Key and IV.
+        Dim rc2CSP As New RC2CryptoServiceProvider()
+
+        Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize)
+
+        ' Get the key and IV.
+        Dim key As Byte() = rc2CSP.Key
+        Dim IV As Byte() = rc2CSP.IV
+
+        ' Get an encryptor.
+        Dim encryptor As ICryptoTransform = rc2CSP.CreateEncryptor(key, IV)
+
+        ' Encrypt the data as an array of encrypted bytes in memory.
+        Dim msEncrypt As New MemoryStream()
+        Dim csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+
+        ' Convert the data to a byte array.
+        Dim original As String = "Here is some data to encrypt."
+        Dim toEncrypt As Byte() = Encoding.ASCII.GetBytes(original)
+
+        ' Write all data to the crypto stream and flush it.
+        csEncrypt.Write(toEncrypt, 0, toEncrypt.Length)
+        csEncrypt.FlushFinalBlock()
+
+        ' Get the encrypted array of bytes.
+        Dim encrypted As Byte() = msEncrypt.ToArray()
+
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' This is where the data could be transmitted or saved.          
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        'Get a decryptor that uses the same key and IV as the encryptor.
+        Dim decryptor As ICryptoTransform = rc2CSP.CreateDecryptor(key, IV)
+
+        ' Now decrypt the previously encrypted message using the decryptor
+        ' obtained in the above step.
+        Dim msDecrypt As New MemoryStream(encrypted)
+        Dim csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+
+        ' Read the decrypted bytes from the decrypting stream
+        ' and place them in a StringBuilder class.
+        Dim roundtrip As New StringBuilder()
+
+        Dim b As Integer = 0
+
+        Do
+            b = csDecrypt.ReadByte()
+
+            If b <> -1 Then
+                roundtrip.Append(ChrW(b))
+            End If
+        Loop While b <> -1
+
+        ' Display the original data and the decrypted data.
+        Console.WriteLine("Original:   {0}", original)
+        Console.WriteLine("Round Trip: {0}", roundtrip)
+
+        Console.ReadLine()
+
+    End Sub
+End Module

@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Globalization.KoreanLunisolarCalendar.DaysInYearBeforeMinSupportedYear
-internalonly: False
----
-
----
 uid: System.Globalization.KoreanLunisolarCalendar.MinSupportedDateTime
 internalonly: False
 ---

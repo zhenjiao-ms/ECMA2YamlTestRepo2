@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.RegularExpressionValidator.MatchTimeout
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.RegularExpressionValidator.#ctor
 internalonly: False
 ---

@@ -149,11 +149,6 @@ internalonly: False
 ---
 
 ---
-uid: System.DirectoryServices.ActiveDirectory.Domain.DomainModeLevel
-internalonly: False
----
-
----
 uid: System.DirectoryServices.ActiveDirectory.Domain.UpdateLocalSideOfTrustRelationship(System.String,System.String)
 internalonly: False
 ---
@@ -165,11 +160,6 @@ internalonly: False
 
 ---
 uid: System.DirectoryServices.ActiveDirectory.Domain.GetDomain(System.DirectoryServices.ActiveDirectory.DirectoryContext)
-internalonly: False
----
-
----
-uid: System.DirectoryServices.ActiveDirectory.Domain.RaiseDomainFunctionalityLevel(System.Int32)
 internalonly: False
 ---
 

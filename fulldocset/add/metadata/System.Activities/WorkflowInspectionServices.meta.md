@@ -14,17 +14,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowInspectionServices.CanInduceIdle(System.Activities.Activity)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowInspectionServices.CacheMetadata(System.Activities.Activity,System.Activities.LocationReferenceEnvironment)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowInspectionServices.GetImplementationVersion(System.Activities.Activity)
 internalonly: False
 ---
 

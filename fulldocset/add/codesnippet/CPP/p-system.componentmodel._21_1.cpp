@@ -1,9 +1,12 @@
-      // Gets the attributes for the property.
-      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
-
-      // Checks to see whether the property is read-only.
-      ReadOnlyAttribute^ myAttribute = dynamic_cast<ReadOnlyAttribute^>(attributes[ ReadOnlyAttribute::typeid ]);
-      if ( myAttribute->IsReadOnly )
-      {
-         // Insert code here.
-      }
+   void PrintIndexItem2()
+   {
+      
+      // Creates a new collection and assigns it the properties for button1.
+      PropertyDescriptorCollection^ properties = TypeDescriptor::GetProperties( button1 );
+      
+      // Sets a PropertyDescriptor to the specific property.
+      PropertyDescriptor^ myProperty = properties[ "Opacity" ];
+      
+      // Prints the display name for the property.
+      textBox1->Text = myProperty->DisplayName;
+   }

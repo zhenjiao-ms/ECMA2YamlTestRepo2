@@ -9,21 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.IO.BufferedStream.EndRead(System.IAsyncResult)
-internalonly: False
----
-
----
-uid: System.IO.BufferedStream.EndWrite(System.IAsyncResult)
-internalonly: False
----
-
----
-uid: System.IO.BufferedStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
-internalonly: False
----
-
----
 uid: System.IO.BufferedStream.Write(System.Byte[],System.Int32,System.Int32)
 internalonly: False
 ---
@@ -35,16 +20,6 @@ internalonly: False
 
 ---
 uid: System.IO.BufferedStream.#ctor(System.IO.Stream)
-internalonly: False
----
-
----
-uid: System.IO.BufferedStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.IO.BufferedStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
@@ -84,17 +59,7 @@ internalonly: False
 ---
 
 ---
-uid: System.IO.BufferedStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
-internalonly: False
----
-
----
 uid: System.IO.BufferedStream.ReadByte
-internalonly: False
----
-
----
-uid: System.IO.BufferedStream.FlushAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 

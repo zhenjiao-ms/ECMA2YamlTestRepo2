@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Runtime.Serialization.Configuration.SerializationSectionGroup.NetDataContractSerializer
-internalonly: False
----
-
----
 uid: System.Runtime.Serialization.Configuration.SerializationSectionGroup.GetSectionGroup(System.Configuration.Configuration)
 internalonly: False
 ---

@@ -1,14 +1,22 @@
-public:
-   // This example method creates a ComponentChangedEventArgs using the specified arguments.
-   // Typically, this type of event args is created by a design mode subsystem.
-   ComponentChangedEventArgs^ CreateComponentChangedEventArgs( Object^ component, MemberDescriptor^ member, Object^ oldValue, Object^ newValue )
-   {
-      // Creates a component changed event args with the specified arguments.
-      ComponentChangedEventArgs^ args = gcnew ComponentChangedEventArgs( component, member, oldValue, newValue );
-      
-      // The component that has changed:              args->Component
-      // The member of the component that changed:    args->Member
-      // The old value of the member:                 args->oldValue
-      // The new value of the member:                 args->newValue
-      return args;
-   }
+   public:
+      void LinkActiveDesignerEvent( IDesignerEventService^ eventService )
+      {
+         // Registers an event handler for the ActiveDesignerChanged event.
+         eventService->ActiveDesignerChanged += gcnew ActiveDesignerEventHandler( this, &MiscCompModSamples::ActiveDesignerEventHandlerExample::OnActiveDesignerEvent );
+      }
+
+   private:
+      void OnActiveDesignerEvent( Object^ /*sender*/, ActiveDesignerEventArgs^ e )
+      {
+         // Displays changed designer information on the console.
+         if ( e->NewDesigner->RootComponent->Site != nullptr )
+         {
+            Console::WriteLine( "Name of the component of the new active designer: {0}", e->NewDesigner->RootComponent->Site->Name );
+         }
+         Console::WriteLine( "Type of the component of the new active designer: {0}", e->NewDesigner->RootComponentClassName );
+         if ( e->OldDesigner->RootComponent->Site != nullptr )
+         {
+            Console::WriteLine( "Name of the component of the previously active designer: {0}", e->OldDesigner->RootComponent->Site->Name );
+         }
+         Console::WriteLine( "Type of the component of the previously active designer: {0}", e->OldDesigner->RootComponentClassName );
+      }

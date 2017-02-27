@@ -1,4 +1,10 @@
-            int myInt32 = -967299;
-            string myInt32String = "+1345556";
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt32).ConvertTo(myInt32, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt32).ConvertFrom(myInt32String));    
+        // This example method creates a ComponentEventArgs using the specified argument.
+        // Typically, this type of event args is created by a design mode subsystem.  
+        public ComponentEventArgs CreateComponentEventArgs(IComponent component)
+        {
+            ComponentEventArgs args = new ComponentEventArgs(component);
+
+            // The component that is related to the event:  args.Component
+
+            return args;
+        }

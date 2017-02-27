@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Tracking.WorkflowInstanceRecord.WorkflowDefinitionIdentity
-internalonly: False
----
-
----
 uid: System.Activities.Tracking.WorkflowInstanceRecord.#ctor(System.Guid,System.String,System.String)
 internalonly: False
 ---
@@ -30,16 +25,6 @@ internalonly: False
 
 ---
 uid: System.Activities.Tracking.WorkflowInstanceRecord.Clone
-internalonly: False
----
-
----
-uid: System.Activities.Tracking.WorkflowInstanceRecord.#ctor(System.Guid,System.Int64,System.String,System.String,System.Activities.WorkflowIdentity)
-internalonly: False
----
-
----
-uid: System.Activities.Tracking.WorkflowInstanceRecord.#ctor(System.Guid,System.String,System.String,System.Activities.WorkflowIdentity)
 internalonly: False
 ---
 

@@ -19,16 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Transactions.Transaction.PromoterType
-internalonly: False
----
-
----
-uid: System.Transactions.Transaction.EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification,System.Guid)
-internalonly: False
----
-
----
 uid: System.Transactions.Transaction.EnlistDurable(System.Guid,System.Transactions.ISinglePhaseNotification,System.Transactions.EnlistmentOptions)
 internalonly: False
 ---
@@ -94,27 +84,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Transactions.Transaction.PromoteAndEnlistDurable(System.Guid,System.Transactions.IPromotableSinglePhaseNotification,System.Transactions.ISinglePhaseNotification,System.Transactions.EnlistmentOptions)
-internalonly: False
----
-
----
 uid: System.Transactions.Transaction.EnlistVolatile(System.Transactions.IEnlistmentNotification,System.Transactions.EnlistmentOptions)
 internalonly: False
 ---
 
 ---
-uid: System.Transactions.Transaction.SetDistributedTransactionIdentifier(System.Transactions.IPromotableSinglePhaseNotification,System.Guid)
-internalonly: False
----
-
----
 uid: System.Transactions.Transaction.Rollback
-internalonly: False
----
-
----
-uid: System.Transactions.Transaction.GetPromotedToken
 internalonly: False
 ---
 

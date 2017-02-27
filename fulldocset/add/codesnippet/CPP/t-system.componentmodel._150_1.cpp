@@ -1,19 +1,15 @@
-private:
-   void ContainsAttribute()
+   property int MyProperty 
    {
-      // Creates a new collection and assigns it the attributes for button1.
-      AttributeCollection^ attributes;
-      attributes = TypeDescriptor::GetAttributes( button1 );
-      
-      // Sets an Attribute to the specific attribute.
-      BrowsableAttribute^ myAttribute = BrowsableAttribute::Yes;
-
-      if ( attributes->Contains( myAttribute ) )
+      [System::ComponentModel::Bindable(true)]
+      int get()
       {
-         textBox1->Text = "button1 has a browsable attribute.";
+         // Insert code here.
+         return 0;
       }
-      else
+
+      [System::ComponentModel::Bindable(true)]
+      void set( int )
       {
-         textBox1->Text = "button1 does not have a browsable attribute.";
+         // Insert code here.
       }
    }

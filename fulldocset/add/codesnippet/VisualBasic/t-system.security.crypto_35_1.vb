@@ -1,117 +1,63 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
 
 
 
-Class RijndaelExample
+Public Class DataProtectionSample
+    ' Create byte array for additional entropy when using Protect method.
+    Private Shared s_aditionalEntropy As Byte() = {9, 8, 7, 6, 5}
+
 
     Public Shared Sub Main()
+        ' Create a simple byte array containing data to be encrypted.
+        Dim secret As Byte() = {0, 1, 2, 3, 4, 1, 2, 3, 4}
+
+        'Encrypt the data.
+        Dim encryptedSecret As Byte() = Protect(secret)
+        Console.WriteLine("The encrypted byte array is:")
+        PrintValues(encryptedSecret)
+
+        ' Decrypt the data and store in a byte array.
+        Dim originalData As Byte() = Unprotect(encryptedSecret)
+        Console.WriteLine("{0}The original data is:", Environment.NewLine)
+        PrintValues(originalData)
+
+    End Sub
+
+
+    Public Shared Function Protect(ByVal data() As Byte) As Byte()
         Try
-
-            Dim original As String = "Here is some data to encrypt!"
-
-            ' Create a new instance of the Rijndael
-            ' class.  This generates a new key and initialization 
-            ' vector (IV).
-            Using myRijndael = Rijndael.Create()
-
-                ' Encrypt the string to an array of bytes.
-                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
-
-                ' Decrypt the bytes to a string.
-                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
-
-                'Display the original data and the decrypted data.
-                Console.WriteLine("Original:   {0}", original)
-                Console.WriteLine("Round Trip: {0}", roundtrip)
-            End Using
-        Catch e As Exception
-            Console.WriteLine("Error: {0}", e.Message)
+            ' Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+            '  only by the same current user.
+            Return ProtectedData.Protect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not encrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
         End Try
 
-    End Sub 'Main
-
-    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
-        ' Check arguments.
-        If plainText Is Nothing OrElse plainText.Length <= 0 Then
-            Throw New ArgumentNullException("plainText")
-        End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
-        End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        Dim encrypted() As Byte
-        ' Create an Rijndael object
-        ' with the specified key and IV.
-        Using rijAlg = Rijndael.Create()
-
-            rijAlg.Key = Key
-            rijAlg.IV = IV
-
-            ' Create an encryptor to perform the stream transform.
-            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
-            ' Create the streams used for encryption.
-            Using msEncrypt As New MemoryStream()
-                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
-                    Using swEncrypt As New StreamWriter(csEncrypt)
-
-                        'Write all data to the stream.
-                        swEncrypt.Write(plainText)
-                    End Using
-                    encrypted = msEncrypt.ToArray()
-                End Using
-            End Using
-        End Using
-
-        ' Return the encrypted bytes from the memory stream.
-        Return encrypted
-
-    End Function 'EncryptStringToBytes
-
-    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        ' Check arguments.
-        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
-            Throw New ArgumentNullException("cipherText")
-        End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
-        End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        ' Declare the string used to hold
-        ' the decrypted text.
-        Dim plaintext As String = Nothing
-
-        ' Create an Rijndael object
-        ' with the specified key and IV.
-        Using rijAlg = Rijndael.Create()
-            rijAlg.Key = Key
-            rijAlg.IV = IV
-
-            ' Create a decryptor to perform the stream transform.
-            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
-
-            ' Create the streams used for decryption.
-            Using msDecrypt As New MemoryStream(cipherText)
-
-                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
-
-                    Using srDecrypt As New StreamReader(csDecrypt)
+    End Function
 
 
-                        ' Read the decrypted bytes from the decrypting stream
-                        ' and place them in a string.
-                        plaintext = srDecrypt.ReadToEnd()
-                    End Using
-                End Using
-            End Using
-        End Using
+    Public Shared Function Unprotect(ByVal data() As Byte) As Byte()
+        Try
+            'Decrypt the data using DataProtectionScope.CurrentUser.
+            Return ProtectedData.Unprotect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not decrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
 
-        Return plaintext
+    End Function
 
-    End Function 'DecryptStringFromBytes 
+
+    Public Shared Sub PrintValues(ByVal myArr() As [Byte])
+        Dim i As [Byte]
+        For Each i In myArr
+            Console.Write(vbTab + "{0}", i)
+        Next i
+        Console.WriteLine()
+
+    End Sub
 End Class

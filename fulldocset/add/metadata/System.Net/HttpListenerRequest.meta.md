@@ -94,11 +94,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.HttpListenerRequest.IsWebSocketRequest
-internalonly: False
----
-
----
 uid: System.Net.HttpListenerRequest.InputStream
 internalonly: False
 ---
@@ -120,11 +115,6 @@ internalonly: False
 
 ---
 uid: System.Net.HttpListenerRequest.ClientCertificateError
-internalonly: False
----
-
----
-uid: System.Net.HttpListenerRequest.GetClientCertificateAsync
 internalonly: False
 ---
 

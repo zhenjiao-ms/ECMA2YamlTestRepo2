@@ -1,4 +1,8 @@
-         int myInt32( -967299);
-         String^ myInt32String = "+1345556";
-         Console::WriteLine( TypeDescriptor::GetConverter( myInt32 )->ConvertTo( myInt32, String::typeid ) );
-         Console::WriteLine( TypeDescriptor::GetConverter( myInt32 )->ConvertFrom( myInt32String ) );
+   public:
+      // This example method creates a ComponentEventArgs using the specified argument.
+      // Typically, this type of event args is created by a design mode subsystem.
+      ComponentEventArgs^ CreateComponentEventArgs( IComponent^ component )
+      {
+         // The component that is related to the event:  args.Component
+         return gcnew ComponentEventArgs( component );
+      }

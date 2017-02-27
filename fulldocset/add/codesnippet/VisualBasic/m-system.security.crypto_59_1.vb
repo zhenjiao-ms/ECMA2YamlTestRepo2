@@ -1,212 +1,120 @@
 Imports System
-Imports System.Xml
+Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
 
 
 
-Module Program
+Class RijndaelExample
 
-    Sub Main(ByVal args() As String)
-
-        ' Create an XmlDocument object.
-        Dim xmlDoc As New XmlDocument()
-
-        ' Load an XML file into the XmlDocument object.
+    Public Shared Sub Main()
         Try
-            xmlDoc.PreserveWhitespace = True
-            xmlDoc.Load("test.xml")
+
+            Dim original As String = "Here is some data to encrypt!"
+
+            ' Create a new instance of the RijndaelManaged
+            ' class.  This generates a new key and initialization 
+            ' vector (IV).
+            Using myRijndael As New RijndaelManaged()
+            
+            	myRijndael.GenerateKey()
+                myRijndael.GenerateIV()
+
+                ' Encrypt the string to an array of bytes.
+                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
+
+                ' Decrypt the bytes to a string.
+                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
+
+                'Display the original data and the decrypted data.
+                Console.WriteLine("Original:   {0}", original)
+                Console.WriteLine("Round Trip: {0}", roundtrip)
+            End Using
         Catch e As Exception
-            Console.WriteLine(e.Message)
+            Console.WriteLine("Error: {0}", e.Message)
         End Try
 
-        ' Create a new RSA key.  This key will encrypt a symmetric key,
-        ' which will then be imbedded in the XML document.  
-        Dim rsaKey As New RSACryptoServiceProvider()
+    End Sub 'Main
 
-
-        Try
-            ' Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey")
-
-            ' Inspect the EncryptedKey element.
-            InspectElement(xmlDoc)
-
-            ' Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, rsaKey, "rsaKey")
-
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        Finally
-            ' Clear the RSA key.
-            rsaKey.Clear()
-        End Try
-
-    End Sub
-
-
-    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptValue As String, ByVal Alg As RSA, ByVal KeyName As String)
-        ' Check the arguments.  
-        If Doc Is Nothing Then
-            Throw New ArgumentNullException("Doc")
+    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        ' Check arguments.
+        If plainText Is Nothing OrElse plainText.Length <= 0 Then
+            Throw New ArgumentNullException("plainText")
         End If
-        If ElementToEncryptValue Is Nothing Then
-            Throw New ArgumentNullException("ElementToEncrypt")
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
         End If
-        If Alg Is Nothing Then
-            Throw New ArgumentNullException("Alg")
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
         End If
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Find the specified element in the XmlDocument
-        ' object and create a new XmlElemnt object.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptValue)(0)
+        Dim encrypted() As Byte
+        ' Create an RijndaelManaged object
+        ' with the specified key and IV.
+        Using rijAlg As New RijndaelManaged()
 
-        ' Throw an XmlException if the element was not found.
-        If elementToEncrypt Is Nothing Then
-            Throw New XmlException("The specified element was not found")
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create a decrytor to perform the stream transform.
+            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
+            ' Create the streams used for encryption.
+            Using msEncrypt As New MemoryStream()
+                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                    Using swEncrypt As New StreamWriter(csEncrypt)
+
+                        'Write all data to the stream.
+                        swEncrypt.Write(plainText)
+                    End Using
+                    encrypted = msEncrypt.ToArray()
+                End Using
+            End Using
+        End Using
+
+        ' Return the encrypted bytes from the memory stream.
+        Return encrypted
+
+    End Function 'EncryptStringToBytes
+
+    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        ' Check arguments.
+        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+            Throw New ArgumentNullException("cipherText")
         End If
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Create a new instance of the EncryptedXml class 
-        ' and use it to encrypt the XmlElement with the 
-        ' a new random symmetric key.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Create a 256 bit Rijndael key.
-        Dim sessionKey As New RijndaelManaged()
-        sessionKey.KeySize = 256
-
-        Dim eXml As New EncryptedXml()
-
-        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Construct an EncryptedData object and populate
-        ' it with the desired encryption information.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-
-        Dim edElement As New EncryptedData()
-        edElement.Type = EncryptedXml.XmlEncElementUrl
-
-        ' Create an EncryptionMethod element so that the 
-        ' receiver knows which algorithm to use for decryption.
-        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
-
-        ' Encrypt the session key and add it to an EncryptedKey element.
-        Dim ek As New EncryptedKey()
-
-        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
-
-        ek.CipherData = New CipherData(encryptedKey)
-
-        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
-
-        ' Save some more information about the key using
-        ' the EncryptionProperty element.  In this example,
-        ' we will save the value "LibVersion1".  You can save
-        ' anything you want here.
-        ' Create a new "EncryptionProperty" XmlElement object. 
-        Dim element As XmlElement = New XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl)
-
-        ' Set the value of the EncryptionProperty" XmlElement object.
-        element.InnerText = "LibVersion1"
-
-        ' Create the EncryptionProperty object using the XmlElement object. 
-        Dim encProp As New EncryptionProperty(element)
-
-        ' Add the EncryptionProperty object to the EncryptedData object.
-        edElement.AddProperty(encProp)
-
-        ' Set the KeyInfo element to specify the
-        ' name of the RSA key.
-        ' Create a new KeyInfo element.
-        edElement.KeyInfo = New KeyInfo()
-
-        ' Create a new KeyInfoName element.
-        Dim kin As New KeyInfoName()
-
-        ' Specify a name for the key.
-        kin.Value = KeyName
-
-        ' Add the KeyInfoName element to the 
-        ' EncryptedKey object.
-        ek.KeyInfo.AddClause(kin)
-
-        ' Add the encrypted key to the 
-        ' EncryptedData object.
-        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
-
-        ' Add the encrypted element data to the 
-        ' EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Replace the element from the original XmlDocument
-        ' object with the EncryptedData element.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
-
-    End Sub
-
-
-    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
-        ' Check the arguments.  
-        If Doc Is Nothing Then
-            Throw New ArgumentNullException("Doc")
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
         End If
-        If Alg Is Nothing Then
-            Throw New ArgumentNullException("Alg")
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
         End If
-        If KeyName Is Nothing Then
-            Throw New ArgumentNullException("KeyName")
-        End If
-        ' Create a new EncryptedXml object.
-        Dim exml As New EncryptedXml(Doc)
+        ' Declare the string used to hold
+        ' the decrypted text.
+        Dim plaintext As String = Nothing
 
-        ' Add a key-name mapping.
-        ' This method can only decrypt documents
-        ' that present the specified key name.
-        exml.AddKeyNameMapping(KeyName, Alg)
+        ' Create an RijndaelManaged object
+        ' with the specified key and IV.
+        Using rijAlg As New RijndaelManaged
+            rijAlg.Key = Key
+            rijAlg.IV = IV
 
-        ' Decrypt the element.
-        exml.DecryptDocument()
+            ' Create a decrytor to perform the stream transform.
+            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
 
-    End Sub
+            ' Create the streams used for decryption.
+            Using msDecrypt As New MemoryStream(cipherText)
 
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
 
-    Sub InspectElement(ByVal Doc As XmlDocument)
-        ' Get the EncryptedData element from the XMLDocument object.
-        Dim encryptedData As XmlElement = Doc.GetElementsByTagName("EncryptedData")(0)
-
-        ' Create a new EncryptedData object.
-        Dim encData As New EncryptedData()
-
-        ' Load the XML from the document to
-        ' initialize the EncryptedData object.
-        encData.LoadXml(encryptedData)
-
-        ' Display the properties.
-        ' Most values are Null by default.
-        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml)
-        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding)
-        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml)
-
-        Dim encPropCollection As EncryptionPropertyCollection = encData.EncryptionProperties
-
-        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count.ToString())
-        'encPropCollection.
-        Dim encProp As EncryptionProperty
-        For Each encProp In encPropCollection
-            Console.WriteLine("EncryptionProperty.ID: " + encProp.Id)
-            Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml)
-            Console.WriteLine("EncryptionProperty.Target: " + encProp.Target)
-        Next encProp
+                    Using srDecrypt As New StreamReader(csDecrypt)
 
 
+                        ' Read the decrypted bytes from the decrypting stream
+                        ' and place them in a string.
+                        plaintext = srDecrypt.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+        End Using
 
-        Console.WriteLine("EncryptedData.Id: " + encData.Id)
-        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml)
-        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType)
+        Return plaintext
 
-    End Sub
-End Module
+    End Function 'DecryptStringFromBytes 
+End Class

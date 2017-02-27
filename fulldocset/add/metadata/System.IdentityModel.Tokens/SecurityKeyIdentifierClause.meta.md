@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.IdentityModel.Tokens.SecurityKeyIdentifierClause.Id
-internalonly: False
----
-
----
 uid: System.IdentityModel.Tokens.SecurityKeyIdentifierClause.#ctor(System.String,System.Byte[],System.Int32)
 internalonly: False
 ---

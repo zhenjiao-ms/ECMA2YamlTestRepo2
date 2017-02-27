@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.ProcessStartInfo.PasswordInClearText
-internalonly: False
----
-
----
 uid: System.Diagnostics.ProcessStartInfo.#ctor(System.String,System.String)
 internalonly: False
 ---
@@ -35,11 +30,6 @@ internalonly: False
 
 ---
 uid: System.Diagnostics.ProcessStartInfo.UserName
-internalonly: False
----
-
----
-uid: System.Diagnostics.ProcessStartInfo.Environment
 internalonly: False
 ---
 

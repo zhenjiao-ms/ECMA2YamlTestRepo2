@@ -1,35 +1,9 @@
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+private void AutoCompleteStringCollection1_CollectionChanged(Object sender, CollectionChangeEventArgs e) {
 
-
-// Adds the LicenseProviderAttribute to the control.
-[LicenseProvider(typeof(LicFileLicenseProvider))]
-public class MyControl : Control 
-{
- 
-   // Creates a new, null license.
-   private License license = null;
- 
-   public MyControl () 
-   {
- 
-      // Adds Validate to the control's constructor.
-      license = LicenseManager.Validate(typeof(MyControl), this);
- 
-      // Insert code to perform other instance creation tasks here.
-   }
- 
-   protected override void Dispose(bool disposing) 
-   {
-      if(disposing)
-      {
-         if (license != null) 
-         {
-            license.Dispose();
-            license = null;
-         }
-      }
-   }
- 
+System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
+messageBoxCS.AppendFormat("{0} = {1}", "Action", e.Action );
+messageBoxCS.AppendLine();
+messageBoxCS.AppendFormat("{0} = {1}", "Element", e.Element );
+messageBoxCS.AppendLine();
+MessageBox.Show(messageBoxCS.ToString(), "CollectionChanged Event" );
 }

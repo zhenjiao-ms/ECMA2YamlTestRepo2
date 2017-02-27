@@ -14,27 +14,12 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Construction.ProjectElement.ConditionLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Construction.ProjectElement.Parent
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Construction.ProjectElement.NextSibling
-internalonly: False
----
-
----
-uid: Microsoft.Build.Construction.ProjectElement.Location
-internalonly: False
----
-
----
-uid: Microsoft.Build.Construction.ProjectElement.LabelLocation
 internalonly: False
 ---
 

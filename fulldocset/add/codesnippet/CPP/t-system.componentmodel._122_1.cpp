@@ -1,2 +1,15 @@
-            // Obtains and shows the size of the standard design-mode grid square.
-            System::Drawing::Size size =  *dynamic_cast<System::Drawing::Size^>(designerOptionService->GetOptionValue( "WindowsFormsDesigner\\General", "GridSize" ));
+public:
+   property Image^ MyImage 
+   {
+      [Description("The image associated with the control"),Category("Appearance")]
+      Image^ get()
+      {
+         // Insert code here.
+         return image1;
+      }
+
+      void set( Image^ value )
+      {
+         // Insert code here.
+      }
+   }

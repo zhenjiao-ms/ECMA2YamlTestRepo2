@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Media.VisualTreeHelper.GetDpi(System.Windows.Media.Visual)
-internalonly: False
----
-
----
 uid: System.Windows.Media.VisualTreeHelper.GetOpacityMask(System.Windows.Media.Visual)
 internalonly: False
 ---
@@ -50,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Media.VisualTreeHelper.GetXSnappingGuidelines(System.Windows.Media.Visual)
-internalonly: False
----
-
----
-uid: System.Windows.Media.VisualTreeHelper.SetRootDpi(System.Windows.Media.Visual,System.Windows.DpiScale)
 internalonly: False
 ---
 

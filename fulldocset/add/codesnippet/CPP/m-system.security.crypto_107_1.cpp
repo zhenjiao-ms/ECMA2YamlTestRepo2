@@ -1,18 +1,40 @@
-using namespace System;
-using namespace System::IO;
-using namespace System::Security::Cryptography;
-int main()
-{
-   
-   // creates the CspParameters object and sets the key container name used to store the RSA key pair
-   CspParameters^ cp = gcnew CspParameters;
-   cp->KeyContainerName = "MyKeyContainerName";
-   
-   // instantiates the rsa instance accessing the key container MyKeyContainerName
-   RSACryptoServiceProvider^ rsa = gcnew RSACryptoServiceProvider( cp );
-   
-   // add the below line to delete the key entry in MyKeyContainerName
-   // rsa.PersistKeyInCsp = false;
-   //writes out the current key pair used in the rsa instance
-   Console::WriteLine( "Key is : \n{0}", rsa->ToXmlString( true ) );
-}
+        public:
+            virtual String^ ToXmlString(bool includePrivateParameters) override
+            {
+                String^ keyContainerName = "";
+                String^ keyNumber = "";
+                String^ providerName = "";
+                String^ providerType = "";
+
+                if (cryptoServiceParameters != nullptr)
+                {
+                    keyContainerName = 
+                        cryptoServiceParameters->KeyContainerName;
+                    keyNumber = cryptoServiceParameters->KeyNumber.ToString();
+                    providerName = cryptoServiceParameters->ProviderName;
+                    providerType = 
+                        cryptoServiceParameters->ProviderType.ToString();
+                }
+
+                StringBuilder^ sb = gcnew StringBuilder();
+                sb->Append("<CustomCryptoKeyValue>");
+
+                sb->Append("<KeyContainerName>");
+                sb->Append(keyContainerName);
+                sb->Append("</KeyContainerName>");
+
+                sb->Append("<KeyNumber>");
+                sb->Append(keyNumber);
+                sb->Append("</KeyNumber>");
+
+                sb->Append("<ProviderName>");
+                sb->Append(providerName);
+                sb->Append("</ProviderName>");
+
+                sb->Append("<ProviderType>");
+                sb->Append(providerType);
+                sb->Append("</ProviderType>");
+
+                sb->Append("</CustomCryptoKeyValue>");
+                return(sb->ToString());
+            }

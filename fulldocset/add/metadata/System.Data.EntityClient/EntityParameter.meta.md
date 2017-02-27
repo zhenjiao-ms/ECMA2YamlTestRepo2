@@ -59,11 +59,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.EntityClient.EntityParameter.EdmType
-internalonly: False
----
-
----
 uid: System.Data.EntityClient.EntityParameter.IsNullable
 internalonly: False
 ---

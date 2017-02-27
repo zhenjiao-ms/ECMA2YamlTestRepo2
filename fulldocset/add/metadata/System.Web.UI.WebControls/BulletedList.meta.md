@@ -84,11 +84,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.BulletedList.RenderWhenDataEmpty
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.BulletedList.RaisePostBackEvent(System.String)
 internalonly: False
 ---

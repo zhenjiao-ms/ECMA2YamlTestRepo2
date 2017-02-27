@@ -1,117 +1,70 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
+Imports System.Text
 
 
+Class Program
 
-Class RijndaelExample
+    Shared Sub Main(ByVal args() As String)
+        Dim [source] As String = "Hello World!"
+        Using md5Hash As MD5 = MD5.Create()
 
-    Public Shared Sub Main()
-        Try
+            Dim hash As String = GetMd5Hash(md5Hash, source)
 
-            Dim original As String = "Here is some data to encrypt!"
+            Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".")
 
-            ' Create a new instance of the Rijndael
-            ' class.  This generates a new key and initialization 
-            ' vector (IV).
-            Using myRijndael = Rijndael.Create()
+            Console.WriteLine("Verifying the hash...")
 
-                ' Encrypt the string to an array of bytes.
-                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
-
-                ' Decrypt the bytes to a string.
-                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
-
-                'Display the original data and the decrypted data.
-                Console.WriteLine("Original:   {0}", original)
-                Console.WriteLine("Round Trip: {0}", roundtrip)
-            End Using
-        Catch e As Exception
-            Console.WriteLine("Error: {0}", e.Message)
-        End Try
-
+            If VerifyMd5Hash(md5Hash, [source], hash) Then
+                Console.WriteLine("The hashes are the same.")
+            Else
+                Console.WriteLine("The hashes are not same.")
+            End If
+        End Using
     End Sub 'Main
 
-    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
-        ' Check arguments.
-        If plainText Is Nothing OrElse plainText.Length <= 0 Then
-            Throw New ArgumentNullException("plainText")
+
+
+    Shared Function GetMd5Hash(ByVal md5Hash As MD5, ByVal input As String) As String
+
+        ' Convert the input string to a byte array and compute the hash.
+        Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input))
+
+        ' Create a new Stringbuilder to collect the bytes
+        ' and create a string.
+        Dim sBuilder As New StringBuilder()
+
+        ' Loop through each byte of the hashed data 
+        ' and format each one as a hexadecimal string.
+        Dim i As Integer
+        For i = 0 To data.Length - 1
+            sBuilder.Append(data(i).ToString("x2"))
+        Next i
+
+        ' Return the hexadecimal string.
+        Return sBuilder.ToString()
+
+    End Function 'GetMd5Hash
+
+
+    ' Verify a hash against a string.
+    Shared Function VerifyMd5Hash(ByVal md5Hash As MD5, ByVal input As String, ByVal hash As String) As Boolean
+        ' Hash the input.
+        Dim hashOfInput As String = GetMd5Hash(md5Hash, input)
+
+        ' Create a StringComparer an compare the hashes.
+        Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
+
+        If 0 = comparer.Compare(hashOfInput, hash) Then
+            Return True
+        Else
+            Return False
         End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
-        End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        Dim encrypted() As Byte
-        ' Create an Rijndael object
-        ' with the specified key and IV.
-        Using rijAlg = Rijndael.Create()
 
-            rijAlg.Key = Key
-            rijAlg.IV = IV
-
-            ' Create an encryptor to perform the stream transform.
-            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
-            ' Create the streams used for encryption.
-            Using msEncrypt As New MemoryStream()
-                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
-                    Using swEncrypt As New StreamWriter(csEncrypt)
-
-                        'Write all data to the stream.
-                        swEncrypt.Write(plainText)
-                    End Using
-                    encrypted = msEncrypt.ToArray()
-                End Using
-            End Using
-        End Using
-
-        ' Return the encrypted bytes from the memory stream.
-        Return encrypted
-
-    End Function 'EncryptStringToBytes
-
-    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        ' Check arguments.
-        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
-            Throw New ArgumentNullException("cipherText")
-        End If
-        If Key Is Nothing OrElse Key.Length <= 0 Then
-            Throw New ArgumentNullException("Key")
-        End If
-        If IV Is Nothing OrElse IV.Length <= 0 Then
-            Throw New ArgumentNullException("IV")
-        End If
-        ' Declare the string used to hold
-        ' the decrypted text.
-        Dim plaintext As String = Nothing
-
-        ' Create an Rijndael object
-        ' with the specified key and IV.
-        Using rijAlg = Rijndael.Create()
-            rijAlg.Key = Key
-            rijAlg.IV = IV
-
-            ' Create a decryptor to perform the stream transform.
-            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
-
-            ' Create the streams used for decryption.
-            Using msDecrypt As New MemoryStream(cipherText)
-
-                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
-
-                    Using srDecrypt As New StreamReader(csDecrypt)
-
-
-                        ' Read the decrypted bytes from the decrypting stream
-                        ' and place them in a string.
-                        plaintext = srDecrypt.ReadToEnd()
-                    End Using
-                End Using
-            End Using
-        End Using
-
-        Return plaintext
-
-    End Function 'DecryptStringFromBytes 
-End Class
+    End Function 'VerifyMd5Hash
+End Class 'Program 
+' This code example produces the following output:
+'
+' The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+' Verifying the hash...
+' The hashes are the same.

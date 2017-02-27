@@ -1,162 +1,161 @@
-//
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
-#using <System.Security.dll>
-#using <System.Xml.dll>
-
 using namespace System;
+using namespace System::Security;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
-using namespace System::Security::Cryptography::Xml;
-using namespace System::Text;
-using namespace System::Xml;
 
-// Sign an XML file and save the signature in a new file.
-void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
+ref class SignatureDescriptionImpl
 {
-   
-   // Create a new XML document.
-   XmlDocument^ doc = gcnew XmlDocument;
-   
-   // Format the document to ignore white spaces.
-   doc->PreserveWhitespace = false;
-   
-   // Load the passed XML file using its name.
-   doc->Load( gcnew XmlTextReader( FileName ) );
-   
-   // Create a SignedXml object.
-   SignedXml^ signedXml = gcnew SignedXml( doc );
-   
-   // Add the key to the SignedXml document. 
-   signedXml->SigningKey = Key;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   reference->Uri = "";
-   
-   // Add an enveloped transformation to the reference.
-   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
-   reference->AddTransform( env );
-   
-   // Add the reference to the SignedXml object.
-   signedXml->AddReference( reference );
-   
-   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-   KeyInfo^ keyInfo = gcnew KeyInfo;
-   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
-   signedXml->KeyInfo = keyInfo;
-   
-   // Compute the signature.
-   signedXml->ComputeSignature();
-   
-   // Get the XML representation of the signature and save
-   // it to an XmlElement object.
-   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-   
-   // Append the element to the XML document.
-   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
-   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
+public:
+   [STAThread]
+   static void Main()
    {
-      doc->RemoveChild( doc->FirstChild );
+      // Create a digital signature based on RSA encryption.
+      SignatureDescription^ rsaSignature = CreateRSAPKCS1Signature();
+      ShowProperties( rsaSignature );
+      
+      // Create a digital signature based on DSA encryption.
+      SignatureDescription^ dsaSignature = CreateDSASignature();
+      ShowProperties( dsaSignature );
+      
+      // Create a HashAlgorithm using the digest algorithm of the signature.
+      HashAlgorithm^ hashAlgorithm = dsaSignature->CreateDigest();
+
+      Console::WriteLine( L"\nHash algorithm for the DigestAlgorithm property:"
+         L" {0}", hashAlgorithm );
+      
+      // Create an AsymmetricSignatureFormatter instance using the DSA key.
+      DSA^ dsa = DSA::Create();
+      AsymmetricSignatureFormatter^ asymmetricFormatter = CreateDSAFormatter( dsa );
+      
+      // Create an AsymmetricSignatureDeformatter instance using the
+      // DSA key.
+      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
+         CreateDSADeformatter( dsa );
+      Console::WriteLine( L"This sample completed successfully; "
+         L"press Enter to exit." );
+      Console::ReadLine();
    }
 
-   
-   // Save the signed XML document to a file specified
-   // using the passed string.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
-   doc->WriteTo( xmltw );
-   xmltw->Close();
-}
+private:
+   // Create a SignatureDescription for RSA encryption.
+   static SignatureDescription^ CreateRSAPKCS1Signature()
+   {
+      SignatureDescription^ signatureDescription = gcnew SignatureDescription;
 
+      // Set the key algorithm property for RSA encryption.
+      signatureDescription->KeyAlgorithm = L"System.Security.Cryptography.RSACryptoServiceProvider";
 
-// Verify the signature of an XML file and return the result.
-Boolean VerifyXmlFile( String^ Name )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Format using white spaces.
-   xmlDocument->PreserveWhitespace = true;
-   
-   // Load the passed XML file into the document. 
-   xmlDocument->Load( Name );
-   
-   // Create a new SignedXml object and pass it
-   // the XML document class.
-   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
-   
-   // Find the "Signature" node and create a new
-   // XmlNodeList object.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature();
-}
+      // Set the digest algorithm for RSA encryption using the
+      // SHA1 provider.
+      signatureDescription->DigestAlgorithm = L"System.Security.Cryptography.SHA1CryptoServiceProvider";
 
+      // Set the formatter algorithm with the RSAPKCS1 formatter.
+      signatureDescription->FormatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureFormatter";
 
-// Create example data to sign.
-void CreateSomeXml( String^ FileName )
-{
-   
-   // Create a new XmlDocument object.
-   XmlDocument^ document = gcnew XmlDocument;
-   
-   // Create a new XmlNode object.
-   XmlNode^ node = document->CreateNode( XmlNodeType::Element, "", "MyElement", "samples" );
-   
-   // Add some text to the node.
-   node->InnerText = "Example text to be signed.";
-   
-   // Append the node to the document.
-   document->AppendChild( node );
-   
-   // Save the XML document to the file name specified.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( FileName,gcnew UTF8Encoding( false ) );
-   document->WriteTo( xmltw );
-   xmltw->Close();
-}
+      // Set the formatter algorithm with the RSAPKCS1 deformatter.
+      signatureDescription->DeformatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
+
+      return signatureDescription;
+   }
+
+   // Create a SignatureDescription using a constructed SecurityElement for
+   // DSA encryption.
+   static SignatureDescription^ CreateDSASignature()
+   {
+      SecurityElement^ securityElement = gcnew SecurityElement( L"DSASignature" );
+      // Create new security elements for the four algorithms.
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Key",L"System.Security.Cryptography.DSACryptoServiceProvider" ) );
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Digest",L"System.Security.Cryptography.SHA1CryptoServiceProvider" ) );
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Formatter",L"System.Security.Cryptography.DSASignatureFormatter" ) );
+      securityElement->AddChild( gcnew SecurityElement(
+         L"Deformatter",L"System.Security.Cryptography.DSASignatureDeformatter" ) );
+      SignatureDescription^ signatureDescription =
+         gcnew SignatureDescription( securityElement );
+
+      return signatureDescription;
+   }
+
+   // Create a signature formatter for DSA encryption.
+   static AsymmetricSignatureFormatter^ CreateDSAFormatter( DSA^ dsa )
+   {
+      // Create a DSA signature formatter for encryption.
+      SignatureDescription^ signatureDescription =
+         gcnew SignatureDescription;
+      signatureDescription->FormatterAlgorithm =
+         L"System.Security.Cryptography.DSASignatureFormatter";
+      AsymmetricSignatureFormatter^ asymmetricFormatter =
+         signatureDescription->CreateFormatter( dsa );
+
+      Console::WriteLine( L"\nCreated formatter : {0}",
+         asymmetricFormatter );
+      return asymmetricFormatter;
+   }
+
+   // Create a signature deformatter for DSA decryption.
+   static AsymmetricSignatureDeformatter^ CreateDSADeformatter( DSA^ dsa )
+   {
+      // Create a DSA signature deformatter to verify the signature.
+      SignatureDescription^ signatureDescription =
+         gcnew SignatureDescription;
+      signatureDescription->DeformatterAlgorithm =
+         L"System.Security.Cryptography.DSASignatureDeformatter";
+      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
+         signatureDescription->CreateDeformatter( dsa );
+
+      Console::WriteLine( L"\nCreated deformatter : {0}",
+         asymmetricDeformatter );
+      return asymmetricDeformatter;
+   }
+
+   // Display to the console the properties of the specified
+   // SignatureDescription.
+   static void ShowProperties( SignatureDescription^ signatureDescription )
+   {
+      // Retrieve the class path for the specified SignatureDescription.
+      String^ classDescription = signatureDescription->ToString();
+
+      String^ deformatterAlgorithm = signatureDescription->DeformatterAlgorithm;
+      String^ formatterAlgorithm = signatureDescription->FormatterAlgorithm;
+      String^ digestAlgorithm = signatureDescription->DigestAlgorithm;
+      String^ keyAlgorithm = signatureDescription->KeyAlgorithm;
+      Console::WriteLine( L"\n** {0} **", classDescription );
+      Console::WriteLine( L"DeformatterAlgorithm : {0}", deformatterAlgorithm );
+      Console::WriteLine( L"FormatterAlgorithm : {0}", formatterAlgorithm );
+      Console::WriteLine( L"DigestAlgorithm : {0}", digestAlgorithm );
+      Console::WriteLine( L"KeyAlgorithm : {0}", keyAlgorithm );
+   }
+};
 
 int main()
 {
-   try
-   {
-      
-      // Generate a signing key.
-      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
-      
-      // Create an XML file to sign.
-      CreateSomeXml( "Example.xml" );
-      Console::WriteLine( "New XML file created." );
-      
-      // Sign the XML that was just created and save it in a 
-      // new file.
-      SignXmlFile( "Example.xml", "SignedExample.xml", Key );
-      Console::WriteLine( "XML file signed." );
-      
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
-      bool result = VerifyXmlFile( "SignedExample.xml" );
-      
-      // Display the results of the signature verification to
-      // the console.
-      if ( result )
-      {
-         Console::WriteLine( "The XML signature is valid." );
-      }
-      else
-      {
-         Console::WriteLine( "The XML signature is not valid." );
-      }
-   }
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-   }
-
+   SignatureDescriptionImpl::Main();
 }
+
+//
+// This sample produces the following output:
+//
+// ** System.Security.Cryptography.SignatureDescription **
+// DeformatterAlgorithm : System.Security.Cryptography.
+// RSAPKCS1SignatureDeformatter
+//
+// FormatterAlgorithm : System.Security.Cryptography.
+// RSAPKCS1SignatureFormatter
+// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
+//
+// ** System.Security.Cryptography.SignatureDescription **
+// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
+// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
+// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
+//
+// Hash algorithm for the DigestAlgorithm property:
+// System.Security.Cryptography.SH
+// A1CryptoServiceProvider
+//
+// Created formatter : System.Security.Cryptography.DSASignatureFormatter
+//
+// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
+// This sample completed successfully; press Enter to exit.

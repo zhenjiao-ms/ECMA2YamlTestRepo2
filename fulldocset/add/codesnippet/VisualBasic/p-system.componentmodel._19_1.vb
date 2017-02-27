@@ -1,11 +1,15 @@
- Private Sub PrintIndexItem2()
-     ' Creates a new collection and assigns it the properties for button1.
-     Dim properties As PropertyDescriptorCollection = _
-        TypeDescriptor.GetProperties(button1)
-        
-     ' Sets a PropertyDescriptor to the specific property.
-     Dim myProperty As PropertyDescriptor = properties("Opacity")
-        
-     ' Prints the display name for the property.
-     textBox1.Text = myProperty.DisplayName
- End Sub
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+
+
+<MetadataType(GetType(ProductMetadata))> _
+Partial Public Class Product
+
+End Class
+
+Partial Public Class ProductMetadata
+    <UIHint("UnitsInStock")> _
+    <Range(100, 10000)> _
+    Public UnitsInStock As Object
+End Class

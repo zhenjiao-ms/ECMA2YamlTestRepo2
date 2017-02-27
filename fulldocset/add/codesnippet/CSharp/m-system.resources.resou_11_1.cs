@@ -1,24 +1,23 @@
 using System;
 using System.Resources;
-using System.IO;
+using System.Collections;
 
-public class WriteResources 
+class EnumerateResources 
 {
-    public static void Main(string[] args) 
-    {  
-        // Create a file stream to encapsulate items.resources.
-        FileStream fs = new FileStream("items.resources", 
-        FileMode.OpenOrCreate,FileAccess.Write);
+    public static void Main() 
+    {
+        // Create a ResourceReader for the file items.resources.
+        ResourceReader rr = new ResourceReader("items.resources"); 
 
-        // Open a resource writer to write from the stream.
-        IResourceWriter writer = new ResourceWriter(fs);
-    
-        // Add resources to the resource writer.
-        writer.AddResource("String 1", "First String");
-        writer.AddResource("String 2", "Second String");
-        writer.AddResource("String 3", "Third String");
+        
+        // Create an IDictionaryEnumerator to iterate through the resources.
+        IDictionaryEnumerator id = rr.GetEnumerator(); 
 
-        // Write the resources to the stream, and close it.
-        writer.Close();
+        // Iterate through the resources and display the contents to the console. 
+        while(id.MoveNext())
+          Console.WriteLine("\n[{0}] \t{1}", id.Key, id.Value); 
+
+        rr.Close();     
+ 
     }
 }

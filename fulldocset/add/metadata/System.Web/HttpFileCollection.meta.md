@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.HttpFileCollection.GetMultiple(System.String)
-internalonly: False
----
-
----
 uid: System.Web.HttpFileCollection.GetKey(System.Int32)
 internalonly: False
 ---

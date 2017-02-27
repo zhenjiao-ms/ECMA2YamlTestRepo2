@@ -1,169 +1,146 @@
 using System;
-using System.IO;
 using System.Xml;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 
-class Class1
+class Program
 {
-    [STAThread]
     static void Main(string[] args)
     {
-        // Encrypt an XML message
-        EncryptXML(LoadXMLDoc());
 
-        // Using XmlDsigBase64Transform resolving a Uri.
-        Uri baseUri = new Uri("http://www.microsoft.com");
-        string relativeUri = "msdn";
-        Uri absoluteUri = ResolveUris(baseUri, relativeUri);
-
-        Console.WriteLine("This sample completed successfully; " +
-            "press Enter to exit.");
-        Console.ReadLine();
-    }
-
-    // Encrypt the text in the specified XmlDocument.
-    private static void EncryptXML(XmlDocument xmlDoc)
-    {
-        XmlDsigBase64Transform xmlTransform = new XmlDsigBase64Transform();
-
-        // Ensure the transform is using the proper algorithm.
-        xmlTransform.Algorithm = SignedXml.XmlDsigBase64TransformUrl;
-
-        // Retrieve the XML representation of the current transform.
-        XmlElement xmlInTransform = xmlTransform.GetXml();
-
-        Console.WriteLine("Xml representation of the current transform: ");
-        Console.WriteLine(xmlInTransform.OuterXml);
-
-        // Retrieve the valid input types for the current transform.
-        Type[] validInTypes = xmlTransform.InputTypes;
-
-        // Verify the xmlTransform can accept the XMLDocument as an
-        // input type.
-        for (int i=0; i<validInTypes.Length; i++)
-        {
-            if (validInTypes[i] == xmlDoc.GetType())
-            {
-                // Demonstrate loading the entire Xml Document.
-                xmlTransform.LoadInput(xmlDoc);
-
-                // This transform is created for demonstration purposes.
-                XmlDsigBase64Transform secondTransform =
-                    new XmlDsigBase64Transform();
-
-                string classDescription = secondTransform.ToString();
-
-                // This call does not perform as expected.
-                // LoadInnerXml is overridden by the XmlDsigBase64Transform
-                // class, but is stubbed out.
-                secondTransform.LoadInnerXml(xmlDoc.SelectNodes("//."));
-
-                break;
-            }
-        }
-
-        Type[] validOutTypes = xmlTransform.OutputTypes;
-
-        for (int i=0; i<validOutTypes.Length; i++)
-        {
-            if (validOutTypes[i] == typeof(System.IO.Stream))
-            {
-                try 
-                {
-                    Type streamType = typeof(System.IO.Stream);
-                    CryptoStream outputStream = (CryptoStream) 
-                        xmlTransform.GetOutput(streamType);
-
-                    // Read the CryptoStream into a stream reader.
-                    StreamReader streamReader =
-                        new StreamReader(outputStream);
-
-                    // Read the stream into a string.
-                    string outputMessage = streamReader.ReadToEnd();
-
-                    // Close the streams.
-                    outputStream.Close();
-                    streamReader.Close();
-
-                    // Display to the console the Xml before and after
-                    // encryption.
-                    Console.WriteLine("Encoding the following message: " +
-                        xmlDoc.InnerText);
-                    Console.WriteLine("Message encoded: " + outputMessage);
-            }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Unexpected exception caught: " +
-                        ex.ToString());
-                }
-
-                break;
-            }
-            else
-            {
-                object outputObject = xmlTransform.GetOutput();
-            }
-        }
-    }
-
-    // Create an XML document with Element and Text nodes.
-    private static XmlDocument LoadXMLDoc()
-    {
+        // Create an XmlDocument object.
         XmlDocument xmlDoc = new XmlDocument();
 
-        XmlNode mainNode = xmlDoc.CreateNode(
-            XmlNodeType.Element,
-            "ContosoMessages",
-            "http://www.contoso.com");
+        // Load an XML file into the XmlDocument object.
+        try
+        {
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load("test.xml");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
 
-        XmlNode textNode = xmlDoc.CreateTextNode("Some text to encode.");
-        mainNode.AppendChild(textNode);
-        xmlDoc.AppendChild(mainNode);
+        // Create a new TripleDES key. 
+        TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
 
-        Console.WriteLine("Created the following XML Document for " +
-            "transformation: ");
-        Console.WriteLine(xmlDoc.InnerXml);
-        return xmlDoc;
+
+        try
+        {
+            // Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", tDESkey);
+
+            // Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
+
+            // Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, tDESkey);
+
+            // Display the encrypted XML to the console.
+            Console.WriteLine();
+            Console.WriteLine("Decrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            // Clear the TripleDES key.
+            tDESkey.Clear();
+        }
+
     }
 
-    // Resolve the specified base and relative Uri's .
-    private static Uri ResolveUris(Uri baseUri, string relativeUri)
+    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, TripleDESCryptoServiceProvider Alg)
     {
-        XmlUrlResolver xmlResolver = new XmlUrlResolver();
-        xmlResolver.Credentials = 
-            System.Net.CredentialCache.DefaultCredentials;
 
-        XmlDsigBase64Transform xmlTransform = new XmlDsigBase64Transform();
-        xmlTransform.Resolver = xmlResolver;
+        ////////////////////////////////////////////////
+        // Find the specified element in the XmlDocument
+        // object and create a new XmlElemnt object.
+        ////////////////////////////////////////////////
 
-        Uri absoluteUri = xmlResolver.ResolveUri(baseUri, relativeUri);
+        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
 
-        if (absoluteUri != null)
+        // Throw an XmlException if the element was not found.
+        if (elementToEncrypt == null)
         {
-            Console.WriteLine(
-                "Resolved the base Uri and relative Uri to the following:");
-            Console.WriteLine(absoluteUri.ToString());
+            throw new XmlException("The specified element was not found");
+
         }
-        else
-        {
-            Console.WriteLine(
-                "Unable to resolve the base Uri and relative Uri");
-        }
-        return absoluteUri;
+
+        //////////////////////////////////////////////////
+        // Create a new instance of the EncryptedXml class 
+        // and use it to encrypt the XmlElement with the 
+        // symmetric key.
+        //////////////////////////////////////////////////
+
+        EncryptedXml eXml = new EncryptedXml();
+
+        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, Alg, false);
+
+        ////////////////////////////////////////////////
+        // Construct an EncryptedData object and populate
+        // it with the desired encryption information.
+        ////////////////////////////////////////////////
+
+
+        EncryptedData edElement = new EncryptedData();
+        
+        edElement.Type = EncryptedXml.XmlEncElementUrl;
+
+  
+        // Create an EncryptionMethod element so that the 
+        // receiver knows which algorithm to use for decryption.
+        // Determine what kind of algorithm is being used and
+        // supply the appropriate URL to the EncryptionMethod element.
+
+        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
+
+        // Add the encrypted element data to the 
+        // EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement;
+
+        ////////////////////////////////////////////////////
+        // Replace the element from the original XmlDocument
+        // object with the EncryptedData element.
+        ////////////////////////////////////////////////////
+
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
     }
+
+    public static void Decrypt(XmlDocument Doc, SymmetricAlgorithm Alg)
+    {
+
+        // Find the EncryptedData element in the XmlDocument.
+        XmlElement encryptedElement = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+        // If the EncryptedData element was not found, throw an exception.
+        if (encryptedElement == null)
+        {
+            throw new XmlException("The EncryptedData element was not found.");
+        }
+
+        // Create an EncryptedData object and populate it.
+        EncryptedData edElement = new EncryptedData();
+        edElement.LoadXml(encryptedElement);
+
+        // Create a new EncryptedXml object.
+        EncryptedXml exml = new EncryptedXml();
+
+        // Decrypt the element using the symmetric key.
+        byte[] rgbOutput = exml.DecryptData(edElement, Alg);
+
+        // Replace the encryptedData element with the plaintext XML element.
+        exml.ReplaceData(encryptedElement, rgbOutput);
+
+    }
+
+
 }
-//
-// This sample produces the following output:
-//
-// Created the following XML Document for transformation:
-// <ContosoMessages xmlns="http://www.contoso.com">Some text to encode.
-// </ContosoMessages>
-// Xml representation of the current transform:
-// <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#base64" xmlns=
-// "http://www.w3.org/2000/09/xmldsig#" />
-// Encoding the following message: Some text to encode.
-// Message encoded: Jmr^
-// Resolved the base Uri and relative Uri to the following:
-// http://www.microsoft.com/msdn
-// This sample completed successfully; press Enter to exit.

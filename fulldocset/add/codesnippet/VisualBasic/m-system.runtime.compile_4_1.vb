@@ -1,15 +1,14 @@
-Imports System
 Imports System.Runtime.CompilerServices
 
+<Assembly: StringFreezingAttribute()> 
 
+Module Program
 
-<Assembly: SuppressIldasmAttribute()> 
+    Dim frozenString = "This is a frozen string after Ngen is run."
 
-
-Class Program
-
-    Shared Sub Main(ByVal args() As String)
-        Console.WriteLine("The SuppressIldasmAttribute is applied to this assembly.")
-
+    Sub Main(ByVal args() As String)
+        Console.WriteLine("The FixedAddressValueTypeAttribute attribute was applied.")
     End Sub
-End Class
+
+
+End Module

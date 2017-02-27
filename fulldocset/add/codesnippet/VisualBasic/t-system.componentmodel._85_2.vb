@@ -1,14 +1,16 @@
-    Public Shared Function Main() As Integer
-        ' Creates a new collection.
-        Dim myNewCollection As New MyCollection()
+        ' Gets the attributes for the property.
+        Dim attributes As AttributeCollection = _
+            TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
         
-        ' Gets the attributes for the collection.
-        Dim attributes As AttributeCollection = TypeDescriptor.GetAttributes(myNewCollection)
+        ' Checks to see whether the value of the ReadOnlyAttribute is Yes.
+        If attributes(GetType(ReadOnlyAttribute)).Equals(ReadOnlyAttribute.Yes) Then
+            ' Insert code here.
+        End If 
         
-        ' Prints the name of the default event by retrieving the
-        ' DefaultEventAttribute from the AttributeCollection. 
-        Dim myAttribute As DefaultEventAttribute = _
-            CType(attributes(GetType(DefaultEventAttribute)), DefaultEventAttribute)
-        Console.WriteLine(("The default event is: " & myAttribute.Name))
-        Return 0
-    End Function 'Main
+        ' This is another way to see whether the property is read-only.
+        Dim myAttribute As ReadOnlyAttribute = _
+            CType(attributes(GetType(ReadOnlyAttribute)), ReadOnlyAttribute)
+            
+        If myAttribute.IsReadOnly Then
+            ' Insert code here.
+        End If 

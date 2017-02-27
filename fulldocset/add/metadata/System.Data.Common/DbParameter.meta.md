@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.Common.DbParameter.Precision
-internalonly: False
----
-
----
 uid: System.Data.Common.DbParameter.SourceColumnNullMapping
 internalonly: False
 ---
@@ -35,11 +30,6 @@ internalonly: False
 
 ---
 uid: System.Data.Common.DbParameter.Value
-internalonly: False
----
-
----
-uid: System.Data.Common.DbParameter.Scale
 internalonly: False
 ---
 

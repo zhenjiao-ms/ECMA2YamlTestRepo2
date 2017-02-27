@@ -17,13 +17,3 @@ internalonly: False
 uid: System.Diagnostics.SymbolStore.SymDocumentWriter.SetSource(System.Byte[])
 internalonly: False
 ---
-
----
-uid: System.Diagnostics.SymbolStore.SymDocumentWriter.Dispose(System.Boolean)
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymDocumentWriter.Dispose
-internalonly: False
----

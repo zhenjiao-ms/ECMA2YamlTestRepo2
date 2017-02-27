@@ -39,11 +39,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Text.RegularExpressions.RegexRunner.CheckTimeout
-internalonly: False
----
-
----
 uid: System.Text.RegularExpressions.RegexRunner.runcrawlpos
 internalonly: False
 ---
@@ -130,11 +125,6 @@ internalonly: False
 
 ---
 uid: System.Text.RegularExpressions.RegexRunner.DoubleStack
-internalonly: False
----
-
----
-uid: System.Text.RegularExpressions.RegexRunner.Scan(System.Text.RegularExpressions.Regex,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.TimeSpan)
 internalonly: False
 ---
 

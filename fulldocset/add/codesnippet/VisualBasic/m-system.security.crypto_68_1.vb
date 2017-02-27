@@ -1,55 +1,102 @@
-Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
+Imports System.Text
+Imports System.IO
 
-
-
-Module CertSelect
+Module DESSample
 
     Sub Main()
         Try
-            Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-            store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
+            ' Create a new DES object to generate a key
+            ' and initialization vector (IV).
+            Dim DESalg As DES = DES.Create
 
-            Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-            Dim i As Integer
-            For i = 0 To collection.Count
-                Dim extension As X509Extension
-                For Each extension In collection(i).Extensions
-                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")")
+            ' Create a string to encrypt.
+            Dim sData As String = "Here is some data to encrypt."
+            Dim FileName As String = "CText.txt"
 
+            ' Encrypt text to a file using the file name, key, and IV.
+            EncryptTextToFile(sData, FileName, DESalg.Key, DESalg.IV)
 
-                    If extension.Oid.FriendlyName = "Key Usage" Then
-                        Dim ext As X509KeyUsageExtension = CType(extension, X509KeyUsageExtension)
-                        Console.WriteLine(ext.KeyUsages)
-                    End If
+            ' Decrypt the text from a file using the file name, key, and IV.
+            Dim Final As String = DecryptTextFromFile(FileName, DESalg.Key, DESalg.IV)
 
-                    If extension.Oid.FriendlyName = "Basic Constraints" Then
-                        Dim ext As X509BasicConstraintsExtension = CType(extension, X509BasicConstraintsExtension)
-                        Console.WriteLine(ext.CertificateAuthority)
-                        Console.WriteLine(ext.HasPathLengthConstraint)
-                        Console.WriteLine(ext.PathLengthConstraint)
-                    End If
-
-                    If extension.Oid.FriendlyName = "Subject Key Identifier" Then
-                        Dim ext As X509SubjectKeyIdentifierExtension = CType(extension, X509SubjectKeyIdentifierExtension)
-                        Console.WriteLine(ext.SubjectKeyIdentifier)
-                    End If
-
-                    If extension.Oid.FriendlyName = "Enhanced Key Usage" Then
-                        Dim ext As X509EnhancedKeyUsageExtension = CType(extension, X509EnhancedKeyUsageExtension)
-                        Dim oids As OidCollection = ext.EnhancedKeyUsages
-                        Dim oid As Oid
-                        For Each oid In oids
-                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")")
-                        Next oid
-                    End If
-                Next extension
-            Next i
-            store.Close()
-        Catch
-            Console.WriteLine("Information could not be written out for this certificate.")
+            ' Display the decrypted string to the console.
+            Console.WriteLine(Final)
+        Catch e As Exception
+            Console.WriteLine(e.Message)
         End Try
-
     End Sub
+
+
+    Sub EncryptTextToFile(ByVal Data As String, ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte)
+        Try
+            ' Create or open the specified file.
+            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+
+            ' Create a new DES object.
+            Dim DESalg As DES = DES.Create
+
+            ' Create a CryptoStream using the FileStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(fStream, _
+                                           DESalg.CreateEncryptor(Key, IV), _
+                                           CryptoStreamMode.Write)
+
+            ' Create a StreamWriter using the CryptoStream.
+            Dim sWriter As New StreamWriter(cStream)
+
+            ' Write the data to the stream 
+            ' to encrypt it.
+            sWriter.WriteLine(Data)
+
+            ' Close the streams and
+            ' close the file.
+            sWriter.Close()
+            cStream.Close()
+            fStream.Close()
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+        Catch e As UnauthorizedAccessException
+            Console.WriteLine("A file error occurred: {0}", e.Message)
+        End Try
+    End Sub
+
+
+    Function DecryptTextFromFile(ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        Try
+            ' Create or open the specified file. 
+            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+
+            ' Create a new DES object.
+            Dim DESalg As DES = DES.Create
+
+            ' Create a CryptoStream using the FileStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(fStream, _
+                                            DESalg.CreateDecryptor(Key, IV), _
+                                            CryptoStreamMode.Read)
+
+            ' Create a StreamReader using the CryptoStream.
+            Dim sReader As New StreamReader(cStream)
+
+            ' Read the data from the stream 
+            ' to decrypt it.
+            Dim val As String = sReader.ReadLine()
+
+            ' Close the streams and
+            ' close the file.
+            sReader.Close()
+            cStream.Close()
+            fStream.Close()
+
+            ' Return the string. 
+            Return val
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        Catch e As UnauthorizedAccessException
+            Console.WriteLine("A file error occurred: {0}", e.Message)
+            Return Nothing
+        End Try
+    End Function
 End Module

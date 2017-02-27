@@ -1,59 +1,117 @@
 #using <System.dll>
-#using <system.security.dll>
 
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Text;
+using namespace System::IO;
+void EncryptTextToFile( String^ Data, String^ FileName, array<Byte>^Key, array<Byte>^IV )
+{
+   try
+   {
+      
+      // Create or open the specified file.
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
+      
+      // Create a new DES object.
+      DES^ DESalg = DES::Create();
+      
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,DESalg->CreateEncryptor( Key, IV ),CryptoStreamMode::Write );
+      
+      // Create a StreamWriter using the CryptoStream.
+      StreamWriter^ sWriter = gcnew StreamWriter( cStream );
+      
+      // Write the data to the stream 
+      // to encrypt it.
+      sWriter->WriteLine( Data );
+      
+      // Close the streams and
+      // close the file.
+      sWriter->Close();
+      cStream->Close();
+      fStream->Close();
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file error occurred: {0}", e->Message );
+   }
+
+}
+
+String^ DecryptTextFromFile( String^ FileName, array<Byte>^Key, array<Byte>^IV )
+{
+   try
+   {
+      
+      // Create or open the specified file. 
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
+      
+      // Create a new DES object.
+      DES^ DESalg = DES::Create();
+      
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,DESalg->CreateDecryptor( Key, IV ),CryptoStreamMode::Read );
+      
+      // Create a StreamReader using the CryptoStream.
+      StreamReader^ sReader = gcnew StreamReader( cStream );
+      
+      // Read the data from the stream 
+      // to decrypt it.
+      String^ val = sReader->ReadLine();
+      
+      // Close the streams and
+      // close the file.
+      sReader->Close();
+      cStream->Close();
+      fStream->Close();
+      
+      // Return the string. 
+      return val;
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+      return nullptr;
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file error occurred: {0}", e->Message );
+      return nullptr;
+   }
+
+}
+
 int main()
 {
    try
    {
-      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      for ( int i = 0; i < collection->Count; i++ )
-      {
-         System::Collections::IEnumerator^ myEnum = collection[ i ]->Extensions->GetEnumerator();
-         while ( myEnum->MoveNext() )
-         {
-            X509Extension^ extension = safe_cast<X509Extension^>(myEnum->Current);
-            Console::WriteLine( L"{0}({1})", extension->Oid->FriendlyName, extension->Oid->Value );
-            if ( extension->Oid->FriendlyName == L"Key Usage" )
-            {
-               X509KeyUsageExtension^ ext = dynamic_cast<X509KeyUsageExtension^>(extension);
-               Console::WriteLine( ext->KeyUsages );
-            }
-            if ( extension->Oid->FriendlyName == L"Basic Constraints" )
-            {
-               X509BasicConstraintsExtension^ ext = dynamic_cast<X509BasicConstraintsExtension^>(extension);
-               Console::WriteLine( ext->CertificateAuthority );
-               Console::WriteLine( ext->HasPathLengthConstraint );
-               Console::WriteLine( ext->PathLengthConstraint );
-            }
-            if ( extension->Oid->FriendlyName == L"Subject Key Identifier" )
-            {
-               X509SubjectKeyIdentifierExtension^ ext = dynamic_cast<X509SubjectKeyIdentifierExtension^>(extension);
-               Console::WriteLine( ext->SubjectKeyIdentifier );
-            }
-            if ( extension->Oid->FriendlyName == L"Enhanced Key Usage" )
-            {
-               X509EnhancedKeyUsageExtension^ ext = dynamic_cast<X509EnhancedKeyUsageExtension^>(extension);
-               OidCollection^ oids = ext->EnhancedKeyUsages;
-               System::Collections::IEnumerator^ myEnum1 = oids->GetEnumerator();
-               while ( myEnum1->MoveNext() )
-               {
-                  Oid^ oid = safe_cast<Oid^>(myEnum1->Current);
-                  Console::WriteLine( L"{0}({1})", oid->FriendlyName, oid->Value );
-               }
-            }
-         }
-
-      }
-      store->Close();
+      
+      // Create a new DES object to generate a key
+      // and initialization vector (IV).
+      DES^ DESalg = DES::Create();
+      
+      // Create a string to encrypt.
+      String^ sData = "Here is some data to encrypt.";
+      String^ FileName = "CText.txt";
+      
+      // Encrypt text to a file using the file name, key, and IV.
+      EncryptTextToFile( sData, FileName, DESalg->Key, DESalg->IV );
+      
+      // Decrypt the text from a file using the file name, key, and IV.
+      String^ Final = DecryptTextFromFile( FileName, DESalg->Key, DESalg->IV );
+      
+      // Display the decrypted string to the console.
+      Console::WriteLine( Final );
    }
-   catch ( CryptographicException^ ) 
+   catch ( Exception^ e ) 
    {
-      Console::WriteLine( L"Information could not be written out for this certificate." );
+      Console::WriteLine( e->Message );
    }
 
 }

@@ -1,8 +1,4 @@
-   public:
-      ResolveNameEventArgs^ CreateResolveNameEventArgs( Object^ value, String^ name )
-      {
-         ResolveNameEventArgs^ e = gcnew ResolveNameEventArgs( name );
-         // The name to resolve                       e.Name
-         // Stores an Object matching the name        e.Value
-         return e;
-      }
+         TimeSpan ts(133333330);
+         String^ myTSStr = "5000000";
+         Console::WriteLine( TypeDescriptor::GetConverter( ts )->ConvertTo( ts, String::typeid ) );
+         Console::WriteLine( TypeDescriptor::GetConverter( ts )->ConvertFrom( myTSStr ) );

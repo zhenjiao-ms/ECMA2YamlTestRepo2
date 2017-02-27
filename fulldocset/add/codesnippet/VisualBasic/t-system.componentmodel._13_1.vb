@@ -1,10 +1,27 @@
-        ' This example method creates a ComponentChangingEventArgs using the specified arguments.
-        ' Typically, this type of event args is created by a design mode subsystem.  
-        Public Function CreateComponentChangingEventArgs(ByVal component As Object, ByVal member As MemberDescriptor) As ComponentChangingEventArgs
-            Dim args As New ComponentChangingEventArgs(component, member)
+Imports System
+Imports System.ComponentModel
+Imports System.ComponentModel.Design
+Imports System.ComponentModel.Design.Serialization
 
-            ' The component that is about to change:       args.Component
-            ' The member that is about to change:          args.Member
+Module ContextStackExample
 
-            Return args
-        End Function
+    Sub Main()
+        ' Create a ContextStack.
+        Dim stack As New ContextStack
+
+        ' Push ten items on to the stack and output the value of each.
+        Dim number As Integer
+        For number = 0 To 9
+            Console.WriteLine(("Value pushed to stack: " + number.ToString()))
+            stack.Push(number)
+        Next number
+
+        ' Pop each item off the stack.        
+        Dim item As Object = stack.Pop()
+        While item IsNot Nothing
+            Console.WriteLine(("Value popped from stack: " + item.ToString()))
+            item = stack.Pop()
+        End While
+    End Sub
+
+End Module

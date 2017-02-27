@@ -1,128 +1,66 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
-namespace RijndaelManaged_Example
+public class X509store2
 {
-    class RijndaelExample
+    public static void Main(string[] args)
     {
-        public static void Main()
+        //Opens the personal certificates store.
+        X509Store store = new X509Store(StoreName.My);
+        store.Open(OpenFlags.ReadWrite);
+        X509Certificate2 certificate = new X509Certificate2();
+
+        //Create certificates from certificate files.
+        //You must put in a valid path to three certificates in the following constructors.
+        X509Certificate2 certificate1 = new X509Certificate2("c:\\mycerts\\*****.cer");
+        X509Certificate2 certificate2 = new X509Certificate2("c:\\mycerts\\*****.cer");
+        X509Certificate2 certificate5 = new X509Certificate2("c:\\mycerts\\*****.cer");
+
+        //Create a collection and add two of the certificates.
+        X509Certificate2Collection collection = new X509Certificate2Collection();
+        collection.Add(certificate2);
+        collection.Add(certificate5);
+
+        //Add certificates to the store.
+        store.Add(certificate1);
+        store.AddRange(collection);
+
+        X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
+        Console.WriteLine("Store name: {0}", store.Name);
+        Console.WriteLine("Store location: {0}", store.Location);
+        foreach (X509Certificate2 x509 in storecollection)
         {
-            try
-            {
-
-                string original = "Here is some data to encrypt!";
-
-                // Create a new instance of the RijndaelManaged
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (RijndaelManaged myRijndael = new RijndaelManaged())
-                {
-
-					myRijndael.GenerateKey();
-                	myRijndael.GenerateIV();
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
-
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
-            }
-        }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
-            // Create an RijndaelManaged object
-            // with the specified key and IV.
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
-
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-
+            Console.WriteLine("certificate name: {0}", x509.Subject);
         }
 
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        //Remove a certificate.
+        store.Remove(certificate1);
+        X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
+        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine);
+        foreach (X509Certificate2 x509 in storecollection2)
         {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an RijndaelManaged object
-            // with the specified key and IV.
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-
-            }
-
-            return plaintext;
-
+            Console.WriteLine("certificate name: {0}", x509.Subject);
         }
+
+        //Remove a range of certificates.
+        store.RemoveRange(collection);
+        X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
+        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine);
+        if (storecollection3.Count == 0)
+        {
+            Console.WriteLine("Store contains no certificates.");
+        }
+        else
+        {
+            foreach (X509Certificate2 x509 in storecollection3)
+            {
+                Console.WriteLine("certificate name: {0}", x509.Subject);
+            }
+        }
+
+        //Close the store.
+        store.Close();
     }
 }

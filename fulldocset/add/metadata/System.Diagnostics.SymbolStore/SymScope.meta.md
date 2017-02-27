@@ -14,22 +14,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.SymbolStore.SymScope.Dispose
-internalonly: False
----
-
----
 uid: System.Diagnostics.SymbolStore.SymScope.GetChildren
 internalonly: False
 ---
 
 ---
 uid: System.Diagnostics.SymbolStore.SymScope.GetLocals
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymScope.Dispose(System.Boolean)
 internalonly: False
 ---
 

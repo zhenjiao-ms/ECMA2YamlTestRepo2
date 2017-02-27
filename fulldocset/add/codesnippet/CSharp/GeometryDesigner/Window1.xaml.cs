@@ -1374,7 +1374,7 @@ namespace SampleApp
                 return lg;
             }
 
-            #region Data members2
+            #region Data members
             private Point startPoint;
             private Point endPoint;
             #endregion
@@ -1422,7 +1422,7 @@ namespace SampleApp
                 return retval;
             }
 
-            #region Data Members3
+            #region Data Members
             private Point  center;
             private double radiusx;
             private double radiusy;
@@ -1479,7 +1479,7 @@ namespace SampleApp
 
             }
 
-            #region Data Members4
+            #region Data Members
             private Point topleft;
             private double width;
             private double height;
@@ -1526,7 +1526,7 @@ namespace SampleApp
                 controlPoints.Add(p3);
             }
 
-            #region Data Members5
+            #region Data Members
             Point startpoint, p1, p2, p3;
             #endregion
 
@@ -1582,7 +1582,7 @@ namespace SampleApp
                 controlPoints.Add(point);
             }
 
-            #region Data Members6
+            #region Data Members
             Point startpoint, point;
             Size size;
             bool largearc;

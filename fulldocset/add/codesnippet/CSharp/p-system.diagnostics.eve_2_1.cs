@@ -1,58 +1,44 @@
-        static void CreateEventSourceSample1(string messageFile)
-        {
-            string myLogName;
-            string sourceName = "SampleApplicationSource";
+using System;
+using System.Diagnostics;
+   class MyEventlogClass
+   {
+      public static void Main()
+      {
+         String myEventType=null;
+         // Associate the instance of 'EventLog' with local System Log.
+         EventLog myEventLog = new EventLog("System", ".");
+         Console.WriteLine("1:Error");
+         Console.WriteLine("2:Information");
+         Console.WriteLine("3:Warning");
+         Console.WriteLine("Select the Event Type");
+         int myOption=Convert.ToInt32(Console.ReadLine());
+         switch(myOption)
+         {
+            case 1:  myEventType="Error";
+                     break;
+            case 2:  myEventType="Information";
+                     break;
+            case 3:  myEventType="Warning";
+                     break;
+            default: break;
+         }
 
-            // Create the event source if it does not exist.
-            if(!EventLog.SourceExists(sourceName))
+            EventLogEntryCollection myLogEntryCollection=myEventLog.Entries;
+            int myCount =myLogEntryCollection.Count;
+            // Iterate through all 'EventLogEntry' instances in 'EventLog'.
+            for(int i=myCount-1;i>0;i--)
             {
-                // Create a new event source for the custom event log
-                // named "myNewLog."  
-
-                myLogName = "myNewLog";
-                EventSourceCreationData mySourceData = new EventSourceCreationData(sourceName, myLogName);
-
-                // Set the message resource file that the event source references.
-                // All event resource identifiers correspond to text in this file.
-                if (!System.IO.File.Exists(messageFile))
-                {
-                    Console.WriteLine("Input message resource file does not exist - {0}", 
-                        messageFile);
-                    messageFile = "";
-                }
-                else 
-                {
-                    // Set the specified file as the resource
-                    // file for message text, category text, and 
-                    // message parameter strings.  
-
-                    mySourceData.MessageResourceFile = messageFile;
-                    mySourceData.CategoryResourceFile = messageFile;
-                    mySourceData.CategoryCount = CategoryCount;
-                    mySourceData.ParameterResourceFile = messageFile;
-
-                    Console.WriteLine("Event source message resource file set to {0}", 
-                        messageFile);
-                }
-
-                Console.WriteLine("Registering new source for event log.");
-                EventLog.CreateEventSource(mySourceData);
-            }
-            else
-            {
-                // Get the event log corresponding to the existing source.
-                myLogName = EventLog.LogNameFromSourceName(sourceName,".");
+               EventLogEntry myLogEntry = myLogEntryCollection[i];
+               // Select the entry having desired EventType.
+               if(myLogEntry.EntryType.ToString().Equals(myEventType))
+               {
+                  // Display Source of the event.
+                  Console.WriteLine(myLogEntry.Source
+                     +" was the source of last event of type "
+                     +myLogEntry.EntryType);
+                  return;
+               }
             }
 
-            // Register the localized name of the event log.
-            // For example, the actual name of the event log is "myNewLog," but
-            // the event log name displayed in the Event Viewer might be
-            // "Sample Application Log" or some other application-specific
-            // text.
-            EventLog myEventLog = new EventLog(myLogName, ".", sourceName);
-            
-            if (messageFile.Length > 0)
-            {
-                myEventLog.RegisterDisplayName(messageFile, DisplayNameMsgId);
-            }
-        }
+         }
+   }

@@ -19,22 +19,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Input.FocusManager.AddGotFocusHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-internalonly: False
----
-
----
 uid: System.Windows.Input.FocusManager.GetIsFocusScope(System.Windows.DependencyObject)
-internalonly: False
----
-
----
-uid: System.Windows.Input.FocusManager.RemoveGotFocusHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
-internalonly: False
----
-
----
-uid: System.Windows.Input.FocusManager.AddLostFocusHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
 internalonly: False
 ---
 
@@ -60,10 +45,5 @@ internalonly: False
 
 ---
 uid: System.Windows.Input.FocusManager.GetFocusedElement(System.Windows.DependencyObject)
-internalonly: False
----
-
----
-uid: System.Windows.Input.FocusManager.RemoveLostFocusHandler(System.Windows.DependencyObject,System.Windows.RoutedEventHandler)
 internalonly: False
 ---

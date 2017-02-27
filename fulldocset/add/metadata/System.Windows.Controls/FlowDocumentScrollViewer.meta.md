@@ -4,22 +4,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.FlowDocumentScrollViewer.IsSelectionActiveProperty
-internalonly: False
----
-
----
 uid: System.Windows.Controls.FlowDocumentScrollViewer.CanDecreaseZoom
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Controls.FlowDocumentScrollViewer.SelectionOpacityProperty
-internalonly: False
----
-
----
-uid: System.Windows.Controls.FlowDocumentScrollViewer.IsInactiveSelectionHighlightEnabledProperty
 internalonly: False
 ---
 
@@ -144,11 +134,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.FlowDocumentScrollViewer.IsSelectionActive
-internalonly: False
----
-
----
 uid: System.Windows.Controls.FlowDocumentScrollViewer.CanDecreaseZoomProperty
 internalonly: False
 ---
@@ -165,11 +150,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.FlowDocumentScrollViewer.ZoomIncrement
-internalonly: False
----
-
----
-uid: System.Windows.Controls.FlowDocumentScrollViewer.IsInactiveSelectionHighlightEnabled
 internalonly: False
 ---
 

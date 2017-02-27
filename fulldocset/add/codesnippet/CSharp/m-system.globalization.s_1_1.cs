@@ -1,63 +1,73 @@
-// This code example demonstrates the 
-// GetSortKey() and ToString() methods, and the 
-// OriginalString and KeyData properties of the 
-// System.Globalization.SortKey class.
-
 using System;
 using System.Globalization;
 
-class Sample 
-{
-    public static void Main() 
-    {
-    CompareInfo cmpi = null;
-    SortKey sk1 = null;
-    SortKey sk2 = null;
-    string s = "ABC";
-    string ignoreCase = "Ignore case";
-    string useCase    = "Use case   ";
 
-// Get a CompareInfo object for the English-Great Britain culture.
-    cmpi = CompareInfo.GetCompareInfo("en-GB");
+public class SamplesSortKey  {
 
-// Get a sort key that ignores case for the specified string.
-    sk1 = cmpi.GetSortKey(s, CompareOptions.IgnoreCase);
-// Get a sort key with no compare option for the specified string.
-    sk2 = cmpi.GetSortKey(s);
+   public static void Main()  {
 
-// Display the original string.
-    Console.WriteLine("Original string: \"{0}\"", sk1.OriginalString);
-    Console.WriteLine();
+      // Creates two identical en-US cultures and one de-DE culture.
+      CompareInfo myComp_enUS1 = new CultureInfo("en-US",false).CompareInfo;
+      CompareInfo myComp_enUS2 = new CultureInfo("en-US",false).CompareInfo;
+      CompareInfo myComp_deDE = new CultureInfo("de-DE",false).CompareInfo;
 
-// Display the the string equivalent of the two sort keys.
-    Console.WriteLine("CompareInfo (culture) name: {0}", cmpi.Name);
-    Console.WriteLine("ToString - {0}: \"{1}\"", ignoreCase, sk1.ToString());
-    Console.WriteLine("ToString - {0}: \"{1}\"", useCase, sk2.ToString());
-    Console.WriteLine();
+      // Creates the base SortKey to compare with all the others.
+      SortKey mySK1 = myComp_enUS1.GetSortKey( "cant", CompareOptions.StringSort );
+      // Creates a SortKey that is derived exactly the same way as the base SortKey.
+      SortKey mySK2 = myComp_enUS1.GetSortKey( "cant", CompareOptions.StringSort );
+      // Creates a SortKey that uses word sort, which is the default sort.
+      SortKey mySK3 = myComp_enUS1.GetSortKey( "cant" );
+      // Creates a SortKey for a different string.
+      SortKey mySK4 = myComp_enUS1.GetSortKey( "can't", CompareOptions.StringSort );
+      // Creates a SortKey from a different CompareInfo with the same culture.
+      SortKey mySK5 = myComp_enUS2.GetSortKey( "cant", CompareOptions.StringSort );
+      // Creates a SortKey from a different CompareInfo with a different culture.
+      SortKey mySK6 = myComp_deDE.GetSortKey( "cant", CompareOptions.StringSort );
 
-// Display the key data of the two sort keys.
-    DisplayKeyData(sk1, ignoreCase);
-    DisplayKeyData(sk2, useCase);
-    }
+      // Compares the base SortKey with itself.
+      Console.WriteLine( "Comparing the base SortKey with itself: {0}", mySK1.Equals( mySK1 ) );
+      Console.WriteLine();
 
-    public static void DisplayKeyData(SortKey sk, string title)
-    {
-    Console.Write("Key Data - {0}: ", title);
-    foreach (byte keyDatum in sk.KeyData)
-        Console.Write("0x{0} ", (uint)keyDatum);
-    Console.WriteLine();
-    }
+      // Prints the header for the table.
+      Console.WriteLine( "CompareInfo   Culture      OriginalString   CompareOptions   Equals()" );
+
+      // Compares the base SortKey with a SortKey that is
+      //    created from the same CompareInfo with the same string and the same CompareOptions.
+      Console.WriteLine( "same          same         same             same             {0}", mySK1.Equals( mySK2 ) );
+
+      // Compares the base SortKey with a SortKey that is 
+      //    created from the same CompareInfo with the same string but with different CompareOptions.
+      Console.WriteLine( "same          same         same             different        {0}", mySK1.Equals( mySK3 ) );
+      
+      // Compares the base SortKey with a SortKey that is 
+      //    created from the same CompareInfo with the different string 
+      //    but with the same CompareOptions.
+      Console.WriteLine( "same          same         different        same             {0}", mySK1.Equals( mySK4 ) );
+
+      // Compares the base SortKey with a SortKey that is 
+      //    created from a different CompareInfo (same culture) 
+      //    with the same string and the same CompareOptions.
+      Console.WriteLine( "different     same         same             same             {0}", mySK1.Equals( mySK5 ) );
+
+      // Compares the base SortKey with a SortKey that is 
+      //    created from a different CompareInfo (different culture) 
+      //    with the same string and the same CompareOptions.
+      Console.WriteLine( "different     different    same             same             {0}", mySK1.Equals( mySK6 ) );
+
+   }
+
 }
+
 /*
-This code example produces the following results:
+This code produces the following output.
 
-Original string: "ABC"
+Comparing the base SortKey with itself: True
 
-CompareInfo (culture) name: en-GB
-ToString - Ignore case: "SortKey - 2057, IgnoreCase, ABC"
-ToString - Use case   : "SortKey - 2057, None, ABC"
-
-Key Data - Ignore case: 0x14 0x2 0x14 0x9 0x14 0x10 0x1 0x1 0x1 0x1 0x0
-Key Data - Use case   : 0x14 0x2 0x14 0x9 0x14 0x10 0x1 0x1 0x18 0x18 0x18 0x1 0x1 0x0
+CompareInfo   Culture      OriginalString   CompareOptions   Equals()
+same          same         same             same             True
+same          same         same             different        False
+same          same         different        same             False
+different     same         same             same             True
+different     different    same             same             False
 
 */

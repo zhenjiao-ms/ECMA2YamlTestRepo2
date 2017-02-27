@@ -1,157 +1,171 @@
-//
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
 using System;
+using System.Security;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Xml;
 
-public class SignVerifyEnvelope
+class SignatureDescriptionImpl
 {
-
-    public static void Main(String[] args)
+    [STAThread]
+    static void Main(string[] args)
     {
-        try
-        {
-            // Generate a signing key.
-            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+        // Create a digital signature based on RSA encryption.
+        SignatureDescription rsaSignature = CreateRSAPKCS1Signature();
+        ShowProperties(rsaSignature);
 
-            // Create an XML file to sign.
-            CreateSomeXml("Example.xml");
-            Console.WriteLine("New XML file created."); 
+        // Create a digital signature based on DSA encryption.
+        SignatureDescription dsaSignature = CreateDSASignature();
+        ShowProperties(dsaSignature);
 
-            // Sign the XML that was just created and save it in a 
-            // new file.
-            SignXmlFile("Example.xml", "SignedExample.xml", Key);
-            Console.WriteLine("XML file signed."); 
+        // Create a HashAlgorithm using the digest algorithm of the signature.
+        HashAlgorithm hashAlgorithm = dsaSignature.CreateDigest();
+        Console.WriteLine("\nHash algorithm for the DigestAlgorithm property:"
+            + " " + hashAlgorithm.ToString());
 
-            // Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...");
-            bool result = VerifyXmlFile("SignedExample.xml");
+        // Create an AsymmetricSignatureFormatter instance using the DSA key.
+        DSA dsa = DSA.Create();
+        AsymmetricSignatureFormatter asymmetricFormatter =
+            CreateDSAFormatter(dsa);
+        
+        // Create an AsymmetricSignatureDeformatter instance using the
+        // DSA key.
+        AsymmetricSignatureDeformatter asymmetricDeformatter =
+            CreateDSADeformatter(dsa);
 
-            // Display the results of the signature verification to \
-            // the console.
-            if(result)
-            {
-                Console.WriteLine("The XML signature is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The XML signature is not valid.");
-            }
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine(e.Message);
-        }
+        Console.WriteLine("This sample completed successfully; " +
+            "press Enter to exit.");
+        Console.ReadLine();
     }
 
-    // Sign an XML file and save the signature in a new file.
-    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
+    // Create a SignatureDescription for RSA encryption.
+    private static SignatureDescription CreateRSAPKCS1Signature()
     {
-        // Create a new XML document.
-        XmlDocument doc = new XmlDocument();
+        SignatureDescription signatureDescription = 
+            new SignatureDescription();
 
-        // Format the document to ignore white spaces.
-        doc.PreserveWhitespace = false;
+        // Set the key algorithm property for RSA encryption.
+        signatureDescription.KeyAlgorithm =
+            "System.Security.Cryptography.RSACryptoServiceProvider";
 
-        // Load the passed XML file using it's name.
-        doc.Load(new XmlTextReader(FileName));
+        // Set the digest algorithm for RSA encryption using the
+        // SHA1 provider.
+        signatureDescription.DigestAlgorithm =
+            "System.Security.Cryptography.SHA1CryptoServiceProvider";
 
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml(doc);
+        // Set the formatter algorithm with the RSAPKCS1 formatter.
+        signatureDescription.FormatterAlgorithm =
+            "System.Security.Cryptography.RSAPKCS1SignatureFormatter";
 
-        // Add the key to the SignedXml document. 
-        signedXml.SigningKey = Key;
+        // Set the formatter algorithm with the RSAPKCS1 deformatter.
+        signatureDescription.DeformatterAlgorithm =
+            "System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
 
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-        reference.Uri = "";
-
-        // Add an enveloped transformation to the reference.
-        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
-        reference.AddTransform(env);
-
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-		
-        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
-        signedXml.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Append the element to the XML document.
-        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
-		
-		
-        if (doc.FirstChild is XmlDeclaration)  
-        {
-            doc.RemoveChild(doc.FirstChild);
-        }
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
-        doc.WriteTo(xmltw);
-        xmltw.Close();
-    }
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyXmlFile(String Name)
-    {
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
-
-        // Format using white spaces.
-        xmlDocument.PreserveWhitespace = true;
-
-        // Load the passed XML file into the document. 
-        xmlDocument.Load(Name);
-
-        // Create a new SignedXml object and pass it
-        // the XML document class.
-        SignedXml signedXml = new SignedXml(xmlDocument);
-
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
-
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
-
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
+        return signatureDescription;
     }
 
-    // Create example data to sign.
-    public static void CreateSomeXml(string FileName)
+    // Create a SignatureDescription using a constructed SecurityElement for 
+    // DSA encryption.
+    private static SignatureDescription CreateDSASignature()
     {
-        // Create a new XmlDocument object.
-        XmlDocument document = new XmlDocument();
+        SecurityElement securityElement = new SecurityElement("DSASignature");
 
-        // Create a new XmlNode object.
-        XmlNode  node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
-		
-        // Add some text to the node.
-        node.InnerText = "Example text to be signed.";
+        // Create new security elements for the four algorithms.
+        securityElement.AddChild(new SecurityElement(
+            "Key",
+            "System.Security.Cryptography.DSACryptoServiceProvider"));
+        securityElement.AddChild(new SecurityElement(
+            "Digest",
+            "System.Security.Cryptography.SHA1CryptoServiceProvider")); 
+        securityElement.AddChild(new SecurityElement(
+            "Formatter",
+            "System.Security.Cryptography.DSASignatureFormatter"));
+        securityElement.AddChild(new SecurityElement(
+            "Deformatter",
+            "System.Security.Cryptography.DSASignatureDeformatter"));
 
-        // Append the node to the document.
-        document.AppendChild(node);
+        SignatureDescription signatureDescription = 
+            new SignatureDescription(securityElement);
 
-        // Save the XML document to the file name specified.
-        XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false));
-        document.WriteTo(xmltw);
-        xmltw.Close();
+        return signatureDescription;
+    }
+
+    // Create a signature formatter for DSA encryption.
+    private static AsymmetricSignatureFormatter CreateDSAFormatter(DSA dsa)
+    {
+        // Create a DSA signature formatter for encryption.
+        SignatureDescription signatureDescription = 
+            new SignatureDescription();
+        signatureDescription.FormatterAlgorithm =
+            "System.Security.Cryptography.DSASignatureFormatter";
+
+        AsymmetricSignatureFormatter asymmetricFormatter =
+            signatureDescription.CreateFormatter(dsa);
+
+        Console.WriteLine("\nCreated formatter : " + 
+            asymmetricFormatter.ToString());
+        return asymmetricFormatter;
+    }
+
+    // Create a signature deformatter for DSA decryption.
+    private static AsymmetricSignatureDeformatter CreateDSADeformatter(
+        DSA dsa)
+    {
+        // Create a DSA signature deformatter to verify the signature.
+        SignatureDescription signatureDescription = 
+            new SignatureDescription();
+        signatureDescription.DeformatterAlgorithm =
+            "System.Security.Cryptography.DSASignatureDeformatter";
+
+        AsymmetricSignatureDeformatter asymmetricDeformatter =
+            signatureDescription.CreateDeformatter(dsa);
+
+        Console.WriteLine("\nCreated deformatter : " + 
+            asymmetricDeformatter.ToString());
+        return asymmetricDeformatter;
+    }
+
+    // Display to the console the properties of the specified
+    // SignatureDescription.
+    private static void ShowProperties(
+        SignatureDescription signatureDescription)
+    {
+        // Retrieve the class path for the specified SignatureDescription.
+        string classDescription = signatureDescription.ToString();
+
+        string deformatterAlgorithm = 
+            signatureDescription.DeformatterAlgorithm;
+        string formatterAlgorithm = signatureDescription.FormatterAlgorithm;
+        string digestAlgorithm = signatureDescription.DigestAlgorithm;
+        string keyAlgorithm = signatureDescription.KeyAlgorithm;
+
+        Console.WriteLine("\n** " + classDescription + " **");
+        Console.WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm);
+        Console.WriteLine("FormatterAlgorithm : " + formatterAlgorithm);
+        Console.WriteLine("DigestAlgorithm : " + digestAlgorithm);
+        Console.WriteLine("KeyAlgorithm : " + keyAlgorithm);
     }
 }
+//
+// This sample produces the following output:
+// 
+// ** System.Security.Cryptography.SignatureDescription **
+// DeformatterAlgorithm : System.Security.Cryptography.
+// RSAPKCS1SignatureDeformatter
+// 
+// FormatterAlgorithm : System.Security.Cryptography.
+// RSAPKCS1SignatureFormatter
+// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
+// 
+// ** System.Security.Cryptography.SignatureDescription **
+// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
+// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
+// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
+// 
+// Hash algorithm for the DigestAlgorithm property: 
+// System.Security.Cryptography.SH
+// A1CryptoServiceProvider
+// 
+// Created formatter : System.Security.Cryptography.DSASignatureFormatter
+// 
+// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
+// This sample completed successfully; press Enter to exit.

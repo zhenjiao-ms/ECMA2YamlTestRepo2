@@ -1,11 +1,18 @@
- private void PrintIndexItem2() {
-    // Creates a new collection and assigns it the properties for button1.
-    PropertyDescriptorCollection properties =
-        TypeDescriptor.GetProperties(button1);
- 
-    // Sets a PropertyDescriptor to the specific property.
-    PropertyDescriptor myProperty = properties["Opacity"];
- 
-    // Prints the display name for the property.
-    textBox1.Text = myProperty.DisplayName;
- }
+using System;
+using System.Web.DynamicData;
+using System.ComponentModel.DataAnnotations;
+
+[MetadataType(typeof(ProductMetadata))]
+public partial class Product 
+{
+
+}
+
+public partial class ProductMetadata
+{
+    [UIHint("UnitsInStock")]
+    [Range(100, 10000, 
+    ErrorMessage = "Units in stock should be between {1} and {2}.")]
+    public object UnitsInStock;
+
+}

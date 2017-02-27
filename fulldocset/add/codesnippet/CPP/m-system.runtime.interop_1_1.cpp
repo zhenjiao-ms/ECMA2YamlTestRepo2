@@ -1,3 +1,3 @@
-    // Show the path where the CLR was loaded from.
-    Console::WriteLine("Runtime directory: {0}",
-        RuntimeEnvironment::GetRuntimeDirectory());
+    // Show the CLR's version number.
+    Console::WriteLine("System version: {0}",
+        RuntimeEnvironment::GetSystemVersion());

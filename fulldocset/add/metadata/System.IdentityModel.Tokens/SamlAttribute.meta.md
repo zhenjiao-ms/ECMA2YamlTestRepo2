@@ -19,22 +19,12 @@ internalonly: False
 ---
 
 ---
-uid: System.IdentityModel.Tokens.SamlAttribute.OriginalIssuer
-internalonly: False
----
-
----
 uid: System.IdentityModel.Tokens.SamlAttribute.MakeReadOnly
 internalonly: False
 ---
 
 ---
 uid: System.IdentityModel.Tokens.SamlAttribute.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
-internalonly: False
----
-
----
-uid: System.IdentityModel.Tokens.SamlAttribute.AttributeValueXsiType
 internalonly: False
 ---
 

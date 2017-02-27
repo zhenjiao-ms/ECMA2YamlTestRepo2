@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectPropertyInstance.IsImmutable
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectPropertyInstance.ToString
 internalonly: False
 ---

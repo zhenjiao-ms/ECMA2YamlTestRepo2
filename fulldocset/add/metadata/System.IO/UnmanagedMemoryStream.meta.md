@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.IO.UnmanagedMemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
-internalonly: False
----
-
----
 uid: System.IO.UnmanagedMemoryStream.CanSeek
 internalonly: False
 ---
@@ -50,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.IO.UnmanagedMemoryStream.Initialize(System.Byte*,System.Int64,System.Int64,System.IO.FileAccess)
-internalonly: False
----
-
----
-uid: System.IO.UnmanagedMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -115,11 +105,6 @@ internalonly: False
 
 ---
 uid: System.IO.UnmanagedMemoryStream.#ctor(System.Byte*,System.Int64)
-internalonly: False
----
-
----
-uid: System.IO.UnmanagedMemoryStream.FlushAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 

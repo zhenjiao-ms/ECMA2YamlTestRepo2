@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.RichTextBox.OnDpiChanged(System.Windows.DpiScale,System.Windows.DpiScale)
-internalonly: False
----
-
----
 uid: System.Windows.Controls.RichTextBox.GetSpellingErrorRange(System.Windows.Documents.TextPointer)
 internalonly: False
 ---

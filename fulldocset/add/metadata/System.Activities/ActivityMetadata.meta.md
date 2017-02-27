@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.ActivityMetadata.AddImportedChild(System.Activities.Activity,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.ActivityMetadata.SetImportedDelegatesCollection(System.Collections.ObjectModel.Collection{System.Activities.ActivityDelegate})
 internalonly: False
 ---
@@ -50,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.Activities.ActivityMetadata.AddVariable(System.Activities.Variable)
-internalonly: False
----
-
----
-uid: System.Activities.ActivityMetadata.AddImportedDelegate(System.Activities.ActivityDelegate,System.Object)
 internalonly: False
 ---
 
@@ -105,11 +95,6 @@ internalonly: False
 
 ---
 uid: System.Activities.ActivityMetadata.SetImportedChildrenCollection(System.Collections.ObjectModel.Collection{System.Activities.Activity})
-internalonly: False
----
-
----
-uid: System.Activities.ActivityMetadata.AddVariable(System.Activities.Variable,System.Object)
 internalonly: False
 ---
 

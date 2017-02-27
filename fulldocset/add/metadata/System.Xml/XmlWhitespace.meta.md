@@ -44,11 +44,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Xml.XmlWhitespace.PreviousText
-internalonly: False
----
-
----
 uid: System.Xml.XmlWhitespace.WriteContentTo(System.Xml.XmlWriter)
 internalonly: False
 ---

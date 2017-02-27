@@ -1,11 +1,10 @@
-        ' This example method creates a ComponentRenameEventArgs using the specified arguments.
-        ' Typically, this type of event args is created by a design mode subsystem.  
-        Public Function CreateComponentRenameEventArgs(ByVal component As Object, ByVal oldName As String, ByVal newName As String) As ComponentRenameEventArgs
-            Dim args As New ComponentRenameEventArgs(component, oldName, newName)
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        TextBox1.Text = "changed"
+        AddHandler System.ComponentModel.TypeDescriptor.Refreshed, AddressOf OnRefreshed
+        System.ComponentModel.TypeDescriptor.GetProperties(TextBox1)
+        System.ComponentModel.TypeDescriptor.Refresh(TextBox1)
+    End Sub
 
-            ' The component that was renamed:          args.Component
-            ' The previous name of the component:      args.OldName
-            ' The new name of the component:           args.NewName            
-
-            Return args
-        End Function
+    Private Sub OnRefreshed(ByVal e As System.ComponentModel.RefreshEventArgs)
+        Console.WriteLine(e.ComponentChanged.ToString())
+    End Sub

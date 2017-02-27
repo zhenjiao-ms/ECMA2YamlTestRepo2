@@ -1,24 +1,17 @@
-Imports System
+Imports System.Drawing
+Imports System.IO
 Imports System.Resources
-Imports System.Collections
-Imports Microsoft.VisualBasic
 
-Class EnumerateResources
-   
-   Public Shared Sub Main()
-      ' Create a ResourceSet for the file items.resources.
-      Dim rs As New ResourceSet("items.resources")      
-      
-      ' Create an IDictionaryEnumerator to read the data in the ResourceSet.
-      Dim id As IDictionaryEnumerator = rs.GetEnumerator()
-      
-      ' Iterate through the ResourceSet and display the contents to the console. 
-      While id.MoveNext()
-         Console.WriteLine(ControlChars.NewLine + "[{0}] " + ControlChars.Tab + "{1}", id.Key, id.Value)
-      End While 
-
-      rs.Close()
-
+Module Example
+   Public Sub Main()
+      ' Bitmap as stream
+      Dim bitmapStream As New MemoryStream()
+      Dim bmp As New Bitmap(".\\AppImage.jpg")
+      bmp.Save(bitmapStream, Imaging.ImageFormat.Jpeg)
+          
+      Using rw As New ResourceWriter(".\UIImages.resources")
+         rw.AddResource("Bitmap", bitmapStream)
+         ' Add other resources.
+      End Using
    End Sub
-
-End Class
+End Module

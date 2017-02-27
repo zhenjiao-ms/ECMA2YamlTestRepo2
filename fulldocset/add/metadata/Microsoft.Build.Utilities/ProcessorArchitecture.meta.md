@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Utilities.ProcessorArchitecture.ARM
-internalonly: False
----
-
----
 uid: Microsoft.Build.Utilities.ProcessorArchitecture.IA64
 internalonly: False
 ---

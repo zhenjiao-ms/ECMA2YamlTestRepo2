@@ -1,39 +1,25 @@
-  Public Class NorthwindEmployee
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+Imports System.ComponentModel
 
-    Public Sub New()
-    End Sub 'New 
+<MetadataType(GetType(ProductMetaData))> _
+Partial Public Class Product
 
-    Private _employeeID As Integer
-    <DataObjectFieldAttribute(True, True, False)> _
-    Public Property EmployeeID() As Integer
-      Get
-        Return _employeeID
-      End Get
-      Set(ByVal value As Integer)
-        _employeeID = value
-      End Set
-    End Property
+End Class
 
-    Private _firstName As String = String.Empty
-    <DataObjectFieldAttribute(False, False, False)> _
-    Public Property FirstName() As String
-      Get
-        Return _firstName
-      End Get
-      Set(ByVal value As String)
-        _firstName = value
-      End Set
-    End Property
 
-    Private _lastName As String = String.Empty
-    <DataObjectFieldAttribute(False, False, False)> _
-    Public Property LastName() As String
-      Get
-        Return _lastName
-      End Get
-      Set(ByVal value As String)
-        _lastName = value
-      End Set
-    End Property
+Public Class ProductMetaData
+    
+    <Range(10, 1000, _
+           ErrorMessage:="Value for {0} must be between {1} and {2}.")> _
+    Public Weight As Object
 
-  End Class 'NorthwindEmployee
+    <Range(300, 3000)> _
+    Public ListPrice As Object
+
+    <Range(GetType(DateTime), "1/2/2004", "3/4/2004", _
+           ErrorMessage:="Value for {0} must be between {1} and {2}")> _
+    Public SellEndDate As Object
+
+End Class

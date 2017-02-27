@@ -1,130 +1,60 @@
 #using <System.dll>
 
 using namespace System;
-using namespace System::Globalization;
+using namespace System::Collections;
 using namespace System::Diagnostics;
-
-[STAThread]
 int main()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   
-   EventSourceCreationData ^ mySourceData = gcnew EventSourceCreationData( "","" );
-   bool registerSource = true;
-   
-   // Process input parameters.
-   if ( args->Length > 1 )
+   try
    {
+      String^ myLogName = "MyNewLog";
       
-      // Require at least the source name.
-      mySourceData->Source = args[ 1 ];
-      if ( args->Length > 2 )
+      // Check if the source exists.
+      if (  !EventLog::SourceExists( "MySource" ) )
       {
-         mySourceData->LogName = args[ 2 ];
-      }
-
-      if ( args->Length > 3 )
-      {
-         mySourceData->MachineName = args[ 3 ];
-      }
-
-      if ( (args->Length > 4) && (args[ 4 ]->Length > 0) )
-      {
-         mySourceData->MessageResourceFile = args[ 4 ];
-      }
-   }
-   else
-   {
-      
-      // Display a syntax help message.
-      Console::WriteLine( "Input:" );
-      Console::WriteLine( " source [event log] [machine name] [resource file]" );
-      registerSource = false;
-   }
-
-   
-   // Set defaults for parameters missing input.
-   if ( mySourceData->MachineName->Length == 0 )
-   {
-      
-      // Default to the local computer.
-      mySourceData->MachineName = ".";
-   }
-
-   if ( mySourceData->LogName->Length == 0 )
-   {
-      
-      // Default to the Application log.
-      mySourceData->LogName = "Application";
-   }
-
-   
-   // Determine if the source exists on the specified computer.
-   if (  !EventLog::SourceExists( mySourceData->Source, mySourceData->MachineName ) )
-   {
-      
-      // The source does not exist.  
-      // Verify that the message file exists
-      // and the event log is local.
-      if ( (mySourceData->MessageResourceFile != nullptr) && (mySourceData->MessageResourceFile->Length > 0) )
-      {
-         if ( mySourceData->MachineName->Equals( "." ) )
-         {
-            if (  !System::IO::File::Exists( mySourceData->MessageResourceFile ) )
-            {
-               Console::WriteLine( "File {0} not found - message file not set for source.", mySourceData->MessageResourceFile );
-               registerSource = false;
-            }
-         }
-         else
-         {
-            
-            // For simplicity, do not allow setting the message
-            // file for a remote event log.  To set the message
-            // for a remote event log, and for source registration,
-            // the file path should be specified with system-wide
-            // environment variables that are valid on the remote
-            // computer, such as
-            // "%SystemRoot%\system32\myresource.dll".
-            Console::WriteLine( "Message resource file ignored for remote event log." );
-            registerSource = false;
-         }
-      }
-   }
-   else
-   {
-      
-      // Do not register the source, it already exists.
-      registerSource = false;
-      
-      // Get the event log corresponding to the existing source.
-      String^ sourceLog;
-      sourceLog = EventLog::LogNameFromSourceName( mySourceData->Source, mySourceData->MachineName );
-      
-      // Determine if the event source is registered for the 
-      // specified log.
-      if ( sourceLog->ToUpper( CultureInfo::InvariantCulture ) != mySourceData->LogName->ToUpper( CultureInfo::InvariantCulture ) )
-      {
-         
-         // An existing source is registered 
-         // to write to a different event log.
-         Console::WriteLine( "Warning: source {0} is already registered to write to event log {1}", mySourceData->Source, sourceLog );
+         //Create source.
+         EventLog::CreateEventSource( "MySource", myLogName );
+         Console::WriteLine( "Creating EventSource" );
       }
       else
+            myLogName = EventLog::LogNameFromSourceName( "MySource", "." );
+      
+      // Get the EventLog associated if the source exists.
+      // Create an EventLog instance and assign its source.
+      EventLog^ myEventLog2 = gcnew EventLog;
+      myEventLog2->Source = "MySource";
+      
+      // Write an informational entry to the event log.
+      myEventLog2->WriteEntry( "Successfully created a new Entry in the Log" );
+      myEventLog2->Close();
+      
+      // Create a new EventLog Object*.
+      EventLog^ myEventLog1 = gcnew EventLog;
+      myEventLog1->Log = myLogName;
+      
+      // Obtain the Log Entries of S"MyNewLog".
+      EventLogEntryCollection^ myEventLogEntryCollection = myEventLog1->Entries;
+      myEventLog1->Close();
+      Console::WriteLine( "The number of entries in 'MyNewLog' = {0}", myEventLogEntryCollection->Count );
+      
+      // Display the 'Message' property of EventLogEntry.
+      for ( int i = 0; i < myEventLogEntryCollection->Count; i++ )
       {
-         
-         // The source is already registered 
-         // to write to the specified event log.
-         Console::WriteLine( "Source {0} already registered to write to event log {1}", mySourceData->Source, sourceLog );
+         Console::WriteLine( "The Message of the EventLog is : {0}", myEventLogEntryCollection[ i ]->Message );
+      }
+      
+      // Copy the EventLog entries to Array of type EventLogEntry.
+      array<EventLogEntry^>^myEventLogEntryArray = gcnew array<EventLogEntry^>(myEventLogEntryCollection->Count);
+      myEventLogEntryCollection->CopyTo( myEventLogEntryArray, 0 );
+      IEnumerator^ myEnumerator = myEventLogEntryArray->GetEnumerator();
+      while ( myEnumerator->MoveNext() )
+      {
+         EventLogEntry^ myEventLogEntry = safe_cast<EventLogEntry^>(myEnumerator->Current);
+         Console::WriteLine( "The LocalTime the Event is generated is {0}", myEventLogEntry->TimeGenerated );
       }
    }
-
-   if ( registerSource )
+   catch ( Exception^ e ) 
    {
-      
-      // Register the new event source for the specified event log.
-      Console::WriteLine( "Registering new source {0} for event log {1}.", mySourceData->Source, mySourceData->LogName );
-      EventLog::CreateEventSource( mySourceData );
-      Console::WriteLine( "Event source was registered successfully!" );
+      Console::WriteLine( "Exception: {0}", e->Message );
    }
 }

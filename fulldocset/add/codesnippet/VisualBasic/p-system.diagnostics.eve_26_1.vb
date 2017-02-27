@@ -1,46 +1,53 @@
-   Imports System
-   Imports System.Configuration.Install
-   Imports System.Diagnostics
-   Imports System.ComponentModel
+        Public Shared Sub CreateEventSourceSample1(ByVal messageFile As String)
 
-   <RunInstaller(True)>  _
-   Public Class SampleEventLogInstaller
-      Inherits Installer
+            Dim myLogName As String
+            Dim sourceName As String = "SampleApplicationSource"
 
-      Private myEventLogInstaller As EventLogInstaller
+            ' Create the event source if it does not exist.
+            If Not EventLog.SourceExists(sourceName)
+            
+                ' Create a new event source for the custom event log
+                ' named "myNewLog."  
 
-      Public Sub New()
+                myLogName = "myNewLog"
+                Dim mySourceData As EventSourceCreationData = New EventSourceCreationData(sourceName, myLogName)
 
-         ' Create an instance of an EventLogInstaller.
-         myEventLogInstaller = New EventLogInstaller()
+                ' Set the message resource file that the event source references.
+                ' All event resource identifiers correspond to text in this file.
+                If Not System.IO.File.Exists(messageFile)
 
-         ' Set the source name of the event log.
-         myEventLogInstaller.Source = "ApplicationEventSource"
+                    Console.WriteLine("Input message resource file does not exist - {0}", _
+                        messageFile)
+                    messageFile = ""
+                Else 
+                    ' Set the specified file as the resource
+                    ' file for message text, category text and 
+                    ' message parameters strings.
 
-         ' Set the event log into which the source writes entries.
-         myEventLogInstaller.Log = "MyCustomLog"
+                    mySourceData.MessageResourceFile = messageFile
+                    mySourceData.CategoryResourceFile = messageFile
+                    mySourceData.CategoryCount = CategoryCount
+                    mySourceData.ParameterResourceFile = messageFile
 
-         ' Set the resource file for the event log.
-         ' The message strings are defined in EventLogMsgs.mc; the message
-         ' identifiers used in the application must match those defined in the
-         ' corresponding message resource file. The messages must be built
-         ' into a Win32 resource library and copied to the target path on the
-         ' system.
+                    Console.WriteLine("Event source message resource file set to {0}", _
+                        messageFile)
+                End If
 
-         myEventLogInstaller.CategoryResourceFile = _
-             Environment.SystemDirectory + "\eventlogmsgs.dll"
-         myEventLogInstaller.CategoryCount = 3
-         myEventLogInstaller.MessageResourceFile = _
-             Environment.SystemDirectory + "\eventlogmsgs.dll"
-         myEventLogInstaller.ParameterResourceFile = _
-             Environment.SystemDirectory + "\eventlogmsgs.dll"
+                Console.WriteLine("Registering new source for event log.")
+                EventLog.CreateEventSource(mySourceData)
+            Else
+                ' Get the event log corresponding to the existing source.
+                myLogName = EventLog.LogNameFromSourceName(sourceName,".")
+            End If
 
-         ' Add myEventLogInstaller to the installer collection.
-         Installers.Add(myEventLogInstaller)
-
-      End Sub 'New
-
-      Public Shared Sub Main()
-        Console.WriteLine("Usage: InstallUtil.exe [<install>.exe | <install>.dll]")
-      End Sub 'Main
-   End Class 'MyEventLogInstaller
+            ' Register the localized name of the event log.
+            ' For example, the actual name of the event log is "myNewLog," but
+            ' the event log name displayed in the Event Viewer might be
+            ' "Sample Application Log" or some other application-specific
+            ' text.
+            Dim myEventLog As EventLog = New EventLog(myLogName, ".", sourceName)
+            
+            If messageFile.Length > 0
+                myEventLog.RegisterDisplayName(messageFile, DisplayNameMsgId)
+            End If
+        End Sub

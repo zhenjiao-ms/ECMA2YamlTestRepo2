@@ -1,19 +1,40 @@
 Imports System
-Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
+Imports System.Xml
+Imports System.IO
 
 
+'/ This sample used the EncryptedData class to create a EncryptedData element
+'/ and write it to an XML file.
+Module EncryptedDataSample1
 
-Public Class MemoryProtectionSample
+    Sub Main()
+        ' Create a new CipherData object.
+        Dim cd As New CipherData
+        ' Assign a byte array to the CipherValue.
+        cd.CipherValue = New Byte(7) {}
+        ' Create a new EncryptedData object.
+        Dim ed As New EncryptedData
+        'Add an encryption method to the object.
+        ed.Id = "ED"
+        ed.EncryptionMethod = New EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc")
+        ed.CipherData = cd
 
-    Public Shared Sub Main()
-        ' Create the original data to be encrypted (The data length should be a multiple of 16).
-        Dim secret As Byte() = {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4}
+        'Add key information to the object.
+        Dim ki As New KeyInfo
+        ki.AddClause(New KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"))
+        ed.KeyInfo = ki
 
-        ' Encrypt the data in memory. The result is stored in the same same array as the original data.
-        ProtectedMemory.Protect(secret, MemoryProtectionScope.SameLogon)
+        ' Create new XML document and put encrypted data into it.
+        Dim doc As New XmlDocument
+        Dim encryptionPropertyElement As XmlElement = CType(doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl), XmlElement)
+        Dim ep As New EncryptionProperty(encryptionPropertyElement)
+        ed.AddProperty(ep)
 
-        ' Decrypt the data in memory and store in the original array.
-        ProtectedMemory.Unprotect(secret, MemoryProtectionScope.SameLogon)
-
+        ' Output the resulting XML information into a file.
+        Dim path As String = "c:\test\MyTest.xml"
+        File.WriteAllText(path, ed.GetXml().OuterXml)
+        'End Sub 'Main 'Console.WriteLine(ed.GetXml().OuterXml);
     End Sub
-End Class
+
+End Module

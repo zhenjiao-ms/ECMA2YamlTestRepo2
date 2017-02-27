@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.PrintDialog.CurrentPageEnabled
-internalonly: False
----
-
----
 uid: System.Windows.Controls.PrintDialog.PrintDocument(System.Windows.Documents.DocumentPaginator,System.String)
 internalonly: False
 ---
@@ -65,11 +60,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.PrintDialog.PageRange
-internalonly: False
----
-
----
-uid: System.Windows.Controls.PrintDialog.SelectedPagesEnabled
 internalonly: False
 ---
 

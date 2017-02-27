@@ -1,29 +1,6 @@
-// Adds the LicenseProviderAttribute to the control.
-
-[LicenseProvider(LicFileLicenseProvider::typeid)]
-public ref class MyControl: public Control
-{
-   // Creates a new, null license.
-private:
-   License^ license;
-
-public:
-   MyControl()
-   {
-      
-      // Adds Validate to the control's constructor.
-      license = LicenseManager::Validate( MyControl::typeid, this );
-
-      // Insert code to perform other instance creation tasks here.
-   }
-
-public:
-   ~MyControl()
-   {
-      if ( license != nullptr )
+   protected:
+      [ReflectionPermission(SecurityAction::Demand, Flags=ReflectionPermissionFlag::MemberAccess)]
+      virtual void PreFilterProperties( System::Collections::IDictionary^ properties ) override
       {
-         delete license;
-         license = nullptr;
+         properties->Add( "OutlineColor", TypeDescriptor::CreateProperty( TestControlDesigner::typeid, "OutlineColor", System::Drawing::Color::typeid, nullptr ) );
       }
-   }
-};

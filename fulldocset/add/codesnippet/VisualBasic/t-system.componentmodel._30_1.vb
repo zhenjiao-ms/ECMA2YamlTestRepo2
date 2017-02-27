@@ -1,106 +1,72 @@
 Imports System
+Imports System.Collections
 Imports System.ComponentModel
+Imports System.ComponentModel.Design
 Imports System.Drawing
-Imports System.Globalization
+Imports System.Data
 Imports System.Windows.Forms
+Imports System.Windows.Forms.Design
 
-Public Class DemoControl
-    Inherits UserControl
-
-    Private borderAppearanceValue As New BorderAppearance()
-    Private components As System.ComponentModel.IContainer = Nothing
-
+' This control demonstrates retrieving the standard 
+' designer option service values in design mode.
+Public Class IDesignerOptionServiceControl
+    Inherits System.Windows.Forms.UserControl
+    Private designerOptionService As IDesignerOptionService
 
     Public Sub New()
-        InitializeComponent()
-
+        Me.BackColor = Color.Beige
+        Me.Size = New Size(404, 135)
     End Sub
 
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+    Public Overrides Property Site() As System.ComponentModel.ISite
+        Get
+            Return MyBase.Site
+        End Get
+        Set(ByVal Value As System.ComponentModel.ISite)
+            MyBase.Site = Value
 
-        If disposing AndAlso (components IsNot Nothing) Then
-            components.Dispose()
+            ' If siting component, attempt to obtain an IDesignerOptionService.
+            If (MyBase.Site IsNot Nothing) Then
+                designerOptionService = CType(Me.GetService(GetType(IDesignerOptionService)), IDesignerOptionService)
+            End If
+        End Set
+    End Property
+
+    ' Displays control information and current IDesignerOptionService 
+    ' values, if available.
+    Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)
+        e.Graphics.DrawString("IDesignerOptionServiceControl", New Font("Arial", 9), New SolidBrush(Color.Blue), 4, 4)
+        If Me.DesignMode Then
+            e.Graphics.DrawString("Currently in design mode", New Font("Arial", 8), New SolidBrush(Color.Black), 4, 18)
+        Else
+            e.Graphics.DrawString("Not in design mode. Cannot access IDesignerOptionService.", New Font("Arial", 8), New SolidBrush(Color.Red), 4, 18)
         End If
+        If (MyBase.Site IsNot Nothing) AndAlso (designerOptionService IsNot Nothing) Then
+            e.Graphics.DrawString("IDesignerOptionService provides access to the table of option values listed when", New Font("Arial", 8), New SolidBrush(Color.Black), 4, 38)
+            e.Graphics.DrawString("the Windows Forms Designer\General tab of the Tools\Options menu is selected.", New Font("Arial", 8), New SolidBrush(Color.Black), 4, 50)
 
-        MyBase.Dispose(disposing)
+            e.Graphics.DrawString("Table of standard value names and current values", New Font("Arial", 8), New SolidBrush(Color.Red), 4, 76)
 
-    End Sub
+            ' Displays a table of the standard value names and current values.
+            Dim ypos As Integer = 90
 
-    <Browsable(True), _
-    EditorBrowsable(EditorBrowsableState.Always), _
-    Category("Demo"), _
-    DesignerSerializationVisibility(DesignerSerializationVisibility.Content)> _
-    Public Property Border() As BorderAppearance
+            ' Obtains and shows the size of the standard design-mode grid square.
+            Dim size As Size = CType(designerOptionService.GetOptionValue("WindowsFormsDesigner\General", "GridSize"), Size)
+            e.Graphics.DrawString("GridSize", New Font("Arial", 8), New SolidBrush(Color.Black), 4, ypos)
+            e.Graphics.DrawString(size.ToString(), New Font("Arial", 8), New SolidBrush(Color.Black), 100, ypos)
+            ypos += 12
 
-        Get
-            Return Me.borderAppearanceValue
-        End Get
+            ' Obtaisn and shows whether the design mode surface grid is enabled.
+            Dim showGrid As Boolean = CBool(designerOptionService.GetOptionValue("WindowsFormsDesigner\General", "ShowGrid"))
+            e.Graphics.DrawString("ShowGrid", New Font("Arial", 8), New SolidBrush(Color.Black), 4, ypos)
+            e.Graphics.DrawString(showGrid.ToString(), New Font("Arial", 8), New SolidBrush(Color.Black), 100, ypos)
+            ypos += 12
 
-        Set(ByVal value As BorderAppearance)
-            Me.borderAppearanceValue = value
-        End Set
-
-    End Property
-
-    Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-
-    End Sub
-End Class
-
-<TypeConverter(GetType(BorderAppearanceConverter))>  _
-Public Class BorderAppearance
-    Private borderSizeValue As Integer = 1
-    Private borderColorValue As Color = Color.Empty
-    
-    
-    <Browsable(True), NotifyParentProperty(True), EditorBrowsable(EditorBrowsableState.Always), DefaultValue(1)>  _
-    Public Property BorderSize() As Integer 
-        Get
-            Return borderSizeValue
-        End Get
-        Set
-            If value < 0 Then
-                Throw New ArgumentOutOfRangeException("BorderSize", value, "must be >= 0")
-            End If
-            
-            If borderSizeValue <> value Then
-                borderSizeValue = value
-            End If
-        End Set
-    End Property
-    
-    
-    <Browsable(True), NotifyParentProperty(True), EditorBrowsable(EditorBrowsableState.Always), DefaultValue(GetType(Color), "")>  _
-    Public Property BorderColor() As Color 
-        Get
-            Return borderColorValue
-        End Get
-        Set
-            If value.Equals(Color.Transparent) Then
-                Throw New NotSupportedException("Transparent colors are not supported.")
-            End If
-            
-            If borderColorValue <> value Then
-                borderColorValue = value
-            End If
-        End Set
-    End Property
-End Class
-
-Public Class BorderAppearanceConverter
-    Inherits ExpandableObjectConverter
-    
-    ' This override prevents the PropertyGrid from 
-    ' displaying the full type name in the value cell.
-    Public Overrides Function ConvertTo(ByVal context As ITypeDescriptorContext, ByVal culture As CultureInfo, ByVal value As Object, ByVal destinationType As Type) As Object
-
-        If destinationType Is GetType(String) Then
-            Return ""
+            ' Obtains and shows whether components should be aligned with the surface grid.
+            Dim snapToGrid As Boolean = CBool(designerOptionService.GetOptionValue("WindowsFormsDesigner\General", "SnapToGrid"))
+            e.Graphics.DrawString("SnapToGrid", New Font("Arial", 8), New SolidBrush(Color.Black), 4, ypos)
+            e.Graphics.DrawString(snapToGrid.ToString(), New Font("Arial", 8), New SolidBrush(Color.Black), 100, ypos)
         End If
+    End Sub
 
-        Return MyBase.ConvertTo(context, culture, value, destinationType)
-
-    End Function
 End Class

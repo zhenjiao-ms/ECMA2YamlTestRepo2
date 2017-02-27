@@ -1,315 +1,311 @@
-Class Program
+Imports System
+Imports System.IO
+Imports System.Collections
+Imports System.Runtime.Serialization.Formatters.Binary
+Imports System.Runtime.Serialization
+Imports System.Runtime.InteropServices
+Imports System.Security.Permissions
 
-    Public Shared Sub Main(ByVal args() As String)
+<Assembly: SecurityPermission( _
+SecurityAction.RequestMinimum, Execution:=True)> 
+' This class includes several Win32 interop definitions.
+Friend Class Win32
+    Public Shared ReadOnly InvalidHandleValue As New IntPtr(-1)
+    Public Const FILE_MAP_WRITE As Int32 = 2
+    Public Const PAGE_READWRITE As Int32 = &H4
 
-        SerializeWithSurrogate("surrogateEmployee.xml")
-        DeserializeSurrogate("surrogateEmployee.xml")
-        ' Create an XmlSchemaSet to hold schemas from the
-        ' schema exporter. 
-        'Dim schemas As New XmlSchemaSet
-        'ExportSchemas("surrogateEmployee.xml", schemas)
-        ' Pass the schemas to the importer.
-        'ImportSchemas(schemas)
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> _
+    Public Shared Function CreateFileMapping(ByVal hFile As IntPtr, _
+                                             ByVal pAttributes As IntPtr, _
+                                             ByVal flProtect As Int32, _
+                                             ByVal dwMaximumSizeHigh As Int32, _
+                                             ByVal dwMaximumSizeLow As Int32, _
+                                             ByVal pName As String) As IntPtr
+    End Function
 
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> _
+    Public Shared Function OpenFileMapping(ByVal dwDesiredAccess As Int32, _
+                                           ByVal bInheritHandle As Boolean, _
+                                           ByVal name As String) As IntPtr
+    End Function
+
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> _
+    Public Shared Function CloseHandle(ByVal handle As IntPtr) As Boolean
+    End Function
+
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> _
+    Public Shared Function MapViewOfFile(ByVal hFileMappingObject As IntPtr, _
+                                         ByVal dwDesiredAccess As Int32, _
+                                         ByVal dwFileOffsetHigh As Int32, _
+                                         ByVal dwFileOffsetLow As Int32, _
+                                         ByVal dwNumberOfBytesToMap As IntPtr) _
+                                         As IntPtr
+    End Function
+
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> _
+    Public Shared Function UnmapViewOfFile(ByVal address As IntPtr) As Boolean
+    End Function
+
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> _
+    Public Shared Function DuplicateHandle(ByVal hSourceProcessHandle As IntPtr, _
+                                           ByVal hSourceHandle As IntPtr, _
+                                           ByVal hTargetProcessHandle As IntPtr, _
+                                           ByRef lpTargetHandle As IntPtr, _
+                                           ByVal dwDesiredAccess As Int32, _
+                                           ByVal bInheritHandle As Boolean, _
+                                           ByVal dwOptions As Int32) As Boolean
+    End Function
+
+    Public Const DUPLICATE_CLOSE_SOURCE As Int32 = &H1
+    Public Const DUPLICATE_SAME_ACCESS As Int32 = &H2
+
+    <DllImport("Kernel32", CharSet:=CharSet.Unicode)> Public Shared Function GetCurrentProcess() As IntPtr
+    End Function
+End Class
+
+
+' This class wraps memory that can be simultaneously 
+' shared by multiple AppDomains and Processes.
+<Serializable()> Public NotInheritable Class SharedMemory
+    Implements ISerializable
+    Implements IDisposable
+
+    ' The handle and string that identify 
+    ' the Windows file-mapping object.
+    Private m_hFileMap As IntPtr = IntPtr.Zero
+    Private m_name As String
+
+    ' The address of the memory-mapped file-mapping object.
+    Private m_address As IntPtr
+    <SecurityPermissionAttribute(SecurityAction.LinkDemand, _
+    Flags:=SecurityPermissionFlag.UnmanagedCode)> _
+    Public Function GetByte(ByVal offset As Int32) As Byte
+        Dim b(0) As Byte
+        Marshal.Copy(New IntPtr(m_address.ToInt64() + offset), b, 0, 1)
+        Return b(0)
+    End Function
+
+    <SecurityPermissionAttribute(SecurityAction.LinkDemand, _
+    Flags:=SecurityPermissionFlag.UnmanagedCode)> _
+    Public Sub SetByte(ByVal offset As Int32, ByVal value As Byte)
+        Dim b(0) As Byte
+        b(0) = value
+        Marshal.Copy(b, 0, New IntPtr(m_address.ToInt64() + offset), 1)
     End Sub
 
 
-    Shared Function CreateSurrogateSerializer() As DataContractSerializer
-        ' Create an instance of the DataContractSerializer. The 
-        ' constructor demands a knownTypes and surrogate. 
-        ' Create a Generic List for the knownTypes. 
-        Dim knownTypes As List(Of Type) = New List(Of Type)()
-        Dim surrogate As New LegacyPersonTypeSurrogate()
-        Dim surrogateSerializer As New  _
-        DataContractSerializer(GetType(Employee), _
-           knownTypes, Integer.MaxValue, False, True, surrogate)
-        Return surrogateSerializer
+    ' The constructors.
+    Public Sub New(ByVal size As Int32)
+        Me.New(size, Nothing)
+    End Sub
+
+    Public Sub New(ByVal size As Int32, ByVal name As String)
+        m_hFileMap = Win32.CreateFileMapping(Win32.InvalidHandleValue, _
+           IntPtr.Zero, Win32.PAGE_READWRITE, 0, size, name)
+        If (m_hFileMap.Equals(IntPtr.Zero)) Then _
+           Throw New Exception("Could not create memory-mapped file.")
+        m_name = name
+        m_address = Win32.MapViewOfFile(m_hFileMap, _
+           Win32.FILE_MAP_WRITE, 0, 0, IntPtr.Zero)
+    End Sub
+
+
+    ' The cleanup methods.
+    Public Sub Dispose() Implements IDisposable.Dispose
+        GC.SuppressFinalize(Me)
+        Dispose(True)
+    End Sub
+
+    Private Sub Dispose(ByVal disposing As Boolean)
+        Win32.UnmapViewOfFile(m_address)
+        Win32.CloseHandle(m_hFileMap)
+        m_address = IntPtr.Zero
+        m_hFileMap = IntPtr.Zero
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        Dispose(False)
+    End Sub
+
+
+    ' Private helper methods.
+    Private Shared Function AllFlagsSet(ByVal flags As Int32, _
+                                        ByVal flagsToTest As Int32) As Boolean
+        Return (flags And flagsToTest) = flagsToTest
     End Function
 
-    Shared Sub SerializeWithSurrogate(ByVal filename As String)
-        ' Create and populate an Employee instance.
-        Dim emp As New Employee()
-        emp.date_hired = New DateTime(1999, 10, 14)
-        emp.salary = 33000
+    Private Shared Function AnyFlagsSet(ByVal flags As Int32, _
+                                        ByVal flagsToTest As Int32) As Boolean
+        Return (flags And flagsToTest) <> 0
+    End Function
 
-        ' Note that the Person class is a legacy XmlSerializable class
-        ' without a DataContract.
-        emp.person = New Person()
-        emp.person.first_name = "Mike"
-        emp.person.last_name = "Ray"
-        emp.person.age = 44
 
-        ' Create a new writer. Then serialize with the 
-        ' surrogate serializer.
-        Dim fs As New FileStream(filename, FileMode.Create)
-        Dim surrogateSerializer As DataContractSerializer = CreateSurrogateSerializer()
+    ' The security attribute demands that code that calls  
+    ' this method have permission to perform serialization.
+    <SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter:=True)> _
+    Sub GetObjectData(ByVal info As SerializationInfo, _
+                      ByVal context As StreamingContext) _
+                      Implements ISerializable.GetObjectData
+        ' The context's State member indicates where the object will be deserialized.
+
+        ' A SharedMemory object cannot be serialized 
+        ' to any of the following destinations.
+        Const InvalidDestinations As StreamingContextStates = _
+           StreamingContextStates.CrossMachine Or _
+           StreamingContextStates.File Or _
+           StreamingContextStates.Other Or _
+           StreamingContextStates.Persistence Or _
+           StreamingContextStates.Remoting
+        If AnyFlagsSet(CType(context.State, Int32), _
+                       CType(InvalidDestinations, Int32)) Then
+            Throw New SerializationException("The SharedMemory object " & _
+               "cannot be serialized to any of the following streaming contexts: " _
+               & InvalidDestinations)
+        End If
+
+        Const DeserializableByHandle As StreamingContextStates = _
+                 StreamingContextStates.Clone Or _
+                 StreamingContextStates.CrossAppDomain
+
+        If AnyFlagsSet(CType(context.State, Int32), _
+              CType(DeserializableByHandle, Int32)) Then
+            info.AddValue("hFileMap", m_hFileMap)
+        End If
+
+        Const DeserializableByName As StreamingContextStates = _
+                 StreamingContextStates.CrossProcess   ' The same computer.
+        If AnyFlagsSet(CType(context.State, Int32), CType(DeserializableByName, _
+                       Int32)) Then
+            If m_name = Nothing Then
+                Throw New SerializationException("The SharedMemory object " & _
+                   "cannot be serialized CrossProcess because it was not constructed " & _
+                   "with a String name.")
+            End If
+            info.AddValue("name", m_name)
+        End If
+    End Sub
+
+    Private Sub New(ByVal info As SerializationInfo, ByVal context As StreamingContext)
+        ' The context's State member indicates where the object was serialized from.
+
+        Const InvalidSources As StreamingContextStates = _
+                 StreamingContextStates.CrossMachine Or _
+                 StreamingContextStates.File Or _
+                 StreamingContextStates.Other Or _
+                 StreamingContextStates.Persistence Or _
+                 StreamingContextStates.Remoting
+
+        If AnyFlagsSet(CType(context.State, Int32), CType(InvalidSources, Int32)) Then
+            Throw New SerializationException("The SharedMemory object " & _
+               "cannot be deserialized from any of the following stream contexts: " & _
+               InvalidSources)
+        End If
+
+        Const SerializedByHandle As StreamingContextStates = _
+                 StreamingContextStates.Clone Or _
+                 StreamingContextStates.CrossAppDomain ' The same process.
+        If AnyFlagsSet(CType(context.State, Int32), _
+              CType(SerializedByHandle, Int32)) Then
+            Try
+                Win32.DuplicateHandle(Win32.GetCurrentProcess(), _
+                   CType(info.GetValue("hFileMap", GetType(IntPtr)), IntPtr), _
+                      Win32.GetCurrentProcess(), m_hFileMap, 0, False, _
+                      Win32.DUPLICATE_SAME_ACCESS)
+            Catch e As SerializationException
+                Throw New SerializationException("A SharedMemory was not " & _
+                   "serialized using any of the following streaming contexts: " & _
+                   SerializedByHandle)
+            End Try
+        End If
+
+        Const SerializedByName As StreamingContextStates = _
+                 StreamingContextStates.CrossProcess   ' The same computer.
+        If AnyFlagsSet(CType(context.State, Int32), _
+                       CType(SerializedByName, Int32)) Then
+            Try
+                m_name = info.GetString("name")
+            Catch e As SerializationException
+                Throw New SerializationException("A SharedMemory object " & _
+                   "was not serialized using any of the following streaming contexts: " & _
+                   SerializedByName)
+            End Try
+            m_hFileMap = Win32.OpenFileMapping(Win32.FILE_MAP_WRITE, False, m_name)
+        End If
+        If Not m_hFileMap.Equals(IntPtr.Zero) Then
+            m_address = Win32.MapViewOfFile(m_hFileMap, _
+               Win32.FILE_MAP_WRITE, 0, 0, IntPtr.Zero)
+        Else
+            Throw New SerializationException("A SharedMemory object " & _
+               "could not be deserialized.")
+        End If
+    End Sub
+End Class
+
+Class App
+    <STAThread()> Shared Sub Main()
+        Serialize()
+        Console.WriteLine()
+        Deserialize()
+    End Sub
+
+    Shared Sub Serialize()
+        ' Create a hashtable of values that will eventually be serialized.
+        Dim sm As New SharedMemory(1024, "MyMemory")
+        Dim x As Int32
+        For x = 0 To 99
+            sm.SetByte(x, x)
+        Next
+
+        Dim b(9) As Byte
+        For x = 0 To b.Length - 1
+            b(x) = sm.GetByte(x)
+        Next
+        Console.WriteLine(BitConverter.ToString(b))
+
+        ' To serialize the hashtable (and its key/value pairs), you must first 
+        ' open a stream for writing. Use a file stream here.
+        Dim fs As New FileStream("DataFile.dat", FileMode.Create)
+
+        ' Construct a BinaryFormatter telling it where 
+        ' the objects will be serialized to.
+        Dim formatter As New BinaryFormatter(Nothing, _
+           New StreamingContext(StreamingContextStates.CrossAppDomain))
         Try
-            surrogateSerializer.WriteObject(fs, emp)
-            Console.WriteLine("Serialization succeeded. ")
+            formatter.Serialize(fs, sm)
+        Catch e As SerializationException
+            Console.WriteLine("Failed to serialize. Reason: " + e.Message)
+            Throw
+        Finally
             fs.Close()
-        Catch exc As SerializationException
-
-            Console.WriteLine(exc.Message)
         End Try
     End Sub
 
-    Shared Sub DeserializeSurrogate(ByVal filename As String)
+    Shared Sub Deserialize()
+        ' Declare the hashtable reference.
+        Dim sm As SharedMemory = Nothing
 
-        ' Create a new reader object.
-        Dim fs2 As New FileStream(filename, FileMode.Open)
-        Dim reader As XmlDictionaryReader = _
-            XmlDictionaryReader.CreateTextReader(fs2, New XmlDictionaryReaderQuotas())
-
-        Console.WriteLine("Trying to deserialize with surrogate.")
+        ' Open the file containing the data that you want to deserialize.
+        Dim fs As New FileStream("DataFile.dat", FileMode.Open)
         Try
-            Dim surrogateSerializer As DataContractSerializer = CreateSurrogateSerializer()
-            Dim newemp As Employee = CType _
-                (surrogateSerializer.ReadObject(reader, False), Employee)
+            Dim Formatter As New BinaryFormatter(Nothing, _
+               New StreamingContext(StreamingContextStates.CrossAppDomain))
 
-            reader.Close()
-            fs2.Close()
-
-            Console.WriteLine("Deserialization succeeded. " + vbLf + vbLf)
-            Console.WriteLine("Deserialized Person data: " + vbLf + vbTab + _
-                " {0} {1}", newemp.person.first_name, newemp.person.last_name)
-            Console.WriteLine(vbTab + " Age: {0} " + vbLf, newemp.person.age)
-            Console.WriteLine(vbTab & "Date Hired: {0}", newemp.date_hired.ToShortDateString())
-            Console.WriteLine(vbTab & "Salary: {0}", newemp.salary)
-            Console.WriteLine("Press Enter to end or continue")
-            Console.ReadLine()
-        Catch serEx As SerializationException
-            Console.WriteLine(serEx.Message)
-            Console.WriteLine(serEx.StackTrace)
-        End Try
-    End Sub
-
-    Shared Sub ExportSchemas(ByVal filename As String, ByRef Schemas As XmlSchemaSet)
-        Console.WriteLine("Now doing schema export.")
-        ' The following code demonstrates schema export with a surrogate.
-        ' The surrogate indicates how to export the non-DataContract Person type.
-        ' Without the surrogate, schema export would fail.
-        Dim xsdexp As New XsdDataContractExporter()
-        xsdexp.Options = New ExportOptions()
-        xsdexp.Options.DataContractSurrogate = New LegacyPersonTypeSurrogate()
-        xsdexp.Export(GetType(Employee))
-
-        ' Write out the exported schema to a file.
-        Dim fs3 As New FileStream("sample.xsd", FileMode.Create)
-        Try
-            Dim sch As XmlSchema
-            For Each sch In xsdexp.Schemas.Schemas()
-                sch.Write(fs3)
-            Next sch
-            Schemas = xsdexp.Schemas
-        Catch serEx As SerializationException
-            Console.WriteLine("Message: {0}", serEx.Message)
-            Console.WriteLine("Inner Text: {0}", serEx.InnerException)
-
+            ' Deserialize the SharedMemory object from the file and 
+            ' assign the reference to the local variable.
+            sm = DirectCast(Formatter.Deserialize(fs), SharedMemory)
+        Catch e As SerializationException
+            Console.WriteLine("Failed to deserialize. Reason: " & e.Message)
         Finally
-            fs3.Dispose()
-        End Try
-    End Sub
-
-    Shared Sub ImportSchemas(ByVal schemas As XmlSchemaSet)
-        Console.WriteLine("Now doing schema import.")
-        ' The following code demonstrates schema import with 
-        ' a surrogate. The surrogate is used to indicate that 
-        ' the Person class already exists and that there is no 
-        ' need to generate a new class when importing the
-        ' PersonSurrogated data contract. If the surrogate 
-        ' was not used, schema import would generate a 
-        ' PersonSurrogated class, and the person field 
-        ' of Employee would be imported as 
-        ' PersonSurrogated and not Person.
-        Dim xsdimp As New XsdDataContractImporter()
-        xsdimp.Options = New ImportOptions()
-        xsdimp.Options.DataContractSurrogate = New LegacyPersonTypeSurrogate()
-        xsdimp.Import(schemas)
-
-        ' Write out the imported schema to a C-Sharp file.
-        ' The code contains data contract types.
-        Dim fs4 As FileStream = New FileStream("sample.cs", FileMode.Create)
-        Try
-            Dim tw As New StreamWriter(fs4)
-            Dim cdp As New Microsoft.CSharp.CSharpCodeProvider()
-            cdp.GenerateCodeFromCompileUnit(xsdimp.CodeCompileUnit, tw, Nothing)
-            tw.Flush()
-        Finally
-            fs4.Dispose()
+            fs.Close()
         End Try
 
-        Console.WriteLine(vbLf + " To see the results of schema export and import,")
-        Console.WriteLine(" see SAMPLE.XSD and SAMPLE.CS." + vbLf)
-
-        Console.WriteLine(" Press ENTER to terminate the sample." + vbLf)
-        Console.ReadLine()
-    End Sub
-
-
-End Class
-
-
-' This is the Employee (outer) type used in the sample.
-
-<DataContract()> Class Employee
-    <DataMember()> _
-    Public date_hired As DateTime
-
-    <DataMember()> _
-    Public salary As [Decimal]
-
-    <DataMember()> _
-    Public person As Person
-End Class
-
-
-' This is the Person (inner) type used in the sample.
-' Note that it is a legacy XmlSerializable type and not a DataContract type.
-
-Public Class Person
-    <XmlElement("FirstName")> _
-    Public first_name As String
-
-    <XmlElement("LastName")> _
-    Public last_name As String
-
-    <XmlAttribute("Age")> _
-    Public age As Integer
-
-
-    Public Sub New()
-
-    End Sub
-End Class
-
-' This is the surrogated version of the Person type
-' that will be used for its serialization/deserialization.
-
-<DataContract()> Class PersonSurrogated
-
-    ' xmlData will store the XML returned for a Person instance 
-    ' by the XmlSerializer.
-    <DataMember()> _
-    Public xmlData As String
-
-End Class
-
-' This is the surrogate that substitutes PersonSurrogated for Person.
-Class LegacyPersonTypeSurrogate
-    Implements IDataContractSurrogate
-
-    Public Function GetDataContractType(ByVal type As Type) As Type _
-       Implements IDataContractSurrogate.GetDataContractType
-        Console.WriteLine("GetDataContractType invoked")
-        Console.WriteLine(vbTab & "type name: {0}", type.Name)
-        ' "Person" will be serialized as "PersonSurrogated"
-        ' This method is called during serialization,
-        ' deserialization, and schema export.
-        If GetType(Person).IsAssignableFrom(type) Then
-            Console.WriteLine(vbTab & "returning PersonSurrogated")
-            Return GetType(PersonSurrogated)
-        End If
-        Return type
-
-    End Function
-
-    Public Function GetObjectToSerialize(ByVal obj As Object, _
-        ByVal targetType As Type) As Object _
-        Implements IDataContractSurrogate.GetObjectToSerialize
-        Console.WriteLine("GetObjectToSerialize Invoked")
-        Console.WriteLine(vbTab & "type name: {0}", obj.ToString)
-        Console.WriteLine(vbTab & "target type: {0}", targetType.Name)
-        ' This method is called on serialization.
-        ' If Person is not being serialized...
-        If TypeOf obj Is Person Then
-            Console.WriteLine(vbTab & "returning PersonSurrogated")
-            ' ... use the XmlSerializer to perform the actual serialization.
-            Dim ps As New PersonSurrogated()
-            Dim xs As New XmlSerializer(GetType(Person))
-            Dim sw As New StringWriter()
-            xs.Serialize(sw, CType(obj, Person))
-            ps.xmlData = sw.ToString()
-            Return ps
-        End If
-        Return obj
-
-    End Function
-
-    Public Function GetDeserializedObject(ByVal obj As Object, _
-        ByVal targetType As Type) As Object Implements _
-        IDataContractSurrogate.GetDeserializedObject
-        Console.WriteLine("GetDeserializedObject invoked")
-        ' This method is called on deserialization.
-        ' If PersonSurrogated is being deserialized...
-        If TypeOf obj Is PersonSurrogated Then
-            Console.WriteLine(vbTab & "returning PersonSurrogated")
-            '... use the XmlSerializer to do the actual deserialization.
-            Dim ps As PersonSurrogated = CType(obj, PersonSurrogated)
-            Dim xs As New XmlSerializer(GetType(Person))
-            Return CType(xs.Deserialize(New StringReader(ps.xmlData)), Person)
-        End If
-        Return obj
-
-    End Function
-
-    Public Function GetReferencedTypeOnImport(ByVal typeName As String, _
-        ByVal typeNamespace As String, ByVal customData As Object) As Type _
-        Implements IDataContractSurrogate.GetReferencedTypeOnImport
-        Console.WriteLine("GetReferencedTypeOnImport invoked")
-        ' This method is called on schema import.
-        ' If a PersonSurrogated data contract is 
-        ' in the specified namespace, do not create a new type for it 
-        ' because there is already an existing type, "Person".
-        Console.WriteLine(vbTab & "Type Name: {0}", typeName)
-
-        'If typeNamespace.Equals("http://schemas.datacontract.org/2004/07/DCSurrogateSample") Then
-        If typeName.Equals("PersonSurrogated") Then
-            Console.WriteLine("Returning Person")
-            Return GetType(Person)
-        End If
-        'End If
-        Return Nothing
-
-    End Function
-
-    Public Function ProcessImportedType(ByVal typeDeclaration _
-        As System.CodeDom.CodeTypeDeclaration, _
-        ByVal compileUnit As System.CodeDom.CodeCompileUnit) _
-        As System.CodeDom.CodeTypeDeclaration _
-        Implements IDataContractSurrogate.ProcessImportedType
-        'Console.WriteLine("ProcessImportedType invoked")
-        ' Not used in this sample.
-        ' You could use this method to construct an entirely new CLR 
-        ' type when a certain type is imported, or modify a 
-        ' generated type in some way.
-        Return typeDeclaration
-    End Function
-
-
-    Public Overloads Function GetCustomDataToExport _
-        (ByVal clrType As Type, ByVal dataContractType As Type) As Object _
-        Implements IDataContractSurrogate.GetCustomDataToExport
-        ' Console.WriteLine("GetCustomDataToExport invoked")
-        ' Not used in this sample
-        Return Nothing
-    End Function
-
-
-    Public Overloads Function GetCustomDataToExport _
-       (ByVal memberInfo As System.Reflection.MemberInfo, _
-       ByVal dataContractType As Type) As Object _
-        Implements IDataContractSurrogate.GetCustomDataToExport
-        ' Console.WriteLine("GetCustomDataToExport invoked")
-        ' Not used in this sample
-        Return Nothing
-
-    End Function
-
-
-    Public Sub GetKnownCustomDataTypes(ByVal customDataTypes As Collection(Of Type)) _
- Implements IDataContractSurrogate.GetKnownCustomDataTypes
-        Console.WriteLine("GetKnownCustomDataTypes invoked")
-        ' Not used in this sample
-
+        ' To prove that the SharedMemory object deserialized correctly, 
+        ' display some of its bytes to the console.
+        Dim b(9) As Byte
+        Dim x As Int32
+        For x = 0 To b.Length - 1
+            b(x) = sm.GetByte(x)
+        Next
+        Console.WriteLine(BitConverter.ToString(b))
     End Sub
 End Class

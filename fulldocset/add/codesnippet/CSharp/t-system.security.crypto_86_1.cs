@@ -1,157 +1,182 @@
-//
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
 using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography.Xml;
-using System.Text;
 using System.Xml;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 
-public class SignVerifyEnvelope
+class Program
 {
-
-    public static void Main(String[] args)
+    static void Main(string[] args)
     {
+
+        // Create an XmlDocument object.
+        XmlDocument xmlDoc = new XmlDocument();
+
+        // Load an XML file into the XmlDocument object.
         try
         {
-            // Generate a signing key.
-            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
-
-            // Create an XML file to sign.
-            CreateSomeXml("Example.xml");
-            Console.WriteLine("New XML file created."); 
-
-            // Sign the XML that was just created and save it in a 
-            // new file.
-            SignXmlFile("Example.xml", "SignedExample.xml", Key);
-            Console.WriteLine("XML file signed."); 
-
-            // Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...");
-            bool result = VerifyXmlFile("SignedExample.xml");
-
-            // Display the results of the signature verification to \
-            // the console.
-            if(result)
-            {
-                Console.WriteLine("The XML signature is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The XML signature is not valid.");
-            }
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load("test.xml");
         }
-        catch(CryptographicException e)
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return;
+        }
+
+        // Create a new RSA key.  This key will encrypt a symmetric key,
+        // which will then be imbedded in the XML document.  
+        RSA rsaKey = new RSACryptoServiceProvider();
+
+
+        try
+        {
+            // Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
+
+            // Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
+            xmlDoc.Save("test.xml");
+
+            // Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey");
+            xmlDoc.Save("test.xml");
+
+            // Display the encrypted XML to the console.
+            Console.WriteLine();
+            Console.WriteLine("Decrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
+        }
+        catch (Exception e)
         {
             Console.WriteLine(e.Message);
         }
-    }
-
-    // Sign an XML file and save the signature in a new file.
-    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
-    {
-        // Create a new XML document.
-        XmlDocument doc = new XmlDocument();
-
-        // Format the document to ignore white spaces.
-        doc.PreserveWhitespace = false;
-
-        // Load the passed XML file using it's name.
-        doc.Load(new XmlTextReader(FileName));
-
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml(doc);
-
-        // Add the key to the SignedXml document. 
-        signedXml.SigningKey = Key;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-        reference.Uri = "";
-
-        // Add an enveloped transformation to the reference.
-        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
-        reference.AddTransform(env);
-
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-		
-        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
-        signedXml.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Append the element to the XML document.
-        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
-		
-		
-        if (doc.FirstChild is XmlDeclaration)  
+        finally
         {
-            doc.RemoveChild(doc.FirstChild);
+            // Clear the RSA key.
+            rsaKey.Clear();
         }
 
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
-        doc.WriteTo(xmltw);
-        xmltw.Close();
     }
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyXmlFile(String Name)
+
+    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, RSA Alg, string KeyName)
     {
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (ElementToEncrypt == null)
+            throw new ArgumentNullException("ElementToEncrypt");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
 
-        // Format using white spaces.
-        xmlDocument.PreserveWhitespace = true;
+        ////////////////////////////////////////////////
+        // Find the specified element in the XmlDocument
+        // object and create a new XmlElemnt object.
+        ////////////////////////////////////////////////
 
-        // Load the passed XML file into the document. 
-        xmlDocument.Load(Name);
+        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
 
-        // Create a new SignedXml object and pass it
-        // the XML document class.
-        SignedXml signedXml = new SignedXml(xmlDocument);
+        // Throw an XmlException if the element was not found.
+        if (elementToEncrypt == null)
+        {
+            throw new XmlException("The specified element was not found");
 
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+        }
 
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
+        //////////////////////////////////////////////////
+        // Create a new instance of the EncryptedXml class 
+        // and use it to encrypt the XmlElement with the 
+        // a new random symmetric key.
+        //////////////////////////////////////////////////
 
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
+        // Create a 256 bit Rijndael key.
+        RijndaelManaged sessionKey = new RijndaelManaged();
+        sessionKey.KeySize = 256;
+
+        EncryptedXml eXml = new EncryptedXml();
+
+        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
+
+        ////////////////////////////////////////////////
+        // Construct an EncryptedData object and populate
+        // it with the desired encryption information.
+        ////////////////////////////////////////////////
+
+
+        EncryptedData edElement = new EncryptedData();
+        edElement.Type = EncryptedXml.XmlEncElementUrl;
+
+        // Create an EncryptionMethod element so that the 
+        // receiver knows which algorithm to use for decryption.
+
+        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
+
+        // Encrypt the session key and add it to an EncryptedKey element.
+        EncryptedKey ek = new EncryptedKey();
+
+        byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
+
+        ek.CipherData = new CipherData(encryptedKey);
+
+        ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
+
+        // Set the KeyInfo element to specify the
+        // name of the RSA key.
+
+        // Create a new KeyInfo element.
+        edElement.KeyInfo = new KeyInfo();
+
+        // Create a new KeyInfoName element.
+        KeyInfoName kin = new KeyInfoName();
+
+        // Specify a name for the key.
+        kin.Value = KeyName;
+
+        // Add the KeyInfoName element to the 
+        // EncryptedKey object.
+        ek.KeyInfo.AddClause(kin);
+
+        // Add the encrypted key to the 
+        // EncryptedData object.
+
+        edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
+
+        // Add the encrypted element data to the 
+        // EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement;
+
+        ////////////////////////////////////////////////////
+        // Replace the element from the original XmlDocument
+        // object with the EncryptedData element.
+        ////////////////////////////////////////////////////
+
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
     }
 
-    // Create example data to sign.
-    public static void CreateSomeXml(string FileName)
+    public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
     {
-        // Create a new XmlDocument object.
-        XmlDocument document = new XmlDocument();
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
+        if (KeyName == null)
+            throw new ArgumentNullException("KeyName");
 
-        // Create a new XmlNode object.
-        XmlNode  node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
-		
-        // Add some text to the node.
-        node.InnerText = "Example text to be signed.";
+        // Create a new EncryptedXml object.
+        EncryptedXml exml = new EncryptedXml(Doc);
 
-        // Append the node to the document.
-        document.AppendChild(node);
+        // Add a key-name mapping.
+        // This method can only decrypt documents
+        // that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg);
 
-        // Save the XML document to the file name specified.
-        XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false));
-        document.WriteTo(xmltw);
-        xmltw.Close();
+        // Decrypt the element.
+        exml.DecryptDocument();
+
     }
+
 }

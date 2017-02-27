@@ -1,60 +1,82 @@
+// This example demonstrates the TextInfo.Clone() and
+// TextInfo.ReadOnly() methods.
+
 using System;
 using System.Globalization;
 
+class Sample 
+{
+    public static void Main() 
+    {
+// Get the TextInfo of a predefined culture that ships with 
+// the .NET Framework.
+    CultureInfo ci = new CultureInfo("en-US");
+    TextInfo ti1 = ci.TextInfo;
 
-public class SamplesThaiBuddhistCalendar  {
+// Display whether the TextInfo is read-only or not.
+    DisplayReadOnly("1) The original TextInfo object", ti1);
+    Console.WriteLine();
+   
+// Create a clone of the original TextInfo and cast the clone to a TextInfo type.
+    Console.WriteLine("2a) Create a clone of the original TextInfo object...");
+    TextInfo ti2 = (TextInfo)ti1.Clone();
 
-   public static void Main()  {
+// Display whether the clone is read-only.
+    DisplayReadOnly("2b) The TextInfo clone", ti2);
 
-      // Sets a DateTime to April 3, 2002 of the Gregorian calendar.
-      DateTime myDT = new DateTime( 2002, 4, 3, new GregorianCalendar() );
+// Set the ListSeparator property on the TextInfo clone.
+    Console.WriteLine("2c) The original value of the clone's ListSeparator " +
+                      "property is \"{0}\".", ti2.ListSeparator);
+    ti2.ListSeparator = "/";
+    Console.WriteLine("2d) The new value of the clone's ListSeparator " +
+                      "property is \"{0}\".\n", ti2.ListSeparator);
 
-      // Creates an instance of the ThaiBuddhistCalendar.
-      ThaiBuddhistCalendar myCal = new ThaiBuddhistCalendar();
+// Create a read-only clone of the original TextInfo.
+    Console.WriteLine("3a) Create a read-only clone of the original TextInfo object...");
+    TextInfo ti3 = TextInfo.ReadOnly(ti1);
 
-      // Displays the values of the DateTime.
-      Console.WriteLine( "April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:" );
-      DisplayValues( myCal, myDT );
+// Display whether the read-only clone is actually read-only.
+    DisplayReadOnly("3b) The TextInfo clone", ti3);
 
-      // Adds two years and ten months.
-      myDT = myCal.AddYears( myDT, 2 );
-      myDT = myCal.AddMonths( myDT, 10 );
+// Try to set the ListSeparator property of a read-only TextInfo object. Use the
+// IsReadOnly property again to determine whether to attempt the set operation. You 
+// could use a try-catch block instead and catch an InvalidOperationException when
+// the set operation fails, but that programming technique is inefficient.
+    Console.WriteLine("3c) Try to set the read-only clone's LineSeparator " +
+                      "property.");
+    if (ti3.IsReadOnly == true)
+        {
+        Console.WriteLine("3d) The set operation is invalid.");
+        }
+    else
+        {
+        // This clause is not executed.
+        ti3.ListSeparator = "/";
+        Console.WriteLine("3d) The new value of the clone's ListSeparator " +
+                          "property is \"{0}\".\n", ti2.ListSeparator);
+        }
+    }
 
-      // Displays the values of the DateTime.
-      Console.WriteLine( "After adding two years and ten months:" );
-      DisplayValues( myCal, myDT );
-
-   }
-
-   public static void DisplayValues( Calendar myCal, DateTime myDT )  {
-      Console.WriteLine( "   Era:        {0}", myCal.GetEra( myDT ) );
-      Console.WriteLine( "   Year:       {0}", myCal.GetYear( myDT ) );
-      Console.WriteLine( "   Month:      {0}", myCal.GetMonth( myDT ) );
-      Console.WriteLine( "   DayOfYear:  {0}", myCal.GetDayOfYear( myDT ) );
-      Console.WriteLine( "   DayOfMonth: {0}", myCal.GetDayOfMonth( myDT ) );
-      Console.WriteLine( "   DayOfWeek:  {0}", myCal.GetDayOfWeek( myDT ) );
-      Console.WriteLine();
-   }
-
+    private static void DisplayReadOnly(string caption, TextInfo ti)
+    {
+    Console.WriteLine("{0} is {1}read-only.", 
+                      caption, ti.IsReadOnly ? "" : "not ");
+    }
 }
 
 /*
-This code produces the following output.
+This code example produces the following results:
 
-April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:
-   Era:        1
-   Year:       2545
-   Month:      4
-   DayOfYear:  93
-   DayOfMonth: 3
-   DayOfWeek:  Wednesday
+1) The original TextInfo object is not read-only.
 
-After adding two years and ten months:
-   Era:        1
-   Year:       2548
-   Month:      2
-   DayOfYear:  34
-   DayOfMonth: 3
-   DayOfWeek:  Thursday
+2a) Create a clone of the original TextInfo object...
+2b) The TextInfo clone is not read-only.
+2c) The original value of the clone's ListSeparator property is ",".
+2d) The new value of the clone's ListSeparator property is "/".
+
+3a) Create a read-only clone of the original TextInfo object...
+3b) The TextInfo clone is read-only.
+3c) Try to set the read-only clone's LineSeparator property.
+3d) The set operation is invalid.
 
 */

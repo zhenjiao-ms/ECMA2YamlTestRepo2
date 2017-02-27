@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.SymbolStore.SymReader.Dispose(System.Boolean)
-internalonly: False
----
-
----
 uid: System.Diagnostics.SymbolStore.SymReader.GetMethod(System.Diagnostics.SymbolStore.SymbolToken,System.Int32)
 internalonly: False
 ---
@@ -65,11 +60,6 @@ internalonly: False
 
 ---
 uid: System.Diagnostics.SymbolStore.SymReader.Finalize
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymReader.Dispose
 internalonly: False
 ---
 

@@ -1,14 +1,14 @@
 int main()
 {
    // Creates a new component.
-   MyControl^ myNewControl = gcnew MyControl;
+   MyImage^ myNewImage = gcnew MyImage;
 
    // Gets the attributes for the component.
-   AttributeCollection^ attributes = TypeDescriptor::GetAttributes( myNewControl );
+   AttributeCollection^ attributes = TypeDescriptor::GetAttributes( myNewImage );
 
-   /* Prints the name of the license provider by retrieving the LicenseProviderAttribute 
-        * from the AttributeCollection. */
-   LicenseProviderAttribute^ myAttribute = dynamic_cast<LicenseProviderAttribute^>(attributes[ LicenseProviderAttribute::typeid ]);
-   Console::WriteLine( "The license provider for this class is: {0}", myAttribute->LicenseProvider );
+   /* Prints the name of the editor by retrieving the EditorAttribute 
+       * from the AttributeCollection. */
+   EditorAttribute^ myAttribute = dynamic_cast<EditorAttribute^>(attributes[ EditorAttribute::typeid ]);
+   Console::WriteLine( "The editor for this class is: {0}", myAttribute->EditorTypeName );
    return 0;
 }

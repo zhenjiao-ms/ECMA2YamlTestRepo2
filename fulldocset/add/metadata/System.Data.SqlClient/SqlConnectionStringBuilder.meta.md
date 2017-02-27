@@ -54,11 +54,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.PoolBlockingPeriod
-internalonly: False
----
-
----
 uid: System.Data.SqlClient.SqlConnectionStringBuilder.ShouldSerialize(System.String)
 internalonly: False
 ---
@@ -70,11 +65,6 @@ internalonly: False
 
 ---
 uid: System.Data.SqlClient.SqlConnectionStringBuilder.WorkstationID
-internalonly: False
----
-
----
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.ColumnEncryptionSetting
 internalonly: False
 ---
 
@@ -99,17 +89,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.MultiSubnetFailover
-internalonly: False
----
-
----
 uid: System.Data.SqlClient.SqlConnectionStringBuilder.FailoverPartner
-internalonly: False
----
-
----
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.ApplicationIntent
 internalonly: False
 ---
 
@@ -124,11 +104,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.ConnectRetryInterval
-internalonly: False
----
-
----
 uid: System.Data.SqlClient.SqlConnectionStringBuilder.Pooling
 internalonly: False
 ---
@@ -139,17 +114,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.TransparentNetworkIPResolution
-internalonly: False
----
-
----
 uid: System.Data.SqlClient.SqlConnectionStringBuilder.IntegratedSecurity
-internalonly: False
----
-
----
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.ConnectRetryCount
 internalonly: False
 ---
 
@@ -175,11 +140,6 @@ internalonly: False
 
 ---
 uid: System.Data.SqlClient.SqlConnectionStringBuilder.PersistSecurityInfo
-internalonly: False
----
-
----
-uid: System.Data.SqlClient.SqlConnectionStringBuilder.Authentication
 internalonly: False
 ---
 

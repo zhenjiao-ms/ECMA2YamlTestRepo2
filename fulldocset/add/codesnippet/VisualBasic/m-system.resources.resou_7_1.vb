@@ -1,34 +1,20 @@
-Imports System.Collections
-Imports System.IO
-Imports System.Reflection
-Imports System.Resources
-
-Module Example
-   Public Sub Main()
-      Dim assem As Assembly = GetType(Example).Assembly
-      Dim fs As Stream = assem.GetManifestResourceStream("PatientForm.resources")
-      Dim rr As New ResourceReader(fs)
-      Dim dict As IDictionaryEnumerator = rr.GetEnumerator
-      Dim ctr As Integer
-
-      Do While dict.MoveNext()
-         ctr += 1
-         Console.WriteLine("{0:00}: {1} = {2}", ctr, dict.Key, dict.Value)
-      Loop
-
-      rr.Close()
+<Serializable> Public Structure PersonTable
+   Public ReadOnly nColumns As Integer
+   Public Readonly column1 As String
+   Public ReadOnly column2 As String
+   Public ReadOnly column3 As String
+   Public ReadOnly width1 As Integer
+   Public ReadOnly width2 As Integer
+   Public ReadOnly width3 As Integer
+   
+   Public Sub New(column1 As String, column2 As String, column3 As String,
+                  width1 As Integer, width2 As Integer, width3 As Integer)
+      Me.column1 = column1
+      Me.column2 = column2
+      Me.column3 = column3
+      Me.width1 = width1
+      Me.width2 = width2
+      Me.width3 = width3
+      Me.nColumns = Me.GetType().GetFields().Count \ 2 
    End Sub
-End Module
-' The example displays the following output:
-'       01: Label3 = "Species:"
-'       02: Label2 = "Pet Name:"
-'       03: Label1 = "Patient Number:"
-'       04: Label7 = "Owner:"
-'       05: Label6 = "Age:"
-'       06: Label5 = "Date of Birth:"
-'       07: Label4 = "Breed:"
-'       08: Label9 = "Home Phone:"
-'       09: Label8 = "Address:"
-'       10: Title = "Top Pet Animal Clinic"
-'       11: Label10 = "Work Phone:"
-'       12: Label11 = "Mobile Phone:"
+End Structure

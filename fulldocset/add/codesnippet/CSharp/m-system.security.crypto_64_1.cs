@@ -1,72 +1,74 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
 
-class AsnEncodedDataSample
+public class HashDirectory
 {
-	static void Main()
-	{		
-		//The following example demonstrates the usage the AsnEncodedData classes.
-		// Asn encoded data is read from the extensions of an X509 certificate.
-		try
-		{
-			// Open the certificate store.
-			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-			// Select one or more certificates to display extensions information.
-			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
 
-			// Create a new AsnEncodedDataCollection object.
-			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
-			for (int i = 0; i < scollection.Count; i++)
-			{
-				// Display certificate information.
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
-				Console.ResetColor();
-				// Display extensions information.
-				foreach (X509Extension extension in scollection[i].Extensions)
-				{
-					// Create an AsnEncodedData object using the extensions information.
-					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
-					Console.ForegroundColor = ConsoleColor.Green;
-					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
-					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
-					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
-					Console.ResetColor();
-					Console.WriteLine(asndata.Format(true));
-					Console.WriteLine(Environment.NewLine);
-					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-					asncoll.Add(asndata);
-				}
-				Console.WriteLine(Environment.NewLine);
-			}
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
-			Console.ResetColor();
-
-			store.Close();
-			//Create an enumerator for moving through the collection.
-			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
-			//You must execute a MoveNext() to get to the first item in the collection.
-			asne.MoveNext();
-			// Write out AsnEncodedData in the collection.
-			Console.ForegroundColor = ConsoleColor.Blue;
-			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
-			Console.ResetColor();
-
-			asne.MoveNext();
-			Console.ForegroundColor = ConsoleColor.DarkBlue;
-			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
-			Console.ResetColor();
-			//Return index in the collection to the beginning.
-			asne.Reset();
-		}
-		catch (CryptographicException)
-		{
-			Console.WriteLine("Information could not be written out for this certificate.");
-		}
-	}
+    [STAThreadAttribute]
+    public static void Main(String[] args)
+    {
+        string directory = "";
+        if (args.Length < 1)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult dr = fbd.ShowDialog();
+            if (dr == DialogResult.OK)
+                directory = fbd.SelectedPath;
+            else
+            {
+                Console.WriteLine("No directory selected.");
+                return;
+            }
+        }
+        else
+            directory = args[0];
+        try
+        {
+            // Create a DirectoryInfo object representing the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(directory);
+            // Get the FileInfo objects for every file in the directory.
+            FileInfo[] files = dir.GetFiles();
+            // Initialize a RIPE160 hash object.
+            RIPEMD160 myRIPEMD160 = RIPEMD160Managed.Create();
+            byte[] hashValue;
+            // Compute and print the hash values for each file in directory.
+            foreach (FileInfo fInfo in files)
+            {
+                // Create a fileStream for the file.
+                FileStream fileStream = fInfo.Open(FileMode.Open);
+                // Be sure it's positioned to the beginning of the stream.
+                fileStream.Position = 0;
+                // Compute the hash of the fileStream.
+                hashValue = myRIPEMD160.ComputeHash(fileStream);
+                // Write the name of the file to the Console.
+                Console.Write(fInfo.Name + ": ");
+                // Write the hash value to the Console.
+                PrintByteArray(hashValue);
+                // Close the file.
+                fileStream.Close();
+            }
+            return;
+        }
+        catch (DirectoryNotFoundException)
+        {
+            Console.WriteLine("Error: The directory specified could not be found.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Error: A file in the directory could not be accessed.");
+        }
+    }
+    // Print the byte array in a readable format.
+    public static void PrintByteArray(byte[] array)
+    {
+        int i;
+        for (i = 0; i < array.Length; i++)
+        {
+            Console.Write(String.Format("{0:X2}", array[i]));
+            if ((i % 4) == 3) Console.Write(" ");
+        }
+        Console.WriteLine();
+    }
 }

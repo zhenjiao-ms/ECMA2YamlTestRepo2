@@ -1,23 +1,33 @@
-
 using System;
-using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
+using System.Xml;
+using System.IO;
 
-
-public class X509
+/// This sample used the GetXml method in the CipherReference class to 
+/// write the XML values for the CipherReference to the console.
+namespace CipherReference2
 {
+	class CipherReference2
+	{
+		[STAThread]
+		static void Main(string[] args)
+		{
+			//Create a URI string.
+			String uri = "http://www.woodgrovebank.com/document.xml";
 
-    public static void Main()
-    {
+			// Create a Base64 transform. The input content retrieved from the
+			// URI should be Base64-decoded before other processing.
+			Transform base64 = new XmlDsigBase64Transform();
 
-        // The path to the certificate.
-        string Certificate =  "Certificate.cer";
+			//Create a transform chain and add the transform to it.
+			TransformChain tc = new TransformChain();
 
-        // Load the certificate into an X509Certificate object.
-        X509Certificate cert = X509Certificate.CreateFromCertFile(Certificate);
+			tc.Add(base64);
 
-        // Get the value.
-        byte[] results = cert.GetCertHash();
-      
-    }
-
+			//Create <CipherReference> information.
+			CipherReference reference = new CipherReference(uri, tc);
+			// Write the CipherReference value to the console.
+			Console.WriteLine("Cipher Reference data: {0}", reference.GetXml().OuterXml);
+		}
+	}
 }

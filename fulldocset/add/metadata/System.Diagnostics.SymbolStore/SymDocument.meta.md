@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.SymbolStore.SymDocument.Dispose
-internalonly: False
----
-
----
 uid: System.Diagnostics.SymbolStore.SymDocument.Language
 internalonly: False
 ---
@@ -45,11 +40,6 @@ internalonly: False
 
 ---
 uid: System.Diagnostics.SymbolStore.SymDocument.GetSourceRange(System.Int32,System.Int32,System.Int32,System.Int32)
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymDocument.Dispose(System.Boolean)
 internalonly: False
 ---
 

@@ -1,125 +1,80 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
-namespace RijndaelManaged_Example
+namespace MD5Sample
 {
-    class RijndaelExample
+    class Program
     {
-        public static void Main()
+        static void Main(string[] args)
         {
-            try
+            string source = "Hello World!";
+            using (MD5 md5Hash = MD5.Create())
             {
+                string hash = GetMd5Hash(md5Hash, source);
 
-                string original = "Here is some data to encrypt!";
+                Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
 
-                // Create a new instance of the Rijndael
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (Rijndael myRijndael = Rijndael.Create())
+                Console.WriteLine("Verifying the hash...");
+
+                if (VerifyMd5Hash(md5Hash, source, hash))
                 {
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
-
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
+                    Console.WriteLine("The hashes are the same.");
                 }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
-            }
-        }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
-            // Create an Rijndael object
-            // with the specified key and IV.
-            using (Rijndael rijAlg = Rijndael.Create())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create an encryptor to perform the stream transform.
-                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
+                else
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
+                    Console.WriteLine("The hashes are not same.");
                 }
             }
 
 
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
 
         }
-
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        static string GetMd5Hash(MD5 md5Hash, string input)
         {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
 
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-            // Create an Rijndael object
-            // with the specified key and IV.
-            using (Rijndael rijAlg = Rijndael.Create())
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
             {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create a decryptor to perform the stream transform.
-                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-
+                sBuilder.Append(data[i].ToString("x2"));
             }
 
-            return plaintext;
-
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
         }
+
+        // Verify a hash against a string.
+        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+        {
+            // Hash the input.
+            string hashOfInput = GetMd5Hash(md5Hash, input);
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
+
+// This code example produces the following output:
+//
+// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+// Verifying the hash...
+// The hashes are the same.

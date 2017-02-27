@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Text.RegularExpressions.RegexCompilationInfo.#ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.String,System.String,System.Boolean,System.TimeSpan)
-internalonly: False
----
-
----
 uid: System.Text.RegularExpressions.RegexCompilationInfo.Options
 internalonly: False
 ---
@@ -30,11 +25,6 @@ internalonly: False
 
 ---
 uid: System.Text.RegularExpressions.RegexCompilationInfo.Name
-internalonly: False
----
-
----
-uid: System.Text.RegularExpressions.RegexCompilationInfo.MatchTimeout
 internalonly: False
 ---
 

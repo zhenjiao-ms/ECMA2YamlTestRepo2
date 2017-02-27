@@ -1,13 +1,2 @@
-        [EditorAttribute(typeof(System.ComponentModel.Design.ArrayEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public object[] componentArray
-        {
-            get
-            {
-                return compArray;
-            }
-            set
-            {
-                compArray = value;
-            }
-        }
-        private object[] compArray;
+			// Requests an IDesignerHost service from the design time environment using Component.Site.GetService()
+			IDesignerHost dh = (IDesignerHost) this.Component.Site.GetService(typeof(IDesignerHost));			

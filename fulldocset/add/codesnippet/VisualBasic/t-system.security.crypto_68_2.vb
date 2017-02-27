@@ -1,123 +1,65 @@
-'
-' This example signs an XML file using an
-' envelope signature. It then verifies the 
-' signed XML.
-'
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
 Imports System.Security.Cryptography.X509Certificates
-Imports System.Text
-Imports System.Xml
+Imports System.IO
 
 
 
-Public Class SignVerifyEnvelope
-   
-   
-   Overloads Public Shared Sub Main(args() As [String])
-      
-      Dim Certificate As String = "microsoft.cer"
-      
-      Try
-         ' Generate a signing key.
-         Dim Key As New RSACryptoServiceProvider()
-         
-         ' Create an XML file to sign.
-         CreateSomeXml("Example.xml")
-         Console.WriteLine("New XML file created.")
-         
-         ' Sign the XML that was just created and save it in a 
-         ' new file.
-         SignXmlFile("Example.xml", "SignedExample.xml", Key, Certificate)
-         Console.WriteLine("XML file signed.")
-      Catch e As CryptographicException
-         Console.WriteLine(e.Message)
-      End Try
-   End Sub 
-   
-   
-   ' Sign an XML file and save the signature in a new file.
-   Public Shared Sub SignXmlFile(FileName As String, SignedFileName As String, Key As RSA, Certificate As String)
-      ' Create a new XML document.
-      Dim doc As New XmlDocument()
-      
-      ' Format the document to ignore white spaces.
-      doc.PreserveWhitespace = False
-      
-      ' Load the passed XML file using it's name.
-      doc.Load(New XmlTextReader(FileName))
-      
-      ' Create a SignedXml object.
-      Dim signedXml As New SignedXml(doc)
-      
-      ' Add the key to the SignedXml document. 
-      signedXml.SigningKey = Key
-      
-      ' Create a reference to be signed.
-      Dim reference As New Reference()
-      reference.Uri = ""
-      
-      ' Add an enveloped transformation to the reference.
-      Dim env As New XmlDsigEnvelopedSignatureTransform()
-      reference.AddTransform(env)
-      
-      ' Add the reference to the SignedXml object.
-      signedXml.AddReference(reference)
-      
-      ' Create a new KeyInfo object.
-      Dim keyInfo As New KeyInfo()
-      
-      ' Load the X509 certificate.
-      Dim MSCert As X509Certificate = X509Certificate.CreateFromCertFile(Certificate)
-      
-      ' Load the certificate into a KeyInfoX509Data object
-      ' and add it to the KeyInfo object.
-      keyInfo.AddClause(New KeyInfoX509Data(MSCert))
-      
-      ' Add the KeyInfo object to the SignedXml object.
-      signedXml.KeyInfo = keyInfo
-      
-      ' Compute the signature.
-      signedXml.ComputeSignature()
-      
-      ' Get the XML representation of the signature and save
-      ' it to an XmlElement object.
-      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-      
-      ' Append the element to the XML document.
-      doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
-      
-      
-      If TypeOf doc.FirstChild Is XmlDeclaration Then
-         doc.RemoveChild(doc.FirstChild)
-      End If
-      
-      ' Save the signed XML document to a file specified
-      ' using the passed string.
-      Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
-      doc.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-   
-   
-   ' Create example data to sign.
-   Public Shared Sub CreateSomeXml(FileName As String)
-      ' Create a new XmlDocument object.
-      Dim document As New XmlDocument()
-      
-      ' Create a new XmlNode object.
-      Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
-      
-      ' Add some text to the node.
-      node.InnerText = "Example text to be signed."
-      
-      ' Append the node to the document.
-      document.AppendChild(node)
-      
-      ' Save the XML document to the file name specified.
-      Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
-      document.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-End Class 
+Class X509store2
+
+    Shared Sub Main(ByVal args() As String)
+        'Create new X509 store called teststore from the local certificate store.
+        Dim store As New X509Store("teststore", StoreLocation.CurrentUser)
+        store.Open(OpenFlags.ReadWrite)
+        Dim certificate As New X509Certificate2()
+
+        'Create certificates from certificate files.
+        'You must put in a valid path to three certificates in the following constructors.
+        Dim certificate1 As New X509Certificate2("c:\mycerts\*****.cer")
+        Dim certificate2 As New X509Certificate2("c:\mycerts\*****.cer")
+        Dim certificate5 As New X509Certificate2("c:\mycerts\*****.cer")
+
+        'Create a collection and add two of the certificates.
+        Dim collection As New X509Certificate2Collection()
+        collection.Add(certificate2)
+        collection.Add(certificate5)
+
+        'Add certificates to the store.
+        store.Add(certificate1)
+        store.AddRange(collection)
+
+        Dim storecollection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Console.WriteLine("Store name: {0}", store.Name)
+        Console.WriteLine("Store location: {0}", store.Location)
+        Dim x509 As X509Certificate2
+        For Each x509 In storecollection
+            Console.WriteLine("certificate name: {0}", x509.Subject)
+        Next x509
+
+        'Remove a certificate.
+        store.Remove(certificate1)
+        Dim storecollection2 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
+        Dim x509a As X509Certificate2
+        For Each x509a In storecollection2
+            Console.WriteLine("certificate name: {0}", x509a.Subject)
+        Next x509a
+
+        'Remove a range of certificates.
+        store.RemoveRange(collection)
+        Dim storecollection3 As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine)
+        If storecollection3.Count = 0 Then
+            Console.WriteLine("Store contains no certificates.")
+        Else
+            Dim x509b As X509Certificate2
+            For Each x509b In storecollection3
+                Console.WriteLine("certificate name: {0}", x509b.Subject)
+            Next x509b
+        End If
+
+        'Close the store.
+        store.Close()
+
+    End Sub
+End Class

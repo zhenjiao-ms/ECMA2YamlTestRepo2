@@ -1,29 +1,30 @@
-
-   // Get the event log corresponding to the existing source.
-   String^ myLogName = EventLog::LogNameFromSourceName( sourceName, "." );
-   
-   // Find each instance of a specific event log entry in a
-   // particular event log.
-   EventLog^ myEventLog = gcnew EventLog( myLogName,"." );
-   int count = 0;
-   Console::WriteLine( "Searching event log entries for the event ID {0}...", ServerConnectionDownMsgId );
-   
-   // Search for the resource ID, display the event text,
-   // and display the number of matching entries.
-   System::Collections::IEnumerator^ myEnum = myEventLog->Entries->GetEnumerator();
-   while ( myEnum->MoveNext() )
+   // Ensure that the source has already been registered using
+   // EventLogInstaller or EventLog.CreateEventSource.
+   String^ sourceName = "SampleApplicationSource";
+   if ( EventLog::SourceExists( sourceName ) )
    {
-      EventLogEntry^ entry = safe_cast<EventLogEntry^>(myEnum->Current);
-      if ( entry->InstanceId == ServerConnectionDownMsgId )
-      {
-         count++;
-         Console::WriteLine();
-         Console::WriteLine( "Entry ID    = {0}", entry->InstanceId );
-         Console::WriteLine( "Reported at {0}", entry->TimeWritten );
-         Console::WriteLine( "Message text:" );
-         Console::WriteLine( "\t{0}", entry->Message );
-      }
-   }
+      // Define an informational event with no category.
+      // The message identifier corresponds to the message text in the
+      // message resource file defined for the source.
+      EventInstance ^ myEvent = gcnew EventInstance( UpdateCycleCompleteMsgId,0 );
 
-   Console::WriteLine();
-   Console::WriteLine( "Found {0} events with ID {1} in event log {2}.", count, ServerConnectionDownMsgId, myLogName );
+      // Write the event to the event log using the registered source.
+      EventLog::WriteEvent( sourceName, myEvent, 0 );
+
+      // Reuse the event data instance for another event entry.
+      // Set the entry category and message identifiers for
+      // the appropriate resource identifiers in the resource files
+      // for the registered source.  Set the event type to Warning.
+      myEvent->CategoryId = RefreshCategoryMsgId;
+      myEvent->EntryType = EventLogEntryType::Warning;
+      myEvent->InstanceId = ServerConnectionDownMsgId;
+
+      // Write the event to the event log using the registered source.
+      // Insert the machine name into the event message text.
+      array<String^>^ss = {Environment::MachineName};
+      EventLog::WriteEvent( sourceName, myEvent, ss );
+   }
+   else
+   {
+      Console::WriteLine( "Warning - event source {0} not registered", sourceName );
+   }

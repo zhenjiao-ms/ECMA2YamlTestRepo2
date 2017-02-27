@@ -26,7 +26,7 @@ namespace Microsoft.WCF.Documentation
     private void SnippetEnableHelpPage()
     {
         // see C_HowToSecureEndpoint\cs
-        //<Snippet1>
+        //<snippet1>
         // Create a new metadata behavior object and set its properties to 
         // create a secure endpoint. 
         ServiceMetadataBehavior sb = new ServiceMetadataBehavior();

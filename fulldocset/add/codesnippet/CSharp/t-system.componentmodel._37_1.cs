@@ -1,14 +1,6 @@
-	    try {
-		System.Diagnostics.Process myProc = new System.Diagnostics.Process();
-		myProc.StartInfo.FileName = "c:\nonexist.exe";  //Attempting to start a non-existing executable
-		myProc.Start();    //Start the application and assign it to the process component.    
-	    }
-  	    catch(Win32Exception w) {
-		Console.WriteLine(w.Message);
-		Console.WriteLine(w.ErrorCode.ToString());
-		Console.WriteLine(w.NativeErrorCode.ToString());
-		Console.WriteLine(w.StackTrace);
-		Console.WriteLine(w.Source);
-		Exception e=w.GetBaseException();
-		Console.WriteLine(e.Message);
- 	    }
+            // The sample first constructs a CultureInfo variable using the Greek culture - 'el'.
+            System.Globalization.CultureInfo myCulture= new System.Globalization.CultureInfo("el");
+            string myCString="Russian";
+            Console.WriteLine(TypeDescriptor.GetConverter(myCulture).ConvertTo(myCulture, typeof(string)));
+            // The following line will output 'ru' based on the string being converted.
+            Console.WriteLine(TypeDescriptor.GetConverter(myCulture).ConvertFrom(myCString));

@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.NativeActivityMetadata.AddDelegate(System.Activities.ActivityDelegate,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.NativeActivityMetadata.SetChildrenCollection(System.Collections.ObjectModel.Collection{System.Activities.Activity})
 internalonly: False
 ---
@@ -64,11 +59,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.NativeActivityMetadata.AddVariable(System.Activities.Variable,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.NativeActivityMetadata.op_Inequality(System.Activities.NativeActivityMetadata,System.Activities.NativeActivityMetadata)
 internalonly: False
 ---
@@ -89,17 +79,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.NativeActivityMetadata.AddImportedChild(System.Activities.Activity,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.NativeActivityMetadata.HasViolations
-internalonly: False
----
-
----
-uid: System.Activities.NativeActivityMetadata.AddImportedDelegate(System.Activities.ActivityDelegate,System.Object)
 internalonly: False
 ---
 
@@ -130,11 +110,6 @@ internalonly: False
 
 ---
 uid: System.Activities.NativeActivityMetadata.AddArgument(System.Activities.RuntimeArgument)
-internalonly: False
----
-
----
-uid: System.Activities.NativeActivityMetadata.AddChild(System.Activities.Activity,System.Object)
 internalonly: False
 ---
 

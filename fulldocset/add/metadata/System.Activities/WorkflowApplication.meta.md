@@ -19,17 +19,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.#ctor(System.Activities.Activity,System.Activities.WorkflowIdentity)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.EndLoad(System.IAsyncResult)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.EndDeleteDefaultInstanceOwner(System.IAsyncResult)
 internalonly: False
 ---
 
@@ -40,11 +30,6 @@ internalonly: False
 
 ---
 uid: System.Activities.WorkflowApplication.Aborted
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.GetRunnableInstance(System.Runtime.DurableInstancing.InstanceStore,System.TimeSpan)
 internalonly: False
 ---
 
@@ -79,11 +64,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.BeginLoad(System.Activities.WorkflowApplicationInstance,System.Activities.DynamicUpdate.DynamicUpdateMap,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.BeginResumeBookmark(System.String,System.Object,System.TimeSpan,System.AsyncCallback,System.Object)
 internalonly: False
 ---
@@ -100,11 +80,6 @@ internalonly: False
 
 ---
 uid: System.Activities.WorkflowApplication.Cancel
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginDeleteDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
@@ -134,16 +109,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.BeginCreateDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.Activities.WorkflowIdentity,System.Activities.WorkflowIdentityFilter,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.#ctor(System.Activities.Activity,System.Collections.Generic.IDictionary{System.String,System.Object},System.Activities.WorkflowIdentity)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.BeginCancel(System.TimeSpan,System.AsyncCallback,System.Object)
 internalonly: False
 ---
@@ -165,16 +130,6 @@ internalonly: False
 
 ---
 uid: System.Activities.WorkflowApplication.BeginTerminate(System.Exception,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginLoad(System.Activities.WorkflowApplicationInstance,System.Activities.DynamicUpdate.DynamicUpdateMap,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.Load(System.Activities.WorkflowApplicationInstance)
 internalonly: False
 ---
 
@@ -204,11 +159,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.GetInstance(System.Guid,System.Runtime.DurableInstancing.InstanceStore)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.Terminate(System.Exception)
 internalonly: False
 ---
@@ -224,22 +174,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.EndGetInstance(System.IAsyncResult)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginLoad(System.Activities.WorkflowApplicationInstance,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.BeginRun(System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginCreateDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.Activities.WorkflowIdentity,System.Activities.WorkflowIdentityFilter,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
@@ -299,11 +234,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.DeleteDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.BeginCancel(System.AsyncCallback,System.Object)
 internalonly: False
 ---
@@ -314,22 +244,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.BeginGetRunnableInstance(System.Runtime.DurableInstancing.InstanceStore,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.Abort
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.Load(System.Activities.WorkflowApplicationInstance,System.TimeSpan)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginGetInstance(System.Guid,System.Runtime.DurableInstancing.InstanceStore,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 
@@ -339,32 +254,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.GetInstance(System.Guid,System.Runtime.DurableInstancing.InstanceStore,System.TimeSpan)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.DeleteDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.TimeSpan)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.OnUnhandledException
 internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.BeginDeleteDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.Terminate(System.String)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.CreateDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.Activities.WorkflowIdentity,System.Activities.WorkflowIdentityFilter,System.TimeSpan)
 internalonly: False
 ---
 
@@ -379,27 +274,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.EndGetRunnableInstance(System.IAsyncResult)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.InstanceStore
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.Load(System.Activities.WorkflowApplicationInstance,System.Activities.DynamicUpdate.DynamicUpdateMap)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.CreateDefaultInstanceOwner(System.Runtime.DurableInstancing.InstanceStore,System.Activities.WorkflowIdentity,System.Activities.WorkflowIdentityFilter)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.EndCreateDefaultInstanceOwner(System.IAsyncResult)
 internalonly: False
 ---
 
@@ -414,22 +289,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.WorkflowApplication.Load(System.Activities.WorkflowApplicationInstance,System.Activities.DynamicUpdate.DynamicUpdateMap,System.TimeSpan)
-internalonly: False
----
-
----
 uid: System.Activities.WorkflowApplication.#ctor(System.Activities.Activity,System.Collections.Generic.IDictionary{System.String,System.Object})
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginLoad(System.Activities.WorkflowApplicationInstance,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.GetRunnableInstance(System.Runtime.DurableInstancing.InstanceStore)
 internalonly: False
 ---
 
@@ -455,16 +315,6 @@ internalonly: False
 
 ---
 uid: System.Activities.WorkflowApplication.ResumeBookmark(System.String,System.Object,System.TimeSpan)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginGetInstance(System.Guid,System.Runtime.DurableInstancing.InstanceStore,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.WorkflowApplication.BeginGetRunnableInstance(System.Runtime.DurableInstancing.InstanceStore,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 

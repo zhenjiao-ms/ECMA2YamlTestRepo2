@@ -299,17 +299,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.SystemParameters.IsGlassEnabled
-internalonly: False
----
-
----
 uid: System.Windows.SystemParameters.MouseHoverHeight
-internalonly: False
----
-
----
-uid: System.Windows.SystemParameters.StaticPropertyChanged
 internalonly: False
 ---
 
@@ -335,11 +325,6 @@ internalonly: False
 
 ---
 uid: System.Windows.SystemParameters.FocusBorderHeight
-internalonly: False
----
-
----
-uid: System.Windows.SystemParameters.WindowGlassBrush
 internalonly: False
 ---
 
@@ -489,11 +474,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.SystemParameters.WindowCornerRadius
-internalonly: False
----
-
----
 uid: System.Windows.SystemParameters.MinimumWindowTrackHeightKey
 internalonly: False
 ---
@@ -515,11 +495,6 @@ internalonly: False
 
 ---
 uid: System.Windows.SystemParameters.ThickVerticalBorderWidth
-internalonly: False
----
-
----
-uid: System.Windows.SystemParameters.UxThemeColor
 internalonly: False
 ---
 
@@ -724,11 +699,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.SystemParameters.UxThemeName
-internalonly: False
----
-
----
 uid: System.Windows.SystemParameters.ThickHorizontalBorderHeight
 internalonly: False
 ---
@@ -750,11 +720,6 @@ internalonly: False
 
 ---
 uid: System.Windows.SystemParameters.MaximizedPrimaryScreenWidthKey
-internalonly: False
----
-
----
-uid: System.Windows.SystemParameters.WindowResizeBorderThickness
 internalonly: False
 ---
 
@@ -1019,11 +984,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.SystemParameters.WindowGlassColor
-internalonly: False
----
-
----
 uid: System.Windows.SystemParameters.DropShadowKey
 internalonly: False
 ---
@@ -1070,11 +1030,6 @@ internalonly: False
 
 ---
 uid: System.Windows.SystemParameters.HorizontalScrollBarThumbWidthKey
-internalonly: False
----
-
----
-uid: System.Windows.SystemParameters.WindowNonClientFrameThickness
 internalonly: False
 ---
 

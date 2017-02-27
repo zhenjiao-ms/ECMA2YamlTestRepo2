@@ -1,45 +1,12 @@
-#using <System.dll>
-
-using namespace System;
-using namespace System::Security::Cryptography;
-int main()
-{
-   try
-   {
-      
-      //Create a new instance of DSACryptoServiceProvider.
-      DSACryptoServiceProvider^ DSA = gcnew DSACryptoServiceProvider;
-      
-      //The hash to sign.
-      array<Byte>^Hash = {59,4,248,102,77,97,142,201,210,12,224,93,25,41,100,197,213,134,130,135};
-      
-      //Create an DSASignatureFormatter object and pass it the 
-      //DSACryptoServiceProvider to transfer the key information.
-      DSASignatureFormatter^ DSAFormatter = gcnew DSASignatureFormatter( DSA );
-      
-      //Set the hash algorithm to SHA1.
-      DSAFormatter->SetHashAlgorithm( "SHA1" );
-      
-      //Create a signature for HashValue and return it.
-      array<Byte>^SignedHash = DSAFormatter->CreateSignature( Hash );
-      
-      //Create an DSASignatureDeformatter object and pass it the 
-      //DSACryptoServiceProvider to transfer the key information.
-      DSASignatureDeformatter^ DSADeformatter = gcnew DSASignatureDeformatter( DSA );
-      
-      //Verify the hash and display the results to the console.
-      if ( DSADeformatter->VerifySignature( Hash, SignedHash ) )
-      {
-         Console::WriteLine( "The signature was verified." );
-      }
-      else
-      {
-         Console::WriteLine( "The signature was not verified." );
-      }
-   }
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-   }
-
-}
+   //Output chain information of the selected certificate.
+   X509Chain ^ ch = gcnew X509Chain;
+   ch->Build( certificate );
+   Console::WriteLine( "Chain Information" );
+   ch->ChainPolicy->RevocationMode = X509RevocationMode::Online;
+   Console::WriteLine( "Chain revocation flag: {0}", ch->ChainPolicy->RevocationFlag );
+   Console::WriteLine( "Chain revocation mode: {0}", ch->ChainPolicy->RevocationMode );
+   Console::WriteLine( "Chain verification flag: {0}", ch->ChainPolicy->VerificationFlags );
+   Console::WriteLine( "Chain verification time: {0}", ch->ChainPolicy->VerificationTime );
+   Console::WriteLine( "Chain status length: {0}", ch->ChainStatus->Length );
+   Console::WriteLine( "Chain application policy count: {0}", ch->ChainPolicy->ApplicationPolicy->Count );
+   Console::WriteLine( "Chain certificate policy count: {0} {1}", ch->ChainPolicy->CertificatePolicy->Count, Environment::NewLine );

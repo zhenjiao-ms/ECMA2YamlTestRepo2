@@ -1,42 +1,169 @@
 #using <System.dll>
-#using <System.Security.dll>
 
 using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Security::Permissions;
 using namespace System::IO;
-using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Security::Cryptography;
+
+
+class RijndaelMemoryExample
+{
+public:
+    static array<Byte>^ encryptStringToBytes_AES(String^ plainText, array<Byte>^ Key, array<Byte>^ IV)
+    {
+        // Check arguments.
+        if (!plainText || plainText->Length <= 0)
+            throw gcnew ArgumentNullException("plainText");
+        if (!Key || Key->Length <= 0)
+            throw gcnew ArgumentNullException("Key");
+        if (!IV  || IV->Length <= 0)
+            throw gcnew ArgumentNullException("IV");
+
+        // Declare the streams used
+        // to encrypt to an in memory
+        // array of bytes.
+		MemoryStream^   msEncrypt;
+        CryptoStream^   csEncrypt;
+        StreamWriter^   swEncrypt;
+
+        // Declare the RijndaelManaged object
+        // used to encrypt the data.
+        RijndaelManaged^ aesAlg;
+
+        try
+        {
+            // Create a RijndaelManaged object
+            // with the specified key and IV.
+            aesAlg = gcnew RijndaelManaged();
+			aesAlg->Padding = PaddingMode::PKCS7;
+            aesAlg->Key = Key;
+            aesAlg->IV = IV;
+
+            // Create an encryptor to perform the stream transform.
+            ICryptoTransform^ encryptor = aesAlg->CreateEncryptor(aesAlg->Key, aesAlg->IV);
+
+            // Create the streams used for encryption.
+            msEncrypt = gcnew MemoryStream();
+			csEncrypt = gcnew CryptoStream(msEncrypt, encryptor, CryptoStreamMode::Write);
+            swEncrypt = gcnew StreamWriter(csEncrypt);
+
+            //Write all data to the stream.
+            swEncrypt->Write(plainText);
+			swEncrypt->Flush();
+			csEncrypt->FlushFinalBlock();
+			msEncrypt->Flush();
+        }
+        finally
+        {
+            // Clean things up.
+
+            // Close the streams.
+            if(swEncrypt)
+                swEncrypt->Close();
+            if (csEncrypt)
+                csEncrypt->Close();
+
+
+            // Clear the RijndaelManaged object.
+            if (aesAlg)
+                aesAlg->Clear();
+        }
+
+        // Return the encrypted bytes from the memory stream.
+        return msEncrypt->ToArray();
+    }
+
+    static String^ decryptStringFromBytes_AES(array<Byte>^ cipherText, array<Byte>^ Key, array<Byte>^ IV)
+    {
+        // Check arguments.
+        if (!cipherText || cipherText->Length <= 0)
+            throw gcnew ArgumentNullException("cipherText");
+        if (!Key || Key->Length <= 0)
+            throw gcnew ArgumentNullException("Key");
+        if (!IV || IV->Length <= 0)
+            throw gcnew ArgumentNullException("IV");
+
+        // TDeclare the streams used
+        // to decrypt to an in memory
+        // array of bytes.
+        MemoryStream^ msDecrypt;
+        CryptoStream^ csDecrypt;
+        StreamReader^ srDecrypt;
+
+        // Declare the RijndaelManaged object
+        // used to decrypt the data.
+        RijndaelManaged^ aesAlg;
+
+        // Declare the string used to hold
+        // the decrypted text.
+        String^ plaintext;
+
+        try
+        {
+            // Create a RijndaelManaged object
+            // with the specified key and IV.
+            aesAlg = gcnew RijndaelManaged();
+			aesAlg->Padding = PaddingMode::PKCS7;
+            aesAlg->Key = Key;
+            aesAlg->IV = IV;
+
+            // Create a decrytor to perform the stream transform.
+			ICryptoTransform^ decryptor = aesAlg->CreateDecryptor(aesAlg->Key, aesAlg->IV);
+
+            // Create the streams used for decryption.
+            msDecrypt = gcnew MemoryStream(cipherText);
+			csDecrypt = gcnew CryptoStream(msDecrypt, decryptor, CryptoStreamMode::Read);
+            srDecrypt = gcnew StreamReader(csDecrypt);
+
+            // Read the decrypted bytes from the decrypting stream
+            // and place them in a string.
+            plaintext = srDecrypt->ReadToEnd();
+        }
+        finally
+        {
+            // Clean things up.
+
+            // Close the streams.
+            if (srDecrypt)
+                srDecrypt->Close();
+            if (csDecrypt)
+                csDecrypt->Close();
+            if (msDecrypt)
+                msDecrypt->Close();
+
+            // Clear the RijndaelManaged object.
+            if (aesAlg)
+                aesAlg->Clear();
+        }
+
+        return plaintext;
+    }
+};
+
 int main()
 {
-   try
-   {
-      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
-      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
-      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
-      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
-         array<Byte>^rawdata = x509->RawData;
-         Console::WriteLine( "Content Type: {0}{1}", X509Certificate2::GetCertContentType( rawdata ), Environment::NewLine );
-         Console::WriteLine( "Friendly Name: {0}{1}", x509->FriendlyName, Environment::NewLine );
-         Console::WriteLine( "Certificate Verified?: {0}{1}", x509->Verify(), Environment::NewLine );
-         Console::WriteLine( "Simple Name: {0}{1}", x509->GetNameInfo( X509NameType::SimpleName, true ), Environment::NewLine );
-         Console::WriteLine( "Signature Algorithm: {0}{1}", x509->SignatureAlgorithm->FriendlyName, Environment::NewLine );
-         Console::WriteLine( "Private Key: {0}{1}", x509->PrivateKey->ToXmlString( false ), Environment::NewLine );
-         Console::WriteLine( "Public Key: {0}{1}", x509->PublicKey->Key->ToXmlString( false ), Environment::NewLine );
-         Console::WriteLine( "Certificate Archived?: {0}{1}", x509->Archived, Environment::NewLine );
-         Console::WriteLine( "Length of Raw Data: {0}{1}", x509->RawData->Length, Environment::NewLine );
-         x509->Reset();
-      }
-      store->Close();
-   }
-   catch ( CryptographicException^ ) 
-   {
-      Console::WriteLine( "Information could not be written out for this certificate." );
-   }
+    try
+    {
+        String^ original = "Here is some data to encrypt!";
 
+        // Create a new instance of the RijndaelManaged
+        // class.  This generates a new key and initialization
+        // vector (IV).
+        RijndaelManaged^ myRijndael = gcnew RijndaelManaged();
+
+        // Encrypt the string to an array of bytes.
+		array<Byte>^ encrypted = RijndaelMemoryExample::encryptStringToBytes_AES(original, myRijndael->Key, myRijndael->IV);
+
+        // Decrypt the bytes to a string.
+        String^ roundtrip = RijndaelMemoryExample::decryptStringFromBytes_AES(encrypted, myRijndael->Key, myRijndael->IV);
+
+        //Display the original data and the decrypted data.
+		Console::WriteLine("Original:   {0}", original);
+		Console::WriteLine("Round Trip: {0}", roundtrip);
+    }
+    catch (Exception^ e)
+    {
+		Console::WriteLine("Error: {0}", e->Message);
+    }
+
+	return 0;
 }

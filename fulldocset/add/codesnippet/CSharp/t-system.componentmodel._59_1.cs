@@ -1,13 +1,57 @@
-private void BindingSource1_ListChanged(Object sender, ListChangedEventArgs e) {
+using System;
+using System.CodeDom;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.ComponentModel.Design.Serialization;
+using System.Drawing;
+using System.Windows.Forms;
+ 
+namespace CodeDomSerializerSample
+{
+    internal class MyCodeDomSerializer : CodeDomSerializer {
+        public override object Deserialize(IDesignerSerializationManager manager, object codeObject) {
+            // This is how we associate the component with the serializer.
+                CodeDomSerializer baseClassSerializer = (CodeDomSerializer)manager.
+                GetSerializer(typeof(MyComponent).BaseType, typeof(CodeDomSerializer));
 
-System.Text.StringBuilder messageBoxCS = new System.Text.StringBuilder();
-messageBoxCS.AppendFormat("{0} = {1}", "ListChangedType", e.ListChangedType );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "NewIndex", e.NewIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "OldIndex", e.OldIndex );
-messageBoxCS.AppendLine();
-messageBoxCS.AppendFormat("{0} = {1}", "PropertyDescriptor", e.PropertyDescriptor );
-messageBoxCS.AppendLine();
-MessageBox.Show(messageBoxCS.ToString(), "ListChanged Event" );
+            /* This is the simplest case, in which the class just calls the base class
+                to do the work. */
+            return baseClassSerializer.Deserialize(manager, codeObject);
+        }
+ 
+        public override object Serialize(IDesignerSerializationManager manager, object value) {
+            /* Associate the component with the serializer in the same manner as with
+                Deserialize */
+            CodeDomSerializer baseClassSerializer = (CodeDomSerializer)manager.
+                GetSerializer(typeof(MyComponent).BaseType, typeof(CodeDomSerializer));
+ 
+            object codeObject = baseClassSerializer.Serialize(manager, value);
+ 
+            /* Anything could be in the codeObject.  This sample operates on a
+                CodeStatementCollection. */
+            if (codeObject is CodeStatementCollection) {
+                CodeStatementCollection statements = (CodeStatementCollection)codeObject;
+ 
+                // The code statement collection is valid, so add a comment.
+                string commentText = "This comment was added to this object by a custom serializer.";
+                CodeCommentStatement comment = new CodeCommentStatement(commentText);
+                statements.Insert(0, comment);
+            }
+            return codeObject;
+        }
+    }
+ 
+    [DesignerSerializer(typeof(MyCodeDomSerializer), typeof(CodeDomSerializer))]
+    public class MyComponent : Component {
+        private string localProperty = "Component Property Value";
+        public string LocalProperty {
+            get {
+                return localProperty;
+            }
+            set {
+                localProperty = value;
+            }
+        }
+    }
+
 }

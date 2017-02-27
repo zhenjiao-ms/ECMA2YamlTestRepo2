@@ -1,4 +1,9 @@
-            Dim ts As New TimeSpan(133333330)
-            Dim myTSStr As String = "5000000"
-            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertTo(ts, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertFrom(myTSStr))
+    ' This control demonstrates a simple logging capability. 
+    <ComplexBindingProperties("DataSource", "DataMember"), _
+    DefaultBindingProperty("TitleText"), _
+    DefaultEvent("ThresholdExceeded"), _
+    DefaultProperty("Threshold"), _
+    HelpKeywordAttribute(GetType(UserControl)), _
+    ToolboxItem("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design")> _
+    Public Class AttributesDemoControl
+        Inherits UserControl

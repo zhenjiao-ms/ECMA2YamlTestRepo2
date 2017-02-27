@@ -1,149 +1,304 @@
-'
-' This example signs an XML file using an
-' envelope signature. It then verifies the 
-' signed XML.
-'
 Imports System
+Imports System.Security
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
-Imports System.Security.Cryptography.Xml
-Imports System.Text
-Imports System.Xml
 
+Public Class Form1
+    Inherits System.Windows.Forms.Form
 
+    ' Event handler for Run button.
+    Private Sub Button1_Click( _
+        ByVal sender As System.Object, _
+        ByVal e As System.EventArgs) Handles Button1.Click
 
-Public Class SignVerifyEnvelope
-   
-   Overloads Public Shared Sub Main(args() As [String])
-      Try
-         ' Generate a signing key.
-         Dim Key As New RSACryptoServiceProvider()
-         
-         ' Create an XML file to sign.
-         CreateSomeXml("Example.xml")
-         Console.WriteLine("New XML file created.")
-         
-         ' Sign the XML that was just created and save it in a 
-         ' new file.
-         SignXmlFile("Example.xml", "SignedExample.xml", Key)
-         Console.WriteLine("XML file signed.")
-         
-         ' Verify the signature of the signed XML.
-         Console.WriteLine("Verifying signature...")
-         Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
-         
-         ' Display the results of the signature verification to \
-         ' the console.
-         If result Then
-            Console.WriteLine("The XML signature is valid.")
-         Else
-            Console.WriteLine("The XML signature is not valid.")
-         End If
-      Catch e As CryptographicException
-         Console.WriteLine(e.Message)
-      End Try
-   End Sub 
-   
-   
-   ' Sign an XML file and save the signature in a new file.
-   Public Shared Sub SignXmlFile(FileName As String, SignedFileName As String, Key As RSA)
-      ' Create a new XML document.
-      Dim doc As New XmlDocument()
-      
-      ' Format the document to ignore white spaces.
-      doc.PreserveWhitespace = False
-      
-      ' Load the passed XML file using it's name.
-      doc.Load(New XmlTextReader(FileName))
-      
-      ' Create a SignedXml object.
-      Dim signedXml As New SignedXml(doc)
-      
-      ' Add the key to the SignedXml document. 
-      signedXml.SigningKey = Key
-      
-      ' Create a reference to be signed.
-      Dim reference As New Reference()
-      reference.Uri = ""
-      
-      ' Add an enveloped transformation to the reference.
-      Dim env As New XmlDsigEnvelopedSignatureTransform()
-      reference.AddTransform(env)
-      
-      ' Add the reference to the SignedXml object.
-      signedXml.AddReference(reference)
-      
-      
-      ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-      Dim keyInfo As New KeyInfo()
-      keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
-      signedXml.KeyInfo = keyInfo
-      
-      ' Compute the signature.
-      signedXml.ComputeSignature()
-      
-      ' Get the XML representation of the signature and save
-      ' it to an XmlElement object.
-      Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-      
-      ' Append the element to the XML document.
-      doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
-      
-      
-      If TypeOf doc.FirstChild Is XmlDeclaration Then
-         doc.RemoveChild(doc.FirstChild)
-      End If
-      
-      ' Save the signed XML document to a file specified
-      ' using the passed string.
-      Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
-      doc.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
-   ' Verify the signature of an XML file and return the result.
-   Public Shared Function VerifyXmlFile(Name As [String]) As [Boolean]
-      ' Create a new XML document.
-      Dim xmlDocument As New XmlDocument()
-      
-      ' Format using white spaces.
-      xmlDocument.PreserveWhitespace = True
-      
-      ' Load the passed XML file into the document. 
-      xmlDocument.Load(Name)
-      
-      ' Create a new SignedXml object and pass it
-      ' the XML document class.
-      Dim signedXml As New SignedXml(xmlDocument)
-      
-      ' Find the "Signature" node and create a new
-      ' XmlNodeList object.
-      Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-      
-      ' Load the signature node.
-      signedXml.LoadXml(CType(nodeList(0), XmlElement))
-      
-      ' Check the signature and return the result.
-      Return signedXml.CheckSignature()
-   End Function 
-   
-   
-   ' Create example data to sign.
-   Public Shared Sub CreateSomeXml(FileName As String)
-      ' Create a new XmlDocument object.
-      Dim document As New XmlDocument()
-      
-      ' Create a new XmlNode object.
-      Dim node As XmlNode = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples")
-      
-      ' Add some text to the node.
-      node.InnerText = "Example text to be signed."
-      
-      ' Append the node to the document.
-      document.AppendChild(node)
-      
-      ' Save the XML document to the file name specified.
-      Dim xmltw As New XmlTextWriter(FileName, New UTF8Encoding(False))
-      document.WriteTo(xmltw)
-      xmltw.Close()
-   End Sub 
+        tbxOutput.Cursor = Cursors.WaitCursor
+        tbxOutput.Text = ""
+
+        ' Create a digital signature based on RSA encryption.
+        Dim rsaSignature As SignatureDescription = CreateRSAPKCS1Signature()
+        ShowProperties(rsaSignature)
+
+        ' Create a digital signature based on DSA encryption.
+        Dim dsaSignature As SignatureDescription = CreateDSASignature()
+        ShowProperties(dsaSignature)
+
+        ' Create a HashAlgorithm using the digest algorithm of the signature.
+        Dim hashAlgorithm As HashAlgorithm = dsaSignature.CreateDigest()
+        WriteLine("Hash algorithm for the DigestAlgorithm property: " + _
+            hashAlgorithm.ToString())
+
+        ' Create an AsymmetricSignatureFormatter instance using the DSA key.
+        Dim dsa As DSA = dsa.Create()
+        Dim asymmetricFormatter As AsymmetricSignatureFormatter = _
+            CreateDSAFormatter(dsa)
+
+        ' Create an AsymmetricSignatureDeformatter instance using the DSA key.
+        dim asymmetricDeformatter as AsymmetricSignatureDeformatter = _
+            CreateDSADeformatter(dsa)
+
+        ' Align interface and conclude application.
+        WriteLine("This sample completed successfully;" + _
+            " press Exit to continue.")
+
+        ' Reset the cursor to the default look.
+        tbxOutput.Cursor = Cursors.Default
+    End Sub
+
+    ' Create a SignatureDescription for RSA encryption.
+    Private Function CreateRSAPKCS1Signature() As SignatureDescription
+        Dim signatureDescription As New SignatureDescription
+
+        ' Set the key algorithm property for RSA encryption.
+        signatureDescription.KeyAlgorithm = _
+            "System.Security.Cryptography.RSACryptoServiceProvider"
+
+        ' Set the digest algorithm for RSA encryption using the SHA1 provider.
+        signatureDescription.DigestAlgorithm = _
+            "System.Security.Cryptography.SHA1CryptoServiceProvider"
+
+        ' Set the formatter algorithm with the RSAPKCS1 formatter.
+        signatureDescription.FormatterAlgorithm = _
+            "System.Security.Cryptography.RSAPKCS1SignatureFormatter"
+
+        ' Set the formatter algorithm with the RSAPKCS1 deformatter.
+        signatureDescription.DeformatterAlgorithm = _
+            "System.Security.Cryptography.RSAPKCS1SignatureDeformatter"
+
+        Return SignatureDescription
+    End Function
+
+    ' Create a SignatureDescription using a constructed SecurityElement for 
+    ' DSA encryption.
+    Private Function CreateDSASignature() As SignatureDescription
+        Dim securityElement As New SecurityElement("DSASignature")
+
+        ' Create new security elements for the four algorithms.
+        securityElement.AddChild(new SecurityElement( _
+            "Key", _
+            "System.Security.Cryptography.DSACryptoServiceProvider"))
+        securityElement.AddChild(New SecurityElement( _
+            "Digest", _
+            "System.Security.Cryptography.SHA1CryptoServiceProvider"))
+        securityElement.AddChild(new SecurityElement( _
+            "Formatter", _
+            "System.Security.Cryptography.DSASignatureFormatter"))
+        securityElement.AddChild(new SecurityElement( _
+            "Deformatter", _
+            "System.Security.Cryptography.DSASignatureDeformatter"))
+
+        Dim signatureDescription As New SignatureDescription(securityElement)
+
+        Return signatureDescription
+    End Function
+
+    ' Create a signature formatter for DSA encryption.
+    Private Function CreateDSAFormatter(ByVal dsa As DSA) _
+        As AsymmetricSignatureFormatter
+
+        ' Create a DSA signature formatter for encryption.
+        Dim signatureDescription As New SignatureDescription
+        signatureDescription.FormatterAlgorithm = _
+            "System.Security.Cryptography.DSASignatureFormatter"
+
+        Dim asymmetricFormatter As AsymmetricSignatureFormatter
+        asymmetricFormatter = signatureDescription.CreateFormatter(dsa)
+
+        WriteLine("Created formatter : " + asymmetricFormatter.ToString())
+        Return asymmetricFormatter
+    End Function
+
+    ' Create a signature deformatter for DSA decryption.
+    Private Function CreateDSADeformatter(ByVal dsa As DSA) _
+        As AsymmetricSignatureDeformatter
+
+        ' Create a DSA signature deformatter to verify the signature.
+        Dim signatureDescription As New SignatureDescription
+        signatureDescription.DeformatterAlgorithm = _
+            "System.Security.Cryptography.DSASignatureDeformatter"
+
+        Dim asymmetricDeformatter As AsymmetricSignatureDeformatter
+        asymmetricDeformatter = SignatureDescription.CreateDeformatter(dsa)
+
+        WriteLine("Created deformatter : " + asymmetricDeformatter.ToString())
+        Return asymmetricDeformatter
+    End Function
+
+    ' Display to the console the properties of the specified
+    ' SignatureDescription.
+    Private Sub ShowProperties(ByVal signatureDescription _
+        As SignatureDescription)
+
+        ' Retrieve the class path for the specified SignatureDescription.
+        Dim classDescription As String = signatureDescription.ToString()
+
+        Dim deformatterAlgorithm As String 
+        deformatterAlgorithm = signatureDescription.DeformatterAlgorithm
+        Dim formatterAlgorithm As String 
+        formatterAlgorithm = signatureDescription.FormatterAlgorithm
+        Dim digestAlgorithm As String 
+        digestAlgorithm = signatureDescription.DigestAlgorithm
+        Dim keyAlgorithm As String 
+        keyAlgorithm = signatureDescription.KeyAlgorithm
+
+        WriteLine(vbCrLf + "** " + classDescription + " **")
+        WriteLine("DeformatterAlgorithm : " + deformatterAlgorithm)
+        WriteLine("FormatterAlgorithm : " + formatterAlgorithm)
+        WriteLine("DigestAlgorithm : " + digestAlgorithm)
+        WriteLine("KeyAlgorithm : " + keyAlgorithm)
+    End Sub
+
+    ' Write the specified message and carriage return to the output textbox.
+    Private Sub WriteLine(ByVal message As String)
+        tbxOutput.AppendText(message + vbCrLf)
+    End Sub
+
+    ' Event handler for Exit button.
+    Private Sub Button2_Click( _
+        ByVal sender As System.Object, _
+        ByVal e As System.EventArgs) Handles Button2.Click
+
+        Application.Exit()
+    End Sub
+#Region " Windows Form Designer generated code "
+
+    Public Sub New()
+        MyBase.New()
+
+        'This call is required by the Windows Form Designer.
+        InitializeComponent()
+
+        'Add any initialization after the InitializeComponent() call
+
+    End Sub
+
+    'Form overrides dispose to clean up the component list.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents tbxOutput As System.Windows.Forms.RichTextBox
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.tbxOutput = New System.Windows.Forms.RichTextBox
+        Me.Panel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Button1)
+        Me.Panel2.Controls.Add(Me.Button2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel2.DockPadding.All = 20
+        Me.Panel2.Location = New System.Drawing.Point(0, 320)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(616, 64)
+        Me.Panel2.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", _
+            9.0!, _
+            System.Drawing.FontStyle.Regular, _
+            System.Drawing.GraphicsUnit.Point, _
+            CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(446, 20)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 24)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "&Run"
+        '
+        'Button2
+        '
+        Me.Button2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button2.Font = New System.Drawing.Font( _
+            "Microsoft Sans Serif", _
+            9.0!, _
+            System.Drawing.FontStyle.Regular, _
+            System.Drawing.GraphicsUnit.Point, _
+            CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(521, 20)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 24)
+        Me.Button2.TabIndex = 3
+        Me.Button2.Text = "E&xit"
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.tbxOutput)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.DockPadding.All = 20
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(616, 320)
+        Me.Panel1.TabIndex = 2
+        '
+        'tbxOutput
+        '
+        Me.tbxOutput.AccessibleDescription = _
+            "Displays output from application."
+        Me.tbxOutput.AccessibleName = "Output textbox."
+        Me.tbxOutput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tbxOutput.Location = New System.Drawing.Point(20, 20)
+        Me.tbxOutput.Name = "tbxOutput"
+        Me.tbxOutput.Size = New System.Drawing.Size(576, 280)
+        Me.tbxOutput.TabIndex = 1
+        Me.tbxOutput.Text = "Click the Run button to run the application."
+        '
+        'Form1
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
+        Me.ClientSize = New System.Drawing.Size(616, 384)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel2)
+        Me.Name = "Form1"
+        Me.Text = "SignatureDescription"
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
 End Class
+'
+' This sample produces the following output:
+'
+'
+' ** System.Security.Cryptography.SignatureDescription **
+' DeformatterAlgorithm : System.Security.Cryptography.
+' RSAPKCS1SignatureDeformatter
+' FormatterAlgorithm : System.Security.Cryptography.RSAPKCS1SignatureFormatter
+' DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+' KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
+' 
+' ** System.Security.Cryptography.SignatureDescription **
+' DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
+' FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
+' DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
+' KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
+' Hash algorithm for the DigestAlgorithm property: System.Security.
+' Cryptography.
+' SHA1CryptoServiceProvider
+' Created formatter : System.Security.Cryptography.DSASignatureFormatter
+' Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
+' This sample completed successfully; press Exit to continue.

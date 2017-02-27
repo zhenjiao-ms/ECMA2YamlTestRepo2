@@ -4,42 +4,10 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
-// This class is serializable and will have its OnDeserialization method
-// called after each instance of this class is deserialized.
-[Serializable]
-class Circle : IDeserializationCallback 
-{
-    Double m_radius;
-
-    // To reduce the size of the serialization stream, the field below is 
-    // not serialized. This field is calculated when an object is constructed
-    // or after an instance of this class is deserialized.
-    [NonSerialized] public Double m_area;
-
-    public Circle(Double radius) 
-    {
-        m_radius = radius;
-        m_area = Math.PI * radius * radius;
-    }
-
-    void IDeserializationCallback.OnDeserialization(Object sender) 
-    {
-        // After being deserialized, initialize the m_area field 
-        // using the deserialized m_radius value.
-        m_area = Math.PI * m_radius * m_radius;
-    }
-
-    public override String ToString() 
-    {
-        return String.Format("radius={0}, area={1}", m_radius, m_area);
-    }
-}
-
-
-class Class1 
+public class App 
 {
     [STAThread]
-    static void Main(string[] args) 
+    static void Main() 
     {
         Serialize();
         Deserialize();
@@ -47,19 +15,22 @@ class Class1
 
     static void Serialize() 
     {
-        Circle c = new Circle(10);
-        Console.WriteLine("Object being serialized: " + c.ToString());
+        // Create a hashtable of values that will eventually be serialized.
+        Hashtable addresses = new Hashtable();
+        addresses.Add("Jeff", "123 Main Street, Redmond, WA 98052");
+        addresses.Add("Fred", "987 Pine Road, Phila., PA 19116");
+        addresses.Add("Mary", "PO Box 112233, Palo Alto, CA 94301");
 
-        // To serialize the Circle, you must first open a stream for 
-        // writing. Use a file stream here.
+        // To serialize the hashtable and its key/value pairs,  
+        // you must first open a stream for writing. 
+        // In this case, use a file stream.
         FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
 
-        // Construct a BinaryFormatter and use it 
-        // to serialize the data to the stream.
+        // Construct a BinaryFormatter and use it to serialize the data to the stream.
         BinaryFormatter formatter = new BinaryFormatter();
         try 
         {
-            formatter.Serialize(fs, c);
+            formatter.Serialize(fs, addresses);
         }
         catch (SerializationException e) 
         {
@@ -75,8 +46,8 @@ class Class1
    
     static void Deserialize() 
     {
-        // Declare the Circle reference.
-        Circle c = null;
+        // Declare the hashtable reference.
+        Hashtable addresses  = null;
 
         // Open the file containing the data that you want to deserialize.
         FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
@@ -84,9 +55,9 @@ class Class1
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            // Deserialize the Circle from the file and 
+            // Deserialize the hashtable from the file and 
             // assign the reference to the local variable.
-            c = (Circle) formatter.Deserialize(fs);
+            addresses = (Hashtable) formatter.Deserialize(fs);
         }
         catch (SerializationException e) 
         {
@@ -98,7 +69,11 @@ class Class1
             fs.Close();
         }
 
-        // To prove that the Circle deserialized correctly, display its area.
-        Console.WriteLine("Object being deserialized: " + c.ToString());
+        // To prove that the table deserialized correctly, 
+        // display the key/value pairs.
+        foreach (DictionaryEntry de in addresses) 
+        {
+            Console.WriteLine("{0} lives at {1}.", de.Key, de.Value);
+        }
     }
 }

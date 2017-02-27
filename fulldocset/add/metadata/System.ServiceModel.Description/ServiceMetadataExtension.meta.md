@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Description.ServiceMetadataExtension.SingleWsdl
-internalonly: False
----
-
----
 uid: System.ServiceModel.Description.ServiceMetadataExtension.Metadata
 internalonly: False
 ---

@@ -1,9 +1,14 @@
-   public:
-      // This example method creates a ComponentChangingEventArgs using the specified arguments.
-      // Typically, this type of event args is created by a design mode subsystem.
-      ComponentChangingEventArgs^ CreateComponentChangingEventArgs( Object^ component, MemberDescriptor^ member )
+public:
+   [RecommendedAsConfigurable(true)]
+   property int MyProperty 
+   {
+      int get()
       {
-         // The component that is about to change:       args.Component
-         // The member that is about to change:          args.Member
-         return gcnew ComponentChangingEventArgs( component,member );
+         // Insert code here.
+         return 0;
       }
+      void set( int /*value*/ )
+      {
+         // Insert code here.
+      }
+   }

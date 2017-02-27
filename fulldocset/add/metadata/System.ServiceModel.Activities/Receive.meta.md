@@ -49,11 +49,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Activities.Receive.FromOperationDescription(System.ServiceModel.Description.OperationDescription)
-internalonly: False
----
-
----
 uid: System.ServiceModel.Activities.Receive.OperationName
 internalonly: False
 ---

@@ -1,40 +1,117 @@
 Imports System
-Imports System.Security.Cryptography
-Imports System.Security.Permissions
 Imports System.IO
-Imports System.Security.Cryptography.X509Certificates
+Imports System.Security.Cryptography
 
-Class CertSelect
 
-    Shared Sub Main()
 
-        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-        store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
+Class RijndaelExample
 
-        Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
-        Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
-        Console.WriteLine("Number of certificates: {0}{1}", scollection.Count, Environment.NewLine)
-         
-        For Each x509 As X509Certificate2 In scollection
-            Try
-                Dim rawdata As Byte() = x509.RawData
-                Console.WriteLine("Content Type: {0}{1}", X509Certificate2.GetCertContentType(rawdata), Environment.NewLine)
-                Console.WriteLine("Friendly Name: {0}{1}", x509.FriendlyName, Environment.NewLine)
-                Console.WriteLine("Certificate Verified?: {0}{1}", x509.Verify(), Environment.NewLine)
-                Console.WriteLine("Simple Name: {0}{1}", x509.GetNameInfo(X509NameType.SimpleName, True), Environment.NewLine)
-                Console.WriteLine("Signature Algorithm: {0}{1}", x509.SignatureAlgorithm.FriendlyName, Environment.NewLine)
-                Console.WriteLine("Private Key: {0}{1}", x509.PrivateKey.ToXmlString(False), Environment.NewLine)
-                Console.WriteLine("Public Key: {0}{1}", x509.PublicKey.Key.ToXmlString(False), Environment.NewLine)
-                Console.WriteLine("Certificate Archived?: {0}{1}", x509.Archived, Environment.NewLine)
-                Console.WriteLine("Length of Raw Data: {0}{1}", x509.RawData.Length, Environment.NewLine)
-                X509Certificate2UI.DisplayCertificate(x509)
-                x509.Reset()         
-             Catch cExcept As CryptographicException
-                 Console.WriteLine("Information could not be written out for this certificate.")
-             End Try
-        Next x509
+    Public Shared Sub Main()
+        Try
 
-        store.Close()
-    End Sub
+            Dim original As String = "Here is some data to encrypt!"
+
+            ' Create a new instance of the Rijndael
+            ' class.  This generates a new key and initialization 
+            ' vector (IV).
+            Using myRijndael = Rijndael.Create()
+
+                ' Encrypt the string to an array of bytes.
+                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
+
+                ' Decrypt the bytes to a string.
+                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
+
+                'Display the original data and the decrypted data.
+                Console.WriteLine("Original:   {0}", original)
+                Console.WriteLine("Round Trip: {0}", roundtrip)
+            End Using
+        Catch e As Exception
+            Console.WriteLine("Error: {0}", e.Message)
+        End Try
+
+    End Sub 'Main
+
+    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        ' Check arguments.
+        If plainText Is Nothing OrElse plainText.Length <= 0 Then
+            Throw New ArgumentNullException("plainText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        Dim encrypted() As Byte
+        ' Create an Rijndael object
+        ' with the specified key and IV.
+        Using rijAlg = Rijndael.Create()
+
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create an encryptor to perform the stream transform.
+            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
+            ' Create the streams used for encryption.
+            Using msEncrypt As New MemoryStream()
+                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                    Using swEncrypt As New StreamWriter(csEncrypt)
+
+                        'Write all data to the stream.
+                        swEncrypt.Write(plainText)
+                    End Using
+                    encrypted = msEncrypt.ToArray()
+                End Using
+            End Using
+        End Using
+
+        ' Return the encrypted bytes from the memory stream.
+        Return encrypted
+
+    End Function 'EncryptStringToBytes
+
+    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        ' Check arguments.
+        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+            Throw New ArgumentNullException("cipherText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        ' Declare the string used to hold
+        ' the decrypted text.
+        Dim plaintext As String = Nothing
+
+        ' Create an Rijndael object
+        ' with the specified key and IV.
+        Using rijAlg = Rijndael.Create()
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create a decryptor to perform the stream transform.
+            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
+
+            ' Create the streams used for decryption.
+            Using msDecrypt As New MemoryStream(cipherText)
+
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+
+                    Using srDecrypt As New StreamReader(csDecrypt)
+
+
+                        ' Read the decrypted bytes from the decrypting stream
+                        ' and place them in a string.
+                        plaintext = srDecrypt.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+        End Using
+
+        Return plaintext
+
+    End Function 'DecryptStringFromBytes 
 End Class

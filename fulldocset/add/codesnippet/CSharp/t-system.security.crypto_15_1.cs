@@ -1,123 +1,68 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
+//The following sample uses the Cryptography class to simulate the roll of a dice.
 
 using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
+using System.IO;
 using System.Text;
-using System.Xml;
+using System.Security.Cryptography;
 
-
-
-class XMLDSIGDetached
+class RNGCSP
 {
-	
-    [STAThread]
-    static void Main(string[] args)
+    private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
+    // Main method.
+    public static void Main()
     {
-        // The URI to sign.
-        string resourceToSign = "http://www.microsoft.com";
-		
-        // The name of the file to which to save the XML signature.
-        string XmlFileName = "xmldsig.xml";
+        const int totalRolls = 25000;
+        int[] results = new int[6];
 
-        try
+        // Roll the dice 25000 times and display
+        // the results to the console.
+        for (int x = 0; x < totalRolls; x++)
         {
-
-            // Generate a DSA signing key.
-            DSACryptoServiceProvider DSAKey = new DSACryptoServiceProvider();
-
-            Console.WriteLine("Signing: {0}", resourceToSign);
-
-            // Sign the detached resourceand save the signature in an XML file.
-            SignDetachedResource(resourceToSign, XmlFileName, DSAKey);
-
-            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
-
-            // Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...");
-
-            //Verify the XML signature in the XML file.
-            bool result = VerifyDetachedSignature(XmlFileName);
-
-            // Display the results of the signature verification to 
-            // the console.
-            if(result)
-            {
-                Console.WriteLine("The XML signature is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The XML signature is not valid.");
-            }
+            byte roll = RollDice((byte)results.Length);
+            results[roll - 1]++;
         }
-        catch(CryptographicException e)
+        for (int i = 0; i < results.Length; ++i)
         {
-            Console.WriteLine(e.Message);
-
+            Console.WriteLine("{0}: {1} ({2:p1})", i + 1, results[i], (double)results[i] / (double)totalRolls);
         }
-		
+        rngCsp.Dispose();
+        Console.ReadLine();
     }
 
-    // Sign an XML file and save the signature in a new file.
-    public static void SignDetachedResource(string URIString, string XmlSigFileName, DSA DSAKey)
+    // This method simulates a roll of the dice. The input parameter is the
+    // number of sides of the dice.
+
+    public static byte RollDice(byte numberSides)
     {
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml();
+        if (numberSides <= 0)
+            throw new ArgumentOutOfRangeException("numberSides");
 
-        // Assign the DSA key to the SignedXml object.
-        signedXml.SigningKey = DSAKey;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-
-        // Add the passed URI to the reference object.
-        reference.Uri = URIString;
-		
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-        // Add a DSAKeyValue to the KeyInfo (optional; helps recipient find key to validate).
-        KeyInfo keyInfo = new KeyInfo();
-        keyInfo.AddClause(new DSAKeyValue((DSA)DSAKey));	
-        signedXml.KeyInfo = keyInfo;
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
-        xmlDigitalSignature.WriteTo(xmltw);
-        xmltw.Close();
+        // Create a byte array to hold the random value.
+        byte[] randomNumber = new byte[1];
+        do
+        {
+            // Fill the array with a random value.
+            rngCsp.GetBytes(randomNumber);
+        }
+        while (!IsFairRoll(randomNumber[0], numberSides));
+        // Return the random number mod the number
+        // of sides.  The possible values are zero-
+        // based, so we add one.
+        return (byte)((randomNumber[0] % numberSides) + 1);
     }
-    // Verify the signature of an XML file and return the result.
-    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
-    {	
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
 
-        // Load the passed XML file into the document.
-        xmlDocument.Load(XmlSigFileName);
-	
-        // Create a new SignedXMl object.
-        SignedXml signedXml = new SignedXml();
+    private static bool IsFairRoll(byte roll, byte numSides)
+    {
+        // There are MaxValue / numSides full sets of numbers that can come up
+        // in a single byte.  For instance, if we have a 6 sided die, there are
+        // 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
+        int fullSetsOfValues = Byte.MaxValue / numSides;
 
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
-
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
-
-        // Check the signature and return the result.
-        return signedXml.CheckSignature();
+        // If the roll is within this range of fair values, then we let it continue.
+        // In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
+        // < rather than <= since the = portion allows through an extra 0 value).
+        // 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
+        // to use.
+        return roll < numSides * fullSetsOfValues;
     }
 }

@@ -1,4 +1,11 @@
-            Dim myInt16 As Short = -10000
-            Dim myInt16String As String = "+20000"
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt16).ConvertTo(myInt16, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt16).ConvertFrom(myInt16String))
+    <Localizable(True)> _
+    Public Property MyProperty() As Integer
+        Get
+            ' Insert code here.
+            Return 0
+        End Get
+        Set
+            ' Insert code here.
+        End Set 
+    End Property
+    

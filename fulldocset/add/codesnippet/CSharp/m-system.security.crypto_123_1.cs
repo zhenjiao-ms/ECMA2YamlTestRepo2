@@ -1,80 +1,53 @@
 using System;
 using System.Security.Cryptography;
-using System.Text;
-
-namespace MD5Sample
+public class OidSample
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string source = "Hello World!";
-            using (MD5 md5Hash = MD5.Create())
-            {
-                string hash = GetMd5Hash(md5Hash, source);
+	public static void Main()
+	{
+		// Assign values to strings.
+		string Value1 = "1.2.840.113549.1.1.1";
+		string Name1 = "3DES";
+		string Value2 = "1.3.6.1.4.1.311.20.2";
+		string InvalidName = "This name is not a valid name";
+		string InvalidValue = "1.1.1.1.1.1.1.1";
 
-                Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
+		// Create new Oid objects using the specified values.
+		// Note that the corresponding Value or Friendly Name property is automatically added to the object.
+		Oid o1 = new Oid(Value1);
+		Oid o2 = new Oid(Name1);
 
-                Console.WriteLine("Verifying the hash...");
+		// Create a new Oid object using the specified Value and Friendly Name properties.
+		// Note that the two are not compared to determine if the Value is associated 
+		//  with the Friendly Name.
+		Oid o3 = new Oid(Value2, InvalidName);
 
-                if (VerifyMd5Hash(md5Hash, source, hash))
-                {
-                    Console.WriteLine("The hashes are the same.");
-                }
-                else
-                {
-                    Console.WriteLine("The hashes are not same.");
-                }
-            }
+		//Create a new Oid object using the specified Value. Note that if the value
+		//  is invalid or not known, no value is assigned to the Friendly Name property.
+		Oid o4 = new Oid(InvalidValue);
 
+		//Write out the property information of the Oid objects.
+		Console.WriteLine("Oid1: Automatically assigned Friendly Name: {0}, {1}", o1.FriendlyName, o1.Value);
+		Console.WriteLine("Oid2: Automatically assigned Value: {0}, {1}", o2.FriendlyName, o2.Value);
+		Console.WriteLine("Oid3: Name and Value not compared: {0}, {1}", o3.FriendlyName, o3.Value);
+		Console.WriteLine("Oid4: Invalid Value used: {0}, {1} {2}", o4.FriendlyName, o4.Value, Environment.NewLine);
 
+		//Create an Oid collection and add several Oid objects.
+		OidCollection oc = new OidCollection();
+		oc.Add(o1);
+		oc.Add(o2);
+		oc.Add(o3);
+		Console.WriteLine("Number of Oids in the collection: {0}", oc.Count);
+		Console.WriteLine("Is synchronized: {0} {1}", oc.IsSynchronized, Environment.NewLine);
 
-        }
-        static string GetMd5Hash(MD5 md5Hash, string input)
-        {
-
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
-
-            // Loop through each byte of the hashed data 
-            // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
-
-        // Verify a hash against a string.
-        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
-        {
-            // Hash the input.
-            string hashOfInput = GetMd5Hash(md5Hash, input);
-
-            // Create a StringComparer an compare the hashes.
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-    }
+		//Create an enumerator for moving through the collection.
+		OidEnumerator oe = oc.GetEnumerator();
+		//You must execute a MoveNext() to get to the first item in the collection.
+		oe.MoveNext();
+		// Write out Oids in the collection.
+		Console.WriteLine("First Oid in collection: {0},{1}", oe.Current.FriendlyName,oe.Current.Value);
+		oe.MoveNext();
+		Console.WriteLine("Second Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value);
+		//Return index in the collection to the beginning.
+		oe.Reset();
+	}
 }
-
-// This code example produces the following output:
-//
-// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
-// Verifying the hash...
-// The hashes are the same.

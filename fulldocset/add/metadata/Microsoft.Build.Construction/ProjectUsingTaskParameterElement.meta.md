@@ -4,22 +4,7 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Construction.ProjectUsingTaskParameterElement.ParameterTypeLocation
-internalonly: False
----
-
----
-uid: Microsoft.Build.Construction.ProjectUsingTaskParameterElement.OutputLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Construction.ProjectUsingTaskParameterElement.Output
-internalonly: False
----
-
----
-uid: Microsoft.Build.Construction.ProjectUsingTaskParameterElement.RequiredLocation
 internalonly: False
 ---
 
@@ -30,11 +15,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Construction.ProjectUsingTaskParameterElement.Name
-internalonly: False
----
-
----
-uid: Microsoft.Build.Construction.ProjectUsingTaskParameterElement.ConditionLocation
 internalonly: False
 ---
 

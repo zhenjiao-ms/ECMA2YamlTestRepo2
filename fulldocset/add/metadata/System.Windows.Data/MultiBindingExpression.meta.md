@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.MultiBindingExpression.HasValidationError
-internalonly: False
----
-
----
 uid: System.Windows.Data.MultiBindingExpression.ParentMultiBinding
 internalonly: False
 ---

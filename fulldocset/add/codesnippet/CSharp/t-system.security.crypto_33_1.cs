@@ -1,60 +1,125 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 
-public class CertSelect
+namespace RijndaelManaged_Example
 {
-    public static void Main()
+    class RijndaelExample
     {
-        try
+        public static void Main()
         {
-            X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-
-            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-            for (int i = 0; i < collection.Count; i++)
+            try
             {
-                foreach (X509Extension extension in collection[i].Extensions)
+
+                string original = "Here is some data to encrypt!";
+
+                // Create a new instance of the Rijndael
+                // class.  This generates a new key and initialization 
+                // vector (IV).
+                using (Rijndael myRijndael = Rijndael.Create())
                 {
-                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")");
-   
+                    // Encrypt the string to an array of bytes.
+                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
 
-                    if (extension.Oid.FriendlyName == "Key Usage")
-                    {
-                        X509KeyUsageExtension ext = (X509KeyUsageExtension)extension;
-                        Console.WriteLine(ext.KeyUsages);
-                    }
+                    // Decrypt the bytes to a string.
+                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
 
-                    if (extension.Oid.FriendlyName == "Basic Constraints")
-                    {
-                        X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
-                        Console.WriteLine(ext.CertificateAuthority);
-                        Console.WriteLine(ext.HasPathLengthConstraint);
-                        Console.WriteLine(ext.PathLengthConstraint);
-                    }
+                    //Display the original data and the decrypted data.
+                    Console.WriteLine("Original:   {0}", original);
+                    Console.WriteLine("Round Trip: {0}", roundtrip);
+                }
 
-                    if (extension.Oid.FriendlyName == "Subject Key Identifier")
-                    {
-                        X509SubjectKeyIdentifierExtension ext = (X509SubjectKeyIdentifierExtension)extension;
-                        Console.WriteLine(ext.SubjectKeyIdentifier);
-                    }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+            }
+        }
+        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        {
+            // Check arguments.
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+            byte[] encrypted;
+            // Create an Rijndael object
+            // with the specified key and IV.
+            using (Rijndael rijAlg = Rijndael.Create())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
 
-                    if (extension.Oid.FriendlyName == "Enhanced Key Usage")
+                // Create an encryptor to perform the stream transform.
+                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                     {
-                        X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
-                        OidCollection oids = ext.EnhancedKeyUsages;
-                        foreach (Oid oid in oids)
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                         {
-                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")");
+
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
                         }
+                        encrypted = msEncrypt.ToArray();
                     }
                 }
             }
-            store.Close();
+
+
+            // Return the encrypted bytes from the memory stream.
+            return encrypted;
+
         }
-        catch (CryptographicException)
+
+        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
         {
-            Console.WriteLine("Information could not be written out for this certificate.");
+            // Check arguments.
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+
+            // Declare the string used to hold
+            // the decrypted text.
+            string plaintext = null;
+
+            // Create an Rijndael object
+            // with the specified key and IV.
+            using (Rijndael rijAlg = Rijndael.Create())
+            {
+                rijAlg.Key = Key;
+                rijAlg.IV = IV;
+
+                // Create a decryptor to perform the stream transform.
+                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
+
+                // Create the streams used for decryption.
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+
+                            // Read the decrypted bytes from the decrypting stream
+                            // and place them in a string.
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+
+            }
+
+            return plaintext;
+
         }
     }
 }

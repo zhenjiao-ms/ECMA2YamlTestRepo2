@@ -1,100 +1,87 @@
+#using <System.dll>
+#using <System.Security.dll>
+
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Text;
-array<Byte>^ RSAEncrypt( array<Byte>^DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
-{
-   try
-   {
-      
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSAalg = gcnew RSACryptoServiceProvider;
-      
-      //Import the RSA Key information. This only needs
-      //toinclude the public key information.
-      RSAalg->ImportParameters( RSAKeyInfo );
-      
-      //Encrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-      return RSAalg->Encrypt( DataToEncrypt, DoOAEPPadding );
-   }
-   //Catch and display a CryptographicException  
-   //to the console.
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-      return nullptr;
-   }
-
-}
-
-array<Byte>^ RSADecrypt( array<Byte>^DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
-{
-   try
-   {
-      
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSAalg = gcnew RSACryptoServiceProvider;
-      
-      //Import the RSA Key information. This needs
-      //to include the private key information.
-      RSAalg->ImportParameters( RSAKeyInfo );
-      
-      //Decrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-      return RSAalg->Decrypt( DataToDecrypt, DoOAEPPadding );
-   }
-   //Catch and display a CryptographicException  
-   //to the console.
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e );
-      return nullptr;
-   }
-
-}
+using namespace System::Security::Cryptography::X509Certificates;
 
 int main()
 {
+   
+   //The following example demonstrates the usage of the AsnEncodedData classes.
+   // Asn encoded data is read from the extensions of an X509 certificate.
    try
    {
       
-      //Create a UnicodeEncoder to convert between byte array and string.
-      UnicodeEncoding^ ByteConverter = gcnew UnicodeEncoding;
+      // Open the certificate store.
+      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
       
-      //Create byte arrays to hold original, encrypted, and decrypted data.
-      array<Byte>^dataToEncrypt = ByteConverter->GetBytes( "Data to Encrypt" );
-      array<Byte>^encryptedData;
-      array<Byte>^decryptedData;
+      // Select one or more certificates to display extensions information.
+      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
       
-      //Create a new instance of RSACryptoServiceProvider to generate
-      //public and private key data.  Pass an integer specifying a key-
-      //length of 2048.
-      RSACryptoServiceProvider^ RSAalg = gcnew RSACryptoServiceProvider( 2048 );
+      // Create a new AsnEncodedDataCollection object.
+      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
+      for ( int i = 0; i < scollection->Count; i++ )
+      {
+         
+         // Display certificate information.
+         Console::ForegroundColor = ConsoleColor::Red;
+         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
+         Console::ResetColor();
+         
+         // Display extensions information.
+         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
+            
+            // Create an AsnEncodedData object using the extensions information.
+            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
+            Console::ForegroundColor = ConsoleColor::Green;
+            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
+            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
+            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
+            Console::ResetColor();
+            Console::WriteLine( asndata->Format(true) );
+            Console::WriteLine( Environment::NewLine );
+            
+            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+            asncoll->Add( asndata );
+         }
+
+         Console::WriteLine( Environment::NewLine );
+
+      }
+      Console::ForegroundColor = ConsoleColor::Red;
+      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
+      Console::ResetColor();
+      store->Close();
       
-      //Display the key-legth to the console.
-      Console::WriteLine( "A new key pair of legth {0} was created", RSAalg->KeySize );
+      //Create an enumerator for moving through the collection.
+      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
       
-      //Pass the data to ENCRYPT, the public key information 
-      //(using RSACryptoServiceProvider.ExportParameters(false),
-      //and a boolean flag specifying no OAEP padding.
-      encryptedData = RSAEncrypt( dataToEncrypt, RSAalg->ExportParameters( false ), false );
+      //You must execute a MoveNext() to get to the first item in the collection.
+      asne->MoveNext();
       
-      //Pass the data to DECRYPT, the private key information 
-      //(using RSACryptoServiceProvider.ExportParameters(true),
-      //and a boolean flag specifying no OAEP padding.
-      decryptedData = RSADecrypt( encryptedData, RSAalg->ExportParameters( true ), false );
+      // Write out AsnEncodedData in the collection.
+      Console::ForegroundColor = ConsoleColor::Blue;
+      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      asne->MoveNext();
+      Console::ForegroundColor = ConsoleColor::DarkBlue;
+      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
       
-      //Display the decrypted plaintext to the console. 
-      Console::WriteLine( "Decrypted plaintext: {0}", ByteConverter->GetString( decryptedData ) );
+      //Return index in the collection to the beginning.
+      asne->Reset();
    }
-   catch ( ArgumentNullException^ ) 
+   catch ( CryptographicException^ ) 
    {
-      
-      //Catch this exception in case the encryption did
-      //not succeed.
-      Console::WriteLine( "Encryption failed." );
+      Console::WriteLine( L"Information could not be written out for this certificate." );
    }
 
+   return 1;
 }

@@ -4,17 +4,7 @@ internalonly: False
 ---
 
 ---
-uid: System.ComponentModel.Composition.Hosting.CompositionContainer.#ctor(System.ComponentModel.Composition.Hosting.CompositionOptions,System.ComponentModel.Composition.Hosting.ExportProvider[])
-internalonly: False
----
-
----
 uid: System.ComponentModel.Composition.Hosting.CompositionContainer.Providers
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.Hosting.CompositionContainer.#ctor(System.ComponentModel.Composition.Primitives.ComposablePartCatalog,System.ComponentModel.Composition.Hosting.CompositionOptions,System.ComponentModel.Composition.Hosting.ExportProvider[])
 internalonly: False
 ---
 

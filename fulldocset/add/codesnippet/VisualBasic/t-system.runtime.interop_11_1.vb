@@ -2,10 +2,15 @@ Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-<assembly: AssemblyVersion("3.0.0.0")>
-<assembly: ComCompatibleVersion(1,0,0,0)>
-Namespace MyNamespace
-    Public Class TheClass
-        ' Insert code.
-    End Class
-End Namespace
+Module D
+	Public Function IsHiddenField(ByVal fi As FieldInfo) As Boolean
+		Dim FieldAttributes As Object() = fi.GetCustomAttributes(GetType(TypeLibVarAttribute), True)
+
+		If FieldAttributes.Length > 0 Then
+			Dim tlv As TypeLibVarAttribute = FieldAttributes(0)
+			Dim flags As TypeLibVarFlags = tlv.Value
+			Return (flags & TypeLibVarFlags.FHidden) > 0
+		End If
+		Return False
+	End Function
+End Module

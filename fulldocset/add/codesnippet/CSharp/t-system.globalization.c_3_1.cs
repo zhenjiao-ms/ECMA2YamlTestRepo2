@@ -1,33 +1,36 @@
-// This example demonstrates the Calendar.AlgorithmType property and
-// CalendarAlgorithmType enumeration.
-
 using System;
 using System.Globalization;
 
-class Sample 
+public class Example
 {
-    public static void Main() 
-    {
-    GregorianCalendar grCal = new GregorianCalendar();
-    HijriCalendar     hiCal = new HijriCalendar();
-    JapaneseLunisolarCalendar 
-                      jaCal = new JapaneseLunisolarCalendar();
-    Display(grCal);
-    Display(hiCal);
-    Display(jaCal);
-    }
+   static Calendar cal = new GregorianCalendar();
+   
+   public static void Main()
+   {
+      DateTime date = new DateTime(2013, 1, 5);
+      DayOfWeek firstDay = DayOfWeek.Sunday;
+      CalendarWeekRule rule;
+      
+      rule = CalendarWeekRule.FirstFullWeek;
+      ShowWeekNumber(date, rule, firstDay);
+      
+      rule = CalendarWeekRule.FirstFourDayWeek;
+      ShowWeekNumber(date, rule, firstDay);
+      
+      Console.WriteLine();
+      date = new DateTime(2010, 1, 3);
+      ShowWeekNumber(date, rule, firstDay);
+   }
 
-    static void Display(Calendar c)
-    {
-    string name = c.ToString().PadRight(50, '.');
-    Console.WriteLine("{0} {1}", name, c.AlgorithmType);
-    }
+   private static void ShowWeekNumber(DateTime dat, CalendarWeekRule rule, 
+                                      DayOfWeek firstDay)
+   {                                   
+      Console.WriteLine("{0:d} with {1:F} rule and {2:F} as first day of week: week {3}",
+                        dat, rule, firstDay, cal.GetWeekOfYear(dat, rule, firstDay));
+   }   
 }
-/*
-This code example produces the following results:
-
-System.Globalization.GregorianCalendar............ SolarCalendar
-System.Globalization.HijriCalendar................ LunarCalendar
-System.Globalization.JapaneseLunisolarCalendar.... LunisolarCalendar
-
-*/
+// The example displays the following output:
+//       1/5/2013 with FirstFullWeek rule and Sunday as first day of week: week 53
+//       1/5/2013 with FirstFourDayWeek rule and Sunday as first day of week: week 1
+//       
+//       1/3/2010 with FirstFourDayWeek rule and Sunday as first day of week: week 1

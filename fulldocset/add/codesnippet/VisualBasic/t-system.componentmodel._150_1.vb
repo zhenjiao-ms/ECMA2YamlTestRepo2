@@ -1,14 +1,10 @@
-    Private Sub ContainsAttribute()
-        ' Creates a new collection and assigns it the attributes for button1.
-        Dim attributes As AttributeCollection
-        attributes = TypeDescriptor.GetAttributes(button1)
-        
-        ' Sets an Attribute to the specific attribute.
-        Dim myAttribute As BrowsableAttribute = BrowsableAttribute.Yes
-        
-        If attributes.Contains(myAttribute) Then
-            textBox1.Text = "button1 has a browsable attribute."
-        Else
-            textBox1.Text = "button1 does not have a browsable attribute."
-        End If
-    End Sub 'ContainsAttribute
+    <Bindable(True)> _
+    Public Property MyProperty() As Integer
+        Get
+            ' Insert code here.
+            Return 0
+        End Get
+        Set
+             ' Insert code here.
+        End Set
+    End Property

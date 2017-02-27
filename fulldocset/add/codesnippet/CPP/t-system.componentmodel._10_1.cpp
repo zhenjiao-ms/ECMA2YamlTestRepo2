@@ -1,14 +1,34 @@
-public:
-   [RecommendedAsConfigurable(true)]
-   property int MyProperty 
+#using <system.dll>
+#using <system.design.dll>
+#using <system.windows.forms.dll>
+
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::ComponentModel::Design;
+using namespace System::Security::Permissions;
+
+namespace CppMenuCommand
+{
+   public ref class CDesigner: public ComponentDesigner
    {
-      int get()
+   public:
+    [PermissionSetAttribute(SecurityAction::Demand, Name="FullTrust")]
+      virtual void Initialize( IComponent^ comp ) override
       {
-         // Insert code here.
-         return 0;
+         ComponentDesigner::Initialize( comp );
+         IMenuCommandService^ mcs = static_cast<IMenuCommandService^>(comp->Site->GetService( IMenuCommandService::typeid ));
+		 MenuCommand^ mc = gcnew MenuCommand( gcnew EventHandler( this, &CDesigner::OnF1Help ),StandardCommands::F1Help );
+         mc->Enabled = true;
+         mc->Visible = true;
+         mc->Supported = true;
+         mcs->AddCommand( mc );
+         System::Windows::Forms::MessageBox::Show( "Initialize() has been invoked." );
       }
-      void set( int /*value*/ )
+
+   private:
+      void OnF1Help( Object^ /*sender*/, EventArgs^ /*e*/ )
       {
-         // Insert code here.
+         System::Windows::Forms::MessageBox::Show( "F1Help has been invoked." );
       }
-   }
+   };
+}

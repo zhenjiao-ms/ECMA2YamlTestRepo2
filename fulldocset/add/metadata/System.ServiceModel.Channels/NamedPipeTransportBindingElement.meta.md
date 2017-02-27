@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Channels.NamedPipeTransportBindingElement.PipeSettings
-internalonly: False
----
-
----
 uid: System.ServiceModel.Channels.NamedPipeTransportBindingElement.ConnectionPoolSettings
 internalonly: False
 ---

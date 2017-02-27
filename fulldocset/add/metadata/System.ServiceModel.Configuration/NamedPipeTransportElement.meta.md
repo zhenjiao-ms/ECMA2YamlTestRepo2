@@ -27,8 +27,3 @@ internalonly: False
 uid: System.ServiceModel.Configuration.NamedPipeTransportElement.BindingElementType
 internalonly: False
 ---
-
----
-uid: System.ServiceModel.Configuration.NamedPipeTransportElement.PipeSettings
-internalonly: False
----

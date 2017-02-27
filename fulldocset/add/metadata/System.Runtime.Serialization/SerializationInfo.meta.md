@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Runtime.Serialization.SerializationInfo.#ctor(System.Type,System.Runtime.Serialization.IFormatterConverter,System.Boolean)
-internalonly: False
----
-
----
 uid: System.Runtime.Serialization.SerializationInfo.AddValue(System.String,System.Byte)
 internalonly: False
 ---

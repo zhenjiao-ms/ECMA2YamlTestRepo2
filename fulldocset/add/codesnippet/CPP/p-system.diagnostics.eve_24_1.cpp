@@ -1,30 +1,67 @@
-   // Ensure that the source has already been registered using
-   // EventLogInstaller or EventLog.CreateEventSource.
-   String^ sourceName = "SampleApplicationSource";
-   if ( EventLog::SourceExists( sourceName ) )
+void DisplayEventLogProperties()
+{
+   
+   // Iterate through the current set of event log files,
+   // displaying the property settings for each file.
+   array<EventLog^>^eventLogs = EventLog::GetEventLogs();
+   System::Collections::IEnumerator^ myEnum = eventLogs->GetEnumerator();
+   while ( myEnum->MoveNext() )
    {
-      // Define an informational event with no category.
-      // The message identifier corresponds to the message text in the
-      // message resource file defined for the source.
-      EventInstance ^ myEvent = gcnew EventInstance( UpdateCycleCompleteMsgId,0 );
+      EventLog^ e = safe_cast<EventLog^>(myEnum->Current);
+      Int64 sizeKB = 0;
+      Console::WriteLine();
+      Console::WriteLine( "{0}:", e->LogDisplayName );
+      Console::WriteLine( "  Log name = \t\t {0}", e->Log );
+      Console::WriteLine( "  Number of event log entries = {0}", e->Entries->Count );
+      
+      // Determine if there is a file for this event log.
+      RegistryKey ^ regEventLog = Registry::LocalMachine->OpenSubKey( String::Format( "System\\CurrentControlSet\\Services\\EventLog\\{0}", e->Log ) );
+      if ( regEventLog )
+      {
+         Object^ temp = regEventLog->GetValue( "File" );
+         if ( temp != nullptr )
+         {
+            Console::WriteLine( "  Log file path = \t {0}", temp );
+            FileInfo^ file = gcnew FileInfo( temp->ToString() );
+            
+            // Get the current size of the event log file.
+            if ( file->Exists )
+            {
+               sizeKB = file->Length / 1024;
+               if ( (file->Length % 1024) != 0 )
+               {
+                  sizeKB++;
+               }
+               Console::WriteLine( "  Current size = \t {0} kilobytes", sizeKB );
+            }
+         }
+         else
+         {
+            Console::WriteLine( "  Log file path = \t <not set>" );
+         }
+      }
+      
+      // Display the maximum size and overflow settings.
+      sizeKB = e->MaximumKilobytes;
+      Console::WriteLine( "  Maximum size = \t {0} kilobytes", sizeKB );
+      Console::WriteLine( "  Overflow setting = \t {0}", e->OverflowAction );
+      switch ( e->OverflowAction )
+      {
+         case OverflowAction::OverwriteOlder:
+            Console::WriteLine( "\t Entries are retained a minimum of {0} days.", e->MinimumRetentionDays );
+            break;
 
-      // Write the event to the event log using the registered source.
-      EventLog::WriteEvent( sourceName, myEvent, 0 );
+         case OverflowAction::DoNotOverwrite:
+            Console::WriteLine( "\t Older entries are not overwritten." );
+            break;
 
-      // Reuse the event data instance for another event entry.
-      // Set the entry category and message identifiers for
-      // the appropriate resource identifiers in the resource files
-      // for the registered source.  Set the event type to Warning.
-      myEvent->CategoryId = RefreshCategoryMsgId;
-      myEvent->EntryType = EventLogEntryType::Warning;
-      myEvent->InstanceId = ServerConnectionDownMsgId;
+         case OverflowAction::OverwriteAsNeeded:
+            Console::WriteLine( "\t If number of entries equals max size limit, a new event log entry overwrites the oldest entry." );
+            break;
 
-      // Write the event to the event log using the registered source.
-      // Insert the machine name into the event message text.
-      array<String^>^ss = {Environment::MachineName};
-      EventLog::WriteEvent( sourceName, myEvent, ss );
+         default:
+            break;
+      }
    }
-   else
-   {
-      Console::WriteLine( "Warning - event source {0} not registered", sourceName );
-   }
+}
+

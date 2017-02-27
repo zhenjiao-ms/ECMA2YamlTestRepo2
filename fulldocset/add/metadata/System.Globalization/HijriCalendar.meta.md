@@ -119,11 +119,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Globalization.HijriCalendar.DaysInYearBeforeMinSupportedYear
-internalonly: False
----
-
----
 uid: System.Globalization.HijriCalendar.Eras
 internalonly: False
 ---

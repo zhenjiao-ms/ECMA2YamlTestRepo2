@@ -1,4 +1,15 @@
-            Dim myInt64 As Long = -123456789123
-            Dim myInt64String As String = "+184467440737095551"
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt64).ConvertTo(myInt64, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt64).ConvertFrom(myInt64String))
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+
+
+<MetadataType(GetType(ProductMetadata))> _
+Partial Public Class Product
+
+End Class
+
+Partial Public Class ProductMetadata
+    <UIHint("UnitsInStock")> _
+    <Range(100, 10000)> _
+    Public UnitsInStock As Object
+End Class

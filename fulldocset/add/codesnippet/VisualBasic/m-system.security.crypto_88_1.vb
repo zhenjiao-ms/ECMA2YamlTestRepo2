@@ -1,153 +1,83 @@
-' This example signs an XML file using an
-' envelope signature. It then verifies the 
-' signed XML.
-'
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
-Imports System.Text
-Imports System.Xml
+
+
+Public Class OidSample
+   Shared msg As String
+   Public Shared Sub Main()
+      ' Assign values to strings.
+      Dim Value1 As String = "1.2.840.113549.1.1.1"
+      Dim Name1 As String = "3DES"
+      Dim Value2 As String = "1.3.6.1.4.1.311.20.2"
+      Dim InvalidName As String = "This name is not a valid name"
+      Dim InvalidValue As String = "1.1.1.1.1.1.1.1"
+      
+      ' Create new Oid objects using the specified values.
+      ' Note that the corresponding Value or Friendly Name property is automatically added to the object.
+      Dim o1 As New Oid(Value1)
+      Dim o2 As New Oid(Name1)
+      
+      ' Create a new Oid object using the specified Value and Friendly Name properties.
+      ' Note that the two are not compared to determine if the Value is associated 
+      '  with the Friendly Name.
+      Dim o3 As New Oid(Value2, InvalidName)
+      
+      'Create a new Oid object using the specified Value. Note that if the value
+      '  is invalid or not known, no value is assigned to the Friendly Name property.
+      Dim o4 As New Oid(InvalidValue)
+      
+      'Write out the property information of the Oid objects.
+	msg = "Oid1: Automatically assigned Friendly Name: " & o1.FriendlyName & ", " & o1.Value
+	MsgBox(msg)
+      'Console.WriteLine("Oid1: Automatically assigned Friendly Name: {0}, {1}", o1.FriendlyName, o1.Value)
+
+
+      'Console.WriteLine("Oid2: Automatically assigned Value: {0}, {1}", o2.FriendlyName, o2.Value)
+	msg = "Oid2: Automatically assigned Value: " & o2.FriendlyName & ", " & o2.Value
+	MsgBox(msg)
+
+
+      'Console.WriteLine("Oid3: Name and Value not compared: {0}, {1}", o3.FriendlyName, o3.Value)
+	msg = "Oid3: Name and Value not compared: " & o3.FriendlyName & ", " & o3.Value
+	MsgBox(msg)
 
 
 
-Module SignVerifyEnvelope
+     ' Console.WriteLine("Oid4: Invalid Value used: {0}, {1} {2}", o4.FriendlyName, o4.Value, Environment.NewLine)
+	msg = "Oid4: Invalid Value used: " & o4.FriendlyName & ", " & o4.Value
+	MsgBox(msg)
+ 
 
+     
+      'Create an Oid collection and add several Oid objects.
+      Dim oc As New OidCollection()
+      oc.Add(o1)
+      oc.Add(o2)
+      oc.Add(o3)
+     ' Console.WriteLine("Number of Oids in the collection: {0}", oc.Count)
+      ' Console.WriteLine("Is synchronized: {0} {1}", oc.IsSynchronized, Environment.NewLine)
 
-    Sub Main(ByVal args() As String)
-        ' Generate a signing key.
-        Dim Key As New RSACryptoServiceProvider()
+	msg = "Number of Oids in the collection: " & oc.Count
+	MsgBox(msg)
+	msg = "Is synchronized: " & oc.IsSynchronized
+	MsgBox(msg)
 
-        Try
+      
+      'Create an enumerator for moving through the collection.
+      Dim oe As OidEnumerator = oc.GetEnumerator()
+      'You must execute a MoveNext() to get to the first item in the collection.
+      oe.MoveNext()
+      ' Write out Oids in the collection.
+      'Console.WriteLine("First Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value)
+	msg = "First Oid in collection: " & oe.Current.FriendlyName & ", " & oe.Current.Value
+	MsgBox(msg)
 
-            ' Sign an XML file and save the signature to a 
-            ' new file.
-            SignXmlFile("Test.xml", "SignedExample.xml", Key)
-            Console.WriteLine("XML file signed.")
+      oe.MoveNext()
+     ' Console.WriteLine("Second Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value)
+	msg = "Second Oid in collection: " & oe.Current.FriendlyName & ", " & oe.Current.Value
+	MsgBox(msg)
 
-            ' Verify the signature of the signed XML.
-            Console.WriteLine("Verifying signature...")
-
-            Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
-
-            ' Display the results of the signature verification to 
-            ' the console.
-            If result Then
-                Console.WriteLine("The XML signature is valid.")
-            Else
-                Console.WriteLine("The XML signature is not valid.")
-            End If
-        Catch e As CryptographicException
-            Console.WriteLine(e.Message)
-        Finally
-            ' Clear resources associated with the 
-            ' RSACryptoServiceProvider.
-            Key.Clear()
-        End Try
-
-    End Sub
-
-
-    ' Sign an XML file and save the signature in a new file.
-    Sub SignXmlFile(ByVal FileName As String, ByVal SignedFileName As String, ByVal Key As RSA)
-        ' Check the arguments.  
-        If FileName Is Nothing Then
-            Throw New ArgumentNullException("FileName")
-        End If
-        If SignedFileName Is Nothing Then
-            Throw New ArgumentNullException("SignedFileName")
-        End If
-        If Key Is Nothing Then
-            Throw New ArgumentNullException("Key")
-        End If
-
-        ' Create a new XML document.
-        Dim doc As New XmlDocument()
-
-        ' Format the document to ignore white spaces.
-        doc.PreserveWhitespace = False
-
-        ' Load the passed XML file using it's name.
-        doc.Load(New XmlTextReader(FileName))
-
-        ' Create a SignedXml object.
-        Dim signedXml As New SignedXml(doc)
-
-        ' Add the key to the SignedXml document. 
-        signedXml.SigningKey = Key
-
-        ' Get the signature object from the SignedXml object.
-        Dim XMLSignature As Signature = signedXml.Signature
-
-        ' Create a reference to be signed.  Pass "" 
-        ' to specify that all of the current XML
-        ' document should be signed.
-        Dim reference As New Reference("")
-
-        ' Add an enveloped transformation to the reference.
-        Dim env As New XmlDsigEnvelopedSignatureTransform()
-        reference.AddTransform(env)
-
-        ' Add the Reference object to the Signature object.
-        XMLSignature.SignedInfo.AddReference(reference)
-
-        ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
-        Dim keyInfo As New KeyInfo()
-        keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
-
-        ' Add the KeyInfo object to the Reference object.
-        XMLSignature.KeyInfo = keyInfo
-
-        ' Compute the signature.
-        signedXml.ComputeSignature()
-
-        ' Get the XML representation of the signature and save
-        ' it to an XmlElement object.
-        Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
-
-        ' Append the element to the XML document.
-        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
-
-
-        If TypeOf doc.FirstChild Is XmlDeclaration Then
-            doc.RemoveChild(doc.FirstChild)
-        End If
-
-        ' Save the signed XML document to a file specified
-        ' using the passed string.
-        Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
-        doc.WriteTo(xmltw)
-        xmltw.Close()
-
-    End Sub
-
-    ' Verify the signature of an XML file and return the result.
-    Function VerifyXmlFile(ByVal Name As String) As [Boolean]
-        ' Check the arguments.  
-        If Name Is Nothing Then
-            Throw New ArgumentNullException("Name")
-        End If
-        ' Create a new XML document.
-        Dim xmlDocument As New XmlDocument()
-
-        ' Format using white spaces.
-        xmlDocument.PreserveWhitespace = True
-
-        ' Load the passed XML file into the document. 
-        xmlDocument.Load(Name)
-
-        ' Create a new SignedXml object and pass it
-        ' the XML document class.
-        Dim signedXml As New SignedXml(xmlDocument)
-
-        ' Find the "Signature" node and create a new
-        ' XmlNodeList object.
-        Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
-
-        ' Load the signature node.
-        signedXml.LoadXml(CType(nodeList(0), XmlElement))
-
-        ' Check the signature and return the result.
-        Return signedXml.CheckSignature()
-
-    End Function
-End Module
+      'Return index in the collection to the beginning.
+      oe.Reset()
+   End Sub 'Main
+End Class 'OidSample

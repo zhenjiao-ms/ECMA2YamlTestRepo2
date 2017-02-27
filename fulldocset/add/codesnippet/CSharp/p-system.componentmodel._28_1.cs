@@ -1,45 +1,22 @@
-    public override DesignerActionItemCollection GetSortedActionItems()
+    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
+    public class CDesigner : System.ComponentModel.Design.ComponentDesigner 
     {
-        DesignerActionItemCollection items = new DesignerActionItemCollection();
-
-        //Define static section header entries.
-        items.Add(new DesignerActionHeaderItem("Appearance"));
-        items.Add(new DesignerActionHeaderItem("Information"));
-
-        //Boolean property for locking color selections.
-        items.Add(new DesignerActionPropertyItem("LockColors",
-                         "Lock Colors", "Appearance",
-                         "Locks the color properties."));
-        if (!LockColors)
+        public override void Initialize(IComponent comp) 
         {
-            items.Add(new DesignerActionPropertyItem("BackColor",
-                             "Back Color", "Appearance",
-                             "Selects the background color."));
-            items.Add(new DesignerActionPropertyItem("ForeColor",
-                             "Fore Color", "Appearance",
-                             "Selects the foreground color."));
+            base.Initialize(comp);
 
-            //This next method item is also added to the context menu 
-            // (as a designer verb).
-            items.Add(new DesignerActionMethodItem(this,
-                             "InvertColors", "Invert Colors",
-                             "Appearance",
-                             "Inverts the fore and background colors.",
-                              true));
+            IMenuCommandService mcs = (IMenuCommandService)comp.Site.
+                        GetService(typeof(IMenuCommandService));
+            MenuCommand mc = new MenuCommand(new EventHandler(OnF1Help), StandardCommands.F1Help);
+            mc.Enabled = true;
+            mc.Visible = true;
+            mc.Supported = true;
+            mcs.AddCommand(mc);
+            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.");
         }
-        items.Add(new DesignerActionPropertyItem("Text",
-                         "Text String", "Appearance",
-                         "Sets the display text."));
 
-        //Create entries for static Information section.
-        StringBuilder location = new StringBuilder("Location: ");
-        location.Append(colLabel.Location);
-        StringBuilder size = new StringBuilder("Size: ");
-        size.Append(colLabel.Size);
-        items.Add(new DesignerActionTextItem(location.ToString(),
-                         "Information"));
-        items.Add(new DesignerActionTextItem(size.ToString(),
-                         "Information"));
-
-        return items;
+        private void OnF1Help(object sender, EventArgs e) 
+        {
+            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.");
+        }
     }

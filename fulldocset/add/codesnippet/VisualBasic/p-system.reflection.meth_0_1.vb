@@ -1,26 +1,37 @@
 Imports System
 Imports System.Reflection
+Imports Microsoft.VisualBasic
 
-Public Class Example
+Class methodbase1
 
-    Public Shared Sub Main()
-
-        ' Demonstrate the effect of the Visual Basic When keyword, which
-        ' generates a Filter clause in the Try block.
-        Dim e As New Example()
+    Public Shared Function Main() As Integer
+        Console.WriteLine("Reflection.MethodBase")
         Console.WriteLine()
-        e.MethodBodyExample("String argument")
-        e.MethodBodyExample(Nothing)
+        ' Get the types.
+        Dim MyType1 As Type = _
+           Type.GetType("System.Runtime.Serialization.Formatter")
+        Dim MyType2 As Type = _
+           Type.GetType("System.Reflection.MethodBase")
 
-        ' Get method body information.
-        Dim mi As MethodInfo = _
-            GetType(Example).GetMethod("MethodBodyExample")
-        Dim mb As MethodBody = mi.GetMethodBody()
-        Console.WriteLine(vbCrLf & "Method: {0}", mi)
+        ' Get and display the methods
+        Dim Mymethodbase1 As MethodBase = _
+           MyType1.GetMethod("WriteInt32", BindingFlags.NonPublic Or BindingFlags.Instance)
+        Dim Mymethodbase2 As MethodBase = _
+           MyType2.GetMethod("GetCurrentMethod", BindingFlags.Public Or BindingFlags.Static)
 
-        ' Display the general information included in the 
-        ' MethodBody object.
-        Console.WriteLine("    Local variables are initialized: {0}", _
-            mb.InitLocals)
-        Console.WriteLine("    Maximum number of items on the operand stack: {0}", _
-            mb.MaxStackSize)
+        Console.WriteLine("Mymethodbase = {0}", Mymethodbase1.ToString())
+        If Mymethodbase1.IsAbstract Then
+            Console.WriteLine(ControlChars.CrLf & "Mymethodbase is an abstract method.")
+        Else
+            Console.WriteLine(ControlChars.CrLf & "Mymethodbase is not an abstract method.")
+        End If
+        Console.Write("Mymethodbase = {0}", Mymethodbase2.ToString())
+        If Mymethodbase2.IsAbstract Then
+            Console.WriteLine(ControlChars.CrLf & "Mymethodbase is an abstract method.")
+        Else
+            Console.WriteLine(ControlChars.CrLf & "Mymethodbase is not an abstract method.")
+        End If
+        Return 0
+    End Function
+
+End Class

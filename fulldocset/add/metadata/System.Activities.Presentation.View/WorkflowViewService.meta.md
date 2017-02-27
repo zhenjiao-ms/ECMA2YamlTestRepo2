@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.View.WorkflowViewService.ViewCreated
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.View.WorkflowViewService.#ctor(System.Activities.Presentation.EditingContext)
 internalonly: False
 ---

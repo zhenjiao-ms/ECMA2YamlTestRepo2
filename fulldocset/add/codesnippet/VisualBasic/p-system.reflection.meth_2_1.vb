@@ -1,26 +1,41 @@
 Imports System
 Imports System.Reflection
 
-Public Class Example
+Class MyMethodInfo
 
-    Public Shared Sub Main()
+    Public Shared Function Main() As Integer
+        Console.WriteLine("Reflection.MethodInfo")
 
-        ' Demonstrate the effect of the Visual Basic When keyword, which
-        ' generates a Filter clause in the Try block.
-        Dim e As New Example()
-        Console.WriteLine()
-        e.MethodBodyExample("String argument")
-        e.MethodBodyExample(Nothing)
+        ' Get the Type and MethodInfo.
+        Dim MyType As Type = Type.GetType("System.Reflection.FieldInfo")
+        Dim Mymethodinfo As MethodInfo = MyType.GetMethod("GetValue")
+        Console.WriteLine(MyType.FullName + "." + Mymethodinfo.Name)
 
-        ' Get method body information.
-        Dim mi As MethodInfo = _
-            GetType(Example).GetMethod("MethodBodyExample")
-        Dim mb As MethodBody = mi.GetMethodBody()
-        Console.WriteLine(vbCrLf & "Method: {0}", mi)
+        ' Get and display the MemberType property.
+        Dim Mymembertypes As MemberTypes = Mymethodinfo.MemberType
 
-        ' Display the general information included in the 
-        ' MethodBody object.
-        Console.WriteLine("    Local variables are initialized: {0}", _
-            mb.InitLocals)
-        Console.WriteLine("    Maximum number of items on the operand stack: {0}", _
-            mb.MaxStackSize)
+        If MemberTypes.Constructor = Mymembertypes Then
+            Console.WriteLine("MemberType is of type All.")
+
+        ElseIf MemberTypes.Custom = Mymembertypes Then
+            Console.WriteLine("MemberType is of type Custom.")
+
+        ElseIf MemberTypes.Event = Mymembertypes Then
+            Console.WriteLine("MemberType is of type Event.")
+
+        ElseIf MemberTypes.Field = Mymembertypes Then
+            Console.WriteLine("MemberType is of type Field.")
+
+        ElseIf MemberTypes.Method = Mymembertypes Then
+            Console.WriteLine("MemberType is of type Method.")
+
+        ElseIf MemberTypes.Property = Mymembertypes Then
+            Console.WriteLine("MemberType is of type Property.")
+
+        ElseIf MemberTypes.TypeInfo = Mymembertypes Then
+            Console.WriteLine("MemberType is of type TypeInfo.")
+
+        End If
+        Return 0
+    End Function
+End Class

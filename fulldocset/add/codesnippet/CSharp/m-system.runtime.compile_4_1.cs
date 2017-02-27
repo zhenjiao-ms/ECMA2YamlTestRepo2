@@ -1,13 +1,17 @@
 using System;
 using System.Runtime.CompilerServices;
 
-[assembly: SuppressIldasmAttribute()]
+[assembly :StringFreezingAttribute()]
+
 class Program
 {
+    
+    string frozenString = "This is a frozen string after Ngen is run.";
+    
     static void Main(string[] args)
     {
-        Console.WriteLine("The SuppressIldasmAttribute is applied to this assembly.");
+
+        Console.WriteLine("The StringFreezingAttribute attribute was applied.");
 
     }
-
 }

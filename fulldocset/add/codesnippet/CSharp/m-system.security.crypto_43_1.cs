@@ -1,146 +1,72 @@
 using System;
-using System.Xml;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
+using System.Security.Cryptography.X509Certificates;
 
-class Program
+class AsnEncodedDataSample
 {
-    static void Main(string[] args)
-    {
+	static void Main()
+	{		
+		//The following example demonstrates the usage the AsnEncodedData classes.
+		// Asn encoded data is read from the extensions of an X509 certificate.
+		try
+		{
+			// Open the certificate store.
+			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+			// Select one or more certificates to display extensions information.
+			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
 
-        // Create an XmlDocument object.
-        XmlDocument xmlDoc = new XmlDocument();
+			// Create a new AsnEncodedDataCollection object.
+			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
+			for (int i = 0; i < scollection.Count; i++)
+			{
+				// Display certificate information.
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
+				Console.ResetColor();
+				// Display extensions information.
+				foreach (X509Extension extension in scollection[i].Extensions)
+				{
+					// Create an AsnEncodedData object using the extensions information.
+					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
+					Console.ForegroundColor = ConsoleColor.Green;
+					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
+					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
+					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
+					Console.ResetColor();
+					Console.WriteLine(asndata.Format(true));
+					Console.WriteLine(Environment.NewLine);
+					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+					asncoll.Add(asndata);
+				}
+				Console.WriteLine(Environment.NewLine);
+			}
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
+			Console.ResetColor();
 
-        // Load an XML file into the XmlDocument object.
-        try
-        {
-            xmlDoc.PreserveWhitespace = true;
-            xmlDoc.Load("test.xml");
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+			store.Close();
+			//Create an enumerator for moving through the collection.
+			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
+			//You must execute a MoveNext() to get to the first item in the collection.
+			asne.MoveNext();
+			// Write out AsnEncodedData in the collection.
+			Console.ForegroundColor = ConsoleColor.Blue;
+			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
 
-        // Create a new TripleDES key. 
-        TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
-
-
-        try
-        {
-            // Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", tDESkey);
-
-            // Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
-
-            // Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, tDESkey);
-
-            // Display the encrypted XML to the console.
-            Console.WriteLine();
-            Console.WriteLine("Decrypted XML:");
-            Console.WriteLine();
-            Console.WriteLine(xmlDoc.OuterXml);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-        finally
-        {
-            // Clear the TripleDES key.
-            tDESkey.Clear();
-        }
-
-    }
-
-    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, TripleDESCryptoServiceProvider Alg)
-    {
-
-        ////////////////////////////////////////////////
-        // Find the specified element in the XmlDocument
-        // object and create a new XmlElemnt object.
-        ////////////////////////////////////////////////
-
-        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
-
-        // Throw an XmlException if the element was not found.
-        if (elementToEncrypt == null)
-        {
-            throw new XmlException("The specified element was not found");
-
-        }
-
-        //////////////////////////////////////////////////
-        // Create a new instance of the EncryptedXml class 
-        // and use it to encrypt the XmlElement with the 
-        // symmetric key.
-        //////////////////////////////////////////////////
-
-        EncryptedXml eXml = new EncryptedXml();
-
-        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, Alg, false);
-
-        ////////////////////////////////////////////////
-        // Construct an EncryptedData object and populate
-        // it with the desired encryption information.
-        ////////////////////////////////////////////////
-
-
-        EncryptedData edElement = new EncryptedData();
-        
-        edElement.Type = EncryptedXml.XmlEncElementUrl;
-
-  
-        // Create an EncryptionMethod element so that the 
-        // receiver knows which algorithm to use for decryption.
-        // Determine what kind of algorithm is being used and
-        // supply the appropriate URL to the EncryptionMethod element.
-
-        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
-
-        // Add the encrypted element data to the 
-        // EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement;
-
-        ////////////////////////////////////////////////////
-        // Replace the element from the original XmlDocument
-        // object with the EncryptedData element.
-        ////////////////////////////////////////////////////
-
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
-
-    }
-
-    public static void Decrypt(XmlDocument Doc, SymmetricAlgorithm Alg)
-    {
-
-        // Find the EncryptedData element in the XmlDocument.
-        XmlElement encryptedElement = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
-
-        // If the EncryptedData element was not found, throw an exception.
-        if (encryptedElement == null)
-        {
-            throw new XmlException("The EncryptedData element was not found.");
-        }
-
-        // Create an EncryptedData object and populate it.
-        EncryptedData edElement = new EncryptedData();
-        edElement.LoadXml(encryptedElement);
-
-        // Create a new EncryptedXml object.
-        EncryptedXml exml = new EncryptedXml();
-
-        // Decrypt the element using the symmetric key.
-        byte[] rgbOutput = exml.DecryptData(edElement, Alg);
-
-        // Replace the encryptedData element with the plaintext XML element.
-        exml.ReplaceData(encryptedElement, rgbOutput);
-
-    }
-
-
+			asne.MoveNext();
+			Console.ForegroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
+			Console.ResetColor();
+			//Return index in the collection to the beginning.
+			asne.Reset();
+		}
+		catch (CryptographicException)
+		{
+			Console.WriteLine("Information could not be written out for this certificate.");
+		}
+	}
 }

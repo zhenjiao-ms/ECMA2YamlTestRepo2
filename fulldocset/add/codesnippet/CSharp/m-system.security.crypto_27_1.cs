@@ -1,122 +1,79 @@
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.IO;
+using System.Text;
+using System.Security.Cryptography;
 
-class DESSample
+namespace RC2CryptoServiceProvider_Examples
 {
-
-    static void Main()
+    class MyMainClass
     {
-        try
+        public static void Main()
         {
-            // Create a new DES object to generate a key 
-            // and initialization vector (IV).  Specify one 
-            // of the recognized simple names for this 
-            // algorithm.
-            DES DESalg = DES.Create("DES");
 
-            // Create a string to encrypt.
-            string sData = "Here is some data to encrypt.";
-            string FileName = "CText.txt";
+            // Create a new instance of the RC2CryptoServiceProvider class
+            // and automatically generate a Key and IV.
+            RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
 
-            // Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, DESalg.Key, DESalg.IV);
+            Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize);
 
-            // Decrypt the text from a file using the file name, key, and IV.
-            string Final = DecryptTextFromFile(FileName, DESalg.Key, DESalg.IV);
+            // Get the key and IV.
+            byte[] key = rc2CSP.Key;
+            byte[] IV = rc2CSP.IV;
+
+            // Get an encryptor.
+            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(key, IV);
+
+            // Encrypt the data as an array of encrypted bytes in memory.
+            MemoryStream msEncrypt = new MemoryStream();
+            CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+
+            // Convert the data to a byte array.
+            string original = "Here is some data to encrypt.";
+            byte[] toEncrypt = Encoding.ASCII.GetBytes(original);
+
+            // Write all data to the crypto stream and flush it.
+            csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
+            csEncrypt.FlushFinalBlock();
+
+            // Get the encrypted array of bytes.
+            byte[] encrypted = msEncrypt.ToArray();
+
+            ///////////////////////////////////////////////////////
+            // This is where the data could be transmitted or saved.          
+            ///////////////////////////////////////////////////////
+
+            //Get a decryptor that uses the same key and IV as the encryptor.
+            ICryptoTransform decryptor = rc2CSP.CreateDecryptor(key, IV);
+
+            // Now decrypt the previously encrypted message using the decryptor
+            // obtained in the above step.
+            MemoryStream msDecrypt = new MemoryStream(encrypted);
+            CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+
+            // Read the decrypted bytes from the decrypting stream
+            // and place them in a StringBuilder class.
+
+            StringBuilder roundtrip = new StringBuilder();
             
-            // Display the decrypted string to the console.
-            Console.WriteLine(Final);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-       
-    }
+            int b = 0;
 
-    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file.
-            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
+            do
+            {
+                b = csDecrypt.ReadByte();
+                
+                if (b != -1)
+                {
+                    roundtrip.Append((char)b);
+                }
 
-            // Create a new DES object.
-            DES DESalg = DES.Create();
+            } while (b != -1);
+ 
 
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                DESalg.CreateEncryptor(Key,IV), 
-                CryptoStreamMode.Write); 
+            // Display the original data and the decrypted data.
+            Console.WriteLine("Original:   {0}", original);
+            Console.WriteLine("Round Trip: {0}", roundtrip);
 
-            // Create a StreamWriter using the CryptoStream.
-            StreamWriter sWriter = new StreamWriter(cStream);
-
-            // Write the data to the stream 
-            // to encrypt it.
-            sWriter.WriteLine(Data);
-  
-            // Close the streams and
-            // close the file.
-            sWriter.Close();
-            cStream.Close();
-            fStream.Close();
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file error occurred: {0}", e.Message);
-        }
-
-    }
-
-    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file. 
-            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
-
-            // Create a new DES object.
-            DES DESalg = DES.Create();
-  
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                DESalg.CreateDecryptor(Key,IV), 
-                CryptoStreamMode.Read); 
-
-            // Create a StreamReader using the CryptoStream.
-            StreamReader sReader = new StreamReader(cStream);
-
-            // Read the data from the stream 
-            // to decrypt it.
-            string val = sReader.ReadLine();
-    
-            // Close the streams and
-            // close the file.
-            sReader.Close();
-            cStream.Close();
-            fStream.Close();
-
-            // Return the string. 
-            return val;
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-            return null;
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file error occurred: {0}", e.Message);
-            return null;
+            Console.ReadLine();
         }
     }
 }

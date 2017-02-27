@@ -1,33 +1,66 @@
+        static void DisplayEventLogProperties()
+        {
+            // Iterate through the current set of event log files,
+            // displaying the property settings for each file.
 
-            // Ensure that the source has already been registered using
-            // EventLogInstaller or EventLog.CreateEventSource.
-
-            string sourceName = "SampleApplicationSource";
-            if(EventLog.SourceExists(sourceName))
+            EventLog[] eventLogs = EventLog.GetEventLogs();
+            foreach (EventLog e in eventLogs)
             {
-                // Define an informational event with no category.
-                // The message identifier corresponds to the message text in the
-                // message resource file defined for the source.
-                EventInstance myEvent = new EventInstance(UpdateCycleCompleteMsgId, 0);
-                
-                // Write the event to the event log using the registered source.
-                EventLog.WriteEvent(sourceName, myEvent);
+                Int64 sizeKB = 0;
 
-                // Reuse the event data instance for another event entry.
-                // Set the entry category and message identifiers for
-                // the appropriate resource identifiers in the resource files
-                // for the registered source.  Set the event type to Warning.
+                Console.WriteLine();
+                Console.WriteLine("{0}:", e.LogDisplayName);
+                Console.WriteLine("  Log name = \t\t {0}", e.Log); 
 
-                myEvent.CategoryId = RefreshCategoryMsgId;
-                myEvent.EntryType = EventLogEntryType.Warning;
-                myEvent.InstanceId = ServerConnectionDownMsgId;
+                Console.WriteLine("  Number of event log entries = {0}", e.Entries.Count.ToString());
+                            
+                // Determine if there is an event log file for this event log.
+                RegistryKey regEventLog = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Services\\EventLog\\" + e.Log);
+                if (regEventLog != null)
+                {
+                    Object temp = regEventLog.GetValue("File");
+                    if (temp != null)
+                    {
+                        Console.WriteLine("  Log file path = \t {0}", temp.ToString());
+                        FileInfo file = new FileInfo(temp.ToString());
 
-                // Write the event to the event log using the registered source.
-                // Insert the machine name into the event message text.
-                EventLog.WriteEvent(sourceName, myEvent, Environment.MachineName);
+                        // Get the current size of the event log file.
+                        if (file.Exists)
+                        {
+                            sizeKB = file.Length / 1024;
+                            if ((file.Length % 1024) != 0)
+                            {
+                                sizeKB++;
+                            }
+                            Console.WriteLine("  Current size = \t {0} kilobytes", sizeKB.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("  Log file path = \t <not set>");
+                    }
+                }
+                            
+                // Display the maximum size and overflow settings.
+
+                sizeKB = e.MaximumKilobytes;
+                Console.WriteLine("  Maximum size = \t {0} kilobytes", sizeKB.ToString());
+                Console.WriteLine("  Overflow setting = \t {0}", e.OverflowAction.ToString());
+
+                switch (e.OverflowAction)
+                {
+                    case OverflowAction.OverwriteOlder:
+                        Console.WriteLine("\t Entries are retained a minimum of {0} days.", 
+                            e.MinimumRetentionDays);
+                        break;
+                    case OverflowAction.DoNotOverwrite:
+                        Console.WriteLine("\t Older entries are not overwritten.");
+                        break;
+                    case OverflowAction.OverwriteAsNeeded:
+                        Console.WriteLine("\t If number of entries equals max size limit, a new event log entry overwrites the oldest entry.");
+                        break;
+                    default:
+                        break;
+                }
             }
-            else 
-            {
-                Console.WriteLine("Warning - event source {0} not registered", 
-                    sourceName);
-            }
+        }

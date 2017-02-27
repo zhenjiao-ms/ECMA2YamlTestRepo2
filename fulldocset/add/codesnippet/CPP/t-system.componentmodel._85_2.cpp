@@ -1,16 +1,15 @@
-int main()
-{
-    // Creates a new collection.
-    DefaultEventAttributeExample::TestCollection^ newCollection = 
-        gcnew DefaultEventAttributeExample::TestCollection;
-    
-    // Gets the attributes for the collection.
-    AttributeCollection^ attributes = 
-        TypeDescriptor::GetAttributes(newCollection);
-    
-    // Prints the name of the default event by retrieving the 
-    // DefaultEventAttribute from the AttributeCollection.
-    DefaultEventAttribute^ attribute = (DefaultEventAttribute^)
-        attributes[DefaultEventAttribute::typeid];
-    Console::WriteLine("The default event is: {0}", attribute->Name);
-}
+      // Gets the attributes for the property.
+      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
+
+      // Checks to see whether the value of the ReadOnlyAttribute is Yes.
+      if ( attributes[ ReadOnlyAttribute::typeid ]->Equals( ReadOnlyAttribute::Yes ) )
+      {
+         // Insert code here.
+      }
+
+      // This is another way to see whether the property is read-only.
+      ReadOnlyAttribute^ myAttribute = dynamic_cast<ReadOnlyAttribute^>(attributes[ ReadOnlyAttribute::typeid ]);
+      if ( myAttribute->IsReadOnly )
+      {
+         // Insert code here.
+      }

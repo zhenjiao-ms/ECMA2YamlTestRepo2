@@ -1,24 +1,25 @@
 Imports System
 Imports System.Resources
-Imports System.Collections
-Imports Microsoft.VisualBasic
+Imports System.IO
 
-Class EnumerateResources
-   
-   Public Shared Sub Main()
-      ' Create a ResourceSet for the file items.resources.
-      Dim rs As New ResourceSet("items.resources")      
-      
-      ' Create an IDictionaryEnumerator to read the data in the ResourceSet.
-      Dim id As IDictionaryEnumerator = rs.GetEnumerator()
-      
-      ' Iterate through the ResourceSet and display the contents to the console. 
-      While id.MoveNext()
-         Console.WriteLine(ControlChars.NewLine + "[{0}] " + ControlChars.Tab + "{1}", id.Key, id.Value)
-      End While 
+Public Class WriteResources
 
-      rs.Close()
+  Public Shared Sub Main(ByVal args() As String)
+      ' Create a file stream to encapsulate items.resources.
+      Dim fs As New FileStream("items.resources", _
+         FileMode.OpenOrCreate, FileAccess.Write)
 
+      ' Open a resource writer to write from the stream.
+      Dim writer = New ResourceWriter(fs)
+
+      ' Add resources to the resource writer.
+      writer.AddResource("String 1", "First String")
+      writer.AddResource("String 2", "Second String")
+      writer.AddResource("String 3", "Third String")
+
+      ' Generate the resources, and close the writer.
+      writer.Generate()
+      writer.Close()
    End Sub
 
 End Class

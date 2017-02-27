@@ -1,24 +1,74 @@
-        // The create function attempts to create a CustomCrypto object using
-        // the assembly name. This functionality requires modification of the
-        // machine.config file. Add the following section to the configuration
-        // element and modify the values of the cryptoClass to reflect what is
-        // installed in your machines GAC.
-        //<mscorlib>
-        // <cryptographySettings>
-        //   <cryptoNameMapping>
-        //     <cryptoClasses>
-        //       <cryptoClass CustomCrypto="Contoso.CustomCrypto, 
-        //         CustomCrypto, 
-        //         Culture=neutral, 
-        //         PublicKeyToken=fdb9f9c4851028bf, 
-        //         Version=1.0.1448.27640" />
-        //     </cryptoClasses>
-        //     <nameEntry name="Contoso.CustomCrypto" class="CustomCrypto" />
-        //     <nameEntry name="CustomCrypto" class="CustomCrypto" />
-        //    </cryptoNameMapping>
-        //  </cryptographySettings>
-        //</mscorlib>
-        new static public CustomCrypto Create(String algorithmName) 
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Windows.Forms;
+
+public class HashDirectory
+{
+
+    [STAThreadAttribute]
+    public static void Main(String[] args)
+    {
+        string directory = "";
+        if (args.Length < 1)
         {
-            return (CustomCrypto) CryptoConfig.CreateFromName(algorithmName);
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult dr = fbd.ShowDialog();
+            if (dr == DialogResult.OK)
+                directory = fbd.SelectedPath;
+            else
+            {
+                Console.WriteLine("No directory selected.");
+                return;
+            }
         }
+        else
+            directory = args[0];
+        try
+        {
+            // Create a DirectoryInfo object representing the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(directory);
+            // Get the FileInfo objects for every file in the directory.
+            FileInfo[] files = dir.GetFiles();
+            // Initialize a RIPE160 hash object.
+            RIPEMD160 myRIPEMD160 = RIPEMD160Managed.Create();
+            byte[] hashValue;
+            // Compute and print the hash values for each file in directory.
+            foreach (FileInfo fInfo in files)
+            {
+                // Create a fileStream for the file.
+                FileStream fileStream = fInfo.Open(FileMode.Open);
+                // Be sure it's positioned to the beginning of the stream.
+                fileStream.Position = 0;
+                // Compute the hash of the fileStream.
+                hashValue = myRIPEMD160.ComputeHash(fileStream);
+                // Write the name of the file to the Console.
+                Console.Write(fInfo.Name + ": ");
+                // Write the hash value to the Console.
+                PrintByteArray(hashValue);
+                // Close the file.
+                fileStream.Close();
+            }
+            return;
+        }
+        catch (DirectoryNotFoundException)
+        {
+            Console.WriteLine("Error: The directory specified could not be found.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Error: A file in the directory could not be accessed.");
+        }
+    }
+    // Print the byte array in a readable format.
+    public static void PrintByteArray(byte[] array)
+    {
+        int i;
+        for (i = 0; i < array.Length; i++)
+        {
+            Console.Write(String.Format("{0:X2}", array[i]));
+            if ((i % 4) == 3) Console.Write(" ");
+        }
+        Console.WriteLine();
+    }
+}

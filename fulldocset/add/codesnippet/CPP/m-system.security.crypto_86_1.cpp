@@ -1,58 +1,28 @@
-            // Expected XML schema:
-            //  <CustomCryptoKeyValue>
-            //      <ProviderName></ProviderName>
-            //      <KeyContainerName></KeyContainerName>
-            //      <KeyNumber></KeyNumber>
-            //      <ProviderType></ProviderType>
-            //  </CustomCryptoKeyValue>
+            // The create function attempts to create a CustomCrypto 
+            // object using the assembly name. This functionality requires 
+            // modification of the machine.config file. Add the following 
+            // section to the configuration element and modify the values 
+            // of the cryptoClass to reflect what isinstalled 
+            // in your machines GAC.
+            //<mscorlib>
+            //  <cryptographySettings>
+            //    <cryptoNameMapping>
+            //      <cryptoClasses>
+            //        <cryptoClass CustomCrypto="Contoso.CustomCrypto,
+            //          CustomCrypto,
+            //          Culture=neutral,
+            //          PublicKeyToken=fdb9f9c4851028bf,
+            //          Version=1.0.1448.27640" />
+            //      </cryptoClasses>
+            //      <nameEntry name="Contoso.CustomCrypto" 
+            //         class="CustomCrypto" />
+            //      <nameEntry name="CustomCrypto" class="CustomCrypto" />
+            //    </cryptoNameMapping>
+            //  </cryptographySettings>
+            //</mscorlib>
+
         public:
-            virtual void FromXmlString(String^ xmlString) override 
+            static CustomCrypto^ Create() 
             {
-                if (xmlString != nullptr)
-                {
-                    XmlDocument^ document = gcnew XmlDocument();
-                    document->LoadXml(xmlString);
-                    XmlNode^ firstNode = document->FirstChild;
-                    XmlNodeList^ nodeList;
-
-                    // Assemble parameters from values in each XML element.
-                    cryptoServiceParameters = gcnew CspParameters();
-
-                    // KeyContainerName is optional.
-                    nodeList = 
-                        document->GetElementsByTagName("KeyContainerName");
-                    if (nodeList->Count > 0)
-                    {
-                        cryptoServiceParameters->KeyContainerName =
-                            nodeList->Item(0)->InnerText;
-                    }
-
-                    // KeyNumber is optional.
-                    nodeList = document->GetElementsByTagName("KeyNumber");
-                    if (nodeList->Count > 0)
-                    {
-                        cryptoServiceParameters->KeyNumber =
-                            Int32::Parse(nodeList->Item(0)->InnerText);
-                    }
-
-                    // ProviderName is optional.
-                    nodeList = document->GetElementsByTagName("ProviderName");
-                    if (nodeList->Count > 0)
-                    {
-                        cryptoServiceParameters->ProviderName =
-                            nodeList->Item(0)->InnerText;
-                    }
-
-                    // ProviderType is optional.
-                    nodeList = document->GetElementsByTagName("ProviderType");
-                    if (nodeList->Count > 0)
-                    {
-                        cryptoServiceParameters->ProviderType =
-                            Int32::Parse(nodeList->Item(0)->InnerText);
-                    }
-                }
-                else
-                {
-                    throw gcnew ArgumentNullException("xmlString");
-                }
+                return Create("CustomCrypto");
             }

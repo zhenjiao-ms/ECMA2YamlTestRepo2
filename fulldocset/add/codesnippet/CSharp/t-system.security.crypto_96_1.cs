@@ -1,150 +1,62 @@
-//
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
-//
 using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Xml;
+using System.IO;
 
-public class SignVerifyEnvelope
+class TestX509Chain
 {
+	static void Main(string[] args)
+	{
+		//Create new X509 store from local certificate store.
+		X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
+		store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadWrite);
 
-    public static void Main(String[] args)
-    {
-        try
-        {
-           // Generate a signing key.
-           RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+		//Output store information.
+		Console.WriteLine ("Store Information");
+		Console.WriteLine ("Number of certificates in the store: {0}", store.Certificates.Count);
+		Console.WriteLine ("Store location: {0}", store.Location);
+		Console.WriteLine ("Store name: {0} {1}", store.Name, Environment.NewLine);
+	
+		//Put certificates from the store into a collection so user can select one.
+		X509Certificate2Collection fcollection = (X509Certificate2Collection)store.Certificates;
+		X509Certificate2Collection collection = X509Certificate2UI.SelectFromCollection(fcollection, "Select an X509 Certificate", "Choose a certificate to examine.", X509SelectionFlag.SingleSelection);
+		X509Certificate2 certificate = collection[0];
+		X509Certificate2UI.DisplayCertificate(certificate);
+		//Output chain information of the selected certificate.
+		X509Chain ch = new X509Chain();
+		ch.Build (certificate);
+		Console.WriteLine ("Chain Information");
+		ch.ChainPolicy.RevocationMode = X509RevocationMode.Online;
+		Console.WriteLine ("Chain revocation flag: {0}", ch.ChainPolicy.RevocationFlag);
+		Console.WriteLine ("Chain revocation mode: {0}", ch.ChainPolicy.RevocationMode);
+		Console.WriteLine ("Chain verification flag: {0}", ch.ChainPolicy.VerificationFlags);
+		Console.WriteLine ("Chain verification time: {0}", ch.ChainPolicy.VerificationTime);
+		Console.WriteLine ("Chain status length: {0}", ch.ChainStatus.Length);
+		Console.WriteLine ("Chain application policy count: {0}", ch.ChainPolicy.ApplicationPolicy.Count);
+		Console.WriteLine ("Chain certificate policy count: {0} {1}", ch.ChainPolicy.CertificatePolicy.Count, Environment.NewLine);
+		//Output chain element information.
+		Console.WriteLine ("Chain Element Information");
+		Console.WriteLine ("Number of chain elements: {0}", ch.ChainElements.Count);
+		Console.WriteLine ("Chain elements synchronized? {0} {1}", ch.ChainElements.IsSynchronized, Environment.NewLine);
+	
+		foreach (X509ChainElement element in ch.ChainElements)
+		{
+			Console.WriteLine ("Element issuer name: {0}", element.Certificate.Issuer);
+			Console.WriteLine ("Element certificate valid until: {0}", element.Certificate.NotAfter);
+			Console.WriteLine ("Element certificate is valid: {0}", element.Certificate.Verify ());
+			Console.WriteLine ("Element error status length: {0}", element.ChainElementStatus.Length);
+			Console.WriteLine ("Element information: {0}", element.Information);
+			Console.WriteLine ("Number of element extensions: {0}{1}", element.Certificate.Extensions.Count, Environment.NewLine);
 
-           // Create an XML file to sign.
-           CreateSomeXml("Example.xml");
-           Console.WriteLine("New XML file created."); 
-
-           // Sign the XML that was just created and save it in a 
-           // new file.
-           SignXmlFile("Example.xml", "signedExample.xml", Key);
-           Console.WriteLine("XML file signed."); 
-
-           // Verify the signature of the signed XML.
-           Console.WriteLine("Verifying signature...");
-           bool result = VerifyXmlFile("SignedExample.xml", Key);
-
-           // Display the results of the signature verification to 
-           // the console.
-           if(result)
-           {
-               Console.WriteLine("The XML signature is valid.");
-           }
-           else
-           {
-            Console.WriteLine("The XML signature is not valid.");
-           }
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine(e.Message);
-        }
-    }
-
-
-    // Sign an XML file and save the signature in a new file. This method does not  
-    // save the public key within the XML file.  This file cannot be verified unless  
-    // the verifying code has the key with which it was signed.
-    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
-    {
-        // Create a new XML document.
-        XmlDocument doc = new XmlDocument();
-
-        // Load the passed XML file using its name.
-        doc.Load(new XmlTextReader(FileName));
-
-        // Create a SignedXml object.
-        SignedXml signedXml = new SignedXml(doc);
-
-        // Add the key to the SignedXml document. 
-        signedXml.SigningKey = Key;
-
-        // Create a reference to be signed.
-        Reference reference = new Reference();
-        reference.Uri = "";
-
-        // Add an enveloped transformation to the reference.
-        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
-        reference.AddTransform(env);
-
-        // Add the reference to the SignedXml object.
-        signedXml.AddReference(reference);
-
-        // Compute the signature.
-        signedXml.ComputeSignature();
-
-        // Get the XML representation of the signature and save
-        // it to an XmlElement object.
-        XmlElement xmlDigitalSignature = signedXml.GetXml();
-
-        // Append the element to the XML document.
-        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
-		
-        if (doc.FirstChild is XmlDeclaration)  
-        {
-            doc.RemoveChild(doc.FirstChild);
-        }
-
-        // Save the signed XML document to a file specified
-        // using the passed string.
-        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
-        doc.WriteTo(xmltw);
-        xmltw.Close();
-    }
-
-    // Verify the signature of an XML file against an asymetric 
-    // algorithm and return the result.
-    public static Boolean VerifyXmlFile(String Name, RSA Key)
-    {
-        // Create a new XML document.
-        XmlDocument xmlDocument = new XmlDocument();
-
-        // Load the passed XML file into the document. 
-        xmlDocument.Load(Name);
-
-        // Create a new SignedXml object and pass it
-        // the XML document class.
-        SignedXml signedXml = new SignedXml(xmlDocument);
-
-        // Find the "Signature" node and create a new
-        // XmlNodeList object.
-        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
-
-        // Load the signature node.
-        signedXml.LoadXml((XmlElement)nodeList[0]);
-
-        // Check the signature and return the result.
-        return signedXml.CheckSignature(Key);
-    }
-
-
-    // Create example data to sign.
-    public static void CreateSomeXml(string FileName)
-    {
-        // Create a new XmlDocument object.
-        XmlDocument document = new XmlDocument();
-
-        // Create a new XmlNode object.
-        XmlNode  node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
-		
-        // Add some text to the node.
-        node.InnerText = "Example text to be signed.";
-
-        // Append the node to the document.
-        document.AppendChild(node);
-
-        // Save the XML document to the file name specified.
-        XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false));
-        document.WriteTo(xmltw);
-        xmltw.Close();
-    }
+			if (ch.ChainStatus.Length > 1)
+			{
+				for (int index = 0; index < element.ChainElementStatus.Length; index++)
+				{
+					Console.WriteLine (element.ChainElementStatus[index].Status);
+					Console.WriteLine (element.ChainElementStatus[index].StatusInformation);
+				}
+			}
+		}
+		store.Close();
+	}
 }

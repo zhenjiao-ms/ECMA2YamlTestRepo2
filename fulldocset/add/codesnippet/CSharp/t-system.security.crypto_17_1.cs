@@ -1,73 +1,33 @@
 using System;
-using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Xml;
+using System.IO;
 
-namespace Contoso
+/// This sample used the GetXml method in the CipherReference class to 
+/// write the XML values for the CipherReference to the console.
+namespace CipherReference2
 {
-    public class ContosoDeformatter : AsymmetricKeyExchangeDeformatter
-    {
-        private RSA rsaKey;
+	class CipherReference2
+	{
+		[STAThread]
+		static void Main(string[] args)
+		{
+			//Create a URI string.
+			String uri = "http://www.woodgrovebank.com/document.xml";
 
-        // Default constructor.
-        public ContosoDeformatter(){}
+			// Create a Base64 transform. The input content retrieved from the
+			// URI should be Base64-decoded before other processing.
+			Transform base64 = new XmlDsigBase64Transform();
 
-        // Constructor with the public key to use for encryption.
-        public ContosoDeformatter(AsymmetricAlgorithm key)
-        {
-            SetKey(key);
-        }
+			//Create a transform chain and add the transform to it.
+			TransformChain tc = new TransformChain();
 
-        // Set the public key for encyption operations.
-        public override void SetKey(AsymmetricAlgorithm key) {
-            if (key != null)
-            {
-                rsaKey = (RSA)key;
-            }
-            else
-            {
-                throw new ArgumentNullException("key");
-            }
-        }
+			tc.Add(base64);
 
-        // Disallow access to the parameters of the formatter.
-        public override String Parameters 
-        {
-            get { return null; }
-            set { ; }
-        }
-
-        // Create the encrypted key exchange data from the specified input
-        // data. This method uses the RSACryptoServiceProvider only. To
-        // support additional providers or provide custom decryption logic,
-        // add logic to this member.
-        public override byte[] DecryptKeyExchange(byte[] rgbData) {
-            byte[] decryptedBytes = null;
-
-            if (rsaKey != null)
-            {
-                if (rsaKey is RSACryptoServiceProvider)
-                {
-                    RSACryptoServiceProvider serviceProvder =
-                        (RSACryptoServiceProvider)rsaKey;
-
-                    decryptedBytes = serviceProvder.Decrypt(rgbData, true);
-                }
-                // Add custom decryption logic here.
-            }
-            else
-            {
-                throw new CryptographicUnexpectedOperationException(
-                    "Cryptography_MissingKey");
-            }
-
-            return decryptedBytes;
-        }
-    }
+			//Create <CipherReference> information.
+			CipherReference reference = new CipherReference(uri, tc);
+			// Write the CipherReference value to the console.
+			Console.WriteLine("Cipher Reference data: {0}", reference.GetXml().OuterXml);
+		}
+	}
 }
-//
-// This code example produces the following output:
-//
-// Data to encrypt : Sample Contoso encryption application.
-// Encrypted data: Khasdf-3248&$%23
-// Data decrypted : Sample Contoso encryption application.
-// 
-// This sample completed successfully; press Enter to exit.

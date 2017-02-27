@@ -1,73 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+#using <System.Security.dll>
+#using <System.Xml.dll>
+
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Text;
+using namespace System::Xml;
 
-// Print the byte array in a readable format.
-void PrintByteArray( array<Byte>^array )
+// Sign an XML file and save the signature in a new file.
+void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ Key )
 {
-   int i;
-   for ( i = 0; i < array->Length; i++ )
-   {
-      Console::Write( String::Format( "{0:X2}", array[ i ] ) );
-      if ( (i % 4) == 3 )
-            Console::Write( " " );
+   
+   // Create a SignedXml object.
+   SignedXml^ signedXml = gcnew SignedXml;
+   
+   // Assign the key to the SignedXml object.
+   signedXml->SigningKey = Key;
+   
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
+   
+   // Add the passed URI to the reference object.
+   reference->Uri = URIString;
 
-   }
-   Console::WriteLine();
+   // Add the reference to the SignedXml object.
+   signedXml->AddReference( reference );
+   
+   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+   KeyInfo^ keyInfo = gcnew KeyInfo;
+   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
+   signedXml->KeyInfo = keyInfo;
+   
+   // Compute the signature.
+   signedXml->ComputeSignature();
+   
+   // Get the XML representation of the signature and save
+   // it to an XmlElement object.
+   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
+   
+   // Save the signed XML document to a file specified
+   // using the passed string.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
+   xmlDigitalSignature->WriteTo( xmltw );
+   xmltw->Close();
 }
 
+
+// Verify the signature of an XML file and return the result.
+Boolean VerifyDetachedSignature( String^ XmlSigFileName )
+{
+   
+   // Create a new XML document.
+   XmlDocument^ xmlDocument = gcnew XmlDocument;
+   
+   // Load the passed XML file into the document.
+   xmlDocument->Load( XmlSigFileName );
+   
+   // Create a new SignedXMl object.
+   SignedXml^ signedXml = gcnew SignedXml;
+   
+   // Find the "Signature" node and create a new
+   // XmlNodeList object.
+   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
+   
+   // Load the signature node.
+   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
+   
+   // Check the signature and return the result.
+   return signedXml->CheckSignature();
+}
+
+
+
+[STAThread]
 int main()
 {
    array<String^>^args = Environment::GetCommandLineArgs();
-   if ( args->Length < 2 )
-   {
-      Console::WriteLine( "Usage: hashdir <directory>" );
-      return 0;
-   }
-
+   
+   // The URI to sign.
+   String^ resourceToSign = "http://www.microsoft.com";
+   
+   // The name of the file to which to save the XML signature.
+   String^ XmlFileName = "xmldsig.xml";
    try
    {
-
-      // Create a DirectoryInfo object representing the specified directory.
-      DirectoryInfo^ dir = gcnew DirectoryInfo( args[ 1 ] );
-
-      // Get the FileInfo objects for every file in the directory.
-      array<FileInfo^>^files = dir->GetFiles();
-
-      // Initialize a SHA256 hash object.
-      SHA256 ^ mySHA256 = SHA256Managed::Create();
-      array<Byte>^hashValue;
-
-      // Compute and print the hash values for each file in directory.
-      System::Collections::IEnumerator^ myEnum = files->GetEnumerator();
-      while ( myEnum->MoveNext() )
+      
+      // Generate a signing key.
+      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      Console::WriteLine( "Signing: {0}", resourceToSign );
+      
+      // Sign the detached resourceand save the signature in an XML file.
+      SignDetachedResource( resourceToSign, XmlFileName, Key );
+      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
+      
+      // Verify the signature of the signed XML.
+      Console::WriteLine( "Verifying signature..." );
+      
+      //Verify the XML signature in the XML file.
+      bool result = VerifyDetachedSignature( XmlFileName );
+      
+      // Display the results of the signature verification to 
+      // the console.
+      if ( result )
       {
-         FileInfo^ fInfo = safe_cast<FileInfo^>(myEnum->Current);
-
-         // Create a fileStream for the file.
-         FileStream^ fileStream = fInfo->Open( FileMode::Open );
-
-         // Compute the hash of the fileStream.
-         hashValue = mySHA256->ComputeHash( fileStream );
-
-         // Write the name of the file to the Console.
-         Console::Write( "{0}: ", fInfo->Name );
-
-         // Write the hash value to the Console.
-         PrintByteArray( hashValue );
-
-         // Close the file.
-         fileStream->Close();
+         Console::WriteLine( "The XML signature is valid." );
       }
-      return 0;
+      else
+      {
+         Console::WriteLine( "The XML signature is not valid." );
+      }
    }
-   catch ( DirectoryNotFoundException^ ) 
+   catch ( CryptographicException^ e ) 
    {
-      Console::WriteLine( "Error: The directory specified could not be found." );
-   }
-   catch ( IOException^ ) 
-   {
-      Console::WriteLine( "Error: A file in the directory could not be accessed." );
+      Console::WriteLine( e->Message );
    }
 
 }

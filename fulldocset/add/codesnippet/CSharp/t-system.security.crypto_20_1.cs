@@ -1,133 +1,228 @@
-
 using System;
-using System.IO;
+using System.Xml;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 
-class Members
+class Program
 {
-    [STAThread]
     static void Main(string[] args)
     {
-        string appPath = (System.IO.Directory.GetCurrentDirectory() );
-        appPath = appPath + "..\\\\..\\\\..\\";
-        // Insert your file names into this method call.
-        EncodeFromFile(appPath + "program.cs", appPath + "code.enc");
-        DecodeFromFile(appPath + "code.enc", appPath + "roundtrip.txt");
+
+        // Create an XmlDocument object.
+        XmlDocument xmlDoc = new XmlDocument();
+
+        // Load an XML file into the XmlDocument object.
+        try
+        {
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load("test.xml");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        // Create a new RSA key.  This key will encrypt a symmetric key,
+        // which will then be imbedded in the XML document.  
+        RSA rsaKey = new RSACryptoServiceProvider();
+
+
+        try
+        {
+            // Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
+
+            // Inspect the EncryptedKey element.
+            InspectElement(xmlDoc);
+
+            // Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey");
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            // Clear the RSA key.
+            rsaKey.Clear();
+        }
 
     }
 
-    // Read in the specified source file and write out an encoded target file.
-    private static void EncodeFromFile(string sourceFile, string targetFile) 
+    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, RSA Alg, string KeyName)
     {
-        // Verify members.cs exists at the specified directory.
-        if (!File.Exists(sourceFile))
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (ElementToEncrypt == null)
+            throw new ArgumentNullException("ElementToEncrypt");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
+
+        ////////////////////////////////////////////////
+        // Find the specified element in the XmlDocument
+        // object and create a new XmlElemnt object.
+        ////////////////////////////////////////////////
+
+        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
+
+        // Throw an XmlException if the element was not found.
+        if (elementToEncrypt == null)
         {
-            Console.Write("Unable to locate source file located at ");
-            Console.WriteLine(sourceFile + ".");
-            Console.Write("Please correct the path and run the ");
-            Console.WriteLine("sample again.");
-            return;
+            throw new XmlException("The specified element was not found");
+
         }
 
-        // Retrieve the input and output file streams.
-        using (FileStream inputFileStream =
-            new FileStream(sourceFile, FileMode.Open, FileAccess.Read))
-        {
-            using (FileStream outputFileStream =
-                new FileStream(targetFile, FileMode.Create, FileAccess.Write))
-            {
+        //////////////////////////////////////////////////
+        // Create a new instance of the EncryptedXml class 
+        // and use it to encrypt the XmlElement with the 
+        // a new random symmetric key.
+        //////////////////////////////////////////////////
 
-                // Create a new ToBase64Transform object to convert to base 64.
-                ToBase64Transform base64Transform = new ToBase64Transform();
+        // Create a 256 bit Rijndael key.
+        RijndaelManaged sessionKey = new RijndaelManaged();
+        sessionKey.KeySize = 256;
 
-                // Create a new byte array with the size of the output block size.
-                byte[] outputBytes = new byte[base64Transform.OutputBlockSize];
+        EncryptedXml eXml = new EncryptedXml();
 
-                // Retrieve the file contents into a byte array.
-                byte[] inputBytes = new byte[inputFileStream.Length];
-                inputFileStream.Read(inputBytes, 0, inputBytes.Length);
+        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
 
-                // Verify that multiple blocks can not be transformed.
-                if (!base64Transform.CanTransformMultipleBlocks)
-                {
-                    // Initializie the offset size.
-                    int inputOffset = 0;
+        ////////////////////////////////////////////////
+        // Construct an EncryptedData object and populate
+        // it with the desired encryption information.
+        ////////////////////////////////////////////////
 
-                    // Iterate through inputBytes transforming by blockSize.
-                    int inputBlockSize = base64Transform.InputBlockSize;
 
-                    while (inputBytes.Length - inputOffset > inputBlockSize)
-                    {
-                        base64Transform.TransformBlock(
-                            inputBytes,
-                            inputOffset,
-                            inputBytes.Length - inputOffset,
-                            outputBytes,
-                            0);
+        EncryptedData edElement = new EncryptedData();
+        edElement.Type = EncryptedXml.XmlEncElementUrl;
 
-                        inputOffset += base64Transform.InputBlockSize;
-                        outputFileStream.Write(
-                            outputBytes,
-                            0,
-                            base64Transform.OutputBlockSize);
-                    }
+        // Create an EncryptionMethod element so that the 
+        // receiver knows which algorithm to use for decryption.
 
-                    // Transform the final block of data.
-                    outputBytes = base64Transform.TransformFinalBlock(
-                        inputBytes,
-                        inputOffset,
-                        inputBytes.Length - inputOffset);
+        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
 
-                    outputFileStream.Write(outputBytes, 0, outputBytes.Length);
-                    Console.WriteLine("Created encoded file at " + targetFile);
-                }
+        // Encrypt the session key and add it to an EncryptedKey element.
+        EncryptedKey ek = new EncryptedKey();
 
-                // Determine if the current transform can be reused.
-                if (!base64Transform.CanReuseTransform)
-                {
-                    // Free up any used resources.
-                    base64Transform.Clear();
-                }
-            }
-        }
+        byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
+
+        ek.CipherData = new CipherData(encryptedKey);
+
+        ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
+
+        // Save some more information about the key using
+        // the EncryptionProperty element.  In this example,
+        // we will save the value "LibVersion1".  You can save
+        // anything you want here.
+
+        // Create a new "EncryptionProperty" XmlElement object. 
+        XmlElement element =  new XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
+
+        // Set the value of the EncryptionProperty" XmlElement object.
+        element.InnerText = "LibVersion1";
+
+        // Create the EncryptionProperty object using the XmlElement object. 
+        EncryptionProperty encProp = new EncryptionProperty(element);
+
+        // Add the EncryptionProperty object to the EncryptedData object.
+        edElement.AddProperty(encProp);
+
+        // Set the KeyInfo element to specify the
+        // name of the RSA key.
+
+        // Create a new KeyInfo element.
+        edElement.KeyInfo = new KeyInfo();
+
+        // Create a new KeyInfoName element.
+        KeyInfoName kin = new KeyInfoName();
+
+        // Specify a name for the key.
+        kin.Value = KeyName;
+
+        // Add the KeyInfoName element to the 
+        // EncryptedKey object.
+        ek.KeyInfo.AddClause(kin);
+
+        // Add the encrypted key to the 
+        // EncryptedData object.
+
+        edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
+
+        // Add the encrypted element data to the 
+        // EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement;
+
+        ////////////////////////////////////////////////////
+        // Replace the element from the original XmlDocument
+        // object with the EncryptedData element.
+        ////////////////////////////////////////////////////
+
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
 
     }
 
-        public static void DecodeFromFile(string inFileName, string outFileName)
+    public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
+    {
+        // Check the arguments.  
+        if (Doc == null)
+            throw new ArgumentNullException("Doc");
+        if (Alg == null)
+            throw new ArgumentNullException("Alg");
+        if (KeyName == null)
+            throw new ArgumentNullException("KeyName");
+
+        // Create a new EncryptedXml object.
+        EncryptedXml exml = new EncryptedXml(Doc);
+
+        // Add a key-name mapping.
+        // This method can only decrypt documents
+        // that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg);
+
+        // Decrypt the element.
+        exml.DecryptDocument();
+
+    }
+
+    static void InspectElement(XmlDocument Doc)
+    {
+        // Get the EncryptedData element from the XMLDocument object.
+        XmlElement encryptedData = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+        // Create a new EncryptedData object.
+        EncryptedData encData = new EncryptedData();
+
+        // Load the XML from the document to
+        // initialize the EncryptedData object.
+        encData.LoadXml(encryptedData);
+
+        // Display the properties.
+        // Most values are Null by default.
+
+        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml);
+        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding);
+        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml);
+
+        EncryptionPropertyCollection encPropCollection = encData.EncryptionProperties;
+
+        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count);
+        //encPropCollection.
+
+        foreach(EncryptionProperty encProp in encPropCollection)
         {
-            using (FromBase64Transform myTransform = new FromBase64Transform(FromBase64TransformMode.IgnoreWhiteSpaces))
-            {
-
-                byte[] myOutputBytes = new byte[myTransform.OutputBlockSize];
-
-                //Open the input and output files.
-                using (FileStream myInputFile = new FileStream(inFileName, FileMode.Open, FileAccess.Read))
-                {
-                    using (FileStream myOutputFile = new FileStream(outFileName, FileMode.Create, FileAccess.Write))
-                    {
-
-                        //Retrieve the file contents into a byte array. 
-                        byte[] myInputBytes = new byte[myInputFile.Length];
-                        myInputFile.Read(myInputBytes, 0, myInputBytes.Length);
-
-                        //Transform the data in chunks the size of InputBlockSize. 
-                        int i = 0;
-                        while (myInputBytes.Length - i > 4/*myTransform.InputBlockSize*/)
-                        {
-                            int bytesWritten = myTransform.TransformBlock(myInputBytes, i, 4/*myTransform.InputBlockSize*/, myOutputBytes, 0);
-                            i += 4/*myTransform.InputBlockSize*/;
-                            myOutputFile.Write(myOutputBytes, 0, bytesWritten);
-                        }
-
-                        //Transform the final block of data.
-                        myOutputBytes = myTransform.TransformFinalBlock(myInputBytes, i, myInputBytes.Length - i);
-                        myOutputFile.Write(myOutputBytes, 0, myOutputBytes.Length);
-
-                        //Free up any used resources.
-                        myTransform.Clear();
-                    }
-                }
-            }
-
+                Console.WriteLine("EncryptionProperty.ID: " + encProp.Id);
+                Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml);
+                Console.WriteLine("EncryptionProperty.Target: " + encProp.Target);
+                 
         }
+
+    
+
+        Console.WriteLine("EncryptedData.Id: " + encData.Id);
+        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml);
+        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType);
+    }
+
 }

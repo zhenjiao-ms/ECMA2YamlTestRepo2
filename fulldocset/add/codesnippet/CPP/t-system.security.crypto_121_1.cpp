@@ -1,33 +1,80 @@
-void EncryptData( String^ inName, String^ outName, array<Byte>^desKey, array<Byte>^desIV )
+#using <System.Security.dll>
+
+using namespace System;
+using namespace System::Security::Cryptography;
+
+public ref class DataProtectionSample
 {
-   
-   //Create the file streams to handle the input and output files.
-   FileStream^ fin = gcnew FileStream( inName,FileMode::Open,FileAccess::Read );
-   FileStream^ fout = gcnew FileStream( outName,FileMode::OpenOrCreate,FileAccess::Write );
-   fout->SetLength( 0 );
-   
-   //Create variables to help with read and write.
-   array<Byte>^bin = gcnew array<Byte>(100);
-   long rdlen = 0; //This is the total number of bytes written.
+private:
 
-   long totlen = (long)fin->Length; //This is the total length of the input file.
+   // Create byte array for additional entropy when using Protect method.
+   static array<Byte>^s_aditionalEntropy = {9,8,7,6,5};
 
-   int len; //This is the number of bytes to be written at a time.
-
-   DES^ des = gcnew DESCryptoServiceProvider;
-   CryptoStream^ encStream = gcnew CryptoStream( fout,des->CreateEncryptor( desKey, desIV ),CryptoStreamMode::Write );
-   Console::WriteLine( "Encrypting..." );
-   
-   //Read from the input file, then encrypt and write to the output file.
-   while ( rdlen < totlen )
+public:
+   static void Main()
    {
-      len = fin->Read( bin, 0, 100 );
-      encStream->Write( bin, 0, len );
-      rdlen = rdlen + len;
-      Console::WriteLine( "{0} bytes processed", rdlen );
+      
+      // Create a simple byte array containing data to be encrypted.
+      array<Byte>^secret = {0,1,2,3,4,1,2,3,4};
+      
+      //Encrypt the data.
+      array<Byte>^encryptedSecret = Protect( secret );
+      Console::WriteLine( "The encrypted byte array is:" );
+      PrintValues( encryptedSecret );
+      
+      // Decrypt the data and store in a byte array.
+      array<Byte>^originalData = Unprotect( encryptedSecret );
+      Console::WriteLine( "{0}The original data is:", Environment::NewLine );
+      PrintValues( originalData );
    }
 
-   encStream->Close();
-   fout->Close();
-   fin->Close();
+   static array<Byte>^ Protect( array<Byte>^data )
+   {
+      try
+      {
+         
+         // Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+         //  only by the same current user.
+         return ProtectedData::Protect( data, s_aditionalEntropy, DataProtectionScope::CurrentUser );
+      }
+      catch ( CryptographicException^ e ) 
+      {
+         Console::WriteLine( "Data was not encrypted. An error occurred." );
+         Console::WriteLine( e );
+         return nullptr;
+      }
+   }
+
+   static array<Byte>^ Unprotect( array<Byte>^data )
+   {
+      try
+      {
+         
+         //Decrypt the data using DataProtectionScope.CurrentUser.
+         return ProtectedData::Unprotect( data, s_aditionalEntropy, DataProtectionScope::CurrentUser );
+      }
+      catch ( CryptographicException^ e ) 
+      {
+         Console::WriteLine( "Data was not decrypted. An error occurred." );
+         Console::WriteLine( e );
+         return nullptr;
+      }
+   }
+
+   static void PrintValues( array<Byte>^myArr )
+   {
+      System::Collections::IEnumerator^ myEnum = myArr->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         Byte i = safe_cast<Byte>(myEnum->Current);
+         Console::Write( "\t{0}", i );
+      }
+
+      Console::WriteLine();
+   }
+};
+
+int main()
+{
+   DataProtectionSample::Main();
 }

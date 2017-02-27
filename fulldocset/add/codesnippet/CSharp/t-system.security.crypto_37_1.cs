@@ -1,67 +1,50 @@
-using System;
-using System.Security.Cryptography;
+        public static void CheckSignatureWithEncryptedGrant(string fileName, IRelDecryptor decryptor)
+        {
+            // Create a new XML document.
+            XmlDocument xmlDocument = new XmlDocument();
+            XmlNamespaceManager nsManager = new XmlNamespaceManager(xmlDocument.NameTable);
 
-public class DataProtectionSample
-{
-// Create byte array for additional entropy when using Protect method.
-	static byte [] s_aditionalEntropy = { 9, 8, 7, 6, 5 };
+            // Format using whitespaces.
+            xmlDocument.PreserveWhitespace = true;
 
-	public static void Main()
-	{
-// Create a simple byte array containing data to be encrypted.
-		
-byte [] secret = { 0, 1, 2, 3, 4, 1, 2, 3, 4 };
+            // Load the passed XML file into the document. 
+            xmlDocument.Load(fileName);
+            nsManager.AddNamespace("dsig", SignedXml.XmlDsigNamespaceUrl);
 
-//Encrypt the data.
-		byte [] encryptedSecret = Protect( secret );
-		Console.WriteLine("The encrypted byte array is:");
-		PrintValues(encryptedSecret);
-		
-// Decrypt the data and store in a byte array.
-		byte [] originalData = Unprotect( encryptedSecret );
-		Console.WriteLine("{0}The original data is:", Environment.NewLine);
-		PrintValues(originalData);
+            // Find the "Signature" node and create a new XmlNodeList object.
+            XmlNodeList nodeList = xmlDocument.SelectNodes("//dsig:Signature", nsManager);
 
-	}
+            for (int i = 0, count = nodeList.Count; i < count; i++)
+            {
+                XmlDocument clone = xmlDocument.Clone() as XmlDocument;
+                XmlNodeList signatures = clone.SelectNodes("//dsig:Signature", nsManager);
 
-	public static byte [] Protect( byte [] data )
-	{
-		try
-		{
-			// Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
-			//  only by the same current user.
-			return ProtectedData.Protect( data, s_aditionalEntropy, DataProtectionScope.CurrentUser );
-		} 
-		catch (CryptographicException e)
-		{
-			Console.WriteLine("Data was not encrypted. An error occurred.");
-			Console.WriteLine(e.ToString());
-			return null;
-		}
-	}
+                // Create a new SignedXml object and pass into it the XML document clone.
+                SignedXml signedXml = new SignedXml(clone);
 
-	public static byte [] Unprotect( byte [] data )
-	{
-		try
-		{
-			//Decrypt the data using DataProtectionScope.CurrentUser.
-			return ProtectedData.Unprotect( data, s_aditionalEntropy, DataProtectionScope.CurrentUser );
-		} 
-		catch (CryptographicException e)
-		{
-			Console.WriteLine("Data was not decrypted. An error occurred.");
-			Console.WriteLine(e.ToString());
-			return null;
-		}
-	}
+                // Load the signature node.
+                signedXml.LoadXml((XmlElement)signatures[i]);
 
-	public static void PrintValues( Byte[] myArr )  
-	{
-	      foreach ( Byte i in myArr )  
-		  	{
-		         Console.Write( "\t{0}", i );
-			 }
-      Console.WriteLine();
-	 }
+                // Set the context for license transform
+                Transform trans = ((Reference)signedXml.SignedInfo.References[0]).TransformChain[0];
 
-}
+                if (trans is XmlLicenseTransform)
+                {
+
+                    // Decryptor is used to decrypt encryptedGrant elements.
+                    if (decryptor != null)
+                        (trans as XmlLicenseTransform).Decryptor = decryptor;
+                }
+
+                // Check the signature and display the result.
+                bool result = signedXml.CheckSignature();
+
+                if (result)
+                    Console.WriteLine("SUCCESS: CheckSignatureWithEncryptedGrant - issuer index #" +
+                                                    i.ToString());
+                else
+                    Console.WriteLine("FAILURE: CheckSignatureWithEncryptedGrant - issuer index #" +
+                                                    i.ToString());
+            }
+
+        }

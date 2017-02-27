@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.SymbolStore.SymMethod.Dispose
-internalonly: False
----
-
----
 uid: System.Diagnostics.SymbolStore.SymMethod.GetRanges(System.Diagnostics.SymbolStore.ISymbolDocument,System.Int32,System.Int32)
 internalonly: False
 ---
@@ -35,11 +30,6 @@ internalonly: False
 
 ---
 uid: System.Diagnostics.SymbolStore.SymMethod.Finalize
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymMethod.Dispose(System.Boolean)
 internalonly: False
 ---
 

@@ -1,55 +1,39 @@
 using namespace System;
 using namespace System::Globalization;
-void DisplayValues( Calendar^ myCal, DateTime myDT )
-{
-   Console::WriteLine( "   Era:        {0}", myCal->GetEra( myDT ) );
-   Console::WriteLine( "   Year:       {0}", myCal->GetYear( myDT ) );
-   Console::WriteLine( "   Month:      {0}", myCal->GetMonth( myDT ) );
-   Console::WriteLine( "   DayOfYear:  {0}", myCal->GetDayOfYear( myDT ) );
-   Console::WriteLine( "   DayOfMonth: {0}", myCal->GetDayOfMonth( myDT ) );
-   Console::WriteLine( "   DayOfWeek:  {0}", myCal->GetDayOfWeek( myDT ) );
-   Console::WriteLine();
-}
-
 int main()
 {
    
-   // Sets a DateTime to April 3, 2002 of the Gregorian calendar.
-   DateTime myDT = DateTime(2002,4,3,gcnew GregorianCalendar);
-   
-   // Creates an instance of the TaiwanCalendar.
+   // Creates and initializes a TaiwanCalendar.
    TaiwanCalendar^ myCal = gcnew TaiwanCalendar;
    
-   // Displays the values of the DateTime.
-   Console::WriteLine( "April 3, 2002 of the Gregorian calendar equals the following in the Taiwan calendar:" );
-   DisplayValues( myCal, myDT );
+   // Displays the header.
+   Console::Write( "YEAR\t" );
+   for ( int y = 90; y <= 94; y++ )
+      Console::Write( "\t {0}", y );
+   Console::WriteLine();
    
-   // Adds two years and ten months.
-   myDT = myCal->AddYears( myDT, 2 );
-   myDT = myCal->AddMonths( myDT, 10 );
+   // Displays the value of the CurrentEra property.
+   Console::Write( "CurrentEra:" );
+   for ( int y = 90; y <= 94; y++ )
+      Console::Write( "\t {0}", myCal->GetMonthsInYear( y, TaiwanCalendar::CurrentEra ) );
+   Console::WriteLine();
    
-   // Displays the values of the DateTime.
-   Console::WriteLine( "After adding two years and ten months:" );
-   DisplayValues( myCal, myDT );
+   // Displays the values in the Eras property.
+   for ( int i = 0; i < myCal->Eras->Length; i++ )
+   {
+      Console::Write( "Era {0}:\t", myCal->Eras[ i ] );
+      for ( int y = 90; y <= 94; y++ )
+         Console::Write( "\t {0}", myCal->GetMonthsInYear( y, myCal->Eras[ i ] ) );
+      Console::WriteLine();
+
+   }
 }
 
 /*
 This code produces the following output.
 
-April 3, 2002 of the Gregorian calendar equals the following in the Taiwan calendar:
-   Era:        1
-   Year:       91
-   Month:      4
-   DayOfYear:  93
-   DayOfMonth: 3
-   DayOfWeek:  Wednesday
-
-After adding two years and ten months:
-   Era:        1
-   Year:       94
-   Month:      2
-   DayOfYear:  34
-   DayOfMonth: 3
-   DayOfWeek:  Thursday
+YEAR            90      91      92      93      94
+CurrentEra:     12      12      12      12      12
+Era 1:          12      12      12      12      12
 
 */

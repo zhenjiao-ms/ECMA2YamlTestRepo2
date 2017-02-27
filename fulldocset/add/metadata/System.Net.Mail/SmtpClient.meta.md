@@ -34,11 +34,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.Mail.SmtpClient.DeliveryFormat
-internalonly: False
----
-
----
 uid: System.Net.Mail.SmtpClient.EnableSsl
 internalonly: False
 ---
@@ -65,11 +60,6 @@ internalonly: False
 
 ---
 uid: System.Net.Mail.SmtpClient.UseDefaultCredentials
-internalonly: False
----
-
----
-uid: System.Net.Mail.SmtpClient.SendMailAsync(System.String,System.String,System.String,System.String)
 internalonly: False
 ---
 
@@ -120,11 +110,6 @@ internalonly: False
 
 ---
 uid: System.Net.Mail.SmtpClient.PickupDirectoryLocation
-internalonly: False
----
-
----
-uid: System.Net.Mail.SmtpClient.SendMailAsync(System.Net.Mail.MailMessage)
 internalonly: False
 ---
 

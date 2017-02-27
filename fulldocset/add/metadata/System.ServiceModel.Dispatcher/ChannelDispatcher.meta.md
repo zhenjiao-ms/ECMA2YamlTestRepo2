@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Dispatcher.ChannelDispatcher.AsynchronousTransactedAcceptEnabled
-internalonly: False
----
-
----
 uid: System.ServiceModel.Dispatcher.ChannelDispatcher.DefaultCloseTimeout
 internalonly: False
 ---

@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Statements.Flowchart.ValidateUnconnectedNodes
-internalonly: False
----
-
----
 uid: System.Activities.Statements.Flowchart.StartNode
 internalonly: False
 ---

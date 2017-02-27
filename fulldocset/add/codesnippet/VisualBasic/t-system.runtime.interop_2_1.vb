@@ -1,32 +1,52 @@
 Imports System
+Imports System.Text
 Imports System.Runtime.InteropServices
+Imports System.Security.Permissions
 
-Public Class CallBack
-    
-    Public Function Activate(Aggregator As IntPtr) As IntPtr
-        Dim oCOM As New ECFSRV32Lib.ObjectActivator()
-        Dim itf As ECFSRV32Lib.IObjectActivator = _
-           CType(oCOM, ECFSRV32Lib.IObjectActivator)
-        Return New IntPtr(itf.CreateBaseComponent(Aggregator.ToInt32()))
+
+
+Public Structure Point
+    Public x, y As Int32
+End Structure
+
+
+
+Public NotInheritable Class App
+
+    <SecurityPermission(SecurityAction.LinkDemand, Unrestricted:=True)> _
+    Shared Sub Main()
+        ' Demonstrate the use of public static fields of the Marshal class.
+        Console.WriteLine("SystemDefaultCharSize={0}, SystemMaxDBCSCharSize={1}", Marshal.SystemDefaultCharSize, Marshal.SystemMaxDBCSCharSize)
+        ' Demonstrate the use of the SizeOf method of the Marshal class.
+        Console.WriteLine("Number of bytes needed by a Point object: {0}", Marshal.SizeOf(GetType(Point)))
+        Dim p As New Point()
+        Console.WriteLine("Number of bytes needed by a Point object: {0}", Marshal.SizeOf(p))
+        ' Demonstrate how to call GlobalAlloc and 
+        ' GlobalFree using the Marshal class.
+        Dim hglobal As IntPtr = Marshal.AllocHGlobal(100)
+        Marshal.FreeHGlobal(hglobal)
+        ' Demonstrate how to use the Marshal class to get the Win32 error 
+        ' code when a Win32 method fails.
+        Dim f As [Boolean] = CloseHandle(New IntPtr(-1))
+        If Not f Then
+            Console.WriteLine("CloseHandle call failed with an error code of: {0}", Marshal.GetLastWin32Error())
+        End If
+
+    End Sub
+
+
+    ' This is a platform invoke prototype. SetLastError is true, which allows 
+    ' the GetLastWin32Error method of the Marshal class to work correctly.    
+    <DllImport("Kernel32", ExactSpelling:=True, SetLastError:=True)> _
+    Shared Function CloseHandle(ByVal h As IntPtr) As [Boolean]
+
     End Function
 End Class
 
-'
-' The EcfInner class. First .NET class derived directly from COM class.
-'
-Public Class EcfInner
-    Inherits ECFSRV32Lib.BaseComponent
-    Private Shared callbackInner As CallBack    
-    
-    Shared Sub RegisterInner()
-        callbackInner = New CallBack()
-        ExtensibleClassFactory.RegisterObjectCreationCallback( _
-           New System.Runtime.InteropServices.ObjectCreationDelegate( _
-           AddressOf callbackInner.Activate))
-    End Sub    
-    
-    'This is the static initializer.    
-    Shared Sub New()
-        RegisterInner()
-    End Sub
-End Class
+
+' This code produces the following output.
+' 
+' SystemDefaultCharSize=2, SystemMaxDBCSCharSize=1
+' Number of bytes needed by a Point object: 8
+' Number of bytes needed by a Point object: 8
+' CloseHandle call failed with an error code of: 6

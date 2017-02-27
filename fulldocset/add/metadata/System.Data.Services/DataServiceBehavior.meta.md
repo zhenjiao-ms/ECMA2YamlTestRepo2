@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.Services.DataServiceBehavior.AcceptReplaceFunctionInQuery
-internalonly: False
----
-
----
 uid: System.Data.Services.DataServiceBehavior.AcceptProjectionRequests
 internalonly: False
 ---

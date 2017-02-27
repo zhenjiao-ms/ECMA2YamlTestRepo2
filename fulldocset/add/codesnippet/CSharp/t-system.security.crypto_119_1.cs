@@ -1,102 +1,85 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
-namespace Contoso
+
+class Alice
 {
-    class MaskGenerator : System.Security.Cryptography.MaskGenerationMethod
+    public static void Main(string[] args)
     {
-        private String HashNameValue;
-
-        // Initialize a mask to encrypt using the SHA1 algorithm.
-        public MaskGenerator() 
+        using (Bob bob = new Bob())
         {
-            HashNameValue = "SHA1";
-        }
-
-        // Create a mask with the specified seed.
-        override public byte[] GenerateMask(byte[] seed, int maskLength)
-        {
-            HashAlgorithm hash;
-            byte[] rgbCounter = new byte[4];
-            byte[] targetRgb = new byte[maskLength];
-            uint counter = 0;
-
-            for (int inc = 0; inc < targetRgb.Length; )
+            using (RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider())
             {
-                ConvertIntToByteArray(counter++, ref rgbCounter);
-                hash = (HashAlgorithm)
-                    CryptoConfig.CreateFromName(HashNameValue);
-
-                byte[] temp = new byte[4 + seed.Length];
-                Buffer.BlockCopy(rgbCounter, 0, temp, 0, 4);
-                Buffer.BlockCopy(seed, 0, temp, 4, seed.Length);
-                hash.ComputeHash(temp);
-
-                if (targetRgb.Length - inc > hash.HashSize/8) 
-                {
-                    Buffer.BlockCopy(
-                        hash.Hash,
-                        0,
-                        targetRgb,
-                        inc,
-                        hash.Hash.Length);
-                }
-                else
-                {
-                    Buffer.BlockCopy(
-                        hash.Hash,
-                        0,
-                        targetRgb,
-                        inc,
-                        targetRgb.Length - inc);
-                }
-                inc += hash.Hash.Length;
-            }
-            return targetRgb;
-        }
-
-        // Convert the specified integer to the byte array.
-        private void ConvertIntToByteArray(
-            uint sourceInt,
-            ref byte[] targetBytes)
-        {
-            uint remainder;
-            int inc = 0;
-
-            // Clear the array prior to filling it.
-            Array.Clear(targetBytes, 0, targetBytes.Length);
-
-            while (sourceInt > 0) 
-            {
-                remainder = sourceInt % 256;
-                targetBytes[3 - inc] = (byte) remainder;
-                sourceInt = (sourceInt - remainder)/256;
-                inc++;
+                // Get Bob's public key
+                rsaKey.ImportCspBlob(bob.key);
+                byte[] encryptedSessionKey = null;
+                byte[] encryptedMessage = null;
+                byte[] iv = null;
+                Send(rsaKey, "Secret message", out iv, out encryptedSessionKey, out encryptedMessage);
+                bob.Receive(iv, encryptedSessionKey, encryptedMessage);
             }
         }
     }
-// This class demonstrates how to create the MaskGenerator class 
-// and call its GenerateMask member.
-    class MaskGeneratorImpl
-    {
-      public static void Main(string[] args)
-      {
-          byte[] seed = new byte[] {0x01, 0x02, 0x03, 0x04};
-          int length = 16;
-          MaskGenerator maskGenerator = new MaskGenerator();
-          byte[] mask = maskGenerator.GenerateMask(seed, length);
-          Console.WriteLine("Generated the following mask:");
-          Console.WriteLine(System.Text.Encoding.ASCII.GetString(mask));
 
-          Console.WriteLine("This sample completed successfully; " +
-                "press Enter to exit.");
-          Console.ReadLine();
-      }
-  }
+    private static void Send(RSA key, string secretMessage, out byte[] iv, out byte[] encryptedSessionKey, out byte[] encryptedMessage)
+    {
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            iv = aes.IV;
+
+            // Encrypt the session key
+            RSAOAEPKeyExchangeFormatter keyFormatter = new RSAOAEPKeyExchangeFormatter(key);
+            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, typeof(Aes));
+
+            // Encrypt the message
+            using (MemoryStream ciphertext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write))
+            {
+                byte[] plaintextMessage = Encoding.UTF8.GetBytes(secretMessage);
+                cs.Write(plaintextMessage, 0, plaintextMessage.Length);
+                cs.Close();
+
+                encryptedMessage = ciphertext.ToArray();
+            }
+        }
+    }
+
 }
-//
-// This sample produces the following output:
-//
-// Generated the following mask:
-// ?"TFd(?~OtO?
-// This sample completed successfully; press Enter to exit.
+public class Bob : IDisposable
+{
+    public byte[] key;
+    private RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
+    public Bob()
+    {
+        key = rsaKey.ExportCspBlob(false);
+    }
+    public void Receive(byte[] iv, byte[] encryptedSessionKey, byte[] encryptedMessage)
+    {
+
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            aes.IV = iv;
+
+            // Decrypt the session key
+            RSAOAEPKeyExchangeDeformatter keyDeformatter = new RSAOAEPKeyExchangeDeformatter(rsaKey);
+            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey);
+
+            // Decrypt the message
+            using (MemoryStream plaintext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write))
+            {
+                cs.Write(encryptedMessage, 0, encryptedMessage.Length);
+                cs.Close();
+
+                string message = Encoding.UTF8.GetString(plaintext.ToArray());
+                Console.WriteLine(message);
+            }
+        }
+    }
+    public void Dispose()
+    {
+        rsaKey.Dispose();
+    }
+}

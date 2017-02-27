@@ -4,16 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Security.Cryptography.X509Certificates.X509Chain.Dispose
-internalonly: False
----
-
----
-uid: System.Security.Cryptography.X509Certificates.X509Chain.Dispose(System.Boolean)
-internalonly: False
----
-
----
 uid: System.Security.Cryptography.X509Certificates.X509Chain.#ctor
 internalonly: False
 ---
@@ -55,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.Security.Cryptography.X509Certificates.X509Chain.Reset
-internalonly: False
----
-
----
-uid: System.Security.Cryptography.X509Certificates.X509Chain.SafeHandle
 internalonly: False
 ---
 

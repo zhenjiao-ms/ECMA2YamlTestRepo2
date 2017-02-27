@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ComponentModel.Composition.ImportManyAttribute.Source
-internalonly: False
----
-
----
 uid: System.ComponentModel.Composition.ImportManyAttribute.#ctor(System.String,System.Type)
 internalonly: False
 ---

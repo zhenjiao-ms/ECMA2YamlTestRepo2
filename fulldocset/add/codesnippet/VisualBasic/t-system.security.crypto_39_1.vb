@@ -1,53 +1,83 @@
-    Public Shared Sub CheckSignatureWithEncryptedGrant(ByVal fileName As String, ByVal decryptor As IRelDecryptor)
-        ' Create a new XML document.
-        Dim xmlDocument As New XmlDocument()
-        Dim nsManager As New XmlNamespaceManager(xmlDocument.NameTable)
+Imports System
+Imports System.Security.Cryptography
 
-        ' Format using whitespaces.
-        xmlDocument.PreserveWhitespace = True
 
-        ' Load the passed XML file into the document. 
-        xmlDocument.Load(fileName)
-        nsManager.AddNamespace("dsig", SignedXml.XmlDsigNamespaceUrl)
+Public Class OidSample
+   Shared msg As String
+   Public Shared Sub Main()
+      ' Assign values to strings.
+      Dim Value1 As String = "1.2.840.113549.1.1.1"
+      Dim Name1 As String = "3DES"
+      Dim Value2 As String = "1.3.6.1.4.1.311.20.2"
+      Dim InvalidName As String = "This name is not a valid name"
+      Dim InvalidValue As String = "1.1.1.1.1.1.1.1"
+      
+      ' Create new Oid objects using the specified values.
+      ' Note that the corresponding Value or Friendly Name property is automatically added to the object.
+      Dim o1 As New Oid(Value1)
+      Dim o2 As New Oid(Name1)
+      
+      ' Create a new Oid object using the specified Value and Friendly Name properties.
+      ' Note that the two are not compared to determine if the Value is associated 
+      '  with the Friendly Name.
+      Dim o3 As New Oid(Value2, InvalidName)
+      
+      'Create a new Oid object using the specified Value. Note that if the value
+      '  is invalid or not known, no value is assigned to the Friendly Name property.
+      Dim o4 As New Oid(InvalidValue)
+      
+      'Write out the property information of the Oid objects.
+	msg = "Oid1: Automatically assigned Friendly Name: " & o1.FriendlyName & ", " & o1.Value
+	MsgBox(msg)
+      'Console.WriteLine("Oid1: Automatically assigned Friendly Name: {0}, {1}", o1.FriendlyName, o1.Value)
 
-        ' Find the "Signature" node and create a new XmlNodeList object.
-        Dim nodeList As XmlNodeList = xmlDocument.SelectNodes("//dsig:Signature", nsManager)
 
-        Dim count = nodeList.Count
-        Dim i As Integer
+      'Console.WriteLine("Oid2: Automatically assigned Value: {0}, {1}", o2.FriendlyName, o2.Value)
+	msg = "Oid2: Automatically assigned Value: " & o2.FriendlyName & ", " & o2.Value
+	MsgBox(msg)
 
-        For i = 0 To count
-            Dim clone As XmlDocument = xmlDocument.Clone()
-           
-            Dim signatures As XmlNodeList = clone.SelectNodes("//dsig:Signature", nsManager)
 
-            ' Create a new SignedXml object and pass into it the XML document clone.
-            Dim signedXml As New SignedXml(clone)
+      'Console.WriteLine("Oid3: Name and Value not compared: {0}, {1}", o3.FriendlyName, o3.Value)
+	msg = "Oid3: Name and Value not compared: " & o3.FriendlyName & ", " & o3.Value
+	MsgBox(msg)
 
-            ' Load the signature node.
-            signedXml.LoadXml(CType(signatures(i), XmlElement))
 
-            ' Set the context for license transform
-            Dim trans As Transform = CType(signedXml.SignedInfo.References(0), Reference).TransformChain(0)
 
-            If TypeOf trans Is XmlLicenseTransform Then
+     ' Console.WriteLine("Oid4: Invalid Value used: {0}, {1} {2}", o4.FriendlyName, o4.Value, Environment.NewLine)
+	msg = "Oid4: Invalid Value used: " & o4.FriendlyName & ", " & o4.Value
+	MsgBox(msg)
+ 
 
-                ' Decryptor is used to decrypt encryptedGrant elements.
-                If Not (decryptor Is Nothing) Then
-                    CType(trans, XmlLicenseTransform).Decryptor = decryptor
-                End If
+     
+      'Create an Oid collection and add several Oid objects.
+      Dim oc As New OidCollection()
+      oc.Add(o1)
+      oc.Add(o2)
+      oc.Add(o3)
+     ' Console.WriteLine("Number of Oids in the collection: {0}", oc.Count)
+      ' Console.WriteLine("Is synchronized: {0} {1}", oc.IsSynchronized, Environment.NewLine)
 
-            End If
+	msg = "Number of Oids in the collection: " & oc.Count
+	MsgBox(msg)
+	msg = "Is synchronized: " & oc.IsSynchronized
+	MsgBox(msg)
 
-            ' Check the signature and display the result.
-            Dim result As Boolean = signedXml.CheckSignature()
+      
+      'Create an enumerator for moving through the collection.
+      Dim oe As OidEnumerator = oc.GetEnumerator()
+      'You must execute a MoveNext() to get to the first item in the collection.
+      oe.MoveNext()
+      ' Write out Oids in the collection.
+      'Console.WriteLine("First Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value)
+	msg = "First Oid in collection: " & oe.Current.FriendlyName & ", " & oe.Current.Value
+	MsgBox(msg)
 
-            If result Then
-                Console.WriteLine("SUCCESS: CheckSignatureWithEncryptedGrant - issuer index #" + i.ToString())
-            Else
-                Console.WriteLine("FAILURE: CheckSignatureWithEncryptedGrant - issuer index #" + i.ToString())
-            End If
-        Next i
+      oe.MoveNext()
+     ' Console.WriteLine("Second Oid in collection: {0},{1}", oe.Current.FriendlyName, oe.Current.Value)
+	msg = "Second Oid in collection: " & oe.Current.FriendlyName & ", " & oe.Current.Value
+	MsgBox(msg)
 
-    End Sub
-End Class
+      'Return index in the collection to the beginning.
+      oe.Reset()
+   End Sub 'Main
+End Class 'OidSample

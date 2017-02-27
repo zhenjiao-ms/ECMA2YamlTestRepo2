@@ -1,10 +1,37 @@
-        // To allow a service to hand out instances of a DataProtector we demand unrestricted DataProtectionPermission 
-        // in the constructor, but Assert the permission when ProviderProtect is called.  This is similar to FileStream
-        // where access is checked at time of creation, not time of use.
-        [SecuritySafeCritical]
-        [DataProtectionPermission(SecurityAction.Assert, ProtectData = true)]
-        protected override byte[] ProviderProtect(byte[] userData)
+        public override string ToXmlString(bool includePrivateParameters)
         {
-            // Delegate to ProtectedData
-            return ProtectedData.Protect(userData, GetHashedPurpose(), Scope);
+            string keyContainerName = "";
+            string keyNumber = "";
+            string providerName = "";
+            string providerType = "";
+
+            if (cspParameters != null)
+            {
+                keyContainerName = cspParameters.KeyContainerName;
+                keyNumber = cspParameters.KeyNumber.ToString();
+                providerName = cspParameters.ProviderName;
+                providerType = cspParameters.ProviderType.ToString();
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<CustomCryptoKeyValue>");
+
+            sb.Append("<KeyContainerName>");
+            sb.Append(keyContainerName);
+            sb.Append("</KeyContainerName>");
+
+            sb.Append("<KeyNumber>");
+            sb.Append(keyNumber);
+            sb.Append("</KeyNumber>");
+
+            sb.Append("<ProviderName>");
+            sb.Append(providerName);
+            sb.Append("</ProviderName>");
+
+            sb.Append("<ProviderType>");
+            sb.Append(providerType);
+            sb.Append("</ProviderType>");
+
+            sb.Append("</CustomCryptoKeyValue>");
+            return(sb.ToString());
         }

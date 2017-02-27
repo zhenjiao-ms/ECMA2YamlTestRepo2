@@ -29,26 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ComponentModel.Composition.Hosting.TypeCatalog.#ctor(System.Collections.Generic.IEnumerable{System.Type},System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.Hosting.TypeCatalog.#ctor(System.Collections.Generic.IEnumerable{System.Type},System.Reflection.ReflectionContext)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.Hosting.TypeCatalog.GetEnumerator
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.Hosting.TypeCatalog.#ctor(System.Collections.Generic.IEnumerable{System.Type},System.ComponentModel.Composition.Primitives.ICompositionElement)
-internalonly: False
----
-
----
 uid: System.ComponentModel.Composition.Hosting.TypeCatalog.#ctor(System.Collections.Generic.IEnumerable{System.Type})
 internalonly: False
 ---

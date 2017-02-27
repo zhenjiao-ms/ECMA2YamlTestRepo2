@@ -1,2 +1,2 @@
-        Hashtable attributeKeys = xmlElement.Attributes;
-        string attributeValue = attributeKeys[attributeName].ToString();
+                Display("The failed assembly is: " + 
+                    sE.FailedAssemblyInfo.EscapedCodeBase);

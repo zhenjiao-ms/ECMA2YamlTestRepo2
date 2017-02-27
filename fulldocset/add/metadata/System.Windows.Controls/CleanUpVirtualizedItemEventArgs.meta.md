@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.CleanUpVirtualizedItemEventArgs.#ctor(System.Object,System.Windows.UIElement)
-internalonly: False
----
-
----
 uid: System.Windows.Controls.CleanUpVirtualizedItemEventArgs.Value
 internalonly: False
 ---

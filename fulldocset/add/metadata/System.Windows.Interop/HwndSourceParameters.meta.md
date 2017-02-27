@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Interop.HwndSourceParameters.TreatAsInputRoot
-internalonly: False
----
-
----
 uid: System.Windows.Interop.HwndSourceParameters.GetHashCode
 internalonly: False
 ---
@@ -79,22 +74,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Interop.HwndSourceParameters.TreatAncestorsAsNonClientArea
-internalonly: False
----
-
----
 uid: System.Windows.Interop.HwndSourceParameters.#ctor(System.String,System.Int32,System.Int32)
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Interop.HwndSourceParameters.PositionY
-internalonly: False
----
-
----
-uid: System.Windows.Interop.HwndSourceParameters.UsesPerPixelTransparency
 internalonly: False
 ---
 

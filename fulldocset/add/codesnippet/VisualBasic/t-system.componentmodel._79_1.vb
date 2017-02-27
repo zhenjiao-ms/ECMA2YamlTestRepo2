@@ -1,4 +1,10 @@
-            Dim myInt32 As Integer = -967299
-            Dim myInt32String As String = "+1345556"
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt32).ConvertTo(myInt32, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt32).ConvertFrom(myInt32String))
+        ' This example method creates a ComponentEventArgs using the specified argument.
+        ' Typically, this type of event args is created by a design mode subsystem.  
+        Public Function CreateComponentEventArgs(ByVal component As IComponent) As ComponentEventArgs
+
+            Dim args As New ComponentEventArgs(component)
+
+            ' The component that is related to the event:  args.Component
+
+            Return args
+        End Function

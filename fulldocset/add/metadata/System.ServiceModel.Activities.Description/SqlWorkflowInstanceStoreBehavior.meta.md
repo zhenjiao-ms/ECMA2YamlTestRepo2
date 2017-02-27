@@ -59,11 +59,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Activities.Description.SqlWorkflowInstanceStoreBehavior.MaxConnectionRetries
-internalonly: False
----
-
----
 uid: System.ServiceModel.Activities.Description.SqlWorkflowInstanceStoreBehavior.InstanceEncodingOption
 internalonly: False
 ---

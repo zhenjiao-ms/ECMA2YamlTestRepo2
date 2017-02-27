@@ -2,18 +2,18 @@ Imports System
 Imports System.Globalization
 
 
-Public Class SamplesTaiwanCalendar   
+Public Class SamplesThaiBuddhistCalendar   
 
    Public Shared Sub Main()
 
       ' Sets a DateTime to April 3, 2002 of the Gregorian calendar.
       Dim myDT As New DateTime(2002, 4, 3, New GregorianCalendar())
 
-      ' Creates an instance of the TaiwanCalendar.
-      Dim myCal As New TaiwanCalendar()
+      ' Creates an instance of the ThaiBuddhistCalendar.
+      Dim myCal As New ThaiBuddhistCalendar()
 
       ' Displays the values of the DateTime.
-      Console.WriteLine("April 3, 2002 of the Gregorian calendar equals the following in the Taiwan calendar:")
+      Console.WriteLine("April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:")
       DisplayValues(myCal, myDT)
 
       ' Adds two years and ten months.
@@ -36,18 +36,18 @@ Public Class SamplesTaiwanCalendar
       Console.WriteLine()
    End Sub 'DisplayValues
 
-End Class 'SamplesTaiwanCalendar 
+End Class 'SamplesThaiBuddhistCalendar 
 
 
 'This code produces the following output.
 
 '
 
-'April 3, 2002 of the Gregorian calendar equals the following in the Taiwan calendar:
+'April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:
 
 '   Era:        1
 
-'   Year:       91
+'   Year:       2545
 
 '   Month:      4
 
@@ -63,7 +63,7 @@ End Class 'SamplesTaiwanCalendar
 
 '   Era:        1
 
-'   Year:       94
+'   Year:       2548
 
 '   Month:      2
 

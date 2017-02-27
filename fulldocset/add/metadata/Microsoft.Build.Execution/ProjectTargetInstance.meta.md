@@ -4,32 +4,12 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectTargetInstance.ConditionLocation
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.InputsLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectTargetInstance.FullPath
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Execution.ProjectTargetInstance.KeepDuplicateOutputs
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.ReturnsLocation
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.DependsOnTargetsLocation
 internalonly: False
 ---
 
@@ -69,36 +49,11 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectTargetInstance.Location
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.KeepDuplicateOutputsLocation
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.BeforeTargetsLocation
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.AfterTargetsLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectTargetInstance.OnErrorChildren
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Execution.ProjectTargetInstance.Returns
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstance.OutputsLocation
 internalonly: False
 ---

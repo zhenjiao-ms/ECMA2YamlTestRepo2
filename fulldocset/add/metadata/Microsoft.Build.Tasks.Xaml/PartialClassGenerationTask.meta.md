@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Xaml.PartialClassGenerationTask.MSBuildProjectDirectory
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Xaml.PartialClassGenerationTask.BuildTaskPath
 internalonly: False
 ---
@@ -49,11 +44,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Xaml.PartialClassGenerationTask.XamlBuildTypeInspectionExtensionNames
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Xaml.PartialClassGenerationTask.SourceCodeFiles
 internalonly: False
 ---
@@ -70,11 +60,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.Xaml.PartialClassGenerationTask.References
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.PartialClassGenerationTask.XamlBuildTypeGenerationExtensionNames
 internalonly: False
 ---
 

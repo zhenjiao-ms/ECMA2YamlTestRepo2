@@ -1,11 +1,30 @@
-        // This example method creates a ComponentChangingEventArgs using the specified arguments.
-        // Typically, this type of event args is created by a design mode subsystem.  
-        public ComponentChangingEventArgs CreateComponentChangingEventArgs(object component, MemberDescriptor member)
-        {
-            ComponentChangingEventArgs args = new ComponentChangingEventArgs(component, member);
+using System;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.ComponentModel.Design.Serialization;
+using System.Windows.Forms;
 
-            // The component that is about to change:       args.Component
-            // The member that is about to change:          args.Member
+namespace ContextStackExample
+{
+    class ContextStackExample
+    {
+        [STAThread]
+        static void Main(string[] args)
+        {            
+            // Create a ContextStack.
+            ContextStack stack = new ContextStack();
+            
+            // Push ten items on to the stack and output the value of each.
+            for( int number = 0; number < 10; number ++ )
+            {
+                Console.WriteLine( "Value pushed to stack: "+number.ToString() );
+                stack.Push( number );
+            }
 
-            return args;
+            // Pop each item off the stack.
+            object item = null;
+            while( (item = stack.Pop()) != null )
+                Console.WriteLine( "Value popped from stack: "+item.ToString() );
         }
+    }
+}

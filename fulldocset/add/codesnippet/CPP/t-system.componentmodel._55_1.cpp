@@ -1,20 +1,4 @@
-   [DefaultProperty("MyProperty")]
-   ref class MyControl: public Control
-   {
-   public:
-
-      property int MyProperty 
-      {
-         int get()
-         {
-            // Insert code here.
-            return 0;
-         }
-
-         void set( int value )
-         {
-            // Insert code here.
-         }
-      }
-      // Insert any additional code.
-   };
+         String^ strM = "1,2,3,4";
+         System::Drawing::Printing::Margins^ m = gcnew System::Drawing::Printing::Margins( 1,2,3,4 );
+         Console::WriteLine( TypeDescriptor::GetConverter( strM )->CanConvertTo( System::Drawing::Printing::Margins::typeid ) );
+         Console::WriteLine( TypeDescriptor::GetConverter( m )->ConvertToString( m ) );

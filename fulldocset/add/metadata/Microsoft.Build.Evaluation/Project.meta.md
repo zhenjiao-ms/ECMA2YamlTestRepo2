@@ -104,11 +104,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Evaluation.Project.CreateProjectInstance(Microsoft.Build.Execution.ProjectInstanceSettings)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Evaluation.Project.Xml
 internalonly: False
 ---
@@ -134,11 +129,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Evaluation.Project.SubToolsetVersion
-internalonly: False
----
-
----
 uid: Microsoft.Build.Evaluation.Project.RemoveGlobalProperty(System.String)
 internalonly: False
 ---
@@ -150,11 +140,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Evaluation.Project.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,Microsoft.Build.Evaluation.ProjectCollection)
-internalonly: False
----
-
----
-uid: Microsoft.Build.Evaluation.Project.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,Microsoft.Build.Evaluation.ProjectCollection,Microsoft.Build.Evaluation.ProjectLoadSettings)
 internalonly: False
 ---
 
@@ -220,11 +205,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Evaluation.Project.GetMetadataValueEscaped(Microsoft.Build.Evaluation.ProjectMetadata)
-internalonly: False
----
-
----
-uid: Microsoft.Build.Evaluation.Project.ProjectFileLocation
 internalonly: False
 ---
 
@@ -339,11 +319,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Evaluation.Project.#ctor(Microsoft.Build.Construction.ProjectRootElement,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,Microsoft.Build.Evaluation.ProjectCollection,Microsoft.Build.Evaluation.ProjectLoadSettings)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Evaluation.Project.AddItem(System.String,System.String)
 internalonly: False
 ---
@@ -355,11 +330,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Evaluation.Project.DirectoryPath
-internalonly: False
----
-
----
-uid: Microsoft.Build.Evaluation.Project.#ctor(System.Xml.XmlReader,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,Microsoft.Build.Evaluation.ProjectCollection,Microsoft.Build.Evaluation.ProjectLoadSettings)
 internalonly: False
 ---
 

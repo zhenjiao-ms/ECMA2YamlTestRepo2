@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectInstance.GetItemsByItemTypeAndEvaluatedInclude(System.String,System.String)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectInstance.Build
 internalonly: False
 ---
@@ -69,22 +64,12 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectInstance.UpdateStateFrom(Microsoft.Build.Execution.ProjectInstance)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectInstance.GetEvaluatedItemIncludeEscaped(Microsoft.Build.Execution.ProjectItemDefinitionInstance)
 internalonly: False
 ---
 
 ---
 uid: Microsoft.Build.Execution.ProjectInstance.Build(System.String,System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger})
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectInstance.DeepCopy(System.Boolean)
 internalonly: False
 ---
 
@@ -159,11 +144,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectInstance.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,Microsoft.Build.Evaluation.ProjectCollection)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectInstance.ToolsVersion
 internalonly: False
 ---
@@ -174,17 +154,7 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectInstance.#ctor(Microsoft.Build.Construction.ProjectRootElement,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,Microsoft.Build.Evaluation.ProjectCollection)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectInstance.Properties
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectInstance.IsImmutable
 internalonly: False
 ---
 
@@ -225,11 +195,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Execution.ProjectInstance.ExpandString(System.String)
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectInstance.ProjectFileLocation
 internalonly: False
 ---
 

@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Drawing.Imaging.EncoderParameter.#ctor(System.Drawing.Imaging.Encoder,System.Int32,System.Drawing.Imaging.EncoderParameterValueType,System.IntPtr)
-internalonly: False
----
-
----
 uid: System.Drawing.Imaging.EncoderParameter.NumberOfValues
 internalonly: False
 ---

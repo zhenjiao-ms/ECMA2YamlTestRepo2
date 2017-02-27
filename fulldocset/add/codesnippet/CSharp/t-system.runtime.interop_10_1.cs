@@ -1,23 +1,9 @@
-
-using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
-
-namespace C
-{
-	class ClassC	
-	{
-		public static bool IsHiddenMethod( MethodInfo mi )
-		{
-			object[] MethodAttributes = mi.GetCustomAttributes( typeof( TypeLibFuncAttribute ), true);
-		
-			if( MethodAttributes.Length > 0 )
-			{
-				TypeLibFuncAttribute tlf = ( TypeLibFuncAttribute )MethodAttributes[0];
-				TypeLibFuncFlags  flags = tlf.Value;
-				return ( flags & TypeLibFuncFlags.FHidden ) != 0; 
-			}
-			return false;
-		}
-	}
-}
+ [StructLayout(LayoutKind.Explicit)]
+ public class SYSTEM_INFO
+ {
+ [FieldOffset(0)] public ulong OemId;
+ [FieldOffset(8)] public ulong PageSize;
+ [FieldOffset(16)] public ulong ActiveProcessorMask;
+ [FieldOffset(24)] public ulong NumberOfProcessors;
+ [FieldOffset(32)] public ulong ProcessorType;
+ }

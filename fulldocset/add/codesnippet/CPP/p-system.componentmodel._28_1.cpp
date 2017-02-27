@@ -1,9 +1,23 @@
-      // Gets the attributes for the property.
-      AttributeCollection^ attributes = TypeDescriptor::GetProperties( this )[ "MyProperty" ]->Attributes;
-
-      // Checks to see if the property needs to be localized.
-      LocalizableAttribute^ myAttribute = dynamic_cast<LocalizableAttribute^>(attributes[ LocalizableAttribute::typeid ]);
-      if ( myAttribute->IsLocalizable )
+   public ref class CDesigner: public ComponentDesigner
+   {
+   public:
+    [PermissionSetAttribute(SecurityAction::Demand, Name="FullTrust")]
+      virtual void Initialize( IComponent^ comp ) override
       {
-         // Insert code here.
+         ComponentDesigner::Initialize( comp );
+         IMenuCommandService^ mcs = static_cast<IMenuCommandService^>(comp->Site->GetService( IMenuCommandService::typeid ));
+		 MenuCommand^ mc = gcnew MenuCommand( gcnew EventHandler( this, &CDesigner::OnF1Help ),StandardCommands::F1Help );
+         mc->Enabled = true;
+         mc->Visible = true;
+         mc->Supported = true;
+         mcs->AddCommand( mc );
+         System::Windows::Forms::MessageBox::Show( "Initialize() has been invoked." );
       }
+
+   private:
+      void OnF1Help( Object^ /*sender*/, EventArgs^ /*e*/ )
+      {
+         System::Windows::Forms::MessageBox::Show( "F1Help has been invoked." );
+      }
+   };
+}

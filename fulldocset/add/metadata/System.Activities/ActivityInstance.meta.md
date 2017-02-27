@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.ActivityInstance.ImplementationVersion
-internalonly: False
----
-
----
 uid: System.Activities.ActivityInstance.State
 internalonly: False
 ---

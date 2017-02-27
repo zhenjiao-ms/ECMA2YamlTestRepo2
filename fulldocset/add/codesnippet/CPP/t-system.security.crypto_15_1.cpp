@@ -1,123 +1,73 @@
-//
-// This example signs a file specified by a URI 
-// using a detached signature. It then verifies  
-// the signed XML.
-//
-#using <System.Security.dll>
-#using <System.Xml.dll>
+//The following sample uses the Cryptography class to simulate the roll of a dice.
 
 using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::Xml;
+using namespace System::IO;
 using namespace System::Text;
-using namespace System::Xml;
+using namespace System::Security::Cryptography;
 
-// Sign an XML file and save the signature in a new file.
-void SignDetachedResource( String^ URIString, String^ XmlSigFileName, DSA^ DSAKey )
+ref class RNGCSP
 {
-   
-   // Create a SignedXml Object*.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Assign the DSA key to the SignedXml object.
-   signedXml->SigningKey = DSAKey;
-   
-   // Create a reference to be signed.
-   Reference^ reference = gcnew Reference;
-   
-   // Add the passed URI to the reference object.
-   reference->Uri = URIString;
-   
-   // Add the reference to the SignedXml object.
-   signedXml->AddReference( reference );
-   
-   // Add a DSAKeyValue to the KeyInfo (optional; helps recipient find key to validate).
-   KeyInfo^ keyInfo = gcnew KeyInfo;
-   keyInfo->AddClause( gcnew DSAKeyValue( safe_cast<DSA^>(DSAKey) ) );
-   signedXml->KeyInfo = keyInfo;
-   
-   // Compute the signature.
-   signedXml->ComputeSignature();
-   
-   // Get the XML representation of the signature and save
-   // it to an XmlElement object.
-   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
-   
-   // Save the signed XML document to a file specified
-   // using the passed string.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
-   xmlDigitalSignature->WriteTo( xmltw );
-   xmltw->Close();
-}
+public:
+    // Main method.
+    static void Main()
+    {
+        const int totalRolls = 25000;
+        array<int>^ results = gcnew array<int>(6);
 
+        // Roll the dice 25000 times and display
+        // the results to the console.
+        for (int x = 0; x < totalRolls; x++)
+        {
+            Byte roll = RollDice((Byte)results->Length);
+            results[roll - 1]++;
+        }
+        for (int i = 0; i < results->Length; ++i)
+        {
+            Console::WriteLine("{0}: {1} ({2:p1})", i + 1, results[i], (double)results[i] / (double)totalRolls);
+        }
+    }
 
-// Verify the signature of an XML file and return the result.
-Boolean VerifyDetachedSignature( String^ XmlSigFileName )
-{
-   
-   // Create a new XML document.
-   XmlDocument^ xmlDocument = gcnew XmlDocument;
-   
-   // Load the passed XML file into the document.
-   xmlDocument->Load( XmlSigFileName );
-   
-   // Create a new SignedXMl object.
-   SignedXml^ signedXml = gcnew SignedXml;
-   
-   // Find the S"Signature" node and create a new
-   // XmlNodeList object.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
-   
-   // Load the signature node.
-   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
-   
-   // Check the signature and return the result.
-   return signedXml->CheckSignature();
-}
+    // This method simulates a roll of the dice. The input parameter is the
+    // number of sides of the dice.
 
+    static Byte RollDice(Byte numberSides)
+    {
+        if (numberSides <= 0)
+            throw gcnew ArgumentOutOfRangeException("numberSides");
+        // Create a new instance of the RNGCryptoServiceProvider.
+        RNGCryptoServiceProvider^ rngCsp = gcnew RNGCryptoServiceProvider();
+        // Create a byte array to hold the random value.
+        array<Byte>^ randomNumber = gcnew array<Byte>(1);
+        do
+        {
+            // Fill the array with a random value.
+            rngCsp->GetBytes(randomNumber);
+        }
+        while (!IsFairRoll(randomNumber[0], numberSides));
+        // Return the random number mod the number
+        // of sides.  The possible values are zero-
+        // based, so we add one.
+        return (Byte)((randomNumber[0] % numberSides) + 1);
+    }
 
+private:
+    static bool IsFairRoll(Byte roll, Byte numSides)
+    {
+        // There are MaxValue / numSides full sets of numbers that can come up
+        // in a single byte.  For instance, if we have a 6 sided die, there are
+        // 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
+        int fullSetsOfValues = Byte::MaxValue / numSides;
 
-[STAThread]
+        // If the roll is within this range of fair values, then we let it continue.
+        // In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
+        // < rather than <= since the = portion allows through an extra 0 value).
+        // 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
+        // to use.
+        return roll < numSides * fullSetsOfValues;
+    }
+};
+
 int main()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   
-   // The URI to sign.
-   String^ resourceToSign = "http://www.microsoft.com";
-   
-   // The name of the file to which to save the XML signature.
-   String^ XmlFileName = "xmldsig.xml";
-   try
-   {
-      
-      // Generate a DSA signing key.
-      DSACryptoServiceProvider^ DSAKey = gcnew DSACryptoServiceProvider;
-      Console::WriteLine( "Signing: {0}", resourceToSign );
-      
-      // Sign the detached resourceand save the signature in an XML file.
-      SignDetachedResource( resourceToSign, XmlFileName, DSAKey );
-      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
-      
-      // Verify the signature of the signed XML.
-      Console::WriteLine( "Verifying signature..." );
-      
-      //Verify the XML signature in the XML file.
-      bool result = VerifyDetachedSignature( XmlFileName );
-      
-      // Display the results of the signature verification to 
-      // the console.
-      if ( result )
-      {
-         Console::WriteLine( "The XML signature is valid." );
-      }
-      else
-      {
-         Console::WriteLine( "The XML signature is not valid." );
-      }
-   }
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-   }
-
+    RNGCSP::Main();
 }

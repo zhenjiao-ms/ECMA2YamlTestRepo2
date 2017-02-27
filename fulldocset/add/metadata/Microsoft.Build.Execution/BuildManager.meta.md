@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.BuildManager.Dispose
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.BuildManager.GetProjectInstanceForBuild(Microsoft.Build.Evaluation.Project)
 internalonly: False
 ---
@@ -30,11 +25,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Execution.BuildManager.BeginBuild(Microsoft.Build.Execution.BuildParameters)
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.BuildManager.Finalize
 internalonly: False
 ---
 

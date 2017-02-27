@@ -1,66 +1,67 @@
 Imports System
+Imports System.IO
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.X509Certificates
+Imports System.Windows.Forms
 
+Public Class HashDirectory
 
+    Public Shared Sub Main(ByVal args() As String)
+        Dim directory As String
+        If args.Length < 1 Then
+            Dim fdb As New FolderBrowserDialog
+            Dim dr As DialogResult = fdb.ShowDialog()
+            If (dr = DialogResult.OK) Then
+                directory = fdb.SelectedPath
+            Else
+                Console.WriteLine("No directory selected")
+                Return
+            End If
+        Else
+            directory = args(0)
+        End If
+        Try
+            ' Create a DirectoryInfo object representing the specified directory.
+            Dim dir As New DirectoryInfo(directory)
+            ' Get the FileInfo objects for every file in the directory.
+            Dim files As FileInfo() = dir.GetFiles()
+            ' Initialize a RIPE160 hash object.
+            Dim myRIPEMD160 As RIPEMD160 = RIPEMD160Managed.Create()
+            Dim hashValue() As Byte
+            ' Compute and print the hash values for each file in directory.
+            Dim fInfo As FileInfo
+            For Each fInfo In files
+                ' Create a fileStream for the file.
+                Dim fileStream As FileStream = fInfo.Open(FileMode.Open)
+                ' Be sure it's positioned to the beginning of the stream.
+                fileStream.Position = 0
+                ' Compute the hash of the fileStream.
+                hashValue = myRIPEMD160.ComputeHash(fileStream)
+                ' Write the name of the file to the Console.
+                Console.Write(fInfo.Name + ": ")
+                ' Write the hash value to the Console.
+                PrintByteArray(hashValue)
+                ' Close the file.
+                fileStream.Close()
+            Next fInfo
+            Return
+        Catch DExc As DirectoryNotFoundException
+            Console.WriteLine("Error: The directory specified could not be found.")
+        Catch IOExc As IOException
+            Console.WriteLine("Error: A file in the directory could not be accessed.")
+        End Try
 
-Class AsnEncodedDataSample
-   Shared msg As String
-   Shared Sub Main()
-      'The following example demonstrates the usage the AsnEncodedData classes.
-      ' Asn encoded data is read from the extensions of an X509 certificate.
-      Try
-         ' Open the certificate store.
-         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
-         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
-         ' Select one or more certificates to display extensions information.
-         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
-         
-         ' Create a new AsnEncodedDataCollection object.
-         Dim asncoll As New AsnEncodedDataCollection()
-         Dim i As Integer
-         For i = 0 To scollection.Count - 1
-            ' Display certificate information.
-	    msg = "Certificate name: "& scollection(i).GetName()
-            MsgBox(msg)
+    End Sub
 
-            ' Display extensions information.
-            Dim extension As X509Extension
-            For Each extension In  scollection(i).Extensions
-               ' Create an AsnEncodedData object using the extensions information.
-               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
-	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
-		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
-		& asndata.Format(True) & Environment.NewLine
-               MsgBox(msg)
-		
-               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-               asncoll.Add(asndata)
-            Next extension
-         Next i
-	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
-         MsgBox(msg)         
-         store.Close()
+    ' Print the byte array in a readable format.
+    Public Shared Sub PrintByteArray(ByVal array() As Byte)
+        Dim i As Integer
+        For i = 0 To array.Length - 1
+            Console.Write(String.Format("{0:X2}", array(i)))
+            If i Mod 4 = 3 Then
+                Console.Write(" ")
+            End If
+        Next i
+        Console.WriteLine()
 
-         'Create an enumerator for moving through the collection.
-         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
-         'You must execute a MoveNext() to get to the first item in the collection.
-         asne.MoveNext()
-         ' Write out AsnEncodedData in the collection.
-	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
-	 MsgBox(msg)
-	
-         
-         asne.MoveNext()
-	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
-	 MsgBox(msg)
-        
-         'Return index in the collection to the beginning.
-         asne.Reset()
-      Catch 
-         MsgBox("Information could not be written out for this certificate.")
-      End Try
-   End Sub 'Main
-End Class 'AsnEncodedDataSample
+    End Sub 'PrintByteArray
+End Class

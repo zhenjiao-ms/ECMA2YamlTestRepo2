@@ -1,75 +1,43 @@
-' This example demonstrates a System.Globalization.Culture-
-' AndRegionInfoBuilder constructor and some of the properties 
-' of the CultureAndRegionInfoBuilder object that is created.
-' Compile this example with a reference to sysglobl.dll.
-
 Imports System
 Imports System.Globalization
 
-Class Sample
-    Public Shared Sub Main() 
-        
-        ' Construct a new, privately used culture that extends the en-US culture 
-        ' provided by the .NET Framework. In this sample, the CultureAndRegion-
-        ' Types.Specific parameter creates a minimal CultureAndRegionInfoBuilder 
-        ' object that you must populate with culture and region information.
+Module Module1
 
-        Dim cib As CultureAndRegionInfoBuilder = Nothing
-        Try
-            cib = New CultureAndRegionInfoBuilder("x-en-US-sample", _
-                                                   CultureAndRegionModifiers.None)
-        Catch ae As ArgumentException
-            Console.WriteLine(ae)
-            Return
-        End Try
-        
-        ' Populate the new CultureAndRegionInfoBuilder object with culture information.
+   Public Sub Main()
 
-        Dim ci As New CultureInfo("en-US")
-        cib.LoadDataFromCultureInfo(ci)
-        
-        ' Populate the new CultureAndRegionInfoBuilder object with region information.
+      ' Displays several properties of the neutral cultures.
+      Console.WriteLine("CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME")
+      Dim ci As CultureInfo
+      For Each ci In CultureInfo.GetCultures(CultureTypes.NeutralCultures)
+         Console.Write("{0,-7}", ci.Name)
+         Console.Write(" {0,-3}", ci.TwoLetterISOLanguageName)
+         Console.Write(" {0,-3}", ci.ThreeLetterISOLanguageName)
+         Console.Write(" {0,-3}", ci.ThreeLetterWindowsLanguageName)
+         Console.Write(" {0,-40}", ci.DisplayName)
+         Console.WriteLine(" {0,-40}", ci.EnglishName)
+      Next ci
 
-        Dim ri As New RegionInfo("US")
-        cib.LoadDataFromRegionInfo(ri)
-        
-        ' Display some of the properties for the x-en-US-sample custom culture.
+   End Sub 'Main 
 
-        Console.Clear()
-        Console.WriteLine("CultureName:. . . . . . . . . . {0}", cib.CultureName)
-        Console.WriteLine("CultureEnglishName: . . . . . . {0}", cib.CultureEnglishName)
-        Console.WriteLine("CultureNativeName:. . . . . . . {0}", cib.CultureNativeName)
-        Console.WriteLine("GeoId:. . . . . . . . . . . . . {0}", cib.GeoId)
-        Console.WriteLine("IsMetric: . . . . . . . . . . . {0}", cib.IsMetric)
-        Console.WriteLine("ISOCurrencySymbol:. . . . . . . {0}", cib.ISOCurrencySymbol)
-        Console.WriteLine("RegionEnglishName:. . . . . . . {0}", cib.RegionEnglishName)
-        Console.WriteLine("RegionName: . . . . . . . . . . {0}", cib.RegionName)
-        Console.WriteLine("RegionNativeName: . . . . . . . {0}", cib.RegionNativeName)
-        Console.WriteLine("ThreeLetterISOLanguageName: . . {0}", cib.ThreeLetterISOLanguageName)
-        Console.WriteLine("ThreeLetterISORegionName: . . . {0}", cib.ThreeLetterISORegionName)
-        Console.WriteLine("ThreeLetterWindowsLanguageName: {0}", cib.ThreeLetterWindowsLanguageName)
-        Console.WriteLine("ThreeLetterWindowsRegionName: . {0}", cib.ThreeLetterWindowsRegionName)
-        Console.WriteLine("TwoLetterISOLanguageName: . . . {0}", cib.TwoLetterISOLanguageName)
-        Console.WriteLine("TwoLetterISORegionName: . . . . {0}", cib.TwoLetterISORegionName)
-    
-    End Sub 'Main
-End Class 'Sample
+
+
+'This code produces the following output.  This output has been cropped for brevity.
 '
-'This code example produces the following results:
-'
-'CultureName:. . . . . . . . . . x-en-US-sample
-'CultureEnglishName: . . . . . . English
-'CultureNativeName:. . . . . . . English
-'GeoId:. . . . . . . . . . . . . 244
-'IsMetric: . . . . . . . . . . . False
-'ISOCurrencySymbol:. . . . . . . USD
-'RegionEnglishName:. . . . . . . United States
-'RegionName: . . . . . . . . . . US
-'RegionNativeName: . . . . . . . United States
-'ThreeLetterISOLanguageName: . . eng
-'ThreeLetterISORegionName: . . . USA
-'ThreeLetterWindowsLanguageName: ENU
-'ThreeLetterWindowsRegionName: . USA
-'TwoLetterISOLanguageName: . . . en
-'TwoLetterISORegionName: . . . . US
-'
+'CULTURE ISO ISO WIN DISPLAYNAME                              ENGLISHNAME
+'ar      ar  ara ARA Arabic                                   Arabic                                  
+'bg      bg  bul BGR Bulgarian                                Bulgarian                               
+'ca      ca  cat CAT Catalan                                  Catalan                                 
+'zh-Hans zh  zho CHS Chinese (Simplified)                     Chinese (Simplified)                    
+'cs      cs  ces CSY Czech                                    Czech                                   
+'da      da  dan DAN Danish                                   Danish                                  
+'de      de  deu DEU German                                   German                                  
+'el      el  ell ELL Greek                                    Greek                                   
+'en      en  eng ENU English                                  English                                 
+'es      es  spa ESP Spanish                                  Spanish                                 
+'fi      fi  fin FIN Finnish                                  Finnish                                 
+'zh      zh  zho CHS Chinese                                  Chinese                                 
+'zh-Hant zh  zho CHT Chinese (Traditional)                    Chinese (Traditional)                   
+'zh-CHS  zh  zho CHS Chinese (Simplified) Legacy              Chinese (Simplified) Legacy             
+'zh-CHT  zh  zho CHT Chinese (Traditional) Legacy             Chinese (Traditional) Legacy            
+
+End Module

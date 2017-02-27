@@ -1,44 +1,13 @@
-            EventSourceCreationData mySourceData = new EventSourceCreationData("", "");
-            bool registerSource = true;
-
-            // Process input parameters.
-            if (args.Length > 0)
+            // Create a new EventLog object.
+            EventLog myEventLog1 = new EventLog();
+            myEventLog1.Log = myLogName;
+            // Obtain the Log Entries of the Event Log
+            EventLogEntryCollection myEventLogEntryCollection = myEventLog1.Entries;
+            Console.WriteLine("The number of entries in 'MyNewLog' = " +
+                                    myEventLogEntryCollection.Count);
+            // Display the 'Message' property of EventLogEntry.
+            for (int i = 0; i < myEventLogEntryCollection.Count; i++)
             {
-                // Require at least the source name.
-
-                mySourceData.Source = args[0];
-
-                if (args.Length > 1)
-                {
-                    mySourceData.LogName = args[1];
-                }
-
-                if (args.Length > 2)
-                {
-                    mySourceData.MachineName = args[2];
-                }
-                if ((args.Length > 3) && (args[3].Length > 0))
-                {
-                    mySourceData.MessageResourceFile = args[3];
-                }
-            }
-            else 
-            {
-                // Display a syntax help message.
-                Console.WriteLine("Input:");
-                Console.WriteLine(" source [event log] [machine name] [resource file]");
-
-                registerSource = false;
-            }
-
-            // Set defaults for parameters missing input.
-            if (mySourceData.MachineName.Length == 0)
-            {
-                // Default to the local computer.
-                mySourceData.MachineName = ".";
-            }
-            if (mySourceData.LogName.Length == 0)
-            {
-                // Default to the Application log.
-                mySourceData.LogName = "Application";
+                Console.WriteLine("The Message of the EventLog is :" +
+                                        myEventLogEntryCollection[i].Message);
             }

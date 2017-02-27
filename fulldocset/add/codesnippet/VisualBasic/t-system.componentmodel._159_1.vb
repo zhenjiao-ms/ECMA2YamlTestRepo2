@@ -1,13 +1,10 @@
-        ' Adds a property to this designer's control at design time 
-        ' that indicates the outline color to use.
-        ' The DesignOnlyAttribute ensures that the OutlineColor
-        ' property is not serialized by the designer.
-        Protected Overrides Sub PreFilterProperties(ByVal properties As System.Collections.IDictionary)
-            Dim pd As PropertyDescriptor = TypeDescriptor.CreateProperty( _
-            GetType(ExampleControlDesigner), _
-            "OutlineColor", _
-            GetType(System.Drawing.Color), _
-            New Attribute() {New DesignOnlyAttribute(True)})
+    Public Sub LinkResolveNameEvent(ByVal serializationManager As IDesignerSerializationManager)
+        ' Registers an event handler for the resolve name event.
+        AddHandler serializationManager.ResolveName, AddressOf Me.OnResolveName
+    End Sub
 
-            properties.Add("OutlineColor", pd)
-        End Sub
+    Private Sub OnResolveName(ByVal sender As Object, ByVal e As ResolveNameEventArgs)
+        ' Displays ResolveName event information on the Console.
+        Console.WriteLine(("Name of the name to resolve: " + e.Name))
+        Console.WriteLine(("ToString output of the object that no name was resolved for: " + e.Value.ToString()))
+    End Sub

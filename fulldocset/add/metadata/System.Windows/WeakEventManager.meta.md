@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.WeakEventManager.ProtectedRemoveHandler(System.Object,System.Delegate)
-internalonly: False
----
-
----
 uid: System.Windows.WeakEventManager.GetCurrentManager(System.Type)
 internalonly: False
 ---
@@ -29,22 +24,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.WeakEventManager.ProtectedAddHandler(System.Object,System.Delegate)
-internalonly: False
----
-
----
 uid: System.Windows.WeakEventManager.Item(System.Object)
 internalonly: False
 ---
 
 ---
 uid: System.Windows.WeakEventManager.#ctor
-internalonly: False
----
-
----
-uid: System.Windows.WeakEventManager.NewListenerList
 internalonly: False
 ---
 

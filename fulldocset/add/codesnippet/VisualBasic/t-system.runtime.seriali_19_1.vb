@@ -1,8 +1,18 @@
-            Dim fs As New FileStream("mystuff.xml", FileMode.Create, FileAccess.ReadWrite)
-            Dim myElement As New XElement("Parent", New XElement("child1", "form"), _
-                New XElement("child2", "base"), _
-                New XElement("child3", "formbase") _
-                )
-            Dim ser As New System.Runtime.Serialization. _
-              NetDataContractSerializer()
-            ser.WriteObject(fs, myElement)
+    Shared Function Import(ByVal schemas As XmlSchemaSet) As CodeCompileUnit 
+
+        Dim imp As New XsdDataContractImporter()
+       ' The EnableDataBinding option adds a RaisePropertyChanged method to
+       ' the generated code. The GenerateInternal causes code access to be
+       ' set to internal.
+       Dim iOptions As New ImportOptions()
+       iOptions.EnableDataBinding = true
+       iOptions.GenerateInternal = true
+       imp.Options = IOptions
+
+        If imp.CanImport(schemas) Then
+            imp.Import(schemas)
+            Return imp.CodeCompileUnit
+        Else
+            Return Nothing
+        End If
+    End Function

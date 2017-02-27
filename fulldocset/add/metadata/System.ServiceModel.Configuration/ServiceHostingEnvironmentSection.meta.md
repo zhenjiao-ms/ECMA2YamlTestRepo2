@@ -37,8 +37,3 @@ internalonly: False
 uid: System.ServiceModel.Configuration.ServiceHostingEnvironmentSection.TransportConfigurationTypes
 internalonly: False
 ---
-
----
-uid: System.ServiceModel.Configuration.ServiceHostingEnvironmentSection.CloseIdleServicesAtLowMemory
-internalonly: False
----

@@ -1,132 +1,79 @@
 using System;
+using System.Collections;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Drawing;
-using System.Globalization;
+using System.Data;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
-namespace ExpandableObjectDemo
+namespace IDesignerOptionServiceExample
 {
-    public partial class DemoControl : UserControl
-    {
-        BorderAppearance borderAppearanceValue = new BorderAppearance();
-        private System.ComponentModel.IContainer components = null;
+    // This control demonstrates retrieving the standard 
+    // designer option service values in design mode.
+    public class IDesignerOptionServiceControl : System.Windows.Forms.UserControl
+    {		
+        private IDesignerOptionService designerOptionService;
 
-        public DemoControl()
+        public IDesignerOptionServiceControl()
         {
-            InitializeComponent();
+            this.BackColor = Color.Beige;
+                    this.Size = new Size(404, 135);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        [Browsable(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [Category("Demo")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public BorderAppearance Border
+        
+        public override System.ComponentModel.ISite Site
         {
             get
             {
-                return this.borderAppearanceValue;
-            }
-
-            set
-            {
-                this.borderAppearanceValue = value;
-            }
-        }
-
-        private void InitializeComponent()
-        {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        }
-    }
-
-    [TypeConverter(typeof(BorderAppearanceConverter))]
-    public class BorderAppearance
-    {
-        private int borderSizeValue = 1;
-        private Color borderColorValue = Color.Empty;
-
-        [Browsable(true),
-        NotifyParentProperty(true),
-        EditorBrowsable(EditorBrowsableState.Always),
-        DefaultValue(1)]
-        public int BorderSize
-        {
-            get
-            {
-                return borderSizeValue;
+                return base.Site;
             }
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(
-                        "BorderSize",
-                        value,
-                        "must be >= 0");
-                }
+                base.Site = value;
 
-                if (borderSizeValue != value)
-                {
-                    borderSizeValue = value;
-                }
+                // If siting component, attempt to obtain an IDesignerOptionService.
+                if( base.Site != null )                            
+                    designerOptionService = (IDesignerOptionService)this.GetService(typeof(IDesignerOptionService));                                   
             }
         }
 
-        [Browsable(true)]
-        [NotifyParentProperty(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [DefaultValue(typeof(Color), "")]
-        public Color BorderColor
+        // Displays control information and current IDesignerOptionService 
+        // values, if available.
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
-            get
+            e.Graphics.DrawString("IDesignerOptionServiceControl", new Font("Arial", 9), new SolidBrush(Color.Blue), 4, 4);
+            if( this.DesignMode )
+                e.Graphics.DrawString("Currently in design mode", new Font("Arial", 8), new SolidBrush(Color.Black), 4, 18);
+            else
+                e.Graphics.DrawString("Not in design mode. Cannot access IDesignerOptionService.", new Font("Arial", 8), new SolidBrush(Color.Red), 4, 18);
+            
+            if( base.Site != null && designerOptionService != null )
             {
-                return borderColorValue;
-            }
-            set
-            {
-                if (value.Equals(Color.Transparent))
-                {
-                    throw new NotSupportedException("Transparent colors are not supported.");
-                }
+                e.Graphics.DrawString("IDesignerOptionService provides access to the table of option values listed when", new Font("Arial", 8), new SolidBrush(Color.Black), 4, 38);
+                e.Graphics.DrawString("the Windows Forms Designer\\General tab of the Tools\\Options menu is selected.", new Font("Arial", 8), new SolidBrush(Color.Black), 4, 50);                
+                
+                e.Graphics.DrawString("Table of standard value names and current values", new Font("Arial", 8), new SolidBrush(Color.Red), 4, 76);
+                
+                // Displays a table of the standard value names and current values.
+                int ypos = 90;
 
-                if (borderColorValue != value)
-                {
-                    borderColorValue = value;
-                }
+                // Obtains and shows the size of the standard design-mode grid square.
+                Size size = (Size)designerOptionService.GetOptionValue("WindowsFormsDesigner\\General", "GridSize");
+                e.Graphics.DrawString("GridSize", new Font("Arial", 8), new SolidBrush(Color.Black), 4, ypos);
+                e.Graphics.DrawString(size.ToString(), new Font("Arial", 8), new SolidBrush(Color.Black), 100, ypos);
+                ypos+=12;
+                
+                // Obtains and shows whether the design mode surface grid is enabled.
+                bool showGrid = (bool)designerOptionService.GetOptionValue("WindowsFormsDesigner\\General", "ShowGrid");
+                e.Graphics.DrawString("ShowGrid", new Font("Arial", 8), new SolidBrush(Color.Black), 4, ypos);
+                e.Graphics.DrawString(showGrid.ToString(), new Font("Arial", 8), new SolidBrush(Color.Black), 100, ypos);
+                ypos+=12;
+                
+                // Obtains and shows whether components should be aligned with the surface grid.
+                bool snapToGrid = (bool)designerOptionService.GetOptionValue("WindowsFormsDesigner\\General", "SnapToGrid");
+                e.Graphics.DrawString("SnapToGrid", new Font("Arial", 8), new SolidBrush(Color.Black), 4, ypos);
+                e.Graphics.DrawString(snapToGrid.ToString(), new Font("Arial", 8), new SolidBrush(Color.Black), 100, ypos);                
             }
-        }
-    }
-
-    public class BorderAppearanceConverter : ExpandableObjectConverter
-    {
-        // This override prevents the PropertyGrid from 
-        // displaying the full type name in the value cell.
-        public override object ConvertTo(
-            ITypeDescriptorContext context,
-            CultureInfo culture,
-            object value,
-            Type destinationType)
-        {
-            if (destinationType == typeof(string))
-            {
-                return "";
-            }
-
-            return base.ConvertTo(
-                context,
-                culture,
-                value,
-                destinationType);
         }
     }
 }

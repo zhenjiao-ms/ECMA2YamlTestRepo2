@@ -14,16 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Execution.ProjectTargetInstanceChild.ConditionLocation
-internalonly: False
----
-
----
-uid: Microsoft.Build.Execution.ProjectTargetInstanceChild.Location
-internalonly: False
----
-
----
 uid: Microsoft.Build.Execution.ProjectTargetInstanceChild.#ctor
 internalonly: False
 ---

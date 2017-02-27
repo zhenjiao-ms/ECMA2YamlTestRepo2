@@ -1,7 +1,9 @@
-    <Designer("System.Windows.Forms.Design.DocumentDesigner, System.Windows.Forms.Design", _
-        GetType(IRootDesigner)), DesignerCategory("Form")> _
-    Public Class MyForm
-        
-        Inherits ContainerControl
-        ' Insert code here.
-    End Class 'MyForm
+   ' This event handler provides custom item-creation behavior.
+    Private Sub customersBindingSource_AddingNew( _
+    ByVal sender As Object, _
+    ByVal e As AddingNewEventArgs) _
+    Handles customersBindingSource.AddingNew
+
+        e.NewObject = DemoCustomer.CreateNewCustomer()
+
+    End Sub

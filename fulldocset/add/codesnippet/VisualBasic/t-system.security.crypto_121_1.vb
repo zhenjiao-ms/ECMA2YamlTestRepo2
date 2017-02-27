@@ -1,31 +1,63 @@
-    Private Shared Sub EncryptData(inName As String, outName As String, _
-    desKey() As Byte, desIV() As Byte)
-    
-        'Create the file streams to handle the input and output files.
-        Dim fin As New FileStream(inName, FileMode.Open, FileAccess.Read)
-        Dim fout As New FileStream(outName, FileMode.OpenOrCreate, _
-           FileAccess.Write)
-        fout.SetLength(0)
-        
-        'Create variables to help with read and write.
-        Dim bin(4096) As Byte 'This is intermediate storage for the encryption.
-        Dim rdlen As Long = 0 'This is the total number of bytes written.
-        Dim totlen As Long = fin.Length 'Total length of the input file.
-        Dim len As Integer 'This is the number of bytes to be written at a time.
-        Dim des As New DESCryptoServiceProvider()
-        Dim encStream As New CryptoStream(fout, _
-           des.CreateEncryptor(desKey, desIV), CryptoStreamMode.Write)
-        
-        Console.WriteLine("Encrypting...")
-        
-        'Read from the input file, then encrypt and write to the output file.
-        While rdlen < totlen
-            len = fin.Read(bin, 0, 4096)
-            encStream.Write(bin, 0, len)
-            rdlen = Convert.ToInt32(rdlen + len / des.BlockSize * des.BlockSize)
-            Console.WriteLine("Processed {0} bytes, {1} bytes total", len, _
-               rdlen)
-        End While
-        
-        encStream.Close()
+Imports System
+Imports System.Security.Cryptography
+
+
+
+Public Class DataProtectionSample
+    ' Create byte array for additional entropy when using Protect method.
+    Private Shared s_aditionalEntropy As Byte() = {9, 8, 7, 6, 5}
+
+
+    Public Shared Sub Main()
+        ' Create a simple byte array containing data to be encrypted.
+        Dim secret As Byte() = {0, 1, 2, 3, 4, 1, 2, 3, 4}
+
+        'Encrypt the data.
+        Dim encryptedSecret As Byte() = Protect(secret)
+        Console.WriteLine("The encrypted byte array is:")
+        PrintValues(encryptedSecret)
+
+        ' Decrypt the data and store in a byte array.
+        Dim originalData As Byte() = Unprotect(encryptedSecret)
+        Console.WriteLine("{0}The original data is:", Environment.NewLine)
+        PrintValues(originalData)
+
     End Sub
+
+
+    Public Shared Function Protect(ByVal data() As Byte) As Byte()
+        Try
+            ' Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+            '  only by the same current user.
+            Return ProtectedData.Protect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not encrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
+
+    End Function
+
+
+    Public Shared Function Unprotect(ByVal data() As Byte) As Byte()
+        Try
+            'Decrypt the data using DataProtectionScope.CurrentUser.
+            Return ProtectedData.Unprotect(data, s_aditionalEntropy, DataProtectionScope.CurrentUser)
+        Catch e As CryptographicException
+            Console.WriteLine("Data was not decrypted. An error occurred.")
+            Console.WriteLine(e.ToString())
+            Return Nothing
+        End Try
+
+    End Function
+
+
+    Public Shared Sub PrintValues(ByVal myArr() As [Byte])
+        Dim i As [Byte]
+        For Each i In myArr
+            Console.Write(vbTab + "{0}", i)
+        Next i
+        Console.WriteLine()
+
+    End Sub
+End Class

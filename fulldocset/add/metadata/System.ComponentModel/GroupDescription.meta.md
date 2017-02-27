@@ -29,22 +29,7 @@ internalonly: False
 ---
 
 ---
-uid: System.ComponentModel.GroupDescription.CustomSort
-internalonly: False
----
-
----
 uid: System.ComponentModel.GroupDescription.GroupNames
-internalonly: False
----
-
----
-uid: System.ComponentModel.GroupDescription.SortDescriptions
-internalonly: False
----
-
----
-uid: System.ComponentModel.GroupDescription.ShouldSerializeSortDescriptions
 internalonly: False
 ---
 

@@ -1,68 +1,214 @@
-'The following sample uses the Cryptography class to simulate the roll of a dice.
 Imports System
-Imports System.IO
-Imports System.Text
+Imports System.Xml
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
 
 
+Module Program
 
-Class RNGCSP
-    Private Shared rngCsp As New RNGCryptoServiceProvider()
-    ' Main method.
-    Public Shared Sub Main()
-        Const totalRolls As Integer = 25000
-        Dim results(5) As Integer
+    Sub Main(ByVal args() As String)
 
-        ' Roll the dice 25000 times and display
-        ' the results to the console.
-        Dim x As Integer
-        For x = 0 To totalRolls
-            Dim roll As Byte = RollDice(System.Convert.ToByte(results.Length))
-            results((roll - 1)) += 1
-        Next x
-        Dim i As Integer
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
 
-        While i < results.Length
-            Console.WriteLine("{0}: {1} ({2:p1})", i + 1, results(i), System.Convert.ToDouble(results(i)) / System.Convert.ToDouble(totalRolls))
-            i += 1
-        End While
-        rngCsp.Dispose()
+        ' Load an XML file into the XmlDocument object.
+        Try
+            xmlDoc.PreserveWhitespace = True
+            xmlDoc.Load("test.xml")
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        End Try
+
+        ' Create a new RSA key.  This key will encrypt a symmetric key,
+        ' which will then be imbedded in the XML document.  
+        Dim rsaKey As New RSACryptoServiceProvider
+
+
+        Try
+            ' Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", "EncryptedElement1", rsaKey, "rsaKey")
+
+            ' Encrypt the "creditcard2" element.
+            Encrypt(xmlDoc, "creditcard2", "EncryptedElement2", rsaKey, "rsaKey")
+
+            ' Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlDoc.OuterXml)
+
+            ' Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey")
+
+            ' Display the encrypted XML to the console.
+            Console.WriteLine()
+            Console.WriteLine("Decrypted XML:")
+            Console.WriteLine()
+            Console.WriteLine(xmlDoc.OuterXml)
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the RSA key.
+            rsaKey.Clear()
+        End Try
+
         Console.ReadLine()
-    End Sub
+
+    End Sub 'Main
+
+End Module 'Program
 
 
-    ' This method simulates a roll of the dice. The input parameter is the
-    ' number of sides of the dice.
-    Public Shared Function RollDice(ByVal numberSides As Byte) As Byte
-        If numberSides <= 0 Then
-            Throw New ArgumentOutOfRangeException("NumSides")
-        End If 
-        ' Create a byte array to hold the random value.
-        Dim randomNumber(0) As Byte
-        Do
-            ' Fill the array with a random value.
-            rngCsp.GetBytes(randomNumber)
-        Loop While Not IsFairRoll(randomNumber(0), numberSides)
-        ' Return the random number mod the number
-        ' of sides.  The possible values are zero-
-        ' based, so we add one.
-        Return System.Convert.ToByte(randomNumber(0) Mod numberSides + 1)
+Module XMLEncryptionSubs
 
-    End Function
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptName As String, ByVal EncryptionElementID As String, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If ElementToEncryptName Is Nothing Then
+            Throw New ArgumentNullException("ElementToEncrypt")
+        End If
+        If EncryptionElementID Is Nothing Then
+            Throw New ArgumentNullException("EncryptionElementID")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Find the specified element in the XmlDocument
+        ' object and create a new XmlElemnt object.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptName)(0)
 
 
-    Private Shared Function IsFairRoll(ByVal roll As Byte, ByVal numSides As Byte) As Boolean
-        ' There are MaxValue / numSides full sets of numbers that can come up
-        ' in a single byte.  For instance, if we have a 6 sided die, there are
-        ' 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
-        Dim fullSetsOfValues As Integer = [Byte].MaxValue / numSides
+        ' Throw an XmlException if the element was not found.
+        If elementToEncrypt Is Nothing Then
+            Throw New XmlException("The specified element was not found")
+        End If
 
-        ' If the roll is within this range of fair values, then we let it continue.
-        ' In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
-        ' < rather than <= since the = portion allows through an extra 0 value).
-        ' 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
-        ' to use.
-        Return roll < numSides * fullSetsOfValues
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a new instance of the EncryptedXml class 
+        ' and use it to encrypt the XmlElement with the 
+        ' a new random symmetric key.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
 
-    End Function 'IsFairRoll
-End Class
+        ' Create a 256 bit Rijndael key.
+        Dim sessionKey As New RijndaelManaged()
+        sessionKey.KeySize = 256
+
+        Dim eXml As New EncryptedXml()
+
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Construct an EncryptedData object and populate
+        ' it with the desired encryption information.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+
+        Dim edElement As New EncryptedData()
+        edElement.Type = EncryptedXml.XmlEncElementUrl
+        edElement.Id = EncryptionElementID
+
+        ' Create an EncryptionMethod element so that the 
+        ' receiver knows which algorithm to use for decryption.
+        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
+
+        ' Encrypt the session key and add it to an EncryptedKey element.
+        Dim ek As New EncryptedKey()
+
+        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
+
+        ek.CipherData = New CipherData(encryptedKey)
+
+        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+
+        ' Set the KeyInfo element to specify the
+        ' name of the RSA key.
+        ' Create a new KeyInfo element.
+        edElement.KeyInfo = New KeyInfo()
+
+        ' Create a new KeyInfoName element.
+        Dim kin As New KeyInfoName()
+
+        ' Specify a name for the key.
+        kin.Value = KeyName
+
+        ' Add the KeyInfoName element to the 
+        ' EncryptedKey object.
+        ek.KeyInfo.AddClause(kin)
+
+        ' Create a new DataReference element
+        ' for the KeyInfo element.  This optional
+        ' element specifies which EncryptedData 
+        ' uses this key.  An XML document can have
+        ' multiple EncryptedData elements that use
+        ' different keys.
+        Dim dRef As New DataReference()
+
+        ' Specify the EncryptedData URI. 
+        dRef.Uri = "#" + EncryptionElementID
+
+        ' Add the DataReference to the EncryptedKey.
+        ek.AddReference(dRef)
+
+        ' Add the encrypted key to the 
+        ' EncryptedData object.
+        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
+
+        ' Add the encrypted element data to the 
+        ' EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Replace the element from the original XmlDocument
+        ' object with the EncryptedData element.
+        ''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
+
+    End Sub 'Encrypt
+
+
+    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(Doc)
+
+        ' Add a key-name mapping.
+        ' This method can only decrypt documents
+        ' that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg)
+
+        ' Decrypt the element.
+        exml.DecryptDocument()
+
+    End Sub 'Decrypt 
+End Module 'XMLEncryptionSubs
+
+
+' To run this sample, place the following XML
+' in a file called test.xml.  Put test.xml
+' in the same directory as your compiled program.
+' 
+'  <root>
+'     <creditcard xmlns="myNamespace" Id="tag1">
+'         <number>19834209</number>
+'         <expiry>02/02/2002</expiry>
+'     </creditcard>
+'     <creditcard2 xmlns="myNamespace" Id="tag2">
+'         <number>19834208</number>
+'         <expiry>02/02/2002</expiry>
+'     </creditcard2>
+' </root>

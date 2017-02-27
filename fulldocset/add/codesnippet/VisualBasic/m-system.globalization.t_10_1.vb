@@ -1,75 +1,33 @@
 Imports System
 Imports System.Globalization
 
-
-Public Class SamplesThaiBuddhistCalendar   
+Public Class SamplesTextInfo
 
    Public Shared Sub Main()
 
-      ' Sets a DateTime to April 3, 2002 of the Gregorian calendar.
-      Dim myDT As New DateTime(2002, 4, 3, New GregorianCalendar())
+      ' Defines the string with mixed casing.
+      Dim myString As String = "wAr aNd pEaCe"
 
-      ' Creates an instance of the ThaiBuddhistCalendar.
-      Dim myCal As New ThaiBuddhistCalendar()
+      ' Creates a TextInfo based on the "en-US" culture.
+      Dim myTI As TextInfo = New CultureInfo("en-US", False).TextInfo
 
-      ' Displays the values of the DateTime.
-      Console.WriteLine("April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:")
-      DisplayValues(myCal, myDT)
+      ' Changes a string to lowercase.
+      Console.WriteLine("""{0}"" to lowercase: {1}", myString, myTI.ToLower(myString))
 
-      ' Adds two years and ten months.
-      myDT = myCal.AddYears(myDT, 2)
-      myDT = myCal.AddMonths(myDT, 10)
+      ' Changes a string to uppercase.
+      Console.WriteLine("""{0}"" to uppercase: {1}", myString, myTI.ToUpper(myString))
 
-      ' Displays the values of the DateTime.
-      Console.WriteLine("After adding two years and ten months:")
-      DisplayValues(myCal, myDT)
+      ' Changes a string to titlecase.
+      Console.WriteLine("""{0}"" to titlecase: {1}", myString, myTI.ToTitleCase(myString))
 
-   End Sub 'Main
+   End Sub 'Main 
 
-   Public Shared Sub DisplayValues(myCal As Calendar, myDT As DateTime)
-      Console.WriteLine("   Era:        {0}", myCal.GetEra(myDT))
-      Console.WriteLine("   Year:       {0}", myCal.GetYear(myDT))
-      Console.WriteLine("   Month:      {0}", myCal.GetMonth(myDT))
-      Console.WriteLine("   DayOfYear:  {0}", myCal.GetDayOfYear(myDT))
-      Console.WriteLine("   DayOfMonth: {0}", myCal.GetDayOfMonth(myDT))
-      Console.WriteLine("   DayOfWeek:  {0}", myCal.GetDayOfWeek(myDT))
-      Console.WriteLine()
-   End Sub 'DisplayValues
-
-End Class 'SamplesThaiBuddhistCalendar 
+End Class 'SamplesTextInfo
 
 
 'This code produces the following output.
-
 '
-
-'April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:
-
-'   Era:        1
-
-'   Year:       2545
-
-'   Month:      4
-
-'   DayOfYear:  93
-
-'   DayOfMonth: 3
-
-'   DayOfWeek:  Wednesday
-
-'
-
-'After adding two years and ten months:
-
-'   Era:        1
-
-'   Year:       2548
-
-'   Month:      2
-
-'   DayOfYear:  34
-
-'   DayOfMonth: 3
-
-'   DayOfWeek:  Thursday
+'"wAr aNd pEaCe" to lowercase: war and peace
+'"wAr aNd pEaCe" to uppercase: WAR AND PEACE
+'"wAr aNd pEaCe" to titlecase: War And Peace
 

@@ -1,24 +1,22 @@
-   [ClassInterface(ClassInterfaceType.AutoDispatch)]
-   [ProgId("InteropSample.MyClass")]
-   public class MyClass
-   {
-       public MyClass() {}
-   }
+using System;
+using System.Runtime.InteropServices;
 
-   class TestApplication
-   {      
-      public static void Main()
-      {
-         try
-         {
-            AttributeCollection attributes;
-            attributes = TypeDescriptor.GetAttributes(typeof(MyClass));
-            ProgIdAttribute progIdAttributeObj = (ProgIdAttribute)attributes[typeof(ProgIdAttribute)];
-            Console.WriteLine("ProgIdAttribute's value is set to : " + progIdAttributeObj.Value);
-         }         
-         catch(Exception e)
-         {
-            Console.WriteLine("Exception : " + e.Message);
-         }
-      }
-   }
+// Have the CLR expose a class interface (derived from IDispatch) for this type.
+// COM clients can call the  members of this class using the Invoke method from the IDispatch interface.
+[ClassInterface(ClassInterfaceType.AutoDispatch)]
+public class AClassUsableViaCOM
+{
+    public AClassUsableViaCOM() { }
+
+    public Int32 Add(Int32 x, Int32 y) { return x + y; }
+}
+
+// The CLR does not expose a class interface for this type.
+// COM clients can call the members of this class using the methods from the IComparable interface.
+[ClassInterface(ClassInterfaceType.None)]
+public class AnotherClassUsableViaCOM : IComparable
+{
+    public AnotherClassUsableViaCOM() { }
+
+    Int32 IComparable.CompareTo(Object o) { return 0; }
+}

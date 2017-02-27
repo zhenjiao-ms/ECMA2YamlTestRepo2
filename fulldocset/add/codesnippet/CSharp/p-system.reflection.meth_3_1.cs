@@ -1,18 +1,19 @@
 using System;
 using System.Reflection;
 
-public class Example
+class Mymethodinfo
 {
-    public static void Main()
+    public static int Main()
     {
-        // Get method body information.
-        MethodInfo mi = typeof(Example).GetMethod("MethodBodyExample");
-        MethodBody mb = mi.GetMethodBody();
-        Console.WriteLine("\r\nMethod: {0}", mi);
-
-        // Display the general information included in the 
-        // MethodBody object.
-        Console.WriteLine("    Local variables are initialized: {0}", 
-            mb.InitLocals);
-        Console.WriteLine("    Maximum number of items on the operand stack: {0}", 
-            mb.MaxStackSize);
+        Console.WriteLine ("\nReflection.MethodInfo");
+  
+        // Get the Type and MethodInfo.
+        Type MyType = Type.GetType("System.Reflection.FieldInfo");
+        MethodInfo Mymethodinfo = MyType.GetMethod("GetValue");
+        Console.Write ("\n" + MyType.FullName + "." + Mymethodinfo.Name);
+  
+        // Get and display the ReturnType.
+        Console.Write ("\nReturnType = {0}", Mymethodinfo.ReturnType);
+        return 0;
+    }
+}

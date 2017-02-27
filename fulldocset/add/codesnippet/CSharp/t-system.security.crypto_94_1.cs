@@ -1,202 +1,85 @@
 using System;
-using System.Xml;
+using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
+using System.Text;
 
-class Program
+
+class Alice
 {
-	static void Main(string[] args)
-	{
+    public static void Main(string[] args)
+    {
+        using (Bob bob = new Bob())
+        {
+            using (RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider())
+            {
+                // Get Bob's public key
+                rsaKey.ImportCspBlob(bob.key);
+                byte[] encryptedSessionKey = null;
+                byte[] encryptedMessage = null;
+                byte[] iv = null;
+                Send(rsaKey, "Secret message", out iv, out encryptedSessionKey, out encryptedMessage);
+                bob.Receive(iv, encryptedSessionKey, encryptedMessage);
+            }
+        }
+    }
 
-		// Create an XmlDocument object.
-		XmlDocument xmlDoc = new XmlDocument();
+    private static void Send(RSA key, string secretMessage, out byte[] iv, out byte[] encryptedSessionKey, out byte[] encryptedMessage)
+    {
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            iv = aes.IV;
 
-		// Load an XML file into the XmlDocument object.
-		try
-		{
-			xmlDoc.PreserveWhitespace = true;
-			xmlDoc.Load("test.xml");
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e.Message);
-		}
+            // Encrypt the session key
+            RSAPKCS1KeyExchangeFormatter keyFormatter = new RSAPKCS1KeyExchangeFormatter(key);
+            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, typeof(Aes));
 
-		// Create a new RSA key.  This key will encrypt a symmetric key,
-		// which will then be imbedded in the XML document.  
-		RSA rsaKey = new RSACryptoServiceProvider();
+            // Encrypt the message
+            using (MemoryStream ciphertext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write))
+            {
+                byte[] plaintextMessage = Encoding.UTF8.GetBytes(secretMessage);
+                cs.Write(plaintextMessage, 0, plaintextMessage.Length);
+                cs.Close();
 
+                encryptedMessage = ciphertext.ToArray();
+            }
+        }
+    }
 
-		try
-		{
-			// Encrypt the "creditcard" element.
-			Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
+}
+public class Bob : IDisposable
+{
+    public byte[] key;
+    private RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
+    public Bob()
+    {
+        key = rsaKey.ExportCspBlob(false);
+    }
+    public void Receive(byte[] iv, byte[] encryptedSessionKey, byte[] encryptedMessage)
+    {
 
-			// Inspect the EncryptedKey element.
-			InspectElement(xmlDoc);
+        using (Aes aes = new AesCryptoServiceProvider())
+        {
+            aes.IV = iv;
 
-			// Decrypt the "creditcard" element.
-			Decrypt(xmlDoc, rsaKey, "rsaKey");
+            // Decrypt the session key
+            RSAPKCS1KeyExchangeDeformatter keyDeformatter = new RSAPKCS1KeyExchangeDeformatter(rsaKey);
+            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey);
 
-		}
-		catch (Exception e)
-		{
-			Console.WriteLine(e.Message);
-		}
-		finally
-		{
-			// Clear the RSA key.
-			rsaKey.Clear();
-		}
+            // Decrypt the message
+            using (MemoryStream plaintext = new MemoryStream())
+            using (CryptoStream cs = new CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write))
+            {
+                cs.Write(encryptedMessage, 0, encryptedMessage.Length);
+                cs.Close();
 
-	}
-
-	public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, RSA Alg, string KeyName)
-	{
-		// Check the arguments.  
-		if (Doc == null)
-			throw new ArgumentNullException("Doc");
-		if (ElementToEncrypt == null)
-			throw new ArgumentNullException("ElementToEncrypt");
-		if (Alg == null)
-			throw new ArgumentNullException("Alg");
-
-		////////////////////////////////////////////////
-		// Find the specified element in the XmlDocument
-		// object and create a new XmlElemnt object.
-		////////////////////////////////////////////////
-
-		XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
-
-		// Throw an XmlException if the element was not found.
-		if (elementToEncrypt == null)
-		{
-			throw new XmlException("The specified element was not found");
-
-		}
-
-		//////////////////////////////////////////////////
-		// Create a new instance of the EncryptedXml class 
-		// and use it to encrypt the XmlElement with the 
-		// a new random symmetric key.
-		//////////////////////////////////////////////////
-
-		// Create a 256 bit Rijndael key.
-		RijndaelManaged sessionKey = new RijndaelManaged();
-		sessionKey.KeySize = 256;
-
-		EncryptedXml eXml = new EncryptedXml();
-
-		byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
-
-		////////////////////////////////////////////////
-		// Construct an EncryptedData object and populate
-		// it with the desired encryption information.
-		////////////////////////////////////////////////
-
-
-		EncryptedData edElement = new EncryptedData();
-		edElement.Type = EncryptedXml.XmlEncElementUrl;
-
-		// Create an EncryptionMethod element so that the 
-		// receiver knows which algorithm to use for decryption.
-
-		edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
-
-		// Encrypt the session key and add it to an EncryptedKey element.
-		EncryptedKey ek = new EncryptedKey();
-
-		byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
-
-		ek.CipherData = new CipherData(encryptedKey);
-
-		ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
-
-		// Set the KeyInfo element to specify the
-		// name of the RSA key.
-
-		// Create a new KeyInfo element.
-		edElement.KeyInfo = new KeyInfo();
-
-		// Create a new KeyInfoName element.
-		KeyInfoName kin = new KeyInfoName();
-
-		// Specify a name for the key.
-		kin.Value = KeyName;
-
-		// Add the KeyInfoName element to the 
-		// EncryptedKey object.
-		ek.KeyInfo.AddClause(kin);
-
-		// Add the encrypted key to the 
-		// EncryptedData object.
-
-		edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
-
-		// Add the encrypted element data to the 
-		// EncryptedData object.
-		edElement.CipherData.CipherValue = encryptedElement;
-
-		////////////////////////////////////////////////////
-		// Replace the element from the original XmlDocument
-		// object with the EncryptedData element.
-		////////////////////////////////////////////////////
-
-		EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
-
-	}
-
-	public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
-	{
-		// Check the arguments.  
-		if (Doc == null)
-			throw new ArgumentNullException("Doc");
-		if (Alg == null)
-			throw new ArgumentNullException("Alg");
-		if (KeyName == null)
-			throw new ArgumentNullException("KeyName");
-
-		// Create a new EncryptedXml object.
-		EncryptedXml exml = new EncryptedXml(Doc);
-
-		// Add a key-name mapping.
-		// This method can only decrypt documents
-		// that present the specified key name.
-		exml.AddKeyNameMapping(KeyName, Alg);
-
-		// Decrypt the element.
-		exml.DecryptDocument();
-
-	}
-
-	static void InspectElement(XmlDocument Doc)
-	{
-		// Get the EncryptedData element from the XMLDocument object.
-		XmlElement encryptedData = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
-
-		// Create a new EncryptedData object.
-		EncryptedData encData = new EncryptedData();
-
-		// Load the XML from the document to
-		// initialize the EncryptedData object.
-		encData.LoadXml(encryptedData);
-
-		// Display the properties.
-		// Most values are Null by default.
-
-
-		
-		Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml);
-		Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding);
-		Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml);
-		if (encData.EncryptionProperties.Count >= 1)
-		{
-			Console.WriteLine("EncryptedData.EncryptionProperties: " + encData.EncryptionProperties[0].GetXml().InnerXml);
-		}
-
-		Console.WriteLine("EncryptedData.Id: " + encData.Id);
-		Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml);
-		Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType);
-	}
-
+                string message = Encoding.UTF8.GetString(plaintext.ToArray());
+                Console.WriteLine(message);
+            }
+        }
+    }
+    public void Dispose()
+    {
+        rsaKey.Dispose();
+    }
 }

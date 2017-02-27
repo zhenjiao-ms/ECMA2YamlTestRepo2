@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.Configuration.SettingsSection.WebUtility
-internalonly: False
----
-
----
 uid: System.Net.Configuration.SettingsSection.WebProxyScript
 internalonly: False
 ---

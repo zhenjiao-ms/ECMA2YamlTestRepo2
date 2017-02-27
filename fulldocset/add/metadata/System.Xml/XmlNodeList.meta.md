@@ -19,16 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Xml.XmlNodeList.System#IDisposable#Dispose
-internalonly: False
----
-
----
-uid: System.Xml.XmlNodeList.PrivateDisposeNodeList
-internalonly: False
----
-
----
 uid: System.Xml.XmlNodeList.Item(System.Int32)
 internalonly: False
 ---

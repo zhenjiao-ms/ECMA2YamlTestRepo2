@@ -1,29 +1,73 @@
-            // The create function attempts to create a CustomCrypto object 
-            // using the assembly name. This functionality requires 
-            // modification of the machine.config file. Add the following 
-            // section to the configuration element and modify the values 
-            // of the cryptoClass to reflect what is installed 
-            // in your machines GAC.
-            //<mscorlib>
-            // <cryptographySettings>
-            //   <cryptoNameMapping>
-            //     <cryptoClasses>
-            //       <cryptoClass CustomCrypto="Contoso.CustomCrypto,
-            //         CustomCrypto,
-            //         Culture=neutral,
-            //         PublicKeyToken=fdb9f9c4851028bf,
-            //         Version=1.0.1448.27640" />
-            //     </cryptoClasses>
-            //     <nameEntry name="Contoso.CustomCrypto" 
-            //        class="CustomCrypto" />
-            //     <nameEntry name="CustomCrypto" class="CustomCrypto" />
-            //    </cryptoNameMapping>
-            //  </cryptographySettings>
-            //</mscorlib>
+using namespace System;
+using namespace System::IO;
+using namespace System::Security::Cryptography;
 
-        public:
-            static CustomCrypto^ Create(String^ algorithmName) 
-            {
-                return (CustomCrypto^) 
-                    CryptoConfig::CreateFromName(algorithmName);
-            }
+// Print the byte array in a readable format.
+void PrintByteArray( array<Byte>^array )
+{
+   int i;
+   for ( i = 0; i < array->Length; i++ )
+   {
+      Console::Write( String::Format( "{0:X2}", array[ i ] ) );
+      if ( (i % 4) == 3 )
+            Console::Write( " " );
+
+   }
+   Console::WriteLine();
+}
+
+int main()
+{
+   array<String^>^args = Environment::GetCommandLineArgs();
+   if ( args->Length < 2 )
+   {
+      Console::WriteLine( "Usage: hashdir <directory>" );
+      return 0;
+   }
+
+   try
+   {
+      
+      // Create a DirectoryInfo object representing the specified directory.
+      DirectoryInfo^ dir = gcnew DirectoryInfo( args[ 1 ] );
+      
+      // Get the FileInfo objects for every file in the directory.
+      array<FileInfo^>^files = dir->GetFiles();
+      
+      // Initialize a RIPE160 hash object.
+      RIPEMD160 ^ myRIPEMD160 = RIPEMD160Managed::Create();
+      array<Byte>^hashValue;
+      
+      // Compute and print the hash values for each file in directory.
+      System::Collections::IEnumerator^ myEnum = files->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         FileInfo^ fInfo = safe_cast<FileInfo^>(myEnum->Current);
+         
+         // Create a fileStream for the file.
+         FileStream^ fileStream = fInfo->Open( FileMode::Open );
+         
+         // Compute the hash of the fileStream.
+         hashValue = myRIPEMD160->ComputeHash( fileStream );
+         
+         // Write the name of the file to the Console.
+         Console::Write( "{0}: ", fInfo->Name );
+         
+         // Write the hash value to the Console.
+         PrintByteArray( hashValue );
+         
+         // Close the file.
+         fileStream->Close();
+      }
+      return 0;
+   }
+   catch ( DirectoryNotFoundException^ ) 
+   {
+      Console::WriteLine( "Error: The directory specified could not be found." );
+   }
+   catch ( IOException^ ) 
+   {
+      Console::WriteLine( "Error: A file in the directory could not be accessed." );
+   }
+
+}

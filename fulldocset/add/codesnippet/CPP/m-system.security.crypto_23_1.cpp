@@ -1,73 +1,109 @@
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
-
-// Print the byte array in a readable format.
-void PrintByteArray( array<Byte>^array )
+using namespace System::Text;
+using namespace System::IO;
+void EncryptTextToFile( String^ Data, String^ FileName, array<Byte>^Key, array<Byte>^IV )
 {
-   int i;
-   for ( i = 0; i < array->Length; i++ )
+   try
    {
-      Console::Write( String::Format( "{0:X2}", array[ i ] ) );
-      if ( (i % 4) == 3 )
-            Console::Write( " " );
-
+      
+      // Create or open the specified file.
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
+      
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,(gcnew TripleDESCryptoServiceProvider)->CreateEncryptor( Key, IV ),CryptoStreamMode::Write );
+      
+      // Create a StreamWriter using the CryptoStream.
+      StreamWriter^ sWriter = gcnew StreamWriter( cStream );
+      
+      // Write the data to the stream 
+      // to encrypt it.
+      sWriter->WriteLine( Data );
+      
+      // Close the streams and
+      // close the file.
+      sWriter->Close();
+      cStream->Close();
+      fStream->Close();
    }
-   Console::WriteLine();
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file access error occurred: {0}", e->Message );
+   }
+
+}
+
+String^ DecryptTextFromFile( String^ FileName, array<Byte>^Key, array<Byte>^IV )
+{
+   try
+   {
+      
+      // Create or open the specified file. 
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
+      
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,(gcnew TripleDESCryptoServiceProvider)->CreateDecryptor( Key, IV ),CryptoStreamMode::Read );
+      
+      // Create a StreamReader using the CryptoStream.
+      StreamReader^ sReader = gcnew StreamReader( cStream );
+      
+      // Read the data from the stream 
+      // to decrypt it.
+      String^ val = sReader->ReadLine();
+      
+      // Close the streams and
+      // close the file.
+      sReader->Close();
+      cStream->Close();
+      fStream->Close();
+      
+      // Return the string. 
+      return val;
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+      return nullptr;
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file access error occurred: {0}", e->Message );
+      return nullptr;
+   }
+
 }
 
 int main()
 {
-   array<String^>^args = Environment::GetCommandLineArgs();
-   if ( args->Length < 2 )
-   {
-      Console::WriteLine( "Usage: hashdir <directory>" );
-      return 0;
-   }
-
    try
    {
       
-      // Create a DirectoryInfo object representing the specified directory.
-      DirectoryInfo^ dir = gcnew DirectoryInfo( args[ 1 ] );
+      // Create a new TripleDESCryptoServiceProvider object
+      // to generate a key and initialization vector (IV).
+      TripleDESCryptoServiceProvider^ tDESalg = gcnew TripleDESCryptoServiceProvider;
       
-      // Get the FileInfo objects for every file in the directory.
-      array<FileInfo^>^files = dir->GetFiles();
+      // Create a string to encrypt.
+      String^ sData = "Here is some data to encrypt.";
+      String^ FileName = "CText.txt";
       
-      // Initialize a RIPE160 hash object.
-      RIPEMD160 ^ myRIPEMD160 = RIPEMD160Managed::Create();
-      array<Byte>^hashValue;
+      // Encrypt text to a file using the file name, key, and IV.
+      EncryptTextToFile( sData, FileName, tDESalg->Key, tDESalg->IV );
       
-      // Compute and print the hash values for each file in directory.
-      System::Collections::IEnumerator^ myEnum = files->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         FileInfo^ fInfo = safe_cast<FileInfo^>(myEnum->Current);
-         
-         // Create a fileStream for the file.
-         FileStream^ fileStream = fInfo->Open( FileMode::Open );
-         
-         // Compute the hash of the fileStream.
-         hashValue = myRIPEMD160->ComputeHash( fileStream );
-         
-         // Write the name of the file to the Console.
-         Console::Write( "{0}: ", fInfo->Name );
-         
-         // Write the hash value to the Console.
-         PrintByteArray( hashValue );
-         
-         // Close the file.
-         fileStream->Close();
-      }
-      return 0;
+      // Decrypt the text from a file using the file name, key, and IV.
+      String^ Final = DecryptTextFromFile( FileName, tDESalg->Key, tDESalg->IV );
+      
+      // Display the decrypted string to the console.
+      Console::WriteLine( Final );
    }
-   catch ( DirectoryNotFoundException^ ) 
+   catch ( Exception^ e ) 
    {
-      Console::WriteLine( "Error: The directory specified could not be found." );
-   }
-   catch ( IOException^ ) 
-   {
-      Console::WriteLine( "Error: A file in the directory could not be accessed." );
+      Console::WriteLine( e->Message );
    }
 
 }

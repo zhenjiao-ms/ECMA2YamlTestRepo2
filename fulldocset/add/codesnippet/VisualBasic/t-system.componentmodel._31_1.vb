@@ -1,10 +1,13 @@
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        TextBox1.Text = "changed"
-        AddHandler System.ComponentModel.TypeDescriptor.Refreshed, AddressOf OnRefreshed
-        System.ComponentModel.TypeDescriptor.GetProperties(TextBox1)
-        System.ComponentModel.TypeDescriptor.Refresh(TextBox1)
-    End Sub
+        <Category("Data"), _
+        Description("Indicates the source of data for the control."), _
+        RefreshProperties(RefreshProperties.Repaint), _
+        AttributeProvider(GetType(IListSource))> _
+        Public Property DataSource() As Object
+            Get
+                Return Me.dataGridView1.DataSource
+            End Get
 
-    Private Sub OnRefreshed(ByVal e As System.ComponentModel.RefreshEventArgs)
-        Console.WriteLine(e.ComponentChanged.ToString())
-    End Sub
+            Set(ByVal value As Object)
+                Me.dataGridView1.DataSource = value
+            End Set
+        End Property

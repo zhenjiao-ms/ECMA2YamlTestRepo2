@@ -1,11 +1,10 @@
 //
-// This example signs an XML file using an
-// envelope signature. It then verifies the 
-// signed XML.
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
 //
-#using <System.Xml.dll>
 #using <System.Security.dll>
-#using <System.dll>
+#using <System.Xml.dll>
 
 using namespace System;
 using namespace System::Security::Cryptography;
@@ -14,56 +13,28 @@ using namespace System::Text;
 using namespace System::Xml;
 
 // Sign an XML file and save the signature in a new file.
-static void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
+void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ Key )
 {
    
-   // Check the arguments.  
-   if ( FileName == nullptr )
-      throw gcnew ArgumentNullException( L"FileName" );
-
-   if ( SignedFileName == nullptr )
-      throw gcnew ArgumentNullException( L"SignedFileName" );
-
-   if ( Key == nullptr )
-      throw gcnew ArgumentNullException( L"Key" );
-
-   
-   // Create a new XML document.
-   XmlDocument^ doc = gcnew XmlDocument;
-   
-   // Format the document to ignore white spaces.
-   doc->PreserveWhitespace = false;
-   
-   // Load the passed XML file using it's name.
-   doc->Load( gcnew XmlTextReader( FileName ) );
-   
    // Create a SignedXml object.
-   SignedXml^ signedXml = gcnew SignedXml( doc );
+   SignedXml^ signedXml = gcnew SignedXml;
    
-   // Add the key to the SignedXml document. 
+   // Assign the key to the SignedXml object.
    signedXml->SigningKey = Key;
    
-   // Get the signature object from the SignedXml object.
-   Signature^ XMLSignature = signedXml->Signature;
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
    
-   // Create a reference to be signed.  Pass "" 
-   // to specify that all of the current XML
-   // document should be signed.
-   Reference^ reference = gcnew Reference( L"" );
-   
-   // Add an enveloped transformation to the reference.
-   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
-   reference->AddTransform( env );
-   
-   // Add the Reference object to the Signature object.
-   XMLSignature->SignedInfo->AddReference( reference );
+   // Add the passed URI to the reference object.
+   reference->Uri = URIString;
+
+   // Add the reference to the SignedXml object.
+   signedXml->AddReference( reference );
    
    // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
    KeyInfo^ keyInfo = gcnew KeyInfo;
-   keyInfo->AddClause( gcnew RSAKeyValue( dynamic_cast<RSA^>(Key) ) );
-   
-   // Add the KeyInfo object to the Reference object.
-   XMLSignature->KeyInfo = keyInfo;
+   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
+   signedXml->KeyInfo = keyInfo;
    
    // Compute the signature.
    signedXml->ComputeSignature();
@@ -72,94 +43,81 @@ static void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
    // it to an XmlElement object.
    XmlElement^ xmlDigitalSignature = signedXml->GetXml();
    
-   // Append the element to the XML document.
-   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
-   if ( dynamic_cast<XmlDeclaration^>(doc->FirstChild) )
-   {
-      doc->RemoveChild( doc->FirstChild );
-   }
-
-   
    // Save the signed XML document to a file specified
    // using the passed string.
-   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
-   doc->WriteTo( xmltw );
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
+   xmlDigitalSignature->WriteTo( xmltw );
    xmltw->Close();
 }
 
 
 // Verify the signature of an XML file and return the result.
-static Boolean VerifyXmlFile( String^ Name )
+Boolean VerifyDetachedSignature( String^ XmlSigFileName )
 {
-   
-   // Check the arguments.  
-   if ( Name == nullptr )
-      throw gcnew ArgumentNullException( L"Name" );
-
    
    // Create a new XML document.
    XmlDocument^ xmlDocument = gcnew XmlDocument;
    
-   // Format using white spaces.
-   xmlDocument->PreserveWhitespace = true;
+   // Load the passed XML file into the document.
+   xmlDocument->Load( XmlSigFileName );
    
-   // Load the passed XML file into the document. 
-   xmlDocument->Load( Name );
-   
-   // Create a new SignedXml object and pass it
-   // the XML document class.
-   SignedXml^ signedXml = gcnew SignedXml( xmlDocument );
+   // Create a new SignedXMl object.
+   SignedXml^ signedXml = gcnew SignedXml;
    
    // Find the "Signature" node and create a new
    // XmlNodeList object.
-   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( L"Signature" );
+   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
    
    // Load the signature node.
-   signedXml->LoadXml( dynamic_cast<XmlElement^>(nodeList->Item( 0 )) );
+   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
    
    // Check the signature and return the result.
    return signedXml->CheckSignature();
 }
 
+
+
+[STAThread]
 int main()
 {
+   array<String^>^args = Environment::GetCommandLineArgs();
    
-   // Generate a signing key.
-   RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+   // The URI to sign.
+   String^ resourceToSign = "http://www.microsoft.com";
+   
+   // The name of the file to which to save the XML signature.
+   String^ XmlFileName = "xmldsig.xml";
    try
    {
       
-      // Sign an XML file and save the signature to a 
-      // new file.
-      SignXmlFile( L"Test.xml", L"SignedExample.xml", Key );
-      Console::WriteLine( L"XML file signed." );
+      // Generate a signing key.
+      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      Console::WriteLine( "Signing: {0}", resourceToSign );
+      
+      // Sign the detached resourceand save the signature in an XML file.
+      SignDetachedResource( resourceToSign, XmlFileName, Key );
+      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
       
       // Verify the signature of the signed XML.
-      Console::WriteLine( L"Verifying signature..." );
-      bool result = VerifyXmlFile( L"SignedExample.xml" );
+      Console::WriteLine( "Verifying signature..." );
+      
+      //Verify the XML signature in the XML file.
+      bool result = VerifyDetachedSignature( XmlFileName );
       
       // Display the results of the signature verification to 
       // the console.
       if ( result )
       {
-         Console::WriteLine( L"The XML signature is valid." );
+         Console::WriteLine( "The XML signature is valid." );
       }
       else
       {
-         Console::WriteLine( L"The XML signature is not valid." );
+         Console::WriteLine( "The XML signature is not valid." );
       }
    }
    catch ( CryptographicException^ e ) 
    {
       Console::WriteLine( e->Message );
    }
-   finally
-   {
-      
-      // Clear resources associated with the 
-      // RSACryptoServiceProvider.
-      Key->Clear();
-   }
 
-   return 1;
 }

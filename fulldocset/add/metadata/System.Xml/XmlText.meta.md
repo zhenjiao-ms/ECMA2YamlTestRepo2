@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Xml.XmlText.PreviousText
-internalonly: False
----
-
----
 uid: System.Xml.XmlText.ParentNode
 internalonly: False
 ---

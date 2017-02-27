@@ -1,13 +1,14 @@
-private void ContainsAttribute() {
-    // Creates a new collection and assigns it the attributes for button1.
-    AttributeCollection attributes;
-    attributes = TypeDescriptor.GetAttributes(button1);
+private void MyEnumerator() {
+    // Creates a new collection, and assigns to it the events for button1.
+    EventDescriptorCollection events = TypeDescriptor.GetEvents(button1);
  
-    // Sets an Attribute to the specific attribute.
-    BrowsableAttribute myAttribute = BrowsableAttribute.Yes;
+    // Creates an enumerator.
+    IEnumerator ie = events.GetEnumerator();
  
-    if (attributes.Contains(myAttribute))
-       textBox1.Text = "button1 has a browsable attribute.";
-    else
-       textBox1.Text = "button1 does not have a browsable attribute.";
+    // Prints the name of each event in the collection.
+    Object myEvent;
+    while(ie.MoveNext() == true) {
+       myEvent = ie.Current;
+       textBox1.Text += myEvent.ToString() + '\n';
+    }
  }

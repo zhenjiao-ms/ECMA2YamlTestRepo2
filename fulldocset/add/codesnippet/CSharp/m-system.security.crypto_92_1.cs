@@ -1,66 +1,202 @@
 using System;
+using System.Xml;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.IO;
+using System.Security.Cryptography.Xml;
 
-public class X509store2
+class Program
 {
-	public static void Main (string[] args)
+	static void Main(string[] args)
 	{
-		//Create new X509 store called teststore from the local certificate store.
-		X509Store store = new X509Store ("teststore", StoreLocation.CurrentUser);
-		store.Open (OpenFlags.ReadWrite);
-		X509Certificate2 certificate = new X509Certificate2 ();
 
-		//Create certificates from certificate files.
-		//You must put in a valid path to three certificates in the following constructors.
-		X509Certificate2 certificate1 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate2 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate5 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
+		// Create an XmlDocument object.
+		XmlDocument xmlDoc = new XmlDocument();
 
-		//Create a collection and add two of the certificates.
-		X509Certificate2Collection collection = new X509Certificate2Collection ();
-		collection.Add (certificate2);
-		collection.Add (certificate5);
-
-		//Add certificates to the store.
-		store.Add (certificate1);
-		store.AddRange (collection);
-
-		X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("Store name: {0}", store.Name);
-		Console.WriteLine ("Store location: {0}", store.Location);
-		foreach (X509Certificate2 x509 in storecollection)
+		// Load an XML file into the XmlDocument object.
+		try
 		{
-			Console.WriteLine("certificate name: {0}",x509.Subject);
+			xmlDoc.PreserveWhitespace = true;
+			xmlDoc.Load("test.xml");
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
 		}
 
-		//Remove a certificate.
-		store.Remove (certificate1);
-		X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		foreach (X509Certificate2 x509 in storecollection2)
+		// Create a new RSA key.  This key will encrypt a symmetric key,
+		// which will then be imbedded in the XML document.  
+		RSA rsaKey = new RSACryptoServiceProvider();
+
+
+		try
 		{
-			Console.WriteLine ("certificate name: {0}", x509.Subject);
+			// Encrypt the "creditcard" element.
+			Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey");
+
+			// Inspect the EncryptedKey element.
+			InspectElement(xmlDoc);
+
+			// Decrypt the "creditcard" element.
+			Decrypt(xmlDoc, rsaKey, "rsaKey");
+
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e.Message);
+		}
+		finally
+		{
+			// Clear the RSA key.
+			rsaKey.Clear();
 		}
 
-		//Remove a range of certificates.
-		store.RemoveRange (collection);
-		X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		if (storecollection3.Count == 0)
+	}
+
+	public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, RSA Alg, string KeyName)
+	{
+		// Check the arguments.  
+		if (Doc == null)
+			throw new ArgumentNullException("Doc");
+		if (ElementToEncrypt == null)
+			throw new ArgumentNullException("ElementToEncrypt");
+		if (Alg == null)
+			throw new ArgumentNullException("Alg");
+
+		////////////////////////////////////////////////
+		// Find the specified element in the XmlDocument
+		// object and create a new XmlElemnt object.
+		////////////////////////////////////////////////
+
+		XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
+
+		// Throw an XmlException if the element was not found.
+		if (elementToEncrypt == null)
 		{
-			Console.WriteLine ("Store contains no certificates.");
-		}
-		else
-		{
-			foreach (X509Certificate2 x509 in storecollection3)
-			{
-				Console.WriteLine ("certificate name: {0}", x509.Subject);
-			}
+			throw new XmlException("The specified element was not found");
+
 		}
 
-		//Close the store.
-		store.Close ();
-	}	
+		//////////////////////////////////////////////////
+		// Create a new instance of the EncryptedXml class 
+		// and use it to encrypt the XmlElement with the 
+		// a new random symmetric key.
+		//////////////////////////////////////////////////
+
+		// Create a 256 bit Rijndael key.
+		RijndaelManaged sessionKey = new RijndaelManaged();
+		sessionKey.KeySize = 256;
+
+		EncryptedXml eXml = new EncryptedXml();
+
+		byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, sessionKey, false);
+
+		////////////////////////////////////////////////
+		// Construct an EncryptedData object and populate
+		// it with the desired encryption information.
+		////////////////////////////////////////////////
+
+
+		EncryptedData edElement = new EncryptedData();
+		edElement.Type = EncryptedXml.XmlEncElementUrl;
+
+		// Create an EncryptionMethod element so that the 
+		// receiver knows which algorithm to use for decryption.
+
+		edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncAES256Url);
+
+		// Encrypt the session key and add it to an EncryptedKey element.
+		EncryptedKey ek = new EncryptedKey();
+
+		byte[] encryptedKey = EncryptedXml.EncryptKey(sessionKey.Key, Alg, false);
+
+		ek.CipherData = new CipherData(encryptedKey);
+
+		ek.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncRSA15Url);
+
+		// Set the KeyInfo element to specify the
+		// name of the RSA key.
+
+		// Create a new KeyInfo element.
+		edElement.KeyInfo = new KeyInfo();
+
+		// Create a new KeyInfoName element.
+		KeyInfoName kin = new KeyInfoName();
+
+		// Specify a name for the key.
+		kin.Value = KeyName;
+
+		// Add the KeyInfoName element to the 
+		// EncryptedKey object.
+		ek.KeyInfo.AddClause(kin);
+
+		// Add the encrypted key to the 
+		// EncryptedData object.
+
+		edElement.KeyInfo.AddClause(new KeyInfoEncryptedKey(ek));
+
+		// Add the encrypted element data to the 
+		// EncryptedData object.
+		edElement.CipherData.CipherValue = encryptedElement;
+
+		////////////////////////////////////////////////////
+		// Replace the element from the original XmlDocument
+		// object with the EncryptedData element.
+		////////////////////////////////////////////////////
+
+		EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
+	}
+
+	public static void Decrypt(XmlDocument Doc, RSA Alg, string KeyName)
+	{
+		// Check the arguments.  
+		if (Doc == null)
+			throw new ArgumentNullException("Doc");
+		if (Alg == null)
+			throw new ArgumentNullException("Alg");
+		if (KeyName == null)
+			throw new ArgumentNullException("KeyName");
+
+		// Create a new EncryptedXml object.
+		EncryptedXml exml = new EncryptedXml(Doc);
+
+		// Add a key-name mapping.
+		// This method can only decrypt documents
+		// that present the specified key name.
+		exml.AddKeyNameMapping(KeyName, Alg);
+
+		// Decrypt the element.
+		exml.DecryptDocument();
+
+	}
+
+	static void InspectElement(XmlDocument Doc)
+	{
+		// Get the EncryptedData element from the XMLDocument object.
+		XmlElement encryptedData = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+		// Create a new EncryptedData object.
+		EncryptedData encData = new EncryptedData();
+
+		// Load the XML from the document to
+		// initialize the EncryptedData object.
+		encData.LoadXml(encryptedData);
+
+		// Display the properties.
+		// Most values are Null by default.
+
+
+		
+		Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml);
+		Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding);
+		Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml);
+		if (encData.EncryptionProperties.Count >= 1)
+		{
+			Console.WriteLine("EncryptedData.EncryptionProperties: " + encData.EncryptionProperties[0].GetXml().InnerXml);
+		}
+
+		Console.WriteLine("EncryptedData.Id: " + encData.Id);
+		Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml);
+		Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType);
+	}
+
 }

@@ -1,66 +1,20 @@
-        Public Overrides Function GetSortedActionItems() _
-        As DesignerActionItemCollection
-            Dim items As New DesignerActionItemCollection()
+    <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
+    Public Class CDesigner
+        Inherits System.ComponentModel.Design.ComponentDesigner
 
-            'Define static section header entries.
-            items.Add(New DesignerActionHeaderItem("Appearance"))
-            items.Add(New DesignerActionHeaderItem("Information"))
+        Public Overrides Sub Initialize(ByVal comp As IComponent)
+            MyBase.Initialize(comp)
 
-            'Boolean property for locking color selections.
-            items.Add(New DesignerActionPropertyItem( _
-            "LockColors", _
-            "Lock Colors", _
-            "Appearance", _
-            "Locks the color properties."))
+            Dim mcs As IMenuCommandService = CType(comp.Site.GetService(GetType(IMenuCommandService)), IMenuCommandService)
+            Dim mc As New MenuCommand(New EventHandler(AddressOf OnF1Help), StandardCommands.F1Help)
+            mc.Enabled = True
+            mc.Visible = True
+            mc.Supported = True
+            mcs.AddCommand(mc)
+            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.")
+        End Sub
 
-            If Not LockColors Then
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "BackColor", _
-                "Back Color", _
-                "Appearance", _
-                "Selects the background color."))
-
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "ForeColor", _
-                "Fore Color", _
-                "Appearance", _
-                "Selects the foreground color."))
-
-                'This next method item is also added to the context menu 
-                ' (as a designer verb).
-                items.Add( _
-                New DesignerActionMethodItem( _
-                Me, _
-                "InvertColors", _
-                "Invert Colors", _
-                "Appearance", _
-                "Inverts the fore and background colors.", _
-                True))
-            End If
-            items.Add( _
-            New DesignerActionPropertyItem( _
-            "Text", _
-            "Text String", _
-            "Appearance", _
-            "Sets the display text."))
-
-            'Create entries for static Information section.
-            Dim location As New StringBuilder("Location: ")
-            location.Append(colLabel.Location)
-            Dim size As New StringBuilder("Size: ")
-            size.Append(colLabel.Size)
-
-            items.Add( _
-            New DesignerActionTextItem( _
-            location.ToString(), _
-            "Information"))
-
-            items.Add( _
-            New DesignerActionTextItem( _
-            size.ToString(), _
-            "Information"))
-
-            Return items
-        End Function
+        Private Sub OnF1Help(ByVal sender As Object, ByVal e As EventArgs)
+            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.")
+        End Sub
+    End Class

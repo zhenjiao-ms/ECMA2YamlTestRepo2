@@ -1,19 +1,28 @@
-        public class MyCustomUserNameValidator : UserNamePasswordValidator
+    public class MyX509CertificateValidator : X509CertificateValidator
+    {
+        string allowedIssuerName;
+        public MyX509CertificateValidator(string allowedIssuerName)
         {
-            // This method validates users. It allows two users, test1 and test2 
-            // with passwords 1tset and 2tset respectively.
-            // This code is for illustration purposes only and 
-            // MUST NOT be used in a production environment because it is NOT secure.	
-            public override void Validate(string userName, string password)
+            if (allowedIssuerName == null)
             {
-                if (null == userName || null == password)
-                {
-                    throw new ArgumentNullException();
-                }
+                throw new ArgumentNullException("allowedIssuerName");
+            }
 
-                if (!(userName == "test1" && password == "1tset") && !(userName == "test2" && password == "2tset"))
-                {
-                    throw new SecurityTokenException("Unknown Username or Password");
-                }
+            this.allowedIssuerName = allowedIssuerName;
+        }
+        public override void Validate(X509Certificate2 certificate)
+        {
+            // Check that there is a certificate.
+            if (certificate == null)
+            {
+                throw new ArgumentNullException("certificate");
+            }
+
+            // Check that the certificate issuer matches the configured issuer
+            if (allowedIssuerName != certificate.IssuerName.Name)
+            {
+                throw new SecurityTokenValidationException
+                  ("Certificate was not issued by a trusted issuer");
             }
         }
+    }

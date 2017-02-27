@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Construction.ProjectChooseElement.ConditionLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Construction.ProjectChooseElement.Condition
 internalonly: False
 ---

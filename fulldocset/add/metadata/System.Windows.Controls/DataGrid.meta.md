@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.DataGrid.NewItemMargin
-internalonly: False
----
-
----
 uid: System.Windows.Controls.DataGrid.HorizontalScrollBarVisibility
 internalonly: False
 ---
@@ -50,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.DataGrid.EnableRowVirtualization
-internalonly: False
----
-
----
-uid: System.Windows.Controls.DataGrid.AddingNewItem
 internalonly: False
 ---
 
@@ -110,11 +100,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.DataGrid.SelectAllCells
-internalonly: False
----
-
----
-uid: System.Windows.Controls.DataGrid.OnTextInput(System.Windows.Input.TextCompositionEventArgs)
 internalonly: False
 ---
 
@@ -230,11 +215,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.DataGrid.RowStyle
-internalonly: False
----
-
----
-uid: System.Windows.Controls.DataGrid.NewItemMarginProperty
 internalonly: False
 ---
 
@@ -425,11 +405,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.DataGrid.NonFrozenColumnsViewportHorizontalOffset
-internalonly: False
----
-
----
-uid: System.Windows.Controls.DataGrid.OnAddingNewItem(System.Windows.Controls.AddingNewItemEventArgs)
 internalonly: False
 ---
 

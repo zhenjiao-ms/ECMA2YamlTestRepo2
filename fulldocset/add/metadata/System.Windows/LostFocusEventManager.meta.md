@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.LostFocusEventManager.NewListenerList
-internalonly: False
----
-
----
 uid: System.Windows.LostFocusEventManager.AddListener(System.Windows.DependencyObject,System.Windows.IWeakEventListener)
 internalonly: False
 ---
@@ -20,16 +15,6 @@ internalonly: False
 
 ---
 uid: System.Windows.LostFocusEventManager.StartListening(System.Object)
-internalonly: False
----
-
----
-uid: System.Windows.LostFocusEventManager.RemoveHandler(System.Windows.DependencyObject,System.EventHandler{System.Windows.RoutedEventArgs})
-internalonly: False
----
-
----
-uid: System.Windows.LostFocusEventManager.AddHandler(System.Windows.DependencyObject,System.EventHandler{System.Windows.RoutedEventArgs})
 internalonly: False
 ---
 

@@ -34,11 +34,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Xaml.XamlDataDrivenToolTask.CreateSwitchValue(System.String,System.String,System.String,System.Tuple{System.String,System.Boolean}[])
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Xaml.XamlDataDrivenToolTask.GenerateResponseFileCommands
 internalonly: False
 ---
@@ -90,11 +85,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.Xaml.XamlDataDrivenToolTask.#ctor(System.String[],System.Resources.ResourceManager)
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.XamlDataDrivenToolTask.ReadSwitchMap2(System.String,System.Tuple{System.String,System.String,System.Tuple{System.String,System.Boolean}[]}[],System.String)
 internalonly: False
 ---
 

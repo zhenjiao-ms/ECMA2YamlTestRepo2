@@ -34,17 +34,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.MenuItem.UsesItemContainerTemplate
-internalonly: False
----
-
----
 uid: System.Windows.Controls.MenuItem.PrepareContainerForItemOverride(System.Windows.DependencyObject,System.Object)
-internalonly: False
----
-
----
-uid: System.Windows.Controls.MenuItem.UsesItemContainerTemplateProperty
 internalonly: False
 ---
 
@@ -140,16 +130,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.MenuItem.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)
-internalonly: False
----
-
----
-uid: System.Windows.Controls.MenuItem.ItemContainerTemplateSelectorProperty
-internalonly: False
----
-
----
-uid: System.Windows.Controls.MenuItem.ItemContainerTemplateSelector
 internalonly: False
 ---
 

@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.Sockets.TcpListener.AcceptTcpClientAsync
-internalonly: False
----
-
----
 uid: System.Net.Sockets.TcpListener.Start
 internalonly: False
 ---
@@ -59,11 +54,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Net.Sockets.TcpListener.AcceptSocketAsync
-internalonly: False
----
-
----
 uid: System.Net.Sockets.TcpListener.AcceptTcpClient
 internalonly: False
 ---
@@ -95,11 +85,6 @@ internalonly: False
 
 ---
 uid: System.Net.Sockets.TcpListener.BeginAcceptSocket(System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Net.Sockets.TcpListener.Create(System.Int32)
 internalonly: False
 ---
 

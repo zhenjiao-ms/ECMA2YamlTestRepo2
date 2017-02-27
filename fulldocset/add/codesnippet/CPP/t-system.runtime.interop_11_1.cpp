@@ -2,12 +2,19 @@ using namespace System;
 using namespace System::Reflection;
 using namespace System::Runtime::InteropServices;
 
-[assembly: AssemblyVersion("3.0.0.0")];
-[assembly: ComCompatibleVersion(1,0,0,0)];
-namespace MyNamespace
+ref class ClassD
 {
-    public ref class TheClass
-    {
-        // Insert code.
-    };
+public:
+   static bool IsHiddenField( FieldInfo^ fi )
+   {
+      array<Object^>^FieldAttributes = fi->GetCustomAttributes( TypeLibVarAttribute::typeid, true );
+      if ( FieldAttributes->Length > 0 )
+      {
+         TypeLibVarAttribute^ tlv = dynamic_cast<TypeLibVarAttribute^>(FieldAttributes[ 0 ]);
+         TypeLibVarFlags flags = tlv->Value;
+         return (flags & TypeLibVarFlags::FHidden) != (TypeLibVarFlags)0;
+      }
+
+      return false;
+   }
 };

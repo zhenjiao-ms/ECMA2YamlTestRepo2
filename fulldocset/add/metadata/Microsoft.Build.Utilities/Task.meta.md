@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Utilities.Task.BuildEngine4
-internalonly: False
----
-
----
 uid: Microsoft.Build.Utilities.Task.TaskResources
 internalonly: False
 ---

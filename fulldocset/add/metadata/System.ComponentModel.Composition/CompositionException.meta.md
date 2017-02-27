@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ComponentModel.Composition.CompositionException.RootCauses
-internalonly: False
----
-
----
 uid: System.ComponentModel.Composition.CompositionException.Errors
 internalonly: False
 ---

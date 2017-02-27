@@ -1,12 +1,7 @@
-      try
+      [ReadOnly(true)]
+      int get()
       {
-         License^ licTest = nullptr;
-         licTest = LicenseManager::Validate( Form1::typeid, this );
+         // Insert code here.
+         return 0;
       }
-      catch ( LicenseException^ licE ) 
-      {
-         Console::WriteLine( licE->Message );
-         Console::WriteLine( licE->LicensedType );
-         Console::WriteLine( licE->StackTrace );
-         Console::WriteLine( licE->Source );
-      }
+   }

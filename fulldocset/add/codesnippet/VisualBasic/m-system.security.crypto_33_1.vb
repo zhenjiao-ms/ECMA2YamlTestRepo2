@@ -1,189 +1,153 @@
+' This example signs an XML file using an
+' envelope signature. It then verifies the 
+' signed XML.
+'
 Imports System
-Imports System.Xml
 Imports System.Security.Cryptography
 Imports System.Security.Cryptography.Xml
+Imports System.Text
+Imports System.Xml
 
 
 
-Module Program
+Module SignVerifyEnvelope
+
 
     Sub Main(ByVal args() As String)
-
-        ' Create an XmlDocument object.
-        Dim xmlDoc As New XmlDocument()
-
-        ' Load an XML file into the XmlDocument object.
-        Try
-            xmlDoc.PreserveWhitespace = True
-            xmlDoc.Load("test.xml")
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        End Try
-
-        ' Create a new RSA key.  This key will encrypt a symmetric key,
-        ' which will then be imbedded in the XML document.  
-        Dim rsaKey As New RSACryptoServiceProvider()
-
+        ' Generate a signing key.
+        Dim Key As New RSACryptoServiceProvider()
 
         Try
-            ' Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey")
 
-            ' Inspect the EncryptedKey element.
-            InspectElement(xmlDoc)
+            ' Sign an XML file and save the signature to a 
+            ' new file.
+            SignXmlFile("Test.xml", "SignedExample.xml", Key)
+            Console.WriteLine("XML file signed.")
 
-            ' Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, rsaKey, "rsaKey")
+            ' Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...")
 
-        Catch e As Exception
+            Dim result As Boolean = VerifyXmlFile("SignedExample.xml")
+
+            ' Display the results of the signature verification to 
+            ' the console.
+            If result Then
+                Console.WriteLine("The XML signature is valid.")
+            Else
+                Console.WriteLine("The XML signature is not valid.")
+            End If
+        Catch e As CryptographicException
             Console.WriteLine(e.Message)
         Finally
-            ' Clear the RSA key.
-            rsaKey.Clear()
+            ' Clear resources associated with the 
+            ' RSACryptoServiceProvider.
+            Key.Clear()
         End Try
 
     End Sub
 
 
-    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptParam As String, ByVal Alg As RSA, ByVal KeyName As String)
+    ' Sign an XML file and save the signature in a new file.
+    Sub SignXmlFile(ByVal FileName As String, ByVal SignedFileName As String, ByVal Key As RSA)
         ' Check the arguments.  
-        If Doc Is Nothing Then
-            Throw New ArgumentNullException("Doc")
+        If FileName Is Nothing Then
+            Throw New ArgumentNullException("FileName")
         End If
-        If ElementToEncryptParam Is Nothing Then
-            Throw New ArgumentNullException("ElementToEncrypt")
+        If SignedFileName Is Nothing Then
+            Throw New ArgumentNullException("SignedFileName")
         End If
-        If Alg Is Nothing Then
-            Throw New ArgumentNullException("Alg")
-        End If
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Find the specified element in the XmlDocument
-        ' object and create a new XmlElemnt object.
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptParam)(0)
-
-
-        ' Throw an XmlException if the element was not found.
-        If elementToEncrypt Is Nothing Then
-            Throw New XmlException("The specified element was not found")
+        If Key Is Nothing Then
+            Throw New ArgumentNullException("Key")
         End If
 
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Create a new instance of the EncryptedXml class 
-        ' and use it to encrypt the XmlElement with the 
-        ' a new random symmetric key.
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Create a 256 bit Rijndael key.
-        Dim sessionKey As New RijndaelManaged()
-        sessionKey.KeySize = 256
+        ' Create a new XML document.
+        Dim doc As New XmlDocument()
 
-        Dim eXml As New EncryptedXml()
+        ' Format the document to ignore white spaces.
+        doc.PreserveWhitespace = False
 
-        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
+        ' Load the passed XML file using it's name.
+        doc.Load(New XmlTextReader(FileName))
 
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Construct an EncryptedData object and populate
-        ' it with the desired encryption information.
-        ''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a SignedXml object.
+        Dim signedXml As New SignedXml(doc)
 
-        Dim edElement As New EncryptedData()
-        edElement.Type = EncryptedXml.XmlEncElementUrl
+        ' Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key
 
-        ' Create an EncryptionMethod element so that the 
-        ' receiver knows which algorithm to use for decryption.
-        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
+        ' Get the signature object from the SignedXml object.
+        Dim XMLSignature As Signature = signedXml.Signature
 
-        ' Encrypt the session key and add it to an EncryptedKey element.
-        Dim ek As New EncryptedKey()
+        ' Create a reference to be signed.  Pass "" 
+        ' to specify that all of the current XML
+        ' document should be signed.
+        Dim reference As New Reference("")
 
-        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
+        ' Add an enveloped transformation to the reference.
+        Dim env As New XmlDsigEnvelopedSignatureTransform()
+        reference.AddTransform(env)
 
-        ek.CipherData = New CipherData(encryptedKey)
+        ' Add the Reference object to the Signature object.
+        XMLSignature.SignedInfo.AddReference(reference)
 
-        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
+        ' Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        Dim keyInfo As New KeyInfo()
+        keyInfo.AddClause(New RSAKeyValue(CType(Key, RSA)))
 
-        ' Set the KeyInfo element to specify the
-        ' name of the RSA key.
-        ' Create a new KeyInfo element.
-        edElement.KeyInfo = New KeyInfo()
+        ' Add the KeyInfo object to the Reference object.
+        XMLSignature.KeyInfo = keyInfo
 
-        ' Create a new KeyInfoName element.
-        Dim kin As New KeyInfoName()
+        ' Compute the signature.
+        signedXml.ComputeSignature()
 
-        ' Specify a name for the key.
-        kin.Value = KeyName
+        ' Get the XML representation of the signature and save
+        ' it to an XmlElement object.
+        Dim xmlDigitalSignature As XmlElement = signedXml.GetXml()
 
-        ' Add the KeyInfoName element to the 
-        ' EncryptedKey object.
-        ek.KeyInfo.AddClause(kin)
+        ' Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, True))
 
-        ' Add the encrypted key to the 
-        ' EncryptedData object.
-        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
 
-        ' Add the encrypted element data to the 
-        ' EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement
+        If TypeOf doc.FirstChild Is XmlDeclaration Then
+            doc.RemoveChild(doc.FirstChild)
+        End If
 
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Replace the element from the original XmlDocument
-        ' object with the EncryptedData element.
-        ''''''''''''''''''''''''''''''''''''''''''''''''
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
+        ' Save the signed XML document to a file specified
+        ' using the passed string.
+        Dim xmltw As New XmlTextWriter(SignedFileName, New UTF8Encoding(False))
+        doc.WriteTo(xmltw)
+        xmltw.Close()
 
     End Sub
 
-
-    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+    ' Verify the signature of an XML file and return the result.
+    Function VerifyXmlFile(ByVal Name As String) As [Boolean]
         ' Check the arguments.  
-        If Doc Is Nothing Then
-            Throw New ArgumentNullException("Doc")
+        If Name Is Nothing Then
+            Throw New ArgumentNullException("Name")
         End If
-        If Alg Is Nothing Then
-            Throw New ArgumentNullException("Alg")
-        End If
-        If KeyName Is Nothing Then
-            Throw New ArgumentNullException("KeyName")
-        End If
-        ' Create a new EncryptedXml object.
-        Dim exml As New EncryptedXml(Doc)
+        ' Create a new XML document.
+        Dim xmlDocument As New XmlDocument()
 
-        ' Add a key-name mapping.
-        ' This method can only decrypt documents
-        ' that present the specified key name.
-        exml.AddKeyNameMapping(KeyName, Alg)
+        ' Format using white spaces.
+        xmlDocument.PreserveWhitespace = True
 
-        ' Decrypt the element.
-        exml.DecryptDocument()
+        ' Load the passed XML file into the document. 
+        xmlDocument.Load(Name)
 
-    End Sub
+        ' Create a new SignedXml object and pass it
+        ' the XML document class.
+        Dim signedXml As New SignedXml(xmlDocument)
 
+        ' Find the "Signature" node and create a new
+        ' XmlNodeList object.
+        Dim nodeList As XmlNodeList = xmlDocument.GetElementsByTagName("Signature")
 
-    Sub InspectElement(ByVal Doc As XmlDocument)
-        ' Get the EncryptedData element from the XMLDocument object.
-        Dim encryptedData As XmlElement = Doc.GetElementsByTagName("EncryptedData")(0)
+        ' Load the signature node.
+        signedXml.LoadXml(CType(nodeList(0), XmlElement))
 
-        ' Create a new EncryptedData object.
-        Dim encData As New EncryptedData()
+        ' Check the signature and return the result.
+        Return signedXml.CheckSignature()
 
-        ' Load the XML from the document to
-        ' initialize the EncryptedData object.
-        encData.LoadXml(encryptedData)
-
-        ' Display the properties.
-        ' Most values are Null by default.
-
-
-        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml)
-        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding)
-        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml)
-        If encData.EncryptionProperties.Count >= 1 Then
-            Console.WriteLine("EncryptedData.EncryptionProperties: " + encData.EncryptionProperties(0).GetXml().InnerXml)
-        End If
-
-        Console.WriteLine("EncryptedData.Id: " + encData.Id)
-        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml)
-        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType)
-
-    End Sub
+    End Function
 End Module

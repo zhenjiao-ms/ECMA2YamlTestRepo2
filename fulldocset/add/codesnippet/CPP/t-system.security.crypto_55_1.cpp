@@ -1,131 +1,87 @@
+#using <System.dll>
+#using <System.Security.dll>
+
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
-
-// Computes a keyed hash for a source file, creates a target file with the keyed hash
-// prepended to the contents of the source file, then decodes the file and compares
-// the source and the decoded files.
-void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
-{
-   
-   // Initialize the keyed hash object.
-   HMACSHA256^ myhmacsha256 = gcnew HMACSHA256( key );
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
-   
-   // Compute the hash of the input file.
-   array<Byte>^hashValue = myhmacsha256->ComputeHash( inStream );
-   
-   // Reset inStream to the beginning of the file.
-   inStream->Position = 0;
-   
-   // Write the computed hash value to the output file.
-   outStream->Write( hashValue, 0, hashValue->Length );
-   
-   // Copy the contents of the sourceFile to the destFile.
-   int bytesRead;
-   
-   // read 1K at a time
-   array<Byte>^buffer = gcnew array<Byte>(1024);
-   do
-   {
-      
-      // Read from the wrapping CryptoStream.
-      bytesRead = inStream->Read( buffer, 0, 1024 );
-      outStream->Write( buffer, 0, bytesRead );
-   }
-   while ( bytesRead > 0 );
-
-   myhmacsha256->Clear();
-   
-   // Close the streams
-   inStream->Close();
-   outStream->Close();
-   return;
-} // end EncodeFile
-
-
-
-// Decode the encoded file and compare to original file.
-bool DecodeFile( array<Byte>^key, String^ sourceFile )
-{
-   
-   // Initialize the keyed hash object. 
-   HMACSHA256^ hmacsha256 = gcnew HMACSHA256( key );
-   
-   // Create an array to hold the keyed hash value read from the file.
-   array<Byte>^storedHash = gcnew array<Byte>(hmacsha256->HashSize / 8);
-   
-   // Create a FileStream for the source file.
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   
-   // Read in the storedHash.
-   inStream->Read( storedHash, 0, storedHash->Length );
-   
-   // Compute the hash of the remaining contents of the file.
-   // The stream is properly positioned at the beginning of the content, 
-   // immediately after the stored hash value.
-   array<Byte>^computedHash = hmacsha256->ComputeHash( inStream );
-   
-   // compare the computed hash with the stored value
-   bool err = false;
-   for ( int i = 0; i < storedHash->Length; i++ )
-   {
-      if ( computedHash[ i ] != storedHash[ i ] )
-      {
-         err = true;
-      }
-   }
-   if (err)
-        {
-            Console::WriteLine("Hash values differ! Encoded file has been tampered with!");
-            return false;
-        }
-        else
-        {
-            Console::WriteLine("Hash values agree -- no tampering occurred.");
-            return true;
-        }
-
-} //end DecodeFile
-
+using namespace System::Security::Cryptography::X509Certificates;
 
 int main()
 {
-   array<String^>^Fileargs = Environment::GetCommandLineArgs();
-   String^ usageText = "Usage: HMACSHA256 inputfile.txt encodedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
    
-   //If no file names are specified, write usage text.
-   if ( Fileargs->Length < 3 )
+   //The following example demonstrates the usage of the AsnEncodedData classes.
+   // Asn encoded data is read from the extensions of an X509 certificate.
+   try
    {
-      Console::WriteLine( usageText );
-   }
-   else
-   {
-      try
+      
+      // Open the certificate store.
+      X509Store^ store = gcnew X509Store( L"MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
+      
+      // Select one or more certificates to display extensions information.
+      X509Certificate2Collection^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, L"Certificate Select",L"Select certificates from the following list to get extension information on that certificate",X509SelectionFlag::MultiSelection);
+      
+      // Create a new AsnEncodedDataCollection object.
+      AsnEncodedDataCollection^ asncoll = gcnew AsnEncodedDataCollection;
+      for ( int i = 0; i < scollection->Count; i++ )
       {
          
-         // Create a random key using a random number generator. This would be the
-         //  secret key shared by sender and receiver.
-         array<Byte>^secretkey = gcnew array<Byte>(64);
+         // Display certificate information.
+         Console::ForegroundColor = ConsoleColor::Red;
+         Console::WriteLine( L"Certificate name: {0}", scollection[i]->GetName() );
+         Console::ResetColor();
          
-         //RNGCryptoServiceProvider is an implementation of a random number generator.
-         RNGCryptoServiceProvider^ rng = gcnew RNGCryptoServiceProvider;
-         
-         // The array is now filled with cryptographically strong random bytes.
-         rng->GetBytes( secretkey );
-         
-         // Use the secret key to encode the message file.
-         EncodeFile( secretkey, Fileargs[ 1 ], Fileargs[ 2 ] );
-         
-         // Take the encoded file and decode
-         DecodeFile( secretkey, Fileargs[ 2 ] );
-      }
-      catch ( IOException^ e ) 
-      {
-         Console::WriteLine( "Error: File not found", e );
-      }
+         // Display extensions information.
+         System::Collections::IEnumerator^ myEnum = scollection[i]->Extensions->GetEnumerator();
+         while ( myEnum->MoveNext() )
+         {
+            X509Extension^ extension = safe_cast<X509Extension ^>(myEnum->Current);
+            
+            // Create an AsnEncodedData object using the extensions information.
+            AsnEncodedData^ asndata = gcnew AsnEncodedData( extension->Oid,extension->RawData );
+            Console::ForegroundColor = ConsoleColor::Green;
+            Console::WriteLine( L"Extension type: {0}", extension->Oid->FriendlyName );
+            Console::WriteLine( L"Oid value: {0}", asndata->Oid->Value );
+            Console::WriteLine( L"Raw data length: {0} {1}", asndata->RawData->Length, Environment::NewLine );
+            Console::ResetColor();
+            Console::WriteLine( asndata->Format(true) );
+            Console::WriteLine( Environment::NewLine );
+            
+            // Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+            asncoll->Add( asndata );
+         }
 
+         Console::WriteLine( Environment::NewLine );
+
+      }
+      Console::ForegroundColor = ConsoleColor::Red;
+      Console::WriteLine( L"Number of AsnEncodedData items in the collection: {0} {1}", asncoll->Count, Environment::NewLine );
+      Console::ResetColor();
+      store->Close();
+      
+      //Create an enumerator for moving through the collection.
+      AsnEncodedDataEnumerator^ asne = asncoll->GetEnumerator();
+      
+      //You must execute a MoveNext() to get to the first item in the collection.
+      asne->MoveNext();
+      
+      // Write out AsnEncodedData in the collection.
+      Console::ForegroundColor = ConsoleColor::Blue;
+      Console::WriteLine( L"First AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      asne->MoveNext();
+      Console::ForegroundColor = ConsoleColor::DarkBlue;
+      Console::WriteLine( L"Second AsnEncodedData in the collection: {0}", asne->Current->Format(true) );
+      Console::ResetColor();
+      
+      //Return index in the collection to the beginning.
+      asne->Reset();
    }
-} //end main
+   catch ( CryptographicException^ ) 
+   {
+      Console::WriteLine( L"Information could not be written out for this certificate." );
+   }
 
+   return 1;
+}

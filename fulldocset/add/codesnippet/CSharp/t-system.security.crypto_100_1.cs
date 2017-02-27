@@ -1,114 +1,80 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using System.IO;
 
-class TrippleDESCSPSample
+namespace MD5Sample
 {
-
-    static void Main()
+    class Program
     {
-        try
+        static void Main(string[] args)
         {
-            // Create a new TripleDESCryptoServiceProvider object
-            // to generate a key and initialization vector (IV).
-            TripleDESCryptoServiceProvider tDESalg = new TripleDESCryptoServiceProvider();
+            string source = "Hello World!";
+            using (MD5 md5Hash = MD5.Create())
+            {
+                string hash = GetMd5Hash(md5Hash, source);
 
-            // Create a string to encrypt.
-            string sData = "Here is some data to encrypt.";
-            string FileName = "CText.txt";
+                Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
 
-            // Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, tDESalg.Key, tDESalg.IV);
+                Console.WriteLine("Verifying the hash...");
 
-            // Decrypt the text from a file using the file name, key, and IV.
-            string Final = DecryptTextFromFile(FileName, tDESalg.Key, tDESalg.IV);
-            
-            // Display the decrypted string to the console.
-            Console.WriteLine(Final);
+                if (VerifyMd5Hash(md5Hash, source, hash))
+                {
+                    Console.WriteLine("The hashes are the same.");
+                }
+                else
+                {
+                    Console.WriteLine("The hashes are not same.");
+                }
+            }
+
+
+
         }
-        catch (Exception e)
+        static string GetMd5Hash(MD5 md5Hash, string input)
         {
-            Console.WriteLine(e.Message);
-        }
-       
-    }
 
-    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file.
-            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                new TripleDESCryptoServiceProvider().CreateEncryptor(Key,IV), 
-                CryptoStreamMode.Write); 
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
 
-            // Create a StreamWriter using the CryptoStream.
-            StreamWriter sWriter = new StreamWriter(cStream);
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
 
-            // Write the data to the stream 
-            // to encrypt it.
-            sWriter.WriteLine(Data);
-  
-            // Close the streams and
-            // close the file.
-            sWriter.Close();
-            cStream.Close();
-            fStream.Close();
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file access error occurred: {0}", e.Message);
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
         }
 
-    }
-
-    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
-    {
-        try
+        // Verify a hash against a string.
+        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
         {
-            // Create or open the specified file. 
-            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
-  
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                new TripleDESCryptoServiceProvider().CreateDecryptor(Key,IV), 
-                CryptoStreamMode.Read); 
+            // Hash the input.
+            string hashOfInput = GetMd5Hash(md5Hash, input);
 
-            // Create a StreamReader using the CryptoStream.
-            StreamReader sReader = new StreamReader(cStream);
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
-            // Read the data from the stream 
-            // to decrypt it.
-            string val = sReader.ReadLine();
-    
-            // Close the streams and
-            // close the file.
-            sReader.Close();
-            cStream.Close();
-            fStream.Close();
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-            // Return the string. 
-            return val;
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-            return null;
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file access error occurred: {0}", e.Message);
-            return null;
-        }
     }
 }
+
+// This code example produces the following output:
+//
+// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
+// Verifying the hash...
+// The hashes are the same.

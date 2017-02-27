@@ -1,2 +1,1 @@
-            ' Requests an IDesignerHost service from the design time environment using Component.Site.GetService()
-            Dim host As IDesignerHost = CType(Me.Component.Site.GetService(GetType(IDesignerHost)), IDesignerHost)
+        Private lists As DesignerActionListCollection

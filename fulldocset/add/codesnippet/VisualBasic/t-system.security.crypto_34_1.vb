@@ -1,94 +1,34 @@
 Imports System
 Imports System.Security.Cryptography
-Imports System.Text
-
- _
-
-Class RSACSPSample
+Imports System.Security.Permissions
+Imports System.IO
+Imports System.Security.Cryptography.X509Certificates
 
 
-    Shared Sub Main()
-        Try
-            'Create a UnicodeEncoder to convert between byte array and string.
-            Dim ByteConverter As New UnicodeEncoding()
 
-            'Create byte arrays to hold original, encrypted, and decrypted data.
-            Dim dataToEncrypt As Byte() = ByteConverter.GetBytes("Data to Encrypt")
-            Dim encryptedData() As Byte
-            Dim decryptedData() As Byte
-
-            'Create a new instance of RSACryptoServiceProvider to generate
-            'public and private key data.
-            Using RSA As New RSACryptoServiceProvider
-
-                'Pass the data to ENCRYPT, the public key information 
-                '(using RSACryptoServiceProvider.ExportParameters(false),
-                'and a boolean flag specifying no OAEP padding.
-                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(False), False)
-
-                'Pass the data to DECRYPT, the private key information 
-                '(using RSACryptoServiceProvider.ExportParameters(true),
-                'and a boolean flag specifying no OAEP padding.
-                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(True), False)
-
-                'Display the decrypted plaintext to the console. 
-                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData))
-            End Using
-        Catch e As ArgumentNullException
-            'Catch this exception in case the encryption did
-            'not succeed.
-            Console.WriteLine("Encryption failed.")
-        End Try
-    End Sub
-
-
-    Public Shared Function RSAEncrypt(ByVal DataToEncrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
-        Try
-            Dim encryptedData() As Byte
-            'Create a new instance of RSACryptoServiceProvider.
-            Using RSA As New RSACryptoServiceProvider
-
-                'Import the RSA Key information. This only needs
-                'toinclude the public key information.
-                RSA.ImportParameters(RSAKeyInfo)
-
-                'Encrypt the passed byte array and specify OAEP padding.  
-                'OAEP padding is only available on Microsoft Windows XP or
-                'later.  
-                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding)
-            End Using
-            Return encryptedData
-            'Catch and display a CryptographicException  
-            'to the console.
-        Catch e As CryptographicException
-            Console.WriteLine(e.Message)
-
-            Return Nothing
-        End Try
-    End Function
-
-
-    Public Shared Function RSADecrypt(ByVal DataToDecrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
-        Try
-            Dim decryptedData() As Byte
-            'Create a new instance of RSACryptoServiceProvider.
-            Using RSA As New RSACryptoServiceProvider
-                'Import the RSA Key information. This needs
-                'to include the private key information.
-                RSA.ImportParameters(RSAKeyInfo)
-
-                'Decrypt the passed byte array and specify OAEP padding.  
-                'OAEP padding is only available on Microsoft Windows XP or
-                'later.  
-                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding)
-                'Catch and display a CryptographicException  
-                'to the console.
-            End Using
-            Return decryptedData
-        Catch e As CryptographicException
-            Console.WriteLine(e.ToString())
-
-            Return Nothing
-        End Try
-    End Function
-End Class
+Class X500Sample
+   Shared msg As String
+   Shared Sub Main()
+	
+      Try
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
+	 msg = "Number of certificates: " & scollection.Count & Environment.NewLine
+	 MsgBox(msg)
+         Dim x509 As X509Certificate2
+         For Each x509 In  scollection
+            Dim dname As New X500DistinguishedName(x509.SubjectName)
+	    msg = "X500DistinguishedName: " & dname.Name & Environment.NewLine
+	 MsgBox(msg)
+            x509.Reset()
+         Next x509
+         store.Close()
+	 Catch e As Exception
+            msg = "Error: Information could not be written out for this certificate."
+            MsgBox(msg)
+      End Try
+   End Sub 'Main 
+End Class 'X500Sample

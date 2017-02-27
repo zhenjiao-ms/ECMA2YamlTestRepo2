@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.CheckBoxList.RenderWhenDataEmpty
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.CheckBoxList.RepeatDirection
 internalonly: False
 ---
@@ -40,11 +35,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.CheckBoxList.LoadPostData(System.String,System.Collections.Specialized.NameValueCollection)
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.CheckBoxList.OnInit(System.EventArgs)
 internalonly: False
 ---
 

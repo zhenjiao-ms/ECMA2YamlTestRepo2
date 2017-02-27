@@ -14,16 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Channels.CorrelationMessageProperty.TransientCorrelations
-internalonly: False
----
-
----
-uid: System.ServiceModel.Channels.CorrelationMessageProperty.#ctor(System.Runtime.DurableInstancing.InstanceKey,System.Collections.Generic.IEnumerable{System.Runtime.DurableInstancing.InstanceKey},System.Collections.Generic.IEnumerable{System.Runtime.DurableInstancing.InstanceKey})
-internalonly: False
----
-
----
 uid: System.ServiceModel.Channels.CorrelationMessageProperty.CorrelationKey
 internalonly: False
 ---

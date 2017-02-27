@@ -1,4 +1,16 @@
-            sbyte mySByte=+121;
-            string mySByteStr="-100";
-            Console.WriteLine(TypeDescriptor.GetConverter(mySByte).ConvertTo(mySByte, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(mySByte).ConvertFrom(mySByteStr));    
+    // Boolean properties are automatically displayed with binary 
+    // UI (such as a checkbox).
+    public bool LockColors
+    {
+        get
+        {
+            return colLabel.ColorLocked;
+        }
+        set
+        {
+            GetPropertyByName("ColorLocked").SetValue(colLabel, value);
+
+            // Refresh the list.
+            this.designerActionUISvc.Refresh(this.Component);
+        }
+    }

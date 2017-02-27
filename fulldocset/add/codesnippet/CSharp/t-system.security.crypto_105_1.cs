@@ -1,80 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+
 using System;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 using System.Text;
+using System.Xml;
 
-namespace MD5Sample
+
+
+class XMLDSIGDetached
 {
-    class Program
+	
+    [STAThread]
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            string source = "Hello World!";
-            using (MD5 md5Hash = MD5.Create())
-            {
-                string hash = GetMd5Hash(md5Hash, source);
+    // The URI to sign.
+        string resourceToSign = "http://www.microsoft.com";
+		
+        // The name of the file to which to save the XML signature.
+        string XmlFileName = "xmldsig.xml";
 
-                Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
-
-                Console.WriteLine("Verifying the hash...");
-
-                if (VerifyMd5Hash(md5Hash, source, hash))
-                {
-                    Console.WriteLine("The hashes are the same.");
-                }
-                else
-                {
-                    Console.WriteLine("The hashes are not same.");
-                }
-            }
-
-
-
-        }
-        static string GetMd5Hash(MD5 md5Hash, string input)
+        try
         {
 
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            // Generate a signing key.
+            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
 
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
+            Console.WriteLine("Signing: {0}", resourceToSign);
 
-            // Loop through each byte of the hashed data 
-            // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
+            // Sign the detached resourceand save the signature in an XML file.
+            SignDetachedResource(resourceToSign, XmlFileName, Key);
+
+            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
+
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+
+            //Verify the XML signature in the XML file.
+            bool result = VerifyDetachedSignature(XmlFileName);
+
+            // Display the results of the signature verification to 
+            // the console.
+            if(result)
             {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
-
-        // Verify a hash against a string.
-        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
-        {
-            // Hash the input.
-            string hashOfInput = GetMd5Hash(md5Hash, input);
-
-            // Create a StringComparer an compare the hashes.
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
+                Console.WriteLine("The XML signature is valid.");
             }
             else
             {
-                return false;
+                Console.WriteLine("The XML signature is not valid.");
             }
         }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
 
+        }
+		
+    }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
+    {
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml();
+
+        // Assign the key to the SignedXml object.
+        signedXml.SigningKey = Key;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+
+        // Add the passed URI to the reference object.
+        reference.Uri = URIString;
+		
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
+        xmlDigitalSignature.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
+    {	
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document.
+        xmlDocument.Load(XmlSigFileName);
+	
+        // Create a new SignedXMl object.
+        SignedXml signedXml = new SignedXml();
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
     }
 }
-
-// This code example produces the following output:
-//
-// The MD5 hash of Hello World! is: ed076287532e86365e841e92bfc50d8c.
-// Verifying the hash...
-// The hashes are the same.

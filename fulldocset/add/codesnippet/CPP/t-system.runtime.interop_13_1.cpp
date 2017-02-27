@@ -1,22 +1,19 @@
-using namespace System;
 using namespace System::Runtime::InteropServices;
-public ref class MyClassThatNeedsToRegister
+public ref class MyClass
 {
 public:
+   MyClass(){}
 
-   [ComRegisterFunctionAttribute]
-   static void RegisterFunction( Type^ t )
+
+   [DispId(8)]
+   void MyMethod(){}
+
+   int MyOtherMethod()
    {
-      
-      //Insert code here.
+      return 0;
    }
 
 
-   [ComUnregisterFunctionAttribute]
-   static void UnregisterFunction( Type^ t )
-   {
-      
-      //Insert code here.
-   }
-
+   [DispId(9)]
+   bool MyField;
 };

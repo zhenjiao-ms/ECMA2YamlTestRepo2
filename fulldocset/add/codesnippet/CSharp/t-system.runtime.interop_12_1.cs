@@ -1,17 +1,24 @@
-using System;
-using System.Runtime.InteropServices;
+   [ClassInterface(ClassInterfaceType.AutoDispatch)]
+   [ProgId("InteropSample.MyClass")]
+   public class MyClass
+   {
+       public MyClass() {}
+   }
 
-public class MyClassThatNeedsToRegister
-{
-   [ComRegisterFunctionAttribute]
-   public static void RegisterFunction(Type t)
-   {
-      //Insert code here.
+   class TestApplication
+   {      
+      public static void Main()
+      {
+         try
+         {
+            AttributeCollection attributes;
+            attributes = TypeDescriptor.GetAttributes(typeof(MyClass));
+            ProgIdAttribute progIdAttributeObj = (ProgIdAttribute)attributes[typeof(ProgIdAttribute)];
+            Console.WriteLine("ProgIdAttribute's value is set to : " + progIdAttributeObj.Value);
+         }         
+         catch(Exception e)
+         {
+            Console.WriteLine("Exception : " + e.Message);
+         }
+      }
    }
-   
-   [ComUnregisterFunctionAttribute]
-   public static void UnregisterFunction(Type t)
-   {
-      //Insert code here.
-   }
-}

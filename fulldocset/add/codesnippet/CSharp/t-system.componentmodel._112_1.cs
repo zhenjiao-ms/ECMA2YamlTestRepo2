@@ -1,45 +1,14 @@
-    public override DesignerActionItemCollection GetSortedActionItems()
-    {
-        DesignerActionItemCollection items = new DesignerActionItemCollection();
-
-        //Define static section header entries.
-        items.Add(new DesignerActionHeaderItem("Appearance"));
-        items.Add(new DesignerActionHeaderItem("Information"));
-
-        //Boolean property for locking color selections.
-        items.Add(new DesignerActionPropertyItem("LockColors",
-                         "Lock Colors", "Appearance",
-                         "Locks the color properties."));
-        if (!LockColors)
+        public void LinkComponentChangedEvent(IComponentChangeService changeService)
         {
-            items.Add(new DesignerActionPropertyItem("BackColor",
-                             "Back Color", "Appearance",
-                             "Selects the background color."));
-            items.Add(new DesignerActionPropertyItem("ForeColor",
-                             "Fore Color", "Appearance",
-                             "Selects the foreground color."));
-
-            //This next method item is also added to the context menu 
-            // (as a designer verb).
-            items.Add(new DesignerActionMethodItem(this,
-                             "InvertColors", "Invert Colors",
-                             "Appearance",
-                             "Inverts the fore and background colors.",
-                              true));
+            // Registers an event handler for the ComponentChanged event.
+            changeService.ComponentChanged += new ComponentChangedEventHandler(this.OnComponentChanged);            
         }
-        items.Add(new DesignerActionPropertyItem("Text",
-                         "Text String", "Appearance",
-                         "Sets the display text."));
 
-        //Create entries for static Information section.
-        StringBuilder location = new StringBuilder("Location: ");
-        location.Append(colLabel.Location);
-        StringBuilder size = new StringBuilder("Size: ");
-        size.Append(colLabel.Size);
-        items.Add(new DesignerActionTextItem(location.ToString(),
-                         "Information"));
-        items.Add(new DesignerActionTextItem(size.ToString(),
-                         "Information"));
-
-        return items;
-    }
+        private void OnComponentChanged(object sender, ComponentChangedEventArgs e)
+        {
+            // Displays changed component information on the console.
+            Console.WriteLine("Type of the component that has changed: "+e.Component.GetType().FullName);      
+            Console.WriteLine("Name of the member of the component that has changed: "+e.Member.Name);            
+            Console.WriteLine("Old value of the member: "+e.OldValue.ToString());
+            Console.WriteLine("New value of the member: "+e.NewValue.ToString());
+        }

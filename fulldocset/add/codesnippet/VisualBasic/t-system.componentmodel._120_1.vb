@@ -1,9 +1,5 @@
-   ' This event handler provides custom item-creation behavior.
-    Private Sub customersBindingSource_AddingNew( _
-    ByVal sender As Object, _
-    ByVal e As AddingNewEventArgs) _
-    Handles customersBindingSource.AddingNew
-
-        e.NewObject = DemoCustomer.CreateNewCustomer()
-
-    End Sub
+            Dim myServer As Servers = Servers.Exchange
+            Dim myServerString As string = "BizTalk"
+            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertTo(myServer, GetType(String))) 
+            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertFrom(myServerString))	
+            			

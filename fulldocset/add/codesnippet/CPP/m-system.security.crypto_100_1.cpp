@@ -1,1 +1,1 @@
-         base64Transform->Clear();
+    customCryptoAlgorithm->Clear();

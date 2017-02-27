@@ -1,45 +1,109 @@
-    public override DesignerActionItemCollection GetSortedActionItems()
+    // This utility method connects the designer to various
+    // services it will use. 
+    private void InitializeServices()
     {
-        DesignerActionItemCollection items = new DesignerActionItemCollection();
+        // Acquire a reference to DesignerActionService.
+        this.actionService =
+            GetService(typeof(DesignerActionService))
+            as DesignerActionService;
 
-        //Define static section header entries.
-        items.Add(new DesignerActionHeaderItem("Appearance"));
-        items.Add(new DesignerActionHeaderItem("Information"));
+		// Acquire a reference to DesignerActionUIService.
+		this.actionUiService =
+			GetService(typeof(DesignerActionUIService))
+			as DesignerActionUIService;
 
-        //Boolean property for locking color selections.
-        items.Add(new DesignerActionPropertyItem("LockColors",
-                         "Lock Colors", "Appearance",
-                         "Locks the color properties."));
-        if (!LockColors)
+        // Acquire a reference to IComponentChangeService.
+        this.changeService =
+            GetService(typeof(IComponentChangeService))
+            as IComponentChangeService;
+
+        // Hook the IComponentChangeService events.
+        if (this.changeService != null)
         {
-            items.Add(new DesignerActionPropertyItem("BackColor",
-                             "Back Color", "Appearance",
-                             "Selects the background color."));
-            items.Add(new DesignerActionPropertyItem("ForeColor",
-                             "Fore Color", "Appearance",
-                             "Selects the foreground color."));
+            this.changeService.ComponentChanged +=
+                new ComponentChangedEventHandler(
+                ChangeService_ComponentChanged);
 
-            //This next method item is also added to the context menu 
-            // (as a designer verb).
-            items.Add(new DesignerActionMethodItem(this,
-                             "InvertColors", "Invert Colors",
-                             "Appearance",
-                             "Inverts the fore and background colors.",
-                              true));
+            this.changeService.ComponentAdded +=
+                new ComponentEventHandler(
+                ChangeService_ComponentAdded);
+
+            this.changeService.ComponentRemoved +=
+                new ComponentEventHandler(
+                changeService_ComponentRemoved);
         }
-        items.Add(new DesignerActionPropertyItem("Text",
-                         "Text String", "Appearance",
-                         "Sets the display text."));
 
-        //Create entries for static Information section.
-        StringBuilder location = new StringBuilder("Location: ");
-        location.Append(colLabel.Location);
-        StringBuilder size = new StringBuilder("Size: ");
-        size.Append(colLabel.Size);
-        items.Add(new DesignerActionTextItem(location.ToString(),
-                         "Information"));
-        items.Add(new DesignerActionTextItem(size.ToString(),
-                         "Information"));
+        // Acquire a reference to ISelectionService.
+        this.selectionService =
+            GetService(typeof(ISelectionService))
+            as ISelectionService;
 
-        return items;
+        // Hook the SelectionChanged event.
+        if (this.selectionService != null)
+        {
+            this.selectionService.SelectionChanged +=
+                new EventHandler(selectionService_SelectionChanged);
+        }
+
+        // Acquire a reference to IDesignerEventService.
+        this.eventService =
+            GetService(typeof(IDesignerEventService))
+            as IDesignerEventService;
+
+        if (this.eventService != null)
+        {
+            this.eventService.ActiveDesignerChanged +=
+                new ActiveDesignerEventHandler(
+                eventService_ActiveDesignerChanged);
+        }
+
+        // Acquire a reference to IDesignerHost.
+        this.host =
+            GetService(typeof(IDesignerHost))
+            as IDesignerHost;
+
+        // Acquire a reference to IDesignerOptionService.
+        this.optionService =
+            GetService(typeof(IDesignerOptionService))
+            as IDesignerOptionService;
+
+        // Acquire a reference to IEventBindingService.
+        this.eventBindingService =
+            GetService(typeof(IEventBindingService))
+            as IEventBindingService;
+
+        // Acquire a reference to IExtenderListService.
+        this.listService =
+            GetService(typeof(IExtenderListService))
+            as IExtenderListService;
+
+        // Acquire a reference to IReferenceService.
+        this.referenceService =
+            GetService(typeof(IReferenceService))
+            as IReferenceService;
+
+        // Acquire a reference to ITypeResolutionService.
+        this.typeResService =
+            GetService(typeof(ITypeResolutionService))
+            as ITypeResolutionService;
+
+        // Acquire a reference to IComponentDiscoveryService.
+        this.componentDiscoveryService =
+            GetService(typeof(IComponentDiscoveryService))
+            as IComponentDiscoveryService;
+
+        // Acquire a reference to IToolboxService.
+        this.toolboxService =
+            GetService(typeof(IToolboxService))
+            as IToolboxService;
+
+        // Acquire a reference to UndoEngine.
+        this.undoEng =
+            GetService(typeof(UndoEngine))
+            as UndoEngine;
+
+        if (this.undoEng != null)
+        {
+            MessageBox.Show("UndoEngine");
+        }
     }

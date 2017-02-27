@@ -54,11 +54,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.TreeViewItem.ArrangeOverride(System.Windows.Size)
-internalonly: False
----
-
----
 uid: System.Windows.Controls.TreeViewItem.IsSelected
 internalonly: False
 ---
@@ -74,11 +69,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.TreeViewItem.System#Windows#Controls#Primitives#IHierarchicalVirtualizationAndScrollInfo#MustDisableVirtualization
-internalonly: False
----
-
----
 uid: System.Windows.Controls.TreeViewItem.OnExpanded(System.Windows.RoutedEventArgs)
 internalonly: False
 ---
@@ -90,16 +80,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.TreeViewItem.IsExpandedProperty
-internalonly: False
----
-
----
-uid: System.Windows.Controls.TreeViewItem.System#Windows#Controls#Primitives#IHierarchicalVirtualizationAndScrollInfo#ItemDesiredSizes
-internalonly: False
----
-
----
-uid: System.Windows.Controls.TreeViewItem.System#Windows#Controls#Primitives#IHierarchicalVirtualizationAndScrollInfo#InBackgroundLayout
 internalonly: False
 ---
 
@@ -124,16 +104,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.TreeViewItem.System#Windows#Controls#Primitives#IHierarchicalVirtualizationAndScrollInfo#ItemsHost
-internalonly: False
----
-
----
-uid: System.Windows.Controls.TreeViewItem.System#Windows#Controls#Primitives#IHierarchicalVirtualizationAndScrollInfo#Constraints
-internalonly: False
----
-
----
 uid: System.Windows.Controls.TreeViewItem.Selected
 internalonly: False
 ---
@@ -150,11 +120,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.TreeViewItem.IsSelectionActive
-internalonly: False
----
-
----
-uid: System.Windows.Controls.TreeViewItem.System#Windows#Controls#Primitives#IHierarchicalVirtualizationAndScrollInfo#HeaderDesiredSizes
 internalonly: False
 ---
 

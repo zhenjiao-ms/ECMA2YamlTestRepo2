@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Delete.Cancel
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Delete.TreatErrorsAsWarnings
 internalonly: False
 ---

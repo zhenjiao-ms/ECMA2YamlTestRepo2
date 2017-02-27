@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.ControlBuilder.ComplexPropertyEntries
-internalonly: False
----
-
----
 uid: System.Web.UI.ControlBuilder.InDesigner
 internalonly: False
 ---
@@ -79,11 +74,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.ControlBuilder.TemplatePropertyEntries
-internalonly: False
----
-
----
 uid: System.Web.UI.ControlBuilder.ProcessGeneratedCode(System.CodeDom.CodeCompileUnit,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod)
 internalonly: False
 ---
@@ -129,17 +119,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.ControlBuilder.BindingContainerBuilder
-internalonly: False
----
-
----
 uid: System.Web.UI.ControlBuilder.AllowWhitespaceLiterals
-internalonly: False
----
-
----
-uid: System.Web.UI.ControlBuilder.SubBuilders
 internalonly: False
 ---
 
@@ -150,11 +130,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.ControlBuilder.CurrentFilterResolutionService
-internalonly: False
----
-
----
-uid: System.Web.UI.ControlBuilder.ItemType
 internalonly: False
 ---
 

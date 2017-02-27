@@ -1,13 +1,4 @@
-Imports System
-Imports System.Runtime.InteropServices
-' by default all classes in this assembly will use COM implementaion 
-<Assembly: IDispatchImpl(IDispatchImplType.CompatibleImpl)> 
-
-Module MyNamespace
-	' But this class will use runtime implementaion
-	<IDispatchImpl(IDispatchImplType.InternalImpl)> _
-	Public Class c
-		'
-	End Class
-
-End Module
+<BestFitMapping(False, ThrowOnUnmappableChar := True)> _
+Interface IMyInterface1
+     'Insert code here.
+End Interface

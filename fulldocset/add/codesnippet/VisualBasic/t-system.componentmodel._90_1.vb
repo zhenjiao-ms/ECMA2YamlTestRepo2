@@ -1,6 +1,14 @@
-    <RunInstallerAttribute(True)> _
-    Public Class MyProjectInstaller
-        Inherits Installer
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
+Imports System.Globalization
 
-        ' Insert code here.
-    End Class 'MyProjectInstaller
+<DisplayColumn("City", "PostalCode", False)> _
+Partial Public Class Address
+
+End Class
+
+<DisplayColumn("LastName")> _
+Public Partial Class Customer
+
+End Class

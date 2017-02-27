@@ -44,11 +44,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.ToolStripRenderer.Offset2Y
-internalonly: False
----
-
----
 uid: System.Windows.Forms.ToolStripRenderer.RenderLabelBackground
 internalonly: False
 ---
@@ -85,11 +80,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.ToolStripRenderer.DrawToolStripPanelBackground(System.Windows.Forms.ToolStripPanelRenderEventArgs)
-internalonly: False
----
-
----
-uid: System.Windows.Forms.ToolStripRenderer.Offset2X
 internalonly: False
 ---
 
@@ -255,11 +245,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Forms.ToolStripRenderer.DrawDropDownButtonBackground(System.Windows.Forms.ToolStripItemRenderEventArgs)
-internalonly: False
----
-
----
-uid: System.Windows.Forms.ToolStripRenderer.ScaleArrowOffsetsIfNeeded
 internalonly: False
 ---
 

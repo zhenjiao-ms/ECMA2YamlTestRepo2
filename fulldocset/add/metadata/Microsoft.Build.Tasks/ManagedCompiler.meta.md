@@ -49,11 +49,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.ManagedCompiler.Prefer32Bit
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.ManagedCompiler.KeyFile
 internalonly: False
 ---
@@ -80,11 +75,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.ManagedCompiler.Resources
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.ManagedCompiler.Platform
 internalonly: False
 ---
 
@@ -179,11 +169,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.ManagedCompiler.HighEntropyVA
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.ManagedCompiler.Win32Manifest
 internalonly: False
 ---
@@ -205,11 +190,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.ManagedCompiler.Utf8Output
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.ManagedCompiler.SubsystemVersion
 internalonly: False
 ---
 

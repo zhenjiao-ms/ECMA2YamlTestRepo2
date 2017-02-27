@@ -14,22 +14,7 @@ internalonly: False
 ---
 
 ---
-uid: System.ComponentModel.Composition.AttributedModelServices.SatisfyImportsOnce(System.ComponentModel.Composition.ICompositionService,System.Object,System.Reflection.ReflectionContext)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.AttributedModelServices.CreatePart(System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.Object)
-internalonly: False
----
-
----
 uid: System.ComponentModel.Composition.AttributedModelServices.CreatePartDefinition(System.Type,System.ComponentModel.Composition.Primitives.ICompositionElement,System.Boolean)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.AttributedModelServices.CreatePart(System.Object,System.Reflection.ReflectionContext)
 internalonly: False
 ---
 
@@ -40,16 +25,6 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Composition.AttributedModelServices.GetContractName(System.Type)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.AttributedModelServices.Imports(System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.Type,System.ComponentModel.Composition.Primitives.ImportCardinality)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.AttributedModelServices.Imports(System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.Type)
 internalonly: False
 ---
 
@@ -65,11 +40,6 @@ internalonly: False
 
 ---
 uid: System.ComponentModel.Composition.AttributedModelServices.SatisfyImportsOnce(System.ComponentModel.Composition.ICompositionService,System.Object)
-internalonly: False
----
-
----
-uid: System.ComponentModel.Composition.AttributedModelServices.Exports(System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.Type)
 internalonly: False
 ---
 

@@ -1,9 +1,19 @@
-    private void DisplaySerializationInfo(SerializationInfo info)
+    static void ExportXSD()
     {
-        SerializationInfoEnumerator e = info.GetEnumerator();
-        Console.WriteLine("Values in the SerializationInfo:");
-        while (e.MoveNext())
+        XsdDataContractExporter exporter = new XsdDataContractExporter();
+        if (exporter.CanExport(typeof(Employee)))
         {
-            Console.WriteLine("Name={0}, ObjectType={1}, Value={2}", e.Name, e.ObjectType, e.Value);
+            exporter.Export(typeof(Employee));
+            Console.WriteLine("number of schemas: {0}", exporter.Schemas.Count);
+            Console.WriteLine();
+            XmlSchemaSet mySchemas = exporter.Schemas;
+
+            XmlQualifiedName XmlNameValue = exporter.GetRootElementName(typeof(Employee));
+            string EmployeeNameSpace = XmlNameValue.Namespace;
+
+            foreach (XmlSchema schema in mySchemas.Schemas(EmployeeNameSpace))
+            {
+                schema.Write(Console.Out);
+            }
         }
     }

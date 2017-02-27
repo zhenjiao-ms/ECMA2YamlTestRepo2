@@ -1,6 +1,12 @@
-            // The sample first constructs a CultureInfo variable using the Greek culture - 'el'.
-            System.Globalization.CultureInfo myCulture= new System.Globalization.CultureInfo("el");
-            string myCString="Russian";
-            Console.WriteLine(TypeDescriptor.GetConverter(myCulture).ConvertTo(myCulture, typeof(string)));
-            // The following line will output 'ru' based on the string being converted.
-            Console.WriteLine(TypeDescriptor.GetConverter(myCulture).ConvertFrom(myCString));
+        // This example method creates a ComponentRenameEventArgs using the specified arguments.
+        // Typically, this type of event args is created by a design mode subsystem.  
+        public ComponentRenameEventArgs CreateComponentRenameEventArgs(object component, string oldName, string newName)
+        {
+            ComponentRenameEventArgs args = new ComponentRenameEventArgs(component, oldName, newName);
+
+            // The component that was renamed:          args.Component
+            // The previous name of the component:      args.OldName
+            // The new name of the component:           args.NewName            
+
+            return args;
+        }

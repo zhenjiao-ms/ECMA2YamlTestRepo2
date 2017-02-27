@@ -1,72 +1,79 @@
 using System;
+using System.IO;
+using System.Text;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 
-class AsnEncodedDataSample
+namespace RC2CryptoServiceProvider_Examples
 {
-	static void Main()
-	{		
-		//The following example demonstrates the usage the AsnEncodedData classes.
-		// Asn encoded data is read from the extensions of an X509 certificate.
-		try
-		{
-			// Open the certificate store.
-			X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-			store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-			X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-			X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-			// Select one or more certificates to display extensions information.
-			X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection);
+    class MyMainClass
+    {
+        public static void Main()
+        {
 
-			// Create a new AsnEncodedDataCollection object.
-			AsnEncodedDataCollection asncoll = new AsnEncodedDataCollection();
-			for (int i = 0; i < scollection.Count; i++)
-			{
-				// Display certificate information.
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("Certificate name: {0}", scollection[i].GetName());
-				Console.ResetColor();
-				// Display extensions information.
-				foreach (X509Extension extension in scollection[i].Extensions)
-				{
-					// Create an AsnEncodedData object using the extensions information.
-					AsnEncodedData asndata = new AsnEncodedData(extension.Oid, extension.RawData);
-					Console.ForegroundColor = ConsoleColor.Green;
-					Console.WriteLine("Extension type: {0}", extension.Oid.FriendlyName);
-					Console.WriteLine("Oid value: {0}",asndata.Oid.Value);
-					Console.WriteLine("Raw data length: {0} {1}", asndata.RawData.Length, Environment.NewLine);
-					Console.ResetColor();
-					Console.WriteLine(asndata.Format(true));
-					Console.WriteLine(Environment.NewLine);
-					// Add the AsnEncodedData object to the AsnEncodedDataCollection object.
-					asncoll.Add(asndata);
-				}
-				Console.WriteLine(Environment.NewLine);
-			}
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine("Number of AsnEncodedData items in the collection: {0} {1}", asncoll.Count, Environment.NewLine);
-			Console.ResetColor();
+            // Create a new instance of the RC2CryptoServiceProvider class
+            // and automatically generate a Key and IV.
+            RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
 
-			store.Close();
-			//Create an enumerator for moving through the collection.
-			AsnEncodedDataEnumerator asne = asncoll.GetEnumerator();
-			//You must execute a MoveNext() to get to the first item in the collection.
-			asne.MoveNext();
-			// Write out AsnEncodedData in the collection.
-			Console.ForegroundColor = ConsoleColor.Blue;
-			Console.WriteLine("First AsnEncodedData in the collection: {0}", asne.Current.Format(true));
-			Console.ResetColor();
+            Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize);
 
-			asne.MoveNext();
-			Console.ForegroundColor = ConsoleColor.DarkBlue;
-			Console.WriteLine("Second AsnEncodedData in the collection: {0}", asne.Current.Format(true));
-			Console.ResetColor();
-			//Return index in the collection to the beginning.
-			asne.Reset();
-		}
-		catch (CryptographicException)
-		{
-			Console.WriteLine("Information could not be written out for this certificate.");
-		}
-	}
+            // Get the key and IV.
+            byte[] key = rc2CSP.Key;
+            byte[] IV = rc2CSP.IV;
+
+            // Get an encryptor.
+            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(key, IV);
+
+            // Encrypt the data as an array of encrypted bytes in memory.
+            MemoryStream msEncrypt = new MemoryStream();
+            CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+
+            // Convert the data to a byte array.
+            string original = "Here is some data to encrypt.";
+            byte[] toEncrypt = Encoding.ASCII.GetBytes(original);
+
+            // Write all data to the crypto stream and flush it.
+            csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
+            csEncrypt.FlushFinalBlock();
+
+            // Get the encrypted array of bytes.
+            byte[] encrypted = msEncrypt.ToArray();
+
+            ///////////////////////////////////////////////////////
+            // This is where the data could be transmitted or saved.          
+            ///////////////////////////////////////////////////////
+
+            //Get a decryptor that uses the same key and IV as the encryptor.
+            ICryptoTransform decryptor = rc2CSP.CreateDecryptor(key, IV);
+
+            // Now decrypt the previously encrypted message using the decryptor
+            // obtained in the above step.
+            MemoryStream msDecrypt = new MemoryStream(encrypted);
+            CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+
+            // Read the decrypted bytes from the decrypting stream
+            // and place them in a StringBuilder class.
+
+            StringBuilder roundtrip = new StringBuilder();
+            
+            int b = 0;
+
+            do
+            {
+                b = csDecrypt.ReadByte();
+                
+                if (b != -1)
+                {
+                    roundtrip.Append((char)b);
+                }
+
+            } while (b != -1);
+ 
+
+            // Display the original data and the decrypted data.
+            Console.WriteLine("Original:   {0}", original);
+            Console.WriteLine("Round Trip: {0}", roundtrip);
+
+            Console.ReadLine();
+        }
+    }
 }

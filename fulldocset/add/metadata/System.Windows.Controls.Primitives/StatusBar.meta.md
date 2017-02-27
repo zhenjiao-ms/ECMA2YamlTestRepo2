@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.Primitives.StatusBar.ItemContainerTemplateSelectorProperty
-internalonly: False
----
-
----
 uid: System.Windows.Controls.Primitives.StatusBar.OnCreateAutomationPeer
 internalonly: False
 ---
@@ -29,17 +24,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.Primitives.StatusBar.UsesItemContainerTemplateProperty
-internalonly: False
----
-
----
 uid: System.Windows.Controls.Primitives.StatusBar.SeparatorStyleKey
-internalonly: False
----
-
----
-uid: System.Windows.Controls.Primitives.StatusBar.ItemContainerTemplateSelector
 internalonly: False
 ---
 
@@ -50,10 +35,5 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.Primitives.StatusBar.IsItemItsOwnContainerOverride(System.Object)
-internalonly: False
----
-
----
-uid: System.Windows.Controls.Primitives.StatusBar.UsesItemContainerTemplate
 internalonly: False
 ---

@@ -29,22 +29,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Security.AccessControl.CommonSecurityDescriptor.AddSystemAcl(System.Byte,System.Int32)
-internalonly: False
----
-
----
 uid: System.Security.AccessControl.CommonSecurityDescriptor.PurgeAccessControl(System.Security.Principal.SecurityIdentifier)
 internalonly: False
 ---
 
 ---
 uid: System.Security.AccessControl.CommonSecurityDescriptor.Owner
-internalonly: False
----
-
----
-uid: System.Security.AccessControl.CommonSecurityDescriptor.AddDiscretionaryAcl(System.Byte,System.Int32)
 internalonly: False
 ---
 

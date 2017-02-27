@@ -1,12 +1,7 @@
- // Gets the attributes for the property.
- AttributeCollection attributes = 
-    TypeDescriptor.GetProperties(this)["MyProperty"].Attributes;
+private void GetCount() {
+    // Creates a new collection and assigns it the events for button1.
+    EventDescriptorCollection events = TypeDescriptor.GetEvents(button1);
  
- // Checks to see whether the property is read-only.
- ReadOnlyAttribute myAttribute = 
-    (ReadOnlyAttribute)attributes[typeof(ReadOnlyAttribute)];
- 
- if(myAttribute.IsReadOnly) {
-    // Insert code here.
+    // Prints the number of events on button1 in a text box.
+    textBox1.Text = events.Count.ToString();
  }
- 

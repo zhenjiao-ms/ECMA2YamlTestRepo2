@@ -1,9 +1,21 @@
-            Try
-                Dim k1 As New Rfc2898DeriveBytes(pwd1, salt1, myIterations)
-                Dim k2 As New Rfc2898DeriveBytes(pwd1, salt1)
-                ' Encrypt the data.
-                Dim encAlg As TripleDES = TripleDES.Create()
-                encAlg.Key = k1.GetBytes(16)
-                Dim encryptionStream As New MemoryStream()
-                Dim encrypt As New CryptoStream(encryptionStream, encAlg.CreateEncryptor(), CryptoStreamMode.Write)
-                Dim utfD1 As Byte() = New System.Text.UTF8Encoding(False).GetBytes(data1)
+Imports System
+Imports System.IO
+Imports System.Security.Cryptography
+
+
+
+Public Class StoreKey
+    
+    Public Shared Sub Main()
+        ' creates the CspParameters object and sets the key container name used to store the RSA key pair
+        Dim cp As New CspParameters()
+        cp.KeyContainerName = "MyKeyContainerName"
+        
+        ' instantiates the rsa instance accessing the key container MyKeyContainerName
+        Dim rsa As New RSACryptoServiceProvider(cp)
+        ' add the below line to delete the key entry in MyKeyContainerName
+        ' rsa.PersistKeyInCsp = false;
+        'writes out the current key pair used in the rsa instance
+        Console.WriteLine("Key is : "  & rsa.ToXmlString(True))
+    End Sub 'Main
+End Class 'StoreKey

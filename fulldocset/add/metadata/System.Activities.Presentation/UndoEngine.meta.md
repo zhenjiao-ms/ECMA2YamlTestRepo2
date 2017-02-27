@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.UndoEngine.UndoCompleted
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.UndoEngine.AddUndoUnit(System.Activities.Presentation.UndoUnit)
 internalonly: False
 ---
@@ -25,11 +20,6 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.UndoEngine.UndoUnitDiscarded
-internalonly: False
----
-
----
-uid: System.Activities.Presentation.UndoEngine.RedoCompleted
 internalonly: False
 ---
 
@@ -60,10 +50,5 @@ internalonly: False
 
 ---
 uid: System.Activities.Presentation.UndoEngine.IsUndoRedoInProgress
-internalonly: False
----
-
----
-uid: System.Activities.Presentation.UndoEngine.UndoUnitCancelled
 internalonly: False
 ---

@@ -1,26 +1,21 @@
 Imports System
 Imports System.Reflection
+Imports Microsoft.VisualBasic
 
-Public Class Example
+Class Mymethodinfo1
 
-    Public Shared Sub Main()
+    Public Shared Function Main() As Integer
+        Console.WriteLine(ControlChars.Cr + "Reflection.MethodInfo")
 
-        ' Demonstrate the effect of the Visual Basic When keyword, which
-        ' generates a Filter clause in the Try block.
-        Dim e As New Example()
-        Console.WriteLine()
-        e.MethodBodyExample("String argument")
-        e.MethodBodyExample(Nothing)
+        'Get the Type and MethodInfo.
+        Dim MyType As Type = Type.GetType("System.Reflection.FieldInfo")
+        Dim Mymethodinfo As MethodInfo = MyType.GetMethod("GetValue")
+        Console.Write(ControlChars.Cr _
+           + MyType.FullName + "." + Mymethodinfo.Name)
 
-        ' Get method body information.
-        Dim mi As MethodInfo = _
-            GetType(Example).GetMethod("MethodBodyExample")
-        Dim mb As MethodBody = mi.GetMethodBody()
-        Console.WriteLine(vbCrLf & "Method: {0}", mi)
-
-        ' Display the general information included in the 
-        ' MethodBody object.
-        Console.WriteLine("    Local variables are initialized: {0}", _
-            mb.InitLocals)
-        Console.WriteLine("    Maximum number of items on the operand stack: {0}", _
-            mb.MaxStackSize)
+        'Get and display the ReturnType.
+        Console.Write(ControlChars.Cr _
+           + "ReturnType = {0}", Mymethodinfo.ReturnType)
+        Return 0
+    End Function
+End Class

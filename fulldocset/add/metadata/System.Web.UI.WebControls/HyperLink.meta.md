@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.HyperLink.ImageHeight
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.HyperLink.ImageUrl
 internalonly: False
 ---
@@ -30,11 +25,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.HyperLink.RenderContents(System.Web.UI.HtmlTextWriter)
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.HyperLink.ImageWidth
 internalonly: False
 ---
 

@@ -1,55 +1,85 @@
 using namespace System;
 using namespace System::Security::Cryptography;
 using namespace System::Text;
-array<Byte>^ RSAEncrypt( array<Byte>^DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
+using namespace System::IO;
+void EncryptTextToFile( String^ Data, String^ FileName, array<Byte>^Key, array<Byte>^IV )
 {
    try
    {
       
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSAalg = gcnew RSACryptoServiceProvider;
+      // Create or open the specified file.
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
       
-      //Import the RSA Key information. This only needs
-      //toinclude the public key information.
-      RSAalg->ImportParameters( RSAKeyInfo );
+      // Create a new TripleDES object.
+      TripleDES^ tripleDESalg = TripleDES::Create();
       
-      //Encrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-      return RSAalg->Encrypt( DataToEncrypt, DoOAEPPadding );
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,tripleDESalg->CreateEncryptor( Key, IV ),CryptoStreamMode::Write );
+      
+      // Create a StreamWriter using the CryptoStream.
+      StreamWriter^ sWriter = gcnew StreamWriter( cStream );
+      
+      // Write the data to the stream 
+      // to encrypt it.
+      sWriter->WriteLine( Data );
+      
+      // Close the streams and
+      // close the file.
+      sWriter->Close();
+      cStream->Close();
+      fStream->Close();
    }
-   //Catch and display a CryptographicException  
-   //to the console.
    catch ( CryptographicException^ e ) 
    {
-      Console::WriteLine( e->Message );
-      return nullptr;
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file error occurred: {0}", e->Message );
    }
 
 }
 
-array<Byte>^ RSADecrypt( array<Byte>^DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
+String^ DecryptTextFromFile( String^ FileName, array<Byte>^Key, array<Byte>^IV )
 {
    try
    {
       
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSAalg = gcnew RSACryptoServiceProvider;
+      // Create or open the specified file. 
+      FileStream^ fStream = File::Open( FileName, FileMode::OpenOrCreate );
       
-      //Import the RSA Key information. This needs
-      //to include the private key information.
-      RSAalg->ImportParameters( RSAKeyInfo );
+      // Create a new TripleDES object.
+      TripleDES^ tripleDESalg = TripleDES::Create();
       
-      //Decrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-      return RSAalg->Decrypt( DataToDecrypt, DoOAEPPadding );
+      // Create a CryptoStream using the FileStream 
+      // and the passed key and initialization vector (IV).
+      CryptoStream^ cStream = gcnew CryptoStream( fStream,tripleDESalg->CreateDecryptor( Key, IV ),CryptoStreamMode::Read );
+      
+      // Create a StreamReader using the CryptoStream.
+      StreamReader^ sReader = gcnew StreamReader( cStream );
+      
+      // Read the data from the stream 
+      // to decrypt it.
+      String^ val = sReader->ReadLine();
+      
+      // Close the streams and
+      // close the file.
+      sReader->Close();
+      cStream->Close();
+      fStream->Close();
+      
+      // Return the string. 
+      return val;
    }
-   //Catch and display a CryptographicException  
-   //to the console.
    catch ( CryptographicException^ e ) 
    {
-      Console::WriteLine( e );
+      Console::WriteLine( "A Cryptographic error occurred: {0}", e->Message );
+      return nullptr;
+   }
+   catch ( UnauthorizedAccessException^ e ) 
+   {
+      Console::WriteLine( "A file error occurred: {0}", e->Message );
       return nullptr;
    }
 
@@ -60,41 +90,28 @@ int main()
    try
    {
       
-      //Create a UnicodeEncoder to convert between byte array and string.
-      UnicodeEncoding^ ByteConverter = gcnew UnicodeEncoding;
+      // Create a new TripleDES object to generate a key 
+      // and initialization vector (IV).  Specify one 
+      // of the recognized simple names for this 
+      // algorithm.
+      TripleDES^ TripleDESalg = TripleDES::Create( "TripleDES" );
       
-      //Create byte arrays to hold original, encrypted, and decrypted data.
-      array<Byte>^dataToEncrypt = ByteConverter->GetBytes( "Data to Encrypt" );
-      array<Byte>^encryptedData;
-      array<Byte>^decryptedData;
+      // Create a string to encrypt.
+      String^ sData = "Here is some data to encrypt.";
+      String^ FileName = "CText.txt";
       
-      //Create a new instance of RSACryptoServiceProvider to generate
-      //public and private key data.  Pass an integer specifying a key-
-      //length of 2048.
-      RSACryptoServiceProvider^ RSAalg = gcnew RSACryptoServiceProvider( 2048 );
+      // Encrypt text to a file using the file name, key, and IV.
+      EncryptTextToFile( sData, FileName, TripleDESalg->Key, TripleDESalg->IV );
       
-      //Display the key-legth to the console.
-      Console::WriteLine( "A new key pair of legth {0} was created", RSAalg->KeySize );
+      // Decrypt the text from a file using the file name, key, and IV.
+      String^ Final = DecryptTextFromFile( FileName, TripleDESalg->Key, TripleDESalg->IV );
       
-      //Pass the data to ENCRYPT, the public key information 
-      //(using RSACryptoServiceProvider.ExportParameters(false),
-      //and a boolean flag specifying no OAEP padding.
-      encryptedData = RSAEncrypt( dataToEncrypt, RSAalg->ExportParameters( false ), false );
-      
-      //Pass the data to DECRYPT, the private key information 
-      //(using RSACryptoServiceProvider.ExportParameters(true),
-      //and a boolean flag specifying no OAEP padding.
-      decryptedData = RSADecrypt( encryptedData, RSAalg->ExportParameters( true ), false );
-      
-      //Display the decrypted plaintext to the console. 
-      Console::WriteLine( "Decrypted plaintext: {0}", ByteConverter->GetString( decryptedData ) );
+      // Display the decrypted string to the console.
+      Console::WriteLine( Final );
    }
-   catch ( ArgumentNullException^ ) 
+   catch ( Exception^ e ) 
    {
-      
-      //Catch this exception in case the encryption did
-      //not succeed.
-      Console::WriteLine( "Encryption failed." );
+      Console::WriteLine( e->Message );
    }
 
 }

@@ -1,114 +1,77 @@
 Imports System
+Imports System.Collections
 Imports System.ComponentModel
-Imports System.ComponentModel.Design.Serialization
+Imports System.ComponentModel.Design
 Imports System.Drawing
-Imports System.Globalization
-Imports System.Reflection
-Namespace Microsoft.Samples.InstanceDescriptorSample
+Imports System.Windows.Forms
 
-   '  This sample shows how to support code generation for a custom type 
-   '  of object using a type converter and InstanceDescriptor objects.
-   '
-   '  To use this code, copy it to a file and add the file to a project.  
-   '  Then add a component to the project and declare a Triangle field and 
-   '  a public property with accessors for the Triangle field on the component.
-   '
-   '  The Triangle property will be persisted using code generation.
+Namespace DesignerSerializationVisibilityTest
+    _
+    ' The code for this user control declares a public property of type DimensionData with a DesignerSerializationVisibility 
+    ' attribute set to DesignerSerializationVisibility.Content, indicating that the properties of the object should be serialized.
 
-   <TypeConverter(GetType(Triangle.TriangleConverter))> _
-   Public Class Triangle
-      ' Triangle members.
-      Private P1 As Point
-      Private P2 As Point
-      Private P3 As Point
+    ' The public, not hidden properties of the object that are set at design time will be persisted in the initialization code
+    ' for the class object. Content persistence will not work for structs without a custom TypeConverter.		
+    Public Class ContentSerializationExampleControl
+        Inherits System.Windows.Forms.UserControl
+        Private components As System.ComponentModel.Container = Nothing
 
-      Public Property Point1() As Point
-         Get
-            Return P1
-         End Get
-         Set(ByVal Value As Point)
-            P1 = Value
-         End Set
-      End Property
 
-      Public Property Point2() As Point
-         Get
-            Return P2
-         End Get
-         Set(ByVal Value As Point)
-            P2 = Value
-         End Set
-      End Property
+        <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)> _
+        Public ReadOnly Property Dimensions() As DimensionData
+            Get
+                Return New DimensionData(Me)
+            End Get
+        End Property
 
-      Public Property Point3() As Point
-         Get
-            Return P3
-         End Get
-         Set(ByVal Value As Point)
-            P3 = Value
-         End Set
-      End Property
 
-      Public Sub New(ByVal point1 As Point, ByVal point2 As Point, ByVal point3 As Point)
-         P1 = point1
-         P2 = point2
-         P3 = point3
-      End Sub 'New
+        Public Sub New()
+            InitializeComponent()
+        End Sub 'New
 
-      ' A TypeConverter for the Triangle object.  Note that you can make it internal,
-      '  private, or any scope you want and the designers will still be able to use
-      '  it through the TypeDescriptor object.  This type converter provides the
-      '  capability to convert to an InstanceDescriptor.  This object can be used by 
-      '  the .NET Framework to generate source code that creates an instance of a 
-      '  Triangle object.
 
-      Friend Class TriangleConverter
-         Inherits TypeConverter
-
-         ' This method overrides CanConvertTo from TypeConverter.  This is called when someone
-         '  wants to convert an instance of Triangle to another type.  Here,
-         '  only coversition to an InstanceDescriptor is supported.
-         Public Overloads Overrides Function CanConvertTo(ByVal context As ITypeDescriptorContext, ByVal destinationType As Type) As Boolean
-            If destinationType Is GetType(InstanceDescriptor) Then
-               Return True
+        Protected Overloads Sub Dispose(ByVal disposing As Boolean)
+            If disposing Then
+                If (components IsNot Nothing) Then
+                    components.Dispose()
+                End If
             End If
+            MyBase.Dispose(disposing)
+        End Sub 'Dispose
 
-            ' Always call the base to see if it can perform the conversion.
-            Return MyBase.CanConvertTo(context, destinationType)
-         End Function
 
-         ' This code performs the actual conversion from a Triangle to an InstanceDescriptor.
-         Public Overloads Overrides Function ConvertTo(ByVal context As ITypeDescriptorContext, ByVal culture As CultureInfo, ByVal value As Object, ByVal destinationType As Type) As Object
-            If destinationType Is GetType(InstanceDescriptor) Then
-               Dim ci As ConstructorInfo = GetType(Triangle).GetConstructor(New Type() {GetType(Point), GetType(Point), GetType(Point)})
-               Dim t As Triangle = CType(value, Triangle)
-               Return New InstanceDescriptor(ci, New Object() {t.Point1, t.Point2, t.Point3})
-            End If
+        Private Sub InitializeComponent()
+        End Sub 'InitializeComponent
+    End Class 'ContentSerializationExampleControl
 
-            ' Always call base, even if you can't convert.
-            Return MyBase.ConvertTo(context, culture, value, destinationType)
-         End Function 
-      End Class 
-   End Class 
+    ' This attribute indicates that the public properties of this object should be listed in the property grid.
+   <TypeConverterAttribute(GetType(System.ComponentModel.ExpandableObjectConverter))> _   
+    Public Class DimensionData
+        Private owner As Control
 
-   Public Class TestComponent
-      Inherits System.ComponentModel.Component
-      Private myTriangleProp As Triangle
+        ' This class reads and writes the Location and Size properties from the Control which it is initialized to.
+        Friend Sub New(ByVal owner As Control)
+            Me.owner = owner
+        End Sub 'New
 
-      Public Sub New()
-         myTriangleProp = New Triangle(New Point(5, 5), _
-                                    New Point(10, 10), New Point(1, 8))
-      End Sub
 
-      Public Property MyTriangle() As Triangle
-         Get
-            Return myTriangleProp
-         End Get
-         Set(ByVal Value As Triangle)
-            myTriangleProp = Value
-         End Set
-      End Property
+        Public Property Location() As Point
+            Get
+                Return owner.Location
+            End Get
+            Set(ByVal Value As Point)
+                owner.Location = Value
+            End Set
+        End Property
 
-   End Class
 
-End Namespace
+        Public Property FormSize() As Size
+            Get
+                Return owner.Size
+            End Get
+            Set(ByVal Value As Size)
+                owner.Size = Value
+            End Set
+        End Property
+    End Class 'DimensionData
+End Namespace 'DesignerSerializationVisibilityTest

@@ -1,48 +1,64 @@
 using System;
-using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Xml;
+using System.IO;
 
-class DSASample
+/// This sample used the EncryptedData class to create an encrypted data element
+/// and write it to an XML file. It demonstrates the use of CipherReference.
+namespace EncryptedDataSample
 {
-		
-	static void Main()
+	class Sample1
 	{
-		try
+		[STAThread]
+		static void Main(string[] args)
 		{
-			//Create a new instance of DSACryptoServiceProvider.
-			DSACryptoServiceProvider DSA = new DSACryptoServiceProvider();
+			//Create a URI string.
+			String uri = "http://www.woodgrovebank.com/document.xml";
+			// Create a Base64 transform. The input content retrieved from the
+			// URI should be Base64-decoded before other processing.
+			Transform base64 = new XmlDsigBase64Transform();
+			//Create a transform chain and add the transform to it.
+			TransformChain tc = new TransformChain();
+			tc.Add(base64);
+			//Create <CipherReference> information.
+			CipherReference reference = new CipherReference(uri, tc);
 
-			//The hash to sign.
-			byte[] Hash = {59,4,248,102,77,97,142,201,210,12,224,93,25,41,100,197,213,134,130,135};
+			// Create a new CipherData object using the CipherReference information.
+			// Note that you cannot assign both a CipherReference and a CipherValue
+			// to a CipherData object.
+			CipherData cd = new CipherData(reference);
 
-			//Create an DSASignatureFormatter object and pass it the 
-			//DSACryptoServiceProvider to transfer the key information.
-			DSASignatureFormatter DSAFormatter = new DSASignatureFormatter(DSA);
+			// Create a new EncryptedData object.
+			EncryptedData ed = new EncryptedData();
 
-			//Set the hash algorithm to SHA1.
-			DSAFormatter.SetHashAlgorithm("SHA1");
+			//Add an encryption method to the object.
+			ed.Id = "ED";
+			ed.EncryptionMethod = new EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc");
+			ed.CipherData = cd;
 
-			//Create a signature for HashValue and return it.
-			byte[] SignedHash = DSAFormatter.CreateSignature(Hash);
+			//Add key information to the object.
+			KeyInfo ki = new KeyInfo();
+			ki.AddClause(new KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"));
+			ed.KeyInfo = ki;
 
-			//Create an DSASignatureDeformatter object and pass it the 
-			//DSACryptoServiceProvider to transfer the key information.
-			DSASignatureDeformatter DSADeformatter = new DSASignatureDeformatter(DSA);
+			// Create new XML document and put encrypted data into it.
+			XmlDocument doc = new XmlDocument();
+			XmlElement encryptionPropertyElement = (XmlElement)doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
+			EncryptionProperty ep = new EncryptionProperty(encryptionPropertyElement);
+			ed.AddProperty(ep);
 
-			//Verify the hash and display the results to the console.
-			if(DSADeformatter.VerifySignature(Hash, SignedHash))
+			// Output the resulting XML information into a file.
+			try
 			{
-				Console.WriteLine("The signature was verified.");
+				string path = @"c:\test\MyTest.xml";
+
+				File.WriteAllText(path, ed.GetXml().OuterXml);
 			}
-			else
+			catch (IOException e)
 			{
-				Console.WriteLine("The signature was not verified.");
+				Console.WriteLine("File IO error. {0}", e);
 			}
 
-		}
-		catch(CryptographicException e)
-		{
-			Console.WriteLine(e.Message);
 		}
 	}
-
 }

@@ -39,11 +39,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Xaml.XamlObjectWriterSettings.SourceBamlUri
-internalonly: False
----
-
----
 uid: System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler
 internalonly: False
 ---

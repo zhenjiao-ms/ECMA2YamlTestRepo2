@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Printing.PrintQueue.AddJob(System.String,System.String,System.Boolean,System.Printing.PrintTicket)
-internalonly: False
----
-
----
 uid: System.Printing.PrintQueue.IsShared
 internalonly: False
 ---
@@ -210,11 +205,6 @@ internalonly: False
 
 ---
 uid: System.Printing.PrintQueue.QueueStatus
-internalonly: False
----
-
----
-uid: System.Printing.PrintQueue.AddJob(System.String,System.Printing.PrintTicket)
 internalonly: False
 ---
 

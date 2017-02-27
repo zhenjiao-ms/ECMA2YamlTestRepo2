@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.GetFrameworkSdkPath.FrameworkSdkVersion45Path
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.GetFrameworkSdkPath.FrameworkSdkVersion40Path
 internalonly: False
 ---

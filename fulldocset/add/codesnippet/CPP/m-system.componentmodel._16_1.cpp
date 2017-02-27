@@ -1,19 +1,17 @@
-protected:
-   void ContainsAttribute()
+private:
+   void MyEnumerator()
    {
-      // Creates a new collection and assigns it the attributes for button1.
-      AttributeCollection^ attributes;
-      attributes = TypeDescriptor::GetAttributes( button1 );
+      // Creates a new collection, and assigns to it the events for button1.
+      EventDescriptorCollection^ events = TypeDescriptor::GetEvents( button1 );
       
-      // Sets an Attribute to the specific attribute.
-      BrowsableAttribute^ myAttribute = BrowsableAttribute::Yes;
-
-      if ( attributes->Contains( myAttribute ) )
+      // Creates an enumerator.
+      IEnumerator^ ie = events->GetEnumerator();
+      
+      // Prints the name of each event in the collection.
+      Object^ myEvent;
+      while ( ie->MoveNext() == true )
       {
-         textBox1->Text = "button1 has a browsable attribute.";
-      }
-      else
-      {
-         textBox1->Text = "button1 does not have a browsable attribute.";
+         myEvent = ie->Current;
+         textBox1->Text = String::Concat( textBox1->Text, myEvent, "\n" );
       }
    }

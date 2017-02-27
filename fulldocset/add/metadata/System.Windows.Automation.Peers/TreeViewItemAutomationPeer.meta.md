@@ -64,11 +64,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Automation.Peers.TreeViewItemAutomationPeer.FindOrCreateItemAutomationPeer(System.Object)
-internalonly: False
----
-
----
 uid: System.Windows.Automation.Peers.TreeViewItemAutomationPeer.System#Windows#Automation#Provider#ISelectionItemProvider#AddToSelection
 internalonly: False
 ---

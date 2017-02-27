@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Tracking.WorkflowInstanceStates.UpdateFailed
-internalonly: False
----
-
----
 uid: System.Activities.Tracking.WorkflowInstanceStates.Started
 internalonly: False
 ---
@@ -50,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.Activities.Tracking.WorkflowInstanceStates.Idle
-internalonly: False
----
-
----
-uid: System.Activities.Tracking.WorkflowInstanceStates.Updated
 internalonly: False
 ---
 

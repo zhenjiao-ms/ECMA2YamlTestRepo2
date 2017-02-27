@@ -1,66 +1,224 @@
 using System;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.IO;
+using System.Xml;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Text;
 
-public class X509store2
+class Class1
 {
-	public static void Main (string[] args)
-	{
-		//Create new X509 store called teststore from the local certificate store.
-		X509Store store = new X509Store ("teststore", StoreLocation.CurrentUser);
-		store.Open (OpenFlags.ReadWrite);
-		X509Certificate2 certificate = new X509Certificate2 ();
+    [STAThread]
+    static void Main(string[] args)
+    {
+        XmlDocument productsXml = LoadProducts();
+        XmlNodeList xsltNodeList = GetXsltAsNodeList();
+        TransformDoc(productsXml, xsltNodeList);
 
-		//Create certificates from certificate files.
-		//You must put in a valid path to three certificates in the following constructors.
-		X509Certificate2 certificate1 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate2 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
-		X509Certificate2 certificate5 = new X509Certificate2 ("c:\\mycerts\\*****.cer");
+        // Use XmlDsigXsltTransform to resolve a Uri.
+        Uri baseUri = new Uri("http://www.contoso.com");
+        string relativeUri = "xml";
+        Uri absoluteUri = ResolveUris(baseUri, relativeUri);
 
-		//Create a collection and add two of the certificates.
-		X509Certificate2Collection collection = new X509Certificate2Collection ();
-		collection.Add (certificate2);
-		collection.Add (certificate5);
+        Console.WriteLine("This sample completed successfully; " +
+            "press Enter to exit.");
+        Console.ReadLine();
+    }
 
-		//Add certificates to the store.
-		store.Add (certificate1);
-		store.AddRange (collection);
+    private static void TransformDoc(
+        XmlDocument xmlDoc, 
+        XmlNodeList xsltNodeList)
+    {
+        try 
+        {
+            // Construct a new XmlDsigXsltTransform.
+            XmlDsigXsltTransform xmlTransform = 
+                new XmlDsigXsltTransform();
 
-		X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("Store name: {0}", store.Name);
-		Console.WriteLine ("Store location: {0}", store.Location);
-		foreach (X509Certificate2 x509 in storecollection)
-		{
-			Console.WriteLine("certificate name: {0}",x509.Subject);
-		}
+            // Load the Xslt tranform as a node list.
+            xmlTransform.LoadInnerXml(xsltNodeList);
 
-		//Remove a certificate.
-		store.Remove (certificate1);
-		X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		foreach (X509Certificate2 x509 in storecollection2)
-		{
-			Console.WriteLine ("certificate name: {0}", x509.Subject);
-		}
+            // Load the Xml document to perform the tranform on.
+            XmlNamespaceManager namespaceManager;
+            namespaceManager = new XmlNamespaceManager(xmlDoc.NameTable);
 
-		//Remove a range of certificates.
-		store.RemoveRange (collection);
-		X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
-		Console.WriteLine ("{1}Store name: {0}", store.Name, Environment.NewLine);
-		if (storecollection3.Count == 0)
-		{
-			Console.WriteLine ("Store contains no certificates.");
-		}
-		else
-		{
-			foreach (X509Certificate2 x509 in storecollection3)
-			{
-				Console.WriteLine ("certificate name: {0}", x509.Subject);
-			}
-		}
+            XmlNodeList productsNodeList;
+            productsNodeList = xmlDoc.SelectNodes("//.", namespaceManager);
 
-		//Close the store.
-		store.Close ();
-	}	
+            xmlTransform.LoadInput(productsNodeList);
+
+            // Retrieve the output from the transform.
+            Stream outputStream = (Stream)
+                xmlTransform.GetOutput(typeof(System.IO.Stream));
+
+            // Read the output stream into a stream reader.
+            StreamReader streamReader =
+                new StreamReader(outputStream);
+
+            // Read the stream into a string.
+            string outputMessage = streamReader.ReadToEnd();
+
+            // Close the streams.
+            outputStream.Close();
+            streamReader.Close();
+
+            // Display to the console the Xml before and after
+            // encryption.
+            Console.WriteLine("\nResult of transformation: " + outputMessage);
+            ShowTransformProperties(xmlTransform);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Caught exception in TransformDoc method: " + 
+                ex.ToString());
+        }
+    }
+    
+    private static XmlNodeList GetXsltAsNodeList()
+    {
+        string transformXml = "<xsl:transform version='1.0' ";
+        transformXml += "xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>";
+        transformXml += "<xsl:template match='products'>";
+        transformXml += "<table><tr><td>ProductId</td><td>Name</td></tr>";
+        transformXml += "<xsl:apply-templates/></table></xsl:template>";
+        transformXml += "<xsl:template match='product'><tr>";
+        transformXml += "<xsl:apply-templates/></tr></xsl:template>";
+        transformXml += "<xsl:template match='productid'><td>";
+        transformXml += "<xsl:apply-templates/></td></xsl:template>";
+        transformXml += "<xsl:template match='description'><td>";
+        transformXml += "<xsl:apply-templates/></td></xsl:template>";
+        transformXml += "</xsl:transform>";
+
+        Console.WriteLine("\nCreated the following Xslt tranform:");
+        Console.WriteLine(transformXml);
+
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(transformXml);
+        return xmlDoc.GetElementsByTagName("xsl:transform");
+    }
+
+    // Encrypt the text in the specified XmlDocument.
+    private static void ShowTransformProperties(
+        XmlDsigXsltTransform xmlTransform)
+    {
+        string classDescription = xmlTransform.ToString();
+        Console.WriteLine("\n** Summary for " + classDescription + " **");
+
+        // Retrieve the XML representation of the current transform.
+        XmlElement xmlInTransform = xmlTransform.GetXml();
+        Console.WriteLine("Xml representation of the current transform:\n" +
+            xmlInTransform.OuterXml);
+
+        // Ensure the transform is using the proper algorithm.
+        xmlTransform.Algorithm =
+            SignedXml.XmlDsigXsltTransformUrl;
+        Console.WriteLine("Algorithm used: " + classDescription);
+
+        // Retrieve the valid input types for the current transform.
+        Type[] validInTypes = xmlTransform.InputTypes;
+        Console.WriteLine("Transform accepts the following inputs:");
+        for (int i=0; i<validInTypes.Length; i++)
+        {
+            Console.WriteLine("\t" + validInTypes[i].ToString());
+        }
+
+        Type[] validOutTypes = xmlTransform.OutputTypes;
+        Console.WriteLine("Transform outputs in the following types:");
+        for (int i=validOutTypes.Length-1; i >= 0; i--)
+        {
+            Console.WriteLine("\t " + validOutTypes[i].ToString());
+
+            if (validOutTypes[i] == typeof(object))
+            {
+                object outputObject = xmlTransform.GetOutput();
+            }
+        }
+    }
+
+    // Create an XML document describing various products.
+    private static XmlDocument LoadProducts()
+    {
+        string contosoProducts = "<?xml version='1.0'?>";
+        contosoProducts += "<products>";
+        contosoProducts += "<product><productid>1</productid>";
+        contosoProducts += "<description>Widgets</description></product>";
+        contosoProducts += "<product><productid>2</productid>";
+        contosoProducts += "<description>Gadgits</description></product>";
+        contosoProducts += "</products>";
+
+        Console.WriteLine(
+            "\nCreated the following Xml document for tranformation:");
+        Console.WriteLine(contosoProducts);
+
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(contosoProducts);
+        return xmlDoc;
+    }
+
+    // Resolve the specified base and relative Uri's .
+    private static Uri ResolveUris(Uri baseUri, string relativeUri)
+    {
+        XmlUrlResolver xmlResolver = new XmlUrlResolver();
+        xmlResolver.Credentials = 
+            System.Net.CredentialCache.DefaultCredentials;
+
+        XmlDsigXsltTransform xmlTransform =
+            new XmlDsigXsltTransform();
+        xmlTransform.Resolver = xmlResolver;
+
+        Uri absoluteUri = xmlResolver.ResolveUri(baseUri, relativeUri);
+        if (absoluteUri != null)
+        {
+            Console.WriteLine(
+                "\nResolved the base Uri and relative Uri to the following:");
+            Console.WriteLine(absoluteUri.ToString());
+        }
+        else
+        {
+            Console.WriteLine(
+                "Unable to resolve the base Uri and relative Uri");
+        }
+        return absoluteUri;
+    }
 }
+//
+// This sample produces the following output:
+//
+// Created the following Xml document for tranformation:
+// <?xml version='1.0'?><products><product><productid>1</productid><descriptio
+// n>Widgets</description></product><product><productid>2</productid><descript
+// ion>Gadgits</description></product></products>
+// 
+// Created the following Xslt tranform:
+// <xsl:transform version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transfor
+// m'><xsl:template match='products'><table><tr><td>ProductId</td><td>Name</td
+// ></tr><xsl:apply-templates/></table></xsl:template><xsl:template match='pro
+// duct'><tr><xsl:apply-templates/></tr></xsl:template><xsl:emplate match='pro
+// ductid'><td><xsl:apply-templates/></td></xsl:template><xsl:template match='
+// description'><td><xsl:apply-templates/></td></xsl:template></xsl:transform>
+// 
+// Result of transformation: <table><tr><td>ProductId</td><td>Name</td></tr><t
+// r><td>1</td><td>Widgets</td></tr><tr><td>2</td><td>Gadgits</td></tr></table
+// >
+//
+// ** Summary for System.Security.Cryptography.Xml.XmlDsigXsltTransform **
+// Xml representation of the current transform:
+// <Transform Algorithm="http://www.w3.org/TR/1999/REC-xslt-19991116" xmlns="h
+// ttp://www.w3.org/2000/09/xmldsig#"><xsl:transform version="1.0" xmlns:xsl="
+// http://www.w3.org/1999/XSL/Transform"><xsl:template match="products"><table
+//  xmlns=""><tr><td>ProductId</td><td>Name</td></tr><xsl:apply-templates /></
+// table></xsl:template><xsl:template match="product"><tr xmlns=""><xsl:apply-
+// templates /></tr></xsl:template><xsl:template match="productid"><td xmlns="
+// "><xsl:apply-templates /></td></xsl:template><xsl:template match="descripti
+// on"><td xmlns=""><xsl:apply-templates /></td></xsl:template></xsl:transform
+// ></Transform>
+// Algorithm used: System.Security.Cryptography.Xml.XmlDsigXsltTransform
+// Transform accepts the following inputs:
+// System.IO.Stream
+// System.Xml.XmlDocument
+// System.Xml.XmlNodeList
+// Transform outputs in the following types:
+// System.IO.Stream
+// 
+// Resolved the base Uri and relative Uri to the following:
+// http://www.contoso.com/xml
+// This sample completed successfully; press Enter to exit.

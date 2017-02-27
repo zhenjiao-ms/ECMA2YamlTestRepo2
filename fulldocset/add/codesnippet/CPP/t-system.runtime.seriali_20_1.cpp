@@ -3,101 +3,84 @@ using namespace System::IO;
 using namespace System::Collections;
 using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace System::Runtime::Serialization;
-
-// This class is serializable and will have its OnDeserialization method
-// called after each instance of this class is deserialized.
-
-[Serializable]
-ref class Circle: public IDeserializationCallback
+ref class App
 {
-private:
-   Double m_radius;
-
 public:
-
-   // To reduce the size of the serialization stream, the field below is 
-   // not serialized. This field is calculated when an object is constructed
-   // or after an instance of this class is deserialized.
-
-   [NonSerialized]
-   Double m_area;
-   Circle( Double radius )
+   static void Serialize()
    {
-      m_radius = radius;
-      m_area = Math::PI * radius * radius;
+      
+      // Create a hashtable of values that will eventually be serialized.
+      Hashtable^ addresses = gcnew Hashtable;
+      addresses->Add( "Jeff", "123 Main Street, Redmond, WA 98052" );
+      addresses->Add( "Fred", "987 Pine Road, Phila., PA 19116" );
+      addresses->Add( "Mary", "PO Box 112233, Palo Alto, CA 94301" );
+      
+      // To serialize the hashtable (and its keys/values),  
+      // you must first open a stream for writing. 
+      // In this case we will use a file stream.
+      FileStream^ fs = gcnew FileStream( "DataFile.dat",FileMode::Create );
+      
+      // Construct a BinaryFormatter and use it to serialize the data to the stream.
+      BinaryFormatter^ formatter = gcnew BinaryFormatter;
+      try
+      {
+         formatter->Serialize( fs, addresses );
+      }
+      catch ( SerializationException^ e ) 
+      {
+         Console::WriteLine( "Failed to serialize. Reason: {0}", e->Message );
+         throw;
+      }
+      finally
+      {
+         fs->Close();
+      }
+
    }
 
-   virtual void OnDeserialization( Object^ /*sender*/ )
+   static void Deserialize()
    {
-      // After being deserialized, initialize the m_area field 
-      // using the deserialized m_radius value.
-      m_area = Math::PI * m_radius * m_radius;
+      
+      // Declare the hashtable reference.
+      Hashtable^ addresses = nullptr;
+      
+      // Open the file containing the data that we want to deserialize.
+      FileStream^ fs = gcnew FileStream( "DataFile.dat",FileMode::Open );
+      try
+      {
+         BinaryFormatter^ formatter = gcnew BinaryFormatter;
+         
+         // Deserialize the hashtable from the file and 
+         // assign the reference to our local variable.
+         addresses = dynamic_cast<Hashtable^>(formatter->Deserialize( fs ));
+      }
+      catch ( SerializationException^ e ) 
+      {
+         Console::WriteLine( "Failed to deserialize. Reason: {0}", e->Message );
+         throw;
+      }
+      finally
+      {
+         fs->Close();
+      }
+
+      
+      // To prove that the table deserialized correctly, display the keys/values.
+      IEnumerator^ myEnum = addresses->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         DictionaryEntry ^ de = safe_cast<DictionaryEntry ^>(myEnum->Current);
+         Console::WriteLine( " {0} lives at {1}.", de->Key, de->Value );
+      }
    }
 
-   virtual String^ ToString() override
-   {
-      return String::Format( "radius= {0}, area= {1}", m_radius, m_area );
-   }
 };
 
-void Serialize()
-{
-   Circle^ c = gcnew Circle( 10 );
-   Console::WriteLine( "Object being serialized: {0}", c );
-
-   // To serialize the Circle, you must first open a stream for 
-   // writing. We will use a file stream here.
-   FileStream^ fs = gcnew FileStream( "DataFile.dat",FileMode::Create );
-
-   // Construct a BinaryFormatter and use it to serialize the data to the stream.
-   BinaryFormatter^ formatter = gcnew BinaryFormatter;
-   try
-   {
-      formatter->Serialize( fs, c );
-   }
-   catch ( SerializationException^ e ) 
-   {
-      Console::WriteLine( "Failed to serialize. Reason: {0}", e->Message );
-      throw;
-   }
-   finally
-   {
-      fs->Close();
-   }
-}
-
-void Deserialize()
-{
-   // Declare the Circle reference.
-   Circle^ c = nullptr;
-
-   // Open the file containing the data that we want to deserialize.
-   FileStream^ fs = gcnew FileStream( "DataFile.dat",FileMode::Open );
-   try
-   {
-      BinaryFormatter^ formatter = gcnew BinaryFormatter;
-
-      // Deserialize the Circle from the file and 
-      // assign the reference to our local variable.
-      c = dynamic_cast<Circle^>(formatter->Deserialize( fs ));
-   }
-   catch ( SerializationException^ e ) 
-   {
-      Console::WriteLine( "Failed to deserialize. Reason: {0}", e->Message );
-      throw;
-   }
-   finally
-   {
-      fs->Close();
-   }
-
-   // To prove that the Circle deserialized correctly, display its area.
-   Console::WriteLine( "Object being deserialized: {0}", c );
-}
 
 [STAThread]
 int main()
 {
-   Serialize();
-   Deserialize();
+   App::Serialize();
+   App::Deserialize();
+   return 0;
 }

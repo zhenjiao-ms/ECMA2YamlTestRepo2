@@ -29,11 +29,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Diagnostics.SymbolStore.SymVariable.Dispose(System.Boolean)
-internalonly: False
----
-
----
 uid: System.Diagnostics.SymbolStore.SymVariable.AddressKind
 internalonly: False
 ---
@@ -50,11 +45,6 @@ internalonly: False
 
 ---
 uid: System.Diagnostics.SymbolStore.SymVariable.AddressField2
-internalonly: False
----
-
----
-uid: System.Diagnostics.SymbolStore.SymVariable.Dispose
 internalonly: False
 ---
 

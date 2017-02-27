@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Csc.ErrorEndLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Csc.ApplicationConfiguration
 internalonly: False
 ---
@@ -80,11 +75,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.Csc.AllowUnsafeBlocks
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Csc.PreferredUILang
 internalonly: False
 ---
 

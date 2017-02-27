@@ -1,169 +1,116 @@
-#using <System.Drawing.dll>
-#using <System.dll>
-#using <System.Design.dll>
-#using <System.Windows.Forms.dll>
-
-using namespace System;
-using namespace System::Collections;
-using namespace System::ComponentModel;
-using namespace System::ComponentModel::Design;
-using namespace System::Diagnostics;
-using namespace System::Drawing;
-using namespace System::Drawing::Design;
-using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
-
-// This example contains an IRootDesigner that implements the IToolboxUser interface.
-// This example demonstrates how to enable the GetToolSupported method of an IToolboxUser
-// designer in order to disable specific toolbox items, and how to respond to the 
-// invocation of a ToolboxItem in the ToolPicked method of an IToolboxUser implementation.
-public ref class SampleRootDesigner;
-
-// The following attribute associates the SampleRootDesigner with this example component.
-
-[DesignerAttribute(__typeof(SampleRootDesigner),__typeof(IRootDesigner))]
-public ref class RootDesignedComponent: public Control{};
-
-
-// This example component class demonstrates the associated IRootDesigner which 
-// implements the IToolboxUser interface. When designer view is invoked, Visual 
-// Studio .NET attempts to display a design mode view for the class at the top 
-// of a code file. This can sometimes fail when the class is one of multiple types 
-// in a code file, and has a DesignerAttribute associating it with an IRootDesigner. 
-// Placing a derived class at the top of the code file solves this problem. A 
-// derived class is not typically needed for this reason, except that placing the 
-// RootDesignedComponent class in another file is not a simple solution for a code 
-// example that is packaged in one segment of code.
-public ref class RootViewSampleComponent: public RootDesignedComponent{};
-
-
-// This example IRootDesigner implements the IToolboxUser interface and provides a 
-// Windows Forms view technology view for its associated component using an internal 
-// Control type.     
-// The following ToolboxItemFilterAttribute enables the GetToolSupported method of this
-// IToolboxUser designer to be queried to check for whether to enable or disable all 
-// ToolboxItems which create any components whose type name begins with "System.Windows.Forms".
-
-[ToolboxItemFilterAttribute(S"System.Windows.Forms",ToolboxItemFilterType::Custom)]
-public ref class SampleRootDesigner: public ParentControlDesigner, public IRootDesigner, public IToolboxUser
-{
-public private:
-   ref class RootDesignerView;
-
-private:
-
-   // This field is a custom Control type named RootDesignerView. This field references
-   // a control that is shown in the design mode document window.
-   RootDesignerView^ view;
-
-   // This string array contains type names of components that should not be added to 
-   // the component managed by this designer from the Toolbox.  Any ToolboxItems whose 
-   // type name matches a type name in this array will be marked disabled according to  
-   // the signal returned by the IToolboxUser.GetToolSupported method of this designer.
-   array<String^>^blockedTypeNames;
-
-public:
-   SampleRootDesigner()
-   {
-      array<String^>^tempTypeNames = {"System.Windows.Forms.ListBox","System.Windows.Forms.GroupBox"};
-      blockedTypeNames = tempTypeNames;
-   }
-
-
-private:
-
-   property array<ViewTechnology>^ SupportedTechnologies 
-   {
-
-      // IRootDesigner.SupportedTechnologies is a required override for an IRootDesigner.
-      // This designer provides a display using the Windows Forms view technology.
-      array<ViewTechnology>^ IRootDesigner::get()
-      {
-         ViewTechnology temp0[] = {ViewTechnology::WindowsForms};
-         return temp0;
-      }
-
-   }
-
-   // This method returns an object that provides the view for this root designer. 
-   Object^ IRootDesigner::GetView( ViewTechnology technology )
-   {
-      
-      // If the design environment requests a view technology other than Windows 
-      // Forms, this method throws an Argument Exception.
-      if ( technology != ViewTechnology::WindowsForms )
-            throw gcnew ArgumentException( "An unsupported view technology was requested","Unsupported view technology." );
-
-      
-      // Creates the view object if it has not yet been initialized.
-      if ( view == nullptr )
-            view = gcnew RootDesignerView( this );
-
-      return view;
-   }
-
-
-   // This method can signal whether to enable or disable the specified
-   // ToolboxItem when the component associated with this designer is selected.
-   bool IToolboxUser::GetToolSupported( ToolboxItem^ tool )
-   {
-      
-      // Search the blocked type names array for the type name of the tool
-      // for which support for is being tested. Return false to indicate the
-      // tool should be disabled when the associated component is selected.
-      for ( int i = 0; i < blockedTypeNames->Length; i++ )
-         if ( tool->TypeName == blockedTypeNames[ i ] )
-                  return false;
-
-      
-      // Return true to indicate support for the tool, if the type name of the
-      // tool is not located in the blockedTypeNames string array.
-      return true;
-   }
-
-
-   // This method can perform behavior when the specified tool has been invoked.
-   // Invocation of a ToolboxItem typically creates a component or components, 
-   // and adds any created components to the associated component.
-   void IToolboxUser::ToolPicked( ToolboxItem^ /*tool*/ ){}
-
-
-public private:
-
-   // This control provides a Windows Forms view technology view object that 
-   // provides a display for the SampleRootDesigner.
-
-   [DesignerAttribute(__typeof(ParentControlDesigner),__typeof(IDesigner))]
-   ref class RootDesignerView: public Control
+   //This code segment implements the IContainer interface.  The code segment
+   //containing the implementation of ISite and IComponent can be found in the documentation
+   //for those interfaces.
+   //Implement the LibraryContainer using the IContainer interface.
+   ref class LibraryContainer: public IContainer
    {
    private:
-
-      // This field stores a reference to a designer.
-      IDesigner^ m_designer;
+      ArrayList^ m_bookList;
 
    public:
-      RootDesignerView( IDesigner^ designer )
+      LibraryContainer()
+      {
+         m_bookList = gcnew ArrayList;
+      }
+
+      virtual void Add( IComponent^ book )
       {
          
-         // Perform basic control initialization.
-         m_designer = designer;
-         BackColor = Color::Blue;
-         Font = gcnew System::Drawing::Font( Font->FontFamily->Name,24.0f );
+         //The book will be added without creation of the ISite object.
+         m_bookList->Add( book );
+      }
+
+      virtual void Add( IComponent^ book, String^ ISNDNNum )
+      {
+         for ( int i = 0; i < m_bookList->Count; ++i )
+         {
+            IComponent^ curObj = static_cast<IComponent^>(m_bookList->default[ i ]);
+            if ( curObj->Site != nullptr )
+            {
+               if ( curObj->Site->Name->Equals( ISNDNNum ) )
+                              throw gcnew SystemException( "The ISBN number already exists in the container" );
+            }
+
+         }
+         ISBNSite^ data = gcnew ISBNSite( this,book );
+         data->Name = ISNDNNum;
+         book->Site = data;
+         m_bookList->Add( book );
+      }
+
+      virtual void Remove( IComponent^ book )
+      {
+         for ( int i = 0; i < m_bookList->Count; ++i )
+         {
+            if ( book->Equals( m_bookList->default[ i ] ) )
+            {
+               m_bookList->RemoveAt( i );
+               break;
+            }
+
+         }
       }
 
 
-   protected:
-
-      // This method is called to draw the view for the SampleRootDesigner.
-      void OnPaint( PaintEventArgs^ pe )
+      property ComponentCollection^ Components 
       {
-         Control::OnPaint( pe );
-         
-         // Draw the name of the component in large letters.
-         pe->Graphics->DrawString( m_designer->Component->Site->Name, Font, Brushes::Yellow, ClientRectangle );
+         virtual ComponentCollection^ get() 
+         {
+            array<IComponent^>^datalist = gcnew array<BookComponent^>(m_bookList->Count);
+            m_bookList->CopyTo( datalist );
+            return gcnew ComponentCollection( datalist );
+         }
+
       }
+
+      ~LibraryContainer()
+      {
+         for ( int i = 0; i < m_bookList->Count; ++i )
+         {
+            IComponent^ curObj = static_cast<IComponent^>(m_bookList->default[ i ]);
+            delete curObj;
+
+         }
+         m_bookList->Clear();
+      }
+
+
 
    };
 
 
-};
+
+   [STAThreadAttribute]
+   int main()
+      {
+         LibraryContainer^ cntrExmpl = gcnew LibraryContainer;
+         try
+         {
+            BookComponent^ book1 = gcnew BookComponent( "Wizard's First Rule","Terry Gooodkind" );
+            cntrExmpl->Add( book1, "0812548051" );
+            BookComponent^ book2 = gcnew BookComponent( "Stone of Tears","Terry Gooodkind" );
+            cntrExmpl->Add( book2, "0812548094" );
+            BookComponent^ book3 = gcnew BookComponent( "Blood of the Fold","Terry Gooodkind" );
+            cntrExmpl->Add( book3, "0812551478" );
+            BookComponent^ book4 = gcnew BookComponent( "The Soul of the Fire","Terry Gooodkind" );
+            
+            //This will generate exception because the ISBN already exists in the container.
+            cntrExmpl->Add( book4, "0812551478" );
+         }
+         catch ( SystemException^ e ) 
+         {
+            Console::WriteLine(  "Error description: {0}", e->Message );
+         }
+
+         ComponentCollection^ datalist = cntrExmpl->Components;
+         IEnumerator^ denum = datalist->GetEnumerator();
+         while ( denum->MoveNext() )
+         {
+            BookComponent^ cmp = static_cast<BookComponent^>(denum->Current);
+            Console::WriteLine( "Book Title: {0}", cmp->Title );
+            Console::WriteLine(  "Book Author: {0}", cmp->Author );
+            Console::WriteLine(  "Book ISBN: {0}", cmp->Site->Name );
+         }
+
+	 return 0;
+      }

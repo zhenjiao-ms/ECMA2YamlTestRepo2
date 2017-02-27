@@ -1,68 +1,75 @@
-'The following sample uses the Cryptography class to simulate the roll of a dice.
 Imports System
-Imports System.IO
-Imports System.Text
 Imports System.Security.Cryptography
 
+Namespace Contoso
+    Public Class ContosoDeformatter
+        Inherits AsymmetricKeyExchangeDeformatter
 
+        Private rsaKey As RSA
 
-Class RNGCSP
-    Private Shared rngCsp As New RNGCryptoServiceProvider()
-    ' Main method.
-    Public Shared Sub Main()
-        Const totalRolls As Integer = 25000
-        Dim results(5) As Integer
+        ' Default constructor.
+        Public Sub New()
 
-        ' Roll the dice 25000 times and display
-        ' the results to the console.
-        Dim x As Integer
-        For x = 0 To totalRolls
-            Dim roll As Byte = RollDice(System.Convert.ToByte(results.Length))
-            results((roll - 1)) += 1
-        Next x
-        Dim i As Integer
+        End Sub
 
-        While i < results.Length
-            Console.WriteLine("{0}: {1} ({2:p1})", i + 1, results(i), System.Convert.ToDouble(results(i)) / System.Convert.ToDouble(totalRolls))
-            i += 1
-        End While
-        rngCsp.Dispose()
-        Console.ReadLine()
-    End Sub
+        ' Constructor with the public key to use for encryption.
+        Public Sub New(ByVal key As AsymmetricAlgorithm)
+            SetKey(key)
+        End Sub
 
+        ' Set the public key for encyption operations.
+        Public Overrides Sub SetKey(ByVal key As AsymmetricAlgorithm)
+            If (Not key Is Nothing) Then
+                rsaKey = CType(key, RSA)
+            Else
+                Throw New ArgumentNullException("key")
+            End If
+        End Sub
 
-    ' This method simulates a roll of the dice. The input parameter is the
-    ' number of sides of the dice.
-    Public Shared Function RollDice(ByVal numberSides As Byte) As Byte
-        If numberSides <= 0 Then
-            Throw New ArgumentOutOfRangeException("NumSides")
-        End If 
-        ' Create a byte array to hold the random value.
-        Dim randomNumber(0) As Byte
-        Do
-            ' Fill the array with a random value.
-            rngCsp.GetBytes(randomNumber)
-        Loop While Not IsFairRoll(randomNumber(0), numberSides)
-        ' Return the random number mod the number
-        ' of sides.  The possible values are zero-
-        ' based, so we add one.
-        Return System.Convert.ToByte(randomNumber(0) Mod numberSides + 1)
+        ' Disallow access to the parameters of the formatter.
+        Public Overrides ReadOnly Property Parameters() As String
+            Get
+                Return Nothing
+            End Get
+            Set(ByVal Value As String)
 
-    End Function
+            End Set
+        End Property
 
+        ' Create the encrypted key exchange data from the specified input
+        ' data. This method uses the RSACryptoServiceProvider only. To
+        ' support additional providers or provide custom decryption logic,
+        ' add logic to this member.
+        Public Overrides Function DecryptKeyExchange(
+            ByVal rgbData() As Byte) As Byte()
 
-    Private Shared Function IsFairRoll(ByVal roll As Byte, ByVal numSides As Byte) As Boolean
-        ' There are MaxValue / numSides full sets of numbers that can come up
-        ' in a single byte.  For instance, if we have a 6 sided die, there are
-        ' 42 full sets of 1-6 that come up.  The 43rd set is incomplete.
-        Dim fullSetsOfValues As Integer = [Byte].MaxValue / numSides
+            Dim decryptedBytes() As Byte
 
-        ' If the roll is within this range of fair values, then we let it continue.
-        ' In the 6 sided die case, a roll between 0 and 251 is allowed.  (We use
-        ' < rather than <= since the = portion allows through an extra 0 value).
-        ' 252 through 255 would provide an extra 0, 1, 2, 3 so they are not fair
-        ' to use.
-        Return roll < numSides * fullSetsOfValues
+            If (Not rsaKey Is Nothing) Then
+                If (TypeOf (rsaKey) Is RSACryptoServiceProvider) Then
+                    Dim rsaProvider As RSACryptoServiceProvider
+                    rsaProvider = CType(rsaKey, RSACryptoServiceProvider)
 
-    End Function 'IsFairRoll
-End Class
+                    decryptedBytes = rsaProvider.Decrypt(rgbData, True)
+                End If
+
+                ' Add custom decryption logic here.
+
+            Else
+                Throw New CryptographicUnexpectedOperationException(
+                    "Cryptography_MissingKey")
+            End If
+
+            Return decryptedBytes
+        End Function
+
+    End Class
+End Namespace
+'
+' This code example produces the following output:
+'
+' Data to encrypt : Sample Contoso encryption application.
+' Encrypted data: Kh34dfg-(*&834d+3
+' Data decrypted : Sample Contoso encryption application.
+' 
+' This sample completed successfully; press Exit to continue.

@@ -109,11 +109,6 @@ internalonly: False
 ---
 
 ---
-uid: System.DirectoryServices.ActiveDirectory.Forest.ForestModeLevel
-internalonly: False
----
-
----
 uid: System.DirectoryServices.ActiveDirectory.Forest.FindAllDiscoverableGlobalCatalogs(System.String)
 internalonly: False
 ---
@@ -155,11 +150,6 @@ internalonly: False
 
 ---
 uid: System.DirectoryServices.ActiveDirectory.Forest.VerifyOutboundTrustRelationship(System.String)
-internalonly: False
----
-
----
-uid: System.DirectoryServices.ActiveDirectory.Forest.RaiseForestFunctionalityLevel(System.Int32)
 internalonly: False
 ---
 

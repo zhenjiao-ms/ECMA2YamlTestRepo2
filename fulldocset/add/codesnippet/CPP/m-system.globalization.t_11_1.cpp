@@ -1,55 +1,30 @@
 using namespace System;
 using namespace System::Globalization;
-void DisplayValues( Calendar^ myCal, DateTime myDT )
-{
-   Console::WriteLine( "   Era:        {0}", myCal->GetEra( myDT ) );
-   Console::WriteLine( "   Year:       {0}", myCal->GetYear( myDT ) );
-   Console::WriteLine( "   Month:      {0}", myCal->GetMonth( myDT ) );
-   Console::WriteLine( "   DayOfYear:  {0}", myCal->GetDayOfYear( myDT ) );
-   Console::WriteLine( "   DayOfMonth: {0}", myCal->GetDayOfMonth( myDT ) );
-   Console::WriteLine( "   DayOfWeek:  {0}", myCal->GetDayOfWeek( myDT ) );
-   Console::WriteLine();
-}
-
 int main()
 {
    
-   // Sets a DateTime to April 3, 2002 of the Gregorian calendar.
-   DateTime myDT = DateTime(2002,4,3,gcnew GregorianCalendar);
+   // Defines the String* with mixed casing.
+   String^ myString = "wAr aNd pEaCe";
    
-   // Creates an instance of the ThaiBuddhistCalendar.
-   ThaiBuddhistCalendar^ myCal = gcnew ThaiBuddhistCalendar;
+   // Creates a TextInfo based on the S"en-US" culture.
+   CultureInfo^ MyCI = gcnew CultureInfo( "en-US",false );
+   TextInfo^ myTI = MyCI->TextInfo;
    
-   // Displays the values of the DateTime.
-   Console::WriteLine( "April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:" );
-   DisplayValues( myCal, myDT );
+   // Changes a String* to lowercase.
+   Console::WriteLine( "\"{0}\" to lowercase: {1}", myString, myTI->ToLower( myString ) );
    
-   // Adds two years and ten months.
-   myDT = myCal->AddYears( myDT, 2 );
-   myDT = myCal->AddMonths( myDT, 10 );
+   // Changes a String* to uppercase.
+   Console::WriteLine( "\"{0}\" to uppercase: {1}", myString, myTI->ToUpper( myString ) );
    
-   // Displays the values of the DateTime.
-   Console::WriteLine( "After adding two years and ten months:" );
-   DisplayValues( myCal, myDT );
+   // Changes a String* to titlecase.
+   Console::WriteLine( "\"{0}\" to titlecase: {1}", myString, myTI->ToTitleCase( myString ) );
 }
 
 /*
 This code produces the following output.
 
-April 3, 2002 of the Gregorian calendar equals the following in the ThaiBuddhist calendar:
-   Era:        1
-   Year:       2545
-   Month:      4
-   DayOfYear:  93
-   DayOfMonth: 3
-   DayOfWeek:  Wednesday
-
-After adding two years and ten months:
-   Era:        1
-   Year:       2548
-   Month:      2
-   DayOfYear:  34
-   DayOfMonth: 3
-   DayOfWeek:  Thursday
+S"wAr aNd pEaCe" to lowercase: war and peace
+S"wAr aNd pEaCe" to uppercase: WAR AND PEACE
+S"wAr aNd pEaCe" to titlecase: War And Peace
 
 */

@@ -1,20 +1,18 @@
 using namespace System;
 using namespace System::Resources;
-using namespace System::IO;
+using namespace System::Collections;
 int main()
 {
    
-   // Create a file stream to encapsulate items.resources.
-   FileStream^ fs = gcnew FileStream( "items.resources",FileMode::OpenOrCreate,FileAccess::Write );
+   // Create a ResourceReader for the file items.resources.
+   ResourceReader^ rr = gcnew ResourceReader( "items.resources" );
    
-   // Open a resource writer to write from the stream.
-   IResourceWriter^ writer = gcnew ResourceWriter( fs );
+   // Create an IDictionaryEnumerator* to iterate through the resources.
+   IDictionaryEnumerator^ id = rr->GetEnumerator();
    
-   // Add resources to the resource writer.
-   writer->AddResource( "String 1", "First String" );
-   writer->AddResource( "String 2", "Second String" );
-   writer->AddResource( "String 3", "Third String" );
-   
-   // Write the resources to the stream, and close it.
-   writer->Close();
+   // Iterate through the resources and display the contents to the console.
+   while ( id->MoveNext() )
+      Console::WriteLine( "\n [{0}] \t {1}", id->Key, id->Value );
+
+   rr->Close();
 }

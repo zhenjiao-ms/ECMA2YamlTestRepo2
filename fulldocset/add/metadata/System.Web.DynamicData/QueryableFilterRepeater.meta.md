@@ -19,16 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.DynamicData.QueryableFilterRepeater.System#Web#DynamicData#IFilterExpressionProvider#Initialize(System.Web.UI.WebControls.IQueryableDataSource)
-internalonly: False
----
-
----
-uid: System.Web.DynamicData.QueryableFilterRepeater.System#Web#DynamicData#IFilterExpressionProvider#GetQueryable(System.Linq.IQueryable)
-internalonly: False
----
-
----
 uid: System.Web.DynamicData.QueryableFilterRepeater.#ctor
 internalonly: False
 ---

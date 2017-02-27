@@ -1,104 +1,73 @@
-Imports System.Security.Cryptography
-Imports System.Text
+Imports System
 Imports System.IO
+Imports System.Text
+Imports System.Security.Cryptography
 
-Module DESSample
+
+
+Module Crypto
 
     Sub Main()
-        Try
-            ' Create a new DES object to generate a key 
-            ' and initialization vector (IV).  Specify one 
-            ' of the recognized simple names for this 
-            ' algorithm.
-            Dim DESalg As DES = DES.Create("DES")
 
-            ' Create a string to encrypt.
-            Dim sData As String = "Here is some data to encrypt."
-            Dim FileName As String = "CText.txt"
+        ' Create a new instance of the RC2CryptoServiceProvider class
+        ' and automatically generate a Key and IV.
+        Dim rc2CSP As New RC2CryptoServiceProvider()
 
-            ' Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, DESalg.Key, DESalg.IV)
+        Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize)
 
-            ' Decrypt the text from a file using the file name, key, and IV.
-            Dim Final As String = DecryptTextFromFile(FileName, DESalg.Key, DESalg.IV)
+        ' Get the key and IV.
+        Dim key As Byte() = rc2CSP.Key
+        Dim IV As Byte() = rc2CSP.IV
 
-            ' Display the decrypted string to the console.
-            Console.WriteLine(Final)
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        End Try
+        ' Get an encryptor.
+        Dim encryptor As ICryptoTransform = rc2CSP.CreateEncryptor(key, IV)
+
+        ' Encrypt the data as an array of encrypted bytes in memory.
+        Dim msEncrypt As New MemoryStream()
+        Dim csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+
+        ' Convert the data to a byte array.
+        Dim original As String = "Here is some data to encrypt."
+        Dim toEncrypt As Byte() = Encoding.ASCII.GetBytes(original)
+
+        ' Write all data to the crypto stream and flush it.
+        csEncrypt.Write(toEncrypt, 0, toEncrypt.Length)
+        csEncrypt.FlushFinalBlock()
+
+        ' Get the encrypted array of bytes.
+        Dim encrypted As Byte() = msEncrypt.ToArray()
+
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' This is where the data could be transmitted or saved.          
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        'Get a decryptor that uses the same key and IV as the encryptor.
+        Dim decryptor As ICryptoTransform = rc2CSP.CreateDecryptor(key, IV)
+
+        ' Now decrypt the previously encrypted message using the decryptor
+        ' obtained in the above step.
+        Dim msDecrypt As New MemoryStream(encrypted)
+        Dim csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+
+        ' Read the decrypted bytes from the decrypting stream
+        ' and place them in a StringBuilder class.
+        Dim roundtrip As New StringBuilder()
+
+        Dim b As Integer = 0
+
+        Do
+            b = csDecrypt.ReadByte()
+
+            If b <> -1 Then
+                roundtrip.Append(ChrW(b))
+            End If
+        Loop While b <> -1
+
+        ' Display the original data and the decrypted data.
+        Console.WriteLine("Original:   {0}", original)
+        Console.WriteLine("Round Trip: {0}", roundtrip)
+
+        Console.ReadLine()
+
     End Sub
-
-
-    Sub EncryptTextToFile(ByVal Data As String, ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte)
-        Try
-            ' Create or open the specified file.
-            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
-
-            ' Create a new DES object.
-            Dim DESalg As DES = DES.Create
-
-            ' Create a CryptoStream using the FileStream 
-            ' and the passed key and initialization vector (IV).
-            Dim cStream As New CryptoStream(fStream, _
-                                           DESalg.CreateEncryptor(Key, IV), _
-                                           CryptoStreamMode.Write)
-
-            ' Create a StreamWriter using the CryptoStream.
-            Dim sWriter As New StreamWriter(cStream)
-
-            ' Write the data to the stream 
-            ' to encrypt it.
-            sWriter.WriteLine(Data)
-
-            ' Close the streams and
-            ' close the file.
-            sWriter.Close()
-            cStream.Close()
-            fStream.Close()
-        Catch e As CryptographicException
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
-        Catch e As UnauthorizedAccessException
-            Console.WriteLine("A file error occurred: {0}", e.Message)
-        End Try
-    End Sub
-
-
-    Function DecryptTextFromFile(ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        Try
-            ' Create or open the specified file. 
-            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
-
-            ' Create a new DES object.
-            Dim DESalg As DES = DES.Create
-
-            ' Create a CryptoStream using the FileStream 
-            ' and the passed key and initialization vector (IV).
-            Dim cStream As New CryptoStream(fStream, _
-                                            DESalg.CreateDecryptor(Key, IV), _
-                                            CryptoStreamMode.Read)
-
-            ' Create a StreamReader using the CryptoStream.
-            Dim sReader As New StreamReader(cStream)
-
-            ' Read the data from the stream 
-            ' to decrypt it.
-            Dim val As String = sReader.ReadLine()
-
-            ' Close the streams and
-            ' close the file.
-            sReader.Close()
-            cStream.Close()
-            fStream.Close()
-
-            ' Return the string. 
-            Return val
-        Catch e As CryptographicException
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
-            Return Nothing
-        Catch e As UnauthorizedAccessException
-            Console.WriteLine("A file error occurred: {0}", e.Message)
-            Return Nothing
-        End Try
-    End Function
 End Module

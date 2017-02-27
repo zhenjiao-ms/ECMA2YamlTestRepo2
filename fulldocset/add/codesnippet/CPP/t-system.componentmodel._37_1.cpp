@@ -1,18 +1,6 @@
-         try
-         {
-            System::Diagnostics::Process^ myProc = gcnew System::Diagnostics::Process;
-            //Attempting to start a non-existing executable
-            myProc->StartInfo->FileName = "c:\nonexist.exe";
-            //Start the application and assign it to the process component.
-            myProc->Start();
-         }
-         catch ( Win32Exception^ w ) 
-         {
-            Console::WriteLine( w->Message );
-            Console::WriteLine( w->ErrorCode );
-            Console::WriteLine( w->NativeErrorCode );
-            Console::WriteLine( w->StackTrace );
-            Console::WriteLine( w->Source );
-            Exception^ e = w->GetBaseException();
-            Console::WriteLine( e->Message );
-         }
+         // The sample first constructs a CultureInfo variable using the Greek culture - 'el'.
+         System::Globalization::CultureInfo^ myCulture = gcnew System::Globalization::CultureInfo( "el" );
+         String^ myCString = "Russian";
+         Console::WriteLine( TypeDescriptor::GetConverter( myCulture )->ConvertTo( myCulture, String::typeid ) );
+         // The following line will output 'ru' based on the string being converted.
+         Console::WriteLine( TypeDescriptor::GetConverter( myCulture )->ConvertFrom( myCString ) );

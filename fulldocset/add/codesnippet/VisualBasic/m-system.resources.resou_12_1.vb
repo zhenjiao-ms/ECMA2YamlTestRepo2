@@ -1,25 +1,17 @@
-Imports System
-Imports System.Resources
 Imports System.IO
+Imports System.Resources
 
-Public Class WriteResources
-
-  Public Shared Sub Main(ByVal args() As String)
-      ' Create a file stream to encapsulate items.resources.
-      Dim fs As New FileStream("items.resources", _
-         FileMode.OpenOrCreate, FileAccess.Write)
-
-      ' Open a resource writer to write from the stream.
-      Dim writer = New ResourceWriter(fs)
-
-      ' Add resources to the resource writer.
-      writer.AddResource("String 1", "First String")
-      writer.AddResource("String 2", "Second String")
-      writer.AddResource("String 3", "Third String")
-
-      ' Generate the resources, and close the writer.
-      writer.Generate()
-      writer.Close()
+Module Example
+   Public Sub Main()                      
+      ' Get the image as an array of bytes.
+      Dim byteStream As New FileStream("AppIcon.jpg", Filemode.Open)
+      Dim bytes(CInt(byteStream.Length - 1)) As Byte
+      byteStream.Read(bytes, 0, CInt(byteStream.Length))
+      
+      ' Create the resource file.
+      Using rw As New ResourceWriter(".\UIImages.resources")
+         rw.AddResource("AppIcon", byteStream)
+         ' Add any other resources.
+      End Using
    End Sub
-
-End Class
+End Module

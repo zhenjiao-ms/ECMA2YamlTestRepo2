@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.ListCollectionView.IsLiveFiltering
-internalonly: False
----
-
----
 uid: System.Windows.Data.ListCollectionView.InternalContains(System.Object)
 internalonly: False
 ---
@@ -59,17 +54,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.ListCollectionView.CanChangeLiveFiltering
-internalonly: False
----
-
----
 uid: System.Windows.Data.ListCollectionView.IsEmpty
-internalonly: False
----
-
----
-uid: System.Windows.Data.ListCollectionView.CanChangeLiveSorting
 internalonly: False
 ---
 
@@ -90,11 +75,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.ListCollectionView.CurrentEditItem
-internalonly: False
----
-
----
-uid: System.Windows.Data.ListCollectionView.LiveGroupingProperties
 internalonly: False
 ---
 
@@ -159,11 +139,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.ListCollectionView.CanChangeLiveGrouping
-internalonly: False
----
-
----
 uid: System.Windows.Data.ListCollectionView.Count
 internalonly: False
 ---
@@ -184,11 +159,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.ListCollectionView.IsLiveSorting
-internalonly: False
----
-
----
 uid: System.Windows.Data.ListCollectionView.UsesLocalArray
 internalonly: False
 ---
@@ -200,11 +170,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.ListCollectionView.Contains(System.Object)
-internalonly: False
----
-
----
-uid: System.Windows.Data.ListCollectionView.LiveFilteringProperties
 internalonly: False
 ---
 
@@ -249,22 +214,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.ListCollectionView.IsLiveGrouping
-internalonly: False
----
-
----
 uid: System.Windows.Data.ListCollectionView.InternalGetEnumerator
 internalonly: False
 ---
 
 ---
 uid: System.Windows.Data.ListCollectionView.#ctor(System.Collections.IList)
-internalonly: False
----
-
----
-uid: System.Windows.Data.ListCollectionView.LiveSortingProperties
 internalonly: False
 ---
 
@@ -305,11 +260,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Data.ListCollectionView.Filter
-internalonly: False
----
-
----
-uid: System.Windows.Data.ListCollectionView.OnAllowsCrossThreadChangesChanged
 internalonly: False
 ---
 

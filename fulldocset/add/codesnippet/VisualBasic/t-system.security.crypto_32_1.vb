@@ -1,37 +1,94 @@
 Imports System
-Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
 
-Class Alice
+ _
 
-    Public Shared Sub Main(ByVal args() As String)
-        Dim bob As New Bob()
-        If (True) Then
-            Using dsa As New ECDsaCng()
-                    dsa.HashAlgorithm = CngAlgorithm.Sha256
-                    bob.key = dsa.Key.Export(CngKeyBlobFormat.EccPublicBlob)
-                    Dim data() As Byte = {21, 5, 8, 12, 207}
-                    Dim signature As Byte() = dsa.SignData(data)
-                    bob.Receive(data, signature)
+Class RSACSPSample
+
+
+    Shared Sub Main()
+        Try
+            'Create a UnicodeEncoder to convert between byte array and string.
+            Dim ByteConverter As New UnicodeEncoding()
+
+            'Create byte arrays to hold original, encrypted, and decrypted data.
+            Dim dataToEncrypt As Byte() = ByteConverter.GetBytes("Data to Encrypt")
+            Dim encryptedData() As Byte
+            Dim decryptedData() As Byte
+
+            'Create a new instance of RSACryptoServiceProvider to generate
+            'public and private key data.
+            Using RSA As New RSACryptoServiceProvider
+
+                'Pass the data to ENCRYPT, the public key information 
+                '(using RSACryptoServiceProvider.ExportParameters(false),
+                'and a boolean flag specifying no OAEP padding.
+                encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(False), False)
+
+                'Pass the data to DECRYPT, the private key information 
+                '(using RSACryptoServiceProvider.ExportParameters(true),
+                'and a boolean flag specifying no OAEP padding.
+                decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(True), False)
+
+                'Display the decrypted plaintext to the console. 
+                Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData))
             End Using
-        End If
+        Catch e As ArgumentNullException
+            'Catch this exception in case the encryption did
+            'not succeed.
+            Console.WriteLine("Encryption failed.")
+        End Try
+    End Sub
 
-    End Sub 'Main
-End Class 'Alice 
+
+    Public Shared Function RSAEncrypt(ByVal DataToEncrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
+        Try
+            Dim encryptedData() As Byte
+            'Create a new instance of RSACryptoServiceProvider.
+            Using RSA As New RSACryptoServiceProvider
+
+                'Import the RSA Key information. This only needs
+                'toinclude the public key information.
+                RSA.ImportParameters(RSAKeyInfo)
+
+                'Encrypt the passed byte array and specify OAEP padding.  
+                'OAEP padding is only available on Microsoft Windows XP or
+                'later.  
+                encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding)
+            End Using
+            Return encryptedData
+            'Catch and display a CryptographicException  
+            'to the console.
+        Catch e As CryptographicException
+            Console.WriteLine(e.Message)
+
+            Return Nothing
+        End Try
+    End Function
 
 
-Public Class Bob
-    Public key() As Byte
+    Public Shared Function RSADecrypt(ByVal DataToDecrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
+        Try
+            Dim decryptedData() As Byte
+            'Create a new instance of RSACryptoServiceProvider.
+            Using RSA As New RSACryptoServiceProvider
+                'Import the RSA Key information. This needs
+                'to include the private key information.
+                RSA.ImportParameters(RSAKeyInfo)
 
-    Public Sub Receive(ByVal data() As Byte, ByVal signature() As Byte)
-        Using ecsdKey As New ECDsaCng(CngKey.Import(key, CngKeyBlobFormat.EccPublicBlob))
-                If ecsdKey.VerifyData(data, signature) Then
-                    Console.WriteLine("Data is good")
-                Else
-                    Console.WriteLine("Data is bad")
-                End If
-        End Using
+                'Decrypt the passed byte array and specify OAEP padding.  
+                'OAEP padding is only available on Microsoft Windows XP or
+                'later.  
+                decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding)
+                'Catch and display a CryptographicException  
+                'to the console.
+            End Using
+            Return decryptedData
+        Catch e As CryptographicException
+            Console.WriteLine(e.ToString())
 
-    End Sub 'Receive
-End Class 'Bob 
+            Return Nothing
+        End Try
+    End Function
+End Class

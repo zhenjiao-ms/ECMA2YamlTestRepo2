@@ -1,74 +1,114 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Windows.Forms;
+using System.Text;
+using System.IO;
 
-public class HashDirectory
+class TrippleDESCSPSample
 {
 
-    [STAThreadAttribute]
-    public static void Main(String[] args)
+    static void Main()
     {
-        string directory = "";
-        if (args.Length < 1)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult dr = fbd.ShowDialog();
-            if (dr == DialogResult.OK)
-                directory = fbd.SelectedPath;
-            else
-            {
-                Console.WriteLine("No directory selected.");
-                return;
-            }
-        }
-        else
-            directory = args[0];
         try
         {
-            // Create a DirectoryInfo object representing the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(directory);
-            // Get the FileInfo objects for every file in the directory.
-            FileInfo[] files = dir.GetFiles();
-            // Initialize a RIPE160 hash object.
-            RIPEMD160 myRIPEMD160 = RIPEMD160Managed.Create();
-            byte[] hashValue;
-            // Compute and print the hash values for each file in directory.
-            foreach (FileInfo fInfo in files)
-            {
-                // Create a fileStream for the file.
-                FileStream fileStream = fInfo.Open(FileMode.Open);
-                // Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0;
-                // Compute the hash of the fileStream.
-                hashValue = myRIPEMD160.ComputeHash(fileStream);
-                // Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ");
-                // Write the hash value to the Console.
-                PrintByteArray(hashValue);
-                // Close the file.
-                fileStream.Close();
-            }
-            return;
+            // Create a new TripleDESCryptoServiceProvider object
+            // to generate a key and initialization vector (IV).
+            TripleDESCryptoServiceProvider tDESalg = new TripleDESCryptoServiceProvider();
+
+            // Create a string to encrypt.
+            string sData = "Here is some data to encrypt.";
+            string FileName = "CText.txt";
+
+            // Encrypt text to a file using the file name, key, and IV.
+            EncryptTextToFile(sData, FileName, tDESalg.Key, tDESalg.IV);
+
+            // Decrypt the text from a file using the file name, key, and IV.
+            string Final = DecryptTextFromFile(FileName, tDESalg.Key, tDESalg.IV);
+            
+            // Display the decrypted string to the console.
+            Console.WriteLine(Final);
         }
-        catch (DirectoryNotFoundException)
+        catch (Exception e)
         {
-            Console.WriteLine("Error: The directory specified could not be found.");
+            Console.WriteLine(e.Message);
         }
-        catch (IOException)
-        {
-            Console.WriteLine("Error: A file in the directory could not be accessed.");
-        }
+       
     }
-    // Print the byte array in a readable format.
-    public static void PrintByteArray(byte[] array)
+
+    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
     {
-        int i;
-        for (i = 0; i < array.Length; i++)
+        try
         {
-            Console.Write(String.Format("{0:X2}", array[i]));
-            if ((i % 4) == 3) Console.Write(" ");
+            // Create or open the specified file.
+            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
+
+            // Create a CryptoStream using the FileStream 
+            // and the passed key and initialization vector (IV).
+            CryptoStream cStream = new CryptoStream(fStream, 
+                new TripleDESCryptoServiceProvider().CreateEncryptor(Key,IV), 
+                CryptoStreamMode.Write); 
+
+            // Create a StreamWriter using the CryptoStream.
+            StreamWriter sWriter = new StreamWriter(cStream);
+
+            // Write the data to the stream 
+            // to encrypt it.
+            sWriter.WriteLine(Data);
+  
+            // Close the streams and
+            // close the file.
+            sWriter.Close();
+            cStream.Close();
+            fStream.Close();
         }
-        Console.WriteLine();
+        catch(CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+        }
+        catch(UnauthorizedAccessException  e)
+        {
+            Console.WriteLine("A file access error occurred: {0}", e.Message);
+        }
+
+    }
+
+    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
+    {
+        try
+        {
+            // Create or open the specified file. 
+            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
+  
+            // Create a CryptoStream using the FileStream 
+            // and the passed key and initialization vector (IV).
+            CryptoStream cStream = new CryptoStream(fStream, 
+                new TripleDESCryptoServiceProvider().CreateDecryptor(Key,IV), 
+                CryptoStreamMode.Read); 
+
+            // Create a StreamReader using the CryptoStream.
+            StreamReader sReader = new StreamReader(cStream);
+
+            // Read the data from the stream 
+            // to decrypt it.
+            string val = sReader.ReadLine();
+    
+            // Close the streams and
+            // close the file.
+            sReader.Close();
+            cStream.Close();
+            fStream.Close();
+
+            // Return the string. 
+            return val;
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+            return null;
+        }
+        catch(UnauthorizedAccessException  e)
+        {
+            Console.WriteLine("A file access error occurred: {0}", e.Message);
+            return null;
+        }
     }
 }

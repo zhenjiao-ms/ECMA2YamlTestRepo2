@@ -1,74 +1,43 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Windows.Forms;
+using System.Security.Permissions;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
-public class HashDirectory
+class CertSelect
 {
+    static void Main()
+    {
+        X509Store store = new X509Store("MY",StoreLocation.CurrentUser);
+        store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
 
-    [STAThreadAttribute]
-    public static void Main(String[] args)
-    {
-        string directory = "";
-        if (args.Length < 1)
+        X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+        X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid,DateTime.Now,false);
+        X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag.MultiSelection);
+        Console.WriteLine("Number of certificates: {0}{1}",scollection.Count,Environment.NewLine);
+
+        foreach (X509Certificate2 x509 in scollection)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult dr = fbd.ShowDialog();
-            if (dr == DialogResult.OK)
-                directory = fbd.SelectedPath;
-            else
+            try
             {
-                Console.WriteLine("No directory selected.");
-                return;
+                byte[] rawdata = x509.RawData;
+                Console.WriteLine("Content Type: {0}{1}",X509Certificate2.GetCertContentType(rawdata),Environment.NewLine);
+                Console.WriteLine("Friendly Name: {0}{1}",x509.FriendlyName,Environment.NewLine);
+                Console.WriteLine("Certificate Verified?: {0}{1}",x509.Verify(),Environment.NewLine);
+                Console.WriteLine("Simple Name: {0}{1}",x509.GetNameInfo(X509NameType.SimpleName,true),Environment.NewLine);
+                Console.WriteLine("Signature Algorithm: {0}{1}",x509.SignatureAlgorithm.FriendlyName,Environment.NewLine);
+                Console.WriteLine("Private Key: {0}{1}",x509.PrivateKey.ToXmlString(false),Environment.NewLine);
+                Console.WriteLine("Public Key: {0}{1}",x509.PublicKey.Key.ToXmlString(false),Environment.NewLine);
+                Console.WriteLine("Certificate Archived?: {0}{1}",x509.Archived,Environment.NewLine);
+                Console.WriteLine("Length of Raw Data: {0}{1}",x509.RawData.Length,Environment.NewLine);
+                X509Certificate2UI.DisplayCertificate(x509);
+                x509.Reset();
+            }
+            catch (CryptographicException)
+            {
+                Console.WriteLine("Information could not be written out for this certificate.");
             }
         }
-        else
-            directory = args[0];
-        try
-        {
-            // Create a DirectoryInfo object representing the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(directory);
-            // Get the FileInfo objects for every file in the directory.
-            FileInfo[] files = dir.GetFiles();
-            // Initialize a RIPE160 hash object.
-            RIPEMD160 myRIPEMD160 = RIPEMD160Managed.Create();
-            byte[] hashValue;
-            // Compute and print the hash values for each file in directory.
-            foreach (FileInfo fInfo in files)
-            {
-                // Create a fileStream for the file.
-                FileStream fileStream = fInfo.Open(FileMode.Open);
-                // Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0;
-                // Compute the hash of the fileStream.
-                hashValue = myRIPEMD160.ComputeHash(fileStream);
-                // Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ");
-                // Write the hash value to the Console.
-                PrintByteArray(hashValue);
-                // Close the file.
-                fileStream.Close();
-            }
-            return;
-        }
-        catch (DirectoryNotFoundException)
-        {
-            Console.WriteLine("Error: The directory specified could not be found.");
-        }
-        catch (IOException)
-        {
-            Console.WriteLine("Error: A file in the directory could not be accessed.");
-        }
-    }
-    // Print the byte array in a readable format.
-    public static void PrintByteArray(byte[] array)
-    {
-        int i;
-        for (i = 0; i < array.Length; i++)
-        {
-            Console.Write(String.Format("{0:X2}", array[i]));
-            if ((i % 4) == 3) Console.Write(" ");
-        }
-        Console.WriteLine();
+        store.Close();
     }
 }

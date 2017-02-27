@@ -1,31 +1,22 @@
-                // Obtains and shows the size of the standard design-mode grid square.
-                PropertyDescriptor pd;
-                pd = designerOptionSvc.Options.Properties["GridSize"];
-                e.Graphics.DrawString("GridSize", 
-                    new Font("Arial", 8), 
-                    new SolidBrush(Color.Black), 4, ypos);
-                e.Graphics.DrawString(pd.GetValue(null).ToString(), 
-                    new Font("Arial", 8), 
-                    new SolidBrush(Color.Black), 200, ypos);
-                ypos += 12;
+    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
+    public class CDesigner : System.ComponentModel.Design.ComponentDesigner 
+    {
+        public override void Initialize(IComponent comp) 
+        {
+            base.Initialize(comp);
 
-                // Uncomment the following code to demonstrate that this
-                // alternate syntax works the same as the previous syntax.
+            IMenuCommandService mcs = (IMenuCommandService)comp.Site.
+                        GetService(typeof(IMenuCommandService));
+            MenuCommand mc = new MenuCommand(new EventHandler(OnF1Help), StandardCommands.F1Help);
+            mc.Enabled = true;
+            mc.Visible = true;
+            mc.Supported = true;
+            mcs.AddCommand(mc);
+            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.");
+        }
 
-                //pd = designerOptionSvc.Options["WindowsFormsDesigner"].Properties["GridSize"];
-                //e.Graphics.DrawString("GridSize",
-                //    new Font("Arial", 8),
-                //    new SolidBrush(Color.Black), 4, ypos);
-                //e.Graphics.DrawString(pd.GetValue(null).ToString(),
-                //    new Font("Arial", 8),
-                //    new SolidBrush(Color.Black), 200, ypos);
-                //ypos += 12;
-
-                //pd = designerOptionSvc.Options["WindowsFormsDesigner"]["General"].Properties["GridSize"];
-                //e.Graphics.DrawString("GridSize",
-                //    new Font("Arial", 8),
-                //    new SolidBrush(Color.Black), 4, ypos);
-                //e.Graphics.DrawString(pd.GetValue(null).ToString(),
-                //    new Font("Arial", 8),
-                //    new SolidBrush(Color.Black), 200, ypos);
-                //ypos += 12;
+        private void OnF1Help(object sender, EventArgs e) 
+        {
+            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.");
+        }
+    }

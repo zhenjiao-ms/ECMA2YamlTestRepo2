@@ -1,1 +1,1 @@
-            Throw New CodeDomSerializerException("This exception was raised as an example.", New CodeLinePragma("Example.txt", 20))
+        Dim properties As PropertyDescriptorCollection = TypeDescriptor.GetProperties(button1)

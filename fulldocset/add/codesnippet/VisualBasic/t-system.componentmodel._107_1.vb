@@ -1,14 +1,17 @@
-   <DesignerSerializer(GetType(MyCodeDomSerializer), GetType(CodeDomSerializer))> _
-   Public Class MyComponent
-      Inherits Component
-      Private localProperty As String = "Component Property Value"
+Imports System
+Imports System.Web.DynamicData
+Imports System.ComponentModel.DataAnnotations
 
-      Public Property LocalProp() As String
-         Get
-            Return localProperty
-         End Get
-         Set(ByVal Value As String)
-            localProperty = Value
-         End Set
-      End Property
-   End Class 'MyComponent
+<MetadataType(GetType(CustomerMetadata))> _
+Partial Public Class Customer
+
+
+End Class
+
+Public Class CustomerMetadata
+
+    ' Add type information.
+    <DataType(DataType.EmailAddress)> _
+    Public EmailAddress As Object
+
+End Class

@@ -84,11 +84,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Interop.HwndSource.OnDpiChanged(System.Windows.HwndDpiChangedEventArgs)
-internalonly: False
----
-
----
 uid: System.Windows.Interop.HwndSource.RegisterKeyboardInputSinkCore(System.Windows.Interop.IKeyboardInputSink)
 internalonly: False
 ---
@@ -125,11 +120,6 @@ internalonly: False
 
 ---
 uid: System.Windows.Interop.HwndSource.CreateHandleRef
-internalonly: False
----
-
----
-uid: System.Windows.Interop.HwndSource.DpiChanged
 internalonly: False
 ---
 

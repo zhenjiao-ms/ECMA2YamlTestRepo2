@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.SqlClient.SqlException.ClientConnectionId
-internalonly: False
----
-
----
 uid: System.Data.SqlClient.SqlException.Procedure
 internalonly: False
 ---
@@ -20,11 +15,6 @@ internalonly: False
 
 ---
 uid: System.Data.SqlClient.SqlException.Number
-internalonly: False
----
-
----
-uid: System.Data.SqlClient.SqlException.ToString
 internalonly: False
 ---
 

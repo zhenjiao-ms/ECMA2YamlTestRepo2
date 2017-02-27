@@ -1,42 +1,83 @@
-#using <System.dll>
-#using <System.Security.dll>
-
 using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Security::Permissions;
 using namespace System::IO;
-using namespace System::Security::Cryptography::X509Certificates;
+using namespace System::Text;
+using namespace System::Security::Cryptography;
+
+// Generate a key k1 with password pwd1 and salt salt1.
+// Generate a key k2 with password pwd1 and salt salt1.
+// Encrypt data1 with key k1 using symmetric encryption, creating edata1.
+// Decrypt edata1 with key k2 using symmetric decryption, creating data2.
+// data2 should equal data1.
+
 int main()
 {
-   try
-   {
-      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
-      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
-      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
-      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
-      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
-      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
-      while ( myEnum->MoveNext() )
-      {
-         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
-         array<Byte>^rawdata = x509->RawData;
-         Console::WriteLine( "Content Type: {0}{1}", X509Certificate2::GetCertContentType( rawdata ), Environment::NewLine );
-         Console::WriteLine( "Friendly Name: {0}{1}", x509->FriendlyName, Environment::NewLine );
-         Console::WriteLine( "Certificate Verified?: {0}{1}", x509->Verify(), Environment::NewLine );
-         Console::WriteLine( "Simple Name: {0}{1}", x509->GetNameInfo( X509NameType::SimpleName, true ), Environment::NewLine );
-         Console::WriteLine( "Signature Algorithm: {0}{1}", x509->SignatureAlgorithm->FriendlyName, Environment::NewLine );
-         Console::WriteLine( "Private Key: {0}{1}", x509->PrivateKey->ToXmlString( false ), Environment::NewLine );
-         Console::WriteLine( "Public Key: {0}{1}", x509->PublicKey->Key->ToXmlString( false ), Environment::NewLine );
-         Console::WriteLine( "Certificate Archived?: {0}{1}", x509->Archived, Environment::NewLine );
-         Console::WriteLine( "Length of Raw Data: {0}{1}", x509->RawData->Length, Environment::NewLine );
-         x509->Reset();
-      }
-      store->Close();
-   }
-   catch ( CryptographicException^ ) 
-   {
-      Console::WriteLine( "Information could not be written out for this certificate." );
-   }
+   array<String^>^passwordargs = Environment::GetCommandLineArgs();
+   String^ usageText = "Usage: RFC2898 <password>\nYou must specify the password for encryption.\n";
 
+   //If no file name is specified, write usage text.
+   if ( passwordargs->Length == 1 )
+   {
+      Console::WriteLine( usageText );
+   }
+   else
+   {
+      String^ pwd1 = passwordargs[ 1 ];
+      
+      array<Byte>^salt1 = gcnew array<Byte>(8);
+	  RNGCryptoServiceProvider ^ rngCsp = gcnew RNGCryptoServiceProvider();
+		 rngCsp->GetBytes(salt1);
+      //data1 can be a string or contents of a file.
+      String^ data1 = "Some test data";
+
+      //The default iteration count is 1000 so the two methods use the same iteration count.
+      int myIterations = 1000;
+
+      try
+      {
+         Rfc2898DeriveBytes ^ k1 = gcnew Rfc2898DeriveBytes( pwd1,salt1,myIterations );
+         Rfc2898DeriveBytes ^ k2 = gcnew Rfc2898DeriveBytes( pwd1,salt1 );
+
+         // Encrypt the data.
+         TripleDES^ encAlg = TripleDES::Create();
+         encAlg->Key = k1->GetBytes( 16 );
+         MemoryStream^ encryptionStream = gcnew MemoryStream;
+         CryptoStream^ encrypt = gcnew CryptoStream( encryptionStream,encAlg->CreateEncryptor(),CryptoStreamMode::Write );
+         array<Byte>^utfD1 = (gcnew System::Text::UTF8Encoding( false ))->GetBytes( data1 );
+
+         encrypt->Write( utfD1, 0, utfD1->Length );
+         encrypt->FlushFinalBlock();
+         encrypt->Close();
+         array<Byte>^edata1 = encryptionStream->ToArray();
+         k1->Reset();
+
+         // Try to decrypt, thus showing it can be round-tripped.
+         TripleDES^ decAlg = TripleDES::Create();
+         decAlg->Key = k2->GetBytes( 16 );
+         decAlg->IV = encAlg->IV;
+         MemoryStream^ decryptionStreamBacking = gcnew MemoryStream;
+         CryptoStream^ decrypt = gcnew CryptoStream( decryptionStreamBacking,decAlg->CreateDecryptor(),CryptoStreamMode::Write );
+
+         decrypt->Write( edata1, 0, edata1->Length );
+         decrypt->Flush();
+         decrypt->Close();
+         k2->Reset();
+
+         String^ data2 = (gcnew UTF8Encoding( false ))->GetString( decryptionStreamBacking->ToArray() );
+         if (  !data1->Equals( data2 ) )
+         {
+            Console::WriteLine( "Error: The two values are not equal." );
+         }
+         else
+         {
+            Console::WriteLine( "The two values are equal." );
+            Console::WriteLine( "k1 iterations: {0}", k1->IterationCount );
+            Console::WriteLine( "k2 iterations: {0}", k2->IterationCount );
+         }
+      }
+
+      catch ( Exception^ e ) 
+      {
+         Console::WriteLine( "Error: ", e );
+      }
+   }
 }

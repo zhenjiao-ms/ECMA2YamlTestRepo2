@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(System.Configuration.ExeConfigurationFileMap,System.Configuration.ConfigurationUserLevel,System.Boolean)
-internalonly: False
----
-
----
 uid: System.Configuration.ConfigurationManager.GetSection(System.String)
 internalonly: False
 ---

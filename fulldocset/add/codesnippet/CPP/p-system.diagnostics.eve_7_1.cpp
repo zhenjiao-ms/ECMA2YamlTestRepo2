@@ -1,52 +1,30 @@
-#using <System.dll>
-#using <System.Configuration.Install.dll>
-
-using namespace System;
-using namespace System::Configuration::Install;
-using namespace System::Diagnostics;
-using namespace System::ComponentModel;
-
-[RunInstaller(true)]
-public ref class SampleEventLogInstaller : public Installer
-{
-private:
-   EventLogInstaller^ myEventLogInstaller;
-
-public:
-   SampleEventLogInstaller()
+   // Ensure that the source has already been registered using
+   // EventLogInstaller or EventLog.CreateEventSource.
+   String^ sourceName = "SampleApplicationSource";
+   if ( EventLog::SourceExists( sourceName ) )
    {
-      
-      // Create an instance of an EventLogInstaller.
-      myEventLogInstaller = gcnew EventLogInstaller;
-      
-      // Set the source name of the event log.
-      myEventLogInstaller->Source = "ApplicationEventSource";
-      
-      // Set the event log into which the source writes entries.
-      //myEventLogInstaller.Log = "MyCustomLog";
-      myEventLogInstaller->Log = "myNewLog";
-      
-      // Set the resource file for the event log.
-      // The message strings are defined in EventLogMsgs.mc; the message 
-      // identifiers used in the application must match those defined in the
-      // corresponding message resource file. The messages must be built
-      // into a Win32 resource library and copied to the target path on the
-      // system.  
-      myEventLogInstaller->CategoryResourceFile =
-             Environment::SystemDirectory + "\\eventlogmsgs.dll";
-      myEventLogInstaller->CategoryCount = 3;
-      myEventLogInstaller->MessageResourceFile =
-             Environment::SystemDirectory + "\\eventlogmsgs.dll";
-      myEventLogInstaller->ParameterResourceFile =
-             Environment::SystemDirectory + "\\eventlogmsgs.dll";
+      // Define an informational event with no category.
+      // The message identifier corresponds to the message text in the
+      // message resource file defined for the source.
+      EventInstance ^ myEvent = gcnew EventInstance( UpdateCycleCompleteMsgId,0 );
 
-      // Add myEventLogInstaller to the installer collection.
-      Installers->Add( myEventLogInstaller );
+      // Write the event to the event log using the registered source.
+      EventLog::WriteEvent( sourceName, myEvent, 0 );
+
+      // Reuse the event data instance for another event entry.
+      // Set the entry category and message identifiers for
+      // the appropriate resource identifiers in the resource files
+      // for the registered source.  Set the event type to Warning.
+      myEvent->CategoryId = RefreshCategoryMsgId;
+      myEvent->EntryType = EventLogEntryType::Warning;
+      myEvent->InstanceId = ServerConnectionDownMsgId;
+
+      // Write the event to the event log using the registered source.
+      // Insert the machine name into the event message text.
+      array<String^>^ss = {Environment::MachineName};
+      EventLog::WriteEvent( sourceName, myEvent, ss );
    }
-
-};
-
-int main()
-{
-   Console::WriteLine( "Usage: InstallUtil.exe [<install>.exe | <install>.dll]" );
-}
+   else
+   {
+      Console::WriteLine( "Warning - event source {0} not registered", sourceName );
+   }

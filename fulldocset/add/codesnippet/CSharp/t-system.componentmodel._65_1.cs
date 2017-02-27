@@ -1,14 +1,35 @@
-        // This property exists only to demonstrate the 
-        // DisplayName attribute. When this control 
-        // is attached to a PropertyGrid control, the
-        // property will be appear as "RenamedProperty"
-        // instead of "MisnamedProperty".
-        [Description("Demonstrates DisplayNameAttribute.")]
-        [DisplayName("RenamedProperty")]
-        public bool MisnamedProperty
-        {
-            get
-            {
-                return true;
-            }
-        }
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+
+
+// Adds the LicenseProviderAttribute to the control.
+[LicenseProvider(typeof(LicFileLicenseProvider))]
+public class MyControl : Control 
+{
+ 
+   // Creates a new, null license.
+   private License license = null;
+ 
+   public MyControl () 
+   {
+ 
+      // Adds Validate to the control's constructor.
+      license = LicenseManager.Validate(typeof(MyControl), this);
+ 
+      // Insert code to perform other instance creation tasks here.
+   }
+ 
+   protected override void Dispose(bool disposing) 
+   {
+      if(disposing)
+      {
+         if (license != null) 
+         {
+            license.Dispose();
+            license = null;
+         }
+      }
+   }
+ 
+}

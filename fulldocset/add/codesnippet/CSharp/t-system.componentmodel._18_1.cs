@@ -1,20 +1,15 @@
-using System;
-using System.Web.DynamicData;
-using System.ComponentModel.DataAnnotations;
+        public void LinkDesignerTransactionCloseEvent(IDesignerHost host)
+        {                       
+            // Registers an event handler for the designer TransactionClosing and TransactionClosed events.
+            host.TransactionClosing += new DesignerTransactionCloseEventHandler(this.OnTransactionClose);
+            host.TransactionClosed += new DesignerTransactionCloseEventHandler(this.OnTransactionClose);
+        }
 
-[MetadataType(typeof(CustomerMetaData))]
-public partial class Customer
-{
-
-   
-}
-
-
-public class CustomerMetaData
-{
-    // Apply RequiredAttribute
-    [Required(ErrorMessage = "Title is required.")]
-    public object Title;
-
-   
-}
+        private void OnTransactionClose(object sender, DesignerTransactionCloseEventArgs e)
+        {
+            // Displays transaction close information on the console.           
+            if( e.TransactionCommitted )            
+                Console.WriteLine("Transaction has been committed.");
+            else
+                Console.WriteLine("Transaction has not yet been committed.");
+        }

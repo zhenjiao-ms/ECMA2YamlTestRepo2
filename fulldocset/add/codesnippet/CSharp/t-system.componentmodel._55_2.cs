@@ -1,15 +1,57 @@
-    public static int Main() {
-        // Creates a new control.
-        MyControl myNewControl = new MyControl();
-     
-        // Gets the attributes for the collection.
-        AttributeCollection attributes = TypeDescriptor.GetAttributes(myNewControl);
-     
-        /* Prints the name of the default property by retrieving the 
-         * DefaultPropertyAttribute from the AttributeCollection. */
-        DefaultPropertyAttribute myAttribute = 
-           (DefaultPropertyAttribute)attributes[typeof(DefaultPropertyAttribute)];
-        Console.WriteLine("The default property is: " + myAttribute.Name);
-      
-        return 0;
-     }
+    [TypeConverter(typeof(BorderAppearanceConverter))]
+    public class BorderAppearance
+    {
+        private int borderSizeValue = 1;
+        private Color borderColorValue = Color.Empty;
+
+        [Browsable(true),
+        NotifyParentProperty(true),
+        EditorBrowsable(EditorBrowsableState.Always),
+        DefaultValue(1)]
+        public int BorderSize
+        {
+            get
+            {
+                return borderSizeValue;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(
+                        "BorderSize",
+                        value,
+                        "must be >= 0");
+                }
+
+                if (borderSizeValue != value)
+                {
+                    borderSizeValue = value;
+                }
+            }
+        }
+
+        [Browsable(true)]
+        [NotifyParentProperty(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [DefaultValue(typeof(Color), "")]
+        public Color BorderColor
+        {
+            get
+            {
+                return borderColorValue;
+            }
+            set
+            {
+                if (value.Equals(Color.Transparent))
+                {
+                    throw new NotSupportedException("Transparent colors are not supported.");
+                }
+
+                if (borderColorValue != value)
+                {
+                    borderColorValue = value;
+                }
+            }
+        }
+    }

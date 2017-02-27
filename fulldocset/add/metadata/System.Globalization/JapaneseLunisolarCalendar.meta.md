@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Globalization.JapaneseLunisolarCalendar.DaysInYearBeforeMinSupportedYear
-internalonly: False
----
-
----
 uid: System.Globalization.JapaneseLunisolarCalendar.MaxSupportedDateTime
 internalonly: False
 ---

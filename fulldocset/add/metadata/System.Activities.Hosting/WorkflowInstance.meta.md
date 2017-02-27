@@ -14,22 +14,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Hosting.WorkflowInstance.DefinitionIdentity
-internalonly: False
----
-
----
 uid: System.Activities.Hosting.WorkflowInstance.OnBeginResumeBookmark(System.Activities.Bookmark,System.Object,System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.Hosting.WorkflowInstance.FlushTrackingRecords(System.TimeSpan)
-internalonly: False
----
-
----
-uid: System.Activities.Hosting.WorkflowInstance.GetActivitiesBlockingUpdate(System.Object,System.Activities.DynamicUpdate.DynamicUpdateMap)
 internalonly: False
 ---
 
@@ -55,11 +40,6 @@ internalonly: False
 
 ---
 uid: System.Activities.Hosting.WorkflowInstance.Initialize(System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.Hosting.WorkflowInstance.#ctor(System.Activities.Activity,System.Activities.WorkflowIdentity)
 internalonly: False
 ---
 
@@ -114,11 +94,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Hosting.WorkflowInstance.EndFlushTrackingRecords(System.IAsyncResult)
-internalonly: False
----
-
----
 uid: System.Activities.Hosting.WorkflowInstance.OnEndAssociateKeys(System.IAsyncResult)
 internalonly: False
 ---
@@ -139,22 +114,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Hosting.WorkflowInstance.BeginFlushTrackingRecords(System.TimeSpan,System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.Hosting.WorkflowInstance.OnNotifyPaused
 internalonly: False
 ---
 
 ---
 uid: System.Activities.Hosting.WorkflowInstance.OnEndFlushTrackingRecords(System.IAsyncResult)
-internalonly: False
----
-
----
-uid: System.Activities.Hosting.WorkflowInstance.Initialize(System.Object,System.Activities.DynamicUpdate.DynamicUpdateMap)
 internalonly: False
 ---
 

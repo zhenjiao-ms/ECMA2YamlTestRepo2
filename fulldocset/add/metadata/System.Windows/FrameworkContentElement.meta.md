@@ -239,11 +239,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.FrameworkContentElement.UpdateDefaultStyle
-internalonly: False
----
-
----
 uid: System.Windows.FrameworkContentElement.BeginStoryboard(System.Windows.Media.Animation.Storyboard,System.Windows.Media.Animation.HandoffBehavior)
 internalonly: False
 ---

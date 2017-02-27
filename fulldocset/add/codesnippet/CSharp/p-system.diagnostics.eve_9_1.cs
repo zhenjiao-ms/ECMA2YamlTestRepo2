@@ -1,46 +1,44 @@
-using System;
-using System.Configuration.Install;
-using System.Diagnostics;
-using System.ComponentModel;
+            EventSourceCreationData mySourceData = new EventSourceCreationData("", "");
+            bool registerSource = true;
 
-[RunInstaller(true)]
-public class SampleEventLogInstaller : Installer
-{
-    private EventLogInstaller myEventLogInstaller;
+            // Process input parameters.
+            if (args.Length > 0)
+            {
+                // Require at least the source name.
 
-    public SampleEventLogInstaller() 
-    {
-        // Create an instance of an EventLogInstaller.
-        myEventLogInstaller = new EventLogInstaller();
+                mySourceData.Source = args[0];
 
-        // Set the source name of the event log.
-        myEventLogInstaller.Source = "ApplicationEventSource";
+                if (args.Length > 1)
+                {
+                    mySourceData.LogName = args[1];
+                }
 
-        // Set the event log into which the source writes entries.
-        //myEventLogInstaller.Log = "MyCustomLog";
-        myEventLogInstaller.Log = "myNewLog";
+                if (args.Length > 2)
+                {
+                    mySourceData.MachineName = args[2];
+                }
+                if ((args.Length > 3) && (args[3].Length > 0))
+                {
+                    mySourceData.MessageResourceFile = args[3];
+                }
+            }
+            else 
+            {
+                // Display a syntax help message.
+                Console.WriteLine("Input:");
+                Console.WriteLine(" source [event log] [machine name] [resource file]");
 
-        // Set the resource file for the event log.
-        // The message strings are defined in EventLogMsgs.mc; the message 
-        // identifiers used in the application must match those defined in the
-        // corresponding message resource file. The messages must be built
-        // into a Win32 resource library and copied to the target path on the
-        // system.  
-            
-        myEventLogInstaller.CategoryResourceFile =
-             Environment.SystemDirectory + "\\eventlogmsgs.dll";
-        myEventLogInstaller.CategoryCount = 3;
-        myEventLogInstaller.MessageResourceFile =
-             Environment.SystemDirectory + "\\eventlogmsgs.dll";
-        myEventLogInstaller.ParameterResourceFile =
-             Environment.SystemDirectory + "\\eventlogmsgs.dll";
+                registerSource = false;
+            }
 
-        // Add myEventLogInstaller to the installer collection.
-        Installers.Add(myEventLogInstaller); 
-    }
-
-    public static void Main()
-    {
-        Console.WriteLine("Usage: InstallUtil.exe [<install>.exe | <install>.dll]");
-    }
-}
+            // Set defaults for parameters missing input.
+            if (mySourceData.MachineName.Length == 0)
+            {
+                // Default to the local computer.
+                mySourceData.MachineName = ".";
+            }
+            if (mySourceData.LogName.Length == 0)
+            {
+                // Default to the Application log.
+                mySourceData.LogName = "Application";
+            }

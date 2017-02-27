@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.Configuration.CustomErrorsSection.AllowNestedErrors
-internalonly: False
----
-
----
 uid: System.Web.Configuration.CustomErrorsSection.Mode
 internalonly: False
 ---

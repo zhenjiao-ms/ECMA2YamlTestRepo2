@@ -1,9 +1,14 @@
-    ' This control demonstrates a simple logging capability. 
-    <ComplexBindingProperties("DataSource", "DataMember"), _
-    DefaultBindingProperty("TitleText"), _
-    DefaultEvent("ThresholdExceeded"), _
-    DefaultProperty("Threshold"), _
-    HelpKeywordAttribute(GetType(UserControl)), _
-    ToolboxItem("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design")> _
-    Public Class AttributesDemoControl
-        Inherits UserControl
+   <DesignerSerializer(GetType(MyCodeDomSerializer), GetType(CodeDomSerializer))> _
+   Public Class MyComponent
+      Inherits Component
+      Private localProperty As String = "Component Property Value"
+
+      Public Property LocalProp() As String
+         Get
+            Return localProperty
+         End Get
+         Set(ByVal Value As String)
+            localProperty = Value
+         End Set
+      End Property
+   End Class 'MyComponent

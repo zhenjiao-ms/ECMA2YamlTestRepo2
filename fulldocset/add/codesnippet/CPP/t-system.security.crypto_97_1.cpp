@@ -1,161 +1,131 @@
 using namespace System;
-using namespace System::Security;
+using namespace System::IO;
 using namespace System::Security::Cryptography;
 
-ref class SignatureDescriptionImpl
+// Computes a keyed hash for a source file, creates a target file with the keyed hash
+// prepended to the contents of the source file, then decrypts the file and compares
+// the source and the decrypted files.
+void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
 {
-public:
-   [STAThread]
-   static void Main()
+   
+   // Initialize the keyed hash object.
+   HMACRIPEMD160^ myhmacRIPEMD160 = gcnew HMACRIPEMD160( key );
+   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
+   FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
+   
+   // Compute the hash of the input file.
+   array<Byte>^hashValue = myhmacRIPEMD160->ComputeHash( inStream );
+   
+   // Reset inStream to the beginning of the file.
+   inStream->Position = 0;
+   
+   // Write the computed hash value to the output file.
+   outStream->Write( hashValue, 0, hashValue->Length );
+   
+   // Copy the contents of the sourceFile to the destFile.
+   int bytesRead;
+   
+   // read 1K at a time
+   array<Byte>^buffer = gcnew array<Byte>(1024);
+   do
    {
-      // Create a digital signature based on RSA encryption.
-      SignatureDescription^ rsaSignature = CreateRSAPKCS1Signature();
-      ShowProperties( rsaSignature );
       
-      // Create a digital signature based on DSA encryption.
-      SignatureDescription^ dsaSignature = CreateDSASignature();
-      ShowProperties( dsaSignature );
-      
-      // Create a HashAlgorithm using the digest algorithm of the signature.
-      HashAlgorithm^ hashAlgorithm = dsaSignature->CreateDigest();
-
-      Console::WriteLine( L"\nHash algorithm for the DigestAlgorithm property:"
-         L" {0}", hashAlgorithm );
-      
-      // Create an AsymmetricSignatureFormatter instance using the DSA key.
-      DSA^ dsa = DSA::Create();
-      AsymmetricSignatureFormatter^ asymmetricFormatter = CreateDSAFormatter( dsa );
-      
-      // Create an AsymmetricSignatureDeformatter instance using the
-      // DSA key.
-      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
-         CreateDSADeformatter( dsa );
-      Console::WriteLine( L"This sample completed successfully; "
-         L"press Enter to exit." );
-      Console::ReadLine();
+      // Read from the wrapping CryptoStream.
+      bytesRead = inStream->Read( buffer, 0, 1024 );
+      outStream->Write( buffer, 0, bytesRead );
    }
+   while ( bytesRead > 0 );
 
-private:
-   // Create a SignatureDescription for RSA encryption.
-   static SignatureDescription^ CreateRSAPKCS1Signature()
+   myhmacRIPEMD160->Clear();
+   
+   // Close the streams
+   inStream->Close();
+   outStream->Close();
+   return;
+} // end EncodeFile
+
+
+
+// Decrypt the encoded file and compare to original file.
+bool DecodeFile( array<Byte>^key, String^ sourceFile )
+{
+   
+   // Initialize the keyed hash object. 
+   HMACRIPEMD160^ hmacRIPEMD160 = gcnew HMACRIPEMD160( key );
+   
+   // Create an array to hold the keyed hash value read from the file.
+   array<Byte>^storedHash = gcnew array<Byte>(hmacRIPEMD160->HashSize / 8);
+   
+   // Create a FileStream for the source file.
+   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
+   
+   // Read in the storedHash.
+   inStream->Read( storedHash, 0, storedHash->Length );
+   
+   // Compute the hash of the remaining contents of the file.
+   // The stream is properly positioned at the beginning of the content, 
+   // immediately after the stored hash value.
+   array<Byte>^computedHash = hmacRIPEMD160->ComputeHash( inStream );
+   
+   // compare the computed hash with the stored value
+   bool err = false;
+   for ( int i = 0; i < storedHash->Length; i++ )
    {
-      SignatureDescription^ signatureDescription = gcnew SignatureDescription;
-
-      // Set the key algorithm property for RSA encryption.
-      signatureDescription->KeyAlgorithm = L"System.Security.Cryptography.RSACryptoServiceProvider";
-
-      // Set the digest algorithm for RSA encryption using the
-      // SHA1 provider.
-      signatureDescription->DigestAlgorithm = L"System.Security.Cryptography.SHA1CryptoServiceProvider";
-
-      // Set the formatter algorithm with the RSAPKCS1 formatter.
-      signatureDescription->FormatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureFormatter";
-
-      // Set the formatter algorithm with the RSAPKCS1 deformatter.
-      signatureDescription->DeformatterAlgorithm = L"System.Security.Cryptography.RSAPKCS1SignatureDeformatter";
-
-      return signatureDescription;
+      if ( computedHash[ i ] != storedHash[ i ] )
+      {
+         err = true;
+      }
    }
+   if (err)
+        {
+            Console::WriteLine("Hash values differ! Encoded file has been tampered with!");
+            return false;
+        }
+        else
+        {
+            Console::WriteLine("Hash values agree -- no tampering occurred.");
+            return true;
+        }
 
-   // Create a SignatureDescription using a constructed SecurityElement for
-   // DSA encryption.
-   static SignatureDescription^ CreateDSASignature()
-   {
-      SecurityElement^ securityElement = gcnew SecurityElement( L"DSASignature" );
-      // Create new security elements for the four algorithms.
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Key",L"System.Security.Cryptography.DSACryptoServiceProvider" ) );
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Digest",L"System.Security.Cryptography.SHA1CryptoServiceProvider" ) );
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Formatter",L"System.Security.Cryptography.DSASignatureFormatter" ) );
-      securityElement->AddChild( gcnew SecurityElement(
-         L"Deformatter",L"System.Security.Cryptography.DSASignatureDeformatter" ) );
-      SignatureDescription^ signatureDescription =
-         gcnew SignatureDescription( securityElement );
+} //end DecodeFile
 
-      return signatureDescription;
-   }
-
-   // Create a signature formatter for DSA encryption.
-   static AsymmetricSignatureFormatter^ CreateDSAFormatter( DSA^ dsa )
-   {
-      // Create a DSA signature formatter for encryption.
-      SignatureDescription^ signatureDescription =
-         gcnew SignatureDescription;
-      signatureDescription->FormatterAlgorithm =
-         L"System.Security.Cryptography.DSASignatureFormatter";
-      AsymmetricSignatureFormatter^ asymmetricFormatter =
-         signatureDescription->CreateFormatter( dsa );
-
-      Console::WriteLine( L"\nCreated formatter : {0}",
-         asymmetricFormatter );
-      return asymmetricFormatter;
-   }
-
-   // Create a signature deformatter for DSA decryption.
-   static AsymmetricSignatureDeformatter^ CreateDSADeformatter( DSA^ dsa )
-   {
-      // Create a DSA signature deformatter to verify the signature.
-      SignatureDescription^ signatureDescription =
-         gcnew SignatureDescription;
-      signatureDescription->DeformatterAlgorithm =
-         L"System.Security.Cryptography.DSASignatureDeformatter";
-      AsymmetricSignatureDeformatter^ asymmetricDeformatter =
-         signatureDescription->CreateDeformatter( dsa );
-
-      Console::WriteLine( L"\nCreated deformatter : {0}",
-         asymmetricDeformatter );
-      return asymmetricDeformatter;
-   }
-
-   // Display to the console the properties of the specified
-   // SignatureDescription.
-   static void ShowProperties( SignatureDescription^ signatureDescription )
-   {
-      // Retrieve the class path for the specified SignatureDescription.
-      String^ classDescription = signatureDescription->ToString();
-
-      String^ deformatterAlgorithm = signatureDescription->DeformatterAlgorithm;
-      String^ formatterAlgorithm = signatureDescription->FormatterAlgorithm;
-      String^ digestAlgorithm = signatureDescription->DigestAlgorithm;
-      String^ keyAlgorithm = signatureDescription->KeyAlgorithm;
-      Console::WriteLine( L"\n** {0} **", classDescription );
-      Console::WriteLine( L"DeformatterAlgorithm : {0}", deformatterAlgorithm );
-      Console::WriteLine( L"FormatterAlgorithm : {0}", formatterAlgorithm );
-      Console::WriteLine( L"DigestAlgorithm : {0}", digestAlgorithm );
-      Console::WriteLine( L"KeyAlgorithm : {0}", keyAlgorithm );
-   }
-};
 
 int main()
 {
-   SignatureDescriptionImpl::Main();
-}
+   array<String^>^Fileargs = Environment::GetCommandLineArgs();
+   String^ usageText = "Usage: HMACRIPEMD160 inputfile.txt encryptedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
+   
+   //If no file names are specified, write usage text.
+   if ( Fileargs->Length < 3 )
+   {
+      Console::WriteLine( usageText );
+   }
+   else
+   {
+      try
+      {
+         
+         // Create a random key using a random number generator. This would be the
+         //  secret key shared by sender and receiver.
+         array<Byte>^secretkey = gcnew array<Byte>(64);
+         
+         //RNGCryptoServiceProvider is an implementation of a random number generator.
+         RNGCryptoServiceProvider^ rng = gcnew RNGCryptoServiceProvider;
+         
+         // The array is now filled with cryptographically strong random bytes.
+         rng->GetBytes( secretkey );
+         
+         // Use the secret key to encode the message file.
+         EncodeFile( secretkey, Fileargs[ 1 ], Fileargs[ 2 ] );
+         
+         // Take the encoded file and decode
+         DecodeFile( secretkey, Fileargs[ 2 ] );
+      }
+      catch ( IOException^ e ) 
+      {
+         Console::WriteLine( "Error: File not found", e );
+      }
 
-//
-// This sample produces the following output:
-//
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureDeformatter
-//
-// FormatterAlgorithm : System.Security.Cryptography.
-// RSAPKCS1SignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.RSACryptoServiceProvider
-//
-// ** System.Security.Cryptography.SignatureDescription **
-// DeformatterAlgorithm : System.Security.Cryptography.DSASignatureDeformatter
-// FormatterAlgorithm : System.Security.Cryptography.DSASignatureFormatter
-// DigestAlgorithm : System.Security.Cryptography.SHA1CryptoServiceProvider
-// KeyAlgorithm : System.Security.Cryptography.DSACryptoServiceProvider
-//
-// Hash algorithm for the DigestAlgorithm property:
-// System.Security.Cryptography.SH
-// A1CryptoServiceProvider
-//
-// Created formatter : System.Security.Cryptography.DSASignatureFormatter
-//
-// Created deformatter : System.Security.Cryptography.DSASignatureDeformatter
-// This sample completed successfully; press Enter to exit.
+   }
+} //end main
+

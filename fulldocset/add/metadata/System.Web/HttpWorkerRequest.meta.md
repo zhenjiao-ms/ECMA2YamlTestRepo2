@@ -114,11 +114,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.HttpWorkerRequest.BeginFlush(System.AsyncCallback,System.Object)
-internalonly: False
----
-
----
 uid: System.Web.HttpWorkerRequest.GetUriPath
 internalonly: False
 ---
@@ -269,22 +264,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.HttpWorkerRequest.EndRead(System.IAsyncResult)
-internalonly: False
----
-
----
 uid: System.Web.HttpWorkerRequest.GetKnownRequestHeaderIndex(System.String)
 internalonly: False
 ---
 
 ---
 uid: System.Web.HttpWorkerRequest.HeaderIfRange
-internalonly: False
----
-
----
-uid: System.Web.HttpWorkerRequest.EndFlush(System.IAsyncResult)
 internalonly: False
 ---
 
@@ -315,11 +300,6 @@ internalonly: False
 
 ---
 uid: System.Web.HttpWorkerRequest.HeaderReferer
-internalonly: False
----
-
----
-uid: System.Web.HttpWorkerRequest.SupportsAsyncRead
 internalonly: False
 ---
 
@@ -385,11 +365,6 @@ internalonly: False
 
 ---
 uid: System.Web.HttpWorkerRequest.HeaderIfUnmodifiedSince
-internalonly: False
----
-
----
-uid: System.Web.HttpWorkerRequest.SupportsAsyncFlush
 internalonly: False
 ---
 
@@ -630,11 +605,6 @@ internalonly: False
 
 ---
 uid: System.Web.HttpWorkerRequest.RequestHeaderMaximum
-internalonly: False
----
-
----
-uid: System.Web.HttpWorkerRequest.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
 internalonly: False
 ---
 

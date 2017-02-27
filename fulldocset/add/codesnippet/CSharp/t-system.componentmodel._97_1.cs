@@ -1,10 +1,9 @@
-        // This example method creates a DesignerEventArgs using the specified designer host.
-        // Typically, this type of event args is created by the IDesignerEventService.  
-        public DesignerEventArgs CreateComponentEventArgs(IDesignerHost host)
-        {
-            DesignerEventArgs args = new DesignerEventArgs(host);
-
-            // The designer host of the created or disposed document:  args.Component
-
-            return args;
-        }
+    // This control demonstrates a simple logging capability. 
+    [ComplexBindingProperties("DataSource", "DataMember")]
+    [DefaultBindingProperty("TitleText")]
+    [DefaultEvent("ThresholdExceeded")]
+    [DefaultProperty("Threshold")]
+    [HelpKeywordAttribute(typeof(UserControl))]
+    [ToolboxItem("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design")]
+    public class AttributesDemoControl : UserControl
+    {

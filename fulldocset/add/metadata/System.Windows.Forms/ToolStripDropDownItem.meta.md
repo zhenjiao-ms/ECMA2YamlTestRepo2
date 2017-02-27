@@ -34,11 +34,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Forms.ToolStripDropDownItem.HasDropDown
-internalonly: False
----
-
----
 uid: System.Windows.Forms.ToolStripDropDownItem.OnDropDownShow(System.EventArgs)
 internalonly: False
 ---

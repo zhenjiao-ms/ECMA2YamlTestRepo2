@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebResourceAttribute.LoadSuccessExpression
-internalonly: False
----
-
----
 uid: System.Web.UI.WebResourceAttribute.WebResource
 internalonly: False
 ---

@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Xml.XmlCDataSection.PreviousText
-internalonly: False
----
-
----
 uid: System.Xml.XmlCDataSection.WriteTo(System.Xml.XmlWriter)
 internalonly: False
 ---

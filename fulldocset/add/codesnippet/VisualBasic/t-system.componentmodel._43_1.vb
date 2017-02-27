@@ -1,5 +1,1 @@
-    <TypeConverter(GetType(MyClassConverter))> _
-    Public Class Class1
-        ' Insert code here.
-    End Class 'MyClass
-    
+            Throw New CodeDomSerializerException("This exception was raised as an example.", New CodeLinePragma("Example.txt", 20))

@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.Binding.ValidatesOnNotifyDataErrors
-internalonly: False
----
-
----
 uid: System.Windows.Data.Binding.#ctor(System.String)
 internalonly: False
 ---

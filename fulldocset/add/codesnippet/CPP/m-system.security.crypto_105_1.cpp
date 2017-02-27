@@ -1,66 +1,57 @@
-#using <System.Xml.dll>
-#using <System.Security.dll>
-#using <System.dll>
-
-using namespace System;
-using namespace System::Security::Cryptography::Xml;
-using namespace System::Xml;
-using namespace System::IO;
-
-/// This sample used the EncryptedData class to create an encrypted data element
-/// and write it to an XML file. It demonstrates the use of CipherReference.
-
-[STAThread]
-int main()
+// Sign an XML file and save the signature in a new file.
+void SignXmlFile( String^ FileName, String^ SignedFileName, RSA^ Key )
 {
    
-   //Create a URI string.
-   String^ uri = "http://www.woodgrovebank.com/document.xml";
-   
-   // Create a Base64 transform. The input content retrieved from the
-   // URI should be Base64-decoded before other processing.
-   Transform^ base64 = gcnew XmlDsigBase64Transform;
-   
-   //Create a transform chain and add the transform to it.
-   TransformChain^ tc = gcnew TransformChain;
-   tc->Add( base64 );
-   
-   //Create <CipherReference> information.
-   CipherReference ^ reference = gcnew CipherReference( uri,tc );
-   
-   // Create a new CipherData object using the CipherReference information.
-   // Note that you cannot assign both a CipherReference and a CipherValue
-   // to a CipherData object.
-   CipherData ^ cd = gcnew CipherData( reference );
-   
-   // Create a new EncryptedData object.
-   EncryptedData^ ed = gcnew EncryptedData;
-   
-   //Add an encryption method to the object.
-   ed->Id = "ED";
-   ed->EncryptionMethod = gcnew EncryptionMethod( "http://www.w3.org/2001/04/xmlenc#aes128-cbc" );
-   ed->CipherData = cd;
-   
-   //Add key information to the object.
-   KeyInfo^ ki = gcnew KeyInfo;
-   ki->AddClause( gcnew KeyInfoRetrievalMethod( "#EK","http://www.w3.org/2001/04/xmlenc#EncryptedKey" ) );
-   ed->KeyInfo = ki;
-   
-   // Create new XML document and put encrypted data into it.
+   // Create a new XML document.
    XmlDocument^ doc = gcnew XmlDocument;
-   XmlElement^ encryptionPropertyElement = dynamic_cast<XmlElement^>(doc->CreateElement( "EncryptionProperty", EncryptedXml::XmlEncNamespaceUrl ));
-   EncryptionProperty ^ ep = gcnew EncryptionProperty( encryptionPropertyElement );
-   ed->AddProperty( ep );
    
-   // Output the resulting XML information into a file.
-   try
+   // Format the document to ignore white spaces.
+   doc->PreserveWhitespace = false;
+   
+   // Load the passed XML file using its name.
+   doc->Load( gcnew XmlTextReader( FileName ) );
+   
+   // Create a SignedXml object.
+   SignedXml^ signedXml = gcnew SignedXml( doc );
+   
+   // Add the key to the SignedXml document. 
+   signedXml->SigningKey = Key;
+   
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
+   reference->Uri = "";
+   
+   // Add an enveloped transformation to the reference.
+   XmlDsigEnvelopedSignatureTransform^ env = gcnew XmlDsigEnvelopedSignatureTransform;
+   reference->AddTransform( env );
+   
+   // Add the reference to the SignedXml object.
+   signedXml->AddReference( reference );
+   
+   // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+   KeyInfo^ keyInfo = gcnew KeyInfo;
+   keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(Key) ) );
+   signedXml->KeyInfo = keyInfo;
+   
+   // Compute the signature.
+   signedXml->ComputeSignature();
+   
+   // Get the XML representation of the signature and save
+   // it to an XmlElement object.
+   XmlElement^ xmlDigitalSignature = signedXml->GetXml();
+   
+   // Append the element to the XML document.
+   doc->DocumentElement->AppendChild( doc->ImportNode( xmlDigitalSignature, true ) );
+   if ( (doc->FirstChild)->GetType() == XmlDeclaration::typeid )
    {
-      String^ path = "c:\\test\\MyTest.xml";
-      File::WriteAllText( path, ed->GetXml()->OuterXml );
-   }
-   catch ( IOException^ e ) 
-   {
-      Console::WriteLine( "File IO error. {0}", e );
+      doc->RemoveChild( doc->FirstChild );
    }
 
+   
+   // Save the signed XML document to a file specified
+   // using the passed string.
+   XmlTextWriter^ xmltw = gcnew XmlTextWriter( SignedFileName,gcnew UTF8Encoding( false ) );
+   doc->WriteTo( xmltw );
+   xmltw->Close();
 }
+

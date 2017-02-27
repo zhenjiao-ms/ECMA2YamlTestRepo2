@@ -1,203 +1,94 @@
-#using <System.Security.dll>
-#using <System.dll>
-#using <System.Xml.dll>
-
 using namespace System;
-using namespace System::Xml;
 using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::Xml;
+using namespace System::Text;
 
-ref class TrippleDESDocumentEncryption
+// Generates a random salt value of the specified length.
+array<Byte>^ CreateRandomSalt(int length)
 {
-protected:
-   XmlDocument^ docValue;
-   TripleDES^ algValue;
+    // Create a buffer
+    array<Byte>^ randomBytes;
 
-public:
-   TrippleDESDocumentEncryption( XmlDocument^ Doc, TripleDES^ Key )
-   {
-      if ( Doc != nullptr )
-      {
-         docValue = Doc;
-      }
-      else
-      {
-         throw gcnew ArgumentNullException( L"Doc" );
-      }
+    if (length >= 1)
+    {
+        randomBytes = gcnew array <Byte>(length);
+    }
+    else
+    {
+        randomBytes = gcnew array <Byte>(1);
+    }
 
-      if ( Key != nullptr )
-      {
-         algValue = Key;
-      }
-      else
-      {
-         throw gcnew ArgumentNullException( L"Key" );
-      }
-   }
+    // Create a new RNGCryptoServiceProvider.
+    RNGCryptoServiceProvider^ cryptoRNGProvider =
+        gcnew RNGCryptoServiceProvider();
 
+    // Fill the buffer with random bytes.
+    cryptoRNGProvider->GetBytes(randomBytes);
 
-   property XmlDocument^ Doc
-   {
-      XmlDocument^ get()
-      {
-         return docValue;
-      }
+    // return the bytes.
+    return randomBytes;
+}
 
-      void set( XmlDocument^ value )
-      {
-         docValue = value;
-      }
+// Clears the bytes in a buffer so they can't later be read from memory.
+void ClearBytes(array<Byte>^ buffer)
+{
+    // Check arguments.
+    if (buffer == nullptr)
+    {
+        throw gcnew ArgumentNullException("buffer");
+    }
 
-   }
+    // Set each byte in the buffer to 0.
+    for (int x = 0; x <= buffer->Length - 1; x++)
+    {
+        buffer[x] = 0;
+    }
+}
 
-   property TripleDES^ Alg
-   {
-      TripleDES^ get()
-      {
-         return algValue;
-      }
-
-      void set( TripleDES^ value )
-      {
-         algValue = value;
-      }
-
-   }
-   void Clear()
-   {
-      if ( algValue != nullptr )
-      {
-         algValue->Clear();
-      }
-      else
-      {
-         throw gcnew Exception( L"No TripleDES key was found to clear." );
-      }
-   }
-
-   void Encrypt( String^ Element )
-   {
-
-      // Find the element by name and create a new
-      // XmlElement object.
-      XmlElement^ inputElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( Element )->Item( 0 ));
-
-      // If the element was not found, throw an exception.
-      if ( inputElement == nullptr )
-      {
-         throw gcnew Exception( L"The element was not found." );
-      }
-
-
-      // Create a new EncryptedXml object.
-      EncryptedXml^ exml = gcnew EncryptedXml( docValue );
-
-      // Encrypt the element using the symmetric key.
-      array<Byte>^rgbOutput = exml->EncryptData( inputElement, algValue, false );
-
-      // Create an EncryptedData object and populate it.
-      EncryptedData^ ed = gcnew EncryptedData;
-
-      // Specify the namespace URI for XML encryption elements.
-      ed->Type = EncryptedXml::XmlEncElementUrl;
-
-      // Specify the namespace URI for the TrippleDES algorithm.
-      ed->EncryptionMethod = gcnew EncryptionMethod( EncryptedXml::XmlEncTripleDESUrl );
-
-      // Create a CipherData element.
-      ed->CipherData = gcnew CipherData;
-
-      // Set the CipherData element to the value of the encrypted XML element.
-      ed->CipherData->CipherValue = rgbOutput;
-
-      // Replace the plaintext XML elemnt with an EncryptedData element.
-      EncryptedXml::ReplaceElement( inputElement, ed, false );
-   }
-
-   void Decrypt()
-   {
-
-      // XmlElement object.
-      XmlElement^ encryptedElement = dynamic_cast<XmlElement^>(docValue->GetElementsByTagName( L"EncryptedData" )->Item( 0 ));
-
-      // If the EncryptedData element was not found, throw an exception.
-      if ( encryptedElement == nullptr )
-      {
-         throw gcnew Exception( L"The EncryptedData element was not found." );
-      }
-
-
-      // Create an EncryptedData object and populate it.
-      EncryptedData^ ed = gcnew EncryptedData;
-      ed->LoadXml( encryptedElement );
-
-      // Create a new EncryptedXml object.
-      EncryptedXml^ exml = gcnew EncryptedXml;
-
-      // Decrypt the element using the symmetric key.
-      array<Byte>^rgbOutput = exml->DecryptData( ed, algValue );
-
-      // Replace the encryptedData element with the plaintext XML elemnt.
-      exml->ReplaceData( encryptedElement, rgbOutput );
-   }
-
-};
-
-int main()
+int main(array<String^>^ args)
 {
 
-   // Create an XmlDocument object.
-   XmlDocument^ xmlDoc = gcnew XmlDocument;
+    // Get a password from the user.
+    Console::WriteLine("Enter a password to produce a key:");
 
-   // Load an XML file into the XmlDocument object.
-   try
-   {
-      xmlDoc->PreserveWhitespace = true;
-      xmlDoc->Load( L"test.xml" );
-   }
-   catch ( Exception^ e )
-   {
-      Console::WriteLine( e->Message );
-      return 0;
-   }
+    // Security Note: Never hard-code a password within your
+    // source code.  Hard-coded passwords can be retrieved
+    // from a compiled assembly.
+    array<Byte>^ password = Encoding::Unicode->GetBytes(Console::ReadLine());
 
+    array<Byte>^ randomSalt = CreateRandomSalt(7);
 
-   // Create a new TripleDES key.
-   TripleDESCryptoServiceProvider^ tDESkey = gcnew TripleDESCryptoServiceProvider;
+    // Create a TripleDESCryptoServiceProvider object.
+    TripleDESCryptoServiceProvider^ cryptoDESProvider =
+        gcnew TripleDESCryptoServiceProvider();
 
-   // Create a new instance of the TrippleDESDocumentEncryption object
-   // defined in this sample.
-   TrippleDESDocumentEncryption^ xmlTDES = gcnew TrippleDESDocumentEncryption( xmlDoc,tDESkey );
-   try
-   {
+    try
+    {
+        Console::WriteLine("Creating a key with PasswordDeriveBytes...");
 
-      // Encrypt the "creditcard" element.
-      xmlTDES->Encrypt( L"creditcard" );
+        // Create a PasswordDeriveBytes object and then create
+        // a TripleDES key from the password and salt.
+        PasswordDeriveBytes^ passwordDeriveBytes = gcnew PasswordDeriveBytes
+            (password->ToString(), randomSalt);
 
-      // Display the encrypted XML to the console.
-      Console::WriteLine( L"Encrypted XML:" );
-      Console::WriteLine();
-      Console::WriteLine( xmlTDES->Doc->OuterXml );
+	   // Create the key and set it to the Key property
+	   // of the TripleDESCryptoServiceProvider object.
+        cryptoDESProvider->Key = passwordDeriveBytes->CryptDeriveKey
+            ("TripleDES", "SHA1", 192, cryptoDESProvider->IV);
+        Console::WriteLine("Operation complete.");
+    }
+    catch (Exception^ ex)
+    {
+        Console::WriteLine(ex->Message);
+    }
+    finally
+    {
+        // Clear the buffers
+        ClearBytes(password);
+        ClearBytes(randomSalt);
 
-      // Decrypt the "creditcard" element.
-      xmlTDES->Decrypt();
+        // Clear the key.
+        cryptoDESProvider->Clear();
+    }
 
-      // Display the encrypted XML to the console.
-      Console::WriteLine();
-      Console::WriteLine( L"Decrypted XML:" );
-      Console::WriteLine();
-      Console::WriteLine( xmlTDES->Doc->OuterXml );
-   }
-   catch ( Exception^ e )
-   {
-      Console::WriteLine( e->Message );
-   }
-   finally
-   {
-
-      // Clear the TripleDES key.
-      xmlTDES->Clear();
-   }
-
-   return 1;
+    Console::ReadLine();
 }

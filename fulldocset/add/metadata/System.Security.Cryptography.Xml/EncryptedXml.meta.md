@@ -129,11 +129,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Security.Cryptography.Xml.EncryptedXml.XmlDSigSearchDepth
-internalonly: False
----
-
----
 uid: System.Security.Cryptography.Xml.EncryptedXml.Encrypt(System.Xml.XmlElement,System.Security.Cryptography.X509Certificates.X509Certificate2)
 internalonly: False
 ---

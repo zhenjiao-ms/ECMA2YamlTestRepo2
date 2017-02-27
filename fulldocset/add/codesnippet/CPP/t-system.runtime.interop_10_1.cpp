@@ -1,20 +1,21 @@
-using namespace System;
-using namespace System::Reflection;
-using namespace System::Runtime::InteropServices;
 
-ref class ClassC
+[StructLayout(LayoutKind::Explicit)]
+public ref class SYSTEM_INFO
 {
-private:
-   static bool IsHiddenMethod( MethodInfo^ mi )
-   {
-      array<Object^>^MethodAttributes = mi->GetCustomAttributes( TypeLibFuncAttribute::typeid, true );
-      if ( MethodAttributes->Length > 0 )
-      {
-         TypeLibFuncAttribute^ tlf = dynamic_cast<TypeLibFuncAttribute^>(MethodAttributes[ 0 ]);
-         TypeLibFuncFlags flags = tlf->Value;
-         return (flags & TypeLibFuncFlags::FHidden) != (TypeLibFuncFlags)0;
-      }
+public:
 
-      return false;
-   }
+   [FieldOffset(0)]
+   UInt64 OemId;
+
+   [FieldOffset(8)]
+   UInt64 PageSize;
+
+   [FieldOffset(24)]
+   UInt64 ActiveProcessorMask;
+
+   [FieldOffset(32)]
+   UInt64 NumberOfProcessors;
+
+   [FieldOffset(40)]
+   UInt64 ProcessorType;
 };

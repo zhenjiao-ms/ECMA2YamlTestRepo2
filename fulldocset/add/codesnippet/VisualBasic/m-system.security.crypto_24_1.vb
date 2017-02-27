@@ -1,96 +1,117 @@
-Imports System.Security.Cryptography
-Imports System.Text
+Imports System
 Imports System.IO
+Imports System.Security.Cryptography
 
-Module TrippleDESCSPSample
 
-    Sub Main()
+
+Class RijndaelExample
+
+    Public Shared Sub Main()
         Try
-            ' Create a new TripleDESCryptoServiceProvider object
-            ' to generate a key and initialization vector (IV).
-            Dim tDESalg As New TripleDESCryptoServiceProvider
 
-            ' Create a string to encrypt.
-            Dim sData As String = "Here is some data to encrypt."
-            Dim FileName As String = "CText.txt"
+            Dim original As String = "Here is some data to encrypt!"
 
-            ' Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, tDESalg.Key, tDESalg.IV)
+            ' Create a new instance of the Rijndael
+            ' class.  This generates a new key and initialization 
+            ' vector (IV).
+            Using myRijndael = Rijndael.Create()
 
-            ' Decrypt the text from a file using the file name, key, and IV.
-            Dim Final As String = DecryptTextFromFile(FileName, tDESalg.Key, tDESalg.IV)
+                ' Encrypt the string to an array of bytes.
+                Dim encrypted As Byte() = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV)
 
-            ' Display the decrypted string to the console.
-            Console.WriteLine(Final)
+                ' Decrypt the bytes to a string.
+                Dim roundtrip As String = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV)
+
+                'Display the original data and the decrypted data.
+                Console.WriteLine("Original:   {0}", original)
+                Console.WriteLine("Round Trip: {0}", roundtrip)
+            End Using
         Catch e As Exception
-            Console.WriteLine(e.Message)
+            Console.WriteLine("Error: {0}", e.Message)
         End Try
-    End Sub
+
+    End Sub 'Main
+
+    Shared Function EncryptStringToBytes(ByVal plainText As String, ByVal Key() As Byte, ByVal IV() As Byte) As Byte()
+        ' Check arguments.
+        If plainText Is Nothing OrElse plainText.Length <= 0 Then
+            Throw New ArgumentNullException("plainText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        Dim encrypted() As Byte
+        ' Create an Rijndael object
+        ' with the specified key and IV.
+        Using rijAlg = Rijndael.Create()
+
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create an encryptor to perform the stream transform.
+            Dim encryptor As ICryptoTransform = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV)
+            ' Create the streams used for encryption.
+            Using msEncrypt As New MemoryStream()
+                Using csEncrypt As New CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write)
+                    Using swEncrypt As New StreamWriter(csEncrypt)
+
+                        'Write all data to the stream.
+                        swEncrypt.Write(plainText)
+                    End Using
+                    encrypted = msEncrypt.ToArray()
+                End Using
+            End Using
+        End Using
+
+        ' Return the encrypted bytes from the memory stream.
+        Return encrypted
+
+    End Function 'EncryptStringToBytes
+
+    Shared Function DecryptStringFromBytes(ByVal cipherText() As Byte, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        ' Check arguments.
+        If cipherText Is Nothing OrElse cipherText.Length <= 0 Then
+            Throw New ArgumentNullException("cipherText")
+        End If
+        If Key Is Nothing OrElse Key.Length <= 0 Then
+            Throw New ArgumentNullException("Key")
+        End If
+        If IV Is Nothing OrElse IV.Length <= 0 Then
+            Throw New ArgumentNullException("IV")
+        End If
+        ' Declare the string used to hold
+        ' the decrypted text.
+        Dim plaintext As String = Nothing
+
+        ' Create an Rijndael object
+        ' with the specified key and IV.
+        Using rijAlg = Rijndael.Create()
+            rijAlg.Key = Key
+            rijAlg.IV = IV
+
+            ' Create a decryptor to perform the stream transform.
+            Dim decryptor As ICryptoTransform = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV)
+
+            ' Create the streams used for decryption.
+            Using msDecrypt As New MemoryStream(cipherText)
+
+                Using csDecrypt As New CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read)
+
+                    Using srDecrypt As New StreamReader(csDecrypt)
 
 
-    Sub EncryptTextToFile(ByVal Data As String, ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte)
-        Try
-            ' Create or open the specified file.
-            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+                        ' Read the decrypted bytes from the decrypting stream
+                        ' and place them in a string.
+                        plaintext = srDecrypt.ReadToEnd()
+                    End Using
+                End Using
+            End Using
+        End Using
 
-            ' Create a CryptoStream using the FileStream 
-            ' and the passed key and initialization vector (IV).
-            Dim cStream As New CryptoStream(fStream, _
-                                            New TripleDESCryptoServiceProvider().CreateEncryptor(Key, IV), _
-                                            CryptoStreamMode.Write)
+        Return plaintext
 
-            ' Create a StreamWriter using the CryptoStream.
-            Dim sWriter As New StreamWriter(cStream)
-
-            ' Write the data to the stream 
-            ' to encrypt it.
-            sWriter.WriteLine(Data)
-
-            ' Close the streams and
-            ' close the file.
-            sWriter.Close()
-            cStream.Close()
-            fStream.Close()
-        Catch e As CryptographicException
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
-        Catch e As UnauthorizedAccessException
-            Console.WriteLine("A file error occurred: {0}", e.Message)
-        End Try
-    End Sub
-
-
-    Function DecryptTextFromFile(ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte) As String
-        Try
-            ' Create or open the specified file. 
-            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
-
-            ' Create a CryptoStream using the FileStream 
-            ' and the passed key and initialization vector (IV).
-            Dim cStream As New CryptoStream(fStream, _
-                                            New TripleDESCryptoServiceProvider().CreateDecryptor(Key, IV), _
-                                            CryptoStreamMode.Read)
-
-            ' Create a StreamReader using the CryptoStream.
-            Dim sReader As New StreamReader(cStream)
-
-            ' Read the data from the stream 
-            ' to decrypt it.
-            Dim val As String = sReader.ReadLine()
-
-            ' Close the streams and
-            ' close the file.
-            sReader.Close()
-            cStream.Close()
-            fStream.Close()
-
-            ' Return the string. 
-            Return val
-        Catch e As CryptographicException
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
-            Return Nothing
-        Catch e As UnauthorizedAccessException
-            Console.WriteLine("A file error occurred: {0}", e.Message)
-            Return Nothing
-        End Try
-    End Function
-End Module
+    End Function 'DecryptStringFromBytes 
+End Class

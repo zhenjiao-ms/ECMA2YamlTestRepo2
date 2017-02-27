@@ -39,11 +39,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Xaml.CommandLineToolSwitch.Arguments
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Xaml.CommandLineToolSwitch.Type
 internalonly: False
 ---
@@ -120,11 +115,6 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.Xaml.CommandLineToolSwitch.ReverseSwitchValue
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CommandLineToolSwitch.IncludeInCommandLine
 internalonly: False
 ---
 

@@ -1,28 +1,23 @@
-    Shared Sub ExportXSD() 
-
-        Dim exporter As New XsdDataContractExporter()
-
-        ' Use the ExportOptions to add the Possessions type to the 
-        ' collection of KnownTypes. 
-        Dim eOptions As New ExportOptions()
-        eOptions.KnownTypes.Add(GetType(Possessions))        
-        exporter.Options = eOptions
-
-        If exporter.CanExport(GetType(Employee)) Then
-            exporter.Export(GetType(Employee))
-            Console.WriteLine("number of schemas: {0}", exporter.Schemas.Count)
-            Console.WriteLine()
-            Dim mySchemas As XmlSchemaSet = exporter.Schemas
+    Shared Sub CompileCode(ByVal ccu As CodeCompileUnit, ByVal sourceName As String) 
+        Dim provider As CodeDomProvider = Nothing
+        Dim sourceFile As New FileInfo(sourceName)
+        ' Select the code provider based on the input file extension, either C# or Visual Basic.
+        If sourceFile.Extension.ToUpper(CultureInfo.InvariantCulture) = ".CS" Then
+            provider = New Microsoft.CSharp.CSharpCodeProvider()
+        ElseIf sourceFile.Extension.ToUpper(CultureInfo.InvariantCulture) = ".VB" Then
+            provider = New Microsoft.VisualBasic.VBCodeProvider()
+        Else
+            Console.WriteLine("Source file must have a .cs or .vb extension")
+        End If
+        If Not (provider Is Nothing) Then
+            Dim options As New CodeGeneratorOptions()
+            ' Set code formatting options to your preference. 
+            options.BlankLinesBetweenMembers = True
+            options.BracingStyle = "C"
             
-            Dim XmlNameValue As XmlQualifiedName = _
-               exporter.GetRootElementName(GetType(Employee))
-            Dim EmployeeNameSpace As String = XmlNameValue.Namespace
-            
-            Dim schema As XmlSchema
-            For Each schema In  mySchemas.Schemas(EmployeeNameSpace)
-                schema.Write(Console.Out)
-            Next schema
+            Dim sw As New StreamWriter(sourceName)
+            provider.GenerateCodeFromCompileUnit(ccu, sw, options)
+            sw.Close()
         End If
     
-    End Sub 
-    
+    End Sub

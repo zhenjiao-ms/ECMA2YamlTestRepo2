@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Presentation.Validation.ValidationService.NavigateToError(System.Activities.Presentation.Validation.ValidationErrorInfo)
-internalonly: False
----
-
----
 uid: System.Activities.Presentation.Validation.ValidationService.#ctor(System.Activities.Presentation.EditingContext)
 internalonly: False
 ---

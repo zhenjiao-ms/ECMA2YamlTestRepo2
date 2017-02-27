@@ -47,8 +47,3 @@ internalonly: False
 uid: System.IdentityModel.Tokens.SamlConstants.Namespace
 internalonly: False
 ---
-
----
-uid: System.IdentityModel.Tokens.SamlConstants.Prefix
-internalonly: False
----

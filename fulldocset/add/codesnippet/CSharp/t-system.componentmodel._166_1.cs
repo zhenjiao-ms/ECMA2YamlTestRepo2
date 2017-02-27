@@ -1,7 +1,7 @@
-    [Designer("System.Windows.Forms.Design.DocumentDesigner, System.Windows.Forms.Design", 
-        typeof(IRootDesigner)),
-        DesignerCategory("Form")]
-        
-     public class MyForm : ContainerControl {
-        // Insert code here.
-     }
+    // This event handler provides custom item-creation behavior.
+    void customersBindingSource_AddingNew(
+        object sender, 
+        AddingNewEventArgs e)
+    {
+        e.NewObject = DemoCustomer.CreateNewCustomer();
+    }

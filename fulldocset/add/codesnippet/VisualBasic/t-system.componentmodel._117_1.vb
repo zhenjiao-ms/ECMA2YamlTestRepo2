@@ -1,4 +1,4 @@
-            Dim myGuid As New Guid("B80D56EC-5899-459d-83B4-1AE0BB8418E4")
-            Dim myGuidString As String = "1AA7F83F-C7F5-11D0-A376-00C04FC9DA04"
-            Console.WriteLine(TypeDescriptor.GetConverter(myGuid).ConvertTo(myGuid, GetType(String)))
-            Console.WriteLine(TypeDescriptor.GetConverter(myGuid).ConvertFrom(myGuidString))
+            Dim dt As New DateTime(1990, 5, 6)
+            Console.WriteLine(TypeDescriptor.GetConverter(dt).ConvertTo(dt, GetType(String)))
+            Dim myStr As String = "1991-10-10"
+            Console.WriteLine(TypeDescriptor.GetConverter(dt).ConvertFrom(myStr))

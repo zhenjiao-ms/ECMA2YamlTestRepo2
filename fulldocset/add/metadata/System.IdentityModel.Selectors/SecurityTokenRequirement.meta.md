@@ -44,11 +44,6 @@ internalonly: False
 ---
 
 ---
-uid: System.IdentityModel.Selectors.SecurityTokenRequirement.IsOptionalTokenProperty
-internalonly: False
----
-
----
 uid: System.IdentityModel.Selectors.SecurityTokenRequirement.RequireCryptographicTokenProperty
 internalonly: False
 ---

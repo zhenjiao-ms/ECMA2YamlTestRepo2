@@ -34,11 +34,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Configuration.IssuedTokenParametersElement.UseStrTransform
-internalonly: False
----
-
----
 uid: System.ServiceModel.Configuration.IssuedTokenParametersElement.KeyType
 internalonly: False
 ---

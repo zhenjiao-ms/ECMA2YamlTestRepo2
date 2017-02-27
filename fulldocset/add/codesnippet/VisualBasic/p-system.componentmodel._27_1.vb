@@ -2,10 +2,10 @@
  Dim attributes As AttributeCollection = _
     TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
         
- ' Checks to see if the property needs to be localized.
- Dim myAttribute As LocalizableAttribute = _
-    CType(attributes(GetType(LocalizableAttribute)), LocalizableAttribute)
+ ' Checks to see whether the property is read-only.
+ Dim myAttribute As ReadOnlyAttribute = _
+    CType(attributes(GetType(ReadOnlyAttribute)), ReadOnlyAttribute)
     
- If myAttribute.IsLocalizable Then
-      ' Insert code here.
+ If myAttribute.IsReadOnly Then
+     ' Insert code here.
  End If

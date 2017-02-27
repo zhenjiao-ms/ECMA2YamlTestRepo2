@@ -1,32 +1,20 @@
-            ' Obtains and shows the size of the standard design-mode grid square.
-            Dim pd As PropertyDescriptor
-            pd = designerOptionSvc.Options.Properties("GridSize")
+    <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")> _
+    Public Class CDesigner
+        Inherits System.ComponentModel.Design.ComponentDesigner
 
-            e.Graphics.DrawString("GridSize", _
-            New Font("Arial", 8), _
-            New SolidBrush(Color.Black), 4, ypos)
+        Public Overrides Sub Initialize(ByVal comp As IComponent)
+            MyBase.Initialize(comp)
 
-            e.Graphics.DrawString(pd.GetValue(Nothing).ToString(), _
-            New Font("Arial", 8), _
-            New SolidBrush(Color.Black), 200, ypos)
+            Dim mcs As IMenuCommandService = CType(comp.Site.GetService(GetType(IMenuCommandService)), IMenuCommandService)
+            Dim mc As New MenuCommand(New EventHandler(AddressOf OnF1Help), StandardCommands.F1Help)
+            mc.Enabled = True
+            mc.Visible = True
+            mc.Supported = True
+            mcs.AddCommand(mc)
+            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.")
+        End Sub
 
-            ypos += 12
-
-            ' Uncomment the following code to demonstrate that this
-            ' alternate syntax works the same as the previous syntax.
-            'pd = designerOptionSvc.Options["WindowsFormsDesigner"].Properties["GridSize"];
-            'e.Graphics.DrawString("GridSize",
-            '    new Font("Arial", 8),
-            '    new SolidBrush(Color.Black), 4, ypos);
-            'e.Graphics.DrawString(pd.GetValue(null).ToString(),
-            '    new Font("Arial", 8),
-            '    new SolidBrush(Color.Black), 200, ypos);
-            'ypos += 12;
-            'pd = designerOptionSvc.Options["WindowsFormsDesigner"]["General"].Properties["GridSize"];
-            'e.Graphics.DrawString("GridSize",
-            '    new Font("Arial", 8),
-            '    new SolidBrush(Color.Black), 4, ypos);
-            'e.Graphics.DrawString(pd.GetValue(null).ToString(),
-            '    new Font("Arial", 8),
-            '    new SolidBrush(Color.Black), 200, ypos);
-            'ypos += 12;
+        Private Sub OnF1Help(ByVal sender As Object, ByVal e As EventArgs)
+            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.")
+        End Sub
+    End Class

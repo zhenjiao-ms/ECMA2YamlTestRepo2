@@ -1,134 +1,157 @@
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
 using System;
-using System.IO;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
 
-public class HMACSHA1example
+public class SignVerifyEnvelope
 {
 
-    public static void Main(string[] Fileargs)
+    public static void Main(String[] args)
     {
-        string dataFile;
-        string signedFile;
-        //If no file names are specified, create them.
-        if (Fileargs.Length < 2)
-        {
-            dataFile = @"text.txt";
-            signedFile = "signedFile.enc";
-
-            if (!File.Exists(dataFile))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(dataFile))
-                {
-                    sw.WriteLine("Here is a message to sign");
-                }
-            }
-
-        }
-        else
-        {
-            dataFile = Fileargs[0];
-            signedFile = Fileargs[1];
-        }
         try
         {
-            // Create a random key using a random number generator. This would be the
-            //  secret key shared by sender and receiver.
-            byte[] secretkey = new Byte[64];
-            //RNGCryptoServiceProvider is an implementation of a random number generator.
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            // Generate a signing key.
+            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+
+            // Create an XML file to sign.
+            CreateSomeXml("Example.xml");
+            Console.WriteLine("New XML file created."); 
+
+            // Sign the XML that was just created and save it in a 
+            // new file.
+            SignXmlFile("Example.xml", "SignedExample.xml", Key);
+            Console.WriteLine("XML file signed."); 
+
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+            bool result = VerifyXmlFile("SignedExample.xml");
+
+            // Display the results of the signature verification to \
+            // the console.
+            if(result)
             {
-                // The array is now filled with cryptographically strong random bytes.
-                rng.GetBytes(secretkey);
-
-                // Use the secret key to sign the message file.
-                SignFile(secretkey, dataFile, signedFile);
-
-                // Verify the signed file
-                VerifyFile(secretkey, signedFile);
+                Console.WriteLine("The XML signature is valid.");
+            }
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
             }
         }
-        catch (IOException e)
+        catch(CryptographicException e)
         {
-            Console.WriteLine("Error: File not found", e);
+            Console.WriteLine(e.Message);
         }
+    }
 
-    }  //end main
-    // Computes a keyed hash for a source file and creates a target file with the keyed hash
-    // prepended to the contents of the source file. 
-    public static void SignFile(byte[] key, String sourceFile, String destFile)
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
     {
-        // Initialize the keyed hash object.
-        using (HMACSHA1 hmac = new HMACSHA1(key))
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
+
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
+
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
+
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
+
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+        reference.Uri = "";
+
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
+
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+		
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+		
+		
+        if (doc.FirstChild is XmlDeclaration)  
         {
-            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
-            {
-                using (FileStream outStream = new FileStream(destFile, FileMode.Create))
-                {
-                    // Compute the hash of the input file.
-                    byte[] hashValue = hmac.ComputeHash(inStream);
-                    // Reset inStream to the beginning of the file.
-                    inStream.Position = 0;
-                    // Write the computed hash value to the output file.
-                    outStream.Write(hashValue, 0, hashValue.Length);
-                    // Copy the contents of the sourceFile to the destFile.
-                    int bytesRead;
-                    // read 1K at a time
-                    byte[] buffer = new byte[1024];
-                    do
-                    {
-                        // Read from the wrapping CryptoStream.
-                        bytesRead = inStream.Read(buffer, 0, 1024);
-                        outStream.Write(buffer, 0, bytesRead);
-                    } while (bytesRead > 0);
-                }
-            }
+            doc.RemoveChild(doc.FirstChild);
         }
-        return;
-    } // end SignFile
 
-
-    // Compares the key in the source file with a new key created for the data portion of the file. If the keys 
-    // compare the data has not been tampered with.
-    public static bool VerifyFile(byte[] key, String sourceFile)
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
+        doc.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyXmlFile(String Name)
     {
-        bool err = false;
-        // Initialize the keyed hash object. 
-        using (HMACSHA1 hmac = new HMACSHA1(key))
-        {
-            // Create an array to hold the keyed hash value read from the file.
-            byte[] storedHash = new byte[hmac.HashSize / 8];
-            // Create a FileStream for the source file.
-            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
-            {
-                // Read in the storedHash.
-                inStream.Read(storedHash, 0, storedHash.Length);
-                // Compute the hash of the remaining contents of the file.
-                // The stream is properly positioned at the beginning of the content, 
-                // immediately after the stored hash value.
-                byte[] computedHash = hmac.ComputeHash(inStream);
-                // compare the computed hash with the stored value
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
 
-                for (int i = 0; i < storedHash.Length; i++)
-                {
-                    if (computedHash[i] != storedHash[i])
-                    {
-                        err = true;
-                    }
-                }
-            }
-        }
-        if (err)
-        {
-            Console.WriteLine("Hash values differ! Signed file has been tampered with!");
-            return false;
-        }
-        else
-        {
-            Console.WriteLine("Hash values agree -- no tampering occurred.");
-            return true;
-        }
+        // Format using white spaces.
+        xmlDocument.PreserveWhitespace = true;
 
-    } //end VerifyFile
+        // Load the passed XML file into the document. 
+        xmlDocument.Load(Name);
 
-} //end class
+        // Create a new SignedXml object and pass it
+        // the XML document class.
+        SignedXml signedXml = new SignedXml(xmlDocument);
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
+    }
+
+    // Create example data to sign.
+    public static void CreateSomeXml(string FileName)
+    {
+        // Create a new XmlDocument object.
+        XmlDocument document = new XmlDocument();
+
+        // Create a new XmlNode object.
+        XmlNode  node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
+		
+        // Add some text to the node.
+        node.InnerText = "Example text to be signed.";
+
+        // Append the node to the document.
+        document.AppendChild(node);
+
+        // Save the XML document to the file name specified.
+        XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false));
+        document.WriteTo(xmltw);
+        xmltw.Close();
+    }
+}

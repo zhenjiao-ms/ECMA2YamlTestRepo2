@@ -1,12 +1,5 @@
-[LicenseProvider(LicFileLicenseProvider::typeid)]
-ref class MyControl: public Control
-{
-protected:
-
+[Editor("System.Windows.Forms.ImageEditorIndex, System.Design",
+UITypeEditor::typeid)]
+public ref class MyImage{
    // Insert code here.
-   ~MyControl()
-   {
-      /* All components must dispose of the licenses they grant. 
-               * Insert code here to dispose of the license. */
-   }
 };

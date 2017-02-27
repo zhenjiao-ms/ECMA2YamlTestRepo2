@@ -84,11 +84,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Printing.PrintQueueStream.#ctor(System.Printing.PrintQueue,System.String,System.Boolean,System.Printing.PrintTicket)
-internalonly: False
----
-
----
 uid: System.Printing.PrintQueueStream.Finalize
 internalonly: False
 ---

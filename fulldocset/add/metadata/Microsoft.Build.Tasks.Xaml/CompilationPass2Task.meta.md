@@ -24,42 +24,7 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.IsInProcessXamlMarkupCompile
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.MSBuildProjectDirectory
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.#ctor
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.Language
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.XamlBuildTypeInspectionExtensionNames
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.ExtensionGeneratedCodeFiles
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.ApplicationMarkupWithTypeName
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.SourceCodeFiles
 internalonly: False
 ---
 
@@ -75,10 +40,5 @@ internalonly: False
 
 ---
 uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.RootNamespace
-internalonly: False
----
-
----
-uid: Microsoft.Build.Tasks.Xaml.CompilationPass2Task.OutputPath
 internalonly: False
 ---

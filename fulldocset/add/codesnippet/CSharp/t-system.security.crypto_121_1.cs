@@ -1,31 +1,67 @@
-private static void EncryptData(String inName, String outName, byte[] desKey, byte[] desIV)
- {    
-     //Create the file streams to handle the input and output files.
-     FileStream fin = new FileStream(inName, FileMode.Open, FileAccess.Read);
-     FileStream fout = new FileStream(outName, FileMode.OpenOrCreate, FileAccess.Write);
-     fout.SetLength(0);
-       
-     //Create variables to help with read and write.
-     byte[] bin = new byte[100]; //This is intermediate storage for the encryption.
-     long rdlen = 0;              //This is the total number of bytes written.
-     long totlen = fin.Length;    //This is the total length of the input file.
-     int len;                     //This is the number of bytes to be written at a time.
- 
-     DES des = new DESCryptoServiceProvider();          
-     CryptoStream encStream = new CryptoStream(fout, des.CreateEncryptor(desKey, desIV), CryptoStreamMode.Write);
-                
-     Console.WriteLine("Encrypting...");
- 
-     //Read from the input file, then encrypt and write to the output file.
-     while(rdlen < totlen)
-     {
-         len = fin.Read(bin, 0, 100);
-         encStream.Write(bin, 0, len);
-         rdlen = rdlen + len;
-         Console.WriteLine("{0} bytes processed", rdlen);
-     }
- 
-     encStream.Close();  
-     fout.Close();
-     fin.Close();                   
- }
+using System;
+using System.Security.Cryptography;
+
+public class DataProtectionSample
+{
+// Create byte array for additional entropy when using Protect method.
+	static byte [] s_aditionalEntropy = { 9, 8, 7, 6, 5 };
+
+	public static void Main()
+	{
+// Create a simple byte array containing data to be encrypted.
+		
+byte [] secret = { 0, 1, 2, 3, 4, 1, 2, 3, 4 };
+
+//Encrypt the data.
+		byte [] encryptedSecret = Protect( secret );
+		Console.WriteLine("The encrypted byte array is:");
+		PrintValues(encryptedSecret);
+		
+// Decrypt the data and store in a byte array.
+		byte [] originalData = Unprotect( encryptedSecret );
+		Console.WriteLine("{0}The original data is:", Environment.NewLine);
+		PrintValues(originalData);
+
+	}
+
+	public static byte [] Protect( byte [] data )
+	{
+		try
+		{
+			// Encrypt the data using DataProtectionScope.CurrentUser. The result can be decrypted
+			//  only by the same current user.
+			return ProtectedData.Protect( data, s_aditionalEntropy, DataProtectionScope.CurrentUser );
+		} 
+		catch (CryptographicException e)
+		{
+			Console.WriteLine("Data was not encrypted. An error occurred.");
+			Console.WriteLine(e.ToString());
+			return null;
+		}
+	}
+
+	public static byte [] Unprotect( byte [] data )
+	{
+		try
+		{
+			//Decrypt the data using DataProtectionScope.CurrentUser.
+			return ProtectedData.Unprotect( data, s_aditionalEntropy, DataProtectionScope.CurrentUser );
+		} 
+		catch (CryptographicException e)
+		{
+			Console.WriteLine("Data was not decrypted. An error occurred.");
+			Console.WriteLine(e.ToString());
+			return null;
+		}
+	}
+
+	public static void PrintValues( Byte[] myArr )  
+	{
+	      foreach ( Byte i in myArr )  
+		  	{
+		         Console.Write( "\t{0}", i );
+			 }
+      Console.WriteLine();
+	 }
+
+}

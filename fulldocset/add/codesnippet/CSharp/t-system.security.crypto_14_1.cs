@@ -1,75 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+
 using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Windows.Forms;
+using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Xml;
 
-public class HashDirectory
+
+
+class XMLDSIGDetached
 {
-
-    [STAThreadAttribute]
-    public static void Main(String[] args)
+	
+    [STAThread]
+    static void Main(string[] args)
     {
-        string directory = "";
-        if (args.Length < 1)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult dr = fbd.ShowDialog();
-            if (dr == DialogResult.OK)
-                directory = fbd.SelectedPath;
-            else
-            {
-                Console.WriteLine("No directory selected.");
-                return;
-            }
-        }
-        else
-            directory = args[0];
+        // The URI to sign.
+        string resourceToSign = "http://www.microsoft.com";
+		
+        // The name of the file to which to save the XML signature.
+        string XmlFileName = "xmldsig.xml";
+
         try
         {
-            // Create a DirectoryInfo object representing the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(directory);
-            // Get the FileInfo objects for every file in the directory.
-            FileInfo[] files = dir.GetFiles();
-            // Initialize a SHA256 hash object.
-            SHA256 mySHA256 = SHA256Managed.Create();
-           
-            byte[] hashValue;
-            // Compute and print the hash values for each file in directory.
-            foreach (FileInfo fInfo in files)
+
+            // Generate a DSA signing key.
+            DSACryptoServiceProvider DSAKey = new DSACryptoServiceProvider();
+
+            Console.WriteLine("Signing: {0}", resourceToSign);
+
+            // Sign the detached resourceand save the signature in an XML file.
+            SignDetachedResource(resourceToSign, XmlFileName, DSAKey);
+
+            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
+
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+
+            //Verify the XML signature in the XML file.
+            bool result = VerifyDetachedSignature(XmlFileName);
+
+            // Display the results of the signature verification to 
+            // the console.
+            if(result)
             {
-                // Create a fileStream for the file.
-                FileStream fileStream = fInfo.Open(FileMode.Open);
-                // Be sure it's positioned to the beginning of the stream.
-                fileStream.Position = 0;
-                // Compute the hash of the fileStream.
-                hashValue = mySHA256.ComputeHash(fileStream);
-                // Write the name of the file to the Console.
-                Console.Write(fInfo.Name + ": ");
-                // Write the hash value to the Console.
-                PrintByteArray(hashValue);
-                // Close the file.
-                fileStream.Close();
+                Console.WriteLine("The XML signature is valid.");
             }
-            return;
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
         }
-        catch (DirectoryNotFoundException)
+        catch(CryptographicException e)
         {
-            Console.WriteLine("Error: The directory specified could not be found.");
+            Console.WriteLine(e.Message);
+
         }
-        catch (IOException)
-        {
-            Console.WriteLine("Error: A file in the directory could not be accessed.");
-        }
+		
     }
-    // Print the byte array in a readable format.
-    public static void PrintByteArray(byte[] array)
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignDetachedResource(string URIString, string XmlSigFileName, DSA DSAKey)
     {
-        int i;
-        for (i = 0; i < array.Length; i++)
-        {
-            Console.Write(String.Format("{0:X2}", array[i]));
-            if ((i % 4) == 3) Console.Write(" ");
-        }
-        Console.WriteLine();
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml();
+
+        // Assign the DSA key to the SignedXml object.
+        signedXml.SigningKey = DSAKey;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+
+        // Add the passed URI to the reference object.
+        reference.Uri = URIString;
+		
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Add a DSAKeyValue to the KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new DSAKeyValue((DSA)DSAKey));	
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
+        xmlDigitalSignature.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
+    {	
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document.
+        xmlDocument.Load(XmlSigFileName);
+	
+        // Create a new SignedXMl object.
+        SignedXml signedXml = new SignedXml();
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
     }
 }

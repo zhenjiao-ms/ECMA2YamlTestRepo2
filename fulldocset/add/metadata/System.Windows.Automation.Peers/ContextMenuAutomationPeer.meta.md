@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Automation.Peers.ContextMenuAutomationPeer.IsContentElementCore
-internalonly: False
----
-
----
 uid: System.Windows.Automation.Peers.ContextMenuAutomationPeer.GetClassNameCore
 internalonly: False
 ---

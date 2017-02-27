@@ -1,51 +1,19 @@
-using System;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-
-namespace CSMenuCommand
-{
-    [Designer(typeof(CDesigner))]
-    public class Component1 : System.ComponentModel.Component
+    public class SampleObject
     {
-        private System.ComponentModel.Container components = null;
+        private string stringValue = null;
+        private int intValue = int.MinValue;
 
-        public Component1(System.ComponentModel.IContainer container)
-        {
-            container.Add(this);
-            InitializeComponent();
+        public string StringProperty 
+        { 
+            get { return this.stringValue; }
+
+            set { this.stringValue = value; }
         }
 
-        public Component1()
+        public int IntProperty 
         {
-            InitializeComponent();
-        }
+            get { return this.intValue; }
 
-        private void InitializeComponent()
-        {
-            components = new System.ComponentModel.Container();
+            set{ this.intValue = value; }
         }
     }
-
-    [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")] 
-    public class CDesigner : System.ComponentModel.Design.ComponentDesigner 
-    {
-        public override void Initialize(IComponent comp) 
-        {
-            base.Initialize(comp);
-
-            IMenuCommandService mcs = (IMenuCommandService)comp.Site.
-                        GetService(typeof(IMenuCommandService));
-            MenuCommand mc = new MenuCommand(new EventHandler(OnF1Help), StandardCommands.F1Help);
-            mc.Enabled = true;
-            mc.Visible = true;
-            mc.Supported = true;
-            mcs.AddCommand(mc);
-            System.Windows.Forms.MessageBox.Show("Initialize() has been invoked.");
-        }
-
-        private void OnF1Help(object sender, EventArgs e) 
-        {
-            System.Windows.Forms.MessageBox.Show("F1Help has been invoked.");
-        }
-    }
-} 

@@ -1,36 +1,24 @@
 using System;
-using System.Collections;
-using System.IO;
-using System.Reflection;
-using System.Resources;
 
-public class Example
+[Serializable] public struct PersonTable
 {
-   public static void Main()
+   public readonly int nColumns;
+   public readonly string column1; 
+   public readonly string column2;
+   public readonly string column3; 
+   public readonly int width1;
+   public readonly int width2;
+   public readonly int width3;
+   
+   public PersonTable(string column1, string column2, string column3,
+                  int width1, int width2, int width3)
    {
-      var assem = typeof(Example).Assembly;
-      var fs = assem.GetManifestResourceStream("PatientForm.resources");
-      var rr = new ResourceReader(fs);
-      IDictionaryEnumerator dict = rr.GetEnumerator();
-      int ctr = 0;
-
-      while (dict.MoveNext()) {
-         ctr++;
-         Console.WriteLine("{0:00}: {1} = {2}", ctr, dict.Key, dict.Value);
-      }
-      rr.Close();
+      this.column1 = column1;
+      this.column2 = column2;
+      this.column3 = column3;
+      this.width1 = width1;
+      this.width2 = width2;
+      this.width3 = width3;
+      this.nColumns = typeof(PersonTable).GetFields().Length / 2; 
    }
 }
-// The example displays the following output:
-//       01: Label3 = "Species:"
-//       02: Label2 = "Pet Name:"
-//       03: Label1 = "Patient Number:"
-//       04: Label7 = "Owner:"
-//       05: Label6 = "Age:"
-//       06: Label5 = "Date of Birth:"
-//       07: Label4 = "Breed:"
-//       08: Label9 = "Home Phone:"
-//       09: Label8 = "Address:"
-//       10: Title = "Top Pet Animal Clinic"
-//       11: Label10 = "Work Phone:"
-//       12: Label11 = "Mobile Phone:"

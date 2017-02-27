@@ -1,103 +1,34 @@
+#using <System.dll>
+#using <system.security.dll>
+
 using namespace System;
 using namespace System::Security::Cryptography;
-using namespace System::Text;
-array<Byte>^ RSAEncrypt( array<Byte>^DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
-{
-   try
-   {
-      
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
-      
-      //Import the RSA Key information. This only needs
-      //toinclude the public key information.
-      RSA->ImportParameters( RSAKeyInfo );
-      
-      //Encrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-
-      array<Byte>^encryptedData = RSA->Encrypt( DataToEncrypt, DoOAEPPadding );
-	  delete RSA;
-	  return encryptedData;
-   }
-   //Catch and display a CryptographicException  
-   //to the console.
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e->Message );
-      return nullptr;
-   }
-
-}
-
-array<Byte>^ RSADecrypt( array<Byte>^DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
-{
-   try
-   {
-      
-      //Create a new instance of RSACryptoServiceProvider.
-      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
-      
-      //Import the RSA Key information. This needs
-      //to include the private key information.
-      RSA->ImportParameters( RSAKeyInfo );
-      
-      //Decrypt the passed byte array and specify OAEP padding.  
-      //OAEP padding is only available on Microsoft Windows XP or
-      //later.  
-	  
-      array<Byte>^decryptedData = RSA->Decrypt( DataToDecrypt, DoOAEPPadding );
-      delete RSA;
-	  return decryptedData;
-   }
-   //Catch and display a CryptographicException  
-   //to the console.
-   catch ( CryptographicException^ e ) 
-   {
-      Console::WriteLine( e );
-      return nullptr;
-   }
-
-}
-
+using namespace System::Security::Permissions;
+using namespace System::IO;
+using namespace System::Security::Cryptography::X509Certificates;
 int main()
 {
    try
    {
-      
-      //Create a UnicodeEncoder to convert between byte array and string.
-      UnicodeEncoding^ ByteConverter = gcnew UnicodeEncoding;
-      
-      //Create byte arrays to hold original, encrypted, and decrypted data.
-      array<Byte>^dataToEncrypt = ByteConverter->GetBytes( "Data to Encrypt" );
-      array<Byte>^encryptedData;
-      array<Byte>^decryptedData;
-      
-      //Create a new instance of RSACryptoServiceProvider to generate
-      //public and private key data.
-      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
-      
-      //Pass the data to ENCRYPT, the public key information 
-      //(using RSACryptoServiceProvider.ExportParameters(false),
-      //and a boolean flag specifying no OAEP padding.
-      encryptedData = RSAEncrypt( dataToEncrypt, RSA->ExportParameters( false ), false );
-      
-      //Pass the data to DECRYPT, the private key information 
-      //(using RSACryptoServiceProvider.ExportParameters(true),
-      //and a boolean flag specifying no OAEP padding.
-      decryptedData = RSADecrypt( encryptedData, RSA->ExportParameters( true ), false );
-      
-      //Display the decrypted plaintext to the console. 
-      Console::WriteLine( "Decrypted plaintext: {0}", ByteConverter->GetString( decryptedData ) );
-	  delete RSA;
+      X509Store ^ store = gcnew X509Store( "MY",StoreLocation::CurrentUser );
+      store->Open( static_cast<OpenFlags>(OpenFlags::ReadOnly | OpenFlags::OpenExistingOnly) );
+      X509Certificate2Collection ^ collection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
+      X509Certificate2Collection ^ fcollection = dynamic_cast<X509Certificate2Collection^>(collection->Find( X509FindType::FindByTimeValid, DateTime::Now, false ));
+      X509Certificate2Collection ^ scollection = X509Certificate2UI::SelectFromCollection(fcollection, "Test Certificate Select","Select a certificate from the following list to get information on that certificate",X509SelectionFlag::MultiSelection);
+      Console::WriteLine( "Number of certificates: {0}{1}", scollection->Count, Environment::NewLine );
+      System::Collections::IEnumerator^ myEnum = scollection->GetEnumerator();
+      while ( myEnum->MoveNext() )
+      {
+         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
+         X500DistinguishedName ^ dname = gcnew X500DistinguishedName( x509->SubjectName );
+         Console::WriteLine( "X500DistinguishedName: {0}{1}", dname->Name, Environment::NewLine );
+         x509->Reset();
+      }
+      store->Close();
    }
-   catch ( ArgumentNullException^ ) 
+   catch ( CryptographicException^ ) 
    {
-      
-      //Catch this exception in case the encryption did
-      //not succeed.
-      Console::WriteLine( "Encryption failed." );
+      Console::WriteLine( "Information could not be written out for this certificate." );
    }
 
 }

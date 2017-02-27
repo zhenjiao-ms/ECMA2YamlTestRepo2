@@ -1,131 +1,103 @@
 using namespace System;
-using namespace System::IO;
 using namespace System::Security::Cryptography;
-
-// Computes a keyed hash for a source file, creates a target file with the keyed hash
-// prepended to the contents of the source file, then decrypts the file and compares
-// the source and the decrypted files.
-void EncodeFile( array<Byte>^key, String^ sourceFile, String^ destFile )
+using namespace System::Text;
+array<Byte>^ RSAEncrypt( array<Byte>^DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
 {
-   
-   // Initialize the keyed hash object.
-   HMACSHA384^ myhmacsha384 = gcnew HMACSHA384( key );
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   FileStream^ outStream = gcnew FileStream( destFile,FileMode::Create );
-   
-   // Compute the hash of the input file.
-   array<Byte>^hashValue = myhmacsha384->ComputeHash( inStream );
-   
-   // Reset inStream to the beginning of the file.
-   inStream->Position = 0;
-   
-   // Write the computed hash value to the output file.
-   outStream->Write( hashValue, 0, hashValue->Length );
-   
-   // Copy the contents of the sourceFile to the destFile.
-   int bytesRead;
-   
-   // read 1K at a time
-   array<Byte>^buffer = gcnew array<Byte>(1024);
-   do
+   try
    {
       
-      // Read from the wrapping CryptoStream.
-      bytesRead = inStream->Read( buffer, 0, 1024 );
-      outStream->Write( buffer, 0, bytesRead );
+      //Create a new instance of RSACryptoServiceProvider.
+      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
+      
+      //Import the RSA Key information. This only needs
+      //toinclude the public key information.
+      RSA->ImportParameters( RSAKeyInfo );
+      
+      //Encrypt the passed byte array and specify OAEP padding.  
+      //OAEP padding is only available on Microsoft Windows XP or
+      //later.  
+
+      array<Byte>^encryptedData = RSA->Encrypt( DataToEncrypt, DoOAEPPadding );
+	  delete RSA;
+	  return encryptedData;
    }
-   while ( bytesRead > 0 );
-
-   myhmacsha384->Clear();
-   
-   // Close the streams
-   inStream->Close();
-   outStream->Close();
-   return;
-} // end EncodeFile
-
-
-
-// Decrypt the encoded file and compare to original file.
-bool DecodeFile( array<Byte>^key, String^ sourceFile )
-{
-   
-   // Initialize the keyed hash object. 
-   HMACSHA384^ hmacsha384 = gcnew HMACSHA384( key );
-   
-   // Create an array to hold the keyed hash value read from the file.
-   array<Byte>^storedHash = gcnew array<Byte>(hmacsha384->HashSize / 8);
-   
-   // Create a FileStream for the source file.
-   FileStream^ inStream = gcnew FileStream( sourceFile,FileMode::Open );
-   
-   // Read in the storedHash.
-   inStream->Read( storedHash, 0, storedHash->Length );
-   
-   // Compute the hash of the remaining contents of the file.
-   // The stream is properly positioned at the beginning of the content, 
-   // immediately after the stored hash value.
-   array<Byte>^computedHash = hmacsha384->ComputeHash( inStream );
-   
-   // compare the computed hash with the stored value
-   bool err = false;
-   for ( int i = 0; i < storedHash->Length; i++ )
+   //Catch and display a CryptographicException  
+   //to the console.
+   catch ( CryptographicException^ e ) 
    {
-      if ( computedHash[ i ] != storedHash[ i ] )
-      {
-         err = true;
-      }
+      Console::WriteLine( e->Message );
+      return nullptr;
    }
-   if (err)
-        {
-            Console::WriteLine("Hash values differ! Encoded file has been tampered with!");
-            return false;
-        }
-        else
-        {
-            Console::WriteLine("Hash values agree -- no tampering occurred.");
-            return true;
-        }
 
-} //end DecodeFile
+}
 
+array<Byte>^ RSADecrypt( array<Byte>^DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding )
+{
+   try
+   {
+      
+      //Create a new instance of RSACryptoServiceProvider.
+      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
+      
+      //Import the RSA Key information. This needs
+      //to include the private key information.
+      RSA->ImportParameters( RSAKeyInfo );
+      
+      //Decrypt the passed byte array and specify OAEP padding.  
+      //OAEP padding is only available on Microsoft Windows XP or
+      //later.  
+	  
+      array<Byte>^decryptedData = RSA->Decrypt( DataToDecrypt, DoOAEPPadding );
+      delete RSA;
+	  return decryptedData;
+   }
+   //Catch and display a CryptographicException  
+   //to the console.
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( e );
+      return nullptr;
+   }
+
+}
 
 int main()
 {
-   array<String^>^Fileargs = Environment::GetCommandLineArgs();
-   String^ usageText = "Usage: HMACSHA384 inputfile.txt encryptedfile.hsh\nYou must specify the two file names. Only the first file must exist.\n";
-   
-   //If no file names are specified, write usage text.
-   if ( Fileargs->Length < 3 )
+   try
    {
-      Console::WriteLine( usageText );
+      
+      //Create a UnicodeEncoder to convert between byte array and string.
+      UnicodeEncoding^ ByteConverter = gcnew UnicodeEncoding;
+      
+      //Create byte arrays to hold original, encrypted, and decrypted data.
+      array<Byte>^dataToEncrypt = ByteConverter->GetBytes( "Data to Encrypt" );
+      array<Byte>^encryptedData;
+      array<Byte>^decryptedData;
+      
+      //Create a new instance of RSACryptoServiceProvider to generate
+      //public and private key data.
+      RSACryptoServiceProvider^ RSA = gcnew RSACryptoServiceProvider;
+      
+      //Pass the data to ENCRYPT, the public key information 
+      //(using RSACryptoServiceProvider.ExportParameters(false),
+      //and a boolean flag specifying no OAEP padding.
+      encryptedData = RSAEncrypt( dataToEncrypt, RSA->ExportParameters( false ), false );
+      
+      //Pass the data to DECRYPT, the private key information 
+      //(using RSACryptoServiceProvider.ExportParameters(true),
+      //and a boolean flag specifying no OAEP padding.
+      decryptedData = RSADecrypt( encryptedData, RSA->ExportParameters( true ), false );
+      
+      //Display the decrypted plaintext to the console. 
+      Console::WriteLine( "Decrypted plaintext: {0}", ByteConverter->GetString( decryptedData ) );
+	  delete RSA;
    }
-   else
+   catch ( ArgumentNullException^ ) 
    {
-      try
-      {
-         
-         // Create a random key using a random number generator. This would be the
-         //  secret key shared by sender and receiver.
-         array<Byte>^secretkey = gcnew array<Byte>(64);
-         
-         //RNGCryptoServiceProvider is an implementation of a random number generator.
-         RNGCryptoServiceProvider^ rng = gcnew RNGCryptoServiceProvider;
-         
-         // The array is now filled with cryptographically strong random bytes.
-         rng->GetBytes( secretkey );
-         
-         // Use the secret key to encode the message file.
-         EncodeFile( secretkey, Fileargs[ 1 ], Fileargs[ 2 ] );
-         
-         // Take the encoded file and decode
-         DecodeFile( secretkey, Fileargs[ 2 ] );
-      }
-      catch ( IOException^ e ) 
-      {
-         Console::WriteLine( "Error: File not found", e );
-      }
-
+      
+      //Catch this exception in case the encryption did
+      //not succeed.
+      Console::WriteLine( "Encryption failed." );
    }
-} //end main
 
+}

@@ -1,7 +1,10 @@
-      // The following code shows how to publish a service using a callback function.
-      // Creates a service creator callback.
-      ServiceCreatorCallback^ callback1 =
-         gcnew ServiceCreatorCallback( this, &Sample::myCallBackMethod );
-      
-      // Adds the service using its type and the service creator callback.
-      serviceContainer->AddService( myService::typeid, callback1 );
+      // Creates a new collection and assign it the properties for button1.
+      PropertyDescriptorCollection^ properties = TypeDescriptor::GetProperties( button1 );
+
+      // Sets an PropertyDescriptor to the specific property.
+      System::ComponentModel::PropertyDescriptor^ myProperty = properties->Find( "Text", false );
+
+      // Prints the property and the property description.
+      textBox1->Text = String::Concat( myProperty->DisplayName, "\n" );
+      textBox1->Text = String::Concat( textBox1->Text, myProperty->Description, "\n" );
+      textBox1->Text = String::Concat( textBox1->Text, myProperty->Category, "\n" );

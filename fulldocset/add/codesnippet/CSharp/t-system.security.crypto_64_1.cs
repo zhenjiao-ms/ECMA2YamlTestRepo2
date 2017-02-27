@@ -1,60 +1,83 @@
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 
-public class CertSelect
+namespace Contoso
 {
-    public static void Main()
+    class KeySizesMembers
     {
-        try
+        [STAThread]
+        static void Main(string[] args)
         {
-            X509Store store = new X509Store("MY", StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+            // Initializes a new instance of the KeySizes class with the
+            // specified key values.
+            int minSize = 64;
+            int maxSize = 1024;
+            int skipSize = 64;
+            KeySizes keySizes = new KeySizes(minSize, maxSize, skipSize);
 
-            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-            for (int i = 0; i < collection.Count; i++)
-            {
-                foreach (X509Extension extension in collection[i].Extensions)
-                {
-                    Console.WriteLine(extension.Oid.FriendlyName + "(" + extension.Oid.Value + ")");
-   
+            // Show the values of the keys.
+            ShowKeys(new KeySizes[1]{keySizes}, "Custom Keys");
 
-                    if (extension.Oid.FriendlyName == "Key Usage")
-                    {
-                        X509KeyUsageExtension ext = (X509KeyUsageExtension)extension;
-                        Console.WriteLine(ext.KeyUsages);
-                    }
+            // Create a new symmetric algorithm and display its key values.
+            SymmetricAlgorithm rijn = SymmetricAlgorithm.Create();
+            ShowKeys(rijn.LegalKeySizes, rijn.ToString());
+            Console.WriteLine("rijn.blocksize:" + rijn.BlockSize);
 
-                    if (extension.Oid.FriendlyName == "Basic Constraints")
-                    {
-                        X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
-                        Console.WriteLine(ext.CertificateAuthority);
-                        Console.WriteLine(ext.HasPathLengthConstraint);
-                        Console.WriteLine(ext.PathLengthConstraint);
-                    }
+            // Create a new RSA algorithm and display its key values.
+            RSACryptoServiceProvider rsaCSP = 
+                new RSACryptoServiceProvider(384);
+            ShowKeys(rsaCSP.LegalKeySizes, rsaCSP.ToString());
+            Console.WriteLine("RSACryptoServiceProvider KeySize = " + 
+                rsaCSP.KeySize);
 
-                    if (extension.Oid.FriendlyName == "Subject Key Identifier")
-                    {
-                        X509SubjectKeyIdentifierExtension ext = (X509SubjectKeyIdentifierExtension)extension;
-                        Console.WriteLine(ext.SubjectKeyIdentifier);
-                    }
-
-                    if (extension.Oid.FriendlyName == "Enhanced Key Usage")
-                    {
-                        X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
-                        OidCollection oids = ext.EnhancedKeyUsages;
-                        foreach (Oid oid in oids)
-                        {
-                            Console.WriteLine(oid.FriendlyName + "(" + oid.Value + ")");
-                        }
-                    }
-                }
-            }
-            store.Close();
+            Console.WriteLine("This sample completed successfully; " +
+                "press Enter to exit.");
+            Console.ReadLine();
         }
-        catch (CryptographicException)
+
+        // Display specified KeySize properties to the console.
+        private static void ShowKeys(KeySizes[] keySizes, string objectName)
         {
-            Console.WriteLine("Information could not be written out for this certificate.");
+            // Retrieve the first KeySizes in the array.
+            KeySizes firstKeySize = keySizes[0];
+
+            // Retrieve the minimum key size in bits.
+            int minKeySize = firstKeySize.MinSize;
+                
+            // Retrieve the maximum key size in bits.
+            int maxKeySize = firstKeySize.MaxSize;
+                
+            // Retrieve the interval between valid key size in bits.
+            int skipKeySize = firstKeySize.SkipSize;
+
+            Console.Write("\n KeySizes retrieved from the ");
+            Console.WriteLine(objectName + " object.");
+            Console.WriteLine("Minimum key size bits: " + minKeySize);
+            Console.WriteLine("Maximum key size bits: " + maxKeySize);
+            Console.WriteLine("Interval between key size bits: " + 
+                skipKeySize);
         }
-    }
+	}
 }
+//
+// This sample produces the following output:
+//
+// KeySizes retrieved from the Custom Keys object.
+// Minimum key size bits: 64
+// Maximum key size bits: 1024
+// Interval between key size bits: 64
+// 
+// KeySizes retrieved from the System.Security.Cryptography.RijndaelManaged
+// object.
+// Minimum key size bits: 128
+// Maximum key size bits: 256
+// Interval between key size bits: 64
+// rijn.blocksize:128
+// 
+// KeySizes retrieved from the
+// System.Security.Cryptography.RSACryptoServiceProvider object.
+// Minimum key size bits: 384
+// Maximum key size bits: 16384
+// Interval between key size bits: 8
+// RSACryptoServiceProvider KeySize = 384
+// This sample completed successfully; press Enter to exit.

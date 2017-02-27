@@ -1,85 +1,144 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
-
-class Alice
+public class TestHMACMD5
 {
-    public static void Main(string[] args)
+    static private void PrintByteArray(Byte[] arr)
     {
-        using (Bob bob = new Bob())
+        int i;
+        Console.WriteLine("Length: " + arr.Length);
+        for (i = 0; i < arr.Length; i++)
         {
-            using (RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider())
-            {
-                // Get Bob's public key
-                rsaKey.ImportCspBlob(bob.key);
-                byte[] encryptedSessionKey = null;
-                byte[] encryptedMessage = null;
-                byte[] iv = null;
-                Send(rsaKey, "Secret message", out iv, out encryptedSessionKey, out encryptedMessage);
-                bob.Receive(iv, encryptedSessionKey, encryptedMessage);
-            }
+            Console.Write("{0:X}", arr[i]);
+            Console.Write("    ");
+            if ((i + 9) % 8 == 0) Console.WriteLine();
         }
+        if (i % 8 != 0) Console.WriteLine();
     }
-
-    private static void Send(RSA key, string secretMessage, out byte[] iv, out byte[] encryptedSessionKey, out byte[] encryptedMessage)
+    public static void Main()
     {
-        using (Aes aes = new AesCryptoServiceProvider())
-        {
-            iv = aes.IV;
+        // Create a key.
+        byte[] key1 = { 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b };
+        // Pass the key to the constructor of the HMACMD5 class.  
+        HMACMD5 hmac1 = new HMACMD5(key1);
 
-            // Encrypt the session key
-            RSAOAEPKeyExchangeFormatter keyFormatter = new RSAOAEPKeyExchangeFormatter(key);
-            encryptedSessionKey = keyFormatter.CreateKeyExchange(aes.Key, typeof(Aes));
+        // Create another key.
+        byte[] key2 = System.Text.Encoding.ASCII.GetBytes("KeyString");
+        // Pass the key to the constructor of the HMACMD5 class.  
+        HMACMD5 hmac2 = new HMACMD5(key2);
 
-            // Encrypt the message
-            using (MemoryStream ciphertext = new MemoryStream())
-            using (CryptoStream cs = new CryptoStream(ciphertext, aes.CreateEncryptor(), CryptoStreamMode.Write))
-            {
-                byte[] plaintextMessage = Encoding.UTF8.GetBytes(secretMessage);
-                cs.Write(plaintextMessage, 0, plaintextMessage.Length);
-                cs.Close();
+        // Encode a string into a byte array, create a hash of the array,
+        // and print the hash to the screen.
+        byte[] data1 = System.Text.Encoding.ASCII.GetBytes("Hi There");
+        PrintByteArray(hmac1.ComputeHash(data1));
 
-                encryptedMessage = ciphertext.ToArray();
-            }
-        }
+        // Encode a string into a byte array, create a hash of the array,
+        // and print the hash to the screen.
+        byte[] data2 = System.Text.Encoding.ASCII.GetBytes("This data will be hashed.");
+        PrintByteArray(hmac2.ComputeHash(data2));
     }
-
 }
-public class Bob : IDisposable
+public class HMACMD5 : KeyedHashAlgorithm
 {
-    public byte[] key;
-    private RSACryptoServiceProvider rsaKey = new RSACryptoServiceProvider();
-    public Bob()
-    {
-        key = rsaKey.ExportCspBlob(false);
-    }
-    public void Receive(byte[] iv, byte[] encryptedSessionKey, byte[] encryptedMessage)
-    {
+    private MD5 hash1;
+    private MD5 hash2;
+    private bool bHashing = false;
 
-        using (Aes aes = new AesCryptoServiceProvider())
+    private byte[] rgbInner = new byte[64];
+    private byte[] rgbOuter = new byte[64];
+
+    public HMACMD5(byte[] rgbKey)
+    {
+        HashSizeValue = 128;
+        // Create the hash algorithms.
+        hash1 = MD5.Create();
+        hash2 = MD5.Create();
+        // Get the key.
+        if (rgbKey.Length > 64)
         {
-            aes.IV = iv;
+            KeyValue = hash1.ComputeHash(rgbKey);
+            // No need to call Initialize; ComputeHash does it automatically.
+        }
+        else
+        {
+            KeyValue = (byte[])rgbKey.Clone();
+        }
+        // Compute rgbInner and rgbOuter.
+        int i = 0;
+        for (i = 0; i < 64; i++)
+        {
+            rgbInner[i] = 0x36;
+            rgbOuter[i] = 0x5C;
+        }
+        for (i = 0; i < KeyValue.Length; i++)
+        {
+            rgbInner[i] ^= KeyValue[i];
+            rgbOuter[i] ^= KeyValue[i];
+        }
+    }
 
-            // Decrypt the session key
-            RSAOAEPKeyExchangeDeformatter keyDeformatter = new RSAOAEPKeyExchangeDeformatter(rsaKey);
-            aes.Key = keyDeformatter.DecryptKeyExchange(encryptedSessionKey);
-
-            // Decrypt the message
-            using (MemoryStream plaintext = new MemoryStream())
-            using (CryptoStream cs = new CryptoStream(plaintext, aes.CreateDecryptor(), CryptoStreamMode.Write))
+    public override byte[] Key
+    {
+        get { return (byte[])KeyValue.Clone(); }
+        set
+        {
+            if (bHashing)
             {
-                cs.Write(encryptedMessage, 0, encryptedMessage.Length);
-                cs.Close();
-
-                string message = Encoding.UTF8.GetString(plaintext.ToArray());
-                Console.WriteLine(message);
+                throw new Exception("Cannot change key during hash operation");
+            }
+            if (value.Length > 64)
+            {
+                KeyValue = hash1.ComputeHash(value);
+                // No need to call Initialize; ComputeHash does it automatically.
+            }
+            else
+            {
+                KeyValue = (byte[])value.Clone();
+            }
+            // Compute rgbInner and rgbOuter.
+            int i = 0;
+            for (i = 0; i < 64; i++)
+            {
+                rgbInner[i] = 0x36;
+                rgbOuter[i] = 0x5C;
+            }
+            for (i = 0; i < KeyValue.Length; i++)
+            {
+                rgbInner[i] ^= KeyValue[i];
+                rgbOuter[i] ^= KeyValue[i];
             }
         }
     }
-    public void Dispose()
+    public override void Initialize()
     {
-        rsaKey.Dispose();
+        hash1.Initialize();
+        hash2.Initialize();
+        bHashing = false;
+    }
+    protected override void HashCore(byte[] rgb, int ib, int cb)
+    {
+        if (bHashing == false)
+        {
+            hash1.TransformBlock(rgbInner, 0, 64, rgbInner, 0);
+            bHashing = true;
+        }
+        hash1.TransformBlock(rgb, ib, cb, rgb, ib);
+    }
+
+    protected override byte[] HashFinal()
+    {
+        if (bHashing == false)
+        {
+            hash1.TransformBlock(rgbInner, 0, 64, rgbInner, 0);
+            bHashing = true;
+        }
+        // Finalize the original hash.
+        hash1.TransformFinalBlock(new byte[0], 0, 0);
+        // Write the outer array.
+        hash2.TransformBlock(rgbOuter, 0, 64, rgbOuter, 0);
+        // Write the inner hash and finalize the hash.
+        hash2.TransformFinalBlock(hash1.Hash, 0, hash1.Hash.Length);
+        bHashing = false;
+        return hash2.Hash;
     }
 }

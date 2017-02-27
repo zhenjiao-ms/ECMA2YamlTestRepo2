@@ -1,74 +1,237 @@
-#using <System.dll>
 #using <System.Security.dll>
-
+#using <System.dll>
+#using <System.Xml.dll>
 using namespace System;
-using namespace System::Security::Cryptography;
-using namespace System::Security::Cryptography::X509Certificates;
 using namespace System::IO;
-int main()
+using namespace System::Xml;
+using namespace System::Security::Cryptography;
+using namespace System::Security::Cryptography::Xml;
+using namespace System::Text;
+
+ref class Class1
 {
-   
-   //Create new X509 store called teststore from the local certificate store.
-   X509Store ^ store = gcnew X509Store( "teststore",StoreLocation::CurrentUser );
-   store->Open( OpenFlags::ReadWrite );
-   X509Certificate2 ^ certificate = gcnew X509Certificate2;
-   
-   //Create certificates from certificate files.
-   //You must put in a valid path to three certificates in the following constructors.
-   X509Certificate2 ^ certificate1 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
-   X509Certificate2 ^ certificate2 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
-   X509Certificate2 ^ certificate5 = gcnew X509Certificate2( "c:\\mycerts\\*****.cer" );
-   
-   //Create a collection and add two of the certificates.
-   X509Certificate2Collection ^ collection = gcnew X509Certificate2Collection;
-   collection->Add( certificate2 );
-   collection->Add( certificate5 );
-   
-   //Add certificates to the store.
-   store->Add( certificate1 );
-   store->AddRange( collection );
-   X509Certificate2Collection ^ storecollection = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-   Console::WriteLine( "Store name: {0}", store->Name );
-   Console::WriteLine( "Store location: {0}", store->Location );
-   System::Collections::IEnumerator^ myEnum = storecollection->GetEnumerator();
-   while ( myEnum->MoveNext() )
+public:
+   [STAThread]
+   static void Main()
    {
-      X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum->Current);
-      Console::WriteLine( "certificate name: {0}", x509->Subject );
+      XmlDocument^ productsXml = LoadProducts();
+      XmlNodeList^ xsltNodeList = GetXsltAsNodeList();
+      TransformDoc( productsXml, xsltNodeList );
+      
+      // Use XmlDsigXsltTransform to resolve a Uri.
+      Uri^ baseUri = gcnew Uri( L"http://www.contoso.com" );
+      String^ relativeUri = L"xml";
+      Uri^ absoluteUri = ResolveUris( baseUri, relativeUri );
+      Console::WriteLine( L"This sample completed successfully; "
+      L"press Enter to exit." );
+      Console::ReadLine();
    }
 
-   
-   //Remove a certificate.
-   store->Remove( certificate1 );
-   X509Certificate2Collection ^ storecollection2 = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-   Console::WriteLine( "{1}Store name: {0}", store->Name, Environment::NewLine );
-   System::Collections::IEnumerator^ myEnum1 = storecollection2->GetEnumerator();
-   while ( myEnum1->MoveNext() )
+private:
+   static void TransformDoc( XmlDocument^ xmlDoc, XmlNodeList^ xsltNodeList )
    {
-      X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum1->Current);
-      Console::WriteLine( "certificate name: {0}", x509->Subject );
-   }
-
-   
-   //Remove a range of certificates.
-   store->RemoveRange( collection );
-   X509Certificate2Collection ^ storecollection3 = dynamic_cast<X509Certificate2Collection^>(store->Certificates);
-   Console::WriteLine( "{1}Store name: {0}", store->Name, Environment::NewLine );
-   if ( storecollection3->Count == 0 )
-   {
-      Console::WriteLine( "Store contains no certificates." );
-   }
-   else
-   {
-      System::Collections::IEnumerator^ myEnum2 = storecollection3->GetEnumerator();
-      while ( myEnum2->MoveNext() )
+      try
       {
-         X509Certificate2 ^ x509 = safe_cast<X509Certificate2 ^>(myEnum2->Current);
-         Console::WriteLine( "certificate name: {0}", x509->Subject );
+         // Construct a new XmlDsigXsltTransform.
+         XmlDsigXsltTransform^ xmlTransform = gcnew XmlDsigXsltTransform;
+
+         // Load the Xslt tranform as a node list.
+         xmlTransform->LoadInnerXml( xsltNodeList );
+
+         // Load the Xml document to perform the tranform on.
+         XmlNamespaceManager^ namespaceManager;
+         namespaceManager = gcnew XmlNamespaceManager( xmlDoc->NameTable );
+         XmlNodeList^ productsNodeList;
+         productsNodeList = xmlDoc->SelectNodes( L"//.", namespaceManager );
+         xmlTransform->LoadInput( productsNodeList );
+
+         // Retrieve the output from the transform.
+         Stream^ outputStream = (Stream^)xmlTransform->GetOutput(
+            System::IO::Stream::typeid );
+
+         // Read the output stream into a stream reader.
+         StreamReader^ streamReader = gcnew StreamReader( outputStream );
+         
+         // Read the stream into a string.
+         String^ outputMessage = streamReader->ReadToEnd();
+         
+         // Close the streams.
+         outputStream->Close();
+         streamReader->Close();
+         
+         // Display to the console the Xml before and after
+         // encryption.
+         Console::WriteLine( L"\nResult of transformation: {0}", outputMessage );
+         ShowTransformProperties( xmlTransform );
+      }
+      catch ( Exception^ ex ) 
+      {
+         Console::WriteLine( L"Caught exception in TransformDoc method: {0}", ex );
       }
    }
 
-   
-   //Close the store.
-   store->Close();
+   static XmlNodeList^ GetXsltAsNodeList()
+   {
+      String^ transformXml = L"<xsl:transform version='1.0' ";
+      transformXml = String::Concat( transformXml,
+         L"xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:template match='products'>" );
+      transformXml = String::Concat( transformXml,
+         L"<table><tr><td>ProductId</td><td>Name</td></tr>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:apply-templates/></table></xsl:template>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:template match='product'><tr>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:apply-templates/></tr></xsl:template>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:template match='productid'><td>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:apply-templates/></td></xsl:template>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:template match='description'><td>" );
+      transformXml = String::Concat( transformXml,
+         L"<xsl:apply-templates/></td></xsl:template>" );
+      transformXml = String::Concat( transformXml,
+         L"</xsl:transform>" );
+      Console::WriteLine( L"\nCreated the following Xslt tranform:" );
+      Console::WriteLine( transformXml );
+      XmlDocument^ xmlDoc = gcnew XmlDocument;
+      xmlDoc->LoadXml( transformXml );
+      return xmlDoc->GetElementsByTagName( L"xsl:transform" );
+   }
+
+   // Encrypt the text in the specified XmlDocument.
+   static void ShowTransformProperties( XmlDsigXsltTransform^ xmlTransform )
+   {
+      String^ classDescription = xmlTransform->ToString();
+      Console::WriteLine( L"\n** Summary for {0} **", classDescription );
+      
+      // Retrieve the XML representation of the current transform.
+      XmlElement^ xmlInTransform = xmlTransform->GetXml();
+      Console::WriteLine( L"Xml representation of the current transform:\n{0}",
+         xmlInTransform->OuterXml );
+      
+      // Ensure the transform is using the proper algorithm.
+      xmlTransform->Algorithm = SignedXml::XmlDsigXsltTransformUrl;
+      Console::WriteLine( L"Algorithm used: {0}", classDescription );
+      
+      // Retrieve the valid input types for the current transform.
+      array<Type^>^validInTypes = xmlTransform->InputTypes;
+      Console::WriteLine( L"Transform accepts the following inputs:" );
+      for ( int i = 0; i < validInTypes->Length; i++ )
+      {
+         Console::WriteLine( L"\t{0}", validInTypes[ i ] );
+
+      }
+      
+      array<Type^>^validOutTypes = xmlTransform->OutputTypes;
+      Console::WriteLine( L"Transform outputs in the following types:" );
+      for ( int i = validOutTypes->Length - 1; i >= 0; i-- )
+      {
+         Console::WriteLine( L"\t {0}", validOutTypes[ i ] );
+         if ( validOutTypes[ i ] == Object::typeid )
+         {
+            Object^ outputObject = xmlTransform->GetOutput();
+         }
+      }
+   }
+
+   // Create an XML document describing various products.
+   static XmlDocument^ LoadProducts()
+   {
+      String^ contosoProducts = L"<?xml version='1.0'?>";
+      contosoProducts = String::Concat( contosoProducts,
+         L"<products>" );
+      contosoProducts = String::Concat( contosoProducts,
+         L"<product><productid>1</productid>" );
+      contosoProducts = String::Concat( contosoProducts,
+         L"<description>Widgets</description></product>" );
+      contosoProducts = String::Concat( contosoProducts,
+         L"<product><productid>2</productid>" );
+      contosoProducts = String::Concat( contosoProducts,
+         L"<description>Gadgits</description></product>" );
+      contosoProducts = String::Concat( contosoProducts,
+         L"</products>" );
+      Console::WriteLine(
+         L"\nCreated the following Xml document for tranformation:" );
+      Console::WriteLine( contosoProducts );
+      XmlDocument^ xmlDoc = gcnew XmlDocument;
+      xmlDoc->LoadXml( contosoProducts );
+      return xmlDoc;
+   }
+
+   // Resolve the specified base and relative Uri's .
+   static Uri^ ResolveUris( Uri^ baseUri, String^ relativeUri )
+   {
+      XmlUrlResolver^ xmlResolver = gcnew XmlUrlResolver;
+      xmlResolver->Credentials =
+         System::Net::CredentialCache::DefaultCredentials;
+
+      XmlDsigXsltTransform^ xmlTransform = gcnew XmlDsigXsltTransform;
+      xmlTransform->Resolver = xmlResolver;
+
+      Uri^ absoluteUri = xmlResolver->ResolveUri( baseUri, relativeUri );
+      if ( absoluteUri != nullptr )
+      {
+         Console::WriteLine(
+         L"\nResolved the base Uri and relative Uri to the following:" );
+         Console::WriteLine( absoluteUri );
+      }
+      else
+      {
+         Console::WriteLine( L"Unable to resolve the base Uri and relative Uri" );
+      }
+
+      return absoluteUri;
+   }
+};
+
+int main()
+{
+   Class1::Main();
 }
+
+//
+// This sample produces the following output:
+//
+// Created the following Xml document for tranformation:
+// <?xml version='1.0'?><products><product><productid>1</productid><descriptio
+// n>Widgets</description></product><product><productid>2</productid><descript
+// ion>Gadgits</description></product></products>
+//
+// Created the following Xslt tranform:
+// <xsl:transform version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transfor
+// m'><xsl:template match='products'><table><tr><td>ProductId</td><td>Name</td
+// ></tr><xsl:apply-templates/></table></xsl:template><xsl:template match='pro
+// duct'><tr><xsl:apply-templates/></tr></xsl:template><xsl:emplate match='pro
+// ductid'><td><xsl:apply-templates/></td></xsl:template><xsl:template match='
+// description'><td><xsl:apply-templates/></td></xsl:template></xsl:transform>
+//
+// Result of transformation: <table><tr><td>ProductId</td><td>Name</td></tr><t
+// r><td>1</td><td>Widgets</td></tr><tr><td>2</td><td>Gadgits</td></tr></table
+// >
+//
+// ** Summary for System.Security.Cryptography.Xml.XmlDsigXsltTransform **
+// Xml representation of the current transform:
+// <Transform Algorithm="http://www.w3.org/TR/1999/REC-xslt-19991116" xmlns="h
+// ttp://www.w3.org/2000/09/xmldsig#"><xsl:transform version="1.0" xmlns:xsl="
+// http://www.w3.org/1999/XSL/Transform"><xsl:template match="products"><table
+//  xmlns=""><tr><td>ProductId</td><td>Name</td></tr><xsl:apply-templates /></
+// table></xsl:template><xsl:template match="product"><tr xmlns=""><xsl:apply-
+// templates /></tr></xsl:template><xsl:template match="productid"><td xmlns="
+// "><xsl:apply-templates /></td></xsl:template><xsl:template match="descripti
+// on"><td xmlns=""><xsl:apply-templates /></td></xsl:template></xsl:transform
+// ></Transform>
+// Algorithm used: System.Security.Cryptography.Xml.XmlDsigXsltTransform
+// Transform accepts the following inputs:
+// System.IO.Stream
+// System.Xml.XmlDocument
+// System.Xml.XmlNodeList
+// Transform outputs in the following types:
+// System.IO.Stream
+//
+// Resolved the base Uri and relative Uri to the following:
+// http://www.contoso.com/xml
+// This sample completed successfully; press Enter to exit.

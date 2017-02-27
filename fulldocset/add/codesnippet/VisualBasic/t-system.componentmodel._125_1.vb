@@ -1,6 +1,4 @@
-    Public Function CreateResolveNameEventArgs(ByVal value As Object, ByVal name As String) As ResolveNameEventArgs
-        Dim e As New ResolveNameEventArgs(name)
-        ' The name to resolve                       e.Name       
-        ' Stores an object matching the name        e.Value            
-        Return e
-    End Function
+            Dim ts As New TimeSpan(133333330)
+            Dim myTSStr As String = "5000000"
+            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertTo(ts, GetType(String)))
+            Console.WriteLine(TypeDescriptor.GetConverter(ts).ConvertFrom(myTSStr))

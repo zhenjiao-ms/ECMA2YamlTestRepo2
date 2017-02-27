@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Globalization.UmAlQuraCalendar.DaysInYearBeforeMinSupportedYear
-internalonly: False
----
-
----
 uid: System.Globalization.UmAlQuraCalendar.ToFourDigitYear(System.Int32)
 internalonly: False
 ---

@@ -6,34 +6,29 @@ public class SamplesTaiwanCalendar  {
 
    public static void Main()  {
 
-      // Sets a DateTime to April 3, 2002 of the Gregorian calendar.
-      DateTime myDT = new DateTime( 2002, 4, 3, new GregorianCalendar() );
-
-      // Creates an instance of the TaiwanCalendar.
+      // Creates and initializes a TaiwanCalendar.
       TaiwanCalendar myCal = new TaiwanCalendar();
 
-      // Displays the values of the DateTime.
-      Console.WriteLine( "April 3, 2002 of the Gregorian calendar equals the following in the Taiwan calendar:" );
-      DisplayValues( myCal, myDT );
-
-      // Adds two years and ten months.
-      myDT = myCal.AddYears( myDT, 2 );
-      myDT = myCal.AddMonths( myDT, 10 );
-
-      // Displays the values of the DateTime.
-      Console.WriteLine( "After adding two years and ten months:" );
-      DisplayValues( myCal, myDT );
-
-   }
-
-   public static void DisplayValues( Calendar myCal, DateTime myDT )  {
-      Console.WriteLine( "   Era:        {0}", myCal.GetEra( myDT ) );
-      Console.WriteLine( "   Year:       {0}", myCal.GetYear( myDT ) );
-      Console.WriteLine( "   Month:      {0}", myCal.GetMonth( myDT ) );
-      Console.WriteLine( "   DayOfYear:  {0}", myCal.GetDayOfYear( myDT ) );
-      Console.WriteLine( "   DayOfMonth: {0}", myCal.GetDayOfMonth( myDT ) );
-      Console.WriteLine( "   DayOfWeek:  {0}", myCal.GetDayOfWeek( myDT ) );
+      // Displays the header.
+      Console.Write( "YEAR\t" );
+      for ( int y = 90; y <= 94; y++ )
+         Console.Write( "\t{0}", y );
       Console.WriteLine();
+
+      // Displays the value of the CurrentEra property.
+      Console.Write( "CurrentEra:" );
+      for ( int y = 90; y <= 94; y++ )
+         Console.Write( "\t{0}", myCal.GetDaysInYear( y, TaiwanCalendar.CurrentEra ) );
+      Console.WriteLine();
+
+      // Displays the values in the Eras property.
+      for ( int i = 0; i < myCal.Eras.Length; i++ )  {
+         Console.Write( "Era {0}:\t", myCal.Eras[i] );
+         for ( int y = 90; y <= 94; y++ )
+            Console.Write( "\t{0}", myCal.GetDaysInYear( y, myCal.Eras[i] ) );
+         Console.WriteLine();
+      }
+
    }
 
 }
@@ -41,20 +36,8 @@ public class SamplesTaiwanCalendar  {
 /*
 This code produces the following output.
 
-April 3, 2002 of the Gregorian calendar equals the following in the Taiwan calendar:
-   Era:        1
-   Year:       91
-   Month:      4
-   DayOfYear:  93
-   DayOfMonth: 3
-   DayOfWeek:  Wednesday
-
-After adding two years and ten months:
-   Era:        1
-   Year:       94
-   Month:      2
-   DayOfYear:  34
-   DayOfMonth: 3
-   DayOfWeek:  Thursday
+YEAR            90      91      92      93      94
+CurrentEra:     365     365     365     366     365
+Era 1:          365     365     365     366     365
 
 */

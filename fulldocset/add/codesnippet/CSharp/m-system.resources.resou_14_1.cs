@@ -1,21 +1,24 @@
 using System;
 using System.Resources;
+using System.IO;
 
+public class WriteResources 
+{
+    public static void Main(string[] args) 
+    {  
+        // Create a file stream to encapsulate items.resources.
+        FileStream fs = new FileStream("items.resources", 
+        FileMode.OpenOrCreate,FileAccess.Write);
 
-public class WriteResources {
-   public static void Main(string[] args) {
-      
-      // Creates a resource writer.
-      IResourceWriter writer = new ResourceWriter("myResources.resources");
+        // Open a resource writer to write from the stream.
+        IResourceWriter writer = new ResourceWriter(fs);
     
-      // Adds resources to the resource writer.
-      writer.AddResource("String 1", "First String");
+        // Add resources to the resource writer.
+        writer.AddResource("String 1", "First String");
+        writer.AddResource("String 2", "Second String");
+        writer.AddResource("String 3", "Third String");
 
-      writer.AddResource("String 2", "Second String");
-
-      writer.AddResource("String 3", "Third String");
-
-      // Writes the resources to the file or stream, and closes it.
-      writer.Close();
-   }
+        // Write the resources to the stream, and close it.
+        writer.Close();
+    }
 }

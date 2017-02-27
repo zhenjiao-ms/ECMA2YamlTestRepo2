@@ -1,120 +1,157 @@
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
 using System;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 using System.Text;
-using System.IO;
+using System.Xml;
 
-class DESSample
+public class SignVerifyEnvelope
 {
 
-    static void Main()
+    public static void Main(String[] args)
     {
-        try
+        // Generate a signing key.
+       RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
+
+       try
+       {
+
+           // Sign an XML file and save the signature to a 
+           // new file.
+           SignXmlFile("Test.xml", "SignedExample.xml", Key);
+           Console.WriteLine("XML file signed.");
+
+           // Verify the signature of the signed XML.
+           Console.WriteLine("Verifying signature...");
+
+           bool result = VerifyXmlFile("SignedExample.xml");
+
+           // Display the results of the signature verification to 
+           // the console.
+           if (result)
+           {
+               Console.WriteLine("The XML signature is valid.");
+           }
+           else
+           {
+               Console.WriteLine("The XML signature is not valid.");
+           }
+       }
+       catch (CryptographicException e)
+       {
+           Console.WriteLine(e.Message);
+       }
+       finally
+       {
+           // Clear resources associated with the 
+           // RSACryptoServiceProvider.
+           Key.Clear();
+       }
+   }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, RSA Key)
+    {
+        // Check the arguments.  
+        if (FileName == null)
+            throw new ArgumentNullException("FileName");
+        if (SignedFileName == null)
+            throw new ArgumentNullException("SignedFileName");
+        if (Key == null)
+            throw new ArgumentNullException("Key");
+
+
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
+
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
+
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
+
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
+
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = Key;
+
+        // Get the signature object from the SignedXml object.
+        Signature XMLSignature = signedXml.Signature;
+
+        // Create a reference to be signed.  Pass "" 
+        // to specify that all of the current XML
+        // document should be signed.
+        Reference reference = new Reference("");
+
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
+
+        // Add the Reference object to the Signature object.
+        XMLSignature.SignedInfo.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));
+
+        // Add the KeyInfo object to the Reference object.
+        XMLSignature.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+
+
+        if (doc.FirstChild is XmlDeclaration)
         {
-            // Create a new DES object to generate a key
-            // and initialization vector (IV).
-            DES DESalg = DES.Create();
-
-            // Create a string to encrypt.
-            string sData = "Here is some data to encrypt.";
-            string FileName = "CText.txt";
-
-            // Encrypt text to a file using the file name, key, and IV.
-            EncryptTextToFile(sData, FileName, DESalg.Key, DESalg.IV);
-
-            // Decrypt the text from a file using the file name, key, and IV.
-            string Final = DecryptTextFromFile(FileName, DESalg.Key, DESalg.IV);
-            
-            // Display the decrypted string to the console.
-            Console.WriteLine(Final);
+            doc.RemoveChild(doc.FirstChild);
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
-       
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false));
+        doc.WriteTo(xmltw);
+        xmltw.Close();
     }
-
-    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyXmlFile(String Name)
     {
-        try
-        {
-            // Create or open the specified file.
-            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
+        // Check the arguments.  
+        if (Name == null)
+            throw new ArgumentNullException("Name");
 
-            // Create a new DES object.
-            DES DESalg = DES.Create();
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
 
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                DESalg.CreateEncryptor(Key,IV), 
-                CryptoStreamMode.Write); 
+        // Format using white spaces.
+        xmlDocument.PreserveWhitespace = true;
 
-            // Create a StreamWriter using the CryptoStream.
-            StreamWriter sWriter = new StreamWriter(cStream);
+        // Load the passed XML file into the document. 
+        xmlDocument.Load(Name);
 
-            // Write the data to the stream 
-            // to encrypt it.
-            sWriter.WriteLine(Data);
-  
-            // Close the streams and
-            // close the file.
-            sWriter.Close();
-            cStream.Close();
-            fStream.Close();
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file error occurred: {0}", e.Message);
-        }
+        // Create a new SignedXml object and pass it
+        // the XML document class.
+        SignedXml signedXml = new SignedXml(xmlDocument);
 
-    }
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
 
-    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
-    {
-        try
-        {
-            // Create or open the specified file. 
-            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
 
-            // Create a new DES object.
-            DES DESalg = DES.Create();
-  
-            // Create a CryptoStream using the FileStream 
-            // and the passed key and initialization vector (IV).
-            CryptoStream cStream = new CryptoStream(fStream, 
-                DESalg.CreateDecryptor(Key,IV), 
-                CryptoStreamMode.Read); 
-
-            // Create a StreamReader using the CryptoStream.
-            StreamReader sReader = new StreamReader(cStream);
-
-            // Read the data from the stream 
-            // to decrypt it.
-            string val = sReader.ReadLine();
-    
-            // Close the streams and
-            // close the file.
-            sReader.Close();
-            cStream.Close();
-            fStream.Close();
-
-            // Return the string. 
-            return val;
-        }
-        catch(CryptographicException e)
-        {
-            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
-            return null;
-        }
-        catch(UnauthorizedAccessException  e)
-        {
-            Console.WriteLine("A file error occurred: {0}", e.Message);
-            return null;
-        }
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
     }
 }

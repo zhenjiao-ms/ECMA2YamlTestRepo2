@@ -1,2 +1,2 @@
-      Hashtable^ attributeKeys = xmlElement->Attributes;
-      String^ attributeValue = attributeKeys[ attributeName ]->ToString();
+                Display("The failed assembly is: {0}",
+                    exception->FailedAssemblyInfo->EscapedCodeBase);

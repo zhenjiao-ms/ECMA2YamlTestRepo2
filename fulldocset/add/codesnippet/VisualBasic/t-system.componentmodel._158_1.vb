@@ -1,9 +1,14 @@
-   ' This event handler provides custom item-creation behavior.
-    Private Sub customersBindingSource_AddingNew( _
-    ByVal sender As Object, _
-    ByVal e As AddingNewEventArgs) _
-    Handles customersBindingSource.AddingNew
-
-        e.NewObject = DemoCustomer.CreateNewCustomer()
-
-    End Sub
+    Private Sub ContainsAttribute()
+        ' Creates a new collection and assigns it the attributes for button1.
+        Dim attributes As AttributeCollection
+        attributes = TypeDescriptor.GetAttributes(button1)
+        
+        ' Sets an Attribute to the specific attribute.
+        Dim myAttribute As BrowsableAttribute = BrowsableAttribute.Yes
+        
+        If attributes.Contains(myAttribute) Then
+            textBox1.Text = "button1 has a browsable attribute."
+        Else
+            textBox1.Text = "button1 does not have a browsable attribute."
+        End If
+    End Sub 'ContainsAttribute

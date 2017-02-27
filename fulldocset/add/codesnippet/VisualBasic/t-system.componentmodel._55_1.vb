@@ -1,15 +1,5 @@
-    <DefaultProperty("MyProperty")> _
-    Public Class MyControl
-        Inherits Control
-
-        Public Property MyProperty() As Integer
-            Get
-                ' Insert code here.
-                Return 0
-            End Get
-            Set
-                ' Insert code here.
-            End Set 
-        End Property
-        ' Insert any additional code.
-    End Class 'MyControl
+Dim strM As String
+strM = "1,2,3,4"
+            Dim m As New System.Drawing.Printing.Margins(1, 2, 3, 4)
+Console.WriteLine(TypeDescriptor.GetConverter(strM).CanConvertTo(GetType(System.Drawing.Printing.Margins)))
+Console.WriteLine(TypeDescriptor.GetConverter(m).ConvertToString(m))

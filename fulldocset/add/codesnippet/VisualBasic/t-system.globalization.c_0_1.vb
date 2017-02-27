@@ -1,75 +1,113 @@
-' This example demonstrates a System.Globalization.Culture-
-' AndRegionInfoBuilder constructor and some of the properties 
-' of the CultureAndRegionInfoBuilder object that is created.
-' Compile this example with a reference to sysglobl.dll.
-
 Imports System
+Imports System.Collections
 Imports System.Globalization
 
-Class Sample
-    Public Shared Sub Main() 
-        
-        ' Construct a new, privately used culture that extends the en-US culture 
-        ' provided by the .NET Framework. In this sample, the CultureAndRegion-
-        ' Types.Specific parameter creates a minimal CultureAndRegionInfoBuilder 
-        ' object that you must populate with culture and region information.
+Public Class SamplesCompareOptions
 
-        Dim cib As CultureAndRegionInfoBuilder = Nothing
-        Try
-            cib = New CultureAndRegionInfoBuilder("x-en-US-sample", _
-                                                   CultureAndRegionModifiers.None)
-        Catch ae As ArgumentException
-            Console.WriteLine(ae)
-            Return
-        End Try
-        
-        ' Populate the new CultureAndRegionInfoBuilder object with culture information.
+   Private Class MyStringComparer
+      Implements IComparer
 
-        Dim ci As New CultureInfo("en-US")
-        cib.LoadDataFromCultureInfo(ci)
-        
-        ' Populate the new CultureAndRegionInfoBuilder object with region information.
+      Private myComp As CompareInfo
+      Private myOptions As CompareOptions = CompareOptions.None
+      
+      ' Constructs a comparer using the specified CompareOptions.
+      Public Sub New(cmpi As CompareInfo, options As CompareOptions)
+         myComp = cmpi
+         Me.myOptions = options
+      End Sub 'New
+      
+      ' Compares strings with the CompareOptions specified in the constructor.
+      Public Function Compare(a As [Object], b As [Object]) As Integer Implements IComparer.Compare
+         If a = b Then
+            Return 0
+         End If
+         If a Is Nothing Then
+            Return - 1
+         End If
+         If b Is Nothing Then
+            Return 1
+         End If 
 
-        Dim ri As New RegionInfo("US")
-        cib.LoadDataFromRegionInfo(ri)
-        
-        ' Display some of the properties for the x-en-US-sample custom culture.
+         Dim sa As [String] = a
+         Dim sb As [String] = b
+         If Not (sa Is Nothing) And Not (sb Is Nothing) Then
+            Return myComp.Compare(sa, sb, myOptions)
+         End If
+         Throw New ArgumentException("a and b should be strings.")
 
-        Console.Clear()
-        Console.WriteLine("CultureName:. . . . . . . . . . {0}", cib.CultureName)
-        Console.WriteLine("CultureEnglishName: . . . . . . {0}", cib.CultureEnglishName)
-        Console.WriteLine("CultureNativeName:. . . . . . . {0}", cib.CultureNativeName)
-        Console.WriteLine("GeoId:. . . . . . . . . . . . . {0}", cib.GeoId)
-        Console.WriteLine("IsMetric: . . . . . . . . . . . {0}", cib.IsMetric)
-        Console.WriteLine("ISOCurrencySymbol:. . . . . . . {0}", cib.ISOCurrencySymbol)
-        Console.WriteLine("RegionEnglishName:. . . . . . . {0}", cib.RegionEnglishName)
-        Console.WriteLine("RegionName: . . . . . . . . . . {0}", cib.RegionName)
-        Console.WriteLine("RegionNativeName: . . . . . . . {0}", cib.RegionNativeName)
-        Console.WriteLine("ThreeLetterISOLanguageName: . . {0}", cib.ThreeLetterISOLanguageName)
-        Console.WriteLine("ThreeLetterISORegionName: . . . {0}", cib.ThreeLetterISORegionName)
-        Console.WriteLine("ThreeLetterWindowsLanguageName: {0}", cib.ThreeLetterWindowsLanguageName)
-        Console.WriteLine("ThreeLetterWindowsRegionName: . {0}", cib.ThreeLetterWindowsRegionName)
-        Console.WriteLine("TwoLetterISOLanguageName: . . . {0}", cib.TwoLetterISOLanguageName)
-        Console.WriteLine("TwoLetterISORegionName: . . . . {0}", cib.TwoLetterISORegionName)
-    
-    End Sub 'Main
-End Class 'Sample
+      End Function 'Compare 
+
+   End Class 'MyStringComparer
+
+
+   Public Shared Sub Main()
+      
+      ' Creates and initializes an array of strings to sort.
+      Dim myArr() As [String] = {"cant", "bill's", "coop", "cannot", "billet", "can't", "con", "bills", "co-op"}
+      Console.WriteLine()
+      Console.WriteLine("Initially,")
+      Dim myStr As [String]
+      For Each myStr In  myArr
+         Console.WriteLine(myStr)
+      Next myStr 
+
+      ' Creates and initializes a Comparer to use.
+      'CultureInfo myCI = new CultureInfo( "en-US", false );
+      Dim myComp As New MyStringComparer(CompareInfo.GetCompareInfo("en-US"), CompareOptions.None)
+      
+      ' Sorts the array without StringSort.
+      Array.Sort(myArr, myComp)
+      Console.WriteLine()
+      Console.WriteLine("After sorting without CompareOptions.StringSort:")
+      For Each myStr In  myArr
+         Console.WriteLine(myStr)
+      Next myStr 
+
+      ' Sorts the array with StringSort.
+      myComp = New MyStringComparer(CompareInfo.GetCompareInfo("en-US"), CompareOptions.StringSort)
+      Array.Sort(myArr, myComp)
+      Console.WriteLine()
+      Console.WriteLine("After sorting with CompareOptions.StringSort:")
+      For Each myStr In  myArr
+         Console.WriteLine(myStr)
+      Next myStr 
+
+   End Sub 'Main
+
+End Class 'SamplesCompareOptions 
+
+
+'This code produces the following output.
 '
-'This code example produces the following results:
+'Initially,
+'cant
+'bill's
+'coop
+'cannot
+'billet
+'can't
+'con
+'bills
+'co-op
 '
-'CultureName:. . . . . . . . . . x-en-US-sample
-'CultureEnglishName: . . . . . . English
-'CultureNativeName:. . . . . . . English
-'GeoId:. . . . . . . . . . . . . 244
-'IsMetric: . . . . . . . . . . . False
-'ISOCurrencySymbol:. . . . . . . USD
-'RegionEnglishName:. . . . . . . United States
-'RegionName: . . . . . . . . . . US
-'RegionNativeName: . . . . . . . United States
-'ThreeLetterISOLanguageName: . . eng
-'ThreeLetterISORegionName: . . . USA
-'ThreeLetterWindowsLanguageName: ENU
-'ThreeLetterWindowsRegionName: . USA
-'TwoLetterISOLanguageName: . . . en
-'TwoLetterISORegionName: . . . . US
+'After sorting without CompareOptions.StringSort:
+'billet
+'bills
+'bill's
+'cannot
+'cant
+'can't
+'con
+'coop
+'co-op
 '
+'After sorting with CompareOptions.StringSort:
+'bill's
+'billet
+'bills
+'can't
+'cannot
+'cant
+'co-op
+'con
+'coop

@@ -1,44 +1,123 @@
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
+
 using System;
+using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
+using System.Text;
 using System.Xml;
-using System.IO;
 
-/// This sample used the EncryptedData class to create a EncryptedData element
-/// and write it to an XML file.
-namespace EncryptedDataSample
+
+
+class XMLDSIGDetached
 {
-	class Sample1
-	{
-		[STAThread]
-		static void Main(string[] args)
-		{
-			// Create a new CipherData object.
-			CipherData cd = new CipherData();
-			// Assign a byte array to be the CipherValue. This is a byte array representing encrypted data.
-			cd.CipherValue = new byte[8];
-			// Create a new EncryptedData object.
-			EncryptedData ed = new EncryptedData();
-			//Add an encryption method to the object.
-			ed.Id = "ED";
-			ed.EncryptionMethod = new EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc");
-			ed.CipherData = cd;
+	
+    [STAThread]
+    static void Main(string[] args)
+    {
+        // The URI to sign.
+        string resourceToSign = "http://www.microsoft.com";
+		
+        // The name of the file to which to save the XML signature.
+        string XmlFileName = "xmldsig.xml";
 
-			//Add key information to the object.
-			KeyInfo ki = new KeyInfo();
-			ki.AddClause(new KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"));
-			ed.KeyInfo = ki;
+        try
+        {
 
-			// Create new XML document and put encrypted data into it.
-			XmlDocument doc = new XmlDocument();
-			XmlElement encryptionPropertyElement = (XmlElement)doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl);
-			EncryptionProperty ep = new EncryptionProperty(encryptionPropertyElement);
-			ed.AddProperty(ep);
+            // Generate a signing key.
+            RSACryptoServiceProvider Key = new RSACryptoServiceProvider();
 
-			// Output the resulting XML information into a file.
-			string path = @"c:\test\MyTest.xml";
-			File.WriteAllText(path,ed.GetXml().OuterXml);
-			//Console.WriteLine(ed.GetXml().OuterXml);
+            Console.WriteLine("Signing: {0}", resourceToSign);
 
-		}
-	}
+            // Sign the detached resourceand save the signature in an XML file.
+            SignDetachedResource(resourceToSign, XmlFileName, Key);
+
+            Console.WriteLine("XML signature was succesfully computed and saved to {0}.", XmlFileName);
+
+            // Verify the signature of the signed XML.
+            Console.WriteLine("Verifying signature...");
+
+            //Verify the XML signature in the XML file.
+            bool result = VerifyDetachedSignature(XmlFileName);
+
+            // Display the results of the signature verification to 
+            // the console.
+            if(result)
+            {
+                Console.WriteLine("The XML signature is valid.");
+            }
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+
+        }
+		
+    }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignDetachedResource(string URIString, string XmlSigFileName, RSA Key)
+    {
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml();
+
+        // Assign the key to the SignedXml object.
+        signedXml.SigningKey = Key;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+
+        // Add the passed URI to the reference object.
+        reference.Uri = URIString;
+		
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+        KeyInfo keyInfo = new KeyInfo();
+        keyInfo.AddClause(new RSAKeyValue((RSA)Key));	
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        XmlTextWriter xmltw = new XmlTextWriter(XmlSigFileName, new UTF8Encoding(false));
+        xmlDigitalSignature.WriteTo(xmltw);
+        xmltw.Close();
+    }
+    // Verify the signature of an XML file and return the result.
+    public static Boolean VerifyDetachedSignature(string XmlSigFileName)
+    {	
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document.
+        xmlDocument.Load(XmlSigFileName);
+	
+        // Create a new SignedXMl object.
+        SignedXml signedXml = new SignedXml();
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature();
+    }
 }

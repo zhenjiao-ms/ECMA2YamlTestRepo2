@@ -32,8 +32,3 @@ internalonly: False
 uid: System.Speech.Recognition.RecognizerInfo.Name
 internalonly: False
 ---
-
----
-uid: System.Speech.Recognition.RecognizerInfo.Dispose
-internalonly: False
----

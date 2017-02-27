@@ -59,11 +59,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.ListView.DeleteMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.ListView.System#Web#UI#WebControls#IDataBoundControl#DataSourceObject
 internalonly: False
 ---
@@ -195,11 +190,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.ListView.OnItemEditing(System.Web.UI.WebControls.ListViewEditEventArgs)
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.ListView.IsUsingModelBinders
 internalonly: False
 ---
 
@@ -559,11 +549,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.ListView.UpdateMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.ListView.CreateItemsWithoutGroups(System.Web.UI.WebControls.ListViewPagedDataSource,System.Boolean,System.Web.UI.WebControls.InsertItemPosition,System.Collections.ArrayList)
 internalonly: False
 ---
@@ -585,11 +570,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.ListView.PagePropertiesChanged
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.ListView.InsertMethod
 internalonly: False
 ---
 

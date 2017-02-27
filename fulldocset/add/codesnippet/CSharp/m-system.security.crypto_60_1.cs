@@ -1,128 +1,127 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
+using System.Text;
+using System.IO;
 
-namespace RijndaelManaged_Example
+class TripleDESSample
 {
-    class RijndaelExample
+
+    static void Main()
     {
-        public static void Main()
+        try
         {
-            try
+            // Create a new TripleDES object to generate a key
+            // and an initialization vector (IV).
+            using (TripleDES TripleDESalg = TripleDES.Create())
             {
+                // Create a string to encrypt.
+                string sData = "Here is some data to encrypt.";
+                string FileName = "CText.enc";
 
-                string original = "Here is some data to encrypt!";
+                // Encrypt text to a file using the file name, key, and IV.
+                EncryptTextToFile(sData, FileName, TripleDESalg.Key, TripleDESalg.IV);
 
-                // Create a new instance of the RijndaelManaged
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (RijndaelManaged myRijndael = new RijndaelManaged())
-                {
+                // Decrypt the text from a file using the file name, key, and IV.
+                string Final = DecryptTextFromFile(FileName, TripleDESalg.Key, TripleDESalg.IV);
 
-					myRijndael.GenerateKey();
-                	myRijndael.GenerateIV();
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
-
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
+                // Display the decrypted string to the console.
+                Console.WriteLine(Final);
             }
         }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        catch (Exception e)
         {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
-            // Create an RijndaelManaged object
-            // with the specified key and IV.
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            Console.WriteLine(e.Message);
+        }
+
+    }
+
+    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
+    {
+        try
+        {
+            // Create or open the specified file.
+            using (FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate))
             {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
 
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
+                // Create a new TripleDES object.
+                using (TripleDES tripleDESalg = TripleDES.Create())
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+
+                    // Create a CryptoStream using the FileStream 
+                    // and the passed key and initialization vector (IV).
+                    using (CryptoStream cStream = new CryptoStream(fStream,
+                        tripleDESalg.CreateEncryptor(Key, IV),
+                        CryptoStreamMode.Write))
                     {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+
+                        // Create a StreamWriter using the CryptoStream.
+                        using (StreamWriter sWriter = new StreamWriter(cStream))
                         {
 
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
+                            // Write the data to the stream 
+                            // to encrypt it.
+                            sWriter.WriteLine(Data);
                         }
-                        encrypted = msEncrypt.ToArray();
                     }
                 }
             }
 
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-
+        }
+        catch (CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            Console.WriteLine("A file access error occurred: {0}", e.Message);
         }
 
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+    }
+
+    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
+    {
+        try
         {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an RijndaelManaged object
-            // with the specified key and IV.
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
+            string retVal = "";
+            // Create or open the specified file. 
+            using (FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate))
             {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
 
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                // Create a new TripleDES object.
+                using (TripleDES tripleDESalg = TripleDES.Create())
                 {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+
+                    // Create a CryptoStream using the FileStream 
+                    // and the passed key and initialization vector (IV).
+                    using (CryptoStream cStream = new CryptoStream(fStream,
+                        tripleDESalg.CreateDecryptor(Key, IV),
+                        CryptoStreamMode.Read))
                     {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+
+                        // Create a StreamReader using the CryptoStream.
+                        using (StreamReader sReader = new StreamReader(cStream))
                         {
 
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
+                            // Read the data from the stream 
+                            // to decrypt it.
+                            retVal = sReader.ReadLine();
                         }
                     }
                 }
 
             }
-
-            return plaintext;
-
+            // Return the string. 
+            return retVal;
+        }
+        catch (CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+            return null;
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            Console.WriteLine("A file access error occurred: {0}", e.Message);
+            return null;
         }
     }
 }

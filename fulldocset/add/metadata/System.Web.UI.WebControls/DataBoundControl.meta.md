@@ -14,37 +14,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.DataBoundControl.TrackViewState
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.DataBoundControl.ItemType
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.DataBoundControl.DataSourceID
 internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.DataBoundControl.CallingDataMethods
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.DataBoundControl.PerformSelect
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.DataBoundControl.IsUsingModelBinders
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.DataBoundControl.CreatingModelDataSource
 internalonly: False
 ---
 
@@ -69,27 +44,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.DataBoundControl.LoadViewState(System.Object)
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.DataBoundControl.OnDataPropertyChanged
 internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.DataBoundControl.SaveViewState
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewChanged(System.Object,System.EventArgs)
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.DataBoundControl.OnCreatingModelDataSource(System.Web.UI.WebControls.CreatingModelDataSourceEventArgs)
 internalonly: False
 ---
 
@@ -100,11 +60,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.DataBoundControl.DataSourceObject
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.DataBoundControl.SelectMethod
 internalonly: False
 ---
 

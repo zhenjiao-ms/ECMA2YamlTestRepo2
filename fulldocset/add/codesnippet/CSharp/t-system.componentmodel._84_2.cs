@@ -1,14 +1,15 @@
     public static int Main() {
         // Creates a new component.
-        MyControl myNewControl = new MyControl();
+        MyImage myNewImage = new MyImage();
      
         // Gets the attributes for the component.
-        AttributeCollection attributes = TypeDescriptor.GetAttributes(myNewControl);
+        AttributeCollection attributes = TypeDescriptor.GetAttributes(myNewImage);
      
-        /* Prints the name of the license provider by retrieving the LicenseProviderAttribute 
+        /* Prints the name of the editor by retrieving the EditorAttribute 
          * from the AttributeCollection. */
-        LicenseProviderAttribute myAttribute = (LicenseProviderAttribute)attributes[typeof(LicenseProviderAttribute)];
-        Console.WriteLine("The license provider for this class is: " + myAttribute.LicenseProvider.ToString());
+        
+        EditorAttribute myAttribute = (EditorAttribute)attributes[typeof(EditorAttribute)];
+        Console.WriteLine("The editor for this class is: " + myAttribute.EditorTypeName);
      
         return 0;
      }

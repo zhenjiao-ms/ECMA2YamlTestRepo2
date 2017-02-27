@@ -1,18 +1,27 @@
-Public Class MyCustomUserNameValidator
-    Inherits UserNamePasswordValidator
 
-    ' This method validates users. It allows two users, test1 and test2 
-    ' with passwords 1tset and 2tset respectively.
-    ' This code is for illustration purposes only and 
-    ' MUST NOT be used in a production environment because it is NOT secure.	
-    Public Overrides Sub Validate(ByVal userName As String, ByVal password As String)
-        If Nothing = userName OrElse Nothing = password Then
-            Throw New ArgumentNullException()
+Public Class MyX509CertificateValidator
+    Inherits X509CertificateValidator
+    Private allowedIssuerName As String
+
+    Public Sub New(ByVal allowedIssuerName As String)
+        If allowedIssuerName Is Nothing Then
+            Throw New ArgumentNullException("allowedIssuerName")
         End If
 
-        If Not (userName = "test1" AndAlso password = "1tset") AndAlso Not (userName = "test2" AndAlso password = "2tset") Then
-            Throw New SecurityTokenException("Unknown Username or Password")
+        Me.allowedIssuerName = allowedIssuerName
+
+    End Sub 'New
+
+    Public Overrides Sub Validate(ByVal certificate As X509Certificate2)
+        ' Check that there is a certificate.
+        If certificate Is Nothing Then
+            Throw New ArgumentNullException("certificate")
+        End If
+
+        ' Check that the certificate issuer matches the configured issuer
+        If allowedIssuerName <> certificate.IssuerName.Name Then
+            Throw New SecurityTokenValidationException("Certificate was not issued by a trusted issuer")
         End If
 
     End Sub 'Validate
-End Class 'MyCustomUserNameValidator
+End Class 'MyX509CertificateValidator

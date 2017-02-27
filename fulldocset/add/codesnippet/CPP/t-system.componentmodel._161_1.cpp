@@ -1,64 +1,60 @@
-#using <System.Windows.Forms.dll>
-#using <System.Drawing.dll>
-#using <System.Design.dll>
 #using <System.dll>
+#using <System.Design.dll>
+#using <System.Drawing.dll>
+#using <System.Windows.Forms.dll>
 
 using namespace System;
+using namespace System::Collections;
 using namespace System::ComponentModel;
 using namespace System::ComponentModel::Design;
 using namespace System::Drawing;
-using namespace System::IO;
 using namespace System::Windows::Forms;
-using namespace System::Windows::Forms::Design;
 
-public ref class HelpDesigner: public System::Windows::Forms::Design::ControlDesigner
+// Provides an example component designer.
+ref class ExampleComponentDesigner: public ComponentDesigner
 {
 public:
-   HelpDesigner(){}
-
-   property System::ComponentModel::Design::DesignerVerbCollection^ Verbs 
+   ExampleComponentDesigner()
    {
-      virtual System::ComponentModel::Design::DesignerVerbCollection^ get() override
+   }
+
+   // This method provides an opportunity to perform processing when a designer is initialized.
+   // The component parameter is the component that the designer is associated with.
+   virtual void Initialize( IComponent^ component ) override
+   {
+      // Always call the base Initialize method in an of this method.
+      ComponentDesigner::Initialize( component );
+   }
+
+   // This method is invoked when the associated component is double-clicked.
+   virtual void DoDefaultAction() override
+   {
+      MessageBox::Show( "The event handler for the default action was invoked." );
+   }
+
+   // This method provides designer verbs.
+   property DesignerVerbCollection^ Verbs 
+   {
+      virtual DesignerVerbCollection^ get() override
       {
-         array<DesignerVerb^>^temp0 = {gcnew DesignerVerb( "Add IHelpService Help Keyword",gcnew EventHandler( this, &HelpDesigner::addKeyword ) ),gcnew DesignerVerb( "Remove IHelpService Help Keyword",gcnew EventHandler( this, &HelpDesigner::removeKeyword ) )};
-         return gcnew DesignerVerbCollection( temp0 );
+         array<DesignerVerb^>^ newDesignerVerbs = {gcnew DesignerVerb( "Example Designer Verb Command", gcnew EventHandler( this, &ExampleComponentDesigner::onVerb ) )};
+         return gcnew DesignerVerbCollection( newDesignerVerbs );
       }
    }
 
 private:
-   void addKeyword( Object^ /*sender*/, EventArgs^ /*e*/ )
+   // Event handling method for the example designer verb
+   void onVerb( Object^ sender, EventArgs^ e )
    {
-      IHelpService^ hs = dynamic_cast<IHelpService^>(this->Control->Site->GetService( IHelpService::typeid ));
-      hs->AddContextAttribute( "keyword", "IHelpService", HelpKeywordType::F1Keyword );
-   }
-
-   void removeKeyword( Object^ /*sender*/, EventArgs^ /*e*/ )
-   {
-      IHelpService^ hs = dynamic_cast<IHelpService^>(this->Control->Site->GetService( IHelpService::typeid ));
-      hs->RemoveContextAttribute( "keyword", "IHelpService" );
+      MessageBox::Show( "The event handler for the Example Designer Verb Command was invoked." );
    }
 };
 
+// Provides an example component associated with the example component designer.
 
-[Designer(HelpDesigner::typeid)]
-public ref class HelpTestControl: public System::Windows::Forms::UserControl
+[DesignerAttribute(ExampleComponentDesigner::typeid, IDesigner::typeid)]
+ref class ExampleComponent: public Component
 {
 public:
-   HelpTestControl()
-   {
-      this->Size = System::Drawing::Size( 320, 100 );
-      this->BackColor = Color::White;
-   }
-
-protected:
-   virtual void OnPaint( System::Windows::Forms::PaintEventArgs^ e ) override
-   {
-      Brush^ brush = gcnew SolidBrush( Color::Blue );
-      e->Graphics->DrawString( "IHelpService Example Designer Control", gcnew System::Drawing::Font( FontFamily::GenericMonospace,10 ), brush, 5, 5 );
-      e->Graphics->DrawString( "Right-click this component for", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 25 );
-      e->Graphics->DrawString( "add/remove Help context keyword commands.", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 35 );
-      e->Graphics->DrawString( "Press F1 while this component is", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 55 );
-      e->Graphics->DrawString( "selected to raise Help topics for", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 65 );
-      e->Graphics->DrawString( "the current keyword or keywords", gcnew System::Drawing::Font( FontFamily::GenericMonospace,8 ), brush, 5, 75 );
-   }
+   ExampleComponent(){}
 };

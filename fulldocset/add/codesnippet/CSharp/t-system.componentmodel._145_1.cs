@@ -1,4 +1,17 @@
-            ulong myUInt64 = 123456789123;
-            string myUInt64String = "184467440737095551";
-            Console.WriteLine(TypeDescriptor.GetConverter(myUInt64).ConvertTo(myUInt64, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myUInt64).ConvertFrom(myUInt64String));    
+        public void LinkComponentEvent(IComponentChangeService changeService)
+        {
+            // Registers an event handler for the ComponentAdded,
+            // ComponentAdding, ComponentRemoved, and ComponentRemoving events.
+            changeService.ComponentAdded += new ComponentEventHandler(this.OnComponentEvent);            
+            changeService.ComponentAdding += new ComponentEventHandler(this.OnComponentEvent);            
+            changeService.ComponentRemoved += new ComponentEventHandler(this.OnComponentEvent);            
+            changeService.ComponentRemoving += new ComponentEventHandler(this.OnComponentEvent);                        
+        }
+
+        private void OnComponentEvent(object sender, ComponentEventArgs e)
+        {
+            // Displays changed component information on the console.            
+            if( e.Component.Site != null )
+                Console.WriteLine("Name of the component related to the event: "+e.Component.Site.Name);      
+            Console.WriteLine("Type of the component related to the event: "+e.Component.GetType().FullName);
+        }

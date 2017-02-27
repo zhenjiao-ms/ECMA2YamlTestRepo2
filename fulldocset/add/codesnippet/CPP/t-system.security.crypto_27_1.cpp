@@ -1,54 +1,125 @@
-#using <System.Xml.dll>
+//
+// This example signs a file specified by a URI 
+// using a detached signature. It then verifies  
+// the signed XML.
+//
 #using <System.Security.dll>
+#using <System.Xml.dll>
 
 using namespace System;
-using namespace System::Xml;
 using namespace System::Security::Cryptography;
 using namespace System::Security::Cryptography::Xml;
-using namespace System::IO;
+using namespace System::Text;
+using namespace System::Xml;
 
-/// This sample used the EncryptedData class to create a EncryptedData element
-/// and write it to an XML file.
+// Sign an XML file and save the signature in a new file.
+void SignDetachedResource( String^ URIString, String^ XmlSigFileName, RSA^ RSAKey )
+{
+   
+   // Create a SignedXml object.
+   SignedXml^ signedXml = gcnew SignedXml;
+   
+   // Assign the key to the SignedXml object.
+   signedXml->SigningKey = RSAKey;
+   
+   // Create a reference to be signed.
+   Reference^ reference = gcnew Reference;
+   
+   // Add the passed URI to the reference object.
+   reference->Uri = URIString;
+   
+   // Add a transformation if the URI is an XML file.
+   if ( URIString->EndsWith( "xml" ) )
+   {
+      
+      // Add the reference to the SignedXml object.
+      signedXml->AddReference( reference );
+      
+      // Add an RSAKeyValue KeyInfo (optional; helps recipient find key to validate).
+      KeyInfo^ keyInfo = gcnew KeyInfo;
+      keyInfo->AddClause( gcnew RSAKeyValue( safe_cast<RSA^>(RSAKey) ) );
+      signedXml->KeyInfo = keyInfo;
+      
+      // Compute the signature.
+      signedXml->ComputeSignature();
+      
+      // Get the XML representation of the signature and save
+      // it to an XmlElement object.
+      XmlElement^ xmlDigitalSignature = signedXml->GetXml();
+      
+      // Save the signed XML document to a file specified
+      // using the passed string.
+      XmlTextWriter^ xmltw = gcnew XmlTextWriter( XmlSigFileName,gcnew UTF8Encoding( false ) );
+      xmlDigitalSignature->WriteTo( xmltw );
+      xmltw->Close();
+   }
+}
+
+
+// Verify the signature of an XML file and return the result.
+Boolean VerifyDetachedSignature( String^ XmlSigFileName )
+{
+   
+   // Create a new XML document.
+   XmlDocument^ xmlDocument = gcnew XmlDocument;
+   
+   // Load the passed XML file into the document.
+   xmlDocument->Load( XmlSigFileName );
+   
+   // Create a new SignedXMl object.
+   SignedXml^ signedXml = gcnew SignedXml;
+   
+   // Find the S"Signature" node and create a new
+   // XmlNodeList object.
+   XmlNodeList^ nodeList = xmlDocument->GetElementsByTagName( "Signature" );
+   
+   // Load the signature node.
+   signedXml->LoadXml( safe_cast<XmlElement^>(nodeList->Item( 0 )) );
+   
+   // Check the signature and return the result.
+   return signedXml->CheckSignature();
+}
+
+
 int main()
 {
-    // Create a new CipherData object.
-    CipherData^ cipher = gcnew CipherData();
-    // Assign a byte array to be the CipherValue. This is a
-    // byte array representing encrypted data.
-    cipher->CipherValue = gcnew array<Byte>(8);
-    // Create a new EncryptedData object.
-    EncryptedData^ encryptionRoot = gcnew EncryptedData();
-    //Add an encryption method to the object.
-    encryptionRoot->Id = "ED";
-    encryptionRoot->EncryptionMethod = gcnew EncryptionMethod(
-        "http://www.w3.org/2001/04/xmlenc#aes128-cbc");
-    encryptionRoot->CipherData = cipher;
+   
+   // The URI to sign.
+   String^ resourceToSign = "http://www.microsoft.com";
+   
+   // The name of the file to which to save the XML signature.
+   String^ XmlFileName = "xmldsig.xml";
+   try
+   {
+      
+      // Generate a signing key.
+      RSACryptoServiceProvider^ Key = gcnew RSACryptoServiceProvider;
+      Console::WriteLine( "Signing: {0}", resourceToSign );
+      
+      // Sign the detached resourceand save the signature in an XML file.
+      SignDetachedResource( resourceToSign, XmlFileName, Key );
+      Console::WriteLine( "XML signature was succesfully computed and saved to {0}.", XmlFileName );
+      
+      // Verify the signature of the signed XML.
+      Console::WriteLine( "Verifying signature..." );
+      
+      //Verify the XML signature in the XML file.
+      bool result = VerifyDetachedSignature( XmlFileName );
+      
+      // Display the results of the signature verification to 
+      // the console.
+      if ( result )
+      {
+         Console::WriteLine( "The XML signature is valid." );
+      }
+      else
+      {
+         Console::WriteLine( "The XML signature is not valid." );
+      }
+   }
+   catch ( CryptographicException^ e ) 
+   {
+      Console::WriteLine( e->Message );
+   }
 
-    //Add key information to the object.
-    KeyInfo^ keyDetails = gcnew KeyInfo();
-    keyDetails->AddClause(gcnew KeyInfoRetrievalMethod("#EK",
-        "http://www.w3.org/2001/04/xmlenc#EncryptedKey"));
-    encryptionRoot->KeyInfo = keyDetails;
-
-    // Create new XML document and put encrypted data into it.
-    XmlDocument^ doc = gcnew XmlDocument();
-    XmlElement^ encryptionPropertyElement =
-        doc->CreateElement("EncryptionProperty", 
-        EncryptedXml::XmlEncNamespaceUrl);
-    EncryptionProperty^ property = gcnew EncryptionProperty(
-        encryptionPropertyElement);
-    encryptionRoot->AddProperty(property);
-
-    // Output the resulting XML information into a file.
-    String^ path = "test.xml";
-    try
-    {
-        File::WriteAllText(path, encryptionRoot->GetXml()->OuterXml);
-    }
-    catch (IOException^ ex)
-    {
-        Console::WriteLine("There was an error writing to {0}", path);
-        Console::WriteLine(ex->Message);
-    }
-    //Console.WriteLine(ed.GetXml().OuterXml);
 }

@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Automation.Peers.SeparatorAutomationPeer.IsContentElementCore
-internalonly: False
----
-
----
 uid: System.Windows.Automation.Peers.SeparatorAutomationPeer.GetClassNameCore
 internalonly: False
 ---

@@ -1,12 +1,20 @@
-    Private Sub GetAttributeValue()
-        ' Creates a new collection and assigns it the attributes for button1.
-        Dim attributes As AttributeCollection
-        attributes = TypeDescriptor.GetAttributes(button1)
-        
-        ' Gets the designer attribute from the collection.
-        Dim myDesigner As DesignerAttribute
-        myDesigner = CType(attributes(GetType(DesignerAttribute)), DesignerAttribute)
-        
-        ' Prints the value of the attribute in a text box.
-        textBox1.Text = myDesigner.DesignerTypeName
-    End Sub 'GetAttributeValue
+            ' Gets the attributes for the property.
+            Dim attributes As AttributeCollection = _
+                TypeDescriptor.GetProperties(Me)("MyProperty").Attributes
+            
+            ' Checks to see if the value of the BindableAttribute is Yes.
+            If attributes(GetType(BindableAttribute)).Equals(BindableAttribute.Yes) Then
+                ' Insert code here.
+            End If 
+            
+            ' This is another way to see whether the property is bindable.
+            Dim myAttribute As BindableAttribute = _
+                CType(attributes(GetType(BindableAttribute)), BindableAttribute)
+            If myAttribute.Bindable Then
+                ' Insert code here.
+            End If 
+
+ 	    ' Yet another way to see whether the property is bindable.
+	    If attributes.Contains(BindableAttribute.Yes) Then
+		' Insert code here.
+	    End If

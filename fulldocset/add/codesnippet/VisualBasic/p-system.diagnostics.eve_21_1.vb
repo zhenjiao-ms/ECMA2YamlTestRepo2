@@ -1,43 +1,13 @@
-            Dim mySourceData As EventSourceCreationData = new EventSourceCreationData("", "")
-            Dim registerSource As Boolean = True
-
-            ' Process input parameters.
-            If args.Length > 0
-                ' Require at least the source name.
-
-                mySourceData.Source = args(0)
-
-                If args.Length > 1
-   
-                    mySourceData.LogName = args(1)
-    
-                End If
-                If args.Length > 2
-   
-                    mySourceData.MachineName = args(2)
-    
-                End If
-                If args.Length > 3 AndAlso args(3).Length > 0
-   
-                    mySourceData.MessageResourceFile = args(3)
-    
-                End If
-
-            Else 
-                ' Display a syntax help message.
-                Console.WriteLine("Input:")
-                Console.WriteLine(" source [event log] [machine name] [resource file]")
-
-                registerSource = False
-            End If
-
-            ' Set defaults for parameters missing input.
-            If mySourceData.MachineName.Length = 0
-            
-                ' Default to the local computer.
-                mySourceData.MachineName = "."
-            End If
-            If mySourceData.LogName.Length = 0
-                ' Default to the Application log.
-                mySourceData.LogName = "Application"
-            End If
+         ' Create a new EventLog object.
+         Dim myEventLog1 As New EventLog()
+         myEventLog1.Log = myLogName
+         ' Obtain the Log Entries of the Event Log
+         Dim myEventLogEntryCollection As EventLogEntryCollection = myEventLog1.Entries
+         Console.WriteLine("The number of entries in 'MyNewLog' = " + _
+                                    myEventLogEntryCollection.Count.ToString())
+         ' Display the 'Message' property of EventLogEntry.
+         Dim i As Integer
+         For i = 0 To myEventLogEntryCollection.Count - 1
+            Console.WriteLine("The Message of the EventLog is :" + _
+                           myEventLogEntryCollection(i).Message)
+         Next i

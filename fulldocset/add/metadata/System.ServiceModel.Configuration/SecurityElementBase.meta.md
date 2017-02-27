@@ -44,11 +44,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Configuration.SecurityElementBase.SerializeElement(System.Xml.XmlWriter,System.Boolean)
-internalonly: False
----
-
----
 uid: System.ServiceModel.Configuration.SecurityElementBase.ApplyConfiguration(System.ServiceModel.Channels.BindingElement)
 internalonly: False
 ---
@@ -85,11 +80,6 @@ internalonly: False
 
 ---
 uid: System.ServiceModel.Configuration.SecurityElementBase.InitializeFrom(System.ServiceModel.Channels.BindingElement)
-internalonly: False
----
-
----
-uid: System.ServiceModel.Configuration.SecurityElementBase.ProtectTokens
 internalonly: False
 ---
 

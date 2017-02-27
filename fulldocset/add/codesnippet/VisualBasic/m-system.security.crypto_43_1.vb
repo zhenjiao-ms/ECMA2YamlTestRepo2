@@ -1,133 +1,66 @@
 Imports System
-Imports System.Xml
 Imports System.Security.Cryptography
-Imports System.Security.Cryptography.Xml
+Imports System.Security.Cryptography.X509Certificates
 
 
 
-Module Program
+Class AsnEncodedDataSample
+   Shared msg As String
+   Shared Sub Main()
+      'The following example demonstrates the usage the AsnEncodedData classes.
+      ' Asn encoded data is read from the extensions of an X509 certificate.
+      Try
+         ' Open the certificate store.
+         Dim store As New X509Store("MY", StoreLocation.CurrentUser)
+         store.Open((OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly))
+         Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
+         Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
+         ' Select one or more certificates to display extensions information.
+         Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Certificate Select", "Select certificates from the following list to get extension information on that certificate", X509SelectionFlag.MultiSelection)
+         
+         ' Create a new AsnEncodedDataCollection object.
+         Dim asncoll As New AsnEncodedDataCollection()
+         Dim i As Integer
+         For i = 0 To scollection.Count - 1
+            ' Display certificate information.
+	    msg = "Certificate name: "& scollection(i).GetName()
+            MsgBox(msg)
 
-    Sub Main(ByVal args() As String)
+            ' Display extensions information.
+            Dim extension As X509Extension
+            For Each extension In  scollection(i).Extensions
+               ' Create an AsnEncodedData object using the extensions information.
+               Dim asndata As New AsnEncodedData(extension.Oid, extension.RawData)
+	       msg = "Extension type: " & extension.Oid.FriendlyName & Environment.NewLine & "Oid value: " & asndata.Oid.Value _
+		& Environment.NewLine & "Raw data length: " & asndata.RawData.Length & Environment.NewLine _
+		& asndata.Format(True) & Environment.NewLine
+               MsgBox(msg)
+		
+               ' Add the AsnEncodedData object to the AsnEncodedDataCollection object.
+               asncoll.Add(asndata)
+            Next extension
+         Next i
+	 msg = "Number of AsnEncodedData items in the collection: " & asncoll.Count
+         MsgBox(msg)         
+         store.Close()
 
-        ' Create an XmlDocument object.
-        Dim xmlDoc As New XmlDocument()
-
-        ' Load an XML file into the XmlDocument object.
-        Try
-            xmlDoc.PreserveWhitespace = True
-            xmlDoc.Load("test.xml")
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        End Try
-
-        ' Create a new TripleDES key. 
-        Dim tDESkey As New TripleDESCryptoServiceProvider()
-
-
-        Try
-            ' Encrypt the "creditcard" element.
-            Encrypt(xmlDoc, "creditcard", tDESkey)
-
-            ' Display the encrypted XML to the console.
-            Console.WriteLine("Encrypted XML:")
-            Console.WriteLine()
-            Console.WriteLine(xmlDoc.OuterXml)
-
-            ' Decrypt the "creditcard" element.
-            Decrypt(xmlDoc, tDESkey)
-
-            ' Display the encrypted XML to the console.
-            Console.WriteLine()
-            Console.WriteLine("Decrypted XML:")
-            Console.WriteLine()
-            Console.WriteLine(xmlDoc.OuterXml)
-        Catch e As Exception
-            Console.WriteLine(e.Message)
-        Finally
-            ' Clear the TripleDES key.
-            tDESkey.Clear()
-        End Try
-
-    End Sub
-
-
-    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptString As String, ByVal Alg As TripleDESCryptoServiceProvider)
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Find the specified element in the XmlDocument
-        ' object and create a new XmlElemnt object.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-
-        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptString)(0)
-
-
-        ' Throw an XmlException if the element was not found.
-        If elementToEncrypt Is Nothing Then
-            Throw New XmlException("The specified element was not found")
-        End If
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Create a new instance of the EncryptedXml class 
-        ' and use it to encrypt the XmlElement with the 
-        ' symmetric key.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-
-        Dim eXml As New EncryptedXml()
-
-        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, Alg, False)
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Construct an EncryptedData object and populate
-        ' it with the desired encryption information.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-
-        Dim edElement As New EncryptedData()
-
-        edElement.Type = EncryptedXml.XmlEncElementUrl
-
-
-        ' Create an EncryptionMethod element so that the 
-        ' receiver knows which algorithm to use for decryption.
-        ' Determine what kind of algorithm is being used and
-        ' supply the appropriate URL to the EncryptionMethod element.
-        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl)
-
-        ' Add the encrypted element data to the 
-        ' EncryptedData object.
-        edElement.CipherData.CipherValue = encryptedElement
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        ' Replace the element from the original XmlDocument
-        ' object with the EncryptedData element.
-        ''''''''''''''''''''''''''''''''''''''''''''''''''
-        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
-
-    End Sub
-
-
-    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As SymmetricAlgorithm)
-
-        ' Find the EncryptedData element in the XmlDocument.
-        Dim encryptedElement As XmlElement = Doc.GetElementsByTagName("EncryptedData")(0) 
-   
-
-        ' If the EncryptedData element was not found, throw an exception.
-        If encryptedElement Is Nothing Then
-            Throw New XmlException("The EncryptedData element was not found.")
-        End If
-
-        ' Create an EncryptedData object and populate it.
-        Dim edElement As New EncryptedData()
-        edElement.LoadXml(encryptedElement)
-
-        ' Create a new EncryptedXml object.
-        Dim exml As New EncryptedXml()
-
-        ' Decrypt the element using the symmetric key.
-        Dim rgbOutput As Byte() = exml.DecryptData(edElement, Alg)
-
-        ' Replace the encryptedData element with the plaintext XML element.
-        exml.ReplaceData(encryptedElement, rgbOutput)
-
-    End Sub
-End Module
+         'Create an enumerator for moving through the collection.
+         Dim asne As AsnEncodedDataEnumerator = asncoll.GetEnumerator()
+         'You must execute a MoveNext() to get to the first item in the collection.
+         asne.MoveNext()
+         ' Write out AsnEncodedData in the collection.
+	 msg = "First AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+	
+         
+         asne.MoveNext()
+	 msg = "Second AsnEncodedData in the collection: " & asne.Current.Format(True)
+	 MsgBox(msg)
+        
+         'Return index in the collection to the beginning.
+         asne.Reset()
+      Catch 
+         MsgBox("Information could not be written out for this certificate.")
+      End Try
+   End Sub 'Main
+End Class 'AsnEncodedDataSample

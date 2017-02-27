@@ -1,33 +1,103 @@
 using System;
-using System.Security.Cryptography.Xml;
-using System.Xml;
-using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
-/// This sample used the GetXml method in the CipherReference class to 
-/// write the XML values for the CipherReference to the console.
-namespace CipherReference2
+class RSACSPSample
 {
-	class CipherReference2
-	{
-		[STAThread]
-		static void Main(string[] args)
-		{
-			//Create a URI string.
-			String uri = "http://www.woodgrovebank.com/document.xml";
 
-			// Create a Base64 transform. The input content retrieved from the
-			// URI should be Base64-decoded before other processing.
-			Transform base64 = new XmlDsigBase64Transform();
+    static void Main()
+    {
+        try
+        {
+            //Create a UnicodeEncoder to convert between byte array and string.
+            UnicodeEncoding ByteConverter = new UnicodeEncoding();
 
-			//Create a transform chain and add the transform to it.
-			TransformChain tc = new TransformChain();
+            //Create byte arrays to hold original, encrypted, and decrypted data.
+            byte[] dataToEncrypt = ByteConverter.GetBytes("Data to Encrypt");
+            byte[] encryptedData;
+            byte[] decryptedData;
+			
+            //Create a new instance of RSACryptoServiceProvider to generate
+            //public and private key data.  Pass an integer specifying a key-
+            //length of 2048.
+            RSACryptoServiceProvider RSAalg = new RSACryptoServiceProvider(2048);
 
-			tc.Add(base64);
+            //Display the key-legth to the console.
+            Console.WriteLine("A new key pair of legth {0} was created", RSAalg.KeySize);
 
-			//Create <CipherReference> information.
-			CipherReference reference = new CipherReference(uri, tc);
-			// Write the CipherReference value to the console.
-			Console.WriteLine("Cipher Reference data: {0}", reference.GetXml().OuterXml);
-		}
-	}
+            //Pass the data to ENCRYPT, the public key information 
+            //(using RSACryptoServiceProvider.ExportParameters(false),
+            //and a boolean flag specifying no OAEP padding.
+            encryptedData = RSAEncrypt(dataToEncrypt,RSAalg.ExportParameters(false), false);
+
+            //Pass the data to DECRYPT, the private key information 
+            //(using RSACryptoServiceProvider.ExportParameters(true),
+            //and a boolean flag specifying no OAEP padding.
+            decryptedData = RSADecrypt(encryptedData,RSAalg.ExportParameters(true), false);
+
+            //Display the decrypted plaintext to the console. 
+            Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
+        }
+        catch(ArgumentNullException)
+        {
+            //Catch this exception in case the encryption did
+            //not succeed.
+            Console.WriteLine("Encryption failed.");
+
+        }
+    }
+
+    static public byte[] RSAEncrypt(byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+    {
+        try
+        {	
+            //Create a new instance of RSACryptoServiceProvider.
+            RSACryptoServiceProvider RSAalg = new RSACryptoServiceProvider();
+
+            //Import the RSA Key information. This only needs
+            //toinclude the public key information.
+            RSAalg.ImportParameters(RSAKeyInfo);
+
+            //Encrypt the passed byte array and specify OAEP padding.  
+            //OAEP padding is only available on Microsoft Windows XP or
+            //later.  
+            return RSAalg.Encrypt(DataToEncrypt, DoOAEPPadding);
+        }
+            //Catch and display a CryptographicException  
+            //to the console.
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+
+            return null;
+        }
+
+    }
+
+    static public byte[] RSADecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo,bool DoOAEPPadding)
+    {
+        try
+        {
+            //Create a new instance of RSACryptoServiceProvider.
+            RSACryptoServiceProvider RSAalg = new RSACryptoServiceProvider();
+
+            //Import the RSA Key information. This needs
+            //to include the private key information.
+            RSAalg.ImportParameters(RSAKeyInfo);
+
+            //Decrypt the passed byte array and specify OAEP padding.  
+            //OAEP padding is only available on Microsoft Windows XP or
+            //later.  
+            return RSAalg.Decrypt(DataToDecrypt, DoOAEPPadding);
+        }
+            //Catch and display a CryptographicException  
+            //to the console.
+        catch(CryptographicException e)
+        {
+            Console.WriteLine(e.ToString());
+
+            return null;
+        }
+
+    }
 }

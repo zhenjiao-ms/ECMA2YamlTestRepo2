@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Automation.Peers.GroupItemAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)
-internalonly: False
----
-
----
 uid: System.Windows.Automation.Peers.GroupItemAutomationPeer.GetChildrenCore
 internalonly: False
 ---

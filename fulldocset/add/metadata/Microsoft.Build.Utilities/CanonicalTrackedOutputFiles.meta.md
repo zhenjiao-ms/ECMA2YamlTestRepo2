@@ -94,11 +94,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Utilities.CanonicalTrackedOutputFiles.OutputsForSource(Microsoft.Build.Framework.ITaskItem[],System.Boolean)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Utilities.CanonicalTrackedOutputFiles.RemoveOutputForSourceRoot(System.String,System.String)
 internalonly: False
 ---

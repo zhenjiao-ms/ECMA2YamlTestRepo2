@@ -1,7 +1,5 @@
-    // This event handler provides custom item-creation behavior.
-    void customersBindingSource_AddingNew(
-        object sender, 
-        AddingNewEventArgs e)
-    {
-        e.NewObject = DemoCustomer.CreateNewCustomer();
-    }
+            Enum myServer= Servers.Exchange;
+            string myServerString = "BizTalk";
+            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertTo(myServer, typeof(string))); 
+            Console.WriteLine(TypeDescriptor.GetConverter(myServer).ConvertFrom(myServerString));    
+            

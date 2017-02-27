@@ -1,54 +1,134 @@
 using System;
-using System.Security.Permissions;
+using System.IO;
+using System.Security.Cryptography;
 
-namespace System.Security.Cryptography
+public class MACTripleDESexample
 {
-    public sealed class MyDataProtector : DataProtector
+
+    public static void Main(string[] Fileargs)
     {
-        public DataProtectionScope Scope { get; set; }
-        // This implementation gets the HashedPurpose from the base class and passes it as OptionalEntropy to ProtectedData.
-        // The default for DataProtector is to prepend the hash to the plain text, but because we are using the hash 
-        // as OptionalEntropy there is no need to prepend it.
-        protected override bool PrependHashedPurposeToPlaintext
+        string dataFile;
+        string signedFile;
+        //If no file names are specified, create them.
+        if (Fileargs.Length < 2)
         {
-            get
+            dataFile = @"text.txt";
+            signedFile = "signedFile.enc";
+
+            if (!File.Exists(dataFile))
             {
-                return false;
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(dataFile))
+                {
+                    sw.WriteLine("Here is a message to sign");
+                }
+            }
+
+        }
+        else
+        {
+            dataFile = Fileargs[0];
+            signedFile = Fileargs[1];
+        }
+        try
+        {
+            // Create a random key using a random number generator. This would be the
+            //  secret key shared by sender and receiver.
+            byte[] secretkey = new Byte[24];
+            //RNGCryptoServiceProvider is an implementation of a random number generator.
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                // The array is now filled with cryptographically strong random bytes.
+                rng.GetBytes(secretkey);
+
+                // Use the secret key to sign the message file.
+                SignFile(secretkey, dataFile, signedFile);
+
+                // Verify the signed file
+                VerifyFile(secretkey, signedFile);
             }
         }
-        // To allow a service to hand out instances of a DataProtector we demand unrestricted DataProtectionPermission 
-        // in the constructor, but Assert the permission when ProviderProtect is called.  This is similar to FileStream
-        // where access is checked at time of creation, not time of use.
-        [SecuritySafeCritical]
-        [DataProtectionPermission(SecurityAction.Assert, ProtectData = true)]
-        protected override byte[] ProviderProtect(byte[] userData)
+        catch (IOException e)
         {
-            // Delegate to ProtectedData
-            return ProtectedData.Protect(userData, GetHashedPurpose(), Scope);
+            Console.WriteLine("Error: File not found", e);
         }
-        // To allow a service to hand out instances of a DataProtector we demand unrestricted DataProtectionPermission 
-        // in the constructor, but Assert the permission when ProviderUnProtect is called.  This is similar to FileStream
-        // where access is checked at time of creation, not time of use.
-        [SecuritySafeCritical]
-        [DataProtectionPermission(SecurityAction.Assert, UnprotectData = true)]
-        protected override byte[] ProviderUnprotect(byte[] encryptedData)
+
+    }  //end main
+    // Computes a keyed hash for a source file and creates a target file with the keyed hash
+    // prepended to the contents of the source file. 
+    public static void SignFile(byte[] key, String sourceFile, String destFile)
+    {
+        // Initialize the keyed hash object.
+        using (MACTripleDES hmac = new MACTripleDES(key))
         {
-            // Delegate to ProtectedData
-            return ProtectedData.Unprotect(encryptedData, GetHashedPurpose(), Scope);
+            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
+            {
+                using (FileStream outStream = new FileStream(destFile, FileMode.Create))
+                {
+                    // Compute the hash of the input file.
+                    byte[] hashValue = hmac.ComputeHash(inStream);
+                    // Reset inStream to the beginning of the file.
+                    inStream.Position = 0;
+                    // Write the computed hash value to the output file.
+                    outStream.Write(hashValue, 0, hashValue.Length);
+                    // Copy the contents of the sourceFile to the destFile.
+                    int bytesRead;
+                    // read 1K at a time
+                    byte[] buffer = new byte[1024];
+                    do
+                    {
+                        // Read from the wrapping CryptoStream.
+                        bytesRead = inStream.Read(buffer, 0, 1024);
+                        outStream.Write(buffer, 0, bytesRead);
+                    } while (bytesRead > 0);
+                }
+            }
         }
-        public override bool IsReprotectRequired(byte[] encryptedData)
+        return;
+    } // end SignFile
+
+
+    // Compares the key in the source file with a new key created for the data portion of the file. If the keys 
+    // compare the data has not been tampered with.
+    public static bool VerifyFile(byte[] key, String sourceFile)
+    {
+        bool err = false;
+        // Initialize the keyed hash object. 
+        using (MACTripleDES hmac = new MACTripleDES(key))
         {
-            // For now, this cannot be determined, so always return true;
+            // Create an array to hold the keyed hash value read from the file.
+            byte[] storedHash = new byte[hmac.HashSize / 8];
+            // Create a FileStream for the source file.
+            using (FileStream inStream = new FileStream(sourceFile, FileMode.Open))
+            {
+                // Read in the storedHash.
+                inStream.Read(storedHash, 0, storedHash.Length);
+                // Compute the hash of the remaining contents of the file.
+                // The stream is properly positioned at the beginning of the content, 
+                // immediately after the stored hash value.
+                byte[] computedHash = hmac.ComputeHash(inStream);
+                // compare the computed hash with the stored value
+
+                for (int i = 0; i < storedHash.Length; i++)
+                {
+                    if (computedHash[i] != storedHash[i])
+                    {
+                        err = true;
+                    }
+                }
+            }
+        }
+        if (err)
+        {
+            Console.WriteLine("Hash values differ! Signed file has been tampered with!");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Hash values agree -- no tampering occurred.");
             return true;
         }
-        // Public constructor
-        // The Demand for DataProtectionPermission is in the constructor because we Assert this permission 
-        // in the ProviderProtect/ProviderUnprotect methods. 
-        [DataProtectionPermission(SecurityAction.Demand, Unrestricted = true)]
-        [SecuritySafeCritical]
-        public MyDataProtector(string appName, string primaryPurpose, params string[] specificPurpose)
-            : base(appName, primaryPurpose, specificPurpose)
-        {
-        }
-    }
-}
+
+    } //end VerifyFile
+
+} //end class

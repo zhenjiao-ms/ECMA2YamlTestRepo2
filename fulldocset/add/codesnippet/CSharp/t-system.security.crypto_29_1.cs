@@ -1,125 +1,83 @@
 using System;
-using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
-namespace TripleDESCryptoServiceProvider_Example
+
+public class CspKeyContainerInfoExample
 {
-    class TripleDESManagedExample
+
+    public static void Main(String[] args)
     {
-        public static void Main()
+        RSACryptoServiceProvider rsa= new RSACryptoServiceProvider();
+
+        try
         {
-            try
-            {
+            // Note: In cases where a random key is generated,   
+            // a key container is not created until you call  
+            // a method that uses the key.  This example calls
+            // the Encrypt method before calling the
+            // CspKeyContainerInfo property so that a key
+            // container is created.  
 
-                string original = "Here is some data to encrypt!";
+            // Create some data to encrypt and display it.
+            string data = "Here is some data to encrypt.";
 
-                // Create a new instance of the TripleDESCryptoServiceProvider
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (TripleDESCryptoServiceProvider myTripleDES = new TripleDESCryptoServiceProvider())
-                {
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myTripleDES.Key, myTripleDES.IV);
+            Console.WriteLine("Data to encrypt: " + data);
 
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myTripleDES.Key, myTripleDES.IV);
+            // Convert the data to an array of bytes and 
+            // encrypt it.
+            byte[] byteData = Encoding.ASCII.GetBytes(data);
 
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
-                }
+            byte[] encData = rsa.Encrypt(byteData, false);
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
-            }
-        }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("Key");
-            byte[] encrypted;
-            // Create an TripleDESCryptoServiceProvider object
-            // with the specified key and IV.
-            using (TripleDESCryptoServiceProvider tdsAlg = new TripleDESCryptoServiceProvider())
-            {
-                tdsAlg.Key = Key;
-                tdsAlg.IV = IV;
+            // Display the encrypted value.
+            Console.WriteLine("Encrypted Data: " + Encoding.ASCII.GetString(encData));
 
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform encryptor = tdsAlg.CreateEncryptor(tdsAlg.Key, tdsAlg.IV);
+            Console.WriteLine();
 
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
+            Console.WriteLine("CspKeyContainerInfo information:");
 
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
+            Console.WriteLine();
 
+            // Create a new CspKeyContainerInfo object.
+            CspKeyContainerInfo keyInfo = rsa.CspKeyContainerInfo;
 
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
+            // Display the value of each property.
+
+            Console.WriteLine("Accessible property: " + keyInfo.Accessible);
+
+            Console.WriteLine("Exportable property: " + keyInfo.Exportable);
+
+            Console.WriteLine("HardwareDevice property: " + keyInfo.HardwareDevice);
+
+            Console.WriteLine("KeyContainerName property: " + keyInfo.KeyContainerName);
+
+            Console.WriteLine("KeyNumber property: " + keyInfo.KeyNumber.ToString());
+
+            Console.WriteLine("MachineKeyStore property: " + keyInfo.MachineKeyStore);
+
+            Console.WriteLine("Protected property: " + keyInfo.Protected);
+
+            Console.WriteLine("ProviderName property: " + keyInfo.ProviderName);
+
+            Console.WriteLine("ProviderType property: " + keyInfo.ProviderType);
+
+            Console.WriteLine("RandomlyGenerated property: " + keyInfo.RandomlyGenerated);
+
+            Console.WriteLine("Removable property: " + keyInfo.Removable);
+
+            Console.WriteLine("UniqueKeyContainerName property: " + keyInfo.UniqueKeyContainerName);
+
 
         }
-
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        catch (Exception e)
         {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("Key");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an TripleDESCryptoServiceProvider object
-            // with the specified key and IV.
-            using (TripleDESCryptoServiceProvider tdsAlg = new TripleDESCryptoServiceProvider())
-            {
-                tdsAlg.Key = Key;
-                tdsAlg.IV = IV;
-
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = tdsAlg.CreateDecryptor(tdsAlg.Key, tdsAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-
-            }
-
-            return plaintext;
-
+            Console.WriteLine(e.ToString());
+        }
+        finally
+        {
+            // Clear the key.
+            rsa.Clear();
         }
     }
 }

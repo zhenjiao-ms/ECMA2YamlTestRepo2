@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Globalization.TaiwanLunisolarCalendar.DaysInYearBeforeMinSupportedYear
-internalonly: False
----
-
----
 uid: System.Globalization.TaiwanLunisolarCalendar.MaxSupportedDateTime
 internalonly: False
 ---

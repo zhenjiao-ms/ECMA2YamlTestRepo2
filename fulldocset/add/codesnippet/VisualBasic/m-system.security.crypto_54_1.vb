@@ -1,89 +1,104 @@
 Imports System.Security.Cryptography
 Imports System.Text
+Imports System.IO
 
-Module RSACSPExample
+Module TripleDESSample
 
     Sub Main()
         Try
-            'Create a UnicodeEncoder to convert between byte array and string.
-            Dim ByteConverter As New UnicodeEncoding
+            ' Create a new TripleDES object to generate a key 
+            ' and initialization vector (IV).  Specify one 
+            ' of the recognized simple names for this 
+            ' algorithm.
+            Dim TripleDESalg As TripleDES = TripleDES.Create("TripleDES")
 
-            'Create byte arrays to hold original, encrypted, and decrypted data.
-            Dim dataToEncrypt As Byte() = ByteConverter.GetBytes("Data to Encrypt")
-            Dim encryptedData() As Byte
-            Dim decryptedData() As Byte
+            ' Create a string to encrypt.
+            Dim sData As String = "Here is some data to encrypt."
+            Dim FileName As String = "CText.txt"
 
-            'Create a new instance of RSACryptoServiceProvider to generate
-            'public and private key data.  Pass an integer specifying a key-
-            'length of 2048.
-            Dim RSAalg As New RSACryptoServiceProvider(2048)
+            ' Encrypt text to a file using the file name, key, and IV.
+            EncryptTextToFile(sData, FileName, TripleDESalg.Key, TripleDESalg.IV)
 
-            'Display the key-legth to the console.
-            Console.WriteLine("A new key pair of legth {0} was created", RSAalg.KeySize)
+            ' Decrypt the text from a file using the file name, key, and IV.
+            Dim Final As String = DecryptTextFromFile(FileName, TripleDESalg.Key, TripleDESalg.IV)
 
-            'Pass the data to ENCRYPT, the public key information 
-            '(using RSACryptoServiceProvider.ExportParameters(false),
-            'and a boolean flag specifying no OAEP padding.
-            encryptedData = RSAEncrypt(dataToEncrypt, RSAalg.ExportParameters(False), False)
-
-            'Pass the data to DECRYPT, the private key information 
-            '(using RSACryptoServiceProvider.ExportParameters(true),
-            'and a boolean flag specifying no OAEP padding.
-            decryptedData = RSADecrypt(encryptedData, RSAalg.ExportParameters(True), False)
-
-            'Display the decrypted plaintext to the console. 
-            Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData))
-        Catch e As ArgumentNullException
-            'Catch this exception in case the encryption did
-            'not succeed.
-            Console.WriteLine("Encryption failed.")
-        End Try
-    End Sub 'Main
-
-
-    Function RSAEncrypt(ByVal DataToEncrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
-        Try
-            'Create a new instance of RSACryptoServiceProvider.
-            Dim RSAalg As New RSACryptoServiceProvider
-
-            'Import the RSA Key information. This only needs
-            'toinclude the public key information.
-            RSAalg.ImportParameters(RSAKeyInfo)
-
-            'Encrypt the passed byte array and specify OAEP padding.  
-            'OAEP padding is only available on Microsoft Windows XP or
-            'later.  
-            Return RSAalg.Encrypt(DataToEncrypt, DoOAEPPadding)
-            'Catch and display a CryptographicException  
-            'to the console.
-        Catch e As CryptographicException
+            ' Display the decrypted string to the console.
+            Console.WriteLine(Final)
+        Catch e As Exception
             Console.WriteLine(e.Message)
-
-            Return Nothing
         End Try
-    End Function 
+    End Sub
 
 
-    Function RSADecrypt(ByVal DataToDecrypt() As Byte, ByVal RSAKeyInfo As RSAParameters, ByVal DoOAEPPadding As Boolean) As Byte()
+    Sub EncryptTextToFile(ByVal Data As String, ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte)
         Try
-            'Create a new instance of RSACryptoServiceProvider.
-            Dim RSAalg As New RSACryptoServiceProvider
+            ' Create or open the specified file.
+            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
 
-            'Import the RSA Key information. This needs
-            'to include the private key information.
-            RSAalg.ImportParameters(RSAKeyInfo)
+            ' Create a new TripleDES object.
+            Dim TripleDESalg As TripleDES = TripleDES.Create
 
-            'Decrypt the passed byte array and specify OAEP padding.  
-            'OAEP padding is only available on Microsoft Windows XP or
-            'later.  
-            Return RSAalg.Decrypt(DataToDecrypt, DoOAEPPadding)
-            'Catch and display a CryptographicException  
-            'to the console.
+            ' Create a CryptoStream using the FileStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(fStream, _
+                                           TripleDESalg.CreateEncryptor(Key, IV), _
+                                           CryptoStreamMode.Write)
+
+            ' Create a StreamWriter using the CryptoStream.
+            Dim sWriter As New StreamWriter(cStream)
+
+            ' Write the data to the stream 
+            ' to encrypt it.
+            sWriter.WriteLine(Data)
+
+            ' Close the streams and
+            ' close the file.
+            sWriter.Close()
+            cStream.Close()
+            fStream.Close()
         Catch e As CryptographicException
-            Console.WriteLine(e.ToString())
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+        Catch e As UnauthorizedAccessException
+            Console.WriteLine("A file error occurred: {0}", e.Message)
+        End Try
+    End Sub
 
+
+    Function DecryptTextFromFile(ByVal FileName As String, ByVal Key() As Byte, ByVal IV() As Byte) As String
+        Try
+            ' Create or open the specified file. 
+            Dim fStream As FileStream = File.Open(FileName, FileMode.OpenOrCreate)
+
+            ' Create a new TripleDES object.
+            Dim TripleDESalg As TripleDES = TripleDES.Create
+
+            ' Create a CryptoStream using the FileStream 
+            ' and the passed key and initialization vector (IV).
+            Dim cStream As New CryptoStream(fStream, _
+                                            TripleDESalg.CreateDecryptor(Key, IV), _
+                                            CryptoStreamMode.Read)
+
+            ' Create a StreamReader using the CryptoStream.
+            Dim sReader As New StreamReader(cStream)
+
+            ' Read the data from the stream 
+            ' to decrypt it.
+            Dim val As String = sReader.ReadLine()
+
+            ' Close the streams and
+            ' close the file.
+            sReader.Close()
+            cStream.Close()
+            fStream.Close()
+
+            ' Return the string. 
+            Return val
+        Catch e As CryptographicException
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message)
+            Return Nothing
+        Catch e As UnauthorizedAccessException
+            Console.WriteLine("A file error occurred: {0}", e.Message)
             Return Nothing
         End Try
-    End Function  
-
+    End Function
 End Module

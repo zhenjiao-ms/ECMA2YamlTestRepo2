@@ -1,7 +1,4 @@
-public:
-   [MergableProperty(true)]
-   property int MyProperty 
-   {
+      [Browsable(true)]
       int get()
       {
          // Insert code here.
@@ -9,6 +6,7 @@ public:
       }
       void set( int value )
       {
+         
          // Insert code here.
       }
    }

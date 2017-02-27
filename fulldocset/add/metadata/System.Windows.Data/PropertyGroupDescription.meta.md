@@ -34,17 +34,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Data.PropertyGroupDescription.CompareNameAscending
-internalonly: False
----
-
----
 uid: System.Windows.Data.PropertyGroupDescription.NamesMatch(System.Object,System.Object)
-internalonly: False
----
-
----
-uid: System.Windows.Data.PropertyGroupDescription.CompareNameDescending
 internalonly: False
 ---
 

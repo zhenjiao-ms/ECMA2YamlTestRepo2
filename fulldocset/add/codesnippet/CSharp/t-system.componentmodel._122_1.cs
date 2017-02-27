@@ -1,2 +1,10 @@
-                // Obtains and shows the size of the standard design-mode grid square.
-                Size size = (Size)designerOptionService.GetOptionValue("WindowsFormsDesigner\\General", "GridSize");
+    [Description("The image associated with the control"),Category("Appearance")] 
+     public Image MyImage {
+        get {
+           // Insert code here.
+           return image1;
+        }
+        set {
+           // Insert code here.
+        }
+     }

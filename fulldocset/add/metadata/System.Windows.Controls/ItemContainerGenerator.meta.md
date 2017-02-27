@@ -34,17 +34,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.ItemContainerGenerator.GenerateBatches
-internalonly: False
----
-
----
 uid: System.Windows.Controls.ItemContainerGenerator.System#Windows#Controls#Primitives#IItemContainerGenerator#StartAt(System.Windows.Controls.Primitives.GeneratorPosition,System.Windows.Controls.Primitives.GeneratorDirection)
-internalonly: False
----
-
----
-uid: System.Windows.Controls.ItemContainerGenerator.Items
 internalonly: False
 ---
 
@@ -105,10 +95,5 @@ internalonly: False
 
 ---
 uid: System.Windows.Controls.ItemContainerGenerator.System#Windows#Controls#Primitives#IItemContainerGenerator#StartAt(System.Windows.Controls.Primitives.GeneratorPosition,System.Windows.Controls.Primitives.GeneratorDirection,System.Boolean)
-internalonly: False
----
-
----
-uid: System.Windows.Controls.ItemContainerGenerator.IndexFromContainer(System.Windows.DependencyObject,System.Boolean)
 internalonly: False
 ---

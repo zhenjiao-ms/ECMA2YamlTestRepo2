@@ -19,16 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.Repeater.SaveViewState
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.Repeater.SelectMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.Repeater.DataSource
 internalonly: False
 ---
@@ -40,11 +30,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.Repeater.DataSourceID
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.Repeater.TrackViewState
 internalonly: False
 ---
 
@@ -64,11 +49,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.Repeater.LoadViewState(System.Object)
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.Repeater.InitializeItem(System.Web.UI.WebControls.RepeaterItem)
 internalonly: False
 ---
@@ -80,16 +60,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.Repeater.CreateChildControls
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.Repeater.CreatingModelDataSource
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.Repeater.CallingDataMethods
 internalonly: False
 ---
 
@@ -124,11 +94,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.Repeater.IsDataBindingAutomatic
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.Repeater.DataMember
 internalonly: False
 ---
@@ -150,11 +115,6 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.Repeater.OnDataPropertyChanged
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.Repeater.OnCreatingModelDataSource(System.Web.UI.WebControls.CreatingModelDataSourceEventArgs)
 internalonly: False
 ---
 
@@ -225,10 +185,5 @@ internalonly: False
 
 ---
 uid: System.Web.UI.WebControls.Repeater.OnItemCreated(System.Web.UI.WebControls.RepeaterItemEventArgs)
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.Repeater.ItemType
 internalonly: False
 ---

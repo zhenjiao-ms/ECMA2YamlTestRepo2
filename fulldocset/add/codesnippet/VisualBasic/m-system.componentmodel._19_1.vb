@@ -1,66 +1,68 @@
-        Public Overrides Function GetSortedActionItems() _
-        As DesignerActionItemCollection
-            Dim items As New DesignerActionItemCollection()
+    ' This utility method connects the designer to various
+    ' services it will use. 
+    Private Sub InitializeServices()
 
-            'Define static section header entries.
-            items.Add(New DesignerActionHeaderItem("Appearance"))
-            items.Add(New DesignerActionHeaderItem("Information"))
+        ' Acquire a reference to DesignerActionService.
+        Me.actionService = GetService(GetType(DesignerActionService))
 
-            'Boolean property for locking color selections.
-            items.Add(New DesignerActionPropertyItem( _
-            "LockColors", _
-            "Lock Colors", _
-            "Appearance", _
-            "Locks the color properties."))
+        ' Acquire a reference to DesignerActionUIService.
+        Me.actionUiService = GetService(GetType(DesignerActionUIService))
 
-            If Not LockColors Then
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "BackColor", _
-                "Back Color", _
-                "Appearance", _
-                "Selects the background color."))
+        ' Acquire a reference to IComponentChangeService.
+        Me.changeService = GetService(GetType(IComponentChangeService))
 
-                items.Add( _
-                New DesignerActionPropertyItem( _
-                "ForeColor", _
-                "Fore Color", _
-                "Appearance", _
-                "Selects the foreground color."))
+        ' Hook the IComponentChangeService events.
+        If (Me.changeService IsNot Nothing) Then
+            AddHandler Me.changeService.ComponentChanged, AddressOf ChangeService_ComponentChanged
 
-                'This next method item is also added to the context menu 
-                ' (as a designer verb).
-                items.Add( _
-                New DesignerActionMethodItem( _
-                Me, _
-                "InvertColors", _
-                "Invert Colors", _
-                "Appearance", _
-                "Inverts the fore and background colors.", _
-                True))
-            End If
-            items.Add( _
-            New DesignerActionPropertyItem( _
-            "Text", _
-            "Text String", _
-            "Appearance", _
-            "Sets the display text."))
+            AddHandler Me.changeService.ComponentAdded, AddressOf ChangeService_ComponentAdded
 
-            'Create entries for static Information section.
-            Dim location As New StringBuilder("Location: ")
-            location.Append(colLabel.Location)
-            Dim size As New StringBuilder("Size: ")
-            size.Append(colLabel.Size)
+            AddHandler Me.changeService.ComponentRemoved, AddressOf changeService_ComponentRemoved
+        End If
 
-            items.Add( _
-            New DesignerActionTextItem( _
-            location.ToString(), _
-            "Information"))
+        ' Acquire a reference to ISelectionService.
+        Me.selectionService = GetService(GetType(ISelectionService))
 
-            items.Add( _
-            New DesignerActionTextItem( _
-            size.ToString(), _
-            "Information"))
+        ' Hook the SelectionChanged event.
+        If (Me.selectionService IsNot Nothing) Then
+            AddHandler Me.selectionService.SelectionChanged, AddressOf selectionService_SelectionChanged
+        End If
 
-            Return items
-        End Function
+        ' Acquire a reference to IDesignerEventService.
+        Me.eventService = GetService(GetType(IDesignerEventService))
+
+        If (Me.eventService IsNot Nothing) Then
+            AddHandler Me.eventService.ActiveDesignerChanged, AddressOf eventService_ActiveDesignerChanged
+        End If
+
+        ' Acquire a reference to IDesignerHost.
+        Me.host = GetService(GetType(IDesignerHost))
+
+        ' Acquire a reference to IDesignerOptionService.
+        Me.optionService = GetService(GetType(IDesignerOptionService))
+
+        ' Acquire a reference to IEventBindingService.
+        Me.eventBindingService = GetService(GetType(IEventBindingService))
+
+        ' Acquire a reference to IExtenderListService.
+        Me.listService = GetService(GetType(IExtenderListService))
+
+        ' Acquire a reference to IReferenceService.
+        Me.referenceService = GetService(GetType(IReferenceService))
+
+        ' Acquire a reference to ITypeResolutionService.
+        Me.typeResService = GetService(GetType(ITypeResolutionService))
+
+        ' Acquire a reference to IComponentDiscoveryService.
+        Me.componentDiscoveryService = GetService(GetType(IComponentDiscoveryService))
+
+        ' Acquire a reference to IToolboxService.
+        Me.toolboxService = GetService(GetType(IToolboxService))
+
+        ' Acquire a reference to UndoEngine.
+        Me.undoEng = GetService(GetType(UndoEngine))
+
+        If (Me.undoEng IsNot Nothing) Then
+            MessageBox.Show("UndoEngine")
+        End If
+    End Sub

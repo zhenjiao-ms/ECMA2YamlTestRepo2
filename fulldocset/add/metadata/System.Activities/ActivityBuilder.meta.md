@@ -24,27 +24,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.ActivityBuilder.ShouldSerializePropertyReferences(System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.ActivityBuilder.GetPropertyReferences(System.Object)
-internalonly: False
----
-
----
-uid: System.Activities.ActivityBuilder.ShouldSerializePropertyReference(System.Object)
-internalonly: False
----
-
----
 uid: System.Activities.ActivityBuilder.System#Activities#Debugger#IDebuggableWorkflowTree#GetWorkflowRoot
-internalonly: False
----
-
----
-uid: System.Activities.ActivityBuilder.ImplementationVersion
 internalonly: False
 ---
 

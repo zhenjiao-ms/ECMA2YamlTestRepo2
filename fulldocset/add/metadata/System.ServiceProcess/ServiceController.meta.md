@@ -84,11 +84,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceProcess.ServiceController.StartType
-internalonly: False
----
-
----
 uid: System.ServiceProcess.ServiceController.Pause
 internalonly: False
 ---

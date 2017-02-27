@@ -49,22 +49,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.Common.DbDataReader.NextResultAsync(System.Threading.CancellationToken)
-internalonly: False
----
-
----
 uid: System.Data.Common.DbDataReader.GetFloat(System.Int32)
-internalonly: False
----
-
----
-uid: System.Data.Common.DbDataReader.IsDBNullAsync(System.Int32,System.Threading.CancellationToken)
-internalonly: False
----
-
----
-uid: System.Data.Common.DbDataReader.ReadAsync(System.Threading.CancellationToken)
 internalonly: False
 ---
 
@@ -109,11 +94,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.Common.DbDataReader.IsDBNullAsync(System.Int32)
-internalonly: False
----
-
----
 uid: System.Data.Common.DbDataReader.GetProviderSpecificValues(System.Object[])
 internalonly: False
 ---
@@ -130,11 +110,6 @@ internalonly: False
 
 ---
 uid: System.Data.Common.DbDataReader.GetInt64(System.Int32)
-internalonly: False
----
-
----
-uid: System.Data.Common.DbDataReader.GetStream(System.Int32)
 internalonly: False
 ---
 
@@ -234,22 +209,7 @@ internalonly: False
 ---
 
 ---
-uid: System.Data.Common.DbDataReader.NextResultAsync
-internalonly: False
----
-
----
-uid: System.Data.Common.DbDataReader.GetTextReader(System.Int32)
-internalonly: False
----
-
----
 uid: System.Data.Common.DbDataReader.Read
-internalonly: False
----
-
----
-uid: System.Data.Common.DbDataReader.ReadAsync
 internalonly: False
 ---
 

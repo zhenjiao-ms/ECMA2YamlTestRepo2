@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.ServiceModel.Configuration.TcpTransportSecurityElement.SslProtocols
-internalonly: False
----
-
----
 uid: System.ServiceModel.Configuration.TcpTransportSecurityElement.ProtectionLevel
 internalonly: False
 ---

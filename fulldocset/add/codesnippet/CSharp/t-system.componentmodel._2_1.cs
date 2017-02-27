@@ -1,4 +1,4 @@
-            uint myUInt32 = 967299;
-            string myUInt32String = "1345556";
-            Console.WriteLine(TypeDescriptor.GetConverter(myUInt32).ConvertTo(myUInt32, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myUInt32).ConvertFrom(myUInt32String));    
+            long myInt64 = -123456789123;
+            string myInt64String = "+184467440737095551";
+            Console.WriteLine(TypeDescriptor.GetConverter(myInt64).ConvertTo(myInt64, typeof(string))); 
+            Console.WriteLine(TypeDescriptor.GetConverter(myInt64).ConvertFrom(myInt64String));    

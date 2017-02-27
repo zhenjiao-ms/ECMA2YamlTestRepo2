@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Console.IsErrorRedirected
-internalonly: False
----
-
----
 uid: System.Console.SetError(System.IO.TextWriter)
 internalonly: False
 ---
@@ -109,11 +104,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Console.IsOutputRedirected
-internalonly: False
----
-
----
 uid: System.Console.Write(System.Single)
 internalonly: False
 ---
@@ -175,11 +165,6 @@ internalonly: False
 
 ---
 uid: System.Console.SetCursorPosition(System.Int32,System.Int32)
-internalonly: False
----
-
----
-uid: System.Console.IsInputRedirected
 internalonly: False
 ---
 

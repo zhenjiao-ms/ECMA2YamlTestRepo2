@@ -1,42 +1,51 @@
 Imports System
-Imports System.Security.Cryptography
-
- _
-
-Class DSASample
+Imports System.Security.Cryptography.Xml
+Imports System.Xml
+Imports System.IO
 
 
-    Shared Sub Main()
-        Try
-            'Create a new instance of DSACryptoServiceProvider.
-            Dim DSA As New DSACryptoServiceProvider()
+'/ This sample used the EncryptedData class to create a EncryptedData element
+'/ and write it to an XML file. It demonstrates the use of CipherReference.
+Module Module1
 
-            'The hash to sign.
-            Dim Hash As Byte() = {59, 4, 248, 102, 77, 97, 142, 201, 210, 12, 224, 93, 25, 41, 100, 197, 213, 134, 130, 135}
+    Sub Main()
+        ' Create a URI string.
+        Dim uri As String = "http://www.woodgrovebank.com/document.xml"
+        ' Create a Base64 transform. The input content retrieved from the
+        ' URI should be Base64-decoded before other processing.
+        Dim base64 As Transform = New XmlDsigBase64Transform
+        Dim tc As New TransformChain
+        tc.Add(base64)
+        ' Create <CipherReference> information.
+        Dim reference As CipherReference = New CipherReference(uri, tc)
 
-            'Create an DSASignatureFormatter object and pass it the 
-            'DSACryptoServiceProvider to transfer the key information.
-            Dim DSAFormatter As New DSASignatureFormatter(DSA)
+        ' Create a new CipherData object.
+        ' Note that you cannot assign both a CipherReference and a CipherValue
+        ' to a CipherData object.
+        Dim cd As CipherData = New CipherData(Reference)
 
-            'Set the hash algorithm to SHA1.
-            DSAFormatter.SetHashAlgorithm("SHA1")
+        ' Create a new EncryptedData object.
+        Dim ed As New EncryptedData
 
-            'Create a signature for HashValue and return it.
-            Dim SignedHash As Byte() = DSAFormatter.CreateSignature(Hash)
+        'Add an encryption method to the object.
+        ed.Id = "ED"
+        ed.EncryptionMethod = New EncryptionMethod("http://www.w3.org/2001/04/xmlenc#aes128-cbc")
+        ed.CipherData = cd
 
-            'Create an DSASignatureDeformatter object and pass it the 
-            'DSACryptoServiceProvider to transfer the key information.
-            Dim DSADeformatter As New DSASignatureDeformatter(DSA)
+        'Add key information to the object.
+        Dim ki As New KeyInfo
+        ki.AddClause(New KeyInfoRetrievalMethod("#EK", "http://www.w3.org/2001/04/xmlenc#EncryptedKey"))
+        ed.KeyInfo = ki
 
-            'Verify the hash and display the results to the console.
-            If DSADeformatter.VerifySignature(Hash, SignedHash) Then
-                Console.WriteLine("The signature was verified.")
-            Else
-                Console.WriteLine("The signature was not verified.")
-            End If
+        ' Create new XML document and put encrypted data into it.
+        Dim doc As New XmlDocument
+        Dim encryptionPropertyElement As XmlElement = CType(doc.CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl), XmlElement)
+        Dim ep As New EncryptionProperty(encryptionPropertyElement)
+        ed.AddProperty(ep)
 
-        Catch e As CryptographicException
-            Console.WriteLine(e.Message)
-        End Try
+        ' Output the resulting XML information into a file.
+        Dim path As String = "c:\test\MyTest.xml"
+        File.WriteAllText(path, ed.GetXml().OuterXml)
     End Sub
-End Class
+
+End Module

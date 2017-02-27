@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Tasks.UpdateManifest.TargetFrameworkVersion
-internalonly: False
----
-
----
 uid: Microsoft.Build.Tasks.UpdateManifest.InputManifest
 internalonly: False
 ---

@@ -1,172 +1,101 @@
 using System;
-using System.Xml;
 using System.Security.Cryptography;
-using System.Security.Cryptography.Xml;
+using System.Text;
 
-	class Program
-	{
-		static void Main(string[] args)
-		{
-
-			// Create an XmlDocument object.
-			XmlDocument xmlDoc = new XmlDocument();
-
-			// Load an XML file into the XmlDocument object.
-			try
-			{
-				xmlDoc.PreserveWhitespace = true;
-				xmlDoc.Load("test.xml");
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-				return;
-			}
-
-			// Create a new TripleDES key. 
-			TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
-
-			// Create a new instance of the TrippleDESDocumentEncryption object
-			// defined in this sample.
-			TrippleDESDocumentEncryption xmlTDES = new TrippleDESDocumentEncryption(xmlDoc, tDESkey);
-			
-			try
-			{
-				// Encrypt the "creditcard" element.
-				xmlTDES.Encrypt("creditcard");
-
-				// Display the encrypted XML to the console.
-				Console.WriteLine("Encrypted XML:");
-				Console.WriteLine();
-				Console.WriteLine(xmlTDES.Doc.OuterXml);
-
-				// Decrypt the "creditcard" element.
-				xmlTDES.Decrypt();
-
-				// Display the encrypted XML to the console.
-				Console.WriteLine();
-				Console.WriteLine("Decrypted XML:");
-				Console.WriteLine();
-				Console.WriteLine(xmlTDES.Doc.OuterXml);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
-			finally
-			{
-				// Clear the TripleDES key.
-				xmlTDES.Clear();
-			}
-
-		}
-
-	}
-
-class TrippleDESDocumentEncryption
+public class PasswordDerivedBytesExample
 {
-	protected XmlDocument docValue;
-	protected TripleDES algValue;
 
-	public TrippleDESDocumentEncryption(XmlDocument Doc, TripleDES Key)
-	{
-		if (Doc != null)
-		{
-			docValue = Doc;
-		}
-		else
-		{
-			throw new ArgumentNullException("Doc");
-		}
+    public static void Main(String[] args)
+    {
 
-		if (Key != null)
-		{
+        // Get a password from the user.
+        Console.WriteLine("Enter a password to produce a key:");
 
-			algValue = Key;
-		}
-		else
-		{
-			throw new ArgumentNullException("Key");
-		}
-	}
+        byte[] pwd = Encoding.Unicode.GetBytes(Console.ReadLine());
 
-	public XmlDocument Doc { set { docValue = value; } get { return docValue; } }
-	public TripleDES Alg { set { algValue = value; } get { return algValue; } }
+        byte[] salt = CreateRandomSalt(7);
 
-	public void Clear()
-	{
-		if (algValue != null)
-		{
-			algValue.Clear();
-		}
-		else
-		{
-			throw new Exception("No TripleDES key was found to clear.");
-		}
-	}
+        // Create a TripleDESCryptoServiceProvider object.
+        TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
 
-	public void Encrypt(string Element)
-	{
-		// Find the element by name and create a new
-		// XmlElement object.
-		XmlElement inputElement = docValue.GetElementsByTagName(Element)[0] as XmlElement;
+        try
+        {
+            Console.WriteLine("Creating a key with PasswordDeriveBytes...");
 
-		// If the element was not found, throw an exception.
-		if (inputElement == null)
-		{
-			throw new Exception("The element was not found.");
-		}
+            // Create a PasswordDeriveBytes object and then create
+            // a TripleDES key from the password and salt.
+            PasswordDeriveBytes pdb = new PasswordDeriveBytes(pwd, salt);
 
-		// Create a new EncryptedXml object.
-		EncryptedXml exml = new EncryptedXml(docValue);
 
-		// Encrypt the element using the symmetric key.
-		byte[] rgbOutput = exml.EncryptData(inputElement, algValue, false);
+            // Create the key and set it to the Key property
+            // of the TripleDESCryptoServiceProvider object.
+            tdes.Key = pdb.CryptDeriveKey("TripleDES", "SHA1", 192, tdes.IV);
 
-		// Create an EncryptedData object and populate it.
-		EncryptedData ed = new EncryptedData();
 
-		// Specify the namespace URI for XML encryption elements.
-		ed.Type = EncryptedXml.XmlEncElementUrl;
+            Console.WriteLine("Operation complete.");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            // Clear the buffers
+            ClearBytes(pwd);
+            ClearBytes(salt);
 
-		// Specify the namespace URI for the TrippleDES algorithm.
-		ed.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
+            // Clear the key.
+            tdes.Clear();
+        }
 
-		// Create a CipherData element.
-		ed.CipherData = new CipherData();
+        Console.ReadLine();
+    }
 
-		// Set the CipherData element to the value of the encrypted XML element.
-		ed.CipherData.CipherValue = rgbOutput;
+    //////////////////////////////////////////////////////////
+    // Helper methods:
+    // CreateRandomSalt: Generates a random salt value of the
+    //                   specified length.
+    //
+    // ClearBytes: Clear the bytes in a buffer so they can't
+    //             later be read from memory.
+    //////////////////////////////////////////////////////////
 
-		// Replace the plaintext XML elemnt with an EncryptedData element.
-		EncryptedXml.ReplaceElement(inputElement, ed, false);
-	}
+    public static byte[] CreateRandomSalt(int length)
+    {
+        // Create a buffer
+        byte[] randBytes;
 
-	public void Decrypt()
-	{
+        if (length >= 1)
+        {
+            randBytes = new byte[length];
+        }
+        else
+        {
+            randBytes = new byte[1];
+        }
 
-		// XmlElement object.
-		XmlElement encryptedElement = docValue.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+        // Create a new RNGCryptoServiceProvider.
+        RNGCryptoServiceProvider rand = new RNGCryptoServiceProvider();
 
-		// If the EncryptedData element was not found, throw an exception.
-		if (encryptedElement == null)
-		{
-			throw new Exception("The EncryptedData element was not found.");
-		}
+        // Fill the buffer with random bytes.
+        rand.GetBytes(randBytes);
 
-		// Create an EncryptedData object and populate it.
-		EncryptedData ed = new EncryptedData();
-		ed.LoadXml(encryptedElement);
+        // return the bytes.
+        return randBytes;
+    }
 
-		// Create a new EncryptedXml object.
-		EncryptedXml exml = new EncryptedXml();
+    public static void ClearBytes(byte[] buffer)
+    {
+        // Check arguments.
+        if (buffer == null)
+        {
+            throw new ArgumentException("buffer");
+        }
 
-		// Decrypt the element using the symmetric key.
-		byte[] rgbOutput = exml.DecryptData(ed, algValue);
-
-		// Replace the encryptedData element with the plaintext XML elemnt.
-		exml.ReplaceData(encryptedElement, rgbOutput);
-
-	}
-
+        // Set each byte in the buffer to 0.
+        for (int x = 0; x < buffer.Length; x++)
+        {
+            buffer[x] = 0;
+        }
+    }
 }

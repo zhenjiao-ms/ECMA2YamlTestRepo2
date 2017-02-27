@@ -42,8 +42,3 @@ internalonly: False
 uid: Microsoft.Build.Tasks.GetFrameworkPath.FrameworkVersion30Path
 internalonly: False
 ---
-
----
-uid: Microsoft.Build.Tasks.GetFrameworkPath.FrameworkVersion45Path
-internalonly: False
----

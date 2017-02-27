@@ -1,128 +1,146 @@
 using System;
-using System.IO;
+using System.Xml;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 
-namespace RijndaelManaged_Example
+class Program
 {
-    class RijndaelExample
+    static void Main(string[] args)
     {
-        public static void Main()
+
+        // Create an XmlDocument object.
+        XmlDocument xmlDoc = new XmlDocument();
+
+        // Load an XML file into the XmlDocument object.
+        try
         {
-            try
-            {
-
-                string original = "Here is some data to encrypt!";
-
-                // Create a new instance of the RijndaelManaged
-                // class.  This generates a new key and initialization 
-                // vector (IV).
-                using (RijndaelManaged myRijndael = new RijndaelManaged())
-                {
-
-					myRijndael.GenerateKey();
-                	myRijndael.GenerateIV();
-                    // Encrypt the string to an array of bytes.
-                    byte[] encrypted = EncryptStringToBytes(original, myRijndael.Key, myRijndael.IV);
-
-                    // Decrypt the bytes to a string.
-                    string roundtrip = DecryptStringFromBytes(encrypted, myRijndael.Key, myRijndael.IV);
-
-                    //Display the original data and the decrypted data.
-                    Console.WriteLine("Original:   {0}", original);
-                    Console.WriteLine("Round Trip: {0}", roundtrip);
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: {0}", e.Message);
-            }
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load("test.xml");
         }
-        static byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        catch (Exception e)
         {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
-            // Create an RijndaelManaged object
-            // with the specified key and IV.
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
-
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform encryptor = rijAlg.CreateEncryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
-
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-
+            Console.WriteLine(e.Message);
         }
 
-        static string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        // Create a new TripleDES key. 
+        TripleDESCryptoServiceProvider tDESkey = new TripleDESCryptoServiceProvider();
+
+
+        try
         {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
+            // Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", tDESkey);
 
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
+            // Display the encrypted XML to the console.
+            Console.WriteLine("Encrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
 
-            // Create an RijndaelManaged object
-            // with the specified key and IV.
-            using (RijndaelManaged rijAlg = new RijndaelManaged())
-            {
-                rijAlg.Key = Key;
-                rijAlg.IV = IV;
+            // Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, tDESkey);
 
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = rijAlg.CreateDecryptor(rijAlg.Key, rijAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-
-            }
-
-            return plaintext;
-
+            // Display the encrypted XML to the console.
+            Console.WriteLine();
+            Console.WriteLine("Decrypted XML:");
+            Console.WriteLine();
+            Console.WriteLine(xmlDoc.OuterXml);
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        finally
+        {
+            // Clear the TripleDES key.
+            tDESkey.Clear();
+        }
+
     }
+
+    public static void Encrypt(XmlDocument Doc, string ElementToEncrypt, TripleDESCryptoServiceProvider Alg)
+    {
+
+        ////////////////////////////////////////////////
+        // Find the specified element in the XmlDocument
+        // object and create a new XmlElemnt object.
+        ////////////////////////////////////////////////
+
+        XmlElement elementToEncrypt = Doc.GetElementsByTagName(ElementToEncrypt)[0] as XmlElement;
+
+        // Throw an XmlException if the element was not found.
+        if (elementToEncrypt == null)
+        {
+            throw new XmlException("The specified element was not found");
+
+        }
+
+        //////////////////////////////////////////////////
+        // Create a new instance of the EncryptedXml class 
+        // and use it to encrypt the XmlElement with the 
+        // symmetric key.
+        //////////////////////////////////////////////////
+
+        EncryptedXml eXml = new EncryptedXml();
+
+        byte[] encryptedElement = eXml.EncryptData(elementToEncrypt, Alg, false);
+
+        ////////////////////////////////////////////////
+        // Construct an EncryptedData object and populate
+        // it with the desired encryption information.
+        ////////////////////////////////////////////////
+
+
+        EncryptedData edElement = new EncryptedData();
+        
+        edElement.Type = EncryptedXml.XmlEncElementUrl;
+
+  
+        // Create an EncryptionMethod element so that the 
+        // receiver knows which algorithm to use for decryption.
+        // Determine what kind of algorithm is being used and
+        // supply the appropriate URL to the EncryptionMethod element.
+
+        edElement.EncryptionMethod = new EncryptionMethod(EncryptedXml.XmlEncTripleDESUrl);
+
+        // Add the encrypted element data to the 
+        // EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement;
+
+        ////////////////////////////////////////////////////
+        // Replace the element from the original XmlDocument
+        // object with the EncryptedData element.
+        ////////////////////////////////////////////////////
+
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, false);
+
+    }
+
+    public static void Decrypt(XmlDocument Doc, SymmetricAlgorithm Alg)
+    {
+
+        // Find the EncryptedData element in the XmlDocument.
+        XmlElement encryptedElement = Doc.GetElementsByTagName("EncryptedData")[0] as XmlElement;
+
+        // If the EncryptedData element was not found, throw an exception.
+        if (encryptedElement == null)
+        {
+            throw new XmlException("The EncryptedData element was not found.");
+        }
+
+        // Create an EncryptedData object and populate it.
+        EncryptedData edElement = new EncryptedData();
+        edElement.LoadXml(encryptedElement);
+
+        // Create a new EncryptedXml object.
+        EncryptedXml exml = new EncryptedXml();
+
+        // Decrypt the element using the symmetric key.
+        byte[] rgbOutput = exml.DecryptData(edElement, Alg);
+
+        // Replace the encryptedData element with the plaintext XML element.
+        exml.ReplaceData(encryptedElement, rgbOutput);
+
+    }
+
+
 }

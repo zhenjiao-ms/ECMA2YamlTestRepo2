@@ -1,15 +1,21 @@
-Imports System
 Imports System.Runtime.InteropServices
 
-Public Class MyClassThatNeedsToRegister
+Class SampleClass
     
-    <ComRegisterFunctionAttribute()> Public Shared Sub _
-      RegisterFunction(t As Type)
+    Public Sub New()
         'Insert code here.
     End Sub
     
-    <ComUnregisterFunctionAttribute()> Public Shared Sub _
-      UnregisterFunction(t As Type)
+    <DispIdAttribute(8)> _ 
+    Public Sub MyMethod()
         'Insert code here.
-    End Sub
+    End Sub    
+    
+    Public Function MyOtherMethod() As Integer
+        'Insert code here.
+        Return 0
+    End Function
+    
+    <DispId(9)> _
+    Public MyField As Boolean
 End Class

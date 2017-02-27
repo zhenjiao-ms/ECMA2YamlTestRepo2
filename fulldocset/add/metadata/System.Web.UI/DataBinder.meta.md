@@ -14,11 +14,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.DataBinder.IsBindableType(System.Type)
-internalonly: False
----
-
----
 uid: System.Web.UI.DataBinder.GetDataItem(System.Object)
 internalonly: False
 ---

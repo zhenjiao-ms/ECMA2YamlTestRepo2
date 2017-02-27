@@ -1,4 +1,18 @@
-            long myInt64 = -123456789123;
-            string myInt64String = "+184467440737095551";
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt64).ConvertTo(myInt64, typeof(string))); 
-            Console.WriteLine(TypeDescriptor.GetConverter(myInt64).ConvertFrom(myInt64String));    
+using System;
+using System.Web.DynamicData;
+using System.ComponentModel.DataAnnotations;
+
+[MetadataType(typeof(ProductMetadata))]
+public partial class Product 
+{
+
+}
+
+public partial class ProductMetadata
+{
+    [UIHint("UnitsInStock")]
+    [Range(100, 10000, 
+    ErrorMessage = "Units in stock should be between {1} and {2}.")]
+    public object UnitsInStock;
+
+}

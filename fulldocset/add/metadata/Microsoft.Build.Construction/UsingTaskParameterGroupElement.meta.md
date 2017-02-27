@@ -19,11 +19,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Construction.UsingTaskParameterGroupElement.ConditionLocation
-internalonly: False
----
-
----
 uid: Microsoft.Build.Construction.UsingTaskParameterGroupElement.Parameters
 internalonly: False
 ---

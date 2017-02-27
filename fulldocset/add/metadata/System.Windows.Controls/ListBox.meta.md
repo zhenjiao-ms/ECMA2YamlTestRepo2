@@ -84,11 +84,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.Controls.ListBox.AnchorItem
-internalonly: False
----
-
----
 uid: System.Windows.Controls.ListBox.IsItemItsOwnContainerOverride(System.Object)
 internalonly: False
 ---

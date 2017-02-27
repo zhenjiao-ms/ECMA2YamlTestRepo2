@@ -1,66 +1,114 @@
 using System;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.IO;
 
-public class X509store2
+class TrippleDESCSPSample
 {
-    public static void Main(string[] args)
+
+    static void Main()
     {
-        //Opens the personal certificates store.
-        X509Store store = new X509Store(StoreName.My);
-        store.Open(OpenFlags.ReadWrite);
-        X509Certificate2 certificate = new X509Certificate2();
-
-        //Create certificates from certificate files.
-        //You must put in a valid path to three certificates in the following constructors.
-        X509Certificate2 certificate1 = new X509Certificate2("c:\\mycerts\\*****.cer");
-        X509Certificate2 certificate2 = new X509Certificate2("c:\\mycerts\\*****.cer");
-        X509Certificate2 certificate5 = new X509Certificate2("c:\\mycerts\\*****.cer");
-
-        //Create a collection and add two of the certificates.
-        X509Certificate2Collection collection = new X509Certificate2Collection();
-        collection.Add(certificate2);
-        collection.Add(certificate5);
-
-        //Add certificates to the store.
-        store.Add(certificate1);
-        store.AddRange(collection);
-
-        X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
-        Console.WriteLine("Store name: {0}", store.Name);
-        Console.WriteLine("Store location: {0}", store.Location);
-        foreach (X509Certificate2 x509 in storecollection)
+        try
         {
-            Console.WriteLine("certificate name: {0}", x509.Subject);
+            // Create a new TripleDESCryptoServiceProvider object
+            // to generate a key and initialization vector (IV).
+            TripleDESCryptoServiceProvider tDESalg = new TripleDESCryptoServiceProvider();
+
+            // Create a string to encrypt.
+            string sData = "Here is some data to encrypt.";
+            string FileName = "CText.txt";
+
+            // Encrypt text to a file using the file name, key, and IV.
+            EncryptTextToFile(sData, FileName, tDESalg.Key, tDESalg.IV);
+
+            // Decrypt the text from a file using the file name, key, and IV.
+            string Final = DecryptTextFromFile(FileName, tDESalg.Key, tDESalg.IV);
+            
+            // Display the decrypted string to the console.
+            Console.WriteLine(Final);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+       
+    }
+
+    public static void EncryptTextToFile(String Data, String FileName, byte[] Key, byte[] IV)
+    {
+        try
+        {
+            // Create or open the specified file.
+            FileStream fStream = File.Open(FileName,FileMode.OpenOrCreate);
+
+            // Create a CryptoStream using the FileStream 
+            // and the passed key and initialization vector (IV).
+            CryptoStream cStream = new CryptoStream(fStream, 
+                new TripleDESCryptoServiceProvider().CreateEncryptor(Key,IV), 
+                CryptoStreamMode.Write); 
+
+            // Create a StreamWriter using the CryptoStream.
+            StreamWriter sWriter = new StreamWriter(cStream);
+
+            // Write the data to the stream 
+            // to encrypt it.
+            sWriter.WriteLine(Data);
+  
+            // Close the streams and
+            // close the file.
+            sWriter.Close();
+            cStream.Close();
+            fStream.Close();
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+        }
+        catch(UnauthorizedAccessException  e)
+        {
+            Console.WriteLine("A file access error occurred: {0}", e.Message);
         }
 
-        //Remove a certificate.
-        store.Remove(certificate1);
-        X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
-        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine);
-        foreach (X509Certificate2 x509 in storecollection2)
-        {
-            Console.WriteLine("certificate name: {0}", x509.Subject);
-        }
+    }
 
-        //Remove a range of certificates.
-        store.RemoveRange(collection);
-        X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
-        Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine);
-        if (storecollection3.Count == 0)
+    public static string DecryptTextFromFile(String FileName, byte[] Key, byte[] IV)
+    {
+        try
         {
-            Console.WriteLine("Store contains no certificates.");
-        }
-        else
-        {
-            foreach (X509Certificate2 x509 in storecollection3)
-            {
-                Console.WriteLine("certificate name: {0}", x509.Subject);
-            }
-        }
+            // Create or open the specified file. 
+            FileStream fStream = File.Open(FileName, FileMode.OpenOrCreate);
+  
+            // Create a CryptoStream using the FileStream 
+            // and the passed key and initialization vector (IV).
+            CryptoStream cStream = new CryptoStream(fStream, 
+                new TripleDESCryptoServiceProvider().CreateDecryptor(Key,IV), 
+                CryptoStreamMode.Read); 
 
-        //Close the store.
-        store.Close();
+            // Create a StreamReader using the CryptoStream.
+            StreamReader sReader = new StreamReader(cStream);
+
+            // Read the data from the stream 
+            // to decrypt it.
+            string val = sReader.ReadLine();
+    
+            // Close the streams and
+            // close the file.
+            sReader.Close();
+            cStream.Close();
+            fStream.Close();
+
+            // Return the string. 
+            return val;
+        }
+        catch(CryptographicException e)
+        {
+            Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
+            return null;
+        }
+        catch(UnauthorizedAccessException  e)
+        {
+            Console.WriteLine("A file access error occurred: {0}", e.Message);
+            return null;
+        }
     }
 }

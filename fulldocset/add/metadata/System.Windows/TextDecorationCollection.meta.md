@@ -39,11 +39,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Windows.TextDecorationCollection.TryRemove(System.Collections.Generic.IEnumerable{System.Windows.TextDecoration},System.Windows.TextDecorationCollection@)
-internalonly: False
----
-
----
 uid: System.Windows.TextDecorationCollection.System#Collections#IList#Item(System.Int32)
 internalonly: False
 ---

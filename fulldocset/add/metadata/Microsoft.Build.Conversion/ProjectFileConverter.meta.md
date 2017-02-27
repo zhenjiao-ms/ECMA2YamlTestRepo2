@@ -24,11 +24,6 @@ internalonly: False
 ---
 
 ---
-uid: Microsoft.Build.Conversion.ProjectFileConverter.FSharpSpecificConversions(System.Boolean)
-internalonly: False
----
-
----
 uid: Microsoft.Build.Conversion.ProjectFileConverter.ConvertInMemory(Microsoft.Build.BuildEngine.Engine,Microsoft.Build.BuildEngine.ProjectLoadSettings)
 internalonly: False
 ---

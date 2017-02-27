@@ -4,11 +4,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.CompositeDataBoundControl.UpdateMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.CompositeDataBoundControl.Controls
 internalonly: False
 ---
@@ -19,27 +14,12 @@ internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.CompositeDataBoundControl.InsertMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.CompositeDataBoundControl.CreateChildControls
 internalonly: False
 ---
 
 ---
-uid: System.Web.UI.WebControls.CompositeDataBoundControl.DeleteMethod
-internalonly: False
----
-
----
 uid: System.Web.UI.WebControls.CompositeDataBoundControl.#ctor
-internalonly: False
----
-
----
-uid: System.Web.UI.WebControls.CompositeDataBoundControl.IsUsingModelBinders
 internalonly: False
 ---
 

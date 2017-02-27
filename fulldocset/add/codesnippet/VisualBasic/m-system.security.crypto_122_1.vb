@@ -1,40 +1,38 @@
 Imports System
 Imports System.Security.Cryptography
-Imports System.Security.Permissions
-Imports System.IO
-Imports System.Security.Cryptography.X509Certificates
+Imports System.Text
 
-Class CertSelect
+Class EncryptorExample
+     Private Shared quote As String = _
+         "Things may come to those who wait, but only the " + _
+         "things left by those who hustle. -- Abraham Lincoln"
 
-    Shared Sub Main()
+     Public Shared Sub Main()
+         Dim aesCSP As New AesCryptoServiceProvider()
 
-        Dim store As New X509Store("MY", StoreLocation.CurrentUser)
-        store.Open(OpenFlags.ReadOnly Or OpenFlags.OpenExistingOnly)
+         aesCSP.GenerateKey()
+         aesCSP.GenerateIV()
+         Dim encQuote() As Byte = EncryptString(aesCSP, quote)
 
-        Dim collection As X509Certificate2Collection = CType(store.Certificates, X509Certificate2Collection)
-        Dim fcollection As X509Certificate2Collection = CType(collection.Find(X509FindType.FindByTimeValid, DateTime.Now, False), X509Certificate2Collection)
-        Dim scollection As X509Certificate2Collection = X509Certificate2UI.SelectFromCollection(fcollection, "Test Certificate Select", "Select a certificate from the following list to get information on that certificate", X509SelectionFlag.MultiSelection)
-        Console.WriteLine("Number of certificates: {0}{1}", scollection.Count, Environment.NewLine)
-         
-        For Each x509 As X509Certificate2 In scollection
-            Try
-                Dim rawdata As Byte() = x509.RawData
-                Console.WriteLine("Content Type: {0}{1}", X509Certificate2.GetCertContentType(rawdata), Environment.NewLine)
-                Console.WriteLine("Friendly Name: {0}{1}", x509.FriendlyName, Environment.NewLine)
-                Console.WriteLine("Certificate Verified?: {0}{1}", x509.Verify(), Environment.NewLine)
-                Console.WriteLine("Simple Name: {0}{1}", x509.GetNameInfo(X509NameType.SimpleName, True), Environment.NewLine)
-                Console.WriteLine("Signature Algorithm: {0}{1}", x509.SignatureAlgorithm.FriendlyName, Environment.NewLine)
-                Console.WriteLine("Private Key: {0}{1}", x509.PrivateKey.ToXmlString(False), Environment.NewLine)
-                Console.WriteLine("Public Key: {0}{1}", x509.PublicKey.Key.ToXmlString(False), Environment.NewLine)
-                Console.WriteLine("Certificate Archived?: {0}{1}", x509.Archived, Environment.NewLine)
-                Console.WriteLine("Length of Raw Data: {0}{1}", x509.RawData.Length, Environment.NewLine)
-                X509Certificate2UI.DisplayCertificate(x509)
-                x509.Reset()         
-             Catch cExcept As CryptographicException
-                 Console.WriteLine("Information could not be written out for this certificate.")
-             End Try
-        Next x509
+         Console.WriteLine("Encrypted Quote:" + vbNewLine)
+         Console.WriteLine(Convert.ToBase64String(encQuote))
 
-        store.Close()
-    End Sub
+         Console.WriteLine(vbNewLine + "Decrypted Quote:" + vbNewLine)
+         Console.WriteLine(DecryptBytes(aesCSP, encQuote))
+     End Sub
+
+     Public Shared Function EncryptString(symAlg As SymmetricAlgorithm, inString As String) As Byte()
+         Dim inBlock() As Byte = UnicodeEncoding.Unicode.GetBytes(inString)
+         Dim xfrm As ICryptoTransform = symAlg.CreateEncryptor()
+         Dim outBlock() As Byte = xfrm.TransformFinalBlock(inBlock, 0, inBlock.Length)
+
+         Return outBlock
+     End Function
+
+     Public Shared Function DecryptBytes(symAlg As SymmetricAlgorithm, inBytes() As Byte) As String
+         Dim xfrm As ICryptoTransform = symAlg.CreateDecryptor()
+         Dim outBlock() As Byte = xfrm.TransformFinalBlock(inBytes, 0, inBytes.Length)
+
+         return UnicodeEncoding.Unicode.GetString(outBlock)
+     End Function
 End Class

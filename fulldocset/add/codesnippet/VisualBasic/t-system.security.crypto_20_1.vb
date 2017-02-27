@@ -1,104 +1,212 @@
-Imports System.IO
+Imports System
+Imports System.Xml
 Imports System.Security.Cryptography
+Imports System.Security.Cryptography.Xml
 
-Friend Class Members
-    <STAThread()> _
-    Shared Sub Main(ByVal args() As String)
-        Dim appPath As String = (System.IO.Directory.GetCurrentDirectory())
-        appPath = appPath & "..\\..\\..\"
-        ' Insert your file names into this method call.
-        EncodeFromFile(appPath & "program.vb", appPath & "code.enc")
-        DecodeFromFile(appPath & "code.enc", appPath & "roundtrip.txt")
+
+
+Module Program
+
+    Sub Main(ByVal args() As String)
+
+        ' Create an XmlDocument object.
+        Dim xmlDoc As New XmlDocument()
+
+        ' Load an XML file into the XmlDocument object.
+        Try
+            xmlDoc.PreserveWhitespace = True
+            xmlDoc.Load("test.xml")
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        End Try
+
+        ' Create a new RSA key.  This key will encrypt a symmetric key,
+        ' which will then be imbedded in the XML document.  
+        Dim rsaKey As New RSACryptoServiceProvider()
+
+
+        Try
+            ' Encrypt the "creditcard" element.
+            Encrypt(xmlDoc, "creditcard", rsaKey, "rsaKey")
+
+            ' Inspect the EncryptedKey element.
+            InspectElement(xmlDoc)
+
+            ' Decrypt the "creditcard" element.
+            Decrypt(xmlDoc, rsaKey, "rsaKey")
+
+        Catch e As Exception
+            Console.WriteLine(e.Message)
+        Finally
+            ' Clear the RSA key.
+            rsaKey.Clear()
+        End Try
 
     End Sub
 
-    ' Read in the specified source file and write out an encoded target file.
-    Private Shared Sub EncodeFromFile(ByVal sourceFile As String, ByVal targetFile As String)
-        ' Verify members.cs exists at the specified directory.
-        If Not File.Exists(sourceFile) Then
-            Console.Write("Unable to locate source file located at ")
-            Console.WriteLine(sourceFile & ".")
-            Console.Write("Please correct the path and run the ")
-            Console.WriteLine("sample again.")
-            Return
+
+    Sub Encrypt(ByVal Doc As XmlDocument, ByVal ElementToEncryptValue As String, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If ElementToEncryptValue Is Nothing Then
+            Throw New ArgumentNullException("ElementToEncrypt")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Find the specified element in the XmlDocument
+        ' object and create a new XmlElemnt object.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        Dim elementToEncrypt As XmlElement = Doc.GetElementsByTagName(ElementToEncryptValue)(0)
+
+        ' Throw an XmlException if the element was not found.
+        If elementToEncrypt Is Nothing Then
+            Throw New XmlException("The specified element was not found")
         End If
 
-        ' Retrieve the input and output file streams.
-        Using inputFileStream As New FileStream(sourceFile, FileMode.Open, FileAccess.Read)
-            Using outputFileStream As New FileStream(targetFile, FileMode.Create, FileAccess.Write)
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a new instance of the EncryptedXml class 
+        ' and use it to encrypt the XmlElement with the 
+        ' a new random symmetric key.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Create a 256 bit Rijndael key.
+        Dim sessionKey As New RijndaelManaged()
+        sessionKey.KeySize = 256
 
-                ' Create a new ToBase64Transform object to convert to base 64.
-                Dim base64Transform As New ToBase64Transform()
+        Dim eXml As New EncryptedXml()
 
-                ' Create a new byte array with the size of the output block size.
-                Dim outputBytes(base64Transform.OutputBlockSize - 1) As Byte
+        Dim encryptedElement As Byte() = eXml.EncryptData(elementToEncrypt, sessionKey, False)
 
-                ' Retrieve the file contents into a byte array.
-                Dim inputBytes(inputFileStream.Length - 1) As Byte
-                inputFileStream.Read(inputBytes, 0, inputBytes.Length)
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Construct an EncryptedData object and populate
+        ' it with the desired encryption information.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
 
-                ' Verify that multiple blocks can not be transformed.
-                If Not base64Transform.CanTransformMultipleBlocks Then
-                    ' Initializie the offset size.
-                    Dim inputOffset As Integer = 0
+        Dim edElement As New EncryptedData()
+        edElement.Type = EncryptedXml.XmlEncElementUrl
 
-                    ' Iterate through inputBytes transforming by blockSize.
-                    Dim inputBlockSize As Integer = base64Transform.InputBlockSize
+        ' Create an EncryptionMethod element so that the 
+        ' receiver knows which algorithm to use for decryption.
+        edElement.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncAES256Url)
 
-                    Do While inputBytes.Length - inputOffset > inputBlockSize
-                        base64Transform.TransformBlock(inputBytes, inputOffset, inputBytes.Length - inputOffset, outputBytes, 0)
+        ' Encrypt the session key and add it to an EncryptedKey element.
+        Dim ek As New EncryptedKey()
 
-                        inputOffset += base64Transform.InputBlockSize
-                        outputFileStream.Write(outputBytes, 0, base64Transform.OutputBlockSize)
-                    Loop
+        Dim encryptedKey As Byte() = EncryptedXml.EncryptKey(sessionKey.Key, Alg, False)
 
-                    ' Transform the final block of data.
-                    outputBytes = base64Transform.TransformFinalBlock(inputBytes, inputOffset, inputBytes.Length - inputOffset)
+        ek.CipherData = New CipherData(encryptedKey)
 
-                    outputFileStream.Write(outputBytes, 0, outputBytes.Length)
-                    Console.WriteLine("Created encoded file at " & targetFile)
-                End If
+        ek.EncryptionMethod = New EncryptionMethod(EncryptedXml.XmlEncRSA15Url)
 
-                ' Determine if the current transform can be reused.
-                If Not base64Transform.CanReuseTransform Then
-                    ' Free up any used resources.
-                    base64Transform.Clear()
-                End If
-            End Using
-        End Using
+        ' Save some more information about the key using
+        ' the EncryptionProperty element.  In this example,
+        ' we will save the value "LibVersion1".  You can save
+        ' anything you want here.
+        ' Create a new "EncryptionProperty" XmlElement object. 
+        Dim element As XmlElement = New XmlDocument().CreateElement("EncryptionProperty", EncryptedXml.XmlEncNamespaceUrl)
+
+        ' Set the value of the EncryptionProperty" XmlElement object.
+        element.InnerText = "LibVersion1"
+
+        ' Create the EncryptionProperty object using the XmlElement object. 
+        Dim encProp As New EncryptionProperty(element)
+
+        ' Add the EncryptionProperty object to the EncryptedData object.
+        edElement.AddProperty(encProp)
+
+        ' Set the KeyInfo element to specify the
+        ' name of the RSA key.
+        ' Create a new KeyInfo element.
+        edElement.KeyInfo = New KeyInfo()
+
+        ' Create a new KeyInfoName element.
+        Dim kin As New KeyInfoName()
+
+        ' Specify a name for the key.
+        kin.Value = KeyName
+
+        ' Add the KeyInfoName element to the 
+        ' EncryptedKey object.
+        ek.KeyInfo.AddClause(kin)
+
+        ' Add the encrypted key to the 
+        ' EncryptedData object.
+        edElement.KeyInfo.AddClause(New KeyInfoEncryptedKey(ek))
+
+        ' Add the encrypted element data to the 
+        ' EncryptedData object.
+        edElement.CipherData.CipherValue = encryptedElement
+
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        ' Replace the element from the original XmlDocument
+        ' object with the EncryptedData element.
+        ''''''''''''''''''''''''''''''''''''''''''''''''''
+        EncryptedXml.ReplaceElement(elementToEncrypt, edElement, False)
 
     End Sub
 
-    Public Shared Sub DecodeFromFile(ByVal inFileName As String, ByVal outFileName As String)
-        Using myTransform As New FromBase64Transform(FromBase64TransformMode.IgnoreWhiteSpaces)
 
-            Dim myOutputBytes(myTransform.OutputBlockSize - 1) As Byte
+    Sub Decrypt(ByVal Doc As XmlDocument, ByVal Alg As RSA, ByVal KeyName As String)
+        ' Check the arguments.  
+        If Doc Is Nothing Then
+            Throw New ArgumentNullException("Doc")
+        End If
+        If Alg Is Nothing Then
+            Throw New ArgumentNullException("Alg")
+        End If
+        If KeyName Is Nothing Then
+            Throw New ArgumentNullException("KeyName")
+        End If
+        ' Create a new EncryptedXml object.
+        Dim exml As New EncryptedXml(Doc)
 
-            'Open the input and output files.
-            Using myInputFile As New FileStream(inFileName, FileMode.Open, FileAccess.Read)
-                Using myOutputFile As New FileStream(outFileName, FileMode.Create, FileAccess.Write)
+        ' Add a key-name mapping.
+        ' This method can only decrypt documents
+        ' that present the specified key name.
+        exml.AddKeyNameMapping(KeyName, Alg)
 
-                    'Retrieve the file contents into a byte array. 
-                    Dim myInputBytes(myInputFile.Length - 1) As Byte
-                    myInputFile.Read(myInputBytes, 0, myInputBytes.Length)
-
-                    'Transform the data in chunks the size of InputBlockSize. 
-                    Dim i As Integer = 0
-                    Do While myInputBytes.Length - i > 4 'myTransform.InputBlockSize
-                        Dim bytesWritten As Int32 = myTransform.TransformBlock(myInputBytes, i, 4, myOutputBytes, 0) 'myTransform.InputBlockSize
-                        i += 4 'myTransform.InputBlockSize
-                        myOutputFile.Write(myOutputBytes, 0, bytesWritten)
-                    Loop
-
-                    'Transform the final block of data.
-                    myOutputBytes = myTransform.TransformFinalBlock(myInputBytes, i, myInputBytes.Length - i)
-                    myOutputFile.Write(myOutputBytes, 0, myOutputBytes.Length)
-
-                    'Free up any used resources.
-                    myTransform.Clear()
-                End Using
-            End Using
-        End Using
+        ' Decrypt the element.
+        exml.DecryptDocument()
 
     End Sub
-End Class
+
+
+    Sub InspectElement(ByVal Doc As XmlDocument)
+        ' Get the EncryptedData element from the XMLDocument object.
+        Dim encryptedData As XmlElement = Doc.GetElementsByTagName("EncryptedData")(0)
+
+        ' Create a new EncryptedData object.
+        Dim encData As New EncryptedData()
+
+        ' Load the XML from the document to
+        ' initialize the EncryptedData object.
+        encData.LoadXml(encryptedData)
+
+        ' Display the properties.
+        ' Most values are Null by default.
+        Console.WriteLine("EncryptedData.CipherData: " + encData.CipherData.GetXml().InnerXml)
+        Console.WriteLine("EncryptedData.Encoding: " + encData.Encoding)
+        Console.WriteLine("EncryptedData.EncryptionMethod: " + encData.EncryptionMethod.GetXml().InnerXml)
+
+        Dim encPropCollection As EncryptionPropertyCollection = encData.EncryptionProperties
+
+        Console.WriteLine("Number of elements in the EncryptionPropertyCollection: " + encPropCollection.Count.ToString())
+        'encPropCollection.
+        Dim encProp As EncryptionProperty
+        For Each encProp In encPropCollection
+            Console.WriteLine("EncryptionProperty.ID: " + encProp.Id)
+            Console.WriteLine("EncryptionProperty.PropertyElement: " + encProp.PropertyElement.InnerXml)
+            Console.WriteLine("EncryptionProperty.Target: " + encProp.Target)
+        Next encProp
+
+
+
+        Console.WriteLine("EncryptedData.Id: " + encData.Id)
+        Console.WriteLine("EncryptedData.KeyInfo: " + encData.KeyInfo.GetXml().InnerXml)
+        Console.WriteLine("EncryptedData.MimeType: " + encData.MimeType)
+
+    End Sub
+End Module

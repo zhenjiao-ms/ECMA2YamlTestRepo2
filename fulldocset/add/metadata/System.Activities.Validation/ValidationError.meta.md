@@ -9,11 +9,6 @@ internalonly: False
 ---
 
 ---
-uid: System.Activities.Validation.ValidationError.SourceDetail
-internalonly: False
----
-
----
 uid: System.Activities.Validation.ValidationError.#ctor(System.String,System.Boolean)
 internalonly: False
 ---
@@ -50,10 +45,5 @@ internalonly: False
 
 ---
 uid: System.Activities.Validation.ValidationError.Source
-internalonly: False
----
-
----
-uid: System.Activities.Validation.ValidationError.#ctor(System.String,System.Boolean,System.String,System.Object)
 internalonly: False
 ---

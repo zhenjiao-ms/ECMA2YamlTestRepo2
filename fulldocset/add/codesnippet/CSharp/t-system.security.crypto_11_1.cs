@@ -1,79 +1,255 @@
-using System;
-using System.IO;
-using System.Text;
-using System.Security.Cryptography;
+//
+// This example signs an XML file using an
+// envelope signature. It then verifies the 
+// signed XML.
+//
+// You must have a certificate with a subject name
+// of "CN=XMLDSIG_Test" in the "My" certificate store. 
+//
+// Run the following command to create a certificate
+// and place it in the store.
+// makecert -r -pe -n "CN=XMLDSIG_Test" -b 01/01/2005 -e 01/01/2010 -sky signing -ss my
 
-namespace RC2CryptoServiceProvider_Examples
+using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Xml;
+
+public class SignVerifyEnvelope
 {
-    class MyMainClass
+
+    public static void Main(String[] args)
     {
-        public static void Main()
+
+        string Certificate = "CN=XMLDSIG_Test";
+
+        try
         {
 
-            // Create a new instance of the RC2CryptoServiceProvider class
-            // and automatically generate a Key and IV.
-            RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
+            // Create an XML file to sign.
+            CreateSomeXml("Example.xml");
+            Console.WriteLine("New XML file created.");
 
-            Console.WriteLine("Effective key size is {0} bits.", rc2CSP.EffectiveKeySize);
+            // Sign the XML that was just created and save it in a 
+            // new file.
+            SignXmlFile("Example.xml", "SignedExample.xml", Certificate);
+            Console.WriteLine("XML file signed.");
 
-            // Get the key and IV.
-            byte[] key = rc2CSP.Key;
-            byte[] IV = rc2CSP.IV;
-
-            // Get an encryptor.
-            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(key, IV);
-
-            // Encrypt the data as an array of encrypted bytes in memory.
-            MemoryStream msEncrypt = new MemoryStream();
-            CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
-
-            // Convert the data to a byte array.
-            string original = "Here is some data to encrypt.";
-            byte[] toEncrypt = Encoding.ASCII.GetBytes(original);
-
-            // Write all data to the crypto stream and flush it.
-            csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
-            csEncrypt.FlushFinalBlock();
-
-            // Get the encrypted array of bytes.
-            byte[] encrypted = msEncrypt.ToArray();
-
-            ///////////////////////////////////////////////////////
-            // This is where the data could be transmitted or saved.          
-            ///////////////////////////////////////////////////////
-
-            //Get a decryptor that uses the same key and IV as the encryptor.
-            ICryptoTransform decryptor = rc2CSP.CreateDecryptor(key, IV);
-
-            // Now decrypt the previously encrypted message using the decryptor
-            // obtained in the above step.
-            MemoryStream msDecrypt = new MemoryStream(encrypted);
-            CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
-
-            // Read the decrypted bytes from the decrypting stream
-            // and place them in a StringBuilder class.
-
-            StringBuilder roundtrip = new StringBuilder();
-            
-            int b = 0;
-
-            do
+            if (VerifyXmlFile("SignedExample.xml", Certificate))
             {
-                b = csDecrypt.ReadByte();
-                
-                if (b != -1)
+                Console.WriteLine("The XML signature is valid.");
+            }
+            else
+            {
+                Console.WriteLine("The XML signature is not valid.");
+            }
+        }
+        catch (CryptographicException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
+
+    // Sign an XML file and save the signature in a new file.
+    public static void SignXmlFile(string FileName, string SignedFileName, string SubjectName)
+    {
+        if (null == FileName)
+            throw new ArgumentNullException("FileName");
+        if (null == SignedFileName)
+            throw new ArgumentNullException("SignedFileName");
+        if (null == SubjectName)
+            throw new ArgumentNullException("SubjectName");
+
+        // Load the certificate from the certificate store.
+        X509Certificate2 cert = GetCertificateBySubject(SubjectName);
+
+        // Create a new XML document.
+        XmlDocument doc = new XmlDocument();
+
+        // Format the document to ignore white spaces.
+        doc.PreserveWhitespace = false;
+
+        // Load the passed XML file using it's name.
+        doc.Load(new XmlTextReader(FileName));
+
+        // Create a SignedXml object.
+        SignedXml signedXml = new SignedXml(doc);
+
+        // Add the key to the SignedXml document. 
+        signedXml.SigningKey = cert.PrivateKey;
+
+        // Create a reference to be signed.
+        Reference reference = new Reference();
+        reference.Uri = "";
+
+        // Add an enveloped transformation to the reference.
+        XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
+        reference.AddTransform(env);
+
+        // Add the reference to the SignedXml object.
+        signedXml.AddReference(reference);
+
+        // Create a new KeyInfo object.
+        KeyInfo keyInfo = new KeyInfo();
+
+        // Load the certificate into a KeyInfoX509Data object
+        // and add it to the KeyInfo object.
+        // Create an X509IssuerSerial object and add it to the
+        // KeyInfoX509Data object.
+        
+        KeyInfoX509Data kdata = new KeyInfoX509Data(cert);
+
+        X509IssuerSerial xserial;
+
+        xserial.IssuerName = cert.IssuerName.ToString();
+        xserial.SerialNumber = cert.SerialNumber;
+
+        kdata.AddIssuerSerial(xserial.IssuerName, xserial.SerialNumber);
+
+        keyInfo.AddClause(kdata);
+
+        // Add the KeyInfo object to the SignedXml object.
+        signedXml.KeyInfo = keyInfo;
+
+        // Compute the signature.
+        signedXml.ComputeSignature();
+
+        // Get the XML representation of the signature and save
+        // it to an XmlElement object.
+        XmlElement xmlDigitalSignature = signedXml.GetXml();
+
+        // Append the element to the XML document.
+        doc.DocumentElement.AppendChild(doc.ImportNode(xmlDigitalSignature, true));
+
+
+        if (doc.FirstChild is XmlDeclaration)
+        {
+            doc.RemoveChild(doc.FirstChild);
+        }
+
+        // Save the signed XML document to a file specified
+        // using the passed string.
+        using (XmlTextWriter xmltw = new XmlTextWriter(SignedFileName, new UTF8Encoding(false)))
+        {
+            doc.WriteTo(xmltw);
+            xmltw.Close();
+        }
+
+    }
+
+    // Verify the signature of an XML file against an asymetric 
+    // algorithm and return the result.
+    public static Boolean VerifyXmlFile(String FileName, String CertificateSubject)
+    {
+        // Check the args.
+        if (null == FileName)
+            throw new ArgumentNullException("FileName");
+        if (null == CertificateSubject)
+            throw new ArgumentNullException("CertificateSubject");
+
+        // Load the certificate from the store.
+        X509Certificate2 cert = GetCertificateBySubject(CertificateSubject);
+
+        // Create a new XML document.
+        XmlDocument xmlDocument = new XmlDocument();
+
+        // Load the passed XML file into the document. 
+        xmlDocument.Load(FileName);
+
+        // Create a new SignedXml object and pass it
+        // the XML document class.
+        SignedXml signedXml = new SignedXml(xmlDocument);
+
+        // Find the "Signature" node and create a new
+        // XmlNodeList object.
+        XmlNodeList nodeList = xmlDocument.GetElementsByTagName("Signature");
+
+        // Load the signature node.
+        signedXml.LoadXml((XmlElement)nodeList[0]);
+
+        // Check the signature and return the result.
+        return signedXml.CheckSignature(cert, true);
+
+    }
+
+
+    public static X509Certificate2 GetCertificateBySubject(string CertificateSubject)
+    {
+        // Check the args.
+        if (null == CertificateSubject)
+            throw new ArgumentNullException("CertificateSubject");
+
+
+        // Load the certificate from the certificate store.
+        X509Certificate2 cert = null;
+
+        X509Store store = new X509Store("My", StoreLocation.CurrentUser);
+
+        try
+        {
+            // Open the store.
+            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+
+            // Get the certs from the store.
+            X509Certificate2Collection CertCol = store.Certificates;
+
+            // Find the certificate with the specified subject.
+            foreach (X509Certificate2 c in CertCol)
+            {
+                if (c.Subject == CertificateSubject)
                 {
-                    roundtrip.Append((char)b);
+                    cert = c;
+                    break;
                 }
+            }
 
-            } while (b != -1);
- 
+            // Throw an exception of the certificate was not found.
+            if (cert == null)
+            {
+                throw new CryptographicException("The certificate could not be found.");
+            }
+        }
+        finally
+        {
+            // Close the store even if an exception was thrown.
+            store.Close();
+        }
+        
+        return cert;
+    }
 
-            // Display the original data and the decrypted data.
-            Console.WriteLine("Original:   {0}", original);
-            Console.WriteLine("Round Trip: {0}", roundtrip);
+    // Create example data to sign.
+    public static void CreateSomeXml(string FileName)
+    {
+        // Check the args.
+        if (null == FileName)
+            throw new ArgumentNullException("FileName");
 
-            Console.ReadLine();
+        // Create a new XmlDocument object.
+        XmlDocument document = new XmlDocument();
+
+        // Create a new XmlNode object.
+        XmlNode node = document.CreateNode(XmlNodeType.Element, "", "MyElement", "samples");
+
+        // Add some text to the node.
+        node.InnerText = "Example text to be signed.";
+
+        // Append the node to the document.
+        document.AppendChild(node);
+
+        // Save the XML document to the file name specified.
+        using (XmlTextWriter xmltw = new XmlTextWriter(FileName, new UTF8Encoding(false)))
+        {
+            document.WriteTo(xmltw);
+
+            xmltw.Close();
         }
     }
 }
+// This code example displays the following to the console:
+//
+// New XML file created.
+// XML file signed.
+// The XML signature is valid.

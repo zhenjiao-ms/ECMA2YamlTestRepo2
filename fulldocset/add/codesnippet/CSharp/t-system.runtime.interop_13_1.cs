@@ -1,17 +1,16 @@
-using System;
 using System.Runtime.InteropServices;
 
-public class MyClassThatNeedsToRegister
+public class MyClass
 {
-   [ComRegisterFunctionAttribute]
-   public static void RegisterFunction(Type t)
-   {
-      //Insert code here.
+   public MyClass() {}
+
+   [DispId(8)]
+   public void MyMethod() {}
+   
+   public int MyOtherMethod() {
+      return 0;
    }
    
-   [ComUnregisterFunctionAttribute]
-   public static void UnregisterFunction(Type t)
-   {
-      //Insert code here.
-   }
+   [DispId(9)]
+   public bool MyField;
 }

@@ -72,8 +72,3 @@ internalonly: False
 uid: System.ServiceModel.Configuration.ClientCredentialsElement.CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement)
 internalonly: False
 ---
-
----
-uid: System.ServiceModel.Configuration.ClientCredentialsElement.UseIdentityConfiguration
-internalonly: False
----

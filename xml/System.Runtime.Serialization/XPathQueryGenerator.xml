@@ -35,8 +35,8 @@
 ## Examples  
  The following example creates XPath queries from two classes to which the <xref:System.Runtime.Serialization.DataContractAttribute> and <xref:System.Runtime.Serialization.DataMemberAttribute> attributes have been applied.  
   
- [!code-vb[XPathQueryGenerator#0](~/add/codesnippet/visualbasic/t-system.runtime.seriali_16_1.vb)]
- [!code-cs[XPathQueryGenerator#0](~/add/codesnippet/csharp/t-system.runtime.seriali_16_1.cs)]  
+ [!code-vb[XPathQueryGenerator#0](~/add/codesnippet/visualbasic/t-system.runtime.seriali_21_1.vb)]
+ [!code-cs[XPathQueryGenerator#0](~/add/codesnippet/csharp/t-system.runtime.seriali_21_1.cs)]  
   
  ]]></format>
     </remarks>
@@ -48,6 +48,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string CreateFromDataContractSerializer(class System.Type type, class System.Reflection.MemberInfo[] pathToMember, class System.Xml.XmlNamespaceManager namespaces) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -60,10 +61,11 @@
       </Parameters>
       <Docs>
         <param name="type">The type that represents a data contract.</param>
-        <param name="pathToMember">The metadata, generated using the &lt;xref:System.Type.GetMember%2A&gt; method of the &lt;xref:System.Type&gt; class, that points to the specific data member used to generate the query.</param>
+        <param name="pathToMember">The metadata, generated using the &lt;xref:System.Type.GetMember%2A&gt; method of the <see cref="T:System.Type" /> class, that points to the specific data member used to generate the query.</param>
         <param name="namespaces">The XML namespaces and their prefixes found in the data contract.</param>
         <summary>Creates an XPath from a data contract using the specified data contract type, array of metadata elements, and namespaces..</summary>
-        <returns>&lt;xref:System.String&gt;  
+        <returns>
+          <see cref="T:System.String" />  
   
  The XPath generated from the type and member data.</returns>
         <remarks>
@@ -90,6 +92,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string CreateFromDataContractSerializer(class System.Type type, class System.Reflection.MemberInfo[] pathToMember, class System.Text.StringBuilder rootElementXpath, class System.Xml.XmlNamespaceManager namespaces) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -103,11 +106,12 @@
       </Parameters>
       <Docs>
         <param name="type">The type that represents a data contract.</param>
-        <param name="pathToMember">The metadata, generated using the &lt;xref:System.Type.GetMember%2A&gt; method of the &lt;xref:System.Type&gt; class, that points to the specific data member used to generate the query.</param>
+        <param name="pathToMember">The metadata, generated using the &lt;xref:System.Type.GetMember%2A&gt; method of the <see cref="T:System.Type" /> class, that points to the specific data member used to generate the query.</param>
         <param name="rootElementXpath">The top level element in the xpath.</param>
         <param name="namespaces">The XML namespaces and their prefixes found in the data contract.</param>
         <summary>Creates an XPath from a data contract using the specified contract data type, array of metadata elements, the top level element, and namespaces.</summary>
-        <returns>&lt;xref:System.String&gt;  
+        <returns>
+          <see cref="T:System.String" />  
   
  The XPath generated from the type and member data.</returns>
         <remarks>To be added.</remarks>

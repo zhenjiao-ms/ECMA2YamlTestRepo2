@@ -38,6 +38,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.Build.Construction.ProjectRootElement xml) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -62,8 +63,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string projectFile) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="projectFile" Type="System.String" />
       </Parameters>
@@ -86,6 +93,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string projectFile, class System.Collections.Generic.IDictionary`2&lt;string, string&gt; globalProperties, string toolsVersion) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -114,6 +122,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.Build.Construction.ProjectRootElement xml, class System.Collections.Generic.IDictionary`2&lt;string, string&gt; globalProperties, string toolsVersion, class Microsoft.Build.Evaluation.ProjectCollection projectCollection) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -144,6 +153,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string projectFile, class System.Collections.Generic.IDictionary`2&lt;string, string&gt; globalProperties, string toolsVersion, class Microsoft.Build.Evaluation.ProjectCollection projectCollection) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -169,75 +179,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ProjectInstance (Microsoft.Build.Construction.ProjectRootElement xml, System.Collections.Generic.IDictionary&lt;string,string&gt; globalProperties, string toolsVersion, string subToolsetVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.Build.Construction.ProjectRootElement xml, class System.Collections.Generic.IDictionary`2&lt;string, string&gt; globalProperties, string toolsVersion, string subToolsetVersion, class Microsoft.Build.Evaluation.ProjectCollection projectCollection) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="xml" Type="Microsoft.Build.Construction.ProjectRootElement" />
-        <Parameter Name="globalProperties" Type="System.Collections.Generic.IDictionary&lt;System.String,System.String&gt;" />
-        <Parameter Name="toolsVersion" Type="System.String" />
-        <Parameter Name="subToolsetVersion" Type="System.String" />
-        <Parameter Name="projectCollection" Type="Microsoft.Build.Evaluation.ProjectCollection" />
-      </Parameters>
-      <Docs>
-        <param name="xml">The project root element.</param>
-        <param name="globalProperties">The global properties to use. May be null.</param>
-        <param name="toolsVersion">The tools version. May be null.</param>
-        <param name="subToolsetVersion">The sub toolset version. May be null.</param>
-        <param name="projectCollection">Project collection.</param>
-        <summary>Creates a new project instance and initializes it from the given project root, using the given global properties, tools version, and project collection</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- No intermediate <xref:Microsoft.Build.Evaluation.Project> object is created. This is useful if a project is going to be built, but not displayed or edited.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ProjectInstance (string projectFile, System.Collections.Generic.IDictionary&lt;string,string&gt; globalProperties, string toolsVersion, string subToolsetVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string projectFile, class System.Collections.Generic.IDictionary`2&lt;string, string&gt; globalProperties, string toolsVersion, string subToolsetVersion, class Microsoft.Build.Evaluation.ProjectCollection projectCollection) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="projectFile" Type="System.String" />
-        <Parameter Name="globalProperties" Type="System.Collections.Generic.IDictionary&lt;System.String,System.String&gt;" />
-        <Parameter Name="toolsVersion" Type="System.String" />
-        <Parameter Name="subToolsetVersion" Type="System.String" />
-        <Parameter Name="projectCollection" Type="Microsoft.Build.Evaluation.ProjectCollection" />
-      </Parameters>
-      <Docs>
-        <param name="projectFile">The name of the project file.</param>
-        <param name="globalProperties">The global properties to use. May be null.</param>
-        <param name="toolsVersion">The tools version. May be null.</param>
-        <param name="subToolsetVersion">The sub toolset version. May be null.</param>
-        <param name="projectCollection">Project collection.</param>
-        <summary>Creates a new project instance and initializes it from the given project file, using the given global properties, tools version, sub toolset version, and project collection.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- No intermediate <xref:Microsoft.Build.Evaluation.Project> object is created. This is useful if a project is going to be built, but not displayed or edited.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="AddItem">
       <MemberSignature Language="C#" Value="public Microsoft.Build.Execution.ProjectItemInstance AddItem (string itemType, string evaluatedInclude);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Build.Execution.ProjectItemInstance AddItem(string itemType, string evaluatedInclude) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -268,6 +215,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Build.Execution.ProjectItemInstance AddItem(string itemType, string evaluatedInclude, class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, string&gt;&gt; metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -300,8 +248,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -318,8 +272,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -346,8 +306,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Logging.ForwardingLoggerRecord&gt; remoteLoggers) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -376,8 +342,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(string target, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -406,8 +378,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(string[] targets, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -436,6 +414,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(string target, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Logging.ForwardingLoggerRecord&gt; remoteLoggers) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -468,8 +447,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(string[] targets, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers, class System.Collections.Generic.IDictionary`2&lt;string, class Microsoft.Build.Execution.TargetResult&gt; targetOutputs) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -500,6 +485,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(string[] targets, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Logging.ForwardingLoggerRecord&gt; remoteLoggers) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -532,8 +518,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(string[] targets, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Framework.ILogger&gt; loggers, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Logging.ForwardingLoggerRecord&gt; remoteLoggers, class System.Collections.Generic.IDictionary`2&lt;string, class Microsoft.Build.Execution.TargetResult&gt; targetOutputs) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -566,6 +558,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Build.Execution.ProjectInstance DeepCopy() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -579,34 +572,19 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="DeepCopy">
-      <MemberSignature Language="C#" Value="public Microsoft.Build.Execution.ProjectInstance DeepCopy (bool isImmutable);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Build.Execution.ProjectInstance DeepCopy(bool isImmutable) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Build.Execution.ProjectInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="isImmutable" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="isImmutable">Flag indicating clone mutability.</param>
-        <summary>Creates an independent, deep clone of this project and everything in it, with specified mutability. Useful for compiling a single file or for keeping build results between builds.</summary>
-        <returns>Returns an independent, deep clone of this project, with specified mutability.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="DefaultTargets">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;string&gt; DefaultTargets { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;string&gt; DefaultTargets" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -629,11 +607,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Directory" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -651,6 +633,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool EvaluateCondition(string condition) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -681,6 +664,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string ExpandString(string unexpandedValue) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -711,6 +695,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string FullPath" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -733,6 +718,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetEvaluatedItemIncludeEscaped(class Microsoft.Build.Execution.ProjectItemDefinitionInstance item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -754,6 +740,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetEvaluatedItemIncludeEscaped(class Microsoft.Build.Execution.ProjectItemInstance item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -775,6 +762,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.ICollection`1&lt;class Microsoft.Build.Execution.ProjectItemInstance&gt; GetItems(string itemType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -791,34 +779,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="GetItemsByItemTypeAndEvaluatedInclude">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;Microsoft.Build.Execution.ProjectItemInstance&gt; GetItemsByItemTypeAndEvaluatedInclude (string itemType, string evaluatedInclude);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Execution.ProjectItemInstance&gt; GetItemsByItemTypeAndEvaluatedInclude(string itemType, string evaluatedInclude) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.Build.Execution.ProjectItemInstance&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="itemType" Type="System.String" />
-        <Parameter Name="evaluatedInclude" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="itemType">The item type of the items to be retrieved.</param>
-        <param name="evaluatedInclude">The evaluated include value of the items to be retrieved</param>
-        <summary>Gets all the items in this project of the specified type and evaluated include value. This is a read-only list.</summary>
-        <returns>Returns all the items in this project of the specified type and evaluated include value. Returns an empty collection if there are none.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="GetMetadataValueEscaped">
       <MemberSignature Language="C#" Value="public static string GetMetadataValueEscaped (Microsoft.Build.Execution.ProjectMetadataInstance metadatum);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMetadataValueEscaped(class Microsoft.Build.Execution.ProjectMetadataInstance metadatum) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -840,6 +806,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMetadataValueEscaped(class Microsoft.Build.Execution.ProjectItemDefinitionInstance item, string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -863,6 +830,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMetadataValueEscaped(class Microsoft.Build.Execution.ProjectItemInstance item, string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -886,6 +854,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Build.Execution.ProjectPropertyInstance GetProperty(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -912,6 +881,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetPropertyValue(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -940,6 +910,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetPropertyValueEscaped(class Microsoft.Build.Execution.ProjectPropertyInstance property) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -961,6 +932,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IDictionary`2&lt;string, string&gt; GlobalProperties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -994,8 +966,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;string&gt; InitialTargets" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -1006,33 +984,20 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="IsImmutable">
-      <MemberSignature Language="C#" Value="public bool IsImmutable { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsImmutable" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a flag indicating that the project instance is immutable. This flag is set permanently when the instance is created.</summary>
-        <value>Returns the flag.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="ItemDefinitions">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.IDictionary&lt;string,Microsoft.Build.Execution.ProjectItemDefinitionInstance&gt; ItemDefinitions { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IDictionary`2&lt;string, class Microsoft.Build.Execution.ProjectItemDefinitionInstance&gt; ItemDefinitions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -1050,6 +1015,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.ICollection`1&lt;class Microsoft.Build.Execution.ProjectItemInstance&gt; Items" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1072,6 +1038,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.ICollection`1&lt;string&gt; ItemTypes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1089,28 +1056,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="ProjectFileLocation">
-      <MemberSignature Language="C#" Value="public Microsoft.Build.Construction.ElementLocation ProjectFileLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ElementLocation ProjectFileLocation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Build.Construction.ElementLocation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets the location of the originating file itself. Never null.</summary>
-        <value>Returns the location of the originating file. Never returns null.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Properties">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.ICollection&lt;Microsoft.Build.Execution.ProjectPropertyInstance&gt; Properties { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.ICollection`1&lt;class Microsoft.Build.Execution.ProjectPropertyInstance&gt; Properties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1133,6 +1084,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RemoveItem(class Microsoft.Build.Execution.ProjectItemInstance item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1154,6 +1106,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RemoveProperty(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1175,6 +1128,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Build.Execution.ProjectPropertyInstance SetProperty(string name, string evaluatedValue) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1205,11 +1159,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IDictionary`2&lt;string, class Microsoft.Build.Execution.ProjectTargetInstance&gt; Targets" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -1227,6 +1185,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ToolsVersion" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1251,6 +1210,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Build.Construction.ProjectRootElement ToProjectRootElement() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1260,26 +1220,6 @@
       <Docs>
         <summary>Creates a ProjectRootElement from the contents of this ProjectInstance.</summary>
         <returns>Returns a ProjectRootElement which represents this instance.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateStateFrom">
-      <MemberSignature Language="C#" Value="public void UpdateStateFrom (Microsoft.Build.Execution.ProjectInstance projectState);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateStateFrom(class Microsoft.Build.Execution.ProjectInstance projectState) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="projectState" Type="Microsoft.Build.Execution.ProjectInstance" />
-      </Parameters>
-      <Docs>
-        <param name="projectState">The <see langword="ProjectInstance" /> to update from.</param>
-        <summary>Replaces the project state &lt;xref:Microsoft.Build.Execution.ProjectInstance.GlobalProperties%2A&gt;, &lt;xref:Microsoft.Build.Execution.ProjectInstance.Properties%2A&gt; and &lt;xref:Microsoft.Build.Execution.ProjectInstance.Items%2A&gt; with those from the specified <see cref="T:Microsoft.Build.Execution.ProjectInstance" />.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

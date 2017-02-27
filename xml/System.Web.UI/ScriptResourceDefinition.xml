@@ -1,6 +1,6 @@
 <Type Name="ScriptResourceDefinition" FullName="System.Web.UI.ScriptResourceDefinition">
-  <TypeSignature Language="C#" Value="public class ScriptResourceDefinition" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ScriptResourceDefinition extends System.Object" />
+  <TypeSignature Language="C#" Value="public class ScriptResourceDefinition : System.Web.UI.IScriptResourceDefinition" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ScriptResourceDefinition extends System.Object implements class System.Web.UI.IScriptResourceDefinition" />
   <AssemblyInfo>
     <AssemblyName>System.Web.Extensions</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -8,7 +8,11 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Web.UI.IScriptResourceDefinition</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>Defines the location of a script resource.</summary>
     <remarks>
@@ -27,8 +31,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Web.UI.ScriptResourceDefinition" /> class.</summary>
@@ -41,8 +51,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance string CdnDebugPath" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -65,8 +81,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance string CdnPath" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -89,8 +111,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CdnSupportsSecureConnection" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -114,8 +145,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance string DebugPath" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -126,41 +163,19 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="LoadSuccessExpression">
-      <MemberSignature Language="C#" Value="public string LoadSuccessExpression { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string LoadSuccessExpression" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a JavaScript expression that is used to detect whether a JavaScript file loaded successfully.</summary>
-        <value>The JavaScript expression. The default is an empty string.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This property is used in conjunction with the <xref:System.Web.UI.ScriptManager.EnableCdnFallback%2A?displayProperty=fullName> property to render inline script that will revert to loading the library from a local server location if the script fails to load from the CDN.  
-  
- For script libraries from Microsoft, this value is already set. If you want to register a script yourself and get CDN fallback support, you would set this property to an expression. For example, to test whether a jQuery library has been loaded, you can use an expression like the following:  
-  
- `typeof(window.jQuery) !== "undefined"`  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Path">
       <MemberSignature Language="C#" Value="public string Path { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Path" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -176,8 +191,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Reflection.Assembly ResourceAssembly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Reflection.Assembly</ReturnType>
       </ReturnValue>
@@ -193,8 +217,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ResourceName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -203,6 +233,50 @@
         <value>The name of a script resource.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="System.Web.UI.IScriptResourceDefinition.CdnDebugPathSecureConnection">
+      <MemberSignature Language="C#" Value="string System.Web.UI.IScriptResourceDefinition.CdnDebugPathSecureConnection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string System.Web.UI.IScriptResourceDefinition.CdnDebugPathSecureConnection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System.Web.UI.IScriptResourceDefinition.CdnPathSecureConnection">
+      <MemberSignature Language="C#" Value="string System.Web.UI.IScriptResourceDefinition.CdnPathSecureConnection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string System.Web.UI.IScriptResourceDefinition.CdnPathSecureConnection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

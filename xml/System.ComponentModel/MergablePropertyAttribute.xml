@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MergablePropertyAttribute extends System.Attribute" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -32,23 +33,23 @@
 ## Examples  
  The following example marks a property as appropriate to merge.  
   
- [!code-cpp[Classic MergablePropertyAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._138_1.cpp)]
- [!code-cs[Classic MergablePropertyAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._138_1.cs)]
- [!code-vb[Classic MergablePropertyAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._138_1.vb)]  
+ [!code-cpp[Classic MergablePropertyAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._146_1.cpp)]
+ [!code-cs[Classic MergablePropertyAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._146_1.cs)]
+ [!code-vb[Classic MergablePropertyAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._146_1.vb)]  
   
  The next example shows how to check the value of the MergablePropertyAttribute for `MyProperty`. First the code gets a <xref:System.ComponentModel.PropertyDescriptorCollection> with all the properties for the object. Next it indexes into the <xref:System.ComponentModel.PropertyDescriptorCollection> to get `MyProperty`. Then it returns the attributes for this property and saves them in the attributes variable.  
   
  The example presents two different ways of checking the value of the MergablePropertyAttribute. In the second code fragment, the example calls the <xref:System.ComponentModel.MergablePropertyAttribute.Equals%2A> method with a `static` value. In the last code fragment, the example uses the <xref:System.ComponentModel.MergablePropertyAttribute.AllowMerge%2A> property to check the value.  
   
- [!code-cpp[Classic MergablePropertyAttribute Example#2](~/add/codesnippet/cpp/t-system.componentmodel._138_2.cpp)]
- [!code-cs[Classic MergablePropertyAttribute Example#2](~/add/codesnippet/csharp/t-system.componentmodel._138_2.cs)]
- [!code-vb[Classic MergablePropertyAttribute Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._138_2.vb)]  
+ [!code-cpp[Classic MergablePropertyAttribute Example#2](~/add/codesnippet/cpp/t-system.componentmodel._146_2.cpp)]
+ [!code-cs[Classic MergablePropertyAttribute Example#2](~/add/codesnippet/csharp/t-system.componentmodel._146_2.cs)]
+ [!code-vb[Classic MergablePropertyAttribute Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._146_2.vb)]  
   
  If you marked a class with the MergablePropertyAttribute, use the following code to check the value.  
   
- [!code-cpp[Classic MergablePropertyAttribute Example#3](~/add/codesnippet/cpp/t-system.componentmodel._138_3.cpp)]
- [!code-cs[Classic MergablePropertyAttribute Example#3](~/add/codesnippet/csharp/t-system.componentmodel._138_3.cs)]
- [!code-vb[Classic MergablePropertyAttribute Example#3](~/add/codesnippet/visualbasic/t-system.componentmodel._138_3.vb)]  
+ [!code-cpp[Classic MergablePropertyAttribute Example#3](~/add/codesnippet/cpp/t-system.componentmodel._146_3.cpp)]
+ [!code-cs[Classic MergablePropertyAttribute Example#3](~/add/codesnippet/csharp/t-system.componentmodel._146_3.cs)]
+ [!code-vb[Classic MergablePropertyAttribute Example#3](~/add/codesnippet/visualbasic/t-system.componentmodel._146_3.vb)]  
   
  ]]></format>
     </remarks>
@@ -60,8 +61,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool allowMerge) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="allowMerge" Type="System.Boolean" />
       </Parameters>
@@ -75,9 +83,9 @@
 ## Examples  
  The following example marks a property as appropriate to merge. This code creates a new <xref:System.ComponentModel.MergablePropertyAttribute>, sets its value to <xref:System.ComponentModel.MergablePropertyAttribute.Yes?displayProperty=fullName>, and binds it to the property.  
   
- [!code-cpp[Classic MergablePropertyAttribute.MergablePropertyAttribute Example#1](~/add/codesnippet/cpp/m-system.componentmodel._30_1.cpp)]
- [!code-cs[Classic MergablePropertyAttribute.MergablePropertyAttribute Example#1](~/add/codesnippet/csharp/m-system.componentmodel._30_1.cs)]
- [!code-vb[Classic MergablePropertyAttribute.MergablePropertyAttribute Example#1](~/add/codesnippet/visualbasic/m-system.componentmodel._30_1.vb)]  
+ [!code-cpp[Classic MergablePropertyAttribute.MergablePropertyAttribute Example#1](~/add/codesnippet/cpp/m-system.componentmodel._31_1.cpp)]
+ [!code-cs[Classic MergablePropertyAttribute.MergablePropertyAttribute Example#1](~/add/codesnippet/csharp/m-system.componentmodel._31_1.cs)]
+ [!code-vb[Classic MergablePropertyAttribute.MergablePropertyAttribute Example#1](~/add/codesnippet/visualbasic/m-system.componentmodel._31_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -89,8 +97,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool AllowMerge" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -126,6 +141,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.MergablePropertyAttribute Default" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -149,6 +166,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -171,6 +190,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -189,6 +210,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsDefaultAttribute() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -208,6 +231,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.MergablePropertyAttribute No" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -231,6 +256,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.MergablePropertyAttribute Yes" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit FormViewCommandEventArgs extends System.Web.UI.WebControls.CommandEventArgs" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -58,8 +59,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(object commandSource, class System.Web.UI.WebControls.CommandEventArgs originalArgs) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="commandSource" Type="System.Object" />
         <Parameter Name="originalArgs" Type="System.Web.UI.WebControls.CommandEventArgs" />
@@ -95,14 +103,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance object CommandSource" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the control that raised the event.</summary>
-        <value>An &lt;xref:System.Object&gt; that represents the control that raised the event.</value>
+        <value>An <see cref="T:System.Object" /> that represents the control that raised the event.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -119,31 +134,6 @@
   
  [!code-cs[FormViewItemCommandEventArgs#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_419_1.aspx)]
  [!code-vb[FormViewItemCommandEventArgs#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_419_1.aspx)]  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Handled">
-      <MemberSignature Language="C#" Value="public bool Handled { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Handled" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that indicates whether the control has handled the event.</summary>
-        <value>
-          <see langword="true" /> if data-bound event code was skipped or has finished; otherwise, <see langword="false" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Set this property to `true` in the event handler to specify that the <xref:System.Web.UI.WebControls.FormView> control should not handle the event because you are handling it in your code.  
   
  ]]></format>
         </remarks>

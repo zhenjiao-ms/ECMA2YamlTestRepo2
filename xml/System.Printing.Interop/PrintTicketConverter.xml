@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PrintTicketConverter extends System.Object implements class System.IDisposable" />
   <AssemblyInfo>
     <AssemblyName>ReachFramework</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -36,6 +37,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string deviceName, int32 clientPrintSchemaVersion) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -67,8 +70,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Printing.PrintTicket ConvertDevModeToPrintTicket(unsigned int8[] devMode) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Printing.PrintTicket</ReturnType>
       </ReturnValue>
@@ -76,7 +86,7 @@
         <Parameter Name="devMode" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="devMode">A &lt;xref:System.Byte&gt; array that contains the DEVMODE structure.</param>
+        <param name="devMode">A <see cref="T:System.Byte" /> array that contains the DEVMODE structure.</param>
         <summary>Converts the specified [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure to a managed code <see cref="T:System.Printing.PrintTicket" />.</summary>
         <returns>The new managed <see cref="T:System.Printing.PrintTicket" />.</returns>
         <remarks>
@@ -103,6 +113,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Printing.PrintTicket ConvertDevModeToPrintTicket(unsigned int8[] devMode, valuetype System.Printing.PrintTicketScope scope) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -113,7 +125,7 @@
         <Parameter Name="scope" Type="System.Printing.PrintTicketScope" />
       </Parameters>
       <Docs>
-        <param name="devMode">A &lt;xref:System.Byte&gt; buffer containing the DEVMODE structure to convert.</param>
+        <param name="devMode">A <see cref="T:System.Byte" /> buffer containing the DEVMODE structure to convert.</param>
         <param name="scope">A <see cref="T:System.Printing.PrintTicketScope" /> value that specifies whether the new <see cref="T:System.Printing.PrintTicket" /> applies to a page, a document, or an entire print job.</param>
         <summary>Converts the specified [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure to a managed code <see cref="T:System.Printing.PrintTicket" /> that has the specified scope.</summary>
         <returns>The new <see cref="T:System.Printing.PrintTicket" />.</returns>
@@ -140,8 +152,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] ConvertPrintTicketToDevMode(class System.Printing.PrintTicket printTicket, valuetype System.Printing.Interop.BaseDevModeType baseType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
@@ -153,7 +172,7 @@
         <param name="printTicket">The <see cref="T:System.Printing.PrintTicket" /> to convert.</param>
         <param name="baseType">A value that identifies whether to use the user default or printer default DEVMODE as the base DEVMODE.</param>
         <summary>Converts the specified managed <see cref="T:System.Printing.PrintTicket" /> to an unmanaged [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure that is based on the [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure identified by the <see cref="T:System.Printing.Interop.BaseDevModeType" />.</summary>
-        <returns>A &lt;xref:System.Byte&gt; array that contains the new [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure.</returns>
+        <returns>A <see cref="T:System.Byte" /> array that contains the new [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -179,6 +198,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] ConvertPrintTicketToDevMode(class System.Printing.PrintTicket printTicket, valuetype System.Printing.Interop.BaseDevModeType baseType, valuetype System.Printing.PrintTicketScope scope) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -194,7 +215,7 @@
         <param name="baseType">A value that identifies whether to use the user default or printer default DEVMODE as the base DEVMODE.</param>
         <param name="scope">A <see cref="T:System.Printing.PrintTicketScope" /> value that specifies whether the conversion of the <see cref="T:System.Printing.PrintTicket" /> should be done at the scope of a page, a document, or an entire print job.</param>
         <summary>Converts the specified managed code <see cref="T:System.Printing.PrintTicket" /> with the specified scope, into an unmanaged [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure that is based on the [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure identified by the <see cref="T:System.Printing.Interop.BaseDevModeType" />.</summary>
-        <returns>A &lt;xref:System.Byte&gt; buffer that represents the new [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure.</returns>
+        <returns>A <see cref="T:System.Byte" /> buffer that represents the new [DEVMODE](http://go.microsoft.com/fwlink/?LinkId=89844) structure.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -222,8 +243,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -239,6 +267,8 @@
       <MemberSignature Language="ILAsm" Value=".property int32 MaxPrintSchemaVersion" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -256,8 +286,14 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.IDisposable.Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ReachFramework</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

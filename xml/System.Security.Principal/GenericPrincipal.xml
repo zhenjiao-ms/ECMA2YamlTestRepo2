@@ -1,14 +1,19 @@
 <Type Name="GenericPrincipal" FullName="System.Security.Principal.GenericPrincipal">
-  <TypeSignature Language="C#" Value="public class GenericPrincipal : System.Security.Claims.ClaimsPrincipal" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit GenericPrincipal extends System.Security.Claims.ClaimsPrincipal" />
+  <TypeSignature Language="C#" Value="public class GenericPrincipal : System.Security.Principal.IPrincipal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit GenericPrincipal extends System.Object implements class System.Security.Principal.IPrincipal" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Security.Claims.ClaimsPrincipal</BaseTypeName>
+    <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Security.Principal.IPrincipal</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Attributes>
     <Attribute>
       <AttributeName>System.Runtime.InteropServices.ComVisible(true)</AttributeName>
@@ -41,6 +46,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Security.Principal.IIdentity identity, string[] roles) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -48,7 +55,7 @@
         <Parameter Name="roles" Type="System.String[]" />
       </Parameters>
       <Docs>
-        <param name="identity">A basic implementation of &lt;xref:System.Security.Principal.IIdentity&gt; that represents any user.</param>
+        <param name="identity">A basic implementation of <see cref="T:System.Security.Principal.IIdentity" /> that represents any user.</param>
         <param name="roles">An array of role names to which the user represented by the `identity` parameter belongs.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Security.Principal.GenericPrincipal" /> class from a user identity and an array of role names to which the user represented by that identity belongs.</summary>
         <remarks>
@@ -68,10 +75,12 @@
       </Docs>
     </Member>
     <Member MemberName="Identity">
-      <MemberSignature Language="C#" Value="public override System.Security.Principal.IIdentity Identity { get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Security.Principal.IIdentity Identity { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Principal.IIdentity Identity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -96,10 +105,12 @@
       </Docs>
     </Member>
     <Member MemberName="IsInRole">
-      <MemberSignature Language="C#" Value="public override bool IsInRole (string role);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsInRole(string role) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool IsInRole (string role);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsInRole(string role) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

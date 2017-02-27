@@ -29,8 +29,14 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Creates a new instance of the <see cref="T:System.Activities.AsyncCodeActivity" /> class.</summary>
@@ -43,6 +49,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.IAsyncResult BeginExecute(class System.Activities.AsyncCodeActivityContext context, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -77,6 +84,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CacheMetadata(valuetype System.Activities.ActivityMetadata metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -97,6 +105,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void CacheMetadata(valuetype System.Activities.CodeActivityMetadata metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -125,6 +134,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Cancel(class System.Activities.AsyncCodeActivityContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -145,6 +155,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void EndExecute(class System.Activities.AsyncCodeActivityContext context, class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -156,7 +167,7 @@
       </Parameters>
       <Docs>
         <param name="context">Information that defines the execution environment for the <see cref="T:System.Activities.AsyncCodeActivity" />.</param>
-        <param name="result">The implemented &lt;xref:System.IAsyncResult&gt; that returns the status of an asynchronous activity when execution ends.</param>
+        <param name="result">The implemented <see cref="T:System.IAsyncResult" /> that returns the status of an asynchronous activity when execution ends.</param>
         <summary>When implemented in a derived class and using the specified execution environment information, notifies the workflow runtime that the associated asynchronous activity operation has completed.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -176,6 +187,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Func`1&lt;class System.Activities.Activity&gt; Implementation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -189,45 +201,6 @@
       <Docs>
         <summary>Gets <see langword="null" /> or throws an error when there is an attempt to set the value of this property.</summary>
         <value>An activity function.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="ImplementationVersion">
-      <MemberSignature Language="C#" Value="protected override sealed Version ImplementationVersion { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Version ImplementationVersion" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Version</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the implementation version of the activity.</summary>
-        <value>The implementation version of the activity.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="OnCreateDynamicUpdateMap">
-      <MemberSignature Language="C#" Value="protected override sealed void OnCreateDynamicUpdateMap (System.Activities.DynamicUpdate.UpdateMapMetadata metadata, System.Activities.Activity originalActivity);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnCreateDynamicUpdateMap(class System.Activities.DynamicUpdate.UpdateMapMetadata metadata, class System.Activities.Activity originalActivity) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="metadata" Type="System.Activities.DynamicUpdate.UpdateMapMetadata" />
-        <Parameter Name="originalActivity" Type="System.Activities.Activity" />
-      </Parameters>
-      <Docs>
-        <param name="metadata">The metadata used.</param>
-        <param name="originalActivity">The original activity.</param>
-        <summary>Raises an event when creating a map for the dynamic update.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

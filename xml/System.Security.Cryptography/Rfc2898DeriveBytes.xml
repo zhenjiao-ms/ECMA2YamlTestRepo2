@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Rfc2898DeriveBytes extends System.Security.Cryptography.DeriveBytes" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -34,9 +35,9 @@
 ## Examples  
  The following code example uses the Rfc2898DeriveBytes class to create two identical keys for the <xref:System.Security.Cryptography.TripleDES> class.  It then encrypts and decrypts some data using the keys.  
   
- [!code-cs[rfc28981#1](~/add/codesnippet/csharp/t-system.security.crypto_117_1.cs)]
- [!code-vb[rfc28981#1](~/add/codesnippet/visualbasic/t-system.security.crypto_117_1.vb)]
- [!code-cpp[rfc28981#1](~/add/codesnippet/cpp/t-system.security.crypto_117_1.cpp)]  
+ [!code-cs[rfc28981#1](~/add/codesnippet/csharp/t-system.security.crypto_112_1.cs)]
+ [!code-vb[rfc28981#1](~/add/codesnippet/visualbasic/t-system.security.crypto_112_1.vb)]
+ [!code-cpp[rfc28981#1](~/add/codesnippet/cpp/t-system.security.crypto_112_1.cpp)]  
   
  ]]></format>
     </remarks>
@@ -48,6 +49,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string password, unsigned int8[] salt) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -92,6 +95,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string password, int32 saltSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -127,13 +132,10 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8[] password, unsigned int8[] salt, int32 iterations) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
-        </Attribute>
-      </Attributes>
       <Parameters>
         <Parameter Name="password" Type="System.Byte[]" />
         <Parameter Name="salt" Type="System.Byte[]" />
@@ -169,6 +171,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string password, unsigned int8[] salt, int32 iterations) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -215,13 +219,10 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string password, int32 saltSize, int32 iterations) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
-        </Attribute>
-      </Attributes>
       <Parameters>
         <Parameter Name="password" Type="System.String" />
         <Parameter Name="saltSize" Type="System.Int32" />
@@ -254,65 +255,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="CryptDeriveKey">
-      <MemberSignature Language="C#" Value="public byte[] CryptDeriveKey (string algname, string alghashname, int keySize, byte[] rgbIV);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] CryptDeriveKey(string algname, string alghashname, int32 keySize, unsigned int8[] rgbIV) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Byte[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="algname" Type="System.String" />
-        <Parameter Name="alghashname" Type="System.String" />
-        <Parameter Name="keySize" Type="System.Int32" />
-        <Parameter Name="rgbIV" Type="System.Byte[]" />
-      </Parameters>
-      <Docs>
-        <param name="algname">The algorithm name for which to derive the key.</param>
-        <param name="alghashname">The hash algorithm name to use to derive the key.</param>
-        <param name="keySize">The size of the key, in bits, to derive.</param>
-        <param name="rgbIV">The initialization vector (IV) to use to derive the key.</param>
-        <summary>Derives a cryptographic key from the <see cref="T:System.Security.Cryptography.Rfc2898DeriveBytes" /> object.</summary>
-        <returns>The derived key.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This function is a wrapper for the Crypto API function CryptDeriveKey(), and is intended to offer interoperability with applications using the Crypto API.  
-  
- If the `keySize` parameter is set to 0 bits, the default key size for the specified algorithm is used.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.Security.Cryptography.CryptographicException">The <paramref name="keySize" /> parameter is incorrect.  
-  
- -or-  
-  
- The cryptographic service provider (CSP) cannot be acquired.  
-  
- -or-  
-  
- The <paramref name="algname" /> parameter is not a valid algorithm name.  
-  
- -or-  
-  
- The <paramref name="alghashname" /> parameter is not a valid hash algorithm name.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -343,8 +291,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance unsigned int8[] GetBytes(int32 cb) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
@@ -366,9 +321,9 @@
 ## Examples  
  The following example shows how to use the GetBytes method to get the key for an instance of <xref:System.Security.Cryptography.Rfc2898DeriveBytes>. This code example is part of a larger example provided for the <xref:System.Security.Cryptography.Rfc2898DeriveBytes> class.  
   
- [!code-cs[rfc28981#2](~/add/codesnippet/csharp/m-system.security.crypto_127_1.cs)]
- [!code-vb[rfc28981#2](~/add/codesnippet/visualbasic/m-system.security.crypto_127_1.vb)]
- [!code-cpp[rfc28981#2](~/add/codesnippet/cpp/m-system.security.crypto_127_1.cpp)]  
+ [!code-cs[rfc28981#2](~/add/codesnippet/csharp/m-system.security.crypto_125_1.cs)]
+ [!code-vb[rfc28981#2](~/add/codesnippet/visualbasic/m-system.security.crypto_125_1.vb)]
+ [!code-cpp[rfc28981#2](~/add/codesnippet/cpp/m-system.security.crypto_125_1.cpp)]  
   
  ]]></format>
         </remarks>
@@ -382,6 +337,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 IterationCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -416,6 +373,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Reset() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -435,9 +394,9 @@
 ## Examples  
  The following example shows how to use the Reset method. This code example is part of a larger example provided for the <xref:System.Security.Cryptography.Rfc2898DeriveBytes> class.  
   
- [!code-cs[rfc28981#5](~/add/codesnippet/csharp/m-system.security.crypto_26_1.cs)]
- [!code-vb[rfc28981#5](~/add/codesnippet/visualbasic/m-system.security.crypto_26_1.vb)]
- [!code-cpp[rfc28981#5](~/add/codesnippet/cpp/m-system.security.crypto_26_1.cpp)]  
+ [!code-cs[rfc28981#5](~/add/codesnippet/csharp/m-system.security.crypto_25_1.cs)]
+ [!code-vb[rfc28981#5](~/add/codesnippet/visualbasic/m-system.security.crypto_25_1.vb)]
+ [!code-cpp[rfc28981#5](~/add/codesnippet/cpp/m-system.security.crypto_25_1.cpp)]  
   
  ]]></format>
         </remarks>
@@ -449,6 +408,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] Salt" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

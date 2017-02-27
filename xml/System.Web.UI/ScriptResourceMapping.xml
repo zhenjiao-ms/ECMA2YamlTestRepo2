@@ -1,6 +1,6 @@
 <Type Name="ScriptResourceMapping" FullName="System.Web.UI.ScriptResourceMapping">
-  <TypeSignature Language="C#" Value="public class ScriptResourceMapping" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ScriptResourceMapping extends System.Object" />
+  <TypeSignature Language="C#" Value="public class ScriptResourceMapping : System.Web.UI.IScriptResourceMapping" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ScriptResourceMapping extends System.Object implements class System.Web.UI.IScriptResourceMapping" />
   <AssemblyInfo>
     <AssemblyName>System.Web.Extensions</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -8,7 +8,11 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Web.UI.IScriptResourceMapping</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>Provides location mapping support for script resources.</summary>
     <remarks>
@@ -27,6 +31,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -41,8 +46,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDefinition(string name, class System.Web.UI.ScriptResourceDefinition definition) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -63,6 +74,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDefinition(string name, class System.Reflection.Assembly assembly, class System.Web.UI.ScriptResourceDefinition definition) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -75,7 +87,7 @@
       </Parameters>
       <Docs>
         <param name="name">The name of the script resource.</param>
-        <param name="assembly">An &lt;xref:System.Reflection.Assembly&gt; object that contains the script resource.</param>
+        <param name="assembly">An <see cref="T:System.Reflection.Assembly" /> object that contains the script resource.</param>
         <param name="definition">A <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object that specifies location support for script resources.</param>
         <summary>Adds a <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object to the <see cref="T:System.Web.UI.ScriptResourceMapping" /> object.</summary>
         <remarks>To be added.</remarks>
@@ -87,6 +99,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Clear() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -100,31 +113,11 @@
       </Docs>
     </Member>
     <Member MemberName="GetDefinition">
-      <MemberSignature Language="C#" Value="public System.Web.UI.ScriptResourceDefinition GetDefinition (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.UI.ScriptResourceDefinition GetDefinition(string name) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.UI.ScriptResourceDefinition</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="name" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="name">The name of the script resource.</param>
-        <summary>Returns the specified <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object from the <see cref="T:System.Web.UI.ScriptResourceMapping" /> object based on the <paramref name="name" /> parameter.</summary>
-        <returns>A <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetDefinition">
       <MemberSignature Language="C#" Value="public System.Web.UI.ScriptResourceDefinition GetDefinition (System.Web.UI.ScriptReference scriptReference);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.UI.ScriptResourceDefinition GetDefinition(class System.Web.UI.ScriptReference scriptReference) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -146,6 +139,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.UI.ScriptResourceDefinition GetDefinition(string name, class System.Reflection.Assembly assembly) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -157,29 +151,8 @@
       </Parameters>
       <Docs>
         <param name="name">The name of the script resource.</param>
-        <param name="assembly">An &lt;xref:System.Reflection.Assembly&gt; object that contains the script resource.</param>
+        <param name="assembly">An <see cref="T:System.Reflection.Assembly" /> object that contains the script resource.</param>
         <summary>Returns the specified <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object from the <see cref="T:System.Web.UI.ScriptResourceMapping" /> object.</summary>
-        <returns>A <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveDefinition">
-      <MemberSignature Language="C#" Value="public System.Web.UI.ScriptResourceDefinition RemoveDefinition (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.UI.ScriptResourceDefinition RemoveDefinition(string name) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.UI.ScriptResourceDefinition</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="name" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="name">The name of the script resource to remove.</param>
-        <summary>Removes a <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object from the <see cref="T:System.Web.UI.ScriptResourceMapping" /> object based on the <paramref name="name" /> parameter.</summary>
         <returns>A <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -190,6 +163,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.UI.ScriptResourceDefinition RemoveDefinition(string name, class System.Reflection.Assembly assembly) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -201,11 +175,39 @@
       </Parameters>
       <Docs>
         <param name="name">The name of the script resource to remove.</param>
-        <param name="assembly">An &lt;xref:System.Reflection.Assembly&gt; object that contains the script resource.</param>
+        <param name="assembly">An <see cref="T:System.Reflection.Assembly" /> object that contains the script resource.</param>
         <summary>Removes a <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object from the <see cref="T:System.Web.UI.ScriptResourceMapping" /> object.</summary>
         <returns>A <see cref="T:System.Web.UI.ScriptResourceDefinition" /> object.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="System.Web.UI.IScriptResourceMapping.GetDefinition">
+      <MemberSignature Language="C#" Value="System.Web.UI.IScriptResourceDefinition IScriptResourceMapping.GetDefinition (string name, System.Reflection.Assembly assembly);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Web.UI.IScriptResourceDefinition System.Web.UI.IScriptResourceMapping.GetDefinition(string name, class System.Reflection.Assembly assembly) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Web.Extensions</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Web.UI.IScriptResourceDefinition</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="assembly" Type="System.Reflection.Assembly" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="assembly">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

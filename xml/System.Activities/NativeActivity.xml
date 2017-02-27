@@ -95,8 +95,14 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>When implemented in a derived class, creates a new instance of the derived class.</summary>
@@ -118,6 +124,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Abort(class System.Activities.NativeActivityAbortContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -138,6 +145,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CacheMetadata(valuetype System.Activities.ActivityMetadata metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -165,6 +173,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void CacheMetadata(valuetype System.Activities.NativeActivityMetadata metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -199,6 +208,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Cancel(class System.Activities.NativeActivityContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -228,6 +238,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".property instance bool CanInduceIdle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -246,6 +257,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Execute(class System.Activities.NativeActivityContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -275,6 +287,7 @@ public sealed class MySequence : NativeActivity
       <MemberSignature Language="ILAsm" Value=".property instance class System.Func`1&lt;class System.Activities.Activity&gt; Implementation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -288,87 +301,6 @@ public sealed class MySequence : NativeActivity
       <Docs>
         <summary>The execution logic of the activity.</summary>
         <value>The execution logic.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="ImplementationVersion">
-      <MemberSignature Language="C#" Value="protected override sealed Version ImplementationVersion { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Version ImplementationVersion" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Version</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the implementation version of the activity.</summary>
-        <value>The implementation version of the activity.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="OnCreateDynamicUpdateMap">
-      <MemberSignature Language="C#" Value="protected virtual void OnCreateDynamicUpdateMap (System.Activities.DynamicUpdate.NativeActivityUpdateMapMetadata metadata, System.Activities.Activity originalActivity);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnCreateDynamicUpdateMap(class System.Activities.DynamicUpdate.NativeActivityUpdateMapMetadata metadata, class System.Activities.Activity originalActivity) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="metadata" Type="System.Activities.DynamicUpdate.NativeActivityUpdateMapMetadata" />
-        <Parameter Name="originalActivity" Type="System.Activities.Activity" />
-      </Parameters>
-      <Docs>
-        <param name="metadata">The metadata.</param>
-        <param name="originalActivity">The original activity.</param>
-        <summary>Raises an event when creating a map for the dynamic update.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="OnCreateDynamicUpdateMap">
-      <MemberSignature Language="C#" Value="protected override sealed void OnCreateDynamicUpdateMap (System.Activities.DynamicUpdate.UpdateMapMetadata metadata, System.Activities.Activity originalActivity);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnCreateDynamicUpdateMap(class System.Activities.DynamicUpdate.UpdateMapMetadata metadata, class System.Activities.Activity originalActivity) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="metadata" Type="System.Activities.DynamicUpdate.UpdateMapMetadata" />
-        <Parameter Name="originalActivity" Type="System.Activities.Activity" />
-      </Parameters>
-      <Docs>
-        <param name="metadata">The metadata.</param>
-        <param name="originalActivity">The original activity.</param>
-        <summary>Raises an event when creating a map for the dynamic update.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateInstance">
-      <MemberSignature Language="C#" Value="protected virtual void UpdateInstance (System.Activities.DynamicUpdate.NativeActivityUpdateContext updateContext);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void UpdateInstance(class System.Activities.DynamicUpdate.NativeActivityUpdateContext updateContext) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="updateContext" Type="System.Activities.DynamicUpdate.NativeActivityUpdateContext" />
-      </Parameters>
-      <Docs>
-        <param name="updateContext">The update context.</param>
-        <summary>Updates the instance of <see cref="T:System.Activities.NativeActivity" />.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

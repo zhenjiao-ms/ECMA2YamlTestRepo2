@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit TextSource extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>PresentationCore</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -38,8 +39,15 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationCore</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Windows.Media.TextFormatting.TextSource" /> class.</summary>
@@ -52,6 +60,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Windows.Media.TextFormatting.TextSpan`1&lt;class System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange&gt; GetPrecedingText(int32 textSourceCharacterIndexLimit) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationCore</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -61,7 +71,7 @@
         <Parameter Name="textSourceCharacterIndexLimit" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="textSourceCharacterIndexLimit">An &lt;xref:System.Int32&gt; value that specifies the character index position where text retrieval stops.</param>
+        <param name="textSourceCharacterIndexLimit">An <see cref="T:System.Int32" /> value that specifies the character index position where text retrieval stops.</param>
         <summary>Retrieves the text span immediately before the specified <see cref="T:System.Windows.Media.TextFormatting.TextSource" /> position.</summary>
         <returns>A <see cref="T:System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange" /> value that represents the text span immediately before <paramref name="textSourceCharacterIndexLimit" />.</returns>
         <remarks>
@@ -82,6 +92,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 GetTextEffectCharacterIndexFromTextSourceCharacterIndex(int32 textSourceCharacterIndex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationCore</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -91,9 +103,9 @@
         <Parameter Name="textSourceCharacterIndex" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="textSourceCharacterIndex">An &lt;xref:System.Int32&gt; value that specifies the <see cref="T:System.Windows.Media.TextFormatting.TextSource" /> character index to map.</param>
+        <param name="textSourceCharacterIndex">An <see cref="T:System.Int32" /> value that specifies the <see cref="T:System.Windows.Media.TextFormatting.TextSource" /> character index to map.</param>
         <summary>Retrieves a value that maps a <see cref="T:System.Windows.Media.TextFormatting.TextSource" /> character index to a <see cref="T:System.Windows.Media.TextEffect" /> character index.</summary>
-        <returns>An &lt;xref:System.Int32&gt; value that represents the <see cref="T:System.Windows.Media.TextEffect" /> character index.</returns>
+        <returns>An <see cref="T:System.Int32" /> value that represents the <see cref="T:System.Windows.Media.TextEffect" /> character index.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -103,6 +115,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Windows.Media.TextFormatting.TextRun GetTextRun(int32 textSourceCharacterIndex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationCore</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -139,30 +153,6 @@
   
  [!code-cs[TextFormattingSnippets#TextFormattingSnippet4](~/add/codesnippet/csharp/TextFormattingSnippets/CustomTextClasses.cs#textformattingsnippet4)]
  [!code-vb[TextFormattingSnippets#TextFormattingSnippet4](~/add/codesnippet/visualbasic/textformattingsnippets/customtextclasses.vb#textformattingsnippet4)]  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="PixelsPerDip">
-      <MemberSignature Language="C#" Value="public double PixelsPerDip { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 PixelsPerDip" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Get or sets the PixelsPerDip at which the text should be rendered.</summary>
-        <value>The current PixelsPerDip value.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Any class that extends <xref:System.Windows.Media.TextFormatting.TextSource> should update         PixelsPerDip whenever the DPI changes for a Per Monitor DPI Aware application.  
   
  ]]></format>
         </remarks>

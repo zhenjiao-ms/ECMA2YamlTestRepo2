@@ -1,12 +1,13 @@
 <Type Name="SymBinder" FullName="System.Diagnostics.SymbolStore.SymBinder">
-  <TypeSignature Language="C#" Value="public class SymBinder : System.Diagnostics.SymbolStore.SymBinderBase, IDisposable, System.Diagnostics.SymbolStore.ISymbolBinder, System.Diagnostics.SymbolStore.ISymbolBinder1" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SymBinder extends System.Diagnostics.SymbolStore.SymBinderBase implements class System.Diagnostics.SymbolStore.ISymbolBinder, class System.Diagnostics.SymbolStore.ISymbolBinder1, class System.IDisposable" />
+  <TypeSignature Language="C#" Value="public class SymBinder : System.Diagnostics.SymbolStore.ISymbolBinder, System.Diagnostics.SymbolStore.ISymbolBinder1" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SymBinder extends System.Object implements class System.Diagnostics.SymbolStore.ISymbolBinder, class System.Diagnostics.SymbolStore.ISymbolBinder1" />
   <AssemblyInfo>
     <AssemblyName>ISymWrapper</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Diagnostics.SymbolStore.SymBinderBase</BaseTypeName>
+    <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
@@ -14,9 +15,6 @@
     </Interface>
     <Interface>
       <InterfaceName>System.Diagnostics.SymbolStore.ISymbolBinder1</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>System.IDisposable</InterfaceName>
     </Interface>
   </Interfaces>
   <Attributes>
@@ -32,9 +30,11 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public SymBinder ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -45,11 +45,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="public override sealed void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose() cil managed" />
+    <Member MemberName="{dtor}">
+      <MemberSignature Language="C#" Value="public void {dtor} ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void {dtor}() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -57,49 +59,17 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Releases the resources used by the current instance of the <see cref="T:System.Diagnostics.SymbolStore.SymBinder" /> class.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool A_0);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool A_0) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="A_0" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="A_0">
-          <see langword="true" /> to release managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
-        <summary>Called by the &lt;xref:System.Diagnostics.SymbolStore.SymBinder.Dispose%2A&gt; and &lt;xref:System.Diagnostics.SymbolStore.SymBinder.Finalize%2A&gt; methods to release the managed and unmanaged resources used by the current instance of the <see cref="T:System.Diagnostics.SymbolStore.SymBinder" /> class.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This method is called only by the public <xref:System.Diagnostics.SymbolStore.SymBinder.Dispose%2A> and <xref:System.Diagnostics.SymbolStore.SymBinder.Finalize%2A> methods; do not call this method directly.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~SymBinder ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method familyvirtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -120,10 +90,12 @@
       </Docs>
     </Member>
     <Member MemberName="GetReader">
-      <MemberSignature Language="C#" Value="public virtual System.Diagnostics.SymbolStore.ISymbolReader GetReader (int importer, string filename, string searchPath);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Diagnostics.SymbolStore.ISymbolReader GetReader(int32 importer, string filename, string searchPath) cil managed" />
+      <MemberSignature Language="C#" Value="public override System.Diagnostics.SymbolStore.ISymbolReader GetReader (int importer, string filename, string searchPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance class System.Diagnostics.SymbolStore.ISymbolReader GetReader(int32 importer, string filename, string searchPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -161,10 +133,12 @@
       </Docs>
     </Member>
     <Member MemberName="GetReader">
-      <MemberSignature Language="C#" Value="public virtual System.Diagnostics.SymbolStore.ISymbolReader GetReader (IntPtr importer, string filename, string searchPath);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Diagnostics.SymbolStore.ISymbolReader GetReader(native int importer, string filename, string searchPath) cil managed" />
+      <MemberSignature Language="C#" Value="public override System.Diagnostics.SymbolStore.ISymbolReader GetReader (IntPtr importer, string filename, string searchPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance class System.Diagnostics.SymbolStore.ISymbolReader GetReader(native int importer, string filename, string searchPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

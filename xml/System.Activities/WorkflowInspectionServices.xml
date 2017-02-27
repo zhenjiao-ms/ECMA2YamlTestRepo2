@@ -20,8 +20,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CacheMetadata(class System.Activities.Activity rootActivity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -40,6 +46,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CacheMetadata(class System.Activities.Activity rootActivity, class System.Activities.LocationReferenceEnvironment hostEnvironment) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -57,40 +64,14 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="CanInduceIdle">
-      <MemberSignature Language="C#" Value="public static bool CanInduceIdle (System.Activities.Activity activity);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool CanInduceIdle(class System.Activities.Activity activity) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="activity" Type="System.Activities.Activity" />
-      </Parameters>
-      <Docs>
-        <param name="activity">The activity.</param>
-        <summary>Specifies whether the service can include idle activities.</summary>
-        <returns>
-          <see langword="True" /> if the service can include idle activities; otherwise, <see langword="false" />.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="GetActivities">
       <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Activities.Activity&gt; GetActivities (System.Activities.Activity activity);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;class System.Activities.Activity&gt; GetActivities(class System.Activities.Activity activity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.CompilerServices.IteratorStateMachine(typeof(System.Activities.WorkflowInspectionServices/&lt;GetActivities&gt;d__3))</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Activities.Activity&gt;</ReturnType>
       </ReturnValue>
@@ -114,32 +95,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="GetImplementationVersion">
-      <MemberSignature Language="C#" Value="public static Version GetImplementationVersion (System.Activities.Activity activity);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Version GetImplementationVersion(class System.Activities.Activity activity) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Version</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="activity" Type="System.Activities.Activity" />
-      </Parameters>
-      <Docs>
-        <param name="activity">The activity.</param>
-        <summary>Retrieves the implementation version of the activity.</summary>
-        <returns>The implementation version of the activity.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Resolve">
       <MemberSignature Language="C#" Value="public static System.Activities.Activity Resolve (System.Activities.Activity root, string id);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.Activity Resolve(class System.Activities.Activity root, string id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -153,7 +114,7 @@
         <param name="root">The activity tree to search.</param>
         <param name="id">The identifier of the activity to find.</param>
         <summary>Returns the activity with the specified <paramref name="id" /> from the specified activity tree.</summary>
-        <returns>The specified activity if found; otherwise, an &lt;xref:System.ArgumentException&gt; is thrown.</returns>
+        <returns>The specified activity if found; otherwise, an <see cref="T:System.ArgumentException" /> is thrown.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

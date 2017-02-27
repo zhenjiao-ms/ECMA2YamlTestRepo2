@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit InstanceDescriptor extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -34,9 +35,9 @@
 ## Examples  
  The following code example illustrates how to use a type converter that participates in code generation through the use of instance descriptors.  
   
- [!code-cpp[InstanceDescriptorSample#1](~/add/codesnippet/cpp/t-system.componentmodel._121_1.cpp)]
- [!code-vb[InstanceDescriptorSample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._121_1.vb)]
- [!code-cs[InstanceDescriptorSample#1](~/add/codesnippet/csharp/t-system.componentmodel._121_1.cs)]  
+ [!code-cpp[InstanceDescriptorSample#1](~/add/codesnippet/cpp/t-system.componentmodel._127_1.cpp)]
+ [!code-vb[InstanceDescriptorSample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._127_1.vb)]
+ [!code-cs[InstanceDescriptorSample#1](~/add/codesnippet/csharp/t-system.componentmodel._127_1.cs)]  
   
  ]]></format>
     </remarks>
@@ -48,27 +49,34 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Reflection.MemberInfo member, class System.Collections.ICollection arguments) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="member" Type="System.Reflection.MemberInfo" />
         <Parameter Name="arguments" Type="System.Collections.ICollection" />
       </Parameters>
       <Docs>
-        <param name="member">The member information for the descriptor. This can be a &lt;xref:System.Reflection.MethodInfo&gt;, &lt;xref:System.Reflection.ConstructorInfo&gt;, &lt;xref:System.Reflection.FieldInfo&gt;, or &lt;xref:System.Reflection.PropertyInfo&gt;. If this is a &lt;xref:System.Reflection.MethodInfo&gt;, &lt;xref:System.Reflection.FieldInfo&gt;, or &lt;xref:System.Reflection.PropertyInfo&gt;, it must represent a <see langword="static" /> member.</param>
+        <param name="member">The member information for the descriptor. This can be a <see cref="T:System.Reflection.MethodInfo" />, <see cref="T:System.Reflection.ConstructorInfo" />, <see cref="T:System.Reflection.FieldInfo" />, or <see cref="T:System.Reflection.PropertyInfo" />. If this is a <see cref="T:System.Reflection.MethodInfo" />, <see cref="T:System.Reflection.FieldInfo" />, or <see cref="T:System.Reflection.PropertyInfo" />, it must represent a <see langword="static" /> member.</param>
         <param name="arguments">The collection of arguments to pass to the member. This parameter can be <see langword="null" /> or an empty collection if there are no arguments. The collection can also consist of other instances of <see cref="T:System.ComponentModel.Design.Serialization.InstanceDescriptor" />.</param>
         <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Design.Serialization.InstanceDescriptor" /> class using the specified member information and arguments.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="member" /> is of type &lt;xref:System.Reflection.MethodInfo&gt;, &lt;xref:System.Reflection.FieldInfo&gt;, or &lt;xref:System.Reflection.PropertyInfo&gt;, and it does not represent a <see langword="static" /> member.  
+          <paramref name="member" /> is of type <see cref="T:System.Reflection.MethodInfo" />, <see cref="T:System.Reflection.FieldInfo" />, or <see cref="T:System.Reflection.PropertyInfo" />, and it does not represent a <see langword="static" /> member.  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.PropertyInfo&gt; and is not readable.  
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.PropertyInfo" /> and is not readable.  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.MethodInfo&gt; or &lt;xref:System.Reflection.ConstructorInfo&gt;, and the number of arguments in <paramref name="arguments" /> does not match the signature of <paramref name="member." />  
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.MethodInfo" /> or <see cref="T:System.Reflection.ConstructorInfo" />, and the number of arguments in <paramref name="arguments" /> does not match the signature of <paramref name="member." />  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.ConstructorInfo&gt; and represents a <see langword="static" /> member.  
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.ConstructorInfo" /> and represents a <see langword="static" /> member.  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.FieldInfo&gt;, and the number of arguments in <paramref name="arguments" /> is not zero.</exception>
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.FieldInfo" />, and the number of arguments in <paramref name="arguments" /> is not zero.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -77,6 +85,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Reflection.MemberInfo member, class System.Collections.ICollection arguments, bool isComplete) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -85,22 +95,22 @@
         <Parameter Name="isComplete" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="member">The member information for the descriptor. This can be a &lt;xref:System.Reflection.MethodInfo&gt;, &lt;xref:System.Reflection.ConstructorInfo&gt;, &lt;xref:System.Reflection.FieldInfo&gt;, or &lt;xref:System.Reflection.PropertyInfo&gt;. If this is a &lt;xref:System.Reflection.MethodInfo&gt;, &lt;xref:System.Reflection.FieldInfo&gt;, or &lt;xref:System.Reflection.PropertyInfo&gt;, it must represent a <see langword="static" /> member.</param>
+        <param name="member">The member information for the descriptor. This can be a <see cref="T:System.Reflection.MethodInfo" />, <see cref="T:System.Reflection.ConstructorInfo" />, <see cref="T:System.Reflection.FieldInfo" />, or <see cref="T:System.Reflection.PropertyInfo" />. If this is a <see cref="T:System.Reflection.MethodInfo" />, <see cref="T:System.Reflection.FieldInfo" />, or <see cref="T:System.Reflection.PropertyInfo" />, it must represent a <see langword="static" /> member.</param>
         <param name="arguments">The collection of arguments to pass to the member. This parameter can be <see langword="null" /> or an empty collection if there are no arguments. The collection can also consist of other instances of <see cref="T:System.ComponentModel.Design.Serialization.InstanceDescriptor" />.</param>
         <param name="isComplete">
           <see langword="true" /> if the specified information completely describes the instance; otherwise, <see langword="false" />.</param>
         <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Design.Serialization.InstanceDescriptor" /> class using the specified member information, arguments, and value indicating whether the specified information completely describes the instance.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="member" /> is of type &lt;xref:System.Reflection.MethodInfo&gt;, &lt;xref:System.Reflection.FieldInfo&gt;, or &lt;xref:System.Reflection.PropertyInfo&gt;, and it does not represent a <see langword="static" /> member  
+          <paramref name="member" /> is of type <see cref="T:System.Reflection.MethodInfo" />, <see cref="T:System.Reflection.FieldInfo" />, or <see cref="T:System.Reflection.PropertyInfo" />, and it does not represent a <see langword="static" /> member  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.PropertyInfo&gt; and is not readable.  
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.PropertyInfo" /> and is not readable.  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.MethodInfo&gt; or &lt;xref:System.Reflection.ConstructorInfo&gt; and the number of arguments in <paramref name="arguments" /> does not match the signature of <paramref name="member" />.  
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.MethodInfo" /> or <see cref="T:System.Reflection.ConstructorInfo" /> and the number of arguments in <paramref name="arguments" /> does not match the signature of <paramref name="member" />.  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.ConstructorInfo&gt; and represents a <see langword="static" /> member  
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.ConstructorInfo" /> and represents a <see langword="static" /> member  
   
- <paramref name="member" /> is of type &lt;xref:System.Reflection.FieldInfo&gt;, and the number of arguments in <paramref name="arguments" /> is not zero.</exception>
+ <paramref name="member" /> is of type <see cref="T:System.Reflection.FieldInfo" />, and the number of arguments in <paramref name="arguments" /> is not zero.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -109,14 +119,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ICollection Arguments" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.ICollection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the collection of arguments that can be used to reconstruct an instance of the object that this instance descriptor represents.</summary>
-        <value>An &lt;xref:System.Collections.ICollection&gt; of arguments that can be used to create the object.</value>
+        <value>An <see cref="T:System.Collections.ICollection" /> of arguments that can be used to create the object.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -126,6 +143,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object Invoke() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -151,8 +170,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsComplete" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -176,14 +202,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Reflection.MemberInfo MemberInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Reflection.MemberInfo</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the member information that describes the instance this descriptor is associated with.</summary>
-        <value>A &lt;xref:System.Reflection.MemberInfo&gt; that describes the instance that this object is associated with.</value>
+        <value>A <see cref="T:System.Reflection.MemberInfo" /> that describes the instance that this object is associated with.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

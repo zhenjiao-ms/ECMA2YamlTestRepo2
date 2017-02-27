@@ -1,6 +1,6 @@
 <Type Name="DelegateArgumentValue&lt;T&gt;" FullName="System.Activities.Expressions.DelegateArgumentValue&lt;T&gt;">
-  <TypeSignature Language="C#" Value="public sealed class DelegateArgumentValue&lt;T&gt; : System.Activities.Expressions.EnvironmentLocationValue&lt;T&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit DelegateArgumentValue`1&lt;T&gt; extends System.Activities.Expressions.EnvironmentLocationValue`1&lt;!T&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class DelegateArgumentValue&lt;T&gt; : System.Activities.CodeActivity&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit DelegateArgumentValue`1&lt;T&gt; extends System.Activities.CodeActivity`1&lt;!T&gt;" />
   <AssemblyInfo>
     <AssemblyName>System.Activities</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -9,9 +9,9 @@
     <TypeParameter Name="T" />
   </TypeParameters>
   <Base>
-    <BaseTypeName>System.Activities.Expressions.EnvironmentLocationValue&lt;T&gt;</BaseTypeName>
+    <BaseTypeName>System.Activities.CodeActivity&lt;T&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="T">T</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TResult">T</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -31,8 +31,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -44,6 +50,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Activities.DelegateArgument delegateArgument) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -60,6 +67,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CacheMetadata(valuetype System.Activities.CodeActivityMetadata metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -79,8 +87,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.DelegateArgument DelegateArgument" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Activities.DelegateArgument</ReturnType>
       </ReturnValue>
@@ -90,19 +107,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LocationReference">
-      <MemberSignature Language="C#" Value="public override System.Activities.LocationReference LocationReference { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.LocationReference LocationReference" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="Execute">
+      <MemberSignature Language="C#" Value="protected override T Execute (System.Activities.CodeActivityContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance !T Execute(class System.Activities.CodeActivityContext context) cil managed" />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Activities.LocationReference</ReturnType>
+        <ReturnType>T</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="System.Activities.CodeActivityContext" />
+      </Parameters>
       <Docs>
+        <param name="context">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

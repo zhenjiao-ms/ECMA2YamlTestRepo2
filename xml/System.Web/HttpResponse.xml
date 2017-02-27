@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit HttpResponse extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -66,13 +67,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.TextWriter writer) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="writer" Type="System.IO.TextWriter" />
       </Parameters>
       <Docs>
-        <param name="writer">A &lt;xref:System.IO.TextWriter&gt; object that enables custom HTTP output.</param>
+        <param name="writer">A <see cref="T:System.IO.TextWriter" /> object that enables custom HTTP output.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Web.HttpResponse" /> class.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -92,6 +95,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddCacheDependency(class System.Web.Caching.CacheDependency[] dependencies) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -135,6 +140,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddCacheItemDependencies(class System.Collections.ArrayList cacheKeys) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -170,6 +177,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddCacheItemDependencies(string[] cacheKeys) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -197,6 +206,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddCacheItemDependency(string cacheKey) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -234,6 +245,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddFileDependencies(class System.Collections.ArrayList filenames) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -264,6 +277,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddFileDependencies(string[] filenames) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -294,6 +309,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddFileDependency(string filename) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -329,8 +346,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddHeader(string name, string value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -353,55 +377,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="AddOnSendingHeaders">
-      <MemberSignature Language="C#" Value="public System.Web.ISubscriptionToken AddOnSendingHeaders (Action&lt;System.Web.HttpContext&gt; callback);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.ISubscriptionToken AddOnSendingHeaders(class System.Action`1&lt;class System.Web.HttpContext&gt; callback) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.ISubscriptionToken</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="callback" Type="System.Action&lt;System.Web.HttpContext&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="callback">The callback method.</param>
-        <summary>[Supported in the .NET Framework 4.5.2 and later versions]  
-  
- Registers a callback that the ASP.NET runtime will invoke immediately before response headers are sent for this request.</summary>
-        <returns>An <see cref="T:System.Web.ISubscriptionToken" /> object that represents the subscription to the OnSendingHeaders pseudo-event.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!IMPORTANT]
->  The AddOnSendingHeaders method is not invoked if the native module flushes the response first.  
-  
- The pseudo-event OnSendingHeaders differs from the IHttpModule-level pipeline event in that it is a per-request subscription rather than a per-application subscription. The intent is that the callback may modify the response status code or may set a response cookie or header. Other usage notes and caveats:  
-  
--   This method is effective only when IIS runs in integrated pipeline mode pipeline and only if response headers haven't yet been sent for the current request.  
-  
--   The ASP.NET runtime does not guarantee anything about the thread that the callback is invoked on. For example, the callback may be invoked synchronously in a background thread if a background flush is being performed. <xref:System.Web.HttpContext.Current%2A> is not guaranteed to be available in such a thread.  
-  
--   The callback must not call any method that manipulates the response entity body or that results in a flush. For example, the callback must not call <xref:System.Web.HttpResponse.Redirect%2A>, as that method may manipulate the response entity body.  
-  
--   The callback must contain only short-running synchronous code. Attempting to invoke an asynchronous operation or wait on such an operation could result in a deadlock.  
-  
--   The callback must not throw an exception; otherwise behavior is undefined.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="AppendCookie">
       <MemberSignature Language="C#" Value="public void AppendCookie (System.Web.HttpCookie cookie);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendCookie(class System.Web.HttpCookie cookie) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -433,6 +415,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendHeader(string name, string value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -473,6 +457,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendToLog(string param) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -520,6 +506,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string ApplyAppPathModifier(string virtualPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -551,42 +539,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="BeginFlush">
-      <MemberSignature Language="C#" Value="public IAsyncResult BeginFlush (AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginFlush(class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="callback">The callback object.</param>
-        <param name="state">The response state.</param>
-        <summary>Sends the currently buffered response to the client.</summary>
-        <returns>The asynchronous result object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If the underlying <xref:System.Web.HttpWorkerRequest> object supports asynchronous flush operations and this method is called from an asynchronous module event or from an asynchronous handler, the flush operation is performed asynchronously. Otherwise, the flush operation is performed synchronously. Asynchronous flush is supported for IIS 6.0 and later.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.Web.HttpException">The response is already completed.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="BinaryWrite">
       <MemberSignature Language="C#" Value="public void BinaryWrite (byte[] buffer);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BinaryWrite(unsigned int8[] buffer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -617,8 +576,18 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool Buffer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -642,8 +611,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool BufferOutput" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -672,6 +648,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpCachePolicy Cache" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -699,6 +677,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance string CacheControl" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -726,6 +706,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Charset" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -759,6 +741,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Clear() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -793,8 +777,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearContent() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -825,6 +816,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearHeaders() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -848,49 +841,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="ClientDisconnectedToken">
-      <MemberSignature Language="C#" Value="public System.Threading.CancellationToken ClientDisconnectedToken { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Threading.CancellationToken ClientDisconnectedToken" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.CancellationToken</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a &lt;xref:System.Threading.CancellationToken&gt; object that is tripped when the client disconnects.</summary>
-        <value>The cancellation token.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This API is thread-safe. However, there are some restrictions on how the cancellation token should be used. Using it incorrectly can lead to race conditions, deadlocks, or other unexpected behavior. Keep in mind the following guidelines:  
-  
--   Ensure that you don't call into this API outside the bounds of a single request, because ASP.NET will dispose of the cancellation token at the end of the request. There is no guarantee that the token will ever transition to a canceled state before it is disposed. For example, if the request finishes without the client having disconnected, the token will be disposed without having first been canceled.  
-  
--   Do not wait on the <xref:System.Threading.CancellationToken.WaitHandle%2A?displayProperty=fullName>, as this defeats the purpose of an asynchronous notification and can cause deadlocks.  
-  
--   Do not call the <xref:System.Threading.CancellationToken.Register%2A?displayProperty=fullName> overloads which invoke the callback on the original <xref:System.Threading.SynchronizationContext> object.  
-  
--   Do not use the <xref:System.Web.HttpContext> object or other non-thread-safe ASP.NET intrinsic objects from within the callback provided to the <xref:System.Threading.CancellationToken.Register%2A?displayProperty=fullName> method. The callback may be running concurrently with other ASP.NET or application code.  
-  
--   Keep the callback methods short-running and non-blocking.  
-  
--   Make every effort to avoid throwing exceptions from within the callback methods.  
-  
- This property is only applicable to Internet Information Service (IIS) 7.5 in integrated mode. If you invoke it without the right IIS version or pipeline mode, a <xref:System.PlatformNotSupportedException> is thrown. To determine the IIS version, use <xref:System.Web.HttpRuntime.IISVersion%2A>. To determine the pipeline mode, use <xref:System.Web.HttpRuntime.UsingIntegratedPipeline%2A>.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Close">
       <MemberSignature Language="C#" Value="public void Close ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Close() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -917,6 +874,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Text.Encoding ContentEncoding" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -924,7 +883,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the HTTP character set of the output stream.</summary>
-        <value>A &lt;xref:System.Text.Encoding&gt; object that contains information about the character set of the current response.</value>
+        <value>A <see cref="T:System.Text.Encoding" /> object that contains information about the character set of the current response.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -950,8 +909,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ContentType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -980,6 +946,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpCookieCollection Cookies" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1014,6 +982,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DisableKernelCache() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1033,35 +1003,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="DisableUserCache">
-      <MemberSignature Language="C#" Value="public void DisableUserCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DisableUserCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Disables IIS user-mode caching for this response.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If IIS user-mode caching is not supported, this method returns without performing any action.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="End">
       <MemberSignature Language="C#" Value="public void End ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void End() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1090,35 +1038,20 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="EndFlush">
-      <MemberSignature Language="C#" Value="public void EndFlush (IAsyncResult asyncResult);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndFlush(class System.IAsyncResult asyncResult) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="asyncResult" Type="System.IAsyncResult" />
-      </Parameters>
-      <Docs>
-        <param name="asyncResult">The asynchronous result object.</param>
-        <summary>Completes an asynchronous flush operation.</summary>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">Asynchronous flush is not supported and the <paramref name="asyncResult" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException">Asynchronous flush is not supported and the <paramref name="asyncResult" /> parameter cannot be cast to a `FlushAsyncResult` object.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Expires">
       <MemberSignature Language="C#" Value="public int Expires { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Expires" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1141,8 +1074,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.DateTime ExpiresAbsolute" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.DateTime</ReturnType>
       </ReturnValue>
@@ -1165,6 +1105,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.IO.Stream Filter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1172,7 +1114,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets a wrapping filter object that is used to modify the HTTP entity body before transmission.</summary>
-        <value>The &lt;xref:System.IO.Stream&gt; object that acts as the output filter.</value>
+        <value>The <see cref="T:System.IO.Stream" /> object that acts as the output filter.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1198,6 +1140,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Flush() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1228,37 +1172,21 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="FlushAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task FlushAsync ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task FlushAsync() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Asynchronously sends all currently buffered output to the client.</summary>
-        <returns>A &lt;xref:System.Threading.Tasks.Task&gt; that represents the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="HeaderEncoding">
       <MemberSignature Language="C#" Value="public System.Text.Encoding HeaderEncoding { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Text.Encoding HeaderEncoding" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Text.Encoding</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets an &lt;xref:System.Text.Encoding&gt; object that represents the encoding for the current header output stream.</summary>
-        <value>An &lt;xref:System.Text.Encoding&gt; that contains information about the character set for the current header.</value>
+        <summary>Gets or sets an <see cref="T:System.Text.Encoding" /> object that represents the encoding for the current header output stream.</summary>
+        <value>An <see cref="T:System.Text.Encoding" /> that contains information about the character set for the current header.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1283,6 +1211,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Specialized.NameValueCollection Headers" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1303,31 +1233,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="HeadersWritten">
-      <MemberSignature Language="C#" Value="public bool HeadersWritten { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool HeadersWritten" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>[Supported in the .NET Framework 4.5.2 and later versions]  
-  
- Gets a value indicating whether the response headers have been written.</summary>
-        <value>
-          <see langword="true" /> if the response headers have been written; otherwise, <see langword="false" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="IsClientConnected">
       <MemberSignature Language="C#" Value="public bool IsClientConnected { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsClientConnected" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1365,8 +1277,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsRequestBeingRedirected" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -1390,14 +1309,24 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.IO.TextWriter Output" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.TextWriter</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Enables output of text to the outgoing HTTP response stream.</summary>
-        <value>A &lt;xref:System.IO.TextWriter&gt; object that enables custom output to the client.</value>
+        <value>A <see cref="T:System.IO.TextWriter" /> object that enables custom output to the client.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1417,6 +1346,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.IO.Stream OutputStream" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1424,7 +1355,7 @@
       </ReturnValue>
       <Docs>
         <summary>Enables binary output to the outgoing HTTP content body.</summary>
-        <value>An IO &lt;xref:System.IO.Stream&gt; representing the raw contents of the outgoing HTTP content body.</value>
+        <value>An IO <see cref="T:System.IO.Stream" /> representing the raw contents of the outgoing HTTP content body.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1457,8 +1388,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Pics(string value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1489,71 +1427,20 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="PushPromise">
-      <MemberSignature Language="C#" Value="public void PushPromise (string path);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushPromise(string path) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="path" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="path">The URL of the push request. It should be the virtual path of the relative resource that the server wants to push to the client.</param>
-        <summary>This API is to support applications sending push promises to HTTP 2.0 clients. You can find more details regarding to Http2 server push at [HTTP/2 Specification Section 8.2: Server Push](http://http2.github.io/http2-spec/#PushResources).</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- PushPromise is non-deterministic and applications shouldn't have logic that depends on it. Its only purpose is performance advantage in some cases. There are many conditions (protocol and implementation) that may cause to ignore the push requests completely. The expectation is based on fire-and-forget.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="PushPromise">
-      <MemberSignature Language="C#" Value="public void PushPromise (string path, string method, System.Collections.Specialized.NameValueCollection headers);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushPromise(string path, string method, class System.Collections.Specialized.NameValueCollection headers) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="path" Type="System.String" />
-        <Parameter Name="method" Type="System.String" />
-        <Parameter Name="headers" Type="System.Collections.Specialized.NameValueCollection" />
-      </Parameters>
-      <Docs>
-        <param name="path">The URL of the push request. It should be the virtual path of the relative resource that the server wants to push to the client.</param>
-        <param name="method">Http request method that would be used by the push request.</param>
-        <param name="headers">Http request header that would be used by the push request.</param>
-        <summary>This API is to support applications sending push promises to HTTP 2.0 clients. You can find more details regarding to Http2 server push at [HTTP/2 Specification Section 8.2: Server Push](http://http2.github.io/http2-spec/#PushResources).</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- PushPromise is non-deterministic and applications shouldn't have logic that depends on it. Its only purpose is performance advantage in some cases. There are many conditions (protocol and implementation) that may cause to ignore the push requests completely. The expectation is based on fire-and-forget.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Redirect">
       <MemberSignature Language="C#" Value="public void Redirect (string url);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Redirect(string url) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1595,8 +1482,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Redirect(string url, bool endResponse) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1645,8 +1539,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance string RedirectLocation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1677,8 +1578,14 @@ Response.End();
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectPermanent(string url) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1710,8 +1617,14 @@ Response.End();
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectPermanent(string url, bool endResponse) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1744,6 +1657,7 @@ Response.End();
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoute(object routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1792,8 +1706,14 @@ Response.RedirectToRoute(
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoute(string routeName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1838,8 +1758,14 @@ Response.RedirectToRoute("Products");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoute(class System.Web.Routing.RouteValueDictionary routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1886,6 +1812,7 @@ Response.RedirectToRoute(
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoute(string routeName, object routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1936,8 +1863,14 @@ Response.RedirectToRoute("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoute(string routeName, class System.Web.Routing.RouteValueDictionary routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1986,6 +1919,7 @@ Response.RedirectToRoute("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoutePermanent(object routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2034,8 +1968,14 @@ Response.RedirectToRoutePermanent(
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoutePermanent(string routeName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2080,8 +2020,14 @@ Response.RedirectToRoutePermanent("Products");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoutePermanent(class System.Web.Routing.RouteValueDictionary routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2128,6 +2074,7 @@ Response.RedirectToRoutePermanent(
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoutePermanent(string routeName, object routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2178,8 +2125,14 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RedirectToRoutePermanent(string routeName, class System.Web.Routing.RouteValueDictionary routeValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2228,8 +2181,15 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RemoveOutputCacheItem(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2259,6 +2219,7 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RemoveOutputCacheItem(string path, string providerName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2292,6 +2253,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCookie(class System.Web.HttpCookie cookie) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2323,6 +2286,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".property instance string Status" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2348,8 +2313,15 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".property instance int32 StatusCode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -2376,6 +2348,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".property instance string StatusDescription" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2406,6 +2380,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".property instance int32 SubStatusCode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2435,38 +2411,20 @@ Response.RedirectToRoutePermanent("Product",
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="SupportsAsyncFlush">
-      <MemberSignature Language="C#" Value="public bool SupportsAsyncFlush { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsAsyncFlush" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether the connection supports asynchronous flush operations.</summary>
-        <value>
-          <see langword="true" /> if the connection supports asynchronous flush operations; otherwise, <see langword="false" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This property returns the value of the <xref:System.Web.HttpWorkerRequest.SupportsAsyncFlush%2A?displayProperty=fullName> property.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="SuppressContent">
       <MemberSignature Language="C#" Value="public bool SuppressContent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool SuppressContent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -2488,65 +2446,13 @@ Response.RedirectToRoutePermanent("Product",
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="SuppressDefaultCacheControlHeader">
-      <MemberSignature Language="C#" Value="public bool SuppressDefaultCacheControlHeader { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SuppressDefaultCacheControlHeader" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>[Supported in the .NET Framework 4.5.2 and later versions]  
-  
- Gets or sets a value indicating whether to suppress the default `Cache Control: private` header for the current HTTP response.</summary>
-        <value>
-          <see langword="true" /> to suppress the default `Cache Control: private` header for the current HTTP response; otherwise, <see langword="false" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- By default, ASP.NET sends a `Cache-Control: private` response header unless an explicit cache policy has been specified for this response. This property allows suppressing this default response header on a per-request basis. The header can still be suppressed for the entire application by setting <xref:System.Web.Configuration.HttpRuntimeSection.SendCacheControlHeader%2A> in [httpRuntime Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/e9b81350-8aaf-47cc-9843-5f7d0c59f369) or [outputCache Element for caching (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/47cd2b47-316f-4dfd-bbf8-539be3066fee).  
-  
- Use caution when suppressing the default `Cache-Control: private` header, as proxies and other intermediaries may treat responses without this header as cacheable by default. This treatment can lead to the inadvertent caching of sensitive information. See [RFC 2616, Sec. 13.4](http://tools.ietf.org/html/rfc2616) for more information.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="SuppressFormsAuthenticationRedirect">
-      <MemberSignature Language="C#" Value="public bool SuppressFormsAuthenticationRedirect { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SuppressFormsAuthenticationRedirect" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that specifies whether forms authentication redirection to the login page should be suppressed.</summary>
-        <value>
-          <see langword="true" /> if forms authentication redirection should be suppressed; otherwise, <see langword="false" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- By default, forms authentication converts HTTP 401 status codes to 302 in order to redirect to the login page. This isn't appropriate for certain classes of errors, such as when authentication succeeds but authorization fails, or when the current request is an AJAX or web service request. This property provides a way to suppress the redirect behavior and send the original status code to the client.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="TransmitFile">
       <MemberSignature Language="C#" Value="public void TransmitFile (string filename);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TransmitFile(string filename) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2568,6 +2474,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TransmitFile(string filename, int64 offset, int64 length) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2618,6 +2526,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".property instance bool TrySkipIisCustomErrors" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2643,6 +2553,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Write(char ch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2673,6 +2585,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Write(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2682,8 +2596,8 @@ Response.RedirectToRoutePermanent("Product",
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">The &lt;xref:System.Object&gt; to write to the HTTP output stream.</param>
-        <summary>Writes an &lt;xref:System.Object&gt; to an HTTP response stream.</summary>
+        <param name="obj">The <see cref="T:System.Object" /> to write to the HTTP output stream.</param>
+        <summary>Writes an <see cref="T:System.Object" /> to an HTTP response stream.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -2693,6 +2607,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Write(string s) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2734,6 +2650,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Write(char[] buffer, int32 index, int32 count) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2768,6 +2686,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteFile(string filename) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2804,6 +2724,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteFile(string filename, bool readIntoMemory) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2842,6 +2764,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteFile(native int fileHandle, int64 offset, int64 size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2889,6 +2813,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteFile(string filename, int64 offset, int64 size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2935,6 +2861,8 @@ Response.RedirectToRoutePermanent("Product",
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteSubstitution(class System.Web.HttpResponseSubstitutionCallback callback) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

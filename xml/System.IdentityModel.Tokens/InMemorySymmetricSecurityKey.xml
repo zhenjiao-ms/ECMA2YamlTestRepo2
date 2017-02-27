@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit InMemorySymmetricSecurityKey extends System.IdentityModel.Tokens.SymmetricSecurityKey" />
   <AssemblyInfo>
     <AssemblyName>System.IdentityModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -27,13 +28,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8[] symmetricKey) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="symmetricKey" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="symmetricKey">An array of &lt;xref:System.Byte&gt; that contains the symmetric key.</param>
+        <param name="symmetricKey">An array of <see cref="T:System.Byte" /> that contains the symmetric key.</param>
         <summary>Initializes a new instance of the <see cref="T:System.IdentityModel.Tokens.InMemorySymmetricSecurityKey" /> class using the specified symmetric key.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException">
@@ -48,6 +51,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8[] symmetricKey, bool cloneBuffer) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -55,7 +60,7 @@
         <Parameter Name="cloneBuffer" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="symmetricKey">An array of &lt;xref:System.Byte&gt; that contains the symmetric key.</param>
+        <param name="symmetricKey">An array of <see cref="T:System.Byte" /> that contains the symmetric key.</param>
         <param name="cloneBuffer">
           <see langword="true" /> to clone the array passed into the `symmetricKey` parameter; otherwise, <see langword="false" />.</param>
         <summary>Initializes a new instance of the <see cref="T:System.IdentityModel.Tokens.InMemorySymmetricSecurityKey" /> class using the specified symmetric key and a value that indicates whether the binary data must be cloned.</summary>
@@ -72,6 +77,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance unsigned int8[] DecryptKey(string algorithm, unsigned int8[] keyData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -83,9 +90,9 @@
       </Parameters>
       <Docs>
         <param name="algorithm">The cryptographic algorithm that was used to encrypt the key.</param>
-        <param name="keyData">An array of &lt;xref:System.Byte&gt; that contains the encrypted key.</param>
+        <param name="keyData">An array of <see cref="T:System.Byte" /> that contains the encrypted key.</param>
         <summary>Decrypts the specified encrypted key.</summary>
-        <returns>An array of &lt;xref:System.Byte&gt; that contains the decrypted key.</returns>
+        <returns>An array of <see cref="T:System.Byte" /> that contains the decrypted key.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -104,6 +111,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance unsigned int8[] EncryptKey(string algorithm, unsigned int8[] keyData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -115,9 +124,9 @@
       </Parameters>
       <Docs>
         <param name="algorithm">The cryptographic algorithm to encrypt the key with.</param>
-        <param name="keyData">An array of &lt;xref:System.Byte&gt; that contains the key.</param>
+        <param name="keyData">An array of <see cref="T:System.Byte" /> that contains the key.</param>
         <summary>Encrypts the specified key.</summary>
-        <returns>An array of &lt;xref:System.Byte&gt; that contains the encrypted key.</returns>
+        <returns>An array of <see cref="T:System.Byte" /> that contains the encrypted key.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -136,6 +145,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance unsigned int8[] GenerateDerivedKey(string algorithm, unsigned int8[] label, unsigned int8[] nonce, int32 derivedKeyLength, int32 offset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -150,12 +161,12 @@
       </Parameters>
       <Docs>
         <param name="algorithm">A URI that represents the cryptographic algorithm to use to generate the derived key.</param>
-        <param name="label">An array of &lt;xref:System.Byte&gt; that contains the label parameter for the cryptographic algorithm.</param>
-        <param name="nonce">An array of &lt;xref:System.Byte&gt; that contains the nonce that is used to create a derived key.</param>
+        <param name="label">An array of <see cref="T:System.Byte" /> that contains the label parameter for the cryptographic algorithm.</param>
+        <param name="nonce">An array of <see cref="T:System.Byte" /> that contains the nonce that is used to create a derived key.</param>
         <param name="derivedKeyLength">The size of the derived key.</param>
         <param name="offset">The position at which the derived key is located in the byte array that is returned from this method.</param>
         <summary>Generates a derived key using the specified cryptographic algorithm and parameters for the current key.</summary>
-        <returns>An array of &lt;xref:System.Byte&gt; that contains the derived key.</returns>
+        <returns>An array of <see cref="T:System.Byte" /> that contains the derived key.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -174,6 +185,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.Cryptography.ICryptoTransform GetDecryptionTransform(string algorithm, unsigned int8[] iv) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -185,7 +198,7 @@
       </Parameters>
       <Docs>
         <param name="algorithm">A cryptographic algorithm that decrypts cipher text, such as encrypted XML.</param>
-        <param name="iv">An array of &lt;xref:System.Byte&gt; that contains the initialization vector (<see langword="IV" />) for the specified algorithm.</param>
+        <param name="iv">An array of <see cref="T:System.Byte" /> that contains the initialization vector (<see langword="IV" />) for the specified algorithm.</param>
         <summary>Gets a transform that decrypts cipher text using the specified cryptographic algorithm.</summary>
         <returns>An <see cref="T:System.Security.Cryptography.ICryptoTransform" /> that represents the decryption transform.</returns>
         <remarks>
@@ -206,6 +219,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.Cryptography.ICryptoTransform GetEncryptionTransform(string algorithm, unsigned int8[] iv) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -217,7 +232,7 @@
       </Parameters>
       <Docs>
         <param name="algorithm">A cryptographic algorithm that encrypts XML.</param>
-        <param name="iv">An array of &lt;xref:System.Byte&gt; that contains the initialization vector (<see langword="IV" />) for the specified algorithm.</param>
+        <param name="iv">An array of <see cref="T:System.Byte" /> that contains the initialization vector (<see langword="IV" />) for the specified algorithm.</param>
         <summary>Gets a transform that encrypts XML using the specified cryptographic algorithm.</summary>
         <returns>An <see cref="T:System.Security.Cryptography.ICryptoTransform" /> that represents the encryption transform.</returns>
         <remarks>
@@ -238,6 +253,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetIVSize(string algorithm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -268,6 +285,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.Cryptography.KeyedHashAlgorithm GetKeyedHashAlgorithm(string algorithm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -291,6 +310,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.Cryptography.SymmetricAlgorithm GetSymmetricAlgorithm(string algorithm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -314,6 +335,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance unsigned int8[] GetSymmetricKey() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -322,7 +345,7 @@
       <Parameters />
       <Docs>
         <summary>Gets the bytes that represent the symmetric key.</summary>
-        <returns>An array of &lt;xref:System.Byte&gt; that contains the symmetric key.</returns>
+        <returns>An array of <see cref="T:System.Byte" /> that contains the symmetric key.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -332,6 +355,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsAsymmetricAlgorithm(string algorithm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -354,6 +379,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsSupportedAlgorithm(string algorithm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -403,6 +430,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsSymmetricAlgorithm(string algorithm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -425,6 +454,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 KeySize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

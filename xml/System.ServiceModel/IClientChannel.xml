@@ -1,0 +1,168 @@
+<Type Name="IClientChannel" FullName="System.ServiceModel.IClientChannel">
+  <TypeSignature Language="C#" Value="public interface IClientChannel : IDisposable, System.ServiceModel.IContextChannel, System.ServiceModel.IExtensibleObject&lt;System.ServiceModel.IContextChannel&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IClientChannel implements class System.IDisposable, class System.ServiceModel.Channels.IChannel, class System.ServiceModel.ICommunicationObject, class System.ServiceModel.IContextChannel, class System.ServiceModel.IExtensibleObject`1&lt;class System.ServiceModel.IContextChannel&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>System.ServiceModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.ServiceModel.IContextChannel</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.ServiceModel.IExtensibleObject&lt;System.ServiceModel.IContextChannel&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>Defines the behavior of outbound request and request/reply channels used by client applications.</summary>
+    <remarks>To be added.</remarks>
+    <threadsafe />
+  </Docs>
+  <Members>
+    <Member MemberName="AllowInitializationUI">
+      <MemberSignature Language="C#" Value="public bool AllowInitializationUI { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AllowInitializationUI" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets or sets a value indicating whether &lt;xref:System.ServiceModel.IClientChannel.DisplayInitializationUI%2A&gt; attempts to call the <see cref="T:System.ServiceModel.Dispatcher.IInteractiveChannelInitializer" /> objects in the &lt;xref:System.ServiceModel.Dispatcher.ClientRuntime.InteractiveChannelInitializers%2A?displayProperty=fullName&gt; property or throws if that collection is not empty.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="BeginDisplayInitializationUI">
+      <MemberSignature Language="C#" Value="public IAsyncResult BeginDisplayInitializationUI (AsyncCallback callback, object state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.IAsyncResult BeginDisplayInitializationUI(class System.AsyncCallback callback, object state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IAsyncResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="callback" Type="System.AsyncCallback" />
+        <Parameter Name="state" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="callback">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>An asynchronous call to begin using a user interface to obtain credential information.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="DidInteractiveInitialization">
+      <MemberSignature Language="C#" Value="public bool DidInteractiveInitialization { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DidInteractiveInitialization" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets a value indicating whether a call was done to a user interface to obtain credential information.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayInitializationUI">
+      <MemberSignature Language="C#" Value="public void DisplayInitializationUI ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DisplayInitializationUI() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A call to a user interface to obtain credential information.</summary>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="EndDisplayInitializationUI">
+      <MemberSignature Language="C#" Value="public void EndDisplayInitializationUI (IAsyncResult result);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EndDisplayInitializationUI(class System.IAsyncResult result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="result" Type="System.IAsyncResult" />
+      </Parameters>
+      <Docs>
+        <param name="result">To be added.</param>
+        <summary>Called when the call to &lt;xref:System.ServiceModel.IClientChannel.BeginDisplayInitializationUI%2A&gt; has finished.</summary>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="UnknownMessageReceived">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;System.ServiceModel.UnknownMessageReceivedEventArgs&gt; UnknownMessageReceived;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class System.ServiceModel.UnknownMessageReceivedEventArgs&gt; UnknownMessageReceived" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;System.ServiceModel.UnknownMessageReceivedEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This is a reserved event.</summary>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="Via">
+      <MemberSignature Language="C#" Value="public Uri Via { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Uri Via" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Uri</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets the URI that contains the transport address to which messages are sent on the client channel.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <threadsafe />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

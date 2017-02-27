@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit ServiceHostBase extends System.ServiceModel.Channels.CommunicationObject implements class System.IDisposable, class System.ServiceModel.IExtensibleObject`1&lt;class System.ServiceModel.ServiceHostBase&gt;" />
   <AssemblyInfo>
     <AssemblyName>System.ServiceModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -52,6 +53,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -73,6 +76,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void AddBaseAddress(class System.Uri baseAddress) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -82,7 +87,7 @@
         <Parameter Name="baseAddress" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="baseAddress">A &lt;xref:System.Uri&gt; that contains the base address for services hosted on the current host.</param>
+        <param name="baseAddress">A <see cref="T:System.Uri" /> that contains the base address for services hosted on the current host.</param>
         <summary>Adds a base address to the service host.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -101,6 +106,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.ServiceModel.Description.ServiceEndpoint&gt; AddDefaultEndpoints() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -119,6 +125,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddServiceEndpoint(class System.ServiceModel.Description.ServiceEndpoint endpoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -154,8 +161,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint(string implementedContract, class System.ServiceModel.Channels.Binding binding, string address) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ServiceModel.Description.ServiceEndpoint</ReturnType>
       </ReturnValue>
@@ -166,10 +180,10 @@
       </Parameters>
       <Docs>
         <param name="implementedContract">The contract implemented by the endpoint.</param>
-        <param name="binding">The &lt;xref:System.ServiceModel.Channels.Binding&gt; for the endpoint added.</param>
+        <param name="binding">The <see cref="T:System.ServiceModel.Channels.Binding" /> for the endpoint added.</param>
         <param name="address">The address for the endpoint added. This can be an absolute or relative URI. If it is a relative URI, one of the base address of the <see cref="T:System.ServiceModel.ServiceHost" /> (depending on the binding protocol) is used as the endpoint's base address.</param>
         <summary>Adds a service endpoint to the hosted service with a specified contract, binding, and endpoint address.</summary>
-        <returns>The &lt;xref:System.ServiceModel.Description.ServiceEndpoint&gt; added to the hosted service.</returns>
+        <returns>The <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> added to the hosted service.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -180,7 +194,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="implementedContract" /> or <paramref name="binding" /> or <paramref name="address" /> or is <see langword="null" />.</exception>
-        <exception cref="T:System.InvalidOperationException">The host is not in a &lt;xref:System.ServiceModel.CommunicationState&gt; or an &lt;xref:System.ServiceModel.CommunicationState&gt; state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added or the binding lacks a transport of binding scheme.</exception>
+        <exception cref="T:System.InvalidOperationException">The host is not in a <see cref="T:System.ServiceModel.CommunicationState" /> or an <see cref="T:System.ServiceModel.CommunicationState" /> state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added or the binding lacks a transport of binding scheme.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -189,8 +203,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint(string implementedContract, class System.ServiceModel.Channels.Binding binding, class System.Uri address) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ServiceModel.Description.ServiceEndpoint</ReturnType>
       </ReturnValue>
@@ -201,14 +222,14 @@
       </Parameters>
       <Docs>
         <param name="implementedContract">The contract implemented by the endpoint.</param>
-        <param name="binding">The &lt;xref:System.ServiceModel.Channels.Binding&gt; for the endpoint added.</param>
-        <param name="address">The &lt;xref:System.Uri&gt; that contains the address for the endpoint added. This can be an absolute or relative URI. If it is a relative URI, one of the base address of the <see cref="T:System.ServiceModel.ServiceHost" /> (depending on the binding protocol) is used as the endpoint's base address.</param>
+        <param name="binding">The <see cref="T:System.ServiceModel.Channels.Binding" /> for the endpoint added.</param>
+        <param name="address">The <see cref="T:System.Uri" /> that contains the address for the endpoint added. This can be an absolute or relative URI. If it is a relative URI, one of the base address of the <see cref="T:System.ServiceModel.ServiceHost" /> (depending on the binding protocol) is used as the endpoint's base address.</param>
         <summary>Adds a service endpoint to the hosted service with a specified contract, binding, and a URI that contains the endpoint address.</summary>
-        <returns>The &lt;xref:System.ServiceModel.Description.ServiceEndpoint&gt; added to the hosted service.</returns>
+        <returns>The <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> added to the hosted service.</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="implementedContract" /> or <paramref name="binding" /> or <paramref name="address" /> or is <see langword="null" />.</exception>
-        <exception cref="T:System.InvalidOperationException">The host is not in a &lt;xref:System.ServiceModel.CommunicationState&gt; or an &lt;xref:System.ServiceModel.CommunicationState&gt; state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added.</exception>
+        <exception cref="T:System.InvalidOperationException">The host is not in a <see cref="T:System.ServiceModel.CommunicationState" /> or an <see cref="T:System.ServiceModel.CommunicationState" /> state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -217,6 +238,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint(string implementedContract, class System.ServiceModel.Channels.Binding binding, string address, class System.Uri listenUri) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -230,11 +253,11 @@
       </Parameters>
       <Docs>
         <param name="implementedContract">The contract implemented by the endpoint.</param>
-        <param name="binding">The &lt;xref:System.ServiceModel.Channels.Binding&gt; for the endpoint added.</param>
+        <param name="binding">The <see cref="T:System.ServiceModel.Channels.Binding" /> for the endpoint added.</param>
         <param name="address">The address for the endpoint added. This address can be an absolute or relative URI. If it is a relative URI, one of the base address of the <see cref="T:System.ServiceModel.ServiceHost" /> (depending on the binding protocol) is used as the endpoint's base address.</param>
-        <param name="listenUri">The &lt;xref:System.Uri&gt; that contains the address which the endpoint listens to for incoming messages. This URI can be relative or absolute.</param>
+        <param name="listenUri">The <see cref="T:System.Uri" /> that contains the address which the endpoint listens to for incoming messages. This URI can be relative or absolute.</param>
         <summary>Adds a service endpoint to the hosted service with a specified contract, binding, endpoint address and URI that contains the address at which it listens.</summary>
-        <returns>The &lt;xref:System.ServiceModel.Description.ServiceEndpoint&gt; added to the hosted service.</returns>
+        <returns>The <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> added to the hosted service.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -245,7 +268,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="implementedContract" /> or <paramref name="binding" /> or <paramref name="address" /> or is <see langword="null" />.</exception>
-        <exception cref="T:System.InvalidOperationException">The host is not in a &lt;xref:System.ServiceModel.CommunicationState&gt; or an &lt;xref:System.ServiceModel.CommunicationState&gt; state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added.</exception>
+        <exception cref="T:System.InvalidOperationException">The host is not in a <see cref="T:System.ServiceModel.CommunicationState" /> or an <see cref="T:System.ServiceModel.CommunicationState" /> state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -254,6 +277,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint(string implementedContract, class System.ServiceModel.Channels.Binding binding, class System.Uri address, class System.Uri listenUri) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -267,15 +292,15 @@
       </Parameters>
       <Docs>
         <param name="implementedContract">The contract implemented by the endpoint.</param>
-        <param name="binding">The &lt;xref:System.ServiceModel.Channels.Binding&gt; for the endpoint added.</param>
-        <param name="address">The &lt;xref:System.Uri&gt; that contains the address for the endpoint added. If it is a relative URI, one of the base address of the <see cref="T:System.ServiceModel.ServiceHost" /> (depending on the binding protocol) is used as the endpoint's base address.</param>
-        <param name="listenUri">The &lt;xref:System.Uri&gt; that contains the address at which the endpoint listens for incoming messages.</param>
+        <param name="binding">The <see cref="T:System.ServiceModel.Channels.Binding" /> for the endpoint added.</param>
+        <param name="address">The <see cref="T:System.Uri" /> that contains the address for the endpoint added. If it is a relative URI, one of the base address of the <see cref="T:System.ServiceModel.ServiceHost" /> (depending on the binding protocol) is used as the endpoint's base address.</param>
+        <param name="listenUri">The <see cref="T:System.Uri" /> that contains the address at which the endpoint listens for incoming messages.</param>
         <summary>Adds a service endpoint to the hosted service with the specified contract, binding, and URIs that contain the endpoint and listening addresses.</summary>
-        <returns>The &lt;xref:System.ServiceModel.Description.ServiceEndpoint&gt; added to the hosted service. This URI can be absolute or relative.</returns>
+        <returns>The <see cref="T:System.ServiceModel.Description.ServiceEndpoint" /> added to the hosted service. This URI can be absolute or relative.</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="implementedContract" /> or <paramref name="binding" /> or <paramref name="address" /> or is <see langword="null" />.</exception>
-        <exception cref="T:System.InvalidOperationException">The host is not in a &lt;xref:System.ServiceModel.CommunicationState&gt; or an &lt;xref:System.ServiceModel.CommunicationState&gt; state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added.</exception>
+        <exception cref="T:System.InvalidOperationException">The host is not in a <see cref="T:System.ServiceModel.CommunicationState" /> or an <see cref="T:System.ServiceModel.CommunicationState" /> state or there is no <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service and so an endpoint cannot be added.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -284,6 +309,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void ApplyConfiguration() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -302,6 +329,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.Description.ServiceAuthenticationBehavior Authentication" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -319,6 +347,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.Description.ServiceAuthorizationBehavior Authorization" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -343,6 +373,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Uri&gt; BaseAddresses" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -350,7 +382,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets the base addresses used by the hosted service.</summary>
-        <value>A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type &lt;xref:System.Uri&gt; that contains the base addresses for the hosted service.</value>
+        <value>A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <see cref="T:System.Uri" /> that contains the base addresses for the hosted service.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -360,8 +392,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.Dispatcher.ChannelDispatcherCollection ChannelDispatchers" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ServiceModel.Dispatcher.ChannelDispatcherCollection</ReturnType>
       </ReturnValue>
@@ -377,14 +416,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan CloseTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the interval of time allowed for the service host to close.</summary>
-        <value>The &lt;xref:System.TimeSpan&gt; that specifies the interval of time allowed for the service host to close.</value>
+        <value>The <see cref="T:System.TimeSpan" /> that specifies the interval of time allowed for the service host to close.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -393,10 +439,10 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">The value, in milliseconds, is less than zero or is larger than &lt;xref:System.Int32.MaxValue&gt; (2,147,483,647 or, in hexadecimal notation, 0X7FFFFFFF).</exception>
-        <exception cref="T:System.InvalidOperationException">The host is in an &lt;xref:System.ServiceModel.CommunicationState&gt; or &lt;xref:System.ServiceModel.CommunicationState&gt; state and cannot be modified.</exception>
-        <exception cref="T:System.ObjectDisposedException">The host is already in a &lt;xref:System.ServiceModel.CommunicationState&gt; state and cannot be modified.</exception>
-        <exception cref="T:System.ServiceModel.CommunicationObjectFaultedException">The host is in a &lt;xref:System.ServiceModel.CommunicationState&gt; state and cannot be modified.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The value, in milliseconds, is less than zero or is larger than <see cref="F:System.Int32.MaxValue" /> (2,147,483,647 or, in hexadecimal notation, 0X7FFFFFFF).</exception>
+        <exception cref="T:System.InvalidOperationException">The host is in an <see cref="T:System.ServiceModel.CommunicationState" /> or <see cref="T:System.ServiceModel.CommunicationState" /> state and cannot be modified.</exception>
+        <exception cref="T:System.ObjectDisposedException">The host is already in a <see cref="T:System.ServiceModel.CommunicationState" /> state and cannot be modified.</exception>
+        <exception cref="T:System.ServiceModel.CommunicationObjectFaultedException">The host is in a <see cref="T:System.ServiceModel.CommunicationState" /> state and cannot be modified.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -405,6 +451,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.ServiceModel.Description.ServiceDescription CreateDescription(class System.Collections.Generic.IDictionary`2&lt;string, class System.ServiceModel.Description.ContractDescription&gt; implementedContracts) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -414,7 +462,7 @@
         <Parameter Name="implementedContracts" Type="System.Collections.Generic.IDictionary&lt;System.String,System.ServiceModel.Description.ContractDescription&gt;&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="implementedContracts">The &lt;xref:System.Collections.Generic.IDictionary%602&gt; that contains the &lt;xref:System.ServiceModel.Description.ContractDescription&gt; objects for the service.</param>
+        <param name="implementedContracts">The &lt;xref:System.Collections.Generic.IDictionary%602&gt; that contains the <see cref="T:System.ServiceModel.Description.ContractDescription" /> objects for the service.</param>
         <summary>When implemented in a derived class, creates the description of the hosted service.</summary>
         <returns>The <see cref="T:System.ServiceModel.Description.ServiceDescription" /> for the hosted service.</returns>
         <remarks>
@@ -433,6 +481,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.Description.ServiceCredentials Credentials" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -457,14 +507,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan DefaultCloseTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the default interval of time allowed for the service host to close.</summary>
-        <value>The &lt;xref:System.TimeSpan&gt; that specifies the default interval of time allowed for the service host to close.</value>
+        <value>The <see cref="T:System.TimeSpan" /> that specifies the default interval of time allowed for the service host to close.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -474,14 +531,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan DefaultOpenTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the default interval of time allowed for the service host to open.</summary>
-        <value>The &lt;xref:System.TimeSpan&gt; that specifies the default interval of time allowed for the service host to open.</value>
+        <value>The <see cref="T:System.TimeSpan" /> that specifies the default interval of time allowed for the service host to open.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -498,8 +562,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.Description.ServiceDescription Description" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ServiceModel.Description.ServiceDescription</ReturnType>
       </ReturnValue>
@@ -522,8 +593,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.IExtensionCollection`1&lt;class System.ServiceModel.ServiceHostBase&gt; Extensions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ServiceModel.IExtensionCollection&lt;System.ServiceModel.ServiceHostBase&gt;</ReturnType>
       </ReturnValue>
@@ -539,14 +617,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IDictionary`2&lt;string, class System.ServiceModel.Description.ContractDescription&gt; ImplementedContracts" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IDictionary&lt;System.String,System.ServiceModel.Description.ContractDescription&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Retrieves the contracts implemented by the service hosted.</summary>
-        <value>The &lt;xref:System.Collections.Generic.IDictionary%602&gt; that contains the &lt;xref:System.ServiceModel.Description.ContractDescription&gt; objects for the service.</value>
+        <value>The &lt;xref:System.Collections.Generic.IDictionary%602&gt; that contains the <see cref="T:System.ServiceModel.Description.ContractDescription" /> objects for the service.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -556,6 +641,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 IncrementManualFlowControlLimit(int32 incrementBy) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -590,6 +677,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InitializeDescription(class System.ServiceModel.UriSchemeKeyedCollection baseAddresses) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -610,6 +699,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void InitializeRuntime() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -628,6 +719,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void LoadConfigurationSection(class System.ServiceModel.Configuration.ServiceElement serviceSection) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -651,6 +744,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 ManualFlowControlLimit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -681,6 +776,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnAbort() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -698,6 +795,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.IAsyncResult OnBeginClose(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -709,11 +808,11 @@
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The &lt;xref:System.TimeSpan&gt; that specifies how long the on-close operation has to complete before timing out.</param>
-        <param name="callback">The &lt;xref:System.AsyncCallback&gt; delegate that receives the notification of the asynchronous operation on-close completion.</param>
+        <param name="timeout">The <see cref="T:System.TimeSpan" /> that specifies how long the on-close operation has to complete before timing out.</param>
+        <param name="callback">The <see cref="T:System.AsyncCallback" /> delegate that receives the notification of the asynchronous operation on-close completion.</param>
         <param name="state">An object, specified by the application, that contains state information associated with the asynchronous on-close operation.</param>
         <summary>Begins an asynchronous operation invoked on the close of the service host.</summary>
-        <returns>The &lt;xref:System.IAsyncResult&gt; that references the asynchronous on-close operation.</returns>
+        <returns>The <see cref="T:System.IAsyncResult" /> that references the asynchronous on-close operation.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -723,6 +822,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.IAsyncResult OnBeginOpen(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -734,11 +835,11 @@
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The &lt;xref:System.TimeSpan&gt; that specifies how long the on-open operation has to complete before timing out.</param>
-        <param name="callback">The &lt;xref:System.AsyncCallback&gt; delegate that receives the notification of the asynchronous operation on-open completion.</param>
+        <param name="timeout">The <see cref="T:System.TimeSpan" /> that specifies how long the on-open operation has to complete before timing out.</param>
+        <param name="callback">The <see cref="T:System.AsyncCallback" /> delegate that receives the notification of the asynchronous operation on-open completion.</param>
         <param name="state">An object, specified by the application, that contains state information associated with the asynchronous on-open operation.</param>
         <summary>Begins an asynchronous operation invoked on the opening of the service host.</summary>
-        <returns>The &lt;xref:System.IAsyncResult&gt; that references the asynchronous on-open operation.</returns>
+        <returns>The <see cref="T:System.IAsyncResult" /> that references the asynchronous on-open operation.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -748,6 +849,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnClose(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -757,7 +860,7 @@
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The &lt;xref:System.TimeSpan&gt; that specifies how long the on-close operation has to complete before timing out.</param>
+        <param name="timeout">The <see cref="T:System.TimeSpan" /> that specifies how long the on-close operation has to complete before timing out.</param>
         <summary>Closes down the hosted service, including their channel dispatchers and associated instance contexts and listeners.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -783,6 +886,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnClosed() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -800,6 +904,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnEndClose(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -809,7 +915,7 @@
         <Parameter Name="result" Type="System.IAsyncResult" />
       </Parameters>
       <Docs>
-        <param name="result">The &lt;xref:System.IAsyncResult&gt; returned by a call to the &lt;xref:System.ServiceModel.ServiceHostBase.OnBeginClose%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method.</param>
+        <param name="result">The <see cref="T:System.IAsyncResult" /> returned by a call to the &lt;xref:System.ServiceModel.ServiceHostBase.OnBeginClose%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method.</param>
         <summary>Completes an asynchronous operation invoked on the closing of the service host.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -820,6 +926,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnEndOpen(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -829,7 +937,7 @@
         <Parameter Name="result" Type="System.IAsyncResult" />
       </Parameters>
       <Docs>
-        <param name="result">The &lt;xref:System.IAsyncResult&gt; returned by a call to the &lt;xref:System.ServiceModel.ServiceHostBase.OnBeginOpen%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method.</param>
+        <param name="result">The <see cref="T:System.IAsyncResult" /> returned by a call to the &lt;xref:System.ServiceModel.ServiceHostBase.OnBeginOpen%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method.</param>
         <summary>Completes an asynchronous operation invoked on the opening of the service host.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -840,6 +948,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnOpen(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -849,7 +959,7 @@
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The &lt;xref:System.TimeSpan&gt; that specifies how long the on-open operation has to complete before timing out.</param>
+        <param name="timeout">The <see cref="T:System.TimeSpan" /> that specifies how long the on-open operation has to complete before timing out.</param>
         <summary>Opens the channel dispatchers.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -860,6 +970,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnOpened() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -884,19 +996,26 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan OpenTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the interval of time allowed for the service host to open.</summary>
-        <value>The &lt;xref:System.TimeSpan&gt; that specifies the interval of time allowed for the service host to open.</value>
+        <value>The <see cref="T:System.TimeSpan" /> that specifies the interval of time allowed for the service host to open.</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">The value is less than zero or is larger than &lt;xref:System.Int32.MaxValue&gt; (2,147,483,647 or, in hexadecimal notation, 0X7FFFFFFF).</exception>
-        <exception cref="T:System.InvalidOperationException">The host is in an &lt;xref:System.ServiceModel.CommunicationState&gt; or &lt;xref:System.ServiceModel.CommunicationState&gt; state and cannot be modified.</exception>
-        <exception cref="T:System.ObjectDisposedException">The host is already in a &lt;xref:System.ServiceModel.CommunicationState&gt; state and cannot be modified.</exception>
-        <exception cref="T:System.ServiceModel.CommunicationObjectFaultedException">The host is in a &lt;xref:System.ServiceModel.CommunicationState&gt; state and cannot be modified.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The value is less than zero or is larger than <see cref="F:System.Int32.MaxValue" /> (2,147,483,647 or, in hexadecimal notation, 0X7FFFFFFF).</exception>
+        <exception cref="T:System.InvalidOperationException">The host is in an <see cref="T:System.ServiceModel.CommunicationState" /> or <see cref="T:System.ServiceModel.CommunicationState" /> state and cannot be modified.</exception>
+        <exception cref="T:System.ObjectDisposedException">The host is already in a <see cref="T:System.ServiceModel.CommunicationState" /> state and cannot be modified.</exception>
+        <exception cref="T:System.ServiceModel.CommunicationObjectFaultedException">The host is in a <see cref="T:System.ServiceModel.CommunicationState" /> state and cannot be modified.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -905,6 +1024,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ReleasePerformanceCounters() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -931,6 +1052,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEndpointAddress(class System.ServiceModel.Description.ServiceEndpoint endpoint, string relativeAddress) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -953,6 +1075,8 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.IDisposable.Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -970,6 +1094,8 @@
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class System.ServiceModel.UnknownMessageReceivedEventArgs&gt; UnknownMessageReceived" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

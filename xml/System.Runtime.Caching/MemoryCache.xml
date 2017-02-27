@@ -92,6 +92,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, class System.Collections.Specialized.NameValueCollection config) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -141,43 +142,12 @@ private void btnGet_Click(object sender, EventArgs e)
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Add">
-      <MemberSignature Language="C#" Value="public override bool Add (System.Runtime.Caching.CacheItem item, System.Runtime.Caching.CacheItemPolicy policy);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Add(class System.Runtime.Caching.CacheItem item, class System.Runtime.Caching.CacheItemPolicy policy) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="item" Type="System.Runtime.Caching.CacheItem" />
-        <Parameter Name="policy" Type="System.Runtime.Caching.CacheItemPolicy" />
-      </Parameters>
-      <Docs>
-        <param name="item">The object to add.</param>
-        <param name="policy">An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.</param>
-        <summary>Inserts a cache entry into the cache as a <see cref="T:System.Runtime.Caching.CacheItem" /> instance, and adds details about how the entry should be evicted.</summary>
-        <returns>true if insertion succeeded, or false if there is an already an entry in the cache that has the same key as item.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!WARNING]
->  The <xref:System.Runtime.Caching.ObjectCache.Add%2A> and <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> method overloads do not support the <xref:System.Runtime.Caching.CacheItemPolicy.UpdateCallback%2A> property. Therefore, to set the <xref:System.Runtime.Caching.CacheItemPolicy.UpdateCallback%2A> property for a cache entry, use the <xref:System.Runtime.Caching.MemoryCache.Set%2A> method overloads instead.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="AddOrGetExisting">
       <MemberSignature Language="C#" Value="public override System.Runtime.Caching.CacheItem AddOrGetExisting (System.Runtime.Caching.CacheItem item, System.Runtime.Caching.CacheItemPolicy policy);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Runtime.Caching.CacheItem AddOrGetExisting(class System.Runtime.Caching.CacheItem item, class System.Runtime.Caching.CacheItemPolicy policy) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -205,7 +175,7 @@ private void btnGet_Click(object sender, EventArgs e)
         </remarks>
         <exception cref="T:System.ArgumentNullException">The &lt;xref:System.Runtime.Caching.CacheItem.Value%2A&gt; property is <see langword="null" />.</exception>
         <exception cref="T:System.ArgumentException">Both the absolute and sliding expiration values for the <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object are set to values other than the defaults of <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> and <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> fields. The <see cref="T:System.Runtime.Caching.MemoryCache" /> class cannot set expiration policy based on a combination of an absolute expiration and a sliding expiration. Only one expiration setting can be explicitly set when you use the <see cref="T:System.Runtime.Caching.MemoryCache" /> instance. The other expiration setting must be set to <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> field or <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> field.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than &lt;xref:System.TimeSpan.Zero&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than <see cref="F:System.TimeSpan.Zero" />.  
   
  -or-  
   
@@ -222,6 +192,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object AddOrGetExisting(string key, object value, valuetype System.DateTimeOffset absoluteExpiration, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -256,7 +227,7 @@ private void btnGet_Click(object sender, EventArgs e)
         <exception cref="T:System.NotSupportedException">
           <paramref name="regionName " />is not <see langword="null" />.</exception>
         <exception cref="T:System.ArgumentException">Both the absolute and sliding expiration values for the <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object are set to values other than the defaults of <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> and <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> fields. The <see cref="T:System.Runtime.Caching.MemoryCache" /> class cannot set expiration policy based on a combination of an absolute expiration and a sliding expiration. Only one expiration setting can be explicitly set when you use the <see cref="T:System.Runtime.Caching.MemoryCache" /> instance. The other expiration setting must be set to <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> or <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /></exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than &lt;xref:System.TimeSpan.Zero&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than <see cref="F:System.TimeSpan.Zero" />.  
   
  -or-  
   
@@ -273,6 +244,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object AddOrGetExisting(string key, object value, class System.Runtime.Caching.CacheItemPolicy policy, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -308,7 +280,7 @@ private void btnGet_Click(object sender, EventArgs e)
  -or-  
   
  Both the removal callback and the update callback have been specified for <see cref="T:System.Runtime.Caching.CacheItemPolicy" />. The <see cref="T:System.Runtime.Caching.MemoryCache" /> only supports using one type of callback per cache entry.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than &lt;xref:System.TimeSpan.Zero&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than <see cref="F:System.TimeSpan.Zero" />.  
   
  -or-  
   
@@ -325,6 +297,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property instance int64 CacheMemoryLimit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -353,6 +326,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Contains(string key, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -381,6 +355,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Runtime.Caching.CacheEntryChangeMonitor CreateCacheEntryChangeMonitor(class System.Collections.Generic.IEnumerable`1&lt;string&gt; keys, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -422,6 +397,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property class System.Runtime.Caching.MemoryCache Default" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -448,6 +424,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Runtime.Caching.DefaultCacheCapabilities DefaultCacheCapabilities" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -484,6 +461,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -522,8 +500,14 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Get(string key, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -549,6 +533,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Runtime.Caching.CacheItem GetCacheItem(string key, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -583,6 +568,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int64 GetCount(string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -606,6 +592,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Collections.Generic.IEnumerator`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, object&gt;&gt; GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -634,6 +621,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Collections.Generic.IDictionary`2&lt;string, object&gt; GetValues(class System.Collections.Generic.IEnumerable`1&lt;string&gt; keys, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -669,8 +657,14 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property instance object Item(string)" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -703,8 +697,14 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -727,6 +727,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property instance int64 PhysicalMemoryLimit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -753,6 +754,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan PollingInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -777,6 +779,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Remove(string key, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -811,6 +814,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Set(class System.Runtime.Caching.CacheItem item, class System.Runtime.Caching.CacheItemPolicy policy) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -847,7 +851,7 @@ private void btnGet_Click(object sender, EventArgs e)
 -   If both the absolute and sliding expiration values of the <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object are set to values other than the defaults of <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> and <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> fields. The <see cref="T:System.Runtime.Caching.MemoryCache" /> class cannot set expiration policy based on both an absolute expiration and a sliding expiration. Only one expiration setting can be explicitly set when you use the <see cref="T:System.Runtime.Caching.MemoryCache" /> class. The other setting must be set to <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> or <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" /> property.  
   
 -   If both the removal callback and the update callback are specified for <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object. The <see cref="T:System.Runtime.Caching.MemoryCache" /> class only supports using one type of callback per cache entry.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than &lt;xref:System.TimeSpan.Zero&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than <see cref="F:System.TimeSpan.Zero" />.  
   
  -or-  
   
@@ -864,6 +868,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Set(string key, object value, valuetype System.DateTimeOffset absoluteExpiration, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -906,7 +911,7 @@ private void btnGet_Click(object sender, EventArgs e)
 -   If both the absolute and sliding expiration values on <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object are set to values other than the defaults of <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> and <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />. This occurs because the <see cref="T:System.Runtime.Caching.MemoryCache" /> class does not support expiring entries based on both an absolute and a sliding expiration. Only one expiration setting can be explicitly set when you use the <see cref="T:System.Runtime.Caching.MemoryCache" /> class. The other setting must be set to <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> or <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.  
   
 -   If both the removal callback and the update callback are specified on <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object. The <see cref="T:System.Runtime.Caching.MemoryCache" /> class only supports using one type of callback per cache entry.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than &lt;xref:System.TimeSpan.Zero&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than <see cref="F:System.TimeSpan.Zero" />.  
   
  -or-  
   
@@ -923,6 +928,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Set(string key, object value, class System.Runtime.Caching.CacheItemPolicy policy, string regionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -965,7 +971,7 @@ private void btnGet_Click(object sender, EventArgs e)
 -   If both the absolute and sliding expiration values on <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> object are set to values other than the defaults of <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> and <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />. This is because the <see cref="T:System.Runtime.Caching.MemoryCache" /> class does not support expiring entries based on both an absolute and a sliding expiration. Only one expiration setting can be explicitly set when you use the <see cref="T:System.Runtime.Caching.MemoryCache" /> class. The other setting must be set to <see cref="F:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration" /> or <see cref="F:System.Runtime.Caching.ObjectCache.NoSlidingExpiration" />.  
   
 -   If both the removal callback and the update callback are specified on <see cref="T:System.Runtime.Caching.CacheItemPolicy" /> class. The <see cref="T:System.Runtime.Caching.MemoryCache" /> class only supports using one type of callback per cache entry.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than &lt;xref:System.TimeSpan.Zero&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The &lt;xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration%2A&gt; property is set to a value less than <see cref="F:System.TimeSpan.Zero" />.  
   
  -or-  
   
@@ -984,6 +990,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1011,6 +1018,7 @@ private void btnGet_Click(object sender, EventArgs e)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int64 Trim(int32 percent) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Caching</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

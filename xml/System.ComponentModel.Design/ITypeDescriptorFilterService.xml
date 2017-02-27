@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ITypeDescriptorFilterService" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
@@ -35,9 +36,9 @@
   
  Add some buttons to your form. Add a `ButtonDesignerFilterComponent` to your form, and it will appear in the component tray. The `ButtonDesignerFilterComponent` will add a `ButtonDesignerFilterService`, which implements ITypeDescriptorFilterService, as a design mode service provider. Existing or new <xref:System.Windows.Forms.Button> objects on the form will begin color cycling after the `ButtonDesignerFilterService` replaces the designer for each existing and new button with a `ColorCycleButtonDesigner`. The buttons will color cycle when you move the mouse pointer over them, and alternately continue cycling or reset the background and foreground colors on `MouseLeave` events. New <xref:System.Windows.Forms.Button> objects will be given the `ColorCycleButtonDesigner` through the <xref:System.ComponentModel.Design.ITypeDescriptorFilterService.FilterAttributes%2A> method of the `ButtonDesignerFilterService` that has been loaded, until the `ButtonDesignerFilterComponent` is disposed and replaces the original ITypeDescriptorFilterService. The `ColorCycleButton` class in this example is a <xref:System.Windows.Forms.Button> associated with a `ColorCycleButtonDesigner`.  
   
- [!code-cs[ITypeDescriptorFilterService#1](~/add/codesnippet/csharp/t-system.componentmodel._32_1.cs)]
- [!code-vb[ITypeDescriptorFilterService#1](~/add/codesnippet/visualbasic/t-system.componentmodel._32_1.vb)]
- [!code-cpp[ITypeDescriptorFilterService#1](~/add/codesnippet/cpp/t-system.componentmodel._32_1.cpp)]  
+ [!code-cs[ITypeDescriptorFilterService#1](~/add/codesnippet/csharp/t-system.componentmodel._34_1.cs)]
+ [!code-vb[ITypeDescriptorFilterService#1](~/add/codesnippet/visualbasic/t-system.componentmodel._34_1.vb)]
+ [!code-cpp[ITypeDescriptorFilterService#1](~/add/codesnippet/cpp/t-system.componentmodel._34_1.cpp)]  
   
  ]]></format>
     </remarks>
@@ -49,6 +50,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool FilterAttributes(class System.ComponentModel.IComponent component, class System.Collections.IDictionary attributes) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -80,6 +83,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool FilterEvents(class System.ComponentModel.IComponent component, class System.Collections.IDictionary events) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -111,6 +116,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool FilterProperties(class System.ComponentModel.IComponent component, class System.Collections.IDictionary properties) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

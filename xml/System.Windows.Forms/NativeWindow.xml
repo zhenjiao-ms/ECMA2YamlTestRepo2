@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi NativeWindow extends System.MarshalByRefObject implements class System.Windows.Forms.IWin32Window" />
   <AssemblyInfo>
     <AssemblyName>System.Windows.Forms</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -52,6 +53,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -73,8 +76,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AssignHandle(native int handle) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -120,6 +130,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CreateHandle(class System.Windows.Forms.CreateParams cp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -162,7 +174,7 @@
         </remarks>
         <exception cref="T:System.OutOfMemoryException">The operating system ran out of resources when trying to create the native window.</exception>
         <exception cref="T:System.ComponentModel.Win32Exception">The native Win32 API could not create the specified window.</exception>
-        <exception cref="T:System.InvalidOperationException">The handle of the current native window is already assigned; in explanation, the &lt;xref:System.Windows.Forms.NativeWindow.Handle%2A&gt; property is not equal to &lt;xref:System.IntPtr.Zero&gt;.</exception>
+        <exception cref="T:System.InvalidOperationException">The handle of the current native window is already assigned; in explanation, the &lt;xref:System.Windows.Forms.NativeWindow.Handle%2A&gt; property is not equal to <see cref="F:System.IntPtr.Zero" />.</exception>
         <permission cref="T:System.Security.Permissions.UIPermission">to create a top-level window. This permission is only demanded if the window style is not a child or if the window does not have a parent. Associated enumeration: <see cref="T:System.Security.Permissions.UIPermissionWindow" /></permission>
         <threadsafe />
       </Docs>
@@ -172,6 +184,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DefWndProc(valuetype System.Windows.Forms.Message m) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -201,6 +215,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DestroyHandle() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -228,6 +244,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -252,6 +270,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Forms.NativeWindow FromHandle(native int handle) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -280,14 +300,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the handle for this window.</summary>
-        <value>If successful, an &lt;xref:System.IntPtr&gt; representing the handle to the associated native Win32 window; otherwise, 0 if no handle is associated with the window.</value>
+        <value>If successful, an <see cref="T:System.IntPtr" /> representing the handle to the associated native Win32 window; otherwise, 0 if no handle is associated with the window.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -318,6 +345,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandleChange() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -358,6 +387,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnThreadException(class System.Exception e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -367,7 +398,7 @@
         <Parameter Name="e" Type="System.Exception" />
       </Parameters>
       <Docs>
-        <param name="e">An &lt;xref:System.Exception&gt; that specifies the unhandled thread exception.</param>
+        <param name="e">An <see cref="T:System.Exception" /> that specifies the unhandled thread exception.</param>
         <summary>When overridden in a derived class, manages an unhandled thread exception.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -385,8 +416,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReleaseHandle() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -424,8 +462,15 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void WndProc(valuetype System.Windows.Forms.Message m) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Windows.Forms</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

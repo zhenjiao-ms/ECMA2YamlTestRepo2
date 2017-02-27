@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit BindingOperations extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>PresentationFramework</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -22,36 +23,13 @@
     <threadsafe />
   </Docs>
   <Members>
-    <Member MemberName="AccessCollection">
-      <MemberSignature Language="C#" Value="public static void AccessCollection (System.Collections.IEnumerable collection, Action accessMethod, bool writeAccess);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AccessCollection(class System.Collections.IEnumerable collection, class System.Action accessMethod, bool writeAccess) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="collection" Type="System.Collections.IEnumerable" />
-        <Parameter Name="accessMethod" Type="System.Action" />
-        <Parameter Name="writeAccess" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="collection">The collection to access.</param>
-        <param name="accessMethod">The action to perform on the collection.</param>
-        <param name="writeAccess">
-          <see langword="true" /> if `accessMethod` will write to the collection; otherwise, <see langword="false" />.</param>
-        <summary>Provides access to a collection by using the synchronization mechanism that the application specified when it called EnableCollectionSynchronization.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="ClearAllBindings">
       <MemberSignature Language="C#" Value="public static void ClearAllBindings (System.Windows.DependencyObject target);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ClearAllBindings(class System.Windows.DependencyObject target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -80,6 +58,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ClearBinding(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -107,147 +87,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="CollectionRegistering">
-      <MemberSignature Language="C#" Value="public static event EventHandler&lt;System.Windows.Data.CollectionRegisteringEventArgs&gt; CollectionRegistering;" />
-      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class System.Windows.Data.CollectionRegisteringEventArgs&gt; CollectionRegistering" />
-      <MemberType>Event</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.EventHandler&lt;System.Windows.Data.CollectionRegisteringEventArgs&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Occurs when the data-binding system notices a collection.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="CollectionViewRegistering">
-      <MemberSignature Language="C#" Value="public static event EventHandler&lt;System.Windows.Data.CollectionViewRegisteringEventArgs&gt; CollectionViewRegistering;" />
-      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class System.Windows.Data.CollectionViewRegisteringEventArgs&gt; CollectionViewRegistering" />
-      <MemberType>Event</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.EventHandler&lt;System.Windows.Data.CollectionViewRegisteringEventArgs&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Occurs when the data-binding system notices a collection view.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="DisableCollectionSynchronization">
-      <MemberSignature Language="C#" Value="public static void DisableCollectionSynchronization (System.Collections.IEnumerable collection);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DisableCollectionSynchronization(class System.Collections.IEnumerable collection) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="collection" Type="System.Collections.IEnumerable" />
-      </Parameters>
-      <Docs>
-        <param name="collection">The collection to remove synchronized access from.</param>
-        <summary>Remove the synchronization registered for the specified collection.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="DisconnectedSource">
-      <MemberSignature Language="C#" Value="public static object DisconnectedSource { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property object DisconnectedSource" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets an object that replaces the &lt;xref:System.Windows.FrameworkElement.DataContext%2A&gt; when an item container is removed from the visual tree.</summary>
-        <value>An object that replaces the &lt;xref:System.Windows.FrameworkElement.DataContext%2A&gt; when an item container is removed from the visual tree.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Use this property if you need to deal with the <xref:System.Windows.FrameworkElement.DataContext%2A> of an item container.  An item container is the UI element that displays an item in an <xref:System.Windows.Controls.ItemsControl>.  When an <xref:System.Windows.Controls.ItemsControl> is data bound to a collection, an item container is generated for each item.  In some cases, item containers are removed from the visual tree.  Two typical cases where an item container is removed are when an item is removed from the underlying collection and when virtualization is enabled on the <xref:System.Windows.Controls.ItemsControl>.  In these cases, the <xref:System.Windows.FrameworkElement.DataContext%2A> property of the item container will be set to the DisconnectedSource property  You should check whether the <xref:System.Windows.FrameworkElement.DataContext%2A> is equal to the DisconnectedSource before accessing the <xref:System.Windows.FrameworkElement.DataContext%2A> in the <xref:System.Windows.FrameworkElement.DataContextChanged> event for item containers. For more information about item containers and virtualization, see the remarks in the <xref:System.Windows.Controls.VirtualizingStackPanel> class.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EnableCollectionSynchronization">
-      <MemberSignature Language="C#" Value="public static void EnableCollectionSynchronization (System.Collections.IEnumerable collection, object lockObject);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void EnableCollectionSynchronization(class System.Collections.IEnumerable collection, object lockObject) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="collection" Type="System.Collections.IEnumerable" />
-        <Parameter Name="lockObject" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="collection">The collection that needs synchronized access.</param>
-        <param name="lockObject">The object to lock when accessing the collection.</param>
-        <summary>Enables a collection to be accessed across multiple threads and specifies the lock object that should be used to synchronize access to the collection.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If you have a lot of data to collect or modify, you might want to use a background thread to collect and modify the data so that the user interface will remain reactive to input.  To enable multiple threads to access a collection, call the EnableCollectionSynchronization method.  When you call this overload of the EnableCollectionSynchronization method, the system locks the collection when you access it.  To specify a callback to lock the collection yourself, call the <xref:System.Windows.Data.BindingOperations.EnableCollectionSynchronization%28System.Collections.IEnumerable%2CSystem.Object%2CSystem.Windows.Data.CollectionSynchronizationCallback%29> overload.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EnableCollectionSynchronization">
-      <MemberSignature Language="C#" Value="public static void EnableCollectionSynchronization (System.Collections.IEnumerable collection, object context, System.Windows.Data.CollectionSynchronizationCallback synchronizationCallback);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void EnableCollectionSynchronization(class System.Collections.IEnumerable collection, object context, class System.Windows.Data.CollectionSynchronizationCallback synchronizationCallback) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="collection" Type="System.Collections.IEnumerable" />
-        <Parameter Name="context" Type="System.Object" />
-        <Parameter Name="synchronizationCallback" Type="System.Windows.Data.CollectionSynchronizationCallback" />
-      </Parameters>
-      <Docs>
-        <param name="collection">The collection that needs synchronized access.</param>
-        <param name="context">An object that is passed to the callback.</param>
-        <param name="synchronizationCallback">The callback that is invoked whenever access to the collection is required.</param>
-        <summary>Enables a collection to be accessed across multiple threads and specifies the callback that should be used to synchronize access to the collection.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If you have a lot of data to collect or modify, you might want to use a background thread to collect and modify the data so that the user interface will remain reactive to input.  To enable multiple threads to access a collection, call the EnableCollectionSynchronization method.  This overload of the EnableCollectionSynchronization method enables you to specify a callback that ensures that the collection is accessed by one thread at a time.  You can have the system lock the collection by calling the <xref:System.Windows.Data.BindingOperations.EnableCollectionSynchronization%28System.Collections.IEnumerable%2CSystem.Object%29> overload.  The `context` parameter is an arbitrary object that you can use to information known when you enable collection synchronization. This is passed to the callback and you can use it to determine the synchronization mechanism to use to control access to `collection`. `Context` can be `null`.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="GetBinding">
       <MemberSignature Language="C#" Value="public static System.Windows.Data.Binding GetBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.Binding GetBinding(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -272,6 +118,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.BindingBase GetBindingBase(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -303,6 +151,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.BindingExpression GetBindingExpression(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -344,6 +194,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.BindingExpressionBase GetBindingExpressionBase(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -375,6 +227,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.MultiBinding GetMultiBinding(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -399,6 +253,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.MultiBindingExpression GetMultiBindingExpression(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -430,6 +286,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.PriorityBinding GetPriorityBinding(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -454,6 +312,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.PriorityBindingExpression GetPriorityBindingExpression(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -473,67 +333,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="GetSourceUpdatingBindingGroups">
-      <MemberSignature Language="C#" Value="public static System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Windows.Data.BindingGroup&gt; GetSourceUpdatingBindingGroups (System.Windows.DependencyObject root);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Windows.Data.BindingGroup&gt; GetSourceUpdatingBindingGroups(class System.Windows.DependencyObject root) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Windows.Data.BindingGroup&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="root" Type="System.Windows.DependencyObject" />
-      </Parameters>
-      <Docs>
-        <param name="root">The root <see cref="T:System.Windows.UIElement" /> to get binding groups for.  This method returns <see cref="T:System.Windows.Data.BindingGroup" /> objects that are associated with this element or its descendant elements.</param>
-        <summary>Gets all <see cref="T:System.Windows.Data.BindingGroup" /> objects that have invalid values or target values have not been updated the source.</summary>
-        <returns>A collection of <see cref="T:System.Windows.Data.BindingGroup" /> objects that are associated with the specified element and have invalid values or target values have not been updated the source.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If `root` is `null`, GetSourceUpdatingBindingGroups returns all <xref:System.Windows.Data.BindingGroup> objects that are invalid or have not been updated.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetSourceUpdatingBindings">
-      <MemberSignature Language="C#" Value="public static System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Windows.Data.BindingExpressionBase&gt; GetSourceUpdatingBindings (System.Windows.DependencyObject root);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Windows.Data.BindingExpressionBase&gt; GetSourceUpdatingBindings(class System.Windows.DependencyObject root) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Windows.Data.BindingExpressionBase&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="root" Type="System.Windows.DependencyObject" />
-      </Parameters>
-      <Docs>
-        <param name="root">The root <see cref="T:System.Windows.UIElement" /> to get binding groups for.  This method returns <see cref="T:System.Windows.Data.BindingExpressionBase" /> objects that are associated with this element or its descendant elements.</param>
-        <summary>Gets all <see cref="T:System.Windows.Data.BindingExpressionBase" /> objects that have invalid values or target values have not been updated the source.</summary>
-        <returns>A collection of <see cref="T:System.Windows.Data.BindingExpressionBase" /> objects that are associated with the specified element and have invalid values or target values have not been updated the source.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If `root` is `null`, GetSourceUpdatingBindings returns all <xref:System.Windows.Data.BindingExpressionBase> objects that are invalid or have not been updated.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="IsDataBound">
       <MemberSignature Language="C#" Value="public static bool IsDataBound (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsDataBound(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -559,6 +365,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Windows.Data.BindingExpressionBase SetBinding(class System.Windows.DependencyObject target, class System.Windows.DependencyProperty dp, class System.Windows.Data.BindingBase binding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

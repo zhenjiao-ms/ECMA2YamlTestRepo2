@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SurrogateSelector extends System.Object implements class System.Runtime.Serialization.ISurrogateSelector" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -31,7 +32,7 @@
 ## Examples  
  The following code example shows how to make a serialization surrogate class that knows how to properly serialize or deserialize a class that is not itself serializable. In addition, this example also shows how to recover from a <xref:System.Runtime.Serialization.SerializationException>.  
   
- [!code-cs[SurrogateSelector#1](~/add/codesnippet/csharp/t-system.runtime.seriali_3_1.cs)]  
+ [!code-cs[SurrogateSelector#1](~/add/codesnippet/csharp/t-system.runtime.seriali_5_1.cs)]  
   
  ]]></format>
     </remarks>
@@ -43,6 +44,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -57,6 +60,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddSurrogate(class System.Type type, valuetype System.Runtime.Serialization.StreamingContext context, class System.Runtime.Serialization.ISerializationSurrogate surrogate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -68,7 +73,7 @@
         <Parameter Name="surrogate" Type="System.Runtime.Serialization.ISerializationSurrogate" />
       </Parameters>
       <Docs>
-        <param name="type">The &lt;xref:System.Type&gt; for which the surrogate is required.</param>
+        <param name="type">The <see cref="T:System.Type" /> for which the surrogate is required.</param>
         <param name="context">The context-specific data.</param>
         <param name="surrogate">The surrogate to call for this type.</param>
         <summary>Adds a surrogate to the list of checked surrogates.</summary>
@@ -92,6 +97,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ChainSelector(class System.Runtime.Serialization.ISurrogateSelector selector) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -128,6 +135,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Runtime.Serialization.ISurrogateSelector GetNextSelector() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -153,6 +162,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Runtime.Serialization.ISerializationSurrogate GetSurrogate(class System.Type type, valuetype System.Runtime.Serialization.StreamingContext context, class System.Runtime.Serialization.ISurrogateSelector selector) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -169,7 +180,7 @@
         <Parameter Name="selector" Type="System.Runtime.Serialization.ISurrogateSelector&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="type">The &lt;xref:System.Type&gt; for which the surrogate is requested.</param>
+        <param name="type">The <see cref="T:System.Type" /> for which the surrogate is requested.</param>
         <param name="context">The streaming context.</param>
         <param name="selector">The surrogate to use.</param>
         <summary>Returns the surrogate for a particular type.</summary>
@@ -193,6 +204,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveSurrogate(class System.Type type, valuetype System.Runtime.Serialization.StreamingContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -203,8 +216,8 @@
         <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" />
       </Parameters>
       <Docs>
-        <param name="type">The &lt;xref:System.Type&gt; for which to remove the surrogate.</param>
-        <param name="context">The &lt;xref:System.Runtime.Serialization.StreamingContext&gt; for the current surrogate.</param>
+        <param name="type">The <see cref="T:System.Type" /> for which to remove the surrogate.</param>
+        <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> for the current surrogate.</param>
         <summary>Removes the surrogate associated with a given type.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  

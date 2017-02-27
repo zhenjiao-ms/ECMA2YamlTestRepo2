@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MetadataWorkspace extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Data.Entity</AssemblyName>
+    <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -27,6 +28,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -41,6 +44,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.IEnumerable`1&lt;string&gt; paths, class System.Collections.Generic.IEnumerable`1&lt;class System.Reflection.Assembly&gt; assembliesToConsider) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -60,6 +65,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ClearCache() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -72,77 +79,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="CreateEntitySqlParser">
-      <MemberSignature Language="C#" Value="public System.Data.Common.EntitySql.EntitySqlParser CreateEntitySqlParser ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Common.EntitySql.EntitySqlParser CreateEntitySqlParser() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Data.Common.EntitySql.EntitySqlParser</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Creates an <see cref="T:System.Data.Common.EntitySql.EntitySqlParser" /> configured to use the <see cref="T:System.Data.Metadata.Edm.DataSpace" /> data space.</summary>
-        <returns>The created parser object.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="CreateQueryCommandTree">
-      <MemberSignature Language="C#" Value="public System.Data.Common.CommandTrees.DbQueryCommandTree CreateQueryCommandTree (System.Data.Common.CommandTrees.DbExpression query);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Common.CommandTrees.DbQueryCommandTree CreateQueryCommandTree(class System.Data.Common.CommandTrees.DbExpression query) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Data.Common.CommandTrees.DbQueryCommandTree</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="query" Type="System.Data.Common.CommandTrees.DbExpression" />
-      </Parameters>
-      <Docs>
-        <param name="query">A <see cref="T:System.Data.Common.CommandTrees.DbExpression" /> that defines the query.</param>
-        <summary>Creates a new <see cref="T:System.Data.Common.CommandTrees.DbQueryCommandTree" /> bound to this metadata workspace based on the specified query expression.</summary>
-        <returns>A new <see cref="T:System.Data.Common.CommandTrees.DbQueryCommandTree" /> with the specified expression as it's &lt;xref:System.Data.Common.CommandTrees.DbQueryCommandTree.Query%2A&gt; property.</returns>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">
-          <paramref name="query" />
-        </exception>
-        <exception cref="T:System.ArgumentException">
-          <paramref name="query" />
-        </exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetEdmSpaceType">
-      <MemberSignature Language="C#" Value="public System.Data.Metadata.Edm.EnumType GetEdmSpaceType (System.Data.Metadata.Edm.EnumType objectSpaceType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EnumType GetEdmSpaceType(class System.Data.Metadata.Edm.EnumType objectSpaceType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Data.Metadata.Edm.EnumType</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="objectSpaceType" Type="System.Data.Metadata.Edm.EnumType" />
-      </Parameters>
-      <Docs>
-        <param name="objectSpaceType">A &lt;xref:System.Data.Metadata.Edm.EnumlType&gt; that supplies the type in the object space.</param>
-        <summary>Returns a <see cref="T:System.Data.Metadata.Edm.StructuralType" /> object that represents the <see cref="T:System.Data.Metadata.Edm.EdmType" /> that matches the type supplied by the parameter <paramref name="objectSpaceType" />.</summary>
-        <returns>A <see cref="T:System.Data.Metadata.Edm.StructuralType" /> object that represents the <see cref="T:System.Data.Metadata.Edm.EdmType" />. If there is no matched type, this method returns null.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="GetEdmSpaceType">
       <MemberSignature Language="C#" Value="public System.Data.Metadata.Edm.StructuralType GetEdmSpaceType (System.Data.Metadata.Edm.StructuralType objectSpaceType);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.StructuralType GetEdmSpaceType(class System.Data.Metadata.Edm.StructuralType objectSpaceType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -164,6 +107,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EntityContainer GetEntityContainer(string name, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -187,6 +132,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EntityContainer GetEntityContainer(string name, bool ignoreCase, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -213,8 +160,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Data.Metadata.Edm.EdmFunction&gt; GetFunctions(string name, string namespaceName, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Data.Metadata.Edm.EdmFunction&gt;</ReturnType>
       </ReturnValue>
@@ -238,6 +192,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Data.Metadata.Edm.EdmFunction&gt; GetFunctions(string name, string namespaceName, valuetype System.Data.Metadata.Edm.DataSpace dataSpace, bool ignoreCase) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -266,6 +222,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !!T GetItem&lt;(class System.Data.Metadata.Edm.GlobalItem) T&gt;(string identity, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -296,6 +254,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !!T GetItem&lt;(class System.Data.Metadata.Edm.GlobalItem) T&gt;(string identity, bool ignoreCase, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -328,6 +288,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.ItemCollection GetItemCollection(valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -354,6 +316,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Data.Metadata.Edm.GlobalItem&gt; GetItems(valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -375,6 +339,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;!!T&gt; GetItems&lt;(class System.Data.Metadata.Edm.GlobalItem) T&gt;(valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -399,31 +365,12 @@
       </Docs>
     </Member>
     <Member MemberName="GetObjectSpaceType">
-      <MemberSignature Language="C#" Value="public System.Data.Metadata.Edm.EnumType GetObjectSpaceType (System.Data.Metadata.Edm.EnumType edmSpaceType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EnumType GetObjectSpaceType(class System.Data.Metadata.Edm.EnumType edmSpaceType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Data.Metadata.Edm.EnumType</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="edmSpaceType" Type="System.Data.Metadata.Edm.EnumType" />
-      </Parameters>
-      <Docs>
-        <param name="edmSpaceType">A <see cref="T:System.Data.Metadata.Edm.EnumType" /> object that represents the <see cref="T:System.Data.Metadata.Edm.EdmType" />.</param>
-        <summary>Returns a <see cref="T:System.Data.Metadata.Edm.StructuralType" /> object that represents the object space type that matches the type supplied by the parameter <paramref name="edmSpaceType" />.</summary>
-        <returns>A <see cref="T:System.Data.Metadata.Edm.StructuralType" /> object that represents the Object space type. If there is no matched type, this method returns null.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetObjectSpaceType">
       <MemberSignature Language="C#" Value="public System.Data.Metadata.Edm.StructuralType GetObjectSpaceType (System.Data.Metadata.Edm.StructuralType edmSpaceType);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.StructuralType GetObjectSpaceType(class System.Data.Metadata.Edm.StructuralType edmSpaceType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -445,6 +392,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Data.Metadata.Edm.PrimitiveType&gt; GetPrimitiveTypes(valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -461,44 +410,15 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="GetRelevantMembersForUpdate">
-      <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Data.Metadata.Edm.EdmMember&gt; GetRelevantMembersForUpdate (System.Data.Metadata.Edm.EntitySetBase entitySet, System.Data.Metadata.Edm.EntityTypeBase entityType, bool partialUpdateSupported);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Data.Metadata.Edm.EdmMember&gt; GetRelevantMembersForUpdate(class System.Data.Metadata.Edm.EntitySetBase entitySet, class System.Data.Metadata.Edm.EntityTypeBase entityType, bool partialUpdateSupported) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.ObjectModel.ReadOnlyCollection&lt;System.Data.Metadata.Edm.EdmMember&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="entitySet" Type="System.Data.Metadata.Edm.EntitySetBase" />
-        <Parameter Name="entityType" Type="System.Data.Metadata.Edm.EntityTypeBase" />
-        <Parameter Name="partialUpdateSupported" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="entitySet">An <see cref="T:System.Data.Metadata.Edm.EntitySet" /> belonging to the C-Space.</param>
-        <param name="entityType">An <see cref="T:System.Data.Metadata.Edm.EntityType" /> that participates in the given <see cref="T:System.Data.Metadata.Edm.EntitySet" />.</param>
-        <param name="partialUpdateSupported">
-          <see langword="true" /> if entities may be updated partially; otherwise, <see langword="false" />.</param>
-        <summary>Returns members of a given <see cref="T:System.Data.Metadata.Edm.EntitySet" />/<see cref="T:System.Data.Metadata.Edm.EntityType" /> for which original values are needed when modifying an entity.</summary>
-        <returns>The <see cref="T:System.Data.Metadata.Edm.EdmMember" />s for which original value is required.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="GetRequiredOriginalValueMembers">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;System.Data.Metadata.Edm.EdmMember&gt; GetRequiredOriginalValueMembers (System.Data.Metadata.Edm.EntitySetBase entitySet, System.Data.Metadata.Edm.EntityTypeBase entityType);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IEnumerable`1&lt;class System.Data.Metadata.Edm.EdmMember&gt; GetRequiredOriginalValueMembers(class System.Data.Metadata.Edm.EntitySetBase entitySet, class System.Data.Metadata.Edm.EntityTypeBase entityType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete("Use MetadataWorkspace.GetRelevantMembersForUpdate(EntitySetBase, EntityTypeBase, bool) instead")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Data.Metadata.Edm.EdmMember&gt;</ReturnType>
       </ReturnValue>
@@ -520,6 +440,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EdmType GetType(string name, string namespaceName, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -545,6 +467,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EdmType GetType(string name, string namespaceName, bool ignoreCase, valuetype System.Data.Metadata.Edm.DataSpace dataSpace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -573,8 +497,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadFromAssembly(class System.Reflection.Assembly assembly) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -593,6 +524,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadFromAssembly(class System.Reflection.Assembly assembly, class System.Action`1&lt;string&gt; logLoadMessage) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -615,6 +547,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly float64 MaximumEdmVersionSupported" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -631,6 +565,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RegisterItemCollection(class System.Data.Metadata.Edm.ItemCollection collection) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -652,34 +588,12 @@
       </Docs>
     </Member>
     <Member MemberName="TryGetEdmSpaceType">
-      <MemberSignature Language="C#" Value="public bool TryGetEdmSpaceType (System.Data.Metadata.Edm.EnumType objectSpaceType, out System.Data.Metadata.Edm.EnumType edmSpaceType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetEdmSpaceType(class System.Data.Metadata.Edm.EnumType objectSpaceType, class System.Data.Metadata.Edm.EnumType edmSpaceType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="objectSpaceType" Type="System.Data.Metadata.Edm.EnumType" />
-        <Parameter Name="edmSpaceType" Type="System.Data.Metadata.Edm.EnumType&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="objectSpaceType">A <see cref="T:System.Data.Metadata.Edm.EnumType" /> object that represents the object space type.</param>
-        <param name="edmSpaceType">When this method returns, contains a <see cref="T:System.Data.Metadata.Edm.EnumType" /> object that represents the <see cref="T:System.Data.Metadata.Edm.EdmType" />. This parameter is passed uninitialized.</param>
-        <summary>Returns a <see cref="T:System.Data.Metadata.Edm.EnumType" /> object via the out parameter <paramref name="edmSpaceType" /> that represents the <see cref="T:System.Data.Metadata.Edm.EdmType" /> that matches the type supplied by the parameter <paramref name="objectSpaceType" />.</summary>
-        <returns>
-          <see langword="true" /> on success, <see langword="false" /> on failure.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="TryGetEdmSpaceType">
       <MemberSignature Language="C#" Value="public bool TryGetEdmSpaceType (System.Data.Metadata.Edm.StructuralType objectSpaceType, out System.Data.Metadata.Edm.StructuralType edmSpaceType);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetEdmSpaceType(class System.Data.Metadata.Edm.StructuralType objectSpaceType, class System.Data.Metadata.Edm.StructuralType edmSpaceType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -704,6 +618,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetEntityContainer(string name, valuetype System.Data.Metadata.Edm.DataSpace dataSpace, class System.Data.Metadata.Edm.EntityContainer entityContainer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -730,6 +646,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetEntityContainer(string name, bool ignoreCase, valuetype System.Data.Metadata.Edm.DataSpace dataSpace, class System.Data.Metadata.Edm.EntityContainer entityContainer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -759,6 +677,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetItem&lt;(class System.Data.Metadata.Edm.GlobalItem) T&gt;(string identity, valuetype System.Data.Metadata.Edm.DataSpace space, !!T item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -791,6 +711,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetItem&lt;(class System.Data.Metadata.Edm.GlobalItem) T&gt;(string identity, bool ignoreCase, valuetype System.Data.Metadata.Edm.DataSpace dataSpace, !!T item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -825,6 +747,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetItemCollection(valuetype System.Data.Metadata.Edm.DataSpace dataSpace, class System.Data.Metadata.Edm.ItemCollection collection) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -850,34 +774,12 @@
       </Docs>
     </Member>
     <Member MemberName="TryGetObjectSpaceType">
-      <MemberSignature Language="C#" Value="public bool TryGetObjectSpaceType (System.Data.Metadata.Edm.EnumType edmSpaceType, out System.Data.Metadata.Edm.EnumType objectSpaceType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetObjectSpaceType(class System.Data.Metadata.Edm.EnumType edmSpaceType, class System.Data.Metadata.Edm.EnumType objectSpaceType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="edmSpaceType" Type="System.Data.Metadata.Edm.EnumType" />
-        <Parameter Name="objectSpaceType" Type="System.Data.Metadata.Edm.EnumType&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="edmSpaceType">A <see cref="T:System.Data.Metadata.Edm.EnumType" /> object that represents the <see cref="T:System.Data.Metadata.Edm.EdmType" />.</param>
-        <param name="objectSpaceType">When this method returns, contains a <see cref="T:System.Data.Metadata.Edm.EnumType" /> object that represents the Object space type. This parameter is passed uninitialized.</param>
-        <summary>Returns a <see cref="T:System.Data.Metadata.Edm.EnumType" /> object via the out parameter <paramref name="objectSpaceType" /> that represents the type that matches the <see cref="T:System.Data.Metadata.Edm.EdmType" /> supplied by the parameter <paramref name="edmSpaceType" />.</summary>
-        <returns>
-          <see langword="true" /> if there is a type that matches the search criteria; otherwise, <see langword="false" />.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="TryGetObjectSpaceType">
       <MemberSignature Language="C#" Value="public bool TryGetObjectSpaceType (System.Data.Metadata.Edm.StructuralType edmSpaceType, out System.Data.Metadata.Edm.StructuralType objectSpaceType);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetObjectSpaceType(class System.Data.Metadata.Edm.StructuralType edmSpaceType, class System.Data.Metadata.Edm.StructuralType objectSpaceType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -902,6 +804,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetType(string name, string namespaceName, valuetype System.Data.Metadata.Edm.DataSpace dataSpace, class System.Data.Metadata.Edm.EdmType type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -930,6 +834,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryGetType(string name, string namespaceName, bool ignoreCase, valuetype System.Data.Metadata.Edm.DataSpace dataSpace, class System.Data.Metadata.Edm.EdmType type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

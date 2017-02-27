@@ -3,17 +3,13 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TrackingParameters extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Workflow.Runtime</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")</AttributeName>
-    </Attribute>
-  </Attributes>
   <Docs>
     <summary>Contains information about the workflow instance associated with a <see cref="T:System.Workflow.Runtime.Tracking.TrackingChannel" />. This class cannot be inherited.</summary>
     <remarks>
@@ -36,6 +32,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Guid instanceId, class System.Type workflowType, class System.Workflow.ComponentModel.Activity rootActivity, class System.Collections.Generic.IList`1&lt;string&gt; callPath, valuetype System.Guid callerInstanceId, valuetype System.Guid contextGuid, valuetype System.Guid callerContextGuid, valuetype System.Guid callerParentContextGuid) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -49,11 +47,11 @@
         <Parameter Name="callerParentContextGuid" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="instanceId">The &lt;xref:System.Guid&gt; of the workflow instance associated with the tracking channel.</param>
-        <param name="workflowType">The &lt;xref:System.Type&gt; of the workflow instance associated with the tracking channel.</param>
+        <param name="instanceId">The <see cref="T:System.Guid" /> of the workflow instance associated with the tracking channel.</param>
+        <param name="workflowType">The <see cref="T:System.Type" /> of the workflow instance associated with the tracking channel.</param>
         <param name="rootActivity">The root <see cref="T:System.Workflow.ComponentModel.Activity" /> of the workflow instance associated with the tracking channel.</param>
         <param name="callPath">A list of strings, each of which represents the &lt;xref:System.Workflow.ComponentModel.Activity.QualifiedName%2A&gt; of an activity in the call chain of the workflow instance associated with the tracking channel. Currently, only the &lt;xref:System.Workflow.ComponentModel.Activity.QualifiedName%2A&gt; of the activity that invoked the workflow instance is included in the list.</param>
-        <param name="callerInstanceId">The &lt;xref:System.Guid&gt; of the workflow that has called the workflow instance associated with the tracking channel.</param>
+        <param name="callerInstanceId">The <see cref="T:System.Guid" /> of the workflow that has called the workflow instance associated with the tracking channel.</param>
         <param name="contextGuid">A number that identifies the <see cref="T:System.Workflow.ComponentModel.ActivityExecutionContext" /> of the root activity of the workflow instance associated with the tracking channel.</param>
         <param name="callerContextGuid">A number that identifies the <see cref="T:System.Workflow.ComponentModel.ActivityExecutionContext" /> of the activity that invoked the workflow instance associated with the tracking channel.</param>
         <param name="callerParentContextGuid">A number that identifies the parent <see cref="T:System.Workflow.ComponentModel.ActivityExecutionContext" /> of the activity that invoked the workflow instance associated with the tracking channel.</param>
@@ -74,6 +72,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid CallerContextGuid" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -81,7 +81,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets the context ID of the caller activity.</summary>
-        <value>A &lt;xref:System.Guid&gt; that contains the context ID of the caller <see cref="T:System.Workflow.ComponentModel.Activity" />.</value>
+        <value>A <see cref="T:System.Guid" /> that contains the context ID of the caller <see cref="T:System.Workflow.ComponentModel.Activity" />.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -91,14 +91,16 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid CallerInstanceId" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Guid</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the &lt;xref:System.Guid&gt; of the workflow instance that called the workflow instance associated with the tracking channel.</summary>
-        <value>The &lt;xref:System.Guid&gt; of the workflow instance that called the workflow instance associated with the tracking channel.</value>
+        <summary>Gets the <see cref="T:System.Guid" /> of the workflow instance that called the workflow instance associated with the tracking channel.</summary>
+        <value>The <see cref="T:System.Guid" /> of the workflow instance that called the workflow instance associated with the tracking channel.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -108,6 +110,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid CallerParentContextGuid" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -115,7 +119,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets the context ID of the caller's parent activity.</summary>
-        <value>A &lt;xref:System.Guid&gt; that contains the context ID of the caller's parent <see cref="T:System.Workflow.ComponentModel.Activity" />.</value>
+        <value>A <see cref="T:System.Guid" /> that contains the context ID of the caller's parent <see cref="T:System.Workflow.ComponentModel.Activity" />.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -125,6 +129,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IList`1&lt;string&gt; CallPath" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -149,6 +155,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid ContextGuid" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -156,7 +164,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets the context ID of the associated activity.</summary>
-        <value>A &lt;xref:System.Guid&gt; that contains the context ID of the <see cref="T:System.Workflow.ComponentModel.Activity" />.</value>
+        <value>A <see cref="T:System.Guid" /> that contains the context ID of the <see cref="T:System.Workflow.ComponentModel.Activity" />.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -166,14 +174,16 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid InstanceId" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Guid</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the &lt;xref:System.Guid&gt; of the workflow instance associated with the tracking channel.</summary>
-        <value>The &lt;xref:System.Guid&gt; of the workflow instance associated with the tracking channel.</value>
+        <summary>Gets the <see cref="T:System.Guid" /> of the workflow instance associated with the tracking channel.</summary>
+        <value>The <see cref="T:System.Guid" /> of the workflow instance associated with the tracking channel.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -183,6 +193,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Workflow.ComponentModel.Activity RootActivity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -200,14 +212,16 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Type WorkflowType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the &lt;xref:System.Type&gt; of the workflow instance associated with the tracking channel.</summary>
-        <value>The &lt;xref:System.Type&gt; of the workflow instance associated with the tracking channel.</value>
+        <summary>Gets the <see cref="T:System.Type" /> of the workflow instance associated with the tracking channel.</summary>
+        <value>The <see cref="T:System.Type" /> of the workflow instance associated with the tracking channel.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

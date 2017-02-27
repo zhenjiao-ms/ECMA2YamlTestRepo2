@@ -20,6 +20,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel.Routing</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -34,6 +35,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.ServiceModel.Dispatcher.MessageFilterTable`1&lt;class System.Collections.Generic.IEnumerable`1&lt;class System.ServiceModel.Description.ServiceEndpoint&gt;&gt; filterTable, bool routeOnHeadersOnly) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel.Routing</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -49,29 +51,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="EnsureOrderedDispatch">
-      <MemberSignature Language="C#" Value="public bool EnsureOrderedDispatch { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool EnsureOrderedDispatch" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether messages are to be dispatched in the order they were sent.</summary>
-        <value>
-          <see langword="true" /> if messages are to be dispatched in the order they were sent; otherwise, <see langword="false" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="FilterTable">
       <MemberSignature Language="C#" Value="public System.ServiceModel.Dispatcher.MessageFilterTable&lt;System.Collections.Generic.IEnumerable&lt;System.ServiceModel.Description.ServiceEndpoint&gt;&gt; FilterTable { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.Dispatcher.MessageFilterTable`1&lt;class System.Collections.Generic.IEnumerable`1&lt;class System.ServiceModel.Description.ServiceEndpoint&gt;&gt; FilterTable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel.Routing</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -89,8 +74,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool RouteOnHeadersOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel.Routing</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -107,13 +101,22 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool SoapProcessingEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel.Routing</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a value that indicates whether messages should be processed between SOAP &lt;xref:System.ServiceModel.Channels.MessageVersion&gt;s.</summary>
+        <summary>Gets or sets a value that indicates whether messages should be processed between SOAP <see cref="T:System.ServiceModel.Channels.MessageVersion" />s.</summary>
         <value>
           <see langword="true" /> if messages should be processed; otherwise, <see langword="false" />. The default value is <see langword="true" />.</value>
         <remarks>

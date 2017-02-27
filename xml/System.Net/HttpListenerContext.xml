@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit HttpListenerContext extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -33,204 +34,20 @@
     <threadsafe />
   </Docs>
   <Members>
-    <Member MemberName="AcceptWebSocketAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync (string subProtocol);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync(string subProtocol) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="subProtocol" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="subProtocol">The supported WebSocket sub-protocol.</param>
-        <summary>Accept a WebSocket connection as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.  
-  
- The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <see cref="T:System.Net.WebSockets.HttpListenerWebSocketContext" /> object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after the WebSocket connection has been accepted.  
-  
- The size of the receive buffer is 16,385 bytes. The WebSocket keep-alive interval is set to the default value of 30,000 (30 seconds).  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">
-          <paramref name="subProtocol" /> is an empty string  
-  
- -or-  
-  
- <paramref name="subProtocol" /> contains illegal characters.</exception>
-        <exception cref="T:System.Net.WebSockets.WebSocketException">An error occurred when sending the response to complete the WebSocket handshake.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="AcceptWebSocketAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync (string subProtocol, TimeSpan keepAliveInterval);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync(string subProtocol, valuetype System.TimeSpan keepAliveInterval) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="subProtocol" Type="System.String" />
-        <Parameter Name="keepAliveInterval" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="subProtocol">The supported WebSocket sub-protocol.</param>
-        <param name="keepAliveInterval">The WebSocket protocol keep-alive interval in milliseconds.</param>
-        <summary>Accept a WebSocket connection specifying the supported WebSocket sub-protocol  and WebSocket keep-alive interval as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.  
-  
- The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <see cref="T:System.Net.WebSockets.HttpListenerWebSocketContext" /> object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after the WebSocket connection has been accepted.  
-  
- The size of the receive buffer is 16,385 bytes.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">
-          <paramref name="subProtocol" /> is an empty string  
-  
- -or-  
-  
- <paramref name="subProtocol" /> contains illegal characters.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">
-          <paramref name="keepAliveInterval" /> is too small.</exception>
-        <exception cref="T:System.Net.WebSockets.WebSocketException">An error occurred when sending the response to complete the WebSocket handshake.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="AcceptWebSocketAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync (string subProtocol, int receiveBufferSize, TimeSpan keepAliveInterval);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync(string subProtocol, int32 receiveBufferSize, valuetype System.TimeSpan keepAliveInterval) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="subProtocol" Type="System.String" />
-        <Parameter Name="receiveBufferSize" Type="System.Int32" />
-        <Parameter Name="keepAliveInterval" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="subProtocol">The supported WebSocket sub-protocol.</param>
-        <param name="receiveBufferSize">The receive buffer size in bytes.</param>
-        <param name="keepAliveInterval">The WebSocket protocol keep-alive interval in milliseconds.</param>
-        <summary>Accept a WebSocket connection specifying the supported WebSocket sub-protocol, receive buffer size, and WebSocket keep-alive interval as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.  
-  
- The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <see cref="T:System.Net.WebSockets.HttpListenerWebSocketContext" /> object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> > object will complete after the WebSocket connection has been accepted.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">
-          <paramref name="subProtocol" /> is an empty string  
-  
- -or-  
-  
- <paramref name="subProtocol" /> contains illegal characters.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">
-          <paramref name="keepAliveInterval" /> is too small.  
-  
- -or-  
-  
- <paramref name="receiveBufferSize" /> is less than 16 bytes  
-  
- -or-  
-  
- <paramref name="receiveBufferSize" /> is greater than 64K bytes.</exception>
-        <exception cref="T:System.Net.WebSockets.WebSocketException">An error occurred when sending the response to complete the WebSocket handshake.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="AcceptWebSocketAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync (string subProtocol, int receiveBufferSize, TimeSpan keepAliveInterval, ArraySegment&lt;byte&gt; internalBuffer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class System.Net.WebSockets.HttpListenerWebSocketContext&gt; AcceptWebSocketAsync(string subProtocol, int32 receiveBufferSize, valuetype System.TimeSpan keepAliveInterval, valuetype System.ArraySegment`1&lt;unsigned int8&gt; internalBuffer) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task&lt;System.Net.WebSockets.HttpListenerWebSocketContext&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="subProtocol" Type="System.String" />
-        <Parameter Name="receiveBufferSize" Type="System.Int32" />
-        <Parameter Name="keepAliveInterval" Type="System.TimeSpan" />
-        <Parameter Name="internalBuffer" Type="System.ArraySegment&lt;System.Byte&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="subProtocol">The supported WebSocket sub-protocol.</param>
-        <param name="receiveBufferSize">The receive buffer size in bytes.</param>
-        <param name="keepAliveInterval">The WebSocket protocol keep-alive interval in milliseconds.</param>
-        <param name="internalBuffer">An internal buffer to use for this operation.</param>
-        <summary>Accept a WebSocket connection specifying the supported WebSocket sub-protocol, receive buffer size, WebSocket keep-alive interval, and the internal buffer as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.  
-  
- The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <see cref="T:System.Net.WebSockets.HttpListenerWebSocketContext" /> object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after the WebSocket connection has been accepted.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">
-          <paramref name="subProtocol" /> is an empty string  
-  
- -or-  
-  
- <paramref name="subProtocol" /> contains illegal characters.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">
-          <paramref name="keepAliveInterval" /> is too small.  
-  
- -or-  
-  
- <paramref name="receiveBufferSize" /> is less than 16 bytes  
-  
- -or-  
-  
- <paramref name="receiveBufferSize" /> is greater than 64K bytes.</exception>
-        <exception cref="T:System.Net.WebSockets.WebSocketException">An error occurred when sending the response to complete the WebSocket handshake.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Request">
       <MemberSignature Language="C#" Value="public System.Net.HttpListenerRequest Request { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Net.HttpListenerRequest Request" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Net.HttpListenerRequest</ReturnType>
       </ReturnValue>
@@ -260,6 +77,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Net.HttpListenerResponse Response" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -291,6 +110,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Principal.IPrincipal User" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -298,7 +119,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets an object used to obtain identity, authentication information, and security roles for the client whose request is represented by this <see cref="T:System.Net.HttpListenerContext" /> object.</summary>
-        <value>An &lt;xref:System.Security.Principal.IPrincipal&gt; object that describes the client, or <see langword="null" /> if the <see cref="T:System.Net.HttpListener" /> that supplied this <see cref="T:System.Net.HttpListenerContext" /> does not require authentication.</value>
+        <value>An <see cref="T:System.Security.Principal.IPrincipal" /> object that describes the client, or <see langword="null" /> if the <see cref="T:System.Net.HttpListener" /> that supplied this <see cref="T:System.Net.HttpListenerContext" /> does not require authentication.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

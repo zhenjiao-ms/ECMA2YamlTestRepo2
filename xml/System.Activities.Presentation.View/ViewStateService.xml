@@ -32,8 +32,14 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initiates a new instance of the <see cref="T:System.Activities.Presentation.View.ViewStateService" /> class.</summary>
@@ -46,6 +52,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool RemoveViewState(class System.Activities.Presentation.Model.ModelItem modelItem, string key) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -57,7 +64,7 @@
       </Parameters>
       <Docs>
         <param name="modelItem">The workflow activity <see cref="T:System.Activities.Presentation.Model.ModelItem" /> associated with the current view state.</param>
-        <param name="key">The &lt;xref:System.String&gt; that identifies the view state item that is stored.</param>
+        <param name="key">The <see cref="T:System.String" /> that identifies the view state item that is stored.</param>
         <summary>When implemented in a derived class, removes the view state represented by the specified key and associated with the specified model item.</summary>
         <returns>
           <see langword="true" /> if the view state was removed; otherwise, <see langword="false" />.</returns>
@@ -70,6 +77,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.Dictionary`2&lt;string, object&gt; RetrieveAllViewState(class System.Activities.Presentation.Model.ModelItem modelItem) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -98,6 +106,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object RetrieveViewState(class System.Activities.Presentation.Model.ModelItem modelItem, string key) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -109,9 +118,9 @@
       </Parameters>
       <Docs>
         <param name="modelItem">The workflow activity <see cref="T:System.Activities.Presentation.Model.ModelItem" /> associated with the current view state.</param>
-        <param name="key">The &lt;xref:System.String&gt; that identifies the aspect of the view state that is to be retrieved.</param>
+        <param name="key">The <see cref="T:System.String" /> that identifies the aspect of the view state that is to be retrieved.</param>
         <summary>Retrieves an aspect of the view state for the specified <paramref name="modelItem" />, matching the specified <paramref name="key" />.</summary>
-        <returns>The aspect of the view state as an &lt;xref:System.Object&gt;,or <see langword="null" />.</returns>
+        <returns>The aspect of the view state as an <see cref="T:System.Object" />,or <see langword="null" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -128,6 +137,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StoreViewState(class System.Activities.Presentation.Model.ModelItem modelItem, string key, object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -140,8 +150,8 @@
       </Parameters>
       <Docs>
         <param name="modelItem">The <see cref="T:System.Activities.Presentation.Model.ModelItem" /> that the view state applies to.</param>
-        <param name="key">The &lt;xref:System.String&gt; that identifies the aspect of the view state that is to be stored.</param>
-        <param name="value">An &lt;xref:System.Object&gt; to be stored.</param>
+        <param name="key">The <see cref="T:System.String" /> that identifies the aspect of the view state that is to be stored.</param>
+        <param name="value">An <see cref="T:System.Object" /> to be stored.</param>
         <summary>Stores an aspect of the view state for the specified <paramref name="modelItem" />, matching the specified <paramref name="key" />.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -159,6 +169,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StoreViewStateWithUndo(class System.Activities.Presentation.Model.ModelItem modelItem, string key, object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -171,8 +182,8 @@
       </Parameters>
       <Docs>
         <param name="modelItem">The <see cref="T:System.Activities.Presentation.Model.ModelItem" /> that the view state applies to.</param>
-        <param name="key">The &lt;xref:System.String&gt; that identifies the aspect of the view state that is to be stored. The &lt;xref:System.String&gt; that identifies the view state item that is stored.</param>
-        <param name="value">An &lt;xref:System.Object&gt; to be stored.</param>
+        <param name="key">The <see cref="T:System.String" /> that identifies the aspect of the view state that is to be stored. The <see cref="T:System.String" /> that identifies the view state item that is stored.</param>
+        <param name="value">An <see cref="T:System.Object" /> to be stored.</param>
         <summary>When implemented in a derived class, records the current setting of the item represented by the specified key so that it is available for an undo operation. The item represented by the specified key is then stored in the view state of the specified model item.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -190,6 +201,7 @@
       <MemberSignature Language="ILAsm" Value=".event class System.Activities.Presentation.View.ViewStateChangedEventHandler UndoableViewStateChanged" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -206,6 +218,7 @@
       <MemberSignature Language="ILAsm" Value=".event class System.Activities.Presentation.View.ViewStateChangedEventHandler ViewStateChanged" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities.Presentation</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

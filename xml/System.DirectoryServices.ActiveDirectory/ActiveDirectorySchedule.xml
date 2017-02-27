@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ActiveDirectorySchedule extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.DirectoryServices</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,6 +21,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -34,6 +37,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.DirectoryServices.ActiveDirectory.ActiveDirectorySchedule schedule) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -53,6 +58,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool[,,] RawSchedule" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -60,7 +67,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets a three-dimensional array that indicates at what time during the week that the source is available for replication.</summary>
-        <value>A three-dimensional array of &lt;xref:System.Boolean&gt; elements in which the element is <see langword="true" /> if the source is available for replication during that specific 15-minute interval. The element is <see langword="false" /> if the source is not available for replication.  
+        <value>A three-dimensional array of <see cref="T:System.Boolean" /> elements in which the element is <see langword="true" /> if the source is available for replication during that specific 15-minute interval. The element is <see langword="false" /> if the source is not available for replication.  
   
  The array is in the form RawSchedule[&lt;day-of-week&gt;, &lt;hour&gt;, &lt;15-minute interval&gt;]. All of these values are zero-based and the week begins at 00:00 on Sunday morning, Coordinated Universal Time.  
   
@@ -200,6 +207,8 @@ Boolean isAvailable = scheduleObject.RawSchedule[2, 15, (Int32)50/15];
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResetSchedule() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -217,6 +226,8 @@ Boolean isAvailable = scheduleObject.RawSchedule[2, 15, (Int32)50/15];
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDailySchedule(valuetype System.DirectoryServices.ActiveDirectory.HourOfDay fromHour, valuetype System.DirectoryServices.ActiveDirectory.MinuteOfHour fromMinute, valuetype System.DirectoryServices.ActiveDirectory.HourOfDay toHour, valuetype System.DirectoryServices.ActiveDirectory.MinuteOfHour toMinute) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -252,6 +263,8 @@ Boolean isAvailable = scheduleObject.RawSchedule[2, 15, (Int32)50/15];
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetSchedule(valuetype System.DayOfWeek day, valuetype System.DirectoryServices.ActiveDirectory.HourOfDay fromHour, valuetype System.DirectoryServices.ActiveDirectory.MinuteOfHour fromMinute, valuetype System.DirectoryServices.ActiveDirectory.HourOfDay toHour, valuetype System.DirectoryServices.ActiveDirectory.MinuteOfHour toMinute) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -265,7 +278,7 @@ Boolean isAvailable = scheduleObject.RawSchedule[2, 15, (Int32)50/15];
         <Parameter Name="toMinute" Type="System.DirectoryServices.ActiveDirectory.MinuteOfHour" />
       </Parameters>
       <Docs>
-        <param name="day">One of the &lt;xref:System.DayOfWeek&gt; members that specifies the day of the week that the source will be available for replication.</param>
+        <param name="day">One of the <see cref="T:System.DayOfWeek" /> members that specifies the day of the week that the source will be available for replication.</param>
         <param name="fromHour">One of the <see cref="T:System.DirectoryServices.ActiveDirectory.HourOfDay" /> members that specifies the first hour that the source will be available for replication.</param>
         <param name="fromMinute">One of the <see cref="T:System.DirectoryServices.ActiveDirectory.MinuteOfHour" /> members that specifies the first 15-minute interval that the source will be available for replication.</param>
         <param name="toHour">One of the <see cref="T:System.DirectoryServices.ActiveDirectory.HourOfDay" /> members that specifies the final hour that the source will be available for replication.</param>
@@ -293,6 +306,8 @@ Boolean isAvailable = scheduleObject.RawSchedule[2, 15, (Int32)50/15];
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetSchedule(valuetype System.DayOfWeek[] days, valuetype System.DirectoryServices.ActiveDirectory.HourOfDay fromHour, valuetype System.DirectoryServices.ActiveDirectory.MinuteOfHour fromMinute, valuetype System.DirectoryServices.ActiveDirectory.HourOfDay toHour, valuetype System.DirectoryServices.ActiveDirectory.MinuteOfHour toMinute) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.DirectoryServices</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -306,7 +321,7 @@ Boolean isAvailable = scheduleObject.RawSchedule[2, 15, (Int32)50/15];
         <Parameter Name="toMinute" Type="System.DirectoryServices.ActiveDirectory.MinuteOfHour" />
       </Parameters>
       <Docs>
-        <param name="days">One of the &lt;xref:System.DayOfWeek&gt; members that specifies the day of the week that the source will be available for replication.</param>
+        <param name="days">One of the <see cref="T:System.DayOfWeek" /> members that specifies the day of the week that the source will be available for replication.</param>
         <param name="fromHour">One of the <see cref="T:System.DirectoryServices.ActiveDirectory.HourOfDay" /> members that specifies the first hour that the source will be available for replication.</param>
         <param name="fromMinute">One of the <see cref="T:System.DirectoryServices.ActiveDirectory.MinuteOfHour" /> members that specifies the first 15-minute interval that the source will be available for replication.</param>
         <param name="toHour">One of the <see cref="T:System.DirectoryServices.ActiveDirectory.HourOfDay" /> members that specifies the final hour that the source will be available for replication.</param>

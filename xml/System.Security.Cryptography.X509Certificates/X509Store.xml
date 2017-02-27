@@ -1,18 +1,15 @@
 <Type Name="X509Store" FullName="System.Security.Cryptography.X509Certificates.X509Store">
-  <TypeSignature Language="C#" Value="public sealed class X509Store : IDisposable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit X509Store extends System.Object implements class System.IDisposable" />
+  <TypeSignature Language="C#" Value="public sealed class X509Store" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit X509Store extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces>
-    <Interface>
-      <InterfaceName>System.IDisposable</InterfaceName>
-    </Interface>
-  </Interfaces>
+  <Interfaces />
   <Docs>
     <summary>Represents an X.509 store, which is a physical store where certificates are persisted and managed. This class cannot be inherited.</summary>
     <remarks>
@@ -39,16 +36,16 @@
   
  The example creates an X509Store object for each combination of standard name and standard location. It calls the <xref:System.Security.Cryptography.X509Certificates.X509Store.Open%2A> method with the <xref:System.Security.Cryptography.X509Certificates.OpenFlags?displayProperty=fullName> flag, which opens the physical store only if it already exists. If the physical store exists, the example uses the <xref:System.Security.Cryptography.X509Certificates.X509Store.Name%2A>, <xref:System.Security.Cryptography.X509Certificates.X509Store.Location%2A>, and <xref:System.Security.Cryptography.X509Certificates.X509Store.Certificates%2A> properties to display the number of certificates in the store.  
   
- [!code-cs[x509store2#2](~/add/codesnippet/csharp/t-system.security.crypto_70_1.cs)]
- [!code-vb[x509store2#2](~/add/codesnippet/visualbasic/t-system.security.crypto_70_1.vb)]  
+ [!code-cs[x509store2#2](~/add/codesnippet/csharp/t-system.security.crypto_68_1.cs)]
+ [!code-vb[x509store2#2](~/add/codesnippet/visualbasic/t-system.security.crypto_68_1.vb)]  
   
  **Example 2**  
   
  This example opens an X.509 certificate store, adds and deletes certificates, and then closes the store. It assumes that you have three certificates to add to and remove from a local store.  
   
- [!code-cs[x509store2#1](~/add/codesnippet/csharp/t-system.security.crypto_70_2.cs)]
- [!code-cpp[x509store2#1](~/add/codesnippet/cpp/t-system.security.crypto_70_2.cpp)]
- [!code-vb[x509store2#1](~/add/codesnippet/visualbasic/t-system.security.crypto_70_2.vb)]  
+ [!code-cs[x509store2#1](~/add/codesnippet/csharp/t-system.security.crypto_68_2.cs)]
+ [!code-cpp[x509store2#1](~/add/codesnippet/cpp/t-system.security.crypto_68_2.cpp)]
+ [!code-vb[x509store2#1](~/add/codesnippet/visualbasic/t-system.security.crypto_68_2.vb)]  
   
  ]]></format>
     </remarks>
@@ -60,8 +57,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Store" /> class using the personal certificates of the current user store.</summary>
@@ -76,9 +80,9 @@
 ## Examples  
  The following code example opens an X.509 certificate store, adds and deletes certificates, and then closes the store. It assumes that you have three certificates to add to and remove from a local store.  
   
- [!code-cs[x509store2#1](~/add/codesnippet/csharp/m-system.security.crypto_92_1.cs)]
- [!code-cpp[x509store2#1](~/add/codesnippet/cpp/m-system.security.crypto_92_1.cpp)]
- [!code-vb[x509store2#1](~/add/codesnippet/visualbasic/m-system.security.crypto_92_1.vb)]  
+ [!code-cs[x509store2#1](~/add/codesnippet/csharp/m-system.security.crypto_91_1.cs)]
+ [!code-cpp[x509store2#1](~/add/codesnippet/cpp/m-system.security.crypto_91_1.cpp)]
+ [!code-vb[x509store2#1](~/add/codesnippet/visualbasic/m-system.security.crypto_91_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -91,6 +95,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int storeHandle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -120,8 +126,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Security.Cryptography.X509Certificates.StoreLocation storeLocation) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="storeLocation" Type="System.Security.Cryptography.X509Certificates.StoreLocation" />
       </Parameters>
@@ -154,8 +167,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Security.Cryptography.X509Certificates.StoreName storeName) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="storeName" Type="System.Security.Cryptography.X509Certificates.StoreName" />
       </Parameters>
@@ -188,8 +208,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string storeName) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="storeName" Type="System.String" />
       </Parameters>
@@ -222,6 +249,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Security.Cryptography.X509Certificates.StoreName storeName, valuetype System.Security.Cryptography.X509Certificates.StoreLocation storeLocation) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -260,6 +289,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string storeName, valuetype System.Security.Cryptography.X509Certificates.StoreLocation storeLocation) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -298,6 +329,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -338,6 +371,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddRange(class System.Security.Cryptography.X509Certificates.X509Certificate2Collection certificates) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -378,6 +413,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Cryptography.X509Certificates.X509Certificate2Collection Certificates" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -427,6 +464,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Close() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -455,39 +494,20 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="public void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Releases the resources used by this <see cref="T:System.Security.Cryptography.X509Certificates.X509Store" />.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  <xref:System.Security.Cryptography.X509Certificates.X509Store> implements the <xref:System.IDisposable> interface starting with the [!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]; in previous versions of the .NET Framework, the <xref:System.Security.Cryptography.X509Certificates.X509Store> class does not implement this interface, and therefore the `Dispose` method does not exist.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Location">
       <MemberSignature Language="C#" Value="public System.Security.Cryptography.X509Certificates.StoreLocation Location { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Security.Cryptography.X509Certificates.StoreLocation Location" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Security.Cryptography.X509Certificates.StoreLocation</ReturnType>
       </ReturnValue>
@@ -534,8 +554,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -582,6 +609,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Open(valuetype System.Security.Cryptography.X509Certificates.OpenFlags flags) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -622,6 +651,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Remove(class System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -662,6 +693,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveRange(class System.Security.Cryptography.X509Certificates.X509Certificate2Collection certificates) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -706,13 +739,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance native int StoreHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets an &lt;xref:System.IntPtr&gt; handle to an <see langword="HCERTSTORE" /> store.</summary>
+        <summary>Gets an <see cref="T:System.IntPtr" /> handle to an <see langword="HCERTSTORE" /> store.</summary>
         <value>A handle to an <see langword="HCERTSTORE" /> store.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  

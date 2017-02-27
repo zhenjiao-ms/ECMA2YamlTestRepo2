@@ -1,5 +1,5 @@
 <Type Name="ConsoleLogger" FullName="Microsoft.Build.Logging.ConsoleLogger">
-  <TypeSignature Language="C#" Value="public class ConsoleLogger : Microsoft.Build.Framework.INodeLogger" />
+  <TypeSignature Language="C#" Value="public class ConsoleLogger : Microsoft.Build.Framework.ILogger, Microsoft.Build.Framework.INodeLogger" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ConsoleLogger extends System.Object implements class Microsoft.Build.Framework.ILogger, class Microsoft.Build.Framework.INodeLogger" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.Build</AssemblyName>
@@ -9,6 +9,9 @@
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.Build.Framework.ILogger</InterfaceName>
+    </Interface>
     <Interface>
       <InterfaceName>Microsoft.Build.Framework.INodeLogger</InterfaceName>
     </Interface>
@@ -33,8 +36,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Creates a default logger.</summary>
@@ -47,6 +56,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Microsoft.Build.Framework.LoggerVerbosity verbosity) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -64,6 +74,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Microsoft.Build.Framework.LoggerVerbosity verbosity, class Microsoft.Build.Logging.WriteHandler write, class Microsoft.Build.Logging.ColorSetter colorSet, class Microsoft.Build.Logging.ColorResetter colorReset) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -87,6 +98,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ApplyParameter(string parameterName, string parameterValue) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -116,6 +128,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BuildFinishedHandler(object sender, class Microsoft.Build.Framework.BuildFinishedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -138,6 +151,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BuildStartedHandler(object sender, class Microsoft.Build.Framework.BuildStartedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -160,6 +174,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CustomEventHandler(object sender, class Microsoft.Build.Framework.CustomBuildEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -182,6 +197,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ErrorHandler(object sender, class Microsoft.Build.Framework.BuildErrorEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -204,6 +220,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Initialize(class Microsoft.Build.Framework.IEventSource eventSource) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -224,6 +241,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Initialize(class Microsoft.Build.Framework.IEventSource eventSource, int32 nodeCount) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -246,6 +264,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MessageHandler(object sender, class Microsoft.Build.Framework.BuildMessageEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -268,6 +287,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Parameters" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -285,6 +305,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ProjectFinishedHandler(object sender, class Microsoft.Build.Framework.ProjectFinishedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -307,6 +328,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ProjectStartedHandler(object sender, class Microsoft.Build.Framework.ProjectStartedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -329,6 +351,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool ShowSummary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -346,6 +369,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Shutdown() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -370,6 +394,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool SkipProjectStartedText" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -394,6 +419,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TargetFinishedHandler(object sender, class Microsoft.Build.Framework.TargetFinishedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -416,6 +442,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TargetStartedHandler(object sender, class Microsoft.Build.Framework.TargetStartedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -438,6 +465,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TaskFinishedHandler(object sender, class Microsoft.Build.Framework.TaskFinishedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -460,6 +488,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TaskStartedHandler(object sender, class Microsoft.Build.Framework.TaskStartedEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -482,6 +511,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.Build.Framework.LoggerVerbosity Verbosity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -499,6 +529,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WarningHandler(object sender, class Microsoft.Build.Framework.BuildWarningEventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -521,6 +552,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Logging.WriteHandler WriteHandler" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

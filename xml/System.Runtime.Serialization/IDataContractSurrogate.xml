@@ -3,11 +3,12 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IDataContractSurrogate" />
   <AssemblyInfo>
     <AssemblyName>System.Runtime.Serialization</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
-    <summary>Provides the methods needed to substitute one type for another by the &lt;xref:System.Runtime.Serialization.DataContractSerializer&gt; during serialization, deserialization, and export and import of XML schema documents (XSD).</summary>
+    <summary>Provides the methods needed to substitute one type for another by the <see cref="T:System.Runtime.Serialization.DataContractSerializer" /> during serialization, deserialization, and export and import of XML schema documents (XSD).</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -23,8 +24,8 @@
 ## Examples  
  The following example shows an implementation of the IDataContractSurrogate interface. The code substitutes the serialization of the `Person` type for a `PersonSurrogated` class.  
   
- [!code-vb[IDataContractSurrogate#0](~/add/codesnippet/visualbasic/t-system.runtime.seriali_6_1.vb)]
- [!code-cs[IDataContractSurrogate#0](~/add/codesnippet/csharp/t-system.runtime.seriali_6_1.cs)]  
+ [!code-vb[IDataContractSurrogate#0](~/add/codesnippet/visualbasic/t-system.runtime.seriali_9_1.vb)]
+ [!code-cs[IDataContractSurrogate#0](~/add/codesnippet/csharp/t-system.runtime.seriali_9_1.cs)]  
   
  ]]></format>
     </remarks>
@@ -36,6 +37,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetCustomDataToExport(class System.Reflection.MemberInfo memberInfo, class System.Type dataContractType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -46,8 +49,8 @@
         <Parameter Name="dataContractType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="memberInfo">A &lt;xref:System.Reflection.MemberInfo&gt; that describes the member.</param>
-        <param name="dataContractType">A &lt;xref:System.Type&gt;.</param>
+        <param name="memberInfo">A <see cref="T:System.Reflection.MemberInfo" /> that describes the member.</param>
+        <param name="dataContractType">A <see cref="T:System.Type" />.</param>
         <summary>During schema export operations, inserts annotations into the schema for non-null return values.</summary>
         <returns>An object that represents the annotation to be inserted into the XML schema definition.</returns>
         <remarks>To be added.</remarks>
@@ -59,6 +62,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetCustomDataToExport(class System.Type clrType, class System.Type dataContractType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -82,6 +87,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Type GetDataContractType(class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -91,9 +98,9 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">The CLR type &lt;xref:System.Type&gt; to substitute.</param>
+        <param name="type">The CLR type <see cref="T:System.Type" /> to substitute.</param>
         <summary>During serialization, deserialization, and schema import and export, returns a data contract type that substitutes the specified type.</summary>
-        <returns>The &lt;xref:System.Type&gt; to substitute for the <paramref name="type" /> value. This type must be serializable by the &lt;xref:System.Runtime.Serialization.DataContractSerializer&gt;. For example, it must be marked with the &lt;xref:System.Runtime.Serialization.DataContractAttribute&gt; attribute or other mechanisms that the serializer recognizes.</returns>
+        <returns>The <see cref="T:System.Type" /> to substitute for the <paramref name="type" /> value. This type must be serializable by the <see cref="T:System.Runtime.Serialization.DataContractSerializer" />. For example, it must be marked with the <see cref="T:System.Runtime.Serialization.DataContractAttribute" /> attribute or other mechanisms that the serializer recognizes.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -113,6 +120,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetDeserializedObject(object obj, class System.Type targetType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -124,9 +133,9 @@
       </Parameters>
       <Docs>
         <param name="obj">The deserialized object to be substituted.</param>
-        <param name="targetType">The &lt;xref:System.Type&gt; that the substituted object should be assigned to.</param>
+        <param name="targetType">The <see cref="T:System.Type" /> that the substituted object should be assigned to.</param>
         <summary>During deserialization, returns an object that is a substitute for the specified object.</summary>
-        <returns>The substituted deserialized object. This object must be of a type that is serializable by the &lt;xref:System.Runtime.Serialization.DataContractSerializer&gt;. For example, it must be marked with the &lt;xref:System.Runtime.Serialization.DataContractAttribute&gt; attribute or other mechanisms that the serializer recognizes.</returns>
+        <returns>The substituted deserialized object. This object must be of a type that is serializable by the <see cref="T:System.Runtime.Serialization.DataContractSerializer" />. For example, it must be marked with the <see cref="T:System.Runtime.Serialization.DataContractAttribute" /> attribute or other mechanisms that the serializer recognizes.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -151,6 +160,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetKnownCustomDataTypes(class System.Collections.ObjectModel.Collection`1&lt;class System.Type&gt; customDataTypes) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -160,7 +171,7 @@
         <Parameter Name="customDataTypes" Type="System.Collections.ObjectModel.Collection&lt;System.Type&gt;" />
       </Parameters>
       <Docs>
-        <param name="customDataTypes">A &lt;xref:System.Collections.ObjectModel.Collection%601&gt; of &lt;xref:System.Type&gt; to add known types to.</param>
+        <param name="customDataTypes">A &lt;xref:System.Collections.ObjectModel.Collection%601&gt; of <see cref="T:System.Type" /> to add known types to.</param>
         <summary>Sets the collection of known types to use for serialization and deserialization of the custom data objects.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -178,6 +189,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetObjectToSerialize(object obj, class System.Type targetType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -189,9 +202,9 @@
       </Parameters>
       <Docs>
         <param name="obj">The object to substitute.</param>
-        <param name="targetType">The &lt;xref:System.Type&gt; that the substituted object should be assigned to.</param>
+        <param name="targetType">The <see cref="T:System.Type" /> that the substituted object should be assigned to.</param>
         <summary>During serialization, returns an object that substitutes the specified object.</summary>
-        <returns>The substituted object that will be serialized. The object must be serializable by the &lt;xref:System.Runtime.Serialization.DataContractSerializer&gt;. For example, it must be marked with the &lt;xref:System.Runtime.Serialization.DataContractAttribute&gt; attribute or other mechanisms that the serializer recognizes.</returns>
+        <returns>The substituted object that will be serialized. The object must be serializable by the <see cref="T:System.Runtime.Serialization.DataContractSerializer" />. For example, it must be marked with the <see cref="T:System.Runtime.Serialization.DataContractAttribute" /> attribute or other mechanisms that the serializer recognizes.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -216,6 +229,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Type GetReferencedTypeOnImport(string typeName, string typeNamespace, object customData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -231,7 +246,7 @@
         <param name="typeNamespace">The namespace of the type in schema.</param>
         <param name="customData">The object that represents the annotation inserted into the XML schema definition, which is data that can be used for finding the referenced type.</param>
         <summary>During schema import, returns the type referenced by the schema.</summary>
-        <returns>The &lt;xref:System.Type&gt; to use for the referenced type.</returns>
+        <returns>The <see cref="T:System.Type" /> to use for the referenced type.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -256,6 +271,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.CodeDom.CodeTypeDeclaration ProcessImportedType(class System.CodeDom.CodeTypeDeclaration typeDeclaration, class System.CodeDom.CodeCompileUnit compileUnit) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Runtime.Serialization</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

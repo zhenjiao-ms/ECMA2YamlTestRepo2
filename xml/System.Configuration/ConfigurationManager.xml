@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed ConfigurationManager extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Configuration</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -299,6 +300,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".property class System.Collections.Specialized.NameValueCollection AppSettings" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -487,6 +490,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".property class System.Configuration.ConnectionStringSettingsCollection ConnectionStrings" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -593,6 +598,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetSection(string sectionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -640,6 +647,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Configuration.Configuration OpenExeConfiguration(valuetype System.Configuration.ConfigurationUserLevel userLevel) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -688,6 +697,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Configuration.Configuration OpenExeConfiguration(string exePath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -727,6 +738,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Configuration.Configuration OpenMachineConfiguration() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -766,6 +779,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Configuration.Configuration OpenMappedExeConfiguration(class System.Configuration.ExeConfigurationFileMap fileMap, valuetype System.Configuration.ConfigurationUserLevel userLevel) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -803,50 +818,13 @@ End Module
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="OpenMappedExeConfiguration">
-      <MemberSignature Language="C#" Value="public static System.Configuration.Configuration OpenMappedExeConfiguration (System.Configuration.ExeConfigurationFileMap fileMap, System.Configuration.ConfigurationUserLevel userLevel, bool preLoad);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Configuration.Configuration OpenMappedExeConfiguration(class System.Configuration.ExeConfigurationFileMap fileMap, valuetype System.Configuration.ConfigurationUserLevel userLevel, bool preLoad) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Configuration.Configuration</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="fileMap" Type="System.Configuration.ExeConfigurationFileMap" />
-        <Parameter Name="userLevel" Type="System.Configuration.ConfigurationUserLevel" />
-        <Parameter Name="preLoad" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="fileMap">An <see cref="T:System.Configuration.ExeConfigurationFileMap" /> object that references the configuration file to use instead of the default application configuration file.</param>
-        <param name="userLevel">The <see cref="T:System.Configuration.ConfigurationUserLevel" /> object for which you are opening the configuration.</param>
-        <param name="preLoad">
-          <see langword="true" /> to preload all section groups and sections; otherwise, <see langword="false" />.</param>
-        <summary>Opens the specified client configuration file as a <see cref="T:System.Configuration.Configuration" /> object that uses the specified file mapping, user level, and preload option.</summary>
-        <returns>The configuration object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The <xref:System.Configuration.ConfigurationUserLevel> object determines the location of the configuration file that is being opened. It indicates whether the file has no user level (the configuration file is in the same directory as the application) or has a per-user level (the configuration file is in an application settings path that is determined by `userLevel`).  
-  
-> [!NOTE]
->  To obtain the <xref:System.Configuration.Configuration> object for a resource, your code must have read permissions on all the configuration files from which it inherits settings. To update a configuration file, your code must additionally have write permissions for both the configuration file and the directory in which it exists.  
-  
- For a code example, see the <xref:System.Configuration.ConfigurationManager.OpenMappedExeConfiguration%2A> overload.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.Configuration.ConfigurationErrorsException">A configuration file could not be loaded.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="OpenMappedMachineConfiguration">
       <MemberSignature Language="C#" Value="public static System.Configuration.Configuration OpenMappedMachineConfiguration (System.Configuration.ConfigurationFileMap fileMap);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Configuration.Configuration OpenMappedMachineConfiguration(class System.Configuration.ConfigurationFileMap fileMap) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -889,6 +867,8 @@ End Module
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RefreshSection(string sectionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Configuration</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

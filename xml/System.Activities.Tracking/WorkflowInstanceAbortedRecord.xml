@@ -25,6 +25,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Guid instanceId, string activityDefinitionId, string reason) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -46,6 +47,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Guid instanceId, int64 recordNumber, string activityDefinitionId, string reason) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -59,54 +61,6 @@
         <param name="recordNumber">A sequence that defines the order in which tracking records are generated.</param>
         <param name="activityDefinitionId">The display name of the root workflow activity.</param>
         <param name="reason">The reason the workflow was aborted.</param>
-        <summary>Creates a new instance of the <see cref="T:System.Activities.Tracking.WorkflowInstanceAbortedRecord" /> class.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WorkflowInstanceAbortedRecord (Guid instanceId, string activityDefinitionId, string reason, System.Activities.WorkflowIdentity workflowDefinitionIdentity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Guid instanceId, string activityDefinitionId, string reason, class System.Activities.WorkflowIdentity workflowDefinitionIdentity) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="instanceId" Type="System.Guid" />
-        <Parameter Name="activityDefinitionId" Type="System.String" />
-        <Parameter Name="reason" Type="System.String" />
-        <Parameter Name="workflowDefinitionIdentity" Type="System.Activities.WorkflowIdentity" />
-      </Parameters>
-      <Docs>
-        <param name="instanceId">The instance ID of the aborted workflow.</param>
-        <param name="activityDefinitionId">The display name of the root workflow activity.</param>
-        <param name="reason">The reason the workflow was aborted.</param>
-        <param name="workflowDefinitionIdentity">The information about the workflow identity.</param>
-        <summary>Creates a new instance of the <see cref="T:System.Activities.Tracking.WorkflowInstanceAbortedRecord" /> class.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WorkflowInstanceAbortedRecord (Guid instanceId, long recordNumber, string activityDefinitionId, string reason, System.Activities.WorkflowIdentity workflowDefinitionIdentity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Guid instanceId, int64 recordNumber, string activityDefinitionId, string reason, class System.Activities.WorkflowIdentity workflowDefinitionIdentity) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="instanceId" Type="System.Guid" />
-        <Parameter Name="recordNumber" Type="System.Int64" />
-        <Parameter Name="activityDefinitionId" Type="System.String" />
-        <Parameter Name="reason" Type="System.String" />
-        <Parameter Name="workflowDefinitionIdentity" Type="System.Activities.WorkflowIdentity" />
-      </Parameters>
-      <Docs>
-        <param name="instanceId">The instance ID of the aborted workflow.</param>
-        <param name="recordNumber">A sequence that defines the order in which tracking records are generated.</param>
-        <param name="activityDefinitionId">The display name of the root workflow activity.</param>
-        <param name="reason">The reason the workflow was aborted.</param>
-        <param name="workflowDefinitionIdentity">The information about the workflow identity.</param>
         <summary>Creates a new instance of the <see cref="T:System.Activities.Tracking.WorkflowInstanceAbortedRecord" /> class.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -117,6 +71,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class System.Activities.Tracking.TrackingRecord Clone() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -134,8 +89,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Reason" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.Serialization.DataMember</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -151,6 +115,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

@@ -1,8 +1,9 @@
 <Type Name="FormatterServices" FullName="System.Runtime.Serialization.FormatterServices">
-  <TypeSignature Language="C#" Value="public static class FormatterServices" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed FormatterServices extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class FormatterServices" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FormatterServices extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -25,6 +26,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CheckTypeSecurity(class System.Type t, valuetype System.Runtime.Serialization.Formatters.TypeFilterLevel securityLevel) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -35,9 +38,9 @@
         <Parameter Name="securityLevel" Type="System.Runtime.Serialization.Formatters.TypeFilterLevel" />
       </Parameters>
       <Docs>
-        <param name="t">The &lt;xref:System.Type&gt; to check for the ability to deserialize.</param>
+        <param name="t">The <see cref="T:System.Type" /> to check for the ability to deserialize.</param>
         <param name="securityLevel">The <see cref="T:System.Runtime.Serialization.Formatters.TypeFilterLevel" /> property value.</param>
-        <summary>Determines whether the specified &lt;xref:System.Type&gt; can be deserialized with the <see cref="T:System.Runtime.Serialization.Formatters.TypeFilterLevel" /> property set to <see langword="Low" />.</summary>
+        <summary>Determines whether the specified <see cref="T:System.Type" /> can be deserialized with the <see cref="T:System.Runtime.Serialization.Formatters.TypeFilterLevel" /> property set to <see langword="Low" />.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -65,6 +68,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object[] GetObjectData(object obj, class System.Reflection.MemberInfo[] members) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -83,7 +88,7 @@
         <param name="obj">The object to write to the formatter.</param>
         <param name="members">The members to extract from the object.</param>
         <summary>Extracts the data from the specified object and returns it as an array of objects.</summary>
-        <returns>An array of &lt;xref:System.Object&gt; that contains data stored in <paramref name="members" /> and associated with <paramref name="obj" />.</returns>
+        <returns>An array of <see cref="T:System.Object" /> that contains data stored in <paramref name="members" /> and associated with <paramref name="obj" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -113,6 +118,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetSafeUninitializedObject(class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -152,6 +159,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Reflection.MemberInfo[] GetSerializableMembers(class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -167,8 +176,8 @@
       </Parameters>
       <Docs>
         <param name="type">The type being serialized.</param>
-        <summary>Gets all the serializable members for a class of the specified &lt;xref:System.Type&gt;.</summary>
-        <returns>An array of type &lt;xref:System.Reflection.MemberInfo&gt; of the non-transient, non-static members.</returns>
+        <summary>Gets all the serializable members for a class of the specified <see cref="T:System.Type" />.</summary>
+        <returns>An array of type <see cref="T:System.Reflection.MemberInfo" /> of the non-transient, non-static members.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -196,6 +205,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Reflection.MemberInfo[] GetSerializableMembers(class System.Type type, valuetype System.Runtime.Serialization.StreamingContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -213,8 +224,8 @@
       <Docs>
         <param name="type">The type being serialized or cloned.</param>
         <param name="context">The context where the serialization occurs.</param>
-        <summary>Gets all the serializable members for a class of the specified &lt;xref:System.Type&gt; and in the provided &lt;xref:System.Runtime.Serialization.StreamingContext&gt;.</summary>
-        <returns>An array of type &lt;xref:System.Reflection.MemberInfo&gt; of the non-transient, non-static members.</returns>
+        <summary>Gets all the serializable members for a class of the specified <see cref="T:System.Type" /> and in the provided <see cref="T:System.Runtime.Serialization.StreamingContext" />.</summary>
+        <returns>An array of type <see cref="T:System.Reflection.MemberInfo" /> of the non-transient, non-static members.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -236,6 +247,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Runtime.Serialization.ISerializationSurrogate GetSurrogateForCyclicalReference(class System.Runtime.Serialization.ISerializationSurrogate innerSurrogate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -265,6 +278,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Type GetTypeFromAssembly(class System.Reflection.Assembly assem, string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -282,8 +297,8 @@
       <Docs>
         <param name="assem">The assembly where you want to look up the object.</param>
         <param name="name">The name of the object.</param>
-        <summary>Looks up the &lt;xref:System.Type&gt; of the specified object in the provided &lt;xref:System.Reflection.Assembly&gt;.</summary>
-        <returns>The &lt;xref:System.Type&gt; of the named object.</returns>
+        <summary>Looks up the <see cref="T:System.Type" /> of the specified object in the provided <see cref="T:System.Reflection.Assembly" />.</summary>
+        <returns>The <see cref="T:System.Type" /> of the named object.</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="assem" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
@@ -297,6 +312,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetUninitializedObject(class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -336,6 +353,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object PopulateObjectMembers(object obj, class System.Reflection.MemberInfo[] members, object[] data) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -353,8 +372,8 @@
       </Parameters>
       <Docs>
         <param name="obj">The object to populate.</param>
-        <param name="members">An array of &lt;xref:System.Reflection.MemberInfo&gt; that describes which fields and properties to populate.</param>
-        <param name="data">An array of &lt;xref:System.Object&gt; that specifies the values for each field and property to populate.</param>
+        <param name="members">An array of <see cref="T:System.Reflection.MemberInfo" /> that describes which fields and properties to populate.</param>
+        <param name="data">An array of <see cref="T:System.Object" /> that specifies the values for each field and property to populate.</param>
         <summary>Populates the specified object with values for each field drawn from the data array of objects.</summary>
         <returns>The newly populated object.</returns>
         <remarks>
@@ -377,7 +396,7 @@
   
  An element of <paramref name="members" /> is <see langword="null" />.</exception>
         <exception cref="T:System.ArgumentException">The length of <paramref name="members" /> does not match the length of <paramref name="data" />.</exception>
-        <exception cref="T:System.Runtime.Serialization.SerializationException">An element of <paramref name="members" /> is not an instance of &lt;xref:System.Reflection.FieldInfo&gt;.</exception>
+        <exception cref="T:System.Runtime.Serialization.SerializationException">An element of <paramref name="members" /> is not an instance of <see cref="T:System.Reflection.FieldInfo" />.</exception>
         <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
         <permission cref="T:System.Security.Permissions.SecurityPermission">For providing serialization services. Associated enumeration: <see cref="T:System.Security.Permissions.SecurityPermissionFlag" />, <see cref="T:System.Security.Permissions.SecurityAction" />.</permission>
         <threadsafe />

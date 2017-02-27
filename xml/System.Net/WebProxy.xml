@@ -1,14 +1,18 @@
 <Type Name="WebProxy" FullName="System.Net.WebProxy">
-  <TypeSignature Language="C#" Value="public class WebProxy : System.Runtime.Serialization.ISerializable" />
+  <TypeSignature Language="C#" Value="public class WebProxy : System.Net.IWebProxy, System.Runtime.Serialization.ISerializable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit WebProxy extends System.Object implements class System.Net.IWebProxy, class System.Runtime.Serialization.ISerializable" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
+    <Interface>
+      <InterfaceName>System.Net.IWebProxy</InterfaceName>
+    </Interface>
     <Interface>
       <InterfaceName>System.Runtime.Serialization.ISerializable</InterfaceName>
     </Interface>
@@ -56,8 +60,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes an empty instance of the <see cref="T:System.Net.WebProxy" /> class.</summary>
@@ -87,6 +98,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string Address) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -121,14 +134,21 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Uri Address) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="Address" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="Address">A &lt;xref:System.Uri&gt; instance that contains the address of the proxy server.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class from the specified &lt;xref:System.Uri&gt; instance.</summary>
+        <param name="Address">A <see cref="T:System.Uri" /> instance that contains the address of the proxy server.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class from the specified <see cref="T:System.Uri" /> instance.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -153,6 +173,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.Runtime.Serialization.SerializationInfo serializationInfo, valuetype System.Runtime.Serialization.StreamingContext streamingContext) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -179,6 +201,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string Address, bool BypassOnLocal) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -216,6 +240,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string Host, int32 Port) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -251,17 +277,24 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Uri Address, bool BypassOnLocal) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="Address" Type="System.Uri" />
         <Parameter Name="BypassOnLocal" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="Address">A &lt;xref:System.Uri&gt; instance that contains the address of the proxy server.</param>
+        <param name="Address">A <see cref="T:System.Uri" /> instance that contains the address of the proxy server.</param>
         <param name="BypassOnLocal">
           <see langword="true" /> to bypass the proxy for local addresses; otherwise, <see langword="false" />.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class with the &lt;xref:System.Uri&gt; instance and bypass setting.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class with the <see cref="T:System.Uri" /> instance and bypass setting.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -286,6 +319,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string Address, bool BypassOnLocal, string[] BypassList) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -325,19 +360,26 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Uri Address, bool BypassOnLocal, string[] BypassList) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="Address" Type="System.Uri" />
         <Parameter Name="BypassOnLocal" Type="System.Boolean" />
         <Parameter Name="BypassList" Type="System.String[]" />
       </Parameters>
       <Docs>
-        <param name="Address">A &lt;xref:System.Uri&gt; instance that contains the address of the proxy server.</param>
+        <param name="Address">A <see cref="T:System.Uri" /> instance that contains the address of the proxy server.</param>
         <param name="BypassOnLocal">
           <see langword="true" /> to bypass the proxy for local addresses; otherwise, <see langword="false" />.</param>
         <param name="BypassList">An array of regular expression strings that contains the URIs of the servers to bypass.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class with the specified &lt;xref:System.Uri&gt; instance, bypass setting, and list of URIs to bypass.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class with the specified <see cref="T:System.Uri" /> instance, bypass setting, and list of URIs to bypass.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -362,6 +404,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string Address, bool BypassOnLocal, string[] BypassList, class System.Net.ICredentials Credentials) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -403,6 +447,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Uri Address, bool BypassOnLocal, string[] BypassList, class System.Net.ICredentials Credentials) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -412,12 +458,12 @@
         <Parameter Name="Credentials" Type="System.Net.ICredentials" />
       </Parameters>
       <Docs>
-        <param name="Address">A &lt;xref:System.Uri&gt; instance that contains the address of the proxy server.</param>
+        <param name="Address">A <see cref="T:System.Uri" /> instance that contains the address of the proxy server.</param>
         <param name="BypassOnLocal">
           <see langword="true" /> to bypass the proxy for local addresses; otherwise, <see langword="false" />.</param>
         <param name="BypassList">An array of regular expression strings that contains the URIs of the servers to bypass.</param>
         <param name="Credentials">An &lt;xref:System.Net.ICredentials&gt; instance to submit to the proxy server for authentication.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class with the specified &lt;xref:System.Uri&gt; instance, bypass setting, list of URIs to bypass, and credentials.</summary>
+        <summary>Initializes a new instance of the <see cref="T:System.Net.WebProxy" /> class with the specified <see cref="T:System.Uri" /> instance, bypass setting, list of URIs to bypass, and credentials.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -442,6 +488,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Uri Address" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -449,7 +497,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the address of the proxy server.</summary>
-        <value>A &lt;xref:System.Uri&gt; instance that contains the address of the proxy server.</value>
+        <value>A <see cref="T:System.Uri" /> instance that contains the address of the proxy server.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -476,6 +524,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ArrayList BypassArrayList" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -500,6 +550,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance string[] BypassList" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -532,6 +584,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool BypassProxyOnLocal" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -570,8 +624,18 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Net.ICredentials Credentials" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Net.ICredentials</ReturnType>
       </ReturnValue>
@@ -598,6 +662,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Net.WebProxy GetDefaultProxy() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -641,6 +707,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void GetObjectData(class System.Runtime.Serialization.SerializationInfo serializationInfo, valuetype System.Runtime.Serialization.StreamingContext streamingContext) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -652,7 +720,7 @@
       </Parameters>
       <Docs>
         <param name="serializationInfo">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
-        <param name="streamingContext">A &lt;xref:System.Runtime.Serialization.StreamingContext&gt; that specifies the destination for this serialization.</param>
+        <param name="streamingContext">A <see cref="T:System.Runtime.Serialization.StreamingContext" /> that specifies the destination for this serialization.</param>
         <summary>Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data that is needed to serialize the target object.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -670,6 +738,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Uri GetProxy(class System.Uri destination) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -679,9 +749,9 @@
         <Parameter Name="destination" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="destination">The &lt;xref:System.Uri&gt; instance of the requested Internet resource.</param>
+        <param name="destination">The <see cref="T:System.Uri" /> instance of the requested Internet resource.</param>
         <summary>Returns the proxied URI for a request.</summary>
-        <returns>The &lt;xref:System.Uri&gt; instance of the Internet resource, if the resource is on the bypass list; otherwise, the &lt;xref:System.Uri&gt; instance of the proxy.</returns>
+        <returns>The <see cref="T:System.Uri" /> instance of the Internet resource, if the resource is on the bypass list; otherwise, the <see cref="T:System.Uri" /> instance of the proxy.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -711,6 +781,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsBypassed(class System.Uri host) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -720,7 +792,7 @@
         <Parameter Name="host" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="host">The &lt;xref:System.Uri&gt; instance of the host to check for proxy use.</param>
+        <param name="host">The <see cref="T:System.Uri" /> instance of the host to check for proxy use.</param>
         <summary>Indicates whether to use the proxy server for the specified host.</summary>
         <returns>
           <see langword="true" /> if the proxy server should not be used for <paramref name="host" />; otherwise, <see langword="false" />.</returns>
@@ -761,8 +833,15 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.Runtime.Serialization.ISerializable.GetObjectData(class System.Runtime.Serialization.SerializationInfo serializationInfo, valuetype System.Runtime.Serialization.StreamingContext streamingContext) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -772,7 +851,7 @@
       </Parameters>
       <Docs>
         <param name="serializationInfo">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object to populate with data.</param>
-        <param name="streamingContext">A &lt;xref:System.Runtime.Serialization.StreamingContext&gt; structure that indicates the destination for this serialization.</param>
+        <param name="streamingContext">A <see cref="T:System.Runtime.Serialization.StreamingContext" /> structure that indicates the destination for this serialization.</param>
         <summary>Creates the serialization data and context that are used by the system to serialize a <see cref="T:System.Net.WebProxy" /> object.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -790,13 +869,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool UseDefaultCredentials" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.Boolean&gt; value that controls whether the &lt;xref:System.Net.CredentialCache.DefaultCredentials%2A&gt; are sent with requests.</summary>
+        <summary>Gets or sets a <see cref="T:System.Boolean" /> value that controls whether the &lt;xref:System.Net.CredentialCache.DefaultCredentials%2A&gt; are sent with requests.</summary>
         <value>
           <see langword="true" /> if the default credentials are used; otherwise, <see langword="false" />. The default value is <see langword="false" />.</value>
         <remarks>

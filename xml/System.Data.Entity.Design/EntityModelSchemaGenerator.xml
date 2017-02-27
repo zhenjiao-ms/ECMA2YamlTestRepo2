@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit EntityModelSchemaGenerator extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Data.Entity.Design</AssemblyName>
+    <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -27,6 +28,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Data.Metadata.Edm.EntityContainer storeEntityContainer) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -44,6 +47,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Data.Metadata.Edm.EntityContainer storeEntityContainer, string namespaceName, string modelEntityContainerName) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -60,42 +65,21 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public EntityModelSchemaGenerator (System.Data.Metadata.Edm.StoreItemCollection storeItemCollection, string namespaceName, string modelEntityContainerName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Data.Metadata.Edm.StoreItemCollection storeItemCollection, string namespaceName, string modelEntityContainerName) cil managed" />
-      <MemberType>Constructor</MemberType>
+    <Member MemberName="EdmItemCollection">
+      <MemberSignature Language="C#" Value="public System.Data.Metadata.Edm.EdmItemCollection EdmItemCollection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Data.Metadata.Edm.EdmItemCollection EdmItemCollection" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(false)</AttributeName>
         </Attribute>
-      </Attributes>
-      <Parameters>
-        <Parameter Name="storeItemCollection" Type="System.Data.Metadata.Edm.StoreItemCollection" />
-        <Parameter Name="namespaceName" Type="System.String" />
-        <Parameter Name="modelEntityContainerName" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="storeItemCollection">The StoreItemCollection that contains an EntityContainer and other items to create the Model Metadata from.</param>
-        <param name="namespaceName">The name to give the namespace. If null, the name of the storeEntityContainer will be used.</param>
-        <param name="modelEntityContainerName">The name to give the Model EntityContainer. If null, a modified version of the namespace of the of a type referenced in storeEntityContainer will be used.</param>
-        <summary>Constructs an EntityModelGenerator</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EdmItemCollection">
-      <MemberSignature Language="C#" Value="public System.Data.Metadata.Edm.EdmItemCollection EdmItemCollection { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Data.Metadata.Edm.EdmItemCollection EdmItemCollection" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
         <Attribute>
-          <AttributeName>System.CLSCompliant(false)</AttributeName>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -113,8 +97,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Data.Metadata.Edm.EntityContainer EntityContainer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Data.Metadata.Edm.EntityContainer</ReturnType>
       </ReturnValue>
@@ -130,8 +121,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool GenerateForeignKeyProperties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -147,6 +147,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IList`1&lt;class System.Data.Metadata.Edm.EdmSchemaError&gt; GenerateMetadata() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -165,6 +167,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IList`1&lt;class System.Data.Metadata.Edm.EdmSchemaError&gt; GenerateMetadata(class System.Version targetEntityFrameworkVersion) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -186,6 +189,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Data.Entity.Design.PluralizationServices.PluralizationService PluralizationService" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -203,6 +207,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteModelSchema(string outputFileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -223,6 +229,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteModelSchema(class System.Xml.XmlWriter writer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -243,6 +251,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteStorageMapping(string outputFileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -263,6 +273,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteStorageMapping(class System.Xml.XmlWriter writer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity.Design</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

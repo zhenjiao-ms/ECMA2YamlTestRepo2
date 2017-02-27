@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EventInstance extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -34,9 +35,9 @@
 ## Examples  
  The following code example writes an informational event entry, and then reuses the EventInstance to write an entry for a warning event to an existing event log. The event message text is specified using a resource identifier in a message resource file. The code example assumes that the corresponding message resource file has been registered for the source.  
   
- [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/t-system.diagnostics.eve_2_1.cpp)]
- [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/t-system.diagnostics.eve_2_1.vb)]
- [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/t-system.diagnostics.eve_2_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/t-system.diagnostics.eve_1_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/t-system.diagnostics.eve_1_1.vb)]
+ [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/t-system.diagnostics.eve_1_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -161,6 +162,8 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 instanceId, int32 categoryId) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -303,11 +306,11 @@ SVC_UPDATE.EXE
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="instanceId" /> parameter is a negative value or a value larger than &lt;xref:System.UInt32.MaxValue?displayProperty=fullName&gt;.  
+        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="instanceId" /> parameter is a negative value or a value larger than <see cref="F:System.UInt32.MaxValue" />.  
   
  -or-  
   
- The <paramref name="categoryId" /> parameter is a negative value or a value larger than &lt;xref:System.UInt16.MaxValue?displayProperty=fullName&gt;.</exception>
+ The <paramref name="categoryId" /> parameter is a negative value or a value larger than <see cref="F:System.UInt16.MaxValue" />.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -316,6 +319,8 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 instanceId, int32 categoryId, valuetype System.Diagnostics.EventLogEntryType entryType) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -465,11 +470,11 @@ SVC_UPDATE.EXE
         <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
           <paramref name="entryType" /> is not a valid <see cref="T:System.Diagnostics.EventLogEntryType" /> value.</exception>
         <exception cref="T:System.ArgumentOutOfRangeException">
-          <paramref name="instanceId" /> is a negative value or a value larger than &lt;xref:System.UInt32.MaxValue?displayProperty=fullName&gt;.  
+          <paramref name="instanceId" /> is a negative value or a value larger than <see cref="F:System.UInt32.MaxValue" />.  
   
  -or-  
   
- <paramref name="categoryId" /> is a negative value or a value larger than &lt;xref:System.UInt16.MaxValue?displayProperty=fullName&gt;.</exception>
+ <paramref name="categoryId" /> is a negative value or a value larger than <see cref="F:System.UInt16.MaxValue" />.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -478,8 +483,15 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance int32 CategoryId" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -507,9 +519,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example writes an informational event entry, and then reuses the <xref:System.Diagnostics.EventInstance> to write an entry for a warning event to an existing event log. The event message text is specified using a resource identifier in a message resource file. The code example assumes that the corresponding message resource file has been registered for the source.  
   
- [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/p-system.diagnostics.eve_24_1.cpp)]
- [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_24_1.vb)]
- [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_24_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/p-system.diagnostics.eve_20_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_20_1.vb)]
+ [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_20_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -626,7 +638,7 @@ SVC_UPDATE.EXE
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">The property is set to a negative value or to a value larger than &lt;xref:System.UInt16.MaxValue?displayProperty=fullName&gt;.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The property is set to a negative value or to a value larger than <see cref="F:System.UInt16.MaxValue" />.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -635,8 +647,15 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Diagnostics.EventLogEntryType EntryType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Diagnostics.EventLogEntryType</ReturnType>
       </ReturnValue>
@@ -654,9 +673,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example writes an informational event entry, and then reuses the <xref:System.Diagnostics.EventInstance> to write an entry for a warning event to an existing event log. The event message text is specified using a resource identifier in a message resource file. The code example assumes that the corresponding message resource file has been registered for the source.  
   
- [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/p-system.diagnostics.eve_11_1.cpp)]
- [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_11_1.vb)]
- [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_11_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/p-system.diagnostics.eve_7_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_7_1.vb)]
+ [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_7_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -782,8 +801,15 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance int64 InstanceId" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
@@ -803,9 +829,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example writes an informational event entry, and then reuses the <xref:System.Diagnostics.EventInstance> to write an entry for a warning event to an existing event log. The event message text is specified using a resource identifier in a message resource file. The code example assumes that the corresponding message resource file has been registered for the source.  
   
- [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/p-system.diagnostics.eve_16_1.cpp)]
- [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_16_1.vb)]
- [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_16_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#9](~/add/codesnippet/cpp/p-system.diagnostics.eve_12_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_12_1.vb)]
+ [!code-cs[EventLog_WriteEvent#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_12_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -922,7 +948,7 @@ SVC_UPDATE.EXE
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">The property is set to a negative value or to a value larger than &lt;xref:System.UInt32.MaxValue?displayProperty=fullName&gt;.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The property is set to a negative value or to a value larger than <see cref="F:System.UInt32.MaxValue" />.</exception>
         <threadsafe />
       </Docs>
     </Member>

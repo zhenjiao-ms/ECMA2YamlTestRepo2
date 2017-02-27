@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ValidationManager extends System.Object implements class System.IServiceProvider" />
   <AssemblyInfo>
     <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -13,11 +14,6 @@
       <InterfaceName>System.IServiceProvider</InterfaceName>
     </Interface>
   </Interfaces>
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")</AttributeName>
-    </Attribute>
-  </Attributes>
   <Docs>
     <summary>Enables the sharing of contextual information, such as property validation, parent activity, and so on, across validators during the compilation process.</summary>
     <remarks>
@@ -40,13 +36,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IServiceProvider serviceProvider) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="serviceProvider" Type="System.IServiceProvider" />
       </Parameters>
       <Docs>
-        <param name="serviceProvider">An &lt;xref:System.IServiceProvider&gt; that locates a GUID identified service.</param>
+        <param name="serviceProvider">An <see cref="T:System.IServiceProvider" /> that locates a GUID identified service.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Workflow.ComponentModel.Compiler.ValidationManager" /> class using the identified service provider.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -64,6 +62,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IServiceProvider serviceProvider, bool validateChildActivities) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -71,7 +71,7 @@
         <Parameter Name="validateChildActivities" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="serviceProvider">An &lt;xref:System.IServiceProvider&gt; that locates a GUID identified service.</param>
+        <param name="serviceProvider">An <see cref="T:System.IServiceProvider" /> that locates a GUID identified service.</param>
         <param name="validateChildActivities">
           <see langword="true" /> to validate the child <see cref="T:System.Workflow.ComponentModel.Activity" /> classes of the current <see cref="T:System.Workflow.ComponentModel.Activity" />; otherwise, <see langword="false" />.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Workflow.ComponentModel.Compiler.ValidationManager" /> class using the identified service provider and indicates whether child <see cref="T:System.Workflow.ComponentModel.Activity" /> classes should be validated.</summary>
@@ -91,6 +91,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ComponentModel.Design.Serialization.ContextStack Context" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -108,6 +110,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetService(class System.Type serviceType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -117,8 +121,8 @@
         <Parameter Name="serviceType" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="serviceType">An object that specifies the &lt;xref:System.Type&gt; of service object to retrieve.</param>
-        <summary>Gets the service object of the specified &lt;xref:System.Type&gt;.</summary>
+        <param name="serviceType">An object that specifies the <see cref="T:System.Type" /> of service object to retrieve.</param>
+        <summary>Gets the service object of the specified <see cref="T:System.Type" />.</summary>
         <returns>A service object of type <paramref name="serviceType" />, or a null reference (<see langword="Nothing" /> in Visual Basic) if there is no service object of type <paramref name="serviceType" />.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -129,6 +133,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Workflow.ComponentModel.Compiler.Validator[] GetValidators(class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -138,7 +144,7 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">The &lt;xref:System.Type&gt; of <see cref="T:System.Workflow.ComponentModel.Compiler.Validator" /> class to find.</param>
+        <param name="type">The <see cref="T:System.Type" /> of <see cref="T:System.Workflow.ComponentModel.Compiler.Validator" /> class to find.</param>
         <summary>Returns an array of validators that are associated with a type by looking up the validator attribute applied on the type.</summary>
         <returns>An array of <see cref="T:System.Workflow.ComponentModel.Compiler.Validator" /> classes.</returns>
         <remarks>
@@ -159,6 +165,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool ValidateChildActivities" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

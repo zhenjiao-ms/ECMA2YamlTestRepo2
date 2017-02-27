@@ -1,19 +1,17 @@
 <Type Name="SymWriter" FullName="System.Diagnostics.SymbolStore.SymWriter">
-  <TypeSignature Language="C#" Value="public class SymWriter : System.Diagnostics.SymbolStore.SymWriterBase, IDisposable, System.Diagnostics.SymbolStore.ISymbolWriter" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SymWriter extends System.Diagnostics.SymbolStore.SymWriterBase implements class System.Diagnostics.SymbolStore.ISymbolWriter, class System.IDisposable" />
+  <TypeSignature Language="C#" Value="public class SymWriter : System.Diagnostics.SymbolStore.ISymbolWriter" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SymWriter extends System.Object implements class System.Diagnostics.SymbolStore.ISymbolWriter" />
   <AssemblyInfo>
     <AssemblyName>ISymWrapper</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Diagnostics.SymbolStore.SymWriterBase</BaseTypeName>
+    <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
       <InterfaceName>System.Diagnostics.SymbolStore.ISymbolWriter</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>System.IDisposable</InterfaceName>
     </Interface>
   </Interfaces>
   <Attributes>
@@ -36,9 +34,11 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public SymWriter ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -51,9 +51,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public SymWriter (bool noUnderlyingWriter);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool noUnderlyingWriter) cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(bool noUnderlyingWriter) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -67,11 +69,31 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Close">
-      <MemberSignature Language="C#" Value="public virtual void Close ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Close() cil managed" />
+    <Member MemberName="{dtor}">
+      <MemberSignature Language="C#" Value="public void {dtor} ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void {dtor}() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Close">
+      <MemberSignature Language="C#" Value="public override void Close ();" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void Close() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -92,10 +114,12 @@
       </Docs>
     </Member>
     <Member MemberName="CloseMethod">
-      <MemberSignature Language="C#" Value="public virtual void CloseMethod ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CloseMethod() cil managed" />
+      <MemberSignature Language="C#" Value="public override void CloseMethod ();" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void CloseMethod() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -116,10 +140,12 @@
       </Docs>
     </Member>
     <Member MemberName="CloseNamespace">
-      <MemberSignature Language="C#" Value="public virtual void CloseNamespace ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CloseNamespace() cil managed" />
+      <MemberSignature Language="C#" Value="public override void CloseNamespace ();" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void CloseNamespace() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -133,10 +159,12 @@
       </Docs>
     </Member>
     <Member MemberName="CloseScope">
-      <MemberSignature Language="C#" Value="public virtual void CloseScope (int endOffset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CloseScope(int32 endOffset) cil managed" />
+      <MemberSignature Language="C#" Value="public override void CloseScope (int endOffset);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void CloseScope(int32 endOffset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -160,10 +188,12 @@
       </Docs>
     </Member>
     <Member MemberName="DefineDocument">
-      <MemberSignature Language="C#" Value="public virtual System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument (string url, Guid language, Guid languageVendor, Guid documentType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument(string url, valuetype System.Guid language, valuetype System.Guid languageVendor, valuetype System.Guid documentType) cil managed" />
+      <MemberSignature Language="C#" Value="public override System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument (string url, Guid language, Guid languageVendor, Guid documentType);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance class System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument(string url, valuetype System.Guid language, valuetype System.Guid languageVendor, valuetype System.Guid documentType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -177,9 +207,9 @@
       </Parameters>
       <Docs>
         <param name="url">The URL that identifies the document.</param>
-        <param name="language">The document language. This parameter can be &lt;xref:System.Guid&gt;.</param>
-        <param name="languageVendor">The identity of the vendor for the document language. This parameter can be &lt;xref:System.Guid&gt;.</param>
-        <param name="documentType">The type of the document. This parameter can be &lt;xref:System.Guid&gt;.</param>
+        <param name="language">The document language. This parameter can be <see cref="T:System.Guid" />.</param>
+        <param name="languageVendor">The identity of the vendor for the document language. This parameter can be <see cref="T:System.Guid" />.</param>
+        <param name="documentType">The type of the document. This parameter can be <see cref="T:System.Guid" />.</param>
         <summary>Defines a source document.</summary>
         <returns>The <see cref="T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter" /> object that represents the document.</returns>
         <remarks>To be added.</remarks>
@@ -187,10 +217,12 @@
       </Docs>
     </Member>
     <Member MemberName="DefineField">
-      <MemberSignature Language="C#" Value="public virtual void DefineField (System.Diagnostics.SymbolStore.SymbolToken parent, string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DefineField(valuetype System.Diagnostics.SymbolStore.SymbolToken parent, string name, valuetype System.Reflection.FieldAttributes attributes, unsigned int8[] signature, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3) cil managed" />
+      <MemberSignature Language="C#" Value="public override void DefineField (System.Diagnostics.SymbolStore.SymbolToken parent, string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void DefineField(valuetype System.Diagnostics.SymbolStore.SymbolToken parent, string name, valuetype System.Reflection.FieldAttributes attributes, unsigned int8[] signature, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -215,17 +247,19 @@
         <param name="addr1">This parameter is not used.</param>
         <param name="addr2">This parameter is not used.</param>
         <param name="addr3">This parameter is not used.</param>
-        <summary>Throws a &lt;xref:System.NotSupportedException&gt; in all cases.</summary>
+        <summary>Throws a <see cref="T:System.NotSupportedException" /> in all cases.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">In all cases.</exception>
         <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="DefineGlobalVariable">
-      <MemberSignature Language="C#" Value="public virtual void DefineGlobalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DefineGlobalVariable(string name, valuetype System.Reflection.FieldAttributes attributes, unsigned int8[] signature, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3) cil managed" />
+      <MemberSignature Language="C#" Value="public override void DefineGlobalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void DefineGlobalVariable(string name, valuetype System.Reflection.FieldAttributes attributes, unsigned int8[] signature, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -248,17 +282,19 @@
         <param name="addr1">This parameter is not used.</param>
         <param name="addr2">This parameter is not used.</param>
         <param name="addr3">This parameter is not used.</param>
-        <summary>Throws a &lt;xref:System.NotSupportedException&gt; in all cases.</summary>
+        <summary>Throws a <see cref="T:System.NotSupportedException" /> in all cases.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">In all cases.</exception>
         <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="DefineLocalVariable">
-      <MemberSignature Language="C#" Value="public virtual void DefineLocalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3, int startOffset, int endOffset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DefineLocalVariable(string name, valuetype System.Reflection.FieldAttributes attributes, unsigned int8[] signature, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3, int32 startOffset, int32 endOffset) cil managed" />
+      <MemberSignature Language="C#" Value="public override void DefineLocalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3, int startOffset, int endOffset);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void DefineLocalVariable(string name, valuetype System.Reflection.FieldAttributes attributes, unsigned int8[] signature, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3, int32 startOffset, int32 endOffset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -277,7 +313,7 @@
       </Parameters>
       <Docs>
         <param name="name">The local variable name.</param>
-        <param name="attributes">The local variable attributes specified using the &lt;xref:System.Reflection.FieldAttributes&gt; enumerator.</param>
+        <param name="attributes">The local variable attributes specified using the <see cref="T:System.Reflection.FieldAttributes" /> enumerator.</param>
         <param name="signature">The local variable signature.</param>
         <param name="addrKind">The address types for `addr1`, `addr2`, and `addr3` using <see cref="T:System.Diagnostics.SymbolStore.SymAddressKind" />.</param>
         <param name="addr1">The first address for the local variable specification.</param>
@@ -300,10 +336,12 @@
       </Docs>
     </Member>
     <Member MemberName="DefineParameter">
-      <MemberSignature Language="C#" Value="public virtual void DefineParameter (string name, System.Reflection.ParameterAttributes attributes, int sequence, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DefineParameter(string name, valuetype System.Reflection.ParameterAttributes attributes, int32 sequence, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3) cil managed" />
+      <MemberSignature Language="C#" Value="public override void DefineParameter (string name, System.Reflection.ParameterAttributes attributes, int sequence, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void DefineParameter(string name, valuetype System.Reflection.ParameterAttributes attributes, int32 sequence, valuetype System.Diagnostics.SymbolStore.SymAddressKind addrKind, int32 addr1, int32 addr2, int32 addr3) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -326,17 +364,19 @@
         <param name="addr1">This parameter is not used.</param>
         <param name="addr2">This parameter is not used.</param>
         <param name="addr3">This parameter is not used.</param>
-        <summary>Throws a &lt;xref:System.NotSupportedException&gt; in all cases.</summary>
+        <summary>Throws a <see cref="T:System.NotSupportedException" /> in all cases.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">In all cases.</exception>
         <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="DefineSequencePoints">
-      <MemberSignature Language="C#" Value="public virtual void DefineSequencePoints (System.Diagnostics.SymbolStore.ISymbolDocumentWriter document, int[] offsets, int[] lines, int[] columns, int[] endLines, int[] endColumns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DefineSequencePoints(class System.Diagnostics.SymbolStore.ISymbolDocumentWriter document, int32[] offsets, int32[] lines, int32[] columns, int32[] endLines, int32[] endColumns) cil managed" />
+      <MemberSignature Language="C#" Value="public override void DefineSequencePoints (System.Diagnostics.SymbolStore.ISymbolDocumentWriter document, int[] offsets, int[] lines, int[] columns, int[] endLines, int[] endColumns);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void DefineSequencePoints(class System.Diagnostics.SymbolStore.ISymbolDocumentWriter document, int32[] offsets, int32[] lines, int32[] columns, int32[] endLines, int32[] endColumns) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -369,61 +409,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="public override sealed void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Releases the resources used by the current instance of the <see cref="T:System.Diagnostics.SymbolStore.SymWriter" /> class.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool A_0);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool A_0) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="A_0" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="A_0">
-          <see langword="true" /> to release managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
-        <summary>Called by the &lt;xref:System.Diagnostics.SymbolStore.SymWriter.Dispose%2A&gt; and &lt;xref:System.Diagnostics.SymbolStore.SymWriter.Finalize%2A&gt; methods to release the managed and unmanaged resources used by the current instance of the <see cref="T:System.Diagnostics.SymbolStore.SymWriter" /> class.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This method is called only by the public <xref:System.Diagnostics.SymbolStore.SymWriter.Dispose%2A> and <xref:System.Diagnostics.SymbolStore.SymWriter.Finalize%2A> methods; do not call this method directly.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~SymWriter ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method familyvirtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -445,9 +437,11 @@
     </Member>
     <Member MemberName="GetWriter">
       <MemberSignature Language="C#" Value="public System.Diagnostics.SymbolStore.Private.ISymUnmanagedWriter* GetWriter ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Diagnostics.SymbolStore.Private.ISymUnmanagedWriter* GetWriter() cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public instance valuetype System.Diagnostics.SymbolStore.Private.ISymUnmanagedWriter* GetWriter() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -461,10 +455,12 @@
       </Docs>
     </Member>
     <Member MemberName="Initialize">
-      <MemberSignature Language="C#" Value="public virtual void Initialize (IntPtr emitter, string filename, bool fFullBuild);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Initialize(native int emitter, string filename, bool fFullBuild) cil managed" />
+      <MemberSignature Language="C#" Value="public override void Initialize (IntPtr emitter, string filename, bool fFullBuild);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void Initialize(native int emitter, string filename, bool fFullBuild) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -495,9 +491,11 @@
     </Member>
     <Member MemberName="InitWriter">
       <MemberSignature Language="C#" Value="public void InitWriter (bool noUnderlyingWriter);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InitWriter(bool noUnderlyingWriter) cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void InitWriter(bool noUnderlyingWriter) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -516,10 +514,12 @@
       </Docs>
     </Member>
     <Member MemberName="OpenMethod">
-      <MemberSignature Language="C#" Value="public virtual void OpenMethod (System.Diagnostics.SymbolStore.SymbolToken method);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OpenMethod(valuetype System.Diagnostics.SymbolStore.SymbolToken method) cil managed" />
+      <MemberSignature Language="C#" Value="public override void OpenMethod (System.Diagnostics.SymbolStore.SymbolToken method);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void OpenMethod(valuetype System.Diagnostics.SymbolStore.SymbolToken method) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -543,10 +543,12 @@
       </Docs>
     </Member>
     <Member MemberName="OpenNamespace">
-      <MemberSignature Language="C#" Value="public virtual void OpenNamespace (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OpenNamespace(string name) cil managed" />
+      <MemberSignature Language="C#" Value="public override void OpenNamespace (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void OpenNamespace(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -570,10 +572,12 @@
       </Docs>
     </Member>
     <Member MemberName="OpenScope">
-      <MemberSignature Language="C#" Value="public virtual int OpenScope (int startOffset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 OpenScope(int32 startOffset) cil managed" />
+      <MemberSignature Language="C#" Value="public override int OpenScope (int startOffset);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance int32 OpenScope(int32 startOffset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -600,10 +604,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetMethodSourceRange">
-      <MemberSignature Language="C#" Value="public virtual void SetMethodSourceRange (System.Diagnostics.SymbolStore.ISymbolDocumentWriter startDoc, int startLine, int startColumn, System.Diagnostics.SymbolStore.ISymbolDocumentWriter endDoc, int endLine, int endColumn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetMethodSourceRange(class System.Diagnostics.SymbolStore.ISymbolDocumentWriter startDoc, int32 startLine, int32 startColumn, class System.Diagnostics.SymbolStore.ISymbolDocumentWriter endDoc, int32 endLine, int32 endColumn) cil managed" />
+      <MemberSignature Language="C#" Value="public override void SetMethodSourceRange (System.Diagnostics.SymbolStore.ISymbolDocumentWriter startDoc, int startLine, int startColumn, System.Diagnostics.SymbolStore.ISymbolDocumentWriter endDoc, int endLine, int endColumn);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void SetMethodSourceRange(class System.Diagnostics.SymbolStore.ISymbolDocumentWriter startDoc, int32 startLine, int32 startColumn, class System.Diagnostics.SymbolStore.ISymbolDocumentWriter endDoc, int32 endLine, int32 endColumn) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -624,17 +630,19 @@
         <param name="endDoc">This parameter is not used.</param>
         <param name="endLine">This parameter is not used.</param>
         <param name="endColumn">This parameter is not used.</param>
-        <summary>Throws a &lt;xref:System.NotSupportedException&gt; in all cases.</summary>
+        <summary>Throws a <see cref="T:System.NotSupportedException" /> in all cases.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.NotSupportedException">In all cases.</exception>
         <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="SetScopeRange">
-      <MemberSignature Language="C#" Value="public virtual void SetScopeRange (int scopeID, int startOffset, int endOffset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetScopeRange(int32 scopeID, int32 startOffset, int32 endOffset) cil managed" />
+      <MemberSignature Language="C#" Value="public override void SetScopeRange (int scopeID, int startOffset, int endOffset);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void SetScopeRange(int32 scopeID, int32 startOffset, int32 endOffset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -655,10 +663,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetSymAttribute">
-      <MemberSignature Language="C#" Value="public virtual void SetSymAttribute (System.Diagnostics.SymbolStore.SymbolToken parent, string name, byte[] data);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetSymAttribute(valuetype System.Diagnostics.SymbolStore.SymbolToken parent, string name, unsigned int8[] data) cil managed" />
+      <MemberSignature Language="C#" Value="public override void SetSymAttribute (System.Diagnostics.SymbolStore.SymbolToken parent, string name, byte[] data);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void SetSymAttribute(valuetype System.Diagnostics.SymbolStore.SymbolToken parent, string name, unsigned int8[] data) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -686,10 +696,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetUnderlyingWriter">
-      <MemberSignature Language="C#" Value="public virtual void SetUnderlyingWriter (IntPtr underlyingWriter);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetUnderlyingWriter(native int underlyingWriter) cil managed" />
+      <MemberSignature Language="C#" Value="public override void SetUnderlyingWriter (IntPtr underlyingWriter);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void SetUnderlyingWriter(native int underlyingWriter) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -699,7 +711,7 @@
         <Parameter Name="underlyingWriter" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="underlyingWriter">An &lt;xref:System.IntPtr&gt; type pointer to code that is the underlying writer.</param>
+        <param name="underlyingWriter">An <see cref="T:System.IntPtr" /> type pointer to code that is the underlying writer.</param>
         <summary>Sets the underlying [ISymUnmanagedWriter Interface](~/add/includes/ajax-current-ext-md.md) (the corresponding unmanaged API) that a managed <see cref="T:System.Diagnostics.SymbolStore.SymWriter" /> uses to emit symbols.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -714,10 +726,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetUserEntryPoint">
-      <MemberSignature Language="C#" Value="public virtual void SetUserEntryPoint (System.Diagnostics.SymbolStore.SymbolToken entryMethod);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetUserEntryPoint(valuetype System.Diagnostics.SymbolStore.SymbolToken entryMethod) cil managed" />
+      <MemberSignature Language="C#" Value="public override void SetUserEntryPoint (System.Diagnostics.SymbolStore.SymbolToken entryMethod);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void SetUserEntryPoint(valuetype System.Diagnostics.SymbolStore.SymbolToken entryMethod) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -741,10 +755,12 @@
       </Docs>
     </Member>
     <Member MemberName="UsingNamespace">
-      <MemberSignature Language="C#" Value="public virtual void UsingNamespace (string fullName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UsingNamespace(string fullName) cil managed" />
+      <MemberSignature Language="C#" Value="public override void UsingNamespace (string fullName);" />
+      <MemberSignature Language="ILAsm" Value=".method public virtual instance void UsingNamespace(string fullName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>ISymWrapper</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

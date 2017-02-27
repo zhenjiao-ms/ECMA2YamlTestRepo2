@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit HttpContext extends System.Object implements class System.IServiceProvider" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -41,6 +42,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Web.HttpWorkerRequest wr) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -58,6 +61,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Web.HttpRequest request, class System.Web.HttpResponse response) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -72,64 +77,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="AcceptWebSocketRequest">
-      <MemberSignature Language="C#" Value="public void AcceptWebSocketRequest (Func&lt;System.Web.WebSockets.AspNetWebSocketContext,System.Threading.Tasks.Task&gt; userFunc);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AcceptWebSocketRequest(class System.Func`2&lt;class System.Web.WebSockets.AspNetWebSocketContext, class System.Threading.Tasks.Task&gt; userFunc) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="userFunc" Type="System.Func&lt;System.Web.WebSockets.AspNetWebSocketContext,System.Threading.Tasks.Task&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="userFunc">The user function.</param>
-        <summary>Accepts an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request using the specified user function.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Calling this method is equivalent to calling the <xref:System.Web.HttpContext.AcceptWebSocketRequest%2A> method overload and passing `null` for the `options` parameter.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="userFunc" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.NotSupportedException">The request is not an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="AcceptWebSocketRequest">
-      <MemberSignature Language="C#" Value="public void AcceptWebSocketRequest (Func&lt;System.Web.WebSockets.AspNetWebSocketContext,System.Threading.Tasks.Task&gt; userFunc, System.Web.WebSockets.AspNetWebSocketOptions options);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AcceptWebSocketRequest(class System.Func`2&lt;class System.Web.WebSockets.AspNetWebSocketContext, class System.Threading.Tasks.Task&gt; userFunc, class System.Web.WebSockets.AspNetWebSocketOptions options) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="userFunc" Type="System.Func&lt;System.Web.WebSockets.AspNetWebSocketContext,System.Threading.Tasks.Task&gt;" />
-        <Parameter Name="options" Type="System.Web.WebSockets.AspNetWebSocketOptions" />
-      </Parameters>
-      <Docs>
-        <param name="userFunc">The user function.</param>
-        <param name="options">The options object.</param>
-        <summary>Accepts an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request using the specified user function and options object.</summary>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="userFunc" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.NotSupportedException">The request is not an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="AddError">
       <MemberSignature Language="C#" Value="public void AddError (Exception errorInfo);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddError(class System.Exception errorInfo) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -139,38 +93,9 @@
         <Parameter Name="errorInfo" Type="System.Exception" />
       </Parameters>
       <Docs>
-        <param name="errorInfo">The &lt;xref:System.Exception&gt; to add to the exception collection.</param>
+        <param name="errorInfo">The <see cref="T:System.Exception" /> to add to the exception collection.</param>
         <summary>Adds an exception to the exception collection for the current HTTP request.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="AddOnRequestCompleted">
-      <MemberSignature Language="C#" Value="public System.Web.ISubscriptionToken AddOnRequestCompleted (Action&lt;System.Web.HttpContext&gt; callback);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.ISubscriptionToken AddOnRequestCompleted(class System.Action`1&lt;class System.Web.HttpContext&gt; callback) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.ISubscriptionToken</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="callback" Type="System.Action&lt;System.Web.HttpContext&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="callback">The HTTP context object.</param>
-        <summary>Raises a virtual event that occurs when the HTTP part of the request is ending.</summary>
-        <returns>The subscription token.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This event occurs before the <xref:System.Web.WebSockets.AspNetWebSocket> connection begins.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="callback" /> parameter is <see langword="null" />.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -179,6 +104,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Exception[] AllErrors" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -186,38 +113,8 @@
       </ReturnValue>
       <Docs>
         <summary>Gets an array of errors accumulated while processing an HTTP request.</summary>
-        <value>An array of &lt;xref:System.Exception&gt; objects for the current HTTP request.</value>
+        <value>An array of <see cref="T:System.Exception" /> objects for the current HTTP request.</value>
         <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="AllowAsyncDuringSyncStages">
-      <MemberSignature Language="C#" Value="public bool AllowAsyncDuringSyncStages { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool AllowAsyncDuringSyncStages" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that indicates whether asynchronous operations are allowed during parts of ASP.NET request processing when they are not expected.</summary>
-        <value>
-          <see langword="false" /> if ASP.NET will throw an exception when the asynchronous API is used at a time when it is not expected; otherwise, <see langword="true" />. The default value is <see langword="false" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- If this flag is not set to `true`, ASP.NET will throw an exception when it detects the application misusing the async API. This can occur if you try to call an asynchronous method during a part of the request processing pipeline where asynchronous operations are not expected, or if there is still outstanding asynchronous work when an asynchronous module or handler signals completion. This behavior is meant as a safety net to let you know early on if you're writing async code that doesn't fit expected patterns and might have negative side effects.  
-  
- ]]></format>
-        </remarks>
         <threadsafe />
       </Docs>
     </Member>
@@ -226,6 +123,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpApplicationState Application" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -245,8 +144,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpApplication ApplicationInstance" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Web.HttpApplication</ReturnType>
       </ReturnValue>
@@ -260,37 +166,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="AsyncPreloadMode">
-      <MemberSignature Language="C#" Value="public System.Web.Configuration.AsyncPreloadModeFlags AsyncPreloadMode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Web.Configuration.AsyncPreloadModeFlags AsyncPreloadMode" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.Configuration.AsyncPreloadModeFlags</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets an object that contains flags that pertain to asynchronous preload mode.</summary>
-        <value>An object that contains flags that pertain to asynchronous preload mode.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The first time this property is accessed, the object that contains flags for asynchronous preload mode is loaded from the <xref:System.Web.Configuration.HttpRuntimeSection.AsyncPreloadMode%2A> setting in the configuration file.  
-  
- Although this property can be set programmatically, changing the property value only has effect if the property is set before the `ExecuteRequestHandler` step in the ASP.NET request pipeline.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Cache">
       <MemberSignature Language="C#" Value="public System.Web.Caching.Cache Cache { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.Caching.Cache Cache" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -315,6 +197,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearError() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -332,6 +216,8 @@
       <MemberSignature Language="ILAsm" Value=".property class System.Web.HttpContext Current" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -410,6 +296,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.IHttpHandler CurrentHandler" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -434,6 +322,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Web.RequestNotification CurrentNotification" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -466,39 +356,13 @@ End Sub
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="DisposeOnPipelineCompleted">
-      <MemberSignature Language="C#" Value="public System.Web.ISubscriptionToken DisposeOnPipelineCompleted (IDisposable target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Web.ISubscriptionToken DisposeOnPipelineCompleted(class System.IDisposable target) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.ISubscriptionToken</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="target" Type="System.IDisposable" />
-      </Parameters>
-      <Docs>
-        <param name="target">The object whose &lt;xref:System.IDisposable.Dispose%2A&gt; method must be called when the <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> connection part of the request is completed.</param>
-        <summary>Enables an object's &lt;xref:System.IDisposable.Dispose%2A&gt; method to be called when the <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> connection part of this request is completed.</summary>
-        <returns>The subscription token.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The <xref:System.IDisposable.Dispose%2A> method of the target object is called after both the HTTP part of the request and the <xref:System.Web.WebSockets.AspNetWebSocket> connection have ended. The <xref:System.Web.HttpContext> object is not available for inspection.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Error">
       <MemberSignature Language="C#" Value="public Exception Error { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Exception Error" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -506,7 +370,7 @@ End Sub
       </ReturnValue>
       <Docs>
         <summary>Gets the first error (if any) accumulated during HTTP request processing.</summary>
-        <value>The first &lt;xref:System.Exception&gt; for the current HTTP request/response process; otherwise, <see langword="null" /> if no errors were accumulated during the HTTP request processing. The default is <see langword="null" />.</value>
+        <value>The first <see cref="T:System.Exception" /> for the current HTTP request/response process; otherwise, <see langword="null" /> if no errors were accumulated during the HTTP request processing. The default is <see langword="null" />.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -516,6 +380,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetAppConfig(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -549,11 +415,16 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object GetConfig(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete("The recommended alternative is System.Web.HttpContext.GetSection in System.Web.dll. http://go.microsoft.com/fwlink/?linkid=14202")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -582,8 +453,15 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetGlobalResourceObject(string classKey, string resourceKey) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -595,7 +473,7 @@ End Sub
         <param name="classKey">A string that represents the &lt;xref:System.Web.Compilation.ResourceExpressionFields.ClassKey%2A&gt; property of the requested resource object.</param>
         <param name="resourceKey">A string that represents the &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; property of the requested resource object.</param>
         <summary>Gets an application-level resource object based on the specified &lt;xref:System.Web.Compilation.ResourceExpressionFields.ClassKey%2A&gt; and &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; properties.</summary>
-        <returns>An &lt;xref:System.Object&gt; that represents the requested application-level resource object; otherwise, null if a resource object is not found or if a resource object is found but it does not have the requested property.</returns>
+        <returns>An <see cref="T:System.Object" /> that represents the requested application-level resource object; otherwise, null if a resource object is not found or if a resource object is found but it does not have the requested property.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -620,6 +498,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetGlobalResourceObject(string classKey, string resourceKey, class System.Globalization.CultureInfo culture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -633,9 +513,9 @@ End Sub
       <Docs>
         <param name="classKey">A string that represents the &lt;xref:System.Web.Compilation.ResourceExpressionFields.ClassKey%2A&gt; property of the requested resource object.</param>
         <param name="resourceKey">A string that represents a &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; property of the requested resource object.</param>
-        <param name="culture">A string that represents the &lt;xref:System.Globalization.CultureInfo&gt; object of the requested resource.</param>
-        <summary>Gets an application-level resource object based on the specified &lt;xref:System.Web.Compilation.ResourceExpressionFields.ClassKey%2A&gt; and &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; properties, and on the &lt;xref:System.Globalization.CultureInfo&gt; object.</summary>
-        <returns>An &lt;xref:System.Object&gt; that represents the requested application-level resource object, which is localized for the specified culture; otherwise, <see langword="null" /> if a resource object is not found or if a resource object is found but it does not have the requested property.</returns>
+        <param name="culture">A string that represents the <see cref="T:System.Globalization.CultureInfo" /> object of the requested resource.</param>
+        <summary>Gets an application-level resource object based on the specified &lt;xref:System.Web.Compilation.ResourceExpressionFields.ClassKey%2A&gt; and &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; properties, and on the <see cref="T:System.Globalization.CultureInfo" /> object.</summary>
+        <returns>An <see cref="T:System.Object" /> that represents the requested application-level resource object, which is localized for the specified culture; otherwise, <see langword="null" /> if a resource object is not found or if a resource object is found but it does not have the requested property.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -660,8 +540,15 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetLocalResourceObject(string virtualPath, string resourceKey) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -673,7 +560,7 @@ End Sub
         <param name="virtualPath">The &lt;xref:System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A&gt; property for the local resource object.</param>
         <param name="resourceKey">A string that represents a &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; property of the requested resource object</param>
         <summary>Gets a page-level resource object based on the specified &lt;xref:System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A&gt; and &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; properties.</summary>
-        <returns>An &lt;xref:System.Object&gt; that represents the requested page-level resource object; otherwise, <see langword="null" /> if a matching resource object is found but not a <paramref name="resourceKey" /> parameter.</returns>
+        <returns>An <see cref="T:System.Object" /> that represents the requested page-level resource object; otherwise, <see langword="null" /> if a matching resource object is found but not a <paramref name="resourceKey" /> parameter.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -693,6 +580,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object GetLocalResourceObject(string virtualPath, string resourceKey, class System.Globalization.CultureInfo culture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -706,9 +595,9 @@ End Sub
       <Docs>
         <param name="virtualPath">The &lt;xref:System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A&gt; property for the local resource object.</param>
         <param name="resourceKey">A string that represents a &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; property of the requested resource object.</param>
-        <param name="culture">A string that represents the &lt;xref:System.Globalization.CultureInfo&gt; object of the requested resource object.</param>
-        <summary>Gets a page-level resource object based on the specified &lt;xref:System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A&gt; and &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; properties, and on the &lt;xref:System.Globalization.CultureInfo&gt; object.</summary>
-        <returns>An &lt;xref:System.Object&gt; that represents the requested local resource object, which is localized for the specified culture; otherwise <see langword="null" /> if a matching resource object is found but not a <paramref name="resourceKey" /> parameter.</returns>
+        <param name="culture">A string that represents the <see cref="T:System.Globalization.CultureInfo" /> object of the requested resource object.</param>
+        <summary>Gets a page-level resource object based on the specified &lt;xref:System.Web.Compilation.ExpressionBuilderContext.VirtualPath%2A&gt; and &lt;xref:System.Web.Compilation.ResourceExpressionFields.ResourceKey%2A&gt; properties, and on the <see cref="T:System.Globalization.CultureInfo" /> object.</summary>
+        <returns>An <see cref="T:System.Object" /> that represents the requested local resource object, which is localized for the specified culture; otherwise <see langword="null" /> if a matching resource object is found but not a <paramref name="resourceKey" /> parameter.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -728,6 +617,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object GetSection(string sectionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -749,8 +640,15 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.IHttpHandler Handler" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Web.IHttpHandler</ReturnType>
       </ReturnValue>
@@ -775,6 +673,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance bool IsCustomErrorEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -793,6 +693,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDebuggingEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -811,6 +713,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance bool IsPostNotification" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -846,54 +750,13 @@ End Sub
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="IsWebSocketRequest">
-      <MemberSignature Language="C#" Value="public bool IsWebSocketRequest { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsWebSocketRequest" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether the request is an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request.</summary>
-        <value>
-          <see langword="true" /> if the request is an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request; otherwise, <see langword="false" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This method returns `true` if the request contains the initial <xref:System.Web.WebSockets.AspNetWebSocket> handshake and the `WebSocket` module of IIS is active.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsWebSocketRequestUpgrading">
-      <MemberSignature Language="C#" Value="public bool IsWebSocketRequestUpgrading { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsWebSocketRequestUpgrading" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether the connection is upgrading from an HTTP connection to an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> connection.</summary>
-        <value>
-          <see langword="true" /> if the connection is upgrading; otherwise, <see langword="false" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Items">
       <MemberSignature Language="C#" Value="public System.Collections.IDictionary Items { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.IDictionary Items" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -901,24 +764,7 @@ End Sub
       </ReturnValue>
       <Docs>
         <summary>Gets a key/value collection that can be used to organize and share data between an <see cref="T:System.Web.IHttpModule" /> interface and an <see cref="T:System.Web.IHttpHandler" /> interface during an HTTP request.</summary>
-        <value>An &lt;xref:System.Collections.IDictionary&gt; key/value collection that provides access to an individual value in the collection by a specified key.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="PageInstrumentation">
-      <MemberSignature Language="C#" Value="public System.Web.Instrumentation.PageInstrumentationService PageInstrumentation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Web.Instrumentation.PageInstrumentationService PageInstrumentation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Web.Instrumentation.PageInstrumentationService</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a reference to the page-instrumentation service instance for this request.</summary>
-        <value>The page-instrumentation service instance for this request.</value>
+        <value>An <see cref="T:System.Collections.IDictionary" /> key/value collection that provides access to an individual value in the collection by a specified key.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -928,6 +774,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.IHttpHandler PreviousHandler" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -952,6 +800,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.Profile.ProfileBase Profile" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -976,6 +826,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemapHandler(class System.Web.IHttpHandler handler) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1004,8 +856,15 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpRequest Request" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Web.HttpRequest</ReturnType>
       </ReturnValue>
@@ -1032,8 +891,15 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpResponse Response" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Web.HttpResponse</ReturnType>
       </ReturnValue>
@@ -1057,8 +923,15 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RewritePath(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1101,6 +974,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RewritePath(string path, bool rebaseClientPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1142,6 +1017,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RewritePath(string filePath, string pathInfo, string queryString) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1186,6 +1063,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RewritePath(string filePath, string pathInfo, string queryString, bool setClientFilePath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1233,6 +1112,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.HttpServerUtility Server" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1257,6 +1138,8 @@ End Sub
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.SessionState.HttpSessionState Session" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1340,6 +1223,7 @@ firstName = DirectCast(context.Session("FirstName"), String)
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetSessionStateBehavior(valuetype System.Web.SessionState.SessionStateBehavior sessionStateBehavior) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1370,8 +1254,18 @@ firstName = DirectCast(context.Session("FirstName"), String)
       <MemberSignature Language="ILAsm" Value=".property instance bool SkipAuthorization" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -1395,6 +1289,8 @@ firstName = DirectCast(context.Session("FirstName"), String)
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance object System.IServiceProvider.GetService(class System.Type service) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1418,38 +1314,13 @@ firstName = DirectCast(context.Session("FirstName"), String)
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="ThreadAbortOnTimeout">
-      <MemberSignature Language="C#" Value="public bool ThreadAbortOnTimeout { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool ThreadAbortOnTimeout" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that specifies whether the ASP.NET runtime should call &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; on the thread that is servicing this request when the request times out.</summary>
-        <value>
-          <see langword="true" /> if &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; will be called when the thread times out; otherwise, <see langword="false" />. The default is <see langword="true" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- In handlers and modules that are using the <xref:System.Web.HttpRequest.TimedOutToken%2A?displayProperty=fullName> property to implement cooperative cancellation, you might wish to disable the <xref:System.Threading.Thread.Abort%2A?displayProperty=fullName> behavior that ASP.NET performs by default when a request times out. Setting this property to `false` can help you make sure that cancellation and cleanup routines will run without being interrupted by ASP.NET.  
-  
- If you set this property to `false`, ASP.NET will not automatically display a "Request timed out" error page when a timeout occurs. The application is responsible for setting the response content appropriately.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Timestamp">
       <MemberSignature Language="C#" Value="public DateTime Timestamp { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.DateTime Timestamp" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1474,6 +1345,8 @@ firstName = DirectCast(context.Session("FirstName"), String)
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.TraceContext Trace" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1491,8 +1364,18 @@ firstName = DirectCast(context.Session("FirstName"), String)
       <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Principal.IPrincipal User" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Security.Principal.IPrincipal</ReturnType>
       </ReturnValue>
@@ -1519,40 +1402,6 @@ firstName = DirectCast(context.Session("FirstName"), String)
   
  ]]></format>
         </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="WebSocketNegotiatedProtocol">
-      <MemberSignature Language="C#" Value="public string WebSocketNegotiatedProtocol { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string WebSocketNegotiatedProtocol" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets the negotiated protocol that was sent from the server to the client for an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> connection.</summary>
-        <value>The negotiated protocol.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="WebSocketRequestedProtocols">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IList&lt;string&gt; WebSocketRequestedProtocols { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IList`1&lt;string&gt; WebSocketRequestedProtocols" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.IList&lt;System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets the ordered list of protocols requested by the client.</summary>
-        <value>The requested protocols, or <see langword="null" /> if this is not an <see cref="T:System.Web.WebSockets.AspNetWebSocket" /> request or if no list is present.</value>
-        <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
     </Member>

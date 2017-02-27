@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EventSourceCreationData extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -40,9 +41,9 @@
 ## Examples  
  The following code example sets the configuration properties for an event source from command-line arguments. The input arguments specify the event source name, event log name, computer name, and event message resource file. The code example verifies that the source does not conflict with an existing event source, and then creates the new event source for the specified event log.  
   
- [!code-vb[EventLog_EventSourceCreation_Properties#1](~/add/codesnippet/visualbasic/t-system.diagnostics.eve_7_1.vb)]
- [!code-cpp[EventLog_EventSourceCreation_Properties#1](~/add/codesnippet/cpp/t-system.diagnostics.eve_7_1.cpp)]
- [!code-cs[EventLog_EventSourceCreation_Properties#1](~/add/codesnippet/csharp/t-system.diagnostics.eve_7_1.cs)]  
+ [!code-vb[EventLog_EventSourceCreation_Properties#1](~/add/codesnippet/visualbasic/t-system.diagnostics.eve_6_1.vb)]
+ [!code-cpp[EventLog_EventSourceCreation_Properties#1](~/add/codesnippet/cpp/t-system.diagnostics.eve_6_1.cpp)]
+ [!code-cs[EventLog_EventSourceCreation_Properties#1](~/add/codesnippet/csharp/t-system.diagnostics.eve_6_1.cs)]  
   
  ]]></format>
     </remarks>
@@ -55,6 +56,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string source, string logName) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -220,8 +223,15 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance int32 CategoryCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -243,9 +253,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example determines whether the event source named `SampleApplicationSource` is registered on the local computer. If the event source does not exist, the example sets the message resource file for the source and creates the new event source. Finally, the code example sets the localized display name for the event log, using the resource identifier value in `DisplayNameMsgId` and the resource file path in `messageFile`.  
   
- [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_2_1.cpp)]
- [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_2_1.vb)]
- [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_2_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_0_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_0_1.vb)]
+ [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_0_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -362,7 +372,7 @@ SVC_UPDATE.EXE
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentOutOfRangeException">The property is set to a negative value or to a value larger than &lt;xref:System.UInt16.MaxValue?displayProperty=fullName&gt;.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The property is set to a negative value or to a value larger than <see cref="F:System.UInt16.MaxValue" />.</exception>
         <permission cref="T:System.Security.Permissions.SecurityPermission">for calling any member of <see cref="T:System.Diagnostics.EventSourceCreationData" /> with full trust. Associated enumeration: <see cref="T:System.Security.Permissions.PermissionState" /></permission>
         <threadsafe />
       </Docs>
@@ -372,8 +382,18 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance string CategoryResourceFile" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -395,9 +415,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example determines whether the event source named `SampleApplicationSource` is registered on the local computer. If the event source does not exist, the example sets the message resource file for the source and creates the new event source. Finally, the code example sets the localized display name for the event log, using the resource identifier value in `DisplayNameMsgId` and the resource file path in `messageFile`.  
   
- [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_10_1.cpp)]
- [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_10_1.vb)]
- [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_10_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_6_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_6_1.vb)]
+ [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_6_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -523,8 +543,18 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance string LogName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -549,9 +579,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example sets the configuration properties for an event source from command-line arguments. The input arguments specify the event source name, event log name, computer name, and event message resource file. This example is part of a larger example provided for the <xref:System.Diagnostics.EventSourceCreationData> class.  
   
- [!code-vb[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_19_1.vb)]
- [!code-cpp[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/cpp/p-system.diagnostics.eve_19_1.cpp)]
- [!code-cs[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/csharp/p-system.diagnostics.eve_19_1.cs)]  
+ [!code-vb[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_15_1.vb)]
+ [!code-cpp[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/cpp/p-system.diagnostics.eve_15_1.cpp)]
+ [!code-cs[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/csharp/p-system.diagnostics.eve_15_1.cs)]  
   
  ]]></format>
         </remarks>
@@ -564,8 +594,18 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance string MachineName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -585,9 +625,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example sets the configuration properties for an event source from command-line arguments. The input arguments specify the event source name, event log name, computer name, and event message resource file. This example is part of a larger example provided for the <xref:System.Diagnostics.EventSourceCreationData> class.  
   
- [!code-vb[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_21_1.vb)]
- [!code-cpp[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/cpp/p-system.diagnostics.eve_21_1.cpp)]
- [!code-cs[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/csharp/p-system.diagnostics.eve_21_1.cs)]  
+ [!code-vb[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_17_1.vb)]
+ [!code-cpp[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/cpp/p-system.diagnostics.eve_17_1.cpp)]
+ [!code-cs[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/csharp/p-system.diagnostics.eve_17_1.cs)]  
   
  ]]></format>
         </remarks>
@@ -601,8 +641,18 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance string MessageResourceFile" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -628,9 +678,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example determines whether the event source named `SampleApplicationSource` is registered on the local computer. If the event source does not exist, the example sets the message resource file for the source and creates the new event source. Finally, the code example sets the localized display name for the event log, using the resource identifier value in `DisplayNameMsgId` and the resource file path in `messageFile`.  
   
- [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_3_1.cpp)]
- [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_3_1.vb)]
- [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_3_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_1_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_1_1.vb)]
+ [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_1_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings.  
   
@@ -756,8 +806,18 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance string ParameterResourceFile" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -806,9 +866,9 @@ TRIGGER.EXE
 ## Examples  
  The following code example determines whether the event source named `SampleApplicationSource` is registered on the local computer. If the event source does not exist, the example sets the message resource file for the source and creates the new event source. Finally, the code example sets the localized display name for the event log, using the resource identifier value in `DisplayNameMsgId` and the resource file path in `messageFile`.  
   
- [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_31_1.cpp)]
- [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_31_1.vb)]
- [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_31_1.cs)]  
+ [!code-cpp[EventLog_WriteEvent#6](~/add/codesnippet/cpp/p-system.diagnostics.eve_26_1.cpp)]
+ [!code-vb[EventLog_WriteEvent#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_26_1.vb)]
+ [!code-cs[EventLog_WriteEvent#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_26_1.cs)]  
   
  The code example uses the following message text file, built into the resource library EventLogMsgs.dll. A message text file is the source from which the message resource file is created. The message text file defines the resource identifiers and text for the category, event message, and parameter insertion strings. Specifically, the message defined for resource identifier 1004 uses a placeholder for a parameter string defined for resource identifier 5002.  
   
@@ -934,8 +994,18 @@ SVC_UPDATE.EXE
       <MemberSignature Language="ILAsm" Value=".property instance string Source" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -957,9 +1027,9 @@ SVC_UPDATE.EXE
 ## Examples  
  The following code example sets the configuration properties for an event source from command-line arguments. The input arguments specify the event source name, event log name, computer name, and event message resource file. This example is part of a larger example provided for the <xref:System.Diagnostics.EventSourceCreationData> class.  
   
- [!code-vb[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_13_1.vb)]
- [!code-cpp[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/cpp/p-system.diagnostics.eve_13_1.cpp)]
- [!code-cs[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/csharp/p-system.diagnostics.eve_13_1.cs)]  
+ [!code-vb[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_9_1.vb)]
+ [!code-cpp[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/cpp/p-system.diagnostics.eve_9_1.cpp)]
+ [!code-cs[EventLog_EventSourceCreation_Properties#2](~/add/codesnippet/csharp/p-system.diagnostics.eve_9_1.cs)]  
   
  ]]></format>
         </remarks>

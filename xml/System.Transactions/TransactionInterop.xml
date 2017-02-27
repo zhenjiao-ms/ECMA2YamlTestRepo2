@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit TransactionInterop extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Transactions</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -10,7 +11,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Facilitates interaction between <see cref="N:System.Transactions" /> and components that were previously written to interact with MSDTC, COM+, or <see cref="N:System.EnterpriseServices" />. This class cannot be inherited.</summary>
+    <summary>Facilitates interaction between <see cref="N:System.Transactions" /> and components that were previously written to interact with MSDTC, COM+, or &lt;xref:System.EnterpriseServices&gt;. This class cannot be inherited.</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -57,6 +58,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Transactions.IDtcTransaction GetDtcTransaction(class System.Transactions.Transaction transaction) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -68,7 +71,7 @@
       <Docs>
         <param name="transaction">A <see cref="T:System.Transactions.Transaction" /> instance to be marshaled.</param>
         <summary>Gets an <see cref="T:System.Transactions.IDtcTransaction" /> instance that represents a <see cref="T:System.Transactions.Transaction" />.</summary>
-        <returns>An <see cref="T:System.Transactions.IDtcTransaction" /> instance that represents a <see cref="T:System.Transactions.Transaction" />.  The <see cref="T:System.Transactions.IDtcTransaction" /> instance is compatible with the unmanaged form of [ITransaction](http://msdn.microsoft.com/library/default.asp?url=/library/cossdk/html/d40264be-f9b2-4044-aac6-84b43e5be666.asp) used by MSDTC and with the Managed form of <see cref="T:System.EnterpriseServices.ITransaction" /> used by <see cref="N:System.EnterpriseServices" />.</returns>
+        <returns>An <see cref="T:System.Transactions.IDtcTransaction" /> instance that represents a <see cref="T:System.Transactions.Transaction" />.  The <see cref="T:System.Transactions.IDtcTransaction" /> instance is compatible with the unmanaged form of [ITransaction](http://msdn.microsoft.com/library/default.asp?url=/library/cossdk/html/d40264be-f9b2-4044-aac6-84b43e5be666.asp) used by MSDTC and with the Managed form of &lt;xref:System.EnterpriseServices.ITransaction&gt; used by &lt;xref:System.EnterpriseServices&gt;.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -78,6 +81,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] GetExportCookie(class System.Transactions.Transaction transaction, unsigned int8[] whereabouts) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -110,6 +115,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Transactions.Transaction GetTransactionFromDtcTransaction(class System.Transactions.IDtcTransaction transactionNative) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -138,6 +145,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Transactions.Transaction GetTransactionFromExportCookie(unsigned int8[] cookie) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -166,6 +175,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Transactions.Transaction GetTransactionFromTransmitterPropagationToken(unsigned int8[] propagationToken) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -197,6 +208,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] GetTransmitterPropagationToken(class System.Transactions.Transaction transaction) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -220,6 +233,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] GetWhereabouts() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -236,29 +251,6 @@
  The Whereabouts contains an address that describes the location of a transaction manager. This permits two transaction managers to communicate with one another and thereby propagate a transaction from one system to the other. The information returned by this method can be used to provide location information for push model transaction propagation with the <xref:System.Transactions.TransactionInterop.GetExportCookie%2A> method.  
   
  For more information on different propagation models, see the Remarks section of the <xref:System.Transactions.TransactionInterop> class.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="PromoterTypeDtc">
-      <MemberSignature Language="C#" Value="public static readonly Guid PromoterTypeDtc;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype System.Guid PromoterTypeDtc" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Guid</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The type of the distributed transaction processor.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This value is used for the `Transaction.PromoterType` property if the transaction is or will be promoted to MSDTC and the `Transaction.GetPromotedToken` method will return an MSDTC transaction propagation token for the `byte[]` result.  
   
  ]]></format>
         </remarks>

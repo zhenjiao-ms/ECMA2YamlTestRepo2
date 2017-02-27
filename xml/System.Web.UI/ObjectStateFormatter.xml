@@ -1,8 +1,9 @@
 <Type Name="ObjectStateFormatter" FullName="System.Web.UI.ObjectStateFormatter">
-  <TypeSignature Language="C#" Value="public sealed class ObjectStateFormatter : System.Runtime.Serialization.IFormatter" />
+  <TypeSignature Language="C#" Value="public sealed class ObjectStateFormatter : System.Runtime.Serialization.IFormatter, System.Web.UI.IStateFormatter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ObjectStateFormatter extends System.Object implements class System.Runtime.Serialization.IFormatter, class System.Web.UI.IStateFormatter" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -11,6 +12,9 @@
   <Interfaces>
     <Interface>
       <InterfaceName>System.Runtime.Serialization.IFormatter</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Web.UI.IStateFormatter</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -58,8 +62,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Web.UI.ObjectStateFormatter" /> class.</summary>
@@ -72,6 +83,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object Deserialize(class System.IO.Stream inputStream) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -81,8 +94,8 @@
         <Parameter Name="inputStream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="inputStream">A &lt;xref:System.IO.Stream&gt; that the <see cref="T:System.Web.UI.ObjectStateFormatter" /> deserializes into an initialized <see langword="object" />.</param>
-        <summary>Deserializes an object state graph from its binary-serialized form that is contained in the specified &lt;xref:System.IO.Stream&gt; object.</summary>
+        <param name="inputStream">A <see cref="T:System.IO.Stream" /> that the <see cref="T:System.Web.UI.ObjectStateFormatter" /> deserializes into an initialized <see langword="object" />.</param>
+        <summary>Deserializes an object state graph from its binary-serialized form that is contained in the specified <see cref="T:System.IO.Stream" /> object.</summary>
         <returns>An object that represents a deserialized object state graph.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -104,7 +117,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException">The specified <paramref name="inputStream" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException">An exception occurs during deserialization of the &lt;xref:System.IO.Stream&gt;. The exception message is appended to the message of the &lt;xref:System.ArgumentException&gt;.</exception>
+        <exception cref="T:System.ArgumentException">An exception occurs during deserialization of the <see cref="T:System.IO.Stream" />. The exception message is appended to the message of the <see cref="T:System.ArgumentException" />.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -113,6 +126,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object Deserialize(string inputString) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -155,6 +170,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string Serialize(object stateGraph) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -191,6 +208,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Serialize(class System.IO.Stream outputStream, object stateGraph) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -201,9 +220,9 @@
         <Parameter Name="stateGraph" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="outputStream">A &lt;xref:System.IO.Stream&gt; to which the <see cref="T:System.Web.UI.ObjectStateFormatter" /> serializes the state of the specified object.</param>
+        <param name="outputStream">A <see cref="T:System.IO.Stream" /> to which the <see cref="T:System.Web.UI.ObjectStateFormatter" /> serializes the state of the specified object.</param>
         <param name="stateGraph">The object to serialize.</param>
-        <summary>Serializes an object state graph to the specified &lt;xref:System.IO.Stream&gt; object.</summary>
+        <summary>Serializes an object state graph to the specified <see cref="T:System.IO.Stream" /> object.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -229,6 +248,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Runtime.Serialization.SerializationBinder System.Runtime.Serialization.IFormatter.Binder" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -253,6 +274,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Runtime.Serialization.StreamingContext System.Runtime.Serialization.IFormatter.Context" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -260,7 +283,7 @@
       </ReturnValue>
       <Docs>
         <summary>For a description of this member, see &lt;xref:System.Runtime.Serialization.IFormatter.Context%2A?displayProperty=fullName&gt;.</summary>
-        <value>The &lt;xref:System.Runtime.Serialization.StreamingContext&gt; used for serialization and deserialization.</value>
+        <value>The <see cref="T:System.Runtime.Serialization.StreamingContext" /> used for serialization and deserialization.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -277,8 +300,15 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance object System.Runtime.Serialization.IFormatter.Deserialize(class System.IO.Stream serializationStream) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -305,8 +335,15 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.Runtime.Serialization.IFormatter.Serialize(class System.IO.Stream serializationStream, object stateGraph) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -334,6 +371,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Runtime.Serialization.ISurrogateSelector System.Runtime.Serialization.IFormatter.SurrogateSelector" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -358,8 +397,15 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance object System.Web.UI.IStateFormatter.Deserialize(string serializedState) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -386,8 +432,15 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance string System.Web.UI.IStateFormatter.Serialize(object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>

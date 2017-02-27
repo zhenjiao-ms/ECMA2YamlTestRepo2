@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit SecurityKeyIdentifierClause extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.IdentityModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -27,6 +28,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(string clauseType) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -51,6 +54,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(string clauseType, unsigned int8[] nonce, int32 length) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -60,7 +65,7 @@
       </Parameters>
       <Docs>
         <param name="clauseType">The key identifier clause type. Sets the value of the &lt;xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType%2A&gt; property.</param>
-        <param name="nonce">An array of &lt;xref:System.Byte&gt; that contains the nonce that was used to create a derived key. Sets the value that is returned by the &lt;xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.GetDerivationNonce%2A&gt; method.</param>
+        <param name="nonce">An array of <see cref="T:System.Byte" /> that contains the nonce that was used to create a derived key. Sets the value that is returned by the &lt;xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.GetDerivationNonce%2A&gt; method.</param>
         <param name="length">The size of the derived key. Sets the value of the &lt;xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.DerivationLength%2A&gt; property.</param>
         <summary>Initializes a new instance of the <see cref="T:System.IdentityModel.Tokens.SecurityKeyIdentifierClause" /> class using the specified key identifier clause type, nonce, and the derived key length.</summary>
         <remarks>
@@ -79,6 +84,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanCreateKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -104,6 +111,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ClauseType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -121,6 +130,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.IdentityModel.Tokens.SecurityKey CreateKey() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -146,6 +157,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 DerivationLength" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -170,6 +183,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] GetDerivationNonce() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -178,7 +193,7 @@
       <Parameters />
       <Docs>
         <summary>Gets the nonce that was used to generate the derived key.</summary>
-        <returns>An array of &lt;xref:System.Byte&gt; that contains the nonce that was used to generate the derived key.</returns>
+        <returns>An array of <see cref="T:System.Byte" /> that contains the nonce that was used to generate the derived key.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -190,35 +205,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Id">
-      <MemberSignature Language="C#" Value="public string Id { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Id" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the key identifier clause ID.</summary>
-        <value>The key identifier clause ID. The default is <see langword="null" />.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- When this security key identifier is serialized into XML, the Id property is serialized as the `Id` attribute of the `<SecurityTokenReference>` element. If the property is `null`, an `Id` attribute is not included in the `<SecurityTokenReference>` element.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Matches">
       <MemberSignature Language="C#" Value="public virtual bool Matches (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Matches(class System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.IdentityModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

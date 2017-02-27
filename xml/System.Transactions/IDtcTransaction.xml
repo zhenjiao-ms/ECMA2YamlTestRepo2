@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IDtcTransaction" />
   <AssemblyInfo>
     <AssemblyName>System.Transactions</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
@@ -32,6 +33,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Abort(native int reason, int32 retaining, int32 async) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -43,7 +46,7 @@
         <Parameter Name="async" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="reason">An optional <see cref="T:System.EnterpriseServices.BOID" /> that indicates why the transaction is being aborted. This parameter can be <see langword="null" />, indicating that no reason for the abort is provided.</param>
+        <param name="reason">An optional &lt;xref:System.EnterpriseServices.BOID&gt; that indicates why the transaction is being aborted. This parameter can be <see langword="null" />, indicating that no reason for the abort is provided.</param>
         <param name="retaining">This value must be <see langword="false" />.</param>
         <param name="async">When `async` is <see langword="true" />, an asynchronous abort is performed and the caller must use <see langword="ITransactionOutcomeEvents" /> to learn about the outcome of the transaction.</param>
         <summary>Aborts a transaction.</summary>
@@ -63,6 +66,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Commit(int32 retaining, int32 commitType, int32 reserved) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -96,6 +101,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetTransactionInfo(native int transactionInformation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Transactions</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -105,7 +112,7 @@
         <Parameter Name="transactionInformation" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="transactionInformation">Pointer to the caller-allocated <see cref="T:System.EnterpriseServices.XACTTRANSINFO" /> structure that will receive information about the transaction. This value must not be <see langword="null" />.</param>
+        <param name="transactionInformation">Pointer to the caller-allocated &lt;xref:System.EnterpriseServices.XACTTRANSINFO&gt; structure that will receive information about the transaction. This value must not be <see langword="null" />.</param>
         <summary>Retrieves information about a transaction.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  

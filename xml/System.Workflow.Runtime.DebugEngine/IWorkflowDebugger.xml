@@ -3,14 +3,10 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IWorkflowDebugger" />
   <AssemblyInfo>
     <AssemblyName>System.Workflow.Runtime</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")</AttributeName>
-    </Attribute>
-  </Attributes>
   <Docs>
     <summary>Defines the interface that receives workflow instance creation, execution, and termination status information from a <see cref="T:System.Workflow.Runtime.DebugEngine.DebugController" /> object running inside the workflow host application.</summary>
     <remarks>
@@ -33,6 +29,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ActivityStatusChanged(valuetype System.Guid programId, valuetype System.Guid scheduleTypeId, valuetype System.Guid instanceId, string activityQualifiedName, string hierarchicalActivityId, valuetype System.Workflow.ComponentModel.ActivityExecutionStatus status, int32 stateReaderId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -48,13 +46,13 @@
         <Parameter Name="stateReaderId" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
-        <param name="activityQualifiedName">A &lt;xref:System.String&gt; containing the fully qualified name of the current activity.</param>
-        <param name="hierarchicalActivityId">A &lt;xref:System.String&gt; containing the qualified name of the parent activity.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
+        <param name="activityQualifiedName">A <see cref="T:System.String" /> containing the fully qualified name of the current activity.</param>
+        <param name="hierarchicalActivityId">A <see cref="T:System.String" /> containing the qualified name of the parent activity.</param>
         <param name="status">The &lt;xref:System.Workflow.ComponentModel.Activity.ExecutionStatus%2A&gt; of the current activity.</param>
-        <param name="stateReaderId">An &lt;xref:System.Int32&gt; containing the activity execution context ID associated with the current activity.</param>
+        <param name="stateReaderId">An <see cref="T:System.Int32" /> containing the activity execution context ID associated with the current activity.</param>
         <summary>Called when the &lt;xref:System.Workflow.ComponentModel.Activity.ExecutionStatus%2A&gt; of an activity within the workflow changes.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -65,6 +63,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AssemblyLoaded(valuetype System.Guid programId, string assemblyPath, bool fromGlobalAssemblyCache) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -76,9 +76,9 @@
         <Parameter Name="fromGlobalAssemblyCache" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="assemblyPath">A &lt;xref:System.String&gt; containing the path on disk from where the assembly is loaded</param>
-        <param name="fromGlobalAssemblyCache">A &lt;xref:System.Boolean&gt; that indicates whether the assembly is loaded from the global assembly cache.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="assemblyPath">A <see cref="T:System.String" /> containing the path on disk from where the assembly is loaded</param>
+        <param name="fromGlobalAssemblyCache">A <see cref="T:System.Boolean" /> that indicates whether the assembly is loaded from the global assembly cache.</param>
         <summary>Called when an assembly is loaded in the app domain corresponding to the <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> in the workflow host application.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -89,6 +89,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void BeforeActivityStatusChanged(valuetype System.Guid programId, valuetype System.Guid scheduleTypeId, valuetype System.Guid instanceId, string activityQualifiedName, string hierarchicalActivityId, valuetype System.Workflow.ComponentModel.ActivityExecutionStatus status, int32 stateReaderId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -104,13 +106,13 @@
         <Parameter Name="stateReaderId" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
-        <param name="activityQualifiedName">A &lt;xref:System.String&gt; containing the fully qualified name of the current activity.</param>
-        <param name="hierarchicalActivityId">A &lt;xref:System.String&gt; containing the qualified name of the parent activity.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
+        <param name="activityQualifiedName">A <see cref="T:System.String" /> containing the fully qualified name of the current activity.</param>
+        <param name="hierarchicalActivityId">A <see cref="T:System.String" /> containing the qualified name of the parent activity.</param>
         <param name="status">The &lt;xref:System.Workflow.ComponentModel.Activity.ExecutionStatus%2A&gt; of the current activity.</param>
-        <param name="stateReaderId">An &lt;xref:System.Int32&gt; containing the activity execution context ID associated with the current activity.</param>
+        <param name="stateReaderId">An <see cref="T:System.Int32" /> containing the activity execution context ID associated with the current activity.</param>
         <summary>Called before the &lt;xref:System.Workflow.ComponentModel.Activity.ExecutionStatus%2A&gt; of an activity within the workflow changes.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -121,6 +123,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void BeforeHandlerInvoked(valuetype System.Guid programId, valuetype System.Guid scheduleTypeId, string activityQualifiedName, valuetype System.Workflow.Runtime.DebugEngine.ActivityHandlerDescriptor handlerMethod) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -133,9 +137,9 @@
         <Parameter Name="handlerMethod" Type="System.Workflow.Runtime.DebugEngine.ActivityHandlerDescriptor" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
-        <param name="activityQualifiedName">A &lt;xref:System.String&gt; containing the fully qualified name of the current activity.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
+        <param name="activityQualifiedName">A <see cref="T:System.String" /> containing the fully qualified name of the current activity.</param>
         <param name="handlerMethod">An <see cref="T:System.Workflow.Runtime.DebugEngine.ActivityHandlerDescriptor" /> that contains the information regarding the code-beside handler method that is about to be invoked.</param>
         <summary>Called before a handler in the code-beside is about to be invoked.</summary>
         <remarks>To be added.</remarks>
@@ -147,6 +151,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void HandlerInvoked(valuetype System.Guid programId, valuetype System.Guid instanceId, int32 threadId, string activityQualifiedName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -159,10 +165,10 @@
         <Parameter Name="activityQualifiedName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
-        <param name="threadId">An &lt;xref:System.Int32&gt; containing the ID of the thread on which the handler was invoked.</param>
-        <param name="activityQualifiedName">A &lt;xref:System.String&gt; containing the fully qualified name of the current activity.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
+        <param name="threadId">An <see cref="T:System.Int32" /> containing the ID of the thread on which the handler was invoked.</param>
+        <param name="activityQualifiedName">A <see cref="T:System.String" /> containing the fully qualified name of the current activity.</param>
         <summary>Called after a handler in the code-beside is invoked.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -173,6 +179,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InstanceCompleted(valuetype System.Guid programId, valuetype System.Guid instanceId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -183,8 +191,8 @@
         <Parameter Name="instanceId" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
         <summary>Called when a workflow instance completes.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -195,6 +203,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InstanceCreated(valuetype System.Guid programId, valuetype System.Guid instanceId, valuetype System.Guid scheduleTypeId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -206,9 +216,9 @@
         <Parameter Name="scheduleTypeId" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
         <summary>Called when a workflow instance is created.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -219,6 +229,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InstanceDynamicallyUpdated(valuetype System.Guid programId, valuetype System.Guid instanceId, valuetype System.Guid scheduleTypeId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -230,9 +242,9 @@
         <Parameter Name="scheduleTypeId" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
         <summary>Called when the workflow instance is dynamically updated with a workflow change.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -243,6 +255,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ScheduleTypeLoaded(valuetype System.Guid programId, valuetype System.Guid scheduleTypeId, string assemblyFullName, string fileName, string md5Digest, bool isDynamic, string scheduleNamespace, string scheduleName, string workflowMarkup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -260,15 +274,15 @@
         <Parameter Name="workflowMarkup" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
-        <param name="assemblyFullName">A &lt;xref:System.String&gt; containing the assembly name from which the workflow type was loaded.</param>
-        <param name="fileName">A &lt;xref:System.String&gt; containing the full path of the markup file corresponding to the workflow, or <see langword="null" /> if the workflow type was a code-only workflow.</param>
-        <param name="md5Digest">A &lt;xref:System.String&gt; containing the md5 hash code for the workflow markup definition, or <see langword="null" /> if the workflow type was a code-only workflow.</param>
-        <param name="isDynamic">A &lt;xref:System.Boolean&gt; that indicates whether the workflow definition was modified dynamically.</param>
-        <param name="scheduleNamespace">A &lt;xref:System.String&gt; containing the fully qualified name of the workflow type.</param>
-        <param name="scheduleName">A &lt;xref:System.String&gt; containing the workflow type name.</param>
-        <param name="workflowMarkup">A &lt;xref:System.String&gt; containing the XAML serialized format of the workflow type.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
+        <param name="assemblyFullName">A <see cref="T:System.String" /> containing the assembly name from which the workflow type was loaded.</param>
+        <param name="fileName">A <see cref="T:System.String" /> containing the full path of the markup file corresponding to the workflow, or <see langword="null" /> if the workflow type was a code-only workflow.</param>
+        <param name="md5Digest">A <see cref="T:System.String" /> containing the md5 hash code for the workflow markup definition, or <see langword="null" /> if the workflow type was a code-only workflow.</param>
+        <param name="isDynamic">A <see cref="T:System.Boolean" /> that indicates whether the workflow definition was modified dynamically.</param>
+        <param name="scheduleNamespace">A <see cref="T:System.String" /> containing the fully qualified name of the workflow type.</param>
+        <param name="scheduleName">A <see cref="T:System.String" /> containing the workflow type name.</param>
+        <param name="workflowMarkup">A <see cref="T:System.String" /> containing the XAML serialized format of the workflow type.</param>
         <summary>Called when a new workflow type is loaded by the workflow runtime engine in the workflow host application.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -279,6 +293,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetInitialActivityStatus(valuetype System.Guid programId, valuetype System.Guid scheduleTypeId, valuetype System.Guid instanceId, string activityQualifiedName, string hierarchicalActivityId, valuetype System.Workflow.ComponentModel.ActivityExecutionStatus status, int32 stateReaderId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -294,13 +310,13 @@
         <Parameter Name="stateReaderId" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
-        <param name="instanceId">A &lt;xref:System.Guid&gt; associated with the currently running workflow instance.</param>
-        <param name="activityQualifiedName">A &lt;xref:System.String&gt; containing the fully qualified name of the current activity.</param>
-        <param name="hierarchicalActivityId">A &lt;xref:System.String&gt; containing the qualified name of the parent activity.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
+        <param name="instanceId">A <see cref="T:System.Guid" /> associated with the currently running workflow instance.</param>
+        <param name="activityQualifiedName">A <see cref="T:System.String" /> containing the fully qualified name of the current activity.</param>
+        <param name="hierarchicalActivityId">A <see cref="T:System.String" /> containing the qualified name of the parent activity.</param>
         <param name="status">The &lt;xref:System.Workflow.ComponentModel.Activity.ExecutionStatus%2A&gt; of the current activity.</param>
-        <param name="stateReaderId">An &lt;xref:System.Int32&gt; containing the activity execution context ID associated with the current activity.</param>
+        <param name="stateReaderId">An <see cref="T:System.Int32" /> containing the activity execution context ID associated with the current activity.</param>
         <summary>Called to set the initial status of the activities in a workflow.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -318,6 +334,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateHandlerMethodsForActivity(valuetype System.Guid programId, valuetype System.Guid scheduleTypeId, string activityQualifiedName, class System.Collections.Generic.List`1&lt;valuetype System.Workflow.Runtime.DebugEngine.ActivityHandlerDescriptor&gt; handlerMethods) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -330,9 +348,9 @@
         <Parameter Name="handlerMethods" Type="System.Collections.Generic.List&lt;System.Workflow.Runtime.DebugEngine.ActivityHandlerDescriptor&gt;" />
       </Parameters>
       <Docs>
-        <param name="programId">An internally generated &lt;xref:System.Guid&gt; associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
-        <param name="scheduleTypeId">An internally generated &lt;xref:System.Guid&gt; associated with a workflow type.</param>
-        <param name="activityQualifiedName">A &lt;xref:System.String&gt; containing the fully qualified name of the current activity.</param>
+        <param name="programId">An internally generated <see cref="T:System.Guid" /> associated with a <see cref="T:System.Workflow.Runtime.WorkflowRuntime" /> instance.</param>
+        <param name="scheduleTypeId">An internally generated <see cref="T:System.Guid" /> associated with a workflow type.</param>
+        <param name="activityQualifiedName">A <see cref="T:System.String" /> containing the fully qualified name of the current activity.</param>
         <param name="handlerMethods">A &lt;xref:System.Collections.Generic.List%601&gt; of handlers associated with an activity.</param>
         <summary>Called when an activity enters the Executing state.</summary>
         <remarks>To be added.</remarks>

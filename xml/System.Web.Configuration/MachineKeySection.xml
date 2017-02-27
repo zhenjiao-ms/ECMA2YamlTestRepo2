@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MachineKeySection extends System.Configuration.ConfigurationSection" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -47,8 +48,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Web.Configuration.MachineKeySection" /> class by using default settings.</summary>
@@ -63,43 +71,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="ApplicationName">
-      <MemberSignature Language="C#" Value="public string ApplicationName { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string ApplicationName" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Configuration.WhiteSpaceTrimStringConverter))</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Configuration.ConfigurationProperty("applicationName", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the name of the application.</summary>
-        <value>The name of the application. The default is &lt;xref:System.String?displayProperty=fullName&gt;.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This property must be set if you set the <xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A> property. The property value is passed to the <xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName> factory method.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="CompatibilityMode">
       <MemberSignature Language="C#" Value="public System.Web.Configuration.MachineKeyCompatibilityMode CompatibilityMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Web.Configuration.MachineKeyCompatibilityMode CompatibilityMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -144,45 +122,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="DataProtectorType">
-      <MemberSignature Language="C#" Value="public string DataProtectorType { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string DataProtectorType" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Configuration.WhiteSpaceTrimStringConverter))</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Configuration.ConfigurationProperty("dataProtectorType", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the name of the data protector type. The default is &lt;xref:System.String.Empty?displayProperty=fullName&gt;.</summary>
-        <value>The name of the data protector type.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- To specify custom data protection algorithms for ASP.NET, set the <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName> property to <xref:System.Web.Configuration.MachineKeyCompatibilityMode> and set this property to a string that represents a class that derives from the <xref:System.Security.Cryptography.DataProtector> class. This string corresponds to the `providerClass` parameter that is passed to the static <xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName> factory method. The class you specify is used by the <xref:System.Web.Security.MachineKey.Protect%2A?displayProperty=fullName> and <xref:System.Web.Security.MachineKey.Unprotect%2A?displayProperty=fullName> methods even if you do not specify the <xref:System.Web.Configuration.MachineKeyCompatibilityMode> option.  
-  
- If you set this property, you must also set the <xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A> property.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Decryption">
       <MemberSignature Language="C#" Value="public string Decryption { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Decryption" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -229,6 +175,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance string DecryptionKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -282,8 +230,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Configuration.ConfigurationPropertyCollection Properties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Configuration.ConfigurationPropertyCollection</ReturnType>
       </ReturnValue>
@@ -298,6 +253,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Reset(class System.Configuration.ConfigurationElement parentElement) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -312,27 +269,13 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetReadOnly">
-      <MemberSignature Language="C#" Value="protected override void SetReadOnly ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void SetReadOnly() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Validation">
       <MemberSignature Language="C#" Value="public System.Web.Configuration.MachineKeyValidation Validation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Web.Configuration.MachineKeyValidation Validation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -365,6 +308,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ValidationAlgorithm" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -406,6 +350,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ValidationKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>

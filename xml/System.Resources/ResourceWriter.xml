@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ResourceWriter extends System.Object implements class System.IDisposable, class System.Resources.IResourceWriter" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -42,9 +43,9 @@
 ## Examples  
  The following example writes several strings into the myResources.resources file.  
   
- [!code-cpp[Classic ResourceWriter Example#1](~/add/codesnippet/cpp/t-system.resources.resou_1_1.cpp)]
- [!code-vb[Classic ResourceWriter Example#1](~/add/codesnippet/visualbasic/t-system.resources.resou_1_1.vb)]
- [!code-cs[Classic ResourceWriter Example#1](~/add/codesnippet/csharp/t-system.resources.resou_1_1.cs)]  
+ [!code-cpp[Classic ResourceWriter Example#1](~/add/codesnippet/cpp/t-system.resources.resou_2_1.cpp)]
+ [!code-vb[Classic ResourceWriter Example#1](~/add/codesnippet/visualbasic/t-system.resources.resou_2_1.vb)]
+ [!code-cs[Classic ResourceWriter Example#1](~/add/codesnippet/csharp/t-system.resources.resou_2_1.cs)]  
   
  ]]></format>
     </remarks>
@@ -56,6 +57,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.Stream stream) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -70,9 +73,9 @@
 ## Examples  
  The following code example defines a new instance of the <xref:System.Resources.ResourceWriter> class that writes to a specified stream. The code adds resources to the writer and writes the resources to the stream.  
   
- [!code-cs[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/csharp/m-system.resources.resou_11_1.cs)]
- [!code-cpp[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/cpp/m-system.resources.resou_11_1.cpp)]
- [!code-vb[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_11_1.vb)]  
+ [!code-cs[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/csharp/m-system.resources.resou_14_1.cs)]
+ [!code-cpp[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/cpp/m-system.resources.resou_14_1.cpp)]
+ [!code-vb[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_14_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -86,8 +89,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
       </Parameters>
@@ -100,9 +110,9 @@
 ## Examples  
  The following code example defines a new instance of the <xref:System.Resources.ResourceWriter> class that will write to a specified file. The code adds resources to the writer and writes the resources to the file.  
   
- [!code-cpp[Classic ResourceWriter Example#1](~/add/codesnippet/cpp/m-system.resources.resou_14_1.cpp)]
- [!code-vb[Classic ResourceWriter Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_14_1.vb)]
- [!code-cs[Classic ResourceWriter Example#1](~/add/codesnippet/csharp/m-system.resources.resou_14_1.cs)]  
+ [!code-cpp[Classic ResourceWriter Example#1](~/add/codesnippet/cpp/m-system.resources.resou_18_1.cpp)]
+ [!code-vb[Classic ResourceWriter Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_18_1.vb)]
+ [!code-cs[Classic ResourceWriter Example#1](~/add/codesnippet/csharp/m-system.resources.resou_18_1.cs)]  
   
  ]]></format>
         </remarks>
@@ -115,6 +125,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddResource(string name, unsigned int8[] value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -141,8 +153,8 @@
 ## Examples  
  The following example uses the AddResource method to add a graphics image that has been read as an array of bytes to a <xref:System.Resources.ResourceWriter> object.  
   
- [!code-cs[System.Resources.ResourceWriter.AddResource#4](~/add/codesnippet/csharp/m-system.resources.resou_9_1.cs)]
- [!code-vb[System.Resources.ResourceWriter.AddResource#4](~/add/codesnippet/visualbasic/m-system.resources.resou_9_1.vb)]  
+ [!code-cs[System.Resources.ResourceWriter.AddResource#4](~/add/codesnippet/csharp/m-system.resources.resou_12_1.cs)]
+ [!code-vb[System.Resources.ResourceWriter.AddResource#4](~/add/codesnippet/visualbasic/m-system.resources.resou_12_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -158,6 +170,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddResource(string name, class System.IO.Stream value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -184,8 +197,8 @@
 ## Examples  
  The following example uses the AddResource method to add a graphics image that has been saved to a <xref:System.IO.MemoryStream> object to a <xref:System.Resources.ResourceWriter> object.  
   
- [!code-vb[System.Resources.ResourceWriter.AddResource#2](~/add/codesnippet/visualbasic/m-system.resources.resou_10_1.vb)]
- [!code-cs[System.Resources.ResourceWriter.AddResource#2](~/add/codesnippet/csharp/m-system.resources.resou_10_1.cs)]  
+ [!code-vb[System.Resources.ResourceWriter.AddResource#2](~/add/codesnippet/visualbasic/m-system.resources.resou_13_1.vb)]
+ [!code-cs[System.Resources.ResourceWriter.AddResource#2](~/add/codesnippet/csharp/m-system.resources.resou_13_1.cs)]  
   
  ]]></format>
         </remarks>
@@ -206,6 +219,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddResource(string name, object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -234,7 +249,7 @@
 ## Examples  
  The following example uses the AddResource method to add object data to a binary resources file.  
   
- [!code-cs[System.Resources.ResourceWriter.AddResource#1](~/add/codesnippet/csharp/m-system.resources.resou_13_1.cs)]  
+ [!code-cs[System.Resources.ResourceWriter.AddResource#1](~/add/codesnippet/csharp/m-system.resources.resou_16_1.cs)]  
   
  `DonorColumns` is a custom class whose fields contain the names of columns to be displayed in the user interface. Note that the class is marked with the <xref:System.SerializableAttribute> attribute. Ordinarily, the class would be defined in a separate assembly, and a reference to it would be provided to the compiler at compile time.  
   
@@ -252,6 +267,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddResource(string name, string value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -278,9 +295,9 @@
 ## Examples  
  The following example uses the AddResource method to add string resources to a <xref:System.Resources.ResourceWriter> object.  
   
- [!code-cs[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/csharp/m-system.resources.resou_4_1.cs)]
- [!code-cpp[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/cpp/m-system.resources.resou_4_1.cpp)]
- [!code-vb[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_4_1.vb)]  
+ [!code-cs[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/csharp/m-system.resources.resou_6_1.cs)]
+ [!code-cpp[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/cpp/m-system.resources.resou_6_1.cpp)]
+ [!code-vb[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_6_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -296,6 +313,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddResource(string name, class System.IO.Stream value, bool closeAfterWrite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -347,6 +365,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddResourceData(string name, string typeName, unsigned int8[] serializedData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -407,6 +427,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Close() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -426,9 +448,9 @@
 ## Examples  
  The following example uses the Close method to write all resource objects in a <xref:System.Resources.ResourceWriter> class to the output stream. The code then shuts down the writer.  
   
- [!code-cs[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/csharp/m-system.resources.resou_6_1.cs)]
- [!code-cpp[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/cpp/m-system.resources.resou_6_1.cpp)]
- [!code-vb[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_6_1.vb)]  
+ [!code-cs[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/csharp/m-system.resources.resou_9_1.cs)]
+ [!code-cpp[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/cpp/m-system.resources.resou_9_1.cpp)]
+ [!code-vb[System.Resources.ResourceWriter Cstr1 Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_9_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -442,6 +464,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -477,6 +501,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Generate() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -505,9 +531,9 @@
 ## Examples  
  The following code example uses the Generate method to write all resource objects in a <xref:System.Resources.ResourceWriter> class to the output stream  
   
- [!code-vb[System.Resources.ResourceWriter.Generate Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_12_1.vb)]
- [!code-cs[System.Resources.ResourceWriter.Generate Example#1](~/add/codesnippet/csharp/m-system.resources.resou_12_1.cs)]
- [!code-cpp[System.Resources.ResourceWriter.Generate Example#1](~/add/codesnippet/cpp/m-system.resources.resou_12_1.cpp)]  
+ [!code-vb[System.Resources.ResourceWriter.Generate Example#1](~/add/codesnippet/visualbasic/m-system.resources.resou_15_1.vb)]
+ [!code-cs[System.Resources.ResourceWriter.Generate Example#1](~/add/codesnippet/csharp/m-system.resources.resou_15_1.cs)]
+ [!code-cpp[System.Resources.ResourceWriter.Generate Example#1](~/add/codesnippet/cpp/m-system.resources.resou_15_1.cpp)]  
   
  ]]></format>
         </remarks>
@@ -522,6 +548,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Func`2&lt;class System.Type, string&gt; TypeNameConverter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

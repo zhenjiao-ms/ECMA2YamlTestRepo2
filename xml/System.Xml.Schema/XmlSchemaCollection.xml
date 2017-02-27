@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit XmlSchemaCollection extends System.Object implements class System.Collections.ICollection, class System.Collections.IEnumerable" />
   <AssemblyInfo>
     <AssemblyName>System.Xml</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -54,6 +55,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -77,6 +80,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Xml.XmlNameTable nametable) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -84,7 +89,7 @@
       </Parameters>
       <Docs>
         <param name="nametable">The <see langword="XmlNameTable" /> to use.</param>
-        <summary>Initializes a new instance of the <see langword="XmlSchemaCollection" /> class with the specified &lt;xref:System.Xml.XmlNameTable&gt;. The <see langword="XmlNameTable" /> is used when loading schemas.</summary>
+        <summary>Initializes a new instance of the <see langword="XmlSchemaCollection" /> class with the specified <see cref="T:System.Xml.XmlNameTable" />. The <see langword="XmlNameTable" /> is used when loading schemas.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -94,6 +99,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Xml.Schema.XmlSchema Add(class System.Xml.Schema.XmlSchema schema) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -104,7 +111,7 @@
       </Parameters>
       <Docs>
         <param name="schema">The <see langword="XmlSchema" /> to add to the collection.</param>
-        <summary>Adds the &lt;xref:System.Xml.Schema.XmlSchema&gt; to the collection.</summary>
+        <summary>Adds the <see cref="T:System.Xml.Schema.XmlSchema" /> to the collection.</summary>
         <returns>The <see langword="XmlSchema" /> object.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -134,6 +141,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class System.Xml.Schema.XmlSchemaCollection schema) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -171,6 +180,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Xml.Schema.XmlSchema Add(string ns, string uri) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -184,7 +195,7 @@
         <param name="ns">The namespace URI associated with the schema. For XML Schemas, this will typically be the <see langword="targetNamespace" />.</param>
         <param name="uri">The URL that specifies the schema to load.</param>
         <summary>Adds the schema located by the given URL into the schema collection.</summary>
-        <returns>The &lt;xref:System.Xml.Schema.XmlSchema&gt; added to the schema collection; <see langword="null" /> if the schema being added is an XDR schema or if there are compilation errors in the schema.</returns>
+        <returns>The <see cref="T:System.Xml.Schema.XmlSchema" /> added to the schema collection; <see langword="null" /> if the schema being added is an XDR schema or if there are compilation errors in the schema.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -250,6 +261,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Xml.Schema.XmlSchema Add(string ns, class System.Xml.XmlReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -261,9 +274,10 @@ schemaColl.Add("urn:author", "names.xsd");
       </Parameters>
       <Docs>
         <param name="ns">The namespace URI associated with the schema. For XML Schemas, this will typically be the <see langword="targetNamespace" />.</param>
-        <param name="reader">&lt;xref:System.Xml.XmlReader&gt; containing the schema to add.</param>
-        <summary>Adds the schema contained in the &lt;xref:System.Xml.XmlReader&gt; to the schema collection.</summary>
-        <returns>The &lt;xref:System.Xml.Schema.XmlSchema&gt; added to the schema collection; <see langword="null" /> if the schema being added is an XDR schema or if there are compilation errors in the schema.</returns>
+        <param name="reader">
+          <see cref="T:System.Xml.XmlReader" /> containing the schema to add.</param>
+        <summary>Adds the schema contained in the <see cref="T:System.Xml.XmlReader" /> to the schema collection.</summary>
+        <returns>The <see cref="T:System.Xml.Schema.XmlSchema" /> added to the schema collection; <see langword="null" /> if the schema being added is an XDR schema or if there are compilation errors in the schema.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -295,6 +309,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Xml.Schema.XmlSchema Add(class System.Xml.Schema.XmlSchema schema, class System.Xml.XmlResolver resolver) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -307,7 +323,7 @@ schemaColl.Add("urn:author", "names.xsd");
       <Docs>
         <param name="schema">The <see langword="XmlSchema" /> to add to the collection.</param>
         <param name="resolver">The <see cref="T:System.Xml.XmlResolver" /> used to resolve namespaces referenced in <see langword="include" /> and <see langword="import" /> elements. If this is <see langword="null" />, external references are not resolved.</param>
-        <summary>Adds the &lt;xref:System.Xml.Schema.XmlSchema&gt; to the collection. The specified <see cref="T:System.Xml.XmlResolver" /> is used to resolve any external references.</summary>
+        <summary>Adds the <see cref="T:System.Xml.Schema.XmlSchema" /> to the collection. The specified <see cref="T:System.Xml.XmlResolver" /> is used to resolve any external references.</summary>
         <returns>The <see langword="XmlSchema" /> added to the schema collection.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -340,6 +356,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Xml.Schema.XmlSchema Add(string ns, class System.Xml.XmlReader reader, class System.Xml.XmlResolver resolver) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -352,10 +370,11 @@ schemaColl.Add("urn:author", "names.xsd");
       </Parameters>
       <Docs>
         <param name="ns">The namespace URI associated with the schema. For XML Schemas, this will typically be the <see langword="targetNamespace" />.</param>
-        <param name="reader">&lt;xref:System.Xml.XmlReader&gt; containing the schema to add.</param>
+        <param name="reader">
+          <see cref="T:System.Xml.XmlReader" /> containing the schema to add.</param>
         <param name="resolver">The <see cref="T:System.Xml.XmlResolver" /> used to resolve namespaces referenced in <see langword="include" /> and <see langword="import" /> elements or <see langword="x-schema" /> attribute (XDR schemas). If this is <see langword="null" />, external references are not resolved.</param>
-        <summary>Adds the schema contained in the &lt;xref:System.Xml.XmlReader&gt; to the schema collection. The specified <see cref="T:System.Xml.XmlResolver" /> is used to resolve any external resources.</summary>
-        <returns>The &lt;xref:System.Xml.Schema.XmlSchema&gt; added to the schema collection; <see langword="null" /> if the schema being added is an XDR schema or if there are compilation errors in the schema.</returns>
+        <summary>Adds the schema contained in the <see cref="T:System.Xml.XmlReader" /> to the schema collection. The specified <see cref="T:System.Xml.XmlResolver" /> is used to resolve any external resources.</summary>
+        <returns>The <see cref="T:System.Xml.Schema.XmlSchema" /> added to the schema collection; <see langword="null" /> if the schema being added is an XDR schema or if there are compilation errors in the schema.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -380,6 +399,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Contains(string ns) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -420,6 +441,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Contains(class System.Xml.Schema.XmlSchema schema) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -430,7 +453,7 @@ schemaColl.Add("urn:author", "names.xsd");
       </Parameters>
       <Docs>
         <param name="schema">The <see langword="XmlSchema" /> object.</param>
-        <summary>Gets a value indicating whether the <see langword="targetNamespace" /> of the specified &lt;xref:System.Xml.Schema.XmlSchema&gt; is in the collection.</summary>
+        <summary>Gets a value indicating whether the <see langword="targetNamespace" /> of the specified <see cref="T:System.Xml.Schema.XmlSchema" /> is in the collection.</summary>
         <returns>
           <see langword="true" /> if there is a schema in the collection with the same <see langword="targetNamespace" />; otherwise, <see langword="false" />.</returns>
         <remarks>
@@ -451,6 +474,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(class System.Xml.Schema.XmlSchema[] array, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -482,6 +507,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -508,6 +535,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Xml.Schema.XmlSchemaCollectionEnumerator GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -544,6 +573,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".property instance class System.Xml.Schema.XmlSchema Item(string)" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -554,7 +585,7 @@ schemaColl.Add("urn:author", "names.xsd");
       </Parameters>
       <Docs>
         <param name="ns">The namespace URI associated with the schema you want to return. This will typically be the <see langword="targetNamespace" /> of the schema.</param>
-        <summary>Gets the &lt;xref:System.Xml.Schema.XmlSchema&gt; associated with the given namespace URI.</summary>
+        <summary>Gets the <see cref="T:System.Xml.Schema.XmlSchema" /> associated with the given namespace URI.</summary>
         <value>The <see langword="XmlSchema" /> associated with the namespace URI; <see langword="null" /> if there is no loaded schema associated with the given namespace or if the namespace is associated with an XDR schema.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -583,8 +614,15 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".property instance class System.Xml.XmlNameTable NameTable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.XmlNameTable</ReturnType>
       </ReturnValue>
@@ -609,6 +647,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.Collections.ICollection.CopyTo(class System.Array array, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -638,6 +678,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".property instance int32 System.Collections.ICollection.Count" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -662,6 +704,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".property instance bool System.Collections.ICollection.IsSynchronized" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -686,6 +730,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".property instance object System.Collections.ICollection.SyncRoot" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -710,6 +756,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -718,7 +766,7 @@ schemaColl.Add("urn:author", "names.xsd");
       <Parameters />
       <Docs>
         <summary>For a description of this member, see &lt;xref:System.Xml.Schema.XmlSchemaCollection.GetEnumerator%2A?displayProperty=fullName&gt;.</summary>
-        <returns>Returns the &lt;xref:System.Collections.IEnumerator&gt; for the collection.</returns>
+        <returns>Returns the <see cref="T:System.Collections.IEnumerator" /> for the collection.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -735,6 +783,8 @@ schemaColl.Add("urn:author", "names.xsd");
       <MemberSignature Language="ILAsm" Value=".event class System.Xml.Schema.ValidationEventHandler ValidationEventHandler" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

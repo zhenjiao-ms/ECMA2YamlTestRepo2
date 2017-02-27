@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ReadOnlyAttribute extends System.Attribute" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -32,23 +33,23 @@
 ## Examples  
  The following code example marks a property as read-only.  
   
- [!code-cs[Classic ReadOnlyAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._82_1.cs)]
- [!code-vb[Classic ReadOnlyAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._82_1.vb)]
- [!code-cpp[Classic ReadOnlyAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._82_1.cpp)]  
+ [!code-cs[Classic ReadOnlyAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._85_1.cs)]
+ [!code-vb[Classic ReadOnlyAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._85_1.vb)]
+ [!code-cpp[Classic ReadOnlyAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._85_1.cpp)]  
   
  The next code example shows how to check the value of the ReadOnlyAttribute for `MyProperty`. First, the code gets a <xref:System.ComponentModel.PropertyDescriptorCollection> with all the properties for the object. Next, it indexes into the <xref:System.ComponentModel.PropertyDescriptorCollection> to get `MyProperty`. Then it returns the attributes for this property and saves them in the attributes variable.  
   
  The example presents two different ways of checking the value of the ReadOnlyAttribute. In the second code fragment, the example calls the <xref:System.ComponentModel.ReadOnlyAttribute.Equals%2A> method. In the last code fragment, the example uses the <xref:System.ComponentModel.ReadOnlyAttribute.IsReadOnly%2A> property to check the value.  
   
- [!code-cs[Classic ReadOnlyAttribute Example#2](~/add/codesnippet/csharp/t-system.componentmodel._82_2.cs)]
- [!code-vb[Classic ReadOnlyAttribute Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._82_2.vb)]
- [!code-cpp[Classic ReadOnlyAttribute Example#2](~/add/codesnippet/cpp/t-system.componentmodel._82_2.cpp)]  
+ [!code-cs[Classic ReadOnlyAttribute Example#2](~/add/codesnippet/csharp/t-system.componentmodel._85_2.cs)]
+ [!code-vb[Classic ReadOnlyAttribute Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._85_2.vb)]
+ [!code-cpp[Classic ReadOnlyAttribute Example#2](~/add/codesnippet/cpp/t-system.componentmodel._85_2.cpp)]  
   
  If you marked a class with the ReadOnlyAttribute, use the following code example to check the value.  
   
- [!code-cs[Classic ReadOnlyAttribute Example#3](~/add/codesnippet/csharp/t-system.componentmodel._82_3.cs)]
- [!code-vb[Classic ReadOnlyAttribute Example#3](~/add/codesnippet/visualbasic/t-system.componentmodel._82_3.vb)]
- [!code-cpp[Classic ReadOnlyAttribute Example#3](~/add/codesnippet/cpp/t-system.componentmodel._82_3.cpp)]  
+ [!code-cs[Classic ReadOnlyAttribute Example#3](~/add/codesnippet/csharp/t-system.componentmodel._85_3.cs)]
+ [!code-vb[Classic ReadOnlyAttribute Example#3](~/add/codesnippet/visualbasic/t-system.componentmodel._85_3.vb)]
+ [!code-cpp[Classic ReadOnlyAttribute Example#3](~/add/codesnippet/cpp/t-system.componentmodel._85_3.cpp)]  
   
  ]]></format>
     </remarks>
@@ -60,8 +61,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool isReadOnly) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="isReadOnly" Type="System.Boolean" />
       </Parameters>
@@ -83,9 +91,9 @@
 ## Examples  
  The following code example marks a property as read-only. This code creates a new <xref:System.ComponentModel.ReadOnlyAttribute>, sets its value to <xref:System.ComponentModel.ReadOnlyAttribute.Yes?displayProperty=fullName>, and binds it to the property.  
   
- [!code-cpp[Classic ReadOnlyAttribute.ReadOnlyAttribute Example#1](~/add/codesnippet/cpp/m-system.componentmodel._35_1.cpp)]
- [!code-vb[Classic ReadOnlyAttribute.ReadOnlyAttribute Example#1](~/add/codesnippet/visualbasic/m-system.componentmodel._35_1.vb)]
- [!code-cs[Classic ReadOnlyAttribute.ReadOnlyAttribute Example#1](~/add/codesnippet/csharp/m-system.componentmodel._35_1.cs)]  
+ [!code-cpp[Classic ReadOnlyAttribute.ReadOnlyAttribute Example#1](~/add/codesnippet/cpp/m-system.componentmodel._36_1.cpp)]
+ [!code-vb[Classic ReadOnlyAttribute.ReadOnlyAttribute Example#1](~/add/codesnippet/visualbasic/m-system.componentmodel._36_1.vb)]
+ [!code-cs[Classic ReadOnlyAttribute.ReadOnlyAttribute Example#1](~/add/codesnippet/csharp/m-system.componentmodel._36_1.cs)]  
   
  ]]></format>
         </remarks>
@@ -97,6 +105,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.ReadOnlyAttribute Default" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -120,6 +130,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -142,6 +154,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -160,6 +174,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsDefaultAttribute() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -179,8 +195,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsReadOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -202,9 +225,9 @@
   
  Then the code sets `myAttribute` to the value of the <xref:System.ComponentModel.ReadOnlyAttribute> in the <xref:System.ComponentModel.AttributeCollection> and checks whether the property is read-only.  
   
- [!code-cs[Classic ReadOnlyAttribute.IsReadOnly Example#1](~/add/codesnippet/csharp/p-system.componentmodel._25_1.cs)]
- [!code-cpp[Classic ReadOnlyAttribute.IsReadOnly Example#1](~/add/codesnippet/cpp/p-system.componentmodel._25_1.cpp)]
- [!code-vb[Classic ReadOnlyAttribute.IsReadOnly Example#1](~/add/codesnippet/visualbasic/p-system.componentmodel._25_1.vb)]  
+ [!code-cs[Classic ReadOnlyAttribute.IsReadOnly Example#1](~/add/codesnippet/csharp/p-system.componentmodel._27_1.cs)]
+ [!code-cpp[Classic ReadOnlyAttribute.IsReadOnly Example#1](~/add/codesnippet/cpp/p-system.componentmodel._27_1.cpp)]
+ [!code-vb[Classic ReadOnlyAttribute.IsReadOnly Example#1](~/add/codesnippet/visualbasic/p-system.componentmodel._27_1.vb)]  
   
  ]]></format>
         </remarks>
@@ -216,6 +239,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.ReadOnlyAttribute No" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -241,6 +266,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.ReadOnlyAttribute Yes" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

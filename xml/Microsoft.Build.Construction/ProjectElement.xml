@@ -20,13 +20,9 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Build.Construction.ProjectElementContainer&gt; AllParents" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Runtime.CompilerServices.IteratorStateMachine(typeof(Microsoft.Build.Construction.ProjectElement/&lt;get_AllParents&gt;d__14))</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.Build.Construction.ProjectElementContainer&gt;</ReturnType>
       </ReturnValue>
@@ -46,6 +42,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Condition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -68,7 +65,7 @@
   
  Removes the attribute if the value to set is empty.  
   
- It is possible for derived classes to throw an &lt;xref:System.InvalidOperationException&gt; if setting the condition is not applicable for those elements.</summary>
+ It is possible for derived classes to throw an <see cref="T:System.InvalidOperationException" /> if setting the condition is not applicable for those elements.</summary>
         <value>Returns the Condition attribute value. Returns an empty string if the attribute is not present.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -83,32 +80,28 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="ConditionLocation">
-      <MemberSignature Language="C#" Value="public virtual Microsoft.Build.Construction.ElementLocation ConditionLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ElementLocation ConditionLocation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Build.Construction.ElementLocation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Location of the "Condition" attribute on this element, if any.  
-  
- If there is no such attribute, returns null.</summary>
-        <value>Returns <see cref="T:Microsoft.Build.Construction.ElementLocation" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="ContainingProject">
       <MemberSignature Language="C#" Value="public Microsoft.Build.Construction.ProjectRootElement ContainingProject { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ProjectRootElement ContainingProject" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>Microsoft.Build.Construction.ProjectRootElement</ReturnType>
       </ReturnValue>
@@ -126,6 +119,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Label" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -157,51 +151,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="LabelLocation">
-      <MemberSignature Language="C#" Value="public Microsoft.Build.Construction.ElementLocation LabelLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ElementLocation LabelLocation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Build.Construction.ElementLocation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Location of the "Label" attribute on this element, if any.  
-  
- If there is no such attribute, returns null;</summary>
-        <value>Returns <see cref="T:Microsoft.Build.Construction.ElementLocation" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Location">
-      <MemberSignature Language="C#" Value="public Microsoft.Build.Construction.ElementLocation Location { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ElementLocation Location" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Build.Construction.ElementLocation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Location of the corresponding Xml element.  
-  
- May not be correct if file is not saved, or file has been edited since it was last saved.  
-  
- In the case of an unsaved edit, the location only contains the path to the file that the element originates from.</summary>
-        <value>Returns <see cref="T:Microsoft.Build.Construction.ElementLocation" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="NextSibling">
       <MemberSignature Language="C#" Value="public Microsoft.Build.Construction.ProjectElement NextSibling { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ProjectElement NextSibling" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -209,7 +164,13 @@
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
         </Attribute>
         <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>set: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -229,11 +190,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ProjectElementContainer Parent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -260,6 +225,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ProjectElement PreviousSibling" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -267,7 +233,13 @@
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
         </Attribute>
         <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>set: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit XmlResolver extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Xml</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -74,8 +75,15 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Xml.XmlResolver" /> class.</summary>
@@ -91,10 +99,12 @@
       </Docs>
     </Member>
     <Member MemberName="Credentials">
-      <MemberSignature Language="C#" Value="public virtual System.Net.ICredentials Credentials { set; }" />
+      <MemberSignature Language="C#" Value="public abstract System.Net.ICredentials Credentials { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Net.ICredentials Credentials" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -143,6 +153,8 @@ resolver.Credentials = myCache;
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetEntity(class System.Uri absoluteUri, string role, class System.Type ofObjectToReturn) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -186,43 +198,13 @@ resolver.Credentials = myCache;
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="GetEntityAsync">
-      <MemberSignature Language="C#" Value="public virtual System.Threading.Tasks.Task&lt;object&gt; GetEntityAsync (Uri absoluteUri, string role, Type ofObjectToReturn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.Task`1&lt;object&gt; GetEntityAsync(class System.Uri absoluteUri, string role, class System.Type ofObjectToReturn) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task&lt;System.Object&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="absoluteUri" Type="System.Uri" />
-        <Parameter Name="role" Type="System.String" />
-        <Parameter Name="ofObjectToReturn" Type="System.Type" />
-      </Parameters>
-      <Docs>
-        <param name="absoluteUri">The URI returned from &lt;xref:System.Xml.XmlResolver.ResolveUri%2A&gt;.</param>
-        <param name="role">Currently not used.</param>
-        <param name="ofObjectToReturn">The type of object to return. The current version only returns &lt;xref:System.IO.Stream&gt; objects.</param>
-        <summary>Asynchronously maps a URI to an object that contains the actual resource.</summary>
-        <returns>A stream object or <see langword="null" /> if a type other than stream is specified.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This is the asynchronous version of <xref:System.Xml.XmlResolver.GetEntity%2A>, with the same functionality. To use this method, you must set the <xref:System.Xml.XmlReaderSettings.Async%2A> flag to `true`.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="ResolveUri">
       <MemberSignature Language="C#" Value="public virtual Uri ResolveUri (Uri baseUri, string relativeUri);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Uri ResolveUri(class System.Uri baseUri, string relativeUri) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -260,6 +242,7 @@ resolver.Credentials = myCache;
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SupportsType(class System.Uri absoluteUri, class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Xml</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -272,7 +255,7 @@ resolver.Credentials = myCache;
       <Docs>
         <param name="absoluteUri">The URI.</param>
         <param name="type">The type to return.</param>
-        <summary>Enables the resolver to return types other than &lt;xref:System.IO.Stream?displayProperty=fullName&gt;.</summary>
+        <summary>Enables the resolver to return types other than <see cref="T:System.IO.Stream" />.</summary>
         <returns>
           <see langword="true" /> if the <paramref name="type" /> is supported; otherwise, <see langword="false" />.</returns>
         <remarks>To be added.</remarks>

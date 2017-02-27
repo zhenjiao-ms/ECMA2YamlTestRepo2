@@ -1,8 +1,9 @@
 <Type Name="ListCollectionView" FullName="System.Windows.Data.ListCollectionView">
-  <TypeSignature Language="C#" Value="public class ListCollectionView : System.Windows.Data.CollectionView, System.Collections.IComparer, System.ComponentModel.ICollectionViewLiveShaping, System.ComponentModel.IEditableCollectionViewAddNewItem, System.ComponentModel.IItemProperties" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ListCollectionView extends System.Windows.Data.CollectionView implements class System.Collections.IComparer, class System.ComponentModel.ICollectionViewLiveShaping, class System.ComponentModel.IEditableCollectionView, class System.ComponentModel.IEditableCollectionViewAddNewItem, class System.ComponentModel.IItemProperties" />
+  <TypeSignature Language="C#" Value="public class ListCollectionView : System.Windows.Data.CollectionView, System.Collections.IComparer, System.ComponentModel.IEditableCollectionView, System.ComponentModel.IEditableCollectionViewAddNewItem, System.ComponentModel.IItemProperties" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ListCollectionView extends System.Windows.Data.CollectionView implements class System.Collections.IComparer, class System.ComponentModel.IEditableCollectionView, class System.ComponentModel.IEditableCollectionViewAddNewItem, class System.ComponentModel.IItemProperties" />
   <AssemblyInfo>
     <AssemblyName>PresentationFramework</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -13,7 +14,7 @@
       <InterfaceName>System.Collections.IComparer</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>System.ComponentModel.ICollectionViewLiveShaping</InterfaceName>
+      <InterfaceName>System.ComponentModel.IEditableCollectionView</InterfaceName>
     </Interface>
     <Interface>
       <InterfaceName>System.ComponentModel.IEditableCollectionViewAddNewItem</InterfaceName>
@@ -23,7 +24,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Represents the collection view for collections that implement &lt;xref:System.Collections.IList&gt;.</summary>
+    <summary>Represents the collection view for collections that implement <see cref="T:System.Collections.IList" />.</summary>
     <remarks>
       <format type="text/markdown"><![CDATA[  
   
@@ -44,14 +45,16 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.IList list) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="list" Type="System.Collections.IList" />
       </Parameters>
       <Docs>
-        <param name="list">The underlying collection, which must implement &lt;xref:System.Collections.IList&gt;.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Windows.Data.ListCollectionView" /> class, using a supplied collection that implements &lt;xref:System.Collections.IList&gt;.</summary>
+        <param name="list">The underlying collection, which must implement <see cref="T:System.Collections.IList" />.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Windows.Data.ListCollectionView" /> class, using a supplied collection that implements <see cref="T:System.Collections.IList" />.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -61,14 +64,24 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.IComparer ActiveComparer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.IComparer</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the current active comparer that is used in sorting.</summary>
-        <value>An &lt;xref:System.Collections.IComparer&gt; object that is the active comparer.</value>
+        <value>An <see cref="T:System.Collections.IComparer" /> object that is the active comparer.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -78,8 +91,18 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Predicate`1&lt;object&gt; ActiveFilter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Predicate&lt;System.Object&gt;</ReturnType>
       </ReturnValue>
@@ -95,6 +118,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object AddNew() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -120,6 +145,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object AddNewItem(object newItem) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -149,6 +175,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanAddNew" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -174,6 +202,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanAddNewItem" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -199,6 +228,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanCancelEdit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -224,6 +255,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CancelEdit() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -248,6 +281,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CancelNew() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -260,65 +295,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="CanChangeLiveFiltering">
-      <MemberSignature Language="C#" Value="public bool CanChangeLiveFiltering { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool CanChangeLiveFiltering" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether the collection view supports turning filtering data in real time on or off.</summary>
-        <value>
-          <see langword="true" /> in all cases.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="CanChangeLiveGrouping">
-      <MemberSignature Language="C#" Value="public bool CanChangeLiveGrouping { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool CanChangeLiveGrouping" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether the collection view supports turning grouping data in real time on or off.</summary>
-        <value>
-          <see langword="true" /> in all cases.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="CanChangeLiveSorting">
-      <MemberSignature Language="C#" Value="public bool CanChangeLiveSorting { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool CanChangeLiveSorting" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether the collection view supports turning sorting data in real time on or off.</summary>
-        <value>
-          <see langword="true" /> in all cases.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="CanFilter">
       <MemberSignature Language="C#" Value="public override bool CanFilter { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanFilter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -343,6 +326,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanGroup" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -361,6 +346,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanRemove" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -386,6 +373,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CanSort" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -403,6 +392,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CommitEdit() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -420,6 +411,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CommitNew() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -444,6 +437,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 Compare(object o1, object o2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -467,6 +462,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Contains(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -496,6 +493,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -547,6 +546,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance object CurrentAddItem" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -564,8 +565,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance object CurrentEditItem" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -581,14 +589,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.IComparer CustomSort" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.IComparer</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a custom object that implements &lt;xref:System.Collections.IComparer&gt; to sort items in the view.</summary>
-        <value>The sort criteria as an implementation of &lt;xref:System.Collections.IComparer&gt;.</value>
+        <summary>Gets or sets a custom object that implements <see cref="T:System.Collections.IComparer" /> to sort items in the view.</summary>
+        <value>The sort criteria as an implementation of <see cref="T:System.Collections.IComparer" />.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -607,6 +622,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EditItem(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -627,6 +644,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Predicate`1&lt;object&gt; Filter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -644,6 +663,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Collections.IEnumerator GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -652,7 +673,7 @@
       <Parameters />
       <Docs>
         <summary>Returns an object that you can use to enumerate the items in the view.</summary>
-        <returns>An &lt;xref:System.Collections.IEnumerator&gt; object that you can use to enumerate the items in the view.</returns>
+        <returns>An <see cref="T:System.Collections.IEnumerator" /> object that you can use to enumerate the items in the view.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -669,6 +690,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object GetItemAt(int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -698,6 +721,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Windows.Data.GroupDescriptionSelectorCallback GroupBySelector" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -720,6 +745,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ObservableCollection`1&lt;class System.ComponentModel.GroupDescription&gt; GroupDescriptions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -756,6 +783,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ReadOnlyObservableCollection`1&lt;object&gt; Groups" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -780,6 +809,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 IndexOf(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -801,6 +832,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InternalContains(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -823,6 +856,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 InternalCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -840,6 +875,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Collections.IEnumerator InternalGetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -858,6 +895,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance int32 InternalIndexOf(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -879,6 +918,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance object InternalItemAt(int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -900,14 +941,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.IList InternalList" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.IList</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the complete and unfiltered underlying collection.</summary>
-        <value>The underlying collection, which must implement &lt;xref:System.Collections.IList&gt;.</value>
+        <value>The underlying collection, which must implement <see cref="T:System.Collections.IList" />.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -917,6 +965,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsAddingNew" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -942,6 +992,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDataInGroupOrder" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -971,6 +1023,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsEditingItem" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -996,6 +1050,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsEmpty" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1014,8 +1070,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsGrouping" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -1027,68 +1090,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="IsLiveFiltering">
-      <MemberSignature Language="C#" Value="public Nullable&lt;bool&gt; IsLiveFiltering { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;bool&gt; IsLiveFiltering" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that indicates whether filtering data in real time is enabled.</summary>
-        <value>
-          <see langword="true" /> if filtering data in real time is enabled; <see langword="false" /> if live filtering is not enabled; <see langword="null" /> if it cannot be determined whether the collection view implements live filtering.</value>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">IsLiveFiltering cannot be set to <see langword="null" />.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsLiveGrouping">
-      <MemberSignature Language="C#" Value="public Nullable&lt;bool&gt; IsLiveGrouping { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;bool&gt; IsLiveGrouping" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that indicates whether grouping data in real time is enabled.</summary>
-        <value>
-          <see langword="true" /> if grouping data in real time is enabled; <see langword="false" /> if live grouping is not enabled; <see langword="null" /> if it cannot be determined whether the collection view implements live grouping.</value>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">IsLiveGrouping cannot be set to <see langword="null" />.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsLiveSorting">
-      <MemberSignature Language="C#" Value="public Nullable&lt;bool&gt; IsLiveSorting { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;bool&gt; IsLiveSorting" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a value that indicates whether sorting in real time is enabled.</summary>
-        <value>
-          <see langword="true" /> if sorting data in real time is enabled; <see langword="false" /> if live sorting is not enabled; <see langword="null" /> if it cannot be determined whether the collection view implements live sorting.</value>
-        <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">&lt;xref:System.Windows.Data.ListCollectionView.IsLiveFiltering%2A&gt; cannot be set to <see langword="null" />.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="ItemProperties">
       <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.ReadOnlyCollection&lt;System.ComponentModel.ItemPropertyInfo&gt; ItemProperties { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.ComponentModel.ItemPropertyInfo&gt; ItemProperties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1101,62 +1109,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="LiveFilteringProperties">
-      <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.ObservableCollection&lt;string&gt; LiveFilteringProperties { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ObservableCollection`1&lt;string&gt; LiveFilteringProperties" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a collection of strings that specify the properties that participate in filtering data in real time.</summary>
-        <value>A collection of strings that specify the properties that participate in filtering data in real time.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="LiveGroupingProperties">
-      <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.ObservableCollection&lt;string&gt; LiveGroupingProperties { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ObservableCollection`1&lt;string&gt; LiveGroupingProperties" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a collection of strings that specify the properties that participate in grouping data in real time.</summary>
-        <value>A collection of strings that specify the properties that participate in grouping data in real time.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="LiveSortingProperties">
-      <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.ObservableCollection&lt;string&gt; LiveSortingProperties { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.ObservableCollection`1&lt;string&gt; LiveSortingProperties" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.ObjectModel.ObservableCollection&lt;System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a collection of strings that specify the properties that participate in sorting data in real time.</summary>
-        <value>A collection of strings that specify the properties that participate in sorting data in real time.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="MoveCurrentToPosition">
       <MemberSignature Language="C#" Value="public override bool MoveCurrentToPosition (int position);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool MoveCurrentToPosition(int32 position) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1180,8 +1139,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.ComponentModel.NewItemPlaceholderPosition NewItemPlaceholderPosition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ComponentModel.NewItemPlaceholderPosition</ReturnType>
       </ReturnValue>
@@ -1192,35 +1158,15 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="OnAllowsCrossThreadChangesChanged">
-      <MemberSignature Language="C#" Value="protected override void OnAllowsCrossThreadChangesChanged ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnAllowsCrossThreadChangesChanged() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Occurs when the &lt;xref:System.Windows.Data.CollectionView.AllowsCrossThreadChanges%2A&gt; property changes.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="OnBeginChangeLogging">
       <MemberSignature Language="C#" Value="protected override void OnBeginChangeLogging (System.Collections.Specialized.NotifyCollectionChangedEventArgs args);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnBeginChangeLogging(class System.Collections.Specialized.NotifyCollectionChangedEventArgs args) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete("Replaced by OnAllowsCrossThreadChangesChanged")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1247,6 +1193,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool PassesFilter(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1276,6 +1224,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ProcessCollectionChanged(class System.Collections.Specialized.NotifyCollectionChangedEventArgs args) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1297,6 +1247,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RefreshOverride() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1314,6 +1266,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Remove(object item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1341,6 +1295,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAt(int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1370,6 +1326,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ComponentModel.SortDescriptionCollection SortDescriptions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1396,8 +1354,15 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance int32 System.Collections.IComparer.Compare(object o1, object o2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1419,6 +1384,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool UsesLocalArray" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>PresentationFramework</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

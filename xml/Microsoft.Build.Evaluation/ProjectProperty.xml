@@ -1,6 +1,6 @@
 <Type Name="ProjectProperty" FullName="Microsoft.Build.Evaluation.ProjectProperty">
-  <TypeSignature Language="C#" Value="public abstract class ProjectProperty : IEquatable&lt;Microsoft.Build.Evaluation.ProjectProperty&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit ProjectProperty extends System.Object implements class System.IEquatable`1&lt;class Microsoft.Build.Evaluation.ProjectProperty&gt;" />
+  <TypeSignature Language="C#" Value="public class ProjectProperty : IEquatable&lt;Microsoft.Build.Evaluation.ProjectProperty&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ProjectProperty extends System.Object implements class System.IEquatable`1&lt;class Microsoft.Build.Evaluation.ProjectProperty&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.Build</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -15,7 +15,7 @@
   </Interfaces>
   <Attributes>
     <Attribute>
-      <AttributeName>System.Diagnostics.DebuggerDisplay("{Name}={EvaluatedValue} [{UnevaluatedValue}]")</AttributeName>
+      <AttributeName>System.Diagnostics.DebuggerDisplay("{name}={EvaluatedValue} [{xml.Value}]")</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
@@ -29,6 +29,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance string EvaluatedValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -54,17 +55,13 @@
       </Docs>
     </Member>
     <Member MemberName="IsEnvironmentProperty">
-      <MemberSignature Language="C#" Value="public abstract bool IsEnvironmentProperty { get; }" />
+      <MemberSignature Language="C#" Value="public bool IsEnvironmentProperty { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsEnvironmentProperty" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -76,10 +73,11 @@
       </Docs>
     </Member>
     <Member MemberName="IsGlobalProperty">
-      <MemberSignature Language="C#" Value="public abstract bool IsGlobalProperty { get; }" />
+      <MemberSignature Language="C#" Value="public bool IsGlobalProperty { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsGlobalProperty" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -98,10 +96,11 @@
       </Docs>
     </Member>
     <Member MemberName="IsImported">
-      <MemberSignature Language="C#" Value="public abstract bool IsImported { get; }" />
+      <MemberSignature Language="C#" Value="public bool IsImported { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsImported" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -115,10 +114,11 @@
       </Docs>
     </Member>
     <Member MemberName="IsReservedProperty">
-      <MemberSignature Language="C#" Value="public abstract bool IsReservedProperty { get; }" />
+      <MemberSignature Language="C#" Value="public bool IsReservedProperty { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsReservedProperty" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -137,10 +137,11 @@
       </Docs>
     </Member>
     <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public abstract string Name { get; }" />
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -149,6 +150,9 @@
         </Attribute>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -162,15 +166,19 @@
       </Docs>
     </Member>
     <Member MemberName="Predecessor">
-      <MemberSignature Language="C#" Value="public abstract Microsoft.Build.Evaluation.ProjectProperty Predecessor { get; }" />
+      <MemberSignature Language="C#" Value="public Microsoft.Build.Evaluation.ProjectProperty Predecessor { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Evaluation.ProjectProperty Predecessor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -197,6 +205,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Evaluation.Project Project" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -205,6 +214,9 @@
         </Attribute>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -222,6 +234,7 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance bool System.IEquatable&lt;Microsoft.Build.Evaluation.ProjectProperty&gt;.Equals(class Microsoft.Build.Evaluation.ProjectProperty other) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -238,10 +251,11 @@
       </Docs>
     </Member>
     <Member MemberName="UnevaluatedValue">
-      <MemberSignature Language="C#" Value="public abstract string UnevaluatedValue { get; set; }" />
+      <MemberSignature Language="C#" Value="public string UnevaluatedValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string UnevaluatedValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -269,10 +283,11 @@
       </Docs>
     </Member>
     <Member MemberName="Xml">
-      <MemberSignature Language="C#" Value="public abstract Microsoft.Build.Construction.ProjectPropertyElement Xml { get; }" />
+      <MemberSignature Language="C#" Value="public Microsoft.Build.Construction.ProjectPropertyElement Xml { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Build.Construction.ProjectPropertyElement Xml" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.Build</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -281,6 +296,9 @@
         </Attribute>
         <Attribute>
           <AttributeName>get: System.Diagnostics.DebuggerStepThrough</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

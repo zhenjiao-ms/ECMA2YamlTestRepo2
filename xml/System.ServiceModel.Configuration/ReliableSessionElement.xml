@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ReliableSessionElement extends System.ServiceModel.Configuration.BindingElementExtensionElement" />
   <AssemblyInfo>
     <AssemblyName>System.ServiceModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -27,8 +28,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Configuration.ReliableSessionElement" /> class.</summary>
@@ -41,11 +49,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan AcknowledgementInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("acknowledgementInterval", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -56,7 +66,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the interval of time that a destination waits before sending an acknowledgment to the message source on reliable channels that are created by the factory.</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; that specifies the interval of time that a service waits until sending an acknowledgment to the message source. The default value is 2 seconds.</value>
+        <value>A <see cref="T:System.TimeSpan" /> that specifies the interval of time that a service waits until sending an acknowledgment to the message source. The default value is 2 seconds.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -66,6 +76,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ApplyConfiguration(class System.ServiceModel.Channels.BindingElement bindingElement) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -86,6 +98,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Type BindingElementType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -103,6 +117,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void CopyFrom(class System.ServiceModel.Configuration.ServiceModelExtensionElement from) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -123,6 +139,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class System.ServiceModel.Channels.BindingElement CreateBindingElement() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -140,6 +158,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool FlowControlEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -163,11 +183,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan InactivityTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("inactivityTimeout", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -177,8 +199,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; value that specifies the maximum duration the channel allows the other communicating party not to send any messages before faulting the channel.</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; value that specifies the maximum duration the channel allows the other communicating party not to send any messages before faulting the channel. The default is 00:10:00.</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> value that specifies the maximum duration the channel allows the other communicating party not to send any messages before faulting the channel.</summary>
+        <value>A <see cref="T:System.TimeSpan" /> value that specifies the maximum duration the channel allows the other communicating party not to send any messages before faulting the channel. The default is 00:10:00.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -195,6 +217,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void InitializeFrom(class System.ServiceModel.Channels.BindingElement bindingElement) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -214,6 +238,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 MaxPendingChannels" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -250,6 +276,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 MaxRetryCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -288,6 +316,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 MaxTransferWindowSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -322,6 +352,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool Ordered" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -345,6 +377,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Configuration.ConfigurationPropertyCollection Properties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -361,6 +395,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>

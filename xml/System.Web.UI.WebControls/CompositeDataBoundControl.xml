@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CompositeDataBoundControl extends System.Web.UI.WebControls.DataBoundControl implements class System.Web.UI.INamingContainer" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -41,8 +42,15 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.Web.UI.WebControls.CompositeDataBoundControl" /> class.</summary>
@@ -62,6 +70,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Web.UI.ControlCollection Controls" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -86,6 +96,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void CreateChildControls() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -110,6 +122,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 CreateChildControls(class System.Collections.IEnumerable dataSource, bool dataBinding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -120,7 +134,7 @@
         <Parameter Name="dataBinding" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="dataSource">An &lt;xref:System.Collections.IEnumerable&gt; that contains the values to bind to the control.</param>
+        <param name="dataSource">An <see cref="T:System.Collections.IEnumerable" /> that contains the values to bind to the control.</param>
         <param name="dataBinding">
           <see langword="true" /> to indicate that the CreateChildControls is called during data binding; otherwise, <see langword="false" />.</param>
         <summary>When overridden in an abstract class, creates the control hierarchy that is used to render the composite data-bound control based on the values from the specified data source.</summary>
@@ -144,81 +158,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="DeleteMethod">
-      <MemberSignature Language="C#" Value="protected string DeleteMethod { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string DeleteMethod" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the name of the method to call in order to delete data.</summary>
-        <value>The name of the method.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Setting this property causes model binding to be used as the data-binding method.  
-  
- For a tutorial series on using model binding with Web Forms, see [Model Binding and Web Forms](http://go.microsoft.com/fwlink/?LinkId=286117).  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="InsertMethod">
-      <MemberSignature Language="C#" Value="protected string InsertMethod { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string InsertMethod" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the name of the method to call in order to insert data.</summary>
-        <value>The name of the method.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Setting this property causes model binding to be used as the data-binding method.  
-  
- For a tutorial series on using model binding with Web Forms, see [Model Binding and Web Forms](http://go.microsoft.com/fwlink/?LinkId=286117).  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsUsingModelBinders">
-      <MemberSignature Language="C#" Value="protected override bool IsUsingModelBinders { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsUsingModelBinders" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that indicates whether model binding is in use.</summary>
-        <value>
-          <see langword="true" /> if model binding is in use; otherwise, <see langword="false" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="PerformDataBinding">
       <MemberSignature Language="C#" Value="protected override void PerformDataBinding (System.Collections.IEnumerable data);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void PerformDataBinding(class System.Collections.IEnumerable data) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -228,39 +174,13 @@
         <Parameter Name="data" Type="System.Collections.IEnumerable" />
       </Parameters>
       <Docs>
-        <param name="data">An &lt;xref:System.Collections.IEnumerable&gt; that contains the values to bind to the composite data-bound control.</param>
+        <param name="data">An <see cref="T:System.Collections.IEnumerable" /> that contains the values to bind to the composite data-bound control.</param>
         <summary>Binds the data from the data source to the composite data-bound control.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
 ## Remarks  
  The PerformDataBinding method is a helper method that is used by classes that derive from the <xref:System.Web.UI.WebControls.CompositeDataBoundControl> class to bind the data from the data source to the composite data-bound control.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateMethod">
-      <MemberSignature Language="C#" Value="protected string UpdateMethod { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string UpdateMethod" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the name of the method to call in order to update data.</summary>
-        <value>The name of the method.</value>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Setting this property causes model binding to be used as the data-binding method.  
-  
- For a tutorial series on using model binding with Web Forms, see [Model Binding and Web Forms](http://go.microsoft.com/fwlink/?LinkId=286117).  
   
  ]]></format>
         </remarks>

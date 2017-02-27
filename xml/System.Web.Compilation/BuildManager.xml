@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BuildManager extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -24,40 +25,12 @@
     <threadsafe />
   </Docs>
   <Members>
-    <Member MemberName="AddCompilationDependency">
-      <MemberSignature Language="C#" Value="public static void AddCompilationDependency (string dependency);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AddCompilationDependency(string dependency) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dependency" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="dependency">A string that represents a dependency.</param>
-        <summary>Specifies a string that represents a dependency that the build manager uses to help determine if a clean build is required.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The method must be called during the `Application_PreStartInit` stage of the application.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">The <paramref name="dependency" /> parameter is <see langword="null" /> or an empty string.</exception>
-        <exception cref="T:System.InvalidOperationException">The method was called after the <see langword="Application_PreStartInit" /> stage of the application.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="AddReferencedAssembly">
       <MemberSignature Language="C#" Value="public static void AddReferencedAssembly (System.Reflection.Assembly assembly);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AddReferencedAssembly(class System.Reflection.Assembly assembly) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -93,8 +66,14 @@
       <MemberSignature Language="ILAsm" Value=".property valuetype System.Nullable`1&lt;bool&gt; BatchCompilationEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
       </ReturnValue>
@@ -121,6 +100,8 @@
       <MemberSignature Language="ILAsm" Value=".property class System.Collections.IList CodeAssemblies" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -128,7 +109,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets a list of assemblies built from the App_Code directory.</summary>
-        <value>An &lt;xref:System.Collections.IList&gt; collection that contains the assemblies built from the App_Code directory.</value>
+        <value>An <see cref="T:System.Collections.IList" /> collection that contains the assemblies built from the App_Code directory.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -138,6 +119,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.Stream CreateCachedFile(string fileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -149,7 +131,7 @@
       <Docs>
         <param name="fileName">The name of the file to create.</param>
         <summary>Creates a cached file.</summary>
-        <returns>The &lt;xref:System.IO.Stream&gt; object for the new file.</returns>
+        <returns>The <see cref="T:System.IO.Stream" /> object for the new file.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -168,6 +150,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig object CreateInstanceFromVirtualPath(string virtualPath, class System.Type requiredBaseType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -181,7 +165,7 @@
         <param name="virtualPath">The virtual path of the file to create an instance of.</param>
         <param name="requiredBaseType">The base type that defines the object to be created.</param>
         <summary>Processes a file, given its virtual path, and creates an instance of the result.</summary>
-        <returns>The &lt;xref:System.Object&gt; that represents the instance of the processed file.</returns>
+        <returns>The <see cref="T:System.Object" /> that represents the instance of the processed file.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -198,6 +182,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Web.Compilation.BuildDependencySet GetCachedBuildDependencySet(class System.Web.HttpContext context, string virtualPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -221,6 +207,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Web.Compilation.BuildDependencySet GetCachedBuildDependencySet(class System.Web.HttpContext context, string virtualPath, bool ensureIsUpToDate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -256,6 +243,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Reflection.Assembly GetCompiledAssembly(string virtualPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -267,7 +256,7 @@
       <Docs>
         <param name="virtualPath">The virtual path to build into an assembly.</param>
         <summary>Compiles a file into an assembly using the specified virtual path.</summary>
-        <returns>An &lt;xref:System.Reflection.Assembly&gt; object that is compiled from the specified virtual path, which is cached to either memory or to disk.</returns>
+        <returns>An <see cref="T:System.Reflection.Assembly" /> object that is compiled from the specified virtual path, which is cached to either memory or to disk.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -277,6 +266,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetCompiledCustomString(string virtualPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -298,6 +289,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Type GetCompiledType(string virtualPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -309,7 +302,7 @@
       <Docs>
         <param name="virtualPath">The virtual path to build into a type.</param>
         <summary>Compiles a file, given its virtual path, and returns the compiled type.</summary>
-        <returns>A &lt;xref:System.Type&gt; object that represents the type generated from compiling the virtual path.</returns>
+        <returns>A <see cref="T:System.Type" /> object that represents the type generated from compiling the virtual path.</returns>
         <remarks>To be added.</remarks>
         <exception cref="T:System.Web.HttpException">An error occurred when compiling the virtual path.</exception>
         <exception cref="T:System.ArgumentNullException">
@@ -322,6 +315,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Type GetGlobalAsaxType() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -348,6 +342,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Web.Util.IWebObjectFactory GetObjectFactory(string virtualPath, bool throwIfNotFound) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -396,6 +391,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.ICollection GetReferencedAssemblies() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -404,7 +401,7 @@
       <Parameters />
       <Docs>
         <summary>Returns a list of assembly references that all page compilations must reference.</summary>
-        <returns>An &lt;xref:System.Collections.ICollection&gt; collection of assembly references.</returns>
+        <returns>An <see cref="T:System.Collections.ICollection" /> collection of assembly references.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -423,8 +420,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Type GetType(string typeName, bool throwOnError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
@@ -435,9 +439,9 @@
       <Docs>
         <param name="typeName">The name of the type.</param>
         <param name="throwOnError">
-          <see langword="true" /> to throw an exception if a &lt;xref:System.Type&gt; object cannot be generated for the type name; otherwise, <see langword="false" />.</param>
+          <see langword="true" /> to throw an exception if a <see cref="T:System.Type" /> object cannot be generated for the type name; otherwise, <see langword="false" />.</param>
         <summary>Finds a type in the top-level assemblies or in assemblies that are defined in configuration, and optionally throws an exception on failure.</summary>
-        <returns>A &lt;xref:System.Type&gt; object that represents the requested <paramref name="typeName" /> parameter.</returns>
+        <returns>A <see cref="T:System.Type" /> object that represents the requested <paramref name="typeName" /> parameter.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -464,6 +468,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Type GetType(string typeName, bool throwOnError, bool ignoreCase) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -477,11 +483,11 @@
       <Docs>
         <param name="typeName">The name of the type.</param>
         <param name="throwOnError">
-          <see langword="true" /> to throw an exception if a &lt;xref:System.Type&gt; cannot be generated for the type name; otherwise, <see langword="false" />.</param>
+          <see langword="true" /> to throw an exception if a <see cref="T:System.Type" /> cannot be generated for the type name; otherwise, <see langword="false" />.</param>
         <param name="ignoreCase">
           <see langword="true" /> if `typeName` is case-sensitive; otherwise, <see langword="false" />.</param>
         <summary>Finds a type in the top-level assemblies, or in assemblies that are defined in configuration, by using a case-insensitive search and optionally throwing an exception on failure.</summary>
-        <returns>A &lt;xref:System.Type&gt; object that represents the requested <paramref name="typeName" /> parameter.</returns>
+        <returns>A <see cref="T:System.Type" /> object that represents the requested <paramref name="typeName" /> parameter.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -508,6 +514,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.ICollection GetVirtualPathDependencies(string virtualPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -519,43 +527,7 @@
       <Docs>
         <param name="virtualPath">The virtual path used to determine the dependencies.</param>
         <summary>Provides a collection of virtual-path dependencies for a specified virtual path.</summary>
-        <returns>An &lt;xref:System.Collections.ICollection&gt; collection of files represented by virtual paths that are caching dependencies for the virtual path.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsPrecompiledApp">
-      <MemberSignature Language="C#" Value="public static bool IsPrecompiledApp { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property bool IsPrecompiledApp" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that specifies whether the application is precompiled.</summary>
-        <value>
-          <see langword="true" /> if the application is precompiled; otherwise, <see langword="false" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsUpdatablePrecompiledApp">
-      <MemberSignature Language="C#" Value="public static bool IsUpdatablePrecompiledApp { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property bool IsUpdatablePrecompiledApp" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a value that specifies whether the application is precompiled as updatable.</summary>
-        <value>
-          <see langword="true" /> if the application is precompiled as updatable; otherwise, <see langword="false" />.</value>
+        <returns>An <see cref="T:System.Collections.ICollection" /> collection of files represented by virtual paths that are caching dependencies for the virtual path.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -565,6 +537,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.Stream ReadCachedFile(string fileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -576,7 +549,7 @@
       <Docs>
         <param name="fileName">The name of the file to read.</param>
         <summary>Reads a cached file.</summary>
-        <returns>The &lt;xref:System.IO.Stream&gt; object for the file, or <see langword="null" /> if the file does not exist.</returns>
+        <returns>The <see cref="T:System.IO.Stream" /> object for the file, or <see langword="null" /> if the file does not exist.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -595,6 +568,7 @@
       <MemberSignature Language="ILAsm" Value=".property class System.Runtime.Versioning.FrameworkName TargetFramework" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

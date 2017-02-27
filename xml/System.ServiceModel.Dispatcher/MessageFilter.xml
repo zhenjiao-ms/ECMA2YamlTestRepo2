@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit MessageFilter extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.ServiceModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -14,16 +15,16 @@
       <AttributeName>System.Runtime.Serialization.DataContract</AttributeName>
     </Attribute>
     <Attribute>
-      <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.XPathMessageFilter))</AttributeName>
-    </Attribute>
-    <Attribute>
-      <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.ActionMessageFilter))</AttributeName>
+      <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.MatchNoneMessageFilter))</AttributeName>
     </Attribute>
     <Attribute>
       <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.MatchAllMessageFilter))</AttributeName>
     </Attribute>
     <Attribute>
-      <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.MatchNoneMessageFilter))</AttributeName>
+      <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.XPathMessageFilter))</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>System.Runtime.Serialization.KnownType(typeof(System.ServiceModel.Dispatcher.ActionMessageFilter))</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
@@ -63,8 +64,15 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>When called in a derived class, initializes a new instance of the <see cref="T:System.ServiceModel.Dispatcher.MessageFilter" /> class.</summary>
@@ -84,6 +92,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance class System.ServiceModel.Dispatcher.IMessageFilterTable`1&lt;!!FilterData&gt; CreateFilterTable&lt;FilterData&gt;() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -105,6 +115,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Match(class System.ServiceModel.Channels.Message message) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -114,10 +126,10 @@
         <Parameter Name="message" Type="System.ServiceModel.Channels.Message" />
       </Parameters>
       <Docs>
-        <param name="message">The &lt;xref:System.ServiceModel.Channels.Message&gt; object to test.</param>
+        <param name="message">The <see cref="T:System.ServiceModel.Channels.Message" /> object to test.</param>
         <summary>When overridden in a derived class, tests whether a message satisfies the filter criteria. The body cannot be examined.</summary>
         <returns>
-          <see langword="true" /> if the &lt;xref:System.ServiceModel.Channels.Message&gt; object satisfies the filter criteria; otherwise, <see langword="false" />.</returns>
+          <see langword="true" /> if the <see cref="T:System.ServiceModel.Channels.Message" /> object satisfies the filter criteria; otherwise, <see langword="false" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -134,6 +146,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Match(class System.ServiceModel.Channels.MessageBuffer buffer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -143,10 +157,10 @@
         <Parameter Name="buffer" Type="System.ServiceModel.Channels.MessageBuffer" />
       </Parameters>
       <Docs>
-        <param name="buffer">The &lt;xref:System.ServiceModel.Channels.MessageBuffer&gt; object to test.</param>
+        <param name="buffer">The <see cref="T:System.ServiceModel.Channels.MessageBuffer" /> object to test.</param>
         <summary>When overridden in a derived class, tests whether a buffered message satisfies the criteria of a filter.</summary>
         <returns>
-          <see langword="true" /> if the &lt;xref:System.ServiceModel.Channels.MessageBuffer&gt; object satisfies the filter criteria; otherwise, <see langword="false" />.</returns>
+          <see langword="true" /> if the <see cref="T:System.ServiceModel.Channels.MessageBuffer" /> object satisfies the filter criteria; otherwise, <see langword="false" />.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

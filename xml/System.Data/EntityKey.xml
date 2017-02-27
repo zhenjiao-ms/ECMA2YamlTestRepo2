@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable sealed beforefieldinit EntityKey extends System.Object implements class System.IEquatable`1&lt;class System.Data.EntityKey&gt;" />
   <AssemblyInfo>
     <AssemblyName>System.Data.Entity</AssemblyName>
+    <AssemblyVersion>3.5.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -52,6 +53,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -66,6 +69,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string qualifiedEntitySetName, class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, object&gt;&gt; entityKeyValues) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -73,7 +78,7 @@
         <Parameter Name="entityKeyValues" Type="System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.Object&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="qualifiedEntitySetName">A &lt;xref:System.String&gt; that is the entity set name qualified by the entity container name.</param>
+        <param name="qualifiedEntitySetName">A <see cref="T:System.String" /> that is the entity set name qualified by the entity container name.</param>
         <param name="entityKeyValues">A generic &lt;xref:System.Collections.Generic.KeyValuePair&gt; collection.  
   
  Each key/value pair has a property name as the key and the value of that property as the value. There should be one pair for each property that is part of the <see cref="T:System.Data.EntityKey" />. The order of the key/value pairs is not important, but each key property should be included. The property names are simple names that are not qualified with an entity type name or the schema name.</param>
@@ -97,6 +102,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string qualifiedEntitySetName, class System.Collections.Generic.IEnumerable`1&lt;class System.Data.EntityKeyMember&gt; entityKeyValues) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -104,7 +111,7 @@
         <Parameter Name="entityKeyValues" Type="System.Collections.Generic.IEnumerable&lt;System.Data.EntityKeyMember&gt;" />
       </Parameters>
       <Docs>
-        <param name="qualifiedEntitySetName">A &lt;xref:System.String&gt; that is the entity set name qualified by the entity container name.</param>
+        <param name="qualifiedEntitySetName">A <see cref="T:System.String" /> that is the entity set name qualified by the entity container name.</param>
         <param name="entityKeyValues">An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of <see cref="T:System.Data.EntityKeyMember" /> objects with which to initialize the key.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Data.EntityKey" /> class with an entity set name and an &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of <see cref="T:System.Data.EntityKeyMember" /> objects.</summary>
         <remarks>To be added.</remarks>
@@ -116,6 +123,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string qualifiedEntitySetName, string keyName, object keyValue) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -124,9 +133,9 @@
         <Parameter Name="keyValue" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="qualifiedEntitySetName">A &lt;xref:System.String&gt; that is the entity set name qualified by the entity container name.</param>
-        <param name="keyName">A &lt;xref:System.String&gt; that is the name of the key.</param>
-        <param name="keyValue">An &lt;xref:System.Object&gt; that is the key value.</param>
+        <param name="qualifiedEntitySetName">A <see cref="T:System.String" /> that is the entity set name qualified by the entity container name.</param>
+        <param name="keyName">A <see cref="T:System.String" /> that is the name of the key.</param>
+        <param name="keyValue">An <see cref="T:System.Object" /> that is the key value.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Data.EntityKey" /> class with an entity set name and specific entity key pair.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -147,11 +156,16 @@
       <MemberSignature Language="ILAsm" Value=".property instance string EntityContainerName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.Serialization.DataMember</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -159,7 +173,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the name of the entity container.</summary>
-        <value>A &lt;xref:System.String&gt; value that is the name of the entity container for the entity to which the <see cref="T:System.Data.EntityKey" /> belongs.</value>
+        <value>A <see cref="T:System.String" /> value that is the name of the entity container for the entity to which the <see cref="T:System.Data.EntityKey" /> belongs.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -169,6 +183,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Data.EntityKeyMember[] EntityKeyValues" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -200,6 +216,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.Data.EntityKey EntityNotValidKey" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -223,11 +241,16 @@
       <MemberSignature Language="ILAsm" Value=".property instance string EntitySetName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.Serialization.DataMember</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -235,7 +258,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the name of the entity set.</summary>
-        <value>A &lt;xref:System.String&gt; value that is the name of the entity set for the entity to which the <see cref="T:System.Data.EntityKey" /> belongs.</value>
+        <value>A <see cref="T:System.String" /> value that is the name of the entity set for the entity to which the <see cref="T:System.Data.EntityKey" /> belongs.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -245,6 +268,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Equals(class System.Data.EntityKey other) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -280,6 +305,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -289,7 +316,7 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">An &lt;xref:System.Object&gt; to compare with this instance.</param>
+        <param name="obj">An <see cref="T:System.Object" /> to compare with this instance.</param>
         <summary>Returns a value that indicates whether this instance is equal to a specified object.</summary>
         <returns>
           <see langword="true" /> if this instance and <paramref name="obj" /> have equal values; otherwise, <see langword="false" />.</returns>
@@ -315,6 +342,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.Metadata.Edm.EntitySet GetEntitySet(class System.Data.Metadata.Edm.MetadataWorkspace metadataWorkspace) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -344,6 +373,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -362,6 +393,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsTemporary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -400,6 +433,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.Data.EntityKey NoEntitySetKey" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -423,6 +458,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void OnDeserialized(valuetype System.Runtime.Serialization.StreamingContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -461,6 +498,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void OnDeserializing(valuetype System.Runtime.Serialization.StreamingContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -499,6 +538,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(class System.Data.EntityKey key1, class System.Data.EntityKey key2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -536,6 +577,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(class System.Data.EntityKey key1, class System.Data.EntityKey key2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Data.Entity</AssemblyName>
+        <AssemblyVersion>3.5.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

@@ -1,6 +1,6 @@
 <Type Name="WorkflowInstance" FullName="System.Activities.Hosting.WorkflowInstance">
   <TypeSignature Language="C#" Value="public abstract class WorkflowInstance" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract WorkflowInstance extends System.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit WorkflowInstance extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Activities</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -43,6 +43,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.Activities.Activity workflowDefinition) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -55,55 +56,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected WorkflowInstance (System.Activities.Activity workflowDefinition, System.Activities.WorkflowIdentity definitionIdentity);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.Activities.Activity workflowDefinition, class System.Activities.WorkflowIdentity definitionIdentity) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="workflowDefinition" Type="System.Activities.Activity" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-      </Parameters>
-      <Docs>
-        <param name="workflowDefinition">The activity that defines the workflow.</param>
-        <param name="definitionIdentity">The definition identity.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Activities.Hosting.WorkflowInstance" /> class with the specified workflow definition and definition identity.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginFlushTrackingRecords">
-      <MemberSignature Language="C#" Value="protected IAsyncResult BeginFlushTrackingRecords (TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.IAsyncResult BeginFlushTrackingRecords(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="timeout">The time period after which to abort the attempt.</param>
-        <param name="callback">The method to be called when the track operation has completed.</param>
-        <param name="state">The information about the asynchronous operation.</param>
-        <summary>Called by the workflow runtime to begin sending pending tracking records to tracking participants asynchronously.</summary>
-        <returns>The status of the current track operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Controller">
       <MemberSignature Language="C#" Value="protected System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl Controller { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Activities.Hosting.WorkflowInstance/WorkflowInstanceControl Controller" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -116,28 +74,12 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="DefinitionIdentity">
-      <MemberSignature Language="C#" Value="public System.Activities.WorkflowIdentity DefinitionIdentity { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.WorkflowIdentity DefinitionIdentity" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowIdentity</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets the definition identity of <see cref="T:System.Activities.Hosting.WorkflowInstance" />.</summary>
-        <value>The definition identity of <see cref="T:System.Activities.Hosting.WorkflowInstance" />.</value>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="DisposeExtensions">
       <MemberSignature Language="C#" Value="protected void DisposeExtensions ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DisposeExtensions() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -145,70 +87,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Calls &lt;xref:System.Disposable.Dispose%2A&gt; on all extensions that implement &lt;xref:System.IDisposable&gt;.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EndFlushTrackingRecords">
-      <MemberSignature Language="C#" Value="protected void EndFlushTrackingRecords (IAsyncResult result);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void EndFlushTrackingRecords(class System.IAsyncResult result) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="result" Type="System.IAsyncResult" />
-      </Parameters>
-      <Docs>
-        <param name="result">The status of the asynchronous track operation.</param>
-        <summary>Called by the workflow runtime to end the track operation.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="FlushTrackingRecords">
-      <MemberSignature Language="C#" Value="protected void FlushTrackingRecords (TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void FlushTrackingRecords(valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="timeout">The time period after which to abort the attempt.</param>
-        <summary>Called by the workflow runtime to send pending tracking records to tracking participants.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetActivitiesBlockingUpdate">
-      <MemberSignature Language="C#" Value="protected static System.Collections.Generic.IList&lt;System.Activities.DynamicUpdate.ActivityBlockingUpdate&gt; GetActivitiesBlockingUpdate (object deserializedRuntimeState, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig class System.Collections.Generic.IList`1&lt;class System.Activities.DynamicUpdate.ActivityBlockingUpdate&gt; GetActivitiesBlockingUpdate(object deserializedRuntimeState, class System.Activities.DynamicUpdate.DynamicUpdateMap updateMap) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.IList&lt;System.Activities.DynamicUpdate.ActivityBlockingUpdate&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="deserializedRuntimeState" Type="System.Object" />
-        <Parameter Name="updateMap" Type="System.Activities.DynamicUpdate.DynamicUpdateMap" />
-      </Parameters>
-      <Docs>
-        <param name="deserializedRuntimeState">The deserialized runtime state.</param>
-        <param name="updateMap">The update map.</param>
-        <summary>Retrieves the list of activity that is blocking the update of the workflow.</summary>
-        <returns>The list of activity that is blocking the update.</returns>
+        <summary>Calls &lt;xref:System.Disposable.Dispose%2A&gt; on all extensions that implement <see cref="T:System.IDisposable" />.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -218,6 +97,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig instance !!T GetExtension&lt;class T&gt;() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -243,6 +123,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig instance class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; GetExtensions&lt;class T&gt;() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -268,8 +149,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.LocationReferenceEnvironment HostEnvironment" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Activities.LocationReferenceEnvironment</ReturnType>
       </ReturnValue>
@@ -292,6 +179,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid Id" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -309,6 +197,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Initialize(object deserializedRuntimeState) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -329,6 +218,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Initialize(class System.Collections.Generic.IDictionary`2&lt;string, object&gt; workflowArgumentValues, class System.Collections.Generic.IList`1&lt;class System.Activities.Handle&gt; workflowExecutionProperties) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -346,35 +236,19 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Initialize">
-      <MemberSignature Language="C#" Value="protected void Initialize (object deserializedRuntimeState, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Initialize(object deserializedRuntimeState, class System.Activities.DynamicUpdate.DynamicUpdateMap updateMap) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="deserializedRuntimeState" Type="System.Object" />
-        <Parameter Name="updateMap" Type="System.Activities.DynamicUpdate.DynamicUpdateMap" />
-      </Parameters>
-      <Docs>
-        <param name="deserializedRuntimeState">The run-time state used to execute the workflow.</param>
-        <param name="updateMap">The update map.</param>
-        <summary>Called by the host to initialize the workflow instance with the workflow run-time state and update map.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="IsReadOnly">
       <MemberSignature Language="C#" Value="protected bool IsReadOnly { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsReadOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -391,6 +265,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance class System.IAsyncResult OnBeginAssociateKeys(class System.Collections.Generic.ICollection`1&lt;class System.Runtime.DurableInstancing.InstanceKey&gt; keys, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -416,6 +291,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.IAsyncResult OnBeginFlushTrackingRecords(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -439,6 +315,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance class System.IAsyncResult OnBeginPersist(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -462,6 +339,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance class System.IAsyncResult OnBeginResumeBookmark(class System.Activities.Bookmark bookmark, object value, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -477,7 +355,7 @@
       <Docs>
         <param name="bookmark">The bookmark to resume.</param>
         <param name="value">The data to be passed to the activity that created the <see cref="T:System.Activities.Bookmark" />.</param>
-        <param name="timeout">The interval in which the resume operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the resume operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the resume operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Called by the workflow runtime to notify the host that a resume bookmark operation is beginning.</summary>
@@ -491,6 +369,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void OnDisassociateKeys(class System.Collections.Generic.ICollection`1&lt;class System.Runtime.DurableInstancing.InstanceKey&gt; keys) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -511,6 +390,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void OnEndAssociateKeys(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -531,6 +411,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEndFlushTrackingRecords(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -551,6 +432,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void OnEndPersist(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -571,6 +453,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance valuetype System.Activities.BookmarkResumptionResult OnEndResumeBookmark(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -592,6 +475,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnNotifyPaused() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -609,6 +493,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnNotifyUnhandledException(class System.Exception exception, class System.Activities.Activity source, string sourceInstanceId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -633,6 +518,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void OnRequestAbort(class System.Exception reason) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -660,6 +546,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RegisterExtensionManager(class System.Activities.Hosting.WorkflowInstanceExtensionManager extensionManager) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -687,6 +574,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool SupportsInstanceKeys" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -705,13 +593,19 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Threading.SynchronizationContext SynchronizationContext" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Threading.SynchronizationContext</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the &lt;xref:System.Threading.SynchronizationContext&gt; used for scheduling the workflow instance.</summary>
+        <summary>Gets or sets the <see cref="T:System.Threading.SynchronizationContext" /> used for scheduling the workflow instance.</summary>
         <value>The synchronization context used for scheduling the workflow instance.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -729,6 +623,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ThrowIfReadOnly() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -736,7 +631,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Throws an &lt;xref:System.InvalidOperationException&gt; if the workflow instance has been initialized, as determined by &lt;xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A&gt;.</summary>
+        <summary>Throws an <see cref="T:System.InvalidOperationException" /> if the workflow instance has been initialized, as determined by &lt;xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A&gt;.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -753,8 +648,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.Activity WorkflowDefinition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Activities.Activity</ReturnType>
       </ReturnValue>

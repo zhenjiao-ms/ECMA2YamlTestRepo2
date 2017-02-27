@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit File extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -78,8 +79,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AppendAllLines(string path, class System.Collections.Generic.IEnumerable`1&lt;string&gt; contents) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -137,8 +144,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AppendAllLines(string path, class System.Collections.Generic.IEnumerable`1&lt;string&gt; contents, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -200,8 +213,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AppendAllText(string path, string contents) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -232,7 +252,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -264,8 +284,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AppendAllText(string path, string contents, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -298,7 +325,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -330,8 +357,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.StreamWriter AppendText(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.StreamWriter</ReturnType>
       </ReturnValue>
@@ -340,7 +374,7 @@
       </Parameters>
       <Docs>
         <param name="path">The path to the file to append to.</param>
-        <summary>Creates a &lt;xref:System.IO.StreamWriter&gt; that appends UTF-8 encoded text to an existing file, or to a new file if the specified file does not exist.</summary>
+        <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends UTF-8 encoded text to an existing file, or to a new file if the specified file does not exist.</summary>
         <returns>A stream writer that appends UTF-8 encoded text to the specified file or to a new file.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -367,7 +401,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -383,6 +417,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Copy(string sourceFileName, string destFileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -422,7 +458,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.  
+          <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.  
   
  -or-  
   
@@ -450,6 +486,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Copy(string sourceFileName, string destFileName, bool overwrite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -496,7 +534,7 @@
   
  <paramref name="destFileName" /> is read-only.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.  
+          <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.  
   
  -or-  
   
@@ -524,8 +562,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Create(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -569,7 +614,7 @@
   
  <paramref name="path" /> specified a file that is read-only.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -586,8 +631,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Create(string path, int32 bufferSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -631,7 +683,7 @@
   
  <paramref name="path" /> specified a file that is read-only.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -648,8 +700,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Create(string path, int32 bufferSize, valuetype System.IO.FileOptions options) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -684,7 +743,7 @@
   
  <paramref name="path" /> specified a file that is read-only.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -701,6 +760,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Create(string path, int32 bufferSize, valuetype System.IO.FileOptions options, class System.Security.AccessControl.FileSecurity fileSecurity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -739,7 +800,7 @@
   
  <paramref name="path" /> specified a file that is read-only.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -756,8 +817,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.StreamWriter CreateText(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.StreamWriter</ReturnType>
       </ReturnValue>
@@ -767,7 +835,7 @@
       <Docs>
         <param name="path">The file to be opened for writing.</param>
         <summary>Creates or opens a file for writing UTF-8 encoded text.</summary>
-        <returns>A &lt;xref:System.IO.StreamWriter&gt; that writes to the specified file using UTF-8 encoding.</returns>
+        <returns>A <see cref="T:System.IO.StreamWriter" /> that writes to the specified file using UTF-8 encoding.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -791,7 +859,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -807,6 +875,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Decrypt(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -846,7 +916,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+        <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">The <paramref name="path" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified.</exception>
         <exception cref="T:System.IO.FileNotFoundException">The file described by the <paramref name="path" /> parameter could not be found.</exception>
@@ -880,6 +950,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Delete(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -917,7 +989,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
@@ -951,6 +1023,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Encrypt(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -992,7 +1066,7 @@
   
  ]]></format>
         </remarks>
-        <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+        <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">The <paramref name="path" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified.</exception>
         <exception cref="T:System.IO.FileNotFoundException">The file described by the <paramref name="path" /> parameter could not be found.</exception>
@@ -1026,6 +1100,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Exists(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1079,6 +1155,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Security.AccessControl.FileSecurity GetAccessControl(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1137,6 +1215,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Security.AccessControl.FileSecurity GetAccessControl(string path, valuetype System.Security.AccessControl.AccessControlSections includeSections) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1188,6 +1268,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.IO.FileAttributes GetAttributes(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1244,6 +1326,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime GetCreationTime(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1260,7 +1344,7 @@
       <Docs>
         <param name="path">The file or directory for which to obtain creation date and time information.</param>
         <summary>Returns the creation date and time of the specified file or directory.</summary>
-        <returns>A &lt;xref:System.DateTime&gt; structure set to the creation date and time for the specified file or directory. This value is expressed in local time.</returns>
+        <returns>A <see cref="T:System.DateTime" /> structure set to the creation date and time for the specified file or directory. This value is expressed in local time.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1288,7 +1372,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1303,6 +1387,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime GetCreationTimeUtc(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1319,7 +1405,7 @@
       <Docs>
         <param name="path">The file or directory for which to obtain creation date and time information.</param>
         <summary>Returns the creation date and time, in coordinated universal time (UTC), of the specified file or directory.</summary>
-        <returns>A &lt;xref:System.DateTime&gt; structure set to the creation date and time for the specified file or directory. This value is expressed in UTC time.</returns>
+        <returns>A <see cref="T:System.DateTime" /> structure set to the creation date and time for the specified file or directory. This value is expressed in UTC time.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1345,7 +1431,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1360,6 +1446,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime GetLastAccessTime(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1376,7 +1464,7 @@
       <Docs>
         <param name="path">The file or directory for which to obtain access date and time information.</param>
         <summary>Returns the date and time the specified file or directory was last accessed.</summary>
-        <returns>A &lt;xref:System.DateTime&gt; structure set to the date and time that the specified file or directory was last accessed. This value is expressed in local time.</returns>
+        <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last accessed. This value is expressed in local time.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1404,7 +1492,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1419,6 +1507,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime GetLastAccessTimeUtc(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1435,7 +1525,7 @@
       <Docs>
         <param name="path">The file or directory for which to obtain access date and time information.</param>
         <summary>Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last accessed.</summary>
-        <returns>A &lt;xref:System.DateTime&gt; structure set to the date and time that the specified file or directory was last accessed. This value is expressed in UTC time.</returns>
+        <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last accessed. This value is expressed in UTC time.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1454,7 +1544,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1469,6 +1559,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime GetLastWriteTime(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1485,7 +1577,7 @@
       <Docs>
         <param name="path">The file or directory for which to obtain write date and time information.</param>
         <summary>Returns the date and time the specified file or directory was last written to.</summary>
-        <returns>A &lt;xref:System.DateTime&gt; structure set to the date and time that the specified file or directory was last written to. This value is expressed in local time.</returns>
+        <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last written to. This value is expressed in local time.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1513,7 +1605,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1528,6 +1620,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime GetLastWriteTimeUtc(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1544,7 +1638,7 @@
       <Docs>
         <param name="path">The file or directory for which to obtain write date and time information.</param>
         <summary>Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last written to.</summary>
-        <returns>A &lt;xref:System.DateTime&gt; structure set to the date and time that the specified file or directory was last written to. This value is expressed in UTC time.</returns>
+        <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last written to. This value is expressed in UTC time.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1563,7 +1657,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1578,6 +1672,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Move(string sourceFileName, string destFileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -1627,7 +1723,7 @@
         <exception cref="T:System.ArgumentNullException">
           <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is <see langword="null" />.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is a zero-length string, contains only white space, or contains invalid characters as defined in &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is a zero-length string, contains only white space, or contains invalid characters as defined in <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">The path specified in <paramref name="sourceFileName" /> or <paramref name="destFileName" /> is invalid, (for example, it is on an unmapped drive).</exception>
@@ -1642,8 +1738,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Open(string path, valuetype System.IO.FileMode mode) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -1676,7 +1779,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1714,8 +1817,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Open(string path, valuetype System.IO.FileMode mode, valuetype System.IO.FileAccess access) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -1748,7 +1858,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.  
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.  
   
  -or-  
   
@@ -1786,8 +1896,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream Open(string path, valuetype System.IO.FileMode mode, valuetype System.IO.FileAccess access, valuetype System.IO.FileShare share) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -1824,7 +1941,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.  
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.  
   
  -or-  
   
@@ -1862,8 +1979,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream OpenRead(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -1896,7 +2020,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1920,8 +2044,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.StreamReader OpenText(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.StreamReader</ReturnType>
       </ReturnValue>
@@ -1931,7 +2062,7 @@
       <Docs>
         <param name="path">The file to be opened for reading.</param>
         <summary>Opens an existing UTF-8 encoded text file for reading.</summary>
-        <returns>A &lt;xref:System.IO.StreamReader&gt; on the specified path.</returns>
+        <returns>A <see cref="T:System.IO.StreamReader" /> on the specified path.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -1955,7 +2086,7 @@
         </remarks>
         <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -1972,8 +2103,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IO.FileStream OpenWrite(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.FileStream</ReturnType>
       </ReturnValue>
@@ -2013,7 +2151,7 @@
   
  <paramref name="path" /> specified a read-only file or directory.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2029,6 +2167,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] ReadAllBytes(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2055,7 +2195,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2083,8 +2223,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] ReadAllLines(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -2114,7 +2261,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2147,8 +2294,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] ReadAllLines(string path, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -2180,7 +2334,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2213,6 +2367,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string ReadAllText(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2253,7 +2409,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2286,6 +2442,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string ReadAllText(string path, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2328,7 +2486,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2361,8 +2519,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;string&gt; ReadLines(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -2437,8 +2601,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;string&gt; ReadLines(string path, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -2502,6 +2672,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2579,8 +2751,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2659,6 +2838,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetAccessControl(string path, class System.Security.AccessControl.FileSecurity fileSecurity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2741,6 +2922,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetAttributes(string path, valuetype System.IO.FileAttributes fileAttributes) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2812,6 +2995,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetCreationTime(string path, valuetype System.DateTime creationTime) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2823,7 +3008,7 @@
       </Parameters>
       <Docs>
         <param name="path">The file for which to set the creation date and time information.</param>
-        <param name="creationTime">A &lt;xref:System.DateTime&gt; containing the value to set for the creation date and time of `path`. This value is expressed in local time.</param>
+        <param name="creationTime">A <see cref="T:System.DateTime" /> containing the value to set for the creation date and time of `path`. This value is expressed in local time.</param>
         <summary>Sets the date and time the file was created.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2839,7 +3024,7 @@
         </remarks>
         <exception cref="T:System.IO.FileNotFoundException">The specified path was not found.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2858,6 +3043,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetCreationTimeUtc(string path, valuetype System.DateTime creationTimeUtc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2874,7 +3061,7 @@
       </Parameters>
       <Docs>
         <param name="path">The file for which to set the creation date and time information.</param>
-        <param name="creationTimeUtc">A &lt;xref:System.DateTime&gt; containing the value to set for the creation date and time of `path`. This value is expressed in UTC time.</param>
+        <param name="creationTimeUtc">A <see cref="T:System.DateTime" /> containing the value to set for the creation date and time of `path`. This value is expressed in UTC time.</param>
         <summary>Sets the date and time, in coordinated universal time (UTC), that the file was created.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2890,7 +3077,7 @@
         </remarks>
         <exception cref="T:System.IO.FileNotFoundException">The specified path was not found.</exception>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2909,6 +3096,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetLastAccessTime(string path, valuetype System.DateTime lastAccessTime) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2920,7 +3109,7 @@
       </Parameters>
       <Docs>
         <param name="path">The file for which to set the access date and time information.</param>
-        <param name="lastAccessTime">A &lt;xref:System.DateTime&gt; containing the value to set for the last access date and time of `path`. This value is expressed in local time.</param>
+        <param name="lastAccessTime">A <see cref="T:System.DateTime" /> containing the value to set for the last access date and time of `path`. This value is expressed in local time.</param>
         <summary>Sets the date and time the specified file was last accessed.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2942,7 +3131,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -2961,6 +3150,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetLastAccessTimeUtc(string path, valuetype System.DateTime lastAccessTimeUtc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2977,7 +3168,7 @@
       </Parameters>
       <Docs>
         <param name="path">The file for which to set the access date and time information.</param>
-        <param name="lastAccessTimeUtc">A &lt;xref:System.DateTime&gt; containing the value to set for the last access date and time of `path`. This value is expressed in UTC time.</param>
+        <param name="lastAccessTimeUtc">A <see cref="T:System.DateTime" /> containing the value to set for the last access date and time of `path`. This value is expressed in UTC time.</param>
         <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2990,7 +3181,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -3009,6 +3200,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetLastWriteTime(string path, valuetype System.DateTime lastWriteTime) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -3020,7 +3213,7 @@
       </Parameters>
       <Docs>
         <param name="path">The file for which to set the date and time information.</param>
-        <param name="lastWriteTime">A &lt;xref:System.DateTime&gt; containing the value to set for the last write date and time of `path`. This value is expressed in local time.</param>
+        <param name="lastWriteTime">A <see cref="T:System.DateTime" /> containing the value to set for the last write date and time of `path`. This value is expressed in local time.</param>
         <summary>Sets the date and time that the specified file was last written to.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3042,7 +3235,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -3061,6 +3254,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetLastWriteTimeUtc(string path, valuetype System.DateTime lastWriteTimeUtc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -3077,7 +3272,7 @@
       </Parameters>
       <Docs>
         <param name="path">The file for which to set the date and time information.</param>
-        <param name="lastWriteTimeUtc">A &lt;xref:System.DateTime&gt; containing the value to set for the last write date and time of `path`. This value is expressed in UTC time.</param>
+        <param name="lastWriteTimeUtc">A <see cref="T:System.DateTime" /> containing the value to set for the last write date and time of `path`. This value is expressed in UTC time.</param>
         <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3090,7 +3285,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -3109,6 +3304,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllBytes(string path, unsigned int8[] bytes) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -3136,7 +3333,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" /> or the byte array is empty.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -3168,8 +3365,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllLines(string path, class System.Collections.Generic.IEnumerable`1&lt;string&gt; contents) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -3234,8 +3437,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllLines(string path, string[] contents) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -3268,7 +3478,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">Either <paramref name="path" /> or <paramref name="contents" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
@@ -3299,8 +3509,14 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllLines(string path, class System.Collections.Generic.IEnumerable`1&lt;string&gt; contents, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -3361,8 +3577,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllLines(string path, string[] contents, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -3374,7 +3597,7 @@
       <Docs>
         <param name="path">The file to write to.</param>
         <param name="contents">The string array to write to the file.</param>
-        <param name="encoding">An &lt;xref:System.Text.Encoding&gt; object that represents the character encoding applied to the string array.</param>
+        <param name="encoding">An <see cref="T:System.Text.Encoding" /> object that represents the character encoding applied to the string array.</param>
         <summary>Creates a new file, writes the specified string array to the file by using the specified encoding, and then closes the file.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3395,7 +3618,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">Either <paramref name="path" /> or <paramref name="contents" /> is <see langword="null" />.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
         <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
@@ -3426,6 +3649,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllText(string path, string contents) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -3463,7 +3688,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" /> or <paramref name="contents" /> is empty.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
@@ -3495,6 +3720,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WriteAllText(string path, string contents, class System.Text.Encoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -3532,7 +3759,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentException">
-          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by &lt;xref:System.IO.Path.InvalidPathChars&gt;.</exception>
+          <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
         <exception cref="T:System.ArgumentNullException">
           <paramref name="path" /> is <see langword="null" /> or <paramref name="contents" /> is empty.</exception>
         <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>

@@ -57,6 +57,7 @@ Workflow 593976e8-558d-4989-94d6-50a14b34fd7b Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Activities.Activity workflowDefinition) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -87,29 +88,11 @@ The two dice are 1 and 5.
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WorkflowApplication (System.Activities.Activity workflowDefinition, System.Activities.WorkflowIdentity definitionIdentity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Activities.Activity workflowDefinition, class System.Activities.WorkflowIdentity definitionIdentity) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="workflowDefinition" Type="System.Activities.Activity" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-      </Parameters>
-      <Docs>
-        <param name="workflowDefinition">The workflow definition.</param>
-        <param name="definitionIdentity">The definition identity.</param>
-        <summary>Creates a new instance of the <see cref="T:System.Activities.WorkflowApplication" /> class with the specified workflow definition and definition identity.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public WorkflowApplication (System.Activities.Activity workflowDefinition, System.Collections.Generic.IDictionary&lt;string,object&gt; inputs);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Activities.Activity workflowDefinition, class System.Collections.Generic.IDictionary`2&lt;string, object&gt; inputs) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -142,32 +125,12 @@ Workflow 8dc844c1-bbf8-4b21-a9a2-05f89e416055 Unloaded.
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WorkflowApplication (System.Activities.Activity workflowDefinition, System.Collections.Generic.IDictionary&lt;string,object&gt; inputs, System.Activities.WorkflowIdentity definitionIdentity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Activities.Activity workflowDefinition, class System.Collections.Generic.IDictionary`2&lt;string, object&gt; inputs, class System.Activities.WorkflowIdentity definitionIdentity) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="workflowDefinition" Type="System.Activities.Activity" />
-        <Parameter Name="inputs" Type="System.Collections.Generic.IDictionary&lt;System.String,System.Object&gt;" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-      </Parameters>
-      <Docs>
-        <param name="workflowDefinition">The workflow definition.</param>
-        <param name="inputs">The definition identity.</param>
-        <param name="definitionIdentity">The values for arguments defined on the root activity of the workflow definition, keyed by argument name.</param>
-        <summary>Creates a new instance of the <see cref="T:System.Activities.WorkflowApplication" /> class that uses the specified workflow definition and argument values, and definition identity.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Abort">
       <MemberSignature Language="C#" Value="public void Abort ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Abort() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -208,6 +171,7 @@ The workflow has been aborted.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Abort(string reason) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -251,8 +215,14 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`1&lt;class System.Activities.WorkflowApplicationAbortedEventArgs&gt; Aborted" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Activities.WorkflowApplicationAbortedEventArgs&gt;</ReturnType>
       </ReturnValue>
@@ -282,6 +252,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddInitialInstanceValues(class System.Collections.Generic.IDictionary`2&lt;class System.Xml.Linq.XName, object&gt; writeOnlyValues) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -302,6 +273,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginCancel(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -314,7 +286,7 @@ The reason for aborting the workflow.
       <Docs>
         <param name="callback">The method to be called when the cancel operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Cancels a workflow instance asynchronously using the specified &lt;xref:System.AsyncCallback&gt; and user-provided state.</summary>
+        <summary>Cancels a workflow instance asynchronously using the specified <see cref="T:System.AsyncCallback" /> and user-provided state.</summary>
         <returns>A reference to the asynchronous cancel operation.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -334,6 +306,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginCancel(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -345,10 +318,10 @@ The reason for aborting the workflow.
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the cancel operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the cancel operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the cancel operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Cancels a workflow instance asynchronously using the specified time-out interval, &lt;xref:System.AsyncCallback&gt;, and user-provided state.</summary>
+        <summary>Cancels a workflow instance asynchronously using the specified time-out interval, <see cref="T:System.AsyncCallback" />, and user-provided state.</summary>
         <returns>A reference to the asynchronous cancel operation.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -363,256 +336,12 @@ The reason for aborting the workflow.
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="BeginCreateDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginCreateDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, System.Activities.WorkflowIdentity definitionIdentity, System.Activities.WorkflowIdentityFilter identityFilter, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginCreateDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.Activities.WorkflowIdentity definitionIdentity, valuetype System.Activities.WorkflowIdentityFilter identityFilter, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-        <Parameter Name="identityFilter" Type="System.Activities.WorkflowIdentityFilter" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="definitionIdentity">The definition identity.</param>
-        <param name="identityFilter">The identity filter.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Creates a default instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance store, definition identity, identity filter, callback and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginCreateDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginCreateDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, System.Activities.WorkflowIdentity definitionIdentity, System.Activities.WorkflowIdentityFilter identityFilter, TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginCreateDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.Activities.WorkflowIdentity definitionIdentity, valuetype System.Activities.WorkflowIdentityFilter identityFilter, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-        <Parameter Name="identityFilter" Type="System.Activities.WorkflowIdentityFilter" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="definitionIdentity">The definition identity.</param>
-        <param name="identityFilter">The identity filter.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Creates a default instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance store, definition identity, identity filter, timeout interval, callback and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginDeleteDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginDeleteDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginDeleteDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Deletes a default instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance store, callback, and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginDeleteDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginDeleteDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginDeleteDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Deletes a default instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance store, timeout interval, callback, and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginGetInstance">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginGetInstance (Guid instanceId, System.Runtime.DurableInstancing.InstanceStore instanceStore, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginGetInstance(valuetype System.Guid instanceId, class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceId" Type="System.Guid" />
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceId">The instance identifier.</param>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Retrieves an instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance identifier, instance store, callback, and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginGetInstance">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginGetInstance (Guid instanceId, System.Runtime.DurableInstancing.InstanceStore instanceStore, TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginGetInstance(valuetype System.Guid instanceId, class System.Runtime.DurableInstancing.InstanceStore instanceStore, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceId" Type="System.Guid" />
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceId">The instance identifier.</param>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Retrieves an instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance identifier, instance store, timeout interval, callback, and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginGetRunnableInstance">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginGetRunnableInstance (System.Runtime.DurableInstancing.InstanceStore instanceStore, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginGetRunnableInstance(class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Retrieves a runnable instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance store, callback, and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginGetRunnableInstance">
-      <MemberSignature Language="C#" Value="public static IAsyncResult BeginGetRunnableInstance (System.Runtime.DurableInstancing.InstanceStore instanceStore, TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.IAsyncResult BeginGetRunnableInstance(class System.Runtime.DurableInstancing.InstanceStore instanceStore, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Retrieves a runnable instance owner asynchronously using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance store, timeout interval, callback, and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginLoad">
-      <MemberSignature Language="C#" Value="public IAsyncResult BeginLoad (System.Activities.WorkflowApplicationInstance instance, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoad(class System.Activities.WorkflowApplicationInstance instance, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Loads a workflow asynchronously from an instance store using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance, callback and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="BeginLoad">
       <MemberSignature Language="C#" Value="public IAsyncResult BeginLoad (Guid instanceId, AsyncCallback callback, object state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoad(valuetype System.Guid instanceId, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -634,64 +363,11 @@ The reason for aborting the workflow.
       </Docs>
     </Member>
     <Member MemberName="BeginLoad">
-      <MemberSignature Language="C#" Value="public IAsyncResult BeginLoad (System.Activities.WorkflowApplicationInstance instance, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoad(class System.Activities.WorkflowApplicationInstance instance, class System.Activities.DynamicUpdate.DynamicUpdateMap updateMap, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="updateMap" Type="System.Activities.DynamicUpdate.DynamicUpdateMap" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="updateMap">The update map.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Loads a workflow asynchronously from an instance store using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance, update map, callback and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginLoad">
-      <MemberSignature Language="C#" Value="public IAsyncResult BeginLoad (System.Activities.WorkflowApplicationInstance instance, TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoad(class System.Activities.WorkflowApplicationInstance instance, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Loads a workflow asynchronously from an instance store using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance, timeout interval, callback and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginLoad">
       <MemberSignature Language="C#" Value="public IAsyncResult BeginLoad (Guid instanceId, TimeSpan timeout, AsyncCallback callback, object state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoad(valuetype System.Guid instanceId, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -705,40 +381,11 @@ The reason for aborting the workflow.
       </Parameters>
       <Docs>
         <param name="instanceId">A globally unique 128-bit identifier for the workflow instance.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the begin load operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Loads a workflow asynchronously from an instance store using the specified instance identifier, timeout period, callback method, and user-provided state.</summary>
         <returns>The status of an asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="BeginLoad">
-      <MemberSignature Language="C#" Value="public IAsyncResult BeginLoad (System.Activities.WorkflowApplicationInstance instance, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap, TimeSpan timeout, AsyncCallback callback, object state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoad(class System.Activities.WorkflowApplicationInstance instance, class System.Activities.DynamicUpdate.DynamicUpdateMap updateMap, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IAsyncResult</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="updateMap" Type="System.Activities.DynamicUpdate.DynamicUpdateMap" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-        <Parameter Name="callback" Type="System.AsyncCallback" />
-        <Parameter Name="state" Type="System.Object" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="updateMap">The update map.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
-        <param name="callback">The method to be called when the begin load operation has completed.</param>
-        <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
-        <summary>Loads a workflow asynchronously from an instance store using the &lt;xref:System.IAsyncResult&gt; asynchronous design pattern with specified instance, update map, timeout interval, callback and state.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -748,6 +395,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoadRunnableInstance(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -782,6 +430,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginLoadRunnableInstance(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -793,7 +442,7 @@ The reason for aborting the workflow.
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the load operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the operation is complete.</param>
         <param name="state">An optional application-specific object containing information about the asynchronous operation.</param>
         <summary>Initiates an operation to load a runnable workflow instance from the &lt;xref:System.Activities.WorkflowApplication.InstanceStore%2A&gt; using the specified time-out interval.</summary>
@@ -818,6 +467,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginPersist(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -852,6 +502,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginPersist(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -863,7 +514,7 @@ The reason for aborting the workflow.
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the persist operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the persist operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the persist operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Persists a workflow instance to an instance store asynchronously using the specified time-out interval, callback method, and user-provided state.</summary>
@@ -888,6 +539,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginResumeBookmark(class System.Activities.Bookmark bookmark, object value, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -924,6 +576,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginResumeBookmark(string bookmarkName, object value, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -958,6 +611,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginResumeBookmark(class System.Activities.Bookmark bookmark, object value, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -973,7 +627,7 @@ The reason for aborting the workflow.
       <Docs>
         <param name="bookmark">The bookmark to resume.</param>
         <param name="value">An object passed as a parameter to the method that is invoked when the bookmark resumes.</param>
-        <param name="timeout">The interval in which the resume operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the resume operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the resume operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Initiates an operation to resume a bookmark using the specified value, time-out interval, callback method, and state.</summary>
@@ -996,6 +650,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginResumeBookmark(string bookmarkName, object value, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1032,6 +687,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginRun(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1064,8 +720,14 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginRun(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IAsyncResult</ReturnType>
       </ReturnValue>
@@ -1075,7 +737,7 @@ The reason for aborting the workflow.
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the resume operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the resume operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the resume operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Starts or resumes a workflow instance asynchronously using the specified time-out interval, callback method, and user-provided state.</summary>
@@ -1098,6 +760,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginTerminate(class System.Exception reason, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1134,6 +797,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginTerminate(string reason, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1170,6 +834,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginTerminate(class System.Exception reason, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1183,7 +848,7 @@ The reason for aborting the workflow.
       </Parameters>
       <Docs>
         <param name="reason">The reason for terminating the workflow instance.</param>
-        <param name="timeout">The interval in which the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Terminates a workflow instance asynchronously using the specified exception, time-out interval, callback method, and user-provided state.</summary>
@@ -1208,6 +873,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginTerminate(string reason, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1221,7 +887,7 @@ The reason for aborting the workflow.
       </Parameters>
       <Docs>
         <param name="reason">The reason for terminating the workflow instance.</param>
-        <param name="timeout">The interval in which the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Terminates a workflow instance asynchronously using the specified error message, time-out interval, callback method, and user-provided state.</summary>
@@ -1246,6 +912,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginUnload(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1280,6 +947,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginUnload(valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1291,7 +959,7 @@ The reason for aborting the workflow.
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the &lt;xref:System.Activities.WorkflowApplication.BeginTerminate%2A&gt; operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <param name="callback">The method to be called when the &lt;xref:System.Activities.WorkflowApplication.BeginUnload%2A&gt; operation has completed.</param>
         <param name="state">An optional application-specific object that contains information about the asynchronous operation.</param>
         <summary>Persists and disposes a workflow instance asynchronously using the specified time-out interval, callback method, and user-provided state.</summary>
@@ -1316,6 +984,7 @@ The reason for aborting the workflow.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Cancel() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1357,6 +1026,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Cancel(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1366,7 +1036,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the cancel operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the cancel operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Cancels the workflow instance using the specified time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -1399,8 +1069,14 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`1&lt;class System.Activities.WorkflowApplicationCompletedEventArgs&gt; Completed" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Activities.WorkflowApplicationCompletedEventArgs&gt;</ReturnType>
       </ReturnValue>
@@ -1420,103 +1096,12 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="CreateDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static void CreateDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, System.Activities.WorkflowIdentity definitionIdentity, System.Activities.WorkflowIdentityFilter identityFilter);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CreateDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.Activities.WorkflowIdentity definitionIdentity, valuetype System.Activities.WorkflowIdentityFilter identityFilter) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-        <Parameter Name="identityFilter" Type="System.Activities.WorkflowIdentityFilter" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="definitionIdentity">The definition identity of the workflow.</param>
-        <param name="identityFilter">The identity filter.</param>
-        <summary>Creates a default instance owner for the workflow using specified instance store, definition identity, and identity filter.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="CreateDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static void CreateDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, System.Activities.WorkflowIdentity definitionIdentity, System.Activities.WorkflowIdentityFilter identityFilter, TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CreateDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, class System.Activities.WorkflowIdentity definitionIdentity, valuetype System.Activities.WorkflowIdentityFilter identityFilter, valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="definitionIdentity" Type="System.Activities.WorkflowIdentity" />
-        <Parameter Name="identityFilter" Type="System.Activities.WorkflowIdentityFilter" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="definitionIdentity">The definition identity of the workflow.</param>
-        <param name="identityFilter">The identity filter.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled.</param>
-        <summary>Creates a default instance owner for the workflow using specified instance store, definition identity, and identity filter and timeout interval.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="DeleteDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static void DeleteDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DeleteDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <summary>Deletes a default instance owner for the workflow with specified instance store.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="DeleteDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static void DeleteDefaultInstanceOwner (System.Runtime.DurableInstancing.InstanceStore instanceStore, TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DeleteDefaultInstanceOwner(class System.Runtime.DurableInstancing.InstanceStore instanceStore, valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled.</param>
-        <summary>Deletes a default instance owner for the workflow with specified instance store and timeout interval..</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="EndCancel">
       <MemberSignature Language="C#" Value="public void EndCancel (IAsyncResult result);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndCancel(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1541,93 +1126,12 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="EndCreateDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static void EndCreateDefaultInstanceOwner (IAsyncResult asyncResult);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void EndCreateDefaultInstanceOwner(class System.IAsyncResult asyncResult) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="asyncResult" Type="System.IAsyncResult" />
-      </Parameters>
-      <Docs>
-        <param name="asyncResult">The asynchronous result.</param>
-        <summary>Waits for the creation of default instance owner to complete.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EndDeleteDefaultInstanceOwner">
-      <MemberSignature Language="C#" Value="public static void EndDeleteDefaultInstanceOwner (IAsyncResult asyncResult);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void EndDeleteDefaultInstanceOwner(class System.IAsyncResult asyncResult) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="asyncResult" Type="System.IAsyncResult" />
-      </Parameters>
-      <Docs>
-        <param name="asyncResult">The asynchronous result.</param>
-        <summary>Waits for the deletion of default instance owner to complete.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EndGetInstance">
-      <MemberSignature Language="C#" Value="public static System.Activities.WorkflowApplicationInstance EndGetInstance (IAsyncResult asyncResult);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.WorkflowApplicationInstance EndGetInstance(class System.IAsyncResult asyncResult) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowApplicationInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="asyncResult" Type="System.IAsyncResult" />
-      </Parameters>
-      <Docs>
-        <param name="asyncResult">The asynchronous result.</param>
-        <summary>Waits for the instance retrieval to complete.</summary>
-        <returns>The result of the operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="EndGetRunnableInstance">
-      <MemberSignature Language="C#" Value="public static System.Activities.WorkflowApplicationInstance EndGetRunnableInstance (IAsyncResult asyncResult);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.WorkflowApplicationInstance EndGetRunnableInstance(class System.IAsyncResult asyncResult) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowApplicationInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="asyncResult" Type="System.IAsyncResult" />
-      </Parameters>
-      <Docs>
-        <param name="asyncResult">The asynchronous result.</param>
-        <summary>Waits for the asynchronous retrieval of runnable instance operation to complete.</summary>
-        <returns>The result of the operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="EndLoad">
       <MemberSignature Language="C#" Value="public void EndLoad (IAsyncResult result);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndLoad(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1657,6 +1161,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndLoadRunnableInstance(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1686,6 +1191,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndPersist(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1715,6 +1221,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Activities.BookmarkResumptionResult EndResumeBookmark(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1745,6 +1252,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndRun(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1774,6 +1282,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndTerminate(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1803,6 +1312,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndUnload(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1832,6 +1342,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.Hosting.WorkflowInstanceExtensionManager Extensions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1849,6 +1360,7 @@ Workflow bcce00c2-d323-42c2-8c25-19ff0c4b6dac Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Activities.Hosting.BookmarkInfo&gt; GetBookmarks() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1891,6 +1403,7 @@ Hello, Steve
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.ObjectModel.ReadOnlyCollection`1&lt;class System.Activities.Hosting.BookmarkInfo&gt; GetBookmarks(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1900,7 +1413,7 @@ Hello, Steve
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which this method must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which this method must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Returns the collection of bookmarks for the workflow instance using the specified time-out interval.</summary>
         <returns>A read-only collection of bookmarks for the workflow instance.</returns>
         <remarks>
@@ -1926,103 +1439,12 @@ Hello, Steve
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="GetInstance">
-      <MemberSignature Language="C#" Value="public static System.Activities.WorkflowApplicationInstance GetInstance (Guid instanceId, System.Runtime.DurableInstancing.InstanceStore instanceStore);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.WorkflowApplicationInstance GetInstance(valuetype System.Guid instanceId, class System.Runtime.DurableInstancing.InstanceStore instanceStore) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowApplicationInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceId" Type="System.Guid" />
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-      </Parameters>
-      <Docs>
-        <param name="instanceId">The instance identifier.</param>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <summary>Retrieves the workflow instance using specified instance identifier and instance store.</summary>
-        <returns>The retrieved instance.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetInstance">
-      <MemberSignature Language="C#" Value="public static System.Activities.WorkflowApplicationInstance GetInstance (Guid instanceId, System.Runtime.DurableInstancing.InstanceStore instanceStore, TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.WorkflowApplicationInstance GetInstance(valuetype System.Guid instanceId, class System.Runtime.DurableInstancing.InstanceStore instanceStore, valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowApplicationInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceId" Type="System.Guid" />
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="instanceId">The instance identifier.</param>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled.</param>
-        <summary>Retrieves the workflow instance using specified instance identifier, instance store and timeout interval.</summary>
-        <returns>A reference to the asynchronous operation.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetRunnableInstance">
-      <MemberSignature Language="C#" Value="public static System.Activities.WorkflowApplicationInstance GetRunnableInstance (System.Runtime.DurableInstancing.InstanceStore instanceStore);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.WorkflowApplicationInstance GetRunnableInstance(class System.Runtime.DurableInstancing.InstanceStore instanceStore) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowApplicationInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application</param>
-        <summary>Retrieves the runnable instance of the workflow with specified instance store.</summary>
-        <returns>The runnable instance.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="GetRunnableInstance">
-      <MemberSignature Language="C#" Value="public static System.Activities.WorkflowApplicationInstance GetRunnableInstance (System.Runtime.DurableInstancing.InstanceStore instanceStore, TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Activities.WorkflowApplicationInstance GetRunnableInstance(class System.Runtime.DurableInstancing.InstanceStore instanceStore, valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Activities.WorkflowApplicationInstance</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instanceStore" Type="System.Runtime.DurableInstancing.InstanceStore" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="instanceStore">The access to the persisted state of the current instance of the workflow application</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled.</param>
-        <summary>Retrieves the runnable instance of the workflow with specified instance store and timeout interval.</summary>
-        <returns>The runnable instance.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Id">
       <MemberSignature Language="C#" Value="public override Guid Id { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Guid Id" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2049,8 +1471,14 @@ Hello, Steve
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`1&lt;class System.Activities.WorkflowApplicationIdleEventArgs&gt; Idle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Activities.WorkflowApplicationIdleEventArgs&gt;</ReturnType>
       </ReturnValue>
@@ -2079,8 +1507,14 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".property instance class System.Runtime.DurableInstancing.InstanceStore InstanceStore" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Runtime.DurableInstancing.InstanceStore</ReturnType>
       </ReturnValue>
@@ -2101,30 +1535,11 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       </Docs>
     </Member>
     <Member MemberName="Load">
-      <MemberSignature Language="C#" Value="public void Load (System.Activities.WorkflowApplicationInstance instance);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Load(class System.Activities.WorkflowApplicationInstance instance) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <summary>Loads a workflow instance from an instance store with specified instance.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Load">
       <MemberSignature Language="C#" Value="public void Load (Guid instanceId);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Load(valuetype System.Guid instanceId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2150,54 +1565,11 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       </Docs>
     </Member>
     <Member MemberName="Load">
-      <MemberSignature Language="C#" Value="public void Load (System.Activities.WorkflowApplicationInstance instance, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Load(class System.Activities.WorkflowApplicationInstance instance, class System.Activities.DynamicUpdate.DynamicUpdateMap updateMap) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="updateMap" Type="System.Activities.DynamicUpdate.DynamicUpdateMap" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="updateMap">The update map.</param>
-        <summary>Loads a workflow instance from an instance store with specified instance and update map.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Load">
-      <MemberSignature Language="C#" Value="public void Load (System.Activities.WorkflowApplicationInstance instance, TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Load(class System.Activities.WorkflowApplicationInstance instance, valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled.</param>
-        <summary>Loads a workflow instance from an instance store with specified instance and timeout interval.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Load">
       <MemberSignature Language="C#" Value="public void Load (Guid instanceId, TimeSpan timeout);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Load(valuetype System.Guid instanceId, valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2209,7 +1581,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       </Parameters>
       <Docs>
         <param name="instanceId">A globally unique 128-bit identifier for the workflow instance.</param>
-        <param name="timeout">The interval in which the load operation must complete before the load operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the load operation must complete before the load operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Loads the specified workflow instance into memory from an instance store using the specified time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2224,35 +1596,12 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Load">
-      <MemberSignature Language="C#" Value="public void Load (System.Activities.WorkflowApplicationInstance instance, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap, TimeSpan timeout);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Load(class System.Activities.WorkflowApplicationInstance instance, class System.Activities.DynamicUpdate.DynamicUpdateMap updateMap, valuetype System.TimeSpan timeout) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="instance" Type="System.Activities.WorkflowApplicationInstance" />
-        <Parameter Name="updateMap" Type="System.Activities.DynamicUpdate.DynamicUpdateMap" />
-        <Parameter Name="timeout" Type="System.TimeSpan" />
-      </Parameters>
-      <Docs>
-        <param name="instance">The instance.</param>
-        <param name="updateMap">The update map.</param>
-        <param name="timeout">The interval in which the begin load operation must complete before the operation is canceled.</param>
-        <summary>Loads a workflow instance from an instance store with specified instance, update map and timeout interval.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="LoadRunnableInstance">
       <MemberSignature Language="C#" Value="public void LoadRunnableInstance ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadRunnableInstance() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2279,6 +1628,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadRunnableInstance(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2288,7 +1638,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the load operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the load operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Loads a runnable workflow instance from the &lt;xref:System.Activities.WorkflowApplication.InstanceStore%2A&gt; using the specified time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2306,6 +1656,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class System.IAsyncResult OnBeginAssociateKeys(class System.Collections.Generic.ICollection`1&lt;class System.Runtime.DurableInstancing.InstanceKey&gt; keys, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2330,6 +1681,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class System.IAsyncResult OnBeginPersist(class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2352,6 +1704,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class System.IAsyncResult OnBeginResumeBookmark(class System.Activities.Bookmark bookmark, object value, valuetype System.TimeSpan timeout, class System.AsyncCallback callback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2380,6 +1733,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void OnDisassociateKeys(class System.Collections.Generic.ICollection`1&lt;class System.Runtime.DurableInstancing.InstanceKey&gt; keys) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2399,6 +1753,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void OnEndAssociateKeys(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2418,8 +1773,14 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void OnEndPersist(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2437,6 +1798,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance valuetype System.Activities.BookmarkResumptionResult OnEndResumeBookmark(class System.IAsyncResult result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2457,6 +1819,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnNotifyPaused() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2473,6 +1836,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnNotifyUnhandledException(class System.Exception exception, class System.Activities.Activity exceptionSource, string exceptionSourceInstanceId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2496,8 +1860,14 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void OnRequestAbort(class System.Exception reason) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2515,8 +1885,14 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".property instance class System.Func`2&lt;class System.Activities.WorkflowApplicationUnhandledExceptionEventArgs, valuetype System.Activities.UnhandledExceptionAction&gt; OnUnhandledException" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Func&lt;System.Activities.WorkflowApplicationUnhandledExceptionEventArgs,System.Activities.UnhandledExceptionAction&gt;</ReturnType>
       </ReturnValue>
@@ -2546,6 +1922,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Persist() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2579,6 +1956,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Persist(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2588,7 +1966,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the persist operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the persist operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Persists a workflow instance to an instance store using the specified time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2613,8 +1991,14 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".property instance class System.Func`2&lt;class System.Activities.WorkflowApplicationIdleEventArgs, valuetype System.Activities.PersistableIdleAction&gt; PersistableIdle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Func&lt;System.Activities.WorkflowApplicationIdleEventArgs,System.Activities.PersistableIdleAction&gt;</ReturnType>
       </ReturnValue>
@@ -2644,6 +2028,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Activities.BookmarkResumptionResult ResumeBookmark(class System.Activities.Bookmark bookmark, object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2683,6 +2068,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Activities.BookmarkResumptionResult ResumeBookmark(string bookmarkName, object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2722,6 +2108,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Activities.BookmarkResumptionResult ResumeBookmark(class System.Activities.Bookmark bookmark, object value, valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2763,6 +2150,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Activities.BookmarkResumptionResult ResumeBookmark(string bookmarkName, object value, valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2804,6 +2192,7 @@ BookmarkName: EnterGuess - OwnerDisplayName: ReadInt
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Run() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2846,8 +2235,14 @@ Workflow 593976e8-558d-4989-94d6-50a14b34fd7b Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Run(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2857,7 +2252,7 @@ Workflow 593976e8-558d-4989-94d6-50a14b34fd7b Unloaded.
       <Docs>
         <param name="timeout">Call this method to initiate execution of a newly created workflow instance.  
   
- The interval in which the run operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+ The interval in which the run operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Begins or resumes the execution of a workflow instance using the specified time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -2891,6 +2286,7 @@ Workflow 593976e8-558d-4989-94d6-50a14b34fd7b Unloaded.
       <MemberSignature Language="ILAsm" Value=".property instance bool SupportsInstanceKeys" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2907,6 +2303,7 @@ Workflow 593976e8-558d-4989-94d6-50a14b34fd7b Unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Terminate(class System.Exception reason) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2952,6 +2349,7 @@ Workflow e6b33409-f010-49f1-82ce-56f8baabe5e5 unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Terminate(string reason) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -2997,6 +2395,7 @@ Workflow f87c6f91-4fe4-40b9-b7cb-4f1bd071bf84 unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Terminate(class System.Exception reason, valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -3008,7 +2407,7 @@ Workflow f87c6f91-4fe4-40b9-b7cb-4f1bd071bf84 unloaded.
       </Parameters>
       <Docs>
         <param name="reason">The reason for terminating the workflow instance.</param>
-        <param name="timeout">The interval in which the Terminate operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the Terminate operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Terminates a workflow instance using the specified exception and time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3042,6 +2441,7 @@ Workflow de28efe5-9057-472b-8d95-899c249893c5 unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Terminate(string reason, valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -3053,7 +2453,7 @@ Workflow de28efe5-9057-472b-8d95-899c249893c5 unloaded.
       </Parameters>
       <Docs>
         <param name="reason">The reason for terminating the workflow instance.</param>
-        <param name="timeout">The interval in which the Terminate operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the Terminate operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Terminates a workflow instance using the specified error message and time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3087,6 +2487,7 @@ Workflow 2897d2ef-377e-4224-ae93-5c19b38f487c unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unload() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -3120,6 +2521,7 @@ Workflow 2897d2ef-377e-4224-ae93-5c19b38f487c unloaded.
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unload(valuetype System.TimeSpan timeout) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -3129,7 +2531,7 @@ Workflow 2897d2ef-377e-4224-ae93-5c19b38f487c unloaded.
         <Parameter Name="timeout" Type="System.TimeSpan" />
       </Parameters>
       <Docs>
-        <param name="timeout">The interval in which the unload operation must complete before the operation is canceled and a &lt;xref:System.TimeoutException&gt; is thrown.</param>
+        <param name="timeout">The interval in which the unload operation must complete before the operation is canceled and a <see cref="T:System.TimeoutException" /> is thrown.</param>
         <summary>Persists and unloads a workflow instance using the specified time-out interval.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -3154,8 +2556,14 @@ Workflow 2897d2ef-377e-4224-ae93-5c19b38f487c unloaded.
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`1&lt;class System.Activities.WorkflowApplicationEventArgs&gt; Unloaded" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Activities.WorkflowApplicationEventArgs&gt;</ReturnType>
       </ReturnValue>

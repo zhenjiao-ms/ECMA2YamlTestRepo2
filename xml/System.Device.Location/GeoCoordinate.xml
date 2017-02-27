@@ -24,6 +24,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -47,8 +48,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 latitude, float64 longitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="latitude" Type="System.Double" />
         <Parameter Name="longitude" Type="System.Double" />
@@ -74,8 +81,14 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 latitude, float64 longitude, float64 altitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="latitude" Type="System.Double" />
         <Parameter Name="longitude" Type="System.Double" />
@@ -84,7 +97,7 @@
       <Docs>
         <param name="latitude">Latitude. May range from -90.0 to 90.0.</param>
         <param name="longitude">Longitude. May range from -180.0 to 180.0</param>
-        <param name="altitude">The altitude in meters. May be negative, 0, positive, or &lt;xref:System.Double&gt;, if unknown.</param>
+        <param name="altitude">The altitude in meters. May be negative, 0, positive, or <see cref="T:System.Double" />, if unknown.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Device.Location.GeoCoordinate" /> class from latitude, longitude, and altitude data.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -104,6 +117,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 latitude, float64 longitude, float64 altitude, float64 horizontalAccuracy, float64 verticalAccuracy, float64 speed, float64 course) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -118,11 +132,11 @@
       <Docs>
         <param name="latitude">The latitude of the location. May range from -90.0 to 90.0.</param>
         <param name="longitude">The longitude of the location. May range from -180.0 to 180.0.</param>
-        <param name="altitude">The altitude in meters. May be negative, 0, positive, or &lt;xref:System.Double&gt;, if unknown.</param>
-        <param name="horizontalAccuracy">The accuracy of the latitude and longitude coordinates, in meters. Must be greater than or equal to 0. If a value of 0 is supplied to this constructor, the &lt;xref:System.Device.Location.GeoCoordinate.HorizontalAccuracy%2A&gt; property will be set to &lt;xref:System.Double.NaN&gt;.</param>
-        <param name="verticalAccuracy">The accuracy of the altitude, in meters. Must be greater than or equal to 0. If a value of 0 is supplied to this constructor, the &lt;xref:System.Device.Location.GeoCoordinate.VerticalAccuracy%2A&gt; property will be set to &lt;xref:System.Double.NaN&gt;.</param>
-        <param name="speed">The speed measured in meters per second. May be negative, 0, positive, or &lt;xref:System.Double&gt;, if unknown.  A negative speed can indicate moving in reverse.</param>
-        <param name="course">The direction of travel, rather than orientation. This parameter is measured in degrees relative to true north. Must range from 0 to 360.0, or be &lt;xref:System.Double&gt;.</param>
+        <param name="altitude">The altitude in meters. May be negative, 0, positive, or <see cref="T:System.Double" />, if unknown.</param>
+        <param name="horizontalAccuracy">The accuracy of the latitude and longitude coordinates, in meters. Must be greater than or equal to 0. If a value of 0 is supplied to this constructor, the &lt;xref:System.Device.Location.GeoCoordinate.HorizontalAccuracy%2A&gt; property will be set to <see cref="F:System.Double.NaN" />.</param>
+        <param name="verticalAccuracy">The accuracy of the altitude, in meters. Must be greater than or equal to 0. If a value of 0 is supplied to this constructor, the &lt;xref:System.Device.Location.GeoCoordinate.VerticalAccuracy%2A&gt; property will be set to <see cref="F:System.Double.NaN" />.</param>
+        <param name="speed">The speed measured in meters per second. May be negative, 0, positive, or <see cref="T:System.Double" />, if unknown.  A negative speed can indicate moving in reverse.</param>
+        <param name="course">The direction of travel, rather than orientation. This parameter is measured in degrees relative to true north. Must range from 0 to 360.0, or be <see cref="T:System.Double" />.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Device.Location.GeoCoordinate" /> class from latitude, longitude, altitude, horizontal accuracy, vertical accuracy, speed, and course.</summary>
         <remarks>To be added.</remarks>
         <exception cref="T:System.ArgumentOutOfRangeException">
@@ -135,8 +149,17 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 Altitude" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -159,8 +182,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 Course" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -192,6 +221,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Equals(class System.Device.Location.GeoCoordinate other) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -221,6 +251,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -250,6 +281,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetDistanceTo(class System.Device.Location.GeoCoordinate other) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -280,6 +312,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -305,8 +338,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 HorizontalAccuracy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -330,6 +369,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsUnknown" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -363,8 +403,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 Latitude" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -396,8 +442,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 Longitude" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -429,6 +481,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(class System.Device.Location.GeoCoordinate left, class System.Device.Location.GeoCoordinate right) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -460,6 +513,7 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(class System.Device.Location.GeoCoordinate left, class System.Device.Location.GeoCoordinate right) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -491,14 +545,20 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 Speed" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets or sets the speed in meters per second.</summary>
-        <value>The speed in meters per second. The speed must be greater than or equal to zero, or &lt;xref:System.Double&gt;.</value>
+        <value>The speed in meters per second. The speed must be greater than or equal to zero, or <see cref="T:System.Double" />.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -519,6 +579,7 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -544,6 +605,7 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.Device.Location.GeoCoordinate Unknown" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -575,8 +637,14 @@
       <MemberSignature Language="ILAsm" Value=".property instance float64 VerticalAccuracy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Device</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>

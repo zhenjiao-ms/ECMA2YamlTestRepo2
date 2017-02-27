@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi CAccPropServicesClass extends System.Object implements class Accessibility.CAccPropServices, class Accessibility.IAccPropServices" />
   <AssemblyInfo>
     <AssemblyName>Accessibility</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -45,6 +46,8 @@
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() runtime managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -66,6 +69,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ClearHmenuProps(valuetype Accessibility._RemotableHandle hmenu, unsigned int32 idChild, valuetype System.Guid paProps, int32 cProps) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -105,6 +110,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ClearHwndProps(valuetype Accessibility._RemotableHandle hwnd, unsigned int32 idObject, unsigned int32 idChild, valuetype System.Guid paProps, int32 cProps) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -146,6 +153,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ClearProps(unsigned int8 pIDString, unsigned int32 dwIDStringLen, valuetype System.Guid paProps, int32 cProps) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -179,6 +188,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ComposeHmenuIdentityString(valuetype Accessibility._RemotableHandle hmenu, unsigned int32 idChild, native int ppIDString, unsigned int32 pdwIDStringLen) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -218,6 +229,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ComposeHwndIdentityString(valuetype Accessibility._RemotableHandle hwnd, unsigned int32 idObject, unsigned int32 idChild, native int ppIDString, unsigned int32 pdwIDStringLen) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -255,10 +268,11 @@
       </Docs>
     </Member>
     <Member MemberName="DecomposeHmenuIdentityString">
-      <MemberSignature Language="C#" Value="public virtual void DecomposeHmenuIdentityString (ref byte pIDString, uint dwIDStringLen, IntPtr phmenu, out uint pidChild);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DecomposeHmenuIdentityString(unsigned int8 pIDString, unsigned int32 dwIDStringLen, native int phmenu, unsigned int32 pidChild) runtime managed" />
+      <MemberSignature Language="C#" Value="public virtual void DecomposeHmenuIdentityString (ref byte pIDString, uint dwIDStringLen, out Accessibility._RemotableHandle phmenu, out uint pidChild);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DecomposeHmenuIdentityString(unsigned int8 pIDString, unsigned int32 dwIDStringLen, valuetype Accessibility._RemotableHandle phmenu, unsigned int32 pidChild) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -267,7 +281,7 @@
       <Parameters>
         <Parameter Name="pIDString" Type="System.Byte&amp;" RefType="ref" />
         <Parameter Name="dwIDStringLen" Type="System.UInt32" />
-        <Parameter Name="phmenu" Type="System.IntPtr">
+        <Parameter Name="phmenu" Type="Accessibility._RemotableHandle&amp;" RefType="out">
           <Attributes>
             <Attribute>
               <AttributeName>System.Runtime.InteropServices.ComAliasName("Accessibility.wireHMENU")</AttributeName>
@@ -277,20 +291,20 @@
         <Parameter Name="pidChild" Type="System.UInt32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="pIDString">Pointer to a buffer containing identity string of an HMENU-based accessible element.</param>
-        <param name="dwIDStringLen">Specifies the length of the identity string specified by `pIDString`.</param>
-        <param name="phmenu">Pointer to a buffer that receives the HMENU of the accessible element.</param>
-        <param name="pidChild">Pointer to a buffer that receives the child ID of the accessible element.</param>
-        <summary>The <see cref="T:Accessibility.CAccPropServicesClass" /> and all of its exposed members are part of a managed wrapper for the Component Object Model (COM) <see langword="IAccPropServices" /> interface.</summary>
+        <param name="pIDString">To be added.</param>
+        <param name="dwIDStringLen">To be added.</param>
+        <param name="phmenu">To be added.</param>
+        <param name="pidChild">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="DecomposeHwndIdentityString">
-      <MemberSignature Language="C#" Value="public virtual void DecomposeHwndIdentityString (ref byte pIDString, uint dwIDStringLen, IntPtr phwnd, out uint pidObject, out uint pidChild);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DecomposeHwndIdentityString(unsigned int8 pIDString, unsigned int32 dwIDStringLen, native int phwnd, unsigned int32 pidObject, unsigned int32 pidChild) runtime managed" />
+      <MemberSignature Language="C#" Value="public virtual void DecomposeHwndIdentityString (ref byte pIDString, uint dwIDStringLen, out Accessibility._RemotableHandle phwnd, out uint pidObject, out uint pidChild);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DecomposeHwndIdentityString(unsigned int8 pIDString, unsigned int32 dwIDStringLen, valuetype Accessibility._RemotableHandle phwnd, unsigned int32 pidObject, unsigned int32 pidChild) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -299,7 +313,7 @@
       <Parameters>
         <Parameter Name="pIDString" Type="System.Byte&amp;" RefType="ref" />
         <Parameter Name="dwIDStringLen" Type="System.UInt32" />
-        <Parameter Name="phwnd" Type="System.IntPtr">
+        <Parameter Name="phwnd" Type="Accessibility._RemotableHandle&amp;" RefType="out">
           <Attributes>
             <Attribute>
               <AttributeName>System.Runtime.InteropServices.ComAliasName("Accessibility.wireHWND")</AttributeName>
@@ -310,14 +324,13 @@
         <Parameter Name="pidChild" Type="System.UInt32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="pIDString">Pointer to a buffer containing identity string of an Hwnd-based accessible element.</param>
-        <param name="dwIDStringLen">Specifies the length of the identity string specified by `pIDString`.</param>
-        <param name="phwnd">Pointer to a buffer that receives the HWND of the accessible element.</param>
-        <param name="pidObject">Pointer to a buffer that receives the object ID of the accessible element.</param>
-        <param name="pidChild">Pointer to a buffer that receives the child ID of the accessible element.</param>
-        <summary>The <see cref="T:Accessibility.CAccPropServicesClass" /> and all of its exposed members are part of a managed wrapper for the Component Object Model (COM) <see langword="IAccPropServices" /> interface.</summary>
+        <param name="pIDString">To be added.</param>
+        <param name="dwIDStringLen">To be added.</param>
+        <param name="phwnd">To be added.</param>
+        <param name="pidObject">To be added.</param>
+        <param name="pidChild">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="SetHmenuProp">
@@ -325,6 +338,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetHmenuProp(valuetype Accessibility._RemotableHandle hmenu, unsigned int32 idChild, valuetype System.Guid idProp, object var) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -364,6 +379,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetHmenuPropServer(valuetype Accessibility._RemotableHandle hmenu, unsigned int32 idChild, valuetype System.Guid paProps, int32 cProps, class Accessibility.IAccPropServer pServer, valuetype Accessibility.AnnoScope AnnoScope) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -407,6 +424,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetHmenuPropStr(valuetype Accessibility._RemotableHandle hmenu, unsigned int32 idChild, valuetype System.Guid idProp, string str) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -446,6 +465,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetHwndProp(valuetype Accessibility._RemotableHandle hwnd, unsigned int32 idObject, unsigned int32 idChild, valuetype System.Guid idProp, object var) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -487,6 +508,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetHwndPropServer(valuetype Accessibility._RemotableHandle hwnd, unsigned int32 idObject, unsigned int32 idChild, valuetype System.Guid paProps, int32 cProps, class Accessibility.IAccPropServer pServer, valuetype Accessibility.AnnoScope AnnoScope) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -532,6 +555,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetHwndPropStr(valuetype Accessibility._RemotableHandle hwnd, unsigned int32 idObject, unsigned int32 idChild, valuetype System.Guid idProp, string str) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -573,6 +598,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetPropServer(unsigned int8 pIDString, unsigned int32 dwIDStringLen, valuetype System.Guid paProps, int32 cProps, class Accessibility.IAccPropServer pServer, valuetype Accessibility.AnnoScope AnnoScope) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -610,6 +637,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetPropValue(unsigned int8 pIDString, unsigned int32 dwIDStringLen, valuetype System.Guid idProp, object var) runtime managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Accessibility</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

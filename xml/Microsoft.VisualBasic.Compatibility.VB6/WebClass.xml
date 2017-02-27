@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi WebClass extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+    <AssemblyVersion>8.0.0.0</AssemblyVersion>
     <AssemblyVersion>10.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -36,6 +37,8 @@
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string UserWebClassName, string WebClassFileName, object ContainingClass) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -44,9 +47,9 @@
         <Parameter Name="ContainingClass" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="UserWebClassName">A &lt;xref:System.String&gt; that contains the <see langword="Name" /> property for the Visual Basic 6.0 <see langword="WebClass" /> object.</param>
-        <param name="WebClassFileName">A &lt;xref:System.String&gt; that contains the file name for the Visual Basic 6.0 <see langword="WebClass" /> object.</param>
-        <param name="ContainingClass">A &lt;xref:System.String&gt; that contains the <see langword="Application" /> property for the Visual Basic 6.0 <see langword="WebClass" /> object.</param>
+        <param name="UserWebClassName">A <see cref="T:System.String" /> that contains the <see langword="Name" /> property for the Visual Basic 6.0 <see langword="WebClass" /> object.</param>
+        <param name="WebClassFileName">A <see cref="T:System.String" /> that contains the file name for the Visual Basic 6.0 <see langword="WebClass" /> object.</param>
+        <param name="ContainingClass">A <see cref="T:System.String" /> that contains the <see langword="Application" /> property for the Visual Basic 6.0 <see langword="WebClass" /> object.</param>
         <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebClass" /> class.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -66,14 +69,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the name that is used in code to identify a <see langword="WebClass" /> object.</summary>
-        <value>A &lt;xref:System.String&gt; that contains the name for the <see langword="WebClass" /> object.</value>
+        <value>A <see cref="T:System.String" /> that contains the name for the <see langword="WebClass" /> object.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -94,8 +104,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.VisualBasic.Compatibility.VB6.WebItem NextItem" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>Microsoft.VisualBasic.Compatibility.VB6.WebItem</ReturnType>
       </ReturnValue>
@@ -122,6 +139,8 @@
       <MemberSignature Language="ILAsm" Value=".method public instance void ProcessEvents(class System.Web.HttpRequest Request) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -151,14 +170,24 @@
       <MemberSignature Language="ILAsm" Value=".property instance string UrlData" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets or sets a parameter that is appended to the end of any URL that is generated by using the &lt;xref:Microsoft.VisualBasic.Compatibility.VB6.WebClass.URLFor%2A&gt; method.</summary>
-        <value>A &lt;xref:System.String&gt; that contains the parameter that will be appended.</value>
+        <value>A <see cref="T:System.String" /> that contains the parameter that will be appended.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -177,6 +206,8 @@
       <MemberSignature Language="ILAsm" Value=".method public instance string URLFor(class Microsoft.VisualBasic.Compatibility.VB6.WebItem obj, string EventName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -188,9 +219,9 @@
       </Parameters>
       <Docs>
         <param name="obj">A <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" /> object for which you want to generate a URL and raise an event.</param>
-        <param name="EventName">Optional. A &lt;xref:System.String&gt; that refers to an event in the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" />.</param>
+        <param name="EventName">Optional. A <see cref="T:System.String" /> that refers to an event in the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" />.</param>
         <summary>Specifies the URL that the system must have to reference a <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebClass" /><see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" /> in the browser.</summary>
-        <returns>A &lt;xref:System.String&gt; that contains the URL.</returns>
+        <returns>A <see cref="T:System.String" /> that contains the URL.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -209,6 +240,8 @@
       <MemberSignature Language="ILAsm" Value=".method public instance string URLFor(string objName, string EventName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>Microsoft.VisualBasic.Compatibility</AssemblyName>
+        <AssemblyVersion>8.0.0.0</AssemblyVersion>
         <AssemblyVersion>10.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -219,10 +252,10 @@
         <Parameter Name="EventName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="objName">A &lt;xref:System.String&gt; that contains the name of the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" /> object for which you want to generate a URL and raise an event.</param>
-        <param name="EventName">Optional. A &lt;xref:System.String&gt; that refers to an event in the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" />.</param>
+        <param name="objName">A <see cref="T:System.String" /> that contains the name of the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" /> object for which you want to generate a URL and raise an event.</param>
+        <param name="EventName">Optional. A <see cref="T:System.String" /> that refers to an event in the <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" />.</param>
         <summary>Specifies the URL that the system must have to reference a <see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebClass" /><see cref="T:Microsoft.VisualBasic.Compatibility.VB6.WebItem" /> in the browser.</summary>
-        <returns>A &lt;xref:System.String&gt; that contains the URL.</returns>
+        <returns>A <see cref="T:System.String" /> that contains the URL.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   

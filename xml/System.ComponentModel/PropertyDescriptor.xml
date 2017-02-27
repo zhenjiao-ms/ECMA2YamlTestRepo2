@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit PropertyDescriptor extends System.ComponentModel.MemberDescriptor" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -55,9 +56,9 @@
 ## Examples  
  The following code example is built upon the example in the <xref:System.ComponentModel.PropertyDescriptorCollection> class. It prints the information (category, description, display name) of the text of a button in a text box. It assumes that `button1` and `textbox1` have been instantiated on a form.  
   
- [!code-cpp[PropertyDescriptor#1](~/add/codesnippet/cpp/t-system.componentmodel._4_1.cpp)]
- [!code-vb[PropertyDescriptor#1](~/add/codesnippet/visualbasic/t-system.componentmodel._4_1.vb)]
- [!code-cs[PropertyDescriptor#1](~/add/codesnippet/csharp/t-system.componentmodel._4_1.cs)]  
+ [!code-cpp[PropertyDescriptor#1](~/add/codesnippet/cpp/t-system.componentmodel._5_1.cpp)]
+ [!code-vb[PropertyDescriptor#1](~/add/codesnippet/visualbasic/t-system.componentmodel._5_1.vb)]
+ [!code-cs[PropertyDescriptor#1](~/add/codesnippet/csharp/t-system.componentmodel._5_1.cs)]  
   
  The following code example shows how to implement a custom property descriptor that provides a read-only wrapper around a property. The `SerializeReadOnlyPropertyDescriptor` is used in a custom designer to provide a read-only property descriptor for the control's <xref:System.Windows.Forms.Control.Size%2A> property.  
   
@@ -81,8 +82,15 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.ComponentModel.MemberDescriptor descr) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="descr" Type="System.ComponentModel.MemberDescriptor" />
       </Parameters>
@@ -98,16 +106,23 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.ComponentModel.MemberDescriptor descr, class System.Attribute[] attrs) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="descr" Type="System.ComponentModel.MemberDescriptor" />
         <Parameter Name="attrs" Type="System.Attribute[]" />
       </Parameters>
       <Docs>
         <param name="descr">A <see cref="T:System.ComponentModel.MemberDescriptor" /> containing the name of the member and its attributes.</param>
-        <param name="attrs">An &lt;xref:System.Attribute&gt; array containing the attributes you want to associate with the property.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.PropertyDescriptor" /> class with the name in the specified <see cref="T:System.ComponentModel.MemberDescriptor" /> and the attributes in both the <see cref="T:System.ComponentModel.MemberDescriptor" /> and the &lt;xref:System.Attribute&gt; array.</summary>
+        <param name="attrs">An <see cref="T:System.Attribute" /> array containing the attributes you want to associate with the property.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.PropertyDescriptor" /> class with the name in the specified <see cref="T:System.ComponentModel.MemberDescriptor" /> and the attributes in both the <see cref="T:System.ComponentModel.MemberDescriptor" /> and the <see cref="T:System.Attribute" /> array.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -124,15 +139,22 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(string name, class System.Attribute[] attrs) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="name" Type="System.String" />
         <Parameter Name="attrs" Type="System.Attribute[]" />
       </Parameters>
       <Docs>
         <param name="name">The name of the property.</param>
-        <param name="attrs">An array of type &lt;xref:System.Attribute&gt; that contains the property attributes.</param>
+        <param name="attrs">An array of type <see cref="T:System.Attribute" /> that contains the property attributes.</param>
         <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.PropertyDescriptor" /> class with the specified name and attributes.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
@@ -143,6 +165,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddValueChanged(object component, class System.EventHandler handler) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -167,6 +191,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanResetValue(object component) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -196,6 +222,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Type ComponentType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -203,7 +231,7 @@
       </ReturnValue>
       <Docs>
         <summary>When overridden in a derived class, gets the type of the component this property is bound to.</summary>
-        <value>A &lt;xref:System.Type&gt; that represents the type of component this property is bound to. When the &lt;xref:System.ComponentModel.PropertyDescriptor.GetValue%2A&gt; or &lt;xref:System.ComponentModel.PropertyDescriptor.SetValue%2A&gt; methods are invoked, the object specified might be an instance of this type.</value>
+        <value>A <see cref="T:System.Type" /> that represents the type of component this property is bound to. When the &lt;xref:System.ComponentModel.PropertyDescriptor.GetValue%2A&gt; or &lt;xref:System.ComponentModel.PropertyDescriptor.SetValue%2A&gt; methods are invoked, the object specified might be an instance of this type.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -220,6 +248,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.ComponentModel.TypeConverter Converter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -227,7 +257,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets the type converter for this property.</summary>
-        <value>A <see cref="T:System.ComponentModel.TypeConverter" /> that is used to convert the &lt;xref:System.Type&gt; of this property.</value>
+        <value>A <see cref="T:System.ComponentModel.TypeConverter" /> that is used to convert the <see cref="T:System.Type" /> of this property.</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -237,6 +267,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance object CreateInstance(class System.Type type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -246,7 +278,7 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">A &lt;xref:System.Type&gt; that represents the type to create.</param>
+        <param name="type">A <see cref="T:System.Type" /> that represents the type to create.</param>
         <summary>Creates an instance of the specified type.</summary>
         <returns>A new instance of the type.</returns>
         <remarks>
@@ -268,6 +300,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -290,6 +324,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void FillAttributes(class System.Collections.IList attributeList) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -299,7 +335,7 @@
         <Parameter Name="attributeList" Type="System.Collections.IList" />
       </Parameters>
       <Docs>
-        <param name="attributeList">An &lt;xref:System.Collections.IList&gt; that lists the attributes in the parent class. Initially, this is empty.</param>
+        <param name="attributeList">An <see cref="T:System.Collections.IList" /> that lists the attributes in the parent class. Initially, this is empty.</param>
         <summary>Adds the attributes of the <see cref="T:System.ComponentModel.PropertyDescriptor" /> to the specified list of attributes in the parent class.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -317,8 +353,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ComponentModel.PropertyDescriptorCollection GetChildProperties() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ComponentModel.PropertyDescriptorCollection</ReturnType>
       </ReturnValue>
@@ -354,8 +397,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ComponentModel.PropertyDescriptorCollection GetChildProperties(class System.Attribute[] filter) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ComponentModel.PropertyDescriptorCollection</ReturnType>
       </ReturnValue>
@@ -363,7 +413,7 @@
         <Parameter Name="filter" Type="System.Attribute[]" />
       </Parameters>
       <Docs>
-        <param name="filter">An array of type &lt;xref:System.Attribute&gt; to use as a filter.</param>
+        <param name="filter">An array of type <see cref="T:System.Attribute" /> to use as a filter.</param>
         <summary>Returns a <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> using a specified array of attributes as a filter.</summary>
         <returns>A <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> with the properties that match the specified attributes.</returns>
         <remarks>
@@ -394,8 +444,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ComponentModel.PropertyDescriptorCollection GetChildProperties(object instance) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.ComponentModel.PropertyDescriptorCollection</ReturnType>
       </ReturnValue>
@@ -434,6 +491,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.ComponentModel.PropertyDescriptorCollection GetChildProperties(object instance, class System.Attribute[] filter) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -445,7 +504,7 @@
       </Parameters>
       <Docs>
         <param name="instance">A component to get the properties for.</param>
-        <param name="filter">An array of type &lt;xref:System.Attribute&gt; to use as a filter.</param>
+        <param name="filter">An array of type <see cref="T:System.Attribute" /> to use as a filter.</param>
         <summary>Returns a <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> for a given object using a specified array of attributes as a filter.</summary>
         <returns>A <see cref="T:System.ComponentModel.PropertyDescriptorCollection" /> with the properties that match the specified attributes for the specified component.</returns>
         <remarks>
@@ -476,6 +535,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetEditor(class System.Type editorBaseType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -497,6 +558,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -515,6 +578,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance object GetInvocationTarget(class System.Type type, object instance) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -525,10 +590,10 @@
         <Parameter Name="instance" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="type">The &lt;xref:System.Type&gt; of the invocation target.</param>
+        <param name="type">The <see cref="T:System.Type" /> of the invocation target.</param>
         <param name="instance">The potential invocation target.</param>
         <summary>This method returns the object that should be used during invocation of members.</summary>
-        <returns>The &lt;xref:System.Object&gt; that should be used during invocation of members.</returns>
+        <returns>The <see cref="T:System.Object" /> that should be used during invocation of members.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -545,6 +610,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Type GetTypeFromName(string typeName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -556,7 +623,7 @@
       <Docs>
         <param name="typeName">The assembly-qualified name of the type to retrieve.</param>
         <summary>Returns a type using its name.</summary>
-        <returns>A &lt;xref:System.Type&gt; that matches the given type name, or <see langword="null" /> if a match cannot be found.</returns>
+        <returns>A <see cref="T:System.Type" /> that matches the given type name, or <see langword="null" /> if a match cannot be found.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -573,6 +640,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object GetValue(object component) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -603,6 +672,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig instance class System.EventHandler GetValueChangedHandler(object component) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -624,6 +695,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsLocalizable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -649,6 +722,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsReadOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -667,6 +742,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnValueChanged(object component, class System.EventArgs e) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -678,7 +755,7 @@
       </Parameters>
       <Docs>
         <param name="component">The object that raises the event.</param>
-        <param name="e">An &lt;xref:System.EventArgs&gt; that contains the event data.</param>
+        <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         <summary>Raises the `ValueChanged` event that you implemented.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -696,6 +773,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Type PropertyType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -703,7 +782,7 @@
       </ReturnValue>
       <Docs>
         <summary>When overridden in a derived class, gets the type of the property.</summary>
-        <value>A &lt;xref:System.Type&gt; that represents the type of the property.</value>
+        <value>A <see cref="T:System.Type" /> that represents the type of the property.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -720,6 +799,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveValueChanged(object component, class System.EventHandler handler) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -744,6 +825,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ResetValue(object component) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -793,6 +876,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.ComponentModel.DesignerSerializationVisibility SerializationVisibility" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -810,6 +895,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetValue(object component, object value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -853,6 +940,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ShouldSerializeValue(object component) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -882,6 +971,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool SupportsChangeEvents" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

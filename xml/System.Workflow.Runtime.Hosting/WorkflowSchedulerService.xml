@@ -3,17 +3,13 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit WorkflowSchedulerService extends System.Workflow.Runtime.Hosting.WorkflowRuntimeService" />
   <AssemblyInfo>
     <AssemblyName>System.Workflow.Runtime</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Workflow.Runtime.Hosting.WorkflowRuntimeService</BaseTypeName>
   </Base>
   <Interfaces />
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")</AttributeName>
-    </Attribute>
-  </Attributes>
   <Docs>
     <summary>Provides a mechanism to implement your own thread pool to execute the workflow and manage in-memory timer registration and events.</summary>
     <remarks>
@@ -36,6 +32,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -60,6 +58,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void Cancel(valuetype System.Guid timerId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -69,7 +69,7 @@
         <Parameter Name="timerId" Type="System.Guid" />
       </Parameters>
       <Docs>
-        <param name="timerId">The &lt;xref:System.Guid&gt; associated with the existing scheduled thread to cancel.</param>
+        <param name="timerId">The <see cref="T:System.Guid" /> associated with the existing scheduled thread to cancel.</param>
         <summary>When overridden in a derived class, cancels the scheduled work item with the given <paramref name="timerId" />.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -87,6 +87,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void Schedule(class System.Threading.WaitCallback callback, valuetype System.Guid workflowInstanceId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -98,7 +100,7 @@
       </Parameters>
       <Docs>
         <param name="callback">A <see cref="T:System.Threading.WaitCallback" /> multicast delegate that represents the method to run.</param>
-        <param name="workflowInstanceId">A &lt;xref:System.Guid&gt; that represents the workflow instance.</param>
+        <param name="workflowInstanceId">A <see cref="T:System.Guid" /> that represents the workflow instance.</param>
         <summary>When overridden in a derived class, this method is called by the runtime to schedule a work item (callback) for a particular instance ID.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -116,6 +118,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void Schedule(class System.Threading.WaitCallback callback, valuetype System.Guid workflowInstanceId, valuetype System.DateTime whenUtc, valuetype System.Guid timerId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Workflow.Runtime</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -129,10 +133,10 @@
       </Parameters>
       <Docs>
         <param name="callback">A <see cref="T:System.Threading.WaitCallback" /> multicast delegate that represents the method to run.</param>
-        <param name="workflowInstanceId">A &lt;xref:System.Guid&gt; that represents the workflow instance to add.</param>
-        <param name="whenUtc">The &lt;xref:System.DateTime&gt; to begin running the workflow item.</param>
-        <param name="timerId">A &lt;xref:System.Guid&gt; that represents the scheduled timer.</param>
-        <summary>When overridden in a derived class, this method is called by the runtime to schedule a work item (callback) for a particular workflow instance to be done at the given time (&lt;xref:System.DateTime&gt;).</summary>
+        <param name="workflowInstanceId">A <see cref="T:System.Guid" /> that represents the workflow instance to add.</param>
+        <param name="whenUtc">The <see cref="T:System.DateTime" /> to begin running the workflow item.</param>
+        <param name="timerId">A <see cref="T:System.Guid" /> that represents the scheduled timer.</param>
+        <summary>When overridden in a derived class, this method is called by the runtime to schedule a work item (callback) for a particular workflow instance to be done at the given time (<see cref="T:System.DateTime" />).</summary>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

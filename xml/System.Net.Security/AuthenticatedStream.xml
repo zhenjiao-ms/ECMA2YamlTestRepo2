@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit AuthenticatedStream extends System.IO.Stream" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -39,6 +40,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.IO.Stream innerStream, bool leaveInnerStreamOpen) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -46,8 +49,8 @@
         <Parameter Name="leaveInnerStreamOpen" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="innerStream">A &lt;xref:System.IO.Stream&gt; object used by the <see cref="T:System.Net.Security.AuthenticatedStream" /> for sending and receiving data.</param>
-        <param name="leaveInnerStreamOpen">A &lt;xref:System.Boolean&gt; that indicates whether closing this <see cref="T:System.Net.Security.AuthenticatedStream" /> object also closes `innerStream`.</param>
+        <param name="innerStream">A <see cref="T:System.IO.Stream" /> object used by the <see cref="T:System.Net.Security.AuthenticatedStream" /> for sending and receiving data.</param>
+        <param name="leaveInnerStreamOpen">A <see cref="T:System.Boolean" /> that indicates whether closing this <see cref="T:System.Net.Security.AuthenticatedStream" /> object also closes `innerStream`.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Net.Security.AuthenticatedStream" /> class.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -64,7 +67,7 @@
   
  -or-  
   
- <paramref name="innerStream" /> is equal to &lt;xref:System.IO.Stream.Null&gt;.</exception>
+ <paramref name="innerStream" /> is equal to <see cref="F:System.IO.Stream.Null" />.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -73,6 +76,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -103,14 +108,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.IO.Stream InnerStream" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the stream used by this <see cref="T:System.Net.Security.AuthenticatedStream" /> for sending and receiving data.</summary>
-        <value>A &lt;xref:System.IO.Stream&gt; object.</value>
+        <value>A <see cref="T:System.IO.Stream" /> object.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -127,13 +139,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsAuthenticated" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a &lt;xref:System.Boolean&gt; value that indicates whether authentication was successful.</summary>
+        <summary>Gets a <see cref="T:System.Boolean" /> value that indicates whether authentication was successful.</summary>
         <value>
           <see langword="true" /> if successful authentication occurred; otherwise, <see langword="false" />.</value>
         <remarks>
@@ -160,13 +174,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsEncrypted" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a &lt;xref:System.Boolean&gt; value that indicates whether data sent using this <see cref="T:System.Net.Security.AuthenticatedStream" /> is encrypted.</summary>
+        <summary>Gets a <see cref="T:System.Boolean" /> value that indicates whether data sent using this <see cref="T:System.Net.Security.AuthenticatedStream" /> is encrypted.</summary>
         <value>
           <see langword="true" /> if data is encrypted before being transmitted over the network and decrypted when it reaches the remote endpoint; otherwise, <see langword="false" />.</value>
         <remarks>
@@ -193,13 +209,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsMutuallyAuthenticated" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a &lt;xref:System.Boolean&gt; value that indicates whether both server and client have been authenticated.</summary>
+        <summary>Gets a <see cref="T:System.Boolean" /> value that indicates whether both server and client have been authenticated.</summary>
         <value>
           <see langword="true" /> if the client and server have been authenticated; otherwise, <see langword="false" />.</value>
         <remarks>
@@ -226,13 +244,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsServer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a &lt;xref:System.Boolean&gt; value that indicates whether the local side of the connection was authenticated as the server.</summary>
+        <summary>Gets a <see cref="T:System.Boolean" /> value that indicates whether the local side of the connection was authenticated as the server.</summary>
         <value>
           <see langword="true" /> if the local endpoint was authenticated as the server side of a client-server authenticated connection; <see langword="false" /> if the local endpoint was authenticated as the client.</value>
         <remarks>
@@ -259,13 +279,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSigned" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a &lt;xref:System.Boolean&gt; value that indicates whether the data sent using this stream is signed.</summary>
+        <summary>Gets a <see cref="T:System.Boolean" /> value that indicates whether the data sent using this stream is signed.</summary>
         <value>
           <see langword="true" /> if the data is signed before being transmitted; otherwise, <see langword="false" />.</value>
         <remarks>
@@ -292,8 +314,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool LeaveInnerStreamOpen" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

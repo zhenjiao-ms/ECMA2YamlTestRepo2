@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TypeConverterAttribute extends System.Attribute" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -37,15 +38,15 @@
 ## Examples  
  The following example declares `MyClass` to use the type converter called `MyClassConverter`. This example assumes that `MyClassConverter` has been implemented elsewhere. The class implementing the converter (`MyClassConverter`) must inherit from the <xref:System.ComponentModel.TypeConverter> class.  
   
- [!code-vb[Classic TypeConverterAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._140_1.vb)]
- [!code-cpp[Classic TypeConverterAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._140_1.cpp)]
- [!code-cs[Classic TypeConverterAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._140_1.cs)]  
+ [!code-vb[Classic TypeConverterAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._148_1.vb)]
+ [!code-cpp[Classic TypeConverterAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._148_1.cpp)]
+ [!code-cs[Classic TypeConverterAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._148_1.cs)]  
   
  The next example creates an instance of `MyClass`. Then it gets the attributes for the class, and prints the name of the type converter used by `MyClass`.  
   
- [!code-vb[Classic TypeConverterAttribute Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._140_2.vb)]
- [!code-cpp[Classic TypeConverterAttribute Example#2](~/add/codesnippet/cpp/t-system.componentmodel._140_2.cpp)]
- [!code-cs[Classic TypeConverterAttribute Example#2](~/add/codesnippet/csharp/t-system.componentmodel._140_2.cs)]  
+ [!code-vb[Classic TypeConverterAttribute Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._148_2.vb)]
+ [!code-cpp[Classic TypeConverterAttribute Example#2](~/add/codesnippet/cpp/t-system.componentmodel._148_2.cpp)]
+ [!code-cs[Classic TypeConverterAttribute Example#2](~/add/codesnippet/csharp/t-system.componentmodel._148_2.cs)]  
   
  ]]></format>
     </remarks>
@@ -57,6 +58,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -78,6 +81,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string typeName) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -102,13 +107,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type type) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">A &lt;xref:System.Type&gt; that represents the type of the converter class to use for data conversion for the object this attribute is bound to.</param>
+        <param name="type">A <see cref="T:System.Type" /> that represents the type of the converter class to use for data conversion for the object this attribute is bound to.</param>
         <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.TypeConverterAttribute" /> class, using the specified type as the data converter for the object this attribute is bound to.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -126,14 +133,21 @@
       <MemberSignature Language="ILAsm" Value=".property instance string ConverterTypeName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the fully qualified type name of the &lt;xref:System.Type&gt; to use as a converter for the object this attribute is bound to.</summary>
-        <value>The fully qualified type name of the &lt;xref:System.Type&gt; to use as a converter for the object this attribute is bound to, or an empty string ("") if none exists. The default value is an empty string ("").</value>
+        <summary>Gets the fully qualified type name of the <see cref="T:System.Type" /> to use as a converter for the object this attribute is bound to.</summary>
+        <value>The fully qualified type name of the <see cref="T:System.Type" /> to use as a converter for the object this attribute is bound to, or an empty string ("") if none exists. The default value is an empty string ("").</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -143,6 +157,8 @@
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.ComponentModel.TypeConverterAttribute Default" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -159,6 +175,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -181,6 +199,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

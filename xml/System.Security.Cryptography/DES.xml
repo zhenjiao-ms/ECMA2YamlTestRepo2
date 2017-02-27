@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DES extends System.Security.Cryptography.SymmetricAlgorithm" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -30,8 +31,8 @@
 ## Examples  
  The following code example uses <xref:System.Security.Cryptography.DESCryptoServiceProvider> (an implementation of DES) to encrypt a string to an in-memory buffer. It then decrypts and displays the round-tripped string.  
   
- [!code-vb[TripleDESCryptoServiceProvider#1](~/add/codesnippet/visualbasic/t-system.security.crypto_29_1.vb)]
- [!code-cs[TripleDESCryptoServiceProvider#1](~/add/codesnippet/csharp/t-system.security.crypto_29_1.cs)]  
+ [!code-vb[TripleDESCryptoServiceProvider#1](~/add/codesnippet/visualbasic/t-system.security.crypto_28_1.vb)]
+ [!code-cs[TripleDESCryptoServiceProvider#1](~/add/codesnippet/csharp/t-system.security.crypto_28_1.cs)]  
   
  Decryption can be handled in the same way; use <xref:System.Security.Cryptography.DESCryptoServiceProvider.CreateDecryptor%2A> instead of <xref:System.Security.Cryptography.DESCryptoServiceProvider.CreateEncryptor%2A>. The same key (<xref:System.Security.Cryptography.SymmetricAlgorithm.Key%2A>) and initialization vector (<xref:System.Security.Cryptography.SymmetricAlgorithm.IV%2A>) used to encrypt the file must be used to decrypt it.  
   
@@ -45,6 +46,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -74,8 +77,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Security.Cryptography.DES Create() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Security.Cryptography.DES</ReturnType>
       </ReturnValue>
@@ -94,15 +104,15 @@
 ## Examples  
  The following code example shows how to create and use a <xref:System.Security.Cryptography.DES> object to encrypt and decrypt data in a file.  
   
- [!code-vb[Cryptography.DES.Create.File#1](~/add/codesnippet/visualbasic/m-system.security.crypto_69_1.vb)]
- [!code-cpp[Cryptography.DES.Create.File#1](~/add/codesnippet/cpp/m-system.security.crypto_69_1.cpp)]
- [!code-cs[Cryptography.DES.Create.File#1](~/add/codesnippet/csharp/m-system.security.crypto_69_1.cs)]  
+ [!code-vb[Cryptography.DES.Create.File#1](~/add/codesnippet/visualbasic/m-system.security.crypto_68_1.vb)]
+ [!code-cpp[Cryptography.DES.Create.File#1](~/add/codesnippet/cpp/m-system.security.crypto_68_1.cpp)]
+ [!code-cs[Cryptography.DES.Create.File#1](~/add/codesnippet/csharp/m-system.security.crypto_68_1.cs)]  
   
  The following code example shows how to create and use a <xref:System.Security.Cryptography.DES> object to encrypt and decrypt data in memory.  
   
- [!code-cs[Cryptography.DES.Create.Memory#1](~/add/codesnippet/csharp/m-system.security.crypto_69_2.cs)]
- [!code-cpp[Cryptography.DES.Create.Memory#1](~/add/codesnippet/cpp/m-system.security.crypto_69_2.cpp)]
- [!code-vb[Cryptography.DES.Create.Memory#1](~/add/codesnippet/visualbasic/m-system.security.crypto_69_2.vb)]  
+ [!code-cs[Cryptography.DES.Create.Memory#1](~/add/codesnippet/csharp/m-system.security.crypto_68_2.cs)]
+ [!code-cpp[Cryptography.DES.Create.Memory#1](~/add/codesnippet/cpp/m-system.security.crypto_68_2.cpp)]
+ [!code-vb[Cryptography.DES.Create.Memory#1](~/add/codesnippet/visualbasic/m-system.security.crypto_68_2.vb)]  
   
  ]]></format>
         </remarks>
@@ -114,8 +124,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Security.Cryptography.DES Create(string algName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Security.Cryptography.DES</ReturnType>
       </ReturnValue>
@@ -132,15 +149,15 @@
 ## Examples  
  The following code example shows how to create and use a <xref:System.Security.Cryptography.DES> object to encrypt and decrypt data in a file.  
   
- [!code-cs[Cryptography.DES.Createstring.File#1](~/add/codesnippet/csharp/m-system.security.crypto_27_1.cs)]
- [!code-vb[Cryptography.DES.Createstring.File#1](~/add/codesnippet/visualbasic/m-system.security.crypto_27_1.vb)]
- [!code-cpp[Cryptography.DES.Createstring.File#1](~/add/codesnippet/cpp/m-system.security.crypto_27_1.cpp)]  
+ [!code-cs[Cryptography.DES.Createstring.File#1](~/add/codesnippet/csharp/m-system.security.crypto_26_1.cs)]
+ [!code-vb[Cryptography.DES.Createstring.File#1](~/add/codesnippet/visualbasic/m-system.security.crypto_26_1.vb)]
+ [!code-cpp[Cryptography.DES.Createstring.File#1](~/add/codesnippet/cpp/m-system.security.crypto_26_1.cpp)]  
   
  The following code example shows how to create and use a <xref:System.Security.Cryptography.DES> object to encrypt and decrypt data in memory.  
   
- [!code-cs[Cryptography.DES.Createstring.Memory#1](~/add/codesnippet/csharp/m-system.security.crypto_27_2.cs)]
- [!code-cpp[Cryptography.DES.Createstring.Memory#1](~/add/codesnippet/cpp/m-system.security.crypto_27_2.cpp)]
- [!code-vb[Cryptography.DES.Createstring.Memory#1](~/add/codesnippet/visualbasic/m-system.security.crypto_27_2.vb)]  
+ [!code-cs[Cryptography.DES.Createstring.Memory#1](~/add/codesnippet/csharp/m-system.security.crypto_26_2.cs)]
+ [!code-cpp[Cryptography.DES.Createstring.Memory#1](~/add/codesnippet/cpp/m-system.security.crypto_26_2.cpp)]
+ [!code-vb[Cryptography.DES.Createstring.Memory#1](~/add/codesnippet/visualbasic/m-system.security.crypto_26_2.vb)]  
   
  ]]></format>
         </remarks>
@@ -152,6 +169,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsSemiWeakKey(unsigned int8[] rgbKey) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -184,6 +203,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsWeakKey(unsigned int8[] rgbKey) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -216,6 +237,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] Key" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>mscorlib</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

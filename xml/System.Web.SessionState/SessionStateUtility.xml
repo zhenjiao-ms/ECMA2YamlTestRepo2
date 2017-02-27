@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit SessionStateUtility extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System.Web</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -62,6 +63,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AddHttpSessionStateToContext(class System.Web.HttpContext context, class System.Web.SessionState.IHttpSessionState container) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -100,6 +103,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Web.SessionState.IHttpSessionState GetHttpSessionStateFromContext(class System.Web.HttpContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -136,6 +141,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Web.HttpStaticObjectsCollection GetSessionStaticObjects(class System.Web.HttpContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -169,55 +176,13 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="IsSessionStateReadOnly">
-      <MemberSignature Language="C#" Value="public static bool IsSessionStateReadOnly (System.Web.HttpContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsSessionStateReadOnly(class System.Web.HttpContext context) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="context" Type="System.Web.HttpContext" />
-      </Parameters>
-      <Docs>
-        <param name="context">Specifies the <see cref="T:System.Web.HttpContext" /> to check.</param>
-        <summary>Gets a value which indicates whether the session state is read-only for the specified <see cref="T:System.Web.HttpContext" />.</summary>
-        <returns>
-          <see langword="true" /> if the session state is read-only; otherwise, <see langword="false" />.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="IsSessionStateRequired">
-      <MemberSignature Language="C#" Value="public static bool IsSessionStateRequired (System.Web.HttpContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsSessionStateRequired(class System.Web.HttpContext context) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="context" Type="System.Web.HttpContext" />
-      </Parameters>
-      <Docs>
-        <param name="context">Specifies the <see cref="T:System.Web.HttpContext" /> to check.</param>
-        <summary>Gets a value which indicates whether the session state is required for the specified <see cref="T:System.Web.HttpContext" />.</summary>
-        <returns>
-          <see langword="true" /> if the session state is required; otherwise, <see langword="false" />.</returns>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="RaiseSessionEnd">
       <MemberSignature Language="C#" Value="public static void RaiseSessionEnd (System.Web.SessionState.IHttpSessionState session, object eventSource, EventArgs eventArgs);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RaiseSessionEnd(class System.Web.SessionState.IHttpSessionState session, object eventSource, class System.EventArgs eventArgs) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -231,7 +196,7 @@
       <Docs>
         <param name="session">The <see cref="T:System.Web.SessionState.IHttpSessionState" /> implementation instance for the session that has ended.</param>
         <param name="eventSource">The event source object to supply to the <see langword="Session_OnEnd" /> event.</param>
-        <param name="eventArgs">The &lt;xref:System.EventArgs&gt; object to supply to the <see langword="Session_OnEnd" /> event.</param>
+        <param name="eventArgs">The <see cref="T:System.EventArgs" /> object to supply to the <see langword="Session_OnEnd" /> event.</param>
         <summary>Executes the **Session_OnEnd** event defined in the Global.asax file for the ASP.NET application.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -257,8 +222,15 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RemoveHttpSessionStateFromContext(class System.Web.HttpContext context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.Web</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -284,23 +256,6 @@
   
  ]]></format>
         </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="SerializationSurrogateSelector">
-      <MemberSignature Language="C#" Value="public static System.Runtime.Serialization.ISurrogateSelector SerializationSurrogateSelector { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property class System.Runtime.Serialization.ISurrogateSelector SerializationSurrogateSelector" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Runtime.Serialization.ISurrogateSelector</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets or sets a serialization surrogate selector that is used for session serialization customization.</summary>
-        <value>A serialization surrogate selector.</value>
-        <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
     </Member>

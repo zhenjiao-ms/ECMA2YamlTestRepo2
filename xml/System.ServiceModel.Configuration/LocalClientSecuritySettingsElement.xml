@@ -1,12 +1,13 @@
 <Type Name="LocalClientSecuritySettingsElement" FullName="System.ServiceModel.Configuration.LocalClientSecuritySettingsElement">
-  <TypeSignature Language="C#" Value="public sealed class LocalClientSecuritySettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LocalClientSecuritySettingsElement extends System.ServiceModel.Configuration.ServiceModelConfigurationElement" />
+  <TypeSignature Language="C#" Value="public sealed class LocalClientSecuritySettingsElement : System.Configuration.ConfigurationElement" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LocalClientSecuritySettingsElement extends System.Configuration.ConfigurationElement" />
   <AssemblyInfo>
     <AssemblyName>System.ServiceModel</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.ServiceModel.Configuration.ServiceModelConfigurationElement</BaseTypeName>
+    <BaseTypeName>System.Configuration.ConfigurationElement</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,8 +21,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Configuration.LocalClientSecuritySettingsElement" /> class.</summary>
@@ -34,6 +42,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool CacheCookies" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -57,6 +67,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 CookieRenewalThresholdPercentage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -82,6 +94,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool DetectReplays" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -105,11 +119,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan MaxClockSkew" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("maxClockSkew", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -119,8 +135,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; that specifies the maximum time difference between the system clocks of the two communicating parties.</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; that specifies the maximum time difference between the system clocks of the two communicating parties. The default value is "00:05:00".</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> that specifies the maximum time difference between the system clocks of the two communicating parties.</summary>
+        <value>A <see cref="T:System.TimeSpan" /> that specifies the maximum time difference between the system clocks of the two communicating parties. The default value is "00:05:00".</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -137,11 +153,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan MaxCookieCachingTime" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("maxCookieCachingTime", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -151,8 +169,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; that specifies the maximum lifetime of cookies.</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; that specifies the maximum lifetime of cookies. The default value is "10675199.02:48:05.4775807".</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> that specifies the maximum lifetime of cookies.</summary>
+        <value>A <see cref="T:System.TimeSpan" /> that specifies the maximum lifetime of cookies. The default value is "10675199.02:48:05.4775807".</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -162,6 +180,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Configuration.ConfigurationPropertyCollection Properties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -178,6 +198,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool ReconnectTransportOnFailure" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -208,6 +230,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 ReplayCacheSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -240,11 +264,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan ReplayWindow" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("replayWindow", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -254,8 +280,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; that specifies the duration in which individual message nonces are valid.</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; that specifies the duration in which individual message nonces are valid.</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> that specifies the duration in which individual message nonces are valid.</summary>
+        <value>A <see cref="T:System.TimeSpan" /> that specifies the duration in which individual message nonces are valid.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -272,11 +298,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan SessionKeyRenewalInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("sessionKeyRenewalInterval", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -286,8 +314,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; that specifies the duration after which the initiator renews the key for the security session.</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; that specifies the duration after which the initiator renews the key for the security session. The default is "10:00:00".</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> that specifies the duration after which the initiator renews the key for the security session.</summary>
+        <value>A <see cref="T:System.TimeSpan" /> that specifies the duration after which the initiator renews the key for the security session. The default is "10:00:00".</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
@@ -297,11 +325,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan SessionKeyRolloverInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("sessionKeyRolloverInterval", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -311,8 +341,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; that specifies the time interval a previous session key is valid on incoming messages during a key renewal. The default is "00:05:00".</summary>
-        <value>A &lt;xref:System.TimeSpan&gt; that specifies the duration a previous session key is valid on incoming messages during a key renewal. The default is "00:05:00".</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> that specifies the time interval a previous session key is valid on incoming messages during a key renewal. The default is "00:05:00".</summary>
+        <value>A <see cref="T:System.TimeSpan" /> that specifies the duration a previous session key is valid on incoming messages during a key renewal. The default is "00:05:00".</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -329,11 +359,13 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.TimeSpan TimestampValidityDuration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter))</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Runtime.TimeSpanOrInfiniteConverter))</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Configuration.ConfigurationProperty("timestampValidityDuration", DefaultValue=Mono.Cecil.CustomAttributeArgument)</AttributeName>
@@ -343,8 +375,8 @@
         <ReturnType>System.TimeSpan</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.TimeSpan&gt; that specifies the duration in which a time stamp is valid.</summary>
-        <value>A positive &lt;xref:System.TimeSpan&gt; that specifies the duration in which a time stamp is valid. The default is "00:15:00".</value>
+        <summary>Gets or sets a <see cref="T:System.TimeSpan" /> that specifies the duration in which a time stamp is valid.</summary>
+        <value>A positive <see cref="T:System.TimeSpan" /> that specifies the duration in which a time stamp is valid. The default is "00:15:00".</value>
         <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>

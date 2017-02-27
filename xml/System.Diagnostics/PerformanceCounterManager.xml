@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PerformanceCounterManager extends System.Object implements class System.Diagnostics.ICollectData" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -36,11 +37,16 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete("This class has been deprecated.  Use the PerformanceCounters through the System.Diagnostics.PerformanceCounter class instead.  http://go.microsoft.com/fwlink/?linkid=14202")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <Parameters />
@@ -63,6 +69,8 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.Diagnostics.ICollectData.CloseData() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -85,6 +93,8 @@
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.Diagnostics.ICollectData.CollectData(int32 callIdx, native int valueNamePtr, native int dataPtr, int32 totalBytes, native int res) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -107,7 +117,7 @@
         <param name="valueNamePtr">A pointer to a Unicode string list with the requested Object identifiers.</param>
         <param name="dataPtr">A pointer to the data buffer.</param>
         <param name="totalBytes">A pointer to a number of bytes.</param>
-        <param name="res">When this method returns, contains a &lt;xref:System.IntPtr&gt; with a value of -1.</param>
+        <param name="res">When this method returns, contains a <see cref="T:System.IntPtr" /> with a value of -1.</param>
         <summary>Performance data collection routine. Called by the PerfCount perf dll.</summary>
         <remarks>To be added.</remarks>
         <threadsafe />

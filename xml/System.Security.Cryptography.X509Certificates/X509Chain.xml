@@ -1,18 +1,15 @@
 <Type Name="X509Chain" FullName="System.Security.Cryptography.X509Certificates.X509Chain">
-  <TypeSignature Language="C#" Value="public class X509Chain : IDisposable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit X509Chain extends System.Object implements class System.IDisposable" />
+  <TypeSignature Language="C#" Value="public class X509Chain" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit X509Chain extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces>
-    <Interface>
-      <InterfaceName>System.IDisposable</InterfaceName>
-    </Interface>
-  </Interfaces>
+  <Interfaces />
   <Docs>
     <summary>Represents a chain-building engine for <see cref="T:System.Security.Cryptography.X509Certificates.X509Certificate2" /> certificates.</summary>
     <remarks>
@@ -31,9 +28,9 @@
 ## Examples  
  The following code example opens the current user's personal certificate store, allows you to select a certificate, then writes certificate and certificate chain information to the console. The output depends on the certificate you select.  
   
- [!code-cpp[x509chaintest#1](~/add/codesnippet/cpp/t-system.security.crypto_49_1.cpp)]
- [!code-cs[x509chaintest#1](~/add/codesnippet/csharp/t-system.security.crypto_49_1.cs)]
- [!code-vb[x509chaintest#1](~/add/codesnippet/visualbasic/t-system.security.crypto_49_1.vb)]  
+ [!code-cpp[x509chaintest#1](~/add/codesnippet/cpp/t-system.security.crypto_47_1.cpp)]
+ [!code-cs[x509chaintest#1](~/add/codesnippet/csharp/t-system.security.crypto_47_1.cs)]
+ [!code-vb[x509chaintest#1](~/add/codesnippet/visualbasic/t-system.security.crypto_47_1.vb)]  
   
  ]]></format>
     </remarks>
@@ -45,11 +42,13 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Security.SecurityCritical</AttributeName>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
         </Attribute>
       </Attributes>
       <Parameters />
@@ -75,13 +74,10 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool useMachineContext) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecurityCritical</AttributeName>
-        </Attribute>
-      </Attributes>
       <Parameters>
         <Parameter Name="useMachineContext" Type="System.Boolean" />
       </Parameters>
@@ -114,14 +110,16 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int chainContext) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="chainContext" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="chainContext">An &lt;xref:System.IntPtr&gt; handle to an X.509 chain.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Chain" /> class using an &lt;xref:System.IntPtr&gt; handle to an X.509 chain.</summary>
+        <param name="chainContext">An <see cref="T:System.IntPtr" /> handle to an X.509 chain.</param>
+        <summary>Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.X509Chain" /> class using an <see cref="T:System.IntPtr" /> handle to an X.509 chain.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -141,6 +139,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Build(class System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -184,6 +184,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance native int ChainContext" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -191,7 +193,7 @@
       </ReturnValue>
       <Docs>
         <summary>Gets a handle to an X.509 chain.</summary>
-        <value>An &lt;xref:System.IntPtr&gt; handle to an X.509 chain.</value>
+        <value>An <see cref="T:System.IntPtr" /> handle to an X.509 chain.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -209,8 +211,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Cryptography.X509Certificates.X509ChainElementCollection ChainElements" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Security.Cryptography.X509Certificates.X509ChainElementCollection</ReturnType>
       </ReturnValue>
@@ -244,6 +253,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Security.Cryptography.X509Certificates.X509ChainPolicy ChainPolicy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -278,6 +289,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Security.Cryptography.X509Certificates.X509ChainStatus[] ChainStatus" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -302,6 +315,8 @@
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Security.Cryptography.X509Certificates.X509Chain Create() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -322,84 +337,15 @@
         <threadsafe />
       </Docs>
     </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="public void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Releases all of the resources used by this <see cref="T:System.Security.Cryptography.X509Certificates.X509Chain" />.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  <xref:System.Security.Cryptography.X509Certificates.X509Chain> implements the <xref:System.IDisposable> interface starting with the [!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]; in previous versions of the .NET Framework, the <xref:System.Security.Cryptography.X509Certificates.X509Chain> class does not implement this interface, and therefore the `Dispose` method does not exist.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecuritySafeCritical</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="disposing" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="disposing">
-          <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
-        <summary>Releases the unmanaged resources used by this <see cref="T:System.Security.Cryptography.X509Certificates.X509Chain" />, and optionally releases the managed resources.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  <xref:System.Security.Cryptography.X509Certificates.X509Chain> implements the <xref:System.IDisposable> interface starting with the [!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]; in previous versions of the .NET Framework, the <xref:System.Security.Cryptography.X509Certificates.X509Chain> class does not implement this interface, and therefore the `Dispose` method does not exist.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
     <Member MemberName="Reset">
       <MemberSignature Language="C#" Value="public void Reset ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Reset() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Security.SecurityCritical</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -409,28 +355,6 @@
         <remarks>To be added.</remarks>
         <permission cref="F:System.Security.Permissions.SecurityAction.LinkDemand">for full trust for the immediate caller. This member cannot be used by partially trusted code.</permission>
         <permission cref="F:System.Security.Permissions.SecurityAction.InheritanceDemand">for full trust for inheritors. This member cannot be inherited by partially trusted code.</permission>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="SafeHandle">
-      <MemberSignature Language="C#" Value="public Microsoft.Win32.SafeHandles.SafeX509ChainHandle SafeHandle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Win32.SafeHandles.SafeX509ChainHandle SafeHandle" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Security.SecurityCritical</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>Microsoft.Win32.SafeHandles.SafeX509ChainHandle</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a safe handle for this <see cref="T:System.Security.Cryptography.X509Certificates.X509Chain" /> instance.</summary>
-        <value>Returns the <see cref="T:Microsoft.Win32.SafeHandles.SafeX509ChainHandle" />.</value>
-        <remarks>To be added.</remarks>
         <threadsafe />
       </Docs>
     </Member>

@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TcpClient extends System.Object implements class System.IDisposable" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -50,6 +51,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -86,13 +89,15 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Net.IPEndPoint localEP) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="localEP" Type="System.Net.IPEndPoint" />
       </Parameters>
       <Docs>
-        <param name="localEP">The &lt;xref:System.Net.IPEndPoint&gt; to which you bind the TCP &lt;xref:System.Net.Sockets.Socket&gt;.</param>
+        <param name="localEP">The <see cref="T:System.Net.IPEndPoint" /> to which you bind the TCP <see cref="T:System.Net.Sockets.Socket" />.</param>
         <summary>Initializes a new instance of the <see cref="T:System.Net.Sockets.TcpClient" /> class and binds it to the specified local endpoint.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -125,6 +130,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Net.Sockets.AddressFamily family) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -165,6 +172,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string hostname, int32 port) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -201,7 +210,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="hostname" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> parameter is not between &lt;xref:System.Net.IPEndPoint.MinPort&gt; and &lt;xref:System.Net.IPEndPoint.MaxPort&gt;.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> parameter is not between <see cref="F:System.Net.IPEndPoint.MinPort" /> and <see cref="F:System.Net.IPEndPoint.MaxPort" />.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information.</exception>
         <threadsafe />
       </Docs>
@@ -211,8 +220,18 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool Active" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -236,6 +255,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 Available" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -263,7 +284,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -272,6 +293,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginConnect(class System.Net.IPAddress address, int32 port, class System.AsyncCallback requestCallback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -284,12 +307,12 @@
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="address">The &lt;xref:System.Net.IPAddress&gt; of the remote host.</param>
+        <param name="address">The <see cref="T:System.Net.IPAddress" /> of the remote host.</param>
         <param name="port">The port number of the remote host.</param>
-        <param name="requestCallback">An &lt;xref:System.AsyncCallback&gt; delegate that references the method to invoke when the operation is complete.</param>
+        <param name="requestCallback">An <see cref="T:System.AsyncCallback" /> delegate that references the method to invoke when the operation is complete.</param>
         <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the `requestCallback` delegate when the operation is complete.</param>
-        <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an &lt;xref:System.Net.IPAddress&gt; and a port number (&lt;xref:System.Int32&gt;).</summary>
-        <returns>An &lt;xref:System.IAsyncResult&gt; object that references the asynchronous connection.</returns>
+        <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an <see cref="T:System.Net.IPAddress" /> and a port number (<see cref="T:System.Int32" />).</summary>
+        <returns>An <see cref="T:System.IAsyncResult" /> object that references the asynchronous connection.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -312,7 +335,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="address" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
         <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
         <threadsafe />
@@ -323,6 +346,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginConnect(class System.Net.IPAddress[] addresses, int32 port, class System.AsyncCallback requestCallback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -335,12 +360,12 @@
         <Parameter Name="state" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="addresses">At least one &lt;xref:System.Net.IPAddress&gt; that designates the remote hosts.</param>
+        <param name="addresses">At least one <see cref="T:System.Net.IPAddress" /> that designates the remote hosts.</param>
         <param name="port">The port number of the remote hosts.</param>
-        <param name="requestCallback">An &lt;xref:System.AsyncCallback&gt; delegate that references the method to invoke when the operation is complete.</param>
+        <param name="requestCallback">An <see cref="T:System.AsyncCallback" /> delegate that references the method to invoke when the operation is complete.</param>
         <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the `requestCallback` delegate when the operation is complete.</param>
-        <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an &lt;xref:System.Net.IPAddress&gt; array and a port number (&lt;xref:System.Int32&gt;).</summary>
-        <returns>An &lt;xref:System.IAsyncResult&gt; object that references the asynchronous connection.</returns>
+        <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by an <see cref="T:System.Net.IPAddress" /> array and a port number (<see cref="T:System.Int32" />).</summary>
+        <returns>An <see cref="T:System.IAsyncResult" /> object that references the asynchronous connection.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -365,7 +390,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="addresses" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
         <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
         <threadsafe />
@@ -376,6 +401,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginConnect(string host, int32 port, class System.AsyncCallback requestCallback, object state) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -390,10 +417,10 @@
       <Docs>
         <param name="host">The name of the remote host.</param>
         <param name="port">The port number of the remote host.</param>
-        <param name="requestCallback">An &lt;xref:System.AsyncCallback&gt; delegate that references the method to invoke when the operation is complete.</param>
+        <param name="requestCallback">An <see cref="T:System.AsyncCallback" /> delegate that references the method to invoke when the operation is complete.</param>
         <param name="state">A user-defined object that contains information about the connect operation. This object is passed to the `requestCallback` delegate when the operation is complete.</param>
-        <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (&lt;xref:System.String&gt;) and a port number (&lt;xref:System.Int32&gt;).</summary>
-        <returns>An &lt;xref:System.IAsyncResult&gt; object that references the asynchronous connection.</returns>
+        <summary>Begins an asynchronous request for a remote host connection. The remote host is specified by a host name (<see cref="T:System.String" />) and a port number (<see cref="T:System.Int32" />).</summary>
+        <returns>An <see cref="T:System.IAsyncResult" /> object that references the asynchronous connection.</returns>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -416,7 +443,7 @@
         </remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="host" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
         <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
         <threadsafe />
@@ -427,14 +454,24 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Net.Sockets.Socket Client" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Net.Sockets.Socket</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets the underlying &lt;xref:System.Net.Sockets.Socket&gt;.</summary>
-        <value>The underlying network &lt;xref:System.Net.Sockets.Socket&gt;.</value>
+        <summary>Gets or sets the underlying <see cref="T:System.Net.Sockets.Socket" />.</summary>
+        <value>The underlying network <see cref="T:System.Net.Sockets.Socket" />.</value>
         <remarks>
           <format type="text/markdown"><![CDATA[  
   
@@ -459,6 +496,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Close() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -496,6 +535,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Connect(class System.Net.IPEndPoint remoteEP) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -505,7 +546,7 @@
         <Parameter Name="remoteEP" Type="System.Net.IPEndPoint" />
       </Parameters>
       <Docs>
-        <param name="remoteEP">The &lt;xref:System.Net.IPEndPoint&gt; to which you intend to connect.</param>
+        <param name="remoteEP">The <see cref="T:System.Net.IPEndPoint" /> to which you intend to connect.</param>
         <summary>Connects the client to a remote TCP host using the specified remote network endpoint.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -541,6 +582,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Connect(class System.Net.IPAddress address, int32 port) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -551,7 +594,7 @@
         <Parameter Name="port" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="address">The &lt;xref:System.Net.IPAddress&gt; of the host to which you intend to connect.</param>
+        <param name="address">The <see cref="T:System.Net.IPAddress" /> of the host to which you intend to connect.</param>
         <param name="port">The port number to which you intend to connect.</param>
         <summary>Connects the client to a remote TCP host using the specified IP address and port number.</summary>
         <remarks>
@@ -578,7 +621,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="address" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> is not between &lt;xref:System.Net.IPEndPoint.MinPort&gt; and &lt;xref:System.Net.IPEndPoint.MaxPort&gt;.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> is not between <see cref="F:System.Net.IPEndPoint.MinPort" /> and <see cref="F:System.Net.IPEndPoint.MaxPort" />.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information.</exception>
         <exception cref="T:System.ObjectDisposedException">
           <see cref="T:System.Net.Sockets.TcpClient" /> is closed.</exception>
@@ -590,6 +633,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Connect(class System.Net.IPAddress[] ipAddresses, int32 port) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -600,7 +645,7 @@
         <Parameter Name="port" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="ipAddresses">The &lt;xref:System.Net.IPAddress&gt; array of the host to which you intend to connect.</param>
+        <param name="ipAddresses">The <see cref="T:System.Net.IPAddress" /> array of the host to which you intend to connect.</param>
         <param name="port">The port number to which you intend to connect.</param>
         <summary>Connects the client to a remote TCP host using the specified IP addresses and port number.</summary>
         <remarks>
@@ -628,9 +673,9 @@
         <exception cref="T:System.ArgumentNullException">The <paramref name="ipAddresses" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
-        <exception cref="T:System.NotSupportedException">This method is valid for sockets that use the &lt;xref:System.Net.Sockets.AddressFamily&gt; flag or the &lt;xref:System.Net.Sockets.AddressFamily&gt; flag.</exception>
+        <exception cref="T:System.NotSupportedException">This method is valid for sockets that use the <see cref="T:System.Net.Sockets.AddressFamily" /> flag or the <see cref="T:System.Net.Sockets.AddressFamily" /> flag.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -639,6 +684,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Connect(string hostname, int32 port) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -678,145 +725,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.ArgumentNullException">The <paramref name="hostname" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> parameter is not between &lt;xref:System.Net.IPEndPoint.MinPort&gt; and &lt;xref:System.Net.IPEndPoint.MaxPort&gt;.</exception>
-        <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">
-          <see cref="T:System.Net.Sockets.TcpClient" /> is closed.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="ConnectAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task ConnectAsync (System.Net.IPAddress address, int port);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task ConnectAsync(class System.Net.IPAddress address, int32 port) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="address" Type="System.Net.IPAddress" />
-        <Parameter Name="port" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="address">The &lt;xref:System.Net.IPAddress&gt; of the host to which you intend to connect.</param>
-        <param name="port">The port number to which you intend to connect.</param>
-        <summary>Connects the client to a remote TCP host using the specified IP address and port number as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task&gt;  
-  
- The task object representing the asynchronous operation.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned Returns <xref:System.Threading.Tasks.Task> object will complete after the TCP connection has been established. This method does not block the calling thread while the connection request is underway.  
-  
- Call this method to establish a synchronous remote host connection to the specified <xref:System.Net.IPAddress> and port number as an asynchronous operation. After connecting with the remote host, use the <xref:System.Net.Sockets.TcpClient.GetStream%2A> method to obtain the underlying <xref:System.Net.Sockets.NetworkStream>. Use this <xref:System.Net.Sockets.NetworkStream> to send and receive data.  
-  
-> [!NOTE]
->  If you receive a <xref:System.Net.Sockets.SocketException>, use <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=fullName> to obtain the specific error code. After you have obtained this code, you can refer to the Windows Sockets version 2 API error code documentation in MSDN for a detailed description of the error.  
-  
-> [!NOTE]
->  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](~/add/includes/ajax-current-ext-md.md).  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="address" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> is not between &lt;xref:System.Net.IPEndPoint.MinPort&gt; and &lt;xref:System.Net.IPEndPoint.MaxPort&gt;.</exception>
-        <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">
-          <see cref="T:System.Net.Sockets.TcpClient" /> is closed.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="ConnectAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task ConnectAsync (System.Net.IPAddress[] addresses, int port);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task ConnectAsync(class System.Net.IPAddress[] addresses, int32 port) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="addresses" Type="System.Net.IPAddress[]" />
-        <Parameter Name="port" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="addresses">The &lt;xref:System.Net.IPAddress&gt; array of the host to which you intend to connect.</param>
-        <param name="port">The port number to which you intend to connect.</param>
-        <summary>Connects the client to a remote TCP host using the specified IP addresses and port number as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task&gt;  
-  
- The task object representing the asynchronous operation.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned Returns <xref:System.Threading.Tasks.Task> object will complete after the TCP connection has been established. This method does not block the calling thread while the connection request is underway.  
-  
- This method is typically used immediately after a call to the <xref:System.Net.Dns.BeginGetHostAddresses%2A> method, which can return multiple IP addresses for a single host. Call this method to establish a synchronous remote host connection to the host specified by the array of <xref:System.Net.IPAddress> elements and the port number as an asynchronous operation. After connecting with the remote host, use the <xref:System.Net.Sockets.TcpClient.GetStream%2A> method to obtain the underlying <xref:System.Net.Sockets.NetworkStream>. Use this <xref:System.Net.Sockets.NetworkStream> to send and receive data.  
-  
-> [!NOTE]
->  If you receive a <xref:System.Net.Sockets.SocketException>, use <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=fullName> to obtain the specific error code. After you have obtained this code, you can refer to the Windows Sockets version 2 API error code documentation in the MSDN library at [http://msdn.microsoft.com/library](http://msdn.microsoft.com/library) for a detailed description of the error.  
-  
-> [!NOTE]
->  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](~/add/includes/ajax-current-ext-md.md).  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="ipAddresses" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The port number is not valid.</exception>
-        <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
-        <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
-        <exception cref="T:System.NotSupportedException">This method is valid for sockets that use the &lt;xref:System.Net.Sockets.AddressFamily&gt; flag or the &lt;xref:System.Net.Sockets.AddressFamily&gt; flag.</exception>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="ConnectAsync">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task ConnectAsync (string host, int port);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task ConnectAsync(string host, int32 port) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Threading.Tasks.Task</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="host" Type="System.String" />
-        <Parameter Name="port" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="host">The DNS name of the remote host to which you intend to connect.</param>
-        <param name="port">The port number of the remote host to which you intend to connect.</param>
-        <summary>Connects the client to the specified TCP port on the specified host as an asynchronous operation.</summary>
-        <returns>Returns &lt;xref:System.Threading.Tasks.Task&gt;  
-  
- The task object representing the asynchronous operation.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- This operation will not block. The returned Returns <xref:System.Threading.Tasks.Task> object will complete after the TCP connection has been established. This method does not block the calling thread while the connection request is underway.  
-  
- Call this method to establish a synchronous remote host connection to the specified host name and port number as an asynchronous operation. After connecting with the remote host, use the <xref:System.Net.Sockets.TcpClient.GetStream%2A> method to obtain the underlying <xref:System.Net.Sockets.NetworkStream>. Use this <xref:System.Net.Sockets.NetworkStream> to send and receive data.  
-  
- If IPv6 is enabled and the ConnectAsync method is called to connect to a host that resolves to both IPv6 and IPv4 addresses, the connection to the IPv6 address will be attempted first before the IPv4 address. This may have the effect of delaying the time to establish the connection if the host is not listening on the IPv6 address.  
-  
-> [!NOTE]
->  If you receive a <xref:System.Net.Sockets.SocketException>, use <xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=fullName> to obtain the specific error code. After you have obtained this code, you can refer to the Windows Sockets version 2 API error code documentation in MSDN for a detailed description of the error.  
-  
-> [!NOTE]
->  This member outputs trace information when you enable network tracing in your application. For more information, see [Network Tracing in the .NET Framework](~/add/includes/ajax-current-ext-md.md).  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="hostname" /> parameter is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> parameter is not between &lt;xref:System.Net.IPEndPoint.MinPort&gt; and &lt;xref:System.Net.IPEndPoint.MaxPort&gt;.</exception>
+        <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port" /> parameter is not between <see cref="F:System.Net.IPEndPoint.MinPort" /> and <see cref="F:System.Net.IPEndPoint.MaxPort" />.</exception>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket. See the Remarks section for more information.</exception>
         <exception cref="T:System.ObjectDisposedException">
           <see cref="T:System.Net.Sockets.TcpClient" /> is closed.</exception>
@@ -828,13 +737,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool Connected" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value indicating whether the underlying &lt;xref:System.Net.Sockets.Socket&gt; for a <see cref="T:System.Net.Sockets.TcpClient" /> is connected to a remote host.</summary>
+        <summary>Gets a value indicating whether the underlying <see cref="T:System.Net.Sockets.Socket" /> for a <see cref="T:System.Net.Sockets.TcpClient" /> is connected to a remote host.</summary>
         <value>
           <see langword="true" /> if the &lt;xref:System.Net.Sockets.TcpClient.Client%2A&gt; socket was connected to a remote resource as of the most recent operation; otherwise, <see langword="false" />.</value>
         <remarks>
@@ -859,27 +770,12 @@
       </Docs>
     </Member>
     <Member MemberName="Dispose">
-      <MemberSignature Language="C#" Value="public void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>4.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Releases the managed and unmanaged resources used by the <see cref="T:System.Net.Sockets.TcpClient" />.</summary>
-        <remarks>To be added.</remarks>
-        <threadsafe />
-      </Docs>
-    </Member>
-    <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -912,6 +808,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndConnect(class System.IAsyncResult asyncResult) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -921,7 +819,7 @@
         <Parameter Name="asyncResult" Type="System.IAsyncResult" />
       </Parameters>
       <Docs>
-        <param name="asyncResult">An &lt;xref:System.IAsyncResult&gt; object returned by a call to &lt;xref:System.Net.Sockets.TcpClient.BeginConnect%2A&gt;.</param>
+        <param name="asyncResult">An <see cref="T:System.IAsyncResult" /> object returned by a call to &lt;xref:System.Net.Sockets.TcpClient.BeginConnect%2A&gt;.</param>
         <summary>Ends a pending asynchronous connection attempt.</summary>
         <remarks>
           <format type="text/markdown"><![CDATA[  
@@ -945,8 +843,8 @@
         <exception cref="T:System.ArgumentNullException">The <paramref name="asyncResult" /> parameter is <see langword="null" />.</exception>
         <exception cref="T:System.ArgumentException">The <paramref name="asyncResult" /> parameter was not returned by a call to a &lt;xref:System.Net.Sockets.TcpClient.BeginConnect%2A&gt; method.</exception>
         <exception cref="T:System.InvalidOperationException">The EndConnect method was previously called for the asynchronous connection.</exception>
-        <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the &lt;xref:System.Net.Sockets.Socket&gt;. See the Remarks section for more information.</exception>
-        <exception cref="T:System.ObjectDisposedException">The underlying &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the <see cref="T:System.Net.Sockets.Socket" />. See the Remarks section for more information.</exception>
+        <exception cref="T:System.ObjectDisposedException">The underlying <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -955,13 +853,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool ExclusiveAddressUse" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets a &lt;xref:System.Boolean&gt; value that specifies whether the <see cref="T:System.Net.Sockets.TcpClient" /> allows only one client to use a port.</summary>
+        <summary>Gets or sets a <see cref="T:System.Boolean" /> value that specifies whether the <see cref="T:System.Net.Sockets.TcpClient" /> allows only one client to use a port.</summary>
         <value>
           <see langword="true" /> if the <see cref="T:System.Net.Sockets.TcpClient" /> allows only one client to use a specific port; otherwise, <see langword="false" />. The default is <see langword="true" /> for Windows Server 2003 and Windows XP Service Pack 2 and later, and <see langword="false" /> for all other versions.</value>
         <remarks>
@@ -983,7 +883,7 @@
  ]]></format>
         </remarks>
         <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the underlying socket.</exception>
-        <exception cref="T:System.ObjectDisposedException">The underlying &lt;xref:System.Net.Sockets.Socket&gt; has been closed.</exception>
+        <exception cref="T:System.ObjectDisposedException">The underlying <see cref="T:System.Net.Sockets.Socket" /> has been closed.</exception>
         <threadsafe />
       </Docs>
     </Member>
@@ -992,6 +892,8 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1020,6 +922,8 @@
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Net.Sockets.NetworkStream GetStream() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1067,6 +971,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance class System.Net.Sockets.LingerOption LingerState" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1116,6 +1022,8 @@
       <MemberSignature Language="ILAsm" Value=".property instance bool NoDelay" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -1150,8 +1058,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 ReceiveBufferSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1192,8 +1107,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 ReceiveTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1225,8 +1147,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 SendBufferSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1262,8 +1191,15 @@
       <MemberSignature Language="ILAsm" Value=".property instance int32 SendTimeout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1290,6 +1226,29 @@
  ]]></format>
         </remarks>
         <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="System.IDisposable.Dispose">
+      <MemberSignature Language="C#" Value="void IDisposable.Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.IDisposable.Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System</AssemblyName>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

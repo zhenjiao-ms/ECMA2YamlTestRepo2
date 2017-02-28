@@ -1,0 +1,200 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.LoaderOptimizationAttribute
+  id: LoaderOptimizationAttribute
+  children:
+  - System.LoaderOptimizationAttribute.#ctor(System.Byte)
+  - System.LoaderOptimizationAttribute.#ctor(System.LoaderOptimization)
+  - System.LoaderOptimizationAttribute.Value
+  langs:
+  - csharp
+  name: LoaderOptimizationAttribute
+  nameWithType: LoaderOptimizationAttribute
+  fullName: System.LoaderOptimizationAttribute
+  type: Class
+  summary: Used to set the default loader optimization policy for the main method of an executable application.
+  remarks: "The LoaderOptimizationAttribute can only be set on the main method for an executable application and is ignored on all other methods.  \n  \n The LoaderOptimizationAttribute attribute is specified with a <xref:System.LoaderOptimization> enumeration value, which tells the loader what type of application to optimize for: `SingleDomain`, `MultiDomain`, or `MultiDomainHost`.  \n  \n This attribute is only a hint to the loader and does not affect program behavior.  \n  \n> [!NOTE]\n>  If custom code access security policy is set for the <xref:System.AppDomain>, by using the <xref:System.AppDomain.SetAppDomainPolicy%2A> property, and the <xref:System.AppDomain> is created using the <xref:System.LoaderOptimization> flag, the effect is the same as specifying the <xref:System.LoaderOptimization> flag; that is, only assemblies in the GAC are shared. When this occurs, the loader does not throw an exception and the application does not experience the performance gains associated with the <xref:System.LoaderOptimization> flag."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Method)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class LoaderOptimizationAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.LoaderOptimizationAttribute.#ctor(System.Byte)
+  id: '#ctor(System.Byte)'
+  parent: System.LoaderOptimizationAttribute
+  langs:
+  - csharp
+  name: LoaderOptimizationAttribute(Byte)
+  nameWithType: LoaderOptimizationAttribute.LoaderOptimizationAttribute(Byte)
+  fullName: System.LoaderOptimizationAttribute.LoaderOptimizationAttribute(Byte)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.LoaderOptimizationAttribute"></xref> class to the specified value.
+  syntax:
+    content: public LoaderOptimizationAttribute (byte value);
+    parameters:
+    - id: value
+      type: System.Byte
+      description: A value equivalent to a <xref href="System.LoaderOptimization"></xref> constant.
+  overload: System.LoaderOptimizationAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.LoaderOptimizationAttribute.#ctor(System.LoaderOptimization)
+  id: '#ctor(System.LoaderOptimization)'
+  parent: System.LoaderOptimizationAttribute
+  langs:
+  - csharp
+  name: LoaderOptimizationAttribute(LoaderOptimization)
+  nameWithType: LoaderOptimizationAttribute.LoaderOptimizationAttribute(LoaderOptimization)
+  fullName: System.LoaderOptimizationAttribute.LoaderOptimizationAttribute(LoaderOptimization)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.LoaderOptimizationAttribute"></xref> class to the specified value.
+  syntax:
+    content: public LoaderOptimizationAttribute (LoaderOptimization value);
+    parameters:
+    - id: value
+      type: System.LoaderOptimization
+      description: A <xref href="System.LoaderOptimization"></xref> constant.
+  overload: System.LoaderOptimizationAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.LoaderOptimizationAttribute.Value
+  id: Value
+  parent: System.LoaderOptimizationAttribute
+  langs:
+  - csharp
+  name: Value
+  nameWithType: LoaderOptimizationAttribute.Value
+  fullName: System.LoaderOptimizationAttribute.Value
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the current <xref href="System.LoaderOptimization"></xref> value for this instance.
+  syntax:
+    content: public LoaderOptimization Value { get; }
+    return:
+      type: System.LoaderOptimization
+      description: A <xref href="System.LoaderOptimization"></xref> constant.
+  overload: System.LoaderOptimizationAttribute.Value*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.LoaderOptimizationAttribute.#ctor(System.Byte)
+  parent: System.LoaderOptimizationAttribute
+  isExternal: false
+  name: LoaderOptimizationAttribute(Byte)
+  nameWithType: LoaderOptimizationAttribute.LoaderOptimizationAttribute(Byte)
+  fullName: System.LoaderOptimizationAttribute.LoaderOptimizationAttribute(Byte)
+- uid: System.Byte
+  parent: System
+  isExternal: false
+  name: Byte
+  nameWithType: Byte
+  fullName: System.Byte
+- uid: System.LoaderOptimizationAttribute.#ctor(System.LoaderOptimization)
+  parent: System.LoaderOptimizationAttribute
+  isExternal: false
+  name: LoaderOptimizationAttribute(LoaderOptimization)
+  nameWithType: LoaderOptimizationAttribute.LoaderOptimizationAttribute(LoaderOptimization)
+  fullName: System.LoaderOptimizationAttribute.LoaderOptimizationAttribute(LoaderOptimization)
+- uid: System.LoaderOptimization
+  parent: System
+  isExternal: false
+  name: LoaderOptimization
+  nameWithType: LoaderOptimization
+  fullName: System.LoaderOptimization
+- uid: System.LoaderOptimizationAttribute.Value
+  parent: System.LoaderOptimizationAttribute
+  isExternal: false
+  name: Value
+  nameWithType: LoaderOptimizationAttribute.Value
+  fullName: System.LoaderOptimizationAttribute.Value
+- uid: System.LoaderOptimizationAttribute.#ctor*
+  parent: System.LoaderOptimizationAttribute
+  isExternal: false
+  name: LoaderOptimizationAttribute
+  nameWithType: LoaderOptimizationAttribute.LoaderOptimizationAttribute
+- uid: System.LoaderOptimizationAttribute.Value*
+  parent: System.LoaderOptimizationAttribute
+  isExternal: false
+  name: Value
+  nameWithType: LoaderOptimizationAttribute.Value

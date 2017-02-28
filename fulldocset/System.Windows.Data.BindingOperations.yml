@@ -1,0 +1,663 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Data.BindingOperations
+  id: BindingOperations
+  children:
+  - System.Windows.Data.BindingOperations.ClearAllBindings(System.Windows.DependencyObject)
+  - System.Windows.Data.BindingOperations.ClearBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetBindingBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetBindingExpressionBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetMultiBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetMultiBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetPriorityBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.GetPriorityBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.IsDataBound(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  - System.Windows.Data.BindingOperations.SetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.Data.BindingBase)
+  langs:
+  - csharp
+  name: BindingOperations
+  nameWithType: BindingOperations
+  fullName: System.Windows.Data.BindingOperations
+  type: Class
+  summary: Provides static methods to manipulate bindings, including <xref href="System.Windows.Data.Binding"></xref>, <xref href="System.Windows.Data.MultiBinding"></xref>, and <xref href="System.Windows.Data.PriorityBinding"></xref> objects.
+  remarks: This class exposes a set of static methods that serve as helper operations for data bindings.
+  syntax:
+    content: public static class BindingOperations
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.ClearAllBindings(System.Windows.DependencyObject)
+  id: ClearAllBindings(System.Windows.DependencyObject)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: ClearAllBindings(DependencyObject)
+  nameWithType: BindingOperations.ClearAllBindings(DependencyObject)
+  fullName: System.Windows.Data.BindingOperations.ClearAllBindings(DependencyObject)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Removes all bindings, including bindings of type <xref href="System.Windows.Data.Binding"></xref>, <xref href="System.Windows.Data.MultiBinding"></xref>, and <xref href="System.Windows.Data.PriorityBinding"></xref>, from the specified <xref href="System.Windows.DependencyObject"></xref>.
+  remarks: If the specified object is not data-bound, this method has no effect.
+  syntax:
+    content: public static void ClearAllBindings (System.Windows.DependencyObject target);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object from which to remove bindings.
+  overload: System.Windows.Data.BindingOperations.ClearAllBindings*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: If <code>target</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.ClearBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: ClearBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: ClearBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.ClearBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.ClearBinding(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Removes the binding from a property if there is one.
+  remarks: "If the given property is data-bound with a <xref:System.Windows.Data.Binding>, <xref:System.Windows.Data.PriorityBinding>, or <xref:System.Windows.Data.MultiBinding>, this method removes the corresponding binding expression and restores the value of the property to what it was before any local value was set through the binding.  \n  \n If the given property is not data-bound, this method has no effect."
+  syntax:
+    content: public static void ClearBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object from which to remove the binding.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The dependency property from which to remove the binding.
+  overload: System.Windows.Data.BindingOperations.ClearBinding*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBinding(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Retrieves the <xref href="System.Windows.Data.Binding"></xref> object that is set on the specified property.
+  syntax:
+    content: public static System.Windows.Data.Binding GetBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the binding.
+    return:
+      type: System.Windows.Data.Binding
+      description: The <xref href="System.Windows.Data.Binding"></xref> object set on the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if no <xref href="System.Windows.Data.Binding"></xref> object has been set.
+  overload: System.Windows.Data.BindingOperations.GetBinding*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be null.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetBindingBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetBindingBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetBindingBase(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBindingBase(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBindingBase(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Retrieves the <xref href="System.Windows.Data.BindingBase"></xref> object that is set on the specified property.
+  remarks: The <xref:System.Windows.Data.BindingBase> class is the common base class for the <xref:System.Windows.Data.Binding>, <xref:System.Windows.Data.PriorityBinding>, and <xref:System.Windows.Data.MultiBinding> classes. You can use the <xref:System.Windows.Data.BindingOperations.GetBinding%2A>, <xref:System.Windows.Data.BindingOperations.GetPriorityBinding%2A>, and <xref:System.Windows.Data.BindingOperations.GetMultiBinding%2A> methods if you know in advance the type of binding that is set on the property.
+  syntax:
+    content: public static System.Windows.Data.BindingBase GetBindingBase (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the <xref href="System.Windows.Data.BindingBase"></xref> object.
+    return:
+      type: System.Windows.Data.BindingBase
+      description: The <xref href="System.Windows.Data.BindingBase"></xref> object that is set on the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if no binding object has been set.
+  overload: System.Windows.Data.BindingOperations.GetBindingBase*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetBindingExpression(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBindingExpression(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBindingExpression(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Returns the <xref href="System.Windows.Data.BindingExpression"></xref> object associated with the specified binding target property on the specified object.
+  remarks: The <xref:System.Windows.Data.BindingExpression> object maintains the connection between the binding source and the binding target. You can obtain the <xref:System.Windows.Data.BindingExpression> object by calling this static method or by calling the <xref:System.Windows.FrameworkElement.GetBindingExpression%2A> method on a data-bound <xref:System.Windows.FrameworkElement> or <xref:System.Windows.FrameworkContentElement> object.
+  example:
+  - "The following example shows the implementation of a <xref:System.Windows.Controls.Primitives.ButtonBase.Click> event handler that uses the GetBindingExpression method to obtain the <xref:System.Windows.Data.BindingExpression> and then calls the <xref:System.Windows.Data.BindingExpression.DataItem%2A> property to access the binding source object.  \n  \n The <xref:System.Windows.Controls.TextBlock>`SavingsText` is the binding target object and <xref:System.Windows.Controls.TextBlock.Text%2A> is the binding target property.  \n  \n [!code-cs[DirectionalBinding#OnRentRaise](~/add/codesnippet/csharp/DirectionalBinding/Page1.xaml.cs#onrentraise)]\n [!code-vb[DirectionalBinding#OnRentRaise](~/add/codesnippet/visualbasic/DirectionalBinding_VB/DirectionalBinding.vb#onrentraise)]"
+  syntax:
+    content: public static System.Windows.Data.BindingExpression GetBindingExpression (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The binding target object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the <xref href="System.Windows.Data.BindingExpression"></xref> object.
+    return:
+      type: System.Windows.Data.BindingExpression
+      description: The <xref href="System.Windows.Data.BindingExpression"></xref> object associated with the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if none exists. If a <xref href="System.Windows.Data.PriorityBindingExpression"></xref> object is set on the property, the <xref:System.Windows.Data.PriorityBindingExpression.ActiveBindingExpression*> is returned.
+  overload: System.Windows.Data.BindingOperations.GetBindingExpression*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetBindingExpressionBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetBindingExpressionBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetBindingExpressionBase(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBindingExpressionBase(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBindingExpressionBase(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Retrieves the <xref href="System.Windows.Data.BindingExpressionBase"></xref> object that is set on the specified property.
+  remarks: The <xref:System.Windows.Data.BindingExpressionBase> class is the common base class for the <xref:System.Windows.Data.BindingExpression>, <xref:System.Windows.Data.PriorityBindingExpression>, and <xref:System.Windows.Data.MultiBindingExpression> classes. You can use the <xref:System.Windows.Data.BindingOperations.GetBindingExpression%2A>, <xref:System.Windows.Data.BindingOperations.GetPriorityBindingExpression%2A>, and <xref:System.Windows.Data.BindingOperations.GetMultiBindingExpression%2A> methods if you know in advance type of binding that is set on the property.
+  syntax:
+    content: public static System.Windows.Data.BindingExpressionBase GetBindingExpressionBase (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the <xref href="System.Windows.Data.BindingExpressionBase"></xref> object.
+    return:
+      type: System.Windows.Data.BindingExpressionBase
+      description: The <xref href="System.Windows.Data.BindingExpressionBase"></xref> object that is set on the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if no binding object has been set.
+  overload: System.Windows.Data.BindingOperations.GetBindingExpressionBase*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be null.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetMultiBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetMultiBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetMultiBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetMultiBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetMultiBinding(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Retrieves the <xref href="System.Windows.Data.MultiBinding"></xref> object that is set on the specified property.
+  syntax:
+    content: public static System.Windows.Data.MultiBinding GetMultiBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the binding.
+    return:
+      type: System.Windows.Data.MultiBinding
+      description: The <xref href="System.Windows.Data.MultiBinding"></xref> object set on the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if no <xref href="System.Windows.Data.MultiBinding"></xref> object has been set.
+  overload: System.Windows.Data.BindingOperations.GetMultiBinding*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be null.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetMultiBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetMultiBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetMultiBindingExpression(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetMultiBindingExpression(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetMultiBindingExpression(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Returns the <xref href="System.Windows.Data.MultiBindingExpression"></xref> object associated with the specified binding target property on the specified object.
+  remarks: The <xref:System.Windows.Data.MultiBindingExpression> object associated with the given property or `null` if none exists.
+  syntax:
+    content: public static System.Windows.Data.MultiBindingExpression GetMultiBindingExpression (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The binding target object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the <xref href="System.Windows.Data.MultiBindingExpression"></xref> object.
+    return:
+      type: System.Windows.Data.MultiBindingExpression
+      description: The <xref href="System.Windows.Data.MultiBindingExpression"></xref> object associated with the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if none exists.
+  overload: System.Windows.Data.BindingOperations.GetMultiBindingExpression*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetPriorityBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetPriorityBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetPriorityBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetPriorityBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetPriorityBinding(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Retrieves the <xref href="System.Windows.Data.PriorityBinding"></xref> object that is set on the specified property.
+  syntax:
+    content: public static System.Windows.Data.PriorityBinding GetPriorityBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the binding.
+    return:
+      type: System.Windows.Data.PriorityBinding
+      description: The <xref href="System.Windows.Data.PriorityBinding"></xref> object set on the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if no <xref href="System.Windows.Data.PriorityBinding"></xref> object has been set.
+  overload: System.Windows.Data.BindingOperations.GetPriorityBinding*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be null.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.GetPriorityBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: GetPriorityBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: GetPriorityBindingExpression(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetPriorityBindingExpression(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetPriorityBindingExpression(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Returns the <xref href="System.Windows.Data.PriorityBindingExpression"></xref> object associated with the specified binding target property on the specified object.
+  syntax:
+    content: public static System.Windows.Data.PriorityBindingExpression GetPriorityBindingExpression (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The binding target object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The binding target property from which to retrieve the <xref href="System.Windows.Data.PriorityBindingExpression"></xref> object.
+    return:
+      type: System.Windows.Data.PriorityBindingExpression
+      description: The <xref href="System.Windows.Data.PriorityBindingExpression"></xref> object associated with the given property or <xref uid="langword_csharp_null" name="null" href=""></xref> if none exists.
+  overload: System.Windows.Data.BindingOperations.GetPriorityBindingExpression*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>target</code> and <code>dp</code> parameters cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.IsDataBound(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  id: IsDataBound(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: IsDataBound(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.IsDataBound(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.IsDataBound(DependencyObject,DependencyProperty)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Returns a value that indicates whether the specified property is currently data-bound.
+  syntax:
+    content: public static bool IsDataBound (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The object where `dp` is.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The dependency property to check.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified property is data-bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Windows.Data.BindingOperations.IsDataBound*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: If <code>target</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Data.BindingOperations.SetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.Data.BindingBase)
+  id: SetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.Data.BindingBase)
+  parent: System.Windows.Data.BindingOperations
+  langs:
+  - csharp
+  name: SetBinding(DependencyObject,DependencyProperty,BindingBase)
+  nameWithType: BindingOperations.SetBinding(DependencyObject,DependencyProperty,BindingBase)
+  fullName: System.Windows.Data.BindingOperations.SetBinding(DependencyObject,DependencyProperty,BindingBase)
+  type: Method
+  assemblies:
+  - PresentationFramework
+  namespace: System.Windows.Data
+  summary: Creates and associates a new instance of <xref href="System.Windows.Data.BindingExpressionBase"></xref> with the specified binding target property.
+  remarks: This method creates a new instance of a <xref:System.Windows.Data.BindingExpressionBase> and associates the instance with the given dependency property of the given object. This method is the way to attach a binding to an arbitrary <xref:System.Windows.DependencyObject> that may not expose its own SetBinding method.
+  example:
+  - "The following example shows how to use this method to set a binding. In this example, `myNewBindDef` is a <xref:System.Windows.Data.Binding> object that describes the binding. The binding target is `myDateText`, an instance of the <xref:System.Windows.Controls.TextBlock> class.  \n  \n [!code-cs[BindConversion#BOSetBinding](~/add/codesnippet/csharp/BindConversion/Window1.xaml.cs#bosetbinding)]\n [!code-vb[BindConversion#BOSetBinding](~/add/codesnippet/visualbasic/bindconversion/window1.xaml.vb#bosetbinding)]"
+  syntax:
+    content: public static System.Windows.Data.BindingExpressionBase SetBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp, System.Windows.Data.BindingBase binding);
+    parameters:
+    - id: target
+      type: System.Windows.DependencyObject
+      description: The binding target of the binding.
+    - id: dp
+      type: System.Windows.DependencyProperty
+      description: The target property of the binding.
+    - id: binding
+      type: System.Windows.Data.BindingBase
+      description: The <xref href="System.Windows.Data.BindingBase"></xref> object that describes the binding.
+    return:
+      type: System.Windows.Data.BindingExpressionBase
+      description: The instance of <xref href="System.Windows.Data.BindingExpressionBase"></xref> created for and associated with the specified property. The <xref href="System.Windows.Data.BindingExpressionBase"></xref> class is the base class of <xref href="System.Windows.Data.BindingExpression"></xref>, <xref href="System.Windows.Data.MultiBindingExpression"></xref>, and <xref href="System.Windows.Data.PriorityBindingExpression"></xref>.
+  overload: System.Windows.Data.BindingOperations.SetBinding*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>binding</code> parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Windows.Data.BindingOperations.ClearAllBindings(System.Windows.DependencyObject)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: ClearAllBindings(DependencyObject)
+  nameWithType: BindingOperations.ClearAllBindings(DependencyObject)
+  fullName: System.Windows.Data.BindingOperations.ClearAllBindings(DependencyObject)
+- uid: System.Windows.DependencyObject
+  parent: System.Windows
+  isExternal: false
+  name: DependencyObject
+  nameWithType: DependencyObject
+  fullName: System.Windows.DependencyObject
+- uid: System.Windows.Data.BindingOperations.ClearBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: ClearBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.ClearBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.ClearBinding(DependencyObject,DependencyProperty)
+- uid: System.Windows.DependencyProperty
+  parent: System.Windows
+  isExternal: false
+  name: DependencyProperty
+  nameWithType: DependencyProperty
+  fullName: System.Windows.DependencyProperty
+- uid: System.Windows.Data.BindingOperations.GetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBinding(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.Binding
+  parent: System.Windows.Data
+  isExternal: false
+  name: Binding
+  nameWithType: Binding
+  fullName: System.Windows.Data.Binding
+- uid: System.Windows.Data.BindingOperations.GetBindingBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBindingBase(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBindingBase(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBindingBase(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.BindingBase
+  parent: System.Windows.Data
+  isExternal: false
+  name: BindingBase
+  nameWithType: BindingBase
+  fullName: System.Windows.Data.BindingBase
+- uid: System.Windows.Data.BindingOperations.GetBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBindingExpression(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBindingExpression(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBindingExpression(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.BindingExpression
+  parent: System.Windows.Data
+  isExternal: false
+  name: BindingExpression
+  nameWithType: BindingExpression
+  fullName: System.Windows.Data.BindingExpression
+- uid: System.Windows.Data.BindingOperations.GetBindingExpressionBase(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBindingExpressionBase(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetBindingExpressionBase(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetBindingExpressionBase(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.BindingExpressionBase
+  parent: System.Windows.Data
+  isExternal: false
+  name: BindingExpressionBase
+  nameWithType: BindingExpressionBase
+  fullName: System.Windows.Data.BindingExpressionBase
+- uid: System.Windows.Data.BindingOperations.GetMultiBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetMultiBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetMultiBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetMultiBinding(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.MultiBinding
+  parent: System.Windows.Data
+  isExternal: false
+  name: MultiBinding
+  nameWithType: MultiBinding
+  fullName: System.Windows.Data.MultiBinding
+- uid: System.Windows.Data.BindingOperations.GetMultiBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetMultiBindingExpression(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetMultiBindingExpression(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetMultiBindingExpression(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.MultiBindingExpression
+  parent: System.Windows.Data
+  isExternal: false
+  name: MultiBindingExpression
+  nameWithType: MultiBindingExpression
+  fullName: System.Windows.Data.MultiBindingExpression
+- uid: System.Windows.Data.BindingOperations.GetPriorityBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetPriorityBinding(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetPriorityBinding(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetPriorityBinding(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.PriorityBinding
+  parent: System.Windows.Data
+  isExternal: false
+  name: PriorityBinding
+  nameWithType: PriorityBinding
+  fullName: System.Windows.Data.PriorityBinding
+- uid: System.Windows.Data.BindingOperations.GetPriorityBindingExpression(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetPriorityBindingExpression(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.GetPriorityBindingExpression(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.GetPriorityBindingExpression(DependencyObject,DependencyProperty)
+- uid: System.Windows.Data.PriorityBindingExpression
+  parent: System.Windows.Data
+  isExternal: false
+  name: PriorityBindingExpression
+  nameWithType: PriorityBindingExpression
+  fullName: System.Windows.Data.PriorityBindingExpression
+- uid: System.Windows.Data.BindingOperations.IsDataBound(System.Windows.DependencyObject,System.Windows.DependencyProperty)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: IsDataBound(DependencyObject,DependencyProperty)
+  nameWithType: BindingOperations.IsDataBound(DependencyObject,DependencyProperty)
+  fullName: System.Windows.Data.BindingOperations.IsDataBound(DependencyObject,DependencyProperty)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Windows.Data.BindingOperations.SetBinding(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.Data.BindingBase)
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: SetBinding(DependencyObject,DependencyProperty,BindingBase)
+  nameWithType: BindingOperations.SetBinding(DependencyObject,DependencyProperty,BindingBase)
+  fullName: System.Windows.Data.BindingOperations.SetBinding(DependencyObject,DependencyProperty,BindingBase)
+- uid: System.Windows.Data.BindingOperations.ClearAllBindings*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: ClearAllBindings
+  nameWithType: BindingOperations.ClearAllBindings
+- uid: System.Windows.Data.BindingOperations.ClearBinding*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: ClearBinding
+  nameWithType: BindingOperations.ClearBinding
+- uid: System.Windows.Data.BindingOperations.GetBinding*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBinding
+  nameWithType: BindingOperations.GetBinding
+- uid: System.Windows.Data.BindingOperations.GetBindingBase*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBindingBase
+  nameWithType: BindingOperations.GetBindingBase
+- uid: System.Windows.Data.BindingOperations.GetBindingExpression*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBindingExpression
+  nameWithType: BindingOperations.GetBindingExpression
+- uid: System.Windows.Data.BindingOperations.GetBindingExpressionBase*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetBindingExpressionBase
+  nameWithType: BindingOperations.GetBindingExpressionBase
+- uid: System.Windows.Data.BindingOperations.GetMultiBinding*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetMultiBinding
+  nameWithType: BindingOperations.GetMultiBinding
+- uid: System.Windows.Data.BindingOperations.GetMultiBindingExpression*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetMultiBindingExpression
+  nameWithType: BindingOperations.GetMultiBindingExpression
+- uid: System.Windows.Data.BindingOperations.GetPriorityBinding*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetPriorityBinding
+  nameWithType: BindingOperations.GetPriorityBinding
+- uid: System.Windows.Data.BindingOperations.GetPriorityBindingExpression*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: GetPriorityBindingExpression
+  nameWithType: BindingOperations.GetPriorityBindingExpression
+- uid: System.Windows.Data.BindingOperations.IsDataBound*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: IsDataBound
+  nameWithType: BindingOperations.IsDataBound
+- uid: System.Windows.Data.BindingOperations.SetBinding*
+  parent: System.Windows.Data.BindingOperations
+  isExternal: false
+  name: SetBinding
+  nameWithType: BindingOperations.SetBinding

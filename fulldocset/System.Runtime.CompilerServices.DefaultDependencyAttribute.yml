@@ -1,0 +1,165 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  id: DefaultDependencyAttribute
+  children:
+  - System.Runtime.CompilerServices.DefaultDependencyAttribute.#ctor(System.Runtime.CompilerServices.LoadHint)
+  - System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint
+  langs:
+  - csharp
+  name: DefaultDependencyAttribute
+  nameWithType: DefaultDependencyAttribute
+  fullName: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  type: Class
+  summary: Provides a hint to the common language runtime (CLR) indicating how likely a dependency is to be loaded. This class is used in a dependent assembly to indicate what hint should be used when the parent does not specify the <xref href="System.Runtime.CompilerServices.DependencyAttribute"></xref> attribute.  This class cannot be inherited.
+  remarks: "This attribute is used by the [Ngen.exe (Native Image Generator)](~/add/includes/ajax-current-ext-md.md) to generate native assembly images.  \n  \n Apply the DefaultDependencyAttribute attribute to a dependent assembly to determine the preferred default binding.  \n  \n A dependency that is likely to be loaded (<xref:System.Runtime.CompilerServices.LoadHint>) will cause Ngen.exe to bind to that dependency.  Using this hint allows Ngen.exe to generate code that will result in a reduced working set and improved throughput but at the cost of always loading the dependency when the parent assembly is loaded.  \n  \n When you apply the <xref:System.Runtime.CompilerServices.DependencyAttribute> attribute to an assembly with a value of <xref:System.Runtime.CompilerServices.LoadHint>, the native image generation service consults the dependent assembly for its preferred default binding, which is specified by the DefaultDependencyAttribute attribute."
+  example:
+  - "The following code example demonstrates how to apply the DefaultDependencyAttribute attribute to an assembly to specify that the dependency is likely to be loaded.  \n  \n [!code-vb[Runtime.CompilerServices.DefaultDependencyAttribute#1](~/add/codesnippet/visualbasic/t-system.runtime.compile_1_1.vb)]\n [!code-cs[Runtime.CompilerServices.DefaultDependencyAttribute#1](~/add/codesnippet/csharp/t-system.runtime.compile_1_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Assembly)]
+
+      public sealed class DefaultDependencyAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute.#ctor(System.Runtime.CompilerServices.LoadHint)
+  id: '#ctor(System.Runtime.CompilerServices.LoadHint)'
+  parent: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  langs:
+  - csharp
+  name: DefaultDependencyAttribute(LoadHint)
+  nameWithType: DefaultDependencyAttribute.DefaultDependencyAttribute(LoadHint)
+  fullName: System.Runtime.CompilerServices.DefaultDependencyAttribute.DefaultDependencyAttribute(LoadHint)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.CompilerServices.DefaultDependencyAttribute"></xref> class with the specified <xref href="System.Runtime.CompilerServices.LoadHint"></xref> binding.
+  remarks: ''
+  example:
+  - "The following code example demonstrates how to apply the <xref:System.Runtime.CompilerServices.DefaultDependencyAttribute> attribute to an assembly to specify that the dependency is likely to be loaded.  \n  \n [!code-vb[Runtime.CompilerServices.DefaultDependencyAttribute#1](~/add/codesnippet/visualbasic/d99c7420-395f-4148-a27f-_1.vb)]\n [!code-cs[Runtime.CompilerServices.DefaultDependencyAttribute#1](~/add/codesnippet/csharp/d99c7420-395f-4148-a27f-_1.cs)]"
+  syntax:
+    content: public DefaultDependencyAttribute (System.Runtime.CompilerServices.LoadHint loadHintArgument);
+    parameters:
+    - id: loadHintArgument
+      type: System.Runtime.CompilerServices.LoadHint
+      description: One of the <xref href="System.Runtime.CompilerServices.LoadHint"></xref> values that indicates the default binding preference.
+  overload: System.Runtime.CompilerServices.DefaultDependencyAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint
+  id: LoadHint
+  parent: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  langs:
+  - csharp
+  name: LoadHint
+  nameWithType: DefaultDependencyAttribute.LoadHint
+  fullName: System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Gets the <xref href="System.Runtime.CompilerServices.LoadHint"></xref> value that indicates when an assembly loads a dependency.
+  remarks: Use this property to return the value of the <xref:System.Runtime.CompilerServices.LoadHint> enumeration used by the <xref:System.Runtime.CompilerServices.DefaultDependencyAttribute> attribute.
+  syntax:
+    content: public System.Runtime.CompilerServices.LoadHint LoadHint { get; }
+    return:
+      type: System.Runtime.CompilerServices.LoadHint
+      description: One of the <xref href="System.Runtime.CompilerServices.LoadHint"></xref> values.
+  overload: System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute.#ctor(System.Runtime.CompilerServices.LoadHint)
+  parent: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  isExternal: false
+  name: DefaultDependencyAttribute(LoadHint)
+  nameWithType: DefaultDependencyAttribute.DefaultDependencyAttribute(LoadHint)
+  fullName: System.Runtime.CompilerServices.DefaultDependencyAttribute.DefaultDependencyAttribute(LoadHint)
+- uid: System.Runtime.CompilerServices.LoadHint
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: LoadHint
+  nameWithType: LoadHint
+  fullName: System.Runtime.CompilerServices.LoadHint
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint
+  parent: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  isExternal: false
+  name: LoadHint
+  nameWithType: DefaultDependencyAttribute.LoadHint
+  fullName: System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute.#ctor*
+  parent: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  isExternal: false
+  name: DefaultDependencyAttribute
+  nameWithType: DefaultDependencyAttribute.DefaultDependencyAttribute
+- uid: System.Runtime.CompilerServices.DefaultDependencyAttribute.LoadHint*
+  parent: System.Runtime.CompilerServices.DefaultDependencyAttribute
+  isExternal: false
+  name: LoadHint
+  nameWithType: DefaultDependencyAttribute.LoadHint

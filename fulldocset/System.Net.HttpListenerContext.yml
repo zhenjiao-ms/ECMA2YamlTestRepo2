@@ -1,0 +1,175 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.HttpListenerContext
+  id: HttpListenerContext
+  children:
+  - System.Net.HttpListenerContext.Request
+  - System.Net.HttpListenerContext.Response
+  - System.Net.HttpListenerContext.User
+  langs:
+  - csharp
+  name: HttpListenerContext
+  nameWithType: HttpListenerContext
+  fullName: System.Net.HttpListenerContext
+  type: Class
+  summary: Provides access to the request and response objects used by the <xref href="System.Net.HttpListener"></xref> class. This class cannot be inherited.
+  remarks: "This class provides the information related to a client's Hypertext Transfer Protocol (HTTP) request being processed by an <xref:System.Net.HttpListener> object. This class also has methods that allow an <xref:System.Net.HttpListener> object to accept a WebSocket connection.  \n  \n The <xref:System.Net.HttpListener.GetContext%2A> method returns instances of the HttpListenerContext class. To get the object that represents the client request, use the <xref:System.Net.HttpListenerContext.Request%2A> property. To get the object that represents the response that will be sent to the client by the <xref:System.Net.HttpListener>, use the <xref:System.Net.HttpListenerContext.Response%2A> property. To get user information about the client sending the request, such as its login name and whether it has been authenticated, you can query the properties in the <xref:System.Security.Principal.IPrincipal> object returned by the <xref:System.Net.HttpListenerContext.User%2A> property.  \n  \n Closing an HttpListenerContext object sends the response to the client and frees any resources used by the HttpListenerContext. Aborting an HttpListenerContext object discards the response to the client if it has not already been sent, and frees any resources used by the HttpListenerContext. After closing or aborting an HttpListenerContext object, you cannot reference its methods or properties. If you do so, you will receive an <xref:System.ObjectDisposedException> exception."
+  example:
+  - "The following code example displays the user information for a client request.  \n  \n [!code-cs[Net_Listener_Basic#8](~/add/codesnippet/csharp/t-system.net.httplistene_0_1.cs)]"
+  syntax:
+    content: public sealed class HttpListenerContext
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Net.HttpListenerContext.Request
+  id: Request
+  parent: System.Net.HttpListenerContext
+  langs:
+  - csharp
+  name: Request
+  nameWithType: HttpListenerContext.Request
+  fullName: System.Net.HttpListenerContext.Request
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets the <xref href="System.Net.HttpListenerRequest"></xref> that represents a client's request for a resource.
+  remarks: If you close this <xref:System.Net.HttpListenerContext>, it will send the response to the client, close the <xref:System.Net.HttpListenerResponse> that contains the response, and close the <xref:System.Net.HttpListenerRequest> object returned by this property.
+  example:
+  - "The following code example demonstrates calling this method. The `listener` variable holds an <xref:System.Net.HttpListener> object.  \n  \n [!code-cs[Net_Listener_Basic#3](~/add/codesnippet/csharp/p-system.net.httplistene_16_1.cs)]"
+  syntax:
+    content: public System.Net.HttpListenerRequest Request { get; }
+    return:
+      type: System.Net.HttpListenerRequest
+      description: An <xref href="System.Net.HttpListenerRequest"></xref> object that represents the client request.
+  overload: System.Net.HttpListenerContext.Request*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Net.HttpListenerContext.Response
+  id: Response
+  parent: System.Net.HttpListenerContext
+  langs:
+  - csharp
+  name: Response
+  nameWithType: HttpListenerContext.Response
+  fullName: System.Net.HttpListenerContext.Response
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets the <xref href="System.Net.HttpListenerResponse"></xref> object that will be sent to the client in response to the client's request.
+  remarks: Your application configures the response by setting properties in the <xref:System.Net.HttpListenerResponse> object returned by this property. After configuring the response, you send it to the client by closing the response, or by closing this <xref:System.Net.HttpListenerContext> object.
+  example:
+  - "The following code example demonstrates getting the response to a client's request and adding the response body.  \n  \n [!code-cs[Net_Listener_Basic#3](~/add/codesnippet/csharp/p-system.net.httplistene_35_1.cs)]"
+  syntax:
+    content: public System.Net.HttpListenerResponse Response { get; }
+    return:
+      type: System.Net.HttpListenerResponse
+      description: An <xref href="System.Net.HttpListenerResponse"></xref> object used to send a response back to the client.
+  overload: System.Net.HttpListenerContext.Response*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Net.HttpListenerContext.User
+  id: User
+  parent: System.Net.HttpListenerContext
+  langs:
+  - csharp
+  name: User
+  nameWithType: HttpListenerContext.User
+  fullName: System.Net.HttpListenerContext.User
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Net
+  summary: Gets an object used to obtain identity, authentication information, and security roles for the client whose request is represented by this <xref href="System.Net.HttpListenerContext"></xref> object.
+  remarks: "An <xref:System.Net.HttpListener> indicates that it requires authentication using the <xref:System.Net.HttpListener.AuthenticationSchemes%2A> property or by specifying an <xref:System.Net.AuthenticationSchemeSelector> delegate using the <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> property.  \n  \n To determine the client's login name and authentication information, check the <xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName> property in the object returned by this property."
+  example:
+  - "The following code example demonstrates accessing identity and authentication information about the client, and returning it to the client in the response.  \n  \n [!code-cs[Net_Listener_Basic#8](~/add/codesnippet/csharp/p-system.net.httplistene_19_1.cs)]"
+  syntax:
+    content: public System.Security.Principal.IPrincipal User { get; }
+    return:
+      type: System.Security.Principal.IPrincipal
+      description: An <xref href="System.Security.Principal.IPrincipal"></xref> object that describes the client, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the <xref href="System.Net.HttpListener"></xref> that supplied this <xref href="System.Net.HttpListenerContext"></xref> does not require authentication.
+  overload: System.Net.HttpListenerContext.User*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Net.HttpListenerContext.Request
+  parent: System.Net.HttpListenerContext
+  isExternal: false
+  name: Request
+  nameWithType: HttpListenerContext.Request
+  fullName: System.Net.HttpListenerContext.Request
+- uid: System.Net.HttpListenerRequest
+  parent: System.Net
+  isExternal: false
+  name: HttpListenerRequest
+  nameWithType: HttpListenerRequest
+  fullName: System.Net.HttpListenerRequest
+- uid: System.Net.HttpListenerContext.Response
+  parent: System.Net.HttpListenerContext
+  isExternal: false
+  name: Response
+  nameWithType: HttpListenerContext.Response
+  fullName: System.Net.HttpListenerContext.Response
+- uid: System.Net.HttpListenerResponse
+  parent: System.Net
+  isExternal: false
+  name: HttpListenerResponse
+  nameWithType: HttpListenerResponse
+  fullName: System.Net.HttpListenerResponse
+- uid: System.Net.HttpListenerContext.User
+  parent: System.Net.HttpListenerContext
+  isExternal: false
+  name: User
+  nameWithType: HttpListenerContext.User
+  fullName: System.Net.HttpListenerContext.User
+- uid: System.Security.Principal.IPrincipal
+  parent: System.Security.Principal
+  isExternal: false
+  name: IPrincipal
+  nameWithType: IPrincipal
+  fullName: System.Security.Principal.IPrincipal
+- uid: System.Net.HttpListenerContext.Request*
+  parent: System.Net.HttpListenerContext
+  isExternal: false
+  name: Request
+  nameWithType: HttpListenerContext.Request
+- uid: System.Net.HttpListenerContext.Response*
+  parent: System.Net.HttpListenerContext
+  isExternal: false
+  name: Response
+  nameWithType: HttpListenerContext.Response
+- uid: System.Net.HttpListenerContext.User*
+  parent: System.Net.HttpListenerContext
+  isExternal: false
+  name: User
+  nameWithType: HttpListenerContext.User

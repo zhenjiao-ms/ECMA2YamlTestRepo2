@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Speech.Recognition.SpeechDetectedEventArgs
+  id: SpeechDetectedEventArgs
+  children:
+  - System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition
+  langs:
+  - csharp
+  name: SpeechDetectedEventArgs
+  nameWithType: SpeechDetectedEventArgs
+  fullName: System.Speech.Recognition.SpeechDetectedEventArgs
+  type: Class
+  summary: Returns data from <xref href="System.Speech.Recognition.SpeechRecognitionEngine.SpeechDetected"></xref> or <xref href="System.Speech.Recognition.SpeechRecognizer.SpeechDetected"></xref> events.
+  remarks: "A `SpeechDetected` event is raised by the <xref:System.Speech.Recognition.SpeechRecognizer> and <xref:System.Speech.Recognition.SpeechRecognitionEngine> classes.  \n  \n **SpeechDetected** events are generated when a recognition engine can identify audio input as human speech.  \n  \n SpeechDetectedEventArgs derives from <xref:System.EventArgs>."
+  example:
+  - "The example below creates a handler for <xref:System.Speech.Recognition.SpeechRecognizer.SpeechDetected?displayProperty=fullName> or <xref:System.Speech.Recognition.SpeechRecognitionEngine.SpeechDetected?displayProperty=fullName> events. The handler initializes a display every time speech is detected and displays status information, including audio position.  \n  \n```  \n_recognizer.SpeechDetected +=  \n  delegate(object sender, SpeechDetectedEventArgs eventArgs)   \n  {  \n  \n    // Clear previous recognition information.  \n    _audioDeviceStatusLabel.Enabled = true;  \n    _audioDeviceStatusLabel.Visible = true;  \n    Utils.DisplayAudioInputFormat(_audioStateLabel, _recognizer);  \n    Utils.DisplayRecognizerState(_recognizerStateLabel, _recognizer.State);  \n    Utils.DisplaySpeechDetected(_speechDetectedLabel, eventArgs.AudioPosition);  \n  };  \n```"
+  syntax:
+    content: 'public class SpeechDetectedEventArgs : EventArgs'
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  implements: []
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition
+  id: AudioPosition
+  parent: System.Speech.Recognition.SpeechDetectedEventArgs
+  langs:
+  - csharp
+  name: AudioPosition
+  nameWithType: SpeechDetectedEventArgs.AudioPosition
+  fullName: System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition
+  type: Property
+  assemblies:
+  - System.Speech
+  namespace: System.Speech.Recognition
+  summary: Gets the position in the audio stream where speech was detected.
+  remarks: ''
+  example:
+  - "The example below creates a handler for <xref:System.Speech.Recognition.SpeechRecognizer.SpeechDetected?displayProperty=fullName> or <xref:System.Speech.Recognition.SpeechRecognitionEngine.SpeechDetected?displayProperty=fullName> events. The handler initializes a display each time speech is detected and displays status information, including audio position.  \n  \n```  \n_recognizer.SpeechDetected +=  \n  delegate(object sender, SpeechDetectedEventArgs eventArgs)   \n  {  \n  \n    // Clear previous recognition information.  \n    _audioDeviceStatusLabel.Enabled = true;  \n    _audioDeviceStatusLabel.Visible = true;  \n    Utils.DisplayAudioInputFormat(_audioStateLabel, _recognizer);  \n    Utils.DisplayRecognizerState(_recognizerStateLabel, _recognizer.State);  \n    Utils.DisplaySpeechDetected(_speechDetectedLabel, eventArgs.AudioPosition);  \n  };  \n```"
+  syntax:
+    content: public TimeSpan AudioPosition { get; }
+    return:
+      type: System.TimeSpan
+      description: Returns the location of a detected phrase within a recognition engine’s speech buffer.
+  overload: System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.EventArgs
+  isExternal: false
+  name: System.EventArgs
+- uid: System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition
+  parent: System.Speech.Recognition.SpeechDetectedEventArgs
+  isExternal: false
+  name: AudioPosition
+  nameWithType: SpeechDetectedEventArgs.AudioPosition
+  fullName: System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition
+- uid: System.TimeSpan
+  parent: System
+  isExternal: false
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System.Speech.Recognition.SpeechDetectedEventArgs.AudioPosition*
+  parent: System.Speech.Recognition.SpeechDetectedEventArgs
+  isExternal: false
+  name: AudioPosition
+  nameWithType: SpeechDetectedEventArgs.AudioPosition

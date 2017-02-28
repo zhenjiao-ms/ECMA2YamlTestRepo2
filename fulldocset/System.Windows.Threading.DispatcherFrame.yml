@@ -1,0 +1,152 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Windows.Threading.DispatcherFrame
+  id: DispatcherFrame
+  children:
+  - System.Windows.Threading.DispatcherFrame.#ctor
+  - System.Windows.Threading.DispatcherFrame.#ctor(System.Boolean)
+  - System.Windows.Threading.DispatcherFrame.Continue
+  langs:
+  - csharp
+  name: DispatcherFrame
+  nameWithType: DispatcherFrame
+  fullName: System.Windows.Threading.DispatcherFrame
+  type: Class
+  summary: Represents an execution loop in the <xref href="System.Windows.Threading.Dispatcher"></xref>.
+  remarks: "DispatcherFrame objects typically fall into two categories:  \n  \n-   Long running, general purpose frames that exit only when instructed to.  These frames should exit when they are requested.  \n  \n-   Short running, very specific frames that exit when an important criteria is met.  These frames may consider not to exit when they are requested in favor of waiting for their exit criteria to be met.  These frames should have a time-out associated with them.  \n  \n<a name=\"xamlTextUsage_DispatcherFrame\"></a>   \n## XAML Text Usage  \n You cannot use this managed class in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
+  example:
+  - "The following example shows how to use a DispatcherFrame to achieve similar results as the [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] <xref:System.Windows.Forms.Application.DoEvents%2A> method.  \n  \n [!code-vb[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/visualbasic/dispatchersnippets/window1.xaml.vb#dispatcherdispatcherframedoevents)]\n [!code-cs[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/csharp/DispatcherSnippets/Window1.xaml.cs#dispatcherdispatcherframedoevents)]"
+  syntax:
+    content: 'public class DispatcherFrame : System.Windows.Threading.DispatcherObject'
+  inheritance:
+  - System.Object
+  - System.Windows.Threading.DispatcherObject
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.Windows.Threading.DispatcherObject.CheckAccess
+  - System.Windows.Threading.DispatcherObject.Dispatcher
+  - System.Windows.Threading.DispatcherObject.VerifyAccess
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Threading.DispatcherFrame.#ctor
+  id: '#ctor'
+  parent: System.Windows.Threading.DispatcherFrame
+  langs:
+  - csharp
+  name: DispatcherFrame()
+  nameWithType: DispatcherFrame.DispatcherFrame()
+  fullName: System.Windows.Threading.DispatcherFrame.DispatcherFrame()
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  namespace: System.Windows.Threading
+  summary: Initializes a new instance of the <xref href="System.Windows.Threading.DispatcherFrame"></xref> class.
+  syntax:
+    content: public DispatcherFrame ();
+    parameters: []
+  overload: System.Windows.Threading.DispatcherFrame.#ctor*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Threading.DispatcherFrame.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: System.Windows.Threading.DispatcherFrame
+  langs:
+  - csharp
+  name: DispatcherFrame(Boolean)
+  nameWithType: DispatcherFrame.DispatcherFrame(Boolean)
+  fullName: System.Windows.Threading.DispatcherFrame.DispatcherFrame(Boolean)
+  type: Constructor
+  assemblies:
+  - WindowsBase
+  namespace: System.Windows.Threading
+  summary: Initializes a new instance of the <xref href="System.Windows.Threading.DispatcherFrame"></xref> class, by using the specified exit request flag.
+  remarks: "<xref:System.Windows.Threading.DispatcherFrame> typically fall into two categories:  \n  \n-   Long running, general purpose frames, that exit only when instructed to.  These frames should exit when they are requested.  \n  \n-   Short running, very specific frames that exit when an important criteria is met.  These frames may consider not exiting when they are requested in favor of waiting for their exit criteria to be met.  These frames should have a time-out associated with them.  \n  \n-  \n  \n-   At application shutdown, all frames are request to exit."
+  syntax:
+    content: public DispatcherFrame (bool exitWhenRequested);
+    parameters:
+    - id: exitWhenRequested
+      type: System.Boolean
+      description: Indicates whether this frame will exit when all frames are requested to exit.
+  overload: System.Windows.Threading.DispatcherFrame.#ctor*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Windows.Threading.DispatcherFrame.Continue
+  id: Continue
+  parent: System.Windows.Threading.DispatcherFrame
+  langs:
+  - csharp
+  name: Continue
+  nameWithType: DispatcherFrame.Continue
+  fullName: System.Windows.Threading.DispatcherFrame.Continue
+  type: Property
+  assemblies:
+  - WindowsBase
+  namespace: System.Windows.Threading
+  summary: Gets or sets a value that indicates whether this <xref href="System.Windows.Threading.DispatcherFrame"></xref> should continue.
+  remarks: "Continue is queried at the top of each dispatcher loop.  \n  \n At application shutdown, all frames are request to exit.  \n  \n<a name=\"xamlTextUsage_Continue\"></a>   \n## XAML Text Usage  \n Members of this class are either not typically used in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)], or cannot be used in [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
+  example:
+  - "The following example shows how to use a <xref:System.Windows.Threading.DispatcherFrame> to achieve similar results as the [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] <xref:System.Windows.Forms.Application.DoEvents%2A> method.  \n  \n [!code-vb[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/visualbasic/dispatchersnippets/window1.xaml.vb#dispatcherdispatcherframedoevents)]\n [!code-cs[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/csharp/DispatcherSnippets/Window1.xaml.cs#dispatcherdispatcherframedoevents)]"
+  syntax:
+    content: public bool Continue { get; set; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the frame should continue; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.  The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  overload: System.Windows.Threading.DispatcherFrame.Continue*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Windows.Threading.DispatcherObject
+  isExternal: false
+  name: System.Windows.Threading.DispatcherObject
+- uid: System.Windows.Threading.DispatcherFrame.#ctor
+  parent: System.Windows.Threading.DispatcherFrame
+  isExternal: false
+  name: DispatcherFrame()
+  nameWithType: DispatcherFrame.DispatcherFrame()
+  fullName: System.Windows.Threading.DispatcherFrame.DispatcherFrame()
+- uid: System.Windows.Threading.DispatcherFrame.#ctor(System.Boolean)
+  parent: System.Windows.Threading.DispatcherFrame
+  isExternal: false
+  name: DispatcherFrame(Boolean)
+  nameWithType: DispatcherFrame.DispatcherFrame(Boolean)
+  fullName: System.Windows.Threading.DispatcherFrame.DispatcherFrame(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Windows.Threading.DispatcherFrame.Continue
+  parent: System.Windows.Threading.DispatcherFrame
+  isExternal: false
+  name: Continue
+  nameWithType: DispatcherFrame.Continue
+  fullName: System.Windows.Threading.DispatcherFrame.Continue
+- uid: System.Windows.Threading.DispatcherFrame.#ctor*
+  parent: System.Windows.Threading.DispatcherFrame
+  isExternal: false
+  name: DispatcherFrame
+  nameWithType: DispatcherFrame.DispatcherFrame
+- uid: System.Windows.Threading.DispatcherFrame.Continue*
+  parent: System.Windows.Threading.DispatcherFrame
+  isExternal: false
+  name: Continue
+  nameWithType: DispatcherFrame.Continue

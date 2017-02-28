@@ -1,0 +1,270 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.CompilerServices.MethodImplAttribute
+  id: MethodImplAttribute
+  children:
+  - System.Runtime.CompilerServices.MethodImplAttribute.#ctor
+  - System.Runtime.CompilerServices.MethodImplAttribute.#ctor(System.Int16)
+  - System.Runtime.CompilerServices.MethodImplAttribute.#ctor(System.Runtime.CompilerServices.MethodImplOptions)
+  - System.Runtime.CompilerServices.MethodImplAttribute.MethodCodeType
+  - System.Runtime.CompilerServices.MethodImplAttribute.Value
+  langs:
+  - csharp
+  name: MethodImplAttribute
+  nameWithType: MethodImplAttribute
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute
+  type: Class
+  summary: Specifies the details of how a method is implemented. This class cannot be inherited.
+  remarks: "You can apply this attribute to methods or constructors.  \n  \n This attribute lets you customize the configuration of the method or constructor to which it applies by supplying a <xref:System.Runtime.CompilerServices.MethodImplOptions> value to its class constructor. The members of the <xref:System.Runtime.CompilerServices.MethodImplOptions> enumeration correspond to bit fields in the `CorMethodImpl` metadata table. This means that information on the attribute cannot be retrieved at run time by calling the <xref:System.Reflection.MemberInfo.GetCustomAttributes%2A?displayProperty=fullName> method; instead, it is retrieved by calling either the `MethodInfo.GetMethodImplementationFlags` or the `ConstructorInfo.GetMethodImplementationFlags` method."
+  example:
+  - "The following example applies the MethodImplAttribute to the `GetCalendarName` method to ensure that it is not inlined at run time by the just-in-time (JIT) compiler.  \n  \n [!code-vb[System.Runtime.CompilerServices.MethodImplAttribute#1](~/add/codesnippet/visualbasic/t-system.runtime.compile_9_1.vb)]\n [!code-cs[System.Runtime.CompilerServices.MethodImplAttribute#1](~/add/codesnippet/csharp/t-system.runtime.compile_9_1.cs)]  \n  \n The following example then calls the `MethodInfo.GetMethodImplementationFlags` method to determine which flags are set for the `GetCalendarName` method. It also demonstrates that this information is not retrieved by the <xref:System.Reflection.MemberInfo.GetCustomAttributes%2A?displayProperty=fullName> method.  \n  \n [!code-cs[System.Runtime.CompilerServices.MethodImplAttribute#2](~/add/codesnippet/csharp/t-system.runtime.compile_9_2.cs)]\n [!code-vb[System.Runtime.CompilerServices.MethodImplAttribute#2](~/add/codesnippet/visualbasic/t-system.runtime.compile_9_2.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Constructor | System.AttributeTargets.Method, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class MethodImplAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor
+  id: '#ctor'
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  langs:
+  - csharp
+  name: MethodImplAttribute()
+  nameWithType: MethodImplAttribute.MethodImplAttribute()
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodImplAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.CompilerServices.MethodImplAttribute"></xref> class.
+  syntax:
+    content: public MethodImplAttribute ();
+    parameters: []
+  overload: System.Runtime.CompilerServices.MethodImplAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor(System.Int16)
+  id: '#ctor(System.Int16)'
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  langs:
+  - csharp
+  name: MethodImplAttribute(Int16)
+  nameWithType: MethodImplAttribute.MethodImplAttribute(Int16)
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodImplAttribute(Int16)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.CompilerServices.MethodImplAttribute"></xref> class with the specified <xref href="System.Runtime.CompilerServices.MethodImplOptions"></xref> value.
+  syntax:
+    content: public MethodImplAttribute (short value);
+    parameters:
+    - id: value
+      type: System.Int16
+      description: A bitmask representing the desired <xref href="System.Runtime.CompilerServices.MethodImplOptions"></xref> value which specifies properties of the attributed method.
+  overload: System.Runtime.CompilerServices.MethodImplAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor(System.Runtime.CompilerServices.MethodImplOptions)
+  id: '#ctor(System.Runtime.CompilerServices.MethodImplOptions)'
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  langs:
+  - csharp
+  name: MethodImplAttribute(MethodImplOptions)
+  nameWithType: MethodImplAttribute.MethodImplAttribute(MethodImplOptions)
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodImplAttribute(MethodImplOptions)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.CompilerServices.MethodImplAttribute"></xref> class with the specified <xref href="System.Runtime.CompilerServices.MethodImplOptions"></xref> value.
+  remarks: This constructor sets the `CorMethodImpl` bit fields in the metadata table. The value of these flags can be retrieved at run time by calling the `MethodInfo.GetMethodImplementationFlags` or `ConstructorInfo.GetMethodImplementationFlags` method.
+  syntax:
+    content: public MethodImplAttribute (System.Runtime.CompilerServices.MethodImplOptions methodImplOptions);
+    parameters:
+    - id: methodImplOptions
+      type: System.Runtime.CompilerServices.MethodImplOptions
+      description: A <xref href="System.Runtime.CompilerServices.MethodImplOptions"></xref> value specifying properties of the attributed method.
+  overload: System.Runtime.CompilerServices.MethodImplAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.MethodCodeType
+  id: MethodCodeType
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  langs:
+  - csharp
+  name: MethodCodeType
+  nameWithType: MethodImplAttribute.MethodCodeType
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodCodeType
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: A <xref href="System.Runtime.CompilerServices.MethodCodeType"></xref> value indicating what kind of implementation is provided for this method.
+  syntax:
+    content: public System.Runtime.CompilerServices.MethodCodeType MethodCodeType;
+    return:
+      type: System.Runtime.CompilerServices.MethodCodeType
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.Value
+  id: Value
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  langs:
+  - csharp
+  name: Value
+  nameWithType: MethodImplAttribute.Value
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.Value
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Gets the <xref href="System.Runtime.CompilerServices.MethodImplOptions"></xref> value describing the attributed method.
+  syntax:
+    content: public System.Runtime.CompilerServices.MethodImplOptions Value { get; }
+    return:
+      type: System.Runtime.CompilerServices.MethodImplOptions
+      description: The <xref href="System.Runtime.CompilerServices.MethodImplOptions"></xref> value describing the attributed method.
+  overload: System.Runtime.CompilerServices.MethodImplAttribute.Value*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: MethodImplAttribute()
+  nameWithType: MethodImplAttribute.MethodImplAttribute()
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodImplAttribute()
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor(System.Int16)
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: MethodImplAttribute(Int16)
+  nameWithType: MethodImplAttribute.MethodImplAttribute(Int16)
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodImplAttribute(Int16)
+- uid: System.Int16
+  parent: System
+  isExternal: false
+  name: Int16
+  nameWithType: Int16
+  fullName: System.Int16
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor(System.Runtime.CompilerServices.MethodImplOptions)
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: MethodImplAttribute(MethodImplOptions)
+  nameWithType: MethodImplAttribute.MethodImplAttribute(MethodImplOptions)
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodImplAttribute(MethodImplOptions)
+- uid: System.Runtime.CompilerServices.MethodImplOptions
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: MethodImplOptions
+  nameWithType: MethodImplOptions
+  fullName: System.Runtime.CompilerServices.MethodImplOptions
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.MethodCodeType
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: MethodCodeType
+  nameWithType: MethodImplAttribute.MethodCodeType
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.MethodCodeType
+- uid: System.Runtime.CompilerServices.MethodCodeType
+  parent: System.Runtime.CompilerServices
+  isExternal: false
+  name: MethodCodeType
+  nameWithType: MethodCodeType
+  fullName: System.Runtime.CompilerServices.MethodCodeType
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.Value
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: Value
+  nameWithType: MethodImplAttribute.Value
+  fullName: System.Runtime.CompilerServices.MethodImplAttribute.Value
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.#ctor*
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: MethodImplAttribute
+  nameWithType: MethodImplAttribute.MethodImplAttribute
+- uid: System.Runtime.CompilerServices.MethodImplAttribute.Value*
+  parent: System.Runtime.CompilerServices.MethodImplAttribute
+  isExternal: false
+  name: Value
+  nameWithType: MethodImplAttribute.Value

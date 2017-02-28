@@ -1,0 +1,468 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Description.OperationContractGenerationContext
+  id: OperationContractGenerationContext
+  children:
+  - System.ServiceModel.Description.OperationContractGenerationContext.#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod)
+  - System.ServiceModel.Description.OperationContractGenerationContext.#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod)
+  - System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod
+  - System.ServiceModel.Description.OperationContractGenerationContext.Contract
+  - System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType
+  - System.ServiceModel.Description.OperationContractGenerationContext.EndMethod
+  - System.ServiceModel.Description.OperationContractGenerationContext.IsAsync
+  - System.ServiceModel.Description.OperationContractGenerationContext.Operation
+  - System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator
+  - System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod
+  langs:
+  - csharp
+  name: OperationContractGenerationContext
+  nameWithType: OperationContractGenerationContext
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext
+  type: Class
+  summary: Passed to the &lt;xref:System.ServiceModel.Description.IOperationContractGenerationExtension.GenerateOperation%2A?displayProperty=fullName&gt; method to enable the modification of an operation contract and its context prior to generating code.
+  remarks: Use the OperationContractGenerationContext object passed to the <xref:System.ServiceModel.Description.IOperationContractGenerationExtension.GenerateOperation%2A?displayProperty=fullName> method to modify the code document object model prior to the generation of code. Typically, the <xref:System.ServiceModel.Description.IOperationContractGenerationExtension?displayProperty=fullName> interface is implemented on a custom <xref:System.ServiceModel.Description.IWsdlImportExtension?displayProperty=fullName> implementation that is used to import custom WSDL elements or otherwise modify the code at the service or operation level. To modify the code at the service level, see <xref:System.ServiceModel.Description.IServiceContractGenerationExtension?displayProperty=fullName>.
+  example:
+  - "The following example shows the use of the OperationContractGenerationContext object passed to the <xref:System.ServiceModel.Description.IOperationContractGenerationExtension.GenerateOperation%2A?displayProperty=fullName> method to add code comments extracted from custom WSDL elements.  \n  \n [!code-cs[C_CustomWSDLExtensions#14](~/add/codesnippet/csharp/c_customwsdlextensions.client/wsdldocumentationimporter.cs#14)]  \n  \n The following code example shows the resulting code comments.  \n  \n [!code-vb[C_CustomWSDLExtensions#13](~/add/codesnippet/visualbasic/c_customwsdlextensions.client/newgeneratedcontract.vb#13)]\n [!code-cs[C_CustomWSDLExtensions#13](~/add/codesnippet/csharp/c_customwsdlextensions.client/newgeneratedcontract.cs#13)]"
+  syntax:
+    content: public class OperationContractGenerationContext
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod)
+  id: '#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod)'
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod)
+  nameWithType: OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod)
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Description.OperationContractGenerationContext"></xref> class using the specified contract generator, contract context, operation description, code type declaration, synchronization method and task method.
+  syntax:
+    content: public OperationContractGenerationContext (System.ServiceModel.Description.ServiceContractGenerator serviceContractGenerator, System.ServiceModel.Description.ServiceContractGenerationContext contract, System.ServiceModel.Description.OperationDescription operation, System.CodeDom.CodeTypeDeclaration declaringType, System.CodeDom.CodeMemberMethod method);
+    parameters:
+    - id: serviceContractGenerator
+      type: System.ServiceModel.Description.ServiceContractGenerator
+      description: The service contract generator that generates the code.
+    - id: contract
+      type: System.ServiceModel.Description.ServiceContractGenerationContext
+      description: The contract and its generation context.
+    - id: operation
+      type: System.ServiceModel.Description.OperationDescription
+      description: The operation description for the operation to be generated.
+    - id: declaringType
+      type: System.CodeDom.CodeTypeDeclaration
+      description: The declaring code type.
+    - id: method
+      type: System.CodeDom.CodeMemberMethod
+      description: The method to be generated.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.#ctor*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod)
+  id: '#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod)'
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod,CodeMemberMethod,CodeMemberMethod)
+  nameWithType: OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod,CodeMemberMethod,CodeMemberMethod)
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod,CodeMemberMethod,CodeMemberMethod)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Description.OperationContractGenerationContext"></xref> class.
+  syntax:
+    content: public OperationContractGenerationContext (System.ServiceModel.Description.ServiceContractGenerator serviceContractGenerator, System.ServiceModel.Description.ServiceContractGenerationContext contract, System.ServiceModel.Description.OperationDescription operation, System.CodeDom.CodeTypeDeclaration declaringType, System.CodeDom.CodeMemberMethod syncMethod, System.CodeDom.CodeMemberMethod beginMethod, System.CodeDom.CodeMemberMethod endMethod);
+    parameters:
+    - id: serviceContractGenerator
+      type: System.ServiceModel.Description.ServiceContractGenerator
+      description: The service contract generator that generates the code.
+    - id: contract
+      type: System.ServiceModel.Description.ServiceContractGenerationContext
+      description: The contract and its generation context.
+    - id: operation
+      type: System.ServiceModel.Description.OperationDescription
+      description: The operation description for the operation to be generated.
+    - id: declaringType
+      type: System.CodeDom.CodeTypeDeclaration
+      description: The declaring code type.
+    - id: syncMethod
+      type: System.CodeDom.CodeMemberMethod
+      description: The synchronous method.
+    - id: beginMethod
+      type: System.CodeDom.CodeMemberMethod
+      description: The asynchronous begin method.
+    - id: endMethod
+      type: System.CodeDom.CodeMemberMethod
+      description: The asynchronous end method.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.#ctor*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod
+  id: BeginMethod
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: BeginMethod
+  nameWithType: OperationContractGenerationContext.BeginMethod
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the <xref href="System.CodeDom.CodeMemberMethod"></xref> for the asynchronous begin operation.
+  remarks: Use the BeginMethod to examine or modify the asynchronous begin method that represents the operation to be generated.
+  syntax:
+    content: public System.CodeDom.CodeMemberMethod BeginMethod { get; }
+    return:
+      type: System.CodeDom.CodeMemberMethod
+      description: The <xref href="System.CodeDom.CodeMemberMethod"></xref> for the asynchronous begin operation. Returns null if the operation is a synchronous operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.Contract
+  id: Contract
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: Contract
+  nameWithType: OperationContractGenerationContext.Contract
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.Contract
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the code generation context for the service contract.
+  remarks: Use the Contract property to obtain the contract generation context for the service contract that contains the operation.
+  syntax:
+    content: public System.ServiceModel.Description.ServiceContractGenerationContext Contract { get; }
+    return:
+      type: System.ServiceModel.Description.ServiceContractGenerationContext
+      description: The <xref href="System.ServiceModel.Description.ServiceContractGenerationContext"></xref> for the current operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.Contract*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType
+  id: DeclaringType
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: DeclaringType
+  nameWithType: OperationContractGenerationContext.DeclaringType
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the declaring type for the current operation.
+  remarks: Use the DeclaringType property to examine or modify the code type declaration for the current operation.
+  syntax:
+    content: public System.CodeDom.CodeTypeDeclaration DeclaringType { get; }
+    return:
+      type: System.CodeDom.CodeTypeDeclaration
+      description: The declaring type for the current operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.EndMethod
+  id: EndMethod
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: EndMethod
+  nameWithType: OperationContractGenerationContext.EndMethod
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.EndMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the asynchronous end operation declaration.
+  remarks: Use the EndMethod property to examine or modify the asynchronous end method that models an asynchronous operation.
+  syntax:
+    content: public System.CodeDom.CodeMemberMethod EndMethod { get; }
+    return:
+      type: System.CodeDom.CodeMemberMethod
+      description: The asynchronous end operation. Returns null if the operation is a synchronous operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.EndMethod*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.IsAsync
+  id: IsAsync
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: IsAsync
+  nameWithType: OperationContractGenerationContext.IsAsync
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.IsAsync
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets a value that indicates whether asynchronous methods are generated for the current operation.
+  syntax:
+    content: public bool IsAsync { get; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation is asynchronous; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.IsAsync*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.Operation
+  id: Operation
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: Operation
+  nameWithType: OperationContractGenerationContext.Operation
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.Operation
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the <xref href="System.ServiceModel.Description.OperationDescription"></xref> for the current operation.
+  remarks: Use the Operation property to examine operation information prior to generating code for that operation.
+  syntax:
+    content: public System.ServiceModel.Description.OperationDescription Operation { get; }
+    return:
+      type: System.ServiceModel.Description.OperationDescription
+      description: The <xref href="System.ServiceModel.Description.OperationDescription"></xref> for the current operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.Operation*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator
+  id: ServiceContractGenerator
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: ServiceContractGenerator
+  nameWithType: OperationContractGenerationContext.ServiceContractGenerator
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the <xref href="System.ServiceModel.Description.ServiceContractGenerator"></xref> that generates the current operation.
+  remarks: Use the ServiceContractGenerator property to examine or modify the object that generates code for the current operation.
+  syntax:
+    content: public System.ServiceModel.Description.ServiceContractGenerator ServiceContractGenerator { get; }
+    return:
+      type: System.ServiceModel.Description.ServiceContractGenerator
+      description: The <xref href="System.ServiceModel.Description.ServiceContractGenerator"></xref> that generates the current operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod
+  id: SyncMethod
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  langs:
+  - csharp
+  name: SyncMethod
+  nameWithType: OperationContractGenerationContext.SyncMethod
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Description
+  summary: Gets the <xref href="System.CodeDom.CodeMemberMethod"></xref> for the synchronous operation.
+  remarks: Use the SyncMethod property to examine or modify the synchronous operation before it is generated.
+  example:
+  - "The following example shows the use of the <xref:System.ServiceModel.Description.OperationContractGenerationContext> object passed to the <xref:System.ServiceModel.Description.IOperationContractGenerationExtension.GenerateOperation%2A?displayProperty=fullName> method to add code comments extracted from custom WSDL elements.  \n  \n [!code-cs[C_CustomWSDLExtensions#14](~/add/codesnippet/csharp/c_customwsdlextensions.client/wsdldocumentationimporter.cs#14)]  \n  \n The following code example shows the resulting code comments.  \n  \n [!code-vb[C_CustomWSDLExtensions#13](~/add/codesnippet/visualbasic/c_customwsdlextensions.client/newgeneratedcontract.vb#13)]\n [!code-cs[C_CustomWSDLExtensions#13](~/add/codesnippet/csharp/c_customwsdlextensions.client/newgeneratedcontract.cs#13)]"
+  syntax:
+    content: public System.CodeDom.CodeMemberMethod SyncMethod { get; }
+    return:
+      type: System.CodeDom.CodeMemberMethod
+      description: The <xref href="System.CodeDom.CodeMemberMethod"></xref> for the synchronous operation.
+  overload: System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod)
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod)
+  nameWithType: OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod)
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod)
+- uid: System.ServiceModel.Description.ServiceContractGenerator
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ServiceContractGenerator
+  nameWithType: ServiceContractGenerator
+  fullName: System.ServiceModel.Description.ServiceContractGenerator
+- uid: System.ServiceModel.Description.ServiceContractGenerationContext
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ServiceContractGenerationContext
+  nameWithType: ServiceContractGenerationContext
+  fullName: System.ServiceModel.Description.ServiceContractGenerationContext
+- uid: System.ServiceModel.Description.OperationDescription
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: OperationDescription
+  nameWithType: OperationDescription
+  fullName: System.ServiceModel.Description.OperationDescription
+- uid: System.CodeDom.CodeTypeDeclaration
+  parent: System.CodeDom
+  isExternal: false
+  name: CodeTypeDeclaration
+  nameWithType: CodeTypeDeclaration
+  fullName: System.CodeDom.CodeTypeDeclaration
+- uid: System.CodeDom.CodeMemberMethod
+  parent: System.CodeDom
+  isExternal: false
+  name: CodeMemberMethod
+  nameWithType: CodeMemberMethod
+  fullName: System.CodeDom.CodeMemberMethod
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.#ctor(System.ServiceModel.Description.ServiceContractGenerator,System.ServiceModel.Description.ServiceContractGenerationContext,System.ServiceModel.Description.OperationDescription,System.CodeDom.CodeTypeDeclaration,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod,System.CodeDom.CodeMemberMethod)
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod,CodeMemberMethod,CodeMemberMethod)
+  nameWithType: OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod,CodeMemberMethod,CodeMemberMethod)
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.OperationContractGenerationContext(ServiceContractGenerator,ServiceContractGenerationContext,OperationDescription,CodeTypeDeclaration,CodeMemberMethod,CodeMemberMethod,CodeMemberMethod)
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: BeginMethod
+  nameWithType: OperationContractGenerationContext.BeginMethod
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.Contract
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: Contract
+  nameWithType: OperationContractGenerationContext.Contract
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.Contract
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: DeclaringType
+  nameWithType: OperationContractGenerationContext.DeclaringType
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.EndMethod
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: EndMethod
+  nameWithType: OperationContractGenerationContext.EndMethod
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.EndMethod
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.IsAsync
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: IsAsync
+  nameWithType: OperationContractGenerationContext.IsAsync
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.IsAsync
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.Operation
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: Operation
+  nameWithType: OperationContractGenerationContext.Operation
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.Operation
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: ServiceContractGenerator
+  nameWithType: OperationContractGenerationContext.ServiceContractGenerator
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: SyncMethod
+  nameWithType: OperationContractGenerationContext.SyncMethod
+  fullName: System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.#ctor*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: OperationContractGenerationContext
+  nameWithType: OperationContractGenerationContext.OperationContractGenerationContext
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.BeginMethod*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: BeginMethod
+  nameWithType: OperationContractGenerationContext.BeginMethod
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.Contract*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: Contract
+  nameWithType: OperationContractGenerationContext.Contract
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.DeclaringType*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: DeclaringType
+  nameWithType: OperationContractGenerationContext.DeclaringType
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.EndMethod*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: EndMethod
+  nameWithType: OperationContractGenerationContext.EndMethod
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.IsAsync*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: IsAsync
+  nameWithType: OperationContractGenerationContext.IsAsync
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.Operation*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: Operation
+  nameWithType: OperationContractGenerationContext.Operation
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.ServiceContractGenerator*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: ServiceContractGenerator
+  nameWithType: OperationContractGenerationContext.ServiceContractGenerator
+- uid: System.ServiceModel.Description.OperationContractGenerationContext.SyncMethod*
+  parent: System.ServiceModel.Description.OperationContractGenerationContext
+  isExternal: false
+  name: SyncMethod
+  nameWithType: OperationContractGenerationContext.SyncMethod

@@ -1,0 +1,342 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ObjectDisposedException
+  id: ObjectDisposedException
+  children:
+  - System.ObjectDisposedException.#ctor(System.String)
+  - System.ObjectDisposedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.ObjectDisposedException.#ctor(System.String,System.Exception)
+  - System.ObjectDisposedException.#ctor(System.String,System.String)
+  - System.ObjectDisposedException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.ObjectDisposedException.Message
+  - System.ObjectDisposedException.ObjectName
+  langs:
+  - csharp
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+  type: Class
+  summary: The exception that is thrown when an operation is performed on a disposed object.
+  remarks: "An ObjectDisposedException is thrown when you try to access a member of an object that implements the <xref:System.IDisposable> interface, and that object has been disposed. Typically, this exception is caused by one of the following conditions:  \n  \n-   You've called an object's `Dispose` method, and you’re trying to access an instance member that gets or sets the object's state. The following example illustrates the ObjectDisposedException that is thrown when you try to reset the frequency of timer notifications after you call the <xref:System.Threading.Timer.Dispose%2A?displayProperty=fullName> method.  \n  \n     [!code-cs[System.ObjectDisposedException#1](~/add/codesnippet/csharp/t-system.objectdisposede_1.cs)]\n     [!code-vb[System.ObjectDisposedException#1](~/add/codesnippet/visualbasic/t-system.objectdisposede_1.vb)]  \n  \n-   You've called an object's `Close` method, and you’re trying to access an instance member that gets or sets the object's state. Often, the `Close` method provides a type's public implementation of the <xref:System.IDisposable.Dispose%2A?displayProperty=fullName> method.  \n  \n-   You've called an object's `Dispose` method multiple times. Typically, this doesn’t throw an exception. However, depending on how a type implements <xref:System.IDisposable.Dispose%2A?displayProperty=fullName>, it may not allow multiple calls to `Dispose`.  \n  \n In most cases, this exception results from developer error. Instead of handling the error in a `try`/`catch` block, you should correct the error, typically by reinstantiating the object."
+  example:
+  - "The following example demonstrates an error that causes the `ObjectDisposedException` exception to be thrown.  \n  \n [!code-cs[ObjDispEx#1](~/add/codesnippet/csharp/t-system.objectdisposede_2.cs)]\n [!code-cpp[ObjDispEx#1](~/add/codesnippet/cpp/t-system.objectdisposede_2.cpp)]\n [!code-vb[ObjDispEx#1](~/add/codesnippet/visualbasic/t-system.objectdisposede_2.vb)]  \n  \n This code produces the following output:  \n  \n```  \nCaught:  \n  Cannot access a closed Stream.  \n```"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public class ObjectDisposedException : InvalidOperationException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  - System.InvalidOperationException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: ObjectDisposedException(String)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(String)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObjectDisposedException"></xref> class with a string containing the name of the disposed object.
+  remarks: "The <xref:System.ObjectDisposedException.Message%2A> property is initialized to a system-supplied message that describes the error and includes the `objectName` parameter. This message takes into account the current system culture.  \n  \n The `InnerException` property of the new instance is initialized to `null`.  \n  \n If `objectName` is `null`, the `Message` property contains only an error message."
+  syntax:
+    content: public ObjectDisposedException (string objectName);
+    parameters:
+    - id: objectName
+      type: System.String
+      description: A string containing the name of the disposed object.
+  overload: System.ObjectDisposedException.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: '#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)'
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: ObjectDisposedException(SerializationInfo,StreamingContext)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(SerializationInfo,StreamingContext)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(SerializationInfo,StreamingContext)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObjectDisposedException"></xref> class with serialized data.
+  syntax:
+    content: protected ObjectDisposedException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The <xref href="System.Runtime.Serialization.SerializationInfo"></xref> that holds the serialized object data about the exception being thrown.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> that contains contextual information about the source or destination.
+  overload: System.ObjectDisposedException.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: ObjectDisposedException(String,Exception)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(String,Exception)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(String,Exception)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObjectDisposedException"></xref> class with a specified error message and a reference to the inner exception that is the cause of this exception.
+  remarks: An exception that is thrown as a direct result of a previous exception should include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor.
+  syntax:
+    content: public ObjectDisposedException (string message, Exception innerException);
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+    - id: innerException
+      type: System.Exception
+      description: The exception that is the cause of the current exception. If `innerException` is not <xref uid="langword_csharp_null" name="null" href=""></xref>, the current exception is raised in a <xref uid="langword_csharp_catch" name="catch" href=""></xref> block that handles the inner exception.
+  overload: System.ObjectDisposedException.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: ObjectDisposedException(String,String)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(String,String)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(String,String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObjectDisposedException"></xref> class with the specified object name and message.
+  remarks: "The `InnerException` property of the new instance is initialized to `null`.  \n  \n If `objectName` is `null`, the `Message` property contains only an error message."
+  syntax:
+    content: public ObjectDisposedException (string objectName, string message);
+    parameters:
+    - id: objectName
+      type: System.String
+      description: The name of the disposed object.
+    - id: message
+      type: System.String
+      description: The error message that explains the reason for the exception.
+  overload: System.ObjectDisposedException.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: ObjectDisposedException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.ObjectDisposedException.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Retrieves the <xref href="System.Runtime.Serialization.SerializationInfo"></xref> object with the parameter name and additional exception information.
+  syntax:
+    content: public override void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The <xref href="System.Runtime.Serialization.SerializationInfo"></xref> that holds the serialized object data about the exception being thrown.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> that contains contextual information about the source or destination.
+  overload: System.ObjectDisposedException.GetObjectData*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.Message
+  id: Message
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: Message
+  nameWithType: ObjectDisposedException.Message
+  fullName: System.ObjectDisposedException.Message
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the message that describes the error.
+  remarks: "If the <xref:System.ObjectDisposedException.ObjectName%2A> property is not `null`, the message includes the name of the object.  \n  \n This property overrides <xref:System.Exception.Message%2A?displayProperty=fullName>."
+  syntax:
+    content: public override string Message { get; }
+    return:
+      type: System.String
+      description: A string that describes the error.
+  overload: System.ObjectDisposedException.Message*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObjectDisposedException.ObjectName
+  id: ObjectName
+  parent: System.ObjectDisposedException
+  langs:
+  - csharp
+  name: ObjectName
+  nameWithType: ObjectDisposedException.ObjectName
+  fullName: System.ObjectDisposedException.ObjectName
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the name of the disposed object.
+  remarks: If the current property is not `null` or <xref:System.String?displayProperty=fullName>, the value of this property is included in the string returned by the <xref:System.ObjectDisposedException.Message%2A> property.
+  syntax:
+    content: public string ObjectName { get; }
+    return:
+      type: System.String
+      description: A string containing the name of the disposed object.
+  overload: System.ObjectDisposedException.ObjectName*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.InvalidOperationException
+  isExternal: false
+  name: System.InvalidOperationException
+- uid: System.ObjectDisposedException.#ctor(System.String)
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectDisposedException(String)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(String)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ObjectDisposedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectDisposedException(SerializationInfo,StreamingContext)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(SerializationInfo,StreamingContext)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.ObjectDisposedException.#ctor(System.String,System.Exception)
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectDisposedException(String,Exception)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(String,Exception)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(String,Exception)
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.ObjectDisposedException.#ctor(System.String,System.String)
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectDisposedException(String,String)
+  nameWithType: ObjectDisposedException.ObjectDisposedException(String,String)
+  fullName: System.ObjectDisposedException.ObjectDisposedException(String,String)
+- uid: System.ObjectDisposedException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: ObjectDisposedException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.ObjectDisposedException.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.ObjectDisposedException.Message
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: Message
+  nameWithType: ObjectDisposedException.Message
+  fullName: System.ObjectDisposedException.Message
+- uid: System.ObjectDisposedException.ObjectName
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectName
+  nameWithType: ObjectDisposedException.ObjectName
+  fullName: System.ObjectDisposedException.ObjectName
+- uid: System.ObjectDisposedException.#ctor*
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException.ObjectDisposedException
+- uid: System.ObjectDisposedException.GetObjectData*
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: GetObjectData
+  nameWithType: ObjectDisposedException.GetObjectData
+- uid: System.ObjectDisposedException.Message*
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: Message
+  nameWithType: ObjectDisposedException.Message
+- uid: System.ObjectDisposedException.ObjectName*
+  parent: System.ObjectDisposedException
+  isExternal: false
+  name: ObjectName
+  nameWithType: ObjectDisposedException.ObjectName

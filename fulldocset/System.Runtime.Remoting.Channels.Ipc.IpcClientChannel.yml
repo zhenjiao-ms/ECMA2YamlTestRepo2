@@ -1,0 +1,414 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  id: IpcClientChannel
+  children:
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor(System.Collections.IDictionary,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor(System.String,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink(System.String,System.Object,System.String@)
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured
+  - System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse(System.String,System.String@)
+  langs:
+  - csharp
+  name: IpcClientChannel
+  nameWithType: IpcClientChannel
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  type: Class
+  summary: Implements a client channel for remote calls that uses the IPC protocol to transmit messages.
+  remarks: "Channels are used by the.NET Framework remoting infrastructure to transport remote calls. When a client calls a remote object, the call is serialized into a message that is sent by a client channel and received by a server channel. After the message is received, it is deserialized and processed. Any returned values are transmitted by the server channel and received by the client channel.  \n  \n The IpcClientChannel class uses the Windows interprocess communication (IPC) system to transport messages between application domains on the same computer. When communicating between application domains on the same computer, the IPC channel is much faster than the TCP or HTTP channels.  \n  \n To perform additional processing of messages on the client side, you can specify an implementation of the <xref:System.Runtime.Remoting.Channels.IClientChannelSinkProvider> interface through which all messages processed by the IpcClientChannel object will be passed.  \n  \n By default, the IpcClientChannel class uses a binary formatter to serialize all messages.  \n  \n A IpcClientChannel object has associated configuration properties that can be set at run time either in a configuration file (by invoking the static <xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName> method) or programmatically (by passing a <xref:System.Collections.IDictionary> collection to the <xref:System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.%23ctor%2A> constructor). For a list of these configuration properties, see the documentation for the <xref:System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.%23ctor%2A> constructor."
+  example:
+  - "The following code example shows how to use the IpcClientChannel class.  \n  \n [!code-cs[Remoting_Ipc#20](~/add/codesnippet/csharp/t-system.runtime.remotin_5_1.cs)]\n [!code-cpp[Remoting_Ipc#20](~/add/codesnippet/cpp/t-system.runtime.remotin_5_1.cpp)]  \n  \n The preceding code uses the following remote object.  \n  \n [!code-cpp[Remoting_Ipc#0](~/add/codesnippet/cpp/t-system.runtime.remotin_5_2.cpp)]\n [!code-cs[Remoting_Ipc#0](~/add/codesnippet/csharp/t-system.runtime.remotin_5_2.cs)]  \n  \n For an example of a server that exposes this object remotely, see <xref:System.Runtime.Remoting.Channels.Ipc.IpcServerChannel>."
+  syntax:
+    content: 'public class IpcClientChannel : System.Runtime.Remoting.Channels.IChannelSender, System.Runtime.Remoting.Channels.ISecurableChannel'
+  inheritance:
+  - System.Object
+  implements:
+  - System.Runtime.Remoting.Channels.IChannelSender
+  - System.Runtime.Remoting.Channels.ISecurableChannel
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor
+  id: '#ctor'
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: IpcClientChannel()
+  nameWithType: IpcClientChannel.IpcClientChannel()
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IpcClientChannel()
+  type: Constructor
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Channels.Ipc.IpcServerChannel"></xref> class.
+  remarks: "The configuration properties of the <xref:System.Runtime.Remoting.Channels.Tcp.TcpClientChannel> instance returned by this constructor are all set to their default values. The following table shows the default value for each configuration property.  \n  \n|Configuration property|Description|  \n|----------------------------|-----------------|  \n|`name`|The default name is \"ipc client\". Each channel must have a unique name.|  \n|`priority`|The default priority is 1.|"
+  example:
+  - "The following code example shows how to use this constructor.  \n  \n [!code-cs[Remoting_Ipc#21](~/add/codesnippet/csharp/m-system.runtime.remotin_34_1.cs)]\n [!code-cpp[Remoting_Ipc#21](~/add/codesnippet/cpp/m-system.runtime.remotin_34_1.cpp)]"
+  syntax:
+    content: public IpcClientChannel ();
+    parameters: []
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor(System.Collections.IDictionary,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)
+  id: '#ctor(System.Collections.IDictionary,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)'
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: IpcClientChannel(IDictionary,IClientChannelSinkProvider)
+  nameWithType: IpcClientChannel.IpcClientChannel(IDictionary,IClientChannelSinkProvider)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IpcClientChannel(IDictionary,IClientChannelSinkProvider)
+  type: Constructor
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Channels.Ipc.IpcClientChannel"></xref> class with the specified configuration properties and sink.
+  remarks: "For more information about channel configuration properties, see [Channel and Formatter Configuration Properties](http://msdn.microsoft.com/en-us/226ecf74-ebbd-4ea0-a701-dcf4441deefe).  \n  \n If you do not require sink functionality, set the `sinkProvider` parameter to `null`."
+  example:
+  - "The following code example shows how to use this constructor.  \n  \n [!code-cpp[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#41](~/add/codesnippet/cpp/e5e9822a-6bc5-4440-94c1-_1.cpp)]\n [!code-cs[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#41](~/add/codesnippet/csharp/e5e9822a-6bc5-4440-94c1-_1.cs)]"
+  syntax:
+    content: public IpcClientChannel (System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IClientChannelSinkProvider sinkProvider);
+    parameters:
+    - id: properties
+      type: System.Collections.IDictionary
+      description: A <xref href="System.Collections.IDictionary"></xref> collection that specifies values for configuration properties to be used by the channel.
+    - id: sinkProvider
+      type: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
+      description: The <xref href="System.Runtime.Remoting.Channels.IServerChannelSinkProvider"></xref> implementation to be used by the channel.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor(System.String,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)
+  id: '#ctor(System.String,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)'
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: IpcClientChannel(String,IClientChannelSinkProvider)
+  nameWithType: IpcClientChannel.IpcClientChannel(String,IClientChannelSinkProvider)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IpcClientChannel(String,IClientChannelSinkProvider)
+  type: Constructor
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Channels.Ipc.IpcClientChannel"></xref> class with the specified name and sink.
+  remarks: "This constructor sets the <xref:System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName%2A> property by using the `name` parameter. If you want to register more than one channel, each channel must have a unique name.  \n  \n If you do not require sink functionality, set the `sinkProvider` parameter to `null`."
+  example:
+  - "The following code example shows how to use this constructor.  \n  \n [!code-cpp[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#42](~/add/codesnippet/cpp/c7989d9c-5253-4e00-b8ab-_1.cpp)]\n [!code-cs[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#42](~/add/codesnippet/csharp/c7989d9c-5253-4e00-b8ab-_1.cs)]"
+  syntax:
+    content: public IpcClientChannel (string name, System.Runtime.Remoting.Channels.IClientChannelSinkProvider sinkProvider);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the channel.
+    - id: sinkProvider
+      type: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
+      description: The <xref href="System.Runtime.Remoting.Channels.IClientChannelSinkProvider"></xref> implementation to be used by the channel.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName
+  id: ChannelName
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: ChannelName
+  nameWithType: IpcClientChannel.ChannelName
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName
+  type: Property
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Gets the name of the current channel.
+  remarks: Every registered channel has a unique name. The name is used to retrieve a specific channel when calling the <xref:System.Runtime.Remoting.Channels.ChannelServices.GetChannel%2A?displayProperty=fullName> method. The default name is "ipc client".
+  example:
+  - "The following code example shows how to use the ChannelName property.  \n  \n [!code-cs[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#21](~/add/codesnippet/csharp/p-system.runtime.remotin_26_1.cs)]\n [!code-cpp[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#21](~/add/codesnippet/cpp/p-system.runtime.remotin_26_1.cpp)]"
+  syntax:
+    content: public string ChannelName { get; }
+    return:
+      type: System.String
+      description: A <xref href="System.String"></xref> instance that contains the name of the channel.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority
+  id: ChannelPriority
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: ChannelPriority
+  nameWithType: IpcClientChannel.ChannelPriority
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority
+  type: Property
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Gets the priority of the current channel.
+  remarks: The priority controls the order in which competing clients connect to a given endpoint; higher priority channels connect before lower priority channels. The default priority is 1; negative priorities are allowed.
+  example:
+  - "The following code example shows how to use the ChannelPriority property.  \n  \n [!code-cs[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#23](~/add/codesnippet/csharp/p-system.runtime.remotin_86_1.cs)]\n [!code-cpp[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#23](~/add/codesnippet/cpp/p-system.runtime.remotin_86_1.cpp)]"
+  syntax:
+    content: public int ChannelPriority { get; }
+    return:
+      type: System.Int32
+      description: An integer that indicates the priority assigned to the channel.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink(System.String,System.Object,System.String@)
+  id: CreateMessageSink(System.String,System.Object,System.String@)
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: CreateMessageSink(String,Object,String)
+  nameWithType: IpcClientChannel.CreateMessageSink(String,Object,String)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink(String,Object,String)
+  type: Method
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Returns a channel message sink that delivers messages to the specified URL or channel data object.
+  remarks: The CreateMessageSink method returns a channel message sink that delivers messages to either the specified URL or the channel data object. If the `uri` parameter is `null`, `remoteChannelData` is used as a target for the sink. Either the `url` or `remoteChannelData` parameters can be `null`, but not both.
+  example:
+  - "The following code example shows how to use the CreateMessageSink method.  \n  \n [!code-cs[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#22](~/add/codesnippet/csharp/26558359-cde8-4500-9c80-_1.cs)]\n [!code-cpp[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#22](~/add/codesnippet/cpp/26558359-cde8-4500-9c80-_1.cpp)]"
+  syntax:
+    content: public virtual System.Runtime.Remoting.Messaging.IMessageSink CreateMessageSink (string url, object remoteChannelData, out string objectURI);
+    parameters:
+    - id: url
+      type: System.String
+      description: The URL to which the new sink delivers messages. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    - id: remoteChannelData
+      type: System.Object
+      description: The channel data object of the remote host to which the new sink will deliver messages. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    - id: objectURI
+      type: System.String
+      description: When this method returns, contains the URI of the new channel message sink that delivers messages to the specified URL or channel data object. This parameter is passed uninitialized.
+    return:
+      type: System.Runtime.Remoting.Messaging.IMessageSink
+      description: A channel message sink that delivers messages to the specified URL or channel data object.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink*
+  exceptions:
+  - type: System.Runtime.Remoting.RemotingException
+    commentId: T:System.Runtime.Remoting.RemotingException
+    description: The provided sink does not implement <xref href="System.Runtime.Remoting.Messaging.IMessageSink"></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured
+  id: IsSecured
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: IsSecured
+  nameWithType: IpcClientChannel.IsSecured
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured
+  type: Property
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Gets or sets a Boolean value that indicates whether the current channel is secure.
+  syntax:
+    content: public bool IsSecured { get; set; }
+    return:
+      type: System.Boolean
+      description: A Boolean value that indicates whether the current instance is secure.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse(System.String,System.String@)
+  id: Parse(System.String,System.String@)
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  langs:
+  - csharp
+  name: Parse(String,String)
+  nameWithType: IpcClientChannel.Parse(String,String)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse(String,String)
+  type: Method
+  assemblies:
+  - System.Runtime.Remoting
+  namespace: System.Runtime.Remoting.Channels.Ipc
+  summary: Extracts the channel URI and the remote well-known object URI from the specified URL.
+  remarks: ''
+  example:
+  - "The following code example shows how to use the Parse method.  \n  \n [!code-cs[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#24](~/add/codesnippet/csharp/a3ba2658-4290-43bf-abd5-_1.cs)]\n [!code-cpp[System.Runtime.Remoting.Channels.Ipc.IpcClientChannel#24](~/add/codesnippet/cpp/a3ba2658-4290-43bf-abd5-_1.cpp)]"
+  syntax:
+    content: public string Parse (string url, out string objectURI);
+    parameters:
+    - id: url
+      type: System.String
+      description: The URL from which to extract the object URI.
+    - id: objectURI
+      type: System.String
+      description: When this method returns, a <xref href="System.String"></xref> instance that holds the URI of the remote well-known object. This parameter is passed uninitialized.
+    return:
+      type: System.String
+      description: A <xref href="System.String"></xref> that contains the channel URI.
+  overload: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.Runtime.Remoting.RemotingException
+  parent: System.Runtime.Remoting
+  isExternal: false
+  name: RemotingException
+  nameWithType: RemotingException
+  fullName: System.Runtime.Remoting.RemotingException
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: IpcClientChannel()
+  nameWithType: IpcClientChannel.IpcClientChannel()
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IpcClientChannel()
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor(System.Collections.IDictionary,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: IpcClientChannel(IDictionary,IClientChannelSinkProvider)
+  nameWithType: IpcClientChannel.IpcClientChannel(IDictionary,IClientChannelSinkProvider)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IpcClientChannel(IDictionary,IClientChannelSinkProvider)
+- uid: System.Collections.IDictionary
+  parent: System.Collections
+  isExternal: false
+  name: IDictionary
+  nameWithType: IDictionary
+  fullName: System.Collections.IDictionary
+- uid: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
+  parent: System.Runtime.Remoting.Channels
+  isExternal: false
+  name: IClientChannelSinkProvider
+  nameWithType: IClientChannelSinkProvider
+  fullName: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor(System.String,System.Runtime.Remoting.Channels.IClientChannelSinkProvider)
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: IpcClientChannel(String,IClientChannelSinkProvider)
+  nameWithType: IpcClientChannel.IpcClientChannel(String,IClientChannelSinkProvider)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IpcClientChannel(String,IClientChannelSinkProvider)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: ChannelName
+  nameWithType: IpcClientChannel.ChannelName
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: ChannelPriority
+  nameWithType: IpcClientChannel.ChannelPriority
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink(System.String,System.Object,System.String@)
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: CreateMessageSink(String,Object,String)
+  nameWithType: IpcClientChannel.CreateMessageSink(String,Object,String)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink(String,Object,String)
+- uid: System.Runtime.Remoting.Messaging.IMessageSink
+  parent: System.Runtime.Remoting.Messaging
+  isExternal: false
+  name: IMessageSink
+  nameWithType: IMessageSink
+  fullName: System.Runtime.Remoting.Messaging.IMessageSink
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: IsSecured
+  nameWithType: IpcClientChannel.IsSecured
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse(System.String,System.String@)
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: Parse(String,String)
+  nameWithType: IpcClientChannel.Parse(String,String)
+  fullName: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse(String,String)
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.#ctor*
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: IpcClientChannel
+  nameWithType: IpcClientChannel.IpcClientChannel
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelName*
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: ChannelName
+  nameWithType: IpcClientChannel.ChannelName
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.ChannelPriority*
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: ChannelPriority
+  nameWithType: IpcClientChannel.ChannelPriority
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.CreateMessageSink*
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: CreateMessageSink
+  nameWithType: IpcClientChannel.CreateMessageSink
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.IsSecured*
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: IsSecured
+  nameWithType: IpcClientChannel.IsSecured
+- uid: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel.Parse*
+  parent: System.Runtime.Remoting.Channels.Ipc.IpcClientChannel
+  isExternal: false
+  name: Parse
+  nameWithType: IpcClientChannel.Parse

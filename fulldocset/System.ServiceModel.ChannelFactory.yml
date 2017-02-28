@@ -1,0 +1,971 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.ChannelFactory
+  id: ChannelFactory
+  children:
+  - System.ServiceModel.ChannelFactory.#ctor
+  - System.ServiceModel.ChannelFactory.ApplyConfiguration(System.String)
+  - System.ServiceModel.ChannelFactory.CreateDescription
+  - System.ServiceModel.ChannelFactory.CreateFactory
+  - System.ServiceModel.ChannelFactory.Credentials
+  - System.ServiceModel.ChannelFactory.DefaultCloseTimeout
+  - System.ServiceModel.ChannelFactory.DefaultOpenTimeout
+  - System.ServiceModel.ChannelFactory.Endpoint
+  - System.ServiceModel.ChannelFactory.EnsureOpened
+  - System.ServiceModel.ChannelFactory.GetProperty``1
+  - System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Description.ServiceEndpoint)
+  - System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory.InitializeEndpoint(System.String,System.ServiceModel.EndpointAddress)
+  - System.ServiceModel.ChannelFactory.OnAbort
+  - System.ServiceModel.ChannelFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.ChannelFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.ChannelFactory.OnClose(System.TimeSpan)
+  - System.ServiceModel.ChannelFactory.OnEndClose(System.IAsyncResult)
+  - System.ServiceModel.ChannelFactory.OnEndOpen(System.IAsyncResult)
+  - System.ServiceModel.ChannelFactory.OnOpen(System.TimeSpan)
+  - System.ServiceModel.ChannelFactory.OnOpened
+  - System.ServiceModel.ChannelFactory.OnOpening
+  - System.ServiceModel.ChannelFactory.System#IDisposable#Dispose
+  langs:
+  - csharp
+  name: ChannelFactory
+  nameWithType: ChannelFactory
+  fullName: System.ServiceModel.ChannelFactory
+  type: Class
+  summary: Creates and manages the channels that are used by clients to send messages to service endpoints.
+  syntax:
+    content: 'public abstract class ChannelFactory : System.ServiceModel.Channels.CommunicationObject, IDisposable, System.ServiceModel.Channels.IChannelFactory'
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Channels.CommunicationObject
+  implements:
+  - System.IDisposable
+  - System.ServiceModel.Channels.IChannelFactory
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.ServiceModel.Channels.CommunicationObject.Abort
+  - System.ServiceModel.Channels.CommunicationObject.BeginClose(System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.BeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.BeginOpen(System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.BeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  - System.ServiceModel.Channels.CommunicationObject.Close
+  - System.ServiceModel.Channels.CommunicationObject.Close(System.TimeSpan)
+  - System.ServiceModel.Channels.CommunicationObject.Closed
+  - System.ServiceModel.Channels.CommunicationObject.Closing
+  - System.ServiceModel.Channels.CommunicationObject.EndClose(System.IAsyncResult)
+  - System.ServiceModel.Channels.CommunicationObject.EndOpen(System.IAsyncResult)
+  - System.ServiceModel.Channels.CommunicationObject.Fault
+  - System.ServiceModel.Channels.CommunicationObject.Faulted
+  - System.ServiceModel.Channels.CommunicationObject.GetCommunicationObjectType
+  - System.ServiceModel.Channels.CommunicationObject.IsDisposed
+  - System.ServiceModel.Channels.CommunicationObject.OnClosed
+  - System.ServiceModel.Channels.CommunicationObject.OnClosing
+  - System.ServiceModel.Channels.CommunicationObject.OnFaulted
+  - System.ServiceModel.Channels.CommunicationObject.Open
+  - System.ServiceModel.Channels.CommunicationObject.Open(System.TimeSpan)
+  - System.ServiceModel.Channels.CommunicationObject.Opened
+  - System.ServiceModel.Channels.CommunicationObject.Opening
+  - System.ServiceModel.Channels.CommunicationObject.State
+  - System.ServiceModel.Channels.CommunicationObject.ThisLock
+  - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposed
+  - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrImmutable
+  - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: ChannelFactory()
+  nameWithType: ChannelFactory.ChannelFactory()
+  fullName: System.ServiceModel.ChannelFactory.ChannelFactory()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.ChannelFactory"></xref> class.
+  syntax:
+    content: protected ChannelFactory ();
+    parameters: []
+  overload: System.ServiceModel.ChannelFactory.#ctor*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.ApplyConfiguration(System.String)
+  id: ApplyConfiguration(System.String)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: ApplyConfiguration(String)
+  nameWithType: ChannelFactory.ApplyConfiguration(String)
+  fullName: System.ServiceModel.ChannelFactory.ApplyConfiguration(String)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes the channel factory with the behaviors provided by a specified configuration file and with those in the service endpoint of the channel factory.
+  syntax:
+    content: protected virtual void ApplyConfiguration (string configurationName);
+    parameters:
+    - id: configurationName
+      type: System.String
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.ApplyConfiguration*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.CreateDescription
+  id: CreateDescription
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: CreateDescription()
+  nameWithType: ChannelFactory.CreateDescription()
+  fullName: System.ServiceModel.ChannelFactory.CreateDescription()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: When implemented in a derived class, creates a description of the service endpoint associated with the channel factory.
+  syntax:
+    content: protected abstract System.ServiceModel.Description.ServiceEndpoint CreateDescription ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Description.ServiceEndpoint
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.CreateDescription*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.CreateFactory
+  id: CreateFactory
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: CreateFactory()
+  nameWithType: ChannelFactory.CreateFactory()
+  fullName: System.ServiceModel.ChannelFactory.CreateFactory()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Builds the channel factory for the current endpoint of the factory.
+  syntax:
+    content: protected virtual System.ServiceModel.Channels.IChannelFactory CreateFactory ();
+    parameters: []
+    return:
+      type: System.ServiceModel.Channels.IChannelFactory
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.CreateFactory*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.Credentials
+  id: Credentials
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: Credentials
+  nameWithType: ChannelFactory.Credentials
+  fullName: System.ServiceModel.ChannelFactory.Credentials
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the credentials used by clients to communicate a service endpoint over the channels produced by the factory.
+  syntax:
+    content: public System.ServiceModel.Description.ClientCredentials Credentials { get; }
+    return:
+      type: System.ServiceModel.Description.ClientCredentials
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.Credentials*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.DefaultCloseTimeout
+  id: DefaultCloseTimeout
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: DefaultCloseTimeout
+  nameWithType: ChannelFactory.DefaultCloseTimeout
+  fullName: System.ServiceModel.ChannelFactory.DefaultCloseTimeout
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the default interval of time provided for a close operation to complete.
+  syntax:
+    content: protected override TimeSpan DefaultCloseTimeout { get; }
+    return:
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.DefaultCloseTimeout*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.DefaultOpenTimeout
+  id: DefaultOpenTimeout
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: DefaultOpenTimeout
+  nameWithType: ChannelFactory.DefaultOpenTimeout
+  fullName: System.ServiceModel.ChannelFactory.DefaultOpenTimeout
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the default interval of time provided for an open operation to complete.
+  syntax:
+    content: protected override TimeSpan DefaultOpenTimeout { get; }
+    return:
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.DefaultOpenTimeout*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.Endpoint
+  id: Endpoint
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: Endpoint
+  nameWithType: ChannelFactory.Endpoint
+  fullName: System.ServiceModel.ChannelFactory.Endpoint
+  type: Property
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Gets the service endpoint to which the channels produced by the factory connect.
+  syntax:
+    content: public System.ServiceModel.Description.ServiceEndpoint Endpoint { get; }
+    return:
+      type: System.ServiceModel.Description.ServiceEndpoint
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.Endpoint*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.EnsureOpened
+  id: EnsureOpened
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: EnsureOpened()
+  nameWithType: ChannelFactory.EnsureOpened()
+  fullName: System.ServiceModel.ChannelFactory.EnsureOpened()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Opens the current channel factory if it is not yet opened.
+  syntax:
+    content: protected void EnsureOpened ();
+    parameters: []
+  overload: System.ServiceModel.ChannelFactory.EnsureOpened*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.GetProperty``1
+  id: GetProperty``1
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: GetProperty()
+  nameWithType: ChannelFactory.GetProperty()
+  fullName: System.ServiceModel.ChannelFactory.GetProperty()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  syntax:
+    content: 'public T GetProperty<T> () where T : class;'
+    parameters: []
+    return:
+      type: T
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.GetProperty<T>*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Description.ServiceEndpoint)
+  id: InitializeEndpoint(System.ServiceModel.Description.ServiceEndpoint)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: InitializeEndpoint(ServiceEndpoint)
+  nameWithType: ChannelFactory.InitializeEndpoint(ServiceEndpoint)
+  fullName: System.ServiceModel.ChannelFactory.InitializeEndpoint(ServiceEndpoint)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes the service endpoint of the channel factory with a specified endpoint.
+  syntax:
+    content: protected void InitializeEndpoint (System.ServiceModel.Description.ServiceEndpoint endpoint);
+    parameters:
+    - id: endpoint
+      type: System.ServiceModel.Description.ServiceEndpoint
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.InitializeEndpoint*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
+  id: InitializeEndpoint(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: InitializeEndpoint(Binding,EndpointAddress)
+  nameWithType: ChannelFactory.InitializeEndpoint(Binding,EndpointAddress)
+  fullName: System.ServiceModel.ChannelFactory.InitializeEndpoint(Binding,EndpointAddress)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes the service endpoint of the channel factory with a specified binding and address.
+  syntax:
+    content: protected void InitializeEndpoint (System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress address);
+    parameters:
+    - id: binding
+      type: System.ServiceModel.Channels.Binding
+      description: To be added.
+    - id: address
+      type: System.ServiceModel.EndpointAddress
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.InitializeEndpoint*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint(System.String,System.ServiceModel.EndpointAddress)
+  id: InitializeEndpoint(System.String,System.ServiceModel.EndpointAddress)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: InitializeEndpoint(String,EndpointAddress)
+  nameWithType: ChannelFactory.InitializeEndpoint(String,EndpointAddress)
+  fullName: System.ServiceModel.ChannelFactory.InitializeEndpoint(String,EndpointAddress)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes the service endpoint of the channel factory with a specified address and configuration.
+  syntax:
+    content: protected void InitializeEndpoint (string configurationName, System.ServiceModel.EndpointAddress address);
+    parameters:
+    - id: configurationName
+      type: System.String
+      description: To be added.
+    - id: address
+      type: System.ServiceModel.EndpointAddress
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.InitializeEndpoint*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnAbort
+  id: OnAbort
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnAbort()
+  nameWithType: ChannelFactory.OnAbort()
+  fullName: System.ServiceModel.ChannelFactory.OnAbort()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Terminates the inner channel factory of the current channel factory.
+  syntax:
+    content: protected override void OnAbort ();
+    parameters: []
+  overload: System.ServiceModel.ChannelFactory.OnAbort*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  id: OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnBeginClose(TimeSpan,AsyncCallback,Object)
+  nameWithType: ChannelFactory.OnBeginClose(TimeSpan,AsyncCallback,Object)
+  fullName: System.ServiceModel.ChannelFactory.OnBeginClose(TimeSpan,AsyncCallback,Object)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Begins an asynchronous close operation on the inner channel factory of the current channel factory that has a state object associated with it.
+  syntax:
+    content: protected override IAsyncResult OnBeginClose (TimeSpan timeout, AsyncCallback callback, object state);
+    parameters:
+    - id: timeout
+      type: System.TimeSpan
+      description: To be added.
+    - id: callback
+      type: System.AsyncCallback
+      description: To be added.
+    - id: state
+      type: System.Object
+      description: To be added.
+    return:
+      type: System.IAsyncResult
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.OnBeginClose*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  id: OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnBeginOpen(TimeSpan,AsyncCallback,Object)
+  nameWithType: ChannelFactory.OnBeginOpen(TimeSpan,AsyncCallback,Object)
+  fullName: System.ServiceModel.ChannelFactory.OnBeginOpen(TimeSpan,AsyncCallback,Object)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Begins an asynchronous open operation on the inner channel factory of the current channel factory that has a state object associated with it.
+  syntax:
+    content: protected override IAsyncResult OnBeginOpen (TimeSpan timeout, AsyncCallback callback, object state);
+    parameters:
+    - id: timeout
+      type: System.TimeSpan
+      description: To be added.
+    - id: callback
+      type: System.AsyncCallback
+      description: To be added.
+    - id: state
+      type: System.Object
+      description: To be added.
+    return:
+      type: System.IAsyncResult
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.OnBeginOpen*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnClose(System.TimeSpan)
+  id: OnClose(System.TimeSpan)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnClose(TimeSpan)
+  nameWithType: ChannelFactory.OnClose(TimeSpan)
+  fullName: System.ServiceModel.ChannelFactory.OnClose(TimeSpan)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Calls close on the inner channel factory with a specified time-out for the completion of the operation.
+  syntax:
+    content: protected override void OnClose (TimeSpan timeout);
+    parameters:
+    - id: timeout
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.OnClose*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnEndClose(System.IAsyncResult)
+  id: OnEndClose(System.IAsyncResult)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnEndClose(IAsyncResult)
+  nameWithType: ChannelFactory.OnEndClose(IAsyncResult)
+  fullName: System.ServiceModel.ChannelFactory.OnEndClose(IAsyncResult)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Completes an asynchronous close operation on the inner channel factory of the current channel factory.
+  syntax:
+    content: protected override void OnEndClose (IAsyncResult result);
+    parameters:
+    - id: result
+      type: System.IAsyncResult
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.OnEndClose*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnEndOpen(System.IAsyncResult)
+  id: OnEndOpen(System.IAsyncResult)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnEndOpen(IAsyncResult)
+  nameWithType: ChannelFactory.OnEndOpen(IAsyncResult)
+  fullName: System.ServiceModel.ChannelFactory.OnEndOpen(IAsyncResult)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Completes an asynchronous open operation on the inner channel factory of the current channel factory.
+  syntax:
+    content: protected override void OnEndOpen (IAsyncResult result);
+    parameters:
+    - id: result
+      type: System.IAsyncResult
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.OnEndOpen*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnOpen(System.TimeSpan)
+  id: OnOpen(System.TimeSpan)
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnOpen(TimeSpan)
+  nameWithType: ChannelFactory.OnOpen(TimeSpan)
+  fullName: System.ServiceModel.ChannelFactory.OnOpen(TimeSpan)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Calls open on the inner channel factory of the current channel factory with a specified time-out for the completion of the operation.
+  syntax:
+    content: protected override void OnOpen (TimeSpan timeout);
+    parameters:
+    - id: timeout
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.ServiceModel.ChannelFactory.OnOpen*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnOpened
+  id: OnOpened
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnOpened()
+  nameWithType: ChannelFactory.OnOpened()
+  fullName: System.ServiceModel.ChannelFactory.OnOpened()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Initializes a read-only copy of the <xref href="System.ServiceModel.Description.ClientCredentials"></xref> object for the channel factory.
+  syntax:
+    content: protected override void OnOpened ();
+    parameters: []
+  overload: System.ServiceModel.ChannelFactory.OnOpened*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.OnOpening
+  id: OnOpening
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: OnOpening()
+  nameWithType: ChannelFactory.OnOpening()
+  fullName: System.ServiceModel.ChannelFactory.OnOpening()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Builds the inner channel factory for the current channel.
+  syntax:
+    content: protected override void OnOpening ();
+    parameters: []
+  overload: System.ServiceModel.ChannelFactory.OnOpening*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.ChannelFactory.System#IDisposable#Dispose
+  id: System#IDisposable#Dispose
+  isEii: true
+  parent: System.ServiceModel.ChannelFactory
+  langs:
+  - csharp
+  name: System.IDisposable.Dispose()
+  nameWithType: ChannelFactory.System.IDisposable.Dispose()
+  fullName: System.ServiceModel.ChannelFactory.System.IDisposable.Dispose()
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel
+  summary: Closes the current channel factory.
+  syntax:
+    content: void IDisposable.Dispose ();
+    parameters: []
+  overload: System.ServiceModel.ChannelFactory.System#IDisposable#Dispose*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.ServiceModel.Channels.CommunicationObject
+  isExternal: false
+  name: System.ServiceModel.Channels.CommunicationObject
+- uid: System.ServiceModel.ChannelFactory.#ctor
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: ChannelFactory()
+  nameWithType: ChannelFactory.ChannelFactory()
+  fullName: System.ServiceModel.ChannelFactory.ChannelFactory()
+- uid: System.ServiceModel.ChannelFactory.ApplyConfiguration(System.String)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: ApplyConfiguration(String)
+  nameWithType: ChannelFactory.ApplyConfiguration(String)
+  fullName: System.ServiceModel.ChannelFactory.ApplyConfiguration(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ServiceModel.ChannelFactory.CreateDescription
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: CreateDescription()
+  nameWithType: ChannelFactory.CreateDescription()
+  fullName: System.ServiceModel.ChannelFactory.CreateDescription()
+- uid: System.ServiceModel.Description.ServiceEndpoint
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ServiceEndpoint
+  nameWithType: ServiceEndpoint
+  fullName: System.ServiceModel.Description.ServiceEndpoint
+- uid: System.ServiceModel.ChannelFactory.CreateFactory
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: CreateFactory()
+  nameWithType: ChannelFactory.CreateFactory()
+  fullName: System.ServiceModel.ChannelFactory.CreateFactory()
+- uid: System.ServiceModel.Channels.IChannelFactory
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: IChannelFactory
+  nameWithType: IChannelFactory
+  fullName: System.ServiceModel.Channels.IChannelFactory
+- uid: System.ServiceModel.ChannelFactory.Credentials
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: Credentials
+  nameWithType: ChannelFactory.Credentials
+  fullName: System.ServiceModel.ChannelFactory.Credentials
+- uid: System.ServiceModel.Description.ClientCredentials
+  parent: System.ServiceModel.Description
+  isExternal: false
+  name: ClientCredentials
+  nameWithType: ClientCredentials
+  fullName: System.ServiceModel.Description.ClientCredentials
+- uid: System.ServiceModel.ChannelFactory.DefaultCloseTimeout
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: DefaultCloseTimeout
+  nameWithType: ChannelFactory.DefaultCloseTimeout
+  fullName: System.ServiceModel.ChannelFactory.DefaultCloseTimeout
+- uid: System.TimeSpan
+  parent: System
+  isExternal: false
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System.ServiceModel.ChannelFactory.DefaultOpenTimeout
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: DefaultOpenTimeout
+  nameWithType: ChannelFactory.DefaultOpenTimeout
+  fullName: System.ServiceModel.ChannelFactory.DefaultOpenTimeout
+- uid: System.ServiceModel.ChannelFactory.Endpoint
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: Endpoint
+  nameWithType: ChannelFactory.Endpoint
+  fullName: System.ServiceModel.ChannelFactory.Endpoint
+- uid: System.ServiceModel.ChannelFactory.EnsureOpened
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: EnsureOpened()
+  nameWithType: ChannelFactory.EnsureOpened()
+  fullName: System.ServiceModel.ChannelFactory.EnsureOpened()
+- uid: System.ServiceModel.ChannelFactory.GetProperty``1
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: GetProperty()
+  nameWithType: ChannelFactory.GetProperty()
+  fullName: System.ServiceModel.ChannelFactory.GetProperty()
+- uid: T
+  isExternal: true
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Description.ServiceEndpoint)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: InitializeEndpoint(ServiceEndpoint)
+  nameWithType: ChannelFactory.InitializeEndpoint(ServiceEndpoint)
+  fullName: System.ServiceModel.ChannelFactory.InitializeEndpoint(ServiceEndpoint)
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: InitializeEndpoint(Binding,EndpointAddress)
+  nameWithType: ChannelFactory.InitializeEndpoint(Binding,EndpointAddress)
+  fullName: System.ServiceModel.ChannelFactory.InitializeEndpoint(Binding,EndpointAddress)
+- uid: System.ServiceModel.Channels.Binding
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: Binding
+  nameWithType: Binding
+  fullName: System.ServiceModel.Channels.Binding
+- uid: System.ServiceModel.EndpointAddress
+  parent: System.ServiceModel
+  isExternal: false
+  name: EndpointAddress
+  nameWithType: EndpointAddress
+  fullName: System.ServiceModel.EndpointAddress
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint(System.String,System.ServiceModel.EndpointAddress)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: InitializeEndpoint(String,EndpointAddress)
+  nameWithType: ChannelFactory.InitializeEndpoint(String,EndpointAddress)
+  fullName: System.ServiceModel.ChannelFactory.InitializeEndpoint(String,EndpointAddress)
+- uid: System.ServiceModel.ChannelFactory.OnAbort
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnAbort()
+  nameWithType: ChannelFactory.OnAbort()
+  fullName: System.ServiceModel.ChannelFactory.OnAbort()
+- uid: System.ServiceModel.ChannelFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnBeginClose(TimeSpan,AsyncCallback,Object)
+  nameWithType: ChannelFactory.OnBeginClose(TimeSpan,AsyncCallback,Object)
+  fullName: System.ServiceModel.ChannelFactory.OnBeginClose(TimeSpan,AsyncCallback,Object)
+- uid: System.IAsyncResult
+  parent: System
+  isExternal: false
+  name: IAsyncResult
+  nameWithType: IAsyncResult
+  fullName: System.IAsyncResult
+- uid: System.AsyncCallback
+  parent: System
+  isExternal: false
+  name: AsyncCallback
+  nameWithType: AsyncCallback
+  fullName: System.AsyncCallback
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.ServiceModel.ChannelFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnBeginOpen(TimeSpan,AsyncCallback,Object)
+  nameWithType: ChannelFactory.OnBeginOpen(TimeSpan,AsyncCallback,Object)
+  fullName: System.ServiceModel.ChannelFactory.OnBeginOpen(TimeSpan,AsyncCallback,Object)
+- uid: System.ServiceModel.ChannelFactory.OnClose(System.TimeSpan)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnClose(TimeSpan)
+  nameWithType: ChannelFactory.OnClose(TimeSpan)
+  fullName: System.ServiceModel.ChannelFactory.OnClose(TimeSpan)
+- uid: System.ServiceModel.ChannelFactory.OnEndClose(System.IAsyncResult)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnEndClose(IAsyncResult)
+  nameWithType: ChannelFactory.OnEndClose(IAsyncResult)
+  fullName: System.ServiceModel.ChannelFactory.OnEndClose(IAsyncResult)
+- uid: System.ServiceModel.ChannelFactory.OnEndOpen(System.IAsyncResult)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnEndOpen(IAsyncResult)
+  nameWithType: ChannelFactory.OnEndOpen(IAsyncResult)
+  fullName: System.ServiceModel.ChannelFactory.OnEndOpen(IAsyncResult)
+- uid: System.ServiceModel.ChannelFactory.OnOpen(System.TimeSpan)
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnOpen(TimeSpan)
+  nameWithType: ChannelFactory.OnOpen(TimeSpan)
+  fullName: System.ServiceModel.ChannelFactory.OnOpen(TimeSpan)
+- uid: System.ServiceModel.ChannelFactory.OnOpened
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnOpened()
+  nameWithType: ChannelFactory.OnOpened()
+  fullName: System.ServiceModel.ChannelFactory.OnOpened()
+- uid: System.ServiceModel.ChannelFactory.OnOpening
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnOpening()
+  nameWithType: ChannelFactory.OnOpening()
+  fullName: System.ServiceModel.ChannelFactory.OnOpening()
+- uid: System.ServiceModel.ChannelFactory.System#IDisposable#Dispose
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: System.IDisposable.Dispose()
+  nameWithType: ChannelFactory.System.IDisposable.Dispose()
+  fullName: System.ServiceModel.ChannelFactory.System.IDisposable.Dispose()
+- uid: System.ServiceModel.ChannelFactory.#ctor*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: ChannelFactory
+  nameWithType: ChannelFactory.ChannelFactory
+- uid: System.ServiceModel.ChannelFactory.ApplyConfiguration*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: ApplyConfiguration
+  nameWithType: ChannelFactory.ApplyConfiguration
+- uid: System.ServiceModel.ChannelFactory.CreateDescription*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: CreateDescription
+  nameWithType: ChannelFactory.CreateDescription
+- uid: System.ServiceModel.ChannelFactory.CreateFactory*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: CreateFactory
+  nameWithType: ChannelFactory.CreateFactory
+- uid: System.ServiceModel.ChannelFactory.Credentials*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: Credentials
+  nameWithType: ChannelFactory.Credentials
+- uid: System.ServiceModel.ChannelFactory.DefaultCloseTimeout*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: DefaultCloseTimeout
+  nameWithType: ChannelFactory.DefaultCloseTimeout
+- uid: System.ServiceModel.ChannelFactory.DefaultOpenTimeout*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: DefaultOpenTimeout
+  nameWithType: ChannelFactory.DefaultOpenTimeout
+- uid: System.ServiceModel.ChannelFactory.Endpoint*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: Endpoint
+  nameWithType: ChannelFactory.Endpoint
+- uid: System.ServiceModel.ChannelFactory.EnsureOpened*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: EnsureOpened
+  nameWithType: ChannelFactory.EnsureOpened
+- uid: System.ServiceModel.ChannelFactory.GetProperty<T>*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: GetProperty<T>
+  nameWithType: ChannelFactory.GetProperty<T>
+- uid: System.ServiceModel.ChannelFactory.InitializeEndpoint*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: InitializeEndpoint
+  nameWithType: ChannelFactory.InitializeEndpoint
+- uid: System.ServiceModel.ChannelFactory.OnAbort*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnAbort
+  nameWithType: ChannelFactory.OnAbort
+- uid: System.ServiceModel.ChannelFactory.OnBeginClose*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnBeginClose
+  nameWithType: ChannelFactory.OnBeginClose
+- uid: System.ServiceModel.ChannelFactory.OnBeginOpen*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnBeginOpen
+  nameWithType: ChannelFactory.OnBeginOpen
+- uid: System.ServiceModel.ChannelFactory.OnClose*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnClose
+  nameWithType: ChannelFactory.OnClose
+- uid: System.ServiceModel.ChannelFactory.OnEndClose*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnEndClose
+  nameWithType: ChannelFactory.OnEndClose
+- uid: System.ServiceModel.ChannelFactory.OnEndOpen*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnEndOpen
+  nameWithType: ChannelFactory.OnEndOpen
+- uid: System.ServiceModel.ChannelFactory.OnOpen*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnOpen
+  nameWithType: ChannelFactory.OnOpen
+- uid: System.ServiceModel.ChannelFactory.OnOpened*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnOpened
+  nameWithType: ChannelFactory.OnOpened
+- uid: System.ServiceModel.ChannelFactory.OnOpening*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: OnOpening
+  nameWithType: ChannelFactory.OnOpening
+- uid: System.ServiceModel.ChannelFactory.System#IDisposable#Dispose*
+  parent: System.ServiceModel.ChannelFactory
+  isExternal: false
+  name: System.IDisposable.Dispose
+  nameWithType: ChannelFactory.System.IDisposable.Dispose

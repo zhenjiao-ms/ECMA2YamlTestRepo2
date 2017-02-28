@@ -1,0 +1,26 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.BindIPEndPoint
+  id: BindIPEndPoint
+  langs:
+  - csharp
+  name: BindIPEndPoint
+  nameWithType: BindIPEndPoint
+  fullName: System.Net.BindIPEndPoint
+  type: Delegate
+  summary: Represents the method that specifies a local Internet Protocol address and port number for a <xref href="System.Net.ServicePoint"></xref>.
+  remarks: "Specify that the BindIPEndPoint delegate is used by a <xref:System.Net.ServicePoint> by setting the <xref:System.Net.ServicePoint.BindIPEndPointDelegate%2A?displayProperty=fullName> property with the delegate as an argument. This delegate should specify a local IP address and port number in the returned <xref:System.Net.IPEndPoint>.  \n  \n If the .NET Framework cannot bind the returned <xref:System.Net.IPEndPoint> to the <xref:System.Net.ServicePoint> after <xref:System.Int32.MaxValue?displayProperty=fullName> attempts, an <xref:System.OverflowException> is thrown.  \n  \n If you want the delegate to give the service point control of the connection binding, the delegate should return `null`. If you want to abort the connection, the delegate must throw an exception."
+  syntax:
+    content: public delegate System.Net.IPEndPoint BindIPEndPoint(ServicePoint servicePoint, IPEndPoint remoteEndPoint, int retryCount);
+  inheritance:
+  - System.Object
+  - System.Delegate
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

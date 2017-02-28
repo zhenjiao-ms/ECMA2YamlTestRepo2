@@ -1,0 +1,1643 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.TimeZoneInfo
+  id: TimeZoneInfo
+  children:
+  - System.TimeZoneInfo.BaseUtcOffset
+  - System.TimeZoneInfo.ClearCachedData
+  - System.TimeZoneInfo.ConvertTime(System.DateTime,System.TimeZoneInfo)
+  - System.TimeZoneInfo.ConvertTime(System.DateTimeOffset,System.TimeZoneInfo)
+  - System.TimeZoneInfo.ConvertTime(System.DateTime,System.TimeZoneInfo,System.TimeZoneInfo)
+  - System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTime,System.String)
+  - System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTimeOffset,System.String)
+  - System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTime,System.String,System.String)
+  - System.TimeZoneInfo.ConvertTimeFromUtc(System.DateTime,System.TimeZoneInfo)
+  - System.TimeZoneInfo.ConvertTimeToUtc(System.DateTime)
+  - System.TimeZoneInfo.ConvertTimeToUtc(System.DateTime,System.TimeZoneInfo)
+  - System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String)
+  - System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[])
+  - System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[],System.Boolean)
+  - System.TimeZoneInfo.DaylightName
+  - System.TimeZoneInfo.DisplayName
+  - System.TimeZoneInfo.Equals(System.TimeZoneInfo)
+  - System.TimeZoneInfo.FindSystemTimeZoneById(System.String)
+  - System.TimeZoneInfo.FromSerializedString(System.String)
+  - System.TimeZoneInfo.GetAdjustmentRules
+  - System.TimeZoneInfo.GetAmbiguousTimeOffsets(System.DateTime)
+  - System.TimeZoneInfo.GetAmbiguousTimeOffsets(System.DateTimeOffset)
+  - System.TimeZoneInfo.GetHashCode
+  - System.TimeZoneInfo.GetSystemTimeZones
+  - System.TimeZoneInfo.GetUtcOffset(System.DateTime)
+  - System.TimeZoneInfo.GetUtcOffset(System.DateTimeOffset)
+  - System.TimeZoneInfo.HasSameRules(System.TimeZoneInfo)
+  - System.TimeZoneInfo.Id
+  - System.TimeZoneInfo.IsAmbiguousTime(System.DateTime)
+  - System.TimeZoneInfo.IsAmbiguousTime(System.DateTimeOffset)
+  - System.TimeZoneInfo.IsDaylightSavingTime(System.DateTime)
+  - System.TimeZoneInfo.IsDaylightSavingTime(System.DateTimeOffset)
+  - System.TimeZoneInfo.IsInvalidTime(System.DateTime)
+  - System.TimeZoneInfo.Local
+  - System.TimeZoneInfo.StandardName
+  - System.TimeZoneInfo.SupportsDaylightSavingTime
+  - System.TimeZoneInfo.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization(System.Object)
+  - System.TimeZoneInfo.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.TimeZoneInfo.ToSerializedString
+  - System.TimeZoneInfo.ToString
+  - System.TimeZoneInfo.Utc
+  langs:
+  - csharp
+  name: TimeZoneInfo
+  nameWithType: TimeZoneInfo
+  fullName: System.TimeZoneInfo
+  type: Class
+  summary: Represents any time zone in the world.
+  syntax:
+    content: >-
+      [System.Runtime.CompilerServices.TypeForwardedFrom("System.Core, Version=3.5.0.0, Culture=Neutral, PublicKeyToken=b77a5c561934e089")]
+
+      public sealed class TimeZoneInfo : IEquatable<TimeZoneInfo>, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IEquatable<System.TimeZoneInfo>
+  - System.Runtime.Serialization.IDeserializationCallback
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.BaseUtcOffset
+  id: BaseUtcOffset
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: BaseUtcOffset
+  nameWithType: TimeZoneInfo.BaseUtcOffset
+  fullName: System.TimeZoneInfo.BaseUtcOffset
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the time difference between the current time zone's standard time and Coordinated Universal Time (UTC).
+  syntax:
+    content: public TimeSpan BaseUtcOffset { get; }
+    return:
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.TimeZoneInfo.BaseUtcOffset*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ClearCachedData
+  id: ClearCachedData
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ClearCachedData()
+  nameWithType: TimeZoneInfo.ClearCachedData()
+  fullName: System.TimeZoneInfo.ClearCachedData()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Clears cached time zone data.
+  syntax:
+    content: public static void ClearCachedData ();
+    parameters: []
+  overload: System.TimeZoneInfo.ClearCachedData*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTime(System.DateTime,System.TimeZoneInfo)
+  id: ConvertTime(System.DateTime,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTime(DateTime,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a time to the time in a particular time zone.
+  syntax:
+    content: public static DateTime ConvertTime (DateTime dateTime, TimeZoneInfo destinationTimeZone);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    - id: destinationTimeZone
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTime(System.DateTimeOffset,System.TimeZoneInfo)
+  id: ConvertTime(System.DateTimeOffset,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTime(DateTimeOffset,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTime(DateTimeOffset,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTime(DateTimeOffset,TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a time to the time in a particular time zone.
+  syntax:
+    content: public static DateTimeOffset ConvertTime (DateTimeOffset dateTimeOffset, TimeZoneInfo destinationTimeZone);
+    parameters:
+    - id: dateTimeOffset
+      type: System.DateTimeOffset
+      description: To be added.
+    - id: destinationTimeZone
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.DateTimeOffset
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTime(System.DateTime,System.TimeZoneInfo,System.TimeZoneInfo)
+  id: ConvertTime(System.DateTime,System.TimeZoneInfo,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTime(DateTime,TimeZoneInfo,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo,TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a time from one time zone to another.
+  syntax:
+    content: public static DateTime ConvertTime (DateTime dateTime, TimeZoneInfo sourceTimeZone, TimeZoneInfo destinationTimeZone);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    - id: sourceTimeZone
+      type: System.TimeZoneInfo
+      description: To be added.
+    - id: destinationTimeZone
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTime,System.String)
+  id: ConvertTimeBySystemTimeZoneId(System.DateTime,System.String)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTimeBySystemTimeZoneId(DateTime,String)
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String)
+  fullName: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a time to the time in another time zone based on the time zone's identifier.
+  syntax:
+    content: public static DateTime ConvertTimeBySystemTimeZoneId (DateTime dateTime, string destinationTimeZoneId);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    - id: destinationTimeZoneId
+      type: System.String
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTimeOffset,System.String)
+  id: ConvertTimeBySystemTimeZoneId(System.DateTimeOffset,System.String)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTimeBySystemTimeZoneId(DateTimeOffset,String)
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTimeOffset,String)
+  fullName: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTimeOffset,String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a time to the time in another time zone based on the time zone's identifier.
+  syntax:
+    content: public static DateTimeOffset ConvertTimeBySystemTimeZoneId (DateTimeOffset dateTimeOffset, string destinationTimeZoneId);
+    parameters:
+    - id: dateTimeOffset
+      type: System.DateTimeOffset
+      description: To be added.
+    - id: destinationTimeZoneId
+      type: System.String
+      description: To be added.
+    return:
+      type: System.DateTimeOffset
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTime,System.String,System.String)
+  id: ConvertTimeBySystemTimeZoneId(System.DateTime,System.String,System.String)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTimeBySystemTimeZoneId(DateTime,String,String)
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String,String)
+  fullName: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String,String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a time from one time zone to another based on time zone identifiers.
+  syntax:
+    content: public static DateTime ConvertTimeBySystemTimeZoneId (DateTime dateTime, string sourceTimeZoneId, string destinationTimeZoneId);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    - id: sourceTimeZoneId
+      type: System.String
+      description: To be added.
+    - id: destinationTimeZoneId
+      type: System.String
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTimeFromUtc(System.DateTime,System.TimeZoneInfo)
+  id: ConvertTimeFromUtc(System.DateTime,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTimeFromUtc(DateTime,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTimeFromUtc(DateTime,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTimeFromUtc(DateTime,TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts a Coordinated Universal Time (UTC) to the time in a specified time zone.
+  syntax:
+    content: public static DateTime ConvertTimeFromUtc (DateTime dateTime, TimeZoneInfo destinationTimeZone);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    - id: destinationTimeZone
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTimeFromUtc*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTimeToUtc(System.DateTime)
+  id: ConvertTimeToUtc(System.DateTime)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTimeToUtc(DateTime)
+  nameWithType: TimeZoneInfo.ConvertTimeToUtc(DateTime)
+  fullName: System.TimeZoneInfo.ConvertTimeToUtc(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the specified date and time to Coordinated Universal Time (UTC).
+  syntax:
+    content: public static DateTime ConvertTimeToUtc (DateTime dateTime);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTimeToUtc*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ConvertTimeToUtc(System.DateTime,System.TimeZoneInfo)
+  id: ConvertTimeToUtc(System.DateTime,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ConvertTimeToUtc(DateTime,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTimeToUtc(DateTime,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTimeToUtc(DateTime,TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the time in a specified time zone to Coordinated Universal Time (UTC).
+  syntax:
+    content: public static DateTime ConvertTimeToUtc (DateTime dateTime, TimeZoneInfo sourceTimeZone);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    - id: sourceTimeZone
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.DateTime
+      description: To be added.
+  overload: System.TimeZoneInfo.ConvertTimeToUtc*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String)
+  id: CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: CreateCustomTimeZone(String,TimeSpan,String,String)
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String)
+  fullName: System.TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Creates a custom time zone with a specified identifier, an offset from Coordinated Universal Time (UTC), a display name, and a standard time display name.
+  syntax:
+    content: public static TimeZoneInfo CreateCustomTimeZone (string id, TimeSpan baseUtcOffset, string displayName, string standardDisplayName);
+    parameters:
+    - id: id
+      type: System.String
+      description: To be added.
+    - id: baseUtcOffset
+      type: System.TimeSpan
+      description: To be added.
+    - id: displayName
+      type: System.String
+      description: To be added.
+    - id: standardDisplayName
+      type: System.String
+      description: To be added.
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.CreateCustomTimeZone*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[])
+  id: CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[])
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[])
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[])
+  fullName: System.TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[])
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  syntax:
+    content: public static TimeZoneInfo CreateCustomTimeZone (string id, TimeSpan baseUtcOffset, string displayName, string standardDisplayName, string daylightDisplayName, TimeZoneInfo.AdjustmentRule[] adjustmentRules);
+    parameters:
+    - id: id
+      type: System.String
+      description: To be added.
+    - id: baseUtcOffset
+      type: System.TimeSpan
+      description: To be added.
+    - id: displayName
+      type: System.String
+      description: To be added.
+    - id: standardDisplayName
+      type: System.String
+      description: To be added.
+    - id: daylightDisplayName
+      type: System.String
+      description: To be added.
+    - id: adjustmentRules
+      type: System.TimeZoneInfo+AdjustmentRule[]
+      description: To be added.
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.CreateCustomTimeZone*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[],System.Boolean)
+  id: CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[],System.Boolean)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[],Boolean)
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[],Boolean)
+  fullName: System.TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[],Boolean)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  syntax:
+    content: public static TimeZoneInfo CreateCustomTimeZone (string id, TimeSpan baseUtcOffset, string displayName, string standardDisplayName, string daylightDisplayName, TimeZoneInfo.AdjustmentRule[] adjustmentRules, bool disableDaylightSavingTime);
+    parameters:
+    - id: id
+      type: System.String
+      description: To be added.
+    - id: baseUtcOffset
+      type: System.TimeSpan
+      description: To be added.
+    - id: displayName
+      type: System.String
+      description: To be added.
+    - id: standardDisplayName
+      type: System.String
+      description: To be added.
+    - id: daylightDisplayName
+      type: System.String
+      description: To be added.
+    - id: adjustmentRules
+      type: System.TimeZoneInfo+AdjustmentRule[]
+      description: To be added.
+    - id: disableDaylightSavingTime
+      type: System.Boolean
+      description: To be added.
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.CreateCustomTimeZone*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.DaylightName
+  id: DaylightName
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: DaylightName
+  nameWithType: TimeZoneInfo.DaylightName
+  fullName: System.TimeZoneInfo.DaylightName
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the display name for the current time zone's daylight saving time.
+  syntax:
+    content: public string DaylightName { get; }
+    return:
+      type: System.String
+      description: To be added.
+  overload: System.TimeZoneInfo.DaylightName*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.DisplayName
+  id: DisplayName
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: DisplayName
+  nameWithType: TimeZoneInfo.DisplayName
+  fullName: System.TimeZoneInfo.DisplayName
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the general display name that represents the time zone.
+  syntax:
+    content: public string DisplayName { get; }
+    return:
+      type: System.String
+      description: To be added.
+  overload: System.TimeZoneInfo.DisplayName*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.Equals(System.TimeZoneInfo)
+  id: Equals(System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: Equals(TimeZoneInfo)
+  nameWithType: TimeZoneInfo.Equals(TimeZoneInfo)
+  fullName: System.TimeZoneInfo.Equals(TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Determines whether the current <xref href="System.TimeZoneInfo"></xref> object and another <xref href="System.TimeZoneInfo"></xref> object are equal.
+  syntax:
+    content: public bool Equals (TimeZoneInfo other);
+    parameters:
+    - id: other
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.Equals*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.FindSystemTimeZoneById(System.String)
+  id: FindSystemTimeZoneById(System.String)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: FindSystemTimeZoneById(String)
+  nameWithType: TimeZoneInfo.FindSystemTimeZoneById(String)
+  fullName: System.TimeZoneInfo.FindSystemTimeZoneById(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Retrieves a <xref href="System.TimeZoneInfo"></xref> object from the registry based on its identifier.
+  syntax:
+    content: public static TimeZoneInfo FindSystemTimeZoneById (string id);
+    parameters:
+    - id: id
+      type: System.String
+      description: To be added.
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.FindSystemTimeZoneById*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.FromSerializedString(System.String)
+  id: FromSerializedString(System.String)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: FromSerializedString(String)
+  nameWithType: TimeZoneInfo.FromSerializedString(String)
+  fullName: System.TimeZoneInfo.FromSerializedString(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Deserializes a string to re-create an original serialized <xref href="System.TimeZoneInfo"></xref> object.
+  syntax:
+    content: public static TimeZoneInfo FromSerializedString (string source);
+    parameters:
+    - id: source
+      type: System.String
+      description: To be added.
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.FromSerializedString*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetAdjustmentRules
+  id: GetAdjustmentRules
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetAdjustmentRules()
+  nameWithType: TimeZoneInfo.GetAdjustmentRules()
+  fullName: System.TimeZoneInfo.GetAdjustmentRules()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Retrieves an array of <xref:System.TimeZoneInfo.AdjustmentRule> objects that apply to the current <xref href="System.TimeZoneInfo"></xref> object.
+  syntax:
+    content: public TimeZoneInfo.AdjustmentRule[] GetAdjustmentRules ();
+    parameters: []
+    return:
+      type: System.TimeZoneInfo+AdjustmentRule[]
+      description: To be added.
+  overload: System.TimeZoneInfo.GetAdjustmentRules*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetAmbiguousTimeOffsets(System.DateTime)
+  id: GetAmbiguousTimeOffsets(System.DateTime)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetAmbiguousTimeOffsets(DateTime)
+  nameWithType: TimeZoneInfo.GetAmbiguousTimeOffsets(DateTime)
+  fullName: System.TimeZoneInfo.GetAmbiguousTimeOffsets(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Returns information about the possible dates and times that an ambiguous date and time can be mapped to.
+  syntax:
+    content: public TimeSpan[] GetAmbiguousTimeOffsets (DateTime dateTime);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    return:
+      type: System.TimeSpan[]
+      description: To be added.
+  overload: System.TimeZoneInfo.GetAmbiguousTimeOffsets*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetAmbiguousTimeOffsets(System.DateTimeOffset)
+  id: GetAmbiguousTimeOffsets(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetAmbiguousTimeOffsets(DateTimeOffset)
+  nameWithType: TimeZoneInfo.GetAmbiguousTimeOffsets(DateTimeOffset)
+  fullName: System.TimeZoneInfo.GetAmbiguousTimeOffsets(DateTimeOffset)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Returns information about the possible dates and times that an ambiguous date and time can be mapped to.
+  syntax:
+    content: public TimeSpan[] GetAmbiguousTimeOffsets (DateTimeOffset dateTimeOffset);
+    parameters:
+    - id: dateTimeOffset
+      type: System.DateTimeOffset
+      description: To be added.
+    return:
+      type: System.TimeSpan[]
+      description: To be added.
+  overload: System.TimeZoneInfo.GetAmbiguousTimeOffsets*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetHashCode
+  id: GetHashCode
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetHashCode()
+  nameWithType: TimeZoneInfo.GetHashCode()
+  fullName: System.TimeZoneInfo.GetHashCode()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Serves as a hash function for hashing algorithms and data structures such as hash tables.
+  syntax:
+    content: public override int GetHashCode ();
+    parameters: []
+    return:
+      type: System.Int32
+      description: To be added.
+  overload: System.TimeZoneInfo.GetHashCode*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetSystemTimeZones
+  id: GetSystemTimeZones
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetSystemTimeZones()
+  nameWithType: TimeZoneInfo.GetSystemTimeZones()
+  fullName: System.TimeZoneInfo.GetSystemTimeZones()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Returns a sorted collection of all the time zones about which information is available on the local system.
+  syntax:
+    content: public static System.Collections.ObjectModel.ReadOnlyCollection<TimeZoneInfo> GetSystemTimeZones ();
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ReadOnlyCollection{System.TimeZoneInfo}
+      description: To be added.
+  overload: System.TimeZoneInfo.GetSystemTimeZones*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetUtcOffset(System.DateTime)
+  id: GetUtcOffset(System.DateTime)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetUtcOffset(DateTime)
+  nameWithType: TimeZoneInfo.GetUtcOffset(DateTime)
+  fullName: System.TimeZoneInfo.GetUtcOffset(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Calculates the offset or difference between the time in this time zone and Coordinated Universal Time (UTC) for a particular date and time.
+  syntax:
+    content: public TimeSpan GetUtcOffset (DateTime dateTime);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    return:
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.TimeZoneInfo.GetUtcOffset*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.GetUtcOffset(System.DateTimeOffset)
+  id: GetUtcOffset(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: GetUtcOffset(DateTimeOffset)
+  nameWithType: TimeZoneInfo.GetUtcOffset(DateTimeOffset)
+  fullName: System.TimeZoneInfo.GetUtcOffset(DateTimeOffset)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Calculates the offset or difference between the time in this time zone and Coordinated Universal Time (UTC) for a particular date and time.
+  syntax:
+    content: public TimeSpan GetUtcOffset (DateTimeOffset dateTimeOffset);
+    parameters:
+    - id: dateTimeOffset
+      type: System.DateTimeOffset
+      description: To be added.
+    return:
+      type: System.TimeSpan
+      description: To be added.
+  overload: System.TimeZoneInfo.GetUtcOffset*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.HasSameRules(System.TimeZoneInfo)
+  id: HasSameRules(System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: HasSameRules(TimeZoneInfo)
+  nameWithType: TimeZoneInfo.HasSameRules(TimeZoneInfo)
+  fullName: System.TimeZoneInfo.HasSameRules(TimeZoneInfo)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Indicates whether the current object and another <xref href="System.TimeZoneInfo"></xref> object have the same adjustment rules.
+  syntax:
+    content: public bool HasSameRules (TimeZoneInfo other);
+    parameters:
+    - id: other
+      type: System.TimeZoneInfo
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.HasSameRules*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.Id
+  id: Id
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: Id
+  nameWithType: TimeZoneInfo.Id
+  fullName: System.TimeZoneInfo.Id
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the time zone identifier.
+  syntax:
+    content: public string Id { get; }
+    return:
+      type: System.String
+      description: To be added.
+  overload: System.TimeZoneInfo.Id*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.IsAmbiguousTime(System.DateTime)
+  id: IsAmbiguousTime(System.DateTime)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: IsAmbiguousTime(DateTime)
+  nameWithType: TimeZoneInfo.IsAmbiguousTime(DateTime)
+  fullName: System.TimeZoneInfo.IsAmbiguousTime(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Determines whether a particular date and time in a particular time zone is ambiguous and can be mapped to two or more Coordinated Universal Time (UTC) times.
+  syntax:
+    content: public bool IsAmbiguousTime (DateTime dateTime);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.IsAmbiguousTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.IsAmbiguousTime(System.DateTimeOffset)
+  id: IsAmbiguousTime(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: IsAmbiguousTime(DateTimeOffset)
+  nameWithType: TimeZoneInfo.IsAmbiguousTime(DateTimeOffset)
+  fullName: System.TimeZoneInfo.IsAmbiguousTime(DateTimeOffset)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Determines whether a particular date and time in a particular time zone is ambiguous and can be mapped to two or more Coordinated Universal Time (UTC) times.
+  syntax:
+    content: public bool IsAmbiguousTime (DateTimeOffset dateTimeOffset);
+    parameters:
+    - id: dateTimeOffset
+      type: System.DateTimeOffset
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.IsAmbiguousTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.IsDaylightSavingTime(System.DateTime)
+  id: IsDaylightSavingTime(System.DateTime)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: IsDaylightSavingTime(DateTime)
+  nameWithType: TimeZoneInfo.IsDaylightSavingTime(DateTime)
+  fullName: System.TimeZoneInfo.IsDaylightSavingTime(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Indicates whether a specified date and time falls in the range of daylight saving time for the time zone of the current <xref href="System.TimeZoneInfo"></xref> object.
+  syntax:
+    content: public bool IsDaylightSavingTime (DateTime dateTime);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.IsDaylightSavingTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.IsDaylightSavingTime(System.DateTimeOffset)
+  id: IsDaylightSavingTime(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: IsDaylightSavingTime(DateTimeOffset)
+  nameWithType: TimeZoneInfo.IsDaylightSavingTime(DateTimeOffset)
+  fullName: System.TimeZoneInfo.IsDaylightSavingTime(DateTimeOffset)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Indicates whether a specified date and time falls in the range of daylight saving time for the time zone of the current <xref href="System.TimeZoneInfo"></xref> object.
+  syntax:
+    content: public bool IsDaylightSavingTime (DateTimeOffset dateTimeOffset);
+    parameters:
+    - id: dateTimeOffset
+      type: System.DateTimeOffset
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.IsDaylightSavingTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.IsInvalidTime(System.DateTime)
+  id: IsInvalidTime(System.DateTime)
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: IsInvalidTime(DateTime)
+  nameWithType: TimeZoneInfo.IsInvalidTime(DateTime)
+  fullName: System.TimeZoneInfo.IsInvalidTime(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Indicates whether a particular date and time is invalid.
+  syntax:
+    content: public bool IsInvalidTime (DateTime dateTime);
+    parameters:
+    - id: dateTime
+      type: System.DateTime
+      description: To be added.
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.IsInvalidTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.Local
+  id: Local
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: Local
+  nameWithType: TimeZoneInfo.Local
+  fullName: System.TimeZoneInfo.Local
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a <xref href="System.TimeZoneInfo"></xref> object that represents the local time zone.
+  syntax:
+    content: public static TimeZoneInfo Local { get; }
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.Local*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.StandardName
+  id: StandardName
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: StandardName
+  nameWithType: TimeZoneInfo.StandardName
+  fullName: System.TimeZoneInfo.StandardName
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the display name for the time zone's standard time.
+  syntax:
+    content: public string StandardName { get; }
+    return:
+      type: System.String
+      description: To be added.
+  overload: System.TimeZoneInfo.StandardName*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.SupportsDaylightSavingTime
+  id: SupportsDaylightSavingTime
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: SupportsDaylightSavingTime
+  nameWithType: TimeZoneInfo.SupportsDaylightSavingTime
+  fullName: System.TimeZoneInfo.SupportsDaylightSavingTime
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a value indicating whether the time zone has any daylight saving time rules.
+  syntax:
+    content: public bool SupportsDaylightSavingTime { get; }
+    return:
+      type: System.Boolean
+      description: To be added.
+  overload: System.TimeZoneInfo.SupportsDaylightSavingTime*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization(System.Object)
+  id: System#Runtime#Serialization#IDeserializationCallback#OnDeserialization(System.Object)
+  isEii: true
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(Object)
+  nameWithType: TimeZoneInfo.System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(Object)
+  fullName: System.TimeZoneInfo.System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(Object)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Runs when the deserialization of an object has been completed.
+  syntax:
+    content: void IDeserializationCallback.OnDeserialization (object sender);
+    parameters:
+    - id: sender
+      type: System.Object
+      description: To be added.
+  overload: System.TimeZoneInfo.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  isEii: true
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: TimeZoneInfo.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.TimeZoneInfo.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Populates a <xref href="System.Runtime.Serialization.SerializationInfo"></xref> object with the data needed to serialize the current <xref href="System.TimeZoneInfo"></xref> object.
+  syntax:
+    content: void ISerializable.GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: To be added.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: To be added.
+  overload: System.TimeZoneInfo.System#Runtime#Serialization#ISerializable#GetObjectData*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ToSerializedString
+  id: ToSerializedString
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ToSerializedString()
+  nameWithType: TimeZoneInfo.ToSerializedString()
+  fullName: System.TimeZoneInfo.ToSerializedString()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the current <xref href="System.TimeZoneInfo"></xref> object to a serialized string.
+  syntax:
+    content: public string ToSerializedString ();
+    parameters: []
+    return:
+      type: System.String
+      description: To be added.
+  overload: System.TimeZoneInfo.ToSerializedString*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.ToString
+  id: ToString
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: ToString()
+  nameWithType: TimeZoneInfo.ToString()
+  fullName: System.TimeZoneInfo.ToString()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Returns the current <xref href="System.TimeZoneInfo"></xref> object's display name.
+  syntax:
+    content: public override string ToString ();
+    parameters: []
+    return:
+      type: System.String
+      description: To be added.
+  overload: System.TimeZoneInfo.ToString*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.TimeZoneInfo.Utc
+  id: Utc
+  parent: System.TimeZoneInfo
+  langs:
+  - csharp
+  name: Utc
+  nameWithType: TimeZoneInfo.Utc
+  fullName: System.TimeZoneInfo.Utc
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a <xref href="System.TimeZoneInfo"></xref> object that represents the Coordinated Universal Time (UTC) zone.
+  syntax:
+    content: public static TimeZoneInfo Utc { get; }
+    return:
+      type: System.TimeZoneInfo
+      description: To be added.
+  overload: System.TimeZoneInfo.Utc*
+  exceptions: []
+  platform:
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.TimeZoneInfo.BaseUtcOffset
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: BaseUtcOffset
+  nameWithType: TimeZoneInfo.BaseUtcOffset
+  fullName: System.TimeZoneInfo.BaseUtcOffset
+- uid: System.TimeSpan
+  parent: System
+  isExternal: false
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: System.TimeZoneInfo.ClearCachedData
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ClearCachedData()
+  nameWithType: TimeZoneInfo.ClearCachedData()
+  fullName: System.TimeZoneInfo.ClearCachedData()
+- uid: System.TimeZoneInfo.ConvertTime(System.DateTime,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTime(DateTime,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo)
+- uid: System.DateTime
+  parent: System
+  isExternal: false
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: System.TimeZoneInfo
+  parent: System
+  isExternal: false
+  name: TimeZoneInfo
+  nameWithType: TimeZoneInfo
+  fullName: System.TimeZoneInfo
+- uid: System.TimeZoneInfo.ConvertTime(System.DateTimeOffset,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTime(DateTimeOffset,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTime(DateTimeOffset,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTime(DateTimeOffset,TimeZoneInfo)
+- uid: System.DateTimeOffset
+  parent: System
+  isExternal: false
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: System.TimeZoneInfo.ConvertTime(System.DateTime,System.TimeZoneInfo,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTime(DateTime,TimeZoneInfo,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTime(DateTime,TimeZoneInfo,TimeZoneInfo)
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTime,System.String)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeBySystemTimeZoneId(DateTime,String)
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String)
+  fullName: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTimeOffset,System.String)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeBySystemTimeZoneId(DateTimeOffset,String)
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTimeOffset,String)
+  fullName: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTimeOffset,String)
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTime,System.String,System.String)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeBySystemTimeZoneId(DateTime,String,String)
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String,String)
+  fullName: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime,String,String)
+- uid: System.TimeZoneInfo.ConvertTimeFromUtc(System.DateTime,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeFromUtc(DateTime,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTimeFromUtc(DateTime,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTimeFromUtc(DateTime,TimeZoneInfo)
+- uid: System.TimeZoneInfo.ConvertTimeToUtc(System.DateTime)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeToUtc(DateTime)
+  nameWithType: TimeZoneInfo.ConvertTimeToUtc(DateTime)
+  fullName: System.TimeZoneInfo.ConvertTimeToUtc(DateTime)
+- uid: System.TimeZoneInfo.ConvertTimeToUtc(System.DateTime,System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeToUtc(DateTime,TimeZoneInfo)
+  nameWithType: TimeZoneInfo.ConvertTimeToUtc(DateTime,TimeZoneInfo)
+  fullName: System.TimeZoneInfo.ConvertTimeToUtc(DateTime,TimeZoneInfo)
+- uid: System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: CreateCustomTimeZone(String,TimeSpan,String,String)
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String)
+  fullName: System.TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String)
+- uid: System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[])
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[])
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[])
+  fullName: System.TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[])
+- uid: System.TimeZoneInfo.CreateCustomTimeZone(System.String,System.TimeSpan,System.String,System.String,System.String,System.TimeZoneInfo+AdjustmentRule[],System.Boolean)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[],Boolean)
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[],Boolean)
+  fullName: System.TimeZoneInfo.CreateCustomTimeZone(String,TimeSpan,String,String,String,TimeZoneInfo+AdjustmentRule[],Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.TimeZoneInfo.DaylightName
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: DaylightName
+  nameWithType: TimeZoneInfo.DaylightName
+  fullName: System.TimeZoneInfo.DaylightName
+- uid: System.TimeZoneInfo.DisplayName
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: DisplayName
+  nameWithType: TimeZoneInfo.DisplayName
+  fullName: System.TimeZoneInfo.DisplayName
+- uid: System.TimeZoneInfo.Equals(System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Equals(TimeZoneInfo)
+  nameWithType: TimeZoneInfo.Equals(TimeZoneInfo)
+  fullName: System.TimeZoneInfo.Equals(TimeZoneInfo)
+- uid: System.TimeZoneInfo.FindSystemTimeZoneById(System.String)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: FindSystemTimeZoneById(String)
+  nameWithType: TimeZoneInfo.FindSystemTimeZoneById(String)
+  fullName: System.TimeZoneInfo.FindSystemTimeZoneById(String)
+- uid: System.TimeZoneInfo.FromSerializedString(System.String)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: FromSerializedString(String)
+  nameWithType: TimeZoneInfo.FromSerializedString(String)
+  fullName: System.TimeZoneInfo.FromSerializedString(String)
+- uid: System.TimeZoneInfo.GetAdjustmentRules
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetAdjustmentRules()
+  nameWithType: TimeZoneInfo.GetAdjustmentRules()
+  fullName: System.TimeZoneInfo.GetAdjustmentRules()
+- uid: System.TimeZoneInfo.GetAmbiguousTimeOffsets(System.DateTime)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetAmbiguousTimeOffsets(DateTime)
+  nameWithType: TimeZoneInfo.GetAmbiguousTimeOffsets(DateTime)
+  fullName: System.TimeZoneInfo.GetAmbiguousTimeOffsets(DateTime)
+- uid: System.TimeSpan[]
+  parent: System
+  isExternal: false
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan[]
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    nameWithType: TimeSpan
+    fullName: TimeSpan[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.TimeZoneInfo.GetAmbiguousTimeOffsets(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetAmbiguousTimeOffsets(DateTimeOffset)
+  nameWithType: TimeZoneInfo.GetAmbiguousTimeOffsets(DateTimeOffset)
+  fullName: System.TimeZoneInfo.GetAmbiguousTimeOffsets(DateTimeOffset)
+- uid: System.TimeZoneInfo.GetHashCode
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetHashCode()
+  nameWithType: TimeZoneInfo.GetHashCode()
+  fullName: System.TimeZoneInfo.GetHashCode()
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.TimeZoneInfo.GetSystemTimeZones
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetSystemTimeZones()
+  nameWithType: TimeZoneInfo.GetSystemTimeZones()
+  fullName: System.TimeZoneInfo.GetSystemTimeZones()
+- uid: System.Collections.ObjectModel.ReadOnlyCollection{System.TimeZoneInfo}
+  parent: System.Collections.ObjectModel
+  isExternal: false
+  name: ReadOnlyCollection<TimeZoneInfo>
+  nameWithType: ReadOnlyCollection<TimeZoneInfo>
+  fullName: System.Collections.ObjectModel.ReadOnlyCollection<System.TimeZoneInfo>
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ReadOnlyCollection`1
+    name: ReadOnlyCollection
+    nameWithType: ReadOnlyCollection
+    fullName: ReadOnlyCollection<System.TimeZoneInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.TimeZoneInfo
+    name: TimeZoneInfo
+    nameWithType: TimeZoneInfo
+    fullName: TimeZoneInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.TimeZoneInfo.GetUtcOffset(System.DateTime)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetUtcOffset(DateTime)
+  nameWithType: TimeZoneInfo.GetUtcOffset(DateTime)
+  fullName: System.TimeZoneInfo.GetUtcOffset(DateTime)
+- uid: System.TimeZoneInfo.GetUtcOffset(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetUtcOffset(DateTimeOffset)
+  nameWithType: TimeZoneInfo.GetUtcOffset(DateTimeOffset)
+  fullName: System.TimeZoneInfo.GetUtcOffset(DateTimeOffset)
+- uid: System.TimeZoneInfo.HasSameRules(System.TimeZoneInfo)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: HasSameRules(TimeZoneInfo)
+  nameWithType: TimeZoneInfo.HasSameRules(TimeZoneInfo)
+  fullName: System.TimeZoneInfo.HasSameRules(TimeZoneInfo)
+- uid: System.TimeZoneInfo.Id
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Id
+  nameWithType: TimeZoneInfo.Id
+  fullName: System.TimeZoneInfo.Id
+- uid: System.TimeZoneInfo.IsAmbiguousTime(System.DateTime)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsAmbiguousTime(DateTime)
+  nameWithType: TimeZoneInfo.IsAmbiguousTime(DateTime)
+  fullName: System.TimeZoneInfo.IsAmbiguousTime(DateTime)
+- uid: System.TimeZoneInfo.IsAmbiguousTime(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsAmbiguousTime(DateTimeOffset)
+  nameWithType: TimeZoneInfo.IsAmbiguousTime(DateTimeOffset)
+  fullName: System.TimeZoneInfo.IsAmbiguousTime(DateTimeOffset)
+- uid: System.TimeZoneInfo.IsDaylightSavingTime(System.DateTime)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsDaylightSavingTime(DateTime)
+  nameWithType: TimeZoneInfo.IsDaylightSavingTime(DateTime)
+  fullName: System.TimeZoneInfo.IsDaylightSavingTime(DateTime)
+- uid: System.TimeZoneInfo.IsDaylightSavingTime(System.DateTimeOffset)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsDaylightSavingTime(DateTimeOffset)
+  nameWithType: TimeZoneInfo.IsDaylightSavingTime(DateTimeOffset)
+  fullName: System.TimeZoneInfo.IsDaylightSavingTime(DateTimeOffset)
+- uid: System.TimeZoneInfo.IsInvalidTime(System.DateTime)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsInvalidTime(DateTime)
+  nameWithType: TimeZoneInfo.IsInvalidTime(DateTime)
+  fullName: System.TimeZoneInfo.IsInvalidTime(DateTime)
+- uid: System.TimeZoneInfo.Local
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Local
+  nameWithType: TimeZoneInfo.Local
+  fullName: System.TimeZoneInfo.Local
+- uid: System.TimeZoneInfo.StandardName
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: StandardName
+  nameWithType: TimeZoneInfo.StandardName
+  fullName: System.TimeZoneInfo.StandardName
+- uid: System.TimeZoneInfo.SupportsDaylightSavingTime
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: SupportsDaylightSavingTime
+  nameWithType: TimeZoneInfo.SupportsDaylightSavingTime
+  fullName: System.TimeZoneInfo.SupportsDaylightSavingTime
+- uid: System.TimeZoneInfo.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization(System.Object)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(Object)
+  nameWithType: TimeZoneInfo.System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(Object)
+  fullName: System.TimeZoneInfo.System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(Object)
+- uid: System.TimeZoneInfo.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: TimeZoneInfo.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.TimeZoneInfo.System.Runtime.Serialization.ISerializable.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.TimeZoneInfo.ToSerializedString
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ToSerializedString()
+  nameWithType: TimeZoneInfo.ToSerializedString()
+  fullName: System.TimeZoneInfo.ToSerializedString()
+- uid: System.TimeZoneInfo.ToString
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ToString()
+  nameWithType: TimeZoneInfo.ToString()
+  fullName: System.TimeZoneInfo.ToString()
+- uid: System.TimeZoneInfo.Utc
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Utc
+  nameWithType: TimeZoneInfo.Utc
+  fullName: System.TimeZoneInfo.Utc
+- uid: System.TimeZoneInfo.BaseUtcOffset*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: BaseUtcOffset
+  nameWithType: TimeZoneInfo.BaseUtcOffset
+- uid: System.TimeZoneInfo.ClearCachedData*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ClearCachedData
+  nameWithType: TimeZoneInfo.ClearCachedData
+- uid: System.TimeZoneInfo.ConvertTime*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTime
+  nameWithType: TimeZoneInfo.ConvertTime
+- uid: System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeBySystemTimeZoneId
+  nameWithType: TimeZoneInfo.ConvertTimeBySystemTimeZoneId
+- uid: System.TimeZoneInfo.ConvertTimeFromUtc*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeFromUtc
+  nameWithType: TimeZoneInfo.ConvertTimeFromUtc
+- uid: System.TimeZoneInfo.ConvertTimeToUtc*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ConvertTimeToUtc
+  nameWithType: TimeZoneInfo.ConvertTimeToUtc
+- uid: System.TimeZoneInfo.CreateCustomTimeZone*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: CreateCustomTimeZone
+  nameWithType: TimeZoneInfo.CreateCustomTimeZone
+- uid: System.TimeZoneInfo.DaylightName*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: DaylightName
+  nameWithType: TimeZoneInfo.DaylightName
+- uid: System.TimeZoneInfo.DisplayName*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: DisplayName
+  nameWithType: TimeZoneInfo.DisplayName
+- uid: System.TimeZoneInfo.Equals*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Equals
+  nameWithType: TimeZoneInfo.Equals
+- uid: System.TimeZoneInfo.FindSystemTimeZoneById*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: FindSystemTimeZoneById
+  nameWithType: TimeZoneInfo.FindSystemTimeZoneById
+- uid: System.TimeZoneInfo.FromSerializedString*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: FromSerializedString
+  nameWithType: TimeZoneInfo.FromSerializedString
+- uid: System.TimeZoneInfo.GetAdjustmentRules*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetAdjustmentRules
+  nameWithType: TimeZoneInfo.GetAdjustmentRules
+- uid: System.TimeZoneInfo.GetAmbiguousTimeOffsets*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetAmbiguousTimeOffsets
+  nameWithType: TimeZoneInfo.GetAmbiguousTimeOffsets
+- uid: System.TimeZoneInfo.GetHashCode*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetHashCode
+  nameWithType: TimeZoneInfo.GetHashCode
+- uid: System.TimeZoneInfo.GetSystemTimeZones*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetSystemTimeZones
+  nameWithType: TimeZoneInfo.GetSystemTimeZones
+- uid: System.TimeZoneInfo.GetUtcOffset*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: GetUtcOffset
+  nameWithType: TimeZoneInfo.GetUtcOffset
+- uid: System.TimeZoneInfo.HasSameRules*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: HasSameRules
+  nameWithType: TimeZoneInfo.HasSameRules
+- uid: System.TimeZoneInfo.Id*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Id
+  nameWithType: TimeZoneInfo.Id
+- uid: System.TimeZoneInfo.IsAmbiguousTime*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsAmbiguousTime
+  nameWithType: TimeZoneInfo.IsAmbiguousTime
+- uid: System.TimeZoneInfo.IsDaylightSavingTime*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsDaylightSavingTime
+  nameWithType: TimeZoneInfo.IsDaylightSavingTime
+- uid: System.TimeZoneInfo.IsInvalidTime*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: IsInvalidTime
+  nameWithType: TimeZoneInfo.IsInvalidTime
+- uid: System.TimeZoneInfo.Local*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Local
+  nameWithType: TimeZoneInfo.Local
+- uid: System.TimeZoneInfo.StandardName*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: StandardName
+  nameWithType: TimeZoneInfo.StandardName
+- uid: System.TimeZoneInfo.SupportsDaylightSavingTime*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: SupportsDaylightSavingTime
+  nameWithType: TimeZoneInfo.SupportsDaylightSavingTime
+- uid: System.TimeZoneInfo.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: System.Runtime.Serialization.IDeserializationCallback.OnDeserialization
+  nameWithType: TimeZoneInfo.System.Runtime.Serialization.IDeserializationCallback.OnDeserialization
+- uid: System.TimeZoneInfo.System#Runtime#Serialization#ISerializable#GetObjectData*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: System.Runtime.Serialization.ISerializable.GetObjectData
+  nameWithType: TimeZoneInfo.System.Runtime.Serialization.ISerializable.GetObjectData
+- uid: System.TimeZoneInfo.ToSerializedString*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ToSerializedString
+  nameWithType: TimeZoneInfo.ToSerializedString
+- uid: System.TimeZoneInfo.ToString*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: ToString
+  nameWithType: TimeZoneInfo.ToString
+- uid: System.TimeZoneInfo.Utc*
+  parent: System.TimeZoneInfo
+  isExternal: false
+  name: Utc
+  nameWithType: TimeZoneInfo.Utc

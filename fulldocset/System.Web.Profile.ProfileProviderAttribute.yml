@@ -1,0 +1,164 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Web.Profile.ProfileProviderAttribute
+  id: ProfileProviderAttribute
+  children:
+  - System.Web.Profile.ProfileProviderAttribute.#ctor(System.String)
+  - System.Web.Profile.ProfileProviderAttribute.ProviderName
+  langs:
+  - csharp
+  name: ProfileProviderAttribute
+  nameWithType: ProfileProviderAttribute
+  fullName: System.Web.Profile.ProfileProviderAttribute
+  type: Class
+  summary: Identifies the profile provider for a user-profile property.
+  remarks: "The ProfileProviderAttribute class is used to identify the profile provider for a property of a custom profile implementation. A custom profile implementation is a class that inherits from the <xref:System.Web.Profile.ProfileBase> abstract class and defines properties for the user profile that are not specified in the  configuration element. You can specify a custom type for the user profile using the `inherits` attribute of the  configuration element in the Web.config file for an application, as shown in the following example.  \n  \n```  \n<configuration>  \n  <connectionStrings>  \n    <add name=\"SqlServices\" connectionString=  \n      \"Data Source=localhost;Integrated Security=SSPI;Initial Catalog=aspnetdb;\" />  \n  </connectionStrings>  \n  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\"  \n        name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <authorization>  \n      <deny users=\"?\" />  \n    </authorization>  \n  \n    <profile inherits=\"Samples.AspNet.Profile.EmployeeProfile\"  \n      defaultProvider=\"SqlProvider\">  \n      <providers>  \n        <clear />  \n        <add  \n          name=\"SqlProvider\"  \n          type=\"System.Web.Profile.SqlProfileProvider\"   \n          connectionStringName=\"SqlServices\"   \n          description=\"SQL Profile Provider for Sample\"/>   \n        <add  \n          name=\"EmployeeInfoProvider\"  \n          type=\"System.Web.Profile.SqlProfileProvider\"   \n          connectionStringName=\"SqlServices\"   \n          description=\"SQL Profile Provider for Employee Info\"/>   \n      </providers>  \n  \n      <properties>  \n        <add name=\"GarmentSize\" />  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n```"
+  example:
+  - "The following code example defines a class that inherits from the <xref:System.Web.Profile.ProfileBase> class to create a custom profile. The type of the custom profile is specified in the `inherits` attribute of the  configuration element in the Web.config file for an application.  \n  \n [!code-cs[System.Web.Profile.ProfileBase#1](~/add/codesnippet/csharp/t-system.web.profile.pro_8_1.cs)]\n [!code-vb[System.Web.Profile.ProfileBase#1](~/add/codesnippet/visualbasic/t-system.web.profile.pro_8_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property)]
+
+      public sealed class ProfileProviderAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Web.Profile.ProfileProviderAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Web.Profile.ProfileProviderAttribute
+  langs:
+  - csharp
+  name: ProfileProviderAttribute(String)
+  nameWithType: ProfileProviderAttribute.ProfileProviderAttribute(String)
+  fullName: System.Web.Profile.ProfileProviderAttribute.ProfileProviderAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Web
+  namespace: System.Web.Profile
+  summary: Creates a new instance of the <xref href="System.Web.Profile.ProfileProviderAttribute"></xref> class with the specified profile provider name.
+  remarks: The <xref:System.Web.Profile.ProfileProviderAttribute> class is used to identify the profile provider for a property of a custom profile implementation. A custom profile implementation is a class that inherits from the <xref:System.Web.Profile.ProfileBase> abstract class and defines properties for the user profile that are not specified in the  configuration element.
+  example:
+  - "The following code example defines a class that inherits from the <xref:System.Web.Profile.ProfileBase> class to create a custom profile. The type of the custom profile is specified in the `inherits` attribute of the  configuration element in the Web.config file for an application. For an example of a configuration file that specifies a custom profile implementation, see the <xref:System.Web.Profile.ProfileProviderAttribute> class overview.  \n  \n [!code-cs[System.Web.Profile.ProfileBase#1](~/add/codesnippet/csharp/m-system.web.profile.pro_11_1.cs)]\n [!code-vb[System.Web.Profile.ProfileBase#1](~/add/codesnippet/visualbasic/m-system.web.profile.pro_11_1.vb)]"
+  syntax:
+    content: public ProfileProviderAttribute (string providerName);
+    parameters:
+    - id: providerName
+      type: System.String
+      description: The name of the profile provider for the property.
+  overload: System.Web.Profile.ProfileProviderAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Web.Profile.ProfileProviderAttribute.ProviderName
+  id: ProviderName
+  parent: System.Web.Profile.ProfileProviderAttribute
+  langs:
+  - csharp
+  name: ProviderName
+  nameWithType: ProfileProviderAttribute.ProviderName
+  fullName: System.Web.Profile.ProfileProviderAttribute.ProviderName
+  type: Property
+  assemblies:
+  - System.Web
+  namespace: System.Web.Profile
+  summary: Gets the name of the profile provider for the user-profile property.
+  syntax:
+    content: public string ProviderName { get; }
+    return:
+      type: System.String
+      description: The name of the profile provider for the user-profile property.
+  overload: System.Web.Profile.ProfileProviderAttribute.ProviderName*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Web.Profile.ProfileProviderAttribute.#ctor(System.String)
+  parent: System.Web.Profile.ProfileProviderAttribute
+  isExternal: false
+  name: ProfileProviderAttribute(String)
+  nameWithType: ProfileProviderAttribute.ProfileProviderAttribute(String)
+  fullName: System.Web.Profile.ProfileProviderAttribute.ProfileProviderAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Web.Profile.ProfileProviderAttribute.ProviderName
+  parent: System.Web.Profile.ProfileProviderAttribute
+  isExternal: false
+  name: ProviderName
+  nameWithType: ProfileProviderAttribute.ProviderName
+  fullName: System.Web.Profile.ProfileProviderAttribute.ProviderName
+- uid: System.Web.Profile.ProfileProviderAttribute.#ctor*
+  parent: System.Web.Profile.ProfileProviderAttribute
+  isExternal: false
+  name: ProfileProviderAttribute
+  nameWithType: ProfileProviderAttribute.ProfileProviderAttribute
+- uid: System.Web.Profile.ProfileProviderAttribute.ProviderName*
+  parent: System.Web.Profile.ProfileProviderAttribute
+  isExternal: false
+  name: ProviderName
+  nameWithType: ProfileProviderAttribute.ProviderName

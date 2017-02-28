@@ -1,0 +1,164 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  id: RuntimeCompatibilityAttribute
+  children:
+  - System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.#ctor
+  - System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+  langs:
+  - csharp
+  name: RuntimeCompatibilityAttribute
+  nameWithType: RuntimeCompatibilityAttribute
+  fullName: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  type: Class
+  summary: Specifies whether to wrap exceptions that do not derive from the <xref href="System.Exception"></xref> class with a <xref href="System.Runtime.CompilerServices.RuntimeWrappedException"></xref> object. This class cannot be inherited.
+  remarks: "Some languages, such as C++, allow you to throw exceptions of any type.  Other languages, such as Microsoft C# and Visual Basic, require that every thrown exception be derived from the <xref:System.Exception> class.  To maintain compatibility between languages, the common language runtime (CLR) wraps objects that do not derive from <xref:System.Exception> in a <xref:System.Runtime.CompilerServices.RuntimeWrappedException> object.  \n  \n You can use the RuntimeCompatibilityAttribute class to specify whether exceptions should appear wrapped inside catch blocks and exception filters for an assembly.  Many language compilers, including the Microsoft C# and Visual Basic compilers, apply this attribute by default to specify the wrapping behavior.  \n  \n Note that the runtime still wraps exceptions even if you use the RuntimeCompatibilityAttribute class to specify that you do not want them wrapped.  In this case, exceptions are unwrapped only inside catch blocks or exception filters."
+  example:
+  - "The following code example demonstrates how to apply the RuntimeCompatibilityAttribute class to an assembly that throws a <xref:System.String> object as an exception in C++ and catches it using a <xref:System.Runtime.CompilerServices.RuntimeWrappedException> object.  \n  \n [!code-cpp[System.Runtime.CompilerServices.RuntimeWrappedException#1](~/add/codesnippet/cpp/t-system.runtime.compile_4_1.cpp)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Assembly, AllowMultiple=false, Inherited=false)]
+
+      public sealed class RuntimeCompatibilityAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.#ctor
+  id: '#ctor'
+  parent: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  langs:
+  - csharp
+  name: RuntimeCompatibilityAttribute()
+  nameWithType: RuntimeCompatibilityAttribute.RuntimeCompatibilityAttribute()
+  fullName: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.RuntimeCompatibilityAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.CompilerServices.RuntimeCompatibilityAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following code example applies the <xref:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute> attribute to an assembly to disable exception wrapping.  \n  \n [!code-cpp[System.Runtime.CompilerServices.RuntimeCompatibilityAttribute#1](~/add/codesnippet/cpp/m-system.runtime.compile_7_1.cpp)]"
+  syntax:
+    content: public RuntimeCompatibilityAttribute ();
+    parameters: []
+  overload: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+  id: WrapNonExceptionThrows
+  parent: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  langs:
+  - csharp
+  name: WrapNonExceptionThrows
+  nameWithType: RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+  fullName: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.CompilerServices
+  summary: Gets or sets a value that indicates whether to wrap exceptions that do not derive from the <xref href="System.Exception"></xref> class with a <xref href="System.Runtime.CompilerServices.RuntimeWrappedException"></xref> object.
+  remarks: ''
+  example:
+  - "The following code example applies the <xref:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute> attribute to an assembly to disable exception wrapping.  \n  \n [!code-cpp[System.Runtime.CompilerServices.RuntimeCompatibilityAttribute#1](~/add/codesnippet/cpp/8f7871df-7dc9-4af6-b4ba-_1.cpp)]"
+  syntax:
+    content: public bool WrapNonExceptionThrows { get; set; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if exceptions that do not derive from the <xref href="System.Exception"></xref> class should appear wrapped with a <xref href="System.Runtime.CompilerServices.RuntimeWrappedException"></xref> object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.#ctor
+  parent: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  isExternal: false
+  name: RuntimeCompatibilityAttribute()
+  nameWithType: RuntimeCompatibilityAttribute.RuntimeCompatibilityAttribute()
+  fullName: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.RuntimeCompatibilityAttribute()
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+  parent: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  isExternal: false
+  name: WrapNonExceptionThrows
+  nameWithType: RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+  fullName: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.#ctor*
+  parent: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  isExternal: false
+  name: RuntimeCompatibilityAttribute
+  nameWithType: RuntimeCompatibilityAttribute.RuntimeCompatibilityAttribute
+- uid: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute.WrapNonExceptionThrows*
+  parent: System.Runtime.CompilerServices.RuntimeCompatibilityAttribute
+  isExternal: false
+  name: WrapNonExceptionThrows
+  nameWithType: RuntimeCompatibilityAttribute.WrapNonExceptionThrows

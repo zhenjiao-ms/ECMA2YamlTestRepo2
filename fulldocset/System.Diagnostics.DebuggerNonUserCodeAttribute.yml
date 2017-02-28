@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.DebuggerNonUserCodeAttribute
+  id: DebuggerNonUserCodeAttribute
+  children:
+  - System.Diagnostics.DebuggerNonUserCodeAttribute.#ctor
+  langs:
+  - csharp
+  name: DebuggerNonUserCodeAttribute
+  nameWithType: DebuggerNonUserCodeAttribute
+  fullName: System.Diagnostics.DebuggerNonUserCodeAttribute
+  type: Class
+  summary: Identifies a type or member that is not part of the user code for an application.
+  remarks: "Designer provided types and members that are not part of the code specifically created by the user can complicate the debugging experience. This attribute suppresses the display of these adjunct types and members in the debugger window and automatically steps through, rather than into, designer provided code.  When the debugger encounters this attribute when stepping through user code, the user experience is to not see the designer provided code and to step to the next user-supplied code statement.  \n  \n> [!NOTE]\n>  The common language runtime attaches no semantics to this attribute. It is provided for use by source code debuggers. For example, in [!INCLUDE[vsprvslong](~/add/includes/vsprvslong-md.md)], the debugger does not display an element with this attribute in the debugger window, does not stop in a method with this attribute, and does not allow a breakpoint to be set in the method.  \n  \n The debugger behavior when the DebuggerNonUserCodeAttribute is present is similar to using a combination of the <xref:System.Diagnostics.DebuggerHiddenAttribute> attribute, which hides the code from the debugger, and the <xref:System.Diagnostics.DebuggerStepThroughAttribute> attribute, which tells the debugger to step through, rather than into, the code it is applied to."
+  example:
+  - "The following code example shows the use of this attribute in a Visual Basic project.  \n  \n```  \n' Form overrides Dispose to clean up the component list.  \n<System.Diagnostics.DebuggerNonUserCode()> _  \nProtected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)  \n    If disposing AndAlso components IsNot Nothing Then  \n        components.Dispose()  \n    End If  \n    MyBase.Dispose(disposing)  \nEnd Sub  \n```"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct | System.AttributeTargets.Constructor | System.AttributeTargets.Method | System.AttributeTargets.Property, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class DebuggerNonUserCodeAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Diagnostics.DebuggerNonUserCodeAttribute.#ctor
+  id: '#ctor'
+  parent: System.Diagnostics.DebuggerNonUserCodeAttribute
+  langs:
+  - csharp
+  name: DebuggerNonUserCodeAttribute()
+  nameWithType: DebuggerNonUserCodeAttribute.DebuggerNonUserCodeAttribute()
+  fullName: System.Diagnostics.DebuggerNonUserCodeAttribute.DebuggerNonUserCodeAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.DebuggerNonUserCodeAttribute"></xref> class.
+  remarks: For a description of the function of this constructor and an example of its use, see the <xref:System.Diagnostics.DebuggerNonUserCodeAttribute> class.
+  syntax:
+    content: public DebuggerNonUserCodeAttribute ();
+    parameters: []
+  overload: System.Diagnostics.DebuggerNonUserCodeAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Diagnostics.DebuggerNonUserCodeAttribute.#ctor
+  parent: System.Diagnostics.DebuggerNonUserCodeAttribute
+  isExternal: false
+  name: DebuggerNonUserCodeAttribute()
+  nameWithType: DebuggerNonUserCodeAttribute.DebuggerNonUserCodeAttribute()
+  fullName: System.Diagnostics.DebuggerNonUserCodeAttribute.DebuggerNonUserCodeAttribute()
+- uid: System.Diagnostics.DebuggerNonUserCodeAttribute.#ctor*
+  parent: System.Diagnostics.DebuggerNonUserCodeAttribute
+  isExternal: false
+  name: DebuggerNonUserCodeAttribute
+  nameWithType: DebuggerNonUserCodeAttribute.DebuggerNonUserCodeAttribute

@@ -1,0 +1,199 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Reflection.CallingConventions
+  id: CallingConventions
+  children:
+  - System.Reflection.CallingConventions.Any
+  - System.Reflection.CallingConventions.ExplicitThis
+  - System.Reflection.CallingConventions.HasThis
+  - System.Reflection.CallingConventions.Standard
+  - System.Reflection.CallingConventions.VarArgs
+  langs:
+  - csharp
+  name: CallingConventions
+  nameWithType: CallingConventions
+  fullName: System.Reflection.CallingConventions
+  type: Enum
+  summary: Defines the valid calling conventions for a method.
+  remarks: The native calling convention is the set of rules governing the order and layout of arguments passed to compiled methods. It also governs how to pass the return value, what registers to use for arguments, and whether the called or the calling method removes arguments from the stack.
+  example:
+  - >-
+    [!code-cpp[Type_GetConstructor3#1](~/add/codesnippet/cpp/t-system.reflection.call_1.cpp)]
+     [!code-cs[Type_GetConstructor3#1](~/add/codesnippet/csharp/t-system.reflection.call_1.cs)]
+     [!code-vb[Type_GetConstructor3#1](~/add/codesnippet/visualbasic/t-system.reflection.call_1.vb)]
+  syntax:
+    content: >-
+      [System.Flags]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public enum CallingConventions
+  inheritance:
+  - System.Object
+  - System.ValueType
+  - System.Enum
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Reflection.CallingConventions.Any
+  id: Any
+  parent: System.Reflection.CallingConventions
+  langs:
+  - csharp
+  name: Any
+  nameWithType: CallingConventions.Any
+  fullName: System.Reflection.CallingConventions.Any
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Specifies that either the <xref uid="langword_csharp_Standard" name="Standard" href=""></xref> or the <xref uid="langword_csharp_VarArgs" name="VarArgs" href=""></xref> calling convention may be used.
+  syntax:
+    content: Any
+    return:
+      type: System.Reflection.CallingConventions
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Reflection.CallingConventions.ExplicitThis
+  id: ExplicitThis
+  parent: System.Reflection.CallingConventions
+  langs:
+  - csharp
+  name: ExplicitThis
+  nameWithType: CallingConventions.ExplicitThis
+  fullName: System.Reflection.CallingConventions.ExplicitThis
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Specifies that the signature is a function-pointer signature, representing a call to an instance or virtual method (not a static method). If <xref uid="langword_csharp_ExplicitThis" name="ExplicitThis" href=""></xref> is set, <xref uid="langword_csharp_HasThis" name="HasThis" href=""></xref> must also be set. The first argument passed to the called method is still a <xref uid="langword_csharp_this" name="this" href=""></xref> pointer, but the type of the first argument is now unknown. Therefore, a token that describes the type (or class) of the <xref uid="langword_csharp_this" name="this" href=""></xref> pointer is explicitly stored into its metadata signature.
+  syntax:
+    content: ExplicitThis
+    return:
+      type: System.Reflection.CallingConventions
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Reflection.CallingConventions.HasThis
+  id: HasThis
+  parent: System.Reflection.CallingConventions
+  langs:
+  - csharp
+  name: HasThis
+  nameWithType: CallingConventions.HasThis
+  fullName: System.Reflection.CallingConventions.HasThis
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Specifies an instance or virtual method (not a static method). At run-time, the called method is passed a pointer to the target object as its first argument (the <xref uid="langword_csharp_this" name="this" href=""></xref> pointer). The signature stored in metadata does not include the type of this first argument, because the method is known and its owner class can be discovered from metadata.
+  syntax:
+    content: HasThis
+    return:
+      type: System.Reflection.CallingConventions
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Reflection.CallingConventions.Standard
+  id: Standard
+  parent: System.Reflection.CallingConventions
+  langs:
+  - csharp
+  name: Standard
+  nameWithType: CallingConventions.Standard
+  fullName: System.Reflection.CallingConventions.Standard
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Specifies the default calling convention as determined by the common language runtime. Use this calling convention for static methods. For instance or virtual methods use <xref uid="langword_csharp_HasThis" name="HasThis" href=""></xref>.
+  syntax:
+    content: Standard
+    return:
+      type: System.Reflection.CallingConventions
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Reflection.CallingConventions.VarArgs
+  id: VarArgs
+  parent: System.Reflection.CallingConventions
+  langs:
+  - csharp
+  name: VarArgs
+  nameWithType: CallingConventions.VarArgs
+  fullName: System.Reflection.CallingConventions.VarArgs
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Reflection
+  summary: Specifies the calling convention for methods with variable arguments.
+  syntax:
+    content: VarArgs
+    return:
+      type: System.Reflection.CallingConventions
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Enum
+  isExternal: false
+  name: System.Enum
+- uid: System.Reflection.CallingConventions.Any
+  parent: System.Reflection.CallingConventions
+  isExternal: false
+  name: Any
+  nameWithType: CallingConventions.Any
+  fullName: System.Reflection.CallingConventions.Any
+- uid: System.Reflection.CallingConventions
+  parent: System.Reflection
+  isExternal: false
+  name: CallingConventions
+  nameWithType: CallingConventions
+  fullName: System.Reflection.CallingConventions
+- uid: System.Reflection.CallingConventions.ExplicitThis
+  parent: System.Reflection.CallingConventions
+  isExternal: false
+  name: ExplicitThis
+  nameWithType: CallingConventions.ExplicitThis
+  fullName: System.Reflection.CallingConventions.ExplicitThis
+- uid: System.Reflection.CallingConventions.HasThis
+  parent: System.Reflection.CallingConventions
+  isExternal: false
+  name: HasThis
+  nameWithType: CallingConventions.HasThis
+  fullName: System.Reflection.CallingConventions.HasThis
+- uid: System.Reflection.CallingConventions.Standard
+  parent: System.Reflection.CallingConventions
+  isExternal: false
+  name: Standard
+  nameWithType: CallingConventions.Standard
+  fullName: System.Reflection.CallingConventions.Standard
+- uid: System.Reflection.CallingConventions.VarArgs
+  parent: System.Reflection.CallingConventions
+  isExternal: false
+  name: VarArgs
+  nameWithType: CallingConventions.VarArgs
+  fullName: System.Reflection.CallingConventions.VarArgs

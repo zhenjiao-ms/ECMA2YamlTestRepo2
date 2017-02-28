@@ -1,0 +1,2243 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Globalization.Calendar
+  id: Calendar
+  children:
+  - System.Globalization.Calendar.#ctor
+  - System.Globalization.Calendar.AddDays(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AddHours(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AddMilliseconds(System.DateTime,System.Double)
+  - System.Globalization.Calendar.AddMinutes(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AddMonths(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AddSeconds(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AddWeeks(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AddYears(System.DateTime,System.Int32)
+  - System.Globalization.Calendar.AlgorithmType
+  - System.Globalization.Calendar.Clone
+  - System.Globalization.Calendar.CurrentEra
+  - System.Globalization.Calendar.Eras
+  - System.Globalization.Calendar.GetDayOfMonth(System.DateTime)
+  - System.Globalization.Calendar.GetDayOfWeek(System.DateTime)
+  - System.Globalization.Calendar.GetDayOfYear(System.DateTime)
+  - System.Globalization.Calendar.GetDaysInMonth(System.Int32,System.Int32)
+  - System.Globalization.Calendar.GetDaysInMonth(System.Int32,System.Int32,System.Int32)
+  - System.Globalization.Calendar.GetDaysInYear(System.Int32)
+  - System.Globalization.Calendar.GetDaysInYear(System.Int32,System.Int32)
+  - System.Globalization.Calendar.GetEra(System.DateTime)
+  - System.Globalization.Calendar.GetHour(System.DateTime)
+  - System.Globalization.Calendar.GetLeapMonth(System.Int32)
+  - System.Globalization.Calendar.GetLeapMonth(System.Int32,System.Int32)
+  - System.Globalization.Calendar.GetMilliseconds(System.DateTime)
+  - System.Globalization.Calendar.GetMinute(System.DateTime)
+  - System.Globalization.Calendar.GetMonth(System.DateTime)
+  - System.Globalization.Calendar.GetMonthsInYear(System.Int32)
+  - System.Globalization.Calendar.GetMonthsInYear(System.Int32,System.Int32)
+  - System.Globalization.Calendar.GetSecond(System.DateTime)
+  - System.Globalization.Calendar.GetWeekOfYear(System.DateTime,System.Globalization.CalendarWeekRule,System.DayOfWeek)
+  - System.Globalization.Calendar.GetYear(System.DateTime)
+  - System.Globalization.Calendar.IsLeapDay(System.Int32,System.Int32,System.Int32)
+  - System.Globalization.Calendar.IsLeapDay(System.Int32,System.Int32,System.Int32,System.Int32)
+  - System.Globalization.Calendar.IsLeapMonth(System.Int32,System.Int32)
+  - System.Globalization.Calendar.IsLeapMonth(System.Int32,System.Int32,System.Int32)
+  - System.Globalization.Calendar.IsLeapYear(System.Int32)
+  - System.Globalization.Calendar.IsLeapYear(System.Int32,System.Int32)
+  - System.Globalization.Calendar.IsReadOnly
+  - System.Globalization.Calendar.MaxSupportedDateTime
+  - System.Globalization.Calendar.MinSupportedDateTime
+  - System.Globalization.Calendar.ReadOnly(System.Globalization.Calendar)
+  - System.Globalization.Calendar.ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  - System.Globalization.Calendar.ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  - System.Globalization.Calendar.ToFourDigitYear(System.Int32)
+  - System.Globalization.Calendar.TwoDigitYearMax
+  langs:
+  - csharp
+  name: Calendar
+  nameWithType: Calendar
+  fullName: System.Globalization.Calendar
+  type: Class
+  summary: Represents time in divisions, such as weeks, months, and years.
+  remarks: "A calendar divides time into units, such as weeks, months, and years. The number, length, and start of the divisions vary in each calendar.  \n  \n> [!NOTE]\n>  For information about using the calendar classes in the .NET Framework, see [Working with Calendars](~/add/includes/ajax-current-ext-md.md).  \n  \n Any moment in time can be represented as a set of numeric values using a particular calendar. For example, a vernal equinox occurred at (1999, 3, 20, 8, 46, 0, 0.0) in the Gregorian calendar, that is, March 20, 1999 C.E. at 8:46:00:0.0. An implementation of Calendar can map any date in the range of a specific calendar to a similar set of numeric values, and <xref:System.DateTime> can map such sets of numeric values to a textual representation using information from Calendar and <xref:System.Globalization.DateTimeFormatInfo>. The textual representation can be culture-sensitive, for example, \"8:46 AM March 20th 1999 AD\" for the en-US culture, or culture-insensitive, for example, \"1999-03-20T08:46:00\" in ISO 8601 format.  \n  \n A Calendar implementation can define one or more eras. The Calendar class identifies the eras as enumerated integers, where the current era (<xref:System.Globalization.Calendar.CurrentEra>) has the value 0.  \n  \n To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each Calendar implementation defines leap years differently.  \n  \n For consistency, the first unit in each interval (the first month, for example) is assigned the value 1.  \n  \n The <xref:System.Globalization> namespace includes the following Calendar implementations:  \n  \n-   <xref:System.Globalization.ChineseLunisolarCalendar>  \n  \n-   <xref:System.Globalization.EastAsianLunisolarCalendar>  \n  \n-   <xref:System.Globalization.GregorianCalendar>  \n  \n-   <xref:System.Globalization.HebrewCalendar>  \n  \n-   <xref:System.Globalization.HijriCalendar>  \n  \n-   <xref:System.Globalization.JapaneseCalendar>  \n  \n-   <xref:System.Globalization.JapaneseLunisolarCalendar>  \n  \n-   <xref:System.Globalization.JulianCalendar>  \n  \n-   <xref:System.Globalization.KoreanCalendar>  \n  \n-   <xref:System.Globalization.KoreanLunisolarCalendar>  \n  \n-   <xref:System.Globalization.PersianCalendar>  \n  \n-   <xref:System.Globalization.TaiwanCalendar>  \n  \n-   <xref:System.Globalization.TaiwanLunisolarCalendar>  \n  \n-   <xref:System.Globalization.ThaiBuddhistCalendar>  \n  \n-   <xref:System.Globalization.UmAlQuraCalendar>"
+  example:
+  - "The following code example demonstrates the members of the Calendar class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/t-system.globalization.c_4_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/t-system.globalization.c_4_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/t-system.globalization.c_4_1.cs)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public abstract class Calendar : ICloneable
+  inheritance:
+  - System.Object
+  implements:
+  - System.ICloneable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.#ctor
+  id: '#ctor'
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: Calendar()
+  nameWithType: Calendar.Calendar()
+  fullName: System.Globalization.Calendar.Calendar()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Initializes a new instance of the <xref href="System.Globalization.Calendar"></xref> class.
+  remarks: ''
+  example:
+  - "The following example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_11_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_11_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_11_1.cs)]"
+  syntax:
+    content: protected Calendar ();
+    parameters: []
+  overload: System.Globalization.Calendar.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddDays(System.DateTime,System.Int32)
+  id: AddDays(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddDays(DateTime,Int32)
+  nameWithType: Calendar.AddDays(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddDays(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is the specified number of days away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `days` value is added to the specified <xref:System.DateTime>. If `days` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The month part of the resulting <xref:System.DateTime> is affected if the resulting day is outside the month of the specified <xref:System.DateTime>. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>. The time-of-day part of the resulting <xref:System.DateTime> remains the same as the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#1](~/add/codesnippet/visualbasic/m-system.globalization.c_6_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#1](~/add/codesnippet/csharp/m-system.globalization.c_6_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_6_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_6_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_6_2.cs)]"
+  syntax:
+    content: public virtual DateTime AddDays (DateTime time, int days);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add days.
+    - id: days
+      type: System.Int32
+      description: The number of days to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of days to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddDays*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>days</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddHours(System.DateTime,System.Int32)
+  id: AddHours(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddHours(DateTime,Int32)
+  nameWithType: Calendar.AddHours(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddHours(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is the specified number of hours away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `hours` value is added to the specified <xref:System.DateTime>. If `hours` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The day part of the resulting <xref:System.DateTime> is affected if the resulting time is outside the day of the specified <xref:System.DateTime>. The month part of the resulting <xref:System.DateTime> is affected if the resulting day is outside the month of the specified <xref:System.DateTime>. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#2](~/add/codesnippet/visualbasic/m-system.globalization.c_34_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#2](~/add/codesnippet/csharp/m-system.globalization.c_34_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_34_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_34_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_34_2.cs)]"
+  syntax:
+    content: public virtual DateTime AddHours (DateTime time, int hours);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add hours.
+    - id: hours
+      type: System.Int32
+      description: The number of hours to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of hours to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddHours*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>hours</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddMilliseconds(System.DateTime,System.Double)
+  id: AddMilliseconds(System.DateTime,System.Double)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddMilliseconds(DateTime,Double)
+  nameWithType: Calendar.AddMilliseconds(DateTime,Double)
+  fullName: System.Globalization.Calendar.AddMilliseconds(DateTime,Double)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is the specified number of milliseconds away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `milliseconds` value is rounded to the nearest integer before it is added to the specified <xref:System.DateTime>. If `milliseconds` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The day part of the resulting <xref:System.DateTime> is affected if the resulting time is outside the day of the specified <xref:System.DateTime>. The month part of the resulting <xref:System.DateTime> is affected if the resulting day is outside the month of the specified <xref:System.DateTime>. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#3](~/add/codesnippet/visualbasic/m-system.globalization.c_20_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#3](~/add/codesnippet/csharp/m-system.globalization.c_20_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_20_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_20_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_20_2.cs)]"
+  syntax:
+    content: public virtual DateTime AddMilliseconds (DateTime time, double milliseconds);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to add milliseconds to.
+    - id: milliseconds
+      type: System.Double
+      description: The number of milliseconds to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of milliseconds to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddMilliseconds*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>milliseconds</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddMinutes(System.DateTime,System.Int32)
+  id: AddMinutes(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddMinutes(DateTime,Int32)
+  nameWithType: Calendar.AddMinutes(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddMinutes(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is the specified number of minutes away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `minutes` value is added to the specified <xref:System.DateTime>. If `minutes` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The day part of the resulting <xref:System.DateTime> is affected if the resulting time is outside the day of the specified <xref:System.DateTime>. The month part of the resulting <xref:System.DateTime> is affected if the resulting day is outside the month of the specified <xref:System.DateTime>. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#4](~/add/codesnippet/visualbasic/m-system.globalization.c_7_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#4](~/add/codesnippet/csharp/m-system.globalization.c_7_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_7_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_7_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_7_2.cs)]"
+  syntax:
+    content: public virtual DateTime AddMinutes (DateTime time, int minutes);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add minutes.
+    - id: minutes
+      type: System.Int32
+      description: The number of minutes to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of minutes to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddMinutes*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>minutes</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddMonths(System.DateTime,System.Int32)
+  id: AddMonths(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddMonths(DateTime,Int32)
+  nameWithType: Calendar.AddMonths(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddMonths(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns a <xref href="System.DateTime"></xref> that is the specified number of months away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `months` value is added to the specified <xref:System.DateTime>. If `months` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The day part of the resulting <xref:System.DateTime> is affected if the resulting day is not a valid day in the resulting month of the resulting year. It is changed to the last valid day in the resulting month of the resulting year. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>. The time-of-day part of the resulting <xref:System.DateTime> remains the same as the specified <xref:System.DateTime>.  \n  \n For example, suppose that the current calendar has 12 months, where the fourth month has 30 days and the tenth month has 31 days. If the specified month is the tenth month, the specified day is the 31st day of that month, and the value of the `months` parameter is 6, the resulting year is one more than the specified year, the resulting month is the fourth month, and the resulting day is the 30th day, which is the last day of the resulting month.  \n  \n If the value of the `months` parameter is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#5](~/add/codesnippet/visualbasic/m-system.globalization.c_15_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#5](~/add/codesnippet/csharp/m-system.globalization.c_15_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_15_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_15_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_15_2.cs)]"
+  syntax:
+    content: public abstract DateTime AddMonths (DateTime time, int months);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add months.
+    - id: months
+      type: System.Int32
+      description: The number of months to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of months to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddMonths*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>months</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddSeconds(System.DateTime,System.Int32)
+  id: AddSeconds(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddSeconds(DateTime,Int32)
+  nameWithType: Calendar.AddSeconds(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddSeconds(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is the specified number of seconds away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `seconds` value is added to the specified <xref:System.DateTime>. If `seconds` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The day part of the resulting <xref:System.DateTime> is affected if the resulting time is outside the day of the specified <xref:System.DateTime>. The month part of the resulting <xref:System.DateTime> is affected if the resulting day is outside the month of the specified <xref:System.DateTime>. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#6](~/add/codesnippet/visualbasic/m-system.globalization.c_16_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#6](~/add/codesnippet/csharp/m-system.globalization.c_16_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_16_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_16_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_16_2.cs)]"
+  syntax:
+    content: public virtual DateTime AddSeconds (DateTime time, int seconds);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add seconds.
+    - id: seconds
+      type: System.Int32
+      description: The number of seconds to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of seconds to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddSeconds*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>seconds</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddWeeks(System.DateTime,System.Int32)
+  id: AddWeeks(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddWeeks(DateTime,Int32)
+  nameWithType: Calendar.AddWeeks(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddWeeks(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is the specified number of weeks away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `weeks` value is added to the specified <xref:System.DateTime>. If `weeks` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The month part of the resulting <xref:System.DateTime> is affected if the resulting day is outside the month of the specified <xref:System.DateTime>. The year part of the resulting <xref:System.DateTime> is affected if the resulting month is outside the year of the specified <xref:System.DateTime>. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>. The time-of-day part of the resulting <xref:System.DateTime> remains the same as the specified <xref:System.DateTime>.  \n  \n In all .NET Framework classes derived from the <xref:System.Globalization.Calendar> class, a week is defined as seven days.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#7](~/add/codesnippet/visualbasic/m-system.globalization.c_26_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#7](~/add/codesnippet/csharp/m-system.globalization.c_26_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_26_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_26_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_26_2.cs)]"
+  syntax:
+    content: public virtual DateTime AddWeeks (DateTime time, int weeks);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add weeks.
+    - id: weeks
+      type: System.Int32
+      description: The number of weeks to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of weeks to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddWeeks*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>weeks</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AddYears(System.DateTime,System.Int32)
+  id: AddYears(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AddYears(DateTime,Int32)
+  nameWithType: Calendar.AddYears(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddYears(DateTime,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns a <xref href="System.DateTime"></xref> that is the specified number of years away from the specified <xref href="System.DateTime"></xref>.
+  remarks: "The `years` value is added to the specified <xref:System.DateTime>. If `years` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The day part of the resulting <xref:System.DateTime> is affected if the resulting day is not a valid day in the resulting month of the resulting year. It is changed to the last valid day in the resulting month of the resulting year. The month part of the resulting <xref:System.DateTime> is affected if the resulting month is not a valid month in the resulting year. It is changed to the last valid month in the resulting year. The era part of the resulting <xref:System.DateTime> is affected if the resulting year is outside the era of the specified <xref:System.DateTime>. The time-of-day part of the resulting <xref:System.DateTime> remains the same as the specified <xref:System.DateTime>.  \n  \n For example, in the Gregorian calendar, February has 28 days, except during a leap year when it has 29 days. If the specified date is the 29th day of February in a leap year and the value of `years` is 1, the resulting date is the 28th day of February in the following year.  \n  \n If `years` is negative, the resulting <xref:System.DateTime> is earlier than the specified <xref:System.DateTime>.  \n  \n The<xref:System.DateTime.Kind%2A> property of the returned <xref:System.DateTime> value always equals <xref:System.DateTimeKind?displayProperty=fullName>. You can preserve the <xref:System.DateTime.Kind%2A> property of the `time` parameter by calling the <xref:System.DateTime.SpecifyKind%2A?displayProperty=fullName> method, as the following example shows.  \n  \n [!code-vb[System.Globalization.Calendar.AddMethods#8](~/add/codesnippet/visualbasic/m-system.globalization.c_36_1.vb)]\n [!code-cs[System.Globalization.Calendar.AddMethods#8](~/add/codesnippet/csharp/m-system.globalization.c_36_1.cs)]"
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_36_2.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_36_2.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_36_2.cs)]"
+  syntax:
+    content: public abstract DateTime AddYears (DateTime time, int years);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to which to add years.
+    - id: years
+      type: System.Int32
+      description: The number of years to add.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that results from adding the specified number of years to the specified <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.AddYears*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The resulting <xref href="System.DateTime"></xref> is outside the supported range of this calendar.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>years</code> is outside the supported range of the <xref href="System.DateTime"></xref> return value.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.AlgorithmType
+  id: AlgorithmType
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: AlgorithmType
+  nameWithType: Calendar.AlgorithmType
+  fullName: System.Globalization.Calendar.AlgorithmType
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Gets a value indicating whether the current calendar is solar-based, lunar-based, or a combination of both.
+  remarks: ''
+  example:
+  - "The following example uses reflection to instantiate each <xref:System.Globalization.Calendar> type found in the .NET Framework and displays the value of its AlgorithmType property.  \n  \n [!code-cs[System.Globalization.Calendar.AlgorithmType#1](~/add/codesnippet/csharp/p-system.globalization.c_16_1.cs)]\n [!code-vb[System.Globalization.Calendar.AlgorithmType#1](~/add/codesnippet/visualbasic/p-system.globalization.c_16_1.vb)]"
+  syntax:
+    content: public virtual System.Globalization.CalendarAlgorithmType AlgorithmType { get; }
+    return:
+      type: System.Globalization.CalendarAlgorithmType
+      description: One of the <xref href="System.Globalization.CalendarAlgorithmType"></xref> values.
+  overload: System.Globalization.Calendar.AlgorithmType*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.Clone
+  id: Clone
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: Clone()
+  nameWithType: Calendar.Clone()
+  fullName: System.Globalization.Calendar.Clone()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Creates a new object that is a copy of the current <xref href="System.Globalization.Calendar"></xref> object.
+  remarks: The new memberwise clone is not read-only.
+  syntax:
+    content: public virtual object Clone ();
+    parameters: []
+    return:
+      type: System.Object
+      description: A new instance of <xref href="System.Object"></xref> that is the memberwise clone of the current <xref href="System.Globalization.Calendar"></xref> object.
+  overload: System.Globalization.Calendar.Clone*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.CurrentEra
+  id: CurrentEra
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: CurrentEra
+  nameWithType: Calendar.CurrentEra
+  fullName: System.Globalization.Calendar.CurrentEra
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Represents the current era of the current calendar.
+  remarks: The CurrentEra field represents the index of the current era in the <xref:System.Globalization.Calendar.Eras%2A> array. Because eras are arranged in reverse chronological order (from the current era to earlier eras), this field is a constant that has a value of 0.
+  syntax:
+    content: public const int CurrentEra = 0;
+    return:
+      type: System.Int32
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.Eras
+  id: Eras
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: Eras
+  nameWithType: Calendar.Eras
+  fullName: System.Globalization.Calendar.Eras
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, gets the list of eras in the current calendar.
+  remarks: The eras are in reverse chronological order, with the current era as the first element of the array, and the oldest era as the last element of the array. For example, the value of the current era in <xref:System.Globalization.JapaneseCalendar> is 4, which is the first element of the array.
+  example:
+  - "The following code example displays the values contained in <xref:System.Globalization.JapaneseCalendar.Eras%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Globalization.JapaneseCalendar.Eras#1](~/add/codesnippet/csharp/p-system.globalization.c_8_1.cs)]\n [!code-vb[System.Globalization.JapaneseCalendar.Eras#1](~/add/codesnippet/visualbasic/p-system.globalization.c_8_1.vb)]\n [!code-cpp[System.Globalization.JapaneseCalendar.Eras#1](~/add/codesnippet/cpp/p-system.globalization.c_8_1.cpp)]"
+  syntax:
+    content: public abstract int[] Eras { get; }
+    return:
+      type: System.Int32[]
+      description: An array of integers that represents the eras in the current calendar.
+  overload: System.Globalization.Calendar.Eras*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDayOfMonth(System.DateTime)
+  id: GetDayOfMonth(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDayOfMonth(DateTime)
+  nameWithType: Calendar.GetDayOfMonth(DateTime)
+  fullName: System.Globalization.Calendar.GetDayOfMonth(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the day of the month in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_21_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_21_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_21_1.cs)]"
+  syntax:
+    content: public abstract int GetDayOfMonth (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: A positive integer that represents the day of the month in the <code>time</code> parameter.
+  overload: System.Globalization.Calendar.GetDayOfMonth*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDayOfWeek(System.DateTime)
+  id: GetDayOfWeek(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDayOfWeek(DateTime)
+  nameWithType: Calendar.GetDayOfWeek(DateTime)
+  fullName: System.Globalization.Calendar.GetDayOfWeek(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the day of the week in the specified <xref href="System.DateTime"></xref>.
+  remarks: The <xref:System.DayOfWeek> values are Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday.
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_19_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_19_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_19_1.cs)]"
+  syntax:
+    content: public abstract DayOfWeek GetDayOfWeek (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.DayOfWeek
+      description: A <xref href="System.DayOfWeek"></xref> value that represents the day of the week in the <code>time</code> parameter.
+  overload: System.Globalization.Calendar.GetDayOfWeek*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDayOfYear(System.DateTime)
+  id: GetDayOfYear(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDayOfYear(DateTime)
+  nameWithType: Calendar.GetDayOfYear(DateTime)
+  fullName: System.Globalization.Calendar.GetDayOfYear(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the day of the year in the specified <xref href="System.DateTime"></xref>.
+  remarks: The day of the year is defined as the number of days from the first day of the year. For example, in <xref:System.Globalization.GregorianCalendar>, GetDayOfYear for January 1 returns 1, and GetDayOfYear for December 31 returns 365 in a common year or 366 in a leap year.
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_46_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_46_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_46_1.cs)]"
+  syntax:
+    content: public abstract int GetDayOfYear (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: A positive integer that represents the day of the year in the <code>time</code> parameter.
+  overload: System.Globalization.Calendar.GetDayOfYear*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDaysInMonth(System.Int32,System.Int32)
+  id: GetDaysInMonth(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDaysInMonth(Int32,Int32)
+  nameWithType: Calendar.GetDaysInMonth(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetDaysInMonth(Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the number of days in the specified month and year of the current era.
+  remarks: For example, in <xref:System.Globalization.GregorianCalendar>, GetDaysInMonth for February returns 28 in a common year or 29 in a leap year.
+  example:
+  - "The following code example compares different implementations of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cs[System.Globalization.Calendar_Compare#1](~/add/codesnippet/csharp/m-system.globalization.c_4_1.cs)]\n [!code-vb[System.Globalization.Calendar_Compare#1](~/add/codesnippet/visualbasic/m-system.globalization.c_4_1.vb)]\n [!code-cpp[System.Globalization.Calendar_Compare#1](~/add/codesnippet/cpp/m-system.globalization.c_4_1.cpp)]"
+  syntax:
+    content: public virtual int GetDaysInMonth (int year, int month);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    return:
+      type: System.Int32
+      description: The number of days in the specified month in the specified year in the current era.
+  overload: System.Globalization.Calendar.GetDaysInMonth*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDaysInMonth(System.Int32,System.Int32,System.Int32)
+  id: GetDaysInMonth(System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDaysInMonth(Int32,Int32,Int32)
+  nameWithType: Calendar.GetDaysInMonth(Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.GetDaysInMonth(Int32,Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the number of days in the specified month, year, and era.
+  remarks: For example, in <xref:System.Globalization.GregorianCalendar>, <xref:System.Globalization.Calendar.GetDaysInMonth%2A> for February returns 28 in a common year or 29 in a leap year.
+  syntax:
+    content: public abstract int GetDaysInMonth (int year, int month, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.Int32
+      description: The number of days in the specified month in the specified year in the specified era.
+  overload: System.Globalization.Calendar.GetDaysInMonth*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDaysInYear(System.Int32)
+  id: GetDaysInYear(System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDaysInYear(Int32)
+  nameWithType: Calendar.GetDaysInYear(Int32)
+  fullName: System.Globalization.Calendar.GetDaysInYear(Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the number of days in the specified year of the current era.
+  remarks: For example, in <xref:System.Globalization.GregorianCalendar>, GetDaysInYear returns 365 for a common year or 366 for a leap year.
+  example:
+  - "The following code example compares different implementations of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cs[System.Globalization.Calendar_Compare#1](~/add/codesnippet/csharp/m-system.globalization.c_27_1.cs)]\n [!code-vb[System.Globalization.Calendar_Compare#1](~/add/codesnippet/visualbasic/m-system.globalization.c_27_1.vb)]\n [!code-cpp[System.Globalization.Calendar_Compare#1](~/add/codesnippet/cpp/m-system.globalization.c_27_1.cpp)]"
+  syntax:
+    content: public virtual int GetDaysInYear (int year);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    return:
+      type: System.Int32
+      description: The number of days in the specified year in the current era.
+  overload: System.Globalization.Calendar.GetDaysInYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>year</code> is outside the range supported by the calendar.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetDaysInYear(System.Int32,System.Int32)
+  id: GetDaysInYear(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetDaysInYear(Int32,Int32)
+  nameWithType: Calendar.GetDaysInYear(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetDaysInYear(Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the number of days in the specified year and era.
+  remarks: For example, in <xref:System.Globalization.GregorianCalendar>, <xref:System.Globalization.Calendar.GetDaysInYear%2A> returns 365 for a common year or 366 for a leap year.
+  syntax:
+    content: public abstract int GetDaysInYear (int year, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.Int32
+      description: The number of days in the specified year in the specified era.
+  overload: System.Globalization.Calendar.GetDaysInYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetEra(System.DateTime)
+  id: GetEra(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetEra(DateTime)
+  nameWithType: Calendar.GetEra(DateTime)
+  fullName: System.Globalization.Calendar.GetEra(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the era in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_33_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_33_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_33_1.cs)]"
+  syntax:
+    content: public abstract int GetEra (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: An integer that represents the era in <code>time</code>.
+  overload: System.Globalization.Calendar.GetEra*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetHour(System.DateTime)
+  id: GetHour(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetHour(DateTime)
+  nameWithType: Calendar.GetHour(DateTime)
+  fullName: System.Globalization.Calendar.GetHour(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the hours value in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_8_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_8_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_8_1.cs)]"
+  syntax:
+    content: public virtual int GetHour (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: An integer from 0 to 23 that represents the hour in <code>time</code>.
+  overload: System.Globalization.Calendar.GetHour*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetLeapMonth(System.Int32)
+  id: GetLeapMonth(System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetLeapMonth(Int32)
+  nameWithType: Calendar.GetLeapMonth(Int32)
+  fullName: System.Globalization.Calendar.GetLeapMonth(Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Calculates the leap month for a specified year.
+  remarks: In a calendar that supports the notion of a leap month, the leap month can occur either after a particular month or after any month in a year. For example, the <xref:System.Globalization.EastAsianLunisolarCalendar.GetMonth%28System.DateTime%29> method returns a number between 1 and 13 that indicates the month associated with a specified date. If there is a leap month between the eighth and ninth months of the year, the <xref:System.Globalization.EastAsianLunisolarCalendar.GetMonth%28System.DateTime%29> method returns 8 for the eighth month, 9 for the leap eighth month, and 10 for the ninth month.
+  syntax:
+    content: public virtual int GetLeapMonth (int year);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: A year.
+    return:
+      type: System.Int32
+      description: "A positive integer that indicates the leap month in the specified year.  \n  \n -or-  \n  \n Zero if this calendar does not support a leap month or if the <code>year</code> parameter does not represent a leap year."
+  overload: System.Globalization.Calendar.GetLeapMonth*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetLeapMonth(System.Int32,System.Int32)
+  id: GetLeapMonth(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetLeapMonth(Int32,Int32)
+  nameWithType: Calendar.GetLeapMonth(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetLeapMonth(Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Calculates the leap month for a specified year and era.
+  remarks: In a calendar that supports the notion of a leap month, the leap month can occur either after a particular month or after any month in a year. For example, the <xref:System.Globalization.EastAsianLunisolarCalendar.GetMonth%28System.DateTime%29> method returns a number between 1 and 13 that indicates the month associated with a specified date. If there is a leap month between the eighth and ninth months of the year, the <xref:System.Globalization.EastAsianLunisolarCalendar.GetMonth%28System.DateTime%29> method returns 8 for the eighth month, 9 for the leap eighth month, and 10 for the ninth month.
+  syntax:
+    content: public virtual int GetLeapMonth (int year, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: A year.
+    - id: era
+      type: System.Int32
+      description: An era.
+    return:
+      type: System.Int32
+      description: "A positive integer that indicates the leap month in the specified year and era.  \n  \n -or-  \n  \n Zero if this calendar does not support a leap month or if the <code>year</code> and <code>era</code> parameters do not specify a leap year."
+  overload: System.Globalization.Calendar.GetLeapMonth*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetMilliseconds(System.DateTime)
+  id: GetMilliseconds(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetMilliseconds(DateTime)
+  nameWithType: Calendar.GetMilliseconds(DateTime)
+  fullName: System.Globalization.Calendar.GetMilliseconds(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the milliseconds value in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_31_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_31_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_31_1.cs)]"
+  syntax:
+    content: public virtual double GetMilliseconds (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Double
+      description: A double-precision floating-point number from 0 to 999 that represents the milliseconds in the <code>time</code> parameter.
+  overload: System.Globalization.Calendar.GetMilliseconds*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetMinute(System.DateTime)
+  id: GetMinute(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetMinute(DateTime)
+  nameWithType: Calendar.GetMinute(DateTime)
+  fullName: System.Globalization.Calendar.GetMinute(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the minutes value in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_13_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_13_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_13_1.cs)]"
+  syntax:
+    content: public virtual int GetMinute (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: An integer from 0 to 59 that represents the minutes in <code>time</code>.
+  overload: System.Globalization.Calendar.GetMinute*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetMonth(System.DateTime)
+  id: GetMonth(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetMonth(DateTime)
+  nameWithType: Calendar.GetMonth(DateTime)
+  fullName: System.Globalization.Calendar.GetMonth(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the month in the specified <xref href="System.DateTime"></xref>.
+  remarks: For example, in <xref:System.Globalization.HebrewCalendar>, GetMonth for Tishrei returns 1, and GetMonth for Elul returns 12 in a common year or 13 in a leap year.
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_30_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_30_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_30_1.cs)]"
+  syntax:
+    content: public abstract int GetMonth (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: A positive integer that represents the month in <code>time</code>.
+  overload: System.Globalization.Calendar.GetMonth*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetMonthsInYear(System.Int32)
+  id: GetMonthsInYear(System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetMonthsInYear(Int32)
+  nameWithType: Calendar.GetMonthsInYear(Int32)
+  fullName: System.Globalization.Calendar.GetMonthsInYear(Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the number of months in the specified year in the current era.
+  remarks: For example, in <xref:System.Globalization.HebrewCalendar>, GetMonthsInYear returns 12 for a common year or 13 for a leap year.
+  example:
+  - "The following code example compares different implementations of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cs[System.Globalization.Calendar_Compare#1](~/add/codesnippet/csharp/m-system.globalization.c_2_1.cs)]\n [!code-vb[System.Globalization.Calendar_Compare#1](~/add/codesnippet/visualbasic/m-system.globalization.c_2_1.vb)]\n [!code-cpp[System.Globalization.Calendar_Compare#1](~/add/codesnippet/cpp/m-system.globalization.c_2_1.cpp)]"
+  syntax:
+    content: public virtual int GetMonthsInYear (int year);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    return:
+      type: System.Int32
+      description: The number of months in the specified year in the current era.
+  overload: System.Globalization.Calendar.GetMonthsInYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>year</code> is outside the range supported by the calendar.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetMonthsInYear(System.Int32,System.Int32)
+  id: GetMonthsInYear(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetMonthsInYear(Int32,Int32)
+  nameWithType: Calendar.GetMonthsInYear(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetMonthsInYear(Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the number of months in the specified year in the specified era.
+  remarks: For example, in <xref:System.Globalization.HebrewCalendar>, <xref:System.Globalization.Calendar.GetMonthsInYear%2A> returns 12 for a common year or 13 for a leap year.
+  syntax:
+    content: public abstract int GetMonthsInYear (int year, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.Int32
+      description: The number of months in the specified year in the specified era.
+  overload: System.Globalization.Calendar.GetMonthsInYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetSecond(System.DateTime)
+  id: GetSecond(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetSecond(DateTime)
+  nameWithType: Calendar.GetSecond(DateTime)
+  fullName: System.Globalization.Calendar.GetSecond(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the seconds value in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_1_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_1_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_1_1.cs)]"
+  syntax:
+    content: public virtual int GetSecond (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: An integer from 0 to 59 that represents the seconds in <code>time</code>.
+  overload: System.Globalization.Calendar.GetSecond*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetWeekOfYear(System.DateTime,System.Globalization.CalendarWeekRule,System.DayOfWeek)
+  id: GetWeekOfYear(System.DateTime,System.Globalization.CalendarWeekRule,System.DayOfWeek)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetWeekOfYear(DateTime,CalendarWeekRule,DayOfWeek)
+  nameWithType: Calendar.GetWeekOfYear(DateTime,CalendarWeekRule,DayOfWeek)
+  fullName: System.Globalization.Calendar.GetWeekOfYear(DateTime,CalendarWeekRule,DayOfWeek)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns the week of the year that includes the date in the specified <xref href="System.DateTime"></xref> value.
+  remarks: "This method can be used to determine the number of weeks in the year by setting `time` to the last day of the year.  \n  \n The <xref:System.Globalization.DateTimeFormatInfo> object for a particular culture that uses the calendar indicated by the <xref:System.Globalization.DateTimeFormatInfo.Calendar%2A?displayProperty=fullName> property includes the following culture-specific values that can be used for the `rule` and `firstDayOfWeek` parameters:  \n  \n-   The <xref:System.Globalization.DateTimeFormatInfo.FirstDayOfWeek%2A?displayProperty=fullName> property contains the default first day of the week that can be used for the `firstDayOfWeek` parameter.  \n  \n-   The <xref:System.Globalization.DateTimeFormatInfo.CalendarWeekRule%2A?displayProperty=fullName> property contains the default calendar week rule that can be used for the `rule` parameter.  \n  \n The following example uses the current culture's <xref:System.Globalization.DateTimeFormatInfo> object to determine that January 1, 2011 is in the first week of the year in the Gregorian calendar.  \n  \n [!code-vb[System.Globalization.Calendar.GetWeekOfYear#2](~/add/codesnippet/visualbasic/298c1997-8343-4118-a11c-_1.vb)]\n [!code-cs[System.Globalization.Calendar.GetWeekOfYear#2](~/add/codesnippet/csharp/298c1997-8343-4118-a11c-_1.cs)]  \n  \n For some calendars, a call to the GetWeekOfYear method throws an <xref:System.ArgumentOutOfRangeException> for particular combinations of `rule` and `firstDayOfWeek` values even if `time` is greater than the date returned by that calendar's <xref:System.Globalization.Calendar.MinSupportedDateTime%2A> property. The following table lists the affected calendars, the specific `rule` values, and the range of the earliest supported `time` values. The specific minimum <xref:System.DateTime> value depends on the value of the `firstDayOfWeek` parameter.  \n  \n|Calendar|CalendarWeekRule value|Gregorian date (M/dd/yyyy)|Date in calendar (M/dd/yyyy)|  \n|--------------|----------------------------|------------------------------------|--------------------------------------|  \n|<xref:System.Globalization.ChineseLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|2/19/1901 to 2/25/1901|1/1/1901 to 1/7/1901|  \n|<xref:System.Globalization.ChineseLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|2/19/1901 to 2/22/1901|1/01/1901 to 1/04/1901|  \n|<xref:System.Globalization.HebrewCalendar>|<xref:System.Globalization.CalendarWeekRule>|9/17/1583|1/01/5344|  \n|<xref:System.Globalization.HebrewCalendar>|<xref:System.Globalization.CalendarWeekRule>|9/17/1583 to 9/23/1583|1/01/5344 to 1/07/5344|  \n|<xref:System.Globalization.HebrewCalendar>|<xref:System.Globalization.CalendarWeekRule>|9/17/1583 to 9/20/1583|1/01/5344 to 1/04/5344|  \n|<xref:System.Globalization.HijriCalendar>|<xref:System.Globalization.CalendarWeekRule>|7/18/0622 to 7/24/0622|1/01/0001 to 1/07/0001|  \n|<xref:System.Globalization.HijriCalendar>|<xref:System.Globalization.CalendarWeekRule>|7/18/0622 to 7/21/0622|1/01/0001 to 1/04/0001|  \nseLunisolarCalendar](assetId:///T:System.Globalization.JapaneseLunisolarCalendar?qualifyHint=False&autoUpgrade=True)|<xref:System.Globalization.CalendarWeekRule>|1/28/1960 to 2/03/1960|1/01/35 to 1/07/0035|  \n|<xref:System.Globalization.JapaneseLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|1/28/1960 to 1/31/1960|1/01/0035 to 1/04/0035|  \n|<xref:System.Globalization.JulianCalendar>|<xref:System.Globalization.CalendarWeekRule>|1/01/0001 to 1/05/0001|1/03/0001 to 1/07/0001|  \n|<xref:System.Globalization.JulianCalendar>|<xref:System.Globalization.CalendarWeekRule>|1/01/0001 to 1/02/0001|1/03/0001 to 1/04/0001|  \n|<xref:System.Globalization.KoreanLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|2/14/0918 to 2/20/0918|1/01/0918 to 1/07/0918|  \n|<xref:System.Globalization.KoreanLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|2/14/0918 to 2/17/0918|1/01/0918 to 1/04/0918|  \n|<xref:System.Globalization.PersianCalendar>|<xref:System.Globalization.CalendarWeekRule>|3/21/0622 to 3/27/0622|1/01/0001 to 1/07/0001|  \nnCalendar](assetId:///T:System.Globalization.PersianCalendar?qualifyHint=False&autoUpgrade=True)|<xref:System.Globalization.CalendarWeekRule>|3/21/0622 to 3/24/0622|1/01/0001 to 1/04/0001|  \n|<xref:System.Globalization.TaiwanLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|2/18/1912 to 2/24/1912|1/01/0001 to 1/07/0001|  \n|<xref:System.Globalization.TaiwanLunisolarCalendar>|<xref:System.Globalization.CalendarWeekRule>|2/18/1912 to 2/21/1912|1/01/0001 to 1/04/0001|  \n|<xref:System.Globalization.UmAlQuraCalendar>|<xref:System.Globalization.CalendarWeekRule>|4/30/1900 to 5/06/1900|1/01/1318 to 1/07/1318|  \n|<xref:System.Globalization.UmAlQuraCalendar>|<xref:System.Globalization.CalendarWeekRule>|4/30/1900 to 5/03/1900|1/01/1318 to 1/04/1318|"
+  example:
+  - "The following code example shows how the result of GetWeekOfYear varies depending on the <xref:System.Globalization.DateTimeFormatInfo.FirstDayOfWeek%2A> and the <xref:System.Globalization.CalendarWeekRule> used. If the specified date is the last day of the year, GetWeekOfYear returns the total number of weeks in that year.  \n  \n [!code-cs[System.Globalization.Calendar.GetWeekOfYear#1](~/add/codesnippet/csharp/298c1997-8343-4118-a11c-_2.cs)]\n [!code-vb[System.Globalization.Calendar.GetWeekOfYear#1](~/add/codesnippet/visualbasic/298c1997-8343-4118-a11c-_2.vb)]\n [!code-cpp[System.Globalization.Calendar.GetWeekOfYear#1](~/add/codesnippet/cpp/298c1997-8343-4118-a11c-_2.cpp)]"
+  syntax:
+    content: public virtual int GetWeekOfYear (DateTime time, System.Globalization.CalendarWeekRule rule, DayOfWeek firstDayOfWeek);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: A date and time value.
+    - id: rule
+      type: System.Globalization.CalendarWeekRule
+      description: An enumeration value that defines a calendar week.
+    - id: firstDayOfWeek
+      type: System.DayOfWeek
+      description: An enumeration value that represents the first day of the week.
+    return:
+      type: System.Int32
+      description: A positive integer that represents the week of the year that includes the date in the <code>time</code> parameter.
+  overload: System.Globalization.Calendar.GetWeekOfYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>time</code> is earlier than <xref:System.Globalization.Calendar.MinSupportedDateTime*> or later than <xref:System.Globalization.Calendar.MaxSupportedDateTime*>.  \n  \n -or-  \n  \n <code>firstDayOfWeek</code> is not a valid <xref href=\"System.DayOfWeek\"></xref> value.  \n  \n -or-  \n  \n <code>rule</code> is not a valid <xref href=\"System.Globalization.CalendarWeekRule\"></xref> value."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.GetYear(System.DateTime)
+  id: GetYear(System.DateTime)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: GetYear(DateTime)
+  nameWithType: Calendar.GetYear(DateTime)
+  fullName: System.Globalization.Calendar.GetYear(DateTime)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns the year in the specified <xref href="System.DateTime"></xref>.
+  remarks: ''
+  example:
+  - "The following code example demonstrates the members of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cpp[System.Globalization.Calendar#1](~/add/codesnippet/cpp/m-system.globalization.c_18_1.cpp)]\n [!code-vb[System.Globalization.Calendar#1](~/add/codesnippet/visualbasic/m-system.globalization.c_18_1.vb)]\n [!code-cs[System.Globalization.Calendar#1](~/add/codesnippet/csharp/m-system.globalization.c_18_1.cs)]"
+  syntax:
+    content: public abstract int GetYear (DateTime time);
+    parameters:
+    - id: time
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> to read.
+    return:
+      type: System.Int32
+      description: An integer that represents the year in <code>time</code>.
+  overload: System.Globalization.Calendar.GetYear*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsLeapDay(System.Int32,System.Int32,System.Int32)
+  id: IsLeapDay(System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsLeapDay(Int32,Int32,Int32)
+  nameWithType: Calendar.IsLeapDay(Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapDay(Int32,Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Determines whether the specified date in the current era is a leap day.
+  remarks: "To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each <xref:System.Globalization.Calendar> implementation defines leap years differently.  \n  \n A leap day is a day that occurs only in a leap year. For example, in the Gregorian calendar, the 29th day of February is the only leap day."
+  example:
+  - "The following code example compares different implementations of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cs[System.Globalization.Calendar_Compare#1](~/add/codesnippet/csharp/49e8614b-1c8a-4bd6-8257-_1.cs)]\n [!code-vb[System.Globalization.Calendar_Compare#1](~/add/codesnippet/visualbasic/49e8614b-1c8a-4bd6-8257-_1.vb)]\n [!code-cpp[System.Globalization.Calendar_Compare#1](~/add/codesnippet/cpp/49e8614b-1c8a-4bd6-8257-_1.cpp)]"
+  syntax:
+    content: public virtual bool IsLeapDay (int year, int month, int day);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    - id: day
+      type: System.Int32
+      description: A positive integer that represents the day.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified day is a leap day; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsLeapDay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>day</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsLeapDay(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: IsLeapDay(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsLeapDay(Int32,Int32,Int32,Int32)
+  nameWithType: Calendar.IsLeapDay(Int32,Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapDay(Int32,Int32,Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, determines whether the specified date in the specified era is a leap day.
+  remarks: "To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each <xref:System.Globalization.Calendar> implementation defines leap years differently.  \n  \n A leap day is a day that occurs only in a leap year. For example, in the Gregorian calendar, the 29th day of February is the only leap day."
+  syntax:
+    content: public abstract bool IsLeapDay (int year, int month, int day, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    - id: day
+      type: System.Int32
+      description: A positive integer that represents the day.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified day is a leap day; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsLeapDay*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>day</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsLeapMonth(System.Int32,System.Int32)
+  id: IsLeapMonth(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsLeapMonth(Int32,Int32)
+  nameWithType: Calendar.IsLeapMonth(Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapMonth(Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Determines whether the specified month in the specified year in the current era is a leap month.
+  remarks: "To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each <xref:System.Globalization.Calendar> implementation defines leap years differently.  \n  \n A leap month is an entire month that occurs only in a leap year. For example, in the Hebrew calendar, Adar Beit is the only leap month."
+  example:
+  - "The following code example compares different implementations of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cs[System.Globalization.Calendar_Compare#1](~/add/codesnippet/csharp/m-system.globalization.c_45_1.cs)]\n [!code-vb[System.Globalization.Calendar_Compare#1](~/add/codesnippet/visualbasic/m-system.globalization.c_45_1.vb)]\n [!code-cpp[System.Globalization.Calendar_Compare#1](~/add/codesnippet/cpp/m-system.globalization.c_45_1.cpp)]"
+  syntax:
+    content: public virtual bool IsLeapMonth (int year, int month);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified month is a leap month; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsLeapMonth*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsLeapMonth(System.Int32,System.Int32,System.Int32)
+  id: IsLeapMonth(System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsLeapMonth(Int32,Int32,Int32)
+  nameWithType: Calendar.IsLeapMonth(Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapMonth(Int32,Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, determines whether the specified month in the specified year in the specified era is a leap month.
+  remarks: "To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each <xref:System.Globalization.Calendar> implementation defines leap years differently.  \n  \n A leap month is an entire month that occurs only in a leap year. For example, in the Hebrew calendar, Adar Beit is the only leap month."
+  syntax:
+    content: public abstract bool IsLeapMonth (int year, int month, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified month is a leap month; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsLeapMonth*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsLeapYear(System.Int32)
+  id: IsLeapYear(System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsLeapYear(Int32)
+  nameWithType: Calendar.IsLeapYear(Int32)
+  fullName: System.Globalization.Calendar.IsLeapYear(Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Determines whether the specified year in the current era is a leap year.
+  remarks: To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each <xref:System.Globalization.Calendar> implementation defines leap years differently.
+  example:
+  - "The following code example compares different implementations of the <xref:System.Globalization.Calendar> class.  \n  \n [!code-cs[System.Globalization.Calendar_Compare#1](~/add/codesnippet/csharp/m-system.globalization.c_25_1.cs)]\n [!code-vb[System.Globalization.Calendar_Compare#1](~/add/codesnippet/visualbasic/m-system.globalization.c_25_1.vb)]\n [!code-cpp[System.Globalization.Calendar_Compare#1](~/add/codesnippet/cpp/m-system.globalization.c_25_1.cpp)]"
+  syntax:
+    content: public virtual bool IsLeapYear (int year);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified year is a leap year; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsLeapYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>year</code> is outside the range supported by the calendar.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsLeapYear(System.Int32,System.Int32)
+  id: IsLeapYear(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsLeapYear(Int32,Int32)
+  nameWithType: Calendar.IsLeapYear(Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapYear(Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, determines whether the specified year in the specified era is a leap year.
+  remarks: To make up for the difference between the calendar year and the actual time that the earth rotates around the sun or the actual time that the moon rotates around the earth, a leap year has a different number of days from a standard calendar year. Each <xref:System.Globalization.Calendar> implementation defines leap years differently.
+  syntax:
+    content: public abstract bool IsLeapYear (int year, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified year is a leap year; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsLeapYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.IsReadOnly
+  id: IsReadOnly
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: IsReadOnly
+  nameWithType: Calendar.IsReadOnly
+  fullName: System.Globalization.Calendar.IsReadOnly
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Gets a value indicating whether this <xref href="System.Globalization.Calendar"></xref> object is read-only.
+  syntax:
+    content: public bool IsReadOnly { get; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this <xref href="System.Globalization.Calendar"></xref> object is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Globalization.Calendar.IsReadOnly*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.MaxSupportedDateTime
+  id: MaxSupportedDateTime
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: MaxSupportedDateTime
+  nameWithType: Calendar.MaxSupportedDateTime
+  fullName: System.Globalization.Calendar.MaxSupportedDateTime
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Gets the latest date and time supported by this <xref href="System.Globalization.Calendar"></xref> object.
+  syntax:
+    content: public virtual DateTime MaxSupportedDateTime { get; }
+    return:
+      type: System.DateTime
+      description: The latest date and time supported by this calendar. The default is <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.MaxSupportedDateTime*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.MinSupportedDateTime
+  id: MinSupportedDateTime
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: MinSupportedDateTime
+  nameWithType: Calendar.MinSupportedDateTime
+  fullName: System.Globalization.Calendar.MinSupportedDateTime
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Gets the earliest date and time supported by this <xref href="System.Globalization.Calendar"></xref> object.
+  syntax:
+    content: public virtual DateTime MinSupportedDateTime { get; }
+    return:
+      type: System.DateTime
+      description: The earliest date and time supported by this calendar. The default is <xref href="System.DateTime"></xref>.
+  overload: System.Globalization.Calendar.MinSupportedDateTime*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.ReadOnly(System.Globalization.Calendar)
+  id: ReadOnly(System.Globalization.Calendar)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: ReadOnly(Calendar)
+  nameWithType: Calendar.ReadOnly(Calendar)
+  fullName: System.Globalization.Calendar.ReadOnly(Calendar)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a read-only version of the specified <xref href="System.Globalization.Calendar"></xref> object.
+  syntax:
+    content: public static System.Globalization.Calendar ReadOnly (System.Globalization.Calendar calendar);
+    parameters:
+    - id: calendar
+      type: System.Globalization.Calendar
+      description: A <xref href="System.Globalization.Calendar"></xref> object.
+    return:
+      type: System.Globalization.Calendar
+      description: "The <xref href=\"System.Globalization.Calendar\"></xref> object specified by the <code>calendar</code> parameter, if <code>calendar</code> is read-only.  \n  \n -or-  \n  \n A read-only memberwise clone of the <xref href=\"System.Globalization.Calendar\"></xref> object specified by <code>calendar</code>, if <code>calendar</code> is not read-only."
+  overload: System.Globalization.Calendar.ReadOnly*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>calendar</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  id: ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  nameWithType: Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Returns a <xref href="System.DateTime"></xref> that is set to the specified date and time in the current era.
+  syntax:
+    content: public virtual DateTime ToDateTime (int year, int month, int day, int hour, int minute, int second, int millisecond);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    - id: day
+      type: System.Int32
+      description: A positive integer that represents the day.
+    - id: hour
+      type: System.Int32
+      description: An integer from 0 to 23 that represents the hour.
+    - id: minute
+      type: System.Int32
+      description: An integer from 0 to 59 that represents the minute.
+    - id: second
+      type: System.Int32
+      description: An integer from 0 to 59 that represents the second.
+    - id: millisecond
+      type: System.Int32
+      description: An integer from 0 to 999 that represents the millisecond.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that is set to the specified date and time in the current era.
+  overload: System.Globalization.Calendar.ToDateTime*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>day</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>hour</code> is less than zero or greater than 23.  \n  \n -or-  \n  \n <code>minute</code> is less than zero or greater than 59.  \n  \n -or-  \n  \n <code>second</code> is less than zero or greater than 59.  \n  \n -or-  \n  \n <code>millisecond</code> is less than zero or greater than 999."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  id: ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  nameWithType: Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: When overridden in a derived class, returns a <xref href="System.DateTime"></xref> that is set to the specified date and time in the specified era.
+  remarks: The ToDateTime method is useful because it can convert any date in the current calendar to a Gregorian calendar date. The Gregorian date can subsequently be used, for example, to compare dates in different calendars or create an equivalent date in a particular calendar.
+  syntax:
+    content: public abstract DateTime ToDateTime (int year, int month, int day, int hour, int minute, int second, int millisecond, int era);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: An integer that represents the year.
+    - id: month
+      type: System.Int32
+      description: A positive integer that represents the month.
+    - id: day
+      type: System.Int32
+      description: A positive integer that represents the day.
+    - id: hour
+      type: System.Int32
+      description: An integer from 0 to 23 that represents the hour.
+    - id: minute
+      type: System.Int32
+      description: An integer from 0 to 59 that represents the minute.
+    - id: second
+      type: System.Int32
+      description: An integer from 0 to 59 that represents the second.
+    - id: millisecond
+      type: System.Int32
+      description: An integer from 0 to 999 that represents the millisecond.
+    - id: era
+      type: System.Int32
+      description: An integer that represents the era.
+    return:
+      type: System.DateTime
+      description: The <xref href="System.DateTime"></xref> that is set to the specified date and time in the current era.
+  overload: System.Globalization.Calendar.ToDateTime*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "<code>year</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>month</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>day</code> is outside the range supported by the calendar.  \n  \n -or-  \n  \n <code>hour</code> is less than zero or greater than 23.  \n  \n -or-  \n  \n <code>minute</code> is less than zero or greater than 59.  \n  \n -or-  \n  \n <code>second</code> is less than zero or greater than 59.  \n  \n -or-  \n  \n <code>millisecond</code> is less than zero or greater than 999.  \n  \n -or-  \n  \n <code>era</code> is outside the range supported by the calendar."
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.ToFourDigitYear(System.Int32)
+  id: ToFourDigitYear(System.Int32)
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: ToFourDigitYear(Int32)
+  nameWithType: Calendar.ToFourDigitYear(Int32)
+  fullName: System.Globalization.Calendar.ToFourDigitYear(Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Converts the specified year to a four-digit year by using the <xref:System.Globalization.Calendar.TwoDigitYearMax*> property to determine the appropriate century.
+  remarks: "<xref:System.Globalization.Calendar.TwoDigitYearMax%2A> is the last year in the 100-year range that can be represented by a two-digit year. The century is determined by finding the sole occurrence of the two-digit `year` within that 100-year range. For example, if <xref:System.Globalization.Calendar.TwoDigitYearMax%2A> is set to 2029, the 100-year range is from 1930 to 2029. Therefore, a 2-digit value of 30 is interpreted as 1930, while a 2-digit value of 29 is interpreted as 2029.  \n  \n If `year` is greater than or equal to 100, the value of `year` is returned unchanged.  \n  \n ToFourDigitYear supports either a two-digit year or a four-digit year. Passing a two-digit year value (less than 100) causes the method to convert the value to a four-digit value according to the <xref:System.Globalization.Calendar.TwoDigitYearMax%2A> value representing the appropriate century. If the application supplies a four-digit year value that is within the supported calendar range to ToFourDigitYear, the method returns the actual input value. If the application supplies a four-digit value that is outside the supported calendar range, or if it supplies a negative value, the method throws an exception."
+  syntax:
+    content: public virtual int ToFourDigitYear (int year);
+    parameters:
+    - id: year
+      type: System.Int32
+      description: A two-digit or four-digit integer that represents the year to convert.
+    return:
+      type: System.Int32
+      description: An integer that contains the four-digit representation of <code>year</code>.
+  overload: System.Globalization.Calendar.ToFourDigitYear*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>year</code> is outside the range supported by the calendar.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Globalization.Calendar.TwoDigitYearMax
+  id: TwoDigitYearMax
+  parent: System.Globalization.Calendar
+  langs:
+  - csharp
+  name: TwoDigitYearMax
+  nameWithType: Calendar.TwoDigitYearMax
+  fullName: System.Globalization.Calendar.TwoDigitYearMax
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Globalization
+  summary: Gets or sets the last year of a 100-year range that can be represented by a 2-digit year.
+  remarks: "This property allows a 2-digit year to be properly translated to a 4-digit year. For example, if this property is set to 2029, the 100-year range is from 1930 to 2029. Therefore, a 2-digit value of 30 is interpreted as 1930, while a 2-digit value of 29 is interpreted as 2029.  \n  \n The initial value of this property is derived from the settings in the regional and language options portion of Control Panel. However, that information can change during the life of the <xref:System.AppDomain>. The <xref:System.Globalization.Calendar> class does not detect changes in the system settings automatically. If the calendar is not supported in the regional and language options, the initial value of this property is the default value defined by the <xref:System.Globalization.Calendar> class.  \n  \n Your application should set this value to 99 to indicate that 2-digit years are to be taken literally. For example, if this property is set to 99, the 100-year range is from 0 (not a valid value for most calendars) to 99. Therefore, a 2-digit value of 30 is interpreted as 30."
+  syntax:
+    content: public virtual int TwoDigitYearMax { get; set; }
+    return:
+      type: System.Int32
+      description: The last year of a 100-year range that can be represented by a 2-digit year.
+  overload: System.Globalization.Calendar.TwoDigitYearMax*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The current <xref href="System.Globalization.Calendar"></xref> object is read-only.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Globalization.Calendar.#ctor
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: Calendar()
+  nameWithType: Calendar.Calendar()
+  fullName: System.Globalization.Calendar.Calendar()
+- uid: System.Globalization.Calendar.AddDays(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddDays(DateTime,Int32)
+  nameWithType: Calendar.AddDays(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddDays(DateTime,Int32)
+- uid: System.DateTime
+  parent: System
+  isExternal: false
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Globalization.Calendar.AddHours(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddHours(DateTime,Int32)
+  nameWithType: Calendar.AddHours(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddHours(DateTime,Int32)
+- uid: System.Globalization.Calendar.AddMilliseconds(System.DateTime,System.Double)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddMilliseconds(DateTime,Double)
+  nameWithType: Calendar.AddMilliseconds(DateTime,Double)
+  fullName: System.Globalization.Calendar.AddMilliseconds(DateTime,Double)
+- uid: System.Double
+  parent: System
+  isExternal: false
+  name: Double
+  nameWithType: Double
+  fullName: System.Double
+- uid: System.Globalization.Calendar.AddMinutes(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddMinutes(DateTime,Int32)
+  nameWithType: Calendar.AddMinutes(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddMinutes(DateTime,Int32)
+- uid: System.Globalization.Calendar.AddMonths(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddMonths(DateTime,Int32)
+  nameWithType: Calendar.AddMonths(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddMonths(DateTime,Int32)
+- uid: System.Globalization.Calendar.AddSeconds(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddSeconds(DateTime,Int32)
+  nameWithType: Calendar.AddSeconds(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddSeconds(DateTime,Int32)
+- uid: System.Globalization.Calendar.AddWeeks(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddWeeks(DateTime,Int32)
+  nameWithType: Calendar.AddWeeks(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddWeeks(DateTime,Int32)
+- uid: System.Globalization.Calendar.AddYears(System.DateTime,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddYears(DateTime,Int32)
+  nameWithType: Calendar.AddYears(DateTime,Int32)
+  fullName: System.Globalization.Calendar.AddYears(DateTime,Int32)
+- uid: System.Globalization.Calendar.AlgorithmType
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AlgorithmType
+  nameWithType: Calendar.AlgorithmType
+  fullName: System.Globalization.Calendar.AlgorithmType
+- uid: System.Globalization.CalendarAlgorithmType
+  parent: System.Globalization
+  isExternal: false
+  name: CalendarAlgorithmType
+  nameWithType: CalendarAlgorithmType
+  fullName: System.Globalization.CalendarAlgorithmType
+- uid: System.Globalization.Calendar.Clone
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: Clone()
+  nameWithType: Calendar.Clone()
+  fullName: System.Globalization.Calendar.Clone()
+- uid: System.Globalization.Calendar.CurrentEra
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: CurrentEra
+  nameWithType: Calendar.CurrentEra
+  fullName: System.Globalization.Calendar.CurrentEra
+- uid: System.Globalization.Calendar.Eras
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: Eras
+  nameWithType: Calendar.Eras
+  fullName: System.Globalization.Calendar.Eras
+- uid: System.Int32[]
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32[]
+  spec.csharp:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: Int32[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Globalization.Calendar.GetDayOfMonth(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDayOfMonth(DateTime)
+  nameWithType: Calendar.GetDayOfMonth(DateTime)
+  fullName: System.Globalization.Calendar.GetDayOfMonth(DateTime)
+- uid: System.Globalization.Calendar.GetDayOfWeek(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDayOfWeek(DateTime)
+  nameWithType: Calendar.GetDayOfWeek(DateTime)
+  fullName: System.Globalization.Calendar.GetDayOfWeek(DateTime)
+- uid: System.DayOfWeek
+  parent: System
+  isExternal: false
+  name: DayOfWeek
+  nameWithType: DayOfWeek
+  fullName: System.DayOfWeek
+- uid: System.Globalization.Calendar.GetDayOfYear(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDayOfYear(DateTime)
+  nameWithType: Calendar.GetDayOfYear(DateTime)
+  fullName: System.Globalization.Calendar.GetDayOfYear(DateTime)
+- uid: System.Globalization.Calendar.GetDaysInMonth(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDaysInMonth(Int32,Int32)
+  nameWithType: Calendar.GetDaysInMonth(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetDaysInMonth(Int32,Int32)
+- uid: System.Globalization.Calendar.GetDaysInMonth(System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDaysInMonth(Int32,Int32,Int32)
+  nameWithType: Calendar.GetDaysInMonth(Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.GetDaysInMonth(Int32,Int32,Int32)
+- uid: System.Globalization.Calendar.GetDaysInYear(System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDaysInYear(Int32)
+  nameWithType: Calendar.GetDaysInYear(Int32)
+  fullName: System.Globalization.Calendar.GetDaysInYear(Int32)
+- uid: System.Globalization.Calendar.GetDaysInYear(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDaysInYear(Int32,Int32)
+  nameWithType: Calendar.GetDaysInYear(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetDaysInYear(Int32,Int32)
+- uid: System.Globalization.Calendar.GetEra(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetEra(DateTime)
+  nameWithType: Calendar.GetEra(DateTime)
+  fullName: System.Globalization.Calendar.GetEra(DateTime)
+- uid: System.Globalization.Calendar.GetHour(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetHour(DateTime)
+  nameWithType: Calendar.GetHour(DateTime)
+  fullName: System.Globalization.Calendar.GetHour(DateTime)
+- uid: System.Globalization.Calendar.GetLeapMonth(System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetLeapMonth(Int32)
+  nameWithType: Calendar.GetLeapMonth(Int32)
+  fullName: System.Globalization.Calendar.GetLeapMonth(Int32)
+- uid: System.Globalization.Calendar.GetLeapMonth(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetLeapMonth(Int32,Int32)
+  nameWithType: Calendar.GetLeapMonth(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetLeapMonth(Int32,Int32)
+- uid: System.Globalization.Calendar.GetMilliseconds(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMilliseconds(DateTime)
+  nameWithType: Calendar.GetMilliseconds(DateTime)
+  fullName: System.Globalization.Calendar.GetMilliseconds(DateTime)
+- uid: System.Globalization.Calendar.GetMinute(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMinute(DateTime)
+  nameWithType: Calendar.GetMinute(DateTime)
+  fullName: System.Globalization.Calendar.GetMinute(DateTime)
+- uid: System.Globalization.Calendar.GetMonth(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMonth(DateTime)
+  nameWithType: Calendar.GetMonth(DateTime)
+  fullName: System.Globalization.Calendar.GetMonth(DateTime)
+- uid: System.Globalization.Calendar.GetMonthsInYear(System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMonthsInYear(Int32)
+  nameWithType: Calendar.GetMonthsInYear(Int32)
+  fullName: System.Globalization.Calendar.GetMonthsInYear(Int32)
+- uid: System.Globalization.Calendar.GetMonthsInYear(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMonthsInYear(Int32,Int32)
+  nameWithType: Calendar.GetMonthsInYear(Int32,Int32)
+  fullName: System.Globalization.Calendar.GetMonthsInYear(Int32,Int32)
+- uid: System.Globalization.Calendar.GetSecond(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetSecond(DateTime)
+  nameWithType: Calendar.GetSecond(DateTime)
+  fullName: System.Globalization.Calendar.GetSecond(DateTime)
+- uid: System.Globalization.Calendar.GetWeekOfYear(System.DateTime,System.Globalization.CalendarWeekRule,System.DayOfWeek)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetWeekOfYear(DateTime,CalendarWeekRule,DayOfWeek)
+  nameWithType: Calendar.GetWeekOfYear(DateTime,CalendarWeekRule,DayOfWeek)
+  fullName: System.Globalization.Calendar.GetWeekOfYear(DateTime,CalendarWeekRule,DayOfWeek)
+- uid: System.Globalization.CalendarWeekRule
+  parent: System.Globalization
+  isExternal: false
+  name: CalendarWeekRule
+  nameWithType: CalendarWeekRule
+  fullName: System.Globalization.CalendarWeekRule
+- uid: System.Globalization.Calendar.GetYear(System.DateTime)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetYear(DateTime)
+  nameWithType: Calendar.GetYear(DateTime)
+  fullName: System.Globalization.Calendar.GetYear(DateTime)
+- uid: System.Globalization.Calendar.IsLeapDay(System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapDay(Int32,Int32,Int32)
+  nameWithType: Calendar.IsLeapDay(Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapDay(Int32,Int32,Int32)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Globalization.Calendar.IsLeapDay(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapDay(Int32,Int32,Int32,Int32)
+  nameWithType: Calendar.IsLeapDay(Int32,Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapDay(Int32,Int32,Int32,Int32)
+- uid: System.Globalization.Calendar.IsLeapMonth(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapMonth(Int32,Int32)
+  nameWithType: Calendar.IsLeapMonth(Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapMonth(Int32,Int32)
+- uid: System.Globalization.Calendar.IsLeapMonth(System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapMonth(Int32,Int32,Int32)
+  nameWithType: Calendar.IsLeapMonth(Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapMonth(Int32,Int32,Int32)
+- uid: System.Globalization.Calendar.IsLeapYear(System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapYear(Int32)
+  nameWithType: Calendar.IsLeapYear(Int32)
+  fullName: System.Globalization.Calendar.IsLeapYear(Int32)
+- uid: System.Globalization.Calendar.IsLeapYear(System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapYear(Int32,Int32)
+  nameWithType: Calendar.IsLeapYear(Int32,Int32)
+  fullName: System.Globalization.Calendar.IsLeapYear(Int32,Int32)
+- uid: System.Globalization.Calendar.IsReadOnly
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: Calendar.IsReadOnly
+  fullName: System.Globalization.Calendar.IsReadOnly
+- uid: System.Globalization.Calendar.MaxSupportedDateTime
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: MaxSupportedDateTime
+  nameWithType: Calendar.MaxSupportedDateTime
+  fullName: System.Globalization.Calendar.MaxSupportedDateTime
+- uid: System.Globalization.Calendar.MinSupportedDateTime
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: MinSupportedDateTime
+  nameWithType: Calendar.MinSupportedDateTime
+  fullName: System.Globalization.Calendar.MinSupportedDateTime
+- uid: System.Globalization.Calendar.ReadOnly(System.Globalization.Calendar)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ReadOnly(Calendar)
+  nameWithType: Calendar.ReadOnly(Calendar)
+  fullName: System.Globalization.Calendar.ReadOnly(Calendar)
+- uid: System.Globalization.Calendar
+  parent: System.Globalization
+  isExternal: false
+  name: Calendar
+  nameWithType: Calendar
+  fullName: System.Globalization.Calendar
+- uid: System.Globalization.Calendar.ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  nameWithType: Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+- uid: System.Globalization.Calendar.ToDateTime(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  nameWithType: Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+  fullName: System.Globalization.Calendar.ToDateTime(Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32)
+- uid: System.Globalization.Calendar.ToFourDigitYear(System.Int32)
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ToFourDigitYear(Int32)
+  nameWithType: Calendar.ToFourDigitYear(Int32)
+  fullName: System.Globalization.Calendar.ToFourDigitYear(Int32)
+- uid: System.Globalization.Calendar.TwoDigitYearMax
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: TwoDigitYearMax
+  nameWithType: Calendar.TwoDigitYearMax
+  fullName: System.Globalization.Calendar.TwoDigitYearMax
+- uid: System.Globalization.Calendar.#ctor*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: Calendar
+  nameWithType: Calendar.Calendar
+- uid: System.Globalization.Calendar.AddDays*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddDays
+  nameWithType: Calendar.AddDays
+- uid: System.Globalization.Calendar.AddHours*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddHours
+  nameWithType: Calendar.AddHours
+- uid: System.Globalization.Calendar.AddMilliseconds*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddMilliseconds
+  nameWithType: Calendar.AddMilliseconds
+- uid: System.Globalization.Calendar.AddMinutes*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddMinutes
+  nameWithType: Calendar.AddMinutes
+- uid: System.Globalization.Calendar.AddMonths*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddMonths
+  nameWithType: Calendar.AddMonths
+- uid: System.Globalization.Calendar.AddSeconds*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddSeconds
+  nameWithType: Calendar.AddSeconds
+- uid: System.Globalization.Calendar.AddWeeks*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddWeeks
+  nameWithType: Calendar.AddWeeks
+- uid: System.Globalization.Calendar.AddYears*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AddYears
+  nameWithType: Calendar.AddYears
+- uid: System.Globalization.Calendar.AlgorithmType*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: AlgorithmType
+  nameWithType: Calendar.AlgorithmType
+- uid: System.Globalization.Calendar.Clone*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: Clone
+  nameWithType: Calendar.Clone
+- uid: System.Globalization.Calendar.Eras*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: Eras
+  nameWithType: Calendar.Eras
+- uid: System.Globalization.Calendar.GetDayOfMonth*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDayOfMonth
+  nameWithType: Calendar.GetDayOfMonth
+- uid: System.Globalization.Calendar.GetDayOfWeek*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDayOfWeek
+  nameWithType: Calendar.GetDayOfWeek
+- uid: System.Globalization.Calendar.GetDayOfYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDayOfYear
+  nameWithType: Calendar.GetDayOfYear
+- uid: System.Globalization.Calendar.GetDaysInMonth*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDaysInMonth
+  nameWithType: Calendar.GetDaysInMonth
+- uid: System.Globalization.Calendar.GetDaysInYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetDaysInYear
+  nameWithType: Calendar.GetDaysInYear
+- uid: System.Globalization.Calendar.GetEra*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetEra
+  nameWithType: Calendar.GetEra
+- uid: System.Globalization.Calendar.GetHour*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetHour
+  nameWithType: Calendar.GetHour
+- uid: System.Globalization.Calendar.GetLeapMonth*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetLeapMonth
+  nameWithType: Calendar.GetLeapMonth
+- uid: System.Globalization.Calendar.GetMilliseconds*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMilliseconds
+  nameWithType: Calendar.GetMilliseconds
+- uid: System.Globalization.Calendar.GetMinute*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMinute
+  nameWithType: Calendar.GetMinute
+- uid: System.Globalization.Calendar.GetMonth*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMonth
+  nameWithType: Calendar.GetMonth
+- uid: System.Globalization.Calendar.GetMonthsInYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetMonthsInYear
+  nameWithType: Calendar.GetMonthsInYear
+- uid: System.Globalization.Calendar.GetSecond*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetSecond
+  nameWithType: Calendar.GetSecond
+- uid: System.Globalization.Calendar.GetWeekOfYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetWeekOfYear
+  nameWithType: Calendar.GetWeekOfYear
+- uid: System.Globalization.Calendar.GetYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: GetYear
+  nameWithType: Calendar.GetYear
+- uid: System.Globalization.Calendar.IsLeapDay*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapDay
+  nameWithType: Calendar.IsLeapDay
+- uid: System.Globalization.Calendar.IsLeapMonth*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapMonth
+  nameWithType: Calendar.IsLeapMonth
+- uid: System.Globalization.Calendar.IsLeapYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsLeapYear
+  nameWithType: Calendar.IsLeapYear
+- uid: System.Globalization.Calendar.IsReadOnly*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: IsReadOnly
+  nameWithType: Calendar.IsReadOnly
+- uid: System.Globalization.Calendar.MaxSupportedDateTime*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: MaxSupportedDateTime
+  nameWithType: Calendar.MaxSupportedDateTime
+- uid: System.Globalization.Calendar.MinSupportedDateTime*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: MinSupportedDateTime
+  nameWithType: Calendar.MinSupportedDateTime
+- uid: System.Globalization.Calendar.ReadOnly*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ReadOnly
+  nameWithType: Calendar.ReadOnly
+- uid: System.Globalization.Calendar.ToDateTime*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ToDateTime
+  nameWithType: Calendar.ToDateTime
+- uid: System.Globalization.Calendar.ToFourDigitYear*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: ToFourDigitYear
+  nameWithType: Calendar.ToFourDigitYear
+- uid: System.Globalization.Calendar.TwoDigitYearMax*
+  parent: System.Globalization.Calendar
+  isExternal: false
+  name: TwoDigitYearMax
+  nameWithType: Calendar.TwoDigitYearMax

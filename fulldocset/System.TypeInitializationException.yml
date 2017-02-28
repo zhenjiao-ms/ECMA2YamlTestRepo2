@@ -1,0 +1,194 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.TypeInitializationException
+  id: TypeInitializationException
+  children:
+  - System.TypeInitializationException.#ctor(System.String,System.Exception)
+  - System.TypeInitializationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - System.TypeInitializationException.TypeName
+  langs:
+  - csharp
+  name: TypeInitializationException
+  nameWithType: TypeInitializationException
+  fullName: System.TypeInitializationException
+  type: Class
+  summary: The exception that is thrown as a wrapper around the exception thrown by the class initializer. This class cannot be inherited.
+  remarks: "When a class initializer fails to initialize a type, a TypeInitializationException is created and passed a reference to the exception thrown by the type's class initializer. The <xref:System.Exception.InnerException%2A> property of TypeInitializationException holds the underlying exception.  \n  \n Typically, the TypeInitializationException exception reflects a catastrophic condition (the runtime is unable to instantiate a type) that prevents an application from continuing.  Most commonly, the TypeInitializationException is thrown in response to some change in the executing environment of the application. Consequently, other than possibly for troubleshooting debug code, the exception should not be handled in a `try`/`catch` block. Instead, the cause of the exception should be investigated and eliminated.  \n  \n TypeInitializationException uses the HRESULT COR_E_TYPEINITIALIZATION, which has the value 0x80131534.  \n  \n For a list of initial property values for an instance of TypeInitializationException, see the <xref:System.TypeInitializationException.%23ctor%2A> constructors.  \n  \n The following sections describe some of the situations in which a TypeInitializationException exception is thrown.  \n  \n [Static constructors and the TypeInitializationException exception](#Static)   \n [Regular expression match timeout values](#Timeout)   \n [Calendars and cultural data](#Calendars)  \n  \n<a name=\"Static\"></a>   \n## Static constructors and the TypeInitializationException exception  \n A static constructor, if one exists, is called automatically by the runtime before creating a new instance of a type. Static constructors can be explicitly defined by a developer. If a static  constructor is not explicitly defined, compilers automatically create one to initialize any `static` (in C#) or `Shared` (in Visual Basic) members of the type.  For more information on static constructors, see [Static Constructors](~/add/includes/ajax-current-ext-md.md).  \n  \n Most commonly, a TypeInitializationException exception is thrown when a static constructor is unable to instantiate a type.  The <xref:System.Exception.InnerException%2A> property indicates why the static constructor was unable to instantiate the type. Some of the more common causes of a TypeInitializationException exception are:  \n  \n An unhandled exception in a static constructor  \n If an exception is thrown in a static constructor, that exception is wrapped in a TypeInitializationException exception, and the type cannot be instantiated.  \n  \n What often makes this exception difficult to troubleshoot is that static constructors are not always explicitly defined in source code. A static constructor exists in a type if:  \n  \n-   It has been explicitly defined as a member of a type.  \n  \n-   The type has  `static` (in C#) or `Shared` (in Visual Basic) variables that are declared and initialized in a single statement. In this case, the language compiler generates a static constructor for the type. You can inspect it by using a utility such as [IL Disassembler](~/add/includes/ajax-current-ext-md.md). For instance, when the C# and VB compilers compile the following example, they generate the IL for a static constructor that is similar to this:  \n  \n    ```  \n  \n    .method private specialname rtspecialname static   \n            void  .cctor() cil managed  \n    {  \n      // Code size       12 (0xc)  \n      .maxstack  8  \n      IL_0000:  ldc.i4.3  \n      IL_0001:  newobj     instance void TestClass::.ctor(int32)  \n      IL_0006:  stsfld     class TestClass Example::test  \n      IL_000b:  ret  \n    } // end of method Example::.cctor  \n  \n    ```  \n  \n The following example shows a TypeInitializationException exception thrown by a compiler-generated static constructor. The `Example` class includes a `static` (in C#) or `Shared` (in Visual Basic) field of type `TestClass` that is instantiated by passing a value of 3 to its class constructor.  That value, however, is illegal; only values of 0 or 1 are permitted. As a result, the `TestClass` class constructor throws an <xref:System.ArgumentOutOfRangeException>. Since this exception is not handled, it is wrapped in a TypeInitializationException exception.  \n  \n [!code-cs[System.TypeInitializationException#3](~/add/codesnippet/csharp/t-system.typeinitializat_1.cs)]\n [!code-vb[System.TypeInitializationException#3](~/add/codesnippet/visualbasic/t-system.typeinitializat_1.vb)]  \n  \n Note that the exception message displays information about the <xref:System.Exception.InnerException%2A> property.  \n  \n A missing assembly or data file  \n A common cause of a TypeInitializationException exception is that an assembly or data file that was present in an application's development and test environments is missing from its runtime environment. For example, you can compile the following example to an assembly named Missing1a.dll by using the this command-line syntax:  \n  \n```c#  \ncsc /t:library Missing1a.cs  \n```  \n  \n```vb  \nvbc Missing1a.vb /t:library  \n```  \n  \n [!code-cs[System.TypeInitializationException#1](~/add/codesnippet/csharp/t-system.typeinitializat_2.cs)]\n [!code-vb[System.TypeInitializationException#1](~/add/codesnippet/visualbasic/t-system.typeinitializat_2.vb)]  \n  \n You can then compile the following example to an executable named Missing1.exe by including a reference to Missing1a.dll:  \n  \n```c#  \ncsc Missing1.cs /r:Missing1a.dll  \n```  \n  \n```vb  \nvbc Missing1.vb /r:Missing1a.dll  \n```  \n  \n However, if you rename, move, or delete Missing1a.dll and run the example, it throws a TypeInitializationException exception and displays the output shown in the example.  Note that the exception message includes information about the <xref:System.Exception.InnerException%2A> property. In this case,  the inner exception is a <xref:System.IO.FileNotFoundException> that is thrown because the runtime cannot find the dependent assembly.  \n  \n [!code-cs[System.TypeInitializationException#2](~/add/codesnippet/csharp/t-system.typeinitializat_3.cs)]\n [!code-vb[System.TypeInitializationException#2](~/add/codesnippet/visualbasic/t-system.typeinitializat_3.vb)]  \n  \n> [!NOTE]\n>  In this example, a TypeInitializationException exception was thrown because an assembly could not be loaded. The exception can also be thrown if a static constructor attempts to open a data file, such as a configuration file, an XML file, or a file containing serialized data, that it cannot find.  \n  \n<a name=\"Timeout\"></a>   \n## Regular expression match timeout values  \n You can set the default timeout value for a regular expression pattern matching operation on a per-application domain basis. The timeout is defined by a specifying a <xref:System.TimeSpan> value for the \"REGEX_DEFAULT_MATCH_TIMEOUT\" property to the  <xref:System.AppDomain.SetData%2A?displayProperty=fullName> method. The time interval must be a valid <xref:System.TimeSpan> object that is greater than zero and less than approximately 24 days. If these requirements are not met, the attempt to set the default timeout value throws an <xref:System.ArgumentOutOfRangeException>, which in turn is wrapped in a TypeInitializationException exception.  \n  \n The following example shows the TypeInitializationException that is thrown when the value assigned to the \"REGEX_DEFAULT_MATCH_TIMEOUT\" property is invalid. To eliminate the exception, set the\"REGEX_DEFAULT_MATCH_TIMEOUT\" property to a  <xref:System.TimeSpan> value that is greater than zero and less than approximately 24 days.  \n  \n [!code-cs[System.TypeInitializationException#4](~/add/codesnippet/csharp/t-system.typeinitializat_4.cs)]\n [!code-vb[System.TypeInitializationException#4](~/add/codesnippet/visualbasic/t-system.typeinitializat_4.vb)]  \n  \n<a name=\"Calendars\"></a>   \n## Calendars and cultural data  \n If you attempt to instantiate a calendar but the runtime is unable to instantiate  the <xref:System.Globalization.CultureInfo> object that corresponds to that calendar, it throws a TypeInitializationException exception. This exception can be thrown by the following calendar class constructors:  \n  \n-   The default constructor of the <xref:System.Globalization.JapaneseCalendar> class.  \n  \n-   The default constructor of the <xref:System.Globalization.KoreanCalendar> class.  \n  \n-   The default constructor of the <xref:System.Globalization.TaiwanCalendar> class.  \n  \n Since cultural data for these cultures should be available on all systems, you should rarely, if ever, encounter this exception."
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class TypeInitializationException : SystemException
+  inheritance:
+  - System.Object
+  - System.Exception
+  - System.SystemException
+  implements: []
+  inheritedMembers:
+  - System.Exception.Data
+  - System.Exception.GetBaseException
+  - System.Exception.GetType
+  - System.Exception.HelpLink
+  - System.Exception.HResult
+  - System.Exception.InnerException
+  - System.Exception.Message
+  - System.Exception.SerializeObjectState
+  - System.Exception.Source
+  - System.Exception.StackTrace
+  - System.Exception.TargetSite
+  - System.Exception.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.TypeInitializationException.#ctor(System.String,System.Exception)
+  id: '#ctor(System.String,System.Exception)'
+  parent: System.TypeInitializationException
+  langs:
+  - csharp
+  name: TypeInitializationException(String,Exception)
+  nameWithType: TypeInitializationException.TypeInitializationException(String,Exception)
+  fullName: System.TypeInitializationException.TypeInitializationException(String,Exception)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.TypeInitializationException"></xref> class with the default error message, the specified type name, and a reference to the inner exception that is the root cause of this exception.
+  remarks: "An exception that is thrown as a direct result of a previous exception can include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or a null reference (`Nothing` in Visual Basic) if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.  \n  \n The following table shows the initial property values for an instance of <xref:System.TypeInitializationException>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Exception.InnerException%2A>|The inner exception reference.|  \n|<xref:System.Exception.Message%2A>|The localized error message string.|  \n|<xref:System.TypeInitializationException.TypeName%2A>|The name of the type.|"
+  syntax:
+    content: public TypeInitializationException (string fullTypeName, Exception innerException);
+    parameters:
+    - id: fullTypeName
+      type: System.String
+      description: The fully qualified name of the type that fails to initialize.
+    - id: innerException
+      type: System.Exception
+      description: The exception that is the cause of the current exception. If the `innerException` parameter is not a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic), the current exception is raised in a <xref uid="langword_csharp_catch" name="catch" href=""></xref> block that handles the inner exception.
+  overload: System.TypeInitializationException.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.TypeInitializationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.TypeInitializationException
+  langs:
+  - csharp
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: TypeInitializationException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.TypeInitializationException.GetObjectData(SerializationInfo,StreamingContext)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Sets the <xref href="System.Runtime.Serialization.SerializationInfo"></xref> object with the type name and additional exception information.
+  syntax:
+    content: public override void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    parameters:
+    - id: info
+      type: System.Runtime.Serialization.SerializationInfo
+      description: The <xref href="System.Runtime.Serialization.SerializationInfo"></xref> that holds the serialized object data about the exception being thrown.
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+      description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> that contains contextual information about the source or destination.
+  overload: System.TypeInitializationException.GetObjectData*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.TypeInitializationException.TypeName
+  id: TypeName
+  parent: System.TypeInitializationException
+  langs:
+  - csharp
+  name: TypeName
+  nameWithType: TypeInitializationException.TypeName
+  fullName: System.TypeInitializationException.TypeName
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the fully qualified name of the type that fails to initialize.
+  syntax:
+    content: public string TypeName { get; }
+    return:
+      type: System.String
+      description: The fully qualified name of the type that fails to initialize.
+  overload: System.TypeInitializationException.TypeName*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.SystemException
+  isExternal: false
+  name: System.SystemException
+- uid: System.TypeInitializationException.#ctor(System.String,System.Exception)
+  parent: System.TypeInitializationException
+  isExternal: false
+  name: TypeInitializationException(String,Exception)
+  nameWithType: TypeInitializationException.TypeInitializationException(String,Exception)
+  fullName: System.TypeInitializationException.TypeInitializationException(String,Exception)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Exception
+  parent: System
+  isExternal: false
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: System.TypeInitializationException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: System.TypeInitializationException
+  isExternal: false
+  name: GetObjectData(SerializationInfo,StreamingContext)
+  nameWithType: TypeInitializationException.GetObjectData(SerializationInfo,StreamingContext)
+  fullName: System.TypeInitializationException.GetObjectData(SerializationInfo,StreamingContext)
+- uid: System.Runtime.Serialization.SerializationInfo
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: SerializationInfo
+  nameWithType: SerializationInfo
+  fullName: System.Runtime.Serialization.SerializationInfo
+- uid: System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: false
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.TypeInitializationException.TypeName
+  parent: System.TypeInitializationException
+  isExternal: false
+  name: TypeName
+  nameWithType: TypeInitializationException.TypeName
+  fullName: System.TypeInitializationException.TypeName
+- uid: System.TypeInitializationException.#ctor*
+  parent: System.TypeInitializationException
+  isExternal: false
+  name: TypeInitializationException
+  nameWithType: TypeInitializationException.TypeInitializationException
+- uid: System.TypeInitializationException.GetObjectData*
+  parent: System.TypeInitializationException
+  isExternal: false
+  name: GetObjectData
+  nameWithType: TypeInitializationException.GetObjectData
+- uid: System.TypeInitializationException.TypeName*
+  parent: System.TypeInitializationException
+  isExternal: false
+  name: TypeName
+  nameWithType: TypeInitializationException.TypeName

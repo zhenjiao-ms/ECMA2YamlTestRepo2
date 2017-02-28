@@ -1,0 +1,261 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Activities.SendMessageContent
+  id: SendMessageContent
+  children:
+  - System.ServiceModel.Activities.SendMessageContent.#ctor
+  - System.ServiceModel.Activities.SendMessageContent.#ctor(System.Activities.InArgument)
+  - System.ServiceModel.Activities.SendMessageContent.#ctor(System.Activities.InArgument,System.Type)
+  - System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType
+  - System.ServiceModel.Activities.SendMessageContent.Message
+  - System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType
+  langs:
+  - csharp
+  name: SendMessageContent
+  nameWithType: SendMessageContent
+  fullName: System.ServiceModel.Activities.SendMessageContent
+  type: Class
+  summary: A class used to send a single item (message) to or from a workflow service. The item can be a built-in type such as primitive types, <xref href="System.ServiceModel.Channels.Message"></xref>, or <xref href="System.Xml.Linq.XElement"></xref>; or an application-defined data contract, message contract, or XML serializable type.
+  remarks: When using this class, messages serialized on the wire are unwrapped, unless the data is a message contract type or of type <xref:System.ServiceModel.Channels.Message>.
+  example:
+  - "The following example shows how to use a SendMessageContent instance with a <xref:System.ServiceModel.Activities.Send> activity.  \n  \n [!code-cs[ContentBasedCorrelation#0](~/add/codesnippet/csharp/t-system.servicemodel.ac_13_1.cs)]"
+  syntax:
+    content: >-
+      [System.Windows.Markup.ContentProperty("Message")]
+
+      public sealed class SendMessageContent : System.ServiceModel.Activities.SendContent
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Activities.SendContent
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.ServiceModel.Activities.SendContent.Create(System.Activities.InArgument)
+  - System.ServiceModel.Activities.SendContent.Create(System.Activities.InArgument,System.Type)
+  - System.ServiceModel.Activities.SendContent.Create(System.Collections.Generic.IDictionary{System.String,System.Activities.InArgument})
+  platform:
+  - netframework-4.0
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Activities.SendMessageContent
+  langs:
+  - csharp
+  name: SendMessageContent()
+  nameWithType: SendMessageContent.SendMessageContent()
+  fullName: System.ServiceModel.Activities.SendMessageContent.SendMessageContent()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Activities
+  namespace: System.ServiceModel.Activities
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Activities.SendMessageContent"></xref> class.
+  syntax:
+    content: public SendMessageContent ();
+    parameters: []
+  overload: System.ServiceModel.Activities.SendMessageContent.#ctor*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor(System.Activities.InArgument)
+  id: '#ctor(System.Activities.InArgument)'
+  parent: System.ServiceModel.Activities.SendMessageContent
+  langs:
+  - csharp
+  name: SendMessageContent(InArgument)
+  nameWithType: SendMessageContent.SendMessageContent(InArgument)
+  fullName: System.ServiceModel.Activities.SendMessageContent.SendMessageContent(InArgument)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Activities
+  namespace: System.ServiceModel.Activities
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Activities.SendMessageContent"></xref> class with the specified data to send.
+  remarks: ''
+  example:
+  - "The following example shows how to use this constructor.  \n  \n [!code-cs[ContentBasedCorrelation#0](~/add/codesnippet/csharp/792c8b8f-2654-4888-aef4-_1.cs)]"
+  syntax:
+    content: public SendMessageContent (System.Activities.InArgument message);
+    parameters:
+    - id: message
+      type: System.Activities.InArgument
+      description: The data to send.
+  overload: System.ServiceModel.Activities.SendMessageContent.#ctor*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor(System.Activities.InArgument,System.Type)
+  id: '#ctor(System.Activities.InArgument,System.Type)'
+  parent: System.ServiceModel.Activities.SendMessageContent
+  langs:
+  - csharp
+  name: SendMessageContent(InArgument,Type)
+  nameWithType: SendMessageContent.SendMessageContent(InArgument,Type)
+  fullName: System.ServiceModel.Activities.SendMessageContent.SendMessageContent(InArgument,Type)
+  type: Constructor
+  assemblies:
+  - System.ServiceModel.Activities
+  namespace: System.ServiceModel.Activities
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Activities.SendMessageContent"></xref> class with the specified message and message type.
+  syntax:
+    content: public SendMessageContent (System.Activities.InArgument message, Type declaredMessageType);
+    parameters:
+    - id: message
+      type: System.Activities.InArgument
+      description: The data to send.
+    - id: declaredMessageType
+      type: System.Type
+      description: The data type that appears on the service description. It must be the same type as `message` or any base type of `message`.
+  overload: System.ServiceModel.Activities.SendMessageContent.#ctor*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType
+  id: DeclaredMessageType
+  parent: System.ServiceModel.Activities.SendMessageContent
+  langs:
+  - csharp
+  name: DeclaredMessageType
+  nameWithType: SendMessageContent.DeclaredMessageType
+  fullName: System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType
+  type: Property
+  assemblies:
+  - System.ServiceModel.Activities
+  namespace: System.ServiceModel.Activities
+  summary: Gets or sets the declared message type.
+  remarks: DeclaredMessageTypeis the data type that will appear on the service description and WSDL. You may want the service description to contain the base class type so that various derived classes can be sent and received by the service at runtime. DeclaredMessageType must be either the same as the argument type of the Message property or its base type.
+  syntax:
+    content: public Type DeclaredMessageType { get; set; }
+    return:
+      type: System.Type
+      description: The declared message type.
+  overload: System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.ServiceModel.Activities.SendMessageContent.Message
+  id: Message
+  parent: System.ServiceModel.Activities.SendMessageContent
+  langs:
+  - csharp
+  name: Message
+  nameWithType: SendMessageContent.Message
+  fullName: System.ServiceModel.Activities.SendMessageContent.Message
+  type: Property
+  assemblies:
+  - System.ServiceModel.Activities
+  namespace: System.ServiceModel.Activities
+  summary: Gets or sets the data to send.
+  syntax:
+    content: public System.Activities.InArgument Message { get; set; }
+    return:
+      type: System.Activities.InArgument
+      description: The data to send.
+  overload: System.ServiceModel.Activities.SendMessageContent.Message*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType
+  id: ShouldSerializeDeclaredMessageType
+  parent: System.ServiceModel.Activities.SendMessageContent
+  langs:
+  - csharp
+  name: ShouldSerializeDeclaredMessageType()
+  nameWithType: SendMessageContent.ShouldSerializeDeclaredMessageType()
+  fullName: System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType()
+  type: Method
+  assemblies:
+  - System.ServiceModel.Activities
+  namespace: System.ServiceModel.Activities
+  summary: Gets a value that indicates whether the <xref:System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType*> property should be XAML-serialized.
+  syntax:
+    content: public bool ShouldSerializeDeclaredMessageType ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property should be serialized; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType*
+  exceptions: []
+  platform:
+  - netframework-4.0
+references:
+- uid: System.ServiceModel.Activities.SendContent
+  isExternal: false
+  name: System.ServiceModel.Activities.SendContent
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: SendMessageContent()
+  nameWithType: SendMessageContent.SendMessageContent()
+  fullName: System.ServiceModel.Activities.SendMessageContent.SendMessageContent()
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor(System.Activities.InArgument)
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: SendMessageContent(InArgument)
+  nameWithType: SendMessageContent.SendMessageContent(InArgument)
+  fullName: System.ServiceModel.Activities.SendMessageContent.SendMessageContent(InArgument)
+- uid: System.Activities.InArgument
+  parent: System.Activities
+  isExternal: false
+  name: InArgument
+  nameWithType: InArgument
+  fullName: System.Activities.InArgument
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor(System.Activities.InArgument,System.Type)
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: SendMessageContent(InArgument,Type)
+  nameWithType: SendMessageContent.SendMessageContent(InArgument,Type)
+  fullName: System.ServiceModel.Activities.SendMessageContent.SendMessageContent(InArgument,Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: DeclaredMessageType
+  nameWithType: SendMessageContent.DeclaredMessageType
+  fullName: System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType
+- uid: System.ServiceModel.Activities.SendMessageContent.Message
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: Message
+  nameWithType: SendMessageContent.Message
+  fullName: System.ServiceModel.Activities.SendMessageContent.Message
+- uid: System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: ShouldSerializeDeclaredMessageType()
+  nameWithType: SendMessageContent.ShouldSerializeDeclaredMessageType()
+  fullName: System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType()
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Activities.SendMessageContent.#ctor*
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: SendMessageContent
+  nameWithType: SendMessageContent.SendMessageContent
+- uid: System.ServiceModel.Activities.SendMessageContent.DeclaredMessageType*
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: DeclaredMessageType
+  nameWithType: SendMessageContent.DeclaredMessageType
+- uid: System.ServiceModel.Activities.SendMessageContent.Message*
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: Message
+  nameWithType: SendMessageContent.Message
+- uid: System.ServiceModel.Activities.SendMessageContent.ShouldSerializeDeclaredMessageType*
+  parent: System.ServiceModel.Activities.SendMessageContent
+  isExternal: false
+  name: ShouldSerializeDeclaredMessageType
+  nameWithType: SendMessageContent.ShouldSerializeDeclaredMessageType

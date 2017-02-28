@@ -1,0 +1,167 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Diagnostics.ConditionalAttribute
+  id: ConditionalAttribute
+  children:
+  - System.Diagnostics.ConditionalAttribute.#ctor(System.String)
+  - System.Diagnostics.ConditionalAttribute.ConditionString
+  langs:
+  - csharp
+  name: ConditionalAttribute
+  nameWithType: ConditionalAttribute
+  fullName: System.Diagnostics.ConditionalAttribute
+  type: Class
+  summary: Indicates to compilers that a method call or attribute should be ignored unless a specified conditional compilation symbol is defined.
+  remarks: "You can apply the ConditionalAttribute attribute to methods and classes. However, its use on classes is valid only for types that are derived from <xref:System.Attribute>. ConditionalAttribute either will be ignored or will produce a compiler warning or error message if you apply it to any other type.  \n  \n Applying ConditionalAttribute to a method indicates to compilers that a call to the method should not be compiled into Microsoft intermediate language (MSIL) unless the conditional compilation symbol that is associated with ConditionalAttribute is defined. You will get a compilation error in Visual Studio if you apply this attribute to a method that does not return void. Applying ConditionalAttribute to an attribute indicates that the attribute should not be emitted to metadata unless the conditional compilation symbol is defined. Any arguments passed to the method or attribute are still type-checked by the compiler.  \n  \n You can use the following techniques to define conditional compilation symbols:  \n  \n-   Use compiler command-line options; for example, **/define:DEBUG**.  \n  \n-   Use environment variables in the operating system shell; for example, **set DEBUG=1**.  \n  \n-   Use pragmas in the source code; for example, define the compilation variable as follows:  \n  \n    ```c#  \n    #define DEBUG  \n    ```  \n  \n    ```vb  \n    #Const DEBUG=True  \n    ```  \n  \n     To undefine the variable, use the following:  \n  \n    ```c#  \n    #undef DEBUG  \n    ```  \n  \n    ```vb  \n    #Const DEBUG=False  \n    ```  \n  \n Compilers that comply with the Common Language Specification (CLS) are permitted to ignore ConditionalAttribute. The C#, Visual Basic, and C++ compilers support ConditionalAttribute; the JScript compiler does not support the attribute.  \n  \n> [!NOTE]\n>  In Visual Basic, the `AddressOf` operator is not affected by this attribute. For example, `Call CType(AddressOf delegate, Action)` always invokes `delegate`, although `Call delegate()` might not.  \n  \n ConditionalAttribute is applied to the methods that are defined in the <xref:System.Diagnostics.Debug> and <xref:System.Diagnostics.Trace> classes.  \n  \n For more information about how to use attributes, see [Attributes](~/add/includes/ajax-current-ext-md.md)."
+  example:
+  - "The following example demonstrates the use of ConditionalAttribute. The example assumes that the condition is defined with the **/define** compiler option. You can obtain different results by changing the compiler option. You can optionally define the conditions by using pragmas in the sample code instead of identifying them as compiler options.  \n  \n [!code-cs[ConditionalAttributeSample1#7](~/add/codesnippet/csharp/t-system.diagnostics.con_1_1.cs)]\n [!code-vb[ConditionalAttributeSample1#7](~/add/codesnippet/visualbasic/t-system.diagnostics.con_1_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Method, AllowMultiple=true)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class ConditionalAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Diagnostics.ConditionalAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Diagnostics.ConditionalAttribute
+  langs:
+  - csharp
+  name: ConditionalAttribute(String)
+  nameWithType: ConditionalAttribute.ConditionalAttribute(String)
+  fullName: System.Diagnostics.ConditionalAttribute.ConditionalAttribute(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Initializes a new instance of the <xref href="System.Diagnostics.ConditionalAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following example demonstrates how to use the ConditionalAttribute constructor. This example is part of a larger example provided for the <xref:System.Diagnostics.ConditionalAttribute> class.  \n  \n [!code-cs[ConditionalAttributeSample1#8](~/add/codesnippet/csharp/m-system.diagnostics.con_4_1.cs)]\n [!code-vb[ConditionalAttributeSample1#8](~/add/codesnippet/visualbasic/m-system.diagnostics.con_4_1.vb)]"
+  syntax:
+    content: public ConditionalAttribute (string conditionString);
+    parameters:
+    - id: conditionString
+      type: System.String
+      description: A string that specifies the case-sensitive conditional compilation symbol that is associated with the attribute.
+  overload: System.Diagnostics.ConditionalAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Diagnostics.ConditionalAttribute.ConditionString
+  id: ConditionString
+  parent: System.Diagnostics.ConditionalAttribute
+  langs:
+  - csharp
+  name: ConditionString
+  nameWithType: ConditionalAttribute.ConditionString
+  fullName: System.Diagnostics.ConditionalAttribute.ConditionString
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Diagnostics
+  summary: Gets the conditional compilation symbol that is associated with the <xref href="System.Diagnostics.ConditionalAttribute"></xref> attribute.
+  remarks: This property is read-only.
+  syntax:
+    content: public string ConditionString { get; }
+    return:
+      type: System.String
+      description: A string that specifies the case-sensitive conditional compilation symbol that is associated with the <xref href="System.Diagnostics.ConditionalAttribute"></xref> attribute.
+  overload: System.Diagnostics.ConditionalAttribute.ConditionString*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Diagnostics.ConditionalAttribute.#ctor(System.String)
+  parent: System.Diagnostics.ConditionalAttribute
+  isExternal: false
+  name: ConditionalAttribute(String)
+  nameWithType: ConditionalAttribute.ConditionalAttribute(String)
+  fullName: System.Diagnostics.ConditionalAttribute.ConditionalAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Diagnostics.ConditionalAttribute.ConditionString
+  parent: System.Diagnostics.ConditionalAttribute
+  isExternal: false
+  name: ConditionString
+  nameWithType: ConditionalAttribute.ConditionString
+  fullName: System.Diagnostics.ConditionalAttribute.ConditionString
+- uid: System.Diagnostics.ConditionalAttribute.#ctor*
+  parent: System.Diagnostics.ConditionalAttribute
+  isExternal: false
+  name: ConditionalAttribute
+  nameWithType: ConditionalAttribute.ConditionalAttribute
+- uid: System.Diagnostics.ConditionalAttribute.ConditionString*
+  parent: System.Diagnostics.ConditionalAttribute
+  isExternal: false
+  name: ConditionString
+  nameWithType: ConditionalAttribute.ConditionString

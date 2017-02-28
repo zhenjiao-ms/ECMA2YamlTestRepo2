@@ -1,0 +1,281 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.Common.CommandTrees.DbSkipExpression
+  id: DbSkipExpression
+  children:
+  - System.Data.Common.CommandTrees.DbSkipExpression.Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  - System.Data.Common.CommandTrees.DbSkipExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  - System.Data.Common.CommandTrees.DbSkipExpression.Count
+  - System.Data.Common.CommandTrees.DbSkipExpression.Input
+  - System.Data.Common.CommandTrees.DbSkipExpression.SortOrder
+  langs:
+  - csharp
+  name: DbSkipExpression
+  nameWithType: DbSkipExpression
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression
+  type: Class
+  summary: Skips a specified number of elements in the input set. DbSkipExpression can only be used after the input collection has been sorted as specified by the sort keys.
+  remarks: DbSkipExpression requires its input collection to have already been sorted. The sort order is represented as the <xref:System.Data.Common.CommandTrees.DbSkipExpression.SortOrder%2A> property. <xref:System.Data.Common.CommandTrees.DbSkipExpression.SortOrder%2A> is a list of <xref:System.Data.Common.CommandTrees.DbSortClause> objects.
+  syntax:
+    content: 'public sealed class DbSkipExpression : System.Data.Common.CommandTrees.DbExpression'
+  inheritance:
+  - System.Object
+  - System.Data.Common.CommandTrees.DbExpression
+  implements: []
+  inheritedMembers:
+  - System.Data.Common.CommandTrees.DbExpression.Equals(System.Object)
+  - System.Data.Common.CommandTrees.DbExpression.ExpressionKind
+  - System.Data.Common.CommandTrees.DbExpression.GetHashCode
+  - System.Data.Common.CommandTrees.DbExpression.ResultType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  id: Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  langs:
+  - csharp
+  name: Accept(DbExpressionVisitor)
+  nameWithType: DbSkipExpression.Accept(DbExpressionVisitor)
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Accept(DbExpressionVisitor)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Implements the visitor pattern for expressions that do not produce a result value.
+  syntax:
+    content: public override void Accept (System.Data.Common.CommandTrees.DbExpressionVisitor visitor);
+    parameters:
+    - id: visitor
+      type: System.Data.Common.CommandTrees.DbExpressionVisitor
+      description: An instance of <xref href="System.Data.Common.CommandTrees.DbExpressionVisitor"></xref>.
+  overload: System.Data.Common.CommandTrees.DbSkipExpression.Accept*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>visitor</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  id: Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  langs:
+  - csharp
+  name: Accept(DbExpressionVisitor<TResultType>)
+  nameWithType: DbSkipExpression.Accept(DbExpressionVisitor<TResultType>)
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Accept(DbExpressionVisitor<TResultType>)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  syntax:
+    content: public override TResultType Accept<TResultType> (System.Data.Common.CommandTrees.DbExpressionVisitor<TResultType> visitor);
+    parameters:
+    - id: visitor
+      type: System.Data.Common.CommandTrees.DbExpressionVisitor`1
+      description: To be added.
+    return:
+      type: TResultType
+      description: To be added.
+  overload: System.Data.Common.CommandTrees.DbSkipExpression.Accept<TResultType>*
+  exceptions: []
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Count
+  id: Count
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  langs:
+  - csharp
+  name: Count
+  nameWithType: DbSkipExpression.Count
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Count
+  type: Property
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Gets or sets an expression that specifies the number of elements to skip from the input collection.
+  syntax:
+    content: public System.Data.Common.CommandTrees.DbExpression Count { get; }
+    return:
+      type: System.Data.Common.CommandTrees.DbExpression
+      description: An expression that specifies the number of elements to skip from the input collection.
+  overload: System.Data.Common.CommandTrees.DbSkipExpression.Count*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The expression is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "The expression is not associated with the command tree of the <xref href=\"System.Data.Common.CommandTrees.DbSkipExpression\"></xref>; the expression is not either a <xref href=\"System.Data.Common.CommandTrees.DbConstantExpression\"></xref> or a <xref href=\"System.Data.Common.CommandTrees.DbParameterReferenceExpression\"></xref>;  \n  \n or the result type of the expression is not equal or promotable to a 64-bit integer type."
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Input
+  id: Input
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  langs:
+  - csharp
+  name: Input
+  nameWithType: DbSkipExpression.Input
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Input
+  type: Property
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Gets the <xref href="System.Data.Common.CommandTrees.DbExpressionBinding"></xref> that specifies the input set.
+  syntax:
+    content: public System.Data.Common.CommandTrees.DbExpressionBinding Input { get; }
+    return:
+      type: System.Data.Common.CommandTrees.DbExpressionBinding
+      description: The <xref href="System.Data.Common.CommandTrees.DbExpressionBinding"></xref> that specifies the input set.
+  overload: System.Data.Common.CommandTrees.DbSkipExpression.Input*
+  exceptions: []
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.SortOrder
+  id: SortOrder
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  langs:
+  - csharp
+  name: SortOrder
+  nameWithType: DbSkipExpression.SortOrder
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.SortOrder
+  type: Property
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Gets a <xref href="System.Data.Common.CommandTrees.DbSortClause"></xref> list that defines the sort order.
+  remarks: <xref:System.Data.Common.CommandTrees.DbSkipExpression> requires its input collection to have already been sorted. The sort order is represented as the SortOrder property. SortOrder is a list of <xref:System.Data.Common.CommandTrees.DbSortClause> objects.
+  syntax:
+    content: public System.Collections.Generic.IList<System.Data.Common.CommandTrees.DbSortClause> SortOrder { get; }
+    return:
+      type: System.Collections.Generic.IList{System.Data.Common.CommandTrees.DbSortClause}
+      description: A <xref href="System.Data.Common.CommandTrees.DbSortClause"></xref> list that defines the sort order.
+  overload: System.Data.Common.CommandTrees.DbSkipExpression.SortOrder*
+  exceptions: []
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Data.Common.CommandTrees.DbExpression
+  isExternal: false
+  name: System.Data.Common.CommandTrees.DbExpression
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Accept(DbExpressionVisitor)
+  nameWithType: DbSkipExpression.Accept(DbExpressionVisitor)
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Accept(DbExpressionVisitor)
+- uid: System.Data.Common.CommandTrees.DbExpressionVisitor
+  parent: System.Data.Common.CommandTrees
+  isExternal: false
+  name: DbExpressionVisitor
+  nameWithType: DbExpressionVisitor
+  fullName: System.Data.Common.CommandTrees.DbExpressionVisitor
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Accept(DbExpressionVisitor<TResultType>)
+  nameWithType: DbSkipExpression.Accept(DbExpressionVisitor<TResultType>)
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Accept(DbExpressionVisitor<TResultType>)
+- uid: TResultType
+  isExternal: true
+  name: TResultType
+  nameWithType: TResultType
+  fullName: TResultType
+- uid: System.Data.Common.CommandTrees.DbExpressionVisitor`1
+  parent: System.Data.Common.CommandTrees
+  isExternal: false
+  name: DbExpressionVisitor<TResultType>
+  nameWithType: DbExpressionVisitor<TResultType>
+  fullName: System.Data.Common.CommandTrees.DbExpressionVisitor<TResultType>
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Count
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Count
+  nameWithType: DbSkipExpression.Count
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Count
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Input
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Input
+  nameWithType: DbSkipExpression.Input
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.Input
+- uid: System.Data.Common.CommandTrees.DbExpressionBinding
+  parent: System.Data.Common.CommandTrees
+  isExternal: false
+  name: DbExpressionBinding
+  nameWithType: DbExpressionBinding
+  fullName: System.Data.Common.CommandTrees.DbExpressionBinding
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.SortOrder
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: SortOrder
+  nameWithType: DbSkipExpression.SortOrder
+  fullName: System.Data.Common.CommandTrees.DbSkipExpression.SortOrder
+- uid: System.Collections.Generic.IList{System.Data.Common.CommandTrees.DbSortClause}
+  parent: System.Collections.Generic
+  isExternal: false
+  name: IList<DbSortClause>
+  nameWithType: IList<DbSortClause>
+  fullName: System.Collections.Generic.IList<System.Data.Common.CommandTrees.DbSortClause>
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList<System.Data.Common.CommandTrees.DbSortClause>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Data.Common.CommandTrees.DbSortClause
+    name: DbSortClause
+    nameWithType: DbSortClause
+    fullName: DbSortClause
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Accept*
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Accept
+  nameWithType: DbSkipExpression.Accept
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Accept<TResultType>*
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Accept<TResultType>
+  nameWithType: DbSkipExpression.Accept<TResultType>
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Count*
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Count
+  nameWithType: DbSkipExpression.Count
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.Input*
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: Input
+  nameWithType: DbSkipExpression.Input
+- uid: System.Data.Common.CommandTrees.DbSkipExpression.SortOrder*
+  parent: System.Data.Common.CommandTrees.DbSkipExpression
+  isExternal: false
+  name: SortOrder
+  nameWithType: DbSkipExpression.SortOrder

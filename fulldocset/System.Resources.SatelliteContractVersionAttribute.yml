@@ -1,0 +1,172 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Resources.SatelliteContractVersionAttribute
+  id: SatelliteContractVersionAttribute
+  children:
+  - System.Resources.SatelliteContractVersionAttribute.#ctor(System.String)
+  - System.Resources.SatelliteContractVersionAttribute.Version
+  langs:
+  - csharp
+  name: SatelliteContractVersionAttribute
+  nameWithType: SatelliteContractVersionAttribute
+  fullName: System.Resources.SatelliteContractVersionAttribute
+  type: Class
+  summary: Instructs a <xref href="System.Resources.ResourceManager"></xref> object to ask for a particular version of a satellite assembly.
+  remarks: "## Desktop Apps  \n In desktop apps, the SatelliteContractVersionAttribute attribute establishes a contract between a main assembly and all its satellites. You apply this  attribute to your main assembly, and pass it the version number of the satellite assemblies that will work with this version of the main assembly. When the resource manager (<xref:System.Resources.ResourceManager> object) looks up resources, it explicitly loads the satellite version specified by this attribute on the main assembly.  \n  \n When you update the main assembly, you increment its assembly version number. However, you might not want to ship new copies of your satellite assemblies if the existing ones are compatible with your app. In this case, increment the main assembly's version number but leave the satellite contract version number the same. The resource manager will use your existing satellite assemblies.  \n  \n If you want to revise a satellite assembly but not the main assembly, increment the version number on your satellite. In this case, ship a publisher policy assembly along with your satellite assembly stating that your new satellite assembly has backward compatibility with your old satellite assembly. The resource manager will still use the old contract number written into your main assembly based on the SatelliteContractVersionAttribute attribute; however, the loader will bind to the satellite assembly version that is specified by the policy assembly.  \n  \n A vendor of a shared component uses a publisher policy assembly to make a compatibility statement about a particular version of a released assembly. A publisher policy assembly is a strongly named assembly that has a name in the format `policy.<major>.<minor>.<ComponentAssemblyName>`, and is registered in the . The publisher policy is generated from an XML configuration file (see the ) by using the [Al.exe (Assembly Linker)](~/add/includes/ajax-current-ext-md.md) tool. The Assembly Linker is used with the `/link` option to link the XML configuration file to a manifest assembly, which is then stored in the global assembly cache. The publisher policy assemblies can be used when a vendor ships a maintenance release (service pack) that contains bug fixes.  \n  \n## [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] Apps  \n This attribute is ignored in [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] apps, because package resource index (PRI) files do not have versioning semantics. In addition, the [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] packaging model requires all resources to ship in the same package, with no possibility of redeploying satellite assemblies or PRI files."
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Assembly, AllowMultiple=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class SatelliteContractVersionAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Resources.SatelliteContractVersionAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Resources.SatelliteContractVersionAttribute
+  langs:
+  - csharp
+  name: SatelliteContractVersionAttribute(String)
+  nameWithType: SatelliteContractVersionAttribute.SatelliteContractVersionAttribute(String)
+  fullName: System.Resources.SatelliteContractVersionAttribute.SatelliteContractVersionAttribute(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Resources
+  summary: Initializes a new instance of the <xref href="System.Resources.SatelliteContractVersionAttribute"></xref> class.
+  remarks: This constructor initializes the <xref:System.Resources.SatelliteContractVersionAttribute.Version%2A> property with the `version` parameter.
+  syntax:
+    content: public SatelliteContractVersionAttribute (string version);
+    parameters:
+    - id: version
+      type: System.String
+      description: A string that specifies the version of the satellite assemblies to load.
+  overload: System.Resources.SatelliteContractVersionAttribute.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>version</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Resources.SatelliteContractVersionAttribute.Version
+  id: Version
+  parent: System.Resources.SatelliteContractVersionAttribute
+  langs:
+  - csharp
+  name: Version
+  nameWithType: SatelliteContractVersionAttribute.Version
+  fullName: System.Resources.SatelliteContractVersionAttribute.Version
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Resources
+  summary: Gets the version of the satellite assemblies with the required resources.
+  remarks: The current property indicates the version of the satellite assemblies that will be used with the main assembly marked with this attribute.
+  syntax:
+    content: public string Version { get; }
+    return:
+      type: System.String
+      description: A string that contains the version of the satellite assemblies with the required resources.
+  overload: System.Resources.SatelliteContractVersionAttribute.Version*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Resources.SatelliteContractVersionAttribute.#ctor(System.String)
+  parent: System.Resources.SatelliteContractVersionAttribute
+  isExternal: false
+  name: SatelliteContractVersionAttribute(String)
+  nameWithType: SatelliteContractVersionAttribute.SatelliteContractVersionAttribute(String)
+  fullName: System.Resources.SatelliteContractVersionAttribute.SatelliteContractVersionAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Resources.SatelliteContractVersionAttribute.Version
+  parent: System.Resources.SatelliteContractVersionAttribute
+  isExternal: false
+  name: Version
+  nameWithType: SatelliteContractVersionAttribute.Version
+  fullName: System.Resources.SatelliteContractVersionAttribute.Version
+- uid: System.Resources.SatelliteContractVersionAttribute.#ctor*
+  parent: System.Resources.SatelliteContractVersionAttribute
+  isExternal: false
+  name: SatelliteContractVersionAttribute
+  nameWithType: SatelliteContractVersionAttribute.SatelliteContractVersionAttribute
+- uid: System.Resources.SatelliteContractVersionAttribute.Version*
+  parent: System.Resources.SatelliteContractVersionAttribute
+  isExternal: false
+  name: Version
+  nameWithType: SatelliteContractVersionAttribute.Version

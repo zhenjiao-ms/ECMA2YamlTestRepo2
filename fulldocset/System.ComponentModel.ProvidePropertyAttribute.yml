@@ -1,0 +1,374 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.ProvidePropertyAttribute
+  id: ProvidePropertyAttribute
+  children:
+  - System.ComponentModel.ProvidePropertyAttribute.#ctor(System.String,System.String)
+  - System.ComponentModel.ProvidePropertyAttribute.#ctor(System.String,System.Type)
+  - System.ComponentModel.ProvidePropertyAttribute.Equals(System.Object)
+  - System.ComponentModel.ProvidePropertyAttribute.GetHashCode
+  - System.ComponentModel.ProvidePropertyAttribute.PropertyName
+  - System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName
+  - System.ComponentModel.ProvidePropertyAttribute.TypeId
+  langs:
+  - csharp
+  name: ProvidePropertyAttribute
+  nameWithType: ProvidePropertyAttribute
+  fullName: System.ComponentModel.ProvidePropertyAttribute
+  type: Class
+  summary: Specifies the name of the property that an implementer of <xref href="System.ComponentModel.IExtenderProvider"></xref> offers to other components. This class cannot be inherited
+  remarks: "When you mark a class with this attribute, you tell the code generator to create an extender property with the name you provide. The marked class must implement <xref:System.ComponentModel.IExtenderProvider>. As a result, the new property can be used by other components in a container.  \n  \n Within the marked class, you must implement `Get` \\<name> and `Set` \\<name> methods. For example, if you mark a class with [ProvideProperty(\"PropertyName\")], you must implement `GetPropertyName` and `SetPropertyName` methods. To specify that the new property will be an extender property, you must implement from <xref:System.ComponentModel.IExtenderProvider>, you must also implement a `CanExtend` method.  \n  \n For more information, see [Attributes](~/add/includes/ajax-current-ext-md.md)."
+  example:
+  - "The following example marks `MyClass` with a ProvidePropertyAttribute that tells the compiler to create a property called `MyProperty` from the `GetMyProperty` and `SetMyProperty` methods.  \n  \n [!code-cs[Classic ProvidePropertyAttribute Example#1](~/add/codesnippet/csharp/t-system.componentmodel._139_1.cs)]\n [!code-cpp[Classic ProvidePropertyAttribute Example#1](~/add/codesnippet/cpp/t-system.componentmodel._139_1.cpp)]\n [!code-vb[Classic ProvidePropertyAttribute Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._139_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=true)]
+
+      public sealed class ProvidePropertyAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: ProvidePropertyAttribute(String,String)
+  nameWithType: ProvidePropertyAttribute.ProvidePropertyAttribute(String,String)
+  fullName: System.ComponentModel.ProvidePropertyAttribute.ProvidePropertyAttribute(String,String)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Initializes a new instance of the <xref href="System.ComponentModel.ProvidePropertyAttribute"></xref> class with the name of the property and the type of its receiver.
+  syntax:
+    content: public ProvidePropertyAttribute (string propertyName, string receiverTypeName);
+    parameters:
+    - id: propertyName
+      type: System.String
+      description: The name of the property extending to an object of the specified type.
+    - id: receiverTypeName
+      type: System.String
+      description: The name of the data type this property can extend.
+  overload: System.ComponentModel.ProvidePropertyAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.#ctor(System.String,System.Type)
+  id: '#ctor(System.String,System.Type)'
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: ProvidePropertyAttribute(String,Type)
+  nameWithType: ProvidePropertyAttribute.ProvidePropertyAttribute(String,Type)
+  fullName: System.ComponentModel.ProvidePropertyAttribute.ProvidePropertyAttribute(String,Type)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Initializes a new instance of the <xref href="System.ComponentModel.ProvidePropertyAttribute"></xref> class with the name of the property and its <xref href="System.Type"></xref>.
+  syntax:
+    content: public ProvidePropertyAttribute (string propertyName, Type receiverType);
+    parameters:
+    - id: propertyName
+      type: System.String
+      description: The name of the property extending to an object of the specified type.
+    - id: receiverType
+      type: System.Type
+      description: The <xref href="System.Type"></xref> of the data type of the object that can receive the property.
+  overload: System.ComponentModel.ProvidePropertyAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: Equals(Object)
+  nameWithType: ProvidePropertyAttribute.Equals(Object)
+  fullName: System.ComponentModel.ProvidePropertyAttribute.Equals(Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Returns whether the value of the given object is equal to the current <xref href="System.ComponentModel.ProvidePropertyAttribute"></xref>.
+  syntax:
+    content: public override bool Equals (object obj);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to test the value equality of.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the given object is equal to that of the current; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ComponentModel.ProvidePropertyAttribute.Equals*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.GetHashCode
+  id: GetHashCode
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: GetHashCode()
+  nameWithType: ProvidePropertyAttribute.GetHashCode()
+  fullName: System.ComponentModel.ProvidePropertyAttribute.GetHashCode()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Returns the hash code for this instance.
+  syntax:
+    content: public override int GetHashCode ();
+    parameters: []
+    return:
+      type: System.Int32
+      description: A hash code for the current <xref href="System.ComponentModel.ProvidePropertyAttribute"></xref>.
+  overload: System.ComponentModel.ProvidePropertyAttribute.GetHashCode*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.PropertyName
+  id: PropertyName
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: PropertyName
+  nameWithType: ProvidePropertyAttribute.PropertyName
+  fullName: System.ComponentModel.ProvidePropertyAttribute.PropertyName
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets the name of a property that this class provides.
+  syntax:
+    content: public string PropertyName { get; }
+    return:
+      type: System.String
+      description: The name of a property that this class provides.
+  overload: System.ComponentModel.ProvidePropertyAttribute.PropertyName*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName
+  id: ReceiverTypeName
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: ReceiverTypeName
+  nameWithType: ProvidePropertyAttribute.ReceiverTypeName
+  fullName: System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets the name of the data type this property can extend.
+  syntax:
+    content: public string ReceiverTypeName { get; }
+    return:
+      type: System.String
+      description: The name of the data type this property can extend.
+  overload: System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.ProvidePropertyAttribute.TypeId
+  id: TypeId
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  langs:
+  - csharp
+  name: TypeId
+  nameWithType: ProvidePropertyAttribute.TypeId
+  fullName: System.ComponentModel.ProvidePropertyAttribute.TypeId
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a unique identifier for this attribute.
+  syntax:
+    content: public override object TypeId { get; }
+    return:
+      type: System.Object
+      description: An <xref href="System.Object"></xref> that is a unique identifier for the attribute.
+  overload: System.ComponentModel.ProvidePropertyAttribute.TypeId*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ComponentModel.ProvidePropertyAttribute.#ctor(System.String,System.String)
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: ProvidePropertyAttribute(String,String)
+  nameWithType: ProvidePropertyAttribute.ProvidePropertyAttribute(String,String)
+  fullName: System.ComponentModel.ProvidePropertyAttribute.ProvidePropertyAttribute(String,String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ComponentModel.ProvidePropertyAttribute.#ctor(System.String,System.Type)
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: ProvidePropertyAttribute(String,Type)
+  nameWithType: ProvidePropertyAttribute.ProvidePropertyAttribute(String,Type)
+  fullName: System.ComponentModel.ProvidePropertyAttribute.ProvidePropertyAttribute(String,Type)
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.ComponentModel.ProvidePropertyAttribute.Equals(System.Object)
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: Equals(Object)
+  nameWithType: ProvidePropertyAttribute.Equals(Object)
+  fullName: System.ComponentModel.ProvidePropertyAttribute.Equals(Object)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.ComponentModel.ProvidePropertyAttribute.GetHashCode
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: GetHashCode()
+  nameWithType: ProvidePropertyAttribute.GetHashCode()
+  fullName: System.ComponentModel.ProvidePropertyAttribute.GetHashCode()
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ComponentModel.ProvidePropertyAttribute.PropertyName
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: PropertyName
+  nameWithType: ProvidePropertyAttribute.PropertyName
+  fullName: System.ComponentModel.ProvidePropertyAttribute.PropertyName
+- uid: System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: ReceiverTypeName
+  nameWithType: ProvidePropertyAttribute.ReceiverTypeName
+  fullName: System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName
+- uid: System.ComponentModel.ProvidePropertyAttribute.TypeId
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: TypeId
+  nameWithType: ProvidePropertyAttribute.TypeId
+  fullName: System.ComponentModel.ProvidePropertyAttribute.TypeId
+- uid: System.ComponentModel.ProvidePropertyAttribute.#ctor*
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: ProvidePropertyAttribute
+  nameWithType: ProvidePropertyAttribute.ProvidePropertyAttribute
+- uid: System.ComponentModel.ProvidePropertyAttribute.Equals*
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: Equals
+  nameWithType: ProvidePropertyAttribute.Equals
+- uid: System.ComponentModel.ProvidePropertyAttribute.GetHashCode*
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: GetHashCode
+  nameWithType: ProvidePropertyAttribute.GetHashCode
+- uid: System.ComponentModel.ProvidePropertyAttribute.PropertyName*
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: PropertyName
+  nameWithType: ProvidePropertyAttribute.PropertyName
+- uid: System.ComponentModel.ProvidePropertyAttribute.ReceiverTypeName*
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: ReceiverTypeName
+  nameWithType: ProvidePropertyAttribute.ReceiverTypeName
+- uid: System.ComponentModel.ProvidePropertyAttribute.TypeId*
+  parent: System.ComponentModel.ProvidePropertyAttribute
+  isExternal: false
+  name: TypeId
+  nameWithType: ProvidePropertyAttribute.TypeId

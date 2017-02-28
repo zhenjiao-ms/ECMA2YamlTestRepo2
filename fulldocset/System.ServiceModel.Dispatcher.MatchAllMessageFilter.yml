@@ -1,0 +1,181 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  id: MatchAllMessageFilter
+  children:
+  - System.ServiceModel.Dispatcher.MatchAllMessageFilter.#ctor
+  - System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(System.ServiceModel.Channels.Message)
+  - System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)
+  langs:
+  - csharp
+  name: MatchAllMessageFilter
+  nameWithType: MatchAllMessageFilter
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  type: Class
+  summary: Represents a query that is satisfied by every non-<xref uid="langword_csharp_null" name="null" href=""></xref> message that it tests.
+  remarks: This class provides a filter that allows every message through. Specifically, the <xref:System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match%2A> methods returns `true` for every message that is not `null`.
+  syntax:
+    content: >-
+      [System.Runtime.Serialization.DataContract]
+
+      public class MatchAllMessageFilter : System.ServiceModel.Dispatcher.MessageFilter
+  inheritance:
+  - System.Object
+  - System.ServiceModel.Dispatcher.MessageFilter
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.ServiceModel.Dispatcher.MessageFilter.CreateFilterTable``1
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.#ctor
+  id: '#ctor'
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  langs:
+  - csharp
+  name: MatchAllMessageFilter()
+  nameWithType: MatchAllMessageFilter.MatchAllMessageFilter()
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter.MatchAllMessageFilter()
+  type: Constructor
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Dispatcher.MatchAllMessageFilter"></xref> class.
+  remarks: This constructor can be used to create distinct instances of <xref:System.ServiceModel.Dispatcher.MatchAllMessageFilter>.
+  syntax:
+    content: public MatchAllMessageFilter ();
+    parameters: []
+  overload: System.ServiceModel.Dispatcher.MatchAllMessageFilter.#ctor*
+  exceptions: []
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(System.ServiceModel.Channels.Message)
+  id: Match(System.ServiceModel.Channels.Message)
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  langs:
+  - csharp
+  name: Match(Message)
+  nameWithType: MatchAllMessageFilter.Match(Message)
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(Message)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> for every message that is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  remarks: The difference between the two overloads of the <xref:System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match%2A> method is that one takes the <xref:System.ServiceModel.Channels.MessageBuffer> parameter and buffers the entire contents of a message (including its body) into memory, while the other takes the <xref:System.ServiceModel.Channels.Message> parameter and does not buffer the body.
+  syntax:
+    content: public override bool Match (System.ServiceModel.Channels.Message message);
+    parameters:
+    - id: message
+      type: System.ServiceModel.Channels.Message
+      description: The <xref href="System.ServiceModel.Channels.Message"></xref> object to test.
+    return:
+      type: System.Boolean
+      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  overload: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)
+  id: Match(System.ServiceModel.Channels.MessageBuffer)
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  langs:
+  - csharp
+  name: Match(MessageBuffer)
+  nameWithType: MatchAllMessageFilter.Match(MessageBuffer)
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(MessageBuffer)
+  type: Method
+  assemblies:
+  - System.ServiceModel
+  namespace: System.ServiceModel.Dispatcher
+  summary: The Match method returns <xref uid="langword_csharp_true" name="true" href=""></xref> for every message that is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  remarks: This method takes the <xref:System.ServiceModel.Channels.MessageBuffer> parameter, which buffers the entire contents of a message (including its body) into memory, and allows the body to be inspected.
+  syntax:
+    content: public override bool Match (System.ServiceModel.Channels.MessageBuffer messageBuffer);
+    parameters:
+    - id: messageBuffer
+      type: System.ServiceModel.Channels.MessageBuffer
+      description: The <xref href="System.ServiceModel.Channels.MessageBuffer"></xref> object to test.
+    return:
+      type: System.Boolean
+      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  overload: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>messageBuffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.ServiceModel.Dispatcher.MessageFilter
+  isExternal: false
+  name: System.ServiceModel.Dispatcher.MessageFilter
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.#ctor
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  isExternal: false
+  name: MatchAllMessageFilter()
+  nameWithType: MatchAllMessageFilter.MatchAllMessageFilter()
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter.MatchAllMessageFilter()
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(System.ServiceModel.Channels.Message)
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  isExternal: false
+  name: Match(Message)
+  nameWithType: MatchAllMessageFilter.Match(Message)
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(Message)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ServiceModel.Channels.Message
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: Message
+  nameWithType: Message
+  fullName: System.ServiceModel.Channels.Message
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(System.ServiceModel.Channels.MessageBuffer)
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  isExternal: false
+  name: Match(MessageBuffer)
+  nameWithType: MatchAllMessageFilter.Match(MessageBuffer)
+  fullName: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match(MessageBuffer)
+- uid: System.ServiceModel.Channels.MessageBuffer
+  parent: System.ServiceModel.Channels
+  isExternal: false
+  name: MessageBuffer
+  nameWithType: MessageBuffer
+  fullName: System.ServiceModel.Channels.MessageBuffer
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.#ctor*
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  isExternal: false
+  name: MatchAllMessageFilter
+  nameWithType: MatchAllMessageFilter.MatchAllMessageFilter
+- uid: System.ServiceModel.Dispatcher.MatchAllMessageFilter.Match*
+  parent: System.ServiceModel.Dispatcher.MatchAllMessageFilter
+  isExternal: false
+  name: Match
+  nameWithType: MatchAllMessageFilter.Match

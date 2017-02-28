@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Security.Cryptography.OidEnumerator
+  id: OidEnumerator
+  children:
+  - System.Security.Cryptography.OidEnumerator.Current
+  - System.Security.Cryptography.OidEnumerator.MoveNext
+  - System.Security.Cryptography.OidEnumerator.Reset
+  - System.Security.Cryptography.OidEnumerator.System#Collections#IEnumerator#Current
+  langs:
+  - csharp
+  name: OidEnumerator
+  nameWithType: OidEnumerator
+  fullName: System.Security.Cryptography.OidEnumerator
+  type: Class
+  summary: Provides the ability to navigate through an <xref href="System.Security.Cryptography.OidCollection"></xref> object. This class cannot be inherited.
+  remarks: This class implements the <xref:System.Collections.IEnumerator> interface.
+  example:
+  - "The following code example shows how to use the OidEnumerator class.  \n  \n [!code-cs[Cryptography.Oid#1](~/add/codesnippet/csharp/t-system.security.crypto_52_1.cs)]\n [!code-vb[Cryptography.Oid#1](~/add/codesnippet/visualbasic/t-system.security.crypto_52_1.vb)]\n [!code-cpp[Cryptography.Oid#1](~/add/codesnippet/cpp/t-system.security.crypto_52_1.cpp)]"
+  syntax:
+    content: 'public sealed class OidEnumerator : System.Collections.IEnumerator'
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.IEnumerator
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Cryptography.OidEnumerator.Current
+  id: Current
+  parent: System.Security.Cryptography.OidEnumerator
+  langs:
+  - csharp
+  name: Current
+  nameWithType: OidEnumerator.Current
+  fullName: System.Security.Cryptography.OidEnumerator.Current
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Security.Cryptography
+  summary: Gets the current <xref href="System.Security.Cryptography.Oid"></xref> object in an <xref href="System.Security.Cryptography.OidCollection"></xref> object.
+  remarks: "After an enumerator is created, the <xref:System.Security.Cryptography.OidEnumerator.MoveNext%2A> method must be called to advance the enumerator to the first element of the collection before reading the value of the Current property; otherwise, Current returns `null` or throws an exception.  \n  \n Current also returns `null` or throws an exception if the last call to <xref:System.Security.Cryptography.OidEnumerator.MoveNext%2A> returns `false`, which indicates that the end of the collection has been reached.  \n  \n Current does not move the position of the enumerator, and consecutive calls to Current return the same object, until <xref:System.Security.Cryptography.OidEnumerator.MoveNext%2A> is called."
+  example:
+  - "The following code example shows how to use the <xref:System.Security.Cryptography.OidEnumerator> class.  \n  \n [!code-cs[Cryptography.Oid#1](~/add/codesnippet/csharp/p-system.security.crypto_54_1.cs)]\n [!code-vb[Cryptography.Oid#1](~/add/codesnippet/visualbasic/p-system.security.crypto_54_1.vb)]\n [!code-cpp[Cryptography.Oid#1](~/add/codesnippet/cpp/p-system.security.crypto_54_1.cpp)]"
+  syntax:
+    content: public System.Security.Cryptography.Oid Current { get; }
+    return:
+      type: System.Security.Cryptography.Oid
+      description: The current <xref href="System.Security.Cryptography.Oid"></xref> object in the collection.
+  overload: System.Security.Cryptography.OidEnumerator.Current*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Cryptography.OidEnumerator.MoveNext
+  id: MoveNext
+  parent: System.Security.Cryptography.OidEnumerator
+  langs:
+  - csharp
+  name: MoveNext()
+  nameWithType: OidEnumerator.MoveNext()
+  fullName: System.Security.Cryptography.OidEnumerator.MoveNext()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Security.Cryptography
+  summary: Advances to the next <xref href="System.Security.Cryptography.Oid"></xref> object in an <xref href="System.Security.Cryptography.OidCollection"></xref> object.
+  remarks: "After an enumerator is created, it is positioned before the first element of the collection, and the first call to the MoveNext method moves the enumerator over the first element of the collection. Subsequent calls to MoveNext advances the enumerator past subsequent items in the collection.  \n  \n After the end of the collection is passed, calls to MoveNext return `false`.  \n  \n An enumerator is valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator becomes invalid and the next call to MoveNext throws an <xref:System.InvalidOperationException>."
+  example:
+  - "The following code example shows how to use the <xref:System.Security.Cryptography.OidEnumerator> class.  \n  \n [!code-cs[Cryptography.Oid#1](~/add/codesnippet/csharp/m-system.security.crypto_123_1.cs)]\n [!code-vb[Cryptography.Oid#1](~/add/codesnippet/visualbasic/m-system.security.crypto_123_1.vb)]\n [!code-cpp[Cryptography.Oid#1](~/add/codesnippet/cpp/m-system.security.crypto_123_1.cpp)]"
+  syntax:
+    content: public bool MoveNext ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the enumerator was successfully advanced to the next element; <xref uid="langword_csharp_false" name="false" href=""></xref>, if the enumerator has passed the end of the collection.
+  overload: System.Security.Cryptography.OidEnumerator.MoveNext*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The collection was modified after the enumerator was created.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Cryptography.OidEnumerator.Reset
+  id: Reset
+  parent: System.Security.Cryptography.OidEnumerator
+  langs:
+  - csharp
+  name: Reset()
+  nameWithType: OidEnumerator.Reset()
+  fullName: System.Security.Cryptography.OidEnumerator.Reset()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.Security.Cryptography
+  summary: Sets an enumerator to its initial position.
+  remarks: The initial position of an enumerator is before the first element in the <xref:System.Security.Cryptography.OidCollection> object. An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator becomes invalid and the next call to the Reset method throws an <xref:System.InvalidOperationException>.
+  example:
+  - "The following code example shows how to use the <xref:System.Security.Cryptography.OidEnumerator> class.  \n  \n [!code-cs[Cryptography.Oid#1](~/add/codesnippet/csharp/m-system.security.crypto_88_1.cs)]\n [!code-vb[Cryptography.Oid#1](~/add/codesnippet/visualbasic/m-system.security.crypto_88_1.vb)]\n [!code-cpp[Cryptography.Oid#1](~/add/codesnippet/cpp/m-system.security.crypto_88_1.cpp)]"
+  syntax:
+    content: public void Reset ();
+    parameters: []
+  overload: System.Security.Cryptography.OidEnumerator.Reset*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The collection was modified after the enumerator was created.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Cryptography.OidEnumerator.System#Collections#IEnumerator#Current
+  id: System#Collections#IEnumerator#Current
+  isEii: true
+  parent: System.Security.Cryptography.OidEnumerator
+  langs:
+  - csharp
+  name: System.Collections.IEnumerator.Current
+  nameWithType: OidEnumerator.System.Collections.IEnumerator.Current
+  fullName: System.Security.Cryptography.OidEnumerator.System.Collections.IEnumerator.Current
+  type: Property
+  assemblies:
+  - System
+  namespace: System.Security.Cryptography
+  summary: Gets the current <xref href="System.Security.Cryptography.Oid"></xref> object in an <xref href="System.Security.Cryptography.OidCollection"></xref> object.
+  syntax:
+    content: object System.Collections.IEnumerator.Current { get; }
+    return:
+      type: System.Object
+      description: The current <xref href="System.Security.Cryptography.Oid"></xref> object.
+  overload: System.Security.Cryptography.OidEnumerator.System#Collections#IEnumerator#Current*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Security.Cryptography.OidEnumerator.Current
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: Current
+  nameWithType: OidEnumerator.Current
+  fullName: System.Security.Cryptography.OidEnumerator.Current
+- uid: System.Security.Cryptography.Oid
+  parent: System.Security.Cryptography
+  isExternal: false
+  name: Oid
+  nameWithType: Oid
+  fullName: System.Security.Cryptography.Oid
+- uid: System.Security.Cryptography.OidEnumerator.MoveNext
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: MoveNext()
+  nameWithType: OidEnumerator.MoveNext()
+  fullName: System.Security.Cryptography.OidEnumerator.MoveNext()
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Security.Cryptography.OidEnumerator.Reset
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: Reset()
+  nameWithType: OidEnumerator.Reset()
+  fullName: System.Security.Cryptography.OidEnumerator.Reset()
+- uid: System.Security.Cryptography.OidEnumerator.System#Collections#IEnumerator#Current
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: System.Collections.IEnumerator.Current
+  nameWithType: OidEnumerator.System.Collections.IEnumerator.Current
+  fullName: System.Security.Cryptography.OidEnumerator.System.Collections.IEnumerator.Current
+- uid: System.Security.Cryptography.OidEnumerator.Current*
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: Current
+  nameWithType: OidEnumerator.Current
+- uid: System.Security.Cryptography.OidEnumerator.MoveNext*
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: MoveNext
+  nameWithType: OidEnumerator.MoveNext
+- uid: System.Security.Cryptography.OidEnumerator.Reset*
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: Reset
+  nameWithType: OidEnumerator.Reset
+- uid: System.Security.Cryptography.OidEnumerator.System#Collections#IEnumerator#Current*
+  parent: System.Security.Cryptography.OidEnumerator
+  isExternal: false
+  name: System.Collections.IEnumerator.Current
+  nameWithType: OidEnumerator.System.Collections.IEnumerator.Current

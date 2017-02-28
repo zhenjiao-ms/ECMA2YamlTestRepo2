@@ -1,0 +1,181 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  id: UnobservedTaskExceptionEventArgs
+  children:
+  - System.Threading.Tasks.UnobservedTaskExceptionEventArgs.#ctor(System.AggregateException)
+  - System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception
+  - System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed
+  - System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved
+  langs:
+  - csharp
+  name: UnobservedTaskExceptionEventArgs
+  nameWithType: UnobservedTaskExceptionEventArgs
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  type: Class
+  summary: Provides data for the event that is raised when a faulted <xref href="System.Threading.Tasks.Task"></xref>'s exception goes unobserved.
+  remarks: The Exception property is used to examine the exception without marking it as observed, whereas the <xref:System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved%2A> method is used to mark the exception as observed. Marking the exception as observed prevents it from triggering exception escalation policy which, by default, terminates the process.
+  syntax:
+    content: 'public class UnobservedTaskExceptionEventArgs : EventArgs'
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  implements: []
+  inheritedMembers:
+  - System.EventArgs.Empty
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-4.0
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.#ctor(System.AggregateException)
+  id: '#ctor(System.AggregateException)'
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  langs:
+  - csharp
+  name: UnobservedTaskExceptionEventArgs(AggregateException)
+  nameWithType: UnobservedTaskExceptionEventArgs.UnobservedTaskExceptionEventArgs(AggregateException)
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.UnobservedTaskExceptionEventArgs(AggregateException)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Initializes a new instance of the <xref href="System.Threading.Tasks.UnobservedTaskExceptionEventArgs"></xref> class with the unobserved exception.
+  syntax:
+    content: public UnobservedTaskExceptionEventArgs (AggregateException exception);
+    parameters:
+    - id: exception
+      type: System.AggregateException
+      description: The Exception that has gone unobserved.
+  overload: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.#ctor*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception
+  id: Exception
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  langs:
+  - csharp
+  name: Exception
+  nameWithType: UnobservedTaskExceptionEventArgs.Exception
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: The Exception that went unobserved.
+  syntax:
+    content: public AggregateException Exception { get; }
+    return:
+      type: System.AggregateException
+      description: The Exception that went unobserved.
+  overload: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed
+  id: Observed
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  langs:
+  - csharp
+  name: Observed
+  nameWithType: UnobservedTaskExceptionEventArgs.Observed
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Gets whether this exception has been marked as "observed."
+  syntax:
+    content: public bool Observed { get; }
+    return:
+      type: System.Boolean
+      description: true if this exception has been marked as "observed"; otherwise false.
+  overload: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed*
+  exceptions: []
+  platform:
+  - netframework-4.0
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved
+  id: SetObserved
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  langs:
+  - csharp
+  name: SetObserved()
+  nameWithType: UnobservedTaskExceptionEventArgs.SetObserved()
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading.Tasks
+  summary: Marks the <xref:System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception*> as "observed," thus preventing it from triggering exception escalation policy which, by default, terminates the process.
+  syntax:
+    content: public void SetObserved ();
+    parameters: []
+  overload: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved*
+  exceptions: []
+  platform:
+  - netframework-4.0
+references:
+- uid: System.EventArgs
+  isExternal: false
+  name: System.EventArgs
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.#ctor(System.AggregateException)
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: UnobservedTaskExceptionEventArgs(AggregateException)
+  nameWithType: UnobservedTaskExceptionEventArgs.UnobservedTaskExceptionEventArgs(AggregateException)
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.UnobservedTaskExceptionEventArgs(AggregateException)
+- uid: System.AggregateException
+  parent: System
+  isExternal: false
+  name: AggregateException
+  nameWithType: AggregateException
+  fullName: System.AggregateException
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: Exception
+  nameWithType: UnobservedTaskExceptionEventArgs.Exception
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: Observed
+  nameWithType: UnobservedTaskExceptionEventArgs.Observed
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: SetObserved()
+  nameWithType: UnobservedTaskExceptionEventArgs.SetObserved()
+  fullName: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved()
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.#ctor*
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: UnobservedTaskExceptionEventArgs
+  nameWithType: UnobservedTaskExceptionEventArgs.UnobservedTaskExceptionEventArgs
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Exception*
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: Exception
+  nameWithType: UnobservedTaskExceptionEventArgs.Exception
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.Observed*
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: Observed
+  nameWithType: UnobservedTaskExceptionEventArgs.Observed
+- uid: System.Threading.Tasks.UnobservedTaskExceptionEventArgs.SetObserved*
+  parent: System.Threading.Tasks.UnobservedTaskExceptionEventArgs
+  isExternal: false
+  name: SetObserved
+  nameWithType: UnobservedTaskExceptionEventArgs.SetObserved

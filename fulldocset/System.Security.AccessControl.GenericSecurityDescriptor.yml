@@ -1,0 +1,439 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Security.AccessControl.GenericSecurityDescriptor
+  id: GenericSecurityDescriptor
+  children:
+  - System.Security.AccessControl.GenericSecurityDescriptor.#ctor
+  - System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength
+  - System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags
+  - System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm(System.Byte[],System.Int32)
+  - System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm(System.Security.AccessControl.AccessControlSections)
+  - System.Security.AccessControl.GenericSecurityDescriptor.Group
+  - System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported
+  - System.Security.AccessControl.GenericSecurityDescriptor.Owner
+  - System.Security.AccessControl.GenericSecurityDescriptor.Revision
+  langs:
+  - csharp
+  name: GenericSecurityDescriptor
+  nameWithType: GenericSecurityDescriptor
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor
+  type: Class
+  summary: Represents a security descriptor. A security descriptor includes an owner, a primary group, a Discretionary Access Control List (DACL), and a System Access Control List (SACL).
+  syntax:
+    content: public abstract class GenericSecurityDescriptor
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.#ctor
+  id: '#ctor'
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: GenericSecurityDescriptor()
+  nameWithType: GenericSecurityDescriptor.GenericSecurityDescriptor()
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.GenericSecurityDescriptor()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Initializes a new instance of the <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> class.
+  syntax:
+    content: protected GenericSecurityDescriptor ();
+    parameters: []
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength
+  id: BinaryLength
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: BinaryLength
+  nameWithType: GenericSecurityDescriptor.BinaryLength
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Gets the length, in bytes, of the binary representation of the current <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object. This length should be used before marshaling the ACL into a binary array with the <xref:System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm*> method.
+  syntax:
+    content: public int BinaryLength { get; }
+    return:
+      type: System.Int32
+      description: The length, in bytes, of the binary representation of the current <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags
+  id: ControlFlags
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: ControlFlags
+  nameWithType: GenericSecurityDescriptor.ControlFlags
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Gets values that specify behavior of the <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  syntax:
+    content: public abstract System.Security.AccessControl.ControlFlags ControlFlags { get; }
+    return:
+      type: System.Security.AccessControl.ControlFlags
+      description: One or more values of the <xref href="System.Security.AccessControl.ControlFlags"></xref> enumeration combined with a logical OR operation.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm(System.Byte[],System.Int32)
+  id: GetBinaryForm(System.Byte[],System.Int32)
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: GetBinaryForm(Byte[],Int32)
+  nameWithType: GenericSecurityDescriptor.GetBinaryForm(Byte[],Int32)
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm(Byte[],Int32)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Returns an array of byte values that represents the information contained in this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  syntax:
+    content: public void GetBinaryForm (byte[] binaryForm, int offset);
+    parameters:
+    - id: binaryForm
+      type: System.Byte[]
+      description: The byte array into which the contents of the <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> is marshaled.
+    - id: offset
+      type: System.Int32
+      description: The offset at which to start marshaling.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code>offset</code> is negative or too high to allow the entire <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> to be copied into <code>array</code>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm(System.Security.AccessControl.AccessControlSections)
+  id: GetSddlForm(System.Security.AccessControl.AccessControlSections)
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: GetSddlForm(AccessControlSections)
+  nameWithType: GenericSecurityDescriptor.GetSddlForm(AccessControlSections)
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm(AccessControlSections)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Returns the Security Descriptor Definition Language (SDDL) representation of the specified sections of the security descriptor that this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object represents.
+  syntax:
+    content: public string GetSddlForm (System.Security.AccessControl.AccessControlSections includeSections);
+    parameters:
+    - id: includeSections
+      type: System.Security.AccessControl.AccessControlSections
+      description: Specifies which sections (access rules, audit rules, primary group, owner) of the security descriptor to get.
+    return:
+      type: System.String
+      description: The SDDL representation of the specified sections of the security descriptor associated with this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Group
+  id: Group
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: Group
+  nameWithType: GenericSecurityDescriptor.Group
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.Group
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Gets or sets the primary group for this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  syntax:
+    content: public abstract System.Security.Principal.SecurityIdentifier Group { get; set; }
+    return:
+      type: System.Security.Principal.SecurityIdentifier
+      description: The primary group for this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.Group*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported
+  id: IsSddlConversionSupported
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: IsSddlConversionSupported()
+  nameWithType: GenericSecurityDescriptor.IsSddlConversionSupported()
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Returns a boolean value that specifies whether the security descriptor associated with this  <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object can be converted to the Security Descriptor Definition Language (SDDL) format.
+  syntax:
+    content: public static bool IsSddlConversionSupported ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the security descriptor associated with this  <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object can be converted to the Security Descriptor Definition Language (SDDL) format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Owner
+  id: Owner
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: Owner
+  nameWithType: GenericSecurityDescriptor.Owner
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.Owner
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Gets or sets the owner of the object associated with this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  syntax:
+    content: public abstract System.Security.Principal.SecurityIdentifier Owner { get; set; }
+    return:
+      type: System.Security.Principal.SecurityIdentifier
+      description: The owner of the object associated with this <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.Owner*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Revision
+  id: Revision
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  langs:
+  - csharp
+  name: Revision
+  nameWithType: GenericSecurityDescriptor.Revision
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.Revision
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.AccessControl
+  summary: Gets the revision level of the <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref> object.
+  syntax:
+    content: public static byte Revision { get; }
+    return:
+      type: System.Byte
+      description: A byte value that specifies the revision level of the <xref href="System.Security.AccessControl.GenericSecurityDescriptor"></xref>.
+  overload: System.Security.AccessControl.GenericSecurityDescriptor.Revision*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: System.ArgumentOutOfRangeException
+  parent: System
+  isExternal: false
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.#ctor
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: GenericSecurityDescriptor()
+  nameWithType: GenericSecurityDescriptor.GenericSecurityDescriptor()
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.GenericSecurityDescriptor()
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: BinaryLength
+  nameWithType: GenericSecurityDescriptor.BinaryLength
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: ControlFlags
+  nameWithType: GenericSecurityDescriptor.ControlFlags
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags
+- uid: System.Security.AccessControl.ControlFlags
+  parent: System.Security.AccessControl
+  isExternal: false
+  name: ControlFlags
+  nameWithType: ControlFlags
+  fullName: System.Security.AccessControl.ControlFlags
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm(System.Byte[],System.Int32)
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: GetBinaryForm(Byte[],Int32)
+  nameWithType: GenericSecurityDescriptor.GetBinaryForm(Byte[],Int32)
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm(Byte[],Int32)
+- uid: System.Byte[]
+  parent: System
+  isExternal: false
+  name: Byte
+  nameWithType: Byte
+  fullName: System.Byte[]
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm(System.Security.AccessControl.AccessControlSections)
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: GetSddlForm(AccessControlSections)
+  nameWithType: GenericSecurityDescriptor.GetSddlForm(AccessControlSections)
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm(AccessControlSections)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Security.AccessControl.AccessControlSections
+  parent: System.Security.AccessControl
+  isExternal: false
+  name: AccessControlSections
+  nameWithType: AccessControlSections
+  fullName: System.Security.AccessControl.AccessControlSections
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Group
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: Group
+  nameWithType: GenericSecurityDescriptor.Group
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.Group
+- uid: System.Security.Principal.SecurityIdentifier
+  parent: System.Security.Principal
+  isExternal: false
+  name: SecurityIdentifier
+  nameWithType: SecurityIdentifier
+  fullName: System.Security.Principal.SecurityIdentifier
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: IsSddlConversionSupported()
+  nameWithType: GenericSecurityDescriptor.IsSddlConversionSupported()
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported()
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Owner
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: Owner
+  nameWithType: GenericSecurityDescriptor.Owner
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.Owner
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Revision
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: Revision
+  nameWithType: GenericSecurityDescriptor.Revision
+  fullName: System.Security.AccessControl.GenericSecurityDescriptor.Revision
+- uid: System.Byte
+  parent: System
+  isExternal: false
+  name: Byte
+  nameWithType: Byte
+  fullName: System.Byte
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.#ctor*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: GenericSecurityDescriptor
+  nameWithType: GenericSecurityDescriptor.GenericSecurityDescriptor
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.BinaryLength*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: BinaryLength
+  nameWithType: GenericSecurityDescriptor.BinaryLength
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.ControlFlags*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: ControlFlags
+  nameWithType: GenericSecurityDescriptor.ControlFlags
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.GetBinaryForm*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: GetBinaryForm
+  nameWithType: GenericSecurityDescriptor.GetBinaryForm
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.GetSddlForm*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: GetSddlForm
+  nameWithType: GenericSecurityDescriptor.GetSddlForm
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Group*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: Group
+  nameWithType: GenericSecurityDescriptor.Group
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.IsSddlConversionSupported*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: IsSddlConversionSupported
+  nameWithType: GenericSecurityDescriptor.IsSddlConversionSupported
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Owner*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: Owner
+  nameWithType: GenericSecurityDescriptor.Owner
+- uid: System.Security.AccessControl.GenericSecurityDescriptor.Revision*
+  parent: System.Security.AccessControl.GenericSecurityDescriptor
+  isExternal: false
+  name: Revision
+  nameWithType: GenericSecurityDescriptor.Revision

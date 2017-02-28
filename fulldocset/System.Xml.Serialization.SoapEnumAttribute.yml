@@ -1,0 +1,200 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.SoapEnumAttribute
+  id: SoapEnumAttribute
+  children:
+  - System.Xml.Serialization.SoapEnumAttribute.#ctor
+  - System.Xml.Serialization.SoapEnumAttribute.#ctor(System.String)
+  - System.Xml.Serialization.SoapEnumAttribute.Name
+  langs:
+  - csharp
+  name: SoapEnumAttribute
+  nameWithType: SoapEnumAttribute
+  fullName: System.Xml.Serialization.SoapEnumAttribute
+  type: Class
+  summary: Controls how the <xref href="System.Xml.Serialization.XmlSerializer"></xref> serializes an enumeration member.
+  remarks: "The SoapEnumAttribute class belongs to a family of attributes that controls how the <xref:System.Xml.Serialization.XmlSerializer> serializes or deserializes an object as encoded SOAP XML. The resulting XML conforms to section 5 of the World Wide Web Consortium (www.w3.org) document \"Simple Object Access Protocol (SOAP) 1.1\". For a complete list of similar attributes, see [Attributes That Control Encoded SOAP Serialization](~/add/includes/ajax-current-ext-md.md).  \n  \n To serialize an object as an encoded SOAP message, you must construct the <xref:System.Xml.Serialization.XmlSerializer> using an <xref:System.Xml.Serialization.XmlTypeMapping> created with the <xref:System.Xml.Serialization.SoapReflectionImporter.ImportTypeMapping%2A> method of the <xref:System.Xml.Serialization.SoapReflectionImporter> class.  \n  \n Use the SoapEnumAttribute to change the enumeration that the <xref:System.Xml.Serialization.XmlSerializer> generates or recognizes (when it serializes or deserializes a class, respectively). For example, if an enumeration contains a member named `One`, but you prefer that the XML output be named `Single`, apply the SoapEnumAttribute to the enumeration member and set the <xref:System.Xml.Serialization.SoapEnumAttribute.Name%2A> property to \"Single\".  \n  \n You can override the <xref:System.Xml.Serialization.SoapEnumAttribute.Name%2A> property value of a SoapEnumAttribute by creating an instance of the SoapEnumAttribute class and assigning it to the <xref:System.Xml.Serialization.SoapAttributes.SoapEnum%2A> property of a <xref:System.Xml.Serialization.SoapAttributes>. For details, see the <xref:System.Xml.Serialization.SoapAttributeOverrides> class overview.  \n  \n To serialize an object as an encoded SOAP message, you must construct the <xref:System.Xml.Serialization.XmlSerializer> using an <xref:System.Xml.Serialization.XmlTypeMapping> created with the <xref:System.Xml.Serialization.SoapReflectionImporter.ImportTypeMapping%2A> method of the <xref:System.Xml.Serialization.SoapReflectionImporter> class.  \n  \n> [!NOTE]\n>  You can use the word `SoapEnum` in your code instead of the longer SoapEnumAttribute.  \n  \n For more information about using attributes, see [Attributes](~/add/includes/ajax-current-ext-md.md)."
+  example:
+  - "The following example uses the <xref:System.Xml.Serialization.XmlSerializer> to serialize a class named `Food` that includes an enumeration named `FoodType`. The `FoodType` enumeration is overridden by creating a SoapEnumAttribute for each enumeration and setting the <xref:System.Xml.Serialization.SoapAttributes.SoapEnum%2A> property of a <xref:System.Xml.Serialization.SoapAttributes> to the SoapEnumAttribute. The <xref:System.Xml.Serialization.SoapAttributes> is added to a <xref:System.Xml.Serialization.SoapAttributeOverrides> that is used to create an <xref:System.Xml.Serialization.XmlSerializer>.  \n  \n [!code-cs[SoapEnumOverrides#1](~/add/codesnippet/csharp/t-system.xml.serializati_12_1.cs)]\n [!code-cpp[SoapEnumOverrides#1](~/add/codesnippet/cpp/t-system.xml.serializati_12_1.cpp)]\n [!code-vb[SoapEnumOverrides#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_12_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Field)]
+
+      public class SoapEnumAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Xml.Serialization.SoapEnumAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  langs:
+  - csharp
+  name: SoapEnumAttribute()
+  nameWithType: SoapEnumAttribute.SoapEnumAttribute()
+  fullName: System.Xml.Serialization.SoapEnumAttribute.SoapEnumAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.SoapEnumAttribute"></xref> class.
+  remarks: "Use the SoapEnumAttribute to override an existing enumeration. Create a new <xref:System.Xml.Serialization.SoapEnumAttribute>, set its properties and assign the object to the <xref:System.Xml.Serialization.SoapAttributes.SoapEnum%2A> property of a <xref:System.Xml.Serialization.SoapAttributes>. For each member of the enumeration, you must create a new <xref:System.Xml.Serialization.SoapAttributes> and add it to the <xref:System.Xml.Serialization.SoapAttributeOverrides>. For more details, see the <xref:System.Xml.Serialization.SoapAttributeOverrides> class overview.  \n  \n> [!NOTE]\n>  You can use the word `SoapEnum` in your code instead of the longer <xref:System.Xml.Serialization.SoapEnumAttribute>."
+  example:
+  - "The following example uses the <xref:System.Xml.Serialization.XmlSerializer> to serialize a class named `Food` that includes an enumeration named `FoodType`. The `FoodType` enumeration is overridden by creating a <xref:System.Xml.Serialization.SoapEnumAttribute> for each enumeration and setting the <xref:System.Xml.Serialization.SoapAttributes.SoapEnum%2A> property of a <xref:System.Xml.Serialization.SoapAttributes> to the <xref:System.Xml.Serialization.SoapEnumAttribute>. The <xref:System.Xml.Serialization.SoapAttributes> is added to a <xref:System.Xml.Serialization.SoapAttributeOverrides> that is used to create an <xref:System.Xml.Serialization.XmlSerializer>.  \n  \n [!code-cs[SoapEnumOverrides#1](~/add/codesnippet/csharp/m-system.xml.serializati_7_1.cs)]\n [!code-cpp[SoapEnumOverrides#1](~/add/codesnippet/cpp/m-system.xml.serializati_7_1.cpp)]\n [!code-vb[SoapEnumOverrides#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_7_1.vb)]"
+  syntax:
+    content: public SoapEnumAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.SoapEnumAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Xml.Serialization.SoapEnumAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  langs:
+  - csharp
+  name: SoapEnumAttribute(String)
+  nameWithType: SoapEnumAttribute.SoapEnumAttribute(String)
+  fullName: System.Xml.Serialization.SoapEnumAttribute.SoapEnumAttribute(String)
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.SoapEnumAttribute"></xref> class using the specified element name.
+  remarks: "Specify the <xref:System.Xml.Serialization.SoapEnumAttribute.Name%2A> when you want the generated XML enumerator to differ from the enumerator found in the enumeration.  \n  \n> [!NOTE]\n>  You can use the word `SoapEnum` in your code instead of the longer <xref:System.Xml.Serialization.SoapEnumAttribute>."
+  example:
+  - "The following example uses the <xref:System.Xml.Serialization.XmlSerializer> to serialize a class named `Food` that includes an enumeration named `FoodType`. The `FoodType` enumeration is overridden by creating a <xref:System.Xml.Serialization.SoapEnumAttribute> for each enumeration and setting the <xref:System.Xml.Serialization.SoapAttributes.SoapEnum%2A> property of a <xref:System.Xml.Serialization.SoapAttributes> to the <xref:System.Xml.Serialization.SoapEnumAttribute>. The <xref:System.Xml.Serialization.SoapAttributes> is added to a <xref:System.Xml.Serialization.SoapAttributeOverrides> that is used to create an <xref:System.Xml.Serialization.XmlSerializer>.  \n  \n [!code-cs[SoapEnumOverrides#1](~/add/codesnippet/csharp/m-system.xml.serializati_6_1.cs)]\n [!code-cpp[SoapEnumOverrides#1](~/add/codesnippet/cpp/m-system.xml.serializati_6_1.cpp)]\n [!code-vb[SoapEnumOverrides#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_6_1.vb)]"
+  syntax:
+    content: public SoapEnumAttribute (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The XML element name generated by the <xref href="System.Xml.Serialization.XmlSerializer"></xref>.
+  overload: System.Xml.Serialization.SoapEnumAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Xml.Serialization.SoapEnumAttribute.Name
+  id: Name
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  langs:
+  - csharp
+  name: Name
+  nameWithType: SoapEnumAttribute.Name
+  fullName: System.Xml.Serialization.SoapEnumAttribute.Name
+  type: Property
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Gets or sets the value generated in an XML document when the <xref href="System.Xml.Serialization.XmlSerializer"></xref> serializes an enumeration, or the value recognized when it deserializes the enumeration member.
+  remarks: "Specify the Name when you want the generated XML enumerator to differ from the enumerator found in the enumeration.  \n  \n> [!NOTE]\n>  You can use the word `SoapEnum` instead of the longer <xref:System.Xml.Serialization.SoapEnumAttribute>."
+  example:
+  - "The following example uses the <xref:System.Xml.Serialization.XmlSerializer> to serialize a class named `Food` that includes an enumeration named `FoodType`. The `FoodType` enumeration is overridden by creating a <xref:System.Xml.Serialization.SoapEnumAttribute> for each enumeration and setting the <xref:System.Xml.Serialization.SoapAttributes.SoapEnum%2A> property of a <xref:System.Xml.Serialization.SoapAttributes> to the <xref:System.Xml.Serialization.SoapEnumAttribute>. The <xref:System.Xml.Serialization.SoapAttributes> is added to a <xref:System.Xml.Serialization.SoapAttributeOverrides> that is used to create an <xref:System.Xml.Serialization.XmlSerializer>.  \n  \n [!code-cs[SoapEnumOverrides#1](~/add/codesnippet/csharp/p-system.xml.serializati_15_1.cs)]\n [!code-cpp[SoapEnumOverrides#1](~/add/codesnippet/cpp/p-system.xml.serializati_15_1.cpp)]\n [!code-vb[SoapEnumOverrides#1](~/add/codesnippet/visualbasic/p-system.xml.serializati_15_1.vb)]"
+  syntax:
+    content: public string Name { get; set; }
+    return:
+      type: System.String
+      description: The value generated in an XML document when the <xref href="System.Xml.Serialization.XmlSerializer"></xref> serializes the enumeration, or the value recognized when it deserializes the enumeration member.
+  overload: System.Xml.Serialization.SoapEnumAttribute.Name*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.SoapEnumAttribute.#ctor
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  isExternal: false
+  name: SoapEnumAttribute()
+  nameWithType: SoapEnumAttribute.SoapEnumAttribute()
+  fullName: System.Xml.Serialization.SoapEnumAttribute.SoapEnumAttribute()
+- uid: System.Xml.Serialization.SoapEnumAttribute.#ctor(System.String)
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  isExternal: false
+  name: SoapEnumAttribute(String)
+  nameWithType: SoapEnumAttribute.SoapEnumAttribute(String)
+  fullName: System.Xml.Serialization.SoapEnumAttribute.SoapEnumAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Xml.Serialization.SoapEnumAttribute.Name
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  isExternal: false
+  name: Name
+  nameWithType: SoapEnumAttribute.Name
+  fullName: System.Xml.Serialization.SoapEnumAttribute.Name
+- uid: System.Xml.Serialization.SoapEnumAttribute.#ctor*
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  isExternal: false
+  name: SoapEnumAttribute
+  nameWithType: SoapEnumAttribute.SoapEnumAttribute
+- uid: System.Xml.Serialization.SoapEnumAttribute.Name*
+  parent: System.Xml.Serialization.SoapEnumAttribute
+  isExternal: false
+  name: Name
+  nameWithType: SoapEnumAttribute.Name

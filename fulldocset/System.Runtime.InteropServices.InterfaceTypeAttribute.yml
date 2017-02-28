@@ -1,0 +1,204 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute
+  id: InterfaceTypeAttribute
+  children:
+  - System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor(System.Int16)
+  - System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor(System.Runtime.InteropServices.ComInterfaceType)
+  - System.Runtime.InteropServices.InterfaceTypeAttribute.Value
+  langs:
+  - csharp
+  name: InterfaceTypeAttribute
+  nameWithType: InterfaceTypeAttribute
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute
+  type: Class
+  summary: Indicates whether a managed interface is dual, dispatch-only, or <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> -only when exposed to COM.
+  remarks: "You can apply this attribute to interfaces.  \n  \n By default, the [Tlbexp.exe (Type Library Exporter)](~/add/includes/ajax-current-ext-md.md) exposes a managed interface to COM as a dual interface, giving you the flexibility of late binding or the performance of early binding. The <xref:System.Runtime.InteropServices.ComInterfaceType> enumeration enables you to override the default behavior and specify late binding only or early binding only. For example, you can apply `InterfaceType (ComInterfaceType.InterfaceIsIDispatch)` to an interface to produce metadata to restrict callers to late binding only. Although interfaces that derive from the `IDispatch` interface are often dual, the `InterfaceIsIDispatch` enumeration member allows only late-bound calls to the interface methods. This attribute has no effect on the managed view of the interface. For additional information on how interfaces are exposed to COM, see [Exported Type Conversion](http://msdn.microsoft.com/en-us/1dfe55f4-07a2-4b61-aabf-a8cf65783a6b).  \n  \n The [Tlbimp.exe (Type Library Importer)](~/add/includes/ajax-current-ext-md.md) also applies this attribute to imported, nondual interfaces; it applies the appropriate enumeration member to indicate that the interface is dispatch-only or `IUnknown` -only."
+  example:
+  - "The following example shows how `InterfaceTypeAttribute` controls how the interface is exposed to COM.  \n  \n [!code-cs[Classic InterfaceTypeAttribute Example#1](~/add/codesnippet/csharp/t-system.runtime.interop_35_1.cs)]\n [!code-cpp[Classic InterfaceTypeAttribute Example#1](~/add/codesnippet/cpp/t-system.runtime.interop_35_1.cpp)]\n [!code-vb[Classic InterfaceTypeAttribute Example#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_35_1.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Interface, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class InterfaceTypeAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor(System.Int16)
+  id: '#ctor(System.Int16)'
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  langs:
+  - csharp
+  name: InterfaceTypeAttribute(Int16)
+  nameWithType: InterfaceTypeAttribute.InterfaceTypeAttribute(Int16)
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute.InterfaceTypeAttribute(Int16)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.InteropServices.InterfaceTypeAttribute"></xref> class with the specified <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> enumeration member.
+  remarks: This constructor takes an underlying 16-bit integer that represents each <xref:System.Runtime.InteropServices.ComInterfaceType> enumeration member. The [Tlbimp.exe (Type Library Importer)](~/add/includes/ajax-current-ext-md.md) uses this constructor.
+  syntax:
+    content: public InterfaceTypeAttribute (short interfaceType);
+    parameters:
+    - id: interfaceType
+      type: System.Int16
+      description: Describes how the interface should be exposed to COM clients.
+  overload: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor(System.Runtime.InteropServices.ComInterfaceType)
+  id: '#ctor(System.Runtime.InteropServices.ComInterfaceType)'
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  langs:
+  - csharp
+  name: InterfaceTypeAttribute(ComInterfaceType)
+  nameWithType: InterfaceTypeAttribute.InterfaceTypeAttribute(ComInterfaceType)
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute.InterfaceTypeAttribute(ComInterfaceType)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: Initializes a new instance of the <xref href="System.Runtime.InteropServices.InterfaceTypeAttribute"></xref> class with the specified <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> enumeration member.
+  remarks: For readable code that is less prone to error, always use this constructor.
+  syntax:
+    content: public InterfaceTypeAttribute (System.Runtime.InteropServices.ComInterfaceType interfaceType);
+    parameters:
+    - id: interfaceType
+      type: System.Runtime.InteropServices.ComInterfaceType
+      description: One of the <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> values that describes how the interface should be exposed to COM clients.
+  overload: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.Value
+  id: Value
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  langs:
+  - csharp
+  name: Value
+  nameWithType: InterfaceTypeAttribute.Value
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute.Value
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.InteropServices
+  summary: Gets the <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> value that describes how the interface should be exposed to COM.
+  syntax:
+    content: public System.Runtime.InteropServices.ComInterfaceType Value { get; }
+    return:
+      type: System.Runtime.InteropServices.ComInterfaceType
+      description: The <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> value that describes how the interface should be exposed to COM.
+  overload: System.Runtime.InteropServices.InterfaceTypeAttribute.Value*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor(System.Int16)
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  isExternal: false
+  name: InterfaceTypeAttribute(Int16)
+  nameWithType: InterfaceTypeAttribute.InterfaceTypeAttribute(Int16)
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute.InterfaceTypeAttribute(Int16)
+- uid: System.Int16
+  parent: System
+  isExternal: false
+  name: Int16
+  nameWithType: Int16
+  fullName: System.Int16
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor(System.Runtime.InteropServices.ComInterfaceType)
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  isExternal: false
+  name: InterfaceTypeAttribute(ComInterfaceType)
+  nameWithType: InterfaceTypeAttribute.InterfaceTypeAttribute(ComInterfaceType)
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute.InterfaceTypeAttribute(ComInterfaceType)
+- uid: System.Runtime.InteropServices.ComInterfaceType
+  parent: System.Runtime.InteropServices
+  isExternal: false
+  name: ComInterfaceType
+  nameWithType: ComInterfaceType
+  fullName: System.Runtime.InteropServices.ComInterfaceType
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.Value
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  isExternal: false
+  name: Value
+  nameWithType: InterfaceTypeAttribute.Value
+  fullName: System.Runtime.InteropServices.InterfaceTypeAttribute.Value
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor*
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  isExternal: false
+  name: InterfaceTypeAttribute
+  nameWithType: InterfaceTypeAttribute.InterfaceTypeAttribute
+- uid: System.Runtime.InteropServices.InterfaceTypeAttribute.Value*
+  parent: System.Runtime.InteropServices.InterfaceTypeAttribute
+  isExternal: false
+  name: Value
+  nameWithType: InterfaceTypeAttribute.Value

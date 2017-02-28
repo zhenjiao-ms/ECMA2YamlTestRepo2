@@ -1,0 +1,648 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  id: SynchronizationAttribute
+  children:
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Boolean)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Int32)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Int32,System.Boolean)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK(System.Runtime.Remoting.Contexts.Context,System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW
+  - System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED
+  langs:
+  - csharp
+  name: SynchronizationAttribute
+  nameWithType: SynchronizationAttribute
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  type: Class
+  summary: Enforces a synchronization domain for the current context and all contexts that share the same instance.
+  remarks: "When this attribute is applied to an object, only one thread can be executing in all contexts that share an instance of this property. This is done by contributing sinks that intercept and serialize incoming calls for the respective contexts. If the property is marked for reentry, then callouts are intercepted too. The callout interception allows other waiting threads to enter the synchronization domain for maximal throughput.  \n  \n> [!NOTE]\n>  There are two classes named `SynchronizationAttribute` : one in the <xref:System.Runtime.Remoting.Contexts> namespace, and the other in the <xref:System.EnterpriseServices> namespace. The <xref:System.EnterpriseServices.SynchronizationAttribute?displayProperty=fullName> class supports only synchronous calls, and can be used only with serviced components. (For more information on serviced components, see [&#91;\\<topic://cpconservicedcomponentoverview>&#93;](http://msdn.microsoft.com/en-us/5133a620-9c8c-47bd-8e36-130e722fe463).) The SynchronizationAttribute supports both synchronous and asynchronous calls, and can be used only with context bound objects. (For more information on context bound objects, see the <xref:System.ContextBoundObject> class.)  \n  \n> [!NOTE]\n>  This class makes a link demand and an inheritance demand at the class level. A <xref:System.Security.SecurityException> is thrown when either the immediate caller or the derived class does not have infrastructure permission. For details about security demands, see [Link Demands](~/add/includes/ajax-current-ext-md.md) and [Inheritance Demands](http://msdn.microsoft.com/en-us/28b9adbb-8f08-4f10-b856-dbf59eb932d9)."
+  example:
+  - "The following code example demonstrates the use of the SynchronizationAttribute. For the complete example code, see the example for the <xref:System.Runtime.Remoting.Messaging.AsyncResult> class.  \n  \n [!code-cpp[AsyncResult.NewExamples#2](~/add/codesnippet/cpp/t-system.runtime.remotin_11_1.cpp)]\n [!code-vb[AsyncResult.NewExamples#2](~/add/codesnippet/visualbasic/t-system.runtime.remotin_11_1.vb)]\n [!code-cs[AsyncResult.NewExamples#2](~/add/codesnippet/csharp/t-system.runtime.remotin_11_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      [System.Security.SecurityCritical]
+
+      public class SynchronizationAttribute : System.Runtime.Remoting.Contexts.ContextAttribute, System.Runtime.Remoting.Contexts.IContributeClientContextSink, System.Runtime.Remoting.Contexts.IContributeServerContextSink
+  inheritance:
+  - System.Object
+  - System.Attribute
+  - System.Runtime.Remoting.Contexts.ContextAttribute
+  implements:
+  - System.Runtime.Remoting.Contexts.IContributeClientContextSink
+  - System.Runtime.Remoting.Contexts.IContributeServerContextSink
+  inheritedMembers:
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.Runtime.Remoting.Contexts.ContextAttribute.AttributeName
+  - System.Runtime.Remoting.Contexts.ContextAttribute.Equals(System.Object)
+  - System.Runtime.Remoting.Contexts.ContextAttribute.Freeze(System.Runtime.Remoting.Contexts.Context)
+  - System.Runtime.Remoting.Contexts.ContextAttribute.GetHashCode
+  - System.Runtime.Remoting.Contexts.ContextAttribute.IsNewContextOK(System.Runtime.Remoting.Contexts.Context)
+  - System.Runtime.Remoting.Contexts.ContextAttribute.Name
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor
+  id: '#ctor'
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: SynchronizationAttribute()
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute()
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> class with default values.
+  syntax:
+    content: public SynchronizationAttribute ();
+    parameters: []
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: SynchronizationAttribute(Boolean)
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute(Boolean)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute(Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> class with a Boolean value indicating whether reentry is required.
+  remarks: If reentry is required, callouts out of the <xref:System.Runtime.Remoting.Contexts.Context> to which the current attribute is applied must be intercepted and serialized.
+  syntax:
+    content: public SynchronizationAttribute (bool reEntrant);
+    parameters:
+    - id: reEntrant
+      type: System.Boolean
+      description: A Boolean value indicating whether reentry is required.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: SynchronizationAttribute(Int32)
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute(Int32)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute(Int32)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> class with a flag indicating the behavior of the object to which this attribute is applied.
+  remarks: The `flag` parameter must be either <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED>, <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED>, <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED>, or <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW>.
+  syntax:
+    content: public SynchronizationAttribute (int flag);
+    parameters:
+    - id: flag
+      type: System.Int32
+      description: An integer value indicating the behavior of the object to which this attribute is applied.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The <code>flag</code> parameter was not one of the defined flags.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Int32,System.Boolean)
+  id: '#ctor(System.Int32,System.Boolean)'
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: SynchronizationAttribute(Int32,Boolean)
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute(Int32,Boolean)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute(Int32,Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Initializes a new instance of the <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> class with a flag indicating the behavior of the object to which this attribute is applied, and a Boolean value indicating whether reentry is required.
+  remarks: The `flag` parameter must be either <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED>, <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED>, <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED>, or <xref:System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW>.
+  syntax:
+    content: public SynchronizationAttribute (int flag, bool reEntrant);
+    parameters:
+    - id: flag
+      type: System.Int32
+      description: An integer value indicating the behavior of the object to which this attribute is applied.
+    - id: reEntrant
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if reentry is required, and callouts must be intercepted and serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The <code>flag</code> parameter was not one of the defined flags.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  id: GetClientContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: GetClientContextSink(IMessageSink)
+  nameWithType: SynchronizationAttribute.GetClientContextSink(IMessageSink)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink(IMessageSink)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Creates a CallOut sink and chains it in front of the provided chain of sinks at the context boundary on the client end of a remoting call.
+  remarks: The current method is an implementation of <xref:System.Runtime.Remoting.Contexts.IContributeClientContextSink.GetClientContextSink%2A?displayProperty=fullName>.
+  syntax:
+    content: public virtual System.Runtime.Remoting.Messaging.IMessageSink GetClientContextSink (System.Runtime.Remoting.Messaging.IMessageSink nextSink);
+    parameters:
+    - id: nextSink
+      type: System.Runtime.Remoting.Messaging.IMessageSink
+      description: The chain of sinks composed so far.
+    return:
+      type: System.Runtime.Remoting.Messaging.IMessageSink
+      description: The composite sink chain with the new CallOut sink.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  id: GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: GetPropertiesForNewContext(IConstructionCallMessage)
+  nameWithType: SynchronizationAttribute.GetPropertiesForNewContext(IConstructionCallMessage)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext(IConstructionCallMessage)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Adds the <xref uid="langword_csharp_Synchronized" name="Synchronized" href=""></xref> context property to the specified <xref href="System.Runtime.Remoting.Activation.IConstructionCallMessage"></xref>.
+  syntax:
+    content: public override void GetPropertiesForNewContext (System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg);
+    parameters:
+    - id: ctorMsg
+      type: System.Runtime.Remoting.Activation.IConstructionCallMessage
+      description: The <xref href="System.Runtime.Remoting.Activation.IConstructionCallMessage"></xref> to which to add the property.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  id: GetServerContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: GetServerContextSink(IMessageSink)
+  nameWithType: SynchronizationAttribute.GetServerContextSink(IMessageSink)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink(IMessageSink)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Creates a synchronized dispatch sink and chains it in front of the provided chain of sinks at the context boundary on the server end of a remoting call.
+  remarks: The current method is an implementation of <xref:System.Runtime.Remoting.Contexts.IContributeServerContextSink.GetServerContextSink%2A?displayProperty=fullName>.
+  syntax:
+    content: public virtual System.Runtime.Remoting.Messaging.IMessageSink GetServerContextSink (System.Runtime.Remoting.Messaging.IMessageSink nextSink);
+    parameters:
+    - id: nextSink
+      type: System.Runtime.Remoting.Messaging.IMessageSink
+      description: The chain of sinks composed so far.
+    return:
+      type: System.Runtime.Remoting.Messaging.IMessageSink
+      description: The composite sink chain with the new synchronized dispatch sink.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK(System.Runtime.Remoting.Contexts.Context,System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  id: IsContextOK(System.Runtime.Remoting.Contexts.Context,System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: IsContextOK(Context,IConstructionCallMessage)
+  nameWithType: SynchronizationAttribute.IsContextOK(Context,IConstructionCallMessage)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK(Context,IConstructionCallMessage)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Returns a Boolean value indicating whether the context parameter meets the context attribute's requirements.
+  syntax:
+    content: public override bool IsContextOK (System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
+    parameters:
+    - id: ctx
+      type: System.Runtime.Remoting.Contexts.Context
+      description: The context to check.
+    - id: msg
+      type: System.Runtime.Remoting.Activation.IConstructionCallMessage
+      description: Information gathered at construction time of the context bound object marked by this attribute. The <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> can inspect, add to, and remove properties from the context while determining if the context is acceptable to it.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the passed in context is OK; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The <code>ctx</code> or <code>msg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant
+  id: IsReEntrant
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: IsReEntrant
+  nameWithType: SynchronizationAttribute.IsReEntrant
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Gets or sets a Boolean value indicating whether reentry is required.
+  remarks: If reentry is required, callouts out of the <xref:System.Runtime.Remoting.Contexts.Context> to which the current attribute is applied must be intercepted and serialized.
+  syntax:
+    content: public virtual bool IsReEntrant { get; }
+    return:
+      type: System.Boolean
+      description: A Boolean value indicating whether reentry is required.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked
+  id: Locked
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: Locked
+  nameWithType: SynchronizationAttribute.Locked
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Gets or sets a Boolean value indicating whether the <xref href="System.Runtime.Remoting.Contexts.Context"></xref> implementing this instance of <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> is locked.
+  remarks: When a synchronized <xref:System.Runtime.Remoting.Contexts.Context> is locked, only the thread currently executing in it has access to objects in the <xref:System.Runtime.Remoting.Contexts.Context>.
+  syntax:
+    content: public virtual bool Locked { get; set; }
+    return:
+      type: System.Boolean
+      description: A Boolean value indicating whether the <xref href="System.Runtime.Remoting.Contexts.Context"></xref> implementing this instance of <xref href="System.Runtime.Remoting.Contexts.SynchronizationAttribute"></xref> is locked.
+  overload: System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED
+  id: NOT_SUPPORTED
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: NOT_SUPPORTED
+  nameWithType: SynchronizationAttribute.NOT_SUPPORTED
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Indicates that the class to which this attribute is applied cannot be created in a context that has synchronization. This field is constant.
+  syntax:
+    content: public const int NOT_SUPPORTED = 1;
+    return:
+      type: System.Int32
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED
+  id: REQUIRED
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: REQUIRED
+  nameWithType: SynchronizationAttribute.REQUIRED
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Indicates that the class to which this attribute is applied must be created in a context that has synchronization. This field is constant.
+  syntax:
+    content: public const int REQUIRED = 4;
+    return:
+      type: System.Int32
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW
+  id: REQUIRES_NEW
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: REQUIRES_NEW
+  nameWithType: SynchronizationAttribute.REQUIRES_NEW
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Indicates that the class to which this attribute is applied must be created in a context with a new instance of the synchronization property each time. This field is constant.
+  syntax:
+    content: public const int REQUIRES_NEW = 8;
+    return:
+      type: System.Int32
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED
+  id: SUPPORTED
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  langs:
+  - csharp
+  name: SUPPORTED
+  nameWithType: SynchronizationAttribute.SUPPORTED
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED
+  type: Field
+  assemblies:
+  - mscorlib
+  namespace: System.Runtime.Remoting.Contexts
+  summary: Indicates that the class to which this attribute is applied is not dependent on whether the context has synchronization. This field is constant.
+  syntax:
+    content: public const int SUPPORTED = 2;
+    return:
+      type: System.Int32
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Runtime.Remoting.Contexts.ContextAttribute
+  isExternal: false
+  name: System.Runtime.Remoting.Contexts.ContextAttribute
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: SynchronizationAttribute()
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute()
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute()
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Boolean)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: SynchronizationAttribute(Boolean)
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute(Boolean)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Int32)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: SynchronizationAttribute(Int32)
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute(Int32)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute(Int32)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor(System.Int32,System.Boolean)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: SynchronizationAttribute(Int32,Boolean)
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute(Int32,Boolean)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SynchronizationAttribute(Int32,Boolean)
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: GetClientContextSink(IMessageSink)
+  nameWithType: SynchronizationAttribute.GetClientContextSink(IMessageSink)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink(IMessageSink)
+- uid: System.Runtime.Remoting.Messaging.IMessageSink
+  parent: System.Runtime.Remoting.Messaging
+  isExternal: false
+  name: IMessageSink
+  nameWithType: IMessageSink
+  fullName: System.Runtime.Remoting.Messaging.IMessageSink
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: GetPropertiesForNewContext(IConstructionCallMessage)
+  nameWithType: SynchronizationAttribute.GetPropertiesForNewContext(IConstructionCallMessage)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext(IConstructionCallMessage)
+- uid: System.Runtime.Remoting.Activation.IConstructionCallMessage
+  parent: System.Runtime.Remoting.Activation
+  isExternal: false
+  name: IConstructionCallMessage
+  nameWithType: IConstructionCallMessage
+  fullName: System.Runtime.Remoting.Activation.IConstructionCallMessage
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink(System.Runtime.Remoting.Messaging.IMessageSink)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: GetServerContextSink(IMessageSink)
+  nameWithType: SynchronizationAttribute.GetServerContextSink(IMessageSink)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink(IMessageSink)
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK(System.Runtime.Remoting.Contexts.Context,System.Runtime.Remoting.Activation.IConstructionCallMessage)
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: IsContextOK(Context,IConstructionCallMessage)
+  nameWithType: SynchronizationAttribute.IsContextOK(Context,IConstructionCallMessage)
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK(Context,IConstructionCallMessage)
+- uid: System.Runtime.Remoting.Contexts.Context
+  parent: System.Runtime.Remoting.Contexts
+  isExternal: false
+  name: Context
+  nameWithType: Context
+  fullName: System.Runtime.Remoting.Contexts.Context
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: IsReEntrant
+  nameWithType: SynchronizationAttribute.IsReEntrant
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: Locked
+  nameWithType: SynchronizationAttribute.Locked
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: NOT_SUPPORTED
+  nameWithType: SynchronizationAttribute.NOT_SUPPORTED
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.NOT_SUPPORTED
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: REQUIRED
+  nameWithType: SynchronizationAttribute.REQUIRED
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRED
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: REQUIRES_NEW
+  nameWithType: SynchronizationAttribute.REQUIRES_NEW
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.REQUIRES_NEW
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: SUPPORTED
+  nameWithType: SynchronizationAttribute.SUPPORTED
+  fullName: System.Runtime.Remoting.Contexts.SynchronizationAttribute.SUPPORTED
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.#ctor*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: SynchronizationAttribute
+  nameWithType: SynchronizationAttribute.SynchronizationAttribute
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetClientContextSink*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: GetClientContextSink
+  nameWithType: SynchronizationAttribute.GetClientContextSink
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetPropertiesForNewContext*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: GetPropertiesForNewContext
+  nameWithType: SynchronizationAttribute.GetPropertiesForNewContext
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.GetServerContextSink*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: GetServerContextSink
+  nameWithType: SynchronizationAttribute.GetServerContextSink
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsContextOK*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: IsContextOK
+  nameWithType: SynchronizationAttribute.IsContextOK
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.IsReEntrant*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: IsReEntrant
+  nameWithType: SynchronizationAttribute.IsReEntrant
+- uid: System.Runtime.Remoting.Contexts.SynchronizationAttribute.Locked*
+  parent: System.Runtime.Remoting.Contexts.SynchronizationAttribute
+  isExternal: false
+  name: Locked
+  nameWithType: SynchronizationAttribute.Locked

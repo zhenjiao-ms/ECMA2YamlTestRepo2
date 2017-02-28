@@ -1,0 +1,281 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ObsoleteAttribute
+  id: ObsoleteAttribute
+  children:
+  - System.ObsoleteAttribute.#ctor
+  - System.ObsoleteAttribute.#ctor(System.String)
+  - System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+  - System.ObsoleteAttribute.IsError
+  - System.ObsoleteAttribute.Message
+  langs:
+  - csharp
+  name: ObsoleteAttribute
+  nameWithType: ObsoleteAttribute
+  fullName: System.ObsoleteAttribute
+  type: Class
+  summary: Marks the program elements that are no longer in use. This class cannot be inherited.
+  remarks: "ObsoleteAttribute is applicable to all program elements except assemblies, modules, parameters, and return values. Marking an element as obsolete informs users that the element will be removed in future versions of the product.  \n  \n The ObsoleteAttribute class includes two properties:  \n  \n-   <xref:System.ObsoleteAttribute.Message%2A>. The string assigned to the <xref:System.ObsoleteAttribute.Message%2A> property is emitted by the compiler when the attribute target is used in code. The string should note that the attribute target is obsolete and, if possible, provide some workaround or programmatic alternative.  \n  \n-   <xref:System.ObsoleteAttribute.IsError%2A>. This is a Boolean value that indicates to the compiler whether using the ObsoleteAttribute attribute should cause it to emit an error (<xref:System.ObsoleteAttribute.IsError%2A> is `true`) or a warning (<xref:System.ObsoleteAttribute.IsError%2A> is `false`).  \n  \n For more information about using attributes, see [Attributes](~/add/includes/ajax-current-ext-md.md).  \n  \n## [!INCLUDE[win8_appname_long](~/add/includes/win8-appname-long-md.md)] Apps  \n When you create a Windows Metadata library (.winmd file), the ObsoleteAttribute is exported as both the ObsoleteAttribute attribute and the [Windows.Foundation.Metadata.DeprecatedAttribute](http://msdn.microsoft.com/library/windows/apps/windows.foundation.metadata.deprecatedattribute.aspx) attribute if only the ObsoleteAttribute is present in source code. The ObsoleteAttribute is transformed to the `DeprecatedAttribute` as follows:  \n  \n-   If the `message` and `error` arguments are both present, `message` is assigned to the `DeprecatedAttribute``message` argument. An error value of `true` maps to [DeprecationType.Remove](http://msdn.microsoft.com/library/windows/apps/windows.foundation.metadata.deprecationtype.aspx), and an `error` value of `false` maps to [DeprecationType.Deprecate](http://msdn.microsoft.com/library/windows/apps/windows.foundation.metadata.deprecationtype.aspx).  \n  \n-   If the `message` argument is not supplied in the ObsoleteAttribute, its default value in the `DeprecatedAttribute` is \"*element_name* is deprecated\", where *element_name* is the name of the target program element to which the attribute is applied.  \n  \n-   If the `error` argument is not present in the ObsoleteAttribute, its default value in the `DeprecatedAttribute` is [DeprecationType.Deprecate](http://msdn.microsoft.com/library/windows/apps/windows.foundation.metadata.deprecationtype.aspx).  \n  \n> [!IMPORTANT]\n>  Directly applying the [Windows.Foundation.Metadata.DeprecatedAttribute](http://msdn.microsoft.com/library/windows/apps/windows.foundation.metadata.deprecatedattribute.aspx) attribute to managed code is not recommended, because this export occurs automatically."
+  example:
+  - "The following example defines a class that contains a property and a method that are marked with the ObsoleteAttribute attribute. Accessing the value of the `OldProperty` property in code generates a compiler warning, but calling the `CallOldMethod` method generates a compiler error. The example also shows the output that results when you attempt to compile the source code.  \n  \n [!code-vb[ObsoleteAttribute#1](~/add/codesnippet/visualbasic/t-system.obsoleteattribute_1.vb)]\n [!code-cs[ObsoleteAttribute#1](~/add/codesnippet/csharp/t-system.obsoleteattribute_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Class | System.AttributeTargets.Struct | System.AttributeTargets.Enum | System.AttributeTargets.Constructor | System.AttributeTargets.Method | System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Event | System.AttributeTargets.Interface | System.AttributeTargets.Delegate, Inherited=false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public sealed class ObsoleteAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObsoleteAttribute.#ctor
+  id: '#ctor'
+  parent: System.ObsoleteAttribute
+  langs:
+  - csharp
+  name: ObsoleteAttribute()
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute()
+  fullName: System.ObsoleteAttribute.ObsoleteAttribute()
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObsoleteAttribute"></xref> class with default properties.
+  remarks: "The following table shows the initial property values for an instance of <xref:System.ObsoleteAttribute>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.ObsoleteAttribute.IsError%2A>|`false`|  \n|<xref:System.ObsoleteAttribute.Message%2A>|`null`|"
+  syntax:
+    content: public ObsoleteAttribute ();
+    parameters: []
+  overload: System.ObsoleteAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObsoleteAttribute.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: System.ObsoleteAttribute
+  langs:
+  - csharp
+  name: ObsoleteAttribute(String)
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute(String)
+  fullName: System.ObsoleteAttribute.ObsoleteAttribute(String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObsoleteAttribute"></xref> class with a specified workaround message.
+  remarks: "The following table shows the initial property values for an instance of <xref:System.ObsoleteAttribute>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.ObsoleteAttribute.IsError%2A>|`false`.|  \n|<xref:System.ObsoleteAttribute.Message%2A>|The workaround message.|"
+  syntax:
+    content: public ObsoleteAttribute (string message);
+    parameters:
+    - id: message
+      type: System.String
+      description: The text string that describes alternative workarounds.
+  overload: System.ObsoleteAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+  id: '#ctor(System.String,System.Boolean)'
+  parent: System.ObsoleteAttribute
+  langs:
+  - csharp
+  name: ObsoleteAttribute(String,Boolean)
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute(String,Boolean)
+  fullName: System.ObsoleteAttribute.ObsoleteAttribute(String,Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Initializes a new instance of the <xref href="System.ObsoleteAttribute"></xref> class with a workaround message and a Boolean value indicating whether the obsolete element usage is considered an error.
+  remarks: "The following table shows the initial property values for an instance of <xref:System.ObsoleteAttribute>.  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.ObsoleteAttribute.IsError%2A>|The `error` value.|  \n|<xref:System.ObsoleteAttribute.Message%2A>|The `message` value.|"
+  syntax:
+    content: public ObsoleteAttribute (string message, bool error);
+    parameters:
+    - id: message
+      type: System.String
+      description: The text string that describes alternative workarounds.
+    - id: error
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the obsolete element usage generates a compiler error; <xref uid="langword_csharp_false" name="false" href=""></xref> if it generates a compiler warning.
+  overload: System.ObsoleteAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObsoleteAttribute.IsError
+  id: IsError
+  parent: System.ObsoleteAttribute
+  langs:
+  - csharp
+  name: IsError
+  nameWithType: ObsoleteAttribute.IsError
+  fullName: System.ObsoleteAttribute.IsError
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets a Boolean value indicating whether the compiler will treat usage of the obsolete program element as an error.
+  remarks: ''
+  example:
+  - "The following example defines a class that contains two members marked as obsolete. The first, a property named `OldProperty`, produces a compiler warning if it is called. The second, a method named `CallOldMethod`, produces a compiler error. The example uses reflection to get information about the <xref:System.ObsoleteAttribute> attributes applied to members of the type and displays the values of their <xref:System.ObsoleteAttribute.Message%2A> and IsError properties.  \n  \n [!code-cs[System.ObsoleteAttribute.Message#1](~/add/codesnippet/csharp/p-system.obsoleteattribu_0_1.cs)]\n [!code-vb[System.ObsoleteAttribute.Message#1](~/add/codesnippet/visualbasic/p-system.obsoleteattribu_0_1.vb)]"
+  syntax:
+    content: public bool IsError { get; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the obsolete element usage is considered an error; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ObsoleteAttribute.IsError*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ObsoleteAttribute.Message
+  id: Message
+  parent: System.ObsoleteAttribute
+  langs:
+  - csharp
+  name: Message
+  nameWithType: ObsoleteAttribute.Message
+  fullName: System.ObsoleteAttribute.Message
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Gets the workaround message, including a description of the alternative program elements.
+  remarks: ''
+  example:
+  - "The following example defines a class that contains two members marked as obsolete. The first, a property named `OldProperty`, produces a compiler warning if it is called. The second, a method named `CallOldMethod`, produces a compiler error. The example uses reflection to get information about the <xref:System.ObsoleteAttribute> attributes applied to members of the type and displays the values of their Message and <xref:System.ObsoleteAttribute.IsError%2A> properties.  \n  \n [!code-cs[System.ObsoleteAttribute.Message#1](~/add/codesnippet/csharp/p-system.obsoleteattribu_1_1.cs)]\n [!code-vb[System.ObsoleteAttribute.Message#1](~/add/codesnippet/visualbasic/p-system.obsoleteattribu_1_1.vb)]"
+  syntax:
+    content: public string Message { get; }
+    return:
+      type: System.String
+      description: The workaround text string.
+  overload: System.ObsoleteAttribute.Message*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ObsoleteAttribute.#ctor
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: ObsoleteAttribute()
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute()
+  fullName: System.ObsoleteAttribute.ObsoleteAttribute()
+- uid: System.ObsoleteAttribute.#ctor(System.String)
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: ObsoleteAttribute(String)
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute(String)
+  fullName: System.ObsoleteAttribute.ObsoleteAttribute(String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: ObsoleteAttribute(String,Boolean)
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute(String,Boolean)
+  fullName: System.ObsoleteAttribute.ObsoleteAttribute(String,Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ObsoleteAttribute.IsError
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: IsError
+  nameWithType: ObsoleteAttribute.IsError
+  fullName: System.ObsoleteAttribute.IsError
+- uid: System.ObsoleteAttribute.Message
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: Message
+  nameWithType: ObsoleteAttribute.Message
+  fullName: System.ObsoleteAttribute.Message
+- uid: System.ObsoleteAttribute.#ctor*
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: ObsoleteAttribute
+  nameWithType: ObsoleteAttribute.ObsoleteAttribute
+- uid: System.ObsoleteAttribute.IsError*
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: IsError
+  nameWithType: ObsoleteAttribute.IsError
+- uid: System.ObsoleteAttribute.Message*
+  parent: System.ObsoleteAttribute
+  isExternal: false
+  name: Message
+  nameWithType: ObsoleteAttribute.Message

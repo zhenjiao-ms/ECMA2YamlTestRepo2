@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Xml.Serialization.SoapIgnoreAttribute
+  id: SoapIgnoreAttribute
+  children:
+  - System.Xml.Serialization.SoapIgnoreAttribute.#ctor
+  langs:
+  - csharp
+  name: SoapIgnoreAttribute
+  nameWithType: SoapIgnoreAttribute
+  fullName: System.Xml.Serialization.SoapIgnoreAttribute
+  type: Class
+  summary: Instructs the <xref href="System.Xml.Serialization.XmlSerializer"></xref> not to serialize the public field or public read/write property value.
+  remarks: "The SoapIgnoreAttribute class belongs to a family of attributes that controls how the <xref:System.Xml.Serialization.XmlSerializer> serializes or deserializes an object as encoded SOAP XML. The resulting XML conforms to section 5 of the World Wide Web Consortium (www.w3.org) document, \"Simple Object Access Protocol (SOAP) 1.1\". For a complete list of similar attributes, see [Attributes That Control Encoded SOAP Serialization](~/add/includes/ajax-current-ext-md.md).  \n  \n To serialize an object as an encoded SOAP message, you must construct the <xref:System.Xml.Serialization.XmlSerializer> using an <xref:System.Xml.Serialization.XmlTypeMapping> created with the <xref:System.Xml.Serialization.SoapReflectionImporter.ImportTypeMapping%2A> method of the <xref:System.Xml.Serialization.SoapReflectionImporter> class.  \n  \n Apply the SoapIgnoreAttribute to any class member that you want the <xref:System.Xml.Serialization.XmlSerializer> to ignore when an instance of the class is serialized. For example, you may do this when the member is used to contain metadata about the object being serialized.  \n  \n For more information about using attributes, see [Attributes](~/add/includes/ajax-current-ext-md.md).  \n  \n> [!NOTE]\n>  You can use the word `SoapIgnore` in your code instead of the longer SoapIgnoreAttribute."
+  example:
+  - "The following example serializes a class named `Group`. The serialization of the `GroupName` and `IgnoreThis` fields and the members of the `GroupType` enumeration are overridden. In the `CreateOverrideSerializer` method, a <xref:System.Xml.Serialization.SoapAttributeOverrides> is created, and for each overridden member or enumeration, a <xref:System.Xml.Serialization.SoapAttributes> is created with the appropriate property set and added to the <xref:System.Xml.Serialization.SoapAttributeOverrides>. An <xref:System.Xml.Serialization.XmlTypeMapping> is created using the <xref:System.Xml.Serialization.SoapAttributeOverrides>, and that <xref:System.Xml.Serialization.XmlTypeMapping> is used to create the <xref:System.Xml.Serialization.XmlSerializer> that overrides the default serialization.  \n  \n [!code-cpp[SoapAttributesOverrides#1](~/add/codesnippet/cpp/t-system.xml.serializati_16_1.cpp)]\n [!code-vb[SoapAttributesOverrides#1](~/add/codesnippet/visualbasic/t-system.xml.serializati_16_1.vb)]\n [!code-cs[SoapAttributesOverrides#1](~/add/codesnippet/csharp/t-system.xml.serializati_16_1.cs)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.Parameter | System.AttributeTargets.ReturnValue)]
+
+      public class SoapIgnoreAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.Equals(System.Object)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetHashCode
+  - System.Attribute.IsDefaultAttribute
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Xml.Serialization.SoapIgnoreAttribute.#ctor
+  id: '#ctor'
+  parent: System.Xml.Serialization.SoapIgnoreAttribute
+  langs:
+  - csharp
+  name: SoapIgnoreAttribute()
+  nameWithType: SoapIgnoreAttribute.SoapIgnoreAttribute()
+  fullName: System.Xml.Serialization.SoapIgnoreAttribute.SoapIgnoreAttribute()
+  type: Constructor
+  assemblies:
+  - System.Xml
+  namespace: System.Xml.Serialization
+  summary: Initializes a new instance of the <xref href="System.Xml.Serialization.SoapIgnoreAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following example serializes a class named `Group`. The serialization of the `GroupName` and `IgnoreThis` fields and the members of the `GroupType` enumeration are overridden. In the `CreateOverrideSerializer` method, a <xref:System.Xml.Serialization.SoapAttributeOverrides> is created, and for each overridden member or enumeration, a <xref:System.Xml.Serialization.SoapAttributes> is created with the appropriate property set and added to the <xref:System.Xml.Serialization.SoapAttributeOverrides>. An <xref:System.Xml.Serialization.XmlTypeMapping> is created using the <xref:System.Xml.Serialization.SoapAttributeOverrides>, and that <xref:System.Xml.Serialization.XmlTypeMapping> is used to create the <xref:System.Xml.Serialization.XmlSerializer> that overrides the default serialization.  \n  \n [!code-cpp[SoapAttributesOverrides#1](~/add/codesnippet/cpp/m-system.xml.serializati_1_1.cpp)]\n [!code-vb[SoapAttributesOverrides#1](~/add/codesnippet/visualbasic/m-system.xml.serializati_1_1.vb)]\n [!code-cs[SoapAttributesOverrides#1](~/add/codesnippet/csharp/m-system.xml.serializati_1_1.cs)]"
+  syntax:
+    content: public SoapIgnoreAttribute ();
+    parameters: []
+  overload: System.Xml.Serialization.SoapIgnoreAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.Xml.Serialization.SoapIgnoreAttribute.#ctor
+  parent: System.Xml.Serialization.SoapIgnoreAttribute
+  isExternal: false
+  name: SoapIgnoreAttribute()
+  nameWithType: SoapIgnoreAttribute.SoapIgnoreAttribute()
+  fullName: System.Xml.Serialization.SoapIgnoreAttribute.SoapIgnoreAttribute()
+- uid: System.Xml.Serialization.SoapIgnoreAttribute.#ctor*
+  parent: System.Xml.Serialization.SoapIgnoreAttribute
+  isExternal: false
+  name: SoapIgnoreAttribute
+  nameWithType: SoapIgnoreAttribute.SoapIgnoreAttribute

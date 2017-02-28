@@ -1,0 +1,151 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Security.Principal.IIdentity
+  id: IIdentity
+  children:
+  - System.Security.Principal.IIdentity.AuthenticationType
+  - System.Security.Principal.IIdentity.IsAuthenticated
+  - System.Security.Principal.IIdentity.Name
+  langs:
+  - csharp
+  name: IIdentity
+  nameWithType: IIdentity
+  fullName: System.Security.Principal.IIdentity
+  type: Interface
+  summary: Defines the basic functionality of an identity object.
+  remarks: An identity object represents the user on whose behalf the code is running. This interface is implemented by the <xref:System.Security.Principal.GenericIdentity> and <xref:System.Security.Principal.WindowsIdentity> classes.
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public interface IIdentity
+  implements: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Principal.IIdentity.AuthenticationType
+  id: AuthenticationType
+  parent: System.Security.Principal.IIdentity
+  langs:
+  - csharp
+  name: AuthenticationType
+  nameWithType: IIdentity.AuthenticationType
+  fullName: System.Security.Principal.IIdentity.AuthenticationType
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.Principal
+  summary: Gets the type of authentication used.
+  remarks: The authentication type is passed to the common language runtime by the operating system or by another authentication provider. Basic authentication, NTLM, Kerberos, and Passport are examples of authentication types.
+  syntax:
+    content: public string AuthenticationType { get; }
+    return:
+      type: System.String
+      description: The type of authentication used to identify the user.
+  overload: System.Security.Principal.IIdentity.AuthenticationType*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Principal.IIdentity.IsAuthenticated
+  id: IsAuthenticated
+  parent: System.Security.Principal.IIdentity
+  langs:
+  - csharp
+  name: IsAuthenticated
+  nameWithType: IIdentity.IsAuthenticated
+  fullName: System.Security.Principal.IIdentity.IsAuthenticated
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.Principal
+  summary: Gets a value that indicates whether the user has been authenticated.
+  remarks: The setting for this property is determined by the Windows `SECURITY_AUTHENTICATED_USER_RID` security identifier (SID).
+  syntax:
+    content: public bool IsAuthenticated { get; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user was authenticated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Security.Principal.IIdentity.IsAuthenticated*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Security.Principal.IIdentity.Name
+  id: Name
+  parent: System.Security.Principal.IIdentity
+  langs:
+  - csharp
+  name: Name
+  nameWithType: IIdentity.Name
+  fullName: System.Security.Principal.IIdentity.Name
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Security.Principal
+  summary: Gets the name of the current user.
+  remarks: "The user name is passed to the common language runtime by the operating system or other authentication provider (such as ASP.NET).  \n  \n Name is typically set to an empty string (\"\") for an unauthenticated entity, but can take other values."
+  syntax:
+    content: public string Name { get; }
+    return:
+      type: System.String
+      description: The name of the user on whose behalf the code is running.
+  overload: System.Security.Principal.IIdentity.Name*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Security.Principal.IIdentity.AuthenticationType
+  parent: System.Security.Principal.IIdentity
+  isExternal: false
+  name: AuthenticationType
+  nameWithType: IIdentity.AuthenticationType
+  fullName: System.Security.Principal.IIdentity.AuthenticationType
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Security.Principal.IIdentity.IsAuthenticated
+  parent: System.Security.Principal.IIdentity
+  isExternal: false
+  name: IsAuthenticated
+  nameWithType: IIdentity.IsAuthenticated
+  fullName: System.Security.Principal.IIdentity.IsAuthenticated
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Security.Principal.IIdentity.Name
+  parent: System.Security.Principal.IIdentity
+  isExternal: false
+  name: Name
+  nameWithType: IIdentity.Name
+  fullName: System.Security.Principal.IIdentity.Name
+- uid: System.Security.Principal.IIdentity.AuthenticationType*
+  parent: System.Security.Principal.IIdentity
+  isExternal: false
+  name: AuthenticationType
+  nameWithType: IIdentity.AuthenticationType
+- uid: System.Security.Principal.IIdentity.IsAuthenticated*
+  parent: System.Security.Principal.IIdentity
+  isExternal: false
+  name: IsAuthenticated
+  nameWithType: IIdentity.IsAuthenticated
+- uid: System.Security.Principal.IIdentity.Name*
+  parent: System.Security.Principal.IIdentity
+  isExternal: false
+  name: Name
+  nameWithType: IIdentity.Name

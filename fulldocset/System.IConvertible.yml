@@ -1,0 +1,840 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.IConvertible
+  id: IConvertible
+  children:
+  - System.IConvertible.GetTypeCode
+  - System.IConvertible.ToBoolean(System.IFormatProvider)
+  - System.IConvertible.ToByte(System.IFormatProvider)
+  - System.IConvertible.ToChar(System.IFormatProvider)
+  - System.IConvertible.ToDateTime(System.IFormatProvider)
+  - System.IConvertible.ToDecimal(System.IFormatProvider)
+  - System.IConvertible.ToDouble(System.IFormatProvider)
+  - System.IConvertible.ToInt16(System.IFormatProvider)
+  - System.IConvertible.ToInt32(System.IFormatProvider)
+  - System.IConvertible.ToInt64(System.IFormatProvider)
+  - System.IConvertible.ToSByte(System.IFormatProvider)
+  - System.IConvertible.ToSingle(System.IFormatProvider)
+  - System.IConvertible.ToString(System.IFormatProvider)
+  - System.IConvertible.ToType(System.Type,System.IFormatProvider)
+  - System.IConvertible.ToUInt16(System.IFormatProvider)
+  - System.IConvertible.ToUInt32(System.IFormatProvider)
+  - System.IConvertible.ToUInt64(System.IFormatProvider)
+  langs:
+  - csharp
+  name: IConvertible
+  nameWithType: IConvertible
+  fullName: System.IConvertible
+  type: Interface
+  summary: Defines methods that convert the value of the implementing reference or value type to a common language runtime type that has an equivalent value.
+  remarks: "This interface provides methods to convert the value of an instance of an implementing type to a common language runtime type that has an equivalent value. The common language runtime types are <xref:System.Boolean>, <xref:System.SByte>, <xref:System.Byte>, <xref:System.Int16>, <xref:System.UInt16>, <xref:System.Int32>, <xref:System.UInt32>, <xref:System.Int64>, <xref:System.UInt64>, <xref:System.Single>, <xref:System.Double>, <xref:System.Decimal>, <xref:System.DateTime>, <xref:System.Char>, and <xref:System.String>.  \n  \n If there is no meaningful conversion to a common language runtime type, then a particular interface method implementation throws <xref:System.InvalidCastException>. For example, if this interface is implemented on a Boolean type, the implementation of the <xref:System.IConvertible.ToDateTime%2A> method throws an exception because there is no meaningful <xref:System.DateTime> equivalent to a Boolean type.  \n  \n The common language runtime typically exposes the IConvertible interface through the <xref:System.Convert> class. The common language runtime also uses the IConvertible interface internally, in explicit interface implementations, to simplify the code used to support conversions in the <xref:System.Convert> class and basic common language runtime types.  \n  \n In addition to the IConvertible interface, the .NET Framework provides classes called type converters for converting user-defined data types to other data types. For more information, see the [Generalized Type Conversion](~/add/includes/ajax-current-ext-md.md) topic."
+  example:
+  - "The following code sample demonstrates an implementation of IConvertible for a Complex number class, allowing it to be cast first as a <xref:System.Double> and then calling the static <xref:System.Convert> members on that <xref:System.Double>.  \n  \n [!code-cpp[System.IConvertible#1](~/add/codesnippet/cpp/t-system.iconvertible_1.cpp)]\n [!code-cs[System.IConvertible#1](~/add/codesnippet/csharp/t-system.iconvertible_1.cs)]\n [!code-vb[System.IConvertible#1](~/add/codesnippet/visualbasic/t-system.iconvertible_1.vb)]"
+  syntax:
+    content: >-
+      [System.CLSCompliant(false)]
+
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public interface IConvertible
+  implements: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.GetTypeCode
+  id: GetTypeCode
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: GetTypeCode()
+  nameWithType: IConvertible.GetTypeCode()
+  fullName: System.IConvertible.GetTypeCode()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Returns the <xref href="System.TypeCode"></xref> for this instance.
+  syntax:
+    content: public TypeCode GetTypeCode ();
+    parameters: []
+    return:
+      type: System.TypeCode
+      description: The enumerated constant that is the <xref href="System.TypeCode"></xref> of the class or value type that implements this interface.
+  overload: System.IConvertible.GetTypeCode*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToBoolean(System.IFormatProvider)
+  id: ToBoolean(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToBoolean(IFormatProvider)
+  nameWithType: IConvertible.ToBoolean(IFormatProvider)
+  fullName: System.IConvertible.ToBoolean(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent Boolean value using the specified culture-specific formatting information.
+  syntax:
+    content: public bool ToBoolean (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Boolean
+      description: A Boolean value equivalent to the value of this instance.
+  overload: System.IConvertible.ToBoolean*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToByte(System.IFormatProvider)
+  id: ToByte(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToByte(IFormatProvider)
+  nameWithType: IConvertible.ToByte(IFormatProvider)
+  fullName: System.IConvertible.ToByte(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 8-bit unsigned integer using the specified culture-specific formatting information.
+  syntax:
+    content: public byte ToByte (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Byte
+      description: An 8-bit unsigned integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToByte*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToChar(System.IFormatProvider)
+  id: ToChar(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToChar(IFormatProvider)
+  nameWithType: IConvertible.ToChar(IFormatProvider)
+  fullName: System.IConvertible.ToChar(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent Unicode character using the specified culture-specific formatting information.
+  syntax:
+    content: public char ToChar (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Char
+      description: A Unicode character equivalent to the value of this instance.
+  overload: System.IConvertible.ToChar*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToDateTime(System.IFormatProvider)
+  id: ToDateTime(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToDateTime(IFormatProvider)
+  nameWithType: IConvertible.ToDateTime(IFormatProvider)
+  fullName: System.IConvertible.ToDateTime(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent <xref href="System.DateTime"></xref> using the specified culture-specific formatting information.
+  syntax:
+    content: public DateTime ToDateTime (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.DateTime
+      description: A <xref href="System.DateTime"></xref> instance equivalent to the value of this instance.
+  overload: System.IConvertible.ToDateTime*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToDecimal(System.IFormatProvider)
+  id: ToDecimal(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToDecimal(IFormatProvider)
+  nameWithType: IConvertible.ToDecimal(IFormatProvider)
+  fullName: System.IConvertible.ToDecimal(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent <xref href="System.Decimal"></xref> number using the specified culture-specific formatting information.
+  syntax:
+    content: public decimal ToDecimal (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Decimal
+      description: A <xref href="System.Decimal"></xref> number equivalent to the value of this instance.
+  overload: System.IConvertible.ToDecimal*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToDouble(System.IFormatProvider)
+  id: ToDouble(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToDouble(IFormatProvider)
+  nameWithType: IConvertible.ToDouble(IFormatProvider)
+  fullName: System.IConvertible.ToDouble(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent double-precision floating-point number using the specified culture-specific formatting information.
+  syntax:
+    content: public double ToDouble (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Double
+      description: A double-precision floating-point number equivalent to the value of this instance.
+  overload: System.IConvertible.ToDouble*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToInt16(System.IFormatProvider)
+  id: ToInt16(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToInt16(IFormatProvider)
+  nameWithType: IConvertible.ToInt16(IFormatProvider)
+  fullName: System.IConvertible.ToInt16(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 16-bit signed integer using the specified culture-specific formatting information.
+  syntax:
+    content: public short ToInt16 (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Int16
+      description: An 16-bit signed integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToInt16*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToInt32(System.IFormatProvider)
+  id: ToInt32(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToInt32(IFormatProvider)
+  nameWithType: IConvertible.ToInt32(IFormatProvider)
+  fullName: System.IConvertible.ToInt32(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 32-bit signed integer using the specified culture-specific formatting information.
+  syntax:
+    content: public int ToInt32 (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Int32
+      description: An 32-bit signed integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToInt32*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToInt64(System.IFormatProvider)
+  id: ToInt64(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToInt64(IFormatProvider)
+  nameWithType: IConvertible.ToInt64(IFormatProvider)
+  fullName: System.IConvertible.ToInt64(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 64-bit signed integer using the specified culture-specific formatting information.
+  syntax:
+    content: public long ToInt64 (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Int64
+      description: An 64-bit signed integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToInt64*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToSByte(System.IFormatProvider)
+  id: ToSByte(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToSByte(IFormatProvider)
+  nameWithType: IConvertible.ToSByte(IFormatProvider)
+  fullName: System.IConvertible.ToSByte(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 8-bit signed integer using the specified culture-specific formatting information.
+  syntax:
+    content: public sbyte ToSByte (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.SByte
+      description: An 8-bit signed integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToSByte*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToSingle(System.IFormatProvider)
+  id: ToSingle(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToSingle(IFormatProvider)
+  nameWithType: IConvertible.ToSingle(IFormatProvider)
+  fullName: System.IConvertible.ToSingle(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent single-precision floating-point number using the specified culture-specific formatting information.
+  syntax:
+    content: public float ToSingle (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Single
+      description: A single-precision floating-point number equivalent to the value of this instance.
+  overload: System.IConvertible.ToSingle*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToString(System.IFormatProvider)
+  id: ToString(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToString(IFormatProvider)
+  nameWithType: IConvertible.ToString(IFormatProvider)
+  fullName: System.IConvertible.ToString(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent <xref href="System.String"></xref> using the specified culture-specific formatting information.
+  syntax:
+    content: public string ToString (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.String
+      description: A <xref href="System.String"></xref> instance equivalent to the value of this instance.
+  overload: System.IConvertible.ToString*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToType(System.Type,System.IFormatProvider)
+  id: ToType(System.Type,System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToType(Type,IFormatProvider)
+  nameWithType: IConvertible.ToType(Type,IFormatProvider)
+  fullName: System.IConvertible.ToType(Type,IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an <xref href="System.Object"></xref> of the specified <xref href="System.Type"></xref> that has an equivalent value, using the specified culture-specific formatting information.
+  syntax:
+    content: public object ToType (Type conversionType, IFormatProvider provider);
+    parameters:
+    - id: conversionType
+      type: System.Type
+      description: The <xref href="System.Type"></xref> to which the value of this instance is converted.
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.Object
+      description: An <xref href="System.Object"></xref> instance of type <code>conversionType</code> whose value is equivalent to the value of this instance.
+  overload: System.IConvertible.ToType*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToUInt16(System.IFormatProvider)
+  id: ToUInt16(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToUInt16(IFormatProvider)
+  nameWithType: IConvertible.ToUInt16(IFormatProvider)
+  fullName: System.IConvertible.ToUInt16(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 16-bit unsigned integer using the specified culture-specific formatting information.
+  syntax:
+    content: public ushort ToUInt16 (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.UInt16
+      description: An 16-bit unsigned integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToUInt16*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToUInt32(System.IFormatProvider)
+  id: ToUInt32(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToUInt32(IFormatProvider)
+  nameWithType: IConvertible.ToUInt32(IFormatProvider)
+  fullName: System.IConvertible.ToUInt32(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 32-bit unsigned integer using the specified culture-specific formatting information.
+  syntax:
+    content: public uint ToUInt32 (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.UInt32
+      description: An 32-bit unsigned integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToUInt32*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.IConvertible.ToUInt64(System.IFormatProvider)
+  id: ToUInt64(System.IFormatProvider)
+  parent: System.IConvertible
+  langs:
+  - csharp
+  name: ToUInt64(IFormatProvider)
+  nameWithType: IConvertible.ToUInt64(IFormatProvider)
+  fullName: System.IConvertible.ToUInt64(IFormatProvider)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System
+  summary: Converts the value of this instance to an equivalent 64-bit unsigned integer using the specified culture-specific formatting information.
+  syntax:
+    content: public ulong ToUInt64 (IFormatProvider provider);
+    parameters:
+    - id: provider
+      type: System.IFormatProvider
+      description: An <xref href="System.IFormatProvider"></xref> interface implementation that supplies culture-specific formatting information.
+    return:
+      type: System.UInt64
+      description: An 64-bit unsigned integer equivalent to the value of this instance.
+  overload: System.IConvertible.ToUInt64*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.IConvertible.GetTypeCode
+  parent: System.IConvertible
+  isExternal: false
+  name: GetTypeCode()
+  nameWithType: IConvertible.GetTypeCode()
+  fullName: System.IConvertible.GetTypeCode()
+- uid: System.TypeCode
+  parent: System
+  isExternal: false
+  name: TypeCode
+  nameWithType: TypeCode
+  fullName: System.TypeCode
+- uid: System.IConvertible.ToBoolean(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToBoolean(IFormatProvider)
+  nameWithType: IConvertible.ToBoolean(IFormatProvider)
+  fullName: System.IConvertible.ToBoolean(IFormatProvider)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.IFormatProvider
+  parent: System
+  isExternal: false
+  name: IFormatProvider
+  nameWithType: IFormatProvider
+  fullName: System.IFormatProvider
+- uid: System.IConvertible.ToByte(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToByte(IFormatProvider)
+  nameWithType: IConvertible.ToByte(IFormatProvider)
+  fullName: System.IConvertible.ToByte(IFormatProvider)
+- uid: System.Byte
+  parent: System
+  isExternal: false
+  name: Byte
+  nameWithType: Byte
+  fullName: System.Byte
+- uid: System.IConvertible.ToChar(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToChar(IFormatProvider)
+  nameWithType: IConvertible.ToChar(IFormatProvider)
+  fullName: System.IConvertible.ToChar(IFormatProvider)
+- uid: System.Char
+  parent: System
+  isExternal: false
+  name: Char
+  nameWithType: Char
+  fullName: System.Char
+- uid: System.IConvertible.ToDateTime(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToDateTime(IFormatProvider)
+  nameWithType: IConvertible.ToDateTime(IFormatProvider)
+  fullName: System.IConvertible.ToDateTime(IFormatProvider)
+- uid: System.DateTime
+  parent: System
+  isExternal: false
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+- uid: System.IConvertible.ToDecimal(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToDecimal(IFormatProvider)
+  nameWithType: IConvertible.ToDecimal(IFormatProvider)
+  fullName: System.IConvertible.ToDecimal(IFormatProvider)
+- uid: System.Decimal
+  parent: System
+  isExternal: false
+  name: Decimal
+  nameWithType: Decimal
+  fullName: System.Decimal
+- uid: System.IConvertible.ToDouble(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToDouble(IFormatProvider)
+  nameWithType: IConvertible.ToDouble(IFormatProvider)
+  fullName: System.IConvertible.ToDouble(IFormatProvider)
+- uid: System.Double
+  parent: System
+  isExternal: false
+  name: Double
+  nameWithType: Double
+  fullName: System.Double
+- uid: System.IConvertible.ToInt16(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToInt16(IFormatProvider)
+  nameWithType: IConvertible.ToInt16(IFormatProvider)
+  fullName: System.IConvertible.ToInt16(IFormatProvider)
+- uid: System.Int16
+  parent: System
+  isExternal: false
+  name: Int16
+  nameWithType: Int16
+  fullName: System.Int16
+- uid: System.IConvertible.ToInt32(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToInt32(IFormatProvider)
+  nameWithType: IConvertible.ToInt32(IFormatProvider)
+  fullName: System.IConvertible.ToInt32(IFormatProvider)
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.IConvertible.ToInt64(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToInt64(IFormatProvider)
+  nameWithType: IConvertible.ToInt64(IFormatProvider)
+  fullName: System.IConvertible.ToInt64(IFormatProvider)
+- uid: System.Int64
+  parent: System
+  isExternal: false
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.IConvertible.ToSByte(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToSByte(IFormatProvider)
+  nameWithType: IConvertible.ToSByte(IFormatProvider)
+  fullName: System.IConvertible.ToSByte(IFormatProvider)
+- uid: System.SByte
+  parent: System
+  isExternal: false
+  name: SByte
+  nameWithType: SByte
+  fullName: System.SByte
+- uid: System.IConvertible.ToSingle(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToSingle(IFormatProvider)
+  nameWithType: IConvertible.ToSingle(IFormatProvider)
+  fullName: System.IConvertible.ToSingle(IFormatProvider)
+- uid: System.Single
+  parent: System
+  isExternal: false
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: System.IConvertible.ToString(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToString(IFormatProvider)
+  nameWithType: IConvertible.ToString(IFormatProvider)
+  fullName: System.IConvertible.ToString(IFormatProvider)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.IConvertible.ToType(System.Type,System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToType(Type,IFormatProvider)
+  nameWithType: IConvertible.ToType(Type,IFormatProvider)
+  fullName: System.IConvertible.ToType(Type,IFormatProvider)
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Type
+  parent: System
+  isExternal: false
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.IConvertible.ToUInt16(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToUInt16(IFormatProvider)
+  nameWithType: IConvertible.ToUInt16(IFormatProvider)
+  fullName: System.IConvertible.ToUInt16(IFormatProvider)
+- uid: System.UInt16
+  parent: System
+  isExternal: false
+  name: UInt16
+  nameWithType: UInt16
+  fullName: System.UInt16
+- uid: System.IConvertible.ToUInt32(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToUInt32(IFormatProvider)
+  nameWithType: IConvertible.ToUInt32(IFormatProvider)
+  fullName: System.IConvertible.ToUInt32(IFormatProvider)
+- uid: System.UInt32
+  parent: System
+  isExternal: false
+  name: UInt32
+  nameWithType: UInt32
+  fullName: System.UInt32
+- uid: System.IConvertible.ToUInt64(System.IFormatProvider)
+  parent: System.IConvertible
+  isExternal: false
+  name: ToUInt64(IFormatProvider)
+  nameWithType: IConvertible.ToUInt64(IFormatProvider)
+  fullName: System.IConvertible.ToUInt64(IFormatProvider)
+- uid: System.UInt64
+  parent: System
+  isExternal: false
+  name: UInt64
+  nameWithType: UInt64
+  fullName: System.UInt64
+- uid: System.IConvertible.GetTypeCode*
+  parent: System.IConvertible
+  isExternal: false
+  name: GetTypeCode
+  nameWithType: IConvertible.GetTypeCode
+- uid: System.IConvertible.ToBoolean*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToBoolean
+  nameWithType: IConvertible.ToBoolean
+- uid: System.IConvertible.ToByte*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToByte
+  nameWithType: IConvertible.ToByte
+- uid: System.IConvertible.ToChar*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToChar
+  nameWithType: IConvertible.ToChar
+- uid: System.IConvertible.ToDateTime*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToDateTime
+  nameWithType: IConvertible.ToDateTime
+- uid: System.IConvertible.ToDecimal*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToDecimal
+  nameWithType: IConvertible.ToDecimal
+- uid: System.IConvertible.ToDouble*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToDouble
+  nameWithType: IConvertible.ToDouble
+- uid: System.IConvertible.ToInt16*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToInt16
+  nameWithType: IConvertible.ToInt16
+- uid: System.IConvertible.ToInt32*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToInt32
+  nameWithType: IConvertible.ToInt32
+- uid: System.IConvertible.ToInt64*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToInt64
+  nameWithType: IConvertible.ToInt64
+- uid: System.IConvertible.ToSByte*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToSByte
+  nameWithType: IConvertible.ToSByte
+- uid: System.IConvertible.ToSingle*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToSingle
+  nameWithType: IConvertible.ToSingle
+- uid: System.IConvertible.ToString*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToString
+  nameWithType: IConvertible.ToString
+- uid: System.IConvertible.ToType*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToType
+  nameWithType: IConvertible.ToType
+- uid: System.IConvertible.ToUInt16*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToUInt16
+  nameWithType: IConvertible.ToUInt16
+- uid: System.IConvertible.ToUInt32*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToUInt32
+  nameWithType: IConvertible.ToUInt32
+- uid: System.IConvertible.ToUInt64*
+  parent: System.IConvertible
+  isExternal: false
+  name: ToUInt64
+  nameWithType: IConvertible.ToUInt64

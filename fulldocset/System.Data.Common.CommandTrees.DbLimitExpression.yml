@@ -1,0 +1,266 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Data.Common.CommandTrees.DbLimitExpression
+  id: DbLimitExpression
+  children:
+  - System.Data.Common.CommandTrees.DbLimitExpression.Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  - System.Data.Common.CommandTrees.DbLimitExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  - System.Data.Common.CommandTrees.DbLimitExpression.Argument
+  - System.Data.Common.CommandTrees.DbLimitExpression.Limit
+  - System.Data.Common.CommandTrees.DbLimitExpression.WithTies
+  langs:
+  - csharp
+  name: DbLimitExpression
+  nameWithType: DbLimitExpression
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression
+  type: Class
+  summary: Represents the restriction of the number of elements in the argument collection to the specified limit value.
+  remarks: A DbLimitExpression can be applied to any <xref:System.Data.Common.CommandTrees.DbExpression> with a collection result type, including <xref:System.Data.Common.CommandTrees.DbSkipExpression>. DbLimitExpression provides the equivalent of the Top operation. It does not require an ordering operation to have been performed on its input. It has two `Expression` properties, <xref:System.Data.Common.CommandTrees.DbLimitExpression.Argument%2A> and <xref:System.Data.Common.CommandTrees.DbLimitExpression.Limit%2A>, that specify the collection and the number of rows to return respectively. DbLimitExpression also has a `Boolean`<xref:System.Data.Common.CommandTrees.DbLimitExpression.WithTies%2A> property that controls whether rows equal in rank to the final row are returned. <xref:System.Data.Common.CommandTrees.DbLimitExpression.WithTies%2A> defaults to `false`.
+  syntax:
+    content: 'public sealed class DbLimitExpression : System.Data.Common.CommandTrees.DbExpression'
+  inheritance:
+  - System.Object
+  - System.Data.Common.CommandTrees.DbExpression
+  implements: []
+  inheritedMembers:
+  - System.Data.Common.CommandTrees.DbExpression.Equals(System.Object)
+  - System.Data.Common.CommandTrees.DbExpression.ExpressionKind
+  - System.Data.Common.CommandTrees.DbExpression.GetHashCode
+  - System.Data.Common.CommandTrees.DbExpression.ResultType
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  id: Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  langs:
+  - csharp
+  name: Accept(DbExpressionVisitor)
+  nameWithType: DbLimitExpression.Accept(DbExpressionVisitor)
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Accept(DbExpressionVisitor)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Implements the visitor pattern for expressions that do not produce a result value.
+  syntax:
+    content: public override void Accept (System.Data.Common.CommandTrees.DbExpressionVisitor visitor);
+    parameters:
+    - id: visitor
+      type: System.Data.Common.CommandTrees.DbExpressionVisitor
+      description: An instance of <xref href="System.Data.Common.CommandTrees.DbExpressionVisitor"></xref>.
+  overload: System.Data.Common.CommandTrees.DbLimitExpression.Accept*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>visitor</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  id: Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  langs:
+  - csharp
+  name: Accept(DbExpressionVisitor<TResultType>)
+  nameWithType: DbLimitExpression.Accept(DbExpressionVisitor<TResultType>)
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Accept(DbExpressionVisitor<TResultType>)
+  type: Method
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  syntax:
+    content: public override TResultType Accept<TResultType> (System.Data.Common.CommandTrees.DbExpressionVisitor<TResultType> visitor);
+    parameters:
+    - id: visitor
+      type: System.Data.Common.CommandTrees.DbExpressionVisitor`1
+      description: To be added.
+    return:
+      type: TResultType
+      description: To be added.
+  overload: System.Data.Common.CommandTrees.DbLimitExpression.Accept<TResultType>*
+  exceptions: []
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Argument
+  id: Argument
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  langs:
+  - csharp
+  name: Argument
+  nameWithType: DbLimitExpression.Argument
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Argument
+  type: Property
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Gets or sets an expression that specifies the input collection.
+  syntax:
+    content: public System.Data.Common.CommandTrees.DbExpression Argument { get; }
+    return:
+      type: System.Data.Common.CommandTrees.DbExpression
+      description: An expression that specifies the input collection.
+  overload: System.Data.Common.CommandTrees.DbLimitExpression.Argument*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The expression is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The expression is not associated with the command tree of the <xref href="System.Data.Common.CommandTrees.DbLimitExpression"></xref>, or its result type is not a collection type.
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Limit
+  id: Limit
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  langs:
+  - csharp
+  name: Limit
+  nameWithType: DbLimitExpression.Limit
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Limit
+  type: Property
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Gets or sets an expression that specifies the limit on the number of elements returned from the input collection.
+  syntax:
+    content: public System.Data.Common.CommandTrees.DbExpression Limit { get; }
+    return:
+      type: System.Data.Common.CommandTrees.DbExpression
+      description: An expression that specifies the limit on the number of elements returned from the input collection.
+  overload: System.Data.Common.CommandTrees.DbLimitExpression.Limit*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: The expression is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The expression is not associated with the command tree of the <xref href="System.Data.Common.CommandTrees.DbLimitExpression"></xref>, or is not one of <xref href="System.Data.Common.CommandTrees.DbConstantExpression"></xref> or <xref href="System.Data.Common.CommandTrees.DbParameterReferenceExpression"></xref>, or its result type is not equal or promotable to a 64-bit integer type.
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.WithTies
+  id: WithTies
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  langs:
+  - csharp
+  name: WithTies
+  nameWithType: DbLimitExpression.WithTies
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.WithTies
+  type: Property
+  assemblies:
+  - System.Data.Entity
+  namespace: System.Data.Common.CommandTrees
+  summary: Gets whether the limit operation will include tied results. Including tied results might produce more results than specified by the <xref:System.Data.Common.CommandTrees.DbLimitExpression.Limit*> value.
+  remarks: The WithTies property controls whether rows equal in rank to the final row are returned.
+  syntax:
+    content: public bool WithTies { get; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the limit operation will include tied results; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Data.Common.CommandTrees.DbLimitExpression.WithTies*
+  exceptions: []
+  platform:
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Data.Common.CommandTrees.DbExpression
+  isExternal: false
+  name: System.Data.Common.CommandTrees.DbExpression
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Accept(System.Data.Common.CommandTrees.DbExpressionVisitor)
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Accept(DbExpressionVisitor)
+  nameWithType: DbLimitExpression.Accept(DbExpressionVisitor)
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Accept(DbExpressionVisitor)
+- uid: System.Data.Common.CommandTrees.DbExpressionVisitor
+  parent: System.Data.Common.CommandTrees
+  isExternal: false
+  name: DbExpressionVisitor
+  nameWithType: DbExpressionVisitor
+  fullName: System.Data.Common.CommandTrees.DbExpressionVisitor
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Accept``1(System.Data.Common.CommandTrees.DbExpressionVisitor`1)
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Accept(DbExpressionVisitor<TResultType>)
+  nameWithType: DbLimitExpression.Accept(DbExpressionVisitor<TResultType>)
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Accept(DbExpressionVisitor<TResultType>)
+- uid: TResultType
+  isExternal: true
+  name: TResultType
+  nameWithType: TResultType
+  fullName: TResultType
+- uid: System.Data.Common.CommandTrees.DbExpressionVisitor`1
+  parent: System.Data.Common.CommandTrees
+  isExternal: false
+  name: DbExpressionVisitor<TResultType>
+  nameWithType: DbExpressionVisitor<TResultType>
+  fullName: System.Data.Common.CommandTrees.DbExpressionVisitor<TResultType>
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Argument
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Argument
+  nameWithType: DbLimitExpression.Argument
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Argument
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Limit
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Limit
+  nameWithType: DbLimitExpression.Limit
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.Limit
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.WithTies
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: WithTies
+  nameWithType: DbLimitExpression.WithTies
+  fullName: System.Data.Common.CommandTrees.DbLimitExpression.WithTies
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Accept*
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Accept
+  nameWithType: DbLimitExpression.Accept
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Accept<TResultType>*
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Accept<TResultType>
+  nameWithType: DbLimitExpression.Accept<TResultType>
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Argument*
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Argument
+  nameWithType: DbLimitExpression.Argument
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.Limit*
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: Limit
+  nameWithType: DbLimitExpression.Limit
+- uid: System.Data.Common.CommandTrees.DbLimitExpression.WithTies*
+  parent: System.Data.Common.CommandTrees.DbLimitExpression
+  isExternal: false
+  name: WithTies
+  nameWithType: DbLimitExpression.WithTies

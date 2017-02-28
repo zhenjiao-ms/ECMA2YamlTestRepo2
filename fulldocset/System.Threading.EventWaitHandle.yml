@@ -1,0 +1,670 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Threading.EventWaitHandle
+  id: EventWaitHandle
+  children:
+  - System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode)
+  - System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String)
+  - System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@)
+  - System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@,System.Security.AccessControl.EventWaitHandleSecurity)
+  - System.Threading.EventWaitHandle.GetAccessControl
+  - System.Threading.EventWaitHandle.OpenExisting(System.String)
+  - System.Threading.EventWaitHandle.OpenExisting(System.String,System.Security.AccessControl.EventWaitHandleRights)
+  - System.Threading.EventWaitHandle.Reset
+  - System.Threading.EventWaitHandle.Set
+  - System.Threading.EventWaitHandle.SetAccessControl(System.Security.AccessControl.EventWaitHandleSecurity)
+  langs:
+  - csharp
+  name: EventWaitHandle
+  nameWithType: EventWaitHandle
+  fullName: System.Threading.EventWaitHandle
+  type: Class
+  summary: Represents a thread synchronization event.
+  remarks: "The EventWaitHandle class allows threads to communicate with each other by signaling. Typically, one or more threads block on an EventWaitHandle until an unblocked thread calls the <xref:System.Threading.EventWaitHandle.Set%2A> method, releasing one or more of the blocked threads. A thread can signal an EventWaitHandle and then block on it, by calling the `static` (`Shared` in Visual Basic) <xref:System.Threading.WaitHandle.SignalAndWait%2A?displayProperty=fullName> method.  \n  \n> [!NOTE]\n>  The EventWaitHandle class provides access to named system synchronization events.  \n  \n The behavior of an EventWaitHandle that has been signaled depends on its reset mode. An EventWaitHandle created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag resets automatically when signaled, after releasing a single waiting thread. An EventWaitHandle created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag remains signaled until its <xref:System.Threading.EventWaitHandle.Reset%2A> method is called.  \n  \n Automatic reset events provide exclusive access to a resource. If an automatic reset event is signaled when no threads are waiting, it remains signaled until a thread attempts to wait on it. The event releases the thread and immediately resets, blocking subsequent threads.  \n  \n Manual reset events are like gates. When the event is not signaled, threads that wait on it will block. When the event is signaled, all waiting threads are released, and the event remains signaled (that is, subsequent waits do not block) until its <xref:System.Threading.EventWaitHandle.Reset%2A> method is called. Manual reset events are useful when one thread must complete an activity before other threads can proceed.  \n  \n EventWaitHandle objects can be used with the `static`(`Shared` in Visual Basic) <xref:System.Threading.WaitHandle.WaitAll%2A?displayProperty=fullName> and <xref:System.Threading.WaitHandle.WaitAny%2A?displayProperty=fullName> methods.  \n  \n For more information about thread synchronization mechanisms, see [EventWaitHandle, AutoResetEvent, CountdownEvent, ManualResetEvent](~/add/includes/ajax-current-ext-md.md)."
+  example:
+  - "The following code example uses the <xref:System.Threading.WaitHandle.SignalAndWait%28System.Threading.WaitHandle%2CSystem.Threading.WaitHandle%29> method overload to allow the main thread to signal a blocked thread and then wait until the thread finishes a task.  \n  \n The example starts five threads and allows them to block on an EventWaitHandle created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag, then releases one thread each time the user presses the ENTER key. The example then queues another five threads and releases them all using an EventWaitHandle created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag.  \n  \n [!code-cpp[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/cpp/t-system.threading.event_0_1.cpp)]\n [!code-vb[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/visualbasic/t-system.threading.event_0_1.vb)]\n [!code-cs[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/csharp/t-system.threading.event_0_1.cs)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public class EventWaitHandle : System.Threading.WaitHandle
+  inheritance:
+  - System.Object
+  - System.MarshalByRefObject
+  - System.Threading.WaitHandle
+  implements: []
+  inheritedMembers:
+  - System.MarshalByRefObject.CreateObjRef(System.Type)
+  - System.MarshalByRefObject.GetLifetimeService
+  - System.MarshalByRefObject.InitializeLifetimeService
+  - System.MarshalByRefObject.MemberwiseClone(System.Boolean)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  - System.Threading.WaitHandle.Close
+  - System.Threading.WaitHandle.Dispose
+  - System.Threading.WaitHandle.Dispose(System.Boolean)
+  - System.Threading.WaitHandle.Handle
+  - System.Threading.WaitHandle.InvalidHandle
+  - System.Threading.WaitHandle.SafeWaitHandle
+  - System.Threading.WaitHandle.SignalAndWait(System.Threading.WaitHandle,System.Threading.WaitHandle)
+  - System.Threading.WaitHandle.SignalAndWait(System.Threading.WaitHandle,System.Threading.WaitHandle,System.Int32,System.Boolean)
+  - System.Threading.WaitHandle.SignalAndWait(System.Threading.WaitHandle,System.Threading.WaitHandle,System.TimeSpan,System.Boolean)
+  - System.Threading.WaitHandle.WaitAll(System.Threading.WaitHandle[])
+  - System.Threading.WaitHandle.WaitAll(System.Threading.WaitHandle[],System.Int32)
+  - System.Threading.WaitHandle.WaitAll(System.Threading.WaitHandle[],System.Int32,System.Boolean)
+  - System.Threading.WaitHandle.WaitAll(System.Threading.WaitHandle[],System.TimeSpan)
+  - System.Threading.WaitHandle.WaitAll(System.Threading.WaitHandle[],System.TimeSpan,System.Boolean)
+  - System.Threading.WaitHandle.WaitAny(System.Threading.WaitHandle[])
+  - System.Threading.WaitHandle.WaitAny(System.Threading.WaitHandle[],System.Int32)
+  - System.Threading.WaitHandle.WaitAny(System.Threading.WaitHandle[],System.Int32,System.Boolean)
+  - System.Threading.WaitHandle.WaitAny(System.Threading.WaitHandle[],System.TimeSpan)
+  - System.Threading.WaitHandle.WaitAny(System.Threading.WaitHandle[],System.TimeSpan,System.Boolean)
+  - System.Threading.WaitHandle.WaitOne
+  - System.Threading.WaitHandle.WaitOne(System.Int32)
+  - System.Threading.WaitHandle.WaitOne(System.Int32,System.Boolean)
+  - System.Threading.WaitHandle.WaitOne(System.TimeSpan)
+  - System.Threading.WaitHandle.WaitOne(System.TimeSpan,System.Boolean)
+  - System.Threading.WaitHandle.WaitTimeout
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode)
+  id: '#ctor(System.Boolean,System.Threading.EventResetMode)'
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: EventWaitHandle(Boolean,EventResetMode)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.EventWaitHandle"></xref> class, specifying whether the wait handle is initially signaled, and whether it resets automatically or manually.
+  remarks: If the initial state of the event is nonsignaled, threads that wait on the event will block. If the initial state is signaled, and the <xref:System.Threading.EventResetMode> flag is specified for `mode`, threads that wait on the event will not block. If the initial state is signaled, and `mode` is <xref:System.Threading.EventResetMode>, the first thread that waits on the event will be released immediately, after which the event will reset, and subsequent threads will block.
+  example:
+  - "The following code example uses the <xref:System.Threading.WaitHandle.SignalAndWait%28System.Threading.WaitHandle%2CSystem.Threading.WaitHandle%29> method overload to allow the main thread to signal a blocked thread and then wait until the thread finishes a task.  \n  \n The example starts five threads and allows them to block on an <xref:System.Threading.EventWaitHandle> created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag, then releases one thread each time the user presses ENTER key. The example then queues another five threads and releases them all using an <xref:System.Threading.EventWaitHandle> created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag.  \n  \n [!code-cpp[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/cpp/a35b5a70-3cc7-4476-81e9-_1.cpp)]\n [!code-vb[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/visualbasic/a35b5a70-3cc7-4476-81e9-_1.vb)]\n [!code-cs[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/csharp/a35b5a70-3cc7-4476-81e9-_1.cs)]"
+  syntax:
+    content: public EventWaitHandle (bool initialState, System.Threading.EventResetMode mode);
+    parameters:
+    - id: initialState
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+    - id: mode
+      type: System.Threading.EventResetMode
+      description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
+  overload: System.Threading.EventWaitHandle.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String)
+  id: '#ctor(System.Boolean,System.Threading.EventResetMode,System.String)'
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: EventWaitHandle(Boolean,EventResetMode,String)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.EventWaitHandle"></xref> class, specifying whether the wait handle is initially signaled if created as a result of this call, whether it resets automatically or manually, and the name of a system synchronization event.
+  remarks: "If `name` is `null` or an empty string, a local <xref:System.Threading.EventWaitHandle> is created.  \n  \n If a system event with the name specified for the `name` parameter already exists, the `initialState` parameter is ignored.  \n  \n> [!IMPORTANT]\n>  When using this constructor for named system events, specify `false` for `initialState`. This constructor provides no way to determine whether a named system event was created, so you cannot make any assumptions about the state of the named event. To determine whether a named event was created, use the <xref:System.Threading.EventWaitHandle.%23ctor%28System.Boolean%2CSystem.Threading.EventResetMode%2CSystem.String%2CSystem.Boolean%40%29> constructor or the <xref:System.Threading.EventWaitHandle.%23ctor%28System.Boolean%2CSystem.Threading.EventResetMode%2CSystem.String%2CSystem.Boolean%40%2CSystem.Security.AccessControl.EventWaitHandleSecurity%29> constructor.  \n  \n If the initial state of the event is nonsignaled, threads that wait on the event will block. If the initial state is signaled, and the <xref:System.Threading.EventResetMode> flag is specified for `mode`, threads that wait on the event will not block. If the initial state is signaled, and `mode` is <xref:System.Threading.EventResetMode>, the first thread that waits on the event will be released immediately, after which the event will reset, and subsequent threads will block."
+  syntax:
+    content: public EventWaitHandle (bool initialState, System.Threading.EventResetMode mode, string name);
+    parameters:
+    - id: initialState
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled if the named event is created as a result of this call; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+    - id: mode
+      type: System.Threading.EventResetMode
+      description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
+    - id: name
+      type: System.String
+      description: The name of a system-wide synchronization event.
+  overload: System.Threading.EventWaitHandle.#ctor*
+  exceptions:
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: A Win32 error occurred.
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: The named event exists and has access control security, but the user does not have <xref href="System.Security.AccessControl.EventWaitHandleRights"></xref>.
+  - type: System.Threading.WaitHandleCannotBeOpenedException
+    commentId: T:System.Threading.WaitHandleCannotBeOpenedException
+    description: The named event cannot be created, perhaps because a wait handle of a different type has the same name.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>name</code> is longer than 260 characters.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@)
+  id: '#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@)'
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: EventWaitHandle(Boolean,EventResetMode,String,Boolean)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.EventWaitHandle"></xref> class, specifying whether the wait handle is initially signaled if created as a result of this call, whether it resets automatically or manually, the name of a system synchronization event, and a Boolean variable whose value after the call indicates whether the named system event was created.
+  remarks: "If a system event with the name specified for the `name` parameter already exists, the `initialState` parameter is ignored. After calling this constructor, use the value in the variable specified for the `ref` parameter (`ByRef` parameter in Visual Basic)`createdNew` to determine whether the named system event already existed or was created.  \n  \n If the initial state of the event is nonsignaled, threads that wait on the event will block. If the initial state is signaled, and the <xref:System.Threading.EventResetMode> flag is specified for `mode`, threads that wait on the event will not block. If the initial state is signaled, and `mode` is <xref:System.Threading.EventResetMode>, the first thread that waits on the event will be released immediately, after which the event will reset, and subsequent threads will block."
+  syntax:
+    content: public EventWaitHandle (bool initialState, System.Threading.EventResetMode mode, string name, out bool createdNew);
+    parameters:
+    - id: initialState
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled if the named event is created as a result of this call; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+    - id: mode
+      type: System.Threading.EventResetMode
+      description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
+    - id: name
+      type: System.String
+      description: The name of a system-wide synchronization event.
+    - id: createdNew
+      type: System.Boolean
+      description: When this method returns, contains <xref uid="langword_csharp_true" name="true" href=""></xref> if a local event was created (that is, if `name` is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string) or if the specified named system event was created; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified named system event already existed. This parameter is passed uninitialized.
+  overload: System.Threading.EventWaitHandle.#ctor*
+  exceptions:
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: A Win32 error occurred.
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: The named event exists and has access control security, but the user does not have <xref href="System.Security.AccessControl.EventWaitHandleRights"></xref>.
+  - type: System.Threading.WaitHandleCannotBeOpenedException
+    commentId: T:System.Threading.WaitHandleCannotBeOpenedException
+    description: The named event cannot be created, perhaps because a wait handle of a different type has the same name.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>name</code> is longer than 260 characters.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@,System.Security.AccessControl.EventWaitHandleSecurity)
+  id: '#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@,System.Security.AccessControl.EventWaitHandleSecurity)'
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: EventWaitHandle(Boolean,EventResetMode,String,Boolean,EventWaitHandleSecurity)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean,EventWaitHandleSecurity)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean,EventWaitHandleSecurity)
+  type: Constructor
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Initializes a new instance of the <xref href="System.Threading.EventWaitHandle"></xref> class, specifying whether the wait handle is initially signaled if created as a result of this call, whether it resets automatically or manually, the name of a system synchronization event, a Boolean variable whose value after the call indicates whether the named system event was created, and the access control security to be applied to the named event if it is created.
+  remarks: "Use this constructor to apply access control security to a named system event when it is created, preventing other code from taking control of the event.  \n  \n This constructor initializes an <xref:System.Threading.EventWaitHandle> object that represents a system event. You can create multiple <xref:System.Threading.EventWaitHandle> objects that represent the same system event.  \n  \n If the system event does not exist, it is created with the specified access control security. If the event exists, the specified access control security is ignored.  \n  \n> [!NOTE]\n>  The caller has full control over the newly created <xref:System.Threading.EventWaitHandle> object even if `eventSecurity` denies or fails to grant some access rights to the current user. However, if the current user attempts to get another <xref:System.Threading.EventWaitHandle> object to represent the same named event, using either a constructor or the <xref:System.Threading.EventWaitHandle.OpenExisting%2A> method, Windows access control security is applied.  \n  \n If a system event with the name specified for the `name` parameter already exists, the `initialState` parameter is ignored. After calling this constructor, use the value in the variable specified for the `ref` parameter (`ByRef` parameter in Visual Basic) `createdNew` to determine whether the named system event already existed or was created.  \n  \n If the initial state of the event is nonsignaled, threads that wait on the event will block. If the initial state is signaled, and the <xref:System.Threading.EventResetMode> flag is specified for `mode`, threads that wait on the event will not block. If the initial state is signaled, and `mode` is <xref:System.Threading.EventResetMode>, the first thread that waits on the event will be released immediately, after which the event will reset, and subsequent threads will block."
+  example:
+  - "The following code example demonstrates the cross-process behavior of a named system event with access control security. The example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29> method overload to test for the existence of a named event.  \n  \n If the event does not exist, it is created with initial ownership and access control security that denies the current user the right to use the event, but grants the right to read and change permissions on the event.  \n  \n If you run the compiled example from two command windows, the second copy will throw an access violation exception on the call to <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29>. The exception is caught, and the example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%2CSystem.Security.AccessControl.EventWaitHandleRights%29> method overload to wait on the event with the rights needed to read and change the permissions.  \n  \n After the permissions are changed, the event is opened with the rights required to wait on it and signal it. If you run the compiled example from a third command window, the example runs using the new permissions.  \n  \n [!code-cs[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/csharp/6e3ca0c7-7b6e-43e8-89d6-_1.cs)]\n [!code-cpp[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/cpp/6e3ca0c7-7b6e-43e8-89d6-_1.cpp)]\n [!code-vb[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/visualbasic/6e3ca0c7-7b6e-43e8-89d6-_1.vb)]"
+  syntax:
+    content: public EventWaitHandle (bool initialState, System.Threading.EventResetMode mode, string name, out bool createdNew, System.Security.AccessControl.EventWaitHandleSecurity eventSecurity);
+    parameters:
+    - id: initialState
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled if the named event is created as a result of this call; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+    - id: mode
+      type: System.Threading.EventResetMode
+      description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
+    - id: name
+      type: System.String
+      description: The name of a system-wide synchronization event.
+    - id: createdNew
+      type: System.Boolean
+      description: When this method returns, contains <xref uid="langword_csharp_true" name="true" href=""></xref> if a local event was created (that is, if `name` is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string) or if the specified named system event was created; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified named system event already existed. This parameter is passed uninitialized.
+    - id: eventSecurity
+      type: System.Security.AccessControl.EventWaitHandleSecurity
+      description: An <xref href="System.Security.AccessControl.EventWaitHandleSecurity"></xref> object that represents the access control security to be applied to the named system event.
+  overload: System.Threading.EventWaitHandle.#ctor*
+  exceptions:
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: A Win32 error occurred.
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: The named event exists and has access control security, but the user does not have <xref href="System.Security.AccessControl.EventWaitHandleRights"></xref>.
+  - type: System.Threading.WaitHandleCannotBeOpenedException
+    commentId: T:System.Threading.WaitHandleCannotBeOpenedException
+    description: The named event cannot be created, perhaps because a wait handle of a different type has the same name.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: <code>name</code> is longer than 260 characters.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.GetAccessControl
+  id: GetAccessControl
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: GetAccessControl()
+  nameWithType: EventWaitHandle.GetAccessControl()
+  fullName: System.Threading.EventWaitHandle.GetAccessControl()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Gets an <xref href="System.Security.AccessControl.EventWaitHandleSecurity"></xref> object that represents the access control security for the named system event represented by the current <xref href="System.Threading.EventWaitHandle"></xref> object.
+  remarks: "The GetAccessControl method uses the following combination of flags (combined using the bitwise OR operation) to search for permissions: <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, and <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>.  \n  \n The user must have <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> rights to call this method, and the event must have been opened with the <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> flag."
+  example:
+  - "The following code example demonstrates the cross-process behavior of a named system event with access control security. The example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29> method overload to test for the existence of a named event.  \n  \n If the event does not exist, it is created with initial ownership and access control security that denies the current user the right to use the event, but grants the right to read and change permissions on the event.  \n  \n If you run the compiled example from two command windows, the second copy will throw an access violation exception on the call to <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29>. The exception is caught, and the example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%2CSystem.Security.AccessControl.EventWaitHandleRights%29> method overload to wait on the event with the rights needed to read and change the permissions.  \n  \n After the permissions have been read, using the GetAccessControl method, and changed, the event is opened with the rights required to wait on it and signal it. If you run the compiled example from a third command window, the example runs using the new permissions.  \n  \n [!code-cs[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/csharp/m-system.threading.event_2_1.cs)]\n [!code-cpp[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/cpp/m-system.threading.event_2_1.cpp)]\n [!code-vb[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/visualbasic/m-system.threading.event_2_1.vb)]"
+  syntax:
+    content: public System.Security.AccessControl.EventWaitHandleSecurity GetAccessControl ();
+    parameters: []
+    return:
+      type: System.Security.AccessControl.EventWaitHandleSecurity
+      description: An <xref href="System.Security.AccessControl.EventWaitHandleSecurity"></xref> object that represents the access control security for the named system event.
+  overload: System.Threading.EventWaitHandle.GetAccessControl*
+  exceptions:
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: "The current <xref href=\"System.Threading.EventWaitHandle\"></xref> object represents a named system event, and the user does not have <xref href=\"System.Security.AccessControl.EventWaitHandleRights\"></xref>.  \n  \n -or-  \n  \n The current <xref href=\"System.Threading.EventWaitHandle\"></xref> object represents a named system event, and was not opened with <xref href=\"System.Security.AccessControl.EventWaitHandleRights\"></xref>."
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Not supported for Windows 98 or Windows Millennium Edition.
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.OpenExisting(System.String)
+  id: OpenExisting(System.String)
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: OpenExisting(String)
+  nameWithType: EventWaitHandle.OpenExisting(String)
+  fullName: System.Threading.EventWaitHandle.OpenExisting(String)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Opens the specified named synchronization event, if it already exists.
+  remarks: "The <xref:System.Threading.EventWaitHandle.OpenExisting%2A> method tries to open the specified named system event. If the system event does not exist, this method throws an exception instead of creating the system event. To create the system event when it does not already exist, use one of the <xref:System.Threading.EventWaitHandle.%23ctor%2A> constructors that has a `name` parameter.  \n  \n Multiple calls to this method that use the same value for `name` do not necessarily return the same <xref:System.Threading.EventWaitHandle> object, even though the objects that are returned represent the same named system event.  \n  \n This method overload is equivalent to calling the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%2CSystem.Security.AccessControl.EventWaitHandleRights%29> method overload and specifying <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> and <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> rights, combined by using the bitwise OR operation.  \n  \n Specifying the <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> flag allows a thread to wait on the named system event, and specifying the <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> flag allows a thread to call the <xref:System.Threading.EventWaitHandle.Set%2A> and <xref:System.Threading.EventWaitHandle.Reset%2A> methods."
+  example:
+  - "The following code example demonstrates the cross-process behavior of a named system event with access control security. The example uses the OpenExisting method overload to test for the existence of a named event.  \n  \n If the event does not exist, it is created with initial ownership and access control security that denies the current user the right to use the event, but grants the right to read and change permissions on the event.  \n  \n If you run the compiled example from two command windows, the second copy will throw an access violation exception on the call to OpenExisting. The exception is caught, and the example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%2CSystem.Security.AccessControl.EventWaitHandleRights%29> method overload to wait on the event with the rights needed to read and change the permissions.  \n  \n After the permissions are changed, the event is opened with the rights required to wait on it and signal it. If you run the compiled example from a third command window, the example runs using the new permissions.  \n  \n [!code-cs[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/csharp/m-system.threading.event_0_1.cs)]\n [!code-cpp[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/cpp/m-system.threading.event_0_1.cpp)]\n [!code-vb[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/visualbasic/m-system.threading.event_0_1.vb)]"
+  syntax:
+    content: public static System.Threading.EventWaitHandle OpenExisting (string name);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the system synchronization event to open.
+    return:
+      type: System.Threading.EventWaitHandle
+      description: An  object that represents the named system event.
+  overload: System.Threading.EventWaitHandle.OpenExisting*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is longer than 260 characters."
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  - type: System.Threading.WaitHandleCannotBeOpenedException
+    commentId: T:System.Threading.WaitHandleCannotBeOpenedException
+    description: The named system event does not exist.
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: A Win32 error occurred.
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: The named event exists, but the user does not have the security access required to use it.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.OpenExisting(System.String,System.Security.AccessControl.EventWaitHandleRights)
+  id: OpenExisting(System.String,System.Security.AccessControl.EventWaitHandleRights)
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: OpenExisting(String,EventWaitHandleRights)
+  nameWithType: EventWaitHandle.OpenExisting(String,EventWaitHandleRights)
+  fullName: System.Threading.EventWaitHandle.OpenExisting(String,EventWaitHandleRights)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Opens the specified named synchronization event, if it already exists, with the desired security access.
+  remarks: "The `rights` parameter must include the <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> flag to allow threads to wait on the event, and the <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> flag to allow threads to call the <xref:System.Threading.EventWaitHandle.Set%2A> and <xref:System.Threading.EventWaitHandle.Reset%2A> methods.  \n  \n The <xref:System.Threading.EventWaitHandle.OpenExisting%2A> method tries to open an existing named system event. If the system event does not exist, this method throws an exception instead of creating the system event. To create the system event when it does not already exist, use one of the <xref:System.Threading.EventWaitHandle.%23ctor%2A> constructors that has a `name` parameter.  \n  \n Multiple calls to this method that use the same value for `name` do not necessarily return the same <xref:System.Threading.EventWaitHandle> object, even though the objects that are returned represent the same named system event."
+  example:
+  - "The following code example demonstrates the cross-process behavior of a named system event with access control security. The example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29> method overload to test for the existence of a named event.  \n  \n If the event does not exist, it is created with initial ownership and access control security that denies the current user the right to use the event, but grants the right to read and change permissions on the event.  \n  \n If you run the compiled example from two command windows, the second copy will throw an access violation exception on the call to <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29>. The exception is caught, and the example uses the OpenExisting method overload to wait on the event with the rights needed to read and change the permissions.  \n  \n After the permissions are changed, the event is opened with the rights required to wait on it and signal it. If you run the compiled example from a third command window, the example runs using the new permissions.  \n  \n [!code-cs[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/csharp/e4e20b41-5365-430f-b111-_1.cs)]\n [!code-cpp[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/cpp/e4e20b41-5365-430f-b111-_1.cpp)]\n [!code-vb[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/visualbasic/e4e20b41-5365-430f-b111-_1.vb)]"
+  syntax:
+    content: public static System.Threading.EventWaitHandle OpenExisting (string name, System.Security.AccessControl.EventWaitHandleRights rights);
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the system synchronization event to open.
+    - id: rights
+      type: System.Security.AccessControl.EventWaitHandleRights
+      description: A bitwise combination of the enumeration values that represent the desired security access.
+    return:
+      type: System.Threading.EventWaitHandle
+      description: An object that represents the named system event.
+  overload: System.Threading.EventWaitHandle.OpenExisting*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is longer than 260 characters."
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  - type: System.Threading.WaitHandleCannotBeOpenedException
+    commentId: T:System.Threading.WaitHandleCannotBeOpenedException
+    description: The named system event does not exist.
+  - type: System.IO.IOException
+    commentId: T:System.IO.IOException
+    description: A Win32 error occurred.
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: The named event exists, but the user does not have the desired security access.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.Reset
+  id: Reset
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: Reset()
+  nameWithType: EventWaitHandle.Reset()
+  fullName: System.Threading.EventWaitHandle.Reset()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Sets the state of the event to nonsignaled, causing threads to block.
+  syntax:
+    content: public bool Reset ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation succeeds; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Threading.EventWaitHandle.Reset*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.Set
+  id: Set
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: Set()
+  nameWithType: EventWaitHandle.Set()
+  fullName: System.Threading.EventWaitHandle.Set()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Sets the state of the event to signaled, allowing one or more waiting threads to proceed.
+  remarks: "For an <xref:System.Threading.EventWaitHandle> with <xref:System.Threading.EventResetMode?displayProperty=fullName> (including <xref:System.Threading.AutoResetEvent>), the Set method releases a single thread. If there are no waiting threads, the wait handle remains signaled until a thread attempts to wait on it, or until its <xref:System.Threading.EventWaitHandle.Reset%2A> method is called.  \n  \n> [!IMPORTANT]\n>  There is no guarantee that every call to the Set method will release a thread from an <xref:System.Threading.EventWaitHandle> whose reset mode is <xref:System.Threading.EventResetMode?displayProperty=fullName>. If two calls are too close together, so that the second call occurs before a thread has been released, only one thread is released. It is as if the second call did not happen. Also, if Set is called when there are no threads waiting and the <xref:System.Threading.EventWaitHandle> is already signaled, the call has no effect.  \n  \n For an <xref:System.Threading.EventWaitHandle> with <xref:System.Threading.EventResetMode?displayProperty=fullName> (including <xref:System.Threading.ManualResetEvent>), calling the Set method leaves the wait handle in a signaled state until its <xref:System.Threading.EventWaitHandle.Reset%2A> method is called."
+  example:
+  - "The following code example uses the <xref:System.Threading.WaitHandle.SignalAndWait%28System.Threading.WaitHandle%2CSystem.Threading.WaitHandle%29> method overload to allow the main thread to signal a blocked thread and then wait until the thread finishes a task.  \n  \n The example starts five threads and allows them to block on an <xref:System.Threading.EventWaitHandle> created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag, then releases one thread each time the user presses the ENTER key. The example then queues another five threads and releases them all using an <xref:System.Threading.EventWaitHandle> created with the <xref:System.Threading.EventResetMode?displayProperty=fullName> flag.  \n  \n [!code-cpp[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/cpp/m-system.threading.event_1_1.cpp)]\n [!code-vb[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/visualbasic/m-system.threading.event_1_1.vb)]\n [!code-cs[System.Threading.WaitHandle.SignalAndWait#1](~/add/codesnippet/csharp/m-system.threading.event_1_1.cs)]"
+  syntax:
+    content: public bool Set ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation succeeds; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.Threading.EventWaitHandle.Set*
+  exceptions:
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Threading.EventWaitHandle.SetAccessControl(System.Security.AccessControl.EventWaitHandleSecurity)
+  id: SetAccessControl(System.Security.AccessControl.EventWaitHandleSecurity)
+  parent: System.Threading.EventWaitHandle
+  langs:
+  - csharp
+  name: SetAccessControl(EventWaitHandleSecurity)
+  nameWithType: EventWaitHandle.SetAccessControl(EventWaitHandleSecurity)
+  fullName: System.Threading.EventWaitHandle.SetAccessControl(EventWaitHandleSecurity)
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Threading
+  summary: Sets the access control security for a named system event.
+  remarks: The user must have <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> rights to call this method, and the event must have been opened with the <xref:System.Security.AccessControl.EventWaitHandleRights?displayProperty=fullName> flag.
+  example:
+  - "The following code example demonstrates the cross-process behavior of a named system event with access control security. The example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29> method overload to test for the existence of a named event.  \n  \n If the event does not exist, it is created with initial ownership and access control security that denies the current user the right to use the event, but grants the right to read and change permissions on the event.  \n  \n If you run the compiled example from two command windows, the second copy will throw an access violation exception on the call to <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%29>. The exception is caught, and the example uses the <xref:System.Threading.EventWaitHandle.OpenExisting%28System.String%2CSystem.Security.AccessControl.EventWaitHandleRights%29> method overload to wait on the event with the rights needed to read and change the permissions.  \n  \n After the permissions are changed, using the SetAccessControl method, the event is opened with the rights required to wait on it and signal it. If you run the compiled example from a third command window, the example runs using the new permissions.  \n  \n [!code-cs[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/csharp/29303474-e36d-46ff-bbff-_1.cs)]\n [!code-cpp[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/cpp/29303474-e36d-46ff-bbff-_1.cpp)]\n [!code-vb[System.Threading.EventWaitHandle.ctor named 5#1](~/add/codesnippet/visualbasic/29303474-e36d-46ff-bbff-_1.vb)]"
+  syntax:
+    content: public void SetAccessControl (System.Security.AccessControl.EventWaitHandleSecurity eventSecurity);
+    parameters:
+    - id: eventSecurity
+      type: System.Security.AccessControl.EventWaitHandleSecurity
+      description: An <xref href="System.Security.AccessControl.EventWaitHandleSecurity"></xref> object that represents the access control security to be applied to the named system event.
+  overload: System.Threading.EventWaitHandle.SetAccessControl*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code>eventSecurity</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  - type: System.UnauthorizedAccessException
+    commentId: T:System.UnauthorizedAccessException
+    description: "The user does not have <xref href=\"System.Security.AccessControl.EventWaitHandleRights\"></xref>.  \n  \n -or-  \n  \n The event was not opened with <xref href=\"System.Security.AccessControl.EventWaitHandleRights\"></xref>."
+  - type: System.SystemException
+    commentId: T:System.SystemException
+    description: The current <xref href="System.Threading.EventWaitHandle"></xref> object does not represent a named system event.
+  - type: System.ObjectDisposedException
+    commentId: T:System.ObjectDisposedException
+    description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Threading.WaitHandle
+  isExternal: false
+  name: System.Threading.WaitHandle
+- uid: System.IO.IOException
+  parent: System.IO
+  isExternal: false
+  name: IOException
+  nameWithType: IOException
+  fullName: System.IO.IOException
+- uid: System.UnauthorizedAccessException
+  parent: System
+  isExternal: false
+  name: UnauthorizedAccessException
+  nameWithType: UnauthorizedAccessException
+  fullName: System.UnauthorizedAccessException
+- uid: System.Threading.WaitHandleCannotBeOpenedException
+  parent: System.Threading
+  isExternal: false
+  name: WaitHandleCannotBeOpenedException
+  nameWithType: WaitHandleCannotBeOpenedException
+  fullName: System.Threading.WaitHandleCannotBeOpenedException
+- uid: System.ArgumentException
+  parent: System
+  isExternal: false
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.NotSupportedException
+  parent: System
+  isExternal: false
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.ObjectDisposedException
+  parent: System
+  isExternal: false
+  name: ObjectDisposedException
+  nameWithType: ObjectDisposedException
+  fullName: System.ObjectDisposedException
+- uid: System.ArgumentNullException
+  parent: System
+  isExternal: false
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.SystemException
+  parent: System
+  isExternal: false
+  name: SystemException
+  nameWithType: SystemException
+  fullName: System.SystemException
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: EventWaitHandle(Boolean,EventResetMode)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Threading.EventResetMode
+  parent: System.Threading
+  isExternal: false
+  name: EventResetMode
+  nameWithType: EventResetMode
+  fullName: System.Threading.EventResetMode
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: EventWaitHandle(Boolean,EventResetMode,String)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String)
+- uid: System.String
+  parent: System
+  isExternal: false
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: EventWaitHandle(Boolean,EventResetMode,String,Boolean)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean)
+- uid: System.Threading.EventWaitHandle.#ctor(System.Boolean,System.Threading.EventResetMode,System.String,System.Boolean@,System.Security.AccessControl.EventWaitHandleSecurity)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: EventWaitHandle(Boolean,EventResetMode,String,Boolean,EventWaitHandleSecurity)
+  nameWithType: EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean,EventWaitHandleSecurity)
+  fullName: System.Threading.EventWaitHandle.EventWaitHandle(Boolean,EventResetMode,String,Boolean,EventWaitHandleSecurity)
+- uid: System.Security.AccessControl.EventWaitHandleSecurity
+  parent: System.Security.AccessControl
+  isExternal: false
+  name: EventWaitHandleSecurity
+  nameWithType: EventWaitHandleSecurity
+  fullName: System.Security.AccessControl.EventWaitHandleSecurity
+- uid: System.Threading.EventWaitHandle.GetAccessControl
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: GetAccessControl()
+  nameWithType: EventWaitHandle.GetAccessControl()
+  fullName: System.Threading.EventWaitHandle.GetAccessControl()
+- uid: System.Threading.EventWaitHandle.OpenExisting(System.String)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: OpenExisting(String)
+  nameWithType: EventWaitHandle.OpenExisting(String)
+  fullName: System.Threading.EventWaitHandle.OpenExisting(String)
+- uid: System.Threading.EventWaitHandle
+  parent: System.Threading
+  isExternal: false
+  name: EventWaitHandle
+  nameWithType: EventWaitHandle
+  fullName: System.Threading.EventWaitHandle
+- uid: System.Threading.EventWaitHandle.OpenExisting(System.String,System.Security.AccessControl.EventWaitHandleRights)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: OpenExisting(String,EventWaitHandleRights)
+  nameWithType: EventWaitHandle.OpenExisting(String,EventWaitHandleRights)
+  fullName: System.Threading.EventWaitHandle.OpenExisting(String,EventWaitHandleRights)
+- uid: System.Security.AccessControl.EventWaitHandleRights
+  parent: System.Security.AccessControl
+  isExternal: false
+  name: EventWaitHandleRights
+  nameWithType: EventWaitHandleRights
+  fullName: System.Security.AccessControl.EventWaitHandleRights
+- uid: System.Threading.EventWaitHandle.Reset
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: Reset()
+  nameWithType: EventWaitHandle.Reset()
+  fullName: System.Threading.EventWaitHandle.Reset()
+- uid: System.Threading.EventWaitHandle.Set
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: Set()
+  nameWithType: EventWaitHandle.Set()
+  fullName: System.Threading.EventWaitHandle.Set()
+- uid: System.Threading.EventWaitHandle.SetAccessControl(System.Security.AccessControl.EventWaitHandleSecurity)
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: SetAccessControl(EventWaitHandleSecurity)
+  nameWithType: EventWaitHandle.SetAccessControl(EventWaitHandleSecurity)
+  fullName: System.Threading.EventWaitHandle.SetAccessControl(EventWaitHandleSecurity)
+- uid: System.Threading.EventWaitHandle.#ctor*
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: EventWaitHandle
+  nameWithType: EventWaitHandle.EventWaitHandle
+- uid: System.Threading.EventWaitHandle.GetAccessControl*
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: GetAccessControl
+  nameWithType: EventWaitHandle.GetAccessControl
+- uid: System.Threading.EventWaitHandle.OpenExisting*
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: OpenExisting
+  nameWithType: EventWaitHandle.OpenExisting
+- uid: System.Threading.EventWaitHandle.Reset*
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: Reset
+  nameWithType: EventWaitHandle.Reset
+- uid: System.Threading.EventWaitHandle.Set*
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: Set
+  nameWithType: EventWaitHandle.Set
+- uid: System.Threading.EventWaitHandle.SetAccessControl*
+  parent: System.Threading.EventWaitHandle
+  isExternal: false
+  name: SetAccessControl
+  nameWithType: EventWaitHandle.SetAccessControl

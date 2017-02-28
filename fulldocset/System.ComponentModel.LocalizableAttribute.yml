@@ -1,0 +1,395 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.LocalizableAttribute
+  id: LocalizableAttribute
+  children:
+  - System.ComponentModel.LocalizableAttribute.#ctor(System.Boolean)
+  - System.ComponentModel.LocalizableAttribute.Default
+  - System.ComponentModel.LocalizableAttribute.Equals(System.Object)
+  - System.ComponentModel.LocalizableAttribute.GetHashCode
+  - System.ComponentModel.LocalizableAttribute.IsDefaultAttribute
+  - System.ComponentModel.LocalizableAttribute.IsLocalizable
+  - System.ComponentModel.LocalizableAttribute.No
+  - System.ComponentModel.LocalizableAttribute.Yes
+  langs:
+  - csharp
+  name: LocalizableAttribute
+  nameWithType: LocalizableAttribute
+  fullName: System.ComponentModel.LocalizableAttribute
+  type: Class
+  summary: Specifies whether a property should be localized. This class cannot be inherited.
+  remarks: "When code is generated for a component, members that are marked with the LocalizableAttribute set to `true` have their property values saved in resource files. You can localize these resource files without modifying the code.  \n  \n By default, members that have no localizable attribute or are marked with the LocalizableAttribute set to `false` will have their property values persisted to code, if the data type allows. Otherwise, if the main component is set to `Localizable`, all properties will be persisted to the resource file. The default is `false`.  \n  \n> [!NOTE]\n>  When you mark a property with the LocalizableAttribute set to `true`, the value of this attribute is set to the constant member <xref:System.ComponentModel.LocalizableAttribute.Yes>. For a property marked with the LocalizableAttribute set to `false`, the value is <xref:System.ComponentModel.LocalizableAttribute.No>. Therefore, when you want to check the value of this attribute in your code, you must specify the attribute as <xref:System.ComponentModel.LocalizableAttribute.Yes?displayProperty=fullName> or <xref:System.ComponentModel.LocalizableAttribute.No?displayProperty=fullName>.  \n  \n For more information, see [Attributes](~/add/includes/ajax-current-ext-md.md)."
+  example:
+  - "The following example marks a property as needing to be localized.  \n  \n [!code-cs[classic localizableattribute example#1](~/add/codesnippet/csharp/t-system.componentmodel._83_1.cs)]\n [!code-cpp[classic localizableattribute example#1](~/add/codesnippet/cpp/t-system.componentmodel._83_1.cpp)]\n [!code-vb[classic localizableattribute example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._83_1.vb)]  \n  \n The next example shows how to check the value of the LocalizableAttribute for `MyProperty`. First, the code gets a <xref:System.ComponentModel.PropertyDescriptorCollection> with all the properties for the object. Then, the code gets `MyProperty` from the <xref:System.ComponentModel.PropertyDescriptorCollection>. Next, it returns the attributes for this property and saves them in the attributes variable.  \n  \n Finally, the code sets `myAttribute` to the value of the LocalizableAttribute in the <xref:System.ComponentModel.AttributeCollection> and checks whether the property needs to be localized.  \n  \n [!code-cs[classic localizableattribute example#2](~/add/codesnippet/csharp/t-system.componentmodel._83_2.cs)]\n [!code-cpp[classic localizableattribute example#2](~/add/codesnippet/cpp/t-system.componentmodel._83_2.cpp)]\n [!code-vb[classic localizableattribute example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._83_2.vb)]"
+  syntax:
+    content: >-
+      [System.AttributeUsage(System.AttributeTargets.All)]
+
+      public sealed class LocalizableAttribute : Attribute
+  inheritance:
+  - System.Object
+  - System.Attribute
+  implements: []
+  inheritedMembers:
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Boolean)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Assembly,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.MemberInfo,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.Module,System.Type,System.Boolean)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type)
+  - System.Attribute.IsDefined(System.Reflection.ParameterInfo,System.Type,System.Boolean)
+  - System.Attribute.Match(System.Object)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#GetTypeInfoCount(System.UInt32@)
+  - System.Attribute.System#Runtime#InteropServices#_Attribute#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
+  - System.Attribute.TypeId
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: LocalizableAttribute(Boolean)
+  nameWithType: LocalizableAttribute.LocalizableAttribute(Boolean)
+  fullName: System.ComponentModel.LocalizableAttribute.LocalizableAttribute(Boolean)
+  type: Constructor
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Initializes a new instance of the <xref href="System.ComponentModel.LocalizableAttribute"></xref> class.
+  remarks: ''
+  example:
+  - "The following example marks a property as needing to be localized. This code creates a new <xref:System.ComponentModel.LocalizableAttribute>, sets its value to <xref:System.ComponentModel.LocalizableAttribute.Yes?displayProperty=fullName>, and binds it to the property.  \n  \n [!code-cs[Classic LocalizableAttribute.LocalizableAttribute Example#1](~/add/codesnippet/csharp/m-system.componentmodel._13_1.cs)]\n [!code-vb[Classic LocalizableAttribute.LocalizableAttribute Example#1](~/add/codesnippet/visualbasic/m-system.componentmodel._13_1.vb)]\n [!code-cpp[Classic LocalizableAttribute.LocalizableAttribute Example#1](~/add/codesnippet/cpp/m-system.componentmodel._13_1.cpp)]"
+  syntax:
+    content: public LocalizableAttribute (bool isLocalizable);
+    parameters:
+    - id: isLocalizable
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a property should be localized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ComponentModel.LocalizableAttribute.#ctor*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.Default
+  id: Default
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: Default
+  nameWithType: LocalizableAttribute.Default
+  fullName: System.ComponentModel.LocalizableAttribute.Default
+  type: Field
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Specifies the default value, which is <xref href="System.ComponentModel.LocalizableAttribute.No"></xref>. This <xref uid="langword_csharp_static" name="static" href=""></xref> field is read-only.
+  remarks: When you mark a property with this value, this attribute is set to the constant member <xref:System.ComponentModel.LocalizableAttribute>. Therefore, when you want to check whether the attribute is set to this value in your code, you must specify the attribute as <xref:System.ComponentModel.LocalizableAttribute?displayProperty=fullName>.
+  syntax:
+    content: public static readonly System.ComponentModel.LocalizableAttribute Default;
+    return:
+      type: System.ComponentModel.LocalizableAttribute
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: Equals(Object)
+  nameWithType: LocalizableAttribute.Equals(Object)
+  fullName: System.ComponentModel.LocalizableAttribute.Equals(Object)
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Returns whether the value of the given object is equal to the current <xref href="System.ComponentModel.LocalizableAttribute"></xref>.
+  syntax:
+    content: public override bool Equals (object obj);
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to test the value equality of.
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the given object is equal to that of the current; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ComponentModel.LocalizableAttribute.Equals*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.GetHashCode
+  id: GetHashCode
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: GetHashCode()
+  nameWithType: LocalizableAttribute.GetHashCode()
+  fullName: System.ComponentModel.LocalizableAttribute.GetHashCode()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Returns the hash code for this instance.
+  syntax:
+    content: public override int GetHashCode ();
+    parameters: []
+    return:
+      type: System.Int32
+      description: A hash code for the current <xref href="System.ComponentModel.LocalizableAttribute"></xref>.
+  overload: System.ComponentModel.LocalizableAttribute.GetHashCode*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.IsDefaultAttribute
+  id: IsDefaultAttribute
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: IsDefaultAttribute()
+  nameWithType: LocalizableAttribute.IsDefaultAttribute()
+  fullName: System.ComponentModel.LocalizableAttribute.IsDefaultAttribute()
+  type: Method
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Determines if this attribute is the default.
+  syntax:
+    content: public override bool IsDefaultAttribute ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the attribute is the default value for this attribute class; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ComponentModel.LocalizableAttribute.IsDefaultAttribute*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.IsLocalizable
+  id: IsLocalizable
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: IsLocalizable
+  nameWithType: LocalizableAttribute.IsLocalizable
+  fullName: System.ComponentModel.LocalizableAttribute.IsLocalizable
+  type: Property
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Gets a value indicating whether a property should be localized.
+  remarks: ''
+  example:
+  - "The following example shows how to check the value of the <xref:System.ComponentModel.LocalizableAttribute> for `MyProperty`. First, the code gets a <xref:System.ComponentModel.PropertyDescriptorCollection> with all the properties for the object. Then, the code gets `MyProperty` from the <xref:System.ComponentModel.PropertyDescriptorCollection>. Next, it returns the attributes for this property and saves them in the attributes variable.  \n  \n Finally, the code sets `myAttribute` to the value of the <xref:System.ComponentModel.LocalizableAttribute> in the <xref:System.ComponentModel.AttributeCollection> and checks whether the property needs to be localized.  \n  \n [!code-cpp[Classic LocalizableAttribute.IsLocalizable Example#1](~/add/codesnippet/cpp/p-system.componentmodel._30_1.cpp)]\n [!code-cs[Classic LocalizableAttribute.IsLocalizable Example#1](~/add/codesnippet/csharp/p-system.componentmodel._30_1.cs)]\n [!code-vb[Classic LocalizableAttribute.IsLocalizable Example#1](~/add/codesnippet/visualbasic/p-system.componentmodel._30_1.vb)]"
+  syntax:
+    content: public bool IsLocalizable { get; }
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a property should be localized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  overload: System.ComponentModel.LocalizableAttribute.IsLocalizable*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.No
+  id: No
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: No
+  nameWithType: LocalizableAttribute.No
+  fullName: System.ComponentModel.LocalizableAttribute.No
+  type: Field
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Specifies that a property should not be localized. This <xref uid="langword_csharp_static" name="static" href=""></xref> field is read-only.
+  remarks: "This field is the default setting for this attribute.  \n  \n When you mark a property with the <xref:System.ComponentModel.LocalizableAttribute> set to `false`, the value of this attribute is set to the constant member No. Therefore, when you want to check whether the attribute is set to this value in your code, you must specify the attribute as No."
+  syntax:
+    content: public static readonly System.ComponentModel.LocalizableAttribute No;
+    return:
+      type: System.ComponentModel.LocalizableAttribute
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.ComponentModel.LocalizableAttribute.Yes
+  id: Yes
+  parent: System.ComponentModel.LocalizableAttribute
+  langs:
+  - csharp
+  name: Yes
+  nameWithType: LocalizableAttribute.Yes
+  fullName: System.ComponentModel.LocalizableAttribute.Yes
+  type: Field
+  assemblies:
+  - System
+  namespace: System.ComponentModel
+  summary: Specifies that a property should be localized. This <xref uid="langword_csharp_static" name="static" href=""></xref> field is read-only.
+  remarks: When you mark a property with the <xref:System.ComponentModel.LocalizableAttribute> set to `true`, the value of this attribute is set to the constant member Yes. Therefore, when you want to check whether the attribute is set to this value in your code, you must specify the attribute as Yes.
+  syntax:
+    content: public static readonly System.ComponentModel.LocalizableAttribute Yes;
+    return:
+      type: System.ComponentModel.LocalizableAttribute
+      description: To be added.
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Attribute
+  isExternal: false
+  name: System.Attribute
+- uid: System.ComponentModel.LocalizableAttribute.#ctor(System.Boolean)
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: LocalizableAttribute(Boolean)
+  nameWithType: LocalizableAttribute.LocalizableAttribute(Boolean)
+  fullName: System.ComponentModel.LocalizableAttribute.LocalizableAttribute(Boolean)
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.ComponentModel.LocalizableAttribute.Default
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: Default
+  nameWithType: LocalizableAttribute.Default
+  fullName: System.ComponentModel.LocalizableAttribute.Default
+- uid: System.ComponentModel.LocalizableAttribute
+  parent: System.ComponentModel
+  isExternal: false
+  name: LocalizableAttribute
+  nameWithType: LocalizableAttribute
+  fullName: System.ComponentModel.LocalizableAttribute
+- uid: System.ComponentModel.LocalizableAttribute.Equals(System.Object)
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: Equals(Object)
+  nameWithType: LocalizableAttribute.Equals(Object)
+  fullName: System.ComponentModel.LocalizableAttribute.Equals(Object)
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.ComponentModel.LocalizableAttribute.GetHashCode
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: GetHashCode()
+  nameWithType: LocalizableAttribute.GetHashCode()
+  fullName: System.ComponentModel.LocalizableAttribute.GetHashCode()
+- uid: System.Int32
+  parent: System
+  isExternal: false
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.ComponentModel.LocalizableAttribute.IsDefaultAttribute
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: IsDefaultAttribute()
+  nameWithType: LocalizableAttribute.IsDefaultAttribute()
+  fullName: System.ComponentModel.LocalizableAttribute.IsDefaultAttribute()
+- uid: System.ComponentModel.LocalizableAttribute.IsLocalizable
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: IsLocalizable
+  nameWithType: LocalizableAttribute.IsLocalizable
+  fullName: System.ComponentModel.LocalizableAttribute.IsLocalizable
+- uid: System.ComponentModel.LocalizableAttribute.No
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: No
+  nameWithType: LocalizableAttribute.No
+  fullName: System.ComponentModel.LocalizableAttribute.No
+- uid: System.ComponentModel.LocalizableAttribute.Yes
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: Yes
+  nameWithType: LocalizableAttribute.Yes
+  fullName: System.ComponentModel.LocalizableAttribute.Yes
+- uid: System.ComponentModel.LocalizableAttribute.#ctor*
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: LocalizableAttribute
+  nameWithType: LocalizableAttribute.LocalizableAttribute
+- uid: System.ComponentModel.LocalizableAttribute.Equals*
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: Equals
+  nameWithType: LocalizableAttribute.Equals
+- uid: System.ComponentModel.LocalizableAttribute.GetHashCode*
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: GetHashCode
+  nameWithType: LocalizableAttribute.GetHashCode
+- uid: System.ComponentModel.LocalizableAttribute.IsDefaultAttribute*
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: IsDefaultAttribute
+  nameWithType: LocalizableAttribute.IsDefaultAttribute
+- uid: System.ComponentModel.LocalizableAttribute.IsLocalizable*
+  parent: System.ComponentModel.LocalizableAttribute
+  isExternal: false
+  name: IsLocalizable
+  nameWithType: LocalizableAttribute.IsLocalizable

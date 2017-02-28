@@ -1,0 +1,172 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Collections.IEnumerator
+  id: IEnumerator
+  children:
+  - System.Collections.IEnumerator.Current
+  - System.Collections.IEnumerator.MoveNext
+  - System.Collections.IEnumerator.Reset
+  langs:
+  - csharp
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+  type: Interface
+  summary: Supports a simple iteration over a non-generic collection.
+  remarks: "IEnumerator is the base interface for all non-generic enumerators.  \n  \n For the generic version of this interface see <xref:System.Collections.Generic.IEnumerator%601>.  \n  \n The `foreach` statement of the C# language (`for each` in Visual Basic) hides the complexity of the enumerators.  Therefore, using `foreach` is recommended instead of directly manipulating the enumerator.  \n  \n Enumerators can be used to read the data in the collection, but they cannot be used to modify the underlying collection.  \n  \n The <xref:System.Collections.IEnumerator.Reset%2A> method is provided for COM interoperability and does not need to be fully implemented; instead, the implementer can throw a <xref:System.NotSupportedException>.  \n  \n Initially, the enumerator is positioned before the first element in the collection. You must call the <xref:System.Collections.IEnumerator.MoveNext%2A> method to advance the enumerator to the first element of the collection before reading the value of <xref:System.Collections.IEnumerator.Current%2A>; otherwise, <xref:System.Collections.IEnumerator.Current%2A> is undefined.  \n  \n <xref:System.Collections.IEnumerator.Current%2A> returns the same object until either <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> is called. <xref:System.Collections.IEnumerator.MoveNext%2A> sets <xref:System.Collections.IEnumerator.Current%2A> to the next element.  \n  \n If <xref:System.Collections.IEnumerator.MoveNext%2A> passes the end of the collection, the enumerator is positioned after the last element in the collection and <xref:System.Collections.IEnumerator.MoveNext%2A> returns `false`. When the enumerator is at this position, subsequent calls to <xref:System.Collections.IEnumerator.MoveNext%2A> also return `false`. If the last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, calling <xref:System.Collections.IEnumerator.Current%2A> throws an exception.  \n  \n To set <xref:System.Collections.IEnumerator.Current%2A> to the first element of the collection again, you can call <xref:System.Collections.IEnumerator.Reset%2A>, if it’s implemented, followed by <xref:System.Collections.IEnumerator.MoveNext%2A>. If <xref:System.Collections.IEnumerator.Reset%2A> is not implemented, you must create a new enumerator instance to return to the first element of the collection.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and the next call to <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> throws an <xref:System.InvalidOperationException>. If the collection is modified between <xref:System.Collections.IEnumerator.MoveNext%2A> and <xref:System.Collections.IEnumerator.Current%2A>, <xref:System.Collections.IEnumerator.Current%2A> returns the element that it is set to, even if the enumerator is already invalidated.  \n  \n The enumerator does not have exclusive access to the collection; therefore, enumerating through a collection is intrinsically not a thread-safe procedure. Even when a collection is synchronized, other threads can still modify the collection, which causes the enumerator to throw an exception. To guarantee thread safety during enumeration, you can either lock the collection during the entire enumeration or catch the exceptions resulting from changes made by other threads."
+  example:
+  - "The following code example demonstrates the implementation of the <xref:System.Collections.IEnumerable> and IEnumerator interfaces for a custom collection. In this example, members of these interfaces are not explicitly called, but they are implemented to support the use of `foreach` (`for each` in Visual Basic) to iterate through the collection.  \n  \n [!code-vb[System.Collections_EnumeratorInterfaces#1](~/add/codesnippet/visualbasic/t-system.collections.ien_0_1.vb)]\n [!code-cs[System.Collections_EnumeratorInterfaces#1](~/add/codesnippet/csharp/t-system.collections.ien_0_1.cs)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      [System.Runtime.InteropServices.Guid("496B0ABF-CDEE-11d3-88E8-00902754C43A")]
+
+      public interface IEnumerator
+  implements: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Collections.IEnumerator.Current
+  id: Current
+  parent: System.Collections.IEnumerator
+  langs:
+  - csharp
+  name: Current
+  nameWithType: IEnumerator.Current
+  fullName: System.Collections.IEnumerator.Current
+  type: Property
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Gets the current element in the collection.
+  remarks: "After an enumerator is created or after the <xref:System.Collections.IEnumerator.Reset%2A> method is called, the <xref:System.Collections.IEnumerator.MoveNext%2A> method must be called to advance the enumerator to the first element of the collection before reading the value of the Current property; otherwise, Current is undefined.  \n  \n Current should throw an  <xref:System.InvalidOperationException> if the last call to <xref:System.Collections.IEnumerator.MoveNext%2A> returned `false`, which indicates the end of the collection.  \n  \n Current does not move the position of the enumerator, and consecutive calls to Current return the same object until either <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> is called.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and the next call to <xref:System.Collections.IEnumerator.MoveNext%2A> or <xref:System.Collections.IEnumerator.Reset%2A> throws an <xref:System.InvalidOperationException>. If the collection is modified between <xref:System.Collections.IEnumerator.MoveNext%2A> and Current, Current returns the element that it is set to, even if the enumerator is already invalidated."
+  example:
+  - "The following code example demonstrates the implementation of the <xref:System.Collections.IEnumerator> interfaces for a custom collection. In this example, Current is not explicitly called, but it is implemented to support the use of `foreach` (`for each` in Visual Basic). This code example is part of a larger example for the <xref:System.Collections.IEnumerator> interface.  \n  \n [!code-vb[System.Collections_EnumeratorInterfaces#2](~/add/codesnippet/visualbasic/p-system.collections.ien_1.vb)]\n [!code-cs[System.Collections_EnumeratorInterfaces#2](~/add/codesnippet/csharp/p-system.collections.ien_1.cs)]"
+  syntax:
+    content: public object Current { get; }
+    return:
+      type: System.Object
+      description: The current element in the collection.
+  overload: System.Collections.IEnumerator.Current*
+  exceptions: []
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Collections.IEnumerator.MoveNext
+  id: MoveNext
+  parent: System.Collections.IEnumerator
+  langs:
+  - csharp
+  name: MoveNext()
+  nameWithType: IEnumerator.MoveNext()
+  fullName: System.Collections.IEnumerator.MoveNext()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Advances the enumerator to the next element of the collection.
+  remarks: "After an enumerator is created or after the <xref:System.Collections.IEnumerator.Reset%2A> method is called, an enumerator is positioned before the first element of the collection, and the first call to the MoveNext method moves the enumerator over the first element of the collection.  \n  \n If MoveNext passes the end of the collection, the enumerator is positioned after the last element in the collection and MoveNext returns `false`. When the enumerator is at this position, subsequent calls to MoveNext also return `false` until <xref:System.Collections.IEnumerator.Reset%2A> is called.  \n  \n An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and the next call to MoveNext or <xref:System.Collections.IEnumerator.Reset%2A> throws an <xref:System.InvalidOperationException>."
+  example:
+  - "The following code example demonstrates the implementation of the <xref:System.Collections.IEnumerator> interfaces for a custom collection. In this example, MoveNext is not explicitly called, but it is implemented to support the use of `foreach` (`for each` in Visual Basic). This code example is part of a larger example for the <xref:System.Collections.IEnumerator> interface.  \n  \n [!code-vb[System.Collections_EnumeratorInterfaces#2](~/add/codesnippet/visualbasic/m-system.collections.ien_1_1.vb)]\n [!code-cs[System.Collections_EnumeratorInterfaces#2](~/add/codesnippet/csharp/m-system.collections.ien_1_1.cs)]"
+  syntax:
+    content: public bool MoveNext ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the enumerator was successfully advanced to the next element; <xref uid="langword_csharp_false" name="false" href=""></xref> if the enumerator has passed the end of the collection.
+  overload: System.Collections.IEnumerator.MoveNext*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The collection was modified after the enumerator was created.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+- uid: System.Collections.IEnumerator.Reset
+  id: Reset
+  parent: System.Collections.IEnumerator
+  langs:
+  - csharp
+  name: Reset()
+  nameWithType: IEnumerator.Reset()
+  fullName: System.Collections.IEnumerator.Reset()
+  type: Method
+  assemblies:
+  - mscorlib
+  namespace: System.Collections
+  summary: Sets the enumerator to its initial position, which is before the first element in the collection.
+  remarks: "An enumerator remains valid as long as the collection remains unchanged. If changes are made to the collection, such as adding, modifying, or deleting elements, the enumerator is irrecoverably invalidated and the next call to the <xref:System.Collections.IEnumerator.MoveNext%2A> or Reset method throws an <xref:System.InvalidOperationException>.  \n  \n The Reset method is provided for COM interoperability. It does not necessarily need to be implemented; instead, the implementer can simply throw a <xref:System.NotSupportedException>."
+  example:
+  - "The following code example demonstrates the implementation of the <xref:System.Collections.IEnumerator> interfaces for a custom collection. In this example, Reset is not explicitly called, but it is implemented to support the use of `foreach` (`for each` in Visual Basic). This code example is part of a larger example for the <xref:System.Collections.IEnumerator> interface.  \n  \n [!code-vb[System.Collections_EnumeratorInterfaces#2](~/add/codesnippet/visualbasic/m-system.collections.ien_2_1.vb)]\n [!code-cs[System.Collections_EnumeratorInterfaces#2](~/add/codesnippet/csharp/m-system.collections.ien_2_1.cs)]"
+  syntax:
+    content: public void Reset ();
+    parameters: []
+  overload: System.Collections.IEnumerator.Reset*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: The collection was modified after the enumerator was created.
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.InvalidOperationException
+  parent: System
+  isExternal: false
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: System.Collections.IEnumerator.Current
+  parent: System.Collections.IEnumerator
+  isExternal: false
+  name: Current
+  nameWithType: IEnumerator.Current
+  fullName: System.Collections.IEnumerator.Current
+- uid: System.Object
+  parent: System
+  isExternal: false
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Collections.IEnumerator.MoveNext
+  parent: System.Collections.IEnumerator
+  isExternal: false
+  name: MoveNext()
+  nameWithType: IEnumerator.MoveNext()
+  fullName: System.Collections.IEnumerator.MoveNext()
+- uid: System.Boolean
+  parent: System
+  isExternal: false
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.IEnumerator.Reset
+  parent: System.Collections.IEnumerator
+  isExternal: false
+  name: Reset()
+  nameWithType: IEnumerator.Reset()
+  fullName: System.Collections.IEnumerator.Reset()
+- uid: System.Collections.IEnumerator.Current*
+  parent: System.Collections.IEnumerator
+  isExternal: false
+  name: Current
+  nameWithType: IEnumerator.Current
+- uid: System.Collections.IEnumerator.MoveNext*
+  parent: System.Collections.IEnumerator
+  isExternal: false
+  name: MoveNext
+  nameWithType: IEnumerator.MoveNext
+- uid: System.Collections.IEnumerator.Reset*
+  parent: System.Collections.IEnumerator
+  isExternal: false
+  name: Reset
+  nameWithType: IEnumerator.Reset

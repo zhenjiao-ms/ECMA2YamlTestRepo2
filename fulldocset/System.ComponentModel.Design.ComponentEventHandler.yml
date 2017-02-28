@@ -1,0 +1,31 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.ComponentModel.Design.ComponentEventHandler
+  id: ComponentEventHandler
+  langs:
+  - csharp
+  name: ComponentEventHandler
+  nameWithType: ComponentEventHandler
+  fullName: System.ComponentModel.Design.ComponentEventHandler
+  type: Delegate
+  summary: Represents the method that will handle the <xref href="System.ComponentModel.Design.IComponentChangeService.ComponentAdding"></xref>, <xref href="System.ComponentModel.Design.IComponentChangeService.ComponentAdded"></xref>, <xref href="System.ComponentModel.Design.IComponentChangeService.ComponentRemoving"></xref>, and <xref href="System.ComponentModel.Design.IComponentChangeService.ComponentRemoved"></xref> events raised for component-level events.
+  remarks: 'When you create a ComponentEventHandler delegate, you identify the method that will handle the event. To associate the event with your event handler, add an instance of the delegate to the event. The event handler is called whenever the event occurs, unless you remove the delegate. For more information about event-handler delegates, see [NIB: Events and Delegates](http://msdn.microsoft.com/en-us/d98fd58b-fa4f-4598-8378-addf4355a115).'
+  example:
+  - "The following example demonstrates registering a ComponentEventHandler and handling the <xref:System.ComponentModel.Design.IComponentChangeService.ComponentAdded>, <xref:System.ComponentModel.Design.IComponentChangeService.ComponentAdding>, <xref:System.ComponentModel.Design.IComponentChangeService.ComponentRemoved> and <xref:System.ComponentModel.Design.IComponentChangeService.ComponentRemoving> events.  \n  \n [!code-cpp[ComponentEventHandlerExample#1](~/add/codesnippet/cpp/t-system.componentmodel._145_1.cpp)]\n [!code-cs[ComponentEventHandlerExample#1](~/add/codesnippet/csharp/t-system.componentmodel._145_1.cs)]\n [!code-vb[ComponentEventHandlerExample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._145_1.vb)]"
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(true)]
+
+      public delegate void ComponentEventHandler(object sender, ComponentEventArgs e);
+  inheritance:
+  - System.Object
+  - System.Delegate
+  platform:
+  - netframework-2.0
+  - netframework-3.0
+  - netframework-3.5
+  - netframework-4.0
+references:
+- uid: System.Delegate
+  isExternal: false
+  name: System.Delegate

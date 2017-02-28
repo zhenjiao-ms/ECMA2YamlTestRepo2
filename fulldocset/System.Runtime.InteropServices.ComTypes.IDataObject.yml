@@ -28,7 +28,7 @@ items:
 
       public interface IDataObject
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The advisory connection was created.  \n  \n </td></tr><tr><td> E_NOTIMPL  \n  \n </td><td> This method is not implemented on the data object.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> There is an invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED  \n  \n </td><td> The data object does not support change notification.  \n  \n </td></tr></tbody></table>"
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,7 +94,7 @@ items:
       description: A DWORD token that specifies the connection to remove. Use the value returned by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise*> when the connection was originally established.
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,7 +124,7 @@ items:
       description: "This method supports the standard return value E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The enumerator object is successfully instantiated or there are no connections.  \n  \n </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED  \n  \n </td><td> This object does not support advisory notifications.  \n  \n </td></tr></tbody></table>"
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.EnumDAdvise*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,7 +154,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The enumerator object was successfully created.  \n  \n </td></tr><tr><td> E_NOTIMPL  \n  \n </td><td> The direction specified by the <code>direction</code> parameter is not supported.  \n  \n </td></tr><tr><td> OLE_S_USEREG  \n  \n </td><td> Requests that OLE enumerate the formats from the registry.  \n  \n </td></tr></tbody></table>"
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.EnumFormatEtc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,7 +187,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The returned <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC\"></xref> structure is different from the one that was passed.  \n  \n </td></tr><tr><td> DATA_S_SAMEFORMATETC  \n  \n </td><td> The <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC\"></xref> structures are the same and <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> is returned in the <code>formatOut</code> parameter.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> There is an invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> OLE_E_NOTRUNNING  \n  \n </td><td> The application is not running.  \n  \n </td></tr></tbody></table>"
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,7 +217,7 @@ items:
       description: When this method returns, contains a pointer to the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure that indicates the storage medium containing the returned data through its <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member, and the responsibility for releasing the medium through the value of its <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member. If <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>, the receiver of the medium is responsible for releasing it; otherwise, <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> points to the <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> interface on the appropriate object so its <xref uid="langword_csharp_Release" name="Release" href=""></xref> method can be called. The medium must be allocated and filled in by GetData. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.GetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -247,7 +247,7 @@ items:
       description: A <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref>, passed by reference, that defines the storage medium containing the data being transferred. The medium must be allocated by the caller and filled in by GetDataHere. The caller must also free the medium. The implementation of this method must always supply a value of <xref uid="langword_csharp_null" name="null" href=""></xref> for the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member of the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure that this parameter points to.
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,7 +277,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> A subsequent call to <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> would probably be successful.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> An invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> An invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> DV_E_TYMED  \n  \n </td><td> An invalid <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.tymed\"></xref> value.  \n  \n </td></tr><tr><td> DV_E_DVASPECT  \n  \n </td><td> An invalid <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.dwAspect\"></xref> value.  \n  \n </td></tr><tr><td> OLE_E_NOTRUNNING  \n  \n </td><td> The application is not running.  \n  \n </td></tr></tbody></table>"
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.QueryGetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,7 +310,7 @@ items:
       description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the data object called, which implements SetData, owns the storage medium after the call returns. This means that the data object must free the medium after it has been used by calling the <xref uid="langword_csharp_ReleaseStgMedium" name="ReleaseStgMedium" href=""></xref> function. <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the caller retains ownership of the storage medium, and the data object called uses the storage medium for the duration of the call only.
   overload: System.Runtime.InteropServices.ComTypes.IDataObject.SetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

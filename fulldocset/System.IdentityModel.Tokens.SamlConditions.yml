@@ -115,7 +115,7 @@ items:
       description: A <xref href="System.DateTime"></xref> that specifies the instant in time when the SAML assertion expires. Sets the <xref:System.IdentityModel.Tokens.SamlConditions.NotOnOrAfter*> property.
     - id: conditions
       type: System.Collections.Generic.IEnumerable{System.IdentityModel.Tokens.SamlCondition}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlCondition"></xref> that specifies a set of conditions that a recipient of a SAML assertion must take into account in assessing the validity of the assertion. Sets the <xref:System.IdentityModel.Tokens.SamlConditions.Conditions*> property.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.IdentityModel.Tokens.SamlCondition"></xref> that specifies a set of conditions that a recipient of a SAML assertion must take into account in assessing the validity of the assertion. Sets the <xref:System.IdentityModel.Tokens.SamlConditions.Conditions*> property.
   overload: System.IdentityModel.Tokens.SamlConditions.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -143,7 +143,7 @@ items:
     content: public System.Collections.Generic.IList<System.IdentityModel.Tokens.SamlCondition> Conditions { get; }
     return:
       type: System.Collections.Generic.IList{System.IdentityModel.Tokens.SamlCondition}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlCondition"></xref> that specifies a set of conditions that a recipient of a SAML assertion must take into account when assessing the validity of the assertion.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.IdentityModel.Tokens.SamlCondition"></xref> that specifies a set of conditions that a recipient of a SAML assertion must take into account when assessing the validity of the assertion.
   overload: System.IdentityModel.Tokens.SamlConditions.Conditions*
   exceptions: []
   version:
@@ -260,14 +260,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the `&lt;saml:Conditions&gt;` element from the specified XML reader.
+  summary: Reads the `<saml:Conditions>` element from the specified XML reader.
   remarks: "The ReadXml method sets the following properties:  \n  \n-   <xref:System.IdentityModel.Tokens.SamlConditions.NotOnOrAfter%2A>  \n  \n-   <xref:System.IdentityModel.Tokens.SamlConditions.NotBefore%2A>  \n  \n-   <xref:System.IdentityModel.Tokens.SamlConditions.Conditions%2A>"
   syntax:
     content: public virtual void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:Conditions&gt;` element.
+      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `<saml:Conditions>` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in the SAML authorization statement that is defined in the SAML specification.
@@ -298,14 +298,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the `&lt;saml:Conditions&gt;` element into the specified XML serializer.
+  summary: Writes the `<saml:Conditions>` element into the specified XML serializer.
   remarks: Use the WriteXml method to write the current <xref:System.IdentityModel.Tokens.SamlConditions> instance into a `<saml:Conditions>` element.
   syntax:
     content: public virtual void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:Conditions&gt;` element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `<saml:Conditions>` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing XML elements in a SAML assertion.

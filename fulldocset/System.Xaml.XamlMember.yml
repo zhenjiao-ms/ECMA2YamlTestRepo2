@@ -394,13 +394,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Gets a &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; object, which is used for deferred loading of XAML declared objects.
+  summary: Gets a <xref:System.Xaml.Schema.XamlValueConverter`1> object, which is used for deferred loading of XAML declared objects.
   remarks: Calling DeferringLoader invokes <xref:System.Xaml.XamlMember.LookupDeferringLoader%2A> or a specific override of that method. This behavior occurs in cases where the initial internal reflection logic has not already set the information.
   syntax:
     content: public System.Xaml.Schema.XamlValueConverter<System.Xaml.XamlDeferringLoader> DeferringLoader { get; }
     return:
       type: System.Xaml.Schema.XamlValueConverter{System.Xaml.XamlDeferringLoader}
-      description: A &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; with <xref href="System.Xaml.XamlDeferringLoader"></xref> constraint on the generic.
+      description: A <xref:System.Xaml.Schema.XamlValueConverter`1> with <xref href="System.Xaml.XamlDeferringLoader"></xref> constraint on the generic.
   overload: System.Xaml.XamlMember.DeferringLoader*
   exceptions: []
   version:
@@ -815,14 +815,14 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Returns a &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; object, which is used for deferred loading of XAML declared objects.
+  summary: Returns a <xref:System.Xaml.Schema.XamlValueConverter`1> object, which is used for deferred loading of XAML declared objects.
   remarks: "This method is invoked when a caller gets a value from the <xref:System.Xaml.XamlMember.DeferringLoader%2A> property. Override this method if you want <xref:System.Xaml.XamlMember.DeferringLoader%2A> to return a value that differs from the value that is enabled by default internal reflection, and if you are also providing custom <xref:System.Xaml.Schema.XamlMemberInvoker> information.  \n  \n The default implementation returns an object either by reading <xref:System.Windows.Markup.XamlDeferLoadAttribute> or using a <xref:System.Xaml.XamlDeferringLoader> from the declaring type. If neither object is available, this method might return `null`."
   syntax:
     content: protected virtual System.Xaml.Schema.XamlValueConverter<System.Xaml.XamlDeferringLoader> LookupDeferringLoader ();
     parameters: []
     return:
       type: System.Xaml.Schema.XamlValueConverter{System.Xaml.XamlDeferringLoader}
-      description: A &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; that has a <xref href="System.Xaml.XamlDeferringLoader"></xref> constraint on the generic.
+      description: A <xref:System.Xaml.Schema.XamlValueConverter`1> that has a <xref href="System.Xaml.XamlDeferringLoader"></xref> constraint on the generic.
   overload: System.Xaml.XamlMember.LookupDeferringLoader*
   exceptions: []
   version:
@@ -1110,7 +1110,7 @@ items:
     parameters: []
     return:
       type: System.Xaml.Schema.XamlValueConverter{System.ComponentModel.TypeConverter}
-      description: A &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; instance with <xref href="System.ComponentModel.TypeConverter"></xref> constraint; or `null`.
+      description: A <xref:System.Xaml.Schema.XamlValueConverter`1> instance with <xref href="System.ComponentModel.TypeConverter"></xref> constraint; or `null`.
   overload: System.Xaml.XamlMember.LookupTypeConverter*
   exceptions: []
   version:
@@ -1206,7 +1206,7 @@ items:
     parameters: []
     return:
       type: System.Xaml.Schema.XamlValueConverter{System.Windows.Markup.ValueSerializer}
-      description: A &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; instance with <xref:System.Windows.Markup.ValueSerializer> constraint, or `null`.
+      description: A <xref:System.Xaml.Schema.XamlValueConverter`1> instance with <xref:System.Windows.Markup.ValueSerializer> constraint, or `null`.
   overload: System.Xaml.XamlMember.LookupValueSerializer*
   exceptions: []
   version:
@@ -1419,13 +1419,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Gets a &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; object, which can be used for type conversion construction of XAML declared objects.
+  summary: Gets a <xref:System.Xaml.Schema.XamlValueConverter`1> object, which can be used for type conversion construction of XAML declared objects.
   remarks: "Calling TypeConverter invokes <xref:System.Xaml.XamlMember.LookupTypeConverter%2A> or a specific override of that method. This behavior occurs when the initial internal reflection logic has not already set the information.  \n  \n Implementations that return a non-null property value for TypeConverter are not necessarily a working <xref:System.ComponentModel.TypeConverter>. The following is a list of possible non-null return values for TypeConverter and what these values represent:  \n  \n-   The return value reports a type converter that is attributed specifically to that member or more generally to the target type of the converter. This behavior is typically what most XAML type systems and XAML processors look for in order to instantiate a type converter and invoke its methods.  \n  \n-   The return value reports a built-in value converter. These converters exist for certain internal operations that are performed by a XAML writer. In particular, these built-in value converters convert the raw attribute string values to the XAML language-level primitives. For the .NET Framework XAML Services implementation, these built-in type conversions often forward to a type converter that is defined in the System assembly. For example, a conversion for an <xref:System.Int32> value has built-in forwarded conversion, and therefore, the <xref:System.Xaml.Schema.XamlValueConverter%601.ConverterType%2A> value references <xref:System.ComponentModel.Int32Converter>.  \n  \n-   The return value reports the special case of an unconstrained object model; that is, the <xref:System.Xaml.XamlMember> has a <xref:System.Xaml.XamlMember.Type%2A> value of <xref:System.Object>. In this case, the <xref:System.Xaml.Schema.XamlValueConverter%601> reports that the <xref:System.Xaml.Schema.XamlValueConverter%601.Name%2A?displayProperty=fullName> is {`Object}`. However, <xref:System.Xaml.Schema.XamlValueConverter%601.ConverterInstance%2A> is `null` because no actual type or instance is available to perform this conversion. Instead, the object model behavior cannot be determined until run time, when the runtime of the specific technology determines the handling of its object graph.  \n  \n If you can access a working <xref:System.ComponentModel.TypeConverter> from <xref:System.Xaml.Schema.XamlValueConverter%601.ConverterInstance%2A>, you can invoke its conversion methods. However, many conversion methods rely on service context. If you do not have the same service context available that the type converter expects for its typical role of writing objects for object graphs, the converter methods can throw exceptions."
   syntax:
     content: public System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> TypeConverter { get; }
     return:
       type: System.Xaml.Schema.XamlValueConverter{System.ComponentModel.TypeConverter}
-      description: A &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; value, with a <xref href="System.ComponentModel.TypeConverter"></xref> constraint on the generic. See Remarks.
+      description: A <xref:System.Xaml.Schema.XamlValueConverter`1> value, with a <xref href="System.ComponentModel.TypeConverter"></xref> constraint on the generic. See Remarks.
   overload: System.Xaml.XamlMember.TypeConverter*
   exceptions: []
   version:
@@ -1448,7 +1448,7 @@ items:
     content: public System.Reflection.MemberInfo UnderlyingMember { get; }
     return:
       type: System.Reflection.MemberInfo
-      description: CLR type system <xref href="System.Reflection.MemberInfo"></xref> information, as cast from the initial constructor parameters. A <xref href="System.Xaml.XamlMember"></xref> that is constructed with the &lt;xref:System.Xaml.XamlMember.%23ctor%28System.String%2CSystem.Xaml.XamlType%2CSystem.Boolean%29&gt; signature returns `null`.
+      description: CLR type system <xref href="System.Reflection.MemberInfo"></xref> information, as cast from the initial constructor parameters. A <xref href="System.Xaml.XamlMember"></xref> that is constructed with the <xref:System.Xaml.XamlMember.#ctor(System.String,System.Xaml.XamlType,System.Boolean)> signature returns `null`.
   overload: System.Xaml.XamlMember.UnderlyingMember*
   exceptions: []
   version:
@@ -1465,13 +1465,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Gets a &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; object, which is used for value serialization of XAML declared objects.
+  summary: Gets a <xref:System.Xaml.Schema.XamlValueConverter`1> object, which is used for value serialization of XAML declared objects.
   remarks: "Calling ValueSerializer invokes <xref:System.Xaml.XamlMember.LookupValueSerializer%2A> or a specific override of that method. This behavior occurs when the initial internal reflection logic has not already set the information.  \n  \n Not all cases that return a non-null property value for ValueSerializer are necessarily a working <xref:System.Windows.Markup.ValueSerializer>. See Remarks in <xref:System.Xaml.XamlMember.TypeConverter%2A>; the same considerations apply to ValueSerializer."
   syntax:
     content: public System.Xaml.Schema.XamlValueConverter<System.Windows.Markup.ValueSerializer> ValueSerializer { get; }
     return:
       type: System.Xaml.Schema.XamlValueConverter{System.Windows.Markup.ValueSerializer}
-      description: A &lt;xref:System.Xaml.Schema.XamlValueConverter%601&gt; with <xref:System.Windows.Markup.ValueSerializer> constraint on the generic.
+      description: A <xref:System.Xaml.Schema.XamlValueConverter`1> with <xref:System.Windows.Markup.ValueSerializer> constraint on the generic.
   overload: System.Xaml.XamlMember.ValueSerializer*
   exceptions: []
   version:

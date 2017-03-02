@@ -840,13 +840,13 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel
-  summary: Gets a value that indicates whether access to the &lt;xref:System.Collections.Generic.ICollection%601&gt; is synchronized, that is thread-safe.
+  summary: Gets a value that indicates whether access to the <xref:System.Collections.Generic.ICollection`1> is synchronized, that is thread-safe.
   remarks: "<xref:System.Collections.ICollection.SyncRoot%2A> returns an object, which can be used to synchronize access to the <xref:System.Collections.Generic.ICollection%601>.  \n  \n Most collection classes in the <xref:System.Collections?displayProperty=fullName> namespace also implement a `Synchronized` method, which provides a synchronized wrapper around the underlying collection.  \n  \n Enumerating through a collection is intrinsically not a thread-safe procedure. Even when a collection is synchronized, other threads can still modify the collection, which causes the enumerator to throw an exception. To guarantee thread safety during enumeration, you can either lock the collection during the entire enumeration or catch the exceptions resulting from changes made by other threads."
   syntax:
     content: bool System.Collections.ICollection.IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: '`true` if access to the &lt;xref:System.Collections.Generic.ICollection%601&gt; is synchronized, that is, thread-safe; otherwise, `false`.'
+      description: '`true` if access to the <xref:System.Collections.Generic.ICollection`1> is synchronized, that is, thread-safe; otherwise, `false`.'
   overload: System.Workflow.ComponentModel.ActivityCollection.System#Collections#ICollection#IsSynchronized*
   exceptions: []
   version:
@@ -866,13 +866,13 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel
-  summary: Gets an object that can be used to synchronize access to the &lt;xref:System.Collections.Generic.ICollection%601&gt;.
+  summary: Gets an object that can be used to synchronize access to the <xref:System.Collections.Generic.ICollection`1>.
   remarks: "For collections whose underlying store is not publicly available, the expected implementation is to return the current instance. Note that the pointer to the current instance might not be sufficient for collections that wrap other collections; those should return the underlying collection <xref:System.Collections.ICollection.SyncRoot%2A> property.  \n  \n Most collection classes in the <xref:System.Collections?displayProperty=fullName> namespace also implement a `Synchronized` method, which provides a synchronized wrapper around the underlying collection. However, derived classes can provide their own synchronized version of the collection using the <xref:System.Workflow.ComponentModel.ActivityCollection.System.Collections.ICollection.SyncRoot%2A> property. The synchronizing code must perform operations on the <xref:System.Workflow.ComponentModel.ActivityCollection.System.Collections.ICollection.SyncRoot%2A> property of the collection, not directly on the collection. This ensures proper operation of collections that are derived from other objects. Specifically, it maintains proper synchronization with other threads that might be simultaneously modifying the collection instance."
   syntax:
     content: object System.Collections.ICollection.SyncRoot { get; }
     return:
       type: System.Object
-      description: An object that can be used to synchronize access to the &lt;xref:System.Collections.Generic.ICollection%601&gt;.
+      description: An object that can be used to synchronize access to the <xref:System.Collections.Generic.ICollection`1>.
   overload: System.Workflow.ComponentModel.ActivityCollection.System#Collections#ICollection#SyncRoot*
   exceptions: []
   version:
@@ -1087,12 +1087,12 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel
-  summary: Gets a value indicating whether the &lt;xref:System.Collections.Generic.ICollection%601&gt; is read-only.
+  summary: Gets a value indicating whether the <xref:System.Collections.Generic.ICollection`1> is read-only.
   syntax:
     content: bool System.Collections.IList.IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: Returns <xref href="System.Boolean"></xref>`true` if the &lt;xref:System.Collections.Generic.ICollection%601&gt; is read-only; otherwise, `false`.
+      description: Returns <xref href="System.Boolean"></xref>`true` if the <xref:System.Collections.Generic.ICollection`1> is read-only; otherwise, `false`.
   overload: System.Workflow.ComponentModel.ActivityCollection.System#Collections#IList#IsReadOnly*
   exceptions: []
   version:

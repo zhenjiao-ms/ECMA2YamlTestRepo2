@@ -131,7 +131,7 @@ items:
       description: The subject name. Sets the <xref:System.IdentityModel.Tokens.SamlSubject.Name*> property.
     - id: confirmations
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.String"></xref> that contains URI references that identify the protocols to authenticate the subject. Sets the <xref:System.IdentityModel.Tokens.SamlSubject.ConfirmationMethods*> property.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.String"></xref> that contains URI references that identify the protocols to authenticate the subject. Sets the <xref:System.IdentityModel.Tokens.SamlSubject.ConfirmationMethods*> property.
     - id: confirmationData
       type: System.String
       description: Additional authentication information that can be used by authentication protocols. Sets the <xref:System.IdentityModel.Tokens.SamlSubject.SubjectConfirmationData*> property.
@@ -168,7 +168,7 @@ items:
     content: public System.Collections.Generic.IList<string> ConfirmationMethods { get; }
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: An &lt;xref:System.Collections.Generic.IList%601&gt; of type <xref href="System.String"></xref> that contains a set of URI references that identify the protocols that should be used to authenticate the subject.
+      description: An <xref:System.Collections.Generic.IList`1> of type <xref href="System.String"></xref> that contains a set of URI references that identify the protocols that should be used to authenticate the subject.
   overload: System.IdentityModel.Tokens.SamlSubject.ConfirmationMethods*
   exceptions: []
   version:
@@ -219,7 +219,7 @@ items:
     parameters: []
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Claims.Claim}
-      description: A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref href="System.IdentityModel.Claims.Claim"></xref> that contains the set of claims represented by this <xref href="System.IdentityModel.Tokens.SamlSubject"></xref> instance.
+      description: A <xref:System.Collections.ObjectModel.ReadOnlyCollection`1> of type <xref href="System.IdentityModel.Claims.Claim"></xref> that contains the set of claims represented by this <xref href="System.IdentityModel.Tokens.SamlSubject"></xref> instance.
   overload: System.IdentityModel.Tokens.SamlSubject.ExtractClaims*
   exceptions: []
   version:
@@ -245,7 +245,7 @@ items:
     parameters:
     - id: samlAuthenticator
       type: System.IdentityModel.Selectors.SamlSecurityTokenAuthenticator
-      description: A <xref href="System.IdentityModel.Selectors.SamlSecurityTokenAuthenticator"></xref> that authenticates the portion of a <xref href="System.IdentityModel.Tokens.SamlSecurityToken"></xref> security token that corresponds to the `&lt;saml:Subject&gt;` element.
+      description: A <xref href="System.IdentityModel.Selectors.SamlSecurityTokenAuthenticator"></xref> that authenticates the portion of a <xref href="System.IdentityModel.Tokens.SamlSecurityToken"></xref> security token that corresponds to the `<saml:Subject>` element.
     return:
       type: System.IdentityModel.Claims.ClaimSet
       description: A <xref href="System.IdentityModel.Claims.ClaimSet"></xref> that contains the set of claims represented by this <xref href="System.IdentityModel.Tokens.SamlSubject"></xref> instance.
@@ -443,14 +443,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the `&lt;saml:Subject&gt;` element from the specified XML reader.
+  summary: Reads the `<saml:Subject>` element from the specified XML reader.
   remarks: The ReadXml method sets the <xref:System.IdentityModel.Tokens.SamlSubject.Name%2A>, <xref:System.IdentityModel.Tokens.SamlSubject.NameFormat%2A>, <xref:System.IdentityModel.Tokens.SamlSubject.NameQualifier%2A>, <xref:System.IdentityModel.Tokens.SamlSubject.ConfirmationMethods%2A>, <xref:System.IdentityModel.Tokens.SamlSubject.Crypto%2A>, <xref:System.IdentityModel.Tokens.SamlSubject.KeyIdentifier%2A>, and <xref:System.IdentityModel.Tokens.SamlSubject.SubjectConfirmationData%2A> properties.
   syntax:
     content: public virtual void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: A <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:Subject&gt;` element.
+      description: A <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `<saml:Subject>` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in a SAML assertion.
@@ -467,10 +467,10 @@ items:
     description: "<code>reader</code> is `null`.  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`."
   - type: System.IdentityModel.Tokens.SecurityTokenException
     commentId: T:System.IdentityModel.Tokens.SecurityTokenException
-    description: "<code>reader</code> refers to an XML element in which one of the following is true:  \n  \n Contains an `&lt;saml:NameIdentifier&gt;` element without a value.  \n  \n -or-  \n  \n Contains an `&lt;saml:ConfirmationMehtod&gt;` element without a value.  \n  \n -or-  \n  \n Contains a `&lt;saml:SubjectConfirmation&gt;` element that does not have at least one `&lt;saml:ConfirmationMethod&gt;` child element.  \n  \n -or-  \n  \n Does not contain at least one `&lt;saml:ConfirmationMethod&gt;` or `&lt;saml:NameIdentifier&gt;` element."
+    description: "<code>reader</code> refers to an XML element in which one of the following is true:  \n  \n Contains an `<saml:NameIdentifier>` element without a value.  \n  \n -or-  \n  \n Contains an `<saml:ConfirmationMehtod>` element without a value.  \n  \n -or-  \n  \n Contains a `<saml:SubjectConfirmation>` element that does not have at least one `<saml:ConfirmationMethod>` child element.  \n  \n -or-  \n  \n Does not contain at least one `<saml:ConfirmationMethod>` or `<saml:NameIdentifier>` element."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: <code>reader</code> refers to an XML element that contains a `&lt;ds:KeyInfo&gt;` element that does not have a key that can be retrieved.
+    description: <code>reader</code> refers to an XML element that contains a `<ds:KeyInfo>` element that does not have a key that can be retrieved.
   version:
   - netframework-30
   - netframework-35
@@ -512,14 +512,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the `&lt;saml:Subject&gt;` element into the specified XML serializer.
+  summary: Writes the `<saml:Subject>` element into the specified XML serializer.
   remarks: Use the WriteXml method to write the properties of the current <xref:System.IdentityModel.Tokens.SamlSubject> instance into a `<saml:Subject>` element.
   syntax:
     content: public virtual void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:Subject&gt;` element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `<saml:Subject>` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing XML elements in a SAML assertion.

@@ -85,7 +85,7 @@ items:
       description: An <xref href="System.Web.SessionState.ISessionStateItemCollection"></xref> that contains the session values for the new session-state provider.
     - id: staticObjects
       type: System.Web.HttpStaticObjectsCollection
-      description: An <xref href="System.Web.HttpStaticObjectsCollection"></xref> that specifies the objects declared by `&lt;object Runat="Server" Scope="Session"/&gt;` tags within the ASP.NET application file Global.asax.
+      description: An <xref href="System.Web.HttpStaticObjectsCollection"></xref> that specifies the objects declared by `<object Runat="Server" Scope="Session"/>` tags within the ASP.NET application file Global.asax.
     - id: timeout
       type: System.Int32
       description: The amount of time, in minutes, allowed between requests before the session-state provider terminates the session.
@@ -699,7 +699,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: Gets a collection of objects declared by `&lt;object Runat="Server" Scope="Session"/&gt;` tags within the ASP.NET application file Global.asax.
+  summary: Gets a collection of objects declared by `<object Runat="Server" Scope="Session"/>` tags within the ASP.NET application file Global.asax.
   remarks: "If an object on a page does not support serialization and <xref:System.Web.SessionState.HttpSessionStateContainer.Mode%2A> is out-of-process (<xref:System.Web.SessionState.SessionStateMode> or <xref:System.Web.SessionState.SessionStateMode>), the object will not be created and will not be added to this collection.  \n  \n StaticObjects is provided for compatibility with earlier versions of ASP."
   syntax:
     content: public System.Web.HttpStaticObjectsCollection StaticObjects { get; }

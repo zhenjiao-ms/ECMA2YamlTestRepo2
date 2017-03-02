@@ -280,7 +280,7 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime
-  summary: Creates a workflow instance by using the specified workflow <xref href="System.Type"></xref> and the arguments to the workflow contained in the specified &lt;xref:System.Collections.Generic.Dictionary%602&gt;.
+  summary: Creates a workflow instance by using the specified workflow <xref href="System.Type"></xref> and the arguments to the workflow contained in the specified <xref:System.Collections.Generic.Dictionary`2>.
   remarks: "Before the <xref:System.Workflow.Runtime.WorkflowInstance> is created, validation is executed on it. If any validation errors occur, the <xref:System.Workflow.ComponentModel.Compiler.WorkflowValidationFailedException> is thrown. This works well for simple scenarios, but in a server environment, revalidating a workflow for every activation might be unnecessary overhead.  \n  \n [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] disabling validation, see <xref:System.Workflow.Runtime.Configuration.WorkflowRuntimeSection.ValidateOnCreate%2A>.  \n  \n For an example of passing in parameters to `CreateWorkflow`, see [Workflow with Parameters Sample](http://go.microsoft.com/fwlink/?LinkId=157403)."
   syntax:
     content: public System.Workflow.Runtime.WorkflowInstance CreateWorkflow (Type workflowType, System.Collections.Generic.Dictionary<string,object> namedArgumentValues);
@@ -290,7 +290,7 @@ items:
       description: The <xref href="System.Type"></xref> of the workflow to create.
     - id: namedArgumentValues
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
-      description: A &lt;xref:System.Collections.Generic.Dictionary%602&gt; of objects keyed by string that represents the arguments to the workflow.
+      description: A <xref:System.Collections.Generic.Dictionary`2> of objects keyed by string that represents the arguments to the workflow.
     return:
       type: System.Workflow.Runtime.WorkflowInstance
       description: The created workflow instance.
@@ -325,7 +325,7 @@ items:
       description: The <xref href="System.Type"></xref> of the workflow to create.
     - id: namedArgumentValues
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
-      description: A &lt;xref:System.Collections.Generic.Dictionary%602&gt; of objects keyed by a string that represents the arguments to the workflow.
+      description: A <xref:System.Collections.Generic.Dictionary`2> of objects keyed by a string that represents the arguments to the workflow.
     - id: instanceId
       type: System.Guid
       description: The <xref href="System.Guid"></xref> of the specific <xref href="System.Workflow.Runtime.WorkflowInstance"></xref> to create.
@@ -353,7 +353,7 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime
-  summary: Creates a workflow instance by using the specified <xref href="System.Xml.XmlReader"></xref> objects and the arguments contained in the specified &lt;xref:System.Collections.Generic.Dictionary%602&gt;.
+  summary: Creates a workflow instance by using the specified <xref href="System.Xml.XmlReader"></xref> objects and the arguments contained in the specified <xref:System.Collections.Generic.Dictionary`2>.
   remarks: "The workflow instance is created from the workflow definition referenced by the <xref:System.Xml.XmlReader> and the arguments supplied by `namedArgumentValues`.  \n  \n Before the <xref:System.Workflow.Runtime.WorkflowInstance> is created, validation is executed on it. If any validation errors occur, the <xref:System.Workflow.ComponentModel.Compiler.WorkflowValidationFailedException> is thrown. This works well for simple scenarios, but in a server environment, revalidating a workflow for every activation might be unnecessary overhead.  \n  \n [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] disabling validation, see <xref:System.Workflow.Runtime.Configuration.WorkflowRuntimeSection.ValidateOnCreate%2A>.  \n  \n For an example of passing in parameters to `CreateWorkflow`, see [Workflow with Parameters Sample](http://go.microsoft.com/fwlink/?LinkID=157403).  \n  \n For an example of using rules defined in XML, see [IfElse with Rules Sample](http://go.microsoft.com/fwlink/?LinkId=157404)."
   syntax:
     content: public System.Workflow.Runtime.WorkflowInstance CreateWorkflow (System.Xml.XmlReader workflowDefinitionReader, System.Xml.XmlReader rulesReader, System.Collections.Generic.Dictionary<string,object> namedArgumentValues);
@@ -366,7 +366,7 @@ items:
       description: An <xref href="System.Xml.XmlReader"></xref>.
     - id: namedArgumentValues
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
-      description: A &lt;xref:System.Collections.Generic.Dictionary%602&gt; of objects keyed by a string that represents the arguments to the workflow.
+      description: A <xref:System.Collections.Generic.Dictionary`2> of objects keyed by a string that represents the arguments to the workflow.
     return:
       type: System.Workflow.Runtime.WorkflowInstance
       description: The created workflow instance.
@@ -407,7 +407,7 @@ items:
       description: An <xref href="System.Xml.XmlReader"></xref>.
     - id: namedArgumentValues
       type: System.Collections.Generic.Dictionary{System.String,System.Object}
-      description: A &lt;xref:System.Collections.Generic.Dictionary%602&gt; of objects keyed by a string that represents the arguments to the workflow.
+      description: A <xref:System.Collections.Generic.Dictionary`2> of objects keyed by a string that represents the arguments to the workflow.
     - id: instanceId
       type: System.Guid
       description: The <xref href="System.Guid"></xref> of the specific <xref href="System.Workflow.Runtime.WorkflowInstance"></xref> to create.

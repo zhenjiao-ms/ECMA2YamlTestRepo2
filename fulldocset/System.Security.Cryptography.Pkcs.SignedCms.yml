@@ -276,7 +276,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: 'The CheckHash method verifies the data integrity of the CMS/PKCS #7 message. CheckHash is a specialized method used in specific security infrastructure applications that only wish to check the hash of the CMS message, rather than perform a full digital signature verification. CheckHash does not authenticate the author nor sender of the message because this method does not involve verifying a digital signature. For general-purpose checking of the integrity and authenticity of a CMS/PKCS #7 message, use the &lt;xref:System.Security.Cryptography.Pkcs.SignedCms.CheckSignature%28System.Boolean%29&gt; or &lt;xref:System.Security.Cryptography.Pkcs.SignedCms.CheckSignature%28System.Security.Cryptography.X509Certificates.X509Certificate2Collection%2CSystem.Boolean%29&gt; methods.'
+  summary: 'The CheckHash method verifies the data integrity of the CMS/PKCS #7 message. CheckHash is a specialized method used in specific security infrastructure applications that only wish to check the hash of the CMS message, rather than perform a full digital signature verification. CheckHash does not authenticate the author nor sender of the message because this method does not involve verifying a digital signature. For general-purpose checking of the integrity and authenticity of a CMS/PKCS #7 message, use the <xref:System.Security.Cryptography.Pkcs.SignedCms.CheckSignature(System.Boolean)> or <xref:System.Security.Cryptography.Pkcs.SignedCms.CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2Collection,System.Boolean)> methods.'
   remarks: 'This method does not provide authentication of the CMS/PKCS #7 message.'
   syntax:
     content: public void CheckHash ();
@@ -350,7 +350,7 @@ items:
     parameters:
     - id: extraStore
       type: System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-      description: An <xref href="System.Security.Cryptography.X509Certificates.X509Certificate2Collection"></xref> object that can be used to validate the certificate chain. If no additional certificates are to be used to validate the certificate chain, use &lt;xref:System.Security.Cryptography.Pkcs.SignedCms.CheckSignature%28System.Boolean%29&gt; instead of CheckSignature.
+      description: An <xref href="System.Security.Cryptography.X509Certificates.X509Certificate2Collection"></xref> object that can be used to validate the certificate chain. If no additional certificates are to be used to validate the certificate chain, use <xref:System.Security.Cryptography.Pkcs.SignedCms.CheckSignature(System.Boolean)> instead of CheckSignature.
     - id: verifySignatureOnly
       type: System.Boolean
       description: "A <xref href=\"System.Boolean\"></xref> value that specifies whether only the digital signatures are verified without the signers' certificates being validated.  \n  \n If `verifySignatureOnly` is `true`, only the digital signatures are verified. If it is `false`, the digital signatures are verified, the signers' certificates are validated, and the purposes of the certificates are validated. The purposes of a certificate are considered valid if the certificate has no key usage or if the key usage supports digital signatures or nonrepudiation."

@@ -854,13 +854,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Provides access to factory methods for creating and configuring <xref href="System.Threading.Tasks.Task"></xref> and &lt;xref:System.Threading.Tasks.Task%601&gt; instances.
+  summary: Provides access to factory methods for creating and configuring <xref href="System.Threading.Tasks.Task"></xref> and <xref:System.Threading.Tasks.Task`1> instances.
   remarks: "This property returns a default instance of the <xref:System.Threading.Tasks.TaskFactory> class that is identical to the one created by calling the parameterless <xref:System.Threading.Tasks.TaskFactory.%23ctor?displayProperty=fullName> constructor. It has the following property values:  \n  \n|Property|Value|  \n|--------------|-----------|  \n|<xref:System.Threading.Tasks.TaskFactory.CancellationToken%2A?displayProperty=fullName>|<xref:System.Threading.CancellationToken.None%2A?displayProperty=fullName>|  \n|<xref:System.Threading.Tasks.TaskFactory.ContinuationOptions%2A?displayProperty=fullName>|<xref:System.Threading.Tasks.TaskContinuationOptions?displayProperty=fullName>|  \n|<xref:System.Threading.Tasks.TaskFactory.CreationOptions%2A?displayProperty=fullName>|<xref:System.Threading.Tasks.TaskCreationOptions?displayProperty=fullName>|  \n|<xref:System.Threading.Tasks.TaskFactory.Scheduler%2A?displayProperty=fullName>|`null`, or <xref:System.Threading.Tasks.TaskScheduler.Current%2A?displayProperty=fullName>|  \n  \n The most common use of this property is to create and start a new task in a single call to the <xref:System.Threading.Tasks.TaskFactory.StartNew%2A?displayProperty=fullName> method.  \n  \n> [!NOTE]\n>  Starting with the [!INCLUDE[net_v45](~/add/includes/net-v45-md.md)], the <xref:System.Threading.Tasks.Task.Run%2A?displayProperty=fullName> method provides the easiest way to create a <xref:System.Threading.Tasks.Task> object with default configuration values.  \n  \n The following example uses the static Factory property to make two calls to the <xref:System.Threading.Tasks.TaskFactory.StartNew%2A?displayProperty=fullName> method. The first populates an array with the names of files in the user's MyDocuments directory, while the second populates an array with the names of subdirectories of the user's MyDocuments directory. It then calls the [TaskFactory.ContinueWhenAll(Task\\[\\], Action\\<Task\\[\\]>)](assetId:///M:System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]})?qualifyHint=True&autoUpgrade=False) method, which displays information about the number of files and directories in the two arrays after the first two tasks have completed execution.  \n  \n [!code-cs[System.Threading.Tasks.Task.Factory#1](~/add/codesnippet/csharp/p-system.threading.tasks_4_1.cs)]\n [!code-vb[System.Threading.Tasks.Task.Factory#1](~/add/codesnippet/visualbasic/p-system.threading.tasks_4_1.vb)]"
   syntax:
     content: public static System.Threading.Tasks.TaskFactory Factory { get; }
     return:
       type: System.Threading.Tasks.TaskFactory
-      description: A factory object that can create a variety of <xref href="System.Threading.Tasks.Task"></xref> and &lt;xref:System.Threading.Tasks.Task%601&gt; objects.
+      description: A factory object that can create a variety of <xref href="System.Threading.Tasks.Task"></xref> and <xref:System.Threading.Tasks.Task`1> objects.
   overload: System.Threading.Tasks.Task.Factory*
   exceptions: []
   version:
@@ -1185,7 +1185,7 @@ items:
     description: The <xref href="System.Threading.Tasks.Task"></xref> has been disposed.
   - type: System.AggregateException
     commentId: T:System.AggregateException
-    description: "The task was canceled. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains information about the exception or exceptions."
+    description: "The task was canceled. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains information about the exception or exceptions."
   version:
   - netframework-40
 - uid: System.Threading.Tasks.Task.Wait(System.Int32)
@@ -1223,7 +1223,7 @@ items:
     description: <code>millisecondsTimeout</code> is a negative number other than -1, which represents an infinite time-out.
   - type: System.AggregateException
     commentId: T:System.AggregateException
-    description: "The task was canceled. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains information about the exception or exceptions."
+    description: "The task was canceled. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains information about the exception or exceptions."
   version:
   - netframework-40
 - uid: System.Threading.Tasks.Task.Wait(System.Threading.CancellationToken)
@@ -1258,7 +1258,7 @@ items:
     description: The task has been disposed.
   - type: System.AggregateException
     commentId: T:System.AggregateException
-    description: "The task was canceled. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains information about the exception or exceptions."
+    description: "The task was canceled. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains information about the exception or exceptions."
   version:
   - netframework-40
 - uid: System.Threading.Tasks.Task.Wait(System.TimeSpan)
@@ -1296,7 +1296,7 @@ items:
     description: "<code>timeout</code> is a negative number other than -1 milliseconds, which represents an infinite time-out.  \n  \n -or-  \n  \n <code>timeout</code> is greater than <xref href=\"System.Int32.MaxValue\"></xref>."
   - type: System.AggregateException
     commentId: T:System.AggregateException
-    description: "The task was canceled. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains information about the exception or exceptions."
+    description: "The task was canceled. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains information about the exception or exceptions."
   version:
   - netframework-40
 - uid: System.Threading.Tasks.Task.Wait(System.Int32,System.Threading.CancellationToken)
@@ -1340,7 +1340,7 @@ items:
     description: <code>millisecondsTimeout</code> is a negative number other than -1, which represents an infinite time-out.
   - type: System.AggregateException
     commentId: T:System.AggregateException
-    description: "The task was canceled. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection contains information about the exception or exceptions."
+    description: "The task was canceled. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains a <xref href=\"System.Threading.Tasks.TaskCanceledException\"></xref> object.  \n  \n -or-  \n  \n An exception was thrown during the execution of the task. The <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection contains information about the exception or exceptions."
   version:
   - netframework-40
 - uid: System.Threading.Tasks.Task.WaitAll(System.Threading.Tasks.Task[])
@@ -1378,7 +1378,7 @@ items:
     description: "The <code>tasks</code> argument contains a null element.  \n  \n -or-  \n  \n The <code>tasks</code> argument is an empty array."
   - type: System.AggregateException
     commentId: T:System.AggregateException
-    description: "At least one of the <xref href=\"System.Threading.Tasks.Task\"></xref> instances was canceled. If a task was canceled, the <xref href=\"System.AggregateException\"></xref> exception contains an <xref href=\"System.OperationCanceledException\"></xref> exception in its &lt;xref:System.AggregateException.InnerExceptions%2A?displayProperty=fullName&gt; collection.  \n  \n -or-  \n  \n An exception was thrown during the execution of at least one of the <xref href=\"System.Threading.Tasks.Task\"></xref> instances."
+    description: "At least one of the <xref href=\"System.Threading.Tasks.Task\"></xref> instances was canceled. If a task was canceled, the <xref href=\"System.AggregateException\"></xref> exception contains an <xref href=\"System.OperationCanceledException\"></xref> exception in its <xref:System.AggregateException.InnerExceptions*?displayProperty=fullName> collection.  \n  \n -or-  \n  \n An exception was thrown during the execution of at least one of the <xref href=\"System.Threading.Tasks.Task\"></xref> instances."
   version:
   - netframework-40
 - uid: System.Threading.Tasks.Task.WaitAll(System.Threading.Tasks.Task[],System.Int32)

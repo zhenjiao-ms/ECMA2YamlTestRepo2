@@ -671,7 +671,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Ensures that a `&lt; p &gt;` tag corresponding to the current layout has been written. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Ensures that a `< p >` tag corresponding to the current layout has been written. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: Called internally by the writer, and can be overridden by an inheriting class.
   syntax:
     content: protected virtual void EnsureLayout ();
@@ -982,12 +982,12 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Indicates whether the `&lt; br &gt;` tag needs to be sent to the output stream. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Indicates whether the `< br >` tag needs to be sent to the output stream. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: protected bool PendingBreak { get; set; }
     return:
       type: System.Boolean
-      description: '`true` if the `&lt; br &gt;` tag needs to be sent to the output stream; otherwise, false.'
+      description: '`true` if the `< br >` tag needs to be sent to the output stream; otherwise, false.'
   overload: System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.PendingBreak*
   exceptions: []
   version:
@@ -1168,14 +1168,14 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Renders a `&lt; do &gt;` event. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Renders a `< do >` event. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: If the control you are targeting is the current form and you want to include all the variables when posting back to the server, you can use the <xref:System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.RenderFormDoEvent%2A> method. Called internally by the writer and inherited classes.
   syntax:
     content: protected void RenderDoEvent (string doType, string target, string arg, System.Web.UI.MobileControls.Adapters.WmlPostFieldType postBackType, string text, bool includeVariables);
     parameters:
     - id: doType
       type: System.String
-      description: The type of action to render. Maps to the type attribute of the `&lt; do &gt;` element. Usually "accept" or "options".
+      description: The type of action to render. Maps to the type attribute of the `< do >` element. Usually "accept" or "options".
     - id: target
       type: System.String
       description: The ID of the control targeted by the action. When the user selects the action, a postback is generated, targeting the control specified by this ID.
@@ -1348,14 +1348,14 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Renders a `&lt; do &gt;` event for the current form. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Renders a `< do >` event for the current form. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: Called internally by the writer and inherited classes.
   syntax:
     content: protected void RenderFormDoEvent (string doType, string arg, System.Web.UI.MobileControls.Adapters.WmlPostFieldType postBackType, string text);
     parameters:
     - id: doType
       type: System.String
-      description: The type of action to render. Maps to the type attribute of the &lt;do&gt; element. Usually "accept" or "options".
+      description: The type of action to render. Maps to the type attribute of the <do> element. Usually "accept" or "options".
     - id: arg
       type: System.String
       description: The argument for the action. The argument is included in the postback generated when the user selects the action.
@@ -1384,7 +1384,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Renders a `&lt; go &gt;` action. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Renders a `< go >` action. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: Called internally by the writer or inherited classes.
   syntax:
     content: public virtual void RenderGoAction (string target, string argument, System.Web.UI.MobileControls.Adapters.WmlPostFieldType postBackType, bool includeVariables);
@@ -1809,7 +1809,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Writes a `&lt; postfield &gt;` element, using the provided parameters. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Writes a `< postfield >` element, using the provided parameters. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: There is an assumed `type` parameter that defaults to <xref:System.Web.UI.MobileControls.Adapters.WmlPostFieldType>.
   syntax:
     content: public void WritePostField (string name, string value);
@@ -1839,7 +1839,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Writes a &lt; `postfield` &gt; element, treating the value as specified by the <code>type</code> parameter. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Writes a < `postfield` > element, treating the value as specified by the <code>type</code> parameter. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: public void WritePostField (string name, string value, System.Web.UI.MobileControls.Adapters.WmlPostFieldType type);
     parameters:

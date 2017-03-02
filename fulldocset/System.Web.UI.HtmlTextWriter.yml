@@ -751,7 +751,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Represents the left angle bracket and slash mark (&lt;/) of the closing tag of a markup element.
+  summary: Represents the left angle bracket and slash mark (</) of the closing tag of a markup element.
   remarks: The EndTagLeftChars field is used by the <xref:System.Web.UI.HtmlTextWriter.RenderBeginTag%2A> method to construct markup element end tags.
   example:
   - "The following code example shows how to render the closing tag of a `<table>` markup element by using the EndTagLeftChars and the <xref:System.Web.UI.HtmlTextWriter.TagRightChar> fields as parameter values in calls to the <xref:System.Web.UI.HtmlTextWriter.Write%2A> method.  \n  \n This code example renders the following markup:  \n  \n `</table>`  \n  \n [!code-vb[MarkupTextWriter_Constants#4](~/add/codesnippet/visualbasic/f-system.web.ui.htmltext_10_1.vb)]\n [!code-cs[MarkupTextWriter_Constants#4](~/add/codesnippet/csharp/f-system.web.ui.htmltext_10_1.cs)]"
@@ -778,7 +778,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes the opening tag of a `&lt;span&gt;` element that contains attributes that implement the layout and character formatting of the specified style.
+  summary: Writes the opening tag of a `<span>` element that contains attributes that implement the layout and character formatting of the specified style.
   remarks: "Use the EnterStyle method to apply styles, such as background color or border width, to a block of markup.  \n  \n The EnterStyle and <xref:System.Web.UI.HtmlTextWriter.ExitStyle%2A> methods allow a device adapter or control to create markup that uses the character formatting of the specified style. Use the same value for `style` in the EnterStyle method that you use in the corresponding <xref:System.Web.UI.HtmlTextWriter.ExitStyle%2A> method.  \n  \n The EnterStyle overload of the EnterStyle method renders the opening tag of a `<span>` element. This method then adds the necessary attributes and style attributes to the opening tag of the `<span>` element to display the settings specified by the <xref:System.Web.UI.WebControls.Style> object. If you want to render a different markup element to contain the attributes and style attributes, use the <xref:System.Web.UI.HtmlTextWriter.EnterStyle%28System.Web.UI.WebControls.Style%2CSystem.Web.UI.HtmlTextWriterTag%29> overload."
   example:
   - "The following code example demonstrates how to use a custom class named `TextSample`, derived from the <xref:System.Web.UI.WebControls.WebControl> class, that uses the EnterStyle method to apply a <xref:System.Web.UI.WebControls.Style.ForeColor%2A> style to a string of text.  \n  \n The EnterStyle method renders the HTML `<span style=\"color:Navy;\">`. The <xref:System.Web.UI.HtmlTextWriter.ExitStyle%2A> method call closes the `<span>` element after the text has been rendered.  \n  \n [!code-vb[System.Web.UI.HtmlTextWriter_EnterStyle#1](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_43_1.vb)]"
@@ -893,7 +893,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes the closing tag of a `&lt;span&gt;` element to end the specified layout and character formatting.
+  summary: Writes the closing tag of a `<span>` element to end the specified layout and character formatting.
   remarks: "The ExitStyle overload of the ExitStyle method renders the closing tag of a `<span>` element after the closing tag of the control, closing the element opened by the corresponding <xref:System.Web.UI.HtmlTextWriter.EnterStyle%2A> call.  \n  \n The ExitStyle and <xref:System.Web.UI.HtmlTextWriter.EnterStyle%2A> methods allow a device adapter or control to create markup that begins and ends a block by using the character formatting of the specified style. Use the same value for `style` in the <xref:System.Web.UI.HtmlTextWriter.EnterStyle%2A> method that you use in the corresponding ExitStyle method."
   example:
   - "The following code example demonstrates how to use a custom class named `TextSample`, derived from the <xref:System.Web.UI.WebControls.WebControl> class, that uses the <xref:System.Web.UI.HtmlTextWriter.EnterStyle%2A> method to apply a <xref:System.Web.UI.WebControls.Style.ForeColor%2A> style to a string of text.  \n  \n The <xref:System.Web.UI.HtmlTextWriter.EnterStyle%2A> method renders the HTML `<span style=\"color:Navy;\">`. The ExitStyle method call closes the `<span>` element after the text has been rendered.  \n  \n [!code-vb[System.Web.UI.HtmlTextWriter_EnterStyle#1](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_32_1.vb)]"
@@ -1382,7 +1382,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Checks an attribute to ensure that it can be rendered in the opening tag of a `&lt;form&gt;` markup element.
+  summary: Checks an attribute to ensure that it can be rendered in the opening tag of a `<form>` markup element.
   remarks: The <xref:System.Web.UI.HtmlTextWriter> class implementation of the IsValidFormAttribute method returns `true` for all attributes. Override the IsValidFormAttribute to limit the attributes that can be rendered in the opening tag of a `<form>` element.
   syntax:
     content: public virtual bool IsValidFormAttribute (string attribute);
@@ -1949,7 +1949,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Represents the closing slash mark and right angle bracket (/&gt;) of a self-closing markup element.
+  summary: Represents the closing slash mark and right angle bracket (/>) of a self-closing markup element.
   remarks: The SelfClosingTagEnd field is used by the <xref:System.Web.UI.HtmlTextWriter.RenderBeginTag%2A> method when constructing self-closing markup elements.
   example:
   - "The following code example shows how to render the value of a custom `FileName` property followed by a quotation mark and the characters represented by the SelfClosingTagEnd field. The code example calls the <xref:System.Web.UI.HtmlTextWriter.Write%2A> method and passes the SelfClosingTagEnd field as the parameter argument to close the element.  \n  \n This code example renders the `FileName` property value, and then the following markup:  \n  \n `\" />`  \n  \n [!code-cs[MarkupTextWriter_Constants#11](~/add/codesnippet/csharp/f-system.web.ui.htmltext_3_1.cs)]\n [!code-vb[MarkupTextWriter_Constants#11](~/add/codesnippet/visualbasic/f-system.web.ui.htmltext_3_1.vb)]"
@@ -2140,7 +2140,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Represents the opening angle bracket (&lt;) of a markup tag.
+  summary: Represents the opening angle bracket (<) of a markup tag.
   remarks: The TagLeftChar field is used by the <xref:System.Web.UI.HtmlTextWriter.RenderBeginTag%2A>, <xref:System.Web.UI.HtmlTextWriter.WriteBeginTag%2A>, <xref:System.Web.UI.HtmlTextWriter.WriteFullBeginTag%2A>, and <xref:System.Web.UI.HtmlTextWriter.WriteEndTag%2A> methods when writing markup tags.
   example:
   - "The following code example renders the first character of the opening tag of a `<table>` element with the element name. The code example uses the <xref:System.Web.UI.HtmlTextWriter.Write%2A> method with the TagLeftChar field as a parameter.  \n  \n This code example renders the following markup:  \n  \n `<table`  \n  \n [!code-vb[MarkupTextWriter_Constants#9](~/add/codesnippet/visualbasic/f-system.web.ui.htmltext_9_1.vb)]\n [!code-cs[MarkupTextWriter_Constants#9](~/add/codesnippet/csharp/f-system.web.ui.htmltext_9_1.cs)]"
@@ -2195,7 +2195,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Represents the closing angle bracket (&gt;) of a markup tag.
+  summary: Represents the closing angle bracket (>) of a markup tag.
   remarks: The TagRightChar field is used by the <xref:System.Web.UI.HtmlTextWriter.RenderBeginTag%2A>, <xref:System.Web.UI.HtmlTextWriter.WriteFullBeginTag%2A>, and <xref:System.Web.UI.HtmlTextWriter.WriteEndTag%2A> methods when writing markup tags.
   example:
   - "The following code example shows how to render the closing tag of a `<table>` element by making calls to overloads of the <xref:System.Web.UI.HtmlTextWriter.Write%2A> method. To render the final character of the tag, the code example uses the <xref:System.Web.UI.HtmlTextWriter.Write%2A> method with the TagRightChar field as a parameter.  \n  \n This code example renders the following markup:  \n  \n `</table>`  \n  \n [!code-vb[MarkupTextWriter_Constants#4](~/add/codesnippet/visualbasic/f-system.web.ui.htmltext_6_1.vb)]\n [!code-cs[MarkupTextWriter_Constants#4](~/add/codesnippet/csharp/f-system.web.ui.htmltext_6_1.cs)]"
@@ -2477,7 +2477,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes a tab string and a formatted string to the output stream, using the same semantics as the &lt;xref:System.String.Format%2A?displayProperty=fullName&gt; method, along with any pending tab spacing.
+  summary: Writes a tab string and a formatted string to the output stream, using the same semantics as the <xref:System.String.Format*?displayProperty=fullName> method, along with any pending tab spacing.
   remarks: The Write method generates any tabs that are pending, and then calls the <xref:System.IO.TextWriter.Write%2A> base method.
   example:
   - "The following code example shows how to use the Write method to render a formatted string with the value of the <xref:System.Globalization.CultureInfo.CurrentCulture%2A> property.  \n  \n [!code-cs[MarkupTextWriter_Methods1#5](~/add/codesnippet/csharp/m-system.web.ui.htmltext_18_1.cs)]\n [!code-vb[MarkupTextWriter_Methods1#5](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_18_1.vb)]"
@@ -2509,7 +2509,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes a formatted string that contains the text representation of an object array to the output stream, along with any pending tab spacing. This method uses the same semantics as the &lt;xref:System.String.Format%2A?displayProperty=fullName&gt; method.
+  summary: Writes a formatted string that contains the text representation of an object array to the output stream, along with any pending tab spacing. This method uses the same semantics as the <xref:System.String.Format*?displayProperty=fullName> method.
   remarks: The Write method generates any tabs that are pending, and then calls the <xref:System.IO.TextWriter.Write%2A> base method.
   example:
   - "This section contains two code examples. The first one demonstrates how to render a formatted string and the contents of an array. The second one demonstrates how to declare the array.  \n  \n The following code example shows how to use the Write method to render a formatted string and the contents of an object array, named `curPriceTime`. The method call renders the second member of the array before it renders the first member.  \n  \n [!code-cs[MarkupTextWriter_Methods2#9](~/add/codesnippet/csharp/m-system.web.ui.htmltext_12_1.cs)]\n [!code-vb[MarkupTextWriter_Methods2#9](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_12_1.vb)]  \n  \n The following code example demonstrates declaring the `curPriceTime` object array.  \n  \n [!code-cs[MarkupTextWriter_Methods2#14](~/add/codesnippet/csharp/m-system.web.ui.htmltext_12_2.cs)]\n [!code-vb[MarkupTextWriter_Methods2#14](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_12_2.vb)]"
@@ -2576,7 +2576,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes a formatted string that contains the text representation of two objects to the output stream, along with any pending tab spacing. This method uses the same semantics as the &lt;xref:System.String.Format%2A?displayProperty=fullName&gt; method.
+  summary: Writes a formatted string that contains the text representation of two objects to the output stream, along with any pending tab spacing. This method uses the same semantics as the <xref:System.String.Format*?displayProperty=fullName> method.
   remarks: The Write method generates any tabs that are pending, and then calls the <xref:System.IO.TextWriter.Write%2A> base method.
   example:
   - "The following code example shows how to use the Write method to render a formatted string and the values of the <xref:System.Globalization.CultureInfo.CurrentCulture%2A> and <xref:System.DateTime.Today%2A> properties.  \n  \n [!code-cs[MarkupTextWriter_Methods1#6](~/add/codesnippet/csharp/m-system.web.ui.htmltext_39_1.cs)]\n [!code-vb[MarkupTextWriter_Methods1#6](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_39_1.vb)]"
@@ -2707,7 +2707,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes a `&lt;br /&gt;` markup element to the output stream.
+  summary: Writes a `<br />` markup element to the output stream.
   remarks: Use the WriteBreak method to render line breaks in custom control or adapter markup. The WriteBreak method writes a space between the `br` and `/` for improved HTML compatibility.
   example:
   - "The following code example shows how to call the WriteBreak method to write a `<br />` element to the requesting browser after the <xref:System.Web.UI.HtmlTextWriter.WriteEncodedText%2A> method writes the encoded `<custID> & <invoice#>` markup.  \n  \n [!code-cs[System.Web.UI.MarkupTextWriter_Samples1#2](~/add/codesnippet/csharp/m-system.web.ui.htmltext_38_1.cs)]\n [!code-vb[System.Web.UI.MarkupTextWriter_Samples1#2](~/add/codesnippet/visualbasic/m-system.web.ui.htmltext_38_1.vb)]"

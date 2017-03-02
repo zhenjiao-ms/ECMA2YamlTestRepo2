@@ -55,10 +55,10 @@ items:
     parameters:
     - id: enable
       type: System.Boolean
-      description: '`true` to remain connected after the &lt;xref:System.Net.Sockets.Socket.Close%2A?displayProperty=fullName&gt; method is called; otherwise, `false`.'
+      description: '`true` to remain connected after the <xref:System.Net.Sockets.Socket.Close*?displayProperty=fullName> method is called; otherwise, `false`.'
     - id: seconds
       type: System.Int32
-      description: The number of seconds to remain connected after the &lt;xref:System.Net.Sockets.Socket.Close%2A?displayProperty=fullName&gt; method is called.
+      description: The number of seconds to remain connected after the <xref:System.Net.Sockets.Socket.Close*?displayProperty=fullName> method is called.
   overload: System.Net.Sockets.LingerOption.#ctor*
   exceptions: []
   version:
@@ -84,7 +84,7 @@ items:
     content: public bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: '`true` if the <xref href="System.Net.Sockets.Socket"></xref> should linger after &lt;xref:System.Net.Sockets.Socket.Close%2A?displayProperty=fullName&gt; is called; otherwise, `false`.'
+      description: '`true` if the <xref href="System.Net.Sockets.Socket"></xref> should linger after <xref:System.Net.Sockets.Socket.Close*?displayProperty=fullName> is called; otherwise, `false`.'
   overload: System.Net.Sockets.LingerOption.Enabled*
   exceptions: []
   version:
@@ -104,7 +104,7 @@ items:
   assemblies:
   - System
   namespace: System.Net.Sockets
-  summary: Gets or sets the amount of time to remain connected after calling the &lt;xref:System.Net.Sockets.Socket.Close%2A?displayProperty=fullName&gt; method if data remains to be sent.
+  summary: Gets or sets the amount of time to remain connected after calling the <xref:System.Net.Sockets.Socket.Close*?displayProperty=fullName> method if data remains to be sent.
   remarks: "Use this value if you want to determine how long a closed <xref:System.Net.Sockets.Socket> will attempt to transfer unsent data before timing out. You can also set this value to the desired time-out period, in seconds.  \n  \n If the <xref:System.Net.Sockets.LingerOption.Enabled%2A> property is `true`, and you set LingerTime to 0, the <xref:System.Net.Sockets.Socket> discards any pending data to send in the outgoing network buffer. If you change this value, you must pass the altered <xref:System.Net.Sockets.LingerOption> instance to the <xref:System.Net.Sockets.Socket.SetSocketOption%2A> method or set the <xref:System.Net.Sockets.TcpClient.LingerState%2A> or <xref:System.Net.Sockets.Socket.LingerState%2A> property.  \n  \n The following table describes the behavior for the possible values of the <xref:System.Net.Sockets.LingerOption.Enabled%2A> property and the LingerTime property stored in the <xref:System.Net.Sockets.Socket.LingerState%2A> property.  \n  \n|`enable`|`seconds`|Behavior|  \n|--------------|---------------|--------------|  \n|`false` (disabled), the default value|The time-out is not applicable, (default).|Attempts to send pending data for a connection-oriented socket (TCP, for example) until the default IP protocol time-out expires.|  \n|`true` (enabled)|A nonzero time-out|Attempts to send pending data until the specified time-out expires, and if the attempt fails, then Winsock resets the connection.|  \n|`true` (enabled)|A zero timeout.|Discards any pending data. For connection-oriented socket (TCP, for example), Winsock resets the connection.|  \n  \n The IP stack computes the default IP protocol time-out period to use based on the round trip time of the connection. In most cases, the time-out computed by the stack is more relevant than one defined by an application. This is the default behavior for a socket when the <xref:System.Net.Sockets.Socket.LingerState%2A> property is not set.  \n  \n When the LingerTime property stored in the <xref:System.Net.Sockets.Socket.LingerState%2A> property is set greater than the default IP protocol time-out, the default IP protocol time-out will still apply and override."
   example:
   - "The following example displays the value of this property.  \n  \n [!code-cs[Socket_Socket_Options#2](~/add/codesnippet/csharp/p-system.net.sockets.lin_1.cs)]\n [!code-cpp[Socket_Socket_Options#2](~/add/codesnippet/cpp/p-system.net.sockets.lin_1.cpp)]\n [!code-vb[Socket_Socket_Options#2](~/add/codesnippet/visualbasic/p-system.net.sockets.lin_1.vb)]"
@@ -112,7 +112,7 @@ items:
     content: public int LingerTime { get; set; }
     return:
       type: System.Int32
-      description: The amount of time, in seconds, to remain connected after calling &lt;xref:System.Net.Sockets.Socket.Close%2A?displayProperty=fullName&gt;.
+      description: The amount of time, in seconds, to remain connected after calling <xref:System.Net.Sockets.Socket.Close*?displayProperty=fullName>.
   overload: System.Net.Sockets.LingerOption.LingerTime*
   exceptions: []
   version:

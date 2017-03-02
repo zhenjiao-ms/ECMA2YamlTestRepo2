@@ -18,7 +18,7 @@ items:
   nameWithType: SamlAction
   fullName: System.IdentityModel.Tokens.SamlAction
   type: Class
-  summary: Represents the `&lt;saml:Action&gt;` element within a SAML assertion that contains an action on a specified resource.
+  summary: Represents the `<saml:Action>` element within a SAML assertion that contains an action on a specified resource.
   remarks: "The SamlAction class corresponds the `<saml:Action>` XML element which is defined in the OASIS SAML v1.1 specification.  \n  \n Use the SamlAction class when specifying a claim about the ability of a subject <xref:System.IdentityModel.Tokens.SamlAuthorizationDecisionStatement> to perform a specified action on a specified resource. Use the SamlAction class to specify the desired action and the <xref:System.IdentityModel.Tokens.SamlAccessDecision> class to specify the access decision. The <xref:System.IdentityModel.Tokens.SamlAction.Action%2A> property represents that action and the <xref:System.IdentityModel.Tokens.SamlAction.Namespace%2A> property specifies the XML namespace in which the action is defined.  \n  \n SamlAction position in the SAML object hierarchy is:  \n  \n <xref:System.IdentityModel.Tokens.SamlSecurityToken>  \n  \n <xref:System.IdentityModel.Tokens.SamlAssertion>  \n  \n <xref:System.IdentityModel.Tokens.SamlAuthorizationDecisionStatement>  \n  \n SamlAction"
   syntax:
     content: public class SamlAction
@@ -240,13 +240,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the `&lt;saml:Action&gt;` element using the specified XML reader.
+  summary: Reads the `<saml:Action>` element using the specified XML reader.
   syntax:
     content: public virtual void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: A <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:Action&gt;` XML element.
+      description: A <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `<saml:Action>` XML element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in the SAML assertion that are defined in the SAML specification.
@@ -255,7 +255,7 @@ items:
       description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that can read a `KeyInfo` clause.
     - id: outOfBandTokenResolver
       type: System.IdentityModel.Selectors.SecurityTokenResolver
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature for SAML assertions referenced by the `&lt;saml:Advice&gt;` XML element.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature for SAML assertions referenced by the `<saml:Advice>` XML element.
   overload: System.IdentityModel.Tokens.SamlAction.ReadXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -277,16 +277,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the <xref href="System.IdentityModel.Tokens.SamlAction"></xref> into the specified XML writer as a `&lt;saml:Action&gt;` element.
+  summary: Writes the <xref href="System.IdentityModel.Tokens.SamlAction"></xref> into the specified XML writer as a `<saml:Action>` element.
   syntax:
     content: public virtual void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:Action&gt;` element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `<saml:Action>` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
-      description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing the `&lt;saml:Action&gt;` element and its child elements and attributes that are defined in the SAML specification.
+      description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing the `<saml:Action>` element and its child elements and attributes that are defined in the SAML specification.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
       description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing `KeyInfo` clauses.

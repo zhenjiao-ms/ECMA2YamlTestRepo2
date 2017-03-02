@@ -23,7 +23,7 @@ items:
   nameWithType: Transform
   fullName: System.Security.Cryptography.Xml.Transform
   type: Class
-  summary: Represents the abstract base class from which all `&lt;Transform&gt;` elements that can be used in an XML digital signature derive.
+  summary: Represents the abstract base class from which all `<Transform>` elements that can be used in an XML digital signature derive.
   remarks: "When performing XML signing and verification, the <`Transform`> element describes how the signer transformed the data object that was signed.  The verifier of a document then uses the <`Transform`> element to transform the signed data in the same manner.  If the verifier cannot transform the signed data in the same manner, the document cannot be verified.  \n  \n Use a class that derives from the Transform class whenever you need to add one or more transform objects to an encrypted XML document or to a signed XML document.  \n  \n For more information about the `<Transform>` element, see the XMLDSIG specification, which is available from the World Wide Web Consortium (W3C) at www.w3.org/TR/xmldsig-core/, or the XML encryption specification, which is available from the W3C at www.w3.org/TR/xmlenc-core/."
   syntax:
     content: public abstract class Transform
@@ -159,7 +159,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: When overridden in a derived class, returns an XML representation of the parameters of the <xref href="System.Security.Cryptography.Xml.Transform"></xref> object that are suitable to be included as subelements of an XMLDSIG `&lt;Transform&gt;` element.
+  summary: When overridden in a derived class, returns an XML representation of the parameters of the <xref href="System.Security.Cryptography.Xml.Transform"></xref> object that are suitable to be included as subelements of an XMLDSIG `<Transform>` element.
   remarks: ''
   example:
   - "If a <xref:System.Security.Cryptography.Xml.Transform> object represents an XPath transform using the XPath expression `self::text()`,a call to GetInnerXml results in an <xref:System.Xml.XmlNodeList> object that represents the following XML element:  \n  \n```  \n<XPath>   \n  self::text()   \n</XPath>  \n```  \n  \n This element corresponds to the transform-specific content of the `<Transform>` element as defined in Section 4.3.3.4 of the XMLDSIG specification. For the above XPath transform, the entire `<Transform>` element is as follows:  \n  \n```  \n<Transform Algorithm=\"http://www.w3.org/TR/1999/REC-xpath-19991116\">   \n  <XPath>   \n    self::text()   \n  </XPath>   \n</Transform>  \n```"
@@ -168,7 +168,7 @@ items:
     parameters: []
     return:
       type: System.Xml.XmlNodeList
-      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object in an XMLDSIG `&lt;Transform&gt;` element.
+      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object in an XMLDSIG `<Transform>` element.
   overload: System.Security.Cryptography.Xml.Transform.GetInnerXml*
   exceptions: []
   version:
@@ -297,7 +297,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: When overridden in a derived class, parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `&lt;Transform&gt;` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object to match the `&lt;Transform&gt;` element.
+  summary: When overridden in a derived class, parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `<Transform>` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object to match the `<Transform>` element.
   remarks: This method is used to process subelements of a `<Transform>` element.
   syntax:
     content: public abstract void LoadInnerXml (System.Xml.XmlNodeList nodeList);

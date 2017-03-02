@@ -269,7 +269,7 @@ items:
     parameters:
     - id: value
       type: System.SByte*
-      description: A pointer to a null-terminated array of 8-bit signed integers. The integers are interpreted using the current system code page encoding (that is, the encoding specified by &lt;xref:System.Text.Encoding.Default%2A?displayProperty=fullName&gt;).
+      description: A pointer to a null-terminated array of 8-bit signed integers. The integers are interpreted using the current system code page encoding (that is, the encoding specified by <xref:System.Text.Encoding.Default*?displayProperty=fullName>).
   overload: System.String.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -431,7 +431,7 @@ items:
     parameters:
     - id: value
       type: System.SByte*
-      description: A pointer to an array of 8-bit signed integers. The integers are interpreted using the current system code page encoding (that is, the encoding specified by &lt;xref:System.Text.Encoding.Default%2A?displayProperty=fullName&gt;).
+      description: A pointer to an array of 8-bit signed integers. The integers are interpreted using the current system code page encoding (that is, the encoding specified by <xref:System.Text.Encoding.Default*?displayProperty=fullName>).
     - id: startIndex
       type: System.Int32
       description: The starting position within `value`.
@@ -1204,7 +1204,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: Concatenates the members of a constructed &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of type <xref href="System.String"></xref>.
+  summary: Concatenates the members of a constructed <xref:System.Collections.Generic.IEnumerable`1> collection of type <xref href="System.String"></xref>.
   remarks: "The method concatenates each object in `values`; it does not add any delimiters. To specify a delimiter between each member of `values`, call the <xref:System.String.Join%28System.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%29> method.  \n  \n An <xref:System.String.Empty> string is used in place of any null element in `values`.  \n  \n If `values` is an empty `IEnumerable(Of String)`, the method returns <xref:System.String.Empty?displayProperty=fullName>. If `values` is `null`, the method throws an <xref:System.ArgumentNullException> exception.  \n  \n Concat is a convenience method that lets you concatenate each element in an `IEnumerable(Of String)` collection without first converting the elements to a string array. It is particularly useful with Language-Integrated Query (LINQ) query expressions. The following example passes a `List(Of String)` object that contains either the uppercase or lowercase letters of the alphabet to a lambda expression that selects letters that are equal to or greater than a particular letter (which, in the example, is \"M\"). The `IEnumerable(Of String)` collection that is returned by the <xref:System.Linq.Enumerable.Where%2A?displayProperty=fullName> method is passed to the Concat method to display the result as a single string.  \n  \n [!code-cs[System.String.Concat#3](~/add/codesnippet/csharp/m-system.string.concat-s_7_1.cs)]\n [!code-vb[System.String.Concat#3](~/add/codesnippet/visualbasic/m-system.string.concat-s_7_1.vb)]"
   example:
   - "The following example uses the Sieve of Eratosthenes algorithm to calculate the prime numbers that are less than or equal to 100. It assigns the result to a <xref:System.Collections.Generic.List%601> object of type <xref:System.String>, which it then passes to the Concat method.  \n  \n [!code-cs[System.String.Concat#2](~/add/codesnippet/csharp/m-system.string.concat-s_7_2.cs)]\n [!code-vb[System.String.Concat#2](~/add/codesnippet/visualbasic/m-system.string.concat-s_7_2.vb)]"
@@ -1213,7 +1213,7 @@ items:
     parameters:
     - id: values
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: A collection object that implements &lt;xref:System.Collections.Generic.IEnumerable%601&gt; and whose generic type argument is <xref href="System.String"></xref>.
+      description: A collection object that implements <xref:System.Collections.Generic.IEnumerable`1> and whose generic type argument is <xref href="System.String"></xref>.
     return:
       type: System.String
       description: The concatenated strings in <code>values</code>, or <xref href="System.String"></xref> if <code>values</code> is an empty `IEnumerable(Of String)`.
@@ -3068,7 +3068,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: Concatenates the members of a constructed &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of type <xref href="System.String"></xref>, using the specified separator between each member.
+  summary: Concatenates the members of a constructed <xref:System.Collections.Generic.IEnumerable`1> collection of type <xref href="System.String"></xref>, using the specified separator between each member.
   remarks: "If `separator` is `null`, an empty string (<xref:System.String?displayProperty=fullName>) is used instead. If any member of `values` is `null`, an empty string is used instead.  \n  \n Join is a convenience method that lets you concatenate each element in an `IEnumerable(Of String)` collection without first converting the elements to a string array. It is particularly useful with Language-Integrated Query (LINQ) query expressions. The following example passes a `List(Of String)` object that contains either the uppercase or lowercase letters of the alphabet to a lambda expression that selects letters that are equal to or greater than a particular letter (which, in the example, is \"M\"). The `IEnumerable(Of String)` collection returned by the <xref:System.Linq.Enumerable.Where%2A?displayProperty=fullName> method is passed to the Join method to display the result as a single string.  \n  \n [!code-cs[System.String.Join#4](~/add/codesnippet/csharp/b02d03ba-30d8-4b66-9fc1-_1.cs)]\n [!code-vb[System.String.Join#4](~/add/codesnippet/visualbasic/b02d03ba-30d8-4b66-9fc1-_1.vb)]"
   example:
   - "The following example uses the Sieve of Eratosthenes algorithm to calculate the prime numbers that are less than or equal to 100. It assigns the result to a <xref:System.Collections.Generic.List%601> object of type <xref:System.String>, which it then passes to the Join method.  \n  \n [!code-cs[System.String.Join#3](~/add/codesnippet/csharp/b02d03ba-30d8-4b66-9fc1-_2.cs)]\n [!code-vb[System.String.Join#3](~/add/codesnippet/visualbasic/b02d03ba-30d8-4b66-9fc1-_2.vb)]"

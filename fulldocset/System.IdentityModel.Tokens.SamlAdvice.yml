@@ -19,7 +19,7 @@ items:
   nameWithType: SamlAdvice
   fullName: System.IdentityModel.Tokens.SamlAdvice
   type: Class
-  summary: Represents the `&lt;saml:Advice&gt;` element within a SAML assertion that contains additional information provided by the SAML authority.
+  summary: Represents the `<saml:Advice>` element within a SAML assertion that contains additional information provided by the SAML authority.
   remarks: The `<saml:Advice>` element within a SAML assertion is an extension point for SAML tokens. One example of how to use the SamlAdvice class is to provide supporting information about the SAML authority issuing the SAML assertion. This supporting information can be in the form of a SAML assertion or a reference to a SAML assertion, which are represented by the <xref:System.IdentityModel.Tokens.SamlAdvice.Assertions%2A> and <xref:System.IdentityModel.Tokens.SamlAdvice.AssertionIdReferences%2A> properties, respectively.
   syntax:
     content: public class SamlAdvice
@@ -80,7 +80,7 @@ items:
     parameters:
     - id: assertions
       type: System.Collections.Generic.IEnumerable{System.IdentityModel.Tokens.SamlAssertion}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provides additional information for a SAML assertion.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provides additional information for a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -109,7 +109,7 @@ items:
     parameters:
     - id: references
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -138,10 +138,10 @@ items:
     parameters:
     - id: references
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
     - id: assertions
       type: System.Collections.Generic.IEnumerable{System.IdentityModel.Tokens.SamlAssertion}
-      description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provide additional information for a SAML assertion.
+      description: An <xref:System.Collections.Generic.IEnumerable`1> of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provide additional information for a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -169,7 +169,7 @@ items:
     content: public System.Collections.Generic.IList<string> AssertionIdReferences { get; }
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: An &lt;xref:System.Collections.Generic.IList%601&gt; of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
+      description: An <xref:System.Collections.Generic.IList`1> of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.AssertionIdReferences*
   exceptions: []
   version:
@@ -194,7 +194,7 @@ items:
     content: public System.Collections.Generic.IList<System.IdentityModel.Tokens.SamlAssertion> Assertions { get; }
     return:
       type: System.Collections.Generic.IList{System.IdentityModel.Tokens.SamlAssertion}
-      description: An &lt;xref:System.Collections.Generic.IList%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provides additional information for a SAML assertion.
+      description: An <xref:System.Collections.Generic.IList`1> of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provides additional information for a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.Assertions*
   exceptions: []
   version:
@@ -261,13 +261,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the `&lt;saml:Advice&gt;` XML element using the specified XML reader.
+  summary: Reads the `<saml:Advice>` XML element using the specified XML reader.
   syntax:
     content: public virtual void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:Advice&gt;` XML element.
+      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `<saml:Advice>` XML element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in the SAML assertion that are defined in the SAML specification.
@@ -276,7 +276,7 @@ items:
       description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that can read a `KeyInfo` clause.
     - id: outOfBandTokenResolver
       type: System.IdentityModel.Selectors.SecurityTokenResolver
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature for SAML assertions that contain this `&lt;saml:Advice&gt;` XML element.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature for SAML assertions that contain this `<saml:Advice>` XML element.
   overload: System.IdentityModel.Tokens.SamlAdvice.ReadXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -284,7 +284,7 @@ items:
     description: "<code>reader</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`"
   - type: System.IdentityModel.Tokens.SecurityTokenException
     commentId: T:System.IdentityModel.Tokens.SecurityTokenException
-    description: The `&lt;saml:Advice&gt; `element does not conform to the XML schema for the `&lt;saml:Advice&gt;` element.
+    description: The `<saml:Advice> `element does not conform to the XML schema for the `<saml:Advice>` element.
   version:
   - netframework-30
   - netframework-35
@@ -301,16 +301,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes this <xref href="System.IdentityModel.Tokens.SamlAdvice"></xref> into the specified XML writer as an `&lt;saml:Advice&gt;` element.
+  summary: Writes this <xref href="System.IdentityModel.Tokens.SamlAdvice"></xref> into the specified XML writer as an `<saml:Advice>` element.
   syntax:
     content: public virtual void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:Advice&gt;` element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `<saml:Advice>` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
-      description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing the `&lt;saml:Advice&gt;` element and its child elements and attributes that are defined in the SAML specification.
+      description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing the `<saml:Advice>` element and its child elements and attributes that are defined in the SAML specification.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
       description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing `KeyInfo` clauses.

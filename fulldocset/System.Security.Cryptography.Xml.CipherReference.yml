@@ -14,7 +14,7 @@ items:
   nameWithType: CipherReference
   fullName: System.Security.Cryptography.Xml.CipherReference
   type: Class
-  summary: Represents the `&lt;CipherReference&gt;` element in XML encryption. This class cannot be inherited.
+  summary: Represents the `<CipherReference>` element in XML encryption. This class cannot be inherited.
   remarks: "This class represents the `<CipherReference>` element in XML encryption. It identifies a source which, when processed, yields the encrypted data.  \n  \n The actual encrypted data referenced by the `<CipherReference>` is obtained by the following process. The `<CipherReference> URI` property contains a Uniform Resource Identifier (URI) that is dereferenced. If the `<CipherReference>` element also contains a transform chain, the data resulting from dereferencing the URI is transformed as specified to produce the encrypted data. For example, if the encrypted data is base64-encoded within an XML document, the transforms would specify an XPath expression followed by a base64 decoding so the encrypted data can be extracted.  \n  \n The syntax of the URI and transforms is similar to that of XML digital signatures.  However, in XML digital signatures, both generation and validation processing start with the same source data and perform that transform in the same order. In XML encryption, the decrypting application has only the encrypted data and the specified transforms. The transforms are enumerated in the order necessary to obtain the encrypted data.  \n  \n **Note** By default, you cannot dereference cipher references from documents with unknown sources, such as files from a Web site, because the <xref:System.Security.Cryptography.Xml.EncryptedXml.DocumentEvidence%2A> property is **null**. For example, when you attempt to decrypt a file containing a `<CipherReference>` element that references a file on the Web, a <xref:System.Security.SecurityException> is thrown, even if the request is made by a fully trusted assembly.  \n  \n If you are sure the documents you are decrypting can be trusted, you can change this behavior for fully trusted applications by using the following code:  \n  \n```  \nEvidence ev = new Evidence();  \nev.AddHost (new Zone(SecurityZone.MyComputer));  \nEncryptedXml exml = new EncryptedXml(doc, ev);  \n```"
   example:
   - "The following code example creates a new instance of CipherReference.  \n  \n [!code-vb[cryptography.Xml.CipherReference#1](~/add/codesnippet/visualbasic/t-system.security.crypto_122_1.vb)]\n [!code-cs[cryptography.Xml.CipherReference#1](~/add/codesnippet/csharp/t-system.security.crypto_122_1.cs)]\n [!code-cpp[cryptography.Xml.CipherReference#1](~/add/codesnippet/cpp/t-system.security.crypto_122_1.cpp)]"
@@ -150,7 +150,7 @@ items:
     parameters: []
     return:
       type: System.Xml.XmlElement
-      description: An <xref href="System.Xml.XmlElement"></xref> that represents the `&lt;CipherReference&gt;` element in XML encryption.
+      description: An <xref href="System.Xml.XmlElement"></xref> that represents the `<CipherReference>` element in XML encryption.
   overload: System.Security.Cryptography.Xml.CipherReference.GetXml*
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
@@ -173,7 +173,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Loads XML information into the `&lt;CipherReference&gt;` element in XML encryption.
+  summary: Loads XML information into the `<CipherReference>` element in XML encryption.
   remarks: Use this method to load an existing XML element into the <xref:System.Security.Cryptography.Xml.CipherReference> object.
   syntax:
     content: public override void LoadXml (System.Xml.XmlElement value);

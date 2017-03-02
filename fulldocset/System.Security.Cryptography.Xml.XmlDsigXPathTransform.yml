@@ -84,13 +84,13 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Returns an XML representation of the parameters of a <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG `&lt;Transform&gt;` element.
+  summary: Returns an XML representation of the parameters of a <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG `<Transform>` element.
   syntax:
     content: protected override System.Xml.XmlNodeList GetInnerXml ();
     parameters: []
     return:
       type: System.Xml.XmlNodeList
-      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object in an XMLDSIG `&lt;Transform&gt;` element.
+      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object in an XMLDSIG `<Transform>` element.
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.GetInnerXml*
   exceptions: []
   version:
@@ -202,7 +202,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `&lt;Transform&gt;` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object to match the `&lt;Transform&gt;` element.
+  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `<Transform>` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object to match the `<Transform>` element.
   remarks: "Use the LoadInnerXml method to initialize the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class with an XPath transform.  \n  \n To initialize the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class with an XPath transform, complete the following steps.  \n  \n1.  Create a new <xref:System.Xml.XmlElement> class and set the <xref:System.Xml.XmlElement.InnerText%2A> property to the value of an XPath transform string.  \n  \n2.  Call the <xref:System.Xml.XmlNode.SelectNodes%2A> method to create an <xref:System.Xml.XmlNodeList> object that represents the transform.  \n  \n3.  Create a new instance of the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class and pass the previously created <xref:System.Xml.XmlNodeList> object to the LoadInnerXml method."
   example:
   - "The following code example shows how to sign and verify an XML document using the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class.  This sample creates an envelope signature.  \n  \n [!code-cpp[Cryptography.Xml.XmlDsigXPathTransform#1](~/add/codesnippet/cpp/e002fc43-4db1-44f5-9eb6-_1.cpp)]\n [!code-vb[Cryptography.Xml.XmlDsigXPathTransform#1](~/add/codesnippet/visualbasic/e002fc43-4db1-44f5-9eb6-_1.vb)]\n [!code-cs[Cryptography.Xml.XmlDsigXPathTransform#1](~/add/codesnippet/csharp/e002fc43-4db1-44f5-9eb6-_1.cs)]"

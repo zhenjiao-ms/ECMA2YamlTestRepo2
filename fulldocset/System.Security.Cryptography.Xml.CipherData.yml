@@ -16,7 +16,7 @@ items:
   nameWithType: CipherData
   fullName: System.Security.Cryptography.Xml.CipherData
   type: Class
-  summary: Represents the `&lt;CipherData&gt;` element in XML encryption. This class cannot be inherited.
+  summary: Represents the `<CipherData>` element in XML encryption. This class cannot be inherited.
   remarks: "The CipherData class represents the `<CipherData>` element in XML encryption. It is a required element that provides the encrypted data. It must either contain the encrypted data as base64-encoded text of the `<CipherValue>` element, or provide a reference to an external location containing the encrypted data using the `<CipherReference>` element.  \n  \n In many cases, you do not need to directly create a new instance of the CipherData class.  The <xref:System.Security.Cryptography.Xml.SignedXml.EncryptedXml%2A>, <xref:System.Security.Cryptography.Xml.EncryptedData>, and <xref:System.Security.Cryptography.Xml.EncryptedKey> classes create instances for you.  \n  \n> [!NOTE]\n>  A CipherData object can have either a <xref:System.Security.Cryptography.Xml.CipherReference> property or a <xref:System.Security.Cryptography.Xml.CipherData.CipherValue%2A> property, but not both. A <xref:System.Security.Cryptography.CryptographicException> is thrown if both are assigned to a CipherData object."
   example:
   - "The following code example uses the <xref:System.Security.Cryptography.Xml.EncryptedData> class to create an <`EncryptedData`> element that contains a <`CipherData`> element, and then writes the XML to an XML file.  \n  \n [!code-cpp[cryptgraphy.Xml.EncryptedData#1](~/add/codesnippet/cpp/t-system.security.crypto_26_1.cpp)]\n [!code-vb[cryptgraphy.Xml.EncryptedData#1](~/add/codesnippet/visualbasic/t-system.security.crypto_26_1.vb)]\n [!code-cs[cryptgraphy.Xml.EncryptedData#1](~/add/codesnippet/csharp/t-system.security.crypto_26_1.cs)]"
@@ -85,7 +85,7 @@ items:
     parameters:
     - id: cipherValue
       type: System.Byte[]
-      description: The encrypted data to use for the `&lt;CipherValue&gt;` element.
+      description: The encrypted data to use for the `<CipherValue>` element.
   overload: System.Security.Cryptography.Xml.CipherData.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -146,7 +146,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the `&lt;CipherReference&gt;` element.
+  summary: Gets or sets the `<CipherReference>` element.
   remarks: "The `<CipherReference>` element identifies a source which, when processed, yields the encrypted data. For more information about this element, see <xref:System.Security.Cryptography.Xml.CipherReference>.  \n  \n> [!NOTE]\n>  A <xref:System.Security.Cryptography.Xml.CipherData> object can have either a <xref:System.Security.Cryptography.Xml.CipherReference> property or a <xref:System.Security.Cryptography.Xml.CipherData.CipherValue%2A> property, but not both. A <xref:System.Security.Cryptography.CryptographicException> is thrown if both are assigned to a <xref:System.Security.Cryptography.Xml.CipherData> object."
   example:
   - "The following code example shows how to create a new instance of the <xref:System.Security.Cryptography.Xml.CipherData> class using <xref:System.Security.Cryptography.Xml.CipherReference> information.  \n  \n [!code-vb[cryptography.Xml.CipherReference#1](~/add/codesnippet/visualbasic/p-system.security.crypto_76_1.vb)]\n [!code-cs[cryptography.Xml.CipherReference#1](~/add/codesnippet/csharp/p-system.security.crypto_76_1.cs)]\n [!code-cpp[cryptography.Xml.CipherReference#1](~/add/codesnippet/cpp/p-system.security.crypto_76_1.cpp)]"
@@ -180,7 +180,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the `&lt;CipherValue&gt;` element.
+  summary: Gets or sets the `<CipherValue>` element.
   remarks: "The value is encrypted data.  \n  \n> [!NOTE]\n>  The `<CipherData>` element can have either a <xref:System.Security.Cryptography.Xml.CipherReference> or a CipherValue child element, but not both. A <xref:System.Security.Cryptography.CryptographicException> is thrown if both are assigned to a <xref:System.Security.Cryptography.Xml.CipherData> object."
   example:
   - "The following code example shows how to create a new instance of the <xref:System.Security.Cryptography.Xml.CipherData> class.  \n  \n [!code-cs[cryptography.Xml.EncryptedData2#1](~/add/codesnippet/csharp/p-system.security.crypto_77_1.cs)]\n [!code-cpp[cryptography.Xml.EncryptedData2#1](~/add/codesnippet/cpp/p-system.security.crypto_77_1.cpp)]\n [!code-vb[cryptography.Xml.EncryptedData2#1](~/add/codesnippet/visualbasic/p-system.security.crypto_77_1.vb)]"
@@ -188,7 +188,7 @@ items:
     content: public byte[] CipherValue { get; set; }
     return:
       type: System.Byte[]
-      description: A byte array that represents the `&lt;CipherValue&gt;` element.
+      description: A byte array that represents the `<CipherValue>` element.
   overload: System.Security.Cryptography.Xml.CipherData.CipherValue*
   exceptions:
   - type: System.ArgumentNullException

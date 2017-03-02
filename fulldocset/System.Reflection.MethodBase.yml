@@ -506,12 +506,12 @@ items:
       description: "An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, `parameters` should be `null`.  \n  \n If the method or constructor represented by this instance takes a `ref` parameter (`ByRef` in Visual Basic), no special attribute is required for that parameter in order to invoke the method or constructor using this function. Any object in this array that is not explicitly initialized with a value will contain the default value for that object type. For reference-type elements, this value is `null`. For value-type elements, this value is 0, 0.0, or `false`, depending on the specific element type."
     return:
       type: System.Object
-      description: "An object containing the return value of the invoked method, or `null` in the case of a constructor.  \n  \n&gt; [!WARNING]\n&gt;  Elements of the <code>parameters</code> array that represent parameters declared with the `ref` or `out` keyword may also be modified."
+      description: "An object containing the return value of the invoked method, or `null` in the case of a constructor.  \n  \n> [!WARNING]\n>  Elements of the <code>parameters</code> array that represent parameters declared with the `ref` or `out` keyword may also be modified."
   overload: System.Reflection.MethodBase.Invoke*
   exceptions:
   - type: System.Reflection.TargetException
     commentId: T:System.Reflection.TargetException
-    description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch <xref href=\"System.Exception\"></xref> instead.  \n  \n The <code>obj</code> parameter is `null` and the method is not static.  \n  \n -or-  \n  \n The method is not declared or inherited by the class of <code>obj</code>.  \n  \n -or-  \n  \n A static constructor is invoked, and <code>obj</code> is neither `null` nor an instance of the class that declared the constructor."
+    description: "> [!NOTE]\n>  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch <xref href=\"System.Exception\"></xref> instead.  \n  \n The <code>obj</code> parameter is `null` and the method is not static.  \n  \n -or-  \n  \n The method is not declared or inherited by the class of <code>obj</code>.  \n  \n -or-  \n  \n A static constructor is invoked, and <code>obj</code> is neither `null` nor an instance of the class that declared the constructor."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The elements of the <code>parameters</code>array do not match the signature of the method or constructor reflected by this instance.
@@ -523,10 +523,10 @@ items:
     description: The <code>parameters</code> array does not have the correct number of arguments.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
-    description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](../Topic/Cross-Platform%20Development%20with%20the%20Portable%20Class%20Library.md), catch the base class exception, <xref href=\"System.MemberAccessException\"></xref>, instead.  \n  \n The caller does not have permission to execute the method or constructor that is represented by the current instance."
+    description: "> [!NOTE]\n>  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](../Topic/Cross-Platform%20Development%20with%20the%20Portable%20Class%20Library.md), catch the base class exception, <xref href=\"System.MemberAccessException\"></xref>, instead.  \n  \n The caller does not have permission to execute the method or constructor that is represented by the current instance."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The type that declares the method is an open generic type. That is, the &lt;xref:System.Type.ContainsGenericParameters%2A?displayProperty=fullName&gt; property returns `true` for the declaring type.
+    description: The type that declares the method is an open generic type. That is, the <xref:System.Type.ContainsGenericParameters*?displayProperty=fullName> property returns `true` for the declaring type.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The current instance is a <xref href="System.Reflection.Emit.MethodBuilder"></xref>.
@@ -571,7 +571,7 @@ items:
       description: An instance of `CultureInfo` used to govern the coercion of types. If this is `null`, the `CultureInfo` for the current thread is used. (This is necessary to convert a `String` that represents 1000 to a `Double` value, for example, since 1000 is represented differently by different cultures.)
     return:
       type: System.Object
-      description: "An `Object` containing the return value of the invoked method, or `null` in the case of a constructor, or `null` if the method's return type is `void`. Before calling the method or constructor, `Invoke` checks to see if the user has access permission and verifies that the parameters are valid.  \n  \n&gt; [!WARNING]\n&gt;  Elements of the <code>parameters</code> array that represent parameters declared with the `ref` or `out` keyword may also be modified."
+      description: "An `Object` containing the return value of the invoked method, or `null` in the case of a constructor, or `null` if the method's return type is `void`. Before calling the method or constructor, `Invoke` checks to see if the user has access permission and verifies that the parameters are valid.  \n  \n> [!WARNING]\n>  Elements of the <code>parameters</code> array that represent parameters declared with the `ref` or `out` keyword may also be modified."
   overload: System.Reflection.MethodBase.Invoke*
   exceptions:
   - type: System.Reflection.TargetException
@@ -591,7 +591,7 @@ items:
     description: The caller does not have permission to execute the method or constructor that is represented by the current instance.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The type that declares the method is an open generic type. That is, the &lt;xref:System.Type.ContainsGenericParameters%2A?displayProperty=fullName&gt; property returns `true` for the declaring type.
+    description: The type that declares the method is an open generic type. That is, the <xref:System.Type.ContainsGenericParameters*?displayProperty=fullName> property returns `true` for the declaring type.
   version:
   - netframework-20
   - netframework-30
@@ -1219,14 +1219,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.GetType%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.GetType*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: Type _MethodBase.GetType ();
     parameters: []
     return:
       type: System.Type
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.GetType%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.GetType*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#GetType*
   exceptions: []
   version:
@@ -1367,13 +1367,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsAbstract%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsAbstract*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsAbstract { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsAbstract%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsAbstract*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsAbstract*
   exceptions: []
   version:
@@ -1394,13 +1394,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsAssembly%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsAssembly*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsAssembly { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsAssembly%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsAssembly*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsAssembly*
   exceptions: []
   version:
@@ -1421,13 +1421,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsConstructor%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsConstructor*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsConstructor { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsConstructor%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsConstructor*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsConstructor*
   exceptions: []
   version:
@@ -1448,13 +1448,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFamily%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFamily*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsFamily { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFamily%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFamily*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFamily*
   exceptions: []
   version:
@@ -1475,13 +1475,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFamilyAndAssembly%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFamilyAndAssembly*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsFamilyAndAssembly { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFamilyAndAssembly%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFamilyAndAssembly*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFamilyAndAssembly*
   exceptions: []
   version:
@@ -1502,13 +1502,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFamilyOrAssembly%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFamilyOrAssembly*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsFamilyOrAssembly { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFamilyOrAssembly%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFamilyOrAssembly*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFamilyOrAssembly*
   exceptions: []
   version:
@@ -1529,13 +1529,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFinal%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFinal*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsFinal { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsFinal%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsFinal*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsFinal*
   exceptions: []
   version:
@@ -1556,13 +1556,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsHideBySig%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsHideBySig*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsHideBySig { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsHideBySig%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsHideBySig*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsHideBySig*
   exceptions: []
   version:
@@ -1583,13 +1583,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsPrivate%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsPrivate*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsPrivate { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsPrivate%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsPrivate*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsPrivate*
   exceptions: []
   version:
@@ -1610,13 +1610,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsPublic%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsPublic*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsPublic { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsPublic%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsPublic*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsPublic*
   exceptions: []
   version:
@@ -1637,13 +1637,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsSpecialName%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsSpecialName*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsSpecialName { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsSpecialName%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsSpecialName*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsSpecialName*
   exceptions: []
   version:
@@ -1664,13 +1664,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsStatic%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsStatic*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsStatic { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsStatic%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsStatic*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsStatic*
   exceptions: []
   version:
@@ -1691,13 +1691,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsVirtual%2A?displayProperty=fullName&gt;.
+  summary: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsVirtual*?displayProperty=fullName>.
   remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Reflection.MethodBase> instance is cast to an <xref:System.Runtime.InteropServices._MethodBase> interface.
   syntax:
     content: bool System.Runtime.InteropServices._MethodBase.IsVirtual { get; }
     return:
       type: System.Boolean
-      description: For a description of this member, see &lt;xref:System.Runtime.InteropServices._MethodBase.IsVirtual%2A?displayProperty=fullName&gt;.
+      description: For a description of this member, see <xref:System.Runtime.InteropServices._MethodBase.IsVirtual*?displayProperty=fullName>.
   overload: System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsVirtual*
   exceptions: []
   version:

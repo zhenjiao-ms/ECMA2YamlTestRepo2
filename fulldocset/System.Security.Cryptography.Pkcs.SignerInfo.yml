@@ -81,7 +81,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: 'The CheckHash method verifies the data integrity of the CMS/PKCS #7 message signer information. CheckHash is a specialized method used in specific security infrastructure applications in which the subject uses the **HashOnly** member of the <xref href="System.Security.Cryptography.Pkcs.SubjectIdentifierType"></xref> enumeration when setting up a <xref href="System.Security.Cryptography.Pkcs.CmsSigner"></xref> object. CheckHash does not authenticate the signer information because this method does not involve verifying a digital signature. For general-purpose checking of the integrity and authenticity of CMS/PKCS #7 message signer information and countersignatures, use the &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Boolean%29&gt; or &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Security.Cryptography.X509Certificates.X509Certificate2Collection%2CSystem.Boolean%29&gt; methods.'
+  summary: 'The CheckHash method verifies the data integrity of the CMS/PKCS #7 message signer information. CheckHash is a specialized method used in specific security infrastructure applications in which the subject uses the **HashOnly** member of the <xref href="System.Security.Cryptography.Pkcs.SubjectIdentifierType"></xref> enumeration when setting up a <xref href="System.Security.Cryptography.Pkcs.CmsSigner"></xref> object. CheckHash does not authenticate the signer information because this method does not involve verifying a digital signature. For general-purpose checking of the integrity and authenticity of CMS/PKCS #7 message signer information and countersignatures, use the <xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature(System.Boolean)> or <xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2Collection,System.Boolean)> methods.'
   remarks: 'This method does not provide authentication of the CMS/PKCS #7 message signer information.'
   syntax:
     content: public void CheckHash ();
@@ -151,7 +151,7 @@ items:
     parameters:
     - id: extraStore
       type: System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-      description: An <xref href="System.Security.Cryptography.X509Certificates.X509Certificate2Collection"></xref> object that can be used to validate the chain. If no additional certificates are to be used to validate the chain, use &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Boolean%29&gt; instead of CheckSignature.
+      description: An <xref href="System.Security.Cryptography.X509Certificates.X509Certificate2Collection"></xref> object that can be used to validate the chain. If no additional certificates are to be used to validate the chain, use <xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature(System.Boolean)> instead of CheckSignature.
     - id: verifySignatureOnly
       type: System.Boolean
       description: A bool value that specifies whether only the digital signature is verified. If `verifySignatureOnly` is `true`, only the signature is verified. If `verifySignatureOnly` is `false`, the digital signature is verified, the certificate chain is validated, and the purposes of the certificates are validated. The purposes of the certificate are considered valid if the certificate has no key usage or if the key usage supports digital signature or nonrepudiation.

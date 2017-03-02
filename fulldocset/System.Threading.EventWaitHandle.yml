@@ -70,7 +70,7 @@ items:
   - System.Threading.WaitHandle.WaitOne(System.TimeSpan)
   - System.Threading.WaitHandle.WaitOne(System.TimeSpan,System.Boolean)
   - System.Threading.WaitHandle.WaitTimeout
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,13 +96,13 @@ items:
     parameters:
     - id: initialState
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+      description: '`true` to set the initial state to signaled; `false` to set it to nonsignaled.'
     - id: mode
       type: System.Threading.EventResetMode
       description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
   overload: System.Threading.EventWaitHandle.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -126,7 +126,7 @@ items:
     parameters:
     - id: initialState
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled if the named event is created as a result of this call; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+      description: '`true` to set the initial state to signaled if the named event is created as a result of this call; `false` to set it to nonsignaled.'
     - id: mode
       type: System.Threading.EventResetMode
       description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
@@ -147,7 +147,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is longer than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
     parameters:
     - id: initialState
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled if the named event is created as a result of this call; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+      description: '`true` to set the initial state to signaled if the named event is created as a result of this call; `false` to set it to nonsignaled.'
     - id: mode
       type: System.Threading.EventResetMode
       description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
@@ -180,7 +180,7 @@ items:
       description: The name of a system-wide synchronization event.
     - id: createdNew
       type: System.Boolean
-      description: When this method returns, contains <xref uid="langword_csharp_true" name="true" href=""></xref> if a local event was created (that is, if `name` is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string) or if the specified named system event was created; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified named system event already existed. This parameter is passed uninitialized.
+      description: When this method returns, contains `true` if a local event was created (that is, if `name` is `null` or an empty string) or if the specified named system event was created; `false` if the specified named system event already existed. This parameter is passed uninitialized.
   overload: System.Threading.EventWaitHandle.#ctor*
   exceptions:
   - type: System.IO.IOException
@@ -195,7 +195,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is longer than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -221,7 +221,7 @@ items:
     parameters:
     - id: initialState
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the initial state to signaled if the named event is created as a result of this call; <xref uid="langword_csharp_false" name="false" href=""></xref> to set it to nonsignaled.
+      description: '`true` to set the initial state to signaled if the named event is created as a result of this call; `false` to set it to nonsignaled.'
     - id: mode
       type: System.Threading.EventResetMode
       description: One of the <xref href="System.Threading.EventResetMode"></xref> values that determines whether the event resets automatically or manually.
@@ -230,7 +230,7 @@ items:
       description: The name of a system-wide synchronization event.
     - id: createdNew
       type: System.Boolean
-      description: When this method returns, contains <xref uid="langword_csharp_true" name="true" href=""></xref> if a local event was created (that is, if `name` is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string) or if the specified named system event was created; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified named system event already existed. This parameter is passed uninitialized.
+      description: When this method returns, contains `true` if a local event was created (that is, if `name` is `null` or an empty string) or if the specified named system event was created; `false` if the specified named system event already existed. This parameter is passed uninitialized.
     - id: eventSecurity
       type: System.Security.AccessControl.EventWaitHandleSecurity
       description: An <xref href="System.Security.AccessControl.EventWaitHandleSecurity"></xref> object that represents the access control security to be applied to the named system event.
@@ -248,7 +248,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is longer than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,7 +286,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,7 +323,7 @@ items:
     description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is longer than 260 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Threading.WaitHandleCannotBeOpenedException
     commentId: T:System.Threading.WaitHandleCannotBeOpenedException
     description: The named system event does not exist.
@@ -333,7 +333,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The named event exists, but the user does not have the security access required to use it.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,7 +373,7 @@ items:
     description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is longer than 260 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Threading.WaitHandleCannotBeOpenedException
     commentId: T:System.Threading.WaitHandleCannotBeOpenedException
     description: The named system event does not exist.
@@ -383,7 +383,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The named event exists, but the user does not have the desired security access.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -406,13 +406,13 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation succeeds; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the operation succeeds; otherwise, `false`.'
   overload: System.Threading.EventWaitHandle.Reset*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -438,13 +438,13 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation succeeds; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the operation succeeds; otherwise, `false`.'
   overload: System.Threading.EventWaitHandle.Set*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -475,7 +475,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>eventSecurity</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>eventSecurity</code> is `null`.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The user does not have <xref href=\"System.Security.AccessControl.EventWaitHandleRights\"></xref>.  \n  \n -or-  \n  \n The event was not opened with <xref href=\"System.Security.AccessControl.EventWaitHandleRights\"></xref>."
@@ -485,7 +485,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref:System.Threading.WaitHandle.Close*> method was previously called on this <xref href="System.Threading.EventWaitHandle"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -24,7 +24,7 @@ items:
 
       public interface IBuildResults
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -50,7 +50,7 @@ items:
       description: Returns an array of strings containing the file paths to the copied component installer files.
   overload: Microsoft.Build.Tasks.Deployment.Bootstrapper.IBuildResults.ComponentFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
       description: Returns a string representing the file path to the generated primary bootstrapper file.
   overload: Microsoft.Build.Tasks.Deployment.Bootstrapper.IBuildResults.KeyFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -102,7 +102,7 @@ items:
       description: Returns an array of <xref href="Microsoft.Build.Tasks.Deployment.Bootstrapper.BuildMessage"></xref> objects representing the build messages generated from a bootstrapper build.
   overload: Microsoft.Build.Tasks.Deployment.Bootstrapper.IBuildResults.Messages*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,10 +125,10 @@ items:
     content: public bool Succeeded { get; }
     return:
       type: System.Boolean
-      description: Returns a Boolean value indicating whether the bootstrapper build was successful. Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the bootstrapper build was successful, <xref uid="langword_csharp_false" name="false" href=""></xref> if not successful.
+      description: Returns a Boolean value indicating whether the bootstrapper build was successful. Returns `true` if the bootstrapper build was successful, `false` if not successful.
   overload: Microsoft.Build.Tasks.Deployment.Bootstrapper.IBuildResults.Succeeded*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -143,8 +143,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -175,8 +175,8 @@ references:
 - uid: Microsoft.Build.Tasks.Deployment.Bootstrapper.BuildMessage[]
   parent: Microsoft.Build.Tasks.Deployment.Bootstrapper
   isExternal: false
-  name: BuildMessage
-  nameWithType: BuildMessage
+  name: BuildMessage[]
+  nameWithType: BuildMessage[]
   fullName: Microsoft.Build.Tasks.Deployment.Bootstrapper.BuildMessage[]
   spec.csharp:
   - uid: Microsoft.Build.Tasks.Deployment.Bootstrapper.BuildMessage

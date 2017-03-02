@@ -17,7 +17,7 @@ items:
   nameWithType: ProfileSection
   fullName: System.Web.Configuration.ProfileSection
   type: Class
-  summary: The ProfileSection class provides a way to programmatically access and modify the <xref uid="langword_csharp_profile" name="profile" href=""></xref> section of a configuration file. This class cannot be inherited.
+  summary: The ProfileSection class provides a way to programmatically access and modify the `profile` section of a configuration file. This class cannot be inherited.
   remarks: The ProfileSection class provides a way to programmatically access and modify the content of the configuration file `profile` section. The `profile` section of the configuration file specifies a schema for user profiles. At run time, the ASP.NET compilation system uses the information specified in the `profile` section to generate a class called `ProfileCommon`, which is derived from <xref:System.Web.Profile.ProfileBase>. The `ProfileCommon` class definition is based on the properties defined in the `profile` section of the configuration file. The class allows you to access and modify the values for individual profiles. An instance of this class is created for each user profile, and you can access the individual profile values in your code through the <xref:System.Web.HttpContext.Profile%2A?displayProperty=fullName> property. For more information about the profile features added to [!INCLUDE[vstecasplong](~/add/includes/vstecasplong-md.md)], see [ASP.NET Profile Properties Overview](~/add/includes/ajax-current-ext-md.md).
   example:
   - "The following configuration file excerpt shows how to declaratively specify values for several properties of the ProfileSection class.  \n  \n```  \n<system.web>  \n  <profile enabled = \"true\"   \n     defaultProvider=\"AspNetSqlProfileProvider\">  \n    <providers>  \n      <add  name=\"AspNetSqlProfileProvider\"  \n        type=\"System.Web.Profile.SqlProfileProvider\"  \n        connectionStringName=\"LocalSqlServer\"  \n        applicationName=\"/\"  \n        description=\"Stores and retrieves profile data from the   \nlocal Microsoft SQL Server database\" />  \n    </providers>  \n    <properties>  \n      <add name = \"FirstName\"/>  \n      <add name = \"LastName\"/>  \n      <add name = \"FavoriteURLs\" type =  \n        \"System.Collection.Specialized.StringCollection, System\"   \n        serializeAs = \"Xml\"/>        \n      <add name = \"ShoppingCart\" type =   \n        \"MyCommerce.ShoppingCart, MyCommerce\"   \n        serializeAs = \"Binary\"/>  \n      <group name = \"SiteColors\" >  \n        <add name = \"BackGround\"/>  \n        <add name = \"SideBar\"/>  \n        <add name = \"ForeGroundText\"/>  \n        <add name = \"ForeGroundBorders\"/>  \n      </group>  \n      <group name=\"Forums\">  \n        <add name = \"HasAvatar\" type=\"bool\" provider=\"Forums\"/>  \n        <add name = \"LastLogin\" type=\"DateTime\" provider=\"Forums\"/>  \n        <add name = \"TotalPosts\" type=\"int\" provider=\"Forums\"/>  \n      </group>  \n    </properties>  \n  </profile>  \n</system.web>  \n```  \n  \n The following code example shows how to use the ProfileSection type.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#3](~/add/codesnippet/csharp/t-system.web.configurati_90_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#3](~/add/codesnippet/visualbasic/t-system.web.configurati_90_1.vb)]"
@@ -74,7 +74,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -98,7 +98,7 @@ items:
     parameters: []
   overload: System.Web.Configuration.ProfileSection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -123,10 +123,10 @@ items:
     content: public bool AutomaticSaveEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if profile information is automatically saved on page exit; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if profile information is automatically saved on page exit; otherwise, `false`. The default is `true`.'
   overload: System.Web.Configuration.ProfileSection.AutomaticSaveEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,7 +154,7 @@ items:
       description: The name of a provider in the <xref:System.Web.Configuration.ProfileSection.Providers*> collection, or an empty string (""). The default is "AspNetSqlProfileProvider."
   overload: System.Web.Configuration.ProfileSection.DefaultProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -179,10 +179,10 @@ items:
     content: public bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the ASP.NET compilation system should generate a <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class that can be used to access information about individual user profiles; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the ASP.NET compilation system should generate a `ProfileCommon` class that can be used to access information about individual user profiles; otherwise, `false`. The default is `true`.'
   overload: System.Web.Configuration.ProfileSection.Enabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -210,7 +210,7 @@ items:
       description: A valid type reference, or an empty string (""). The default is an empty string.
   overload: System.Web.Configuration.ProfileSection.Inherits*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,7 +234,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.ProfileSection.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,10 +259,10 @@ items:
     content: public System.Web.Configuration.RootProfilePropertySettingsCollection PropertySettings { get; }
     return:
       type: System.Web.Configuration.RootProfilePropertySettingsCollection
-      description: A <xref href="System.Web.Configuration.RootProfilePropertySettingsCollection"></xref> object that contains all the properties defined within the <xref uid="langword_csharp_properties" name="properties" href=""></xref> subsection of the <xref uid="langword_csharp_profile" name="profile" href=""></xref> section of the configuration file.
+      description: A <xref href="System.Web.Configuration.RootProfilePropertySettingsCollection"></xref> object that contains all the properties defined within the `properties` subsection of the `profile` section of the configuration file.
   overload: System.Web.Configuration.ProfileSection.PropertySettings*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,10 +287,10 @@ items:
     content: public System.Configuration.ProviderSettingsCollection Providers { get; }
     return:
       type: System.Configuration.ProviderSettingsCollection
-      description: A <xref href="System.Configuration.ProviderSettingsCollection"></xref> that contains the providers defined within the <xref uid="langword_csharp_providers" name="providers" href=""></xref> subsection of the <xref uid="langword_csharp_profile" name="profile" href=""></xref> section of the configuration file.
+      description: A <xref href="System.Configuration.ProviderSettingsCollection"></xref> that contains the providers defined within the `providers` subsection of the `profile` section of the configuration file.
   overload: System.Web.Configuration.ProfileSection.Providers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

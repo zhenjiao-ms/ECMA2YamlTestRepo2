@@ -15,7 +15,7 @@ items:
   nameWithType: EnumeratorToEnumVariantMarshaler
   fullName: System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler
   type: Class
-  summary: Marshals the COM <xref uid="langword_csharp_IEnumVARIANT" name="IEnumVARIANT" href=""></xref> interface to the .NET Framework <xref href="System.Collections.IEnumerator"></xref> interface, and vice versa.
+  summary: Marshals the COM `IEnumVARIANT` interface to the .NET Framework <xref href="System.Collections.IEnumerator"></xref> interface, and vice versa.
   remarks: This custom marshaler marshals `IEnumVARIANT` to <xref:System.Collections.IEnumerator> and marshals <xref:System.Collections.IEnumerator> to `IEnumVARIANT`. The CLR automatically uses this class to bridge COM enumerators and .NET enumerators. The <xref:System.Collections.IEnumerator> type returned by the <xref:System.Collections.IEnumerable.GetEnumerator%2A> method in the imported COM class uses `EnumeratorToEnumVariantMarshaler` to map the calls to the `IEnumVARIANT` interface pointer returned by the COM object's member with a DISPID of -4.
   syntax:
     content: 'public class EnumeratorToEnumVariantMarshaler : System.Runtime.InteropServices.ICustomMarshaler'
@@ -31,7 +31,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -58,7 +58,7 @@ items:
       description: The managed object to be destroyed.
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.CleanUpManagedData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
       description: A pointer to the unmanaged data to be destroyed.
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.CleanUpNativeData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
       description: An instance of the custom marshaler.
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.GetInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: -1 to indicate the type this marshaler handles is not a value type.
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumeratorToEnumVariantMarshaler.GetNativeDataSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,8 +174,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>pManagedObj</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>pManagedObj</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,11 +207,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>pNativeData</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>pNativeData</code> is `null`.
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The unmanaged object that <code>pNativeData</code> points to could not be converted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

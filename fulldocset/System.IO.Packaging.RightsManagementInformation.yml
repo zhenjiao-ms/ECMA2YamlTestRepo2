@@ -33,7 +33,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -60,7 +60,7 @@ items:
       description: The <xref href="System.Security.RightsManagement.CryptoProvider"></xref> for accessing the rights management information.
   overload: System.IO.Packaging.RightsManagementInformation.CryptoProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -85,7 +85,7 @@ items:
       description: The user of the <xref href="System.Security.RightsManagement.UseLicense"></xref> to be deleted.
   overload: System.IO.Packaging.RightsManagementInformation.DeleteUseLicense*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -111,7 +111,7 @@ items:
       description: A collection of user and <xref href="System.Security.RightsManagement.UseLicense"></xref> key/value pairs that are contained in the rights managed protected package.
   overload: System.IO.Packaging.RightsManagementInformation.GetEmbeddedUseLicenses*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -136,13 +136,13 @@ items:
     parameters: []
     return:
       type: System.Security.RightsManagement.PublishLicense
-      description: The embedded <xref href="System.Security.RightsManagement.PublishLicense"></xref>; or <xref uid="langword_csharp_null" name="null" href=""></xref>, if the package does not contain a <xref href="System.Security.RightsManagement.PublishLicense"></xref>.
+      description: The embedded <xref href="System.Security.RightsManagement.PublishLicense"></xref>; or `null`, if the package does not contain a <xref href="System.Security.RightsManagement.PublishLicense"></xref>.
   overload: System.IO.Packaging.RightsManagementInformation.LoadPublishLicense*
   exceptions:
   - type: System.IO.FileFormatException
     commentId: T:System.IO.FileFormatException
     description: The rights management information in this package cannot be read by the current version of this class.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -170,16 +170,16 @@ items:
       description: The user or user group to return the <xref href="System.Security.RightsManagement.UseLicense"></xref> for.
     return:
       type: System.Security.RightsManagement.UseLicense
-      description: The <xref href="System.Security.RightsManagement.UseLicense"></xref> for the specified user; or <xref uid="langword_csharp_null" name="null" href=""></xref>, if the package does not contain a <xref href="System.Security.RightsManagement.UseLicense"></xref> that matches the given <code>userKey</code>.
+      description: The <xref href="System.Security.RightsManagement.UseLicense"></xref> for the specified user; or `null`, if the package does not contain a <xref href="System.Security.RightsManagement.UseLicense"></xref> that matches the given <code>userKey</code>.
   overload: System.IO.Packaging.RightsManagementInformation.LoadUseLicense*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>userKey</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>userKey</code> parameter is `null`.
   - type: System.IO.FileFormatException
     commentId: T:System.IO.FileFormatException
     description: The rights management information in this package cannot be read by the current version of this class.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -207,11 +207,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>publishLicense</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>publishLicense</code> parameter is `null`.
   - type: System.IO.FileFormatException
     commentId: T:System.IO.FileFormatException
     description: The rights management information in this package cannot be read by the current version of this class.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -244,11 +244,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: Either the <code>userKey</code> or <code>useLicense</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: Either the <code>userKey</code> or <code>useLicense</code> parameter is `null`.
   - type: System.IO.FileFormatException
     commentId: T:System.IO.FileFormatException
     description: The rights management information in this package cannot be read by the current version of this class.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

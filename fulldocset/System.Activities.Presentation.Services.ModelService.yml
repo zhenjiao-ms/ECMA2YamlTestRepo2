@@ -36,7 +36,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.#ctor
   id: '#ctor'
@@ -56,7 +56,7 @@ items:
     parameters: []
   overload: System.Activities.Presentation.Services.ModelService.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.CreateItem(System.Object)
   id: CreateItem(System.Object)
@@ -82,7 +82,7 @@ items:
       description: Returns a newly created <xref href="System.Activities.Presentation.Model.ModelItem"></xref> that is a clone of the existing item.
   overload: System.Activities.Presentation.Services.ModelService.CreateItem*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.CreateItem(System.Type,System.Activities.Presentation.Model.CreateOptions,System.Object[])
   id: CreateItem(System.Type,System.Activities.Presentation.Model.CreateOptions,System.Object[])
@@ -114,7 +114,7 @@ items:
       description: Returns the newly created <xref href="System.Activities.Presentation.Model.ModelItem"></xref>.
   overload: System.Activities.Presentation.Services.ModelService.CreateItem*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.CreateStaticMemberItem(System.Type,System.String)
   id: CreateStaticMemberItem(System.Type,System.String)
@@ -144,7 +144,7 @@ items:
       description: Returns <xref href="System.Activities.Presentation.Model.ModelItem"></xref>.
   overload: System.Activities.Presentation.Services.ModelService.CreateStaticMemberItem*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.Find(System.Activities.Presentation.Model.ModelItem,System.Predicate{System.Type})
   id: Find(System.Activities.Presentation.Model.ModelItem,System.Predicate{System.Type})
@@ -165,7 +165,7 @@ items:
     parameters:
     - id: startingItem
       type: System.Activities.Presentation.Model.ModelItem
-      description: The <xref href="System.Activities.Presentation.Model.ModelItem"></xref> from which to start the search. Items above this item will be ignored. This item, and any item below it in the hierarchy, will be included in the search. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, <xref:System.Activities.Presentation.Services.ModelService.Root*> is used instead.
+      description: The <xref href="System.Activities.Presentation.Model.ModelItem"></xref> from which to start the search. Items above this item will be ignored. This item, and any item below it in the hierarchy, will be included in the search. If this value is `null`, <xref:System.Activities.Presentation.Services.ModelService.Root*> is used instead.
     - id: match
       type: System.Predicate{System.Type}
       description: A predicate that allows more complex type matching to be used. This method will enumerate all items within the given parent scope that match the predicate.
@@ -176,8 +176,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>match</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>match</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.Find(System.Activities.Presentation.Model.ModelItem,System.Type)
   id: Find(System.Activities.Presentation.Model.ModelItem,System.Type)
@@ -198,7 +198,7 @@ items:
     parameters:
     - id: startingItem
       type: System.Activities.Presentation.Model.ModelItem
-      description: The <xref href="System.Activities.Presentation.Model.ModelItem"></xref> from which to start the search. Items above this item will be ignored. This item, and any item below it in the hierarchy, will be included in the search. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, <xref:System.Activities.Presentation.Services.ModelService.Root*> is used instead.
+      description: The <xref href="System.Activities.Presentation.Model.ModelItem"></xref> from which to start the search. Items above this item will be ignored. This item, and any item below it in the hierarchy, will be included in the search. If this value is `null`, <xref:System.Activities.Presentation.Services.ModelService.Root*> is used instead.
     - id: type
       type: System.Type
       description: The <xref href="System.Type"></xref> of the object to find. This method will enumerate all items within the given parent scope that are of the requested type.
@@ -209,8 +209,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>type</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.FromName(System.Activities.Presentation.Model.ModelItem,System.String)
   id: FromName(System.Activities.Presentation.Model.ModelItem,System.String)
@@ -236,13 +236,13 @@ items:
       description: The name to locate.
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: Returns a <xref href="System.Activities.Presentation.Model.ModelItem"></xref> whose name matches <code>name</code>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no match was found.
+      description: Returns a <xref href="System.Activities.Presentation.Model.ModelItem"></xref> whose name matches <code>name</code>, or `null` if no match was found.
   overload: System.Activities.Presentation.Services.ModelService.FromName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.FromName(System.Activities.Presentation.Model.ModelItem,System.String,System.StringComparison)
   id: FromName(System.Activities.Presentation.Model.ModelItem,System.String,System.StringComparison)
@@ -271,13 +271,13 @@ items:
       description: Determines how the name should be compared. The default is to compare against ordinal.
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: Returns a <xref href="System.Activities.Presentation.Model.ModelItem"></xref> whose name matches <code>name</code>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no match was found.
+      description: Returns a <xref href="System.Activities.Presentation.Model.ModelItem"></xref> whose name matches <code>name</code>, or `null` if no match was found.
   overload: System.Activities.Presentation.Services.ModelService.FromName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.ModelChanged
   id: ModelChanged
@@ -299,7 +299,7 @@ items:
       type: System.EventHandler{System.Activities.Presentation.Services.ModelChangedEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.Services.ModelService.Root
   id: Root
@@ -322,7 +322,7 @@ items:
       description: Returns the root of the model hierarchy as a <xref href="System.Activities.Presentation.Model.ModelItem"></xref>.
   overload: System.Activities.Presentation.Services.ModelService.Root*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -373,8 +373,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

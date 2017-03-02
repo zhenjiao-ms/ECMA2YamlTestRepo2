@@ -64,7 +64,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -88,7 +88,7 @@ items:
     parameters: []
   overload: System.IO.Stream.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,8 +141,8 @@ items:
     description: Methods were called after the stream was closed.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The current <xref uid="langword_csharp_Stream" name="Stream" href=""></xref> implementation does not support the read operation.
-  platform:
+    description: The current `Stream` implementation does not support the read operation.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,7 +181,7 @@ items:
       description: A user-provided object that distinguishes this particular asynchronous write request from other requests.
     return:
       type: System.IAsyncResult
-      description: An <xref uid="langword_csharp_IAsyncResult" name="IAsyncResult" href=""></xref> that represents the asynchronous write, which could still be pending.
+      description: An `IAsyncResult` that represents the asynchronous write, which could still be pending.
   overload: System.IO.Stream.BeginWrite*
   exceptions:
   - type: System.IO.IOException
@@ -195,8 +195,8 @@ items:
     description: Methods were called after the stream was closed.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The current <xref uid="langword_csharp_Stream" name="Stream" href=""></xref> implementation does not support the write operation.
-  platform:
+    description: The current `Stream` implementation does not support the write operation.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -221,10 +221,10 @@ items:
     content: public abstract bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports reading; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the stream supports reading; otherwise, `false`.'
   overload: System.IO.Stream.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -247,10 +247,10 @@ items:
     content: public abstract bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports seeking; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the stream supports seeking; otherwise, `false`.'
   overload: System.IO.Stream.CanSeek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: A value that determines whether the current stream can time out.
   overload: System.IO.Stream.CanTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -301,10 +301,10 @@ items:
     content: public abstract bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports writing; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the stream supports writing; otherwise, `false`.'
   overload: System.IO.Stream.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -328,7 +328,7 @@ items:
     parameters: []
   overload: System.IO.Stream.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -359,7 +359,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destination</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destination</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The current stream does not support reading.  \n  \n -or-  \n  \n <code>destination</code> does not support writing."
@@ -369,7 +369,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurred.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Stream.CopyTo(System.IO.Stream,System.Int32)
   id: CopyTo(System.IO.Stream,System.Int32)
@@ -398,7 +398,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destination</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destination</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>bufferSize</code> is negative or zero.
@@ -411,7 +411,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurred.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Stream.CreateWaitHandle
   id: CreateWaitHandle
@@ -432,10 +432,10 @@ items:
     parameters: []
     return:
       type: System.Threading.WaitHandle
-      description: A reference to the allocated <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref>.
+      description: A reference to the allocated `WaitHandle`.
   overload: System.IO.Stream.CreateWaitHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,7 +459,7 @@ items:
     parameters: []
   overload: System.IO.Stream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -483,10 +483,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.IO.Stream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,7 +518,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "A handle to the pending read operation is not available.  \n  \n -or-  \n  \n The pending operation does not support reading."
@@ -528,7 +528,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The stream is closed or an internal error has occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -557,7 +557,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "A handle to the pending write operation is not available.  \n  \n -or-  \n  \n The pending operation does not support writing."
@@ -567,7 +567,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The stream is closed or an internal error has occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -594,7 +594,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -621,11 +621,11 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: A class derived from <xref uid="langword_csharp_Stream" name="Stream" href=""></xref> does not support seeking.
+    description: A class derived from `Stream` does not support seeking.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -642,7 +642,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: A <xref uid="langword_csharp_Stream" name="Stream" href=""></xref> with no backing store.
+  summary: A `Stream` with no backing store.
   remarks: Use `Null` to redirect output to a stream that will not consume any operating system resources. When the methods of `Stream` that provide writing are invoked on `Null`, the call simply returns, and no data is written. `Null` also implements a `Read` method that returns zero without reading data.
   syntax:
     content: public static readonly System.IO.Stream Null;
@@ -650,7 +650,7 @@ items:
       type: System.IO.Stream
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -673,7 +673,7 @@ items:
     parameters: []
   overload: System.IO.Stream.ObjectInvariant*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Stream.Position
   id: Position
@@ -705,7 +705,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -748,7 +748,7 @@ items:
     description: The sum of <code>offset</code> and <code>count</code> is larger than the buffer length.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>count</code> is negative.
@@ -761,7 +761,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -785,7 +785,7 @@ items:
     parameters: []
     return:
       type: System.Int32
-      description: The unsigned byte cast to an <xref uid="langword_csharp_Int32" name="Int32" href=""></xref>, or -1 if at the end of the stream.
+      description: The unsigned byte cast to an `Int32`, or -1 if at the end of the stream.
   overload: System.IO.Stream.ReadByte*
   exceptions:
   - type: System.NotSupportedException
@@ -794,7 +794,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,7 +822,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The ReadTimeout method always throws an <xref href="System.InvalidOperationException"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -864,7 +864,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -900,7 +900,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -932,8 +932,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>stream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -971,7 +971,7 @@ items:
     description: The sum of <code>offset</code> and <code>count</code> is greater than the buffer length.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>count</code> is negative.
@@ -984,7 +984,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Write was called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1020,7 +1020,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1048,7 +1048,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The WriteTimeout method always throws an <xref href="System.InvalidOperationException"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1120,8 +1120,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

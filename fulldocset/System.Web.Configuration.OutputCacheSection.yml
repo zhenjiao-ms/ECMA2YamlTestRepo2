@@ -73,7 +73,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,7 +97,7 @@ items:
     parameters: []
   overload: System.Web.Configuration.OutputCacheSection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -123,7 +123,7 @@ items:
       description: The name of the default provider.
   overload: System.Web.Configuration.OutputCacheSection.DefaultProviderName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Configuration.OutputCacheSection.EnableFragmentCache
   id: EnableFragmentCache
@@ -145,10 +145,10 @@ items:
     content: public bool EnableFragmentCache { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the fragment cache is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the fragment cache is enabled; otherwise, `false`. The default is `true`.'
   overload: System.Web.Configuration.OutputCacheSection.EnableFragmentCache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,10 +171,10 @@ items:
     content: public bool EnableKernelCacheForVaryByStar { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if kernel caching is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if kernel caching is enabled; otherwise, `false`. The default is `false`.'
   overload: System.Web.Configuration.OutputCacheSection.EnableKernelCacheForVaryByStar*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,10 +199,10 @@ items:
     content: public bool EnableOutputCache { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the output cache is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the output cache is enabled; otherwise, `false`. The default is `true`.'
   overload: System.Web.Configuration.OutputCacheSection.EnableOutputCache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -219,7 +219,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets a value indicating whether the <xref uid="langword_csharp_vary" name="vary" href=""></xref> header is enabled.
+  summary: Gets or sets a value indicating whether the `vary` header is enabled.
   remarks: The `vary` header indicates the request-header fields that the server uses to determine which of multiple cached responses are sent in response to a client request. The default for the OmitVaryStar property is `false`. By default, ASP.NET sends the `vary` header in all `POST` requests, as well as in all GET-request query strings. If the OmitVaryStar is `true`, ASP.NET omits the `vary` header when returning the response for cached pages, provided that the `GET` request to a response is cached with no `VaryByCustom` property and the `POST` request to a response is cached with no `VaryByParam` property and no `VaryByCustom` property.
   example:
   - "The following code example shows how to use the OmitVaryStar property.  \n  \n [!code-vb[System.Web.Configuration.OutputCacheSection#5](~/add/codesnippet/visualbasic/p-system.web.configurati_139_1.vb)]\n [!code-cs[System.Web.Configuration.OutputCacheSection#5](~/add/codesnippet/csharp/p-system.web.configurati_139_1.cs)]"
@@ -227,10 +227,10 @@ items:
     content: public bool OmitVaryStar { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref uid="langword_csharp_vary" name="vary" href=""></xref> header is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the `vary` header is enabled; otherwise, `false`. The default is `false`.'
   overload: System.Web.Configuration.OutputCacheSection.OmitVaryStar*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -254,7 +254,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.OutputCacheSection.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
       description: The collection of providers.
   overload: System.Web.Configuration.OutputCacheSection.Providers*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Configuration.OutputCacheSection.SendCacheControlHeader
   id: SendCacheControlHeader
@@ -293,7 +293,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets a value indicating whether the <xref uid="langword_csharp_cache-control:private" name="cache-control:private" href=""></xref> header is sent by the output cache module by default.
+  summary: Gets or sets a value indicating whether the `cache-control:private` header is sent by the output cache module by default.
   remarks: "The SendCacheControlHeader applies to content with no output caching specified. When it is set to `false`, the `cache-control:private` header is not sent by default.  \n  \n> [!NOTE]\n>  This setting enables the content to be cached on the client by default."
   example:
   - "The following code example shows how to use the SendCacheControlHeader property.  \n  \n [!code-vb[System.Web.Configuration.OutputCacheSection#6](~/add/codesnippet/visualbasic/p-system.web.configurati_142_1.vb)]\n [!code-cs[System.Web.Configuration.OutputCacheSection#6](~/add/codesnippet/csharp/p-system.web.configurati_142_1.cs)]"
@@ -301,10 +301,10 @@ items:
     content: public bool SendCacheControlHeader { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the sending of <xref uid="langword_csharp_cache-control:private" name="cache-control:private" href=""></xref> header is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the sending of `cache-control:private` header is enabled; otherwise, `false`. The default is `true`.'
   overload: System.Web.Configuration.OutputCacheSection.SendCacheControlHeader*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

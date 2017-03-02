@@ -124,7 +124,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,7 +150,7 @@ items:
     parameters: []
   overload: System.Data.OleDb.OleDbDataAdapter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -179,7 +179,7 @@ items:
       description: An <xref href="System.Data.OleDb.OleDbCommand"></xref> that is a SELECT statement or stored procedure, and is set as the <xref:System.Data.OleDb.OleDbDataAdapter.SelectCommand*> property of the <xref href="System.Data.OleDb.OleDbDataAdapter"></xref>.
   overload: System.Data.OleDb.OleDbDataAdapter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -211,7 +211,7 @@ items:
       description: An <xref href="System.Data.OleDb.OleDbConnection"></xref> that represents the connection.
   overload: System.Data.OleDb.OleDbDataAdapter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
       description: The connection string.
   overload: System.Data.OleDb.OleDbDataAdapter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,7 +280,7 @@ items:
       description: To be added.
   overload: System.Data.OleDb.OleDbDataAdapter.CreateRowUpdatedEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -317,7 +317,7 @@ items:
       description: To be added.
   overload: System.Data.OleDb.OleDbDataAdapter.CreateRowUpdatingEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -345,7 +345,7 @@ items:
       description: An <xref href="System.Data.OleDb.OleDbCommand"></xref> used during <xref:System.Data.Common.DbDataAdapter.Update*> to delete records in the data source that correspond to deleted rows in the <xref href="System.Data.DataSet"></xref>.
   overload: System.Data.OleDb.OleDbDataAdapter.DeleteCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,7 +362,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.OleDb
-  summary: Adds or refreshes rows in a <xref href="System.Data.DataTable"></xref> to match those in an ADO <xref uid="langword_csharp_Recordset" name="Recordset" href=""></xref> or <xref uid="langword_csharp_Record" name="Record" href=""></xref> object using the specified <xref href="System.Data.DataTable"></xref> and ADO objects.
+  summary: Adds or refreshes rows in a <xref href="System.Data.DataTable"></xref> to match those in an ADO `Recordset` or `Record` object using the specified <xref href="System.Data.DataTable"></xref> and ADO objects.
   remarks: "The link between ActiveX Data Objects (ADO) and ADO.NET is a one-way operation in that you can copy data from ADO to the <xref:System.Data.DataSet>, but any updates to the data must be handled by ADO.NET.  \n  \n This overload of the Fill method does not close the input `Recordset` on completion of the Fill operation.  \n  \n When handling batch SQL statements that return multiple results, this implementation of Fill and <xref:System.Data.Common.DbDataAdapter.FillSchema%2A> for the OLE DB.NET Framework Data Provider retrieves schema information for only the first result.  \n  \n The Fill operation adds the rows to the specified destination <xref:System.Data.DataTable> object in the <xref:System.Data.DataSet>, creating the <xref:System.Data.DataTable> object if it does not already exist. When you create a <xref:System.Data.DataTable> object, the Fill operation ordinarily creates only column name metadata. However, if the <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> property is set to `AddWithKey`, appropriate primary keys and constraints are also created.  \n  \n You can use the Fill method multiple times on the same <xref:System.Data.DataTable>. If a primary key exists, incoming rows are merged with matching rows that already exist. If no primary key exists, incoming rows are appended to the <xref:System.Data.DataTable>. If primary key information is present, any duplicate rows are reconciled and only appear one time in the <xref:System.Data.DataTable> that corresponds to the <xref:System.Data.DataSet>. Primary key information may be set either through <xref:System.Data.Common.DbDataAdapter.FillSchema%2A>, by specifying the <xref:System.Data.DataTable.PrimaryKey%2A> property of the <xref:System.Data.DataTable>, or by setting the <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> property to `AddWithKey`.  \n  \n If the <xref:System.Data.OleDb.OleDbDataAdapter.SelectCommand%2A> returns the results of an OUTER JOIN, the `DataAdapter` does not set a <xref:System.Data.DataTable.PrimaryKey%2A> value for the resulting <xref:System.Data.DataTable>. You must explicitly define the primary key to make sure that duplicate rows are resolved correctly. For more information, see [Defining Primary Keys](~/add/includes/ajax-current-ext-md.md).  \n  \n To function correctly with the .NET Framework Data Provider for OLE DB, `AddWithKey` requires that the native OLE DB provider obtains required primary key information by setting the DBPROP_UNIQUEROWS property, and then determines which columns are primary key columns by examining DBCOLUMN_KEYCOLUMN in the `IColumnsRowset`. Alternatively the user may explicitly set the primary key constraints on each <xref:System.Data.DataTable>. This makes sure that incoming records that match existing records are updated instead of appended.  \n  \n If the <xref:System.Data.OleDb.OleDbDataAdapter> encounters duplicate columns while populating a <xref:System.Data.DataTable>, it generates names for the subsequent columns, using the pattern \"*columnname*1\", \"*columnname*2\", \"*columnname*3\", and so on. Empty column names are added to the <xref:System.Data.DataTable>, using an empty string for the first column, followed by \"1\", \"2\", \"3\", and so on for the subsequent empty columns.  \n  \n Values in ADO `Recordset` or `Record` objects are converted to common language runtime types for storage in the <xref:System.Data.DataSet>.  \n  \n> [!CAUTION]\n>  This overload of the Fill method does not implicitly call `Close` on the ADO object when the fill operation is complete. Therefore, always call `Close` when you are finished using ADO `Recordset` or `Record` objects. This makes sure that the underlying connection to a data source is released in a timely manner, and also prevents possible access violations because of unmanaged ADO objects being reclaimed by garbage collection when existing references still exist.  \n  \n When you call the `TableMappings.Add` method on a `DataAdapter` and you explicitly map the source table parameter to an empty string, the dataset is successfully filled using the source table, but the dataset will be populated with nothing. For example, in the following example, `rDataSet` will be populated with nothing.  \n  \n```  \nrAdapter.TableMappings.Add(\"source table\", \"\");  \nrAdapter.Fill(rDataSet, \"source table\");     \n```  \n  \n This example shows how you can skip a result when dealing with multiple results.  \n  \n The following example uses an <xref:System.Data.OleDb.OleDbDataAdapter> to fill a <xref:System.Data.DataTable> using an ADO `Recordset`. This example assumes that you have created an ADO `Recordset`.  \n  \n```vb#  \nDim custDA As OleDbDataAdapter = New OleDbDataAdapter()  \n     Dim custDS As DataSet = New DataSet  \n     Dim custTable As DataTable = New DataTable(\"Customers\")  \n     custTable.Columns.Add(\"CustomerID\", Type.GetType(\"System.String\"))  \n     custTable.Columns.Add(\"CompanyName\", Type.GetType(\"System.String\"))  \n     custDS.Tables.Add(custTable)  \n     'Use ADO objects from ADO library (msado15.dll) imported  \n     ' as.NET library ADODB.dll using TlbImp.exe  \n     Dim adoConn As ADODB.Connection = New ADODB.Connection()  \n     Dim adoRS As ADODB.Recordset = New ADODB.Recordset()  \n     adoConn.Open(\"Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Northwind;Integrated Security=SSPI;\", \"\", \"\", -1)  \n     adoRS.Open(\"SELECT CustomerID, CompanyName FROM Customers\", adoConn, ADODB.CursorTypeEnum.adOpenForwardOnly, ADODB.LockTypeEnum.adLockReadOnly, 1)  \n     custDA.Fill(custTable, adoRS)  \n     adoRS.Close()  \n     adoConn.Close()  \n```  \n  \n```c#  \nOleDbDataAdapter custDA = new OleDbDataAdapter();  \n     DataSet custDS = new DataSet();  \n     DataTable custTable = new DataTable(\"Customers\");  \n     custTable.Columns.Add(\"CustomerID\", typeof(String));  \n     custTable.Columns.Add(\"CompanyName\", typeof(String));  \n     custDS.Tables.Add(custTable);  \n     //Use ADO objects from ADO library (msado15.dll) imported  \n     //  as.NET library ADODB.dll using TlbImp.exe  \n     ADODB.Connection adoConn = new ADODB.Connection();  \n     ADODB.Recordset adoRS = new ADODB.Recordset();  \n     adoConn.Open(\"Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Northwind;Integrated Security=SSPI;\", \"\", \"\", -1);  \n     adoRS.Open(\"SELECT CustomerID, CompanyName FROM Customers\", adoConn, ADODB.CursorTypeEnum.adOpenForwardOnly, ADODB.LockTypeEnum.adLockReadOnly, 1);  \n     custDA.Fill(custTable, adoRS);  \n     adoRS.Close();  \n     adoConn.Close();  \n```"
   syntax:
     content: public int Fill (System.Data.DataTable dataTable, object ADODBRecordSet);
@@ -372,13 +372,13 @@ items:
       description: A <xref href="System.Data.DataTable"></xref> to fill with records and, if it is required, schema.
     - id: ADODBRecordSet
       type: System.Object
-      description: An ADO <xref uid="langword_csharp_Recordset" name="Recordset" href=""></xref> or <xref uid="langword_csharp_Record" name="Record" href=""></xref> object.
+      description: An ADO `Recordset` or `Record` object.
     return:
       type: System.Int32
       description: The number of rows successfully refreshed to the <xref href="System.Data.DataTable"></xref>. This does not include rows affected by statements that do not return rows.
   overload: System.Data.OleDb.OleDbDataAdapter.Fill*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -395,7 +395,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.OleDb
-  summary: Adds or refreshes rows in the <xref href="System.Data.DataSet"></xref> to match those in an ADO <xref uid="langword_csharp_Recordset" name="Recordset" href=""></xref> or <xref uid="langword_csharp_Record" name="Record" href=""></xref> object using the specified <xref href="System.Data.DataSet"></xref>, ADO object, and source table name.
+  summary: Adds or refreshes rows in the <xref href="System.Data.DataSet"></xref> to match those in an ADO `Recordset` or `Record` object using the specified <xref href="System.Data.DataSet"></xref>, ADO object, and source table name.
   remarks: "The link between ActiveX Data Objects (ADO) and ADO.NET is a one-way operation in that you can copy data from ADO to the <xref:System.Data.DataSet>, but any updates to the data must be handled by ADO.NET.  \n  \n The <xref:System.Data.OleDb.OleDbDataAdapter.Fill%2A> method iterates through multiple results by calling the `NextRecordset` method on the `Recordset`, closing the input `Recordset` on completion of the <xref:System.Data.OleDb.OleDbDataAdapter.Fill%2A> operation.  \n  \n The <xref:System.Data.OleDb.OleDbDataAdapter.Fill%2A> operation adds the rows to the specified destination <xref:System.Data.DataTable> object in the <xref:System.Data.DataSet>, creating the <xref:System.Data.DataTable> object if it does not already exist. When you create a <xref:System.Data.DataTable> object, the <xref:System.Data.OleDb.OleDbDataAdapter.Fill%2A> operation ordinarily creates only column name metadata. However, if the <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> property is set to `AddWithKey`, appropriate primary keys and constraints are also created.  \n  \n If primary key information is present, any duplicate rows are reconciled and only appear one time in the <xref:System.Data.DataTable> that corresponds to the <xref:System.Data.DataSet>. Primary key information may be set either through <xref:System.Data.Common.DbDataAdapter.FillSchema%2A>, by specifying the <xref:System.Data.DataTable.PrimaryKey%2A> property of the <xref:System.Data.DataTable>, or by setting the <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> property to `AddWithKey`.  \n  \n To function correctly with the .NET Framework Data Provider for OLE DB, `AddWithKey` requires the native OLE DB provider to obtain required primary key information by setting the DBPROP_UNIQUEROWS property, and then determine which columns are primary key columns by examining DBCOLUMN_KEYCOLUMN in the **IColumnsRowset**. Alternatively the user may explicitly set the primary key constraints on each <xref:System.Data.DataTable>. This ensures that incoming records that match existing records are updated instead of appended.  \n  \n If the <xref:System.Data.OleDb.OleDbDataAdapter.SelectCommand%2A> returns the results of an OUTER JOIN, the `DataAdapter` does not set a <xref:System.Data.DataTable.PrimaryKey%2A> value for the resulting <xref:System.Data.DataTable>. You must explicitly define the primary key to make sure that duplicate rows are resolved correctly. For more information, see [Defining Primary Keys](~/add/includes/ajax-current-ext-md.md).  \n  \n If the `Recordset` is closed before the starting of the <xref:System.Data.OleDb.OleDbDataAdapter.Fill%2A> operation, no error results. This is required for handling of multiple results, because queries that do not return rows are indicated by a closed `Recordset`. The <xref:System.Data.OleDb.OleDbDataAdapter> just calls `NextRecordset` on the closed `Recordset` and continues processing.  \n  \n If an error is encountered while populating the data set, rows added before the occurrence of the error remain in the <xref:System.Data.DataSet>. The rest of the operation is aborted.  \n  \n If the <xref:System.Data.Common.DbDataAdapter> object encounters duplicate columns while populating a <xref:System.Data.DataTable>, it generates names for the subsequent columns, using the pattern \"*columnname*1\", \"*columnname*2\", \"*columnname*3\", and so on. If the incoming data contains unnamed columns, they are placed in the <xref:System.Data.DataSet> according to the pattern \"Column1\", \"Column2\", and so on. When multiple result sets are added to the <xref:System.Data.DataSet> each result set is placed in a separate table. Additional result sets are named by appending integral values to the specified table name (for example, \"Table\", \"Table1\", \"Table2\", and so on.). Applications that use column and table names should make sure that conflicts with these naming patterns does not occur.  \n  \n Values in ADO `Recordset` or `Record` objects are converted to common language runtime types for storage in the <xref:System.Data.DataSet>.  \n  \n> [!NOTE]\n>  This overload of the <xref:System.Data.OleDb.OleDbDataAdapter.Fill%2A> method implicitly calls `Close` on the ADO object when the fill operation is complete.  \n  \n The following example uses an <xref:System.Data.OleDb.OleDbDataAdapter> to fill a <xref:System.Data.DataSet> using an ADO `Recordset` that is an ADO `Record` object. This example assumes that you have created an ADO `RecordSet` and `Record` object.  \n  \n```vb#  \nDim custDA As OleDbDataAdapter = New OleDbDataAdapter()  \n     Dim custDS As DataSet = New DataSet  \n     'Use ADO objects from ADO library (msado15.dll) imported  \n     ' as.NET library ADODB.dll using TlbImp.exe  \n     Dim adoConn As ADODB.Connection = New ADODB.Connection()  \n     Dim adoRS As ADODB.Recordset = New ADODB.Recordset()  \n     adoConn.Open(\"Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Northwind;Integrated Security=SSPI;\", \"\", \"\", -1)  \n     adoRS.Open(\"SELECT * FROM Customers\", adoConn, ADODB.CursorTypeEnum.adOpenForwardOnly, ADODB.LockTypeEnum.adLockReadOnly, 1)  \n     custDA.Fill(custDS, adoRS, \"Customers\")  \n     adoConn.Close()  \n```  \n  \n```c#  \nOleDbDataAdapter custDA = new OleDbDataAdapter();  \n     DataSet custDS = new DataSet();  \n     //Use ADO objects from ADO library (msado15.dll) imported  \n     // as.NET library ADODB.dll using TlbImp.exe  \n     ADODB.Connection adoConn = new ADODB.Connection();  \n     ADODB.Recordset adoRS = new ADODB.Recordset();  \n     adoConn.Open(\"Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=Northwind;Integrated Security=SSPI;\", \"\", \"\", -1);  \n     adoRS.Open(\"SELECT * FROM Customers\", adoConn, ADODB.CursorTypeEnum.adOpenForwardOnly, ADODB.LockTypeEnum.adLockReadOnly, 1);  \n     custDA.Fill(custDS, adoRS, \"Customers\");  \n     adoConn.Close();  \n```"
   syntax:
     content: public int Fill (System.Data.DataSet dataSet, object ADODBRecordSet, string srcTable);
@@ -405,7 +405,7 @@ items:
       description: A <xref href="System.Data.DataSet"></xref> to fill with records and, if it is required, schema.
     - id: ADODBRecordSet
       type: System.Object
-      description: An ADO <xref uid="langword_csharp_Recordset" name="Recordset" href=""></xref> or <xref uid="langword_csharp_Record" name="Record" href=""></xref> object.
+      description: An ADO `Recordset` or `Record` object.
     - id: srcTable
       type: System.String
       description: The source table used for the table mappings.
@@ -417,7 +417,7 @@ items:
   - type: System.SystemException
     commentId: T:System.SystemException
     description: The source table is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -445,7 +445,7 @@ items:
       description: An <xref href="System.Data.OleDb.OleDbCommand"></xref> used during <xref:System.Data.Common.DbDataAdapter.Update*> to insert records in the data source that correspond to new rows in the <xref href="System.Data.DataSet"></xref>.
   overload: System.Data.OleDb.OleDbDataAdapter.InsertCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,7 +470,7 @@ items:
       description: To be added.
   overload: System.Data.OleDb.OleDbDataAdapter.OnRowUpdated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -495,7 +495,7 @@ items:
       description: To be added.
   overload: System.Data.OleDb.OleDbDataAdapter.OnRowUpdating*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,7 +522,7 @@ items:
       type: System.Data.OleDb.OleDbRowUpdatedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -549,7 +549,7 @@ items:
       type: System.Data.OleDb.OleDbRowUpdatingEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -577,7 +577,7 @@ items:
       description: An <xref href="System.Data.OleDb.OleDbCommand"></xref> that is used during <xref:System.Data.Common.DbDataAdapter.Fill*> to select records from data source for placement in the <xref href="System.Data.DataSet"></xref>.
   overload: System.Data.OleDb.OleDbDataAdapter.SelectCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -604,7 +604,7 @@ items:
       description: An <xref href="System.Data.IDbCommand"></xref> used during an update to delete records in the data source for deleted rows in the data set.
   overload: System.Data.OleDb.OleDbDataAdapter.System#Data#IDbDataAdapter#DeleteCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -631,7 +631,7 @@ items:
       description: An <xref href="System.Data.IDbCommand"></xref> that is used during an update to insert records from a data source for placement in the data set.
   overload: System.Data.OleDb.OleDbDataAdapter.System#Data#IDbDataAdapter#InsertCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -658,7 +658,7 @@ items:
       description: An <xref href="System.Data.IDbCommand"></xref> that is used during an update to select records from a data source for placement in the data set.
   overload: System.Data.OleDb.OleDbDataAdapter.System#Data#IDbDataAdapter#SelectCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -685,7 +685,7 @@ items:
       description: An <xref href="System.Data.IDbCommand"></xref> used during an update to update records in the data source for modified rows in the data set.
   overload: System.Data.OleDb.OleDbDataAdapter.System#Data#IDbDataAdapter#UpdateCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -713,7 +713,7 @@ items:
       description: A new <xref href="System.Object"></xref> that is a copy of this instance.
   overload: System.Data.OleDb.OleDbDataAdapter.System#ICloneable#Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -741,7 +741,7 @@ items:
       description: An <xref href="System.Data.OleDb.OleDbCommand"></xref> used during <xref:System.Data.Common.DbDataAdapter.Update*> to update records in the data source that correspond to modified rows in the <xref href="System.Data.DataSet"></xref>.
   overload: System.Data.OleDb.OleDbDataAdapter.UpdateCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

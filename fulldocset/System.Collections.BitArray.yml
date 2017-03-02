@@ -31,7 +31,7 @@ items:
   nameWithType: BitArray
   fullName: System.Collections.BitArray
   type: Class
-  summary: Manages a compact array of bit values, which are represented as Booleans, where <xref uid="langword_csharp_true" name="true" href=""></xref> indicates that the bit is on (1) and <xref uid="langword_csharp_false" name="false" href=""></xref> indicates the bit is off (0).
+  summary: Manages a compact array of bit values, which are represented as Booleans, where `true` indicates that the bit is on (1) and `false` indicates the bit is off (0).
   remarks: "The BitArray class is a collection class in which the capacity is always the same as the count. Elements are added to a BitArray by increasing the <xref:System.Collections.BitArray.Length%2A> property; elements are deleted by decreasing the <xref:System.Collections.BitArray.Length%2A> property. The size of a BitArray is controlled by the client; indexing past the end of the BitArray throws an <xref:System.ArgumentException>.The BitArray class provides methods that are not found in other collections, including those that allow multiple elements to be modified at once using a filter, such as <xref:System.Collections.BitArray.And%2A>, <xref:System.Collections.BitArray.Or%2A>, <xref:System.Collections.BitArray.Xor%2A> , <xref:System.Collections.BitArray.Not%2A>, and <xref:System.Collections.BitArray.SetAll%2A>.  \n  \n The <xref:System.Collections.Specialized.BitVector32> class is a structure that provides the same functionality as BitArray, but with faster performance. <xref:System.Collections.Specialized.BitVector32> is faster because it is a value type and therefore allocated on the stack, whereas BitArray is a reference type and, therefore, allocated on the heap.  \n  \n <xref:System.Collections.Specialized.BitVector32?displayProperty=fullName> can store exactly 32 bits, whereas BitArray can store a variable number of bits. <xref:System.Collections.Specialized.BitVector32> stores both bit flags and small integers, thereby making it ideal for data that is not exposed to the user. However, if the number of required bit flags is unknown, is variable, or is greater than 32, use BitArray instead.  \n  \n BitArray is in the <xref:System.Collections> namespace; <xref:System.Collections.Specialized.BitVector32> is in the <xref:System.Collections.Specialized> namespace.  \n  \n Elements in this collection can be accessed using an integer index.  Indexes in this collection are zero-based."
   example:
   - "The following code example shows how to create and initialize a BitArray and how to print out its values.  \n  \n [!code-cpp[Classic BitArray Example#1](~/add/codesnippet/cpp/t-system.collections.bit_1.cpp)]\n [!code-cs[Classic BitArray Example#1](~/add/codesnippet/csharp/t-system.collections.bit_1.cs)]\n [!code-vb[Classic BitArray Example#1](~/add/codesnippet/visualbasic/t-system.collections.bit_1.vb)]"
@@ -53,7 +53,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -82,8 +82,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>values</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,11 +112,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>bytes</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>bytes</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The length of <code>bytes</code> is greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,8 +145,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>bits</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>bits</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,7 +163,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Collections
-  summary: Initializes a new instance of the <xref href="System.Collections.BitArray"></xref> class that can hold the specified number of bit values, which are initially set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Initializes a new instance of the <xref href="System.Collections.BitArray"></xref> class that can hold the specified number of bit values, which are initially set to `false`.
   remarks: This constructor is an O(`n`) operation, where `n` is `length`.
   syntax:
     content: public BitArray (int length);
@@ -176,7 +176,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>length</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -205,11 +205,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>values</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The length of <code>values</code> is greater than <xref href="System.Int32"></xref>
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>length</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,11 +276,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> and the current <xref href="System.Collections.BitArray"></xref> do not have the same number of elements.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,7 +307,7 @@ items:
       description: A shallow copy of the <xref href="System.Collections.BitArray"></xref>.
   overload: System.Collections.BitArray.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -341,7 +341,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than zero.
@@ -351,7 +351,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="System.Collections.BitArray"></xref> cannot be cast automatically to the type of the destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -377,7 +377,7 @@ items:
       description: The number of elements contained in the <xref href="System.Collections.BitArray"></xref>.
   overload: System.Collections.BitArray.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -412,7 +412,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is greater than or equal to the number of elements in the <xref href=\"System.Collections.BitArray\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -439,7 +439,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> for the entire <xref href="System.Collections.BitArray"></xref>.
   overload: System.Collections.BitArray.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -462,10 +462,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: This property is always <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This property is always `false`.
   overload: System.Collections.BitArray.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -490,10 +490,10 @@ items:
     content: public bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: This property is always <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This property is always `false`.
   overload: System.Collections.BitArray.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -526,7 +526,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is equal to or greater than <xref:System.Collections.BitArray.Count*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,7 +555,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The property is set to a value that is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -572,7 +572,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Collections
-  summary: Inverts all the bit values in the current <xref href="System.Collections.BitArray"></xref>, so that elements set to <xref uid="langword_csharp_true" name="true" href=""></xref> are changed to <xref uid="langword_csharp_false" name="false" href=""></xref>, and elements set to <xref uid="langword_csharp_false" name="false" href=""></xref> are changed to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Inverts all the bit values in the current <xref href="System.Collections.BitArray"></xref>, so that elements set to `true` are changed to `false`, and elements set to `false` are changed to `true`.
   remarks: This method is an O(`n`) operation, where `n` is <xref:System.Collections.BitArray.Count%2A>.
   example:
   - "The following code example shows how to apply NOT to a <xref:System.Collections.BitArray>.  \n  \n [!code-cpp[Classic BitArray.Not Example#1](~/add/codesnippet/cpp/m-system.collections.bit_3_1.cpp)]\n [!code-cs[Classic BitArray.Not Example#1](~/add/codesnippet/csharp/m-system.collections.bit_3_1.cs)]\n [!code-vb[Classic BitArray.Not Example#1](~/add/codesnippet/visualbasic/m-system.collections.bit_3_1.vb)]"
@@ -584,7 +584,7 @@ items:
       description: The current instance with inverted bit values.
   overload: System.Collections.BitArray.Not*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -618,11 +618,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> and the current <xref href="System.Collections.BitArray"></xref> do not have the same number of elements.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -657,7 +657,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is greater than or equal to the number of elements in the <xref href=\"System.Collections.BitArray\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -686,7 +686,7 @@ items:
       description: The Boolean value to assign to all bits.
   overload: System.Collections.BitArray.SetAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -714,7 +714,7 @@ items:
       description: An object that can be used to synchronize access to the <xref href="System.Collections.BitArray"></xref>.
   overload: System.Collections.BitArray.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -748,11 +748,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> and the current <xref href="System.Collections.BitArray"></xref> do not have the same number of elements.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -794,8 +794,8 @@ references:
 - uid: System.Boolean[]
   parent: System
   isExternal: false
-  name: Boolean
-  nameWithType: Boolean
+  name: Boolean[]
+  nameWithType: Boolean[]
   fullName: System.Boolean[]
   spec.csharp:
   - uid: System.Boolean
@@ -814,8 +814,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -858,8 +858,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32

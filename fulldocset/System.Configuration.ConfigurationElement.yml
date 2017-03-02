@@ -59,7 +59,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
     parameters: []
   overload: System.Configuration.ConfigurationElement.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,7 +111,7 @@ items:
       description: The top-level <xref href="System.Configuration.Configuration"></xref> instance that the current <xref href="System.Configuration.ConfigurationElement"></xref> instance belongs to.
   overload: System.Configuration.ConfigurationElement.CurrentConfiguration*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Configuration.ConfigurationElement.DeserializeElement(System.Xml.XmlReader,System.Boolean)
   id: DeserializeElement(System.Xml.XmlReader,System.Boolean)
@@ -137,13 +137,13 @@ items:
       description: The <xref href="System.Xml.XmlReader"></xref> that reads from the configuration file.
     - id: serializeCollectionKey
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to serialize only the collection key properties; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to serialize only the collection key properties; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.DeserializeElement*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "The element to read is locked.  \n  \n \\- or -  \n  \n An attribute of the current node is not recognized.  \n  \n \\- or -  \n  \n The lock status of the current node cannot be determined."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
       description: An <xref href="System.Configuration.ElementInformation"></xref> that contains the non-customizable information and functionality of the <xref href="System.Configuration.ConfigurationElement"></xref>.
   overload: System.Configuration.ConfigurationElement.ElementInformation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -196,7 +196,7 @@ items:
       description: The <xref href="System.Configuration.ConfigurationElementProperty"></xref> that represents the <xref href="System.Configuration.ConfigurationElement"></xref> itself.
   overload: System.Configuration.ConfigurationElement.ElementProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -222,10 +222,10 @@ items:
       description: The object to compare with.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object to compare with is equal to the current <xref href="System.Configuration.ConfigurationElement"></xref> instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object to compare with is equal to the current <xref href="System.Configuration.ConfigurationElement"></xref> instance; otherwise, `false`. The default is `false`.'
   overload: System.Configuration.ConfigurationElement.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -254,7 +254,7 @@ items:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: The current element is not associated with a context.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,7 +280,7 @@ items:
       description: A unique value representing the current <xref href="System.Configuration.ConfigurationElement"></xref> instance.
   overload: System.Configuration.ConfigurationElement.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,10 +307,10 @@ items:
       description: The name of the assembly.
     return:
       type: System.String
-      description: The transformed version of the assembly name. If no transformer is available, the <code>assemblyName</code> parameter value is returned unchanged. The <xref:System.Configuration.Configuration.TypeStringTransformer*> property is <xref uid="langword_csharp_null" name="null" href=""></xref> if no transformer is available.
+      description: The transformed version of the assembly name. If no transformer is available, the <code>assemblyName</code> parameter value is returned unchanged. The <xref:System.Configuration.Configuration.TypeStringTransformer*> property is `null` if no transformer is available.
   overload: System.Configuration.ConfigurationElement.GetTransformedAssemblyString*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Configuration.ConfigurationElement.GetTransformedTypeString(System.String)
   id: GetTransformedTypeString(System.String)
@@ -334,10 +334,10 @@ items:
       description: The name of the type.
     return:
       type: System.String
-      description: The transformed version of the specified type name. If no transformer is available, the <code>typeName</code> parameter value is returned unchanged. The <xref:System.Configuration.Configuration.TypeStringTransformer*> property is <xref uid="langword_csharp_null" name="null" href=""></xref> if no transformer is available.
+      description: The transformed version of the specified type name. If no transformer is available, the <code>typeName</code> parameter value is returned unchanged. The <xref:System.Configuration.Configuration.TypeStringTransformer*> property is `null` if no transformer is available.
   overload: System.Configuration.ConfigurationElement.GetTransformedTypeString*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Configuration.ConfigurationElement.Init
   id: Init
@@ -357,7 +357,7 @@ items:
     parameters: []
   overload: System.Configuration.ConfigurationElement.Init*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,7 +381,7 @@ items:
     parameters: []
   overload: System.Configuration.ConfigurationElement.InitializeDefault*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -407,10 +407,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the element has been modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the element has been modified; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.IsModified*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -436,10 +436,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Configuration.ConfigurationElement"></xref> object is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Configuration.ConfigurationElement"></xref> object is read-only; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,11 +471,11 @@ items:
   exceptions:
   - type: System.Configuration.ConfigurationException
     commentId: T:System.Configuration.ConfigurationException
-    description: <code>prop</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or does not exist within the element.
+    description: <code>prop</code> is `null` or does not exist within the element.
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: <code>prop</code> is read only or locked.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -508,7 +508,7 @@ items:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: <code>prop</code> is read-only or locked.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -534,7 +534,7 @@ items:
       description: An object that implements the <xref href="System.Collections.IList"></xref> interface.
   overload: System.Configuration.ConfigurationElement.ListErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -562,7 +562,7 @@ items:
       description: The <xref href="System.Configuration.ConfigurationLockCollection"></xref> of locked attributes (properties) for the element.
   overload: System.Configuration.ConfigurationElement.LockAllAttributesExcept*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,7 +590,7 @@ items:
       description: The <xref href="System.Configuration.ConfigurationLockCollection"></xref> of locked elements.
   overload: System.Configuration.ConfigurationElement.LockAllElementsExcept*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -618,7 +618,7 @@ items:
       description: The <xref href="System.Configuration.ConfigurationLockCollection"></xref> of locked attributes (properties) for the element.
   overload: System.Configuration.ConfigurationElement.LockAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -646,7 +646,7 @@ items:
       description: The <xref href="System.Configuration.ConfigurationLockCollection"></xref> of locked elements.
   overload: System.Configuration.ConfigurationElement.LockElements*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -671,13 +671,13 @@ items:
     content: public bool LockItem { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the element is locked; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the element is locked; otherwise, `false`. The default is `false`.'
   overload: System.Configuration.ConfigurationElement.LockItem*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: The element has already been locked at a higher configuration level.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -707,10 +707,10 @@ items:
       description: The value of the unrecognized attribute.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when an unknown attribute is encountered while deserializing; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when an unknown attribute is encountered while deserializing; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.OnDeserializeUnrecognizedAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -740,13 +740,13 @@ items:
       description: The <xref href="System.Xml.XmlReader"></xref> being used for deserialization.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when an unknown element is encountered while deserializing; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when an unknown element is encountered while deserializing; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.OnDeserializeUnrecognizedElement*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "The element identified by <code>elementName</code> is locked.  \n  \n \\- or -  \n  \n One or more of the element's attributes is locked.  \n  \n \\- or -  \n  \n <code>elementName</code> is unrecognized, or the element has an unrecognized attribute.  \n  \n \\- or -  \n  \n The element has a Boolean attribute with an invalid value.  \n  \n \\- or -  \n  \n An attempt was made to deserialize a property more than once.  \n  \n \\- or -  \n  \n An attempt was made to deserialize a property that is not a valid member of the element.  \n  \n \\- or -  \n  \n The element cannot contain a CDATA or text element."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -779,7 +779,7 @@ items:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -802,7 +802,7 @@ items:
     parameters: []
   overload: System.Configuration.ConfigurationElement.PostDeserialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,7 +828,7 @@ items:
       description: The <xref href="System.Xml.XmlWriter"></xref> that will be used to serialize the <xref href="System.Configuration.ConfigurationElement"></xref>.
   overload: System.Configuration.ConfigurationElement.PreSerialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -856,7 +856,7 @@ items:
       description: The <xref href="System.Configuration.ConfigurationPropertyCollection"></xref> of properties for the element.
   overload: System.Configuration.ConfigurationElement.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -882,7 +882,7 @@ items:
       description: The parent node of the configuration element.
   overload: System.Configuration.ConfigurationElement.Reset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -899,14 +899,14 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: Resets the value of the <xref:System.Configuration.ConfigurationElement.IsModified*> method to <xref uid="langword_csharp_false" name="false" href=""></xref> when implemented in a derived class.
+  summary: Resets the value of the <xref:System.Configuration.ConfigurationElement.IsModified*> method to `false` when implemented in a derived class.
   remarks: The ResetModified method is automatically called after changes to this <xref:System.Configuration.ConfigurationElement> object have been written to the configuration file.
   syntax:
     content: protected virtual void ResetModified ();
     parameters: []
   overload: System.Configuration.ConfigurationElement.ResetModified*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -935,16 +935,16 @@ items:
       description: The <xref href="System.Xml.XmlWriter"></xref> that writes to the configuration file.
     - id: serializeCollectionKey
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to serialize only the collection key properties; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to serialize only the collection key properties; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if any data was actually serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if any data was actually serialized; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.SerializeElement*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: The current attribute is locked at a higher configuration level.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -974,13 +974,13 @@ items:
       description: The name of the <xref href="System.Configuration.ConfigurationElement"></xref> to be written.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if writing was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if writing was successful; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.SerializeToXmlElement*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: The element has multiple child elements.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1009,13 +1009,13 @@ items:
       description: The value to assign to the property.
     - id: ignoreLocks
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the locks on the property should be ignored; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the locks on the property should be ignored; otherwise, `false`.'
   overload: System.Configuration.ConfigurationElement.SetPropertyValue*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: Occurs if the element is read-only or <code>ignoreLocks</code> is <xref uid="langword_csharp_true" name="true" href=""></xref> but the locks cannot be ignored.
-  platform:
+    description: Occurs if the element is read-only or <code>ignoreLocks</code> is `true` but the locks cannot be ignored.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1039,7 +1039,7 @@ items:
     parameters: []
   overload: System.Configuration.ConfigurationElement.SetReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1066,13 +1066,13 @@ items:
       description: A <xref href="System.Configuration.ConfigurationElement"></xref> at the current level containing a merged view of the properties.
     - id: parentElement
       type: System.Configuration.ConfigurationElement
-      description: The parent <xref href="System.Configuration.ConfigurationElement"></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if this is the top level.
+      description: The parent <xref href="System.Configuration.ConfigurationElement"></xref>, or `null` if this is the top level.
     - id: saveMode
       type: System.Configuration.ConfigurationSaveMode
       description: A <xref href="System.Configuration.ConfigurationSaveMode"></xref> that determines which property values to include.
   overload: System.Configuration.ConfigurationElement.Unmerge*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

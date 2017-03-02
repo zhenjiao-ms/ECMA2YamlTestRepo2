@@ -143,7 +143,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
       description: To be added.
   overload: System.Array.AsReadOnly<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -208,7 +208,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
@@ -218,7 +218,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>value</code> does not implement the <xref href="System.IComparable"></xref> interface, and the search encounters an element that does not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -248,7 +248,7 @@ items:
       description: The object to search for.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
     return:
       type: System.Int32
       description: The index of the specified <code>value</code> in the specified <code>array</code>, if <code>value</code> is found; otherwise, a negative number. If <code>value</code> is not found and <code>value</code> is less than one or more elements in <code>array</code>, the negative number returned is the bitwise complement of the index of the first element that is larger than <code>value</code>. If <code>value</code> is not found and <code>value</code> is greater than all elements in <code>array</code>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <code>array</code>, the return value can be incorrect and a negative number could be returned, even if <code>value</code> is present in <code>array</code>.
@@ -256,17 +256,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, and <code>value</code> is of a type that is not compatible with the elements of <code>array</code>.
+    description: <code>comparer</code> is `null`, and <code>value</code> is of a type that is not compatible with the elements of <code>array</code>.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, <code>value</code> does not implement the <xref href="System.IComparable"></xref> interface, and the search encounters an element that does not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+    description: <code>comparer</code> is `null`, <code>value</code> does not implement the <xref href="System.IComparable"></xref> interface, and the search encounters an element that does not implement the <xref href="System.IComparable"></xref> interface.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,7 +307,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
@@ -320,7 +320,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>value</code> does not implement the <xref href="System.IComparable"></xref> interface, and the search encounters an element that does not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -356,7 +356,7 @@ items:
       description: The object to search for.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
     return:
       type: System.Int32
       description: The index of the specified <code>value</code> in the specified <code>array</code>, if <code>value</code> is found; otherwise, a negative number. If <code>value</code> is not found and <code>value</code> is less than one or more elements in <code>array</code>, the negative number returned is the bitwise complement of the index of the first element that is larger than <code>value</code>. If <code>value</code> is not found and <code>value</code> is greater than all elements in <code>array</code>, the negative number returned is the bitwise complement of (the index of the last element plus 1). If this method is called with a non-sorted <code>array</code>, the return value can be incorrect and a negative number could be returned, even if <code>value</code> is present in <code>array</code>.
@@ -364,7 +364,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
@@ -373,11 +373,11 @@ items:
     description: "<code>index</code> is less than the lower bound of <code>array</code>.  \n  \n -or-  \n  \n <code>length</code> is less than zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>index</code> and <code>length</code> do not specify a valid range in <code>array</code>.  \n  \n -or-  \n  \n <code>comparer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>value</code> is of a type that is not compatible with the elements of <code>array</code>."
+    description: "<code>index</code> and <code>length</code> do not specify a valid range in <code>array</code>.  \n  \n -or-  \n  \n <code>comparer</code> is `null`, and <code>value</code> is of a type that is not compatible with the elements of <code>array</code>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, <code>value</code> does not implement the <xref href="System.IComparable"></xref> interface, and the search encounters an element that does not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+    description: <code>comparer</code> is `null`, <code>value</code> does not implement the <xref href="System.IComparable"></xref> interface, and the search encounters an element that does not implement the <xref href="System.IComparable"></xref> interface.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,7 +408,7 @@ items:
       description: To be added.
   overload: System.Array.BinarySearch<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -442,7 +442,7 @@ items:
       description: To be added.
   overload: System.Array.BinarySearch<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -479,7 +479,7 @@ items:
       description: To be added.
   overload: System.Array.BinarySearch<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,7 +519,7 @@ items:
       description: To be added.
   overload: System.Array.BinarySearch<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -556,11 +556,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: "<code>index</code> is less than the lower bound of <code>array</code>.  \n  \n -or-  \n  \n <code>length</code> is less than zero.  \n  \n -or-  \n  \n The sum of <code>index</code> and <code>length</code> is greater than the size of <code>array</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -589,7 +589,7 @@ items:
       description: A shallow copy of the <xref href="System.Array"></xref>.
   overload: System.Array.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -630,7 +630,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>destinationArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>sourceArray</code> is `null`.  \n  \n -or-  \n  \n <code>destinationArray</code> is `null`."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>sourceArray</code> and <code>destinationArray</code> have different ranks.
@@ -646,7 +646,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>length</code> is greater than the number of elements from <code>sourceIndex</code> to the end of <code>sourceArray</code>.  \n  \n -or-  \n  \n <code>length</code> is greater than the number of elements from <code>destinationIndex</code> to the end of <code>destinationArray</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,7 +677,7 @@ items:
       description: To be added.
   overload: System.Array.ConvertAll<TInput,TOutput>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -712,7 +712,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>destinationArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>sourceArray</code> is `null`.  \n  \n -or-  \n  \n <code>destinationArray</code> is `null`."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>sourceArray</code> and <code>destinationArray</code> have different ranks.
@@ -728,7 +728,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>length</code> is greater than the number of elements in <code>sourceArray</code>.  \n  \n -or-  \n  \n <code>length</code> is greater than the number of elements in <code>destinationArray</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -763,7 +763,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>destinationArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>sourceArray</code> is `null`.  \n  \n -or-  \n  \n <code>destinationArray</code> is `null`."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>sourceArray</code> and <code>destinationArray</code> have different ranks.
@@ -779,7 +779,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>length</code> is greater than the number of elements in <code>sourceArray</code>.  \n  \n -or-  \n  \n <code>length</code> is greater than the number of elements in <code>destinationArray</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,7 +822,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>destinationArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>sourceArray</code> is `null`.  \n  \n -or-  \n  \n <code>destinationArray</code> is `null`."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>sourceArray</code> and <code>destinationArray</code> have different ranks.
@@ -838,7 +838,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>length</code> is greater than the number of elements from <code>sourceIndex</code> to the end of <code>sourceArray</code>.  \n  \n -or-  \n  \n <code>length</code> is greater than the number of elements from <code>destinationIndex</code> to the end of <code>destinationArray</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -881,7 +881,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>destinationArray</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>sourceArray</code> is `null`.  \n  \n -or-  \n  \n <code>destinationArray</code> is `null`."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>sourceArray</code> and <code>destinationArray</code> have different ranks.
@@ -897,7 +897,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>length</code> is greater than the number of elements from <code>sourceIndex</code> to the end of <code>sourceArray</code>.  \n  \n -or-  \n  \n <code>length</code> is greater than the number of elements from <code>destinationIndex</code> to the end of <code>destinationArray</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -931,7 +931,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than the lower bound of <code>array</code>.
@@ -947,7 +947,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: At least one element in the source <xref href="System.Array"></xref> cannot be cast to the type of destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -981,7 +981,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is outside the range of valid indexes for <code>array</code>.
@@ -997,7 +997,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: At least one element in the source <xref href="System.Array"></xref> cannot be cast to the type of destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1034,7 +1034,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>elementType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>elementType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>elementType</code> is not a valid <xref href="System.Type"></xref>.
@@ -1044,7 +1044,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>length</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1081,7 +1081,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>elementType</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>lengths</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>elementType</code> is `null`.  \n  \n -or-  \n  \n <code>lengths</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>elementType</code> is not a valid <xref href=\"System.Type\"></xref>.  \n  \n -or-  \n  \n The <code>lengths</code> array contains less than one element."
@@ -1091,7 +1091,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Any value in <code>lengths</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1128,7 +1128,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>elementType</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>lengths</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>elementType</code> is `null`.  \n  \n -or-  \n  \n <code>lengths</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>elementType</code> is not a valid <xref href=\"System.Type\"></xref>.  \n  \n -or-  \n  \n The <code>lengths</code> array contains less than one element."
@@ -1138,7 +1138,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Any value in <code>lengths</code> is less than zero or greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1178,7 +1178,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>elementType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>elementType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>elementType</code> is not a valid <xref href="System.Type"></xref>.
@@ -1188,7 +1188,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>length1</code> is less than zero.  \n  \n -or-  \n  \n <code>length2</code> is less than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1228,7 +1228,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>elementType</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>lengths</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>lowerBounds</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>elementType</code> is `null`.  \n  \n -or-  \n  \n <code>lengths</code> is `null`.  \n  \n -or-  \n  \n <code>lowerBounds</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>elementType</code> is not a valid <xref href=\"System.Type\"></xref>.  \n  \n -or-  \n  \n The <code>lengths</code> array contains less than one element.  \n  \n -or-  \n  \n The <code>lengths</code> and <code>lowerBounds</code> arrays do not contain the same number of elements."
@@ -1238,7 +1238,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "Any value in <code>lengths</code> is less than zero.  \n  \n -or-  \n  \n Any value in <code>lowerBounds</code> is very large, such that the sum of a dimension's lower bound and length is greater than <xref href=\"System.Int32.MaxValue\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1281,7 +1281,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>elementType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>elementType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>elementType</code> is not a valid <xref href="System.Type"></xref>.
@@ -1291,7 +1291,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>length1</code> is less than zero.  \n  \n -or-  \n  \n <code>length2</code> is less than zero.  \n  \n -or-  \n  \n <code>length3</code> is less than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1322,7 +1322,7 @@ items:
       description: To be added.
   overload: System.Array.Exists<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1353,7 +1353,7 @@ items:
       description: To be added.
   overload: System.Array.Find<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1384,7 +1384,7 @@ items:
       description: To be added.
   overload: System.Array.FindAll<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1415,7 +1415,7 @@ items:
       description: To be added.
   overload: System.Array.FindIndex<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1449,7 +1449,7 @@ items:
       description: To be added.
   overload: System.Array.FindIndex<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1486,7 +1486,7 @@ items:
       description: To be added.
   overload: System.Array.FindIndex<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1517,7 +1517,7 @@ items:
       description: To be added.
   overload: System.Array.FindLast<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1548,7 +1548,7 @@ items:
       description: To be added.
   overload: System.Array.FindLastIndex<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1582,7 +1582,7 @@ items:
       description: To be added.
   overload: System.Array.FindLastIndex<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1619,7 +1619,7 @@ items:
       description: To be added.
   overload: System.Array.FindLastIndex<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1647,7 +1647,7 @@ items:
       description: To be added.
   overload: System.Array.ForEach<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1676,7 +1676,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> for the <xref href="System.Array"></xref>.
   overload: System.Array.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1711,7 +1711,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: "<code>dimension</code> is less than zero.  \n  \n -or-  \n  \n <code>dimension</code> is equal to or greater than <xref:System.Array.Rank*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1744,7 +1744,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: "<code>dimension</code> is less than zero.  \n  \n -or-  \n  \n <code>dimension</code> is equal to or greater than <xref:System.Array.Rank*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1779,7 +1779,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: "<code>dimension</code> is less than zero.  \n  \n -or-  \n  \n <code>dimension</code> is equal to or greater than <xref:System.Array.Rank*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1814,7 +1814,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: "<code>dimension</code> is less than zero.  \n  \n -or-  \n  \n <code>dimension</code> is equal to or greater than <xref:System.Array.Rank*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1852,7 +1852,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: <code>index</code> is outside the range of valid indexes for the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1886,14 +1886,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>indices</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>indices</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The number of dimensions in the current <xref href="System.Array"></xref> is not equal to the number of elements in <code>indices</code>.
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: Any element in <code>indices</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1931,7 +1931,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is outside the range of valid indexes for the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1965,14 +1965,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>indices</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>indices</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The number of dimensions in the current <xref href="System.Array"></xref> is not equal to the number of elements in <code>indices</code>.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Any element in <code>indices</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2013,7 +2013,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: Either <code>index1</code> or <code>index2</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2054,7 +2054,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Either <code>index1</code> or <code>index2</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2098,7 +2098,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: <code>index1</code> or <code>index2</code> or <code>index3</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2142,7 +2142,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index1</code> or <code>index2</code> or <code>index3</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2179,11 +2179,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2223,14 +2223,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is outside the range of valid indexes for <code>array</code>.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2273,14 +2273,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> is outside the range of valid indexes for <code>array</code>.  \n  \n -or-  \n  \n <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> and <code>count</code> do not specify a valid section in <code>array</code>."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2311,7 +2311,7 @@ items:
       description: To be added.
   overload: System.Array.IndexOf<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2345,7 +2345,7 @@ items:
       description: To be added.
   overload: System.Array.IndexOf<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2382,7 +2382,7 @@ items:
       description: To be added.
   overload: System.Array.IndexOf<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2406,7 +2406,7 @@ items:
     parameters: []
   overload: System.Array.Initialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2429,10 +2429,10 @@ items:
     content: public bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: This property is always <xref uid="langword_csharp_true" name="true" href=""></xref> for all arrays.
+      description: This property is always `true` for all arrays.
   overload: System.Array.IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2455,10 +2455,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: This property is always <xref uid="langword_csharp_false" name="false" href=""></xref> for all arrays.
+      description: This property is always `false` for all arrays.
   overload: System.Array.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2483,10 +2483,10 @@ items:
     content: public bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: This property is always <xref uid="langword_csharp_false" name="false" href=""></xref> for all arrays.
+      description: This property is always `false` for all arrays.
   overload: System.Array.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2523,11 +2523,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2567,14 +2567,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is outside the range of valid indexes for <code>array</code>.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2617,14 +2617,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> is outside the range of valid indexes for <code>array</code>.  \n  \n -or-  \n  \n <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> and <code>count</code> do not specify a valid section in <code>array</code>."
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2655,7 +2655,7 @@ items:
       description: To be added.
   overload: System.Array.LastIndexOf<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2689,7 +2689,7 @@ items:
       description: To be added.
   overload: System.Array.LastIndexOf<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2726,7 +2726,7 @@ items:
       description: To be added.
   overload: System.Array.LastIndexOf<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2757,7 +2757,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The array is multidimensional and contains more than <xref href="System.Int32.MaxValue"></xref> elements.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2783,7 +2783,7 @@ items:
       description: A 64-bit integer that represents the total number of elements in all the dimensions of the <xref href="System.Array"></xref>.
   overload: System.Array.LongLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2811,7 +2811,7 @@ items:
       description: The rank (number of dimensions) of the <xref href="System.Array"></xref>.
   overload: System.Array.Rank*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2839,7 +2839,7 @@ items:
       description: To be added.
   overload: System.Array.Resize<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2870,11 +2870,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2911,7 +2911,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
@@ -2921,7 +2921,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>index</code> and <code>length</code> do not specify a valid range in <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2962,7 +2962,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: <code>index</code> is outside the range of valid indexes for the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2996,7 +2996,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>indices</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>indices</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The number of dimensions in the current <xref href="System.Array"></xref> is not equal to the number of elements in <code>indices</code>.
@@ -3006,7 +3006,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: Any element in <code>indices</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3047,7 +3047,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is outside the range of valid indexes for the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3081,7 +3081,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>indices</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>indices</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The number of dimensions in the current <xref href="System.Array"></xref> is not equal to the number of elements in <code>indices</code>.
@@ -3091,7 +3091,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Any element in <code>indices</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3135,7 +3135,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: Either <code>index1</code> or <code>index2</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3179,7 +3179,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Either <code>index1</code> or <code>index2</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3226,7 +3226,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: <code>index1</code> or <code>index2</code> or <code>index3</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3273,7 +3273,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index1</code> or <code>index2</code> or <code>index3</code> is outside the range of valid indexes for the corresponding dimension of the current <xref href="System.Array"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3304,14 +3304,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: One or more elements in <code>array</code> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3340,22 +3340,22 @@ items:
       description: The one-dimensional <xref href="System.Array"></xref> that contains the keys to sort.
     - id: items
       type: System.Array
-      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to sort only the `keys`<xref href=\"System.Array\"></xref>."
+      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n `null` to sort only the `keys`<xref href=\"System.Array\"></xref>."
   overload: System.Array.Sort*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keys</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>keys</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: "The <code>keys</code><xref href=\"System.Array\"></xref> is multidimensional.  \n  \n -or-  \n  \n The <code>items</code><xref href=\"System.Array\"></xref> is multidimensional."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>items</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>, and the length of <code>keys</code> is greater than the length of <code>items</code>.
+    description: <code>items</code> is not `null`, and the length of <code>keys</code> is greater than the length of <code>items</code>.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: One or more elements in the <code>keys</code><xref href="System.Array"></xref> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3384,22 +3384,22 @@ items:
       description: The one-dimensional array to sort.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
   overload: System.Array.Sort*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, and one or more elements in <code>array</code> do not implement the <xref href="System.IComparable"></xref> interface.
+    description: <code>comparer</code> is `null`, and one or more elements in <code>array</code> do not implement the <xref href="System.IComparable"></xref> interface.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The implementation of <code>comparer</code> caused an error during the sort. For example, <code>comparer</code> might not return 0 when comparing an item with itself.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3428,25 +3428,25 @@ items:
       description: The one-dimensional <xref href="System.Array"></xref> that contains the keys to sort.
     - id: items
       type: System.Array
-      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to sort only the `keys`<xref href=\"System.Array\"></xref>."
+      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n `null` to sort only the `keys`<xref href=\"System.Array\"></xref>."
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
   overload: System.Array.Sort*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keys</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>keys</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: "The <code>keys</code><xref href=\"System.Array\"></xref> is multidimensional.  \n  \n -or-  \n  \n The <code>items</code><xref href=\"System.Array\"></xref> is multidimensional."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>items</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and the length of <code>keys</code> is greater than the length of <code>items</code>.  \n  \n -or-  \n  \n The implementation of <code>comparer</code> caused an error during the sort. For example, <code>comparer</code> might not return 0 when comparing an item with itself."
+    description: "<code>items</code> is not `null`, and the length of <code>keys</code> is greater than the length of <code>items</code>.  \n  \n -or-  \n  \n The implementation of <code>comparer</code> caused an error during the sort. For example, <code>comparer</code> might not return 0 when comparing an item with itself."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, and one or more elements in the <code>keys</code><xref href="System.Array"></xref> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+    description: <code>comparer</code> is `null`, and one or more elements in the <code>keys</code><xref href="System.Array"></xref> do not implement the <xref href="System.IComparable"></xref> interface.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3483,7 +3483,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
@@ -3496,7 +3496,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: One or more elements in <code>array</code> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3525,7 +3525,7 @@ items:
       description: The one-dimensional <xref href="System.Array"></xref> that contains the keys to sort.
     - id: items
       type: System.Array
-      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to sort only the `keys`<xref href=\"System.Array\"></xref>."
+      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n `null` to sort only the `keys`<xref href=\"System.Array\"></xref>."
     - id: index
       type: System.Int32
       description: The starting index of the range to sort.
@@ -3536,7 +3536,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keys</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>keys</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: "The <code>keys</code><xref href=\"System.Array\"></xref> is multidimensional.  \n  \n -or-  \n  \n The <code>items</code><xref href=\"System.Array\"></xref> is multidimensional."
@@ -3545,11 +3545,11 @@ items:
     description: "<code>index</code> is less than the lower bound of <code>keys</code>.  \n  \n -or-  \n  \n <code>length</code> is less than zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>items</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and the length of <code>keys</code> is greater than the length of <code>items</code>.  \n  \n -or-  \n  \n <code>index</code> and <code>length</code> do not specify a valid range in the <code>keys</code><xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <code>items</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>index</code> and <code>length</code> do not specify a valid range in the <code>items</code><xref href=\"System.Array\"></xref>."
+    description: "<code>items</code> is not `null`, and the length of <code>keys</code> is greater than the length of <code>items</code>.  \n  \n -or-  \n  \n <code>index</code> and <code>length</code> do not specify a valid range in the <code>keys</code><xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <code>items</code> is not `null`, and <code>index</code> and <code>length</code> do not specify a valid range in the <code>items</code><xref href=\"System.Array\"></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: One or more elements in the <code>keys</code><xref href="System.Array"></xref> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3584,12 +3584,12 @@ items:
       description: The number of elements in the range to sort.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
   overload: System.Array.Sort*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: <code>array</code> is multidimensional.
@@ -3601,8 +3601,8 @@ items:
     description: "<code>index</code> and <code>length</code> do not specify a valid range in <code>array</code>.  \n  \n -or-  \n  \n The implementation of <code>comparer</code> caused an error during the sort. For example, <code>comparer</code> might not return 0 when comparing an item with itself."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, and one or more elements in <code>array</code> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+    description: <code>comparer</code> is `null`, and one or more elements in <code>array</code> do not implement the <xref href="System.IComparable"></xref> interface.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3631,7 +3631,7 @@ items:
       description: The one-dimensional <xref href="System.Array"></xref> that contains the keys to sort.
     - id: items
       type: System.Array
-      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to sort only the `keys`<xref href=\"System.Array\"></xref>."
+      description: "The one-dimensional <xref href=\"System.Array\"></xref> that contains the items that correspond to each of the keys in the `keys`<xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n `null` to sort only the `keys`<xref href=\"System.Array\"></xref>."
     - id: index
       type: System.Int32
       description: The starting index of the range to sort.
@@ -3640,12 +3640,12 @@ items:
       description: The number of elements in the range to sort.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
   overload: System.Array.Sort*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keys</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>keys</code> is `null`.
   - type: System.RankException
     commentId: T:System.RankException
     description: "The <code>keys</code><xref href=\"System.Array\"></xref> is multidimensional.  \n  \n -or-  \n  \n The <code>items</code><xref href=\"System.Array\"></xref> is multidimensional."
@@ -3654,11 +3654,11 @@ items:
     description: "<code>index</code> is less than the lower bound of <code>keys</code>.  \n  \n -or-  \n  \n <code>length</code> is less than zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>items</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and the lower bound of <code>keys</code> does not match the lower bound of <code>items</code>.  \n  \n -or-  \n  \n <code>items</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and the length of <code>keys</code> is greater than the length of <code>items</code>.  \n  \n -or-  \n  \n <code>index</code> and <code>length</code> do not specify a valid range in the <code>keys</code><xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <code>items</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>index</code> and <code>length</code> do not specify a valid range in the <code>items</code><xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n The implementation of <code>comparer</code> caused an error during the sort. For example, <code>comparer</code> might not return 0 when comparing an item with itself."
+    description: "<code>items</code> is not `null`, and the lower bound of <code>keys</code> does not match the lower bound of <code>items</code>.  \n  \n -or-  \n  \n <code>items</code> is not `null`, and the length of <code>keys</code> is greater than the length of <code>items</code>.  \n  \n -or-  \n  \n <code>index</code> and <code>length</code> do not specify a valid range in the <code>keys</code><xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n <code>items</code> is not `null`, and <code>index</code> and <code>length</code> do not specify a valid range in the <code>items</code><xref href=\"System.Array\"></xref>.  \n  \n -or-  \n  \n The implementation of <code>comparer</code> caused an error during the sort. For example, <code>comparer</code> might not return 0 when comparing an item with itself."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, and one or more elements in the <code>keys</code><xref href="System.Array"></xref> do not implement the <xref href="System.IComparable"></xref> interface.
-  platform:
+    description: <code>comparer</code> is `null`, and one or more elements in the <code>keys</code><xref href="System.Array"></xref> do not implement the <xref href="System.IComparable"></xref> interface.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3683,7 +3683,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3711,7 +3711,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3739,7 +3739,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3770,7 +3770,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3804,7 +3804,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3832,7 +3832,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<TKey,TValue>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3863,7 +3863,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<TKey,TValue>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3897,7 +3897,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<TKey,TValue>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3934,7 +3934,7 @@ items:
       description: To be added.
   overload: System.Array.Sort<TKey,TValue>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3962,7 +3962,7 @@ items:
       description: An object that can be used to synchronize access to the <xref href="System.Array"></xref>.
   overload: System.Array.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3989,7 +3989,7 @@ items:
       description: The number of elements contained in the collection.
   overload: System.Array.System#Collections#ICollection#Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4023,7 +4023,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.IList"></xref> has a fixed size.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4051,7 +4051,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.IList"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4076,13 +4076,13 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The object to locate in the current list. The element to locate can be <xref uid="langword_csharp_null" name="null" href=""></xref> for reference types.
+      description: The object to locate in the current list. The element to locate can be `null` for reference types.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> is found in the <xref href="System.Collections.IList"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> is found in the <xref href="System.Collections.IList"></xref>; otherwise, `false`.'
   overload: System.Array.System#Collections#IList#Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4113,7 +4113,7 @@ items:
       description: The index of value if found in the list; otherwise, -1.
   overload: System.Array.System#Collections#IList#IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4153,7 +4153,7 @@ items:
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
     description: <code>value</code> is null reference in the <xref href="System.Collections.IList"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4190,7 +4190,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current <xref href="System.Array"></xref> does not have exactly one dimension.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4221,7 +4221,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.IList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.IList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4255,7 +4255,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.IList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.IList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4289,7 +4289,7 @@ items:
       description: "An integer that indicates the relationship of the current collection object to other, as shown in the following table.  \n  \n|Return value|Description|  \n|------------------|-----------------|  \n|-1|The current instance precedes <code>other</code>.|  \n|0|The current instance and <code>other</code> are equal.|  \n|1|The current instance follows <code>other</code>.|"
   overload: System.Array.System#Collections#IStructuralComparable#CompareTo*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Array.System#Collections#IStructuralEquatable#Equals(System.Object,System.Collections.IEqualityComparer)
   id: System#Collections#IStructuralEquatable#Equals(System.Object,System.Collections.IEqualityComparer)
@@ -4317,10 +4317,10 @@ items:
       description: An object that determines whether the current instance and `other` are equal.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the two objects are equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the two objects are equal; otherwise, `false`.'
   overload: System.Array.System#Collections#IStructuralEquatable#Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Array.System#Collections#IStructuralEquatable#GetHashCode(System.Collections.IEqualityComparer)
   id: System#Collections#IStructuralEquatable#GetHashCode(System.Collections.IEqualityComparer)
@@ -4348,7 +4348,7 @@ items:
       description: The hash code for the current instance.
   overload: System.Array.System#Collections#IStructuralEquatable#GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Array.TrueForAll``1(``0[],System.Predicate`1)
   id: TrueForAll``1(``0[],System.Predicate`1)
@@ -4376,7 +4376,7 @@ items:
       description: To be added.
   overload: System.Array.TrueForAll<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4465,8 +4465,8 @@ references:
   fullName: System.Collections.ObjectModel.ReadOnlyCollection<T>
 - uid: T[]
   isExternal: true
-  name: T
-  nameWithType: T
+  name: T[]
+  nameWithType: T[]
   fullName: T[]
   spec.csharp:
   - uid: T
@@ -4579,8 +4579,8 @@ references:
   fullName: System.Array.ConvertAll(TInput[],Converter<TInput,TOutput>)
 - uid: TOutput[]
   isExternal: true
-  name: TOutput
-  nameWithType: TOutput
+  name: TOutput[]
+  nameWithType: TOutput[]
   fullName: TOutput[]
   spec.csharp:
   - uid: TOutput
@@ -4592,8 +4592,8 @@ references:
     fullName: '[]'
 - uid: TInput[]
   isExternal: true
-  name: TInput
-  nameWithType: TInput
+  name: TInput[]
+  nameWithType: TInput[]
   fullName: TInput[]
   spec.csharp:
   - uid: TInput
@@ -4672,8 +4672,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32
@@ -4692,8 +4692,8 @@ references:
 - uid: System.Int64[]
   parent: System
   isExternal: false
-  name: Int64
-  nameWithType: Int64
+  name: Int64[]
+  nameWithType: Int64[]
   fullName: System.Int64[]
   spec.csharp:
   - uid: System.Int64
@@ -5161,8 +5161,8 @@ references:
   fullName: System.Array.Sort(TKey[],TValue[])
 - uid: TKey[]
   isExternal: true
-  name: TKey
-  nameWithType: TKey
+  name: TKey[]
+  nameWithType: TKey[]
   fullName: TKey[]
   spec.csharp:
   - uid: TKey
@@ -5174,8 +5174,8 @@ references:
     fullName: '[]'
 - uid: TValue[]
   isExternal: true
-  name: TValue
-  nameWithType: TValue
+  name: TValue[]
+  nameWithType: TValue[]
   fullName: TValue[]
   spec.csharp:
   - uid: TValue

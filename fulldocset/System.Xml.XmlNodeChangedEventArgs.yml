@@ -33,7 +33,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -74,7 +74,7 @@ items:
       description: The <xref href="System.Xml.XmlNodeChangedAction"></xref>.
   overload: System.Xml.XmlNodeChangedEventArgs.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,10 +96,10 @@ items:
     content: public System.Xml.XmlNodeChangedAction Action { get; }
     return:
       type: System.Xml.XmlNodeChangedAction
-      description: "An <xref uid=\"langword_csharp_XmlNodeChangedAction\" name=\"XmlNodeChangedAction\" href=\"\"></xref> value describing the node change event.  \n  \n <table><thead><tr><th> XmlNodeChangedAction Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> Insert  \n  \n </td><td> A node has been or will be inserted.  \n  \n </td></tr><tr><td> Remove  \n  \n </td><td> A node has been or will be removed.  \n  \n </td></tr><tr><td> Change  \n  \n </td><td> A node has been or will be changed.  \n  \n </td></tr></tbody></table><div class=\"alert NOTE\">  \n The <xref uid=\"langword_csharp_Action\" name=\"Action\" href=\"\"></xref> value does not differentiate between when the event occurred (before or after). You can create separate event handlers to handle both instances.  \n  \n</div>"
+      description: "An `XmlNodeChangedAction` value describing the node change event.  \n  \n <table><thead><tr><th> XmlNodeChangedAction Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> Insert  \n  \n </td><td> A node has been or will be inserted.  \n  \n </td></tr><tr><td> Remove  \n  \n </td><td> A node has been or will be removed.  \n  \n </td></tr><tr><td> Change  \n  \n </td><td> A node has been or will be changed.  \n  \n </td></tr></tbody></table><div class=\"alert NOTE\">  \n The `Action` value does not differentiate between when the event occurred (before or after). You can create separate event handlers to handle both instances.  \n  \n</div>"
   overload: System.Xml.XmlNodeChangedEventArgs.Action*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,10 +121,10 @@ items:
     content: public System.Xml.XmlNode NewParent { get; }
     return:
       type: System.Xml.XmlNode
-      description: "The value of the <xref uid=\"langword_csharp_ParentNode\" name=\"ParentNode\" href=\"\"></xref> after the operation completes. This property returns <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> if the node is being removed.  \n  \n <div class=\"alert NOTE\">  \n For attribute nodes this property returns the <xref:System.Xml.XmlAttribute.OwnerElement*>.  \n  \n</div>"
+      description: "The value of the `ParentNode` after the operation completes. This property returns `null` if the node is being removed.  \n  \n <div class=\"alert NOTE\">  \n For attribute nodes this property returns the <xref:System.Xml.XmlAttribute.OwnerElement*>.  \n  \n</div>"
   overload: System.Xml.XmlNodeChangedEventArgs.NewParent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -146,10 +146,10 @@ items:
     content: public string NewValue { get; }
     return:
       type: System.String
-      description: "The new value of the node. This property returns <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> if the node is neither an attribute nor a text node, or if the node is being removed.  \n  \n If called in a <xref href=\"System.Xml.XmlDocument.NodeChanging\"></xref> event, <xref uid=\"langword_csharp_NewValue\" name=\"NewValue\" href=\"\"></xref> returns the value of the node if the change is successful. If called in a <xref href=\"System.Xml.XmlDocument.NodeChanged\"></xref> event, <xref uid=\"langword_csharp_NewValue\" name=\"NewValue\" href=\"\"></xref> returns the current value of the node."
+      description: "The new value of the node. This property returns `null` if the node is neither an attribute nor a text node, or if the node is being removed.  \n  \n If called in a <xref href=\"System.Xml.XmlDocument.NodeChanging\"></xref> event, `NewValue` returns the value of the node if the change is successful. If called in a <xref href=\"System.Xml.XmlDocument.NodeChanged\"></xref> event, `NewValue` returns the current value of the node."
   overload: System.Xml.XmlNodeChangedEventArgs.NewValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,10 +171,10 @@ items:
     content: public System.Xml.XmlNode Node { get; }
     return:
       type: System.Xml.XmlNode
-      description: The <xref uid="langword_csharp_XmlNode" name="XmlNode" href=""></xref> that is being added, removed or changed; this property never returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The `XmlNode` that is being added, removed or changed; this property never returns `null`.
   overload: System.Xml.XmlNodeChangedEventArgs.Node*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -196,10 +196,10 @@ items:
     content: public System.Xml.XmlNode OldParent { get; }
     return:
       type: System.Xml.XmlNode
-      description: "The value of the <xref uid=\"langword_csharp_ParentNode\" name=\"ParentNode\" href=\"\"></xref> before the operation began. This property returns <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> if the node did not have a parent.  \n  \n <div class=\"alert NOTE\">  \n For attribute nodes this property returns the <xref:System.Xml.XmlAttribute.OwnerElement*>.  \n  \n</div>"
+      description: "The value of the `ParentNode` before the operation began. This property returns `null` if the node did not have a parent.  \n  \n <div class=\"alert NOTE\">  \n For attribute nodes this property returns the <xref:System.Xml.XmlAttribute.OwnerElement*>.  \n  \n</div>"
   overload: System.Xml.XmlNodeChangedEventArgs.OldParent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -221,10 +221,10 @@ items:
     content: public string OldValue { get; }
     return:
       type: System.String
-      description: "The original value of the node. This property returns <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> if the node is neither an attribute nor a text node, or if the node is being inserted.  \n  \n If called in a <xref href=\"System.Xml.XmlDocument.NodeChanging\"></xref> event, <xref uid=\"langword_csharp_OldValue\" name=\"OldValue\" href=\"\"></xref> returns the current value of the node that will be replaced if the change is successful. If called in a <xref href=\"System.Xml.XmlDocument.NodeChanged\"></xref> event, <xref uid=\"langword_csharp_OldValue\" name=\"OldValue\" href=\"\"></xref> returns the value of node prior to the change."
+      description: "The original value of the node. This property returns `null` if the node is neither an attribute nor a text node, or if the node is being inserted.  \n  \n If called in a <xref href=\"System.Xml.XmlDocument.NodeChanging\"></xref> event, `OldValue` returns the current value of the node that will be replaced if the change is successful. If called in a <xref href=\"System.Xml.XmlDocument.NodeChanged\"></xref> event, `OldValue` returns the value of node prior to the change."
   overload: System.Xml.XmlNodeChangedEventArgs.OldValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

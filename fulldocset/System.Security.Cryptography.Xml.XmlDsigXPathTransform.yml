@@ -41,7 +41,7 @@ items:
   - System.Security.Cryptography.Xml.Transform.GetXml
   - System.Security.Cryptography.Xml.Transform.PropagatedNamespaces
   - System.Security.Cryptography.Xml.Transform.Resolver
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -84,16 +84,16 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Returns an XML representation of the parameters of a <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: Returns an XML representation of the parameters of a <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG `&lt;Transform&gt;` element.
   syntax:
     content: protected override System.Xml.XmlNodeList GetInnerXml ();
     parameters: []
     return:
       type: System.Xml.XmlNodeList
-      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object in an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object in an XMLDSIG `&lt;Transform&gt;` element.
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.GetInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,7 +122,7 @@ items:
       description: The output of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.GetOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -157,7 +157,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>type</code> parameter is not an <xref href="System.Xml.XmlNodeList"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,7 +185,7 @@ items:
       description: An array of valid input types for the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object; you can pass only objects of one of these types to the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform.LoadInput*> method of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.InputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,7 +202,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object to match the <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `&lt;Transform&gt;` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object to match the `&lt;Transform&gt;` element.
   remarks: "Use the LoadInnerXml method to initialize the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class with an XPath transform.  \n  \n To initialize the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class with an XPath transform, complete the following steps.  \n  \n1.  Create a new <xref:System.Xml.XmlElement> class and set the <xref:System.Xml.XmlElement.InnerText%2A> property to the value of an XPath transform string.  \n  \n2.  Call the <xref:System.Xml.XmlNode.SelectNodes%2A> method to create an <xref:System.Xml.XmlNodeList> object that represents the transform.  \n  \n3.  Create a new instance of the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class and pass the previously created <xref:System.Xml.XmlNodeList> object to the LoadInnerXml method."
   example:
   - "The following code example shows how to sign and verify an XML document using the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform> class.  This sample creates an envelope signature.  \n  \n [!code-cpp[Cryptography.Xml.XmlDsigXPathTransform#1](~/add/codesnippet/cpp/e002fc43-4db1-44f5-9eb6-_1.cpp)]\n [!code-vb[Cryptography.Xml.XmlDsigXPathTransform#1](~/add/codesnippet/visualbasic/e002fc43-4db1-44f5-9eb6-_1.vb)]\n [!code-cs[Cryptography.Xml.XmlDsigXPathTransform#1](~/add/codesnippet/csharp/e002fc43-4db1-44f5-9eb6-_1.cs)]"
@@ -216,8 +216,8 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The <code>nodeList</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>nodeList</code> parameter does not contain an <xref href=\"System.Security.Cryptography.Xml.XmlDsigXPathTransform\"></xref> element."
-  platform:
+    description: "The <code>nodeList</code> parameter is `null`.  \n  \n -or-  \n  \n The <code>nodeList</code> parameter does not contain an <xref href=\"System.Security.Cryptography.Xml.XmlDsigXPathTransform\"></xref> element."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -246,7 +246,7 @@ items:
       description: The input to load into the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.LoadInput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -274,7 +274,7 @@ items:
       description: An array of valid output types for the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object; the <xref:System.Security.Cryptography.Xml.XmlDsigXPathTransform.GetOutput*> methods of the current <xref href="System.Security.Cryptography.Xml.XmlDsigXPathTransform"></xref> object return only objects of one of these types.
   overload: System.Security.Cryptography.Xml.XmlDsigXPathTransform.OutputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,8 +346,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

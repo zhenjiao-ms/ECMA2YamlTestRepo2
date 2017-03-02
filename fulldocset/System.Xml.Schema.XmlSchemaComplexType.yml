@@ -22,7 +22,7 @@ items:
   nameWithType: XmlSchemaComplexType
   fullName: System.Xml.Schema.XmlSchemaComplexType
   type: Class
-  summary: Represents the <xref uid="langword_csharp_complexType" name="complexType" href=""></xref> element from XML Schema as specified by the World Wide Web Consortium (W3C). This class defines a complex type that determines the set of attributes and content of an element.
+  summary: Represents the `complexType` element from XML Schema as specified by the World Wide Web Consortium (W3C). This class defines a complex type that determines the set of attributes and content of an element.
   remarks: An element can be declared with a type attribute that refers to a `complexType` element that defines the structure, content, and attributes of that element.
   example:
   - "The following example creates a `complexType` element.  \n  \n [!code-cpp[Classic WebData XmlSchemaComplexType Example#1](~/add/codesnippet/cpp/t-system.xml.schema.xmls_27_1.cpp)]\n [!code-vb[Classic WebData XmlSchemaComplexType Example#1](~/add/codesnippet/visualbasic/t-system.xml.schema.xmls_27_1.vb)]\n [!code-cs[Classic WebData XmlSchemaComplexType Example#1](~/add/codesnippet/csharp/t-system.xml.schema.xmls_27_1.cs)]  \n  \n The following XML file is used for the preceding code example.  \n  \n [!code-xml[Classic WebData XmlSchemaComplexType Example#2](~/add/codesnippet/xml/t-system.xml.schema.xmls_27_2.xsd)]"
@@ -64,7 +64,7 @@ items:
   - System.Xml.Schema.XmlSchemaType.Name
   - System.Xml.Schema.XmlSchemaType.QualifiedName
   - System.Xml.Schema.XmlSchemaType.TypeCode
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,7 +87,7 @@ items:
     parameters: []
   overload: System.Xml.Schema.XmlSchemaComplexType.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -113,7 +113,7 @@ items:
       description: The <xref href="System.Xml.Schema.XmlSchemaAnyAttribute"></xref> component of the complex type.
   overload: System.Xml.Schema.XmlSchemaComplexType.AnyAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -138,7 +138,7 @@ items:
       description: Contains <xref href="System.Xml.Schema.XmlSchemaAttribute"></xref> and <xref href="System.Xml.Schema.XmlSchemaAttributeGroupRef"></xref> classes.
   overload: System.Xml.Schema.XmlSchemaComplexType.Attributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -161,10 +161,10 @@ items:
     content: public System.Xml.Schema.XmlSchemaObjectTable AttributeUses { get; }
     return:
       type: System.Xml.Schema.XmlSchemaObjectTable
-      description: The collection of all the attributes from this complex type and its base types. The post-compilation value of the <xref uid="langword_csharp_AttributeUses" name="AttributeUses" href=""></xref> property.
+      description: The collection of all the attributes from this complex type and its base types. The post-compilation value of the `AttributeUses` property.
   overload: System.Xml.Schema.XmlSchemaComplexType.AttributeUses*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,16 +181,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: Gets the post-compilation value for <xref uid="langword_csharp_anyAttribute" name="anyAttribute" href=""></xref> for this complex type and its base type(s).
+  summary: Gets the post-compilation value for `anyAttribute` for this complex type and its base type(s).
   remarks: The value of this property is read-only. This property has values after the schema has been successfully compiled to determine the complete attribute set of the complex type. For example, it might be the `anyAttribute` element from one of the base types.
   syntax:
     content: public System.Xml.Schema.XmlSchemaAnyAttribute AttributeWildcard { get; }
     return:
       type: System.Xml.Schema.XmlSchemaAnyAttribute
-      description: The post-compilation value of the <xref uid="langword_csharp_anyAttribute" name="anyAttribute" href=""></xref> element.
+      description: The post-compilation value of the `anyAttribute` element.
   overload: System.Xml.Schema.XmlSchemaComplexType.AttributeWildcard*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,16 +207,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: Gets or sets the <xref uid="langword_csharp_block" name="block" href=""></xref> attribute.
+  summary: Gets or sets the `block` attribute.
   remarks: "Indicates the type of derivation.  \n  \n This attribute can contain the following values:  \n  \n|Enum|Description|  \n|----------|-----------------|  \n|`None`|Use the derivation restriction defined by the `BlockDefault` property of the schema, if it exists.|  \n|`Extension`|This element cannot be replaced by a type derived by Extension.|  \n|`Restriction`|This element cannot be replaced by a type derived by Restriction.|  \n|`All`|`#all`. This element cannot be replaced by any type regardless of derivation method.|  \n  \n The `Substitution`, `List`, and `Union` derivation methods are not supported by this property."
   syntax:
     content: public System.Xml.Schema.XmlSchemaDerivationMethod Block { get; set; }
     return:
       type: System.Xml.Schema.XmlSchemaDerivationMethod
-      description: "The <xref uid=\"langword_csharp_block\" name=\"block\" href=\"\"></xref> attribute prevents a complex type from being used in the specified type of derivation. The default is <xref uid=\"langword_csharp_XmlSchemaDerivationMethod.None\" name=\"XmlSchemaDerivationMethod.None\" href=\"\"></xref>.  \n  \n Optional."
+      description: "The `block` attribute prevents a complex type from being used in the specified type of derivation. The default is `XmlSchemaDerivationMethod.None`.  \n  \n Optional."
   overload: System.Xml.Schema.XmlSchemaComplexType.Block*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,16 +233,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: Gets the value after the type has been compiled to the post-schema-validation information set (infoset). This value indicates how the type is enforced when <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref> is used in the instance document.
+  summary: Gets the value after the type has been compiled to the post-schema-validation information set (infoset). This value indicates how the type is enforced when `xsi:type` is used in the instance document.
   remarks: "This value is taken either from the type itself or, if not defined at the type level, it is taken from the `schema` element. For example, if the value is restricted, only the specifically defined type can be used, not types derived from the specifically defined type.  \n  \n This attribute can contain the following values:  \n  \n|Enum|Description|  \n|----------|-----------------|  \n|`None`|Use the derivation restriction defined by the `BlockDefault` property of the schema, if it exists.|  \n|`Extension`|This element cannot be replaced by a type derived by Extension.|  \n|`Restriction`|This element cannot be replaced by a type derived by Restriction.|  \n|`All`|`#all`. This element cannot be replaced by any type regardless of derivation method.|  \n  \n The `Substitution`, `List`, and `Union` derivation methods are not supported by this property."
   syntax:
     content: public System.Xml.Schema.XmlSchemaDerivationMethod BlockResolved { get; }
     return:
       type: System.Xml.Schema.XmlSchemaDerivationMethod
-      description: The post-schema-validated infoset value. The default is <xref uid="langword_csharp_BlockDefault" name="BlockDefault" href=""></xref> value on the <xref uid="langword_csharp_schema" name="schema" href=""></xref> element.
+      description: The post-schema-validated infoset value. The default is `BlockDefault` value on the `schema` element.
   overload: System.Xml.Schema.XmlSchemaComplexType.BlockResolved*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,7 +268,7 @@ items:
       description: The content model type that is one of the <xref href="System.Xml.Schema.XmlSchemaSimpleContent"></xref> or <xref href="System.Xml.Schema.XmlSchemaComplexContent"></xref> classes.
   overload: System.Xml.Schema.XmlSchemaComplexType.ContentModel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,7 +294,7 @@ items:
       description: The post-compilation value of the content model for the complex type.
   overload: System.Xml.Schema.XmlSchemaComplexType.ContentType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -320,7 +320,7 @@ items:
       description: The particle for the content type. The post-compilation value of the <xref:System.Xml.Schema.XmlSchemaComplexType.ContentType*> particle.
   overload: System.Xml.Schema.XmlSchemaComplexType.ContentTypeParticle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -337,15 +337,15 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: Gets or sets the information that determines if the <xref uid="langword_csharp_complexType" name="complexType" href=""></xref> element can be used in the instance document.
+  summary: Gets or sets the information that determines if the `complexType` element can be used in the instance document.
   syntax:
     content: public bool IsAbstract { get; set; }
     return:
       type: System.Boolean
-      description: "If <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, an element cannot use this <xref uid=\"langword_csharp_complexType\" name=\"complexType\" href=\"\"></xref> element directly and must use a complex type that is derived from this <xref uid=\"langword_csharp_complexType\" name=\"complexType\" href=\"\"></xref> element. The default is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n Optional."
+      description: "If `true`, an element cannot use this `complexType` element directly and must use a complex type that is derived from this `complexType` element. The default is `false`.  \n  \n Optional."
   overload: System.Xml.Schema.XmlSchemaComplexType.IsAbstract*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -368,10 +368,10 @@ items:
     content: public override bool IsMixed { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, if character data can appear between child elements of this complex type; otherwise, <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>. The default is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n Optional."
+      description: "`true`, if character data can appear between child elements of this complex type; otherwise, `false`. The default is `false`.  \n  \n Optional."
   overload: System.Xml.Schema.XmlSchemaComplexType.IsMixed*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,7 +397,7 @@ items:
       description: The compositor type.
   overload: System.Xml.Schema.XmlSchemaComplexType.Particle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

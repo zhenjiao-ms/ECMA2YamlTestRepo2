@@ -52,7 +52,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.#ctor
   id: '#ctor'
@@ -72,7 +72,7 @@ items:
     parameters: []
   overload: System.Runtime.Caching.ObjectCache.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
   id: Add(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
@@ -99,10 +99,10 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if insertion succeeded, or <xref uid="langword_csharp_false" name="false" href=""></xref> if there is an already an entry in the cache that has the same key as <code>item</code>.
+      description: '`true` if insertion succeeded, or `false` if there is an already an entry in the cache that has the same key as <code>item</code>.'
   overload: System.Runtime.Caching.ObjectCache.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Add(System.String,System.Object,System.DateTimeOffset,System.String)
   id: Add(System.String,System.Object,System.DateTimeOffset,System.String)
@@ -132,13 +132,13 @@ items:
       description: The fixed date and time at which the cache entry will expire. This parameter is required when the <xref:System.Runtime.Caching.ObjectCache.Add*> method is called.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default value is `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if insertion succeeded, or <xref uid="langword_csharp_false" name="false" href=""></xref> if there is an already an entry in the cache that has the same key as <code>key</code>.
+      description: '`true` if insertion succeeded, or `false` if there is an already an entry in the cache that has the same key as <code>key</code>.'
   overload: System.Runtime.Caching.ObjectCache.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Add(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
   id: Add(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
@@ -168,13 +168,13 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the insertion try succeeds, or <xref uid="langword_csharp_false" name="false" href=""></xref> if there is an already an entry in the cache with the same key as <code>key</code>.
+      description: '`true` if the insertion try succeeds, or `false` if there is an already an entry in the cache with the same key as <code>key</code>.'
   overload: System.Runtime.Caching.ObjectCache.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
   id: AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
@@ -200,10 +200,10 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     return:
       type: System.Runtime.Caching.CacheItem
-      description: If a cache entry with the same key exists, the specified cache entry; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If a cache entry with the same key exists, the specified cache entry; otherwise, `null`.
   overload: System.Runtime.Caching.ObjectCache.AddOrGetExisting*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)
   id: AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)
@@ -233,13 +233,13 @@ items:
       description: The fixed date and time at which the cache entry will expire.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Object
-      description: If a cache entry with the same key exists, the specified cache entry's value; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If a cache entry with the same key exists, the specified cache entry's value; otherwise, `null`.
   overload: System.Runtime.Caching.ObjectCache.AddOrGetExisting*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
   id: AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
@@ -269,13 +269,13 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Object
-      description: If a cache entry with the same key exists, the specified cache entry's value; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If a cache entry with the same key exists, the specified cache entry's value; otherwise, `null`.
   overload: System.Runtime.Caching.ObjectCache.AddOrGetExisting*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Contains(System.String,System.String)
   id: Contains(System.String,System.String)
@@ -298,13 +298,13 @@ items:
       description: A unique identifier for the cache entry.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache where the cache can be found, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache where the cache can be found, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the cache contains a cache entry with the same key value as <code>key</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the cache contains a cache entry with the same key value as <code>key</code>; otherwise, `false`.'
   overload: System.Runtime.Caching.ObjectCache.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)
   id: CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)
@@ -328,13 +328,13 @@ items:
       description: The unique identifiers for cache entries to monitor.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache where the cache keys in the `keys` parameter exist, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache where the cache keys in the `keys` parameter exist, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Runtime.Caching.CacheEntryChangeMonitor
       description: A change monitor that monitors cache entries in the cache.
   overload: System.Runtime.Caching.ObjectCache.CreateCacheEntryChangeMonitor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.DefaultCacheCapabilities
   id: DefaultCacheCapabilities
@@ -356,7 +356,7 @@ items:
       description: A bitwise combination of flags that indicate the default capabilities of a cache implementation.
   overload: System.Runtime.Caching.ObjectCache.DefaultCacheCapabilities*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Get(System.String,System.String)
   id: Get(System.String,System.String)
@@ -379,13 +379,13 @@ items:
       description: A unique identifier for the cache entry to get.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry was added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry was added, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Object
       description: The cache entry that is identified by <code>key</code>.
   overload: System.Runtime.Caching.ObjectCache.Get*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.GetCacheItem(System.String,System.String)
   id: GetCacheItem(System.String,System.String)
@@ -409,13 +409,13 @@ items:
       description: A unique identifier for the cache entry to get.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache was added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache was added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default is `null`.
     return:
       type: System.Runtime.Caching.CacheItem
       description: The cache entry that is identified by <code>key</code>.
   overload: System.Runtime.Caching.ObjectCache.GetCacheItem*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.GetCount(System.String)
   id: GetCount(System.String)
@@ -435,13 +435,13 @@ items:
     parameters:
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache for which the cache entry count should be computed, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache for which the cache entry count should be computed, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Int64
-      description: The number of cache entries in the cache. If <code>regionName</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>, the count indicates the number of entries that are in the specified cache region.
+      description: The number of cache entries in the cache. If <code>regionName</code> is not `null`, the count indicates the number of entries that are in the specified cache region.
   overload: System.Runtime.Caching.ObjectCache.GetCount*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.GetEnumerator
   id: GetEnumerator
@@ -465,7 +465,7 @@ items:
       description: The enumerator object that provides access to the cache entries in the cache.
   overload: System.Runtime.Caching.ObjectCache.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)
   id: GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)
@@ -489,13 +489,13 @@ items:
       description: A collection of unique identifiers for the cache entries to get.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry or entries were added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry or entries were added, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.Object}
       description: A dictionary of key/value pairs that represent cache entries.
   overload: System.Runtime.Caching.ObjectCache.GetValues*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.GetValues(System.String,System.String[])
   id: GetValues(System.String,System.String[])
@@ -516,7 +516,7 @@ items:
     parameters:
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry or entries were added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry or entries were added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default is `null`.
     - id: keys
       type: System.String[]
       description: A collection of unique identifiers for the cache entries to get.
@@ -525,7 +525,7 @@ items:
       description: A dictionary of key/value pairs that represent cache entries.
   overload: System.Runtime.Caching.ObjectCache.GetValues*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Host
   id: Host
@@ -550,11 +550,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value being assigned to the property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value being assigned to the property is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to set the property value more than one time.
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration
   id: InfiniteAbsoluteExpiration
@@ -576,7 +576,7 @@ items:
       type: System.DateTimeOffset
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Item(System.String)
   id: Item(System.String)
@@ -603,7 +603,7 @@ items:
       description: A key that serves as an indexer into the cache instance.
   overload: System.Runtime.Caching.ObjectCache.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Name
   id: Name
@@ -626,7 +626,7 @@ items:
       description: The name of a specific cache instance.
   overload: System.Runtime.Caching.ObjectCache.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.NoSlidingExpiration
   id: NoSlidingExpiration
@@ -648,7 +648,7 @@ items:
       type: System.TimeSpan
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Remove(System.String,System.String)
   id: Remove(System.String,System.String)
@@ -672,13 +672,13 @@ items:
       description: A unique identifier for the cache entry.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry was added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry was added, if regions are implemented. The default value for the optional parameter is `null`.
     return:
       type: System.Object
-      description: An object that represents the value of the removed cache entry that was specified by the key, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the specified entry was not found.
+      description: An object that represents the value of the removed cache entry that was specified by the key, or `null` if the specified entry was not found.
   overload: System.Runtime.Caching.ObjectCache.Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
   id: Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
@@ -705,7 +705,7 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
   overload: System.Runtime.Caching.ObjectCache.Set*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)
   id: Set(System.String,System.Object,System.DateTimeOffset,System.String)
@@ -735,10 +735,10 @@ items:
       description: The fixed date and time at which the cache entry will expire.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is `null`.
   overload: System.Runtime.Caching.ObjectCache.Set*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
   id: Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
@@ -768,10 +768,10 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     - id: regionName
       type: System.String
-      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is `null`.
   overload: System.Runtime.Caching.ObjectCache.Set*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
   id: System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
@@ -794,7 +794,7 @@ items:
       description: To be added.
   overload: System.Runtime.Caching.ObjectCache.System#Collections#Generic#IEnumerable<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.ObjectCache.System#Collections#IEnumerable#GetEnumerator
   id: System#Collections#IEnumerable#GetEnumerator
@@ -819,7 +819,7 @@ items:
       description: The enumerator object that provides access to the items in the cache.
   overload: System.Runtime.Caching.ObjectCache.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -1071,8 +1071,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

@@ -49,7 +49,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,7 +78,7 @@ items:
       description: One of the <xref href="System.Security.Permissions.PermissionState"></xref> values.
   overload: System.Net.SocketPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -118,8 +118,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>hostName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>hostName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -147,7 +147,7 @@ items:
       description: An instance that implements the <xref href="System.Collections.IEnumerator"></xref> interface that contains <xref href="System.Net.EndpointPermission"></xref> instances.
   overload: System.Net.SocketPermission.AcceptList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,8 +187,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>hostName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>hostName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,7 +215,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
       description: An instance that implements the <xref href="System.Collections.IEnumerator"></xref> interface that contains <xref href="System.Net.EndpointPermission"></xref> instances.
   overload: System.Net.SocketPermission.ConnectList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -272,7 +272,7 @@ items:
       description: A new instance of the <xref href="System.Net.SocketPermission"></xref> class that is a copy of the current instance.
   overload: System.Net.SocketPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,11 +303,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>securityElement</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>securityElement</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>securityElement</code> is not a permission element for this type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -336,7 +336,7 @@ items:
       description: The <xref href="System.Net.SocketPermission"></xref> instance to intersect with the current instance.
     return:
       type: System.Security.IPermission
-      description: The <xref href="System.Net.SocketPermission"></xref> instance that represents the intersection of two <xref href="System.Net.SocketPermission"></xref> instances. If the intersection is empty, the method returns <xref uid="langword_csharp_null" name="null" href=""></xref>. If the <code>target</code> parameter is a null reference, the method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Net.SocketPermission"></xref> instance that represents the intersection of two <xref href="System.Net.SocketPermission"></xref> instances. If the intersection is empty, the method returns `null`. If the <code>target</code> parameter is a null reference, the method returns `null`.
   overload: System.Net.SocketPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
@@ -345,7 +345,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: <xref href="System.Net.DnsPermission"></xref> is not granted to the method caller.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -374,7 +374,7 @@ items:
       description: A <xref href="System.Net.SocketPermission"></xref> that is to be tested for the subset relationship.
     return:
       type: System.Boolean
-      description: If <code>target</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance defines no permissions; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance defines a subset of <code>target</code> permissions; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: If <code>target</code> is `null`, this method returns `true` if the current instance defines no permissions; otherwise, `false`. If <code>target</code> is not `null`, this method returns `true` if the current instance defines a subset of <code>target</code> permissions; otherwise, `false`.
   overload: System.Net.SocketPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
@@ -383,7 +383,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: <xref href="System.Net.DnsPermission"></xref> is not granted to the method caller.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -409,10 +409,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Net.SocketPermission"></xref> instance is created with the <xref uid="langword_csharp_Unrestricted" name="Unrestricted" href=""></xref> value from <xref href="System.Security.Permissions.PermissionState"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Net.SocketPermission"></xref> instance is created with the `Unrestricted` value from <xref href="System.Security.Permissions.PermissionState"></xref>; otherwise, `false`.'
   overload: System.Net.SocketPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -441,7 +441,7 @@ items:
       description: A <xref href="System.Security.SecurityElement"></xref> instance that contains an XML-encoded representation of the <xref href="System.Net.SocketPermission"></xref> instance, including state information.
   overload: System.Net.SocketPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,13 +470,13 @@ items:
       description: The <xref href="System.Net.SocketPermission"></xref> instance to combine with the current instance.
     return:
       type: System.Security.IPermission
-      description: The <xref href="System.Net.SocketPermission"></xref> instance that represents the union of two <xref href="System.Net.SocketPermission"></xref> instances. If <code>target</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>, it returns a copy of the current instance.
+      description: The <xref href="System.Net.SocketPermission"></xref> instance that represents the union of two <xref href="System.Net.SocketPermission"></xref> instances. If <code>target</code> parameter is `null`, it returns a copy of the current instance.
   overload: System.Net.SocketPermission.Union*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>target</code> is not a <xref href="System.Net.SocketPermission"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

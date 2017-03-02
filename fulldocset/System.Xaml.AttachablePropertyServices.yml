@@ -30,16 +30,16 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(System.Object,System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
   id: CopyPropertiesTo(System.Object,System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
   parent: System.Xaml.AttachablePropertyServices
   langs:
   - csharp
-  name: CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  nameWithType: AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  fullName: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
+  name: CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  nameWithType: AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  fullName: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
   type: Method
   assemblies:
   - System.Xaml
@@ -54,13 +54,13 @@ items:
       description: A specific attachable property store that implements <xref href="System.Xaml.IAttachedPropertyStore"></xref>; or any non-null object to access a static default attachable property store.
     - id: array
       type: System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[]
-      description: The destination array. The array is a generic array, should be passed undimensioned, and should have components of <xref href="System.Xaml.AttachableMemberIdentifier"></xref> and <xref uid="langword_csharp_object" name="object" href=""></xref>.
+      description: The destination array. The array is a generic array, should be passed undimensioned, and should have components of <xref href="System.Xaml.AttachableMemberIdentifier"></xref> and `object`.
     - id: index
       type: System.Int32
       description: The source index into which to copy.
   overload: System.Xaml.AttachablePropertyServices.CopyPropertiesTo*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.AttachablePropertyServices.GetAttachedPropertyCount(System.Object)
   id: GetAttachedPropertyCount(System.Object)
@@ -86,7 +86,7 @@ items:
       description: The integer count of entries in the store.
   overload: System.Xaml.AttachablePropertyServices.GetAttachedPropertyCount*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.AttachablePropertyServices.RemoveProperty(System.Object,System.Xaml.AttachableMemberIdentifier)
   id: RemoveProperty(System.Object,System.Xaml.AttachableMemberIdentifier)
@@ -113,10 +113,10 @@ items:
       description: The identifier for the attachable property entry to remove from the store.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an attachable property entry for <code>name</code> was found in the store and removed from it; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an attachable property entry for <code>name</code> was found in the store and removed from it; otherwise, `false`.'
   overload: System.Xaml.AttachablePropertyServices.RemoveProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.AttachablePropertyServices.SetProperty(System.Object,System.Xaml.AttachableMemberIdentifier,System.Object)
   id: SetProperty(System.Object,System.Xaml.AttachableMemberIdentifier,System.Object)
@@ -150,8 +150,8 @@ items:
     description: A value could not be set in the store.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.AttachablePropertyServices.TryGetProperty(System.Object,System.Xaml.AttachableMemberIdentifier,System.Object@)
   id: TryGetProperty(System.Object,System.Xaml.AttachableMemberIdentifier,System.Object@)
@@ -180,10 +180,10 @@ items:
       description: Out parameter. When this method returns, contains the destination object for the value if `name` exists in the store and has a value.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an attachable property entry for <code>name</code> was found in the store and a value was posted to <code>value</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an attachable property entry for <code>name</code> was found in the store and a value was posted to <code>value</code>; otherwise, `false`.'
   overload: System.Xaml.AttachablePropertyServices.TryGetProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.AttachablePropertyServices.TryGetProperty``1(System.Object,System.Xaml.AttachableMemberIdentifier,``0@)
   id: TryGetProperty``1(System.Object,System.Xaml.AttachableMemberIdentifier,``0@)
@@ -214,7 +214,7 @@ items:
       description: To be added.
   overload: System.Xaml.AttachablePropertyServices.TryGetProperty<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -235,14 +235,14 @@ references:
 - uid: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(System.Object,System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
   parent: System.Xaml.AttachablePropertyServices
   isExternal: false
-  name: CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  nameWithType: AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  fullName: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
+  name: CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  nameWithType: AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  fullName: System.Xaml.AttachablePropertyServices.CopyPropertiesTo(Object,KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
 - uid: System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[]
   parent: System.Collections.Generic
   isExternal: false
-  name: KeyValuePair<AttachableMemberIdentifier,Object>
-  nameWithType: KeyValuePair<AttachableMemberIdentifier,Object>
+  name: KeyValuePair<AttachableMemberIdentifier,Object>[]
+  nameWithType: KeyValuePair<AttachableMemberIdentifier,Object>[]
   fullName: System.Collections.Generic.KeyValuePair<System.Xaml.AttachableMemberIdentifier,System.Object>[]
   spec.csharp:
   - uid: System.Collections.Generic.KeyValuePair`2

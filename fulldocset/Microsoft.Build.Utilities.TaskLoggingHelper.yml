@@ -71,7 +71,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,7 +99,7 @@ items:
       description: The task containing an instance of this task.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,7 +130,7 @@ items:
       description: The task name.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.BuildEngine
   id: BuildEngine
@@ -154,7 +154,7 @@ items:
       description: An <xref href="Microsoft.Build.Framework.IBuildEngine"></xref> that represents the instance of the build engine that is associated with the task.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.BuildEngine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -188,13 +188,13 @@ items:
       description: The message with the code prefix removed.
     return:
       type: System.String
-      description: The message code prefix that is extracted from the full message string, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no message code.
+      description: The message code prefix that is extracted from the full message string, or `null` if there is no message code.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.ExtractMessageCode*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -237,8 +237,8 @@ items:
     description: The <xref:Microsoft.Build.Utilities.Task.TaskResources*> property of the owner task is not set.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>resourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>resourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -275,8 +275,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>unformatted</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>unformatted</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,7 +307,7 @@ items:
       description: Returns the message from resource in task library.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.GetResourceMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.HasLoggedErrors
   id: HasLoggedErrors
@@ -331,10 +331,10 @@ items:
     content: public bool HasLoggedErrors { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the task has logged any errors through this logging helper object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the task has logged any errors through this logging helper object; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.HasLoggedErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,7 +362,7 @@ items:
       description: The prefix used to compose Help keywords from resource names.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.HelpKeywordPrefix*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -391,7 +391,7 @@ items:
       description: The command line string.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCommandLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -423,7 +423,7 @@ items:
       description: The command line string.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCommandLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,8 +459,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,8 +518,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -550,8 +550,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>e</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>e</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -580,13 +580,13 @@ items:
       description: The exception to log
     - id: showStackTrace
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include the stack trace in the log; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include the stack trace in the log; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>e</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>e</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -614,19 +614,19 @@ items:
       description: The exception to log.
     - id: showStackTrace
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include the stack trace in the log; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include the stack trace in the log; otherwise, `false`.'
     - id: showDetail
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to log exception types and any inner exceptions; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to log exception types and any inner exceptions; otherwise, `false`.'
     - id: file
       type: System.String
-      description: The name of the file related to the exception, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the project file should be logged.
+      description: The name of the file related to the exception, or `null` if the project file should be logged.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>e</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>e</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -660,8 +660,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -719,8 +719,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -754,8 +754,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -807,8 +807,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -842,10 +842,10 @@ items:
       description: The name of the project.
     - id: succeeded
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that project was built successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that project was built successfully; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectFinished*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -882,7 +882,7 @@ items:
       description: The targets to build. An empty string indicates default targets.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectStarted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -918,8 +918,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -956,8 +956,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -991,8 +991,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1029,8 +1029,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1062,13 +1062,13 @@ items:
       description: One of the values of <xref href="Microsoft.Build.Framework.MessageImportance"></xref> that indicates the importance level of the command line.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an error was logged; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an error was logged; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromText*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>lineOfText</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>lineOfText</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1097,13 +1097,13 @@ items:
       description: The name of the file to log messages from.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate at least one error was logged; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate at least one error was logged; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1135,13 +1135,13 @@ items:
       description: One of the enumeration values that specifies the importance of logged messages.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate at least one error was logged; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate at least one error was logged; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: Thrown when `filename` is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1173,13 +1173,13 @@ items:
       description: One of the values of <xref href="Microsoft.Build.Framework.MessageImportance"></xref> that indicates the importance level of the command line.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an error was logged; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an error was logged; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromStream*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>stream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1213,8 +1213,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1272,8 +1272,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>message</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1304,8 +1304,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>e</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>e</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1334,13 +1334,13 @@ items:
       description: The exception to log
     - id: showStackTrace
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include the stack trace in the log; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include the stack trace in the log; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>e</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>e</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1374,8 +1374,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1433,8 +1433,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1468,8 +1468,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1521,8 +1521,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>messageResourceName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>messageResourceName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1549,7 +1549,7 @@ items:
       description: The name of the parent task.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.TaskName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1574,10 +1574,10 @@ items:
     content: public System.Resources.ResourceManager TaskResources { get; set; }
     return:
       type: System.Resources.ResourceManager
-      description: A <xref href="System.Resources.ResourceManager"></xref> that represents the culture-specific resources used by the logging methods. This value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Resources.ResourceManager"></xref> that represents the culture-specific resources used by the logging methods. This value can be `null`.
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.TaskResources*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1655,8 +1655,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

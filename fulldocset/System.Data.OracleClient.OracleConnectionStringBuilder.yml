@@ -88,7 +88,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,7 +111,7 @@ items:
     parameters: []
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -146,7 +146,7 @@ items:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: Invalid value within the connection string (specifically, when a Boolean or numeric value was expected but not supplied).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,7 +172,7 @@ items:
     parameters: []
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,13 +201,13 @@ items:
       description: The key to locate in the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref> contains an element that has the specified key; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref> contains an element that has the specified key; otherwise, `false`.'
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.ContainsKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keyword</code> is null (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic)
-  platform:
+    description: <code>keyword</code> is null (`Nothing` in Visual Basic)
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,7 +235,7 @@ items:
       description: The value of the DataSource property, or <xref href="System.String"></xref> if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.DataSource*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,10 +258,10 @@ items:
     content: public bool Enlist { get; set; }
     return:
       type: System.Boolean
-      description: The value of the Enlist property, or <xref uid="langword_csharp_true" name="true" href=""></xref> if the property has not been previously set.
+      description: The value of the Enlist property, or `true` if the property has not been previously set.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Enlist*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,7 +286,7 @@ items:
       description: To be added.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.GetProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,7 +303,7 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: Gets or sets a value that indicates whether "User ID" and "Password" are specified in the connection (when <xref uid="langword_csharp_false" name="false" href=""></xref>) or whether the current Windows account credentials are used for authentication (when <xref uid="langword_csharp_true" name="true" href=""></xref>).
+  summary: Gets or sets a value that indicates whether "User ID" and "Password" are specified in the connection (when `false`) or whether the current Windows account credentials are used for authentication (when `true`).
   remarks: This property corresponds to the "Integrated Security" key within the connection string.
   example:
   - "The following example converts an existing connection string from using Windows Authentication to using integrated security. The example works by removing the user name and password from the connection string, and then setting the IntegratedSecurity property of the <xref:System.Data.OracleClient.OracleConnectionStringBuilder> object.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.OracleClient.OracleConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks OracleConnectionStringBuilder.IntegratedSecurity#1](~/add/codesnippet/csharp/p-system.data.oracleclie_4_1.cs)]\n [!code-vb[DataWorks OracleConnectionStringBuilder.IntegratedSecurity#1](~/add/codesnippet/visualbasic/p-system.data.oracleclie_4_1.vb)]"
@@ -311,10 +311,10 @@ items:
     content: public bool IntegratedSecurity { get; set; }
     return:
       type: System.Boolean
-      description: The value of the IntegratedSecurity property, or a <xref uid="langword_csharp_false" name="false" href=""></xref> if none has been supplied.
+      description: The value of the IntegratedSecurity property, or a `false` if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.IntegratedSecurity*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -336,10 +336,10 @@ items:
     content: public override bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> in every case, because the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref> supplies a fixed-size collection of key/value pairs.
+      description: '`true` in every case, because the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref> supplies a fixed-size collection of key/value pairs.'
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,14 +373,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keyword</code> is a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic).
+    description: <code>keyword</code> is a null reference (`Nothing` in Visual Basic).
   - type: System.Collections.Generic.KeyNotFoundException
     commentId: T:System.Collections.Generic.KeyNotFoundException
     description: Tried to add a key which does not exist within the available keys.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: Invalid value within the connection string (specifically, when a Boolean or numeric value was expected but not supplied).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,7 +408,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> that contains the keys in the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref>.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Keys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -434,7 +434,7 @@ items:
       description: The value of the LoadBalanceTimeout property, or 0 if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.LoadBalanceTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,7 +460,7 @@ items:
       description: The value of the MaxPoolSize property, or 100 if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.MaxPoolSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,7 +486,7 @@ items:
       description: The value of the MinPoolSize property, or 0 if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.MinPoolSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -509,10 +509,10 @@ items:
     content: public bool OmitOracleConnectionName { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if transaction rollbacks are enabled; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if transaction rollbacks are enabled; otherwise `false`.'
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.OmitOracleConnectionName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -540,7 +540,7 @@ items:
       description: The value of the Password property, or <xref href="System.String"></xref> if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Password*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -563,10 +563,10 @@ items:
     content: public bool PersistSecurityInfo { get; set; }
     return:
       type: System.Boolean
-      description: The value of the PersistSecurityInfo property, or <xref uid="langword_csharp_false" name="false" href=""></xref> if none has been supplied.
+      description: The value of the PersistSecurityInfo property, or `false` if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.PersistSecurityInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -589,10 +589,10 @@ items:
     content: public bool Pooling { get; set; }
     return:
       type: System.Boolean
-      description: The value of the Pooling property, or <xref uid="langword_csharp_true " name="true " href=""></xref>if none has been supplied.
+      description: The value of the Pooling property, or `true `if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Pooling*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -621,13 +621,13 @@ items:
       description: The key of the key/value pair to be removed from the connection string in this <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the key existed within the connection string and was removed, <xref uid="langword_csharp_false" name="false" href=""></xref> if the key did not exist.
+      description: '`true` if the key existed within the connection string and was removed, `false` if the key did not exist.'
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Remove*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keyword</code> is null (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic).
-  platform:
+    description: <code>keyword</code> is null (`Nothing` in Visual Basic).
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -654,10 +654,10 @@ items:
       description: The key to locate in the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref> contains an entry with the specified key; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref> contains an entry with the specified key; otherwise, `false`.'
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.ShouldSerialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -689,10 +689,10 @@ items:
       description: The value corresponding to `keyword.`
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>keyword</code> was found within the connection string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>keyword</code> was found within the connection string; otherwise, `false`.'
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.TryGetValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -715,10 +715,10 @@ items:
     content: public bool Unicode { get; set; }
     return:
       type: System.Boolean
-      description: The value of the Unicode property, or <xref uid="langword_csharp_false " name="false " href=""></xref>if none has been supplied.
+      description: The value of the Unicode property, or `false `if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Unicode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -744,7 +744,7 @@ items:
       description: The value of the UserID property, or <xref href="System.String"></xref> if none has been supplied.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.UserID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -772,7 +772,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> that contains the values in the <xref href="System.Data.OracleClient.OracleConnectionStringBuilder"></xref>.
   overload: System.Data.OracleClient.OracleConnectionStringBuilder.Values*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -71,11 +71,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>assembly</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or empty.
+    description: The <code>assembly</code> parameter is `null` or empty.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The method was not called before the <xref uid="langword_csharp_Application_Start" name="Application_Start" href=""></xref> event in the Global.asax file occurred.
-  platform:
+    description: The method was not called before the `Application_Start` event in the Global.asax file occurred.
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.BatchCompilationEnabled
   id: BatchCompilationEnabled
@@ -95,13 +95,13 @@ items:
     content: public static Nullable<bool> BatchCompilationEnabled { get; set; }
     return:
       type: System.Nullable{System.Boolean}
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if batch compilation is always enabled, <xref uid="langword_csharp_false" name="false" href=""></xref> if batch compilation is never enabled, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the compilation setting is determined from the configuration file. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`true` if batch compilation is always enabled, `false` if batch compilation is never enabled, or `null` if the compilation setting is determined from the configuration file. The default value is `null`.'
   overload: System.Web.Compilation.BuildManager.BatchCompilationEnabled*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The property was not set in the <xref uid="langword_csharp_PreApplicationStart" name="PreApplicationStart" href=""></xref> method.
-  platform:
+    description: The property was not set in the `PreApplicationStart` method.
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.CodeAssemblies
   id: CodeAssemblies
@@ -123,7 +123,7 @@ items:
       description: An <xref href="System.Collections.IList"></xref> collection that contains the assemblies built from the App_Code directory.
   overload: System.Web.Compilation.BuildManager.CodeAssemblies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -153,7 +153,7 @@ items:
       description: The <xref href="System.IO.Stream"></xref> object for the new file.
   overload: System.Web.Compilation.BuildManager.CreateCachedFile*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(System.String,System.Type)
   id: CreateInstanceFromVirtualPath(System.String,System.Type)
@@ -183,7 +183,7 @@ items:
       description: The <xref href="System.Object"></xref> that represents the instance of the processed file.
   overload: System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,10 +212,10 @@ items:
       description: The virtual path from which to determine the build dependency set.
     return:
       type: System.Web.Compilation.BuildDependencySet
-      description: A <xref href="System.Web.Compilation.BuildDependencySet"></xref> object that is stored in the cache, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the <xref href="System.Web.Compilation.BuildDependencySet"></xref> object cannot be retrieved from the cache.
+      description: A <xref href="System.Web.Compilation.BuildDependencySet"></xref> object that is stored in the cache, or `null` if the <xref href="System.Web.Compilation.BuildDependencySet"></xref> object cannot be retrieved from the cache.
   overload: System.Web.Compilation.BuildManager.GetCachedBuildDependencySet*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -245,13 +245,13 @@ items:
       description: The virtual path from which to determine the build dependency set.
     - id: ensureIsUpToDate
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that only a current build dependency set should be returned, or <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that any available build dependency set should be returned, even if it is not current. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` to specify that only a current build dependency set should be returned, or `false` to indicate that any available build dependency set should be returned, even if it is not current. The default is `true`.'
     return:
       type: System.Web.Compilation.BuildDependencySet
-      description: A <xref href="System.Web.Compilation.BuildDependencySet"></xref> object that is stored in the cache, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the <xref href="System.Web.Compilation.BuildDependencySet"></xref> object cannot be retrieved from the cache.
+      description: A <xref href="System.Web.Compilation.BuildDependencySet"></xref> object that is stored in the cache, or `null` if the <xref href="System.Web.Compilation.BuildDependencySet"></xref> object cannot be retrieved from the cache.
   overload: System.Web.Compilation.BuildManager.GetCachedBuildDependencySet*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.GetCompiledAssembly(System.String)
   id: GetCompiledAssembly(System.String)
@@ -277,7 +277,7 @@ items:
       description: An <xref href="System.Reflection.Assembly"></xref> object that is compiled from the specified virtual path, which is cached to either memory or to disk.
   overload: System.Web.Compilation.BuildManager.GetCompiledAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -306,7 +306,7 @@ items:
       description: A string, as returned by the <xref:System.Web.Compilation.BuildProvider.GetCustomString*> method, that is cached to disk or memory.
   overload: System.Web.Compilation.BuildManager.GetCompiledCustomString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -340,8 +340,8 @@ items:
     description: An error occurred when compiling the virtual path.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>virtualPath</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>virtualPath</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -371,7 +371,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to call this method before the Global.asax page was compiled.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.GetObjectFactory(System.String,System.Boolean)
   id: GetObjectFactory(System.String,System.Boolean)
@@ -395,7 +395,7 @@ items:
       description: The virtual path.
     - id: throwIfNotFound
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an error if the virtual path does not exist; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If the virtual path does not exist and `throwIfNotFound` is <xref uid="langword_csharp_false" name="false" href=""></xref>, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`true` to throw an error if the virtual path does not exist; otherwise, `false`. If the virtual path does not exist and `throwIfNotFound` is `false`, this method returns `null`.'
     return:
       type: System.Web.Util.IWebObjectFactory
       description: The object factory.
@@ -404,7 +404,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The virtual path does not exist.  \n  \n -or-  \n  \n A higher-level exception already existed when this method was called.  \n  \n -or-  \n  \n This method was called while the compilation process was building top-level files.  \n  \n -or-  \n  \n This is a precompiled application and the virtual path was not found in the cache.  \n  \n -or-  \n  \n A circular reference was detected."
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.GetReferencedAssemblies
   id: GetReferencedAssemblies
@@ -428,7 +428,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> collection of assembly references.
   overload: System.Web.Compilation.BuildManager.GetReferencedAssemblies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -455,7 +455,7 @@ items:
       description: The name of the type.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if a <xref href="System.Type"></xref> object cannot be generated for the type name; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if a <xref href="System.Type"></xref> object cannot be generated for the type name; otherwise, `false`.'
     return:
       type: System.Type
       description: A <xref href="System.Type"></xref> object that represents the requested <code>typeName</code> parameter.
@@ -463,8 +463,8 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "<code>typeName</code> is invalid.  \n  \n \\- or -  \n  \n <code>typeName</code> is ambiguous.  \n  \n \\- or -  \n  \n <code>typeName</code> could not be found, and <code>throwOnError</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
-  platform:
+    description: "<code>typeName</code> is invalid.  \n  \n \\- or -  \n  \n <code>typeName</code> is ambiguous.  \n  \n \\- or -  \n  \n <code>typeName</code> could not be found, and <code>throwOnError</code> is `true`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -491,10 +491,10 @@ items:
       description: The name of the type.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if a <xref href="System.Type"></xref> cannot be generated for the type name; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if a <xref href="System.Type"></xref> cannot be generated for the type name; otherwise, `false`.'
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if `typeName` is case-sensitive; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if `typeName` is case-sensitive; otherwise, `false`.'
     return:
       type: System.Type
       description: A <xref href="System.Type"></xref> object that represents the requested <code>typeName</code> parameter.
@@ -502,8 +502,8 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "<code>typeName</code> is invalid.  \n  \n \\- or -  \n  \n <code>typeName</code> is ambiguous.  \n  \n \\- or -  \n  \n <code>typeName</code> could not be found, and <code>throwOnError</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
-  platform:
+    description: "<code>typeName</code> is invalid.  \n  \n \\- or -  \n  \n <code>typeName</code> is ambiguous.  \n  \n \\- or -  \n  \n <code>typeName</code> could not be found, and <code>throwOnError</code> is `true`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -532,7 +532,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> collection of files represented by virtual paths that are caching dependencies for the virtual path.
   overload: System.Web.Compilation.BuildManager.GetVirtualPathDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -559,10 +559,10 @@ items:
       description: The name of the file to read.
     return:
       type: System.IO.Stream
-      description: The <xref href="System.IO.Stream"></xref> object for the file, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the file does not exist.
+      description: The <xref href="System.IO.Stream"></xref> object for the file, or `null` if the file does not exist.
   overload: System.Web.Compilation.BuildManager.ReadCachedFile*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.BuildManager.TargetFramework
   id: TargetFramework
@@ -585,7 +585,7 @@ items:
       description: The target version of the .NET Framework for the current Web site.
   overload: System.Web.Compilation.BuildManager.TargetFramework*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object

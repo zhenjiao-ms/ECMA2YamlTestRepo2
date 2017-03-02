@@ -41,7 +41,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
     parameters: []
   overload: System.Management.EnumerationOptions.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -102,28 +102,28 @@ items:
       description: The number of items to retrieve at one time from WMI.
     - id: rewindable
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to show that the result set is rewindable (allows multiple traversal); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to show that the result set is rewindable (allows multiple traversal); otherwise, `false`.'
     - id: returnImmediatley
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to show that the operation should return immediately (semi-sync) or block until all results are available; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to show that the operation should return immediately (semi-sync) or block until all results are available; otherwise, `false`.'
     - id: useAmendedQualifiers
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to show that the returned objects should contain amended (locale-aware) qualifiers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to show that the returned objects should contain amended (locale-aware) qualifiers; otherwise, `false`.'
     - id: ensureLocatable
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ensure all returned objects have valid paths; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ensure all returned objects have valid paths; otherwise, `false`.'
     - id: prototypeOnly
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to return a prototype of the result set instead of the actual results; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to return a prototype of the result set instead of the actual results; otherwise, `false`.'
     - id: directRead
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to retrieve objects of only the specified class or from derived classes as well; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to retrieve objects of only the specified class or from derived classes as well; otherwise, `false`.'
     - id: enumerateDeep
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use recursive enumeration in subclasses; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to use recursive enumeration in subclasses; otherwise, `false`.'
   overload: System.Management.EnumerationOptions.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,7 +151,7 @@ items:
       description: Returns an <xref href="System.Int32"></xref> value used for the block size in block operations.
   overload: System.Management.EnumerationOptions.BlockSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
       description: The cloned object.
   overload: System.Management.EnumerationOptions.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,7 +206,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether *direct access* to the WMI provider is requested for the specified class.
   overload: System.Management.EnumerationOptions.DirectRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,7 +232,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether the objects returned should have locatable information in them.
   overload: System.Management.EnumerationOptions.EnsureLocatable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -249,7 +249,7 @@ items:
   assemblies:
   - System.Management
   namespace: System.Management
-  summary: Gets or sets a value indicating whether recursive enumeration is requested into all classes derived from the specified superclass. If <xref uid="langword_csharp_false" name="false" href=""></xref>, only immediate derived class members are returned.
+  summary: Gets or sets a value indicating whether recursive enumeration is requested into all classes derived from the specified superclass. If `false`, only immediate derived class members are returned.
   remarks: "## Property Value  \n `true` if recursive enumeration is requested into all classes derived from the specified superclass; otherwise, `false`. The default value is `false`.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example initializes an <xref:System.Management.EnumerationOptions> variable with an <xref:System.Management.EnumerationOptions> constructor and then gets all the instances of a WMI class and its subclasses.  \n  \n [!code-vb[wminet_EnumerationOptions_EnumerateDeep#1](~/add/codesnippet/visualbasic/p-system.management.enum_0_1.vb)]\n [!code-cs[wminet_EnumerationOptions_EnumerateDeep#1](~/add/codesnippet/csharp/p-system.management.enum_0_1.cs)]"
@@ -260,7 +260,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether recursive enumeration is requested into all classes derived from the specified superclass.
   overload: System.Management.EnumerationOptions.EnumerateDeep*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,7 +286,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether the query should return a prototype of the result set instead of the actual results.
   overload: System.Management.EnumerationOptions.PrototypeOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,7 +303,7 @@ items:
   assemblies:
   - System.Management
   namespace: System.Management
-  summary: Gets or sets a value indicating whether the invoked operation should be performed in a synchronous or semisynchronous fashion. If this property is set to <xref uid="langword_csharp_true" name="true" href=""></xref>, the enumeration is invoked and the call returns immediately. The actual retrieval of the results will occur when the resulting collection is walked.
+  summary: Gets or sets a value indicating whether the invoked operation should be performed in a synchronous or semisynchronous fashion. If this property is set to `true`, the enumeration is invoked and the call returns immediately. The actual retrieval of the results will occur when the resulting collection is walked.
   remarks: "## Property Value  \n `true` if the invoked operation should be performed in a synchronous or semisynchronous fashion; otherwise, `false`. The default value is `true`.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public bool ReturnImmediately { get; set; }
@@ -312,7 +312,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether the invoked operation should be performed in a synchronous or semisynchronous fashion.
   overload: System.Management.EnumerationOptions.ReturnImmediately*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -329,7 +329,7 @@ items:
   assemblies:
   - System.Management
   namespace: System.Management
-  summary: Gets or sets a value indicating whether the collection is assumed to be rewindable. If <xref uid="langword_csharp_true" name="true" href=""></xref>, the objects in the collection will be kept available for multiple enumerations. If <xref uid="langword_csharp_false" name="false" href=""></xref>, the collection can only be enumerated one time.
+  summary: Gets or sets a value indicating whether the collection is assumed to be rewindable. If `true`, the objects in the collection will be kept available for multiple enumerations. If `false`, the collection can only be enumerated one time.
   remarks: "## Property Value  \n `true` if the collection is assumed to be rewindable; otherwise, `false`. The default value is `true`.  \n  \n## .NET Framework Security  \n Full trust for the immediate caller. This member cannot be used by partially trusted code. For more information, see [Using Libraries from Partially Trusted Code](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public bool Rewindable { get; set; }
@@ -338,7 +338,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether the collection is assumed to be rewindable.
   overload: System.Management.EnumerationOptions.Rewindable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -364,7 +364,7 @@ items:
       description: Returns a <xref href="System.Boolean"></xref> value indicating whether the objects returned from WMI should contain amended information.
   overload: System.Management.EnumerationOptions.UseAmendedQualifiers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

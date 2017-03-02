@@ -82,7 +82,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,7 +108,7 @@ items:
     parameters: []
   overload: Microsoft.VisualBasic.FileIO.FileSystem.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,10 +134,10 @@ items:
     parameters:
     - id: baseDirectory
       type: System.String
-      description: <xref uid="langword_csharp_String" name="String" href=""></xref>. First path to be combined.
+      description: '`String`. First path to be combined.'
     - id: relativePath
       type: System.String
-      description: <xref uid="langword_csharp_String" name="String" href=""></xref>. Second path to be combined.
+      description: '`String`. Second path to be combined.'
     return:
       type: System.String
       description: The combination of the specified paths.
@@ -146,7 +146,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>baseDirectory</code> or <code>relativePath</code> are malformed paths.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -183,7 +183,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The source directory does not exist.
@@ -205,7 +205,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: A destination file exists but cannot be accessed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -237,7 +237,7 @@ items:
       description: The location to which the directory contents should be copied.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -245,7 +245,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The source directory does not exist.
@@ -269,8 +269,8 @@ items:
     description: A destination file exists but cannot be accessed.
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
-    description: <code>ShowUI</code> is set to <xref uid="langword_csharp_UIOption.AllDialogs" name="UIOption.AllDialogs" href=""></xref> and the user cancels the operation, or one or more files in the directory cannot be copied.
-  platform:
+    description: <code>ShowUI</code> is set to `UIOption.AllDialogs` and the user cancels the operation, or one or more files in the directory cannot be copied.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -302,7 +302,7 @@ items:
       description: The location to which the directory contents should be copied.
     - id: overwrite
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to overwrite existing files; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` to overwrite existing files; otherwise `False`. Default is `False`.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -310,7 +310,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The source directory does not exist.
@@ -332,7 +332,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: A destination file exists but cannot be accessed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -364,7 +364,7 @@ items:
       description: The location to which the directory contents should be copied.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: onUserCancel
       type: Microsoft.VisualBasic.FileIO.UICancelOption
       description: Specifies what should be done if the user clicks **Cancel** during the operation. Default is <xref href="Microsoft.VisualBasic.FileIO.UICancelOption"></xref>.
@@ -375,7 +375,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationDirectoryName</code> or <code>sourceDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The source directory does not exist.
@@ -399,8 +399,8 @@ items:
     description: A destination file exists but cannot be accessed.
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
-    description: <code>ShowUI</code> is set to <xref uid="langword_csharp_UIOption.AllDialogs" name="UIOption.AllDialogs" href=""></xref> and the user cancels the operation, or one or more files in the directory cannot be copied.
-  platform:
+    description: <code>ShowUI</code> is set to `UIOption.AllDialogs` and the user cancels the operation, or one or more files in the directory cannot be copied.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -437,7 +437,7 @@ items:
     description: <code>destinationFileName </code>contains path information.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> or <code>sourceFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> or <code>sourceFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
@@ -456,7 +456,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -488,7 +488,7 @@ items:
       description: The location to which the file should be copied.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.CopyFile*
   exceptions:
   - type: System.ArgumentException
@@ -496,13 +496,13 @@ items:
     description: <code>destinationFileName </code>contains path information.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> or <code>sourceFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> or <code>sourceFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The destination file exists and <code>overwrite</code> is set to <xref uid="langword_csharp_False" name="False" href=""></xref>.
+    description: The destination file exists and <code>overwrite</code> is set to `False`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: A file or directory name in the path contains a colon (:) or is in an invalid format.
@@ -515,7 +515,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -547,7 +547,7 @@ items:
       description: The location to which the file should be copied.
     - id: overwrite
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> if existing files should be overwritten; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` if existing files should be overwritten; otherwise `False`. Default is `False`.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.CopyFile*
   exceptions:
   - type: System.ArgumentException
@@ -555,13 +555,13 @@ items:
     description: <code>destinationFileName </code>contains path information.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> or <code>sourceFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> or <code>sourceFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The destination file exists and <code>overwrite</code> is set to <xref uid="langword_csharp_False" name="False" href=""></xref>.
+    description: The destination file exists and <code>overwrite</code> is set to `False`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: A file or directory name in the path contains a colon (:) or is in an invalid format.
@@ -574,7 +574,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -606,7 +606,7 @@ items:
       description: The location to which the file should be copied.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: onUserCancel
       type: Microsoft.VisualBasic.FileIO.UICancelOption
       description: Specifies what should be done if the user clicks **Cancel** during the operation. Default is <xref href="Microsoft.VisualBasic.FileIO.UICancelOption"></xref>.
@@ -617,13 +617,13 @@ items:
     description: <code>destinationFileName </code>contains path information.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> or <code>sourceFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> or <code>sourceFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The destination file exists and <code>overwrite</code> is set to <xref uid="langword_csharp_False" name="False" href=""></xref>.
+    description: The destination file exists and <code>overwrite</code> is set to `False`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: A file or directory name in the path contains a colon (:) or is in an invalid format.
@@ -638,8 +638,8 @@ items:
     description: The user lacks necessary permissions to view the path.
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
-    description: <code>UICancelOption</code> is set to <xref uid="langword_csharp_ThrowException" name="ThrowException" href=""></xref>, and the user has canceled the operation or an unspecified I/O error occurs.
-  platform:
+    description: <code>UICancelOption</code> is set to `ThrowException`, and the user has canceled the operation or an unspecified I/O error occurs.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -673,7 +673,7 @@ items:
     description: The directory name is malformed. For example, it contains illegal characters or is only white space.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The directory name is too long.
@@ -686,7 +686,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have permission to create the directory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -720,7 +720,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -749,7 +749,7 @@ items:
       description: Directory to be deleted.
     - id: onDirectoryNotEmpty
       type: Microsoft.VisualBasic.FileIO.DeleteDirectoryOption
-      description: Specifies what should be done when a directory that is to be deleted contains files or directories. Default is <xref uid="langword_csharp_DeleteDirectoryOption.DeleteAllContents" name="DeleteDirectoryOption.DeleteAllContents" href=""></xref>.
+      description: Specifies what should be done when a directory that is to be deleted contains files or directories. Default is `DeleteDirectoryOption.DeleteAllContents`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -757,7 +757,7 @@ items:
     description: The path is a zero-length string, is malformed, contains only white space, or contains invalid characters (including wildcard characters). The path is a device path (starts with \\\\.\\).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist or is a file.
@@ -776,7 +776,7 @@ items:
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
     description: The user cancels the operation or the directory cannot be deleted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -805,10 +805,10 @@ items:
       description: Directory to be deleted.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Specifies whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Specifies whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: recycle
       type: Microsoft.VisualBasic.FileIO.RecycleOption
-      description: Specifies whether or not the deleted file should be sent to the **Recycle Bin**. Default is <xref uid="langword_csharp_RecycleOption.DeletePermanently" name="RecycleOption.DeletePermanently" href=""></xref>.
+      description: Specifies whether or not the deleted file should be sent to the **Recycle Bin**. Default is `RecycleOption.DeletePermanently`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -816,7 +816,7 @@ items:
     description: The path is a zero-length string, is malformed, contains only white space, or contains invalid characters (including wildcard characters). The path is a device path (starts with \\\\.\\).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist or is a file.
@@ -835,7 +835,7 @@ items:
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
     description: The user cancels the operation or the directory cannot be deleted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -864,10 +864,10 @@ items:
       description: Directory to be deleted.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Specifies whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Specifies whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: recycle
       type: Microsoft.VisualBasic.FileIO.RecycleOption
-      description: Specifies whether or not the deleted file should be sent to the **Recycle Bin**. Default is <xref uid="langword_csharp_RecycleOption.DeletePermanently" name="RecycleOption.DeletePermanently" href=""></xref>.
+      description: Specifies whether or not the deleted file should be sent to the **Recycle Bin**. Default is `RecycleOption.DeletePermanently`.
     - id: onUserCancel
       type: Microsoft.VisualBasic.FileIO.UICancelOption
       description: Specifies whether to throw an exception if the user clicks **Cancel**.
@@ -878,7 +878,7 @@ items:
     description: The path is a zero-length string, is malformed, contains only white space, or contains invalid characters (including wildcard characters). The path is a device path (starts with \\\\.\\).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist or is a file.
@@ -897,7 +897,7 @@ items:
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
     description: The user cancels the operation or the directory cannot be deleted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -931,7 +931,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; it has a trailing slash where a file must be specified; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>file</code> is `Nothing` or an empty string.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -950,7 +950,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have permission to delete the file or the file is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -979,10 +979,10 @@ items:
       description: Name and path of the file to be deleted.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: recycle
       type: Microsoft.VisualBasic.FileIO.RecycleOption
-      description: Whether or not the deleted file should be sent to the **Recycle Bin**. Default is <xref uid="langword_csharp_RecycleOption.DeletePermanently" name="RecycleOption.DeletePermanently" href=""></xref>.
+      description: Whether or not the deleted file should be sent to the **Recycle Bin**. Default is `RecycleOption.DeletePermanently`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile*
   exceptions:
   - type: System.ArgumentException
@@ -990,7 +990,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; it has a trailing slash where a file must be specified; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>file</code> is `Nothing` or an empty string.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -1009,7 +1009,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have permission to delete the file or the file is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1038,13 +1038,13 @@ items:
       description: Name and path of the file to be deleted.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: recycle
       type: Microsoft.VisualBasic.FileIO.RecycleOption
-      description: Whether or not the deleted file should be sent to the **Recycle Bin**. Default is <xref uid="langword_csharp_RecycleOption.DeletePermanently" name="RecycleOption.DeletePermanently" href=""></xref>.
+      description: Whether or not the deleted file should be sent to the **Recycle Bin**. Default is `RecycleOption.DeletePermanently`.
     - id: onUserCancel
       type: Microsoft.VisualBasic.FileIO.UICancelOption
-      description: Specifies whether or not an exception is thrown when the user cancels the operation. Default is <xref uid="langword_csharp_UICancelOption.ThrowException" name="UICancelOption.ThrowException" href=""></xref>.
+      description: Specifies whether or not an exception is thrown when the user cancels the operation. Default is `UICancelOption.ThrowException`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile*
   exceptions:
   - type: System.ArgumentException
@@ -1052,7 +1052,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; it has a trailing slash where a file must be specified; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>file</code> is `Nothing` or an empty string.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -1074,7 +1074,7 @@ items:
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
     description: The user cancelled the operation and <code>onUserCancel</code> is set to <xref href="Microsoft.VisualBasic.FileIO.UICancelOption"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1091,7 +1091,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: Returns <xref uid="langword_csharp_True" name="True" href=""></xref> if the specified directory exists.
+  summary: Returns `True` if the specified directory exists.
   remarks: ''
   example:
   - "This example determines whether the directory `C:\\backup\\logs` exists and checks its properties.  \n  \n [!code-vb[VbRefFile#13](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._66_1.vb)]"
@@ -1103,10 +1103,10 @@ items:
       description: Path of the directory.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> if the directory exists; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` if the directory exists; otherwise `False`.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.DirectoryExists*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1134,7 +1134,7 @@ items:
       description: A read-only collection of all available drives as <xref href="System.IO.DriveInfo"></xref> objects.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.Drives*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1151,7 +1151,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: Returns <xref uid="langword_csharp_True" name="True" href=""></xref> if the specified file exists.
+  summary: Returns `True` if the specified file exists.
   remarks: If the application does not have sufficient permissions to read the specified file, the `FileExists` method returns `False`, regardless of the existence of the path; the method does not throw an exception.
   example:
   - "This example checks to see whether or not the file `Check.txt` exists and supplies the information in a message box.  \n  \n [!code-vb[VbRefFile#20](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._163_1.vb)]"
@@ -1163,13 +1163,13 @@ items:
       description: Name and path of the file.
     return:
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_True" name="True" href=""></xref> if the file exists; otherwise this method returns <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: Returns `True` if the file exists; otherwise this method returns `False`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.FileExists*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The name of the file ends with a backslash (\\).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1201,10 +1201,10 @@ items:
       description: The search text.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> if the search should be case-sensitive; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>. Default is <xref uid="langword_csharp_True" name="True" href=""></xref>.
+      description: '`True` if the search should be case-sensitive; otherwise `False`. Default is `True`.'
     - id: searchType
       type: Microsoft.VisualBasic.FileIO.SearchOption
-      description: Whether to include subfolders. Default is <xref uid="langword_csharp_SearchOption.SearchTopLevelOnly" name="SearchOption.SearchTopLevelOnly" href=""></xref>.
+      description: Whether to include subfolders. Default is `SearchOption.SearchTopLevelOnly`.
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.String}
       description: Read-only collection of the names of files containing the specified text..
@@ -1215,7 +1215,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with `\\.\`).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified directory does not exist.
@@ -1234,7 +1234,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1266,10 +1266,10 @@ items:
       description: The search text.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> if the search should be case-sensitive; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>. Default is <xref uid="langword_csharp_True" name="True" href=""></xref>.
+      description: '`True` if the search should be case-sensitive; otherwise `False`. Default is `True`.'
     - id: searchType
       type: Microsoft.VisualBasic.FileIO.SearchOption
-      description: Whether to include subfolders. Default is <xref uid="langword_csharp_SearchOption.SearchTopLevelOnly" name="SearchOption.SearchTopLevelOnly" href=""></xref>.
+      description: Whether to include subfolders. Default is `SearchOption.SearchTopLevelOnly`.
     - id: fileWildcards
       type: System.String[]
       description: Pattern to be matched.
@@ -1283,7 +1283,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with `\\.\`).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified directory does not exist.
@@ -1302,7 +1302,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1339,7 +1339,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified directory does not exist.
@@ -1358,7 +1358,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1387,7 +1387,7 @@ items:
       description: Name and path of directory.
     - id: searchType
       type: Microsoft.VisualBasic.FileIO.SearchOption
-      description: Whether to include subfolders. Default is <xref uid="langword_csharp_SearchOption.SearchTopLevelOnly" name="SearchOption.SearchTopLevelOnly" href=""></xref>.
+      description: Whether to include subfolders. Default is `SearchOption.SearchTopLevelOnly`.
     - id: wildcards
       type: System.String[]
       description: Pattern to match names.
@@ -1401,7 +1401,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: One or more of the specified wildcard characters is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>, an empty string, or contains only spaces.
+    description: One or more of the specified wildcard characters is `Nothing`, an empty string, or contains only spaces.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified directory does not exist.
@@ -1420,7 +1420,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1446,7 +1446,7 @@ items:
     parameters:
     - id: directory
       type: System.String
-      description: <xref uid="langword_csharp_String" name="String" href=""></xref>. Path of directory.
+      description: '`String`. Path of directory.'
     return:
       type: System.IO.DirectoryInfo
       description: <xref href="System.IO.DirectoryInfo"></xref> object for the specified path.
@@ -1457,7 +1457,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>directory</code> is `Nothing` or an empty string.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -1467,7 +1467,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1504,14 +1504,14 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>drive</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>drive</code> is `Nothing` or an empty string.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1548,7 +1548,7 @@ items:
     description: The path name is malformed. For example, it contains invalid characters or is only white space. The file name has a trailing slash mark.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>file</code> is `Nothing` or an empty string.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The path contains a colon in the middle of the string.
@@ -1561,7 +1561,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks ACL (access control list) access to the file.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1598,7 +1598,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>directory</code> is `Nothing`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory to search does not exist.
@@ -1617,7 +1617,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1646,7 +1646,7 @@ items:
       description: Directory to be searched.
     - id: searchType
       type: Microsoft.VisualBasic.FileIO.SearchOption
-      description: Whether to include subfolders. Default is <xref uid="langword_csharp_SearchOption.SearchTopLevelOnly" name="SearchOption.SearchTopLevelOnly" href=""></xref>.
+      description: Whether to include subfolders. Default is `SearchOption.SearchTopLevelOnly`.
     - id: wildcards
       type: System.String[]
       description: Pattern to be matched.
@@ -1660,7 +1660,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>directory</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>directory</code> is `Nothing`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory to search does not exist.
@@ -1679,7 +1679,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user lacks necessary permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1705,13 +1705,13 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: Required. Path to be parsed. <xref uid="langword_csharp_String" name="String" href=""></xref>.
+      description: Required. Path to be parsed. `String`.
     return:
       type: System.String
       description: The file name from the specified path.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.GetName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1748,14 +1748,14 @@ items:
     description: Path does not have a parent path because it is a root path.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>path</code> is `Nothing`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: A file or directory name in the path contains a colon (:) or is in an invalid format.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1781,10 +1781,10 @@ items:
     parameters: []
     return:
       type: System.String
-      description: <xref uid="langword_csharp_String" name="String" href=""></xref> containing the full path of the temporary file.
+      description: '`String` containing the full path of the temporary file.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.GetTempFileName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1821,7 +1821,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist.
@@ -1843,7 +1843,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1875,7 +1875,7 @@ items:
       description: Path of the directory to which the source directory is being moved.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Specifies whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Specifies whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -1883,13 +1883,13 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The target directory already exists and o<code>verwrite</code> is set to <xref uid="langword_csharp_False" name="False" href=""></xref>.
+    description: The target directory already exists and o<code>verwrite</code> is set to `False`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -1905,7 +1905,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1937,7 +1937,7 @@ items:
       description: Path of the directory to which the source directory is being moved.
     - id: overwrite
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> if existing directories should be overwritten; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` if existing directories should be overwritten; otherwise `False`. Default is `False`.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -1945,13 +1945,13 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The target directory already exists and o<code>verwrite</code> is set to <xref uid="langword_csharp_False" name="False" href=""></xref>.
+    description: The target directory already exists and o<code>verwrite</code> is set to `False`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -1967,7 +1967,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1999,10 +1999,10 @@ items:
       description: Path of the directory to which the source directory is being moved.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Specifies whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Specifies whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: onUserCancel
       type: Microsoft.VisualBasic.FileIO.UICancelOption
-      description: Specifies whether or not an exception is thrown when the user cancels the operation. Default is <xref uid="langword_csharp_UICancelOption.ThrowException" name="UICancelOption.ThrowException" href=""></xref>.
+      description: Specifies whether or not an exception is thrown when the user cancels the operation. Default is `UICancelOption.ThrowException`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -2010,16 +2010,16 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\).'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>sourceDirectoryName</code> or <code>destinationDirectoryName</code> is `Nothing` or an empty string.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: <code>onUserCancel</code> is set to <xref uid="langword_csharp_ThrowException" name="ThrowException" href=""></xref> and a subdirectory of the file cannot be copied.
+    description: <code>onUserCancel</code> is set to `ThrowException` and a subdirectory of the file cannot be copied.
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
-    description: <code>onUserCancel</code> is set to <xref uid="langword_csharp_ThrowException" name="ThrowException" href=""></xref>, and the user cancels the operation, or the operation cannot be completed.
+    description: <code>onUserCancel</code> is set to `ThrowException`, and the user cancels the operation, or the operation cannot be completed.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
@@ -2035,7 +2035,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2072,7 +2072,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
@@ -2088,7 +2088,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2120,7 +2120,7 @@ items:
       description: Path of the directory into which the file should be moved.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Specifies whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Specifies whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.MoveFile*
   exceptions:
   - type: System.ArgumentException
@@ -2128,7 +2128,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
@@ -2144,7 +2144,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2176,7 +2176,7 @@ items:
       description: Path of the directory into which the file should be moved.
     - id: overwrite
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to overwrite existing files; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` to overwrite existing files; otherwise `False`. Default is `False`.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.MoveFile*
   exceptions:
   - type: System.ArgumentException
@@ -2184,7 +2184,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
@@ -2200,7 +2200,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2232,10 +2232,10 @@ items:
       description: Path of the directory into which the file should be moved.
     - id: showUI
       type: Microsoft.VisualBasic.FileIO.UIOption
-      description: Specifies whether to visually track the operation's progress. Default is <xref uid="langword_csharp_UIOption.OnlyErrorDialogs" name="UIOption.OnlyErrorDialogs" href=""></xref>.
+      description: Specifies whether to visually track the operation's progress. Default is `UIOption.OnlyErrorDialogs`.
     - id: onUserCancel
       type: Microsoft.VisualBasic.FileIO.UICancelOption
-      description: Specifies whether or not an exception is thrown when the user cancels the operation. Default is <xref uid="langword_csharp_UICancelOption.ThrowException" name="UICancelOption.ThrowException" href=""></xref>.
+      description: Specifies whether or not an exception is thrown when the user cancels the operation. Default is `UICancelOption.ThrowException`.
   overload: Microsoft.VisualBasic.FileIO.FileSystem.MoveFile*
   exceptions:
   - type: System.ArgumentException
@@ -2243,7 +2243,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationFileName</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> or an empty string.
+    description: <code>destinationFileName</code> is `Nothing` or an empty string.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The source file is not valid or does not exist.
@@ -2252,7 +2252,7 @@ items:
     description: The file is in use by another process, or an I/O error occurs.
   - type: System.OperationCanceledException
     commentId: T:System.OperationCanceledException
-    description: <code>onUserCancel</code> is set to <xref uid="langword_csharp_ThrowException" name="ThrowException" href=""></xref>, and either the user has cancelled the operation or an unspecified I/O error occurs.
+    description: <code>onUserCancel</code> is set to `ThrowException`, and either the user has cancelled the operation or an unspecified I/O error occurs.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The path exceeds the system-defined maximum length.
@@ -2262,7 +2262,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2279,7 +2279,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: The <xref uid="langword_csharp_OpenTextFieldParser" name="OpenTextFieldParser" href=""></xref> method allows you to create a <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> object,  which provides a way to easily and efficiently parse structured text files, such as logs. The <xref uid="langword_csharp_TextFieldParser" name="TextFieldParser" href=""></xref> object can be used to read both delimited and fixed-width files.
+  summary: The `OpenTextFieldParser` method allows you to create a <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> object,  which provides a way to easily and efficiently parse structured text files, such as logs. The `TextFieldParser` object can be used to read both delimited and fixed-width files.
   remarks: "The following table lists examples of tasks involving the `My.Computer.FileSystem.OpenTextFieldParser` method.  \n  \n|||  \n|-|-|  \n|To|See|  \n|Read from a delimited text file|[How to: Read From Comma-Delimited Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|  \n|Read from a fixed-width text file|[How to: Read From Fixed-width Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|  \n|Read from a text file with multiple formats|[How to: Read From Text Files with Multiple Formats in Visual Basic](~/add/includes/ajax-current-ext-md.md)|"
   example:
   - "This example opens the `TextFieldParser``reader` and uses it to read from `C:\\TestFolder1\\Test1.txt`.  \n  \n [!code-vb[VbRefFile#18](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._156_1.vb)]"
@@ -2288,7 +2288,7 @@ items:
     parameters:
     - id: file
       type: System.String
-      description: The file to be opened with the <xref uid="langword_csharp_TextFieldParser" name="TextFieldParser" href=""></xref>.
+      description: The file to be opened with the `TextFieldParser`.
     return:
       type: Microsoft.VisualBasic.FileIO.TextFieldParser
       description: <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> to read the specified file.
@@ -2299,7 +2299,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2318,7 +2318,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2335,7 +2335,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: The <xref uid="langword_csharp_OpenTextFieldParser" name="OpenTextFieldParser" href=""></xref> method allows you to create a <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> object, which provides a way to easily and efficiently parse structured text files, such as logs. The <xref uid="langword_csharp_TextFieldParser" name="TextFieldParser" href=""></xref> object can be used to read both delimited and fixed-width files.
+  summary: The `OpenTextFieldParser` method allows you to create a <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> object, which provides a way to easily and efficiently parse structured text files, such as logs. The `TextFieldParser` object can be used to read both delimited and fixed-width files.
   remarks: "The following table lists examples of tasks involving the `My.Computer.FileSystem.OpenTextFieldParser` method.  \n  \n|||  \n|-|-|  \n|To|See|  \n|Read from a delimited text file|[How to: Read From Comma-Delimited Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|  \n|Read from a fixed-width text file|[How to: Read From Fixed-width Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|  \n|Read from a text file with multiple formats|[How to: Read From Text Files with Multiple Formats in Visual Basic](~/add/includes/ajax-current-ext-md.md)|"
   example:
   - "This example opens the `TextFieldParser``reader` and uses it to read from `C:\\TestFolder1\\Test1.txt`.  \n  \n [!code-vb[VbRefFile#18](~/add/codesnippet/visualbasic/23049b6e-0913-4641-bd0f-_1.vb)]"
@@ -2344,7 +2344,7 @@ items:
     parameters:
     - id: file
       type: System.String
-      description: The file to be opened with the <xref uid="langword_csharp_TextFieldParser" name="TextFieldParser" href=""></xref>.
+      description: The file to be opened with the `TextFieldParser`.
     - id: fieldWidths
       type: System.Int32[]
       description: Widths of the fields.
@@ -2358,7 +2358,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2377,7 +2377,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2394,7 +2394,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: The <xref uid="langword_csharp_OpenTextFieldParser" name="OpenTextFieldParser" href=""></xref> method allows you to create a <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> object, which provides a way to easily and efficiently parse structured text files, such as logs. The <xref uid="langword_csharp_TextFieldParser" name="TextFieldParser" href=""></xref> object can be used to read both delimited and fixed-width files.
+  summary: The `OpenTextFieldParser` method allows you to create a <xref href="Microsoft.VisualBasic.FileIO.TextFieldParser"></xref> object, which provides a way to easily and efficiently parse structured text files, such as logs. The `TextFieldParser` object can be used to read both delimited and fixed-width files.
   remarks: "The following table lists examples of tasks involving the `My.Computer.FileSystem.OpenTextFieldParser` method.  \n  \n|||  \n|-|-|  \n|To|See|  \n|Read from a delimited text file|[How to: Read From Comma-Delimited Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|  \n|Read from a fixed-width text file|[How to: Read From Fixed-width Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|  \n|Read from a text file with multiple formats|[How to: Read From Text Files with Multiple Formats in Visual Basic](~/add/includes/ajax-current-ext-md.md)|"
   example:
   - "This example opens the `TextFieldParser``reader` and uses it to read from `C:\\TestFolder1\\Test1.txt`.  \n  \n [!code-vb[VbRefFile#18](~/add/codesnippet/visualbasic/714bc4c9-ee52-4bdc-875b-_1.vb)]"
@@ -2403,7 +2403,7 @@ items:
     parameters:
     - id: file
       type: System.String
-      description: The file to be opened with the <xref uid="langword_csharp_TextFieldParser" name="TextFieldParser" href=""></xref>.
+      description: The file to be opened with the `TextFieldParser`.
     - id: delimiters
       type: System.String[]
       description: Delimiters for the fields.
@@ -2417,7 +2417,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2436,7 +2436,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2477,7 +2477,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to read from the file.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2521,7 +2521,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to read from the file.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2550,7 +2550,7 @@ items:
       description: File to be written to.
     - id: append
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to append to the contents of the file; <xref uid="langword_csharp_False" name="False" href=""></xref> to overwrite the contents of the file. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` to append to the contents of the file; `False` to overwrite the contents of the file. Default is `False`.'
     return:
       type: System.IO.StreamWriter
       description: <xref href="System.IO.StreamWriter"></xref> object to write to the specified file.
@@ -2559,7 +2559,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The file name ends with a trailing slash.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2588,7 +2588,7 @@ items:
       description: File to be written to.
     - id: append
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to append to the contents in the file; <xref uid="langword_csharp_False" name="False" href=""></xref> to overwrite the contents of the file. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` to append to the contents in the file; `False` to overwrite the contents of the file. Default is `False`.'
     - id: encoding
       type: System.Text.Encoding
       description: Encoding to be used in writing to the file. Default is ASCII.
@@ -2600,7 +2600,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The file name ends with a trailing slash.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2629,7 +2629,7 @@ items:
       description: File to be read.
     return:
       type: System.Byte[]
-      description: <xref uid="langword_csharp_Byte" name="Byte" href=""></xref> array containing the contents of the file.
+      description: '`Byte` array containing the contents of the file.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.ReadAllBytes*
   exceptions:
   - type: System.ArgumentException
@@ -2637,7 +2637,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2656,7 +2656,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2673,7 +2673,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: Returns the contents of a text file as a <xref uid="langword_csharp_String" name="String" href=""></xref>.
+  summary: Returns the contents of a text file as a `String`.
   remarks: "The `ReadAllText` method of the `My.Computer.FileSystem` object allows you to read from a text file. The contents of the file are returned as a string.  \n  \n The file encoding can be specified if the contents of the file are in an encoding such as ASCII or UTF-8. If you are reading from a file with extended characters, you need to specify the file encoding using another overload of the <xref:Microsoft.VisualBasic.FileIO.FileSystem.ReadAllText%2A> method.  \n  \n Do not make decisions about the contents of the file based on the name of the file. For example, the file Form1.vb may not be a Visual Basic source file. Verify all inputs before using the data in your application.  \n  \n The following table lists an example of a task involving the `My.Computer.FileSystem.ReadAllText` method.  \n  \n|||  \n|-|-|  \n|To|See|  \n|Read from a text file|[How to: Read From Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|"
   example:
   - "This example reads the contents of `Test.txt` into a string and then displays it in a message box.  \n  \n [!code-vb[VbRefFile#8](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._107_1.vb)]  \n  \n This example reads the contents of the ASCII file `Test.txt` into a string and then displays it in a message box.  \n  \n [!code-vb[VbRefFile#9](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._107_2.vb)]"
@@ -2685,7 +2685,7 @@ items:
       description: Name and path of the file to read.
     return:
       type: System.String
-      description: <xref uid="langword_csharp_String" name="String" href=""></xref> containing the contents of the file.
+      description: '`String` containing the contents of the file.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.ReadAllText*
   exceptions:
   - type: System.ArgumentException
@@ -2693,7 +2693,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2712,7 +2712,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2729,7 +2729,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.FileIO
-  summary: Returns the contents of a text file as a <xref uid="langword_csharp_String" name="String" href=""></xref>.
+  summary: Returns the contents of a text file as a `String`.
   remarks: "The `ReadAllText` method of the `My.Computer.FileSystem` object allows you to read from a text file. The contents of the file are returned as a string.  \n  \n The file encoding can be specified if the contents of the file are in an encoding such as ASCII or UTF-8. If you are reading from a file with extended characters, you need to specify the file encoding.  \n  \n Do not make decisions about the contents of the file based on the name of the file. For example, the file Form1.vb may not be a Visual Basic source file. Verify all inputs before using the data in your application.  \n  \n The following table lists an example of a task involving the `My.Computer.FileSystem.ReadAllText` method.  \n  \n|||  \n|-|-|  \n|To|See|  \n|Read from a text file|[How to: Read From Text Files in Visual Basic](~/add/includes/ajax-current-ext-md.md)|"
   example:
   - "This example reads the contents of `Test.txt` into a string and then displays it in a message box.  \n  \n [!code-vb[VbRefFile#8](~/add/codesnippet/visualbasic/1582cda5-304c-4525-b252-_1.vb)]  \n  \n This example reads the contents of the ASCII file `Test.txt` into a string and then displays it in a message box.  \n  \n [!code-vb[VbRefFile#9](~/add/codesnippet/visualbasic/1582cda5-304c-4525-b252-_2.vb)]"
@@ -2744,7 +2744,7 @@ items:
       description: Character encoding to use in reading the file. Default is UTF-8.
     return:
       type: System.String
-      description: <xref uid="langword_csharp_String" name="String" href=""></xref> containing the contents of the file.
+      description: '`String` containing the contents of the file.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.ReadAllText*
   exceptions:
   - type: System.ArgumentException
@@ -2752,7 +2752,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2771,7 +2771,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2808,7 +2808,7 @@ items:
     description: <code>newName</code> contains path information.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>directory</code> is <xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>newName</code> is <xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> or an empty string."
+    description: "<code>directory</code> is `Nothing`.  \n  \n -or-  \n  \n <code>newName</code> is `Nothing` or an empty string."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory does not exist.
@@ -2827,7 +2827,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2864,7 +2864,7 @@ items:
     description: <code>newName</code> contains path information or ends with a backslash (\\).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>file</code> is <xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>newName</code> is <xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> or an empty string."
+    description: "<code>file</code> is `Nothing`.  \n  \n -or-  \n  \n <code>newName</code> is `Nothing` or an empty string."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The directory does not exist.
@@ -2883,7 +2883,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The user does not have required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2915,7 +2915,7 @@ items:
       description: Data to be written to the file.
     - id: append
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to append to the file contents; <xref uid="langword_csharp_False" name="False" href=""></xref> to overwrite the file contents. Default is <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: '`True` to append to the file contents; `False` to overwrite the file contents. Default is `False`.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.WriteAllBytes*
   exceptions:
   - type: System.ArgumentException
@@ -2923,7 +2923,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -2942,7 +2942,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2974,7 +2974,7 @@ items:
       description: Text to be written to file.
     - id: append
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to append to the contents of the file; <xref uid="langword_csharp_False" name="False" href=""></xref> to overwrite the contents of the file.
+      description: '`True` to append to the contents of the file; `False` to overwrite the contents of the file.'
   overload: Microsoft.VisualBasic.FileIO.FileSystem.WriteAllText*
   exceptions:
   - type: System.ArgumentException
@@ -2982,7 +2982,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -3001,7 +3001,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3033,7 +3033,7 @@ items:
       description: Text to be written to file.
     - id: append
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> to append to the contents of the file; <xref uid="langword_csharp_False" name="False" href=""></xref> to overwrite the contents of the file.
+      description: '`True` to append to the contents of the file; `False` to overwrite the contents of the file.'
     - id: encoding
       type: System.Text.Encoding
       description: What encoding to use when writing to file.
@@ -3044,7 +3044,7 @@ items:
     description: 'The path is not valid for one of the following reasons: it is a zero-length string; it contains only white space; it contains invalid characters; or it is a device path (starts with \\\\.\\); it ends with a trailing slash.'
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>file</code> is <xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>.
+    description: <code>file</code> is `Nothing`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file does not exist.
@@ -3063,7 +3063,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The user lacks necessary permissions to view the path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3375,8 +3375,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -3533,8 +3533,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32
@@ -3601,8 +3601,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

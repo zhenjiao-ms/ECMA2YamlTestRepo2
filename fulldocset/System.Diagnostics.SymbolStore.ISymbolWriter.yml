@@ -37,7 +37,7 @@ items:
 
       public interface ISymbolWriter
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,7 +61,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.CloseMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,7 +108,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.CloseNamespace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -135,7 +135,7 @@ items:
       description: The points past the last instruction in the scope.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.CloseScope*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -173,7 +173,7 @@ items:
       description: The object that represents the document.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineDocument*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -221,7 +221,7 @@ items:
       description: The third address for the field specification.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineField*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,7 +265,7 @@ items:
       description: The third address for the global variable specification.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineGlobalVariable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
       description: The end offset for the variable. If this parameter is zero, it is ignored and the variable is defined throughout the entire scope. If the parameter is nonzero, the variable falls within the offsets of the current scope.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineLocalVariable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -361,7 +361,7 @@ items:
       description: The third address for the parameter specification.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,7 +403,7 @@ items:
       description: The document end positions for the sequence points.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineSequencePoints*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,10 +433,10 @@ items:
       description: The file name for which the debugging symbols are written. Some writers require a file name, and others do not. If a file name is specified for a writer that does not use file names, this parameter is ignored.
     - id: fFullBuild
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> indicates that this is a full rebuild; <xref uid="langword_csharp_false" name="false" href=""></xref> indicates that this is an incremental compilation.
+      description: '`true` indicates that this is a full rebuild; `false` indicates that this is an incremental compilation.'
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.Initialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,7 +463,7 @@ items:
       description: The metadata token for the method to be opened.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -490,7 +490,7 @@ items:
       description: The name of the new namespace.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenNamespace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -520,7 +520,7 @@ items:
       description: An opaque scope identifier that can be used with <xref:System.Diagnostics.SymbolStore.ISymbolWriter.SetScopeRange*> to define the start and end offsets of a scope at a later time. In this case, the offsets passed to OpenScope and <xref:System.Diagnostics.SymbolStore.ISymbolWriter.CloseScope*> are ignored. A scope identifier is valid only in the current method.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenScope*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -561,7 +561,7 @@ items:
       description: The ending column number.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetMethodSourceRange*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -593,7 +593,7 @@ items:
       description: The byte offset of the end of the lexical scope.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetScopeRange*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -626,7 +626,7 @@ items:
       description: The attribute value.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetSymAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -643,7 +643,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: Sets the underlying <xref uid="langword_csharp_ISymUnmanagedWriter" name="ISymUnmanagedWriter" href=""></xref> (the corresponding unmanaged interface) that a managed <xref href="System.Diagnostics.SymbolStore.ISymbolWriter"></xref> uses to emit symbols.
+  summary: Sets the underlying `ISymUnmanagedWriter` (the corresponding unmanaged interface) that a managed <xref href="System.Diagnostics.SymbolStore.ISymbolWriter"></xref> uses to emit symbols.
   remarks: The underlying `ISymUnmanagedWriter` (the corresponding unmanaged interface) represents a symbol writer for managed code. The interface provides methods for defining documents, sequence points, lexical scopes, and variables.
   syntax:
     content: public void SetUnderlyingWriter (IntPtr underlyingWriter);
@@ -653,7 +653,7 @@ items:
       description: A pointer to code that represents the underlying writer.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetUnderlyingWriter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -680,7 +680,7 @@ items:
       description: The metadata token for the method that is the user entry point.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetUserEntryPoint*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -707,7 +707,7 @@ items:
       description: The fully qualified name of the namespace.
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.UsingNamespace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,8 +788,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -838,8 +838,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32

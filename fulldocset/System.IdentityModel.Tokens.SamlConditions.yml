@@ -34,7 +34,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -57,7 +57,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SamlConditions.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -86,7 +86,7 @@ items:
       description: A <xref href="System.DateTime"></xref> that specifies the instant in time when the SAML assertion expires. Sets the <xref:System.IdentityModel.Tokens.SamlConditions.NotOnOrAfter*> property.
   overload: System.IdentityModel.Tokens.SamlConditions.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -120,8 +120,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>conditions</code> contains a member that is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>conditions</code> contains a member that is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -146,7 +146,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlCondition"></xref> that specifies a set of conditions that a recipient of a SAML assertion must take into account when assessing the validity of the assertion.
   overload: System.IdentityModel.Tokens.SamlConditions.Conditions*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -168,10 +168,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the properties of this instance are read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the properties of this instance are read-only; otherwise, `false`. The default is `false`.'
   overload: System.IdentityModel.Tokens.SamlConditions.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -194,7 +194,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SamlConditions.MakeReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -219,7 +219,7 @@ items:
       description: A <xref href="System.DateTime"></xref> that specifies the earliest instant in time when the SAML assertion is valid.
   overload: System.IdentityModel.Tokens.SamlConditions.NotBefore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -244,7 +244,7 @@ items:
       description: A <xref href="System.DateTime"></xref> that specifies the instant in time when the SAML assertion expires.
   overload: System.IdentityModel.Tokens.SamlConditions.NotOnOrAfter*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -260,20 +260,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the <xref uid="langword_csharp_&lt;saml:Conditions&gt;" name="&lt;saml:Conditions&gt;" href=""></xref> element from the specified XML reader.
+  summary: Reads the `&lt;saml:Conditions&gt;` element from the specified XML reader.
   remarks: "The ReadXml method sets the following properties:  \n  \n-   <xref:System.IdentityModel.Tokens.SamlConditions.NotOnOrAfter%2A>  \n  \n-   <xref:System.IdentityModel.Tokens.SamlConditions.NotBefore%2A>  \n  \n-   <xref:System.IdentityModel.Tokens.SamlConditions.Conditions%2A>"
   syntax:
     content: public virtual void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the <xref uid="langword_csharp_&lt;saml:Conditions&gt;" name="&lt;saml:Conditions&gt;" href=""></xref> element.
+      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:Conditions&gt;` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in the SAML authorization statement that is defined in the SAML specification.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that reads the <xref uid="langword_csharp_KeyInfo" name="KeyInfo" href=""></xref> clause of the digital signature.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that reads the `KeyInfo` clause of the digital signature.
     - id: outOfBandTokenResolver
       type: System.IdentityModel.Selectors.SecurityTokenResolver
       description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature.
@@ -281,8 +281,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>reader</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>samlSerializer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>reader</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -298,26 +298,26 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the <xref uid="langword_csharp_&lt;saml:Conditions&gt;" name="&lt;saml:Conditions&gt;" href=""></xref> element into the specified XML serializer.
+  summary: Writes the `&lt;saml:Conditions&gt;` element into the specified XML serializer.
   remarks: Use the WriteXml method to write the current <xref:System.IdentityModel.Tokens.SamlConditions> instance into a `<saml:Conditions>` element.
   syntax:
     content: public virtual void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the <xref uid="langword_csharp_&lt;saml:Conditions&gt;" name="&lt;saml:Conditions&gt;" href=""></xref> element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:Conditions&gt;` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing XML elements in a SAML assertion.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing <xref uid="langword_csharp_KeyInfo" name="KeyInfo" href=""></xref> clauses.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing `KeyInfo` clauses.
   overload: System.IdentityModel.Tokens.SamlConditions.WriteXml*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>writer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>samlSerializer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>writer</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

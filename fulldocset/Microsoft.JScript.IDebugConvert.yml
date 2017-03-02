@@ -38,7 +38,7 @@ items:
 
       public interface IDebugConvert
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
       description: The literal string "true" or the literal string "false".
   overload: Microsoft.JScript.IDebugConvert.BooleanToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,7 +99,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.ByteToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: The string representation of <code>value</code>.
   overload: Microsoft.JScript.IDebugConvert.DoubleToDateString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -157,7 +157,7 @@ items:
       description: The string representation of <code>value</code>.
   overload: Microsoft.JScript.IDebugConvert.DoubleToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -189,7 +189,7 @@ items:
       description: A localized string that contains information about the error.
   overload: Microsoft.JScript.IDebugConvert.GetErrorMessageForHR*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.JScript.IDebugConvert.GetManagedCharObject(System.UInt16)
   id: GetManagedCharObject(System.UInt16)
@@ -215,7 +215,7 @@ items:
       description: <code>i</code> converted to a <xref href="System.Char"></xref> and then an <xref href="System.Object"></xref>.
   overload: Microsoft.JScript.IDebugConvert.GetManagedCharObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
       description: <code>i</code> converted to an <xref href="System.Object"></xref>.
   overload: Microsoft.JScript.IDebugConvert.GetManagedInt64Object*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -273,7 +273,7 @@ items:
       description: <code>value</code> converted to a managed <xref href="System.Object"></xref>.
   overload: Microsoft.JScript.IDebugConvert.GetManagedObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -302,7 +302,7 @@ items:
       description: <code>i</code> converted to an <xref href="System.Object"></xref>.
   overload: Microsoft.JScript.IDebugConvert.GetManagedUInt64Object*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,7 +334,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.Int16ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.Int32ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -398,7 +398,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.Int64ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -424,19 +424,19 @@ items:
       description: The regular expression pattern to match.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use case-insensitive matching; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to use case-insensitive matching; otherwise, `false`.'
     - id: global
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use a global match; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to use a global match; otherwise, `false`.'
     - id: multiline
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use a multiline match; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to use a multiline match; otherwise, `false`.'
     return:
       type: System.String
       description: The string representation of the regular expression information.
   overload: Microsoft.JScript.IDebugConvert.RegexpToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -468,7 +468,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.SByteToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -497,7 +497,7 @@ items:
       description: The string representation of <code>value</code>.
   overload: Microsoft.JScript.IDebugConvert.SingleToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -526,7 +526,7 @@ items:
       description: The string representation of <code>source</code> that contains escape characters.
   overload: Microsoft.JScript.IDebugConvert.StringToPrintable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,13 +555,13 @@ items:
       description: The type to convert `value` to.
     - id: truncationPermitted
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to allow data loss; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to allow data loss; otherwise, `false`.'
     return:
       type: System.Object
       description: <code>value</code> converted to the <code>typeCode</code> type.
   overload: Microsoft.JScript.IDebugConvert.ToPrimitive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -593,7 +593,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.UInt16ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -625,7 +625,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.UInt32ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -657,7 +657,7 @@ items:
       description: The string representation of <code>value</code> in base <code>radix</code>.
   overload: Microsoft.JScript.IDebugConvert.UInt64ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

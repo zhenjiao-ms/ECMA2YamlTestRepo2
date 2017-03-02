@@ -67,7 +67,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.ImageIndexConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,7 +130,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: The conversion could not be performed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,7 +154,7 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context, which can be used to extract additional information about the environment this type converter is being invoked from. This parameter or properties of this parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context, which can be used to extract additional information about the environment this type converter is being invoked from. This parameter or properties of this parameter can be `null`.
     - id: culture
       type: System.Globalization.CultureInfo
       description: A <xref href="System.Globalization.CultureInfo"></xref> that provides locale information.
@@ -171,11 +171,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>destinationType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>destinationType</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The specified <code>value</code> could not be converted to the specified <code>destinationType</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,13 +199,13 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context, which can be used to extract additional information about the environment this type converter is being invoked from. This parameter or properties of this parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context, which can be used to extract additional information about the environment this type converter is being invoked from. This parameter or properties of this parameter can be `null`.
     return:
       type: System.ComponentModel.TypeConverter.StandardValuesCollection
       description: A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> that holds a standard set of valid index values. If no image list is found, this collection will contain a single object with a value of -1.
   overload: System.Windows.Forms.ImageIndexConverter.GetStandardValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,10 +232,10 @@ items:
       description: A formatter context.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Windows.Forms.ImageIndexConverter.GetStandardValues*> method returns an exclusive list of valid values; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. This implementation always returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Windows.Forms.ImageIndexConverter.GetStandardValues*> method returns an exclusive list of valid values; otherwise, `false`. This implementation always returns `false`.'
   overload: System.Windows.Forms.ImageIndexConverter.GetStandardValuesExclusive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,13 +259,13 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context, which can be used to extract additional information about the environment this type converter is being invoked from. This parameter or properties of this parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context, which can be used to extract additional information about the environment this type converter is being invoked from. This parameter or properties of this parameter can be `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Windows.Forms.ImageIndexConverter.GetStandardValues*> method returns a standard set of values; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. Always returns <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the <xref:System.Windows.Forms.ImageIndexConverter.GetStandardValues*> method returns a standard set of values; otherwise, `false`. Always returns `true`.'
   overload: System.Windows.Forms.ImageIndexConverter.GetStandardValuesSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -282,16 +282,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Gets or sets a value indicating whether a <xref uid="langword_csharp_none" name="none" href=""></xref> or <xref uid="langword_csharp_null" name="null" href=""></xref> value is valid in the <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> collection.
+  summary: Gets or sets a value indicating whether a `none` or `null` value is valid in the <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> collection.
   remarks: As implemented in this class is always returns `true`.
   syntax:
     content: protected virtual bool IncludeNoneAsStandardValue { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a <xref uid="langword_csharp_none" name="none" href=""></xref> or <xref uid="langword_csharp_null" name="null" href=""></xref> value is valid in the standard values collection; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a `none` or `null` value is valid in the standard values collection; otherwise, `false`.'
   overload: System.Windows.Forms.ImageIndexConverter.IncludeNoneAsStandardValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

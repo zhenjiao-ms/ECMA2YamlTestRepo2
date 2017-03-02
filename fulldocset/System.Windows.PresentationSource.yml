@@ -42,7 +42,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -64,7 +64,7 @@ items:
     parameters: []
   overload: System.Windows.PresentationSource.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -87,7 +87,7 @@ items:
     parameters: []
   overload: System.Windows.PresentationSource.AddSource*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -103,7 +103,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: Adds a handler for the <xref uid="langword_csharp_SourceChanged" name="SourceChanged" href=""></xref> event to the provided element.
+  summary: Adds a handler for the `SourceChanged` event to the provided element.
   remarks: "Despite what the syntax block for this event states, there is no legitimate [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] attached property usage. You should not attempt to add handlers in [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)], and handlers in code should only be placed on objects that serve as hosts for presentation (<xref:System.Windows.PresentationSource> ) content. Such handlers should only be attached during object initialization, and should be explicitly removed in a Dispose method or equivalent object cleanup.  \n  \n Even though this is a routed event, there are special restrictions placed on this event that differ from normal routed event behavior, due to the relatively small number of elements in a typical application scenario that would concern themselves with handling this event.  \n  \n-   You cannot use the <xref:System.Windows.UIElement> or <xref:System.Windows.ContentElement> <xref:System.Windows.UIElement.AddHandler%2A> methods to add handlers. You must use AddSourceChangedHandler.  \n  \n-   The [!INCLUDE[TLA#tla_cshrp](~/add/includes/tlasharptla-cshrp-md.md)] `+=` and `-=` event handler syntaxes, and related language specific handler syntaxes, are not supported, because the event itself is not exposed as public. Only the <xref:System.Windows.PresentationSource> utility methods for adding and removing the handlers directly are supported.  \n  \n-   Class handlers are not allowed. Specifically, you cannot call <xref:System.Windows.EventManager.RegisterClassHandler%2A> against this event in a class constructor because although an identifier field exists for SourceChanged, the identifier is not public.  \n  \n-   All registered handlers will receive the SourceChanged event even if one of the handlers attempts to mark the arguments as handled."
   syntax:
     content: public static void AddSourceChangedHandler (System.Windows.IInputElement element, System.Windows.SourceChangedEventHandler handler);
@@ -116,7 +116,7 @@ items:
       description: The hander implementation to add.
   overload: System.Windows.PresentationSource.AddSourceChangedHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -132,13 +132,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: Sets the list of listeners for the <xref href="System.Windows.PresentationSource.ContentRendered"></xref> event to <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  summary: Sets the list of listeners for the <xref href="System.Windows.PresentationSource.ContentRendered"></xref> event to `null`.
   syntax:
     content: protected void ClearContentRenderedListeners ();
     parameters: []
   overload: System.Windows.PresentationSource.ClearContentRenderedListeners*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -163,7 +163,7 @@ items:
       description: A visual target (instance of a <xref href="System.Windows.Media.CompositionTarget"></xref> derived class).
   overload: System.Windows.PresentationSource.CompositionTarget*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -186,7 +186,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -211,7 +211,7 @@ items:
       description: A list of weak references.
   overload: System.Windows.PresentationSource.CurrentSources*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -239,7 +239,7 @@ items:
       description: The <xref href="System.Windows.PresentationSource"></xref> in which the dependency object is being presented.
   overload: System.Windows.PresentationSource.FromDependencyObject*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -264,13 +264,13 @@ items:
       description: The <xref href="System.Windows.Media.Visual"></xref> to find the source for.
     return:
       type: System.Windows.PresentationSource
-      description: The <xref href="System.Windows.PresentationSource"></xref> in which the visual is being presented, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>visual</code> is disposed.
+      description: The <xref href="System.Windows.PresentationSource"></xref> in which the visual is being presented, or `null` if <code>visual</code> is disposed.
   overload: System.Windows.PresentationSource.FromVisual*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>visual</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>visual</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -295,7 +295,7 @@ items:
       description: Returns a <xref href="System.Windows.Media.CompositionTarget"></xref> that is target for rendering the visual.
   overload: System.Windows.PresentationSource.GetCompositionTargetCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -316,10 +316,10 @@ items:
     content: public abstract bool IsDisposed { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object is disposed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object is disposed; otherwise, `false`.'
   overload: System.Windows.PresentationSource.IsDisposed*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -341,7 +341,7 @@ items:
     parameters: []
   overload: System.Windows.PresentationSource.RemoveSource*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -357,7 +357,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: Removes a handler for the <xref uid="langword_csharp_SourceChanged" name="SourceChanged" href=""></xref> event from the provided element.
+  summary: Removes a handler for the `SourceChanged` event from the provided element.
   remarks: "Even though this is a routed event, there are special restrictions placed on this event that differ from normal routed event behavior, due to the relatively small number of elements in a typical application scenario that would concern themselves with handling this event.  \n  \n-   You cannot use the <xref:System.Windows.UIElement> or <xref:System.Windows.ContentElement> <xref:System.Windows.UIElement.RemoveHandler%2A> methods to remove handlers. You must use RemoveSourceChangedHandler.  \n  \n-   The [!INCLUDE[TLA#tla_cshrp](~/add/includes/tlasharptla-cshrp-md.md)] `+=` and `-=` event handler syntaxes, and other language specific handler syntaxes, are not supported, because the event itself is not exposed as public. Only the <xref:System.Windows.PresentationSource> utility methods for adding and removing the handlers directly are supported."
   syntax:
     content: public static void RemoveSourceChangedHandler (System.Windows.IInputElement e, System.Windows.SourceChangedEventHandler handler);
@@ -370,7 +370,7 @@ items:
       description: The handler implementation to remove.
   overload: System.Windows.PresentationSource.RemoveSourceChangedHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -399,7 +399,7 @@ items:
       description: The new root <xref href="System.Windows.Media.Visual"></xref>.
   overload: System.Windows.PresentationSource.RootChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -423,7 +423,7 @@ items:
       description: The root visual.
   overload: System.Windows.PresentationSource.RootVisual*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

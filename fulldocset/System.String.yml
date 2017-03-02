@@ -176,7 +176,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,7 +212,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> specifies an array that contains an invalid Unicode character, or <code>value</code> specifies an address less than 64000.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
       description: An array of Unicode characters.
   overload: System.String.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -274,7 +274,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A new instance of <xref href="System.String"></xref> could not be initialized using <code>value</code>, assuming <code>value</code> is encoded in ANSI.
@@ -284,7 +284,7 @@ items:
   - type: System.AccessViolationException
     commentId: T:System.AccessViolationException
     description: <code>value</code> specifies an invalid address.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -320,7 +320,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>count</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,7 +362,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> specifies an array that contains an invalid Unicode character, or <code>value</code> + <code>startIndex</code> specifies an address less than 64000.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,11 +400,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> or <code>length</code> is less than zero.  \n  \n -or-  \n  \n The sum of <code>startIndex</code> and <code>length</code> is greater than the number of elements in <code>value</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -442,7 +442,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> or <code>length</code> is less than zero.  \n  \n -or-  \n  \n The address specified by <code>value</code> + <code>startIndex</code> is too large for the current platform; that is, the address calculation overflowed.  \n  \n -or-  \n  \n The length of the new string to initialize is too large to allocate."
@@ -452,7 +452,7 @@ items:
   - type: System.AccessViolationException
     commentId: T:System.AccessViolationException
     description: <code>value</code>, <code>startIndex</code>, and <code>length</code> collectively specify an invalid address.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -488,12 +488,12 @@ items:
       description: The number of characters within `value` to use.
     - id: enc
       type: System.Text.Encoding
-      description: An object that specifies how the array referenced by `value` is encoded. If `enc` is <xref uid="langword_csharp_null" name="null" href=""></xref>, ANSI encoding is assumed.
+      description: An object that specifies how the array referenced by `value` is encoded. If `enc` is `null`, ANSI encoding is assumed.
   overload: System.String.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> or <code>length</code> is less than zero.  \n  \n -or-  \n  \n The address specified by <code>value</code> + <code>startIndex</code> is too large for the current platform; that is, the address calculation overflowed.  \n  \n -or-  \n  \n The length of the new string to initialize is too large to allocate."
@@ -503,7 +503,7 @@ items:
   - type: System.AccessViolationException
     commentId: T:System.AccessViolationException
     description: <code>value</code>, <code>startIndex</code>, and <code>length</code> collectively specify an invalid address.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -538,7 +538,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: <code>index</code> is greater than or equal to the length of this object or less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -565,7 +565,7 @@ items:
       description: This instance of <xref href="System.String"></xref>.
   overload: System.String.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -600,7 +600,7 @@ items:
       description: "A 32-bit signed integer that indicates the lexical relationship between the two comparands.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|<code>strA</code> precedes <code>strB</code> in the sort order.|  \n|Zero|<code>strA</code> occurs in the same position as <code>strB</code> in the sort order.|  \n|Greater than zero|<code>strA</code> follows <code>strB</code> in the sort order.|"
   overload: System.String.Compare*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -632,13 +632,13 @@ items:
       description: The second string to compare.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during the comparison; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during the comparison; otherwise, `false`.'
     return:
       type: System.Int32
       description: "A 32-bit signed integer that indicates the lexical relationship between the two comparands.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|<code>strA</code> precedes <code>strB</code> in the sort order.|  \n|Zero|<code>strA</code> occurs in the same position as <code>strB</code> in the sort order.|  \n|Greater than zero|<code>strA</code> follows <code>strB</code> in the sort order.|"
   overload: System.String.Compare*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -682,7 +682,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <xref href="System.StringComparison"></xref> is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -714,7 +714,7 @@ items:
       description: The second string to compare.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during the comparison; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during the comparison; otherwise, `false`.'
     - id: culture
       type: System.Globalization.CultureInfo
       description: An object that supplies culture-specific comparison information.
@@ -725,8 +725,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -772,8 +772,8 @@ items:
     description: <code>options</code> is not a <xref href="System.Globalization.CompareOptions"></xref> value.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -819,8 +819,8 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>indexA</code> or <code>indexB</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>length</code> is greater than zero."
-  platform:
+    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>indexA</code> or <code>indexB</code> is `null`, and <code>length</code> is greater than zero."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -861,7 +861,7 @@ items:
       description: The maximum number of characters in the substrings to compare.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during the comparison; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during the comparison; otherwise, `false`.'
     return:
       type: System.Int32
       description: "A 32-bit signed integer that indicates the lexical relationship between the two comparands.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|The substring in <code>strA</code> precedes the substring in <code>strB</code> in the sort order.|  \n|Zero|The substrings occur in the same position in the sort order, or <code>length</code> is zero.|  \n|Greater than zero|The substring in <code>strA</code> follows the substring in <code>strB</code> in the sort order.|"
@@ -869,8 +869,8 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>indexA</code> or <code>indexB</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>length</code> is greater than zero."
-  platform:
+    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>indexA</code> or <code>indexB</code> is `null`, and <code>length</code> is greater than zero."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -919,11 +919,11 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>indexA</code> or <code>indexB</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>length</code> is greater than zero."
+    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>indexA</code> or <code>indexB</code> is `null`, and <code>length</code> is greater than zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -964,7 +964,7 @@ items:
       description: The maximum number of characters in the substrings to compare.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during the comparison; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during the comparison; otherwise, `false`.'
     - id: culture
       type: System.Globalization.CultureInfo
       description: An object that supplies culture-specific comparison information.
@@ -975,11 +975,11 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>strA</code> or <code>strB</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>length</code> is greater than zero."
+    description: "<code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>strA</code> or <code>strB</code> is `null`, and <code>length</code> is greater than zero."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1034,11 +1034,11 @@ items:
     description: <code>options</code> is not a <xref href="System.Globalization.CompareOptions"></xref> value.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>indexA</code> is greater than <code>strA</code><xref uid=\"langword_csharp_.Length\" name=\".Length\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code><xref uid=\"langword_csharp_.Length\" name=\".Length\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>strA</code> or <code>strB</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and <code>length</code> is greater than zero."
+    description: "<code>indexA</code> is greater than <code>strA</code>`.Length`.  \n  \n -or-  \n  \n <code>indexB</code> is greater than <code>strB</code>`.Length`.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative.  \n  \n -or-  \n  \n Either <code>strA</code> or <code>strB</code> is `null`, and <code>length</code> is greater than zero."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1073,7 +1073,7 @@ items:
       description: "An integer that indicates the lexical relationship between the two comparands.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|<code>strA</code> is less than <code>strB</code>.|  \n|Zero|<code>strA</code> and <code>strB</code> are equal.|  \n|Greater than zero|<code>strA</code> is greater than <code>strB</code>.|"
   overload: System.String.CompareOrdinal*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1119,8 +1119,8 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>strA</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>strB</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and<code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative."
-  platform:
+    description: "<code>strA</code> is not `null` and <code>indexA</code> is greater than <code>strA</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>strB</code> is not `null` and<code>indexB</code> is greater than <code>strB</code>.<xref:System.String.Length*>.  \n  \n -or-  \n  \n <code>indexA</code>, <code>indexB</code>, or <code>length</code> is negative."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1149,13 +1149,13 @@ items:
       description: An object that evaluates to a <xref href="System.String"></xref>.
     return:
       type: System.Int32
-      description: "A 32-bit signed integer that indicates whether this instance precedes, follows, or appears in the same position in the sort order as the <code>value</code> parameter.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|This instance precedes <code>value</code>.|  \n|Zero|This instance has the same position in the sort order as <code>value</code>.|  \n|Greater than zero|This instance follows <code>value</code>.<br /><br /> -or-<br /><br /><code>value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|"
+      description: "A 32-bit signed integer that indicates whether this instance precedes, follows, or appears in the same position in the sort order as the <code>value</code> parameter.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|This instance precedes <code>value</code>.|  \n|Zero|This instance has the same position in the sort order as <code>value</code>.|  \n|Greater than zero|This instance follows <code>value</code>.<br /><br /> -or-<br /><br /><code>value</code> is `null`.|"
   overload: System.String.CompareTo*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is not a <xref href="System.String"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1184,10 +1184,10 @@ items:
       description: The string to compare with this instance.
     return:
       type: System.Int32
-      description: "A 32-bit signed integer that indicates whether this instance precedes, follows, or appears in the same position in the sort order as the <code>strB</code> parameter.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|This instance precedes <code>strB</code>.|  \n|Zero|This instance has the same position in the sort order as <code>strB</code>.|  \n|Greater than zero|This instance follows <code>strB</code>.<br /><br /> -or-<br /><br /><code>strB</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|"
+      description: "A 32-bit signed integer that indicates whether this instance precedes, follows, or appears in the same position in the sort order as the <code>strB</code> parameter.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|Less than zero|This instance precedes <code>strB</code>.|  \n|Zero|This instance has the same position in the sort order as <code>strB</code>.|  \n|Greater than zero|This instance follows <code>strB</code>.<br /><br /> -or-<br /><br /><code>strB</code> is `null`.|"
   overload: System.String.CompareTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1216,13 +1216,13 @@ items:
       description: A collection object that implements &lt;xref:System.Collections.Generic.IEnumerable%601&gt; and whose generic type argument is <xref href="System.String"></xref>.
     return:
       type: System.String
-      description: The concatenated strings in <code>values</code>, or <xref href="System.String"></xref> if <code>values</code> is an empty <xref uid="langword_csharp_IEnumerable(Of String)" name="IEnumerable(Of String)" href=""></xref>.
+      description: The concatenated strings in <code>values</code>, or <xref href="System.String"></xref> if <code>values</code> is an empty `IEnumerable(Of String)`.
   overload: System.String.Concat*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>values</code> is `null`.
+  version:
   - netframework-40
 - uid: System.String.Concat(System.Object)
   id: Concat(System.Object)
@@ -1245,13 +1245,13 @@ items:
     parameters:
     - id: arg0
       type: System.Object
-      description: The object to represent, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The object to represent, or `null`.
     return:
       type: System.String
-      description: The string representation of the value of <code>arg0</code>, or <xref href="System.String"></xref> if <code>arg0</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The string representation of the value of <code>arg0</code>, or <xref href="System.String"></xref> if <code>arg0</code> is `null`.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1285,11 +1285,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>args</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>args</code> is `null`.
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: Out of memory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1323,11 +1323,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>values</code> is `null`.
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: Out of memory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1362,7 +1362,7 @@ items:
       description: The concatenated string representations of the values of <code>arg0</code> and <code>arg1</code>.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1397,7 +1397,7 @@ items:
       description: The concatenation of <code>str0</code> and <code>str1</code>.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1435,7 +1435,7 @@ items:
       description: The concatenated string representations of the values of <code>arg0</code>, <code>arg1</code>, and <code>arg2</code>.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1473,7 +1473,7 @@ items:
       description: The concatenation of <code>str0</code>, <code>str1</code>, and <code>str2</code>.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1514,7 +1514,7 @@ items:
       description: The concatenated string representation of each value in the parameter list.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1555,7 +1555,7 @@ items:
       description: The concatenation of <code>str0</code>, <code>str1</code>, <code>str2</code>, and <code>str3</code>.
   overload: System.String.Concat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1583,7 +1583,7 @@ items:
       description: To be added.
   overload: System.String.Concat<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.String.Contains(System.String)
   id: Contains(System.String)
@@ -1609,13 +1609,13 @@ items:
       description: The string to seek.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>value</code> parameter occurs within this string, or if <code>value</code> is the empty string (""); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>value</code> parameter occurs within this string, or if <code>value</code> is the empty string (""); otherwise, `false`.'
   overload: System.String.Contains*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1649,8 +1649,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>str</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>str</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1690,11 +1690,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destination</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destination</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>sourceIndex</code>, <code>destinationIndex</code>, or <code>count</code> is negative  \n  \n -or-  \n  \n <code>sourceIndex</code> does not identify a position in the current instance.  \n  \n -or-  \n  \n <code>destinationIndex</code> does not identify a valid index in the <code>destination</code> array.  \n  \n -or-  \n  \n <code>count</code> is greater than the length of the substring from <code>startIndex</code> to the end of this instance  \n  \n -or-  \n  \n <code>count</code> is greater than the length of the subarray from <code>destinationIndex</code> to the end of the <code>destination</code> array."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1719,7 +1719,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1748,13 +1748,13 @@ items:
       description: The string to compare to the substring at the end of this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> matches the end of this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> matches the end of this instance; otherwise, `false`.'
   overload: System.String.EndsWith*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1786,16 +1786,16 @@ items:
       description: One of the enumeration values that determines how this string and `value` are compared.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>value</code> parameter matches the end of this string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>value</code> parameter matches the end of this string; otherwise, `false`.'
   overload: System.String.EndsWith*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1824,19 +1824,19 @@ items:
       description: The string to compare to the substring at the end of this instance.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during the comparison; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during the comparison; otherwise, `false`.'
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Cultural information that determines how this instance and `value` are compared. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the current culture is used.
+      description: Cultural information that determines how this instance and `value` are compared. If `culture` is `null`, the current culture is used.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>value</code> parameter matches the end of this string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>value</code> parameter matches the end of this string; otherwise, `false`.'
   overload: System.String.EndsWith*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1865,10 +1865,10 @@ items:
       description: The string to compare to this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> is a <xref href="System.String"></xref> and its value is the same as this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.  If <code>obj</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, the method returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> is a <xref href="System.String"></xref> and its value is the same as this instance; otherwise, `false`.  If <code>obj</code> is `null`, the method returns `false`.'
   overload: System.String.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1897,10 +1897,10 @@ items:
       description: The string to compare to this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the <code>value</code> parameter is the same as the value of this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, the method returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of the <code>value</code> parameter is the same as the value of this instance; otherwise, `false`. If <code>value</code> is `null`, the method returns `false`.'
   overload: System.String.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1926,16 +1926,16 @@ items:
     parameters:
     - id: a
       type: System.String
-      description: The first string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The first string to compare, or `null`.
     - id: b
       type: System.String
-      description: The second string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The second string to compare, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>a</code> is the same as the value of <code>b</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If both <code>a</code> and <code>b</code> are <xref uid="langword_csharp_null" name="null" href=""></xref>, the method returns <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the value of <code>a</code> is the same as the value of <code>b</code>; otherwise, `false`. If both <code>a</code> and <code>b</code> are `null`, the method returns `true`.'
   overload: System.String.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1967,13 +1967,13 @@ items:
       description: One of the enumeration values that specifies how the strings will be compared.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the <code>value</code> parameter is the same as this string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of the <code>value</code> parameter is the same as this string; otherwise, `false`.'
   overload: System.String.Equals*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1999,22 +1999,22 @@ items:
     parameters:
     - id: a
       type: System.String
-      description: The first string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The first string to compare, or `null`.
     - id: b
       type: System.String
-      description: The second string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The second string to compare, or `null`.
     - id: comparisonType
       type: System.StringComparison
       description: One of the enumeration values that specifies the rules for the comparison.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the <code>a</code> parameter is equal to the value of the <code>b</code> parameter; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of the <code>a</code> parameter is equal to the value of the <code>b</code> parameter; otherwise, `false`.'
   overload: System.String.Equals*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2052,11 +2052,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>format</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: "The format item in <code>format</code> is invalid.  \n  \n -or-  \n  \n The index of a format item is not zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2094,11 +2094,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> or <code>args</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>format</code> or <code>args</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: "<code>format</code> is invalid.  \n  \n -or-  \n  \n The index of a format item is less than zero, or greater than or equal to the length of the <code>args</code> array."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2139,11 +2139,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> or <code>args</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>format</code> or <code>args</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: "<code>format</code> is invalid.  \n  \n -or-  \n  \n The index of a format item is less than zero, or greater than or equal to the length of the <code>args</code> array."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2184,11 +2184,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>format</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: "<code>format</code> is invalid.  \n  \n -or-  \n  \n The index of a format item is not zero or one."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2232,11 +2232,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>format</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: "<code>format</code> is invalid.  \n  \n -or-  \n  \n The index of a format item is less than zero, or greater than two."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2265,7 +2265,7 @@ items:
       description: An enumerator object.
   overload: System.String.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2294,7 +2294,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.String.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2323,7 +2323,7 @@ items:
       description: The enumerated constant, <xref href="System.TypeCode"></xref>.
   overload: System.String.GetTypeCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2355,7 +2355,7 @@ items:
       description: The zero-based index position of <code>value</code> if that character is found, or -1 if it is not.
   overload: System.String.IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2389,8 +2389,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2428,7 +2428,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is less than 0 (zero) or greater than the length of the string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2465,11 +2465,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is less than 0 (zero) or greater than the length of this string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2506,11 +2506,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a valid <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2551,7 +2551,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>count</code> or <code>startIndex</code> is negative.  \n  \n -or-  \n  \n <code>startIndex</code> is greater than the length of this string.  \n  \n -or-  \n  \n <code>count</code> is greater than the length of this string minus <code>startIndex</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2591,11 +2591,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>count</code> or <code>startIndex</code> is negative.  \n  \n -or-  \n  \n <code>startIndex</code> is greater than the length of this string.  \n  \n -or-  \n  \n <code>count</code> is greater than the length of this string minus <code>startIndex</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2635,14 +2635,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is less than 0 (zero) or greater than the length of this string.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a valid <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2685,14 +2685,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>count</code> or <code>startIndex</code> is negative.  \n  \n -or-  \n  \n <code>startIndex</code> is greater than the length of this instance.  \n  \n -or-  \n  \n <code>count</code> is greater than the length of this string minus <code>startIndex</code>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a valid <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2726,8 +2726,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>anyOf</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>anyOf</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2764,11 +2764,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>anyOf</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>anyOf</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> is negative.  \n  \n -or-  \n  \n <code>startIndex</code> is greater than the number of characters in this instance."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2808,11 +2808,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>anyOf</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>anyOf</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>count</code> or <code>startIndex</code> is negative.  \n  \n -or-  \n  \n <code>count</code> + <code>startIndex</code> is greater than the number of characters in this instance."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2849,11 +2849,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is negative or greater than the length of this instance.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2887,8 +2887,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>str</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>str</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2917,13 +2917,13 @@ items:
       description: The string to search for in the intern pool.
     return:
       type: System.String
-      description: A reference to <code>str</code> if it is in the common language runtime intern pool; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A reference to <code>str</code> if it is in the common language runtime intern pool; otherwise, `null`.
   overload: System.String.IsInterned*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>str</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>str</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2949,13 +2949,13 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this string is in normalization form C; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this string is in normalization form C; otherwise, `false`.'
   overload: System.String.IsNormalized*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current instance contains invalid Unicode characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2984,13 +2984,13 @@ items:
       description: A Unicode normalization form.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this string is in the normalization form specified by the <code>normalizationForm</code> parameter; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this string is in the normalization form specified by the <code>normalizationForm</code> parameter; otherwise, `false`.'
   overload: System.String.IsNormalized*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current instance contains invalid Unicode characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3007,7 +3007,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: Indicates whether the specified string is <xref uid="langword_csharp_null" name="null" href=""></xref> or an <xref href="System.String.Empty"></xref> string.
+  summary: Indicates whether the specified string is `null` or an <xref href="System.String.Empty"></xref> string.
   remarks: "IsNullOrEmpty is a convenience method that enables you to simultaneously test whether a <xref:System.String> is `null` or its value is <xref:System.String>. It is equivalent to the following code:  \n  \n [!code-cpp[System.String.IsNullOrEmpty#1](~/add/codesnippet/cpp/m-system.string.isnullor_0_1.cpp)]\n [!code-cs[System.String.IsNullOrEmpty#1](~/add/codesnippet/csharp/m-system.string.isnullor_0_1.cs)]\n [!code-vb[System.String.IsNullOrEmpty#1](~/add/codesnippet/visualbasic/m-system.string.isnullor_0_1.vb)]  \n  \n You can use the <xref:System.String.IsNullOrWhiteSpace%2A> method to test whether a string is `null`, its value is <xref:System.String.Empty?displayProperty=fullName>,  or it consists only of white-space characters.  \n  \n## What is a null string?  \n A string is `null` if it has not been assigned a value (in C++ and Visual Basic) or if has explicitly been assigned a value of `null`. Although the [composite formatting](~/add/includes/ajax-current-ext-md.md) feature can gracefully handle a null string, as the following example shows, attempting to call one if its members throws a <xref:System.NullReferenceException>.  \n  \n [!code-cpp[System.String.IsNullOrEmpty#2](~/add/codesnippet/cpp/m-system.string.isnullor_0_2.cpp)]\n [!code-cs[System.String.IsNullOrEmpty#2](~/add/codesnippet/csharp/m-system.string.isnullor_0_2.cs)]\n [!code-vb[System.String.IsNullOrEmpty#2](~/add/codesnippet/visualbasic/m-system.string.isnullor_0_2.vb)]  \n  \n## What is an empty string?  \n A string is empty if it  is explicitly assigned an empty string (\"\") or <xref:System.String.Empty?displayProperty=fullName>. An empty string has a <xref:System.String.Length%2A> of 0.  The following example creates an empty string and displays its value and its length.  \n  \n [!code-cpp[System.String.IsNullOrEmpty#3](~/add/codesnippet/cpp/m-system.string.isnullor_0_3.cpp)]\n [!code-cs[System.String.IsNullOrEmpty#3](~/add/codesnippet/csharp/m-system.string.isnullor_0_3.cs)]\n [!code-vb[System.String.IsNullOrEmpty#3](~/add/codesnippet/visualbasic/m-system.string.isnullor_0_3.vb)]"
   example:
   - "The following example examines three strings and determines whether each string has a value, is an empty string, or is `null`.  \n  \n [!code-cs[String.IsNullOrEmpty#1](~/add/codesnippet/csharp/m-system.string.isnullor_0_4.cs)]\n [!code-cpp[String.IsNullOrEmpty#1](~/add/codesnippet/cpp/m-system.string.isnullor_0_4.cpp)]\n [!code-vb[String.IsNullOrEmpty#1](~/add/codesnippet/visualbasic/m-system.string.isnullor_0_4.vb)]"
@@ -3019,10 +3019,10 @@ items:
       description: The string to test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>value</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string (""); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>value</code> parameter is `null` or an empty string (""); otherwise, `false`.'
   overload: System.String.IsNullOrEmpty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3039,7 +3039,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: Indicates whether a specified string is <xref uid="langword_csharp_null" name="null" href=""></xref>, empty, or consists only of white-space characters.
+  summary: Indicates whether a specified string is `null`, empty, or consists only of white-space characters.
   remarks: "IsNullOrWhiteSpace is a convenience method that is similar to the following  code, except that it offers superior performance:  \n  \n [!code-cs[System.String.IsNullOrWhitespace#2](~/add/codesnippet/csharp/m-system.string.isnullor_1_1.cs)]\n [!code-vb[System.String.IsNullOrWhitespace#2](~/add/codesnippet/visualbasic/m-system.string.isnullor_1_1.vb)]  \n  \n White-space characters are defined by the Unicode standard. The IsNullOrWhiteSpace method interprets any character that returns a value of `true` when it is passed to the <xref:System.Char.IsWhiteSpace%2A?displayProperty=fullName> method as a white-space character."
   example:
   - "The following example creates a string array, and then passes each element of the array to the IsNullOrWhiteSpace method.  \n  \n [!code-vb[System.String.IsNullOrWhiteSpace#1](~/add/codesnippet/visualbasic/m-system.string.isnullor_1_2.vb)]\n [!code-cs[System.String.IsNullOrWhiteSpace#1](~/add/codesnippet/csharp/m-system.string.isnullor_1_2.cs)]"
@@ -3051,10 +3051,10 @@ items:
       description: The string to test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>value</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or <xref href="System.String"></xref>, or if <code>value</code> consists exclusively of white-space characters.
+      description: '`true` if the <code>value</code> parameter is `null` or <xref href="System.String"></xref>, or if <code>value</code> consists exclusively of white-space characters.'
   overload: System.String.IsNullOrWhiteSpace*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.String.Join(System.String,System.Collections.Generic.IEnumerable{System.String})
   id: Join(System.String,System.Collections.Generic.IEnumerable{System.String})
@@ -3088,8 +3088,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>values</code> is `null`.
+  version:
   - netframework-40
 - uid: System.String.Join(System.String,System.Object[])
   id: Join(System.String,System.Object[])
@@ -3123,8 +3123,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>values</code> is `null`.
+  version:
   - netframework-40
 - uid: System.String.Join(System.String,System.String[])
   id: Join(System.String,System.String[])
@@ -3158,8 +3158,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3202,14 +3202,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> or <code>count</code> is less than 0.  \n  \n -or-  \n  \n <code>startIndex</code> plus <code>count</code> is greater than the number of elements in <code>value</code>."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: Out of memory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3240,7 +3240,7 @@ items:
       description: To be added.
   overload: System.String.Join<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.String.LastIndexOf(System.Char)
   id: LastIndexOf(System.Char)
@@ -3269,7 +3269,7 @@ items:
       description: The zero-based index position of <code>value</code> if that character is found, or -1 if it is not.
   overload: System.String.LastIndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3303,8 +3303,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3342,7 +3342,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The current instance does not equal <xref href="System.String.Empty"></xref>, and <code>startIndex</code> is less than zero or greater than or equal to the length of this instance.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3379,11 +3379,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The current instance does not equal <xref href=\"System.String\"></xref>, and <code>startIndex</code> is less than zero or greater than the length of the current instance.  \n  \n -or-  \n  \n The current instance equals <xref href=\"System.String\"></xref>, and <code>startIndex</code> is less than -1 or greater than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3420,11 +3420,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a valid <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3465,7 +3465,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The current instance does not equal <xref href=\"System.String.Empty\"></xref>, and <code>startIndex</code> is less than zero or greater than or equal to the length of this instance.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String.Empty\"></xref>, and <code>startIndex</code> - <code>count</code> + 1 is less than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3505,11 +3505,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>count</code> is negative.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String\"></xref>, and <code>startIndex</code> is negative.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String\"></xref>, and <code>startIndex</code> is greater than the length of this instance.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String.Empty\"></xref>, and <code>startIndex</code> - <code>count</code>+ 1 specifies a position that is not within this instance.  \n  \n -or-  \n  \n The current instance equals <xref href=\"System.String.Empty\"></xref> and <code>start</code> is less than -1 or greater than zero.  \n  \n -or-  \n  \n The current instance equals <xref href=\"System.String.Empty\"></xref> and <code>count</code> is greater than 1."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3549,14 +3549,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The current instance does not equal <xref href=\"System.String\"></xref>, and <code>startIndex</code> is less than zero or greater than the length of the current instance.  \n  \n -or-  \n  \n The current instance equals <xref href=\"System.String\"></xref>, and <code>startIndex</code> is less than -1 or greater than zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a valid <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3599,14 +3599,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>count</code> is negative.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String\"></xref>, and <code>startIndex</code> is negative.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String\"></xref>, and <code>startIndex</code> is greater than the length of this instance.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String.Empty\"></xref>, and <code>startIndex</code> + 1 - <code>count</code> specifies a position that is not within this instance.  \n  \n -or-  \n  \n The current instance equals <xref href=\"System.String.Empty\"></xref> and <code>start</code> is less than -1 or greater than zero.  \n  \n -or-  \n  \n The current instance equals <xref href=\"System.String.Empty\"></xref> and <code>count</code> is greater than 1."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a valid <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3640,8 +3640,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>anyOf</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>anyOf</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3678,11 +3678,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>anyOf</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>anyOf</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The current instance does not equal <xref href="System.String.Empty"></xref>, and <code>startIndex</code> specifies a position that is not within this instance.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3722,11 +3722,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>anyOf</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>anyOf</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The current instance does not equal <xref href=\"System.String.Empty\"></xref>, and <code>count</code> or <code>startIndex</code> is negative.  \n  \n -or-  \n  \n The current instance does not equal <xref href=\"System.String.Empty\"></xref>, and <code>startIndex</code> minus <code>count</code> + 1 is less than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3754,7 +3754,7 @@ items:
       description: The number of characters in the current string.
   overload: System.String.Length*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3786,7 +3786,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current instance contains invalid Unicode characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3821,7 +3821,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current instance contains invalid Unicode characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3847,16 +3847,16 @@ items:
     parameters:
     - id: a
       type: System.String
-      description: The first string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The first string to compare, or `null`.
     - id: b
       type: System.String
-      description: The second string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The second string to compare, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>a</code> is the same as the value of <code>b</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of <code>a</code> is the same as the value of <code>b</code>; otherwise, `false`.'
   overload: System.String.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3882,16 +3882,16 @@ items:
     parameters:
     - id: a
       type: System.String
-      description: The first string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The first string to compare, or `null`.
     - id: b
       type: System.String
-      description: The second string to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The second string to compare, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>a</code> is different from the value of <code>b</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of <code>a</code> is different from the value of <code>b</code>; otherwise, `false`.'
   overload: System.String.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3926,7 +3926,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>totalWidth</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3964,7 +3964,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>totalWidth</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3999,7 +3999,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>totalWidth</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4037,7 +4037,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>totalWidth</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4072,7 +4072,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> specifies a position that is not within this string."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4110,7 +4110,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "Either <code>startIndex</code> or <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> plus <code>count</code> specify a position outside this instance."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4145,7 +4145,7 @@ items:
       description: A string that is equivalent to this instance except that all instances of <code>oldChar</code> are replaced with <code>newChar</code>. If <code>oldChar</code> is not found in the current instance, the method returns the current instance unchanged.
   overload: System.String.Replace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4182,11 +4182,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>oldValue</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>oldValue</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>oldValue</code> is the empty string ("").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4212,13 +4212,13 @@ items:
     parameters:
     - id: separator
       type: System.Char[]
-      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or `null`.
     return:
       type: System.String[]
       description: An array whose elements contain the substrings from this instance that are delimited by one or more characters in <code>separator</code>. For more information, see the Remarks section.
   overload: System.String.Split*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4244,7 +4244,7 @@ items:
     parameters:
     - id: separator
       type: System.Char[]
-      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or `null`.
     - id: count
       type: System.Int32
       description: The maximum number of substrings to return.
@@ -4256,7 +4256,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>count</code> is negative.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4282,7 +4282,7 @@ items:
     parameters:
     - id: separator
       type: System.Char[]
-      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or `null`.
     - id: options
       type: System.StringSplitOptions
       description: <xref href="System.StringSplitOptions"></xref> to omit empty array elements from the array returned; or <xref href="System.StringSplitOptions"></xref> to include empty array elements in the array returned.
@@ -4294,7 +4294,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>options</code> is not one of the <xref href="System.StringSplitOptions"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4320,7 +4320,7 @@ items:
     parameters:
     - id: separator
       type: System.String[]
-      description: A string array that delimits the substrings in this string, an empty array that contains no delimiters, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A string array that delimits the substrings in this string, an empty array that contains no delimiters, or `null`.
     - id: options
       type: System.StringSplitOptions
       description: <xref href="System.StringSplitOptions"></xref> to omit empty array elements from the array returned; or <xref href="System.StringSplitOptions"></xref> to include empty array elements in the array returned.
@@ -4332,7 +4332,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>options</code> is not one of the <xref href="System.StringSplitOptions"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4358,7 +4358,7 @@ items:
     parameters:
     - id: separator
       type: System.Char[]
-      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A character array that delimits the substrings in this string, an empty array that contains no delimiters, or `null`.
     - id: count
       type: System.Int32
       description: The maximum number of substrings to return.
@@ -4376,7 +4376,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>options</code> is not one of the <xref href="System.StringSplitOptions"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4402,7 +4402,7 @@ items:
     parameters:
     - id: separator
       type: System.String[]
-      description: A string array that delimits the substrings in this string, an empty array that contains no delimiters, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A string array that delimits the substrings in this string, an empty array that contains no delimiters, or `null`.
     - id: count
       type: System.Int32
       description: The maximum number of substrings to return.
@@ -4420,7 +4420,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>options</code> is not one of the <xref href="System.StringSplitOptions"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4449,13 +4449,13 @@ items:
       description: The string to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> matches the beginning of this string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> matches the beginning of this string; otherwise, `false`.'
   overload: System.String.StartsWith*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4487,16 +4487,16 @@ items:
       description: One of the enumeration values that determines how this string and `value` are compared.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this instance begins with <code>value</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this instance begins with <code>value</code>; otherwise, `false`.'
   overload: System.String.StartsWith*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>comparisonType</code> is not a <xref href="System.StringComparison"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4525,19 +4525,19 @@ items:
       description: The string to compare.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during the comparison; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during the comparison; otherwise, `false`.'
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Cultural information that determines how this string and `value` are compared. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the current culture is used.
+      description: Cultural information that determines how this string and `value` are compared. If `culture` is `null`, the current culture is used.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>value</code> parameter matches the beginning of this string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>value</code> parameter matches the beginning of this string; otherwise, `false`.'
   overload: System.String.StartsWith*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4572,7 +4572,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is less than zero or greater than the length of this instance.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4610,7 +4610,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> plus <code>length</code> indicates a position not within this instance.  \n  \n -or-  \n  \n <code>startIndex</code> or <code>length</code> is less than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4636,7 +4636,7 @@ items:
       description: To be added.
   overload: System.String.System#Collections#Generic#IEnumerable<System#Char>#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4664,7 +4664,7 @@ items:
       description: An enumerator that can be used to iterate through the current string.
   overload: System.String.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4692,13 +4692,13 @@ items:
       description: This parameter is ignored.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the current string is <xref href="System.Boolean"></xref>; <xref uid="langword_csharp_false" name="false" href=""></xref> if the value of the current string is <xref href="System.Boolean"></xref>.
+      description: '`true` if the value of the current string is <xref href="System.Boolean"></xref>; `false` if the value of the current string is <xref href="System.Boolean"></xref>.'
   overload: System.String.System#IConvertible#ToBoolean*
   exceptions:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: The value of the current string is not <xref href="System.Boolean"></xref> or <xref href="System.Boolean"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4735,7 +4735,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number greater than <xref href="System.Byte.MaxValue"></xref> or less than <xref href="System.Byte.MinValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4766,7 +4766,7 @@ items:
       description: The character at index 0 in the current <xref href="System.String"></xref> object.
   overload: System.String.System#IConvertible#ToChar*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4797,7 +4797,7 @@ items:
       description: The converted value of the current <xref href="System.String"></xref> object.
   overload: System.String.System#IConvertible#ToDateTime*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4834,7 +4834,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number less than <xref href="System.Decimal.MinValue"></xref> or than <xref href="System.Decimal.MaxValue"></xref> greater.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4871,7 +4871,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number less than <xref href="System.Double.MinValue"></xref> or greater than <xref href="System.Double.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4908,7 +4908,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number greater than <xref href="System.Int16.MaxValue"></xref> or less than <xref href="System.Int16.MinValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4939,7 +4939,7 @@ items:
       description: The converted value of the current <xref href="System.String"></xref> object.
   overload: System.String.System#IConvertible#ToInt32*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4970,7 +4970,7 @@ items:
       description: The converted value of the current <xref href="System.String"></xref> object.
   overload: System.String.System#IConvertible#ToInt64*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5007,7 +5007,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number greater than <xref href="System.SByte.MaxValue"></xref> or less than <xref href="System.SByte.MinValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5038,7 +5038,7 @@ items:
       description: The converted value of the current <xref href="System.String"></xref> object.
   overload: System.String.System#IConvertible#ToSingle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5074,11 +5074,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The value of the current <xref href="System.String"></xref> object cannot be converted to the type specified by the <code>type</code> parameter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5115,7 +5115,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number greater than <xref href="System.UInt16.MaxValue"></xref> or less than <xref href="System.UInt16.MinValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5152,7 +5152,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of the current <xref href="System.String"></xref> object is a number greater <xref href="System.UInt32.MaxValue"></xref> or less than <xref href="System.UInt32.MinValue"></xref>
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5183,7 +5183,7 @@ items:
       description: The converted value of the current <xref href="System.String"></xref> object.
   overload: System.String.System#IConvertible#ToUInt64*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5212,7 +5212,7 @@ items:
       description: A Unicode character array whose elements are the individual characters of this instance. If this instance is an empty string, the returned array is empty and has a zero length.
   overload: System.String.ToCharArray*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5250,7 +5250,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> or <code>length</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> plus <code>length</code> is greater than the length of this instance."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5279,7 +5279,7 @@ items:
       description: A string in lowercase.
   overload: System.String.ToLower*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5313,8 +5313,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5343,7 +5343,7 @@ items:
       description: The lowercase equivalent of the current string.
   overload: System.String.ToLowerInvariant*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5372,7 +5372,7 @@ items:
       description: The current string.
   overload: System.String.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5402,7 +5402,7 @@ items:
       description: The current string.
   overload: System.String.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5431,7 +5431,7 @@ items:
       description: The uppercase equivalent of the current string.
   overload: System.String.ToUpper*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5465,8 +5465,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5495,7 +5495,7 @@ items:
       description: The uppercase equivalent of the current string.
   overload: System.String.ToUpperInvariant*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5524,7 +5524,7 @@ items:
       description: The string that remains after all white-space characters are removed from the start and end of the current string. If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
   overload: System.String.Trim*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5550,13 +5550,13 @@ items:
     parameters:
     - id: trimChars
       type: System.Char[]
-      description: An array of Unicode characters to remove, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of Unicode characters to remove, or `null`.
     return:
       type: System.String
-      description: The string that remains after all occurrences of the characters in the <code>trimChars</code> parameter are removed from the start and end of the current string. If <code>trimChars</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty array, white-space characters are removed instead. If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
+      description: The string that remains after all occurrences of the characters in the <code>trimChars</code> parameter are removed from the start and end of the current string. If <code>trimChars</code> is `null` or an empty array, white-space characters are removed instead. If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
   overload: System.String.Trim*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5582,13 +5582,13 @@ items:
     parameters:
     - id: trimChars
       type: System.Char[]
-      description: An array of Unicode characters to remove, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of Unicode characters to remove, or `null`.
     return:
       type: System.String
-      description: The string that remains after all occurrences of the characters in the <code>trimChars</code> parameter are removed from the end of the current string. If <code>trimChars</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty array, Unicode white-space characters are removed instead. If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
+      description: The string that remains after all occurrences of the characters in the <code>trimChars</code> parameter are removed from the end of the current string. If <code>trimChars</code> is `null` or an empty array, Unicode white-space characters are removed instead. If no characters can be trimmed from the current instance, the method returns the current instance unchanged.
   overload: System.String.TrimEnd*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5614,13 +5614,13 @@ items:
     parameters:
     - id: trimChars
       type: System.Char[]
-      description: An array of Unicode characters to remove, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of Unicode characters to remove, or `null`.
     return:
       type: System.String
-      description: The string that remains after all occurrences of characters in the <code>trimChars</code> parameter are removed from the start of the current string. If <code>trimChars</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty array, white-space characters are removed instead.
+      description: The string that remains after all occurrences of characters in the <code>trimChars</code> parameter are removed from the start of the current string. If <code>trimChars</code> is `null` or an empty array, white-space characters are removed instead.
   overload: System.String.TrimStart*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5695,6 +5695,20 @@ references:
   name: String(Char*)
   nameWithType: String.String(Char*)
   fullName: System.String.String(Char*)
+- uid: System.Char*
+  parent: System
+  isExternal: false
+  name: Char*
+  nameWithType: Char*
+  fullName: System.Char*
+  spec.csharp:
+  - uid: System.Char
+    name: Char
+    nameWithType: Char
+    fullName: Char
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.String.#ctor(System.Char[])
   parent: System.String
   isExternal: false
@@ -5704,8 +5718,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char
@@ -5721,6 +5735,20 @@ references:
   name: String(SByte*)
   nameWithType: String.String(SByte*)
   fullName: System.String.String(SByte*)
+- uid: System.SByte*
+  parent: System
+  isExternal: false
+  name: SByte*
+  nameWithType: SByte*
+  fullName: System.SByte*
+  spec.csharp:
+  - uid: System.SByte
+    name: SByte
+    nameWithType: SByte
+    fullName: SByte
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.String.#ctor(System.Char,System.Int32)
   parent: System.String
   isExternal: false
@@ -5937,8 +5965,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -5957,8 +5985,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

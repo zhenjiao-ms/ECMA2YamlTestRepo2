@@ -15,7 +15,7 @@ items:
   nameWithType: TypeToTypeInfoMarshaler
   fullName: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler
   type: Class
-  summary: Marshals the unmanaged <xref uid="langword_csharp_ITypeInfo" name="ITypeInfo" href=""></xref> interface to the managed <xref href="System.Type"></xref> class, and marshals the managed <xref href="System.Type"></xref> class to the unmanaged <xref uid="langword_csharp_ITypeInfo" name="ITypeInfo" href=""></xref> interface.
+  summary: Marshals the unmanaged `ITypeInfo` interface to the managed <xref href="System.Type"></xref> class, and marshals the managed <xref href="System.Type"></xref> class to the unmanaged `ITypeInfo` interface.
   remarks: "The `ITypeInfo` interface exposed for a .NET type is based on the metadata that would appear in an exported type library. Likewise, the <xref:System.Type> instance exposed for an `ITypeInfo` interface is based on the metadata that would appear in an imported assembly.  \n  \n The Type Library Importer (Tlbimp.exe) marks `ITypeInfo` parameters with the appropriate <xref:System.Runtime.InteropServices.MarshalAsAttribute> with the <xref:System.Runtime.InteropServices.UnmanagedType> enumeration member when converting signatures that use `ITypeInfo` parameters to signatures that use <xref:System.Type> parameters.  \n  \n The same conversion functionality can be accomplished without the custom marshaler, by calling <xref:System.Runtime.InteropServices.Marshal.GetITypeInfoForType%2A> and <xref:System.Runtime.InteropServices.Marshal.GetTypeForITypeInfo%2A>."
   syntax:
     content: 'public class TypeToTypeInfoMarshaler : System.Runtime.InteropServices.ICustomMarshaler'
@@ -31,7 +31,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -58,7 +58,7 @@ items:
       description: The managed object to be destroyed.
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.CleanUpManagedData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
       description: A pointer to the unmanaged data to be destroyed.
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.CleanUpNativeData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
       description: An instance of the custom marshaler.
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.GetInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: -1 to indicate the type this marshaler handles is not a value type.
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.GetNativeDataSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,8 +174,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>pManagedObj</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>pManagedObj</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,8 +207,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>pNativeData</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>pNativeData</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

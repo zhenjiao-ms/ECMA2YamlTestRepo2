@@ -56,7 +56,7 @@ items:
   - System.Security.Policy.CodeGroup.RemoveChild(System.Security.Policy.CodeGroup)
   - System.Security.Policy.CodeGroup.ToXml
   - System.Security.Policy.CodeGroup.ToXml(System.Security.Policy.PolicyLevel)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,11 +87,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>membershipCondition</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>membershipCondition</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The type of the <code>membershipCondition</code> parameter is not valid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -116,7 +116,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,11 +150,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>originScheme</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>originScheme</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>originScheme</code> contains characters that are not permitted in schemes.  \n  \n -or-  \n  \n <code>originScheme</code> = <xref href=\"System.Security.Policy.NetCodeGroup.AbsentOriginScheme\"></xref> and <code>connectAccess</code> specifies <xref href=\"System.Security.Policy.CodeConnectAccess.OriginScheme\"></xref> as its scheme."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -179,7 +179,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,10 +201,10 @@ items:
     content: public override string AttributeString { get; }
     return:
       type: System.String
-      description: Always <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Always `null`.
   overload: System.Security.Policy.NetCodeGroup.AttributeString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -231,7 +231,7 @@ items:
       description: An equivalent copy of the current code group, including its membership conditions and child code groups.
   overload: System.Security.Policy.NetCodeGroup.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,7 +259,7 @@ items:
       description: To be added.
   overload: System.Security.Policy.NetCodeGroup.CreateXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,10 +286,10 @@ items:
       description: The <xref href="System.Security.Policy.NetCodeGroup"></xref> object to compare with the current code group.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified code group is equivalent to the current code group; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified code group is equivalent to the current code group; otherwise, `false`.'
   overload: System.Security.Policy.NetCodeGroup.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -318,7 +318,7 @@ items:
       description: A <xref href="System.Collections.DictionaryEntry"></xref> array containing connection access information.
   overload: System.Security.Policy.NetCodeGroup.GetConnectAccessRules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -344,7 +344,7 @@ items:
       description: The hash code of the current code group.
   overload: System.Security.Policy.NetCodeGroup.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -369,7 +369,7 @@ items:
       description: The string "Union".
   overload: System.Security.Policy.NetCodeGroup.MergeLogic*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,7 +397,7 @@ items:
       description: To be added.
   overload: System.Security.Policy.NetCodeGroup.ParseXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,7 +422,7 @@ items:
       description: Always the string "Same site Web."
   overload: System.Security.Policy.NetCodeGroup.PermissionSetName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -448,7 +448,7 @@ items:
     parameters: []
   overload: System.Security.Policy.NetCodeGroup.ResetConnectAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -475,16 +475,16 @@ items:
       description: The <xref href="System.Security.Policy.Evidence"></xref> for the assembly.
     return:
       type: System.Security.Policy.PolicyStatement
-      description: A <xref href="System.Security.Policy.PolicyStatement"></xref> that consists of the permissions granted by the code group with optional attributes, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the code group does not apply (the membership condition does not match the specified evidence).
+      description: A <xref href="System.Security.Policy.PolicyStatement"></xref> that consists of the permissions granted by the code group with optional attributes, or `null` if the code group does not apply (the membership condition does not match the specified evidence).
   overload: System.Security.Policy.NetCodeGroup.Resolve*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>evidence</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>evidence</code> parameter is `null`.
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
     description: More than one code group (including the parent code group and any child code groups) is marked <xref href="System.Security.Policy.PolicyStatementAttribute"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -516,8 +516,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>evidence</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>evidence</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -649,8 +649,8 @@ references:
 - uid: System.Collections.DictionaryEntry[]
   parent: System.Collections
   isExternal: false
-  name: DictionaryEntry
-  nameWithType: DictionaryEntry
+  name: DictionaryEntry[]
+  nameWithType: DictionaryEntry[]
   fullName: System.Collections.DictionaryEntry[]
   spec.csharp:
   - uid: System.Collections.DictionaryEntry

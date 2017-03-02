@@ -36,7 +36,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -58,13 +58,13 @@ items:
     content: public bool Cached { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user control's output is cached; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user control''s output is cached; otherwise, `false`.'
   overload: System.Web.UI.ControlCachePolicy.Cached*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The user control is not associated with a <xref href=\"System.Web.UI.BasePartialCachingControl\"></xref> and is not cacheable.  \n  \n \\- or -  \n  \n The Cached property is set outside of the initialization and rendering stages of the control."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,13 +87,13 @@ items:
     content: public System.Web.Caching.CacheDependency Dependency { get; set; }
     return:
       type: System.Web.Caching.CacheDependency
-      description: The <xref href="System.Web.Caching.CacheDependency"></xref> associated with the control. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Web.Caching.CacheDependency"></xref> associated with the control. The default is `null`.
   overload: System.Web.UI.ControlCachePolicy.Dependency*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The user control is not associated with a <xref href=\"System.Web.UI.BasePartialCachingControl\"></xref> and is not cacheable.  \n  \n \\- or -  \n  \n The Dependency property is set outside of the initialization and rendering stages of the control."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,7 +124,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The user control is not associated with a <xref href=\"System.Web.UI.BasePartialCachingControl\"></xref> and is not cacheable.  \n  \n \\- or -  \n  \n The Duration property is set outside of the initialization and rendering stages of the control."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -156,7 +156,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: An attempt was made to set the ProviderName property during or after the <xref href="System.Web.UI.Control.PreRender"></xref> event.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.UI.ControlCachePolicy.SetExpires(System.DateTime)
   id: SetExpires(System.DateTime)
@@ -185,7 +185,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The user control is not associated with a <xref href="System.Web.UI.BasePartialCachingControl"></xref> and is not cacheable.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -211,13 +211,13 @@ items:
     parameters:
     - id: useSlidingExpiration
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use sliding cache expiration instead of absolute expiration; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to use sliding cache expiration instead of absolute expiration; otherwise, `false`.'
   overload: System.Web.UI.ControlCachePolicy.SetSlidingExpiration*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The user control is not associated with a <xref href="System.Web.UI.BasePartialCachingControl"></xref> and is not cacheable.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -247,7 +247,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The user control is not associated with a <xref href="System.Web.UI.BasePartialCachingControl"></xref> and is not cacheable.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -270,10 +270,10 @@ items:
     content: public bool SupportsCaching { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user control supports caching; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user control supports caching; otherwise, `false`.'
   overload: System.Web.UI.ControlCachePolicy.SupportsCaching*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -301,7 +301,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The user control is not associated with a <xref href=\"System.Web.UI.BasePartialCachingControl\"></xref> and is not cacheable.  \n  \n \\- or -  \n  \n The VaryByControl property is set outside of the initialization and rendering stages of the control."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -318,7 +318,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Gets or sets a list of <xref uid="langword_csharp_GET" name="GET" href=""></xref> or <xref uid="langword_csharp_POST" name="POST" href=""></xref> parameter names to vary the cached output by.
+  summary: Gets or sets a list of `GET` or `POST` parameter names to vary the cached output by.
   remarks: By default, these strings correspond to a query string value sent with the GET method or to a parameter sent using the POST method. When the VaryByParams property is set to multiple parameters, the output cache contains a different version of the requested document for each specified parameter. Possible values include "none", "*", and any valid query string or POST parameter name.
   syntax:
     content: public System.Web.HttpCacheVaryByParams VaryByParams { get; }
@@ -330,7 +330,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The user control is not associated with a <xref href="System.Web.UI.BasePartialCachingControl"></xref> and is not cacheable.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

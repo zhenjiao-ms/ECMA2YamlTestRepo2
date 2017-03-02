@@ -40,7 +40,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -62,13 +62,13 @@ items:
     content: public System.Runtime.InteropServices.UnmanagedType BaseType { get; }
     return:
       type: System.Runtime.InteropServices.UnmanagedType
-      description: An <xref uid="langword_csharp_UnmanagedType" name="UnmanagedType" href=""></xref> object.
+      description: An `UnmanagedType` object.
   overload: System.Reflection.Emit.UnmanagedMarshal.BaseType*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The unmanaged type is not an <xref uid="langword_csharp_LPArray" name="LPArray" href=""></xref> or a <xref uid="langword_csharp_SafeArray" name="SafeArray" href=""></xref>.
-  platform:
+    description: The unmanaged type is not an `LPArray` or a `SafeArray`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -101,7 +101,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not a simple native type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not a simple native type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,7 +151,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Specifies an <xref uid="langword_csharp_LPArray" name="LPArray" href=""></xref> to marshal to unmanaged code. The length of an <xref uid="langword_csharp_LPArray" name="LPArray" href=""></xref> is determined at runtime by the size of the actual marshaled array.
+  summary: Specifies an `LPArray` to marshal to unmanaged code. The length of an `LPArray` is determined at runtime by the size of the actual marshaled array.
   remarks: "The `DefineLPArray` method is not a simple native marshal.  \n  \n Only unmanaged marshal constructs can be made using these static constructors.  \n  \n Marshaling an array is a more complex process than marshaling an integer parameter. Array members are copied in a specific order so that the other side can reconstruct the array exactly."
   syntax:
     content: public static System.Reflection.Emit.UnmanagedMarshal DefineLPArray (System.Runtime.InteropServices.UnmanagedType elemType);
@@ -167,7 +167,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not a simple native type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -184,14 +184,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Specifies a <xref uid="langword_csharp_SafeArray" name="SafeArray" href=""></xref> to marshal to unmanaged code.
+  summary: Specifies a `SafeArray` to marshal to unmanaged code.
   remarks: "The `DefineSafeArray` method is not a simple native marshal.  \n  \n Only unmanaged marshal constructs can be made using these static constructors.  \n  \n Marshaling an array is a more complex process than marshaling an integer parameter. Array members are copied in a specific order so that the other side can reconstruct the array exactly."
   syntax:
     content: public static System.Reflection.Emit.UnmanagedMarshal DefineSafeArray (System.Runtime.InteropServices.UnmanagedType elemType);
     parameters:
     - id: elemType
       type: System.Runtime.InteropServices.UnmanagedType
-      description: The base type or the <xref uid="langword_csharp_UnmanagedType" name="UnmanagedType" href=""></xref> of each element of the array.
+      description: The base type or the `UnmanagedType` of each element of the array.
     return:
       type: System.Reflection.Emit.UnmanagedMarshal
       description: An <xref href="System.Reflection.Emit.UnmanagedMarshal"></xref> object.
@@ -200,7 +200,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not a simple native type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,7 +233,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not a simple native type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not an unmanaged element count.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -288,7 +288,7 @@ items:
       description: An <xref href="System.Runtime.InteropServices.UnmanagedType"></xref> object.
   overload: System.Reflection.Emit.UnmanagedMarshal.GetUnmanagedType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -317,7 +317,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The argument is not a custom marshaler.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

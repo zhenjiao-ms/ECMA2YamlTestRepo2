@@ -74,7 +74,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,7 +100,7 @@ items:
     parameters: []
   overload: System.Xml.Serialization.SoapElementAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,7 +129,7 @@ items:
       description: The XML element name of the serialized member.
   overload: System.Xml.Serialization.SoapElementAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -157,7 +157,7 @@ items:
       description: One of the XML Schema data types.
   overload: System.Xml.Serialization.SoapElementAttribute.DataType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,7 +185,7 @@ items:
       description: The name of the generated XML element. The default is the member identifier.
   overload: System.Xml.Serialization.SoapElementAttribute.ElementName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,16 +202,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Serialization
-  summary: Gets or sets a value that indicates whether the <xref href="System.Xml.Serialization.XmlSerializer"></xref> must serialize a member that has the <xref uid="langword_csharp_xsi:null" name="xsi:null" href=""></xref> attribute set to "1".
+  summary: Gets or sets a value that indicates whether the <xref href="System.Xml.Serialization.XmlSerializer"></xref> must serialize a member that has the `xsi:null` attribute set to "1".
   remarks: "The XML schema specification for structures allows an XML document to explicitly signal that an element's content is missing. Such an element contains the attribute `xsi:null` set to \"1\". For more information, see the World Wide Web Consortium (www.w3.org) specification named \"XML Schema Part 1: Structures\".  \n  \n If the IsNullable property is set to `true`, the `xsi:null` attribute is generated for class members that have been set to `null`. For example, if you set a field named `MyStringArray` to `null`, the <xref:System.Xml.Serialization.XmlSerializer> generates the following XML code.  \n  \n```  \n<MyStringArray xsi:null = \"1\" />  \n```  \n  \n If the <xref:System.Xml.Serialization.XmlElementAttribute.IsNullable%2A> property is `false`, no XML element is generated.  \n  \n> [!NOTE]\n>  You cannot apply the <xref:System.Xml.Serialization.XmlElementAttribute.IsNullable%2A> property to a member typed as a value type because a value type cannot contain `null`."
   syntax:
     content: public bool IsNullable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Xml.Serialization.XmlSerializer"></xref> generates the <xref uid="langword_csharp_xsi:null" name="xsi:null" href=""></xref> attribute; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Xml.Serialization.XmlSerializer"></xref> generates the `xsi:null` attribute; otherwise, `false`.'
   overload: System.Xml.Serialization.SoapElementAttribute.IsNullable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

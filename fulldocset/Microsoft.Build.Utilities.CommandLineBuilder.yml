@@ -50,7 +50,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,7 +78,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Utilities.CommandLineBuilder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -106,7 +106,7 @@ items:
       description: If true, hyphens should be quoted.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.Utilities.CommandLineBuilder.AppendFileNameIfNotNull(Microsoft.Build.Framework.ITaskItem)
@@ -132,10 +132,10 @@ items:
     parameters:
     - id: fileItem
       type: Microsoft.Build.Framework.ITaskItem
-      description: The task item specification to append to the command line. If it is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The task item specification to append to the command line. If it is `null`, then this method has no effect.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendFileNameIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,10 +163,10 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: The file name to append. If it is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The file name to append. If it is `null`, then this method has no effect.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendFileNameIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,13 +194,13 @@ items:
     parameters:
     - id: fileItems
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: The task item specifications to append. If the array is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The task item specifications to append. If the array is `null`, then this method has no effect.
     - id: delimiter
       type: System.String
       description: The delimiter to put between task item specifications in the command line.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendFileNamesIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -219,7 +219,7 @@ items:
   - Microsoft.Build.Utilities.v3.5
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: Appends the command line with the list of file names in the specified <xref uid="langword_csharp_string" name="string" href=""></xref> array, separated by the specified delimiter.
+  summary: Appends the command line with the list of file names in the specified `string` array, separated by the specified delimiter.
   remarks: "This method appends the command line with file names, and surrounds the file names with quotation marks as necessary. The file names are separated by the specified delimiter.  \n  \n If the command line is not empty, then this method also appends the command line with a space, before the file names."
   example:
   - '`AppendFileNamesIfNotNull(new string[] {"Alpha.cs", "Beta.cs"}, ",")` yields `Alpha.cs,Beta.cs`.'
@@ -228,13 +228,13 @@ items:
     parameters:
     - id: fileNames
       type: System.String[]
-      description: The file names to append. If the array is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The file names to append. If the array is `null`, then this method has no effect.
     - id: delimiter
       type: System.String
       description: The delimiter to put between file names in the command line.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendFileNamesIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,7 +265,7 @@ items:
       description: The file name to append.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendFileNameWithQuoting*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -296,7 +296,7 @@ items:
       description: The text to be quoted.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendQuotedTextToBuffer*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.Utilities.CommandLineBuilder.AppendSpaceIfNotEmpty
@@ -320,7 +320,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSpaceIfNotEmpty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,10 +348,10 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitch*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -379,13 +379,13 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameter
       type: Microsoft.Build.Framework.ITaskItem
-      description: The switch parameter to append to the command line. Quotation marks will be added as necessary. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The switch parameter to append to the command line. Quotation marks will be added as necessary. If this value is `null`, then this method has no effect.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -413,13 +413,13 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameter
       type: System.String
-      description: The switch parameter to append to the command line. Quotation marks will be added as necessary. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The switch parameter to append to the command line. Quotation marks will be added as necessary. If this value is `null`, then this method has no effect.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -447,16 +447,16 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameters
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: An array of switch parameters to append to the command line. Quotation marks will be added as necessary. If the array is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: An array of switch parameters to append to the command line. Quotation marks will be added as necessary. If the array is `null`, then this method has no effect.
     - id: delimiter
       type: System.String
-      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be `null`.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -484,16 +484,16 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameters
       type: System.String[]
-      description: An array of switch parameters to append to the command line. Quotation marks will be added as necessary. If the array is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: An array of switch parameters to append to the command line. Quotation marks will be added as necessary. If the array is `null`, then this method has no effect.
     - id: delimiter
       type: System.String
-      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be `null`.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,13 +521,13 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameter
       type: Microsoft.Build.Framework.ITaskItem
-      description: The switch parameter to append to the command line. Quotation marks will not be added. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The switch parameter to append to the command line. Quotation marks will not be added. If this value is `null`, then this method has no effect.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchUnquotedIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,13 +555,13 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameter
       type: System.String
-      description: The switch parameter to append to the command line. Quotation marks will not be added. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: The switch parameter to append to the command line. Quotation marks will not be added. If this value is `null`, then this method has no effect.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchUnquotedIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -589,16 +589,16 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameters
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: An array of switch parameters to append to the command line. Quotation marks will not be added. If the array is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: An array of switch parameters to append to the command line. Quotation marks will not be added. If the array is `null`, then this method has no effect.
     - id: delimiter
       type: System.String
-      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be `null`.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchUnquotedIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -626,16 +626,16 @@ items:
     parameters:
     - id: switchName
       type: System.String
-      description: The name of the switch to append to the command line. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the switch to append to the command line. This value cannot be `null`.
     - id: parameters
       type: System.String[]
-      description: An array of switch parameters to append to the command line. Quotation marks will not be added. If the array is <xref uid="langword_csharp_null" name="null" href=""></xref>, then this method has no effect.
+      description: An array of switch parameters to append to the command line. Quotation marks will not be added. If the array is `null`, then this method has no effect.
     - id: delimiter
       type: System.String
-      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The delimiter that separates individual parameters. This value can be empty, but it cannot be `null`.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendSwitchUnquotedIfNotNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -666,7 +666,7 @@ items:
       description: The string to append to the command line.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendTextUnquoted*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.CommandLineBuilder.AppendTextWithQuoting(System.String)
   id: AppendTextWithQuoting(System.String)
@@ -694,7 +694,7 @@ items:
       description: The string to append to the command line.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.AppendTextWithQuoting*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -721,7 +721,7 @@ items:
       description: A <xref href="System.Text.StringBuilder"></xref> for inheriting classes.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.CommandLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -749,10 +749,10 @@ items:
       description: The string to examine for characters that require quotation marks.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the switch parameter should be surrounded with quotation marks; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the switch parameter should be surrounded with quotation marks; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.CommandLineBuilder.IsQuotingRequired*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -779,7 +779,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.Length*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.CommandLineBuilder.ToString
   id: ToString
@@ -807,7 +807,7 @@ items:
       description: A <xref href="System.String"></xref> that represents the command line.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -839,7 +839,7 @@ items:
       description: A string representing the switch parameter to scan for double-quotes.
   overload: Microsoft.Build.Utilities.CommandLineBuilder.VerifyThrowNoEmbeddedDoubleQuotes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -899,8 +899,8 @@ references:
 - uid: Microsoft.Build.Framework.ITaskItem[]
   parent: Microsoft.Build.Framework
   isExternal: false
-  name: ITaskItem
-  nameWithType: ITaskItem
+  name: ITaskItem[]
+  nameWithType: ITaskItem[]
   fullName: Microsoft.Build.Framework.ITaskItem[]
   spec.csharp:
   - uid: Microsoft.Build.Framework.ITaskItem
@@ -919,8 +919,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

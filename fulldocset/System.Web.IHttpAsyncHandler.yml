@@ -17,7 +17,7 @@ items:
     content: 'public interface IHttpAsyncHandler : System.Web.IHttpHandler'
   implements:
   - System.Web.IHttpHandler
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -40,10 +40,10 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: An <xref href="System.Web.HttpContext"></xref> object that provides references to intrinsic server objects (for example, <xref uid="langword_csharp_Request" name="Request" href=""></xref>, <xref uid="langword_csharp_Response" name="Response" href=""></xref>, <xref uid="langword_csharp_Session" name="Session" href=""></xref>, and <xref uid="langword_csharp_Server" name="Server" href=""></xref>) used to service HTTP requests.
+      description: An <xref href="System.Web.HttpContext"></xref> object that provides references to intrinsic server objects (for example, `Request`, `Response`, `Session`, and `Server`) used to service HTTP requests.
     - id: cb
       type: System.AsyncCallback
-      description: The <xref href="System.AsyncCallback"></xref> to call when the asynchronous method call is complete. If `cb` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the delegate is not called.
+      description: The <xref href="System.AsyncCallback"></xref> to call when the asynchronous method call is complete. If `cb` is `null`, the delegate is not called.
     - id: extraData
       type: System.Object
       description: Any extra data needed to process the request.
@@ -52,7 +52,7 @@ items:
       description: An <xref href="System.IAsyncResult"></xref> that contains information about the status of the process.
   overload: System.Web.IHttpAsyncHandler.BeginProcessRequest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,7 +79,7 @@ items:
       description: An <xref href="System.IAsyncResult"></xref> that contains information about the status of the process.
   overload: System.Web.IHttpAsyncHandler.EndProcessRequest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

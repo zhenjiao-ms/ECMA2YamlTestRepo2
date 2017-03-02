@@ -42,7 +42,7 @@ items:
   - System.Security.AccessControl.GenericAce.op_Equality(System.Security.AccessControl.GenericAce,System.Security.AccessControl.GenericAce)
   - System.Security.AccessControl.GenericAce.op_Inequality(System.Security.AccessControl.GenericAce,System.Security.AccessControl.GenericAce)
   - System.Security.AccessControl.GenericAce.PropagationFlags
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -72,13 +72,13 @@ items:
       description: Flags that specify information about the inheritance, inheritance propagation, and auditing conditions for the new ACE.
     - id: opaque
       type: System.Byte[]
-      description: An array of byte values that contains the data for the new ACE. This value can be <xref uid="langword_csharp_null" name="null" href=""></xref>. The length of this array must not be greater than the value of the <xref href="System.Security.AccessControl.CustomAce.MaxOpaqueLength"></xref> field, and must be a multiple of four.
+      description: An array of byte values that contains the data for the new ACE. This value can be `null`. The length of this array must not be greater than the value of the <xref href="System.Security.AccessControl.CustomAce.MaxOpaqueLength"></xref> field, and must be a multiple of four.
   overload: System.Security.AccessControl.CustomAce.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of the <code>type</code> parameter is not greater than <xref href="System.Security.AccessControl.AceType"></xref> or the length of the <code>opaque</code> array is either greater than the value of the <xref href="System.Security.AccessControl.CustomAce.MaxOpaqueLength"></xref> field or not a multiple of four.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -103,7 +103,7 @@ items:
       description: The length, in bytes, of the binary representation of the current <xref href="System.Security.AccessControl.CustomAce"></xref> object.
   overload: System.Security.AccessControl.CustomAce.BinaryLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -135,7 +135,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> is negative or too high to allow the entire <xref href="System.Security.AccessControl.CustomAce"></xref> to be copied into <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -161,7 +161,7 @@ items:
       description: An array of byte values that represents the opaque data associated with this <xref href="System.Security.AccessControl.CustomAce"></xref> object.
   overload: System.Security.AccessControl.CustomAce.GetOpaque*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,7 +185,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -210,7 +210,7 @@ items:
       description: The length of the opaque callback data.
   overload: System.Security.AccessControl.CustomAce.OpaqueLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,7 +236,7 @@ items:
       description: An array of byte values that represents the opaque callback data for this <xref href="System.Security.AccessControl.CustomAce"></xref> object.
   overload: System.Security.AccessControl.CustomAce.SetOpaque*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -272,8 +272,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

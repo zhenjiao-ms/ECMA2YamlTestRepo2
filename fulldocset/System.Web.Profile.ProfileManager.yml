@@ -46,7 +46,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -73,7 +73,7 @@ items:
       description: The property settings to be added.
   overload: System.Web.Profile.ProfileManager.AddDynamicProfileProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Profile.ProfileManager.ApplicationName
   id: ApplicationName
@@ -98,7 +98,7 @@ items:
       description: The name of the application for which to store and retrieve profile information.
   overload: System.Web.Profile.ProfileManager.ApplicationName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -123,13 +123,13 @@ items:
     content: public static bool AutomaticSaveEnabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user profile will be automatically saved at the end of the execution of an ASP.NET page; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the user profile will be automatically saved at the end of the execution of an ASP.NET page; otherwise, `false`. The default is `true`.'
   overload: System.Web.Profile.ProfileManager.AutomaticSaveEnabled*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: An attempt was made to get the AutomaticSaveEnabled property value without at least <xref href="System.Web.AspNetHostingPermissionLevel"></xref> permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -164,7 +164,7 @@ items:
       description: The number of profiles deleted from the data source.
   overload: System.Web.Profile.ProfileManager.DeleteInactiveProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -193,7 +193,7 @@ items:
       description: The user name for the profile to be deleted.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user profile was found and deleted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user profile was found and deleted; otherwise, `false`.'
   overload: System.Web.Profile.ProfileManager.DeleteProfile*
   exceptions:
   - type: System.ArgumentException
@@ -201,8 +201,8 @@ items:
     description: <code>username</code> is an empty string ("") or contains a comma.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -239,8 +239,8 @@ items:
     description: "The length of <code>usernames</code> is zero.  \n  \n \\- or -  \n  \n One of the items in <code>usernames</code> is an empty string (\"\") or contains a comma.  \n  \n \\- or -  \n  \n Two or more items in <code>usernames</code> have the same value."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n One of the items in <code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>usernames</code> is `null`.  \n  \n \\- or -  \n  \n One of the items in <code>usernames</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,8 +277,8 @@ items:
     description: "<code>profiles</code> has a <xref:System.Web.Profile.ProfileInfoCollection.Count*> value of zero.  \n  \n \\- or -  \n  \n One of the <xref href=\"System.Web.Profile.ProfileInfo\"></xref> objects in <code>profiles</code> has a <xref:System.Web.Profile.ProfileInfo.UserName*> that is an empty string (\"\") or contains a comma."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>profiles</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n One of the <xref href=\"System.Web.Profile.ProfileInfo\"></xref> objects in <code>profiles</code> has a <xref:System.Web.Profile.ProfileInfo.UserName*> that is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>profiles</code> is `null`.  \n  \n \\- or -  \n  \n One of the <xref href=\"System.Web.Profile.ProfileInfo\"></xref> objects in <code>profiles</code> has a <xref:System.Web.Profile.ProfileInfo.UserName*> that is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,10 +303,10 @@ items:
     content: public static bool Enabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user profile is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user profile is enabled; otherwise, `false`. The default is `false`.'
   overload: System.Web.Profile.ProfileManager.Enabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,11 +346,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>usernameToMatch</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>usernameToMatch</code> is an empty string ("").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -399,11 +399,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>usernameToMatch</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>usernameToMatch</code> is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> is larger than <xref href=\"System.Int32.MaxValue\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,11 +440,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>usernameToMatch</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>usernameToMatch</code> is an empty string ("").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -490,11 +490,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>usernameToMatch</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>usernameToMatch</code> is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> is larger than <xref href=\"System.Int32.MaxValue\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -529,7 +529,7 @@ items:
       description: A <xref href="System.Web.Profile.ProfileInfoCollection"></xref> containing user profile information about the inactive profiles.
   overload: System.Web.Profile.ProfileManager.GetAllInactiveProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -573,7 +573,7 @@ items:
       description: A <xref href="System.Web.Profile.ProfileInfoCollection"></xref> containing user profile information about the inactive profiles.
   overload: System.Web.Profile.ProfileManager.GetAllInactiveProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,7 +605,7 @@ items:
       description: A <xref href="System.Web.Profile.ProfileInfoCollection"></xref> containing user profile information for all of the profiles in the data source.
   overload: System.Web.Profile.ProfileManager.GetAllProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -646,7 +646,7 @@ items:
       description: A <xref href="System.Web.Profile.ProfileInfoCollection"></xref> containing user profile information for all of the profiles in the data source.
   overload: System.Web.Profile.ProfileManager.GetAllProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -681,7 +681,7 @@ items:
       description: The number of profiles in the data source for which the last activity date occurred before the specified date and time.
   overload: System.Web.Profile.ProfileManager.GetNumberOfInactiveProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -713,7 +713,7 @@ items:
       description: The number of profiles in the data source.
   overload: System.Web.Profile.ProfileManager.GetNumberOfProfiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -744,7 +744,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: An attempt was made to get the Provider property value without at least <xref href="System.Web.AspNetHostingPermissionLevel"></xref> permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -775,7 +775,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: An attempt was made to get the Providers property value without at least <xref href="System.Web.AspNetHostingPermissionLevel"></xref> permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -877,8 +877,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

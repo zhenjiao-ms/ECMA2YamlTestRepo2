@@ -60,7 +60,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,14 +94,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One of the elements in <code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>roleName</code> is `null`.  \n  \n -or-  \n  \n One of the elements in <code>usernames</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n One of the elements in <code>usernames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>usernames</code> contains a duplicate element."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -135,14 +135,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "One of the roles in <code>roleNames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One of the users in <code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "One of the roles in <code>roleNames</code> is `null`.  \n  \n -or-  \n  \n One of the users in <code>usernames</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "One of the roles in <code>roleNames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n One of the users in <code>usernames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>roleNames</code> contains a duplicate element.  \n  \n -or-  \n  \n <code>usernames</code> contains a duplicate element."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -176,14 +176,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>roleName</code> is `null`.  \n  \n -or-  \n  \n <code>username</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>username</code> is an empty string or contains a comma (,)."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: "Role management is not enabled.  \n  \n -or-  \n  \n User is already assigned to the specified role."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,14 +217,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "One of the roles in <code>roleNames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "One of the roles in <code>roleNames</code> is `null`.  \n  \n -or-  \n  \n <code>username</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "One of the roles in <code>roleNames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>username</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>roleNames</code> contains a duplicate element."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -252,7 +252,7 @@ items:
       description: The name of the application to store and retrieve role information for.
   overload: System.Web.Security.Roles.ApplicationName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,10 +277,10 @@ items:
     content: public static bool CacheRolesInCookie { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current user's roles are cached in a cookie; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the current user''s roles are cached in a cookie; otherwise, `false`. The default is `true`.'
   overload: System.Web.Security.Roles.CacheRolesInCookie*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -308,7 +308,7 @@ items:
       description: The name of the cookie where role names are cached. The default is .ASPXROLES.
   overload: System.Web.Security.Roles.CookieName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -336,7 +336,7 @@ items:
       description: The path of the cookie where role names are cached. The default is /.
   overload: System.Web.Security.Roles.CookiePath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -361,10 +361,10 @@ items:
     content: public static System.Web.Security.CookieProtection CookieProtectionValue { get; }
     return:
       type: System.Web.Security.CookieProtection
-      description: One of the <xref href="System.Web.Security.CookieProtection"></xref> enumeration values indicating how role names that are cached in a cookie are protected. The default is <xref uid="langword_csharp_All" name="All" href=""></xref>.
+      description: One of the <xref href="System.Web.Security.CookieProtection"></xref> enumeration values indicating how role names that are cached in a cookie are protected. The default is `All`.
   overload: System.Web.Security.Roles.CookieProtectionValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -389,10 +389,10 @@ items:
     content: public static bool CookieRequireSSL { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if SSL is required to return the role names cookie to the server; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if SSL is required to return the role names cookie to the server; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.Roles.CookieRequireSSL*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,10 +417,10 @@ items:
     content: public static bool CookieSlidingExpiration { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the role names cookie expiration date and time will be reset periodically; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the role names cookie expiration date and time will be reset periodically; otherwise, `false`. The default is `true`.'
   overload: System.Web.Security.Roles.CookieSlidingExpiration*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -448,7 +448,7 @@ items:
       description: An integer specifying the number of minutes before the roles cookie expires. The default is 30 minutes.
   overload: System.Web.Security.Roles.CookieTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,10 +471,10 @@ items:
     content: public static bool CreatePersistentCookie { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the role-names cookie is a persistent cookie; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the role-names cookie is a persistent cookie; otherwise `false`. The default is `false`.'
   overload: System.Web.Security.Roles.CreatePersistentCookie*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -505,14 +505,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>roleName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>roleName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string.  \n  \n -or-  \n  \n <code>roleName</code> contains a comma."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -541,7 +541,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -570,19 +570,19 @@ items:
       description: The name of the role to delete.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>roleName</code> was deleted from the data source; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>roleName</code> was deleted from the data source; otherwise, `false`.'
   overload: System.Web.Security.Roles.DeleteRole*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>roleName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>roleName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>roleName</code> is an empty string or contains a comma (,).
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: "<code>roleName</code> has one or more members.  \n  \n -or-  \n  \n Role management is not enabled."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -611,22 +611,22 @@ items:
       description: The name of the role to delete.
     - id: throwOnPopulatedRole
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, throws an exception if `roleName` has one or more members.
+      description: If `true`, throws an exception if `roleName` has one or more members.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>roleName</code> was deleted from the data source; otherwise; <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>roleName</code> was deleted from the data source; otherwise; `false`.'
   overload: System.Web.Security.Roles.DeleteRole*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>roleName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>roleName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>roleName</code> is an empty string.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "<code>roleName</code> has one or more members and <code>throwOnPopulatedRole</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n Role management is not enabled."
-  platform:
+    description: "<code>roleName</code> has one or more members and <code>throwOnPopulatedRole</code> is `true`.  \n  \n -or-  \n  \n Role management is not enabled."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -652,7 +652,7 @@ items:
       description: The <xref:System.Web.HttpCookie.Domain*> of the role names cookie.
   overload: System.Web.Security.Roles.Domain*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,10 +677,10 @@ items:
     content: public static bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if role management is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if role management is enabled; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.Roles.Enabled*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Security.Roles.FindUsersInRole(System.String,System.String)
   id: FindUsersInRole(System.String,System.String)
@@ -714,14 +714,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> (<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> in Visual Basic).  \n  \n -or-  \n  \n <code>usernameToMatch</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>roleName</code> is `null` (`Nothing` in Visual Basic).  \n  \n -or-  \n  \n <code>usernameToMatch</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>usernameToMatch</code> is an empty string."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -753,7 +753,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,7 +788,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,14 +822,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>username</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>username</code> contains a comma (,).
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -863,14 +863,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>roleName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>roleName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>roleName</code> is an empty string or contains a comma (,).
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -899,19 +899,19 @@ items:
       description: The name of the role to search in.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the currently logged-on user is in the specified role; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the currently logged-on user is in the specified role; otherwise, `false`.'
   overload: System.Web.Security.Roles.IsUserInRole*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n There is no current logged-on user."
+    description: "<code>roleName</code> is `null`.  \n  \n -or-  \n  \n There is no current logged-on user."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>roleName</code> is an empty string or contains a comma (,).
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -943,19 +943,19 @@ items:
       description: The name of the role to search in.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified user is in the specified role; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified user is in the specified role; otherwise, `false`.'
   overload: System.Web.Security.Roles.IsUserInRole*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>roleName</code> is `null`.  \n  \n -or-  \n  \n <code>username</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>username</code> contains a comma (,)."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -983,7 +983,7 @@ items:
       description: The maximum number of role names to be cached for a user. The default is 25.
   overload: System.Web.Security.Roles.MaxCachedResults*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1014,7 +1014,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1045,7 +1045,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1079,14 +1079,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>roleName</code> is `null`.  \n  \n -or-  \n  \n <code>username</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string or contains a comma (,)  \n  \n <code>username</code> is an empty string or contains a comma (,)."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1120,14 +1120,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "One of the roles in <code>roleNames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "One of the roles in <code>roleNames</code> is `null`.  \n  \n -or-  \n  \n <code>username</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "One of the roles in <code>roleNames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>username</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>roleNames</code> contains a duplicate element."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1161,14 +1161,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One of the user names in <code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>roleName</code> is `null`.  \n  \n -or-  \n  \n One of the user names in <code>usernames</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>roleName</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n One of the user names in <code>usernames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>usernames</code> contains a duplicate element."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1202,14 +1202,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "One of the roles specified in <code>roleNames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One of the users specified in <code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "One of the roles specified in <code>roleNames</code> is `null`.  \n  \n -or-  \n  \n One of the users specified in <code>usernames</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "One of the roles specified in <code>roleNames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n One of the users specified in <code>usernames</code> is an empty string or contains a comma (,).  \n  \n -or-  \n  \n <code>roleNames</code> contains a duplicate element.  \n  \n -or-  \n  \n <code>usernames</code> contains a duplicate element."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1238,19 +1238,19 @@ items:
       description: The name of the role to search for in the data source.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the role name already exists in the data source; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the role name already exists in the data source; otherwise, `false`.'
   overload: System.Web.Security.Roles.RoleExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>roleName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic).
+    description: <code>roleName</code> is `null` (`Nothing` in Visual Basic).
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>roleName</code> is an empty string or contains a comma (,).
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: Role management is not enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1286,8 +1286,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

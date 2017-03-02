@@ -37,7 +37,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -68,8 +68,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>owner</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>viewName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>owner</code> is `null`  \n  \n -or-  \n  \n <code>viewName</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,10 +91,10 @@ items:
     content: public virtual bool CanDelete { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Web.UI.DataSourceView.ExecuteDelete*> method is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Web.UI.DataSourceView.ExecuteDelete*> method is supported; otherwise, `false`.'
   overload: System.Web.UI.Design.DesignerDataSourceView.CanDelete*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -116,10 +116,10 @@ items:
     content: public virtual bool CanInsert { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Web.UI.DataSourceView.ExecuteInsert*> method is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Web.UI.DataSourceView.ExecuteInsert*> method is supported; otherwise, `false`.'
   overload: System.Web.UI.Design.DesignerDataSourceView.CanInsert*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,10 +141,10 @@ items:
     content: public virtual bool CanPage { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if paging through the data retrieved by the <xref:System.Web.UI.DataSourceView.ExecuteSelect*> method is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if paging through the data retrieved by the <xref:System.Web.UI.DataSourceView.ExecuteSelect*> method is supported; otherwise, `false`.'
   overload: System.Web.UI.Design.DesignerDataSourceView.CanPage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -166,10 +166,10 @@ items:
     content: public virtual bool CanRetrieveTotalRowCount { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if retrieving the total number of data rows is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if retrieving the total number of data rows is supported; otherwise, `false`.'
   overload: System.Web.UI.Design.DesignerDataSourceView.CanRetrieveTotalRowCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,10 +191,10 @@ items:
     content: public virtual bool CanSort { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a sorted view on the underlying data source is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a sorted view on the underlying data source is supported; otherwise, `false`.'
   overload: System.Web.UI.Design.DesignerDataSourceView.CanSort*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -216,10 +216,10 @@ items:
     content: public virtual bool CanUpdate { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Web.UI.DataSourceView.ExecuteUpdate*> method is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Web.UI.DataSourceView.ExecuteUpdate*> method is supported; otherwise, `false`.'
   overload: System.Web.UI.Design.DesignerDataSourceView.CanUpdate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
       description: The <xref href="System.Web.UI.Design.IDataSourceDesigner"></xref> object provided when the current <xref href="System.Web.UI.Design.DesignerDataSourceView"></xref> instance was created.
   overload: System.Web.UI.Design.DesignerDataSourceView.DataSourceDesigner*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -273,13 +273,13 @@ items:
       description: The minimum number of rows to return.
     - id: isSampleData
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the returned data is sample data; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the returned data is live data.
+      description: '`true` to indicate that the returned data is sample data; `false` to indicate that the returned data is live data.'
     return:
       type: System.Collections.IEnumerable
       description: A <xref href="System.Web.UI.DataSourceView"></xref> object containing data to display at design time.
   overload: System.Web.UI.Design.DesignerDataSourceView.GetDesignTimeData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,7 +304,7 @@ items:
       description: The view name.
   overload: System.Web.UI.Design.DesignerDataSourceView.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
       description: An <xref href="System.Web.UI.Design.IDataSourceViewSchema"></xref> object.
   overload: System.Web.UI.Design.DesignerDataSourceView.Schema*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

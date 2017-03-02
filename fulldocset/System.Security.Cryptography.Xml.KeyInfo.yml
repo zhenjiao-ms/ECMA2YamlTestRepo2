@@ -17,7 +17,7 @@ items:
   nameWithType: KeyInfo
   fullName: System.Security.Cryptography.Xml.KeyInfo
   type: Class
-  summary: Represents an XML digital signature or XML encryption <xref uid="langword_csharp_&lt;KeyInfo&gt;" name="&lt;KeyInfo&gt;" href=""></xref> element.
+  summary: Represents an XML digital signature or XML encryption `&lt;KeyInfo&gt;` element.
   remarks: "The KeyInfo class represents key information in XML digital signing and encryption.  \n  \n The KeyInfo class enables you to imbed key-related information intended to help identify the key necessary for validating or decrypting the XML document. Multiple types of key-related information can be included within a single KeyInfo; each type of key-related information has an associated class derived from <xref:System.Security.Cryptography.Xml.KeyInfoClause>.  \n  \n For more information about the `<KeyInfo>` element, see the XMLDSIG specification, which is available from the W3C at www.w3.org/TR/xmldsig-core/, or see the XML encryption specification, which is available from the W3C at www.w3.org/TR/xmlenc-core/."
   example:
   - "The following code example uses the KeyInfo object when signing a resource represented by a Universal Resource Identifier (URI).  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/csharp/t-system.security.crypto_105_1.cs)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/visualbasic/t-system.security.crypto_105_1.vb)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigDetached#1](~/add/codesnippet/cpp/t-system.security.crypto_105_1.cpp)]  \n  \n The following code example uses the KeyInfo object when signing an XML document.  This example saves the signature in a new file.  \n  \n [!code-cs[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/csharp/t-system.security.crypto_105_2.cs)]\n [!code-cpp[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/cpp/t-system.security.crypto_105_2.cpp)]\n [!code-vb[System.Security.Cryptography.XML-XMLDsigEnvelope#1](~/add/codesnippet/visualbasic/t-system.security.crypto_105_2.vb)]  \n  \n The following code example uses the KeyInfo object when encrypting an XML document. This example embeds an encrypted key within the encrypted XML document.  \n  \n [!code-cs[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/csharp/t-system.security.crypto_105_3.cs)]\n [!code-vb[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/visualbasic/t-system.security.crypto_105_3.vb)]\n [!code-cpp[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/cpp/t-system.security.crypto_105_3.cpp)]  \n  \n The following code example uses the KeyInfo object when encrypting an XML document. This example maps a name to a symmetric key to identify it to the decryption method.  \n  \n [!code-vb[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/visualbasic/t-system.security.crypto_105_4.vb)]\n [!code-cs[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/csharp/t-system.security.crypto_105_4.cs)]\n [!code-cpp[Cryptography.XML.XMLEncMapKey#1](~/add/codesnippet/cpp/t-system.security.crypto_105_4.cpp)]"
@@ -35,7 +35,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,7 +61,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.KeyInfo.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,7 +90,7 @@ items:
       description: The <xref href="System.Security.Cryptography.Xml.KeyInfoClause"></xref> to add to the <xref href="System.Security.Cryptography.Xml.KeyInfo"></xref> object.
   overload: System.Security.Cryptography.Xml.KeyInfo.AddClause*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
       description: The number of <xref href="System.Security.Cryptography.Xml.KeyInfoClause"></xref> objects contained in the <xref href="System.Security.Cryptography.Xml.KeyInfo"></xref> object.
   overload: System.Security.Cryptography.Xml.KeyInfo.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: An enumerator of the subelements of <xref href="System.Security.Cryptography.Xml.KeyInfo"></xref> that can be used to iterate through the collection.
   overload: System.Security.Cryptography.Xml.KeyInfo.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,7 +172,7 @@ items:
       description: An enumerator of the subelements of <xref href="System.Security.Cryptography.Xml.KeyInfo"></xref> that can be used to iterate through the collection.
   overload: System.Security.Cryptography.Xml.KeyInfo.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,7 +198,7 @@ items:
       description: The XML representation of the <xref href="System.Security.Cryptography.Xml.KeyInfo"></xref> object.
   overload: System.Security.Cryptography.Xml.KeyInfo.GetXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,7 +223,7 @@ items:
       description: The key information identity.
   overload: System.Security.Cryptography.Xml.KeyInfo.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -251,8 +251,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>value</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>value</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

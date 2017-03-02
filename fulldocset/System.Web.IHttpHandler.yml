@@ -16,7 +16,7 @@ items:
   syntax:
     content: public interface IHttpHandler
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -41,10 +41,10 @@ items:
     content: public bool IsReusable { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Web.IHttpHandler"></xref> instance is reusable; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Web.IHttpHandler"></xref> instance is reusable; otherwise, `false`.'
   overload: System.Web.IHttpHandler.IsReusable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,7 +61,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: Enables processing of HTTP Web requests by a custom <xref uid="langword_csharp_HttpHandler" name="HttpHandler" href=""></xref> that implements the <xref href="System.Web.IHttpHandler"></xref> interface.
+  summary: Enables processing of HTTP Web requests by a custom `HttpHandler` that implements the <xref href="System.Web.IHttpHandler"></xref> interface.
   remarks: Place your custom `HttpHandler` code in the ProcessRequest virtual method, as shown in the following example.
   example:
   - "The following code example writes four lines of text to the HTTP output stream in response to a client request for a page named handler.aspx. All requests for handler.aspx are serviced by the `MyHttpHandler` class in the namespace `HandlerExample` contained in the assembly HandlerTest.dll.  \n  \n [!code-cs[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/csharp/m-system.web.ihttphandle_1.cs)]\n [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/visualbasic/m-system.web.ihttphandle_1.vb)]"
@@ -70,10 +70,10 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: An <xref href="System.Web.HttpContext"></xref> object that provides references to the intrinsic server objects (for example, <xref uid="langword_csharp_Request" name="Request" href=""></xref>, <xref uid="langword_csharp_Response" name="Response" href=""></xref>, <xref uid="langword_csharp_Session" name="Session" href=""></xref>, and <xref uid="langword_csharp_Server" name="Server" href=""></xref>) used to service HTTP requests.
+      description: An <xref href="System.Web.HttpContext"></xref> object that provides references to the intrinsic server objects (for example, `Request`, `Response`, `Session`, and `Server`) used to service HTTP requests.
   overload: System.Web.IHttpHandler.ProcessRequest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

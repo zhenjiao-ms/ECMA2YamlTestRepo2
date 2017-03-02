@@ -91,7 +91,7 @@ items:
   - System.Reflection.PropertyInfo.System#Runtime#InteropServices#_PropertyInfo#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
   - System.Reflection.PropertyInfo.System#Runtime#InteropServices#_PropertyInfo#GetTypeInfoCount(System.UInt32@)
   - System.Reflection.PropertyInfo.System#Runtime#InteropServices#_PropertyInfo#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,16 +114,16 @@ items:
     parameters:
     - id: mdBuilder
       type: System.Reflection.Emit.MethodBuilder
-      description: A <xref uid="langword_csharp_MethodBuilder" name="MethodBuilder" href=""></xref> object that represents the other method.
+      description: A `MethodBuilder` object that represents the other method.
   overload: System.Reflection.Emit.PropertyBuilder.AddOtherMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>mdBuilder</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>mdBuilder</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has been called on the enclosing type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -148,7 +148,7 @@ items:
       description: Attributes of this property.
   overload: System.Reflection.Emit.PropertyBuilder.Attributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,10 +171,10 @@ items:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this property can be read; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this property can be read; otherwise, `false`.'
   overload: System.Reflection.Emit.PropertyBuilder.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -197,10 +197,10 @@ items:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this property can be written to; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this property can be written to; otherwise, `false`.'
   overload: System.Reflection.Emit.PropertyBuilder.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -222,10 +222,10 @@ items:
     content: public override Type DeclaringType { get; }
     return:
       type: System.Type
-      description: The <xref uid="langword_csharp_Type" name="Type" href=""></xref> object for the class that declares this member.
+      description: The `Type` object for the class that declares this member.
   overload: System.Reflection.Emit.PropertyBuilder.DeclaringType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,23 +242,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Returns an array of the public and non-public <xref uid="langword_csharp_get" name="get" href=""></xref> and <xref uid="langword_csharp_set" name="set" href=""></xref> accessors on this property.
+  summary: Returns an array of the public and non-public `get` and `set` accessors on this property.
   remarks: To get the accessors of a property, reflect on the property's parent type using Type.GetType or Assembly.GetType, retrieve the Reflection property object from the type, and call PropertyInfo.GetAccessors.
   syntax:
     content: public override System.Reflection.MethodInfo[] GetAccessors (bool nonPublic);
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: Indicates whether non-public methods should be returned in the <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> array. <xref uid="langword_csharp_true" name="true" href=""></xref> if non-public methods are to be included; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Indicates whether non-public methods should be returned in the `MethodInfo` array. `true` if non-public methods are to be included; otherwise, `false`.
     return:
       type: System.Reflection.MethodInfo[]
-      description: An array of type <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> containing the matching public or non-public accessors, or an empty array if matching accessors do not exist on this property.
+      description: An array of type `MethodInfo` containing the matching public or non-public accessors, or an empty array if matching accessors do not exist on this property.
   overload: System.Reflection.Emit.PropertyBuilder.GetAccessors*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -282,7 +282,7 @@ items:
     parameters:
     - id: inherit
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, walks up this property's inheritance chain to find the custom attributes
+      description: If `true`, walks up this property's inheritance chain to find the custom attributes
     return:
       type: System.Object[]
       description: An array of all the custom attributes.
@@ -291,7 +291,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -318,16 +318,16 @@ items:
       description: An array of custom attributes identified by type.
     - id: inherit
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, walks up this property's inheritance chain to find the custom attributes.
+      description: If `true`, walks up this property's inheritance chain to find the custom attributes.
     return:
       type: System.Object[]
-      description: An array of custom attributes defined on this reflected member, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no attributes are defined on this member.
+      description: An array of custom attributes defined on this reflected member, or `null` if no attributes are defined on this member.
   overload: System.Reflection.Emit.PropertyBuilder.GetCustomAttributes*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -351,13 +351,13 @@ items:
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: Indicates whether non-public get accessors should be returned. <xref uid="langword_csharp_true" name="true" href=""></xref> if non-public methods are to be included; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Indicates whether non-public get accessors should be returned. `true` if non-public methods are to be included; otherwise, `false`.
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object representing the get accessor for this property, if <code>nonPublic</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>. Returns <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>nonPublic</code> is <xref uid="langword_csharp_false" name="false" href=""></xref> and the get accessor is non-public, or if <code>nonPublic</code> is <xref uid="langword_csharp_true" name="true" href=""></xref> but no get accessors exist.
+      description: A `MethodInfo` object representing the get accessor for this property, if <code>nonPublic</code> is `true`. Returns `null` if <code>nonPublic</code> is `false` and the get accessor is non-public, or if <code>nonPublic</code> is `true` but no get accessors exist.
   overload: System.Reflection.Emit.PropertyBuilder.GetGetMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,13 +381,13 @@ items:
     parameters: []
     return:
       type: System.Reflection.ParameterInfo[]
-      description: An array of type <xref uid="langword_csharp_ParameterInfo" name="ParameterInfo" href=""></xref> containing the parameters for the indexes.
+      description: An array of type `ParameterInfo` containing the parameters for the indexes.
   overload: System.Reflection.Emit.PropertyBuilder.GetIndexParameters*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,13 +411,13 @@ items:
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: Indicates whether the accessor should be returned if it is non-public. <xref uid="langword_csharp_true" name="true" href=""></xref> if non-public methods are to be included; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Indicates whether the accessor should be returned if it is non-public. `true` if non-public methods are to be included; otherwise, `false`.
     return:
       type: System.Reflection.MethodInfo
-      description: "The property's <xref uid=\"langword_csharp_Set\" name=\"Set\" href=\"\"></xref> method, or <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, as shown in the following table.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|A <xref href=\"System.Reflection.MethodInfo\"></xref> object representing the Set method for this property.|The set accessor is public.<br /><br /><code>nonPublic</code> is true and non-public methods can be returned.|  \n|null|<code>nonPublic</code> is true, but the property is read-only.<br /><br /><code>nonPublic</code> is false and the set accessor is non-public.|"
+      description: "The property's `Set` method, or `null`, as shown in the following table.  \n  \n|Value|Condition|  \n|-----------|---------------|  \n|A <xref href=\"System.Reflection.MethodInfo\"></xref> object representing the Set method for this property.|The set accessor is public.<br /><br /><code>nonPublic</code> is true and non-public methods can be returned.|  \n|null|<code>nonPublic</code> is true, but the property is read-only.<br /><br /><code>nonPublic</code> is false and the set accessor is non-public.|"
   overload: System.Reflection.Emit.PropertyBuilder.GetSetMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -444,7 +444,7 @@ items:
       description: The object whose property value will be returned.
     - id: index
       type: System.Object[]
-      description: Optional index values for indexed properties. This value should be <xref uid="langword_csharp_null" name="null" href=""></xref> for non-indexed properties.
+      description: Optional index values for indexed properties. This value should be `null` for non-indexed properties.
     return:
       type: System.Object
       description: The value of the specified indexed property.
@@ -453,7 +453,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,7 +470,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Gets the value of a property having the specified binding, index, and <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref>.
+  summary: Gets the value of a property having the specified binding, index, and `CultureInfo`.
   remarks: To get the value of a property, reflect on the property's parent type using Type.GetType or Assembly.GetType, retrieve the Reflection property object from the type, and call PropertyInfo.GetValue.
   syntax:
     content: public override object GetValue (object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object[] index, System.Globalization.CultureInfo culture);
@@ -480,16 +480,16 @@ items:
       description: The object whose property value will be returned.
     - id: invokeAttr
       type: System.Reflection.BindingFlags
-      description: 'The invocation attribute. This must be a bit flag from <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> : <xref uid="langword_csharp_InvokeMethod" name="InvokeMethod" href=""></xref>, <xref uid="langword_csharp_CreateInstance" name="CreateInstance" href=""></xref>, <xref uid="langword_csharp_Static" name="Static" href=""></xref>, <xref uid="langword_csharp_GetField" name="GetField" href=""></xref>, <xref uid="langword_csharp_SetField" name="SetField" href=""></xref>, <xref uid="langword_csharp_GetProperty" name="GetProperty" href=""></xref>, or <xref uid="langword_csharp_SetProperty" name="SetProperty" href=""></xref>. A suitable invocation attribute must be specified. If a static member is to be invoked, the <xref uid="langword_csharp_Static" name="Static" href=""></xref> flag of <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> must be set.'
+      description: 'The invocation attribute. This must be a bit flag from `BindingFlags` : `InvokeMethod`, `CreateInstance`, `Static`, `GetField`, `SetField`, `GetProperty`, or `SetProperty`. A suitable invocation attribute must be specified. If a static member is to be invoked, the `Static` flag of `BindingFlags` must be set.'
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> objects using reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of `MemberInfo` objects using reflection. If `binder` is `null`, the default binder is used.
     - id: index
       type: System.Object[]
-      description: Optional index values for indexed properties. This value should be <xref uid="langword_csharp_null" name="null" href=""></xref> for non-indexed properties.
+      description: Optional index values for indexed properties. This value should be `null` for non-indexed properties.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: The <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> object that represents the culture for which the resource is to be localized. Note that if the resource is not localized for this culture, the <xref uid="langword_csharp_CultureInfo.Parent" name="CultureInfo.Parent" href=""></xref> method will be called successively in search of a match. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> is obtained from the <xref uid="langword_csharp_CultureInfo.CurrentUICulture" name="CultureInfo.CurrentUICulture" href=""></xref> property.
+      description: The `CultureInfo` object that represents the culture for which the resource is to be localized. Note that if the resource is not localized for this culture, the `CultureInfo.Parent` method will be called successively in search of a match. If this value is `null`, the `CultureInfo` is obtained from the `CultureInfo.CurrentUICulture` property.
     return:
       type: System.Object
       description: The property value for <code>obj</code>.
@@ -498,7 +498,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,19 +522,19 @@ items:
     parameters:
     - id: attributeType
       type: System.Type
-      description: The <xref uid="langword_csharp_Type" name="Type" href=""></xref> object to which the custom attributes are applied.
+      description: The `Type` object to which the custom attributes are applied.
     - id: inherit
       type: System.Boolean
       description: Specifies whether to walk up this property's inheritance chain to find the custom attributes.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if one or more instance of <code>attributeType</code> is defined on this property; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if one or more instance of <code>attributeType</code> is defined on this property; otherwise `false`.'
   overload: System.Reflection.Emit.PropertyBuilder.IsDefined*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -560,7 +560,7 @@ items:
       description: The <xref href="System.Reflection.Module"></xref> in which the type that declares the current property is defined.
   overload: System.Reflection.Emit.PropertyBuilder.Module*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -585,7 +585,7 @@ items:
       description: A <xref href="System.String"></xref> containing the name of this member.
   overload: System.Reflection.Emit.PropertyBuilder.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -610,7 +610,7 @@ items:
       description: Read-only. Retrieves the token for this property.
   overload: System.Reflection.Emit.PropertyBuilder.PropertyToken*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -635,7 +635,7 @@ items:
       description: The type of this property.
   overload: System.Reflection.Emit.PropertyBuilder.PropertyType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -652,15 +652,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Gets the class object that was used to obtain this instance of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref>.
+  summary: Gets the class object that was used to obtain this instance of `MemberInfo`.
   syntax:
     content: public override Type ReflectedType { get; }
     return:
       type: System.Type
-      description: The <xref uid="langword_csharp_Type" name="Type" href=""></xref> object through which this <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> object was obtained.
+      description: The `Type` object through which this `MemberInfo` object was obtained.
   overload: System.Reflection.Emit.PropertyBuilder.ReflectedType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -692,8 +692,8 @@ items:
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has been called on the enclosing type.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property is not one of the supported types.  \n  \n -or-  \n  \n The type of <code>defaultValue</code> does not match the type of the property.  \n  \n -or-  \n  \n The property is of type <xref href=\"System.Object\"></xref> or other reference type, <code>defaultValue</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, and the value cannot be assigned to the reference type."
-  platform:
+    description: "The property is not one of the supported types.  \n  \n -or-  \n  \n The type of <code>defaultValue</code> does not match the type of the property.  \n  \n -or-  \n  \n The property is of type <xref href=\"System.Object\"></xref> or other reference type, <code>defaultValue</code> is not `null`, and the value cannot be assigned to the reference type."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -721,11 +721,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>customBuilder</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>customBuilder</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: if <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has been called on the enclosing type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -757,11 +757,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>con</code> or <code>binaryAttribute</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>con</code> or <code>binaryAttribute</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has been called on the enclosing type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -787,16 +787,16 @@ items:
     parameters:
     - id: mdBuilder
       type: System.Reflection.Emit.MethodBuilder
-      description: A <xref uid="langword_csharp_MethodBuilder" name="MethodBuilder" href=""></xref> object that represents the method that gets the property value.
+      description: A `MethodBuilder` object that represents the method that gets the property value.
   overload: System.Reflection.Emit.PropertyBuilder.SetGetMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>mdBuilder</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>mdBuilder</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has been called on the enclosing type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,16 +822,16 @@ items:
     parameters:
     - id: mdBuilder
       type: System.Reflection.Emit.MethodBuilder
-      description: A <xref uid="langword_csharp_MethodBuilder" name="MethodBuilder" href=""></xref> object that represents the method that sets the property value.
+      description: A `MethodBuilder` object that represents the method that sets the property value.
   overload: System.Reflection.Emit.PropertyBuilder.SetSetMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>mdBuilder</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>mdBuilder</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has been called on the enclosing type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -861,13 +861,13 @@ items:
       description: The new value for this property.
     - id: index
       type: System.Object[]
-      description: Optional index values for indexed properties. This value should be <xref uid="langword_csharp_null" name="null" href=""></xref> for non-indexed properties.
+      description: Optional index values for indexed properties. This value should be `null` for non-indexed properties.
   overload: System.Reflection.Emit.PropertyBuilder.SetValue*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -897,22 +897,22 @@ items:
       description: The new value for this property.
     - id: invokeAttr
       type: System.Reflection.BindingFlags
-      description: 'The invocation attribute. This must be a bit flag from <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> : <xref uid="langword_csharp_InvokeMethod" name="InvokeMethod" href=""></xref>, <xref uid="langword_csharp_CreateInstance" name="CreateInstance" href=""></xref>, <xref uid="langword_csharp_Static" name="Static" href=""></xref>, <xref uid="langword_csharp_GetField" name="GetField" href=""></xref>, <xref uid="langword_csharp_SetField" name="SetField" href=""></xref>, <xref uid="langword_csharp_GetProperty" name="GetProperty" href=""></xref>, or <xref uid="langword_csharp_SetProperty" name="SetProperty" href=""></xref>. A suitable invocation attribute must be specified. If a static member is to be invoked, the <xref uid="langword_csharp_Static" name="Static" href=""></xref> flag of <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> must be set.'
+      description: 'The invocation attribute. This must be a bit flag from `BindingFlags` : `InvokeMethod`, `CreateInstance`, `Static`, `GetField`, `SetField`, `GetProperty`, or `SetProperty`. A suitable invocation attribute must be specified. If a static member is to be invoked, the `Static` flag of `BindingFlags` must be set.'
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> objects using reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of `MemberInfo` objects using reflection. If `binder` is `null`, the default binder is used.
     - id: index
       type: System.Object[]
-      description: Optional index values for indexed properties. This value should be <xref uid="langword_csharp_null" name="null" href=""></xref> for non-indexed properties.
+      description: Optional index values for indexed properties. This value should be `null` for non-indexed properties.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: The <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> object that represents the culture for which the resource is to be localized. Note that if the resource is not localized for this culture, the <xref uid="langword_csharp_CultureInfo.Parent" name="CultureInfo.Parent" href=""></xref> method will be called successively in search of a match. If this value is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> is obtained from the <xref uid="langword_csharp_CultureInfo.CurrentUICulture" name="CultureInfo.CurrentUICulture" href=""></xref> property.
+      description: The `CultureInfo` object that represents the culture for which the resource is to be localized. Note that if the resource is not localized for this culture, the `CultureInfo.Parent` method will be called successively in search of a match. If this value is `null`, the `CultureInfo` is obtained from the `CultureInfo.CurrentUICulture` property.
   overload: System.Reflection.Emit.PropertyBuilder.SetValue*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -955,7 +955,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -992,7 +992,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1023,7 +1023,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1075,7 +1075,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1177,8 +1177,8 @@ references:
 - uid: System.Reflection.MethodInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MethodInfo
-  nameWithType: MethodInfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
   fullName: System.Reflection.MethodInfo[]
   spec.csharp:
   - uid: System.Reflection.MethodInfo
@@ -1197,8 +1197,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1235,8 +1235,8 @@ references:
 - uid: System.Reflection.ParameterInfo[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterInfo
-  nameWithType: ParameterInfo
+  name: ParameterInfo[]
+  nameWithType: ParameterInfo[]
   fullName: System.Reflection.ParameterInfo[]
   spec.csharp:
   - uid: System.Reflection.ParameterInfo
@@ -1375,8 +1375,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

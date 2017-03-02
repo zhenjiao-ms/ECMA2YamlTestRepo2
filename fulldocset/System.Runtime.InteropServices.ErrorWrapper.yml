@@ -13,7 +13,7 @@ items:
   nameWithType: ErrorWrapper
   fullName: System.Runtime.InteropServices.ErrorWrapper
   type: Class
-  summary: Wraps objects the marshaler should marshal as a <xref uid="langword_csharp_VT_ERROR" name="VT_ERROR" href=""></xref>.
+  summary: Wraps objects the marshaler should marshal as a `VT_ERROR`.
   remarks: "By default, <xref:System.Object> type arguments are marshaled as a `VARIANT` type, where the object type determines the `VARTYPE` value of the `VARIANT`.  \n  \n The ErrorWrapper type must to be passed as an <xref:System.Object> type to be marshaled as a `VARIANT` of type `VT_ERROR`, otherwise the ErrorWrapper type is marshaled as an integer.  \n  \n The following table illustrates marshaling in a managed call to a native function, using platform invoke.  \n  \n|Managed signature parameter|pArr value|Marshaled as|  \n|---------------------------------|----------------|------------------|  \n|ErrorWrapper[] pArr|ErrorWrapper[10] of ErrorWrapper(77)|`Int[10]`|  \n|Object[] pArr|ErrorWrapper[10] of ErrorWrapper(77)|`VARIANT[10]` of `VT_ERROR`|  \n|Object[] pArr|Object[10] of ErrorWrapper(77)|`VARIANT[10]` of `VT_ERROR`|  \n  \n The following table illustrates marshaling data in a managed call to a native function, using COM runtime callable wrappers (RCW).  \n  \n|Managed signature parameter|pArr value|Marshaled as|  \n|---------------------------------|----------------|------------------|  \n|ErrorWrapper[] pArr|ErrorWrapper[10] of ErrorWrapper(77)|`Int[10]`|  \n|Object[] pArr|ErrorWrapper[10] of ErrorWrapper(77)|`SafeArrayTypeMismatch` exception|  \n|Object[] pArr|Object[10] of ErrorWrapper(77)|`SAFEARRAY(VARIANT)`|  \n  \n Note that ErrorWrapper objects are not marshaled as type `VT_ERROR` after they are passed back from COM.  A single value is marshaled back from COM as type `VT_I4`, while arrays are marshaled back from COM as type `VT_UI4`.  \n  \n For more information on `VT_ERROR`, please see the existing documentation for `VARENUM::VT_ERROR` in the MSDN library."
   example:
   - "The following code example first demonstrates a lone <xref:System.Int32> object marshaled back from COM as an <xref:System.Int32> object. It then demonstrates an <xref:System.Int32> array marshaled back from COM as a <xref:System.UInt32> array.  \n  \n```  \n// Scenario 1:  \n// Pass a single value.  \nInt32 x = 3;  \nObject o = new ErrorWrapper(x);  \n// Pass 'o' to COM.  \n// On the return trip, 'o' has been unwrapped and is still an Int32 object.  \nInt32 y = (Int32)o;  \nScenario 2:  \n// Pass an array of values.  \nInt32[] arr = new Int32[3];  \nObject o = new ErrorWrapper(arr);  \n// Pass 'o' to COM.  \n// On the return trip, 'o' has been unwrapped and is now a UInt32[] array.  \nUInt32[ ] arr2 = (UInt32[])o;  \n```"
@@ -33,7 +33,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
       description: The exception to be converted to an error code.
   overload: System.Runtime.InteropServices.ErrorWrapper.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
       description: The HRESULT of the error.
   overload: System.Runtime.InteropServices.ErrorWrapper.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,7 +114,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>errorCode</code> parameter is not an <xref href="System.Int32"></xref> type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
       description: The HRESULT of the error.
   overload: System.Runtime.InteropServices.ErrorWrapper.ErrorCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

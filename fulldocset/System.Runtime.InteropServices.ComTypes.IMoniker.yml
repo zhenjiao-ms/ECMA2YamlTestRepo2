@@ -29,7 +29,7 @@ items:
   nameWithType: IMoniker
   fullName: System.Runtime.InteropServices.ComTypes.IMoniker
   type: Interface
-  summary: Provides the managed definition of the <xref uid="langword_csharp_IMoniker" name="IMoniker" href=""></xref> interface, with COM functionality from <xref uid="langword_csharp_IPersist" name="IPersist" href=""></xref> and <xref uid="langword_csharp_IPersistStream" name="IPersistStream" href=""></xref>.
+  summary: Provides the managed definition of the `IMoniker` interface, with COM functionality from `IPersist` and `IPersistStream`.
   remarks: "For more information about the `IMoniker`, `IPersist`, and `IPersistStream` interfaces, see the MSDN Library.  \n  \n The common language runtime throws an exception when a COM method in native code returns an HRESULT. For more information, see [How to: Map HRESULTs and Exceptions](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: >-
@@ -39,7 +39,7 @@ items:
 
       public interface IMoniker
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -63,7 +63,7 @@ items:
     parameters:
     - id: pbc
       type: System.Runtime.InteropServices.ComTypes.IBindCtx
-      description: A reference to the <xref uid="langword_csharp_IBindCtx" name="IBindCtx" href=""></xref> interface on the bind context object used in this binding operation.
+      description: A reference to the `IBindCtx` interface on the bind context object used in this binding operation.
     - id: pmkToLeft
       type: System.Runtime.InteropServices.ComTypes.IMoniker
       description: A reference to the moniker to the left of the current moniker, if the moniker is part of a composite moniker.
@@ -75,7 +75,7 @@ items:
       description: When this method returns, contains a reference to the interface requested by `riidResult`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.BindToObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,7 +99,7 @@ items:
     parameters:
     - id: pbc
       type: System.Runtime.InteropServices.ComTypes.IBindCtx
-      description: A reference to the <xref uid="langword_csharp_IBindCtx" name="IBindCtx" href=""></xref> interface on the bind context object used during this binding operation.
+      description: A reference to the `IBindCtx` interface on the bind context object used during this binding operation.
     - id: pmkToLeft
       type: System.Runtime.InteropServices.ComTypes.IMoniker
       description: A reference to the moniker to the left of the current moniker, if the moniker is part of a composite moniker.
@@ -111,7 +111,7 @@ items:
       description: When this method returns, contains a reference to the interface requested by `riid`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.BindToStorage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -135,13 +135,13 @@ items:
     parameters:
     - id: pmkOther
       type: System.Runtime.InteropServices.ComTypes.IMoniker
-      description: A reference to the <xref uid="langword_csharp_IMoniker" name="IMoniker" href=""></xref> interface on another moniker to compare with the current moniker for a common prefix.
+      description: A reference to the `IMoniker` interface on another moniker to compare with the current moniker for a common prefix.
     - id: ppmkPrefix
       type: System.Runtime.InteropServices.ComTypes.IMoniker
       description: When this method returns, contains the moniker that is the common prefix of the current moniker and `pmkOther`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.CommonPrefixWith*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,16 +165,16 @@ items:
     parameters:
     - id: pmkRight
       type: System.Runtime.InteropServices.ComTypes.IMoniker
-      description: A reference to the <xref uid="langword_csharp_IMoniker" name="IMoniker" href=""></xref> interface on a moniker to append to the end of the current moniker.
+      description: A reference to the `IMoniker` interface on a moniker to append to the end of the current moniker.
     - id: fOnlyIfNotGeneric
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the caller requires a nongeneric composition. The operation proceeds only if `pmkRight` is a moniker class that the current moniker can combine with in some way other than forming a generic composite. <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the method can create a generic composite if necessary.
+      description: '`true` to indicate that the caller requires a nongeneric composition. The operation proceeds only if `pmkRight` is a moniker class that the current moniker can combine with in some way other than forming a generic composite. `false` to indicate that the method can create a generic composite if necessary.'
     - id: ppmkComposite
       type: System.Runtime.InteropServices.ComTypes.IMoniker
       description: When this method returns, contains a reference to the resulting composite moniker. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.ComposeWith*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,13 +198,13 @@ items:
     parameters:
     - id: fForward
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enumerate the monikers from left to right. <xref uid="langword_csharp_false" name="false" href=""></xref> to enumerate from right to left.
+      description: '`true` to enumerate the monikers from left to right. `false` to enumerate from right to left.'
     - id: ppenumMoniker
       type: System.Runtime.InteropServices.ComTypes.IEnumMoniker
       description: When this method returns, contains a reference to the enumerator object for the moniker. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.Enum*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -231,7 +231,7 @@ items:
       description: When this method returns, contains the CLSID. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.GetClassID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -264,7 +264,7 @@ items:
       description: When this method returns, contains the display name string. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.GetDisplayName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -288,10 +288,10 @@ items:
     parameters:
     - id: pcbSize
       type: System.Int64
-      description: When this method returns, contains a <xref uid="langword_csharp_long" name="long" href=""></xref> value indicating the size, in bytes, of the stream needed to save this object. This parameter is passed uninitialized.
+      description: When this method returns, contains a `long` value indicating the size, in bytes, of the stream needed to save this object. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.GetSizeMax*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -324,7 +324,7 @@ items:
       description: When this method returns, contains the time of the last change. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.GetTimeOfLastChange*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -351,7 +351,7 @@ items:
       description: When this method returns, contains the hash value for this moniker. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.Hash*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -378,7 +378,7 @@ items:
       description: When this method returns, contains a moniker that is the inverse of the current moniker. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.Inverse*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -402,10 +402,10 @@ items:
     parameters: []
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value if the object has changed; otherwise, an <xref uid="langword_csharp_S_FALSE" name="S_FALSE" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value.
+      description: An `S_OK``HRESULT` value if the object has changed; otherwise, an `S_FALSE``HRESULT` value.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.IsDirty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,10 +432,10 @@ items:
       description: A reference to the moniker to use for comparison.
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value if the monikers are identical; otherwise, an <xref uid="langword_csharp_S_FALSE" name="S_FALSE" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value.
+      description: An `S_OK``HRESULT` value if the monikers are identical; otherwise, an `S_FALSE``HRESULT` value.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.IsEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -468,10 +468,10 @@ items:
       description: A reference to the moniker most recently added to the Running Object Table (ROT).
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value if the moniker is running; an <xref uid="langword_csharp_S_FALSE" name="S_FALSE" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value if the moniker is not running; or an <xref uid="langword_csharp_E_UNEXPECTED" name="E_UNEXPECTED" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value.
+      description: An `S_OK``HRESULT` value if the moniker is running; an `S_FALSE``HRESULT` value if the moniker is not running; or an `E_UNEXPECTED``HRESULT` value.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.IsRunning*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -495,13 +495,13 @@ items:
     parameters:
     - id: pdwMksys
       type: System.Int32
-      description: When this method returns, contains a pointer to an integer that is one of the values from the <xref uid="langword_csharp_MKSYS" name="MKSYS" href=""></xref> enumeration, and refers to one of the COM moniker classes. This parameter is passed uninitialized.
+      description: When this method returns, contains a pointer to an integer that is one of the values from the `MKSYS` enumeration, and refers to one of the COM moniker classes. This parameter is passed uninitialized.
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value if the moniker is a system moniker; otherwise, an <xref uid="langword_csharp_S_FALSE" name="S_FALSE" href=""></xref><xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value.
+      description: An `S_OK``HRESULT` value if the moniker is a system moniker; otherwise, an `S_FALSE``HRESULT` value.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.IsSystemMoniker*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -528,7 +528,7 @@ items:
       description: The stream that the object is loaded from.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.Load*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -567,7 +567,7 @@ items:
       description: When this method returns, contains a reference to the moniker that was built from `pszDisplayName`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.ParseDisplayName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -591,7 +591,7 @@ items:
     parameters:
     - id: pbc
       type: System.Runtime.InteropServices.ComTypes.IBindCtx
-      description: A reference to the <xref uid="langword_csharp_IBindCtx" name="IBindCtx" href=""></xref> interface on the bind context to use in this binding operation.
+      description: A reference to the `IBindCtx` interface on the bind context to use in this binding operation.
     - id: dwReduceHowFar
       type: System.Int32
       description: A value that specifies how far the current moniker should be reduced.
@@ -600,10 +600,10 @@ items:
       description: A reference to the moniker to the left of the current moniker.
     - id: ppmkReduced
       type: System.Runtime.InteropServices.ComTypes.IMoniker
-      description: When this method returns, contains a reference to the reduced form of the current moniker, which can be <xref uid="langword_csharp_null" name="null" href=""></xref> if an error occurs or if the current moniker is reduced to nothing. This parameter is passed uninitialized.
+      description: When this method returns, contains a reference to the reduced form of the current moniker, which can be `null` if an error occurs or if the current moniker is reduced to nothing. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.Reduce*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -633,7 +633,7 @@ items:
       description: When this method returns, contains a reference to the relative moniker. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.RelativePathTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -660,10 +660,10 @@ items:
       description: The stream to which the object is saved.
     - id: fClearDirty
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to clear the modified flag after the save is complete; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>
+      description: '`true` to clear the modified flag after the save is complete; otherwise `false`'
   overload: System.Runtime.InteropServices.ComTypes.IMoniker.Save*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -59,7 +59,7 @@ items:
   - System.Windows.PropertyMetadata.IsSealed
   - System.Windows.PropertyMetadata.PropertyChangedCallback
   - System.Windows.UIPropertyMetadata.IsAnimationProhibited
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -82,7 +82,7 @@ items:
     parameters: []
   overload: System.Windows.FrameworkPropertyMetadata.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -113,7 +113,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -141,7 +141,7 @@ items:
       description: A reference to a handler implementation that the property system will call whenever the effective value of the property changes.
   overload: System.Windows.FrameworkPropertyMetadata.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -175,7 +175,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -209,7 +209,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -240,7 +240,7 @@ items:
       description: A reference to a handler implementation will be called whenever the property system calls <xref:System.Windows.DependencyObject.CoerceValue*> for this dependency property.
   overload: System.Windows.FrameworkPropertyMetadata.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -277,7 +277,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -314,7 +314,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -354,7 +354,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -391,13 +391,13 @@ items:
       description: A reference to a handler implementation that will be called whenever the property system calls <xref:System.Windows.DependencyObject.CoerceValue*> on this dependency property.
     - id: isAnimationProhibited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to prevent the property system from animating the property that this metadata is applied to. Such properties will raise a run-time exception originating from the property system if animations of them are attempted. <xref uid="langword_csharp_false" name="false" href=""></xref> to permit animating the property. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to prevent the property system from animating the property that this metadata is applied to. Such properties will raise a run-time exception originating from the property system if animations of them are attempted. `false` to permit animating the property. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -434,7 +434,7 @@ items:
       description: A reference to a handler implementation that will be called whenever the property system calls <xref:System.Windows.DependencyObject.CoerceValue*> against this property.
     - id: isAnimationProhibited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to prevent the property system from animating the property that this metadata is applied to. Such properties will raise a run-time exception originating from the property system if animations of them are attempted. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to prevent the property system from animating the property that this metadata is applied to. Such properties will raise a run-time exception originating from the property system if animations of them are attempted. The default is `false`.'
     - id: defaultUpdateSourceTrigger
       type: System.Windows.Data.UpdateSourceTrigger
       description: The <xref href="System.Windows.Data.UpdateSourceTrigger"></xref> to use when bindings for this property are applied that have their <xref href="System.Windows.Data.UpdateSourceTrigger"></xref> set to <xref href="System.Windows.Data.UpdateSourceTrigger"></xref>.
@@ -443,7 +443,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>defaultValue</code> is set to <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>; see Remarks.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -467,13 +467,13 @@ items:
     content: public bool AffectsArrange { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dependency property on which this metadata exists potentially affects the arrange pass; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dependency property on which this metadata exists potentially affects the arrange pass; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.AffectsArrange*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -497,13 +497,13 @@ items:
     content: public bool AffectsMeasure { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dependency property on which this metadata exists potentially affects the measure pass; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dependency property on which this metadata exists potentially affects the measure pass; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.AffectsMeasure*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -525,13 +525,13 @@ items:
     content: public bool AffectsParentArrange { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dependency property on which this metadata exists potentially affects the arrange pass specifically on its parent element; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dependency property on which this metadata exists potentially affects the arrange pass specifically on its parent element; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.AffectsParentArrange*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -553,13 +553,13 @@ items:
     content: public bool AffectsParentMeasure { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dependency property on which this metadata exists potentially affects the measure pass specifically on its parent element; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dependency property on which this metadata exists potentially affects the measure pass specifically on its parent element; otherwise, `false`.The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.AffectsParentMeasure*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -583,13 +583,13 @@ items:
     content: public bool AffectsRender { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dependency property on which this metadata exists affects rendering; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dependency property on which this metadata exists affects rendering; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.AffectsRender*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -613,13 +613,13 @@ items:
     content: public bool BindsTwoWayByDefault { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dependency property on which this metadata exists binds two-way by default; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dependency property on which this metadata exists binds two-way by default; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.BindsTwoWayByDefault*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -650,7 +650,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -674,13 +674,13 @@ items:
     content: public bool Inherits { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value is inheritable; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value is inheritable; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.Inherits*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -704,10 +704,10 @@ items:
     content: public bool IsDataBindingAllowed { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data binding is supported on the dependency property to which this metadata applies; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if data binding is supported on the dependency property to which this metadata applies; otherwise, `false`. The default is `true`.'
   overload: System.Windows.FrameworkPropertyMetadata.IsDataBindingAllowed*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -729,13 +729,13 @@ items:
     content: public bool IsNotDataBindable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property does not support data binding; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property does not support data binding; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.IsNotDataBindable*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -757,13 +757,13 @@ items:
     content: public bool Journal { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if journaling should be performed on the dependency property that this metadata is applied to; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if journaling should be performed on the dependency property that this metadata is applied to; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.Journal*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -792,7 +792,7 @@ items:
       description: The dependency property this metadata is being applied to.
   overload: System.Windows.FrameworkPropertyMetadata.Merge*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -818,10 +818,10 @@ items:
       description: The dependency property to which the metadata has been applied.
     - id: targetType
       type: System.Type
-      description: The type associated with this metadata if this is type-specific metadata. If this is default metadata, this value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The type associated with this metadata if this is type-specific metadata. If this is default metadata, this value can be `null`.
   overload: System.Windows.FrameworkPropertyMetadata.OnApply*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -843,13 +843,13 @@ items:
     content: public bool OverridesInheritanceBehavior { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value inheritance should span across certain content boundaries; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value inheritance should span across certain content boundaries; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.OverridesInheritanceBehavior*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -871,13 +871,13 @@ items:
     content: public bool SubPropertiesDoNotAffectRender { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if changes to sub-property values do not affect rendering if changed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if changes to sub-property values do not affect rendering if changed; otherwise, `false`. The default is `false`.'
   overload: System.Windows.FrameworkPropertyMetadata.SubPropertiesDoNotAffectRender*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The metadata has already been applied to a dependency property operation, so that metadata is sealed and properties of the metadata cannot be set.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

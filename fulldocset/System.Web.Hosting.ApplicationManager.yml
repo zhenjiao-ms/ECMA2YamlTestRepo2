@@ -43,7 +43,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
     parameters: []
   overload: System.Web.Hosting.ApplicationManager.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,8 +105,8 @@ items:
     description: A physical path for the application does not exist.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appHost</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>appHost</code> is `null`.  \n  \n \\- or -  \n  \n <code>type</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,7 +144,7 @@ items:
       description: The physical path to the application.
     - id: failIfExists
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if an object of the specified type is currently registered; <xref uid="langword_csharp_false" name="false" href=""></xref> to return the existing registered object of the specified type.
+      description: '`true` to throw an exception if an object of the specified type is currently registered; `false` to return the existing registered object of the specified type.'
     return:
       type: System.Web.Hosting.IRegisteredObject
       description: A new object of the specified <code>type</code>.
@@ -152,14 +152,14 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>physicalPath</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n \\- or -  \n  \n <code>physicalPath</code> is not a valid application path.  \n  \n \\- or -  \n  \n <code>type</code> does not implement the <xref href=\"System.Web.Hosting.IRegisteredObject\"></xref> interface."
+    description: "<code>physicalPath</code> is `null`  \n  \n \\- or -  \n  \n <code>physicalPath</code> is not a valid application path.  \n  \n \\- or -  \n  \n <code>type</code> does not implement the <xref href=\"System.Web.Hosting.IRegisteredObject\"></xref> interface."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appID</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>appID</code> is `null`.  \n  \n \\- or -  \n  \n <code>type</code> is `null`."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>failIfExists</code> is <xref uid="langword_csharp_true" name="true" href=""></xref> and an object of the specified type is already registered.
-  platform:
+    description: <code>failIfExists</code> is `true` and an object of the specified type is already registered.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,10 +195,10 @@ items:
       description: The physical path to the application.
     - id: failIfExists
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if an object of the specified type is currently registered; <xref uid="langword_csharp_false" name="false" href=""></xref> to return the existing registered object of the specified type.
+      description: '`true` to throw an exception if an object of the specified type is currently registered; `false` to return the existing registered object of the specified type.'
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw exceptions for hosting initialization errors; <xref uid="langword_csharp_false" name="false" href=""></xref> to not throw hosting initialization exceptions.
+      description: '`true` to throw exceptions for hosting initialization errors; `false` to not throw hosting initialization exceptions.'
     return:
       type: System.Web.Hosting.IRegisteredObject
       description: A new object of the specified <code>type</code>.
@@ -206,14 +206,14 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>physicalPath</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n \\- or -  \n  \n <code>physicalPath</code> is not a valid application path.  \n  \n \\- or -  \n  \n <code>type</code> does not implement the <xref href=\"System.Web.Hosting.IRegisteredObject\"></xref> interface."
+    description: "<code>physicalPath</code> is `null`  \n  \n \\- or -  \n  \n <code>physicalPath</code> is not a valid application path.  \n  \n \\- or -  \n  \n <code>type</code> does not implement the <xref href=\"System.Web.Hosting.IRegisteredObject\"></xref> interface."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appID</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>appID</code> is `null`.  \n  \n \\- or -  \n  \n <code>type</code> is `null`."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>failIfExists</code> is <xref uid="langword_csharp_true" name="true" href=""></xref> and an object of the specified type is already registered.
-  platform:
+    description: <code>failIfExists</code> is `true` and an object of the specified type is already registered.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
       description: The application domain of the application.
   overload: System.Web.Hosting.ApplicationManager.GetAppDomain*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Hosting.ApplicationManager.GetAppDomain(System.Web.Hosting.IApplicationHost)
   id: GetAppDomain(System.Web.Hosting.IApplicationHost)
@@ -268,7 +268,7 @@ items:
       description: The application domain of the application.
   overload: System.Web.Hosting.ApplicationManager.GetAppDomain*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Hosting.ApplicationManager.GetApplicationManager
   id: GetApplicationManager
@@ -294,7 +294,7 @@ items:
       description: The single instance of the <xref href="System.Web.Hosting.ApplicationManager"></xref> object associated with the ASP.NET host process that is running.
   overload: System.Web.Hosting.ApplicationManager.GetApplicationManager*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,13 +323,13 @@ items:
       description: The type of the object to return.
     return:
       type: System.Web.Hosting.IRegisteredObject
-      description: The registered object of the specified type; or <xref uid="langword_csharp_null" name="null" href=""></xref> if the type has not been registered through a call to the <xref:System.Web.Hosting.ApplicationManager.CreateObject*> method.
+      description: The registered object of the specified type; or `null` if the type has not been registered through a call to the <xref:System.Web.Hosting.ApplicationManager.CreateObject*> method.
   overload: System.Web.Hosting.ApplicationManager.GetObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appId</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n —or—  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>appId</code> is `null`.  \n  \n —or—  \n  \n <code>type</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -358,7 +358,7 @@ items:
       description: An array of <xref href="System.Web.Hosting.ApplicationInfo"></xref> objects that contain information about the applications managed by this <xref href="System.Web.Hosting.ApplicationManager"></xref> instance.
   overload: System.Web.Hosting.ApplicationManager.GetRunningApplications*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -382,10 +382,10 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: Always <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Always `null`.
   overload: System.Web.Hosting.ApplicationManager.InitializeLifetimeService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -409,10 +409,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if all applications in the process are idle; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if all applications in the process are idle; otherwise, `false`.'
   overload: System.Web.Hosting.ApplicationManager.IsIdle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -435,7 +435,7 @@ items:
     parameters: []
   overload: System.Web.Hosting.ApplicationManager.Open*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,7 +459,7 @@ items:
     parameters: []
   overload: System.Web.Hosting.ApplicationManager.ShutdownAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -488,8 +488,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>appId</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>appId</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -520,8 +520,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appId</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>appId</code> is `null`.  \n  \n \\- or -  \n  \n <code>type</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -647,8 +647,8 @@ references:
 - uid: System.Web.Hosting.ApplicationInfo[]
   parent: System.Web.Hosting
   isExternal: false
-  name: ApplicationInfo
-  nameWithType: ApplicationInfo
+  name: ApplicationInfo[]
+  nameWithType: ApplicationInfo[]
   fullName: System.Web.Hosting.ApplicationInfo[]
   spec.csharp:
   - uid: System.Web.Hosting.ApplicationInfo

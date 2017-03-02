@@ -58,7 +58,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,8 +87,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>owner</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>owner</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,8 +114,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -147,11 +147,11 @@ items:
     description: An attempt was made to apply personalization state to a Web Parts control that is not managed by the parent <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>webPart</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>webPart</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An attempt was made to apply personalization data more than once to the same Web Parts control."
-  platform:
+    description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was `null`.  \n  \n \\- or -  \n  \n An attempt was made to apply personalization data more than once to the same Web Parts control."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -176,10 +176,10 @@ items:
     content: public bool CanEnterSharedScope { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user is authorized to enter <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> scope; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user is authorized to enter <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> scope; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,7 +212,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>scope</code> is not a valid member of the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,11 +244,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: Either <code>webPartA</code> or <code>webPartB</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: Either <code>webPartA</code> or <code>webPartB</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>webPartA</code> and <code>webPartB</code> are not of the same <xref href=\"System.Type\"></xref>.  \n  \n \\- or -  \n  \n <code>webPartA</code> and <code>webPartB</code> are <xref href=\"System.Web.UI.WebControls.WebParts.GenericWebPart\"></xref> controls but one or both lack a child control.  \n  \n \\- or -  \n  \n <code>webPartA</code> and <code>webPartB</code> are <xref href=\"System.Web.UI.WebControls.WebParts.GenericWebPart\"></xref> controls, but their child controls are not of the same <xref href=\"System.Type\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -271,13 +271,13 @@ items:
     content: public virtual bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if personalization is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if personalization is enabled; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to set this property value after the associated <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref> control's <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -306,8 +306,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current user does not have rights to modify personalization information, or other checks failed.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> returned <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The current user does not have rights to modify personalization information, or other checks failed.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> returned `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -358,8 +358,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -391,8 +391,8 @@ items:
     description: An attempt was made to extract personalization state from a Web Parts control that is not managed by the parent <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref>.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPart\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPart\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -424,11 +424,11 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to retrieve an authorization filter when <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> by calling this method too early in the page life cycle.  \n  \n \\- or -  \n  \n An attempt was made to retrieve an authorization filter and no personalization state has been loaded.  \n  \n \\- or  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "An attempt was made to retrieve an authorization filter when <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> is `false` by calling this method too early in the page life cycle.  \n  \n \\- or -  \n  \n An attempt was made to retrieve an authorization filter and no personalization state has been loaded.  \n  \n \\- or  \n  \n The personalization state returned from the data store was `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>webPartID</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string ("").
-  platform:
+    description: <code>webPartID</code> is `null` or an empty string ("").
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -451,13 +451,13 @@ items:
     content: public virtual bool HasPersonalizationState { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the page has personalization data associated with it; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the page has personalization data associated with it; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is no personalization provider associated with the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance. This can occur if the property is accessed prior to the completion of the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Control.Page*> property for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "There is no personalization provider associated with the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance. This can occur if the property is accessed prior to the completion of the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Control.Page*> property for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is `null`.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -489,7 +489,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: An attempt was made to set a value of InitialScope that is not a member of the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,10 +512,10 @@ items:
     content: public bool IsEnabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if personalization is enabled for the current <xref href="System.Web.UI.WebControls.WebParts.WebPartPersonalization"></xref> instance and personalization data has successfully loaded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if personalization is enabled for the current <xref href="System.Web.UI.WebControls.WebParts.WebPartPersonalization"></xref> instance and personalization data has successfully loaded; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -538,10 +538,10 @@ items:
     content: protected bool IsInitialized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if personalization is initialized for this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if personalization is initialized for this instance; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,10 +566,10 @@ items:
     content: public bool IsModifiable { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user is authorized to modify state information; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user is authorized to modify state information; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -598,17 +598,17 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This method is called when personalization is not enabled (<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled*> equals <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>).  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Control.Page*> property for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "This method is called when personalization is not enabled (<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled*> equals `false`).  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Control.Page*> property for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is `null`.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is `null`."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "A provider was explicitly set in either the page markup or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName*> property and the provider could not be found.  \n  \n \\- or -  \n  \n The object containing the personalization state data is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "A provider was explicitly set in either the page markup or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName*> property and the provider could not be found.  \n  \n \\- or -  \n  \n The object containing the personalization state data is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "A problem occurred while loading and deserializing data.  \n  \n \\- or -  \n  \n An error occurred in the definition of a personalization provider in the configuration file."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: The underlying personalization providers failed to initialize because a default provider could not be found or because a failure occurred while attempting to initialize a personalization provider.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -633,7 +633,7 @@ items:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -662,7 +662,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to set this property to a value other than its current value after the <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref> control's <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method has completed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -689,7 +689,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Web.UI.WebControls.WebParts.WebPartPersonalization"></xref> instance cannot reference a valid personalization provider.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -715,8 +715,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current user does not have the capability called <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability\"></xref>.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance cannot reference a valid personalization provider.  \n  \n \\- or -  \n  \n No personalization provider is currently associated with the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance. This can occur if this method is called prior to calling <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*> (the personalization provider reference is obtained during the call to <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*>.  \n  \n \\- or -  \n  \n No personalization state has been loaded.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The current user does not have the capability called <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability\"></xref>.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance cannot reference a valid personalization provider.  \n  \n \\- or -  \n  \n No personalization provider is currently associated with the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance. This can occur if this method is called prior to calling <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*> (the personalization provider reference is obtained during the call to <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*>.  \n  \n \\- or -  \n  \n No personalization state has been loaded.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is `null`.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -742,7 +742,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> instance indicating the scope of the <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref>.
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -769,7 +769,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: No personalization data has been loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -802,7 +802,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: No personalization data has been loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -825,10 +825,10 @@ items:
     content: protected bool ShouldResetPersonalizationState { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the personalization state for the current page has been reset; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the personalization state for the current page has been reset; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -856,11 +856,11 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current user does not have the user capability to enter <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope when attempting to switch from <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope to <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance has not completed initialization.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The current user does not have the user capability to enter <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope when attempting to switch from <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope to <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance has not completed initialization.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is `null`.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: An attempt was made to toggle to a scope that is not defined in the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> enumeration. Technically, this situation should never occur.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -886,7 +886,7 @@ items:
       description: An <xref href="System.Collections.IDictionary"></xref> containing the set of user capabilities granted to the current user, or an empty <xref href="System.Collections.Specialized.HybridDictionary"></xref> if the user is anonymous.
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -912,7 +912,7 @@ items:
       description: The current parent <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref>.
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.WebPartManager*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

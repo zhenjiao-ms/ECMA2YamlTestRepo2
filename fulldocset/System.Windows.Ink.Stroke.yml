@@ -66,7 +66,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -96,11 +96,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stylusPoints</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>stylusPoints</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>stylusPoints</code> is empty..
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -133,11 +133,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stylusPoints</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>drawingAtrributes</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>stylusPoints</code> is `null`.  \n  \n -or-  \n  \n <code>drawingAtrributes</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>stylusPoints</code> is empty.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -170,8 +170,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>propertyData</code> argument is not one of the allowed data types listed in the <xref uid="langword_csharp_Parameters" name="Parameters" href=""></xref> section.
-  platform:
+    description: The <code>propertyData</code> argument is not one of the allowed data types listed in the `Parameters` section.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -199,7 +199,7 @@ items:
       description: The new <xref href="System.Windows.Ink.Stroke"></xref> object.
   overload: System.Windows.Ink.Stroke.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -227,10 +227,10 @@ items:
       description: The unique identifier for the property.
     return:
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the custom property exists; otherwise, returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Returns `true` if the custom property exists; otherwise, returns `false`.
   overload: System.Windows.Ink.Stroke.ContainsPropertyData*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -258,7 +258,7 @@ items:
       description: The <xref href="System.Windows.Media.DrawingContext"></xref> object onto which the stroke will be rendered.
   overload: System.Windows.Ink.Stroke.Draw*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -289,7 +289,7 @@ items:
       description: The <xref href="System.Windows.Ink.DrawingAttributes"></xref> object defining the attributes of the stroke that is drawn.
   overload: System.Windows.Ink.Stroke.Draw*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -320,7 +320,7 @@ items:
       description: The <xref href="System.Windows.Ink.DrawingAttributes"></xref> object defining the attributes of the stroke that is drawn.
   overload: System.Windows.Ink.Stroke.DrawCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -349,8 +349,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The set value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The set value is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -376,7 +376,7 @@ items:
       type: System.Windows.Ink.PropertyDataChangedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -402,7 +402,7 @@ items:
       type: System.Windows.Ink.DrawingAttributesReplacedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -418,7 +418,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Ink
-  summary: Returns the stylus points the <xref href="System.Windows.Ink.Stroke"></xref> uses when <xref:System.Windows.Ink.DrawingAttributes.FitToCurve*> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Returns the stylus points the <xref href="System.Windows.Ink.Stroke"></xref> uses when <xref:System.Windows.Ink.DrawingAttributes.FitToCurve*> is `true`.
   remarks: The GetBezierStylusPoints method returns a new <xref:System.Windows.Input.StylusPointCollection> that contains the stylus points that the <xref:System.Windows.Ink.Stroke> uses when the <xref:System.Windows.Ink.DrawingAttributes.FitToCurve%2A> property on the <xref:System.Windows.Ink.Stroke.DrawingAttributes%2A> property is set to `true`.  To get the stylus points that are used when <xref:System.Windows.Ink.DrawingAttributes.FitToCurve%2A> is set to `false`, use the <xref:System.Windows.Ink.Stroke.StylusPoints%2A> property.
   example:
   - "The following example demonstrates how to draw a circle at each <xref:System.Windows.Input.StylusPoint> of a <xref:System.Windows.Ink.Stroke>. If the <xref:System.Windows.Ink.DrawingAttributes.FitToCurve%2A> property is set to `true`, the GetBezierStylusPoints is used to get the stylus points. Otherwise, the <xref:System.Windows.Ink.Stroke.StylusPoints%2A> property is used.  \n  \n [!code-cs[StrokeSnippets#23](~/add/codesnippet/csharp/StrokeSnippets_CS/MyStroke.cs#23)]\n [!code-vb[StrokeSnippets#23](~/add/codesnippet/visualbasic/StrokeSnippets_VB/MyStroke.vb#23)]"
@@ -427,10 +427,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Input.StylusPointCollection
-      description: A <xref href="System.Windows.Input.StylusPointCollection"></xref> that contains the stylus points along the spine of a <xref href="System.Windows.Ink.Stroke"></xref> when <xref:System.Windows.Ink.DrawingAttributes.FitToCurve*> is <xref uid="langword_csharp_true" name="true" href=""></xref>
+      description: A <xref href="System.Windows.Input.StylusPointCollection"></xref> that contains the stylus points along the spine of a <xref href="System.Windows.Ink.Stroke"></xref> when <xref:System.Windows.Ink.DrawingAttributes.FitToCurve*> is `true`
   overload: System.Windows.Ink.Stroke.GetBezierStylusPoints*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -458,7 +458,7 @@ items:
       description: A <xref href="System.Windows.Rect"></xref> structure defining the bounding box for the <xref href="System.Windows.Ink.Stroke"></xref> object.
   overload: System.Windows.Ink.Stroke.GetBounds*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -489,7 +489,7 @@ items:
       description: A <xref href="System.Windows.Ink.StrokeCollection"></xref> that contains copies of the segments of the current <xref href="System.Windows.Ink.Stroke"></xref> that are within the specified bounds.
   overload: System.Windows.Ink.Stroke.GetClipResult*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -520,7 +520,7 @@ items:
       description: A <xref href="System.Windows.Ink.StrokeCollection"></xref> that contains copies of the segments of the current <xref href="System.Windows.Ink.Stroke"></xref> that are within the bounds of <code>bounds</code>.
   overload: System.Windows.Ink.Stroke.GetClipResult*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -551,7 +551,7 @@ items:
       description: A <xref href="System.Windows.Ink.StrokeCollection"></xref> that contains the segments of the current <xref href="System.Windows.Ink.Stroke"></xref> that are outside the specified bounds.
   overload: System.Windows.Ink.Stroke.GetEraseResult*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -582,7 +582,7 @@ items:
       description: A <xref href="System.Windows.Ink.StrokeCollection"></xref> that contains the segments of the current <xref href="System.Windows.Ink.Stroke"></xref> that are outside the bounds of the specified <xref href="System.Windows.Rect"></xref>.
   overload: System.Windows.Ink.Stroke.GetEraseResult*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -616,7 +616,7 @@ items:
       description: A <xref href="System.Windows.Ink.StrokeCollection"></xref> that contains copies of the segments of the current <xref href="System.Windows.Ink.Stroke"></xref> after it is dissected by the specified path.
   overload: System.Windows.Ink.Stroke.GetEraseResult*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -642,7 +642,7 @@ items:
       description: A <xref href="System.Windows.Media.Geometry"></xref> that represents the <xref href="System.Windows.Ink.Stroke"></xref>.
   overload: System.Windows.Ink.Stroke.GetGeometry*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -673,7 +673,7 @@ items:
       description: A <xref href="System.Windows.Media.Geometry"></xref> that represents the <xref href="System.Windows.Ink.Stroke"></xref>.
   overload: System.Windows.Ink.Stroke.GetGeometry*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -701,13 +701,13 @@ items:
       description: The unique identifier for the property.
     return:
       type: System.Object
-      description: An <xref uid="langword_csharp_object" name="object" href=""></xref> containing the property data.
+      description: An `object` containing the property data.
   overload: System.Windows.Ink.Stroke.GetPropertyData*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>propertyDataId</code> is not associated with a custom property of the <xref href="System.Windows.Ink.Stroke"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -735,7 +735,7 @@ items:
       description: An array of <xref href="System.Guid"></xref> objects.
   overload: System.Windows.Ink.Stroke.GetPropertyDataIds*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -763,10 +763,10 @@ items:
       description: The <xref href="System.Windows.Point"></xref> to hit test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>point</code> intersects the current stroke; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>point</code> intersects the current stroke; otherwise, `false`.'
   overload: System.Windows.Ink.Stroke.HitTest*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -797,10 +797,10 @@ items:
       description: The percentage of the length of the <xref href="System.Windows.Ink.Stroke"></xref>, that must be in `lassoPoints` for the <xref href="System.Windows.Ink.Stroke"></xref> to be considered hit.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current stroke is within the specified bounds; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current stroke is within the specified bounds; otherwise `false`.'
   overload: System.Windows.Ink.Stroke.HitTest*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -831,10 +831,10 @@ items:
       description: The shape of `path` with which to hit test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>stylusShape</code> intersects the current stroke; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>stylusShape</code> intersects the current stroke; otherwise, `false`.'
   overload: System.Windows.Ink.Stroke.HitTest*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -865,10 +865,10 @@ items:
       description: The diameter of the area to hit test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified area intersects the current stroke; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified area intersects the current stroke; otherwise, `false`.'
   overload: System.Windows.Ink.Stroke.HitTest*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -899,10 +899,10 @@ items:
       description: The percentage of the length of the <xref href="System.Windows.Ink.Stroke"></xref>, that must be in `percentageWithinBounds` for the <xref href="System.Windows.Ink.Stroke"></xref> to be considered hit..
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current stroke is within the bounds of <code>bounds</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current stroke is within the bounds of <code>bounds</code>; otherwise, `false`.'
   overload: System.Windows.Ink.Stroke.HitTest*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -926,7 +926,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -952,7 +952,7 @@ items:
       description: The <xref href="System.Windows.Ink.PropertyDataChangedEventArgs"></xref> object that contains the event data.
   overload: System.Windows.Ink.Stroke.OnDrawingAttributesChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -978,7 +978,7 @@ items:
       description: The <xref href="System.Windows.Ink.DrawingAttributesReplacedEventArgs"></xref> object that contains the event data.
   overload: System.Windows.Ink.Stroke.OnDrawingAttributesReplaced*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1006,7 +1006,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Windows.Ink.Stroke.OnInvalidated*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1031,7 +1031,7 @@ items:
       description: The event data that describes the property that changed, as well as old and new values.
   overload: System.Windows.Ink.Stroke.OnPropertyChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1057,7 +1057,7 @@ items:
       description: The <xref href="System.Windows.Ink.PropertyDataChangedEventArgs"></xref> object that contains the event data.
   overload: System.Windows.Ink.Stroke.OnPropertyDataChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1082,7 +1082,7 @@ items:
       description: A <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Windows.Ink.Stroke.OnStylusPointsChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1107,7 +1107,7 @@ items:
       description: A <xref href="System.Windows.Ink.StylusPointsReplacedEventArgs"></xref> that contains the event data.
   overload: System.Windows.Ink.Stroke.OnStylusPointsReplaced*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1133,7 +1133,7 @@ items:
       type: System.Windows.Ink.PropertyDataChangedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1161,7 +1161,7 @@ items:
       description: The unique identifier for the property.
   overload: System.Windows.Ink.Stroke.RemovePropertyData*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1188,7 +1188,7 @@ items:
       description: The <xref href="System.Windows.Input.StylusPointCollection"></xref> that contains the stylus points that represent the current <xref href="System.Windows.Ink.Stroke"></xref>.
   overload: System.Windows.Ink.Stroke.StylusPoints*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1214,7 +1214,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1240,7 +1240,7 @@ items:
       type: System.Windows.Ink.StylusPointsReplacedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1268,10 +1268,10 @@ items:
       description: The <xref href="System.Windows.Media.Matrix"></xref> object defining the transformation.
     - id: applyToStylusTip
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to apply the transformation to the tip of the stylus; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to apply the transformation to the tip of the stylus; otherwise, `false`.'
   overload: System.Windows.Ink.Stroke.Transform*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1519,8 +1519,8 @@ references:
 - uid: System.Guid[]
   parent: System
   isExternal: false
-  name: Guid
-  nameWithType: Guid
+  name: Guid[]
+  nameWithType: Guid[]
   fullName: System.Guid[]
   spec.csharp:
   - uid: System.Guid

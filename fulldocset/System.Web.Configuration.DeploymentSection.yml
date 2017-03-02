@@ -66,7 +66,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,7 +90,7 @@ items:
     parameters: []
   overload: System.Web.Configuration.DeploymentSection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,7 +114,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.DeploymentSection.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -131,7 +131,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets a value that specifies whether Web applications on the computer are deployed in <xref uid="langword_csharp_retail" name="retail" href=""></xref> mode.
+  summary: Gets or sets a value that specifies whether Web applications on the computer are deployed in `retail` mode.
   remarks: "When Retail is `true`, ASP.NET disables trace output, disables debug capabilities, and disables detailed system-generated error messages for remote users. For applications that have a `customErrors` element in the application Web.config file, the `mode` attribute is forced to `On`. These settings override any settings that are made in application Web.config files.  \n  \n> [!NOTE]\n>  When you use the `retail` setting, you should continue to set the `debug` attribute to `false` in application Web.config files that are deployed to the server. The `debug` setting disables request execution timeout, and this is not overridden by the `retail` setting. For more information, see. [Most Common ASP.NET Support issues - Reporting from deep inside Microsoft Developer Support](http://www.hanselman.com/blog/MostCommonASPNETSupportIssuesReportingFromDeepInsideMicrosoftDeveloperSupport.aspx) on Scott Hanselman's blog."
   example:
   - "The following configuration file example shows how to set this property to `true` in the machine.config file. The machine.config file is located in this folder:  \n  \n `%windir%\\Microsoft.NET\\Framework\\<frameworkversion>\\Config`  \n  \n```  \n<system.web>  \n  <deployment   \n    retail=\"true\" />  \n</system.web>  \n```"
@@ -139,10 +139,10 @@ items:
     content: public bool Retail { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if Web applications are deployed in <xref uid="langword_csharp_retail" name="retail" href=""></xref> mode; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if Web applications are deployed in `retail` mode; otherwise, `false`. The default is `false`.'
   overload: System.Web.Configuration.DeploymentSection.Retail*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

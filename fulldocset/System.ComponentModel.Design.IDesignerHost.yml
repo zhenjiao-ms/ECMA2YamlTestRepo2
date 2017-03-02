@@ -42,7 +42,7 @@ items:
   implements:
   - System.ComponentModel.Design.IServiceContainer
   - System.IServiceProvider
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -66,7 +66,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.IDesignerHost.Activate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,7 +117,7 @@ items:
       description: The <xref href="System.ComponentModel.IContainer"></xref> for this host.
   overload: System.ComponentModel.Design.IDesignerHost.Container*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -147,7 +147,7 @@ items:
       description: The newly created component.
   overload: System.ComponentModel.Design.IDesignerHost.CreateComponent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,7 +180,7 @@ items:
       description: The newly created component.
   overload: System.ComponentModel.Design.IDesignerHost.CreateComponent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,7 +207,7 @@ items:
       description: A new instance of <xref href="System.ComponentModel.Design.DesignerTransaction"></xref>. When you complete the steps in your transaction, you should call <xref:System.ComponentModel.Design.DesignerTransaction.Commit*> on this object.
   overload: System.ComponentModel.Design.IDesignerHost.CreateTransaction*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -237,7 +237,7 @@ items:
       description: A new <xref href="System.ComponentModel.Design.DesignerTransaction"></xref>. When you have completed the steps in your transaction, you should call <xref:System.ComponentModel.Design.DesignerTransaction.Commit*> on this object.
   overload: System.ComponentModel.Design.IDesignerHost.CreateTransaction*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -288,7 +288,7 @@ items:
       description: The component to destroy.
   overload: System.ComponentModel.Design.IDesignerHost.DestroyComponent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -314,10 +314,10 @@ items:
       description: The <xref href="System.ComponentModel.IComponent"></xref> to retrieve the designer for.
     return:
       type: System.ComponentModel.Design.IDesigner
-      description: An <xref href="System.ComponentModel.Design.IDesigner"></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no designer for the specified component.
+      description: An <xref href="System.ComponentModel.Design.IDesigner"></xref>, or `null` if there is no designer for the specified component.
   overload: System.ComponentModel.Design.IDesignerHost.GetDesigner*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,10 +343,10 @@ items:
       description: The name of the type to load.
     return:
       type: System.Type
-      description: The type object for the specified type name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the type cannot be found.
+      description: The type object for the specified type name, or `null` if the type cannot be found.
   overload: System.ComponentModel.Design.IDesignerHost.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -368,10 +368,10 @@ items:
     content: public bool InTransaction { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a transaction is in progress; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a transaction is in progress; otherwise, `false`.'
   overload: System.ComponentModel.Design.IDesignerHost.InTransaction*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,7 +396,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -418,10 +418,10 @@ items:
     content: public bool Loading { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the designer host is currently loading the document; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the designer host is currently loading the document; otherwise, `false`.'
   overload: System.ComponentModel.Design.IDesignerHost.Loading*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -447,7 +447,7 @@ items:
       description: The instance of the root component class.
   overload: System.ComponentModel.Design.IDesignerHost.RootComponent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -472,7 +472,7 @@ items:
       description: The fully qualified name of the base component class.
   overload: System.ComponentModel.Design.IDesignerHost.RootComponentClassName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -497,7 +497,7 @@ items:
       type: System.ComponentModel.Design.DesignerTransactionCloseEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,7 +522,7 @@ items:
       type: System.ComponentModel.Design.DesignerTransactionCloseEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -548,7 +548,7 @@ items:
       description: A description of the current transaction.
   overload: System.ComponentModel.Design.IDesignerHost.TransactionDescription*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -573,7 +573,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -598,7 +598,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

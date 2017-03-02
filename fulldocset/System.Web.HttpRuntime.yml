@@ -45,7 +45,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -68,7 +68,7 @@ items:
     parameters: []
   overload: System.Web.HttpRuntime.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,7 +94,7 @@ items:
       description: The application identification of the application domain where the <xref href="System.Web.HttpRuntime"></xref> exists.
   overload: System.Web.HttpRuntime.AppDomainAppId*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,7 +119,7 @@ items:
       description: The physical drive path of the application directory for the application hosted in the current application domain.
   overload: System.Web.HttpRuntime.AppDomainAppPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,7 +144,7 @@ items:
       description: The virtual path of the directory that contains the application hosted in the current application domain.
   overload: System.Web.HttpRuntime.AppDomainAppVirtualPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,7 +170,7 @@ items:
       description: The unique application domain identifier.
   overload: System.Web.HttpRuntime.AppDomainId*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,7 +198,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: ASP.NET is not installed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,7 +223,7 @@ items:
       description: The virtual path for the ASP.NET client script files.
   overload: System.Web.HttpRuntime.AspClientScriptVirtualPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -251,7 +251,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: ASP.NET is not installed on this computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: The path to the current application's /bin directory.
   overload: System.Web.HttpRuntime.BinDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: ASP.NET is not installed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -329,7 +329,7 @@ items:
     parameters: []
   overload: System.Web.HttpRuntime.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -354,7 +354,7 @@ items:
       description: The physical path to the common language runtime executable files.
   overload: System.Web.HttpRuntime.ClrInstallDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -379,7 +379,7 @@ items:
       description: The physical path to the application's temporary file storage directory.
   overload: System.Web.HttpRuntime.CodegenDir*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,10 +403,10 @@ items:
     parameters: []
     return:
       type: System.Security.NamedPermissionSet
-      description: A <xref href="System.Security.NamedPermissionSet"></xref> object containing the names and descriptions of permissions, or <xref uid="langword_csharp_null" name="null" href=""></xref> if none exists.
+      description: A <xref href="System.Security.NamedPermissionSet"></xref> object containing the names and descriptions of permissions, or `null` if none exists.
   overload: System.Web.HttpRuntime.GetNamedPermissionSet*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -428,10 +428,10 @@ items:
     content: public static bool IsOnUNCShare { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the application is mapped to a UNC share; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the application is mapped to a UNC share; otherwise, `false`.'
   overload: System.Web.HttpRuntime.IsOnUNCShare*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -456,7 +456,7 @@ items:
       description: The physical path to the Machine.config file for the current application.
   overload: System.Web.HttpRuntime.MachineConfigurationDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -485,11 +485,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>wr</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>wr</code> parameter is `null`.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The Web application is running under IIS 7 in Integrated mode.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -513,7 +513,7 @@ items:
     parameters: []
   overload: System.Web.HttpRuntime.UnloadAppDomain*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -536,10 +536,10 @@ items:
     content: public static bool UsingIntegratedPipeline { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the application is running in integrated-pipeline mode; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the application is running in integrated-pipeline mode; otherwise, `false`.'
   overload: System.Web.HttpRuntime.UsingIntegratedPipeline*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

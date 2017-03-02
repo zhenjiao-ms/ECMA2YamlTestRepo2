@@ -20,7 +20,7 @@ items:
 
       public interface ICustomAttributeProvider
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -44,7 +44,7 @@ items:
     parameters:
     - id: inherit
       type: System.Boolean
-      description: When <xref uid="langword_csharp_true" name="true" href=""></xref>, look up the hierarchy chain for the inherited custom attribute.
+      description: When `true`, look up the hierarchy chain for the inherited custom attribute.
     return:
       type: System.Object[]
       description: An array of Objects representing custom attributes, or an empty array.
@@ -56,7 +56,7 @@ items:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
     description: There is more than one attribute of type <code>attributeType</code> defined on this member.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -83,7 +83,7 @@ items:
       description: The type of the custom attributes.
     - id: inherit
       type: System.Boolean
-      description: When <xref uid="langword_csharp_true" name="true" href=""></xref>, look up the hierarchy chain for the inherited custom attribute.
+      description: When `true`, look up the hierarchy chain for the inherited custom attribute.
     return:
       type: System.Object[]
       description: An array of Objects representing custom attributes, or an empty array.
@@ -94,8 +94,8 @@ items:
     description: The custom attribute type cannot be loaded.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>attributeType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>attributeType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,13 +121,13 @@ items:
       description: The type of the custom attributes.
     - id: inherit
       type: System.Boolean
-      description: When <xref uid="langword_csharp_true" name="true" href=""></xref>, look up the hierarchy chain for the inherited custom attribute.
+      description: When `true`, look up the hierarchy chain for the inherited custom attribute.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>attributeType</code> is defined on this member; <xref uid="langword_csharp_false" name="false" href=""></xref> otherwise.
+      description: '`true` if the <code>attributeType</code> is defined on this member; `false` otherwise.'
   overload: System.Reflection.ICustomAttributeProvider.IsDefined*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,8 +160,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

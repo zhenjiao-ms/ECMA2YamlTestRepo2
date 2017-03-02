@@ -46,7 +46,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -68,7 +68,7 @@ items:
     parameters: []
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -92,7 +92,7 @@ items:
       description: The acknowledgment type to return to the sending application.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.AcknowledgeType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -117,7 +117,7 @@ items:
       description: The acknowledgment message that Message Queuing generates.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.Acknowledgment*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -142,7 +142,7 @@ items:
       description: The queue that receives the acknowledgment messages that Message Queuing generates.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.AdministrationQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -164,10 +164,10 @@ items:
     content: public Nullable<int> AppSpecific { get; set; }
     return:
       type: System.Nullable{System.Int32}
-      description: An <xref uid="langword_csharp_integer" name="integer" href=""></xref> value that represents additional application-specific information.
+      description: An `integer` value that represents additional application-specific information.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.AppSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -191,7 +191,7 @@ items:
       description: The time that the message arrived in the destination queue.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.ArrivedTime*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -213,10 +213,10 @@ items:
     content: public Nullable<bool> Authenticated { get; }
     return:
       type: System.Nullable{System.Boolean}
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the message was authenticated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the message was authenticated; otherwise, `false`.'
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.Authenticated*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -240,7 +240,7 @@ items:
       description: The content of the MSMQ message body.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.Body*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -265,7 +265,7 @@ items:
       description: The type of data that the message body contains.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.BodyType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -290,7 +290,7 @@ items:
       description: The message identifier used by acknowledgment, report, and response messages to reference the original message.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.CorrelationId*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -315,7 +315,7 @@ items:
       description: The intended destination queue for the message.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.DestinationQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -340,7 +340,7 @@ items:
       description: A byte array that contains additional, application-defined information associated with the message.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.Extension*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -371,7 +371,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: The property collection on the message is null.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -396,7 +396,7 @@ items:
       description: The message's identifier.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -421,7 +421,7 @@ items:
       description: An application-defined Unicode string that describes the message.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.Label*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -437,16 +437,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.MsmqIntegration
-  summary: 'Gets the message type: <xref uid="langword_csharp_Normal" name="Normal" href=""></xref>, <xref uid="langword_csharp_Acknowledgment" name="Acknowledgment" href=""></xref>, or <xref uid="langword_csharp_Report" name="Report" href=""></xref>.'
+  summary: 'Gets the message type: `Normal`, `Acknowledgment`, or `Report`.'
   remarks: "Message Queuing (MSMQ) typically sets this property when it sends the message. A Message Queuing message can be one of the following types:  \n  \n-   Normal, which is either a typical message sent from an application to a queue, or a response message returned to the sending application.  \n  \n-   Acknowledgment, which Message Queuing generates whenever the sending application requests one. For example, Message Queuing can generate positive or negative messages to indicate that the original message arrived or was read. Message Queuing returns the appropriate acknowledgment message to the administration queue specified by the sending application.  \n  \n-   Report, which is generated whenever a report queue is defined at the source Queue Manager. When tracing is enabled, Message Queuing sends a report message to the Message Queuing report queue each time the original message enters or leaves a Message Queuing server."
   syntax:
     content: public Nullable<System.Messaging.MessageType> MessageType { get; }
     return:
       type: System.Nullable{System.Messaging.MessageType}
-      description: 'The message type: <xref uid="langword_csharp_Normal" name="Normal" href=""></xref>, <xref uid="langword_csharp_Acknowledgment" name="Acknowledgment" href=""></xref>, or <xref uid="langword_csharp_Report" name="Report" href=""></xref>.'
+      description: 'The message type: `Normal`, `Acknowledgment`, or `Report`.'
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.MessageType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -469,7 +469,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -497,7 +497,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: The value is not null and is not within the range of <xref href="System.Messaging.MessagePriority"></xref> values.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -522,7 +522,7 @@ items:
       description: The URI for the queue that receives application-generated response messages.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.ResponseQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -546,7 +546,7 @@ items:
       description: The identifier of the sending user.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.SenderId*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -571,7 +571,7 @@ items:
       description: The date and time on the sending computer that the message was sent by the source queue manager.
   overload: System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty.SentTime*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -599,7 +599,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is not infinite and is greater than Int32.MaxValue milliseconds.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -811,8 +811,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

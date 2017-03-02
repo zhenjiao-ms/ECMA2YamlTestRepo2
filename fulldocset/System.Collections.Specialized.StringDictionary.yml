@@ -44,7 +44,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -70,7 +70,7 @@ items:
     parameters: []
   overload: System.Collections.Specialized.StringDictionary.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,19 +99,19 @@ items:
       description: The key of the entry to add.
     - id: value
       type: System.String
-      description: The value of the entry to add. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The value of the entry to add. The value can be `null`.
   overload: System.Collections.Specialized.StringDictionary.Add*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>key</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: An entry with the same key already exists in the <xref href="System.Collections.Specialized.StringDictionary"></xref>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.Specialized.StringDictionary"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,7 +140,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.Specialized.StringDictionary"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,13 +169,13 @@ items:
       description: The key to locate in the <xref href="System.Collections.Specialized.StringDictionary"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Collections.Specialized.StringDictionary"></xref> contains an entry with the specified key; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Collections.Specialized.StringDictionary"></xref> contains an entry with the specified key; otherwise, `false`.'
   overload: System.Collections.Specialized.StringDictionary.ContainsKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The key is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The key is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,13 +201,13 @@ items:
     parameters:
     - id: value
       type: System.String
-      description: The value to locate in the <xref href="System.Collections.Specialized.StringDictionary"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The value to locate in the <xref href="System.Collections.Specialized.StringDictionary"></xref>. The value can be `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Collections.Specialized.StringDictionary"></xref> contains an element with the specified value; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Collections.Specialized.StringDictionary"></xref> contains an element with the specified value; otherwise, `false`.'
   overload: System.Collections.Specialized.StringDictionary.ContainsValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,11 +244,11 @@ items:
     description: "<code>array</code> is multidimensional.  \n  \n -or-  \n  \n The number of elements in the <xref href=\"System.Collections.Specialized.StringDictionary\"></xref> is greater than the available space from <code>index</code> to the end of <code>array</code>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than the lower bound of <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: "The number of key/value pairs in the <xref href=\"System.Collections.Specialized.StringDictionary\"></xref>.  \n  \n Retrieving the value of this property is an O(1) operation."
   overload: System.Collections.Specialized.StringDictionary.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> that iterates through the string dictionary.
   overload: System.Collections.Specialized.StringDictionary.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -330,10 +330,10 @@ items:
     content: public virtual bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to the <xref href="System.Collections.Specialized.StringDictionary"></xref> is synchronized (thread safe); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to the <xref href="System.Collections.Specialized.StringDictionary"></xref> is synchronized (thread safe); otherwise, `false`.'
   overload: System.Collections.Specialized.StringDictionary.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,13 +362,13 @@ items:
       description: The key whose value to get or set.
     return:
       type: System.String
-      description: The value associated with the specified key. If the specified key is not found, Get returns <xref uid="langword_csharp_null" name="null" href=""></xref>, and Set creates a new entry with the specified key.
+      description: The value associated with the specified key. If the specified key is not found, Get returns `null`, and Set creates a new entry with the specified key.
   overload: System.Collections.Specialized.StringDictionary.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>key</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,7 +396,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> that provides the keys in the <xref href="System.Collections.Specialized.StringDictionary"></xref>.
   overload: System.Collections.Specialized.StringDictionary.Keys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -427,11 +427,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The key is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The key is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.Specialized.StringDictionary"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,7 +459,7 @@ items:
       description: An <xref href="System.Object"></xref> that can be used to synchronize access to the <xref href="System.Collections.Specialized.StringDictionary"></xref>.
   overload: System.Collections.Specialized.StringDictionary.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -487,7 +487,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> that provides the values in the <xref href="System.Collections.Specialized.StringDictionary"></xref>.
   overload: System.Collections.Specialized.StringDictionary.Values*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

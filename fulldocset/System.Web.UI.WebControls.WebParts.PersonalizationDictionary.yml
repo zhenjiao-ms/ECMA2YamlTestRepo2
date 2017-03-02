@@ -47,7 +47,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -71,7 +71,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -98,7 +98,7 @@ items:
       description: The estimated number of entries to be stored in the dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,7 +125,7 @@ items:
       description: The unique identifier for a piece of state information.
     - id: value
       type: System.Web.UI.WebControls.WebParts.PersonalizationEntry
-      description: A piece of state information to be added to the personalization dictionary. This value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A piece of state information to be added to the personalization dictionary. This value can be `null`.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.Add*
   exceptions:
   - type: System.ArgumentException
@@ -133,8 +133,8 @@ items:
     description: "<code>key</code> is a duplicate of a key already in the dictionary.  \n  \n \\- or -  \n  \n <code>key</code> is either an empty string (\"\") or trimming <code>key</code> results in an empty string.  \n  \n \\- or -  \n  \n <code>value</code> is not a <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationEntry\"></xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>key</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>key</code> is `null`.  \n  \n \\- or -  \n  \n <code>value</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,7 +158,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,7 +185,7 @@ items:
       description: A key value.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the provided key matches a key in the personalization dictionary; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the provided key matches a key in the personalization dictionary; otherwise, `false`.'
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.Contains*
   exceptions:
   - type: System.ArgumentException
@@ -193,8 +193,8 @@ items:
     description: <code>key</code> is either an empty string (""), or trimming <code>key</code> results in an empty string.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>key</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -229,11 +229,11 @@ items:
     description: "<code>array</code> is multidimensional.  \n  \n \\- or -  \n  \n <code>array</code> is the wrong size based on the <code>index</code> parameter.  \n  \n \\- or -  \n  \n <code>array</code> has insufficient capacity to hold the values contained in the personalization dictionary."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,7 +259,7 @@ items:
       description: The number of entries in the dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,7 +286,7 @@ items:
       description: An <xref href="System.Collections.IDictionaryEnumerator"></xref> for the personalization dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -309,10 +309,10 @@ items:
     content: public virtual bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> in all cases.
+      description: '`false` in all cases.'
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -335,10 +335,10 @@ items:
     content: public virtual bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> in all cases.
+      description: '`false` in all cases.'
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -361,10 +361,10 @@ items:
     content: public virtual bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> in all cases.
+      description: '`false` in all cases.'
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,11 +396,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>key</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>key</code> is either an empty string (""), or trimming <code>key</code> results in an empty string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -426,7 +426,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> containing the keys for the personalization dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.Keys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -455,11 +455,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>key</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>key</code> is either an empty string (""), or trimming <code>key</code> results in an empty string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -485,7 +485,7 @@ items:
       description: An object that can be used to synchronize access to the personalization dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,7 +519,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>array</code> is not an array of <xref href="System.Collections.DictionaryEntry"></xref> items.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -552,11 +552,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>key</code> is not a <xref href=\"System.String\"></xref> object.  \n  \n \\- or -  \n  \n <code>value</code> is not a <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationEntry\"></xref> object."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -584,13 +584,13 @@ items:
       description: A <xref href="System.String"></xref> object that identifies a particular <xref href="System.Web.UI.WebControls.WebParts.PersonalizationEntry"></xref> to check for existence in the personalization dictionary.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>key</code> exists in the personalization dictionary; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>key</code> exists in the personalization dictionary; otherwise `false`.'
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.System#Collections#IDictionary#Contains*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>key</code> is not a <xref href="System.String"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -624,7 +624,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>key</code> is not a <xref href="System.String"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -655,7 +655,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>key</code> is not a <xref href="System.String"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -683,7 +683,7 @@ items:
       description: An instance of <xref href="System.Collections.IEnumerator"></xref> to enumerate through the items in a personalization dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -709,7 +709,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> containing the values for the personalization dictionary.
   overload: System.Web.UI.WebControls.WebParts.PersonalizationDictionary.Values*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -799,8 +799,8 @@ references:
 - uid: System.Collections.DictionaryEntry[]
   parent: System.Collections
   isExternal: false
-  name: DictionaryEntry
-  nameWithType: DictionaryEntry
+  name: DictionaryEntry[]
+  nameWithType: DictionaryEntry[]
   fullName: System.Collections.DictionaryEntry[]
   spec.csharp:
   - uid: System.Collections.DictionaryEntry

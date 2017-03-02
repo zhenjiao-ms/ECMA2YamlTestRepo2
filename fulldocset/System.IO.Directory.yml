@@ -73,7 +73,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -116,7 +116,7 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n -or-  \n  \n <code>path</code> is prefixed with, or contains, only a colon character (:)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -126,7 +126,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>path</code> contains a colon character (:) that is not part of a drive label ("C:\\").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,7 +172,7 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the  <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n -or-  \n  \n <code>path</code> is prefixed with, or contains, only a colon character (:)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -182,7 +182,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>path</code> contains a colon character (:) that is not part of a drive label ("C:\\").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -222,14 +222,14 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: "<code>path</code> does not exist or could not be found.  \n  \n -or-  \n  \n The specified path is invalid (for example, it is on an unmapped drive)."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,12 +258,12 @@ items:
       description: The name of the directory to remove.
     - id: recursive
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to remove directories, subdirectories, and files in `path`; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to remove directories, subdirectories, and files in `path`; otherwise, `false`.'
   overload: System.IO.Directory.Delete*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "A file with the same name and location specified by <code>path</code> exists.  \n  \n -or-  \n  \n The directory specified by <code>path</code> is read-only, or <code>recursive</code> is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> and <code>path</code> is not an empty directory.  \n  \n -or-  \n  \n The directory is the application's current working directory.  \n  \n -or-  \n  \n The directory contains a read-only file.  \n  \n -or-  \n  \n The directory is being used by another process."
+    description: "A file with the same name and location specified by <code>path</code> exists.  \n  \n -or-  \n  \n The directory specified by <code>path</code> is read-only, or <code>recursive</code> is `false` and <code>path</code> is not an empty directory.  \n  \n -or-  \n  \n The directory is the application's current working directory.  \n  \n -or-  \n  \n The directory contains a read-only file.  \n  \n -or-  \n  \n The directory is being used by another process."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
@@ -272,14 +272,14 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: "<code>path</code> does not exist or could not be found.  \n  \n -or-  \n  \n The specified path is invalid (for example, it is on an unmapped drive)."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
     description: <code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: <code>path</code> is invalid, such as referring to an unmapped drive.
@@ -332,7 +332,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateDirectories(System.String,System.String)
   id: EnumerateDirectories(System.String,System.String)
@@ -369,7 +369,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: <code>path</code> is invalid, such as referring to an unmapped drive.
@@ -385,7 +385,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateDirectories(System.String,System.String,System.IO.SearchOption)
   id: EnumerateDirectories(System.String,System.String,System.IO.SearchOption)
@@ -425,7 +425,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the  <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>searchOption</code> is not a valid <xref href="System.IO.SearchOption"></xref> value.
@@ -444,7 +444,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateFiles(System.String)
   id: EnumerateFiles(System.String)
@@ -478,7 +478,7 @@ items:
     description: <code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: <code>path</code> is invalid, such as referring to an unmapped drive.
@@ -494,7 +494,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateFiles(System.String,System.String)
   id: EnumerateFiles(System.String,System.String)
@@ -531,7 +531,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: <code>path</code> is invalid, such as referring to an unmapped drive.
@@ -547,7 +547,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateFiles(System.String,System.String,System.IO.SearchOption)
   id: EnumerateFiles(System.String,System.String,System.IO.SearchOption)
@@ -587,7 +587,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>searchOption</code> is not a valid <xref href="System.IO.SearchOption"></xref> value.
@@ -606,7 +606,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateFileSystemEntries(System.String)
   id: EnumerateFileSystemEntries(System.String)
@@ -638,7 +638,7 @@ items:
     description: <code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: <code>path</code> is invalid, such as referring to an unmapped drive.
@@ -654,7 +654,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateFileSystemEntries(System.String,System.String)
   id: EnumerateFileSystemEntries(System.String,System.String)
@@ -689,7 +689,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: <code>path</code> is invalid, such as referring to an unmapped drive.
@@ -705,7 +705,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.EnumerateFileSystemEntries(System.String,System.String,System.IO.SearchOption)
   id: EnumerateFileSystemEntries(System.String,System.String,System.IO.SearchOption)
@@ -743,7 +743,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>searchOption</code> is not a valid <xref href="System.IO.SearchOption"></xref> value.
@@ -762,7 +762,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.Exists(System.String)
   id: Exists(System.String)
@@ -788,10 +788,10 @@ items:
       description: The path to test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>path</code> refers to an existing directory; <xref uid="langword_csharp_false" name="false" href=""></xref> if the directory does not exist or an error occurs when trying to determine if the specified directory exists.
+      description: '`true` if <code>path</code> refers to an existing directory; `false` if the directory does not exist or an error occurs when trying to determine if the specified directory exists.'
   overload: System.IO.Directory.Exists*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -825,7 +825,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>path</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>path</code> parameter is `null`.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurred while opening the directory.
@@ -838,7 +838,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The <code>path</code> parameter specified a directory that is read-only.  \n  \n -or-  \n  \n This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -873,7 +873,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>path</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>path</code> parameter is `null`.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurred while opening the directory.
@@ -886,7 +886,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The <code>path</code> parameter specified a directory that is read-only.  \n  \n -or-  \n  \n This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -926,11 +926,11 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -970,11 +970,11 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1009,7 +1009,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The operating system is Windows CE, which does not have current directory functionality.  \n  \n This method is available in the .NET Compact Framework, but is not currently supported."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1049,7 +1049,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -1059,7 +1059,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1102,7 +1102,7 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using <xref:System.IO.Path.GetInvalidPathChars*>.  \n  \n -or-  \n  \n <code>searchPattern</code> doesn't contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> or <code>searchPattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> or <code>searchPattern</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -1112,7 +1112,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1155,7 +1155,7 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n -or-  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> or <code>searchPattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> or <code>searchPattern</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>searchOption</code> is not a valid <xref href="System.IO.SearchOption"></xref> value.
@@ -1171,7 +1171,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1211,11 +1211,11 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with <xref:System.IO.Path.GetInvalidPathChars*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1258,14 +1258,14 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is not found or is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1311,14 +1311,14 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using <xref:System.IO.Path.GetInvalidPathChars*>.  \n  \n -or-  \n  \n <code>searchPattern</code> doesn't contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> or <code>searchPattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> or <code>searchPattern</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is not found or is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1359,7 +1359,7 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n -or-  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> or <code>searchpattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> or <code>searchpattern</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>searchOption</code> is not a valid <xref href="System.IO.SearchOption"></xref> value.
@@ -1375,7 +1375,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "<code>path</code> is a file name.  \n  \n -or-  \n  \n A network error has occurred."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1415,7 +1415,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with <xref:System.IO.Path.GetInvalidPathChars*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -1425,7 +1425,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1468,7 +1468,7 @@ items:
     description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n -or-  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> or <code>searchPattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> or <code>searchPattern</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -1478,7 +1478,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1519,7 +1519,7 @@ items:
     description: "<code>path </code>is a zero-length string, contains only white space, or contains invalid characters. You can query for invalid characters by using the <xref:System.IO.Path.GetInvalidPathChars*> method.  \n  \n \\- or -  \n  \n <code>searchPattern</code> does not contain a valid pattern."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>searchPattern</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>path</code> is `null`.  \n  \n -or-  \n  \n <code>searchPattern</code> is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>searchOption</code> is not a valid <xref href="System.IO.SearchOption"></xref> value.
@@ -1538,7 +1538,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.Directory.GetLastAccessTime(System.String)
   id: GetLastAccessTime(System.String)
@@ -1575,14 +1575,14 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <code>path</code> parameter is in an invalid format.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1622,14 +1622,14 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <code>path</code> parameter is in an invalid format.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1669,11 +1669,11 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1713,11 +1713,11 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1752,7 +1752,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1781,7 +1781,7 @@ items:
       description: The path for which to retrieve the parent directory.
     return:
       type: System.IO.DirectoryInfo
-      description: The parent directory, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>path</code> is the root directory, including the root of a UNC server or share name.
+      description: The parent directory, or `null` if <code>path</code> is the root directory, including the root of a UNC server or share name.
   overload: System.IO.Directory.GetParent*
   exceptions:
   - type: System.IO.IOException
@@ -1795,14 +1795,14 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path was not found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1845,14 +1845,14 @@ items:
     description: <code>sourceDirName</code> or <code>destDirName</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceDirName</code> or <code>destDirName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>sourceDirName</code> or <code>destDirName</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The path specified by <code>sourceDirName</code> is invalid (for example, it is on an unmapped drive).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1886,7 +1886,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>directorySecurity</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>directorySecurity</code> parameter is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory could not be found.
@@ -1899,7 +1899,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Windows 2000 or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1939,7 +1939,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -1952,7 +1952,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Windows NT or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1990,7 +1990,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -2003,7 +2003,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Windows NT or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2040,7 +2040,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -2053,7 +2053,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified directory was not found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2093,7 +2093,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -2106,7 +2106,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>lastAccessTime</code> specifies a value outside the range of dates or times permitted for this operation.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2146,7 +2146,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -2159,7 +2159,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>lastAccessTimeUtc</code> specifies a value outside the range of dates or times permitted for this operation.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2199,7 +2199,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -2212,7 +2212,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>lastWriteTime</code> specifies a value outside the range of dates or times permitted for this operation.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2252,7 +2252,7 @@ items:
     description: <code>path</code> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the  <xref:System.IO.Path.GetInvalidPathChars*> method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.
@@ -2265,7 +2265,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>lastWriteTimeUtc</code> specifies a value outside the range of dates or times permitted for this operation.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2532,8 +2532,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

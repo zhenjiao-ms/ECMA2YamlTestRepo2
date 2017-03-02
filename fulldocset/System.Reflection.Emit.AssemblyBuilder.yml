@@ -134,7 +134,7 @@ items:
   - System.Reflection.Assembly.System#Runtime#InteropServices#_Assembly#GetType
   - System.Reflection.Assembly.ToString
   - System.Reflection.Assembly.UnsafeLoadFrom(System.String)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,14 +171,14 @@ items:
     description: "<code>name</code> has been previously defined.  \n  \n -or-  \n  \n There is another file in the assembly named <code>fileName</code>.  \n  \n -or-  \n  \n The length of <code>name</code> is zero.  \n  \n -or-  \n  \n The length of <code>fileName</code> is zero, or if <code>fileName</code> includes a path."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> or <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> or <code>fileName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file <code>fileName</code> is not found.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,14 +218,14 @@ items:
     description: "<code>name</code> has been previously defined.  \n  \n -or-  \n  \n There is another file in the assembly named <code>fileName</code>.  \n  \n -or-  \n  \n The length of <code>name</code> is zero or if the length of <code>fileName</code> is zero.  \n  \n -or-  \n  \n <code>fileName</code> includes a path."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> or <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> or <code>fileName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: If the file <code>fileName</code> is not found.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,7 +257,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,14 +294,14 @@ items:
     description: "<code>name</code> begins with white space.  \n  \n -or-  \n  \n The length of <code>name</code> is zero.  \n  \n -or-  \n  \n The length of <code>name</code> is greater than or equal to 260."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
   - type: System.ExecutionEngineException
     commentId: T:System.ExecutionEngineException
     description: "The assembly for default symbol writer cannot be loaded.  \n  \n -or-  \n  \n The type that implements the default symbol writer interface cannot be found."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -330,7 +330,7 @@ items:
       description: The name of the dynamic module. Must be less than 260 characters in length.
     - id: emitSymbolInfo
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if symbol information is to be emitted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if symbol information is to be emitted; otherwise, `false`.'
     return:
       type: System.Reflection.Emit.ModuleBuilder
       description: A <xref href="System.Reflection.Emit.ModuleBuilder"></xref> representing the defined dynamic module.
@@ -341,14 +341,14 @@ items:
     description: "<code>name</code> begins with white space.  \n  \n -or-  \n  \n The length of <code>name</code> is zero.  \n  \n -or-  \n  \n The length of <code>name</code> is greater than or equal to 260."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ExecutionEngineException
     commentId: T:System.ExecutionEngineException
     description: "The assembly for default symbol writer cannot be loaded.  \n  \n -or-  \n  \n The type that implements the default symbol writer interface cannot be found."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,7 +385,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> or <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> or <code>fileName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The length of <code>name</code> or <code>fileName</code> is zero.  \n  \n -or-  \n  \n The length of <code>name</code> is greater than or equal to 260.  \n  \n -or-  \n  \n <code>fileName</code> contains a path specification (a directory component, for example).  \n  \n -or-  \n  \n There is a conflict with the name of another file that belongs to this assembly."
@@ -401,7 +401,7 @@ items:
   - type: System.ExecutionEngineException
     commentId: T:System.ExecutionEngineException
     description: "The assembly for default symbol writer cannot be loaded.  \n  \n -or-  \n  \n The type that implements the default symbol writer interface cannot be found."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,7 +433,7 @@ items:
       description: The name of the file to which the dynamic module should be saved.
     - id: emitSymbolInfo
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, symbolic information is written using the default symbol writer.
+      description: If `true`, symbolic information is written using the default symbol writer.
     return:
       type: System.Reflection.Emit.ModuleBuilder
       description: A <xref href="System.Reflection.Emit.ModuleBuilder"></xref> object representing the defined dynamic module.
@@ -441,7 +441,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> or <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> or <code>fileName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The length of <code>name</code> or <code>fileName</code> is zero.  \n  \n -or-  \n  \n The length of <code>name</code> is greater than or equal to 260.  \n  \n -or-  \n  \n <code>fileName</code> contains a path specification (a directory component, for example).  \n  \n -or-  \n  \n There is a conflict with the name of another file that belongs to this assembly."
@@ -457,7 +457,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -500,11 +500,11 @@ items:
     description: "<code>name</code> has been previously defined.  \n  \n -or-  \n  \n There is another file in the assembly named <code>fileName</code>.  \n  \n -or-  \n  \n The length of <code>name</code> is zero.  \n  \n -or-  \n  \n The length of <code>fileName</code> is zero.  \n  \n -or-  \n  \n <code>fileName</code> includes a path."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> or <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> or <code>fileName</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -548,11 +548,11 @@ items:
     description: "<code>name</code> has been previously defined or if there is another file in the assembly named <code>fileName</code>.  \n  \n -or-  \n  \n The length of <code>name</code> is zero.  \n  \n -or-  \n  \n The length of <code>fileName</code> is zero.  \n  \n -or-  \n  \n <code>fileName</code> includes a path."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> or <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> or <code>fileName</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -586,11 +586,11 @@ items:
     description: An unmanaged resource was previously defined.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>resource</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>resource</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -624,14 +624,14 @@ items:
     description: "An unmanaged resource was previously defined.  \n  \n -or-  \n  \n The file <code>resourceFileName</code> is not readable.  \n  \n -or-  \n  \n <code>resourceFileName</code> is the empty string (\"\")."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>resourceFileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>resourceFileName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: "<code>resourceFileName</code> is not found.  \n  \n -or-  \n  \n <code>resourceFileName</code> is a directory."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -663,7 +663,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -710,7 +710,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -738,7 +738,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -761,13 +761,13 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: An object to compare with this instance, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object to compare with this instance, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> equals the type and value of this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> equals the type and value of this instance; otherwise, `false`.'
   overload: System.Reflection.Emit.AssemblyBuilder.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.Evidence
   id: Evidence
@@ -789,7 +789,7 @@ items:
       description: The evidence for this assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.Evidence*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.FullName
   id: FullName
@@ -812,7 +812,7 @@ items:
       description: The display name of the dynamic assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.FullName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetCustomAttributes(System.Boolean)
   id: GetCustomAttributes(System.Boolean)
@@ -838,7 +838,7 @@ items:
       description: An array that contains the custom attributes; the array is empty if there are no attributes.
   overload: System.Reflection.Emit.AssemblyBuilder.GetCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetCustomAttributes(System.Type,System.Boolean)
   id: GetCustomAttributes(System.Type,System.Boolean)
@@ -869,11 +869,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>attributeType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>attributeType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>attributeType</code> is not a <xref href="System.Type"></xref> object supplied by the runtime. For example, <code>attributeType</code> is a <xref href="System.Reflection.Emit.TypeBuilder"></xref> object.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetCustomAttributesData
   id: GetCustomAttributesData
@@ -897,7 +897,7 @@ items:
       description: A generic list of <xref href="System.Reflection.CustomAttributeData"></xref> objects representing data about the attributes that have been applied to the current module.
   overload: System.Reflection.Emit.AssemblyBuilder.GetCustomAttributesData*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetDynamicModule(System.String)
   id: GetDynamicModule(System.String)
@@ -925,14 +925,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The length of <code>name</code> is zero.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -964,7 +964,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -991,7 +991,7 @@ items:
       description: The name of the specified file.
     return:
       type: System.IO.FileStream
-      description: A <xref href="System.IO.FileStream"></xref> for the specified file, or <xref uid="langword_csharp_null" name="null" href=""></xref>, if the file is not found.
+      description: A <xref href="System.IO.FileStream"></xref> for the specified file, or `null`, if the file is not found.
   overload: System.Reflection.Emit.AssemblyBuilder.GetFile*
   exceptions:
   - type: System.NotSupportedException
@@ -1000,7 +1000,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1023,7 +1023,7 @@ items:
     parameters:
     - id: getResourceModules
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include resource modules; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include resource modules; otherwise, `false`.'
     return:
       type: System.IO.FileStream[]
       description: An array of <xref href="System.IO.FileStream"></xref> objects.
@@ -1035,7 +1035,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1061,7 +1061,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.Reflection.Emit.AssemblyBuilder.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetLoadedModules(System.Boolean)
   id: GetLoadedModules(System.Boolean)
@@ -1081,13 +1081,13 @@ items:
     parameters:
     - id: getResourceModules
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include resource modules; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include resource modules; otherwise, `false`.'
     return:
       type: System.Reflection.Module[]
       description: The loaded modules that are part of this assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.GetLoadedModules*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetManifestResourceInfo(System.String)
   id: GetManifestResourceInfo(System.String)
@@ -1110,7 +1110,7 @@ items:
       description: The name of the resource.
     return:
       type: System.Reflection.ManifestResourceInfo
-      description: <xref href="System.Reflection.ManifestResourceInfo"></xref> populated with information about the resource's topology, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the resource is not found.
+      description: <xref href="System.Reflection.ManifestResourceInfo"></xref> populated with information about the resource's topology, or `null` if the resource is not found.
   overload: System.Reflection.Emit.AssemblyBuilder.GetManifestResourceInfo*
   exceptions:
   - type: System.NotSupportedException
@@ -1119,7 +1119,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1142,7 +1142,7 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: An array of type <xref uid="langword_csharp_String" name="String" href=""></xref> containing the names of all the resources.
+      description: An array of type `String` containing the names of all the resources.
   overload: System.Reflection.Emit.AssemblyBuilder.GetManifestResourceNames*
   exceptions:
   - type: System.NotSupportedException
@@ -1151,7 +1151,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1186,7 +1186,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1227,7 +1227,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1253,10 +1253,10 @@ items:
       description: The name of the requested module.
     return:
       type: System.Reflection.Module
-      description: The module being requested, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the module is not found.
+      description: The module being requested, or `null` if the module is not found.
   overload: System.Reflection.Emit.AssemblyBuilder.GetModule*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetModules(System.Boolean)
   id: GetModules(System.Boolean)
@@ -1276,13 +1276,13 @@ items:
     parameters:
     - id: getResourceModules
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include resource modules; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include resource modules; otherwise, `false`.'
     return:
       type: System.Reflection.Module[]
       description: The modules that are part of this assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.GetModules*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetName(System.Boolean)
   id: GetName(System.Boolean)
@@ -1302,13 +1302,13 @@ items:
     parameters:
     - id: copiedName
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the code base to the location of the assembly after it is shadow-copied; <xref uid="langword_csharp_false" name="false" href=""></xref> to set the code base to the original location.
+      description: '`true` to set the code base to the location of the assembly after it is shadow-copied; `false` to set the code base to the original location.'
     return:
       type: System.Reflection.AssemblyName
       description: The name of the dynamic assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.GetName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetReferencedAssemblies
   id: GetReferencedAssemblies
@@ -1332,7 +1332,7 @@ items:
       description: An array of assembly names for the referenced assemblies. This array is not a complete list.
   overload: System.Reflection.Emit.AssemblyBuilder.GetReferencedAssemblies*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetSatelliteAssembly(System.Globalization.CultureInfo)
   id: GetSatelliteAssembly(System.Globalization.CultureInfo)
@@ -1361,17 +1361,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>culture</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The assembly cannot be found.
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
-    description: The satellite assembly with a matching file name was found, but the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> did not match the one specified.
+    description: The satellite assembly with a matching file name was found, but the `CultureInfo` did not match the one specified.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: The satellite assembly is not a valid assembly.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetSatelliteAssembly(System.Globalization.CultureInfo,System.Version)
   id: GetSatelliteAssembly(System.Globalization.CultureInfo,System.Version)
@@ -1403,17 +1403,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>culture</code> is `null`.
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
-    description: The satellite assembly with a matching file name was found, but the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> or the version did not match the one specified.
+    description: The satellite assembly with a matching file name was found, but the `CultureInfo` or the version did not match the one specified.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The assembly cannot be found.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: The satellite assembly is not a valid assembly.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GetType(System.String,System.Boolean,System.Boolean)
   id: GetType(System.String,System.Boolean,System.Boolean)
@@ -1437,16 +1437,16 @@ items:
       description: The name of the type to search for.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if the type is not found; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if the type is not found; otherwise, `false`.'
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore the case of the type name when searching; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore the case of the type name when searching; otherwise, `false`.'
     return:
       type: System.Type
-      description: The specified type, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the type is not found or has not been created yet.
+      description: The specified type, or `null` if the type is not found or has not been created yet.
   overload: System.Reflection.Emit.AssemblyBuilder.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.GlobalAssemblyCache
   id: GlobalAssemblyCache
@@ -1466,10 +1466,10 @@ items:
     content: public override bool GlobalAssemblyCache { get; }
     return:
       type: System.Boolean
-      description: Always <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Always `false`.
   overload: System.Reflection.Emit.AssemblyBuilder.GlobalAssemblyCache*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.HostContext
   id: HostContext
@@ -1491,7 +1491,7 @@ items:
       description: A value that indicates the host context where the dynamic assembly is being created.
   overload: System.Reflection.Emit.AssemblyBuilder.HostContext*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.ImageRuntimeVersion
   id: ImageRuntimeVersion
@@ -1516,7 +1516,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1545,10 +1545,10 @@ items:
       description: This argument is ignored for objects of this type.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if one or more instances of <code>attributeType</code> is applied to this dynamic assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if one or more instances of <code>attributeType</code> is applied to this dynamic assembly; otherwise, `false`.'
   overload: System.Reflection.Emit.AssemblyBuilder.IsDefined*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.IsDynamic
   id: IsDynamic
@@ -1568,10 +1568,10 @@ items:
     content: public override bool IsDynamic { get; }
     return:
       type: System.Boolean
-      description: Always <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: Always `true`.
   overload: System.Reflection.Emit.AssemblyBuilder.IsDynamic*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.Location
   id: Location
@@ -1590,7 +1590,7 @@ items:
     content: public override string Location { get; }
     return:
       type: System.String
-      description: The location of the loaded file that contains the manifest. If the loaded file has been shadow-copied, the <xref uid="langword_csharp_Location" name="Location" href=""></xref> is that of the file before being shadow-copied.
+      description: The location of the loaded file that contains the manifest. If the loaded file has been shadow-copied, the `Location` is that of the file before being shadow-copied.
   overload: System.Reflection.Emit.AssemblyBuilder.Location*
   exceptions:
   - type: System.NotSupportedException
@@ -1599,7 +1599,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1624,7 +1624,7 @@ items:
       description: The manifest module.
   overload: System.Reflection.Emit.AssemblyBuilder.ManifestModule*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.PermissionSet
   id: PermissionSet
@@ -1647,7 +1647,7 @@ items:
       description: The grant set of the current dynamic assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.PermissionSet*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.ReflectionOnly
   id: ReflectionOnly
@@ -1667,10 +1667,10 @@ items:
     content: public override bool ReflectionOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the dynamic assembly is in the reflection-only context; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the dynamic assembly is in the reflection-only context; otherwise, `false`.'
   overload: System.Reflection.Emit.AssemblyBuilder.ReflectionOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.Save(System.String)
   id: Save(System.String)
@@ -1698,20 +1698,20 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The length of <code>assemblyFileName</code> is 0.  \n  \n -or-  \n  \n There are two or more modules resource files in the assembly with the same name.  \n  \n -or-  \n  \n The target directory of the assembly is invalid.  \n  \n -or-  \n  \n <code>assemblyFileName</code> is not a simple file name (for example, has a directory or drive component), or more than one unmanaged resource, including a version information resource, was defined in this assembly.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_CultureInfo\" name=\"CultureInfo\" href=\"\"></xref> string in <xref href=\"System.Reflection.AssemblyCultureAttribute\"></xref> is not a valid string and <xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource*> was called prior to calling this method."
+    description: "The length of <code>assemblyFileName</code> is 0.  \n  \n -or-  \n  \n There are two or more modules resource files in the assembly with the same name.  \n  \n -or-  \n  \n The target directory of the assembly is invalid.  \n  \n -or-  \n  \n <code>assemblyFileName</code> is not a simple file name (for example, has a directory or drive component), or more than one unmanaged resource, including a version information resource, was defined in this assembly.  \n  \n -or-  \n  \n The `CultureInfo` string in <xref href=\"System.Reflection.AssemblyCultureAttribute\"></xref> is not a valid string and <xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource*> was called prior to calling this method."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFileName</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This assembly has been saved before.  \n  \n -or-  \n  \n This assembly has access <xref uid=\"langword_csharp_Run\" name=\"Run\" href=\"\"></xref><xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>"
+    description: "This assembly has been saved before.  \n  \n -or-  \n  \n This assembly has access `Run`<xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An output error occurs during the save.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has not been called for any of the types in the modules of the assembly to be written to disk.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1746,20 +1746,20 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The length of <code>assemblyFileName</code> is 0.  \n  \n -or-  \n  \n There are two or more modules resource files in the assembly with the same name.  \n  \n -or-  \n  \n The target directory of the assembly is invalid.  \n  \n -or-  \n  \n <code>assemblyFileName</code> is not a simple file name (for example, has a directory or drive component), or more than one unmanaged resource, including a version information resources, was defined in this assembly.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_CultureInfo\" name=\"CultureInfo\" href=\"\"></xref> string in <xref href=\"System.Reflection.AssemblyCultureAttribute\"></xref> is not a valid string and <xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource*> was called prior to calling this method."
+    description: "The length of <code>assemblyFileName</code> is 0.  \n  \n -or-  \n  \n There are two or more modules resource files in the assembly with the same name.  \n  \n -or-  \n  \n The target directory of the assembly is invalid.  \n  \n -or-  \n  \n <code>assemblyFileName</code> is not a simple file name (for example, has a directory or drive component), or more than one unmanaged resource, including a version information resources, was defined in this assembly.  \n  \n -or-  \n  \n The `CultureInfo` string in <xref href=\"System.Reflection.AssemblyCultureAttribute\"></xref> is not a valid string and <xref:System.Reflection.Emit.AssemblyBuilder.DefineVersionInfoResource*> was called prior to calling this method."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFileName</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This assembly has been saved before.  \n  \n -or-  \n  \n This assembly has access <xref uid=\"langword_csharp_Run\" name=\"Run\" href=\"\"></xref><xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>"
+    description: "This assembly has been saved before.  \n  \n -or-  \n  \n This assembly has access `Run`<xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An output error occurs during the save.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <xref:System.Reflection.Emit.TypeBuilder.CreateType*> has not been called for any of the types in the modules of the assembly to be written to disk.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1785,7 +1785,7 @@ items:
       description: The security rule set that the CLR enforces for this dynamic assembly.
   overload: System.Reflection.Emit.AssemblyBuilder.SecurityRuleSet*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.AssemblyBuilder.SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder)
   id: SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder)
@@ -1813,11 +1813,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>con</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>con</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1851,14 +1851,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>con</code> or <code>binaryAttribute</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>con</code> or <code>binaryAttribute</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>con</code> is not a <xref uid="langword_csharp_RuntimeConstructorInfo" name="RuntimeConstructorInfo" href=""></xref> object.
-  platform:
+    description: <code>con</code> is not a `RuntimeConstructorInfo` object.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1886,14 +1886,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>entryMethod</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>entryMethod</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>entryMethod</code> is not contained within this assembly.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1928,14 +1928,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>entryMethod</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>entryMethod</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>entryMethod</code> is not contained within this assembly.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1978,7 +1978,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2015,7 +2015,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2046,7 +2046,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2098,7 +2098,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The method is called late-bound using the COM `IDispatch` interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2266,8 +2266,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -2346,8 +2346,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -2411,8 +2411,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -2443,8 +2443,8 @@ references:
 - uid: System.IO.FileStream[]
   parent: System.IO
   isExternal: false
-  name: FileStream
-  nameWithType: FileStream
+  name: FileStream[]
+  nameWithType: FileStream[]
   fullName: System.IO.FileStream[]
   spec.csharp:
   - uid: System.IO.FileStream
@@ -2475,8 +2475,8 @@ references:
 - uid: System.Reflection.Module[]
   parent: System.Reflection
   isExternal: false
-  name: Module
-  nameWithType: Module
+  name: Module[]
+  nameWithType: Module[]
   fullName: System.Reflection.Module[]
   spec.csharp:
   - uid: System.Reflection.Module
@@ -2507,8 +2507,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -2575,8 +2575,8 @@ references:
 - uid: System.Reflection.AssemblyName[]
   parent: System.Reflection
   isExternal: false
-  name: AssemblyName
-  nameWithType: AssemblyName
+  name: AssemblyName[]
+  nameWithType: AssemblyName[]
   fullName: System.Reflection.AssemblyName[]
   spec.csharp:
   - uid: System.Reflection.AssemblyName

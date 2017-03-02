@@ -183,7 +183,7 @@ items:
   - System.Web.UI.WebControls.WebControl.ToolTip
   - System.Web.UI.WebControls.WebControl.TrackViewState
   - System.Web.UI.WebControls.WebControl.Width
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,7 +209,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.HyperLink.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -238,7 +238,7 @@ items:
       description: The output stream to render on the client.
   overload: System.Web.UI.WebControls.HyperLink.AddAttributesToRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -267,7 +267,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the parsed element.
   overload: System.Web.UI.WebControls.HyperLink.AddParsedSubObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,7 +295,7 @@ items:
       description: The path to the image to display for the <xref href="System.Web.UI.WebControls.HyperLink"></xref> control. The default value is an empty string ("").
   overload: System.Web.UI.WebControls.HyperLink.ImageUrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -321,7 +321,7 @@ items:
       description: An object that contains the previously saved state.
   overload: System.Web.UI.WebControls.HyperLink.LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -349,7 +349,7 @@ items:
       description: The URL to link to when the <xref href="System.Web.UI.WebControls.HyperLink"></xref> control is clicked. The default value is an empty string ('').
   overload: System.Web.UI.WebControls.HyperLink.NavigateUrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -378,7 +378,7 @@ items:
       description: The output stream to render on the client.
   overload: System.Web.UI.WebControls.HyperLink.RenderContents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -395,16 +395,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets a value that indicates whether the control should set the <xref uid="langword_csharp_disabled" name="disabled" href=""></xref> attribute of the rendered HTML element to "disabled" when the control's <xref:System.Web.UI.WebControls.WebControl.IsEnabled*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Gets a value that indicates whether the control should set the `disabled` attribute of the rendered HTML element to "disabled" when the control's <xref:System.Web.UI.WebControls.WebControl.IsEnabled*> property is `false`.
   remarks: This property indicates how ASP.NET should render HTML for a control when the control is disabled. If this property is `true`, ASP.NET renders a `disabled` attribute when a control is disabled. If this property is `false`, ASP.NET renders a `class` attribute when a control is disabled. For more information, see <xref:System.Web.UI.WebControls.WebControl.SupportsDisabledAttribute%2A?displayProperty=fullName>.
   syntax:
     content: public override bool SupportsDisabledAttribute { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the &lt;xref:System.Web.UI.Control.RenderingCompatibility%2A?displayProperty=fullName&gt; property indicates an ASP.NET version lower than `4.0`; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the &lt;xref:System.Web.UI.Control.RenderingCompatibility%2A?displayProperty=fullName&gt; property indicates an ASP.NET version lower than `4.0`; otherwise, `false`.'
   overload: System.Web.UI.WebControls.HyperLink.SupportsDisabledAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.UI.WebControls.HyperLink.Target
   id: Target
@@ -426,10 +426,10 @@ items:
     content: public string Target { get; set; }
     return:
       type: System.String
-      description: "The target window or frame to load the Web page linked to when the <xref href=\"System.Web.UI.WebControls.HyperLink\"></xref> control is clicked. Values must begin with a letter in the range of a through z (case-insensitive), except for the special values listed in the following table, which begin with an underscore.  \n  \n <table><tbody><tr><td><xref uid=\"langword_csharp__blank \" name=\"_blank \" href=\"\"></xref></td><td> Renders the content in a new window without frames.  \n  \n </td></tr><tr><td><xref uid=\"langword_csharp__parent \" name=\"_parent \" href=\"\"></xref></td><td> Renders the content in the immediate frameset parent.  \n  \n </td></tr><tr><td><xref uid=\"langword_csharp__search\" name=\"_search\" href=\"\"></xref></td><td> Renders the content in the search pane.  \n  \n </td></tr><tr><td><xref uid=\"langword_csharp__self \" name=\"_self \" href=\"\"></xref></td><td> Renders the content in the frame with focus.  \n  \n </td></tr><tr><td><xref uid=\"langword_csharp__top \" name=\"_top \" href=\"\"></xref></td><td> Renders the content in the full window without frames.  \n  \n </td></tr></tbody></table><div class=\"alert NOTE\">  \n Check your browser documentation to determine if the <xref uid=\"langword_csharp__search\" name=\"_search\" href=\"\"></xref> value is supported.  For example, Microsoft Internet Explorer 5.0 and later support the <xref uid=\"langword_csharp__search\" name=\"_search\" href=\"\"></xref> target value.  \n  \n</div>  \n  \n The default value is an empty string (\"\")."
+      description: "The target window or frame to load the Web page linked to when the <xref href=\"System.Web.UI.WebControls.HyperLink\"></xref> control is clicked. Values must begin with a letter in the range of a through z (case-insensitive), except for the special values listed in the following table, which begin with an underscore.  \n  \n <table><tbody><tr><td>`_blank `</td><td> Renders the content in a new window without frames.  \n  \n </td></tr><tr><td>`_parent `</td><td> Renders the content in the immediate frameset parent.  \n  \n </td></tr><tr><td>`_search`</td><td> Renders the content in the search pane.  \n  \n </td></tr><tr><td>`_self `</td><td> Renders the content in the frame with focus.  \n  \n </td></tr><tr><td>`_top `</td><td> Renders the content in the full window without frames.  \n  \n </td></tr></tbody></table><div class=\"alert NOTE\">  \n Check your browser documentation to determine if the `_search` value is supported.  For example, Microsoft Internet Explorer 5.0 and later support the `_search` target value.  \n  \n</div>  \n  \n The default value is an empty string (\"\")."
   overload: System.Web.UI.WebControls.HyperLink.Target*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -457,7 +457,7 @@ items:
       description: The text caption for the <xref href="System.Web.UI.WebControls.HyperLink"></xref> control. The default value is an empty string ("").
   overload: System.Web.UI.WebControls.HyperLink.Text*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -90,7 +90,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,7 +124,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.Close
   id: Close
@@ -147,7 +147,7 @@ items:
     parameters: []
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,7 +182,7 @@ items:
     description: <code>sourceFileName </code>or<code> destinationFileName </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceFileName </code>or<code> destinationFileName </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>sourceFileName </code>or<code> destinationFileName </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -198,7 +198,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled.  \n  \n -or-  \n  \n <code>destinationFileName</code> exists.  \n  \n -or-  \n  \n An I/O error has occurred."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.CopyFile(System.String,System.String,System.Boolean)
   id: CopyFile(System.String,System.String,System.Boolean)
@@ -225,7 +225,7 @@ items:
       description: The name of the destination file. This cannot be a directory.
     - id: overwrite
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the destination file can be overwritten; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the destination file can be overwritten; otherwise, `false`.'
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.CopyFile*
   exceptions:
   - type: System.ArgumentException
@@ -233,7 +233,7 @@ items:
     description: <code>sourceFileName </code>or<code> destinationFileName </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceFileName </code>or<code> destinationFileName </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>sourceFileName </code>or<code> destinationFileName </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -249,7 +249,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled.  \n  \n -or-  \n  \n An I/O error has occurred."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.CreateDirectory(System.String)
   id: CreateDirectory(System.String)
@@ -280,8 +280,8 @@ items:
     description: The current code has insufficient permissions to create isolated storage directory.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The directory path is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The directory path is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,14 +319,14 @@ items:
     description: <code>path</code> is malformed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory in <code>path</code> does not exist.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.CurrentSize
   id: CurrentSize
@@ -357,7 +357,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current object size is undefined.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -394,8 +394,8 @@ items:
     description: The directory could not be deleted.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The directory path was <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The directory path was `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -429,8 +429,8 @@ items:
     description: The target file is open or the path is incorrect.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The file path is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The file path is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -456,12 +456,12 @@ items:
       description: The path to test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>path</code> refers to an existing directory in the isolated store and is not <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>path</code> refers to an existing directory in the isolated store and is not `null`; otherwise, `false`.'
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.DirectoryExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store is closed.
@@ -471,7 +471,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.Dispose
   id: Dispose
@@ -494,7 +494,7 @@ items:
     parameters: []
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -520,12 +520,12 @@ items:
       description: The path and file name to test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>path</code> refers to an existing file in the isolated store and is not <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>path</code> refers to an existing file in the isolated store and is not `null`; otherwise, `false`.'
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.FileExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store is closed.
@@ -535,7 +535,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: The isolated store has been removed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.Finalize
   id: Finalize
@@ -555,7 +555,7 @@ items:
     parameters: []
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,7 +590,7 @@ items:
     description: <code>path </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -600,7 +600,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.GetDirectoryNames
   id: GetDirectoryNames
@@ -639,7 +639,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: One or more directories are not found.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.GetDirectoryNames(System.String)
   id: GetDirectoryNames(System.String)
@@ -670,7 +670,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>searchPattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>searchPattern</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store is closed.
@@ -686,7 +686,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: The isolated store has been removed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -710,13 +710,13 @@ items:
     parameters:
     - id: scope
       type: System.IO.IsolatedStorage.IsolatedStorageScope
-      description: Represents the <xref href="System.IO.IsolatedStorage.IsolatedStorageScope"></xref> for which to return isolated stores. <xref uid="langword_csharp_User" name="User" href=""></xref> and <xref uid="langword_csharp_User|Roaming" name="User|Roaming" href=""></xref> are the only <xref uid="langword_csharp_IsolatedStorageScope" name="IsolatedStorageScope" href=""></xref> combinations supported.
+      description: Represents the <xref href="System.IO.IsolatedStorage.IsolatedStorageScope"></xref> for which to return isolated stores. `User` and `User|Roaming` are the only `IsolatedStorageScope` combinations supported.
     return:
       type: System.Collections.IEnumerator
       description: Enumerator for the <xref href="System.IO.IsolatedStorage.IsolatedStorageFile"></xref> stores within the specified isolated storage scope.
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -752,7 +752,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: File paths from the isolated store root cannot be determined.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.GetFileNames(System.String)
   id: GetFileNames(System.String)
@@ -783,7 +783,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>searchPattern</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>searchPattern</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
@@ -793,7 +793,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The file path specified by <code>searchPattern</code> cannot be found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,7 +828,7 @@ items:
     description: <code>path </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -838,7 +838,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.GetLastWriteTime(System.String)
   id: GetLastWriteTime(System.String)
@@ -870,7 +870,7 @@ items:
     description: <code>path </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -880,7 +880,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.GetMachineStoreForApplication
   id: GetMachineStoreForApplication
@@ -910,7 +910,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: Sufficient isolated storage permissions have not been granted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -943,7 +943,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: Sufficient isolated storage permissions have not been granted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -978,7 +978,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The store failed to open.  \n  \n -or-  \n  \n The assembly specified has insufficient permissions to create isolated stores.  \n  \n -or-  \n  \n The permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n An isolated storage location cannot be initialized."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1006,7 +1006,7 @@ items:
       description: To be added.
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.GetPermission*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1053,8 +1053,8 @@ items:
     description: The <code>scope</code> is invalid.
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
-    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined,because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
-  platform:
+    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined,because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned `null`.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1101,8 +1101,8 @@ items:
     description: The <code>scope</code> is invalid.
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
-    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
-  platform:
+    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned `null`.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1143,14 +1143,14 @@ items:
     description: Sufficient isolated storage permissions have not been granted.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Neither <code>domainIdentity</code> nor <code>assemblyIdentity</code> has been passed in. This verifies that the correct constructor is being used.  \n  \n -or-  \n  \n Either <code>domainIdentity</code> or <code>assemblyIdentity</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "Neither <code>domainIdentity</code> nor <code>assemblyIdentity</code> has been passed in. This verifies that the correct constructor is being used.  \n  \n -or-  \n  \n Either <code>domainIdentity</code> or <code>assemblyIdentity</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>scope</code> is invalid.
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
-    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
-  platform:
+    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned `null`.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1179,10 +1179,10 @@ items:
       description: A bitwise combination of the enumeration values.
     - id: domainEvidenceType
       type: System.Type
-      description: The type of the <xref href="System.Security.Policy.Evidence"></xref> that you can chose from the list of <xref href="System.Security.Policy.Evidence"></xref> present in the domain of the calling application. <xref uid="langword_csharp_null" name="null" href=""></xref> lets the <xref href="System.IO.IsolatedStorage.IsolatedStorage"></xref> object choose the evidence.
+      description: The type of the <xref href="System.Security.Policy.Evidence"></xref> that you can chose from the list of <xref href="System.Security.Policy.Evidence"></xref> present in the domain of the calling application. `null` lets the <xref href="System.IO.IsolatedStorage.IsolatedStorage"></xref> object choose the evidence.
     - id: assemblyEvidenceType
       type: System.Type
-      description: The type of the <xref href="System.Security.Policy.Evidence"></xref> that you can chose from the list of <xref href="System.Security.Policy.Evidence"></xref> present in the domain of the calling application. <xref uid="langword_csharp_null" name="null" href=""></xref> lets the <xref href="System.IO.IsolatedStorage.IsolatedStorage"></xref> object choose the evidence.
+      description: The type of the <xref href="System.Security.Policy.Evidence"></xref> that you can chose from the list of <xref href="System.Security.Policy.Evidence"></xref> present in the domain of the calling application. `null` lets the <xref href="System.IO.IsolatedStorage.IsolatedStorage"></xref> object choose the evidence.
     return:
       type: System.IO.IsolatedStorage.IsolatedStorageFile
       description: An object that represents the parameters.
@@ -1196,8 +1196,8 @@ items:
     description: The <code>scope</code> is invalid.
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
-    description: "The evidence type provided is missing in the assembly evidence list.  \n  \n -or-  \n  \n An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
-  platform:
+    description: "The evidence type provided is missing in the assembly evidence list.  \n  \n -or-  \n  \n An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned `null`.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1255,8 +1255,8 @@ items:
     description: The <code>scope</code> is invalid.
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
-    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
-  platform:
+    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n <code>scope</code> contains the enumeration value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> for  the current application domain returned `null`.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the application domain cannot be determined.  \n  \n -or-  \n  \n <code>scope</code> contains the value <xref href=\"System.IO.IsolatedStorage.IsolatedStorageScope\"></xref>, but the permissions for the calling assembly cannot be determined."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1288,8 +1288,8 @@ items:
     description: Sufficient isolated storage permissions have not been granted.
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
-    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n The application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> property returned <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The permissions for the application domain cannot be determined."
-  platform:
+    description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n The application identity of the caller cannot be determined, because the <xref:System.AppDomain.ActivationContext*> property returned `null`.  \n  \n -or-  \n  \n The permissions for the application domain cannot be determined."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1322,7 +1322,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n The permissions for the calling assembly cannot be determined."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1357,7 +1357,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The store failed to open.  \n  \n -or-  \n  \n The assembly specified has insufficient permissions to create isolated stores.  \n  \n -or-  \n  \n An isolated storage location cannot be initialized.  \n  \n -or-  \n  \n The permissions for the application domain cannot be determined."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1384,7 +1384,7 @@ items:
       description: The isolated storage file that corresponds to the isolated storage scope based on the calling code's application identity.
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStoreForSite*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.IncreaseQuotaTo(System.Int64)
   id: IncreaseQuotaTo(System.Int64)
@@ -1408,7 +1408,7 @@ items:
       description: The requested size, in bytes.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new quota is accepted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the new quota is accepted; otherwise, `false`.'
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.IncreaseQuotaTo*
   exceptions:
   - type: System.ArgumentException
@@ -1429,7 +1429,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.IsEnabled
   id: IsEnabled
@@ -1449,10 +1449,10 @@ items:
     content: public static bool IsEnabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> in all cases.
+      description: '`true` in all cases.'
   overload: System.IO.IsolatedStorage.IsolatedStorageFile.IsEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.MaximumSize
   id: MaximumSize
@@ -1483,7 +1483,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: An isolated storage error occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1518,7 +1518,7 @@ items:
     description: <code>sourceFileName </code>or<code> destinationFileName </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceFileName </code>or<code> destinationFileName </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>sourceFileName </code>or<code> destinationFileName </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -1531,7 +1531,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled.  \n  \n -or-  \n  \n <code>destinationDirectoryName</code> already exists.  \n  \n -or-  \n  \n <code>sourceDirectoryName</code> and <code>destinationDirectoryName</code> refer to the same directory."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.MoveFile(System.String,System.String)
   id: MoveFile(System.String,System.String)
@@ -1563,7 +1563,7 @@ items:
     description: <code>sourceFileName </code>or<code> destinationFileName </code>is a zero-length string, contains only white space, or contains one or more invalid characters defined by the &lt;xref:System.IO.Path.GetInvalidPathChars%2A?displayProperty=fullName&gt; method.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>sourceFileName </code>or<code> destinationFileName </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>sourceFileName </code>or<code> destinationFileName </code>is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The isolated store has been closed.
@@ -1576,7 +1576,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: "The isolated store has been removed.  \n  \n -or-  \n  \n Isolated storage is disabled."
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.OpenFile(System.String,System.IO.FileMode)
   id: OpenFile(System.String,System.IO.FileMode)
@@ -1614,7 +1614,7 @@ items:
     description: <code>path</code> is malformed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory in <code>path</code> does not exist.
@@ -1624,7 +1624,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess)
   id: OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess)
@@ -1665,7 +1665,7 @@ items:
     description: <code>path</code> is malformed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory in <code>path</code> does not exist.
@@ -1675,7 +1675,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
   id: OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
@@ -1719,7 +1719,7 @@ items:
     description: <code>path</code> is malformed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory in <code>path</code> does not exist.
@@ -1729,7 +1729,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.Quota
   id: Quota
@@ -1757,7 +1757,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.IsolatedStorage.IsolatedStorageFile.Remove
   id: Remove
@@ -1783,7 +1783,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: The isolated store cannot be deleted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1813,7 +1813,7 @@ items:
   - type: System.IO.IsolatedStorage.IsolatedStorageException
     commentId: T:System.IO.IsolatedStorage.IsolatedStorageException
     description: The isolated store cannot be removed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1847,7 +1847,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The isolated store has been disposed.
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.IO.IsolatedStorage.IsolatedStorage
@@ -2048,8 +2048,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

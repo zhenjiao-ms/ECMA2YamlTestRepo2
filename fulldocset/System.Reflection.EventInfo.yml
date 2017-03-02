@@ -74,7 +74,7 @@ items:
   - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
   - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#GetTypeInfoCount(System.UInt32@)
   - System.Reflection.MemberInfo.System#Runtime#InteropServices#_MemberInfo#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,13 +91,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Initializes a new instance of the <xref uid="langword_csharp_EventInfo" name="EventInfo" href=""></xref> class.
+  summary: Initializes a new instance of the `EventInfo` class.
   syntax:
     content: protected EventInfo ();
     parameters: []
   overload: System.Reflection.EventInfo.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -131,7 +131,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The event does not have a public <xref uid="langword_csharp_add" name="add" href=""></xref> accessor.
+    description: The event does not have a public `add` accessor.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The handler that was passed in cannot be used.
@@ -140,8 +140,8 @@ items:
     description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch the base class exception, <xref href=\"System.MemberAccessException\"></xref>, instead.  \n  \n The caller does not have access permission to the member."
   - type: System.Reflection.TargetException
     commentId: T:System.Reflection.TargetException
-    description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](../Topic/Cross-Platform%20Development%20with%20the%20Portable%20Class%20Library.md), catch <xref href=\"System.Exception\"></xref> instead.  \n  \n The <code>target</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and the event is not static.  \n  \n -or-  \n  \n The <xref href=\"System.Reflection.EventInfo\"></xref> is not declared on the target."
-  platform:
+    description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](../Topic/Cross-Platform%20Development%20with%20the%20Portable%20Class%20Library.md), catch <xref href=\"System.Exception\"></xref> instead.  \n  \n The <code>target</code> parameter is `null` and the event is not static.  \n  \n -or-  \n  \n The <xref href=\"System.Reflection.EventInfo\"></xref> is not declared on the target."
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.Attributes
   id: Attributes
@@ -164,7 +164,7 @@ items:
       description: The read-only attributes for this event.
   overload: System.Reflection.EventInfo.Attributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,13 +187,13 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: An object to compare with this instance, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object to compare with this instance, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> equals the type and value of this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> equals the type and value of this instance; otherwise, `false`.'
   overload: System.Reflection.EventInfo.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.EventHandlerType
   id: EventHandlerType
@@ -207,7 +207,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Gets the <xref uid="langword_csharp_Type" name="Type" href=""></xref> object of the underlying event-handler delegate associated with this event.
+  summary: Gets the `Type` object of the underlying event-handler delegate associated with this event.
   remarks: ''
   example:
   - "The following example uses the EventHandlerType property to discover the delegate type of an event and to display its parameter types.  \n  \n The example defines a delegate named `MyDelegate` and an event named `ev` of type `MyDelegate`. The code in the `Main` method discovers the event signature by getting the delegate type of the event, getting the `Invoke` method of the delegate type, and then retrieving and displaying the parameters.  \n  \n [!code-cs[eventarg#1](~/add/codesnippet/csharp/p-system.reflection.even_1.cs)]\n [!code-cpp[eventarg#1](~/add/codesnippet/cpp/p-system.reflection.even_1.cpp)]\n [!code-vb[eventarg#1](~/add/codesnippet/visualbasic/p-system.reflection.even_1.vb)]"
@@ -215,13 +215,13 @@ items:
     content: public virtual Type EventHandlerType { get; }
     return:
       type: System.Type
-      description: A read-only <xref uid="langword_csharp_Type" name="Type" href=""></xref> object representing the delegate event handler.
+      description: A read-only `Type` object representing the delegate event handler.
   overload: System.Reflection.EventInfo.EventHandlerType*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.GetAddMethod
   id: GetAddMethod
@@ -247,7 +247,7 @@ items:
       description: A <xref href="System.Reflection.MethodInfo"></xref> object representing the method used to add an event handler delegate to the event source.
   overload: System.Reflection.EventInfo.GetAddMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -264,7 +264,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: When overridden in a derived class, retrieves the <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object for the <xref:System.Reflection.EventInfo.AddEventHandler*> method of the event, specifying whether to return non-public methods.
+  summary: When overridden in a derived class, retrieves the `MethodInfo` object for the <xref:System.Reflection.EventInfo.AddEventHandler*> method of the event, specifying whether to return non-public methods.
   remarks: The `GetAddMethod` initializes and adds the event subscribe method as a Boolean value. The `AddEventHandler` method is used to add an event-handler delegate to the invocation list of an event source.
   example:
   - "Typically, the method has the following signature:  \n  \n```  \nadd_<EventName>(<EventHandlerType> handler)  \n```"
@@ -273,7 +273,7 @@ items:
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if non-public methods can be returned; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if non-public methods can be returned; otherwise, `false`.'
     return:
       type: System.Reflection.MethodInfo
       description: A <xref href="System.Reflection.MethodInfo"></xref> object representing the method used to add an event handler delegate to the event source.
@@ -281,8 +281,8 @@ items:
   exceptions:
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
-    description: <code>nonPublic</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, the method used to add an event handler delegate is non-public, and the caller does not have permission to reflect on non-public methods.
-  platform:
+    description: <code>nonPublic</code> is `true`, the method used to add an event handler delegate is non-public, and the caller does not have permission to reflect on non-public methods.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -308,7 +308,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.Reflection.EventInfo.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.GetOtherMethods
   id: GetOtherMethods
@@ -322,17 +322,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Returns the public methods that have been associated with an event in metadata using the <xref uid="langword_csharp_.other" name=".other" href=""></xref> directive.
+  summary: Returns the public methods that have been associated with an event in metadata using the `.other` directive.
   remarks: "The metadata for an event can associate four kinds of methods with the event:  \n  \n-   The `.addon` directive specifies the method used to add event handlers. Use the <xref:System.Reflection.EventInfo.GetAddMethod%2A> method to retrieve an <xref:System.Reflection.EventInfo> for that method.  \n  \n-   The `.removeon` directive specifies the method used to detach event handlers. Use the <xref:System.Reflection.EventInfo.GetRemoveMethod%2A> method to retrieve an <xref:System.Reflection.EventInfo> for that method.  \n  \n-   The `.fire` directive specifies the method used to raise the event. Use the <xref:System.Reflection.EventInfo.GetRaiseMethod%2A> method to retrieve an <xref:System.Reflection.EventInfo> for that method.  \n  \n-   The `.other` directive specifies any other methods associated with the event. Use the <xref:System.Reflection.EventInfo.GetOtherMethods%2A> method to retrieve an array of <xref:System.Reflection.EventInfo> objects for those methods.  \n  \n The methods associated with an event using the `.other` directive have no special significance to the runtime. The C# and Visual Basic compilers do not use the `.other` directive."
   syntax:
     content: public System.Reflection.MethodInfo[] GetOtherMethods ();
     parameters: []
     return:
       type: System.Reflection.MethodInfo[]
-      description: An array of <xref href="System.Reflection.EventInfo"></xref> objects representing the public methods that have been associated with the event in metadata by using the <xref uid="langword_csharp_.other" name=".other" href=""></xref> directive. If there are no such public methods, an empty array is returned.
+      description: An array of <xref href="System.Reflection.EventInfo"></xref> objects representing the public methods that have been associated with the event in metadata by using the `.other` directive. If there are no such public methods, an empty array is returned.
   overload: System.Reflection.EventInfo.GetOtherMethods*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -349,23 +349,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Returns the methods that have been associated with the event in metadata using the <xref uid="langword_csharp_.other" name=".other" href=""></xref> directive, specifying whether to include non-public methods.
+  summary: Returns the methods that have been associated with the event in metadata using the `.other` directive, specifying whether to include non-public methods.
   remarks: "The metadata for an event can associate four kinds of methods with the event:  \n  \n-   The `.addon` directive specifies the method used to add event handlers. Use the <xref:System.Reflection.EventInfo.GetAddMethod%2A> method to retrieve an <xref:System.Reflection.EventInfo> for that method.  \n  \n-   The `.removeon` directive specifies the method used to detach event handlers. Use the <xref:System.Reflection.EventInfo.GetRemoveMethod%2A> method to retrieve an <xref:System.Reflection.EventInfo> for this method.  \n  \n-   The `.fire` directive specifies the method used to raise the event. Use the <xref:System.Reflection.EventInfo.GetRaiseMethod%2A> method to retrieve an <xref:System.Reflection.EventInfo> for this method.  \n  \n-   The `.other` directive specifies any other methods associated with the event. Use the <xref:System.Reflection.EventInfo.GetOtherMethods%2A> method to retrieve an array of <xref:System.Reflection.EventInfo> objects for those methods.  \n  \n The methods associated with an event using the `.other` directive have no special significance to the runtime. The C# and Visual Basic compilers do not use the `.other` directive."
   syntax:
     content: public virtual System.Reflection.MethodInfo[] GetOtherMethods (bool nonPublic);
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include non-public methods; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include non-public methods; otherwise, `false`.'
     return:
       type: System.Reflection.MethodInfo[]
-      description: An array of <xref href="System.Reflection.EventInfo"></xref> objects representing methods that have been associated with an event in metadata by using the <xref uid="langword_csharp_.other" name=".other" href=""></xref> directive. If there are no methods matching the specification, an empty array is returned.
+      description: An array of <xref href="System.Reflection.EventInfo"></xref> objects representing methods that have been associated with an event in metadata by using the `.other` directive. If there are no methods matching the specification, an empty array is returned.
   overload: System.Reflection.EventInfo.GetOtherMethods*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: This method is not implemented.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -392,7 +392,7 @@ items:
       description: The method that is called when the event is raised.
   overload: System.Reflection.EventInfo.GetRaiseMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -416,16 +416,16 @@ items:
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if non-public methods can be returned; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if non-public methods can be returned; otherwise, `false`.'
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object that was called when the event was raised.
+      description: A `MethodInfo` object that was called when the event was raised.
   overload: System.Reflection.EventInfo.GetRaiseMethod*
   exceptions:
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
-    description: <code>nonPublic</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, the method used to add an event handler delegate is non-public, and the caller does not have permission to reflect on non-public methods.
-  platform:
+    description: <code>nonPublic</code> is `true`, the method used to add an event handler delegate is non-public, and the caller does not have permission to reflect on non-public methods.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -454,7 +454,7 @@ items:
       description: A <xref href="System.Reflection.MethodInfo"></xref> object representing the method used to remove an event handler delegate from the event source.
   overload: System.Reflection.EventInfo.GetRemoveMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,7 +471,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: When overridden in a derived class, retrieves the <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object for removing a method of the event, specifying whether to return non-public methods.
+  summary: When overridden in a derived class, retrieves the `MethodInfo` object for removing a method of the event, specifying whether to return non-public methods.
   remarks: ''
   example:
   - "Typically, the method has the following signature:  \n  \n```  \nremove_<EventName>(<EventHandlerType> handler)  \n```"
@@ -480,7 +480,7 @@ items:
     parameters:
     - id: nonPublic
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if non-public methods can be returned; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if non-public methods can be returned; otherwise, `false`.'
     return:
       type: System.Reflection.MethodInfo
       description: A <xref href="System.Reflection.MethodInfo"></xref> object representing the method used to remove an event handler delegate from the event source.
@@ -488,8 +488,8 @@ items:
   exceptions:
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
-    description: <code>nonPublic</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, the method used to add an event handler delegate is non-public, and the caller does not have permission to reflect on non-public methods.
-  platform:
+    description: <code>nonPublic</code> is `true`, the method used to add an event handler delegate is non-public, and the caller does not have permission to reflect on non-public methods.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -511,13 +511,13 @@ items:
     content: public virtual bool IsMulticast { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the delegate is an instance of a multicast delegate; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the delegate is an instance of a multicast delegate; otherwise, `false`.'
   overload: System.Reflection.EventInfo.IsMulticast*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.IsSpecialName
   id: IsSpecialName
@@ -531,16 +531,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Gets a value indicating whether the <xref uid="langword_csharp_EventInfo" name="EventInfo" href=""></xref> has a name with a special meaning.
+  summary: Gets a value indicating whether the `EventInfo` has a name with a special meaning.
   remarks: This property determines whether the event's name has a special meaning. Names that begin with or contain an underscore character (_), property accessors, and operator overloading methods are examples of names that might require special treatment by some compilers.
   syntax:
     content: public bool IsSpecialName { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this event has a special name; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this event has a special name; otherwise, `false`.'
   overload: System.Reflection.EventInfo.IsSpecialName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,7 +566,7 @@ items:
       description: A <xref href="System.Reflection.MemberTypes"></xref> value indicating that this member is an event.
   overload: System.Reflection.EventInfo.MemberType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,10 +595,10 @@ items:
       description: The second object to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> is equal to <code>right</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> is equal to <code>right</code>; otherwise, `false`.'
   overload: System.Reflection.EventInfo.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.op_Inequality(System.Reflection.EventInfo,System.Reflection.EventInfo)
   id: op_Inequality(System.Reflection.EventInfo,System.Reflection.EventInfo)
@@ -624,10 +624,10 @@ items:
       description: The second object to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> is not equal to <code>right</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> is not equal to <code>right</code>; otherwise, `false`.'
   overload: System.Reflection.EventInfo.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.RemoveEventHandler(System.Object,System.Delegate)
   id: RemoveEventHandler(System.Object,System.Delegate)
@@ -656,17 +656,17 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The event does not have a public <xref uid="langword_csharp_remove" name="remove" href=""></xref> accessor.
+    description: The event does not have a public `remove` accessor.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The handler that was passed in cannot be used.
   - type: System.Reflection.TargetException
     commentId: T:System.Reflection.TargetException
-    description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch <xref href=\"System.Exception\"></xref> instead.  \n  \n The <code>target</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and the event is not static.  \n  \n -or-  \n  \n The <xref href=\"System.Reflection.EventInfo\"></xref> is not declared on the target."
+    description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch <xref href=\"System.Exception\"></xref> instead.  \n  \n The <code>target</code> parameter is `null` and the event is not static.  \n  \n -or-  \n  \n The <xref href=\"System.Reflection.EventInfo\"></xref> is not declared on the target."
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](../Topic/Cross-Platform%20Development%20with%20the%20Portable%20Class%20Library.md), catch the base class exception, <xref href=\"System.MemberAccessException\"></xref>, instead.  \n  \n The caller does not have access permission to the member."
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.EventInfo.System#Runtime#InteropServices#_EventInfo#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
   id: System#Runtime#InteropServices#_EventInfo#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
@@ -706,7 +706,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -733,7 +733,7 @@ items:
       description: A `T:System.Type` object representing the <xref href="System.Reflection.EventInfo"></xref> type.
   overload: System.Reflection.EventInfo.System#Runtime#InteropServices#_EventInfo#GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -770,7 +770,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -801,7 +801,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -853,7 +853,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -997,8 +997,8 @@ references:
 - uid: System.Reflection.MethodInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MethodInfo
-  nameWithType: MethodInfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
   fullName: System.Reflection.MethodInfo[]
   spec.csharp:
   - uid: System.Reflection.MethodInfo

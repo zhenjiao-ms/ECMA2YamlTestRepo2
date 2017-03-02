@@ -39,7 +39,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -68,11 +68,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>provider</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>provider</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: A required service cannot be found. See <xref href="System.ComponentModel.Design.UndoEngine"></xref> for required services. If you have removed this service, ensure that you provide a replacement.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,7 +97,7 @@ items:
       description: To be added.
   overload: System.ComponentModel.Design.UndoEngine.AddUndoUnit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,13 +124,13 @@ items:
       description: The name of the unit to create.
     - id: primary
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to create the first of a series of nested units; <xref uid="langword_csharp_false" name="false" href=""></xref> to create subsequent nested units.
+      description: '`true` to create the first of a series of nested units; `false` to create subsequent nested units.'
     return:
       type: System.ComponentModel.Design.UndoEngine.UndoUnit
       description: A new <xref:System.ComponentModel.Design.UndoEngine.UndoUnit> with a specified name.
   overload: System.ComponentModel.Design.UndoEngine.CreateUndoUnit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,7 +155,7 @@ items:
       description: To be added.
   overload: System.ComponentModel.Design.UndoEngine.DiscardUndoUnit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.UndoEngine.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,10 +201,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.ComponentModel.Design.UndoEngine.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,10 +226,10 @@ items:
     content: public bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.ComponentModel.Design.UndoEngine"></xref> is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.ComponentModel.Design.UndoEngine"></xref> is enabled; otherwise, `false`.'
   overload: System.ComponentModel.Design.UndoEngine.Enabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,11 +260,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>serviceType</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>serviceType</code> is required but cannot be found. If you have removed this service, ensure that you provide a replacement.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,13 +290,13 @@ items:
       description: The type of service to retrieve.
     return:
       type: System.Object
-      description: The requested service, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the requested service is not found.
+      description: The requested service, or `null` if the requested service is not found.
   overload: System.ComponentModel.Design.UndoEngine.GetService*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>serviceType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -322,7 +322,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.UndoEngine.OnUndoing*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,7 +348,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.UndoEngine.OnUndone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -372,7 +372,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -394,10 +394,10 @@ items:
     content: public bool UndoInProgress { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an undo action is in progress; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an undo action is in progress; otherwise, `false`.'
   overload: System.ComponentModel.Design.UndoEngine.UndoInProgress*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,7 +422,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

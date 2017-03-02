@@ -24,7 +24,7 @@ items:
   syntax:
     content: public interface IDataServiceMetadataProvider
   implements: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.ContainerName
@@ -47,7 +47,7 @@ items:
       description: String that contains the name of the container.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.ContainerName*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.ContainerNamespace
@@ -70,7 +70,7 @@ items:
       description: String that contains the namespace name.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.ContainerNamespace*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.GetDerivedTypes(System.Data.Services.Providers.ResourceType)
@@ -98,7 +98,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of derived <xref href="System.Data.Services.Providers.ResourceType"></xref> objects.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.GetDerivedTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.GetResourceAssociationSet(System.Data.Services.Providers.ResourceSet,System.Data.Services.Providers.ResourceType,System.Data.Services.Providers.ResourceProperty)
@@ -131,7 +131,7 @@ items:
       description: A <xref href="System.Data.Services.Providers.ResourceAssociationSet"></xref> instance.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.GetResourceAssociationSet*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.HasDerivedTypes(System.Data.Services.Providers.ResourceType)
@@ -155,10 +155,10 @@ items:
       description: A <xref href="System.Data.Services.Providers.ResourceType"></xref> object to evaluate.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when <code>resourceType</code> represents an entity that has derived types; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when <code>resourceType</code> represents an entity that has derived types; otherwise `false`.'
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.HasDerivedTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.ResourceSets
@@ -181,7 +181,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of <xref href="System.Data.Services.Providers.ResourceSet"></xref> objects.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.ResourceSets*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.ServiceOperations
@@ -204,7 +204,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of <xref href="System.Data.Services.Providers.ServiceOperation"></xref> objects.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.ServiceOperations*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveResourceSet(System.String,System.Data.Services.Providers.ResourceSet@)
@@ -228,13 +228,13 @@ items:
       description: Name of the <xref href="System.Data.Services.Providers.ResourceSet"></xref> to resolve.
     - id: resourceSet
       type: System.Data.Services.Providers.ResourceSet
-      description: Returns the resource set or a <xref uid="langword_csharp_null" name="null" href=""></xref> value if a resource set with the given `name` is not found.
+      description: Returns the resource set or a `null` value if a resource set with the given `name` is not found.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when resource set with the given <code>name</code> is found; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when resource set with the given <code>name</code> is found; otherwise `false`.'
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveResourceSet*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveResourceType(System.String,System.Data.Services.Providers.ResourceType@)
@@ -258,13 +258,13 @@ items:
       description: Name of the type to resolve.
     - id: resourceType
       type: System.Data.Services.Providers.ResourceType
-      description: Returns the resource type or a <xref uid="langword_csharp_null" name="null" href=""></xref> value if a resource type with the given `name` is not found.
+      description: Returns the resource type or a `null` value if a resource type with the given `name` is not found.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when resource type with the given <code>name</code> is found; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when resource type with the given <code>name</code> is found; otherwise `false`.'
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveResourceType*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveServiceOperation(System.String,System.Data.Services.Providers.ServiceOperation@)
@@ -288,13 +288,13 @@ items:
       description: Name of the service operation to resolve.
     - id: serviceOperation
       type: System.Data.Services.Providers.ServiceOperation
-      description: Returns the service operation or a <xref uid="langword_csharp_null" name="null" href=""></xref> value if a service operation with the given `name` is not found.
+      description: Returns the service operation or a `null` value if a service operation with the given `name` is not found.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when service operation with the given <code>name</code> is found; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when service operation with the given <code>name</code> is found; otherwise `false`.'
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.TryResolveServiceOperation*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Services.Providers.IDataServiceMetadataProvider.Types
@@ -317,7 +317,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of <xref href="System.Data.Services.Providers.ResourceType"></xref> objects.
   overload: System.Data.Services.Providers.IDataServiceMetadataProvider.Types*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:

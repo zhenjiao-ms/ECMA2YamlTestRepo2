@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -64,7 +64,7 @@ items:
       description: The <xref href="System.Web.UI.Control"></xref> that receives the postback event.
   overload: System.Web.UI.PostBackOptions.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -93,7 +93,7 @@ items:
       description: The optional parameter passed during the postback event.
   overload: System.Web.UI.PostBackOptions.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,19 +125,19 @@ items:
       description: The target of the postback.
     - id: autoPostBack
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to automatically post the form back to the server in response to a user action; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to automatically post the form back to the server in response to a user action; otherwise, `false`.'
     - id: requiresJavaScriptProtocol
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref uid="langword_csharp_javascript:" name="javascript:" href=""></xref> prefix is required; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the `javascript:` prefix is required; otherwise, `false`.'
     - id: trackFocus
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the postback event should return the page to the current scroll position and return focus to the target control; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the postback event should return the page to the current scroll position and return focus to the target control; otherwise, `false`.'
     - id: clientSubmit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the postback event can be raised by client script; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the postback event can be raised by client script; otherwise, `false`.'
     - id: performValidation
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if client-side validation is required before the postback event occurs; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if client-side validation is required before the postback event occurs; otherwise, `false`.'
     - id: validationGroup
       type: System.String
       description: The group of controls for which <xref href="System.Web.UI.PostBackOptions"></xref> causes validation when it posts back to the server.
@@ -145,8 +145,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>targetControl</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>targetControl</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,7 +174,7 @@ items:
       description: The URL for the postback of a Web Forms page. The default value is an empty string ("").
   overload: System.Web.UI.PostBackOptions.ActionUrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -200,7 +200,7 @@ items:
       description: The optional argument that is transferred in the postback event. The default value is an empty string ("").
   overload: System.Web.UI.PostBackOptions.Argument*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -225,10 +225,10 @@ items:
     content: public bool AutoPostBack { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the form will automatically post back in response to a user action; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the form will automatically post back in response to a user action; otherwise, `false`. The default value is `false`.'
   overload: System.Web.UI.PostBackOptions.AutoPostBack*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -251,10 +251,10 @@ items:
     content: public bool ClientSubmit { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the postback event should occur from client-side script; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the postback event should occur from client-side script; otherwise, `false`. The default value is `true`.'
   overload: System.Web.UI.PostBackOptions.ClientSubmit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,10 +279,10 @@ items:
     content: public bool PerformValidation { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if client-side validation is required before the postback event occurs; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if client-side validation is required before the postback event occurs; otherwise, `false`. The default value is `false`.'
   overload: System.Web.UI.PostBackOptions.PerformValidation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,16 +299,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Gets or sets a value indicating whether the <xref uid="langword_csharp_javascript:" name="javascript:" href=""></xref> prefix is generated for the client-side script.
+  summary: Gets or sets a value indicating whether the `javascript:` prefix is generated for the client-side script.
   remarks: The `javascript:` prefix is needed with some HTML attributes such as the `href` attribute of the `<a>` tag to distinguish a JavaScript property from a URL. An attribute like `onclick` does not need the `javascript:` prefix because it is automatically associated with JavaScript.
   syntax:
     content: public bool RequiresJavaScriptProtocol { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref uid="langword_csharp_javascript:" name="javascript:" href=""></xref> prefix is generated for the client-side script; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the `javascript:` prefix is generated for the client-side script; otherwise, `false`. The default value is `true`.'
   overload: System.Web.UI.PostBackOptions.RequiresJavaScriptProtocol*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,7 +334,7 @@ items:
       description: A <xref href="System.Web.UI.Control"></xref> that represents the control that receives the postback event.
   overload: System.Web.UI.PostBackOptions.TargetControl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -357,10 +357,10 @@ items:
     content: public bool TrackFocus { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the postback event should return the page to the current scroll position and return focus to the target control; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the postback event should return the page to the current scroll position and return focus to the target control; otherwise, `false`. The default value is `false`.'
   overload: System.Web.UI.PostBackOptions.TrackFocus*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,7 +388,7 @@ items:
       description: The group of controls for which the <xref href="System.Web.UI.PostBackOptions"></xref> object causes validation when it posts back to the server. The default value is an empty string ("").
   overload: System.Web.UI.PostBackOptions.ValidationGroup*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

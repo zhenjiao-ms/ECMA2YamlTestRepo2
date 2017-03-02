@@ -63,7 +63,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,7 +86,7 @@ items:
     parameters: []
   overload: System.UriTypeConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,13 +115,13 @@ items:
       description: A <xref href="System.Type"></xref> that represents the type that you want to convert from.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>sourceType</code> is a <xref href="System.String"></xref> type or a <xref href="System.Uri"></xref> type can be assigned from <code>sourceType</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>sourceType</code> is a <xref href="System.String"></xref> type or a <xref href="System.Uri"></xref> type can be assigned from <code>sourceType</code>; otherwise, `false`.'
   overload: System.UriTypeConverter.CanConvertFrom*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>sourceType</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>sourceType</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,10 +150,10 @@ items:
       description: A <xref href="System.Type"></xref> that represents the type that you want to convert to.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>destinationType</code> is of type <xref href="System.ComponentModel.Design.Serialization.InstanceDescriptor"></xref>, <xref href="System.String"></xref>, or <xref href="System.Uri"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>destinationType</code> is of type <xref href="System.ComponentModel.Design.Serialization.InstanceDescriptor"></xref>, <xref href="System.String"></xref>, or <xref href="System.Uri"></xref>; otherwise, `false`.'
   overload: System.UriTypeConverter.CanConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,7 +191,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be performed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,7 +217,7 @@ items:
       description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: A <xref href="System.Globalization.CultureInfo"></xref>. If <xref uid="langword_csharp_null" name="null" href=""></xref> is passed, the current culture is assumed.
+      description: A <xref href="System.Globalization.CultureInfo"></xref>. If `null` is passed, the current culture is assumed.
     - id: value
       type: System.Object
       description: The <xref href="System.Object"></xref> to convert.
@@ -231,11 +231,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>destinationType</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>destinationType</code> parameter is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be performed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -264,10 +264,10 @@ items:
       description: The <xref href="System.Object"></xref> to test for validity.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> is a <xref href="System.Uri"></xref> or a <xref href="System.String"></xref> from which a <xref href="System.Uri"></xref> can be created; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> is a <xref href="System.Uri"></xref> or a <xref href="System.String"></xref> from which a <xref href="System.Uri"></xref> can be created; otherwise, `false`.'
   overload: System.UriTypeConverter.IsValid*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

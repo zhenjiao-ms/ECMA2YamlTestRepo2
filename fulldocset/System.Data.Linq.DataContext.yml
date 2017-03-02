@@ -63,7 +63,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.#ctor(System.Data.IDbConnection)
@@ -88,7 +88,7 @@ items:
       description: The connection used by the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)].
   overload: System.Data.Linq.DataContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.#ctor(System.String)
@@ -112,7 +112,7 @@ items:
       description: "This argument can be any one of the following:  \n  \n The name of a file where a SQL Server Express database resides.  \n  \n The name of a server where a database is present. In this case the provider uses the default database for a user.  \n  \n A complete connection string. [!INCLUDE[vbtecdlinq](~/add/includes/vbtecdlinq-md.md)] just passes the string to the provider without modification."
   overload: System.Data.Linq.DataContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.#ctor(System.Data.IDbConnection,System.Data.Linq.Mapping.MappingSource)
@@ -139,7 +139,7 @@ items:
       description: A source for mapping.
   overload: System.Data.Linq.DataContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.#ctor(System.String,System.Data.Linq.Mapping.MappingSource)
@@ -166,7 +166,7 @@ items:
       description: A source for mapping.
   overload: System.Data.Linq.DataContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ChangeConflicts
@@ -194,7 +194,7 @@ items:
       description: A collection of objects that caused concurrency conflicts.
   overload: System.Data.Linq.DataContext.ChangeConflicts*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.CommandTimeout
@@ -218,7 +218,7 @@ items:
       description: An integer value that increases the time-out period for queries that would otherwise time out during the default time-out period.
   overload: System.Data.Linq.DataContext.CommandTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Connection
@@ -242,7 +242,7 @@ items:
       description: The connection used by the framework.
   overload: System.Data.Linq.DataContext.Connection*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.CreateDatabase
@@ -266,7 +266,7 @@ items:
     parameters: []
   overload: System.Data.Linq.DataContext.CreateDatabase*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.CreateMethodCallQuery``1(System.Object,System.Reflection.MethodInfo,System.Object[])
@@ -298,7 +298,7 @@ items:
       description: To be added.
   overload: System.Data.Linq.DataContext.CreateMethodCallQuery<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.DatabaseExists
@@ -322,10 +322,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified database can be opened; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified database can be opened; otherwise, `false`.'
   overload: System.Data.Linq.DataContext.DatabaseExists*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.DeferredLoadingEnabled
@@ -346,10 +346,10 @@ items:
     content: public bool DeferredLoadingEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if deferred loading is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if deferred loading is enabled; otherwise, `false`.'
   overload: System.Data.Linq.DataContext.DeferredLoadingEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.DeleteDatabase
@@ -373,7 +373,7 @@ items:
     parameters: []
   overload: System.Data.Linq.DataContext.DeleteDatabase*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Dispose
@@ -394,7 +394,7 @@ items:
     parameters: []
   overload: System.Data.Linq.DataContext.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Dispose(System.Boolean)
@@ -415,10 +415,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Data.Linq.DataContext.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteCommand(System.String,System.Object[])
@@ -447,13 +447,13 @@ items:
       description: The SQL command to be executed.
     - id: parameters
       type: System.Object[]
-      description: "The array of parameters to be passed to the command. Note the following behavior:  \n  \n If the number of objects in the array is less than the highest number identified in the command string, an exception is thrown.  \n  \n If the array contains objects that are not referenced in the command string, no exception is thrown.  \n  \n If any one of the parameters is null, it is converted to <xref uid=\"langword_csharp_DBNull.Value\" name=\"DBNull.Value\" href=\"\"></xref>."
+      description: "The array of parameters to be passed to the command. Note the following behavior:  \n  \n If the number of objects in the array is less than the highest number identified in the command string, an exception is thrown.  \n  \n If the array contains objects that are not referenced in the command string, no exception is thrown.  \n  \n If any one of the parameters is null, it is converted to `DBNull.Value`."
     return:
       type: System.Int32
       description: The number of rows modified by the executed command.
   overload: System.Data.Linq.DataContext.ExecuteCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteDynamicDelete(System.Object)
@@ -478,7 +478,7 @@ items:
       description: The entity to be deleted.
   overload: System.Data.Linq.DataContext.ExecuteDynamicDelete*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteDynamicInsert(System.Object)
@@ -503,7 +503,7 @@ items:
       description: The entity to be inserted.
   overload: System.Data.Linq.DataContext.ExecuteDynamicInsert*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteDynamicUpdate(System.Object)
@@ -528,7 +528,7 @@ items:
       description: The entity to be updated.
   overload: System.Data.Linq.DataContext.ExecuteDynamicUpdate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteMethodCall(System.Object,System.Reflection.MethodInfo,System.Object[])
@@ -562,7 +562,7 @@ items:
       description: The result (the return value and output parameters) of executing the specified method.
   overload: System.Data.Linq.DataContext.ExecuteMethodCall*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteQuery(System.Type,System.String,System.Object[])
@@ -583,19 +583,19 @@ items:
     parameters:
     - id: elementType
       type: System.Type
-      description: "The type of the &lt;xref:System.Collections.Generic.IEnumerable%601&gt; to be returned.  \n  \n The algorithm for matching columns in the result of the query to fields or properties in the object works as follows:  \n  \n If a field or property is mapped to a particular column name, that column name is expected in the resultset.  \n  \n If a field or property is not mapped, a column with the same name as the field or property is expected in the resultset.  \n  \n The comparison is performed by looking for a case-sensitive match first. If this match is not found, a subsequent search occurs for a case-insensitive match.  \n  \n The query must return all the tracked fields and properties of the object (except those that are loaded on a deferred basis) when all the following conditions are true:  \n  \n `T` is an entity explicitly tracked by the <xref href=\"System.Data.Linq.DataContext\"></xref>.  \n  \n <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n The entity has a primary key.  \n  \n Otherwise an exception is thrown."
+      description: "The type of the &lt;xref:System.Collections.Generic.IEnumerable%601&gt; to be returned.  \n  \n The algorithm for matching columns in the result of the query to fields or properties in the object works as follows:  \n  \n If a field or property is mapped to a particular column name, that column name is expected in the resultset.  \n  \n If a field or property is not mapped, a column with the same name as the field or property is expected in the resultset.  \n  \n The comparison is performed by looking for a case-sensitive match first. If this match is not found, a subsequent search occurs for a case-insensitive match.  \n  \n The query must return all the tracked fields and properties of the object (except those that are loaded on a deferred basis) when all the following conditions are true:  \n  \n `T` is an entity explicitly tracked by the <xref href=\"System.Data.Linq.DataContext\"></xref>.  \n  \n <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled*> is `true`.  \n  \n The entity has a primary key.  \n  \n Otherwise an exception is thrown."
     - id: query
       type: System.String
       description: The SQL query to be executed.
     - id: parameters
       type: System.Object[]
-      description: "The array of parameters to be passed to the command. Note the following behavior:  \n  \n If the number of objects in the array is less than the highest number identified in the command string, an exception is thrown.  \n  \n If the array contains objects that are not referenced in the command string, no exception is thrown.  \n  \n If a parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, it is converted to <xref uid=\"langword_csharp_DBNull.Value\" name=\"DBNull.Value\" href=\"\"></xref>."
+      description: "The array of parameters to be passed to the command. Note the following behavior:  \n  \n If the number of objects in the array is less than the highest number identified in the command string, an exception is thrown.  \n  \n If the array contains objects that are not referenced in the command string, no exception is thrown.  \n  \n If a parameter is `null`, it is converted to `DBNull.Value`."
     return:
       type: System.Collections.IEnumerable
       description: An &lt;xref:System.Collections.Generic.IEnumerable%601&gt; collection of objects returned by the query.
   overload: System.Data.Linq.DataContext.ExecuteQuery*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ExecuteQuery``1(System.String,System.Object[])
@@ -624,7 +624,7 @@ items:
       description: To be added.
   overload: System.Data.Linq.DataContext.ExecuteQuery<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.GetChangeSet
@@ -653,7 +653,7 @@ items:
       description: The set of objects is returned as three read-only collections.
   overload: System.Data.Linq.DataContext.GetChangeSet*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.GetCommand(System.Linq.IQueryable)
@@ -685,7 +685,7 @@ items:
       description: The requested command information object.
   overload: System.Data.Linq.DataContext.GetCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.GetTable(System.Type)
@@ -713,7 +713,7 @@ items:
       description: A collection of objects defined by the <code>type</code> parameter.
   overload: System.Data.Linq.DataContext.GetTable*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.GetTable``1
@@ -736,7 +736,7 @@ items:
       description: To be added.
   overload: System.Data.Linq.DataContext.GetTable<TEntity>*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.LoadOptions
@@ -760,7 +760,7 @@ items:
       description: The prefetch load options for related data.
   overload: System.Data.Linq.DataContext.LoadOptions*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Log
@@ -786,7 +786,7 @@ items:
       description: The <xref href="System.IO.TextReader"></xref> to use for writing the command.
   overload: System.Data.Linq.DataContext.Log*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Mapping
@@ -809,7 +809,7 @@ items:
       description: The mapping between a database and domain objects.
   overload: System.Data.Linq.DataContext.Mapping*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.ObjectTrackingEnabled
@@ -830,10 +830,10 @@ items:
     content: public bool ObjectTrackingEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object tracking is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the object tracking is enabled; otherwise, `false`. The default is `true`.'
   overload: System.Data.Linq.DataContext.ObjectTrackingEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Collections.IEnumerable)
@@ -860,7 +860,7 @@ items:
       description: The collection of entities to be refreshed.
   overload: System.Data.Linq.DataContext.Refresh*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Object)
@@ -887,7 +887,7 @@ items:
       description: The object to be refreshed.
   overload: System.Data.Linq.DataContext.Refresh*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Refresh(System.Data.Linq.RefreshMode,System.Object[])
@@ -914,7 +914,7 @@ items:
       description: The array of entity objects to be refreshed.
   overload: System.Data.Linq.DataContext.Refresh*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.SubmitChanges
@@ -936,7 +936,7 @@ items:
     parameters: []
   overload: System.Data.Linq.DataContext.SubmitChanges*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.SubmitChanges(System.Data.Linq.ConflictMode)
@@ -965,7 +965,7 @@ items:
       description: "The action to be taken if the submission fails. Valid arguments are as follows:  \n  \n <xref href=\"System.Data.Linq.ConflictMode\"></xref><xref href=\"System.Data.Linq.ConflictMode\"></xref>"
   overload: System.Data.Linq.DataContext.SubmitChanges*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Transaction
@@ -989,7 +989,7 @@ items:
       description: The transaction object used by the <xref href="System.Data.Linq.DataContext"></xref> when executing queries and commands.
   overload: System.Data.Linq.DataContext.Transaction*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Translate(System.Data.Common.DbDataReader)
@@ -1016,7 +1016,7 @@ items:
       description: A list of objects returned by the conversion.
   overload: System.Data.Linq.DataContext.Translate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Translate(System.Type,System.Data.Common.DbDataReader)
@@ -1037,7 +1037,7 @@ items:
     parameters:
     - id: elementType
       type: System.Type
-      description: "The type of the &lt;xref:System.Collections.Generic.IEnumerable%601&gt; to be returned.  \n  \n The algorithm for matching columns in the result to fields and properties in the object works as follows:  \n  \n If a field or property is mapped to a particular column name, that column name is expected in the resultset.  \n  \n If a field or property is not mapped, a column with the same name as the field or property is expected in the resultset.  \n  \n The comparison is performed by looking for a case-sensitive match first. If this match is not found, a subsequent search is occurs for a case-insensitive match.  \n  \n The query must return all the tracked fields and properties of the object (except those that are loaded on a deferred basis) when all the following conditions are true:  \n  \n `T` is an entity explicitly tracked by the <xref href=\"System.Data.Linq.DataContext\"></xref>.  \n  \n <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n The entity has a primary key.  \n  \n Otherwise an exception is thrown."
+      description: "The type of the &lt;xref:System.Collections.Generic.IEnumerable%601&gt; to be returned.  \n  \n The algorithm for matching columns in the result to fields and properties in the object works as follows:  \n  \n If a field or property is mapped to a particular column name, that column name is expected in the resultset.  \n  \n If a field or property is not mapped, a column with the same name as the field or property is expected in the resultset.  \n  \n The comparison is performed by looking for a case-sensitive match first. If this match is not found, a subsequent search is occurs for a case-insensitive match.  \n  \n The query must return all the tracked fields and properties of the object (except those that are loaded on a deferred basis) when all the following conditions are true:  \n  \n `T` is an entity explicitly tracked by the <xref href=\"System.Data.Linq.DataContext\"></xref>.  \n  \n <xref:System.Data.Linq.DataContext.ObjectTrackingEnabled*> is `true`.  \n  \n The entity has a primary key.  \n  \n Otherwise an exception is thrown."
     - id: reader
       type: System.Data.Common.DbDataReader
       description: The <xref href="System.Data.IDataReader"></xref> to be converted.
@@ -1046,7 +1046,7 @@ items:
       description: A list of objects returned by the conversion.
   overload: System.Data.Linq.DataContext.Translate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.DataContext.Translate``1(System.Data.Common.DbDataReader)
@@ -1072,7 +1072,7 @@ items:
       description: To be added.
   overload: System.Data.Linq.DataContext.Translate<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:
@@ -1199,8 +1199,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

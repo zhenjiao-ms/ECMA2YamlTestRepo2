@@ -73,7 +73,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,7 +99,7 @@ items:
     parameters: []
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,7 +127,7 @@ items:
       description: One of the <xref href="System.Web.HttpCookieMode"></xref> values. The default value is <xref href="System.Web.HttpCookieMode"></xref>.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Cookieless*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,7 +155,7 @@ items:
       description: A <xref href="System.Web.Configuration.FormsAuthenticationCredentials"></xref> collection that contains the user names and passwords.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Credentials*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -183,7 +183,7 @@ items:
       description: The URL to which to redirect the request after authentication. The default value is default.aspx.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.DefaultUrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -211,7 +211,7 @@ items:
       description: The name of the domain for the outgoing forms authentication cookies. Default is an empty string.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Domain*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,7 +235,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.ElementProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,7 +263,7 @@ items:
       description: true if authenticated users can be redirected to URLs in other applications; otherwise false. The default is false.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.EnableCrossAppRedirects*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -291,7 +291,7 @@ items:
       description: The URL the request is redirected to when the user is not authenticated. The default value is login.aspx.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.LoginUrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,7 +319,7 @@ items:
       description: The name of the HTTP cookie to use for request authentication.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -347,7 +347,7 @@ items:
       description: The path of the HTTP cookie to use for authentication. The default value is a slash (/), which represents the Web-application root.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Path*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -371,7 +371,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,10 +396,10 @@ items:
     content: public System.Web.Configuration.FormsProtectionEnum Protection { get; set; }
     return:
       type: System.Web.Configuration.FormsProtectionEnum
-      description: "One of the <xref href=\"System.Web.Configuration.FormsProtectionEnum\"></xref> enumeration values. The default value is <xref uid=\"langword_csharp_All\" name=\"All\" href=\"\"></xref>.  \n  \n **Note** Be sure to use the default value for this property if you want both data validation and encryption to help protect the cookie. This option uses the configured data-validation algorithm based on the <xref uid=\"langword_csharp_machineKey\" name=\"machineKey\" href=\"\"></xref>. Triple-DES (3DES) is used for encryption, if available and if the key is long enough (48 bytes or more).  \n  \n To improve the protection of your cookie, you may also want to set the <xref:System.Web.Configuration.FormsAuthenticationConfiguration.RequireSSL*> to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+      description: "One of the <xref href=\"System.Web.Configuration.FormsProtectionEnum\"></xref> enumeration values. The default value is `All`.  \n  \n **Note** Be sure to use the default value for this property if you want both data validation and encryption to help protect the cookie. This option uses the configured data-validation algorithm based on the `machineKey`. Triple-DES (3DES) is used for encryption, if available and if the key is long enough (48 bytes or more).  \n  \n To improve the protection of your cookie, you may also want to set the <xref:System.Web.Configuration.FormsAuthenticationConfiguration.RequireSSL*> to `true`."
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Protection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -424,10 +424,10 @@ items:
     content: public bool RequireSSL { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an SSL connection is required; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an SSL connection is required; otherwise, `false`. The default is `false`.'
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.RequireSSL*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -452,10 +452,10 @@ items:
     content: public bool SlidingExpiration { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the sliding expiration is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the sliding expiration is enabled; otherwise, `false`. The default is `true`.'
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.SlidingExpiration*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -483,7 +483,7 @@ items:
       description: The ticket expiration-date compatibility mode.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.TicketCompatibilityMode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Configuration.FormsAuthenticationConfiguration.Timeout
   id: Timeout
@@ -508,7 +508,7 @@ items:
       description: The amount of time in minutes after which the authentication expires. The default value is 30 minutes.
   overload: System.Web.Configuration.FormsAuthenticationConfiguration.Timeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

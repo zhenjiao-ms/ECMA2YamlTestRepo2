@@ -57,7 +57,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -81,7 +81,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,8 +110,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>provider</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>provider</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,7 +140,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The serialization manager has an active serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,13 +167,13 @@ items:
       description: The type to create an instance of.
     - id: arguments
       type: System.Collections.ICollection
-      description: The parameters of the type’s constructor. This can be <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty collection to invoke the default constructor.
+      description: The parameters of the type’s constructor. This can be `null` or an empty collection to invoke the default constructor.
     - id: name
       type: System.String
-      description: A name to give the object. If <xref uid="langword_csharp_null" name="null" href=""></xref>, the object will not be given a name, unless the object is added to a container and the container gives the object a name.
+      description: A name to give the object. If `null`, the object will not be given a name, unless the object is added to a container and the container gives the object a name.
     - id: addToContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to add the object to the container if the object implements <xref href="System.ComponentModel.IComponent"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to add the object to the container if the object implements <xref href="System.ComponentModel.IComponent"></xref>; otherwise, `false`.'
     return:
       type: System.Object
       description: A new instance of the type specified by <code>type</code>.
@@ -182,7 +182,7 @@ items:
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: <code>type</code> does not have a constructor that takes parameters contained in <code>arguments</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,7 +212,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The serialization manager is already within a session. This version of <xref href="System.ComponentModel.Design.Serialization.DesignerSerializationManager"></xref> does not support simultaneous sessions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -241,7 +241,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -270,7 +270,7 @@ items:
       description: The specified type.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.GetRuntimeType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.DesignerSerializationManager.GetSerializer(System.Type,System.Type)
   id: GetSerializer(System.Type,System.Type)
@@ -297,13 +297,13 @@ items:
       description: The type of serializer to retrieve.
     return:
       type: System.Object
-      description: The serializer for <code>objectType</code>, or <xref uid="langword_csharp_null" name="null" href=""></xref>, if not found.
+      description: The serializer for <code>objectType</code>, or `null`, if not found.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.GetSerializer*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>objectType</code> or <code>serializerType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>objectType</code> or <code>serializerType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -330,10 +330,10 @@ items:
       description: The type of service to retrieve.
     return:
       type: System.Object
-      description: The requested service, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the service cannot be resolved.
+      description: The requested service, or `null` if the service cannot be resolved.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.GetService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -360,10 +360,10 @@ items:
       description: The name of the type to retrieve.
     return:
       type: System.Type
-      description: The requested type, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the type cannot be resolved.
+      description: The requested type, or `null` if the type cannot be resolved.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
       description: A <xref href="System.ComponentModel.Design.Serialization.ResolveNameEventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.OnResolveName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,7 +417,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.OnSessionCreated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -444,7 +444,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.OnSessionDisposed*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,13 +467,13 @@ items:
     content: public bool PreserveNames { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will pass the given component name; <xref uid="langword_csharp_false" name="false" href=""></xref> if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will check for the presence of the given name in the container. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will pass the given component name; `false` if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will check for the presence of the given name in the container. The default is `true`.'
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.PreserveNames*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was changed from within a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -499,7 +499,7 @@ items:
       description: The object that should be used to provide properties to the serialization manager's <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.Properties*> property.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.PropertyProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,13 +522,13 @@ items:
     content: public bool RecycleInstances { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will return the existing instance; <xref uid="langword_csharp_false" name="false" href=""></xref> if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will create a new instance of a type. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will return the existing instance; `false` if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> will create a new instance of a type. The default is `false`.'
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.RecycleInstances*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The serialization manager has an active serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -552,7 +552,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -576,7 +576,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -604,7 +604,7 @@ items:
       description: The serialization provider to add.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#AddSerializationProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -634,7 +634,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -664,16 +664,16 @@ items:
       description: The arguments to pass to the constructor for this type.
     - id: name
       type: System.String
-      description: The name of the object. This name can be used to access the object later through <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetInstance*>. If <xref uid="langword_csharp_null" name="null" href=""></xref> is passed, the object is still created but cannot be accessed by name.
+      description: The name of the object. This name can be used to access the object later through <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetInstance*>. If `null` is passed, the object is still created but cannot be accessed by name.
     - id: addToContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to add this object to the design container. The object must implement <xref href="System.ComponentModel.IComponent"></xref> for this to have any effect.
+      description: '`true` to add this object to the design container. The object must implement <xref href="System.ComponentModel.IComponent"></xref> for this to have any effect.'
     return:
       type: System.Object
       description: The newly created object instance.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -700,16 +700,16 @@ items:
       description: The name of the object to retrieve.
     return:
       type: System.Object
-      description: An instance of the object with the given name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no object by that name can be found.
+      description: An instance of the object with the given name, or `null` if no object by that name can be found.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#GetInstance*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -737,16 +737,16 @@ items:
       description: The object for which to retrieve the name.
     return:
       type: System.String
-      description: The name of the object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the object is unnamed.
+      description: The name of the object, or `null` if the object is unnamed.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#GetName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -776,10 +776,10 @@ items:
       description: The type of the serializer to retrieve.
     return:
       type: System.Object
-      description: An instance of the requested serializer, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no appropriate serializer can be located.
+      description: An instance of the requested serializer, or `null` if no appropriate serializer can be located.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#GetSerializer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -806,13 +806,13 @@ items:
       description: The fully qualified name of the type to load.
     return:
       type: System.Type
-      description: An instance of the type, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the type cannot be loaded.
+      description: An instance of the type, or `null` if the type cannot be loaded.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#GetType*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -838,7 +838,7 @@ items:
       description: A <xref href="System.ComponentModel.PropertyDescriptorCollection"></xref> containing the properties to be serialized.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -866,7 +866,7 @@ items:
       description: The <xref href="System.ComponentModel.Design.Serialization.IDesignerSerializationProvider"></xref> to remove.
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#ComponentModel#Design#Serialization#IDesignerSerializationManager#RemoveSerializationProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -897,7 +897,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -930,14 +930,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: One or both of the parameters are <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: One or both of the parameters are `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The object specified by instance already has a name, or <code>name</code> is already used by another named object.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property was accessed outside of a serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -965,10 +965,10 @@ items:
       description: An object that specifies the type of service object to get.
     return:
       type: System.Object
-      description: "A service object of type <code>serviceType</code>.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> if there is no service object of type <code>serviceType</code>."
+      description: "A service object of type <code>serviceType</code>.  \n  \n -or-  \n  \n `null` if there is no service object of type <code>serviceType</code>."
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.System#IServiceProvider#GetService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -991,13 +991,13 @@ items:
     content: public bool ValidateRecycledTypes { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> verifies types; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> if it does not. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if <xref:System.ComponentModel.Design.Serialization.DesignerSerializationManager.CreateInstance*> verifies types; otherwise, `false` if it does not. The default is `true`.'
   overload: System.ComponentModel.Design.Serialization.DesignerSerializationManager.ValidateRecycledTypes*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The serialization manager has an active serialization session.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -77,7 +77,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,7 +100,7 @@ items:
     parameters: []
   overload: System.Diagnostics.EventLogInstaller.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: The number of categories in the category resource file. The default value is zero.
   overload: System.Diagnostics.EventLogInstaller.CategoryCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -156,7 +156,7 @@ items:
       description: The path of the category resource file. The default is an empty string ("").
   overload: System.Diagnostics.EventLogInstaller.CategoryResourceFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,8 +185,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The specified component is not an <xref href=\"System.Diagnostics.EventLog\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Diagnostics.EventLog.Log*> or <xref:System.Diagnostics.EventLog.Source*> property of the specified component is either <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or empty."
-  platform:
+    description: "The specified component is not an <xref href=\"System.Diagnostics.EventLog\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Diagnostics.EventLog.Log*> or <xref:System.Diagnostics.EventLog.Source*> property of the specified component is either `null` or empty."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -219,7 +219,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The name specified in the <xref:System.Diagnostics.EventLogInstaller.Source*> property is already registered for a different event log.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -246,10 +246,10 @@ items:
       description: The installer to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this installer and the installer specified by the <code>otherInstaller</code> parameter would install or uninstall the same source; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this installer and the installer specified by the <code>otherInstaller</code> parameter would install or uninstall the same source; otherwise, `false`.'
   overload: System.Diagnostics.EventLogInstaller.IsEquivalentInstaller*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -275,7 +275,7 @@ items:
       description: The name of the log. This can be Application, System, or a custom log name. The default is an empty string ("").
   overload: System.Diagnostics.EventLogInstaller.Log*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,7 +303,7 @@ items:
       description: The path of the message resource file. The default is an empty string ("").
   overload: System.Diagnostics.EventLogInstaller.MessageResourceFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,7 +331,7 @@ items:
       description: The path of the message parameter resource file. The default is an empty string ("").
   overload: System.Diagnostics.EventLogInstaller.ParameterResourceFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -358,7 +358,7 @@ items:
       description: An <xref href="System.Collections.IDictionary"></xref> that contains the pre-installation state of the computer.
   overload: System.Diagnostics.EventLogInstaller.Rollback*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -384,7 +384,7 @@ items:
       description: The name to register with the event log as a source of entries. The default is an empty string ("").
   overload: System.Diagnostics.EventLogInstaller.Source*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,7 +411,7 @@ items:
       description: An <xref href="System.Collections.IDictionary"></xref> that contains the pre-installation state of the computer.
   overload: System.Diagnostics.EventLogInstaller.Uninstall*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -434,13 +434,13 @@ items:
     content: public System.Configuration.Install.UninstallAction UninstallAction { get; set; }
     return:
       type: System.Configuration.Install.UninstallAction
-      description: One of the <xref href="System.Configuration.Install.UninstallAction"></xref> values that indicates what state to leave the event log in when the <xref href="System.Diagnostics.EventLog"></xref> is uninstalled. The default is <xref uid="langword_csharp_Remove" name="Remove" href=""></xref>.
+      description: One of the <xref href="System.Configuration.Install.UninstallAction"></xref> values that indicates what state to leave the event log in when the <xref href="System.Diagnostics.EventLog"></xref> is uninstalled. The default is `Remove`.
   overload: System.Diagnostics.EventLogInstaller.UninstallAction*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: UninstallAction contains an invalid value. The only valid values for this property are <xref uid="langword_csharp_Remove" name="Remove" href=""></xref> and <xref uid="langword_csharp_NoAction" name="NoAction" href=""></xref>.
-  platform:
+    description: UninstallAction contains an invalid value. The only valid values for this property are `Remove` and `NoAction`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -38,7 +38,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -65,8 +65,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rsa</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>rsa</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -88,10 +88,10 @@ items:
     content: public override bool CanCreateKey { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> in all cases.
+      description: '`true` in all cases.'
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.CanCreateKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -116,7 +116,7 @@ items:
       description: A <xref href="System.IdentityModel.Tokens.RsaSecurityKey"></xref> that is a key created using the RSA algorithm specified in the constructor.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.CreateKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -132,16 +132,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Gets the <xref uid="langword_csharp_Exponent" name="Exponent" href=""></xref> parameter for the RSA algorithm.
+  summary: Gets the `Exponent` parameter for the RSA algorithm.
   syntax:
     content: public byte[] GetExponent ();
     parameters: []
     return:
       type: System.Byte[]
-      description: An array of <xref href="System.Byte"></xref> that contains the <xref uid="langword_csharp_Exponent" name="Exponent" href=""></xref> parameter for the RSA algorithm.
+      description: An array of <xref href="System.Byte"></xref> that contains the `Exponent` parameter for the RSA algorithm.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetExponent*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -157,16 +157,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Gets the <xref uid="langword_csharp_Modulus" name="Modulus" href=""></xref> parameter for the RSA algorithm.
+  summary: Gets the `Modulus` parameter for the RSA algorithm.
   syntax:
     content: public byte[] GetModulus ();
     parameters: []
     return:
       type: System.Byte[]
-      description: An array of <xref href="System.Byte"></xref> that contains the <xref uid="langword_csharp_Modulus" name="Modulus" href=""></xref> parameter for the RSA algorithm.
+      description: An array of <xref href="System.Byte"></xref> that contains the `Modulus` parameter for the RSA algorithm.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetModulus*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -191,10 +191,10 @@ items:
       description: A <xref href="System.IdentityModel.Tokens.SecurityKeyIdentifierClause"></xref> to compare to.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>keyIdentifierClause</code> is of type <xref href="System.IdentityModel.Tokens.RsaKeyIdentifierClause"></xref> and the arrays returned by the <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetModulus*> and <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetExponent*> methods for the <code>keyIdentifierClause</code> parameter are identical to the current instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>keyIdentifierClause</code> is of type <xref href="System.IdentityModel.Tokens.RsaKeyIdentifierClause"></xref> and the arrays returned by the <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetModulus*> and <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetExponent*> methods for the <code>keyIdentifierClause</code> parameter are identical to the current instance; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.Matches*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -219,10 +219,10 @@ items:
       description: An <xref href="System.Security.Cryptography.RSA"></xref> that represents an RSA algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.Cryptography.RSAParameters.Exponent"></xref> and <xref href="System.Security.Cryptography.RSAParameters.Modulus"></xref> fields of the <code>rsa</code> parameter match the values returned by the <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetModulus*> and <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetExponent*> methods for the current instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.Cryptography.RSAParameters.Exponent"></xref> and <xref href="System.Security.Cryptography.RSAParameters.Modulus"></xref> fields of the <code>rsa</code> parameter match the values returned by the <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetModulus*> and <xref:System.IdentityModel.Tokens.RsaKeyIdentifierClause.GetExponent*> methods for the current instance; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.Matches*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -246,7 +246,7 @@ items:
       description: An <xref href="System.Security.Cryptography.RSA"></xref> that represents an RSA algorithm.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.Rsa*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -272,7 +272,7 @@ items:
       description: A <xref href="System.String"></xref> that represents the current object.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -288,19 +288,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the Base64 encoded <xref uid="langword_csharp_Exponent" name="Exponent" href=""></xref> parameter of the RSA algorithm into the specified XML serializer.
+  summary: Writes the Base64 encoded `Exponent` parameter of the RSA algorithm into the specified XML serializer.
   syntax:
     content: public void WriteExponentAsBase64 (System.Xml.XmlWriter writer);
     parameters:
     - id: writer
       type: System.Xml.XmlWriter
-      description: A <xref href="System.Xml.XmlWriter"></xref> to write the Base64 encoded <xref uid="langword_csharp_Exponent" name="Exponent" href=""></xref> parameter of the RSA algorithm.
+      description: A <xref href="System.Xml.XmlWriter"></xref> to write the Base64 encoded `Exponent` parameter of the RSA algorithm.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.WriteExponentAsBase64*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>writer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>writer</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -316,19 +316,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the Base64 encoded <xref uid="langword_csharp_Modulus" name="Modulus" href=""></xref> parameter of the RSA algorithm into the specified XML serializer.
+  summary: Writes the Base64 encoded `Modulus` parameter of the RSA algorithm into the specified XML serializer.
   syntax:
     content: public void WriteModulusAsBase64 (System.Xml.XmlWriter writer);
     parameters:
     - id: writer
       type: System.Xml.XmlWriter
-      description: A <xref href="System.Xml.XmlWriter"></xref> to write the Base64 encoded <xref uid="langword_csharp_Modulus" name="Modulus" href=""></xref> parameter of the RSA algorithm.
+      description: A <xref href="System.Xml.XmlWriter"></xref> to write the Base64 encoded `Modulus` parameter of the RSA algorithm.
   overload: System.IdentityModel.Tokens.RsaKeyIdentifierClause.WriteModulusAsBase64*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>writer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>writer</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -387,8 +387,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

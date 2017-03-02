@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -58,7 +58,7 @@ items:
     parameters: []
   overload: System.Configuration.Install.InstallContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -84,13 +84,13 @@ items:
     parameters:
     - id: logFilePath
       type: System.String
-      description: The path to the log file for this installation, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no log file should be created.
+      description: The path to the log file for this installation, or `null` if no log file should be created.
     - id: commandLine
       type: System.String[]
-      description: The command-line parameters entered when running the installation program, or <xref uid="langword_csharp_null" name="null" href=""></xref> if none were entered.
+      description: The command-line parameters entered when running the installation program, or `null` if none were entered.
   overload: System.Configuration.Install.InstallContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,7 +107,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: Determines whether the specified command-line parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Determines whether the specified command-line parameter is `true`.
   remarks: This method accesses the <xref:System.Configuration.Install.InstallContext.Parameters%2A> property, which contains a parsed version of the command-line parameters, to determine whether the specified parameter is `true`.
   example:
   - "This example is an excerpt of the sample in the class overview of the <xref:System.Configuration.Install.InstallContext> class.  \n  \n It uses the IsParameterTrue method to find out if the `LogtoConsole` parameter has been set. If `yes`, it will then use the <xref:System.Configuration.Install.InstallContext.LogMessage%2A> method to write status messages to the installation log file and the console.  \n  \n [!code-cs[InstallContext_InstallContext#4](~/add/codesnippet/csharp/m-system.configuration.i_5_1.cs)]\n [!code-cpp[InstallContext_InstallContext#4](~/add/codesnippet/cpp/m-system.configuration.i_5_1.cpp)]\n [!code-vb[InstallContext_InstallContext#4](~/add/codesnippet/visualbasic/m-system.configuration.i_5_1.vb)]"
@@ -119,10 +119,10 @@ items:
       description: The name of the command-line parameter to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified parameter is set to "yes", "true", "1", or an empty string (""); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified parameter is set to "yes", "true", "1", or an empty string (""); otherwise, `false`.'
   overload: System.Configuration.Install.InstallContext.IsParameterTrue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,7 +151,7 @@ items:
       description: The message to write.
   overload: System.Configuration.Install.InstallContext.LogMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -179,7 +179,7 @@ items:
       description: A <xref href="System.Collections.Specialized.StringDictionary"></xref> that represents the command-line parameters that were entered when the installation executable was run.
   overload: System.Configuration.Install.InstallContext.Parameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -208,7 +208,7 @@ items:
       description: A <xref href="System.Collections.Specialized.StringDictionary"></xref> containing the parsed command-line parameters.
   overload: System.Configuration.Install.InstallContext.ParseCommandLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -238,8 +238,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

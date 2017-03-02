@@ -70,7 +70,7 @@ items:
   - System.Threading.WaitHandle.WaitOne(System.TimeSpan)
   - System.Threading.WaitHandle.WaitOne(System.TimeSpan,System.Boolean)
   - System.Threading.WaitHandle.WaitTimeout
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,7 +96,7 @@ items:
     parameters: []
   overload: System.Threading.Mutex.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,10 +122,10 @@ items:
     parameters:
     - id: initiallyOwned
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to give the calling thread initial ownership of the mutex; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to give the calling thread initial ownership of the mutex; otherwise, `false`.'
   overload: System.Threading.Mutex.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,10 +151,10 @@ items:
     parameters:
     - id: initiallyOwned
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to give the calling thread initial ownership of the named system mutex if the named system mutex is created as a result of this call; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to give the calling thread initial ownership of the named system mutex if the named system mutex is created as a result of this call; otherwise, `false`.'
     - id: name
       type: System.String
-      description: The name of the <xref href="System.Threading.Mutex"></xref>. If the value is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Threading.Mutex"></xref> is unnamed.
+      description: The name of the <xref href="System.Threading.Mutex"></xref>. If the value is `null`, the <xref href="System.Threading.Mutex"></xref> is unnamed.
   overload: System.Threading.Mutex.#ctor*
   exceptions:
   - type: System.UnauthorizedAccessException
@@ -169,7 +169,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is longer than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,13 +195,13 @@ items:
     parameters:
     - id: initiallyOwned
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to give the calling thread initial ownership of the named system mutex if the named system mutex is created as a result of this call; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to give the calling thread initial ownership of the named system mutex if the named system mutex is created as a result of this call; otherwise, `false`.'
     - id: name
       type: System.String
-      description: The name of the <xref href="System.Threading.Mutex"></xref>. If the value is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Threading.Mutex"></xref> is unnamed.
+      description: The name of the <xref href="System.Threading.Mutex"></xref>. If the value is `null`, the <xref href="System.Threading.Mutex"></xref> is unnamed.
     - id: createdNew
       type: System.Boolean
-      description: When this method returns, contains a Boolean that is <xref uid="langword_csharp_true" name="true" href=""></xref> if a local mutex was created (that is, if `name` is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string) or if the specified named system mutex was created; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified named system mutex already existed. This parameter is passed uninitialized.
+      description: When this method returns, contains a Boolean that is `true` if a local mutex was created (that is, if `name` is `null` or an empty string) or if the specified named system mutex was created; `false` if the specified named system mutex already existed. This parameter is passed uninitialized.
   overload: System.Threading.Mutex.#ctor*
   exceptions:
   - type: System.UnauthorizedAccessException
@@ -216,7 +216,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is longer than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,13 +242,13 @@ items:
     parameters:
     - id: initiallyOwned
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to give the calling thread initial ownership of the named system mutex if the named system mutex is created as a result of this call; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to give the calling thread initial ownership of the named system mutex if the named system mutex is created as a result of this call; otherwise, `false`.'
     - id: name
       type: System.String
-      description: The name of the system mutex. If the value is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Threading.Mutex"></xref> is unnamed.
+      description: The name of the system mutex. If the value is `null`, the <xref href="System.Threading.Mutex"></xref> is unnamed.
     - id: createdNew
       type: System.Boolean
-      description: When this method returns, contains a Boolean that is <xref uid="langword_csharp_true" name="true" href=""></xref> if a local mutex was created (that is, if `name` is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string) or if the specified named system mutex was created; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified named system mutex already existed. This parameter is passed uninitialized.
+      description: When this method returns, contains a Boolean that is `true` if a local mutex was created (that is, if `name` is `null` or an empty string) or if the specified named system mutex was created; `false` if the specified named system mutex already existed. This parameter is passed uninitialized.
     - id: mutexSecurity
       type: System.Security.AccessControl.MutexSecurity
       description: A <xref href="System.Security.AccessControl.MutexSecurity"></xref> object that represents the access control security to be applied to the named system mutex.
@@ -266,7 +266,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is longer than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -301,7 +301,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Not supported for Windows 98 or Windows Millennium Edition.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -338,7 +338,7 @@ items:
     description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is longer than 260 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Threading.WaitHandleCannotBeOpenedException
     commentId: T:System.Threading.WaitHandleCannotBeOpenedException
     description: The named mutex does not exist.
@@ -348,7 +348,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The named mutex exists, but the user does not have the security access required to use it.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,7 +388,7 @@ items:
     description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is longer than 260 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Threading.WaitHandleCannotBeOpenedException
     commentId: T:System.Threading.WaitHandleCannotBeOpenedException
     description: The named mutex does not exist.
@@ -398,7 +398,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The named mutex exists, but the user does not have the desired security access.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -430,7 +430,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current instance has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -461,14 +461,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>mutexSecurity</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>mutexSecurity</code> is `null`.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The user does not have <xref href=\"System.Security.AccessControl.MutexRights\"></xref>.  \n  \n -or-  \n  \n The mutex was not opened with <xref href=\"System.Security.AccessControl.MutexRights\"></xref>."
   - type: System.SystemException
     commentId: T:System.SystemException
     description: The current <xref href="System.Threading.Mutex"></xref> object does not represent a named system mutex.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

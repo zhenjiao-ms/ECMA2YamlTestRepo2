@@ -63,7 +63,7 @@ items:
 
       public interface _MethodInfo
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,7 +89,7 @@ items:
       description: One of the <xref href="System.Reflection.MethodAttributes"></xref> values.
   overload: System.Runtime.InteropServices._MethodInfo.Attributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
       description: One of the <xref href="System.Reflection.CallingConventions"></xref> values.
   overload: System.Runtime.InteropServices._MethodInfo.CallingConvention*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -138,10 +138,10 @@ items:
     content: public Type DeclaringType { get; }
     return:
       type: System.Type
-      description: The <xref uid="langword_csharp_Type" name="Type" href=""></xref> object for the class that declares this member.
+      description: The `Type` object for the class that declares this member.
   overload: System.Runtime.InteropServices._MethodInfo.DeclaringType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -168,10 +168,10 @@ items:
       description: The <xref href="System.Object"></xref> to compare with the current <xref href="System.Object"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Object"></xref> is equal to the current <xref href="System.Object"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <xref href="System.Object"></xref> is equal to the current <xref href="System.Object"></xref>; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,7 +198,7 @@ items:
       description: A <xref href="System.Reflection.MethodInfo"></xref> object for the first implementation of this method.
   overload: System.Runtime.InteropServices._MethodInfo.GetBaseDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -222,13 +222,13 @@ items:
     parameters:
     - id: inherit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to search this member's inheritance chain to find the attributes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to search this member''s inheritance chain to find the attributes; otherwise, `false`.'
     return:
       type: System.Object[]
       description: An array that contains all the custom attributes, or an array with zero (0) elements if no attributes are defined.
   overload: System.Runtime.InteropServices._MethodInfo.GetCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -255,13 +255,13 @@ items:
       description: The type of attribute to search for. Only attributes that are assignable to this type are returned.
     - id: inherit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to search this member's inheritance chain to find the attributes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to search this member''s inheritance chain to find the attributes; otherwise, `false`.'
     return:
       type: System.Object[]
       description: An array of custom attributes applied to this member, or an array with zero (0) elements if no attributes have been applied.
   overload: System.Runtime.InteropServices._MethodInfo.GetCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -288,7 +288,7 @@ items:
       description: The hash code for the current instance.
   overload: System.Runtime.InteropServices._MethodInfo.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -327,7 +327,7 @@ items:
       description: An array allocated by the caller that receives the identifiers corresponding to the names.
   overload: System.Runtime.InteropServices._MethodInfo.GetIDsOfNames*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -354,7 +354,7 @@ items:
       description: One of the <xref href="System.Reflection.MethodImplAttributes"></xref> values.
   overload: System.Runtime.InteropServices._MethodInfo.GetMethodImplementationFlags*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,7 +381,7 @@ items:
       description: An array of type <xref href="System.Reflection.ParameterInfo"></xref> containing information that matches the signature of the method (or constructor) reflected by this instance.
   overload: System.Runtime.InteropServices._MethodInfo.GetParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,7 +408,7 @@ items:
       description: A <xref href="System.Type"></xref> object.
   overload: System.Runtime.InteropServices._MethodInfo.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -441,7 +441,7 @@ items:
       description: A pointer to the requested type information object.
   overload: System.Runtime.InteropServices._MethodInfo.GetTypeInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -468,7 +468,7 @@ items:
       description: When this method returns, contains a pointer to a location that receives the number of type information interfaces provided by the object. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices._MethodInfo.GetTypeInfoCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -495,13 +495,13 @@ items:
       description: The instance that created this method.
     - id: parameters
       type: System.Object[]
-      description: "An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, `parameters` should be <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n If the method or constructor represented by this instance takes a <xref uid=\"langword_csharp_ref\" name=\"ref\" href=\"\"></xref> parameter (<xref uid=\"langword_csharp_ByRef\" name=\"ByRef\" href=\"\"></xref> in Visual Basic), no special attribute is required for that parameter to invoke the method or constructor using this function. Any object in this array that is not explicitly initialized with a value will contain the default value for that object type. For reference type elements, this value is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>. For value type elements, this value is 0, 0.0, or <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>, depending on the specific element type."
+      description: "An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, `parameters` should be `null`.  \n  \n If the method or constructor represented by this instance takes a `ref` parameter (`ByRef` in Visual Basic), no special attribute is required for that parameter to invoke the method or constructor using this function. Any object in this array that is not explicitly initialized with a value will contain the default value for that object type. For reference type elements, this value is `null`. For value type elements, this value is 0, 0.0, or `false`, depending on the specific element type."
     return:
       type: System.Object
       description: An instance of the class associated with the constructor.
   overload: System.Runtime.InteropServices._MethodInfo.Invoke*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -528,22 +528,22 @@ items:
       description: The instance that created this method.
     - id: invokeAttr
       type: System.Reflection.BindingFlags
-      description: One of the <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> values that specifies the type of binding.
+      description: One of the `BindingFlags` values that specifies the type of binding.
     - id: binder
       type: System.Reflection.Binder
-      description: A <xref uid="langword_csharp_Binder" name="Binder" href=""></xref> that defines a set of properties and enables the binding, coercion of argument types, and invocation of members using reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, then <xref uid="langword_csharp_Binder.DefaultBinding" name="Binder.DefaultBinding" href=""></xref> is used.
+      description: A `Binder` that defines a set of properties and enables the binding, coercion of argument types, and invocation of members using reflection. If `binder` is `null`, then `Binder.DefaultBinding` is used.
     - id: parameters
       type: System.Object[]
-      description: An array of type <xref uid="langword_csharp_Object" name="Object" href=""></xref> used to match the number, order, and type of the parameters for this constructor, under the constraints of `binder`. If this constructor does not require parameters, pass an array with zero elements, as in `Object[] parameters = new Object[0]`. Any object in this array that is not explicitly initialized with a value will contain the default value for that object type. For reference type elements, this value is <xref uid="langword_csharp_null" name="null" href=""></xref>. For value type elements, this value is 0, 0.0, or <xref uid="langword_csharp_false" name="false" href=""></xref>, depending on the specific element type.
+      description: An array of type `Object` used to match the number, order, and type of the parameters for this constructor, under the constraints of `binder`. If this constructor does not require parameters, pass an array with zero elements, as in `Object[] parameters = new Object[0]`. Any object in this array that is not explicitly initialized with a value will contain the default value for that object type. For reference type elements, this value is `null`. For value type elements, this value is 0, 0.0, or `false`, depending on the specific element type.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: A <xref href="System.Globalization.CultureInfo"></xref> object used to govern the coercion of types. If this is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: A <xref href="System.Globalization.CultureInfo"></xref> object used to govern the coercion of types. If this is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     return:
       type: System.Object
       description: An instance of the class associated with the constructor.
   overload: System.Runtime.InteropServices._MethodInfo.Invoke*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -591,7 +591,7 @@ items:
       description: The index of the first argument that has an error.
   overload: System.Runtime.InteropServices._MethodInfo.Invoke*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -614,10 +614,10 @@ items:
     content: public bool IsAbstract { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is abstract; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method is abstract; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsAbstract*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -640,10 +640,10 @@ items:
     content: public bool IsAssembly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method can be called by other classes in the same assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method can be called by other classes in the same assembly; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -666,10 +666,10 @@ items:
     content: public bool IsConstructor { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method is a constructor; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method is a constructor; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsConstructor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -693,16 +693,16 @@ items:
     parameters:
     - id: attributeType
       type: System.Type
-      description: The <xref uid="langword_csharp_Type" name="Type" href=""></xref> object to which the custom attributes are applied.
+      description: The `Type` object to which the custom attributes are applied.
     - id: inherit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to search this member's inheritance chain to find the attributes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to search this member''s inheritance chain to find the attributes; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if one or more instance of the <code>attributeType</code> parameter is applied to this member; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if one or more instance of the <code>attributeType</code> parameter is applied to this member; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsDefined*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -725,10 +725,10 @@ items:
     content: public bool IsFamily { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to the class is restricted to members of the class itself and to members of its derived classes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to the class is restricted to members of the class itself and to members of its derived classes; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsFamily*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -751,10 +751,10 @@ items:
     content: public bool IsFamilyAndAssembly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to this method is restricted to members of the class itself and to members of derived classes that are in the same assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to this method is restricted to members of the class itself and to members of derived classes that are in the same assembly; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsFamilyAndAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -777,10 +777,10 @@ items:
     content: public bool IsFamilyOrAssembly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to this method is restricted to members of the class itself, members of derived classes wherever they are, and members of other classes in the same assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to this method is restricted to members of the class itself, members of derived classes wherever they are, and members of other classes in the same assembly; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsFamilyOrAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -803,10 +803,10 @@ items:
     content: public bool IsFinal { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method is <xref uid="langword_csharp_final" name="final" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method is `final`; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsFinal*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -829,10 +829,10 @@ items:
     content: public bool IsHideBySig { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the member is hidden by signature; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the member is hidden by signature; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsHideBySig*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -855,10 +855,10 @@ items:
     content: public bool IsPrivate { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to this method is restricted to other members of the class itself; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to this method is restricted to other members of the class itself; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsPrivate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -881,10 +881,10 @@ items:
     content: public bool IsPublic { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method is public; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method is public; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsPublic*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -907,10 +907,10 @@ items:
     content: public bool IsSpecialName { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method has a special name; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method has a special name; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsSpecialName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -933,10 +933,10 @@ items:
     content: public bool IsStatic { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method is <xref uid="langword_csharp_static" name="static" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method is `static`; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsStatic*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -959,10 +959,10 @@ items:
     content: public bool IsVirtual { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method is <xref uid="langword_csharp_virtual" name="virtual" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method is `virtual`; otherwise, `false`.'
   overload: System.Runtime.InteropServices._MethodInfo.IsVirtual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -988,7 +988,7 @@ items:
       description: One of the <xref href="System.Reflection.MemberTypes"></xref> values indicating the type of member.
   overload: System.Runtime.InteropServices._MethodInfo.MemberType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1014,7 +1014,7 @@ items:
       description: A <xref href="System.RuntimeMethodHandle"></xref> object.
   overload: System.Runtime.InteropServices._MethodInfo.MethodHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1040,7 +1040,7 @@ items:
       description: A <xref href="System.String"></xref> object containing the name of this member.
   overload: System.Runtime.InteropServices._MethodInfo.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1063,10 +1063,10 @@ items:
     content: public Type ReflectedType { get; }
     return:
       type: System.Type
-      description: The <xref uid="langword_csharp_Type" name="Type" href=""></xref> object that was used to obtain this <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> object.
+      description: The `Type` object that was used to obtain this `MemberInfo` object.
   overload: System.Runtime.InteropServices._MethodInfo.ReflectedType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1092,7 +1092,7 @@ items:
       description: The return type of this method.
   overload: System.Runtime.InteropServices._MethodInfo.ReturnType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1118,7 +1118,7 @@ items:
       description: An <xref href="System.Reflection.ICustomAttributeProvider"></xref> object representing the custom attributes for the return type.
   overload: System.Runtime.InteropServices._MethodInfo.ReturnTypeCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1145,7 +1145,7 @@ items:
       description: A string that represents the current <xref href="System.Object"></xref>.
   overload: System.Runtime.InteropServices._MethodInfo.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1226,8 +1226,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1300,8 +1300,8 @@ references:
 - uid: System.Reflection.ParameterInfo[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterInfo
-  nameWithType: ParameterInfo
+  name: ParameterInfo[]
+  nameWithType: ParameterInfo[]
   fullName: System.Reflection.ParameterInfo[]
   spec.csharp:
   - uid: System.Reflection.ParameterInfo

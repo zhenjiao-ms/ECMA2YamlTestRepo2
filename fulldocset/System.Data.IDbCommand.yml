@@ -31,7 +31,7 @@ items:
     content: 'public interface IDbCommand : IDisposable'
   implements:
   - System.IDisposable
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -55,7 +55,7 @@ items:
     parameters: []
   overload: System.Data.IDbCommand.Cancel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -83,7 +83,7 @@ items:
       description: The text command to execute. The default value is an empty string ("").
   overload: System.Data.IDbCommand.CommandText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,7 +114,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The property value assigned is less than 0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -137,10 +137,10 @@ items:
     content: public System.Data.CommandType CommandType { get; set; }
     return:
       type: System.Data.CommandType
-      description: One of the <xref href="System.Data.CommandType"></xref> values. The default is <xref uid="langword_csharp_Text" name="Text" href=""></xref>.
+      description: One of the <xref href="System.Data.CommandType"></xref> values. The default is `Text`.
   overload: System.Data.IDbCommand.CommandType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,7 +165,7 @@ items:
       description: The connection to the data source.
   overload: System.Data.IDbCommand.Connection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -189,10 +189,10 @@ items:
     parameters: []
     return:
       type: System.Data.IDbDataParameter
-      description: An <xref uid="langword_csharp_IDbDataParameter" name="IDbDataParameter" href=""></xref> object.
+      description: An `IDbDataParameter` object.
   overload: System.Data.IDbCommand.CreateParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,7 +209,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: Executes an SQL statement against the <xref uid="langword_csharp_Connection" name="Connection" href=""></xref> object of a .NET Framework data provider, and returns the number of rows affected.
+  summary: Executes an SQL statement against the `Connection` object of a .NET Framework data provider, and returns the number of rows affected.
   remarks: "You can use the ExecuteNonQuery to perform catalog operations (for example, querying the structure of a database or creating database objects such as tables), or to change the data in a database without using a <xref:System.Data.DataSet> by executing UPDATE, INSERT, or DELETE statements.  \n  \n Although the ExecuteNonQuery does not return any rows, any output parameters or return values mapped to parameters are populated with data.  \n  \n For UPDATE, INSERT, and DELETE statements, the return value is the number of rows affected by the command. For all other types of statements, the return value is -1."
   example:
   - "The following example creates an instance of the derived class, <xref:System.Data.OleDb.OleDbCommand>, and then executes it. To accomplish this, the method is passed a string that is a SQL SELECT statement and a string to use to connect to the data source.  \n  \n [!code-cs[Classic WebData OleDbCommand.ExecuteNonQuery Example#1](~/add/codesnippet/csharp/m-system.data.idbcommand_1_1.cs)]\n [!code-vb[Classic WebData OleDbCommand.ExecuteNonQuery Example#1](~/add/codesnippet/visualbasic/m-system.data.idbcommand_1_1.vb)]"
@@ -224,7 +224,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The connection does not exist.  \n  \n -or-  \n  \n The connection is not open."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -250,7 +250,7 @@ items:
       description: An <xref href="System.Data.IDataReader"></xref> object.
   overload: System.Data.IDbCommand.ExecuteReader*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,7 +280,7 @@ items:
       description: An <xref href="System.Data.IDataReader"></xref> object.
   overload: System.Data.IDbCommand.ExecuteReader*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -309,7 +309,7 @@ items:
       description: The first column of the first row in the resultset.
   overload: System.Data.IDbCommand.ExecuteScalar*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -337,7 +337,7 @@ items:
       description: The parameters of the SQL statement or stored procedure.
   overload: System.Data.IDbCommand.Parameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The <xref:System.Data.OleDb.OleDbCommand.Connection*> is not set.  \n  \n -or-  \n  \n The <xref:System.Data.OleDb.OleDbCommand.Connection*> is not <xref:System.Data.OleDb.OleDbConnection.Open*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,15 +383,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: Gets or sets the transaction within which the <xref uid="langword_csharp_Command" name="Command" href=""></xref> object of a .NET Framework data provider executes.
+  summary: Gets or sets the transaction within which the `Command` object of a .NET Framework data provider executes.
   syntax:
     content: public System.Data.IDbTransaction Transaction { get; set; }
     return:
       type: System.Data.IDbTransaction
-      description: the <xref uid="langword_csharp_Command" name="Command" href=""></xref> object of a .NET Framework data provider executes. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: the `Command` object of a .NET Framework data provider executes. The default value is `null`.
   overload: System.Data.IDbCommand.Transaction*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -413,13 +413,13 @@ items:
     content: public System.Data.UpdateRowSource UpdatedRowSource { get; set; }
     return:
       type: System.Data.UpdateRowSource
-      description: One of the <xref href="System.Data.UpdateRowSource"></xref> values. The default is <xref uid="langword_csharp_Both" name="Both" href=""></xref> unless the command is automatically generated. Then the default is <xref uid="langword_csharp_None" name="None" href=""></xref>.
+      description: One of the <xref href="System.Data.UpdateRowSource"></xref> values. The default is `Both` unless the command is automatically generated. Then the default is `None`.
   overload: System.Data.IDbCommand.UpdatedRowSource*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The value entered was not one of the <xref href="System.Data.UpdateRowSource"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

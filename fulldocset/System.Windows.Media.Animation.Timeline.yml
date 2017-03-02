@@ -114,7 +114,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -136,7 +136,7 @@ items:
     parameters: []
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -161,7 +161,7 @@ items:
       description: The time at which this <xref href="System.Windows.Media.Animation.Timeline"></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information.
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -192,7 +192,7 @@ items:
       description: The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information.
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -226,7 +226,7 @@ items:
       description: The repeating behavior of this timeline, either as an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> or a repeat <xref:System.Windows.Media.Animation.RepeatBehavior.Duration*>. See the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> property for more information.
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -257,7 +257,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> exceeds 1.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -280,7 +280,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -306,7 +306,7 @@ items:
       description: A clock for this <xref href="System.Windows.Media.Animation.Timeline"></xref>.
   overload: System.Windows.Media.Animation.Timeline.AllocateClock*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -328,10 +328,10 @@ items:
     content: public bool AutoReverse { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the timeline plays in reverse at the end of each iteration; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the timeline plays in reverse at the end of each iteration; otherwise, `false`. The default value is `false`.'
   overload: System.Windows.Media.Animation.Timeline.AutoReverse*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -354,7 +354,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -378,10 +378,10 @@ items:
     content: public Nullable<TimeSpan> BeginTime { get; set; }
     return:
       type: System.Nullable{System.TimeSpan}
-      description: The time at which this <xref href="System.Windows.Media.Animation.Timeline"></xref> should begin, relative to its parent's BeginTime. If this timeline is a root timeline, the time is relative to its interactive begin time (the moment at which the timeline was triggered). This value may be positive, negative, or <xref uid="langword_csharp_null" name="null" href=""></xref>; a <xref uid="langword_csharp_null" name="null" href=""></xref> value means the timeline never plays. The default value is zero.
+      description: The time at which this <xref href="System.Windows.Media.Animation.Timeline"></xref> should begin, relative to its parent's BeginTime. If this timeline is a root timeline, the time is relative to its interactive begin time (the moment at which the timeline was triggered). This value may be positive, negative, or `null`; a `null` value means the timeline never plays. The default value is zero.
   overload: System.Windows.Media.Animation.Timeline.BeginTime*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -404,7 +404,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -427,10 +427,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_true." name="true." href=""></xref>
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is `true.`
   overload: System.Windows.Media.Animation.Timeline.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -453,10 +453,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is `true`.
   overload: System.Windows.Media.Animation.Timeline.CloneCurrentValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -482,7 +482,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -508,7 +508,7 @@ items:
       description: A new, controllable <xref href="System.Windows.Media.Animation.Clock"></xref> constructed from this <xref href="System.Windows.Media.Animation.Timeline"></xref>. If this <xref href="System.Windows.Media.Animation.Timeline"></xref> is a <xref href="System.Windows.Media.Animation.TimelineGroup"></xref> that contains child timelines, a tree of <xref href="System.Windows.Media.Animation.Clock"></xref> objects is created with a controllable <xref href="System.Windows.Media.Animation.Clock"></xref> created from this <xref href="System.Windows.Media.Animation.Timeline"></xref> as the root.
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -531,13 +531,13 @@ items:
     parameters:
     - id: hasControllableRoot
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the root <xref href="System.Windows.Media.Animation.Clock"></xref> returned should return a <xref href="System.Windows.Media.Animation.ClockController"></xref> from its <xref:System.Windows.Media.Animation.Clock.Controller*> property so that the <xref href="System.Windows.Media.Animation.Clock"></xref> tree can be interactively controlled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the root <xref href="System.Windows.Media.Animation.Clock"></xref> returned should return a <xref href="System.Windows.Media.Animation.ClockController"></xref> from its <xref:System.Windows.Media.Animation.Clock.Controller*> property so that the <xref href="System.Windows.Media.Animation.Clock"></xref> tree can be interactively controlled; otherwise, `false`.'
     return:
       type: System.Windows.Media.Animation.Clock
       description: A new <xref href="System.Windows.Media.Animation.Clock"></xref> constructed from this <xref href="System.Windows.Media.Animation.Timeline"></xref>. If this <xref href="System.Windows.Media.Animation.Timeline"></xref> is a <xref href="System.Windows.Media.Animation.TimelineGroup"></xref> that contains child timelines, a tree of <xref href="System.Windows.Media.Animation.Clock"></xref> objects is created with a controllable <xref href="System.Windows.Media.Animation.Clock"></xref> created from this <xref href="System.Windows.Media.Animation.Timeline"></xref> as the root.
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -563,7 +563,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -587,7 +587,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -613,7 +613,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -644,7 +644,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The sum of <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> and DecelerationRatio exceeds 1.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -667,7 +667,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -690,7 +690,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -717,7 +717,7 @@ items:
       description: 'The timeline''s simple duration: the amount of time this timeline takes to complete a single forward iteration. The default value is <xref:System.Windows.Duration.Automatic*>.'
   overload: System.Windows.Media.Animation.Timeline.Duration*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -740,7 +740,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -765,7 +765,7 @@ items:
       description: A value that specifies how the timeline behaves after it reaches the end of its active period but its parent is inside its active or fill period. The default value is <xref href="System.Windows.Media.Animation.FillBehavior"></xref>.
   overload: System.Windows.Media.Animation.Timeline.FillBehavior*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -788,7 +788,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -811,13 +811,13 @@ items:
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to check if this instance can be frozen; <xref uid="langword_csharp_false" name="false" href=""></xref> to freeze this instance.
+      description: '`true` to check if this instance can be frozen; `false` to freeze this instance.'
     return:
       type: System.Boolean
-      description: "If <code>isChecking</code> is true, this method returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if this instance can be made read-only, or <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> if it cannot be made read-only.  \n  \n If <code>isChecking</code> is false, this method returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if this instance is now read-only, or <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object."
+      description: "If <code>isChecking</code> is true, this method returns `true` if this instance can be made read-only, or `false` if it cannot be made read-only.  \n  \n If <code>isChecking</code> is false, this method returns `true` if this instance is now read-only, or `false` if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object."
   overload: System.Windows.Media.Animation.Timeline.FreezeCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -843,7 +843,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Timeline"></xref> instance to clone.
   overload: System.Windows.Media.Animation.Timeline.GetAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -869,7 +869,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Timeline"></xref> to copy and freeze.
   overload: System.Windows.Media.Animation.Timeline.GetCurrentValueAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -895,10 +895,10 @@ items:
       description: The timeline from which to retrieve the desired frame rate.
     return:
       type: System.Nullable{System.Int32}
-      description: The desired frame rate of this timeline. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The desired frame rate of this timeline. The default value is `null`.
   overload: System.Windows.Media.Animation.Timeline.GetDesiredFrameRate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -927,7 +927,7 @@ items:
       description: The length of a single iteration of this <xref href="System.Windows.Media.Animation.Timeline"></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown.
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDuration*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -956,7 +956,7 @@ items:
       description: The length of a single iteration of this <xref href="System.Windows.Media.Animation.Timeline"></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown.
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDurationCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -977,10 +977,10 @@ items:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: The name of this timeline. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of this timeline. The default value is `null`.
   overload: System.Windows.Media.Animation.Timeline.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1003,7 +1003,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1027,7 +1027,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1052,7 +1052,7 @@ items:
       description: An iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> that specifies the number of times the timeline should play, a <xref href="System.TimeSpan"></xref> value that specifies the total the length of this timeline's active period, or the special value <xref:System.Windows.Media.Animation.RepeatBehavior.Forever*>, which specifies that the timeline should repeat indefinitely. The default value is a <xref href="System.Windows.Media.Animation.RepeatBehavior"></xref> with a <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> of `1`, which indicates that the timeline plays once.
   overload: System.Windows.Media.Animation.Timeline.RepeatBehavior*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1075,7 +1075,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1101,10 +1101,10 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Timeline"></xref> to which `desiredFrameRate` is assigned.
     - id: desiredFrameRate
       type: System.Nullable{System.Int32}
-      description: The maximum number of frames this timeline should generate each second, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the system should control the number of frames.
+      description: The maximum number of frames this timeline should generate each second, or `null` if the system should control the number of frames.
   overload: System.Windows.Media.Animation.Timeline.SetDesiredFrameRate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1134,7 +1134,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: SpeedRatio is less than 0 or is not a finite value.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1157,7 +1157,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

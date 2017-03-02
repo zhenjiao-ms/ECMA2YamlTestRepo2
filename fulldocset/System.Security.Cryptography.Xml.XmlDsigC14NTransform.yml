@@ -42,7 +42,7 @@ items:
   - System.Security.Cryptography.Xml.Transform.GetXml
   - System.Security.Cryptography.Xml.Transform.PropagatedNamespaces
   - System.Security.Cryptography.Xml.Transform.Resolver
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -68,7 +68,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,10 +94,10 @@ items:
     parameters:
     - id: includeComments
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include comments; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include comments; otherwise, `false`.'
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -126,7 +126,7 @@ items:
       description: The digest associated with an <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.GetDigestedOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -143,16 +143,16 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Returns an XML representation of the parameters of an <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: Returns an XML representation of the parameters of an <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG `&lt;Transform&gt;` element.
   syntax:
     content: protected override System.Xml.XmlNodeList GetInnerXml ();
     parameters: []
     return:
       type: System.Xml.XmlNodeList
-      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object in an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object in an XMLDSIG `&lt;Transform&gt;` element.
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.GetInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,7 +181,7 @@ items:
       description: The output of the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.GetOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -216,7 +216,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>type</code> parameter is not a <xref href="System.IO.Stream"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
       description: An array of valid input types for the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object; you can pass only objects of one of these types to the <xref:System.Security.Cryptography.Xml.XmlDsigC14NTransform.LoadInput*> method of the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.InputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -261,7 +261,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element; this method is not supported because this element has no inner XML elements.
+  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `&lt;Transform&gt;` element; this method is not supported because this element has no inner XML elements.
   remarks: This method is not supported because the <xref:System.Security.Cryptography.Xml.XmlDsigC14NTransform> object has no inner XML elements.
   syntax:
     content: public override void LoadInnerXml (System.Xml.XmlNodeList nodeList);
@@ -271,7 +271,7 @@ items:
       description: An <xref href="System.Xml.XmlNodeList"></xref> object to load into the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.LoadInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -302,8 +302,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>obj</code> parameter is a <xref href="System.IO.Stream"></xref> object and it is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>obj</code> parameter is a <xref href="System.IO.Stream"></xref> object and it is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,7 +331,7 @@ items:
       description: An array of valid output types for the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object; the <xref:System.Security.Cryptography.Xml.XmlDsigC14NTransform.GetOutput*> methods of the current <xref href="System.Security.Cryptography.Xml.XmlDsigC14NTransform"></xref> object return only objects of one of these types.
   overload: System.Security.Cryptography.Xml.XmlDsigC14NTransform.OutputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,8 +373,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -435,8 +435,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

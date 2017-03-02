@@ -641,7 +641,7 @@ items:
   - System.Windows.UIElement.UpdateLayout
   - System.Windows.UIElement.Visibility
   - System.Windows.UIElement.VisibilityProperty
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -663,7 +663,7 @@ items:
     parameters: []
   overload: System.Windows.Controls.WebBrowser.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -690,7 +690,7 @@ items:
       description: A <xref href="System.Boolean"></xref> value that indicates whether there is a document to navigate back to.
   overload: System.Windows.Controls.WebBrowser.CanGoBack*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -717,7 +717,7 @@ items:
       description: A <xref href="System.Boolean"></xref> value that indicates whether there is a document to navigate forward to.
   overload: System.Windows.Controls.WebBrowser.CanGoForward*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -748,7 +748,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A reference to the underlying native `WebBrowser` could not be retrieved.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -782,7 +782,7 @@ items:
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: There is no document to navigate back to.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -816,7 +816,7 @@ items:
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: There is no document to navigate forward to.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -856,7 +856,7 @@ items:
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: The script function does not exist.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -899,7 +899,7 @@ items:
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: The script function does not exist.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -923,7 +923,7 @@ items:
       type: System.Windows.Navigation.LoadCompletedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -949,7 +949,7 @@ items:
       description: The URL to navigate to.
   overload: System.Windows.Controls.WebBrowser.Navigate*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Windows.Controls.WebBrowser.Navigate(System.Uri)
   id: Navigate(System.Uri)
@@ -984,7 +984,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: Navigation from an application that is running in partial trust to a <xref href="System.Uri"></xref> that is not located at the site of origin.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1019,7 +1019,7 @@ items:
       description: HTTP headers to send to the server when the source is requested.
   overload: System.Windows.Controls.WebBrowser.Navigate*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Windows.Controls.WebBrowser.Navigate(System.Uri,System.String,System.Byte[],System.String)
   id: Navigate(System.Uri,System.String,System.Byte[],System.String)
@@ -1062,8 +1062,8 @@ items:
     description: A reference to the underlying native `WebBrowser` could not be retrieved.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "Navigation from an application that is running in partial trust:  \n  \n-   To a <xref href=\"System.Uri\"></xref> that is not located at the site of origin, or  \n  \n-   <code>targetFrameName</code> name is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or empty."
-  platform:
+    description: "Navigation from an application that is running in partial trust:  \n  \n-   To a <xref href=\"System.Uri\"></xref> that is not located at the site of origin, or  \n  \n-   <code>targetFrameName</code> name is not `null` or empty."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1087,7 +1087,7 @@ items:
       type: System.Windows.Navigation.NavigatedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1121,7 +1121,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A reference to the underlying native `WebBrowser` could not be retrieved.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1155,7 +1155,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A reference to the underlying native `WebBrowser` could not be retrieved.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1179,7 +1179,7 @@ items:
       type: System.Windows.Navigation.NavigatingCancelEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1201,13 +1201,13 @@ items:
     content: public object ObjectForScripting { get; set; }
     return:
       type: System.Object
-      description: The <xref href="System.Object"></xref> that is an instance of a <xref uid="langword_csharp_public" name="public" href=""></xref> class, implemented by the host application, that can be accessed by script from a hosted document.
+      description: The <xref href="System.Object"></xref> that is an instance of a `public` class, implemented by the host application, that can be accessed by script from a hosted document.
   overload: System.Windows.Controls.WebBrowser.ObjectForScripting*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: ObjectForScripting is set with an instance of type that is not <xref uid="langword_csharp_COMVisible" name="COMVisible" href=""></xref>.
-  platform:
+    description: ObjectForScripting is set with an instance of type that is not `COMVisible`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1235,7 +1235,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A reference to the underlying native `WebBrowser` could not be retrieved.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1267,7 +1267,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A reference to the underlying native `WebBrowser` could not be retrieved.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1303,7 +1303,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: Navigation from an application that is running in partial trust to a <xref href="System.Uri"></xref> that is not located at the site of origin.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1330,7 +1330,7 @@ items:
       description: To be added.
   overload: System.Windows.Controls.WebBrowser.TabIntoCore*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Windows.Controls.WebBrowser.TranslateAcceleratorCore(System.Windows.Interop.MSG@,System.Windows.Input.ModifierKeys)
   id: TranslateAcceleratorCore(System.Windows.Interop.MSG@,System.Windows.Input.ModifierKeys)
@@ -1358,7 +1358,7 @@ items:
       description: To be added.
   overload: System.Windows.Controls.WebBrowser.TranslateAcceleratorCore*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Windows.Interop.ActiveXHost
@@ -1463,8 +1463,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1513,8 +1513,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

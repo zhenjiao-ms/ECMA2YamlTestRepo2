@@ -51,7 +51,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -75,7 +75,7 @@ items:
     parameters: []
   overload: System.Net.WebPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -104,7 +104,7 @@ items:
       description: A <xref href="System.Security.Permissions.PermissionState"></xref> value.
   overload: System.Net.WebPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -138,8 +138,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>uriString</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>uriString</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
       description: A regular expression that describes the URI to which access is to be granted.
   overload: System.Net.WebPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,7 +199,7 @@ items:
       description: The <xref href="System.Collections.IEnumerator"></xref> interface that contains accept permissions.
   overload: System.Net.WebPermission.AcceptList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,8 +233,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>uriString</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>uriString</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,8 +268,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>uriRegex</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>uriRegex</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -297,7 +297,7 @@ items:
       description: The <xref href="System.Collections.IEnumerator"></xref> interface that contains connect permissions.
   overload: System.Net.WebPermission.ConnectList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,7 +326,7 @@ items:
       description: A new instance of the <xref href="System.Net.WebPermission"></xref> class that has the same values as the original.
   overload: System.Net.WebPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -357,11 +357,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>securityElement</code> parameter is <xref uid="langword_csharp_null." name="null." href=""></xref>
+    description: The <code>securityElement</code> parameter is `null.`
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>securityElement</code> is not a permission element for this type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,13 +390,13 @@ items:
       description: The <xref href="System.Net.WebPermission"></xref> to compare with the current instance.
     return:
       type: System.Security.IPermission
-      description: A new <xref href="System.Net.WebPermission"></xref> that represents the intersection of the current instance and the <code>target</code> parameter. If the intersection is empty, the method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A new <xref href="System.Net.WebPermission"></xref> that represents the intersection of the current instance and the <code>target</code> parameter. If the intersection is empty, the method returns `null`.
   overload: System.Net.WebPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> or of type <xref href="System.Net.WebPermission"></xref>
-  platform:
+    description: <code>target</code> is not `null` or of type <xref href="System.Net.WebPermission"></xref>
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -425,7 +425,7 @@ items:
       description: The <xref href="System.Net.WebPermission"></xref> to compare to the current <xref href="System.Net.WebPermission"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance is a subset of the <code>target</code> parameter; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If the target is <xref uid="langword_csharp_null" name="null" href=""></xref>, the method returns <xref uid="langword_csharp_true" name="true" href=""></xref> for an empty current permission that is not unrestricted and <xref uid="langword_csharp_false" name="false" href=""></xref> otherwise.
+      description: '`true` if the current instance is a subset of the <code>target</code> parameter; otherwise, `false`. If the target is `null`, the method returns `true` for an empty current permission that is not unrestricted and `false` otherwise.'
   overload: System.Net.WebPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
@@ -434,7 +434,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The current instance contains a Regex-encoded right and there is not exactly the same right found in the target instance.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -458,10 +458,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Net.WebPermission"></xref> was created with the <xref href="System.Security.Permissions.PermissionState"></xref><xref href="System.Security.Permissions.PermissionState"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Net.WebPermission"></xref> was created with the <xref href="System.Security.Permissions.PermissionState"></xref><xref href="System.Security.Permissions.PermissionState"></xref>; otherwise, `false`.'
   overload: System.Net.WebPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -490,7 +490,7 @@ items:
       description: A <xref href="System.Security.SecurityElement"></xref> that contains an XML-encoded representation of the <xref href="System.Net.WebPermission"></xref>, including state information.
   overload: System.Net.WebPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,13 +519,13 @@ items:
       description: The <xref href="System.Net.WebPermission"></xref> to combine with the current <xref href="System.Net.WebPermission"></xref>.
     return:
       type: System.Security.IPermission
-      description: A <xref href="System.Net.WebPermission"></xref> that represents the union of the current instance and the <code>target</code> parameter. If either <xref uid="langword_csharp_WebPermission" name="WebPermission" href=""></xref> is <xref href="System.Security.Permissions.PermissionState"></xref>, the method returns a <xref href="System.Net.WebPermission"></xref> that is <xref href="System.Security.Permissions.PermissionState"></xref>. If the target is <xref uid="langword_csharp_null" name="null" href=""></xref>, the method returns a copy of the current <xref href="System.Net.WebPermission"></xref>.
+      description: A <xref href="System.Net.WebPermission"></xref> that represents the union of the current instance and the <code>target</code> parameter. If either `WebPermission` is <xref href="System.Security.Permissions.PermissionState"></xref>, the method returns a <xref href="System.Net.WebPermission"></xref> that is <xref href="System.Security.Permissions.PermissionState"></xref>. If the target is `null`, the method returns a copy of the current <xref href="System.Net.WebPermission"></xref>.
   overload: System.Net.WebPermission.Union*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: target is not <xref uid="langword_csharp_null" name="null" href=""></xref> or of type <xref href="System.Net.WebPermission"></xref>.
-  platform:
+    description: target is not `null` or of type <xref href="System.Net.WebPermission"></xref>.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

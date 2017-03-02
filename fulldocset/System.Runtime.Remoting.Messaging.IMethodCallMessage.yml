@@ -27,7 +27,7 @@ items:
       public interface IMethodCallMessage : System.Runtime.Remoting.Messaging.IMethodMessage
   implements:
   - System.Runtime.Remoting.Messaging.IMethodMessage
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -44,22 +44,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the specified argument that is not marked as an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the specified argument that is not marked as an `out` parameter.
   syntax:
     content: public object GetInArg (int argNum);
     parameters:
     - id: argNum
       type: System.Int32
-      description: The number of the requested <xref uid="langword_csharp_in" name="in" href=""></xref> argument.
+      description: The number of the requested `in` argument.
     return:
       type: System.Object
-      description: The requested argument that is not marked as an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+      description: The requested argument that is not marked as an `out` parameter.
   overload: System.Runtime.Remoting.Messaging.IMethodCallMessage.GetInArg*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,22 +76,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the name of the specified argument that is not marked as an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the name of the specified argument that is not marked as an `out` parameter.
   syntax:
     content: public string GetInArgName (int index);
     parameters:
     - id: index
       type: System.Int32
-      description: The number of the requested <xref uid="langword_csharp_in" name="in" href=""></xref> argument.
+      description: The number of the requested `in` argument.
     return:
       type: System.String
-      description: The name of a specific argument that is not marked as an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+      description: The name of a specific argument that is not marked as an `out` parameter.
   overload: System.Runtime.Remoting.Messaging.IMethodCallMessage.GetInArgName*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,7 +108,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets the number of arguments in the call that are not marked as <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+  summary: Gets the number of arguments in the call that are not marked as `out` parameters.
   remarks: ''
   example:
   - "The following example code shows a custom proxy that overrides RealProxy.Invoke in order to write the call message information to the console.  \n  \n [!code-cs[IMethodCallMessage_GetInArg#2](~/add/codesnippet/csharp/p-system.runtime.remotin_22_1.cs)]\n [!code-vb[IMethodCallMessage_GetInArg#2](~/add/codesnippet/visualbasic/p-system.runtime.remotin_22_1.vb)]\n [!code-cpp[IMethodCallMessage_GetInArg#2](~/add/codesnippet/cpp/p-system.runtime.remotin_22_1.cpp)]"
@@ -116,13 +116,13 @@ items:
     content: public int InArgCount { get; }
     return:
       type: System.Int32
-      description: The number of arguments in the call that are not marked as <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+      description: The number of arguments in the call that are not marked as `out` parameters.
   overload: System.Runtime.Remoting.Messaging.IMethodCallMessage.InArgCount*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets an array of arguments that are not marked as <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+  summary: Gets an array of arguments that are not marked as `out` parameters.
   remarks: Although the InArgs property is redundant since the same functionality can be achieved with the <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage.InArgCount%2A> and <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage.GetInArg%2A> methods, there might be performance optimization available if the implementer understands when all the arguments will be retrieved.
   example:
   - >-
@@ -150,13 +150,13 @@ items:
     content: public object[] InArgs { get; }
     return:
       type: System.Object[]
-      description: An array of arguments that are not marked as <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+      description: An array of arguments that are not marked as `out` parameters.
   overload: System.Runtime.Remoting.Messaging.IMethodCallMessage.InArgs*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,8 +213,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

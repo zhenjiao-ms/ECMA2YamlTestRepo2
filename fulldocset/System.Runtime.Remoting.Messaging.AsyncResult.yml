@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -70,7 +70,7 @@ items:
       description: The delegate object on which the asynchronous call was invoked.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncDelegate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -103,7 +103,7 @@ items:
       description: No value is returned.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncProcessMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -120,7 +120,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets the object provided as the last parameter of a <xref uid="langword_csharp_BeginInvoke" name="BeginInvoke" href=""></xref> method call.
+  summary: Gets the object provided as the last parameter of a `BeginInvoke` method call.
   remarks: For more information about the `BeginInvoke` method, see [Asynchronous Programming Using Delegates](~/add/includes/ajax-current-ext-md.md).
   example:
   - "The following code example demonstrates how the AsyncState property is used to pass information to a callback method. The last parameter of the `BeginInvoke` method call is a format string, which the callback method uses to format an output message.  \n  \n The example consists of two classes, the class that contains the method which is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information on the way this callback example works, and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.runtime.remotin_83_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.runtime.remotin_83_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.runtime.remotin_83_1.cpp)]  \n[!code-cs[AsyncDelegateExamples#5](~/add/codesnippet/csharp/p-system.runtime.remotin_83_2.cs)]\n[!code-cpp[AsyncDelegateExamples#5](~/add/codesnippet/cpp/p-system.runtime.remotin_83_2.cpp)]\n[!code-vb[AsyncDelegateExamples#5](~/add/codesnippet/visualbasic/p-system.runtime.remotin_83_2.vb)]"
@@ -128,10 +128,10 @@ items:
     content: public virtual object AsyncState { get; }
     return:
       type: System.Object
-      description: The object provided as the last parameter of a <xref uid="langword_csharp_BeginInvoke" name="BeginInvoke" href=""></xref> method call.
+      description: The object provided as the last parameter of a `BeginInvoke` method call.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -159,7 +159,7 @@ items:
       description: A <xref href="System.Threading.WaitHandle"></xref> that encapsulates Win32 synchronization handles, and allows the implementation of various synchronization schemes.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncWaitHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -176,16 +176,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets a value indicating whether the <xref uid="langword_csharp_BeginInvoke" name="BeginInvoke" href=""></xref> call completed synchronously.
+  summary: Gets a value indicating whether the `BeginInvoke` call completed synchronously.
   remarks: "If it is detected that the `BeginInvoke` call completed synchronously in the <xref:System.AsyncCallback> delegate, it is probable that the thread that called BeginInvoke is the current thread. Most providers of the <xref:System.IAsyncResult> interface will not use the capability and will return a default `false`.  \n  \n Current implementation of CompletedSynchronously always returns `false`."
   syntax:
     content: public virtual bool CompletedSynchronously { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref uid="langword_csharp_BeginInvoke" name="BeginInvoke" href=""></xref> call completed synchronously; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the `BeginInvoke` call completed synchronously; otherwise, `false`.'
   overload: System.Runtime.Remoting.Messaging.AsyncResult.CompletedSynchronously*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,15 +202,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets or sets a value indicating whether <xref uid="langword_csharp_EndInvoke" name="EndInvoke" href=""></xref> has been called on the current <xref href="System.Runtime.Remoting.Messaging.AsyncResult"></xref>.
+  summary: Gets or sets a value indicating whether `EndInvoke` has been called on the current <xref href="System.Runtime.Remoting.Messaging.AsyncResult"></xref>.
   syntax:
     content: public bool EndInvokeCalled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref uid="langword_csharp_EndInvoke" name="EndInvoke" href=""></xref> has been called on the current <xref href="System.Runtime.Remoting.Messaging.AsyncResult"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if `EndInvoke` has been called on the current <xref href="System.Runtime.Remoting.Messaging.AsyncResult"></xref>; otherwise, `false`.'
   overload: System.Runtime.Remoting.Messaging.AsyncResult.EndInvokeCalled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -237,7 +237,7 @@ items:
       description: A remoting message that should represent a response to a method call on a remote object.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,10 +262,10 @@ items:
     content: public virtual bool IsCompleted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> after the server has completed the call; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` after the server has completed the call; otherwise, `false`.'
   overload: System.Runtime.Remoting.Messaging.AsyncResult.IsCompleted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -291,7 +291,7 @@ items:
       description: An <xref href="System.Runtime.Remoting.Messaging.IMessageSink"></xref> interface that represents the next message sink in the sink chain.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.NextSink*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -318,7 +318,7 @@ items:
       description: The <xref href="System.Runtime.Remoting.Messaging.IMessageCtrl"></xref> for the current remote method call.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.SetMessageCtrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -345,10 +345,10 @@ items:
       description: A response message to a method call on a remote object.
     return:
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: Returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Returns `null`.
   overload: System.Runtime.Remoting.Messaging.AsyncResult.SyncProcessMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

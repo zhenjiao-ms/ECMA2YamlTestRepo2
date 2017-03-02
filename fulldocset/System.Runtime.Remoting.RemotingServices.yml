@@ -52,7 +52,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,7 +90,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -120,7 +120,7 @@ items:
       description: The URL of the well-known object.
     - id: data
       type: System.Object
-      description: Channel specific data. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Channel specific data. Can be `null`.
     return:
       type: System.Object
       description: A proxy that points to an endpoint that is served by the requested well-known object.
@@ -129,7 +129,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,19 +158,19 @@ items:
       description: Object to disconnect from its channel.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object was disconnected from the registered remoting channels successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object was disconnected from the registered remoting channels successfully; otherwise, `false`.'
   overload: System.Runtime.Remoting.RemotingServices.Disconnect*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>obj</code> parameter is a proxy.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -211,7 +211,7 @@ items:
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
     description: The method was called from a context other than the native context of the object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -312,7 +312,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: Either the immediate caller does not have infrastructure permission, or at least one of the callers higher in the callstack does not have permission to retrieve the type information of non-public members.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,11 +346,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> or <code>info</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> or <code>info</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -382,13 +382,13 @@ items:
       description: The <xref href="System.MarshalByRefObject"></xref> for which a URI is requested.
     return:
       type: System.String
-      description: The URI of the specified object if it has one, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the object has not yet been marshaled.
+      description: The URI of the specified object if it has one, or `null` if the object has not yet been marshaled.
   overload: System.Runtime.Remoting.RemotingServices.GetObjectUri*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,13 +417,13 @@ items:
       description: A proxy connected to the object you want to create a <xref href="System.Runtime.Remoting.ObjRef"></xref> for.
     return:
       type: System.Runtime.Remoting.ObjRef
-      description: A <xref href="System.Runtime.Remoting.ObjRef"></xref> that represents the remote object the specified proxy is connected to, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the object or proxy have not been marshaled.
+      description: A <xref href="System.Runtime.Remoting.ObjRef"></xref> that represents the remote object the specified proxy is connected to, or `null` if the object or proxy have not been marshaled.
   overload: System.Runtime.Remoting.RemotingServices.GetObjRefForProxy*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -456,7 +456,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -494,7 +494,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: Either the immediate caller does not have infrastructure permission, or at least one of the callers higher in the callstack does not have permission to retrieve the type information of non-public members.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -529,7 +529,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,13 +555,13 @@ items:
       description: The message that contains a call to the method in question.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method called in <code>msg</code> is overloaded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method called in <code>msg</code> is overloaded; otherwise, `false`.'
   overload: System.Runtime.Remoting.RemotingServices.IsMethodOverloaded*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -593,10 +593,10 @@ items:
       description: The object to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object is out of the current application domain; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object is out of the current application domain; otherwise, `false`.'
   overload: System.Runtime.Remoting.RemotingServices.IsObjectOutOfAppDomain*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -628,10 +628,10 @@ items:
       description: The object to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object is out of the current context; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object is out of the current context; otherwise, `false`.'
   overload: System.Runtime.Remoting.RemotingServices.IsObjectOutOfContext*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -663,13 +663,13 @@ items:
       description: The method in question.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is one way; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method is one way; otherwise, `false`.'
   overload: System.Runtime.Remoting.RemotingServices.IsOneWay*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -701,7 +701,7 @@ items:
       description: A Boolean value that indicates whether the object specified in the <code>proxy</code> parameter is a transparent proxy or a real object.
   overload: System.Runtime.Remoting.RemotingServices.IsTransparentProxy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -728,7 +728,7 @@ items:
       description: An internally defined constant that identifies the stage in a remoting exchange.
   overload: System.Runtime.Remoting.RemotingServices.LogRemotingStage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -764,7 +764,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -793,7 +793,7 @@ items:
       description: The object to convert.
     - id: URI
       type: System.String
-      description: The specified URI with which to initialize the new <xref href="System.Runtime.Remoting.ObjRef"></xref>. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The specified URI with which to initialize the new <xref href="System.Runtime.Remoting.ObjRef"></xref>. Can be `null`.
     return:
       type: System.Runtime.Remoting.ObjRef
       description: An instance of the <xref href="System.Runtime.Remoting.ObjRef"></xref> class that represents the object specified in the <code>Obj</code> parameter.
@@ -801,11 +801,11 @@ items:
   exceptions:
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
-    description: <code>Obj</code> is an object proxy, and the <code>URI</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>Obj</code> is an object proxy, and the <code>URI</code> parameter is not `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -832,10 +832,10 @@ items:
       description: The object to convert into a <xref href="System.Runtime.Remoting.ObjRef"></xref>.
     - id: ObjURI
       type: System.String
-      description: The URI the object specified in the `Obj` parameter is marshaled with. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The URI the object specified in the `Obj` parameter is marshaled with. Can be `null`.
     - id: RequestedType
       type: System.Type
-      description: The <xref href="System.Type"></xref>`Obj` is marshaled as. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Type"></xref>`Obj` is marshaled as. Can be `null`.
     return:
       type: System.Runtime.Remoting.ObjRef
       description: An instance of the <xref href="System.Runtime.Remoting.ObjRef"></xref> class that represents the object specified in the <code>Obj</code> parameter.
@@ -843,11 +843,11 @@ items:
   exceptions:
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
-    description: <code>Obj</code> is a proxy of a remote object, and the <code>ObjUri</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>Obj</code> is a proxy of a remote object, and the <code>ObjUri</code> parameter is not `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -885,7 +885,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -923,7 +923,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -950,7 +950,7 @@ items:
       description: The <xref href="System.Runtime.Remoting.ObjRef"></xref> that represents the remote object for which the proxy is being created.
     - id: fRefine
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to refine the proxy to the type on the server; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to refine the proxy to the type on the server; otherwise, `false`.'
     return:
       type: System.Object
       description: A proxy to the object that the given <xref href="System.Runtime.Remoting.ObjRef"></xref> represents.
@@ -962,7 +962,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

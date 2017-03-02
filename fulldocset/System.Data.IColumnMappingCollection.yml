@@ -23,7 +23,7 @@ items:
     content: 'public interface IColumnMappingCollection : System.Collections.IList'
   implements:
   - System.Collections.IList
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -55,7 +55,7 @@ items:
       description: The ColumnMapping object that was added to the collection.
   overload: System.Data.IColumnMappingCollection.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -81,10 +81,10 @@ items:
       description: The case-sensitive name of the source column.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a <xref href="System.Data.Common.DataColumnMapping"></xref> object with the specified source column name exists, otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a <xref href="System.Data.Common.DataColumnMapping"></xref> object with the specified source column name exists, otherwise `false`.'
   overload: System.Data.IColumnMappingCollection.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,10 +110,10 @@ items:
       description: The name of the <xref href="System.Data.DataSet"></xref> column within the collection.
     return:
       type: System.Data.IColumnMapping
-      description: The ColumnMapping object with the specified <xref uid="langword_csharp_DataSet" name="DataSet" href=""></xref> column name.
+      description: The ColumnMapping object with the specified `DataSet` column name.
   overload: System.Data.IColumnMappingCollection.GetByDataSetColumn*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,10 +142,10 @@ items:
       description: The case-sensitive name of the source column.
     return:
       type: System.Int32
-      description: The zero-based location of the <xref uid="langword_csharp_DataColumnMapping" name="DataColumnMapping" href=""></xref> object with the specified source column name.
+      description: The zero-based location of the `DataColumnMapping` object with the specified source column name.
   overload: System.Data.IColumnMappingCollection.IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -162,19 +162,19 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: Gets or sets the <xref href="System.Data.IColumnMapping"></xref> object with the specified <xref uid="langword_csharp_SourceColumn" name="SourceColumn" href=""></xref> name.
+  summary: Gets or sets the <xref href="System.Data.IColumnMapping"></xref> object with the specified `SourceColumn` name.
   syntax:
     content: public object this[string index] { get; set; }
     parameters:
     - id: index
       type: System.String
-      description: The <xref uid="langword_csharp_SourceColumn" name="SourceColumn" href=""></xref> name of the <xref uid="langword_csharp_IColumnMapping" name="IColumnMapping" href=""></xref> object to find.
+      description: The `SourceColumn` name of the `IColumnMapping` object to find.
     return:
       type: System.Object
-      description: The <xref uid="langword_csharp_IColumnMapping" name="IColumnMapping" href=""></xref> object with the specified <xref uid="langword_csharp_SourceColumn" name="SourceColumn" href=""></xref> name.
+      description: The `IColumnMapping` object with the specified `SourceColumn` name.
   overload: System.Data.IColumnMappingCollection.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -200,13 +200,13 @@ items:
     parameters:
     - id: sourceColumnName
       type: System.String
-      description: The case-sensitive <xref uid="langword_csharp_SourceColumn" name="SourceColumn" href=""></xref> name.
+      description: The case-sensitive `SourceColumn` name.
   overload: System.Data.IColumnMappingCollection.RemoveAt*
   exceptions:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: A <xref href="System.Data.Common.DataColumnMapping"></xref> object does not exist with the specified <xref uid="langword_csharp_SourceColumn" name="SourceColumn" href=""></xref> name.
-  platform:
+    description: A <xref href="System.Data.Common.DataColumnMapping"></xref> object does not exist with the specified `SourceColumn` name.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

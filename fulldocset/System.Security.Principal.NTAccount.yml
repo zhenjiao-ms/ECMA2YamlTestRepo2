@@ -36,7 +36,7 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Security.Principal.IdentityReference.op_Equality(System.Security.Principal.IdentityReference,System.Security.Principal.IdentityReference)
   - System.Security.Principal.IdentityReference.op_Inequality(System.Security.Principal.IdentityReference,System.Security.Principal.IdentityReference)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -60,16 +60,16 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The name used to create the <xref href="System.Security.Principal.NTAccount"></xref> object. This parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string.
+      description: The name used to create the <xref href="System.Security.Principal.NTAccount"></xref> object. This parameter cannot be `null` or an empty string.
   overload: System.Security.Principal.NTAccount.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>name</code> is an empty string.  \n  \n -or-  \n  \n <code>name</code> is too long."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -93,19 +93,19 @@ items:
     parameters:
     - id: domainName
       type: System.String
-      description: The name of the domain. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string. Domain names that are null values are treated like an empty string.
+      description: The name of the domain. This parameter can be `null` or an empty string. Domain names that are null values are treated like an empty string.
     - id: accountName
       type: System.String
-      description: The name of the account. This parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string.
+      description: The name of the account. This parameter cannot be `null` or an empty string.
   overload: System.Security.Principal.NTAccount.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>accountName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>accountName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>accountName</code> is an empty string.  \n  \n -or-  \n  \n <code>accountName</code> is too long.  \n  \n -or-  \n  \n <code>domainName</code> is too long."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,13 +128,13 @@ items:
     parameters:
     - id: o
       type: System.Object
-      description: An object to compare with this <xref href="System.Security.Principal.NTAccount"></xref> object, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object to compare with this <xref href="System.Security.Principal.NTAccount"></xref> object, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>o</code> is an object with the same underlying type and value as this <xref href="System.Security.Principal.NTAccount"></xref> object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>o</code> is an object with the same underlying type and value as this <xref href="System.Security.Principal.NTAccount"></xref> object; otherwise, `false`.'
   overload: System.Security.Principal.NTAccount.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
       description: A hash value for the current <xref href="System.Security.Principal.NTAccount"></xref> object.
   overload: System.Security.Principal.NTAccount.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,10 +186,10 @@ items:
       description: "The type being queried for validity to serve as a conversion from <xref href=\"System.Security.Principal.NTAccount\"></xref>. The following target types are valid:  \n  \n \\- <xref href=\"System.Security.Principal.NTAccount\"></xref>  \n  \n \\- <xref href=\"System.Security.Principal.SecurityIdentifier\"></xref>"
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>targetType</code> is a valid translation type for the <xref href="System.Security.Principal.NTAccount"></xref> class; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>targetType</code> is a valid translation type for the <xref href="System.Security.Principal.NTAccount"></xref> class; otherwise `false`.'
   overload: System.Security.Principal.NTAccount.IsValidTargetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,22 +206,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Principal
-  summary: Compares two <xref href="System.Security.Principal.NTAccount"></xref> objects to determine whether they are equal. They are considered equal if they have the same canonical name representation as the one returned by the <xref:System.Security.Principal.NTAccount.Value*> property or if they are both <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  summary: Compares two <xref href="System.Security.Principal.NTAccount"></xref> objects to determine whether they are equal. They are considered equal if they have the same canonical name representation as the one returned by the <xref:System.Security.Principal.NTAccount.Value*> property or if they are both `null`.
   syntax:
     content: public static bool op_Equality (System.Security.Principal.NTAccount left, System.Security.Principal.NTAccount right);
     parameters:
     - id: left
       type: System.Security.Principal.NTAccount
-      description: The left operand to use for the equality comparison. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The left operand to use for the equality comparison. This parameter can be `null`.
     - id: right
       type: System.Security.Principal.NTAccount
-      description: The right operand to use for the equality comparison. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The right operand to use for the equality comparison. This parameter can be `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> and <code>right</code> are equal; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> and <code>right</code> are equal; otherwise `false`.'
   overload: System.Security.Principal.NTAccount.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -238,22 +238,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Principal
-  summary: Compares two <xref href="System.Security.Principal.NTAccount"></xref> objects to determine whether they are not equal. They are considered not equal if they have different canonical name representations than the one returned by the <xref:System.Security.Principal.NTAccount.Value*> property or if one of the objects is <xref uid="langword_csharp_null" name="null" href=""></xref> and the other is not.
+  summary: Compares two <xref href="System.Security.Principal.NTAccount"></xref> objects to determine whether they are not equal. They are considered not equal if they have different canonical name representations than the one returned by the <xref:System.Security.Principal.NTAccount.Value*> property or if one of the objects is `null` and the other is not.
   syntax:
     content: public static bool op_Inequality (System.Security.Principal.NTAccount left, System.Security.Principal.NTAccount right);
     parameters:
     - id: left
       type: System.Security.Principal.NTAccount
-      description: The left operand to use for the inequality comparison. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The left operand to use for the inequality comparison. This parameter can be `null`.
     - id: right
       type: System.Security.Principal.NTAccount
-      description: The right operand to use for the inequality comparison. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The right operand to use for the inequality comparison. This parameter can be `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> and <code>right</code> are not equal; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> and <code>right</code> are not equal; otherwise `false`.'
   overload: System.Security.Principal.NTAccount.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
       description: The account name, in *Domain* **\\** *Account* format.
   overload: System.Security.Principal.NTAccount.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,7 +310,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>targetType </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>targetType </code>is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>targetType </code>is not an <xref href="System.Security.Principal.IdentityReference"></xref> type.
@@ -320,7 +320,7 @@ items:
   - type: System.SystemException
     commentId: T:System.SystemException
     description: "The source account name is too long.  \n  \n -or-  \n  \n A Win32 error code was returned."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -345,7 +345,7 @@ items:
       description: The uppercase string representation of this <xref href="System.Security.Principal.NTAccount"></xref> object.
   overload: System.Security.Principal.NTAccount.Value*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

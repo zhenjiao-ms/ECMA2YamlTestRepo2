@@ -47,7 +47,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
       description: One of the <xref href="System.Net.NetworkInformation.NetworkInformationAccess"></xref> values.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
       description: One of the <xref href="System.Security.Permissions.PermissionState"></xref> values.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -133,7 +133,7 @@ items:
       description: One of the <xref href="System.Net.NetworkInformation.NetworkInformationAccess"></xref> values.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.Access*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -162,7 +162,7 @@ items:
       description: One of the <xref href="System.Net.NetworkInformation.NetworkInformationAccess"></xref> values.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.AddPermission*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,7 +191,7 @@ items:
       description: A <xref href="System.Net.NetworkInformation.NetworkInformationPermission"></xref> that is identical to the current permission
   overload: System.Net.NetworkInformation.NetworkInformationPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -220,11 +220,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>securityElement</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>securityElement</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>securityElement</code> is not a permission encoding.  \n  \n -or-  \n  \n <code>securityElement</code> is not an encoding of a <xref href=\"System.Net.NetworkInformation.NetworkInformationPermission\"></xref>.  \n  \n -or-  \n  \n <code>securityElement</code> has invalid <xref href=\"System.Net.NetworkInformation.NetworkInformationAccess\"></xref> values."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,13 +253,13 @@ items:
       description: An <xref href="System.Security.IPermission"></xref> to intersect with the current permission. It must be of the same type as the current permission.
     return:
       type: System.Security.IPermission
-      description: A <xref href="System.Net.NetworkInformation.NetworkInformationPermission"></xref> that represents the intersection of the current permission and the specified permission. This new permission is <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty or <code>target</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Net.NetworkInformation.NetworkInformationPermission"></xref> that represents the intersection of the current permission and the specified permission. This new permission is `null` if the intersection is empty or <code>target</code> is `null`.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>target</code> is not a <xref href="System.Net.NetworkInformation.NetworkInformationPermission"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -288,10 +288,10 @@ items:
       description: An <xref href="System.Security.IPermission"></xref> that is to be tested for the subset relationship. This permission must be of the same type as the current permission
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is a subset of the specified permission; otherwise, `false`.'
   overload: System.Net.NetworkInformation.NetworkInformationPermission.IsSubsetOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -317,10 +317,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is unrestricted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is unrestricted; otherwise, `false`.'
   overload: System.Net.NetworkInformation.NetworkInformationPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -347,7 +347,7 @@ items:
       description: A <xref href="System.Security.SecurityElement"></xref> that contains the XML encoding of the current permission.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -379,7 +379,7 @@ items:
       description: A new permission that represents the union of the current permission and the specified permission.
   overload: System.Net.NetworkInformation.NetworkInformationPermission.Union*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

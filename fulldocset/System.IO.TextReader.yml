@@ -47,7 +47,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -71,7 +71,7 @@ items:
     parameters: []
   overload: System.IO.TextReader.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -88,14 +88,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Closes the <xref href="System.IO.TextReader"></xref> and releases any system resources associated with the <xref uid="langword_csharp_TextReader" name="TextReader" href=""></xref>.
+  summary: Closes the <xref href="System.IO.TextReader"></xref> and releases any system resources associated with the `TextReader`.
   remarks: "This implementation of `Close` calls the <xref:System.IO.StringReader.Dispose%28System.Boolean%29?displayProperty=fullName> method and passes it a `true` value.  \n  \n Flushing the text reader will not flush its underlying encoder unless you explicitly call `Close`. Setting the <xref:System.IO.StreamWriter.AutoFlush%2A?displayProperty=fullName> property to `true` means that data will be flushed from the buffer to the stream, but the encoder state will not be flushed. This allows the encoder to keep its state (partial characters) so that it can encode the next block of characters correctly. This scenario affects UTF8 and UTF7 where certain characters can be encoded only after the encoder receives the adjacent character or characters.  \n  \n> [!NOTE]\n>  In derived classes, do not override the Close method. Instead, override the <xref:System.IO.TextReader.Dispose%28System.Boolean%29?displayProperty=fullName> method to add code for releasing resources."
   syntax:
     content: public virtual void Close ();
     parameters: []
   overload: System.IO.TextReader.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,7 +119,7 @@ items:
     parameters: []
   overload: System.IO.TextReader.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -143,10 +143,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.IO.TextReader.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,7 +163,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Provides a <xref uid="langword_csharp_TextReader" name="TextReader" href=""></xref> with no data to read from.
+  summary: Provides a `TextReader` with no data to read from.
   remarks: "Reading from the Null text reader is similar to reading from the end of a stream:  \n  \n-   The <xref:System.IO.TextReader.Read%2A> and <xref:System.IO.TextReader.Peek%2A> methods return -1.  \n  \n-   The <xref:System.IO.TextReader.ReadBlock%2A> method returns zero.  \n  \n-   The <xref:System.IO.TextReader.ReadLine%2A> method returns `null`.  \n  \n-   The <xref:System.IO.TextReader.ReadToEnd%2A> method returns an empty string."
   syntax:
     content: public static readonly System.IO.TextReader Null;
@@ -171,7 +171,7 @@ items:
       type: System.IO.TextReader
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -204,7 +204,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -237,7 +237,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -275,7 +275,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The buffer length minus <code>index</code> is less than <code>count</code>.
@@ -288,7 +288,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,7 +326,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The buffer length minus <code>index</code> is less than <code>count</code>.
@@ -339,7 +339,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -363,7 +363,7 @@ items:
     parameters: []
     return:
       type: System.String
-      description: The next line from the reader, or <xref uid="langword_csharp_null" name="null" href=""></xref> if all characters have been read.
+      description: The next line from the reader, or `null` if all characters have been read.
   overload: System.IO.TextReader.ReadLine*
   exceptions:
   - type: System.IO.IOException
@@ -378,7 +378,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The number of characters in the next line is larger than <xref href="System.Int32.MaxValue"></xref>
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,7 +417,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The number of characters in the next line is larger than <xref href="System.Int32.MaxValue"></xref>
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -434,14 +434,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Creates a thread-safe wrapper around the specified <xref uid="langword_csharp_TextReader" name="TextReader" href=""></xref>.
+  summary: Creates a thread-safe wrapper around the specified `TextReader`.
   remarks: The current method returns a class that wraps around the specified <xref:System.IO.TextReader> instance and restricts access to it by multiple threads. All reads from the returned wrapper will be thread safe.
   syntax:
     content: public static System.IO.TextReader Synchronized (System.IO.TextReader reader);
     parameters:
     - id: reader
       type: System.IO.TextReader
-      description: The <xref uid="langword_csharp_TextReader" name="TextReader" href=""></xref> to synchronize.
+      description: The `TextReader` to synchronize.
     return:
       type: System.IO.TextReader
       description: A thread-safe <xref href="System.IO.TextReader"></xref>.
@@ -449,8 +449,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>reader</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>reader</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -564,8 +564,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char

@@ -23,7 +23,7 @@ items:
   nameWithType: ITypeLib2
   fullName: System.Runtime.InteropServices.ComTypes.ITypeLib2
   type: Interface
-  summary: Provides a managed definition of the <xref uid="langword_csharp_ITypeLib2" name="ITypeLib2" href=""></xref> interface.
+  summary: Provides a managed definition of the `ITypeLib2` interface.
   remarks: "For additional information about the `ITypeLib2` interface, see the MSDN Library.  \n  \n The common language runtime throws an exception when a COM method in native code returns an HRESULT. For more information, see [How to: Map HRESULTs and Exceptions](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: >-
@@ -34,7 +34,7 @@ items:
       public interface ITypeLib2 : System.Runtime.InteropServices.ComTypes.ITypeLib
   implements:
   - System.Runtime.InteropServices.ComTypes.ITypeLib
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,19 +61,19 @@ items:
       description: The name to search for.
     - id: lHashVal
       type: System.Int32
-      description: A hash value to speed up the search, computed by the <xref uid="langword_csharp_LHashValOfNameSys" name="LHashValOfNameSys" href=""></xref> function. If `lHashVal` is 0, a value is computed.
+      description: A hash value to speed up the search, computed by the `LHashValOfNameSys` function. If `lHashVal` is 0, a value is computed.
     - id: ppTInfo
       type: System.Runtime.InteropServices.ComTypes.ITypeInfo[]
       description: When this method returns, contains an array of pointers to the type descriptions that contain the name specified in `szNameBuf`. This parameter is passed uninitialized.
     - id: rgMemId
       type: System.Int32[]
-      description: When this method returns, contains an array of the <xref uid="langword_csharp_MEMBERID" name="MEMBERID" href=""></xref>s of the found items; `rgMemId` [i] is the <xref uid="langword_csharp_MEMBERID" name="MEMBERID" href=""></xref> that indexes into the type description specified by `ppTInfo` [i]. This parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains an array of the `MEMBERID`s of the found items; `rgMemId` [i] is the `MEMBERID` that indexes into the type description specified by `ppTInfo` [i]. This parameter cannot be `null`. This parameter is passed uninitialized.
     - id: pcFound
       type: System.Int16
-      description: "On entry, a value, passed by reference, that indicates how many instances to look for. For example, `pcFound` = 1 can be called to find the first occurrence. The search stops when one instance is found.  \n  \n On exit, indicates the number of instances that were found. If the <xref uid=\"langword_csharp_in\" name=\"in\" href=\"\"></xref> and <xref uid=\"langword_csharp_out\" name=\"out\" href=\"\"></xref> values of `pcFound` are identical, there might be more type descriptions that contain the name."
+      description: "On entry, a value, passed by reference, that indicates how many instances to look for. For example, `pcFound` = 1 can be called to find the first occurrence. The search stops when one instance is found.  \n  \n On exit, indicates the number of instances that were found. If the `in` and `out` values of `pcFound` are identical, there might be more type descriptions that contain the name."
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.FindName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,10 +96,10 @@ items:
     parameters:
     - id: pCustData
       type: System.IntPtr
-      description: A pointer to <xref uid="langword_csharp_CUSTDATA" name="CUSTDATA" href=""></xref>, which holds all custom data items.
+      description: A pointer to `CUSTDATA`, which holds all custom data items.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetAllCustData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: When this method returns, contains an object that specifies where to put the retrieved data. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetCustData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
       description: When this method returns, contains a string that specifies the fully qualified name of the Help file. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetDocumentation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -193,16 +193,16 @@ items:
       description: An index of the type description whose documentation is to be returned; if `index` is -1, the documentation for the library is returned.
     - id: pbstrHelpString
       type: System.String
-      description: When this method returns, contains a BSTR that specifies the name of the specified item. If the caller does not need the item name, `pbstrHelpString` can be <xref uid="langword_csharp_null" name="null" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains a BSTR that specifies the name of the specified item. If the caller does not need the item name, `pbstrHelpString` can be `null`. This parameter is passed uninitialized.
     - id: pdwHelpStringContext
       type: System.Int32
-      description: When this method returns, contains the Help localization context. If the caller does not need the Help context, `pdwHelpStringContext` can be <xref uid="langword_csharp_null" name="null" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains the Help localization context. If the caller does not need the Help context, `pdwHelpStringContext` can be `null`. This parameter is passed uninitialized.
     - id: pbstrHelpStringDll
       type: System.String
-      description: When this method returns, contains a BSTR that specifies the fully qualified name of the file containing the DLL used for Help file. If the caller does not need the file name, `pbstrHelpStringDll` can be <xref uid="langword_csharp_null" name="null" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains a BSTR that specifies the fully qualified name of the file containing the DLL used for Help file. If the caller does not need the file name, `pbstrHelpStringDll` can be `null`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetDocumentation2*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -229,7 +229,7 @@ items:
       description: When this method returns, contains a structure that contains the library's attributes. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetLibAttr*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,13 +253,13 @@ items:
     parameters:
     - id: pcUniqueNames
       type: System.IntPtr
-      description: A pointer to a count of unique names. If the caller does not need this information, set to <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A pointer to a count of unique names. If the caller does not need this information, set to `null`.
     - id: pcchUniqueNames
       type: System.Int32
       description: When this method returns, contains a pointer to a change in the count of unique names. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetLibStatistics*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -283,10 +283,10 @@ items:
     parameters:
     - id: ppTComp
       type: System.Runtime.InteropServices.ComTypes.ITypeComp
-      description: When this method returns, contains an <xref uid="langword_csharp_ITypeComp" name="ITypeComp" href=""></xref> instance for this <xref uid="langword_csharp_ITypeLib" name="ITypeLib" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains an `ITypeComp` instance for this `ITypeLib`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetTypeComp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,13 +310,13 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: An index of the <xref uid="langword_csharp_ITypeInfo" name="ITypeInfo" href=""></xref> interface to return.
+      description: An index of the `ITypeInfo` interface to return.
     - id: ppTI
       type: System.Runtime.InteropServices.ComTypes.ITypeInfo
-      description: When this method returns, contains an <xref uid="langword_csharp_ITypeInfo" name="ITypeInfo" href=""></xref> describing the type referenced by `index`. This parameter is passed uninitialized.
+      description: When this method returns, contains an `ITypeInfo` describing the type referenced by `index`. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetTypeInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,7 +343,7 @@ items:
       description: The number of type descriptions in the type library.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetTypeInfoCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -367,13 +367,13 @@ items:
     parameters:
     - id: guid
       type: System.Guid
-      description: The <xref href="System.Guid"></xref>, passed by reference, that represents the IID of the <xref uid="langword_csharp_CLSID" name="CLSID" href=""></xref> interface of the class whose type info is requested.
+      description: The <xref href="System.Guid"></xref>, passed by reference, that represents the IID of the `CLSID` interface of the class whose type info is requested.
     - id: ppTInfo
       type: System.Runtime.InteropServices.ComTypes.ITypeInfo
-      description: When this method returns, contains the requested <xref uid="langword_csharp_ITypeInfo" name="ITypeInfo" href=""></xref> interface. This parameter is passed uninitialized.
+      description: When this method returns, contains the requested `ITypeInfo` interface. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetTypeInfoOfGuid*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,10 +400,10 @@ items:
       description: The index of the type description within the type library.
     - id: pTKind
       type: System.Runtime.InteropServices.ComTypes.TYPEKIND
-      description: When this method returns, contains a reference to the <xref uid="langword_csharp_TYPEKIND" name="TYPEKIND" href=""></xref> enumeration for the type description. This parameter is passed uninitialized.
+      description: When this method returns, contains a reference to the `TYPEKIND` enumeration for the type description. This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.GetTypeInfoType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,10 +433,10 @@ items:
       description: The hash value of `szNameBuf`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>szNameBuf</code> was found in the type library; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>szNameBuf</code> was found in the type library; otherwise, `false`.'
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.IsName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,10 +460,10 @@ items:
     parameters:
     - id: pTLibAttr
       type: System.IntPtr
-      description: The <xref uid="langword_csharp_TLIBATTR" name="TLIBATTR" href=""></xref> structure to release.
+      description: The `TLIBATTR` structure to release.
   overload: System.Runtime.InteropServices.ComTypes.ITypeLib2.ReleaseTLibAttr*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -490,8 +490,8 @@ references:
 - uid: System.Runtime.InteropServices.ComTypes.ITypeInfo[]
   parent: System.Runtime.InteropServices.ComTypes
   isExternal: false
-  name: ITypeInfo
-  nameWithType: ITypeInfo
+  name: ITypeInfo[]
+  nameWithType: ITypeInfo[]
   fullName: System.Runtime.InteropServices.ComTypes.ITypeInfo[]
   spec.csharp:
   - uid: System.Runtime.InteropServices.ComTypes.ITypeInfo
@@ -504,8 +504,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32

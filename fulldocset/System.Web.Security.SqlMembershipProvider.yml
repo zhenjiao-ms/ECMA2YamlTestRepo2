@@ -49,7 +49,7 @@ items:
   - System.Web.Security.MembershipProvider
   implements: []
   inheritedMembers: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -73,7 +73,7 @@ items:
     parameters: []
   overload: System.Web.Security.SqlMembershipProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -103,11 +103,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: An attempt was made to set the ApplicationName property to an empty string or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: An attempt was made to set the ApplicationName property to an empty string or `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An attempt was made to set the ApplicationName property to a string that is longer than 256 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,15 +142,15 @@ items:
       description: The new password for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the password was updated successfully. <xref uid="langword_csharp_false" name="false" href=""></xref> if the supplied old password is invalid, the user is locked out, or the user does not exist in the database.
+      description: '`true` if the password was updated successfully. `false` if the supplied old password is invalid, the user is locked out, or the user does not exist in the database.'
   overload: System.Web.Security.SqlMembershipProvider.ChangePassword*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>oldPassword</code> is an empty string or longer than 128 characters.  \n  \n \\- or -  \n  \n <code>newPassword</code> is an empty string or longer than 128 characters.  \n  \n \\- or -  \n  \n The encoded version of <code>newPassword</code> is greater than 128 characters.  \n  \n \\- or -  \n  \n The change-password action was canceled by a subscriber to the <xref href=\"System.Web.Security.Membership.ValidatingPassword\"></xref> event, and the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation*> property was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The length of <code>newPassword</code> is less than the minimum length specified in the <xref:System.Web.Security.SqlMembershipProvider.MinRequiredPasswordLength*> property.  \n  \n \\- or -  \n  \n The number of non-alphabetic characters in <code>newPassword</code> is less than the required number of non-alphabetic characters specified in the <xref:System.Web.Security.SqlMembershipProvider.MinRequiredNonAlphanumericCharacters*> property.  \n  \n \\- or -  \n  \n <code>newPassword</code> does not pass the regular expression defined in the <xref:System.Web.Security.SqlMembershipProvider.PasswordStrengthRegularExpression*> property."
+    description: "<code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>oldPassword</code> is an empty string or longer than 128 characters.  \n  \n \\- or -  \n  \n <code>newPassword</code> is an empty string or longer than 128 characters.  \n  \n \\- or -  \n  \n The encoded version of <code>newPassword</code> is greater than 128 characters.  \n  \n \\- or -  \n  \n The change-password action was canceled by a subscriber to the <xref href=\"System.Web.Security.Membership.ValidatingPassword\"></xref> event, and the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation*> property was `null`.  \n  \n \\- or -  \n  \n The length of <code>newPassword</code> is less than the minimum length specified in the <xref:System.Web.Security.SqlMembershipProvider.MinRequiredPasswordLength*> property.  \n  \n \\- or -  \n  \n The number of non-alphabetic characters in <code>newPassword</code> is less than the required number of non-alphabetic characters specified in the <xref:System.Web.Security.SqlMembershipProvider.MinRequiredNonAlphanumericCharacters*> property.  \n  \n \\- or -  \n  \n <code>newPassword</code> does not pass the regular expression defined in the <xref:System.Web.Security.SqlMembershipProvider.PasswordStrengthRegularExpression*> property."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>oldPassword</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPassword</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>username</code> is `null`.  \n  \n \\- or -  \n  \n <code>oldPassword</code> is `null`.  \n  \n \\- or -  \n  \n <code>newPassword</code> is `null`."
   - type: System.Web.Security.MembershipPasswordException
     commentId: T:System.Web.Security.MembershipPasswordException
     description: <code>username</code> was not found in the database.
@@ -160,7 +160,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: An unhandled exception occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,7 +198,7 @@ items:
       description: The new password answer for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the update was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. A value of <xref uid="langword_csharp_false" name="false" href=""></xref> is also returned if the <code>password</code> is incorrect, the user is locked out, or the user does not exist in the database.
+      description: '`true` if the update was successful; otherwise, `false`. A value of `false` is also returned if the <code>password</code> is incorrect, the user is locked out, or the user does not exist in the database.'
   overload: System.Web.Security.SqlMembershipProvider.ChangePasswordQuestionAndAnswer*
   exceptions:
   - type: System.ArgumentException
@@ -206,11 +206,11 @@ items:
     description: "<code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>password</code> is an empty string or is longer than 128 characters.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is an empty string or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> is an empty string or is longer than 128 characters.  \n  \n \\- or -  \n  \n The encoded version of <code>newPasswordAnswer</code> is longer than 128 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>password</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>username</code> is `null`.  \n  \n \\- or -  \n  \n <code>password</code> is `null`.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is `null` and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is `true`.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> is `null` and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is `true`."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An error occurred when changing the password question and answer in the database.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,10 +260,10 @@ items:
       description: One of the <xref:System.Web.Security.MembershipCreateStatus> values, indicating whether the user was created successfully.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns `null`.
   overload: System.Web.Security.SqlMembershipProvider.CreateUser*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -292,10 +292,10 @@ items:
       description: The name of the user to delete.
     - id: deleteAllRelatedData
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to delete data related to the user from the database; <xref uid="langword_csharp_false" name="false" href=""></xref> to leave data related to the user in the database.
+      description: '`true` to delete data related to the user from the database; `false` to leave data related to the user in the database.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user was deleted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. A value of <xref uid="langword_csharp_false" name="false" href=""></xref> is also returned if the user does not exist in the database.
+      description: '`true` if the user was deleted; otherwise, `false`. A value of `false` is also returned if the user does not exist in the database.'
   overload: System.Web.Security.SqlMembershipProvider.DeleteUser*
   exceptions:
   - type: System.ArgumentException
@@ -303,8 +303,8 @@ items:
     description: <code>username</code> is an empty string (""), contains a comma, or is longer than 256 characters.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -329,10 +329,10 @@ items:
     content: public override bool EnablePasswordReset { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership provider supports password reset; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the membership provider supports password reset; otherwise, `false`. The default is `true`.'
   overload: System.Web.Security.SqlMembershipProvider.EnablePasswordReset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -357,10 +357,10 @@ items:
     content: public override bool EnablePasswordRetrieval { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership provider supports password retrieval; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the membership provider supports password retrieval; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.SqlMembershipProvider.EnablePasswordRetrieval*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -404,7 +404,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>emailToMatch</code> is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than one.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> plus <code>pageSize</code> minus one exceeds <xref href=\"System.Int32.MaxValue\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -450,8 +450,8 @@ items:
     description: "<code>usernameToMatch</code> is an empty string (\"\") or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> plus <code>pageSize</code> minus one exceeds <xref href=\"System.Int32.MaxValue\"></xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>usernameToMatch</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -480,7 +480,7 @@ items:
       description: A random password that is at least 14 characters long.
   overload: System.Web.Security.SqlMembershipProvider.GeneratePassword*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,7 +521,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than one.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> plus <code>pageSize</code> minus one exceeds <xref href=\"System.Int32.MaxValue\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -550,7 +550,7 @@ items:
       description: The number of users currently accessing the application.
   overload: System.Web.Security.SqlMembershipProvider.GetNumberOfUsersOnline*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,17 +590,17 @@ items:
     description: "<code>passwordAnswer</code> is invalid.  \n  \n \\- or -  \n  \n The membership user identified by <code>username</code> is locked out."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <xref:System.Web.Security.SqlMembershipProvider.EnablePasswordRetrieval*> is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: <xref:System.Web.Security.SqlMembershipProvider.EnablePasswordRetrieval*> is set to `false`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: "<code>username</code> is not found in the membership database.  \n  \n \\- or -  \n  \n An error occurred while retrieving the password from the database."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One of the parameter values exceeds the maximum allowed length.  \n  \n \\- or -  \n  \n <code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is an empty string and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is greater than 128 characters.  \n  \n \\- or -  \n  \n The encoded version of <code>passwordAnswer</code> is greater than 128 characters."
+    description: "One of the parameter values exceeds the maximum allowed length.  \n  \n \\- or -  \n  \n <code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is an empty string and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is `true`.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is greater than 128 characters.  \n  \n \\- or -  \n  \n The encoded version of <code>passwordAnswer</code> is greater than 128 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
-  platform:
+    description: "<code>username</code> is `null`.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is `null` and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is `true`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -627,19 +627,19 @@ items:
       description: The unique identifier for the user.
     - id: userIsOnline
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to update the last-activity date/time stamp for the specified user; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to update the last-activity date/time stamp for the specified user; otherwise, `false`.'
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object representing the user associated with the specified unique identifier. If no user is found in the database for the specified <code>providerUserKey</code> value, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: A <xref:System.Web.Security.MembershipUser> object representing the user associated with the specified unique identifier. If no user is found in the database for the specified <code>providerUserKey</code> value, `null` is returned.
   overload: System.Web.Security.SqlMembershipProvider.GetUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>providerUserKey</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>providerUserKey</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>providerUserKey</code> is not of type <xref href="System.Guid"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -668,10 +668,10 @@ items:
       description: The name of the user to get information for.
     - id: userIsOnline
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to update the last activity date/time stamp for the user; <xref uid="langword_csharp_false" name="false" href=""></xref> to return user information without updating the last activity date/time stamp for the user.
+      description: '`true` to update the last activity date/time stamp for the user; `false` to return user information without updating the last activity date/time stamp for the user.'
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object representing the specified user. If no user is found in the database for the specified <code>username</code> value, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: A <xref:System.Web.Security.MembershipUser> object representing the specified user. If no user is found in the database for the specified <code>username</code> value, `null` is returned.
   overload: System.Web.Security.SqlMembershipProvider.GetUser*
   exceptions:
   - type: System.ArgumentException
@@ -679,8 +679,8 @@ items:
     description: "<code>username</code> exceeds 256 characters.  \n  \n \\- or -  \n  \n <code>username</code> contains a comma."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -709,7 +709,7 @@ items:
       description: The e-mail address to search for.
     return:
       type: System.String
-      description: The user name associated with the specified e-mail address. If no match is found, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The user name associated with the specified e-mail address. If no match is found, this method returns `null`.
   overload: System.Web.Security.SqlMembershipProvider.GetUserNameByEmail*
   exceptions:
   - type: System.ArgumentException
@@ -717,8 +717,8 @@ items:
     description: <code>email</code> exceeds 256 characters.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: More than one user with the same e-mail address exists in the database and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
-  platform:
+    description: More than one user with the same e-mail address exists in the database and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is `true`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -750,17 +750,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>config</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>config</code> is `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "The <xref uid=\"langword_csharp_enablePasswordRetrieval\" name=\"enablePasswordRetrieval\" href=\"\"></xref>, <xref uid=\"langword_csharp_enablePasswordReset\" name=\"enablePasswordReset\" href=\"\"></xref>, <xref uid=\"langword_csharp_requiresQuestionAndAnswer\" name=\"requiresQuestionAndAnswer\" href=\"\"></xref>, or <xref uid=\"langword_csharp_requiresUniqueEmail\" name=\"requiresUniqueEmail\" href=\"\"></xref> attribute is set to a value other than a <xref uid=\"langword_csharp_Boolean\" name=\"Boolean\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_maxInvalidPasswordAttempts\" name=\"maxInvalidPasswordAttempts\" href=\"\"></xref> or the <xref uid=\"langword_csharp_passwordAttemptWindow\" name=\"passwordAttemptWindow\" href=\"\"></xref> attribute is set to a value other than a positive integer.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_minRequiredPasswordLength\" name=\"minRequiredPasswordLength\" href=\"\"></xref> attribute is set to a value other than a positive integer, or the value is greater than 128.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_minRequiredNonalphanumericCharacters\" name=\"minRequiredNonalphanumericCharacters\" href=\"\"></xref> attribute is set to a value other than zero or a positive integer, or the value is greater than 128.  \n  \n \\- or -  \n  \n The value for the <xref uid=\"langword_csharp_passwordStrengthRegularExpression\" name=\"passwordStrengthRegularExpression\" href=\"\"></xref> attribute is not a valid regular expression.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_applicationName\" name=\"applicationName\" href=\"\"></xref> attribute is set to a value that is greater than 256 characters.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_passwordFormat\" name=\"passwordFormat\" href=\"\"></xref> attribute specified in the application configuration file is an invalid <xref:System.Web.Security.MembershipPasswordFormat> enumeration.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_passwordFormat\" name=\"passwordFormat\" href=\"\"></xref> attribute is set to <xref:System.Web.Security.MembershipPasswordFormat> and the <xref uid=\"langword_csharp_enablePasswordRetrieval\" name=\"enablePasswordRetrieval\" href=\"\"></xref> attribute is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> in the application configuration.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_passwordFormat\" name=\"passwordFormat\" href=\"\"></xref> attribute is set to <xref uid=\"langword_csharp_Encrypted\" name=\"Encrypted\" href=\"\"></xref> and the  configuration element specifies <xref uid=\"langword_csharp_AutoGenerate\" name=\"AutoGenerate\" href=\"\"></xref> for the <xref uid=\"langword_csharp_decryptionKey\" name=\"decryptionKey\" href=\"\"></xref> attribute.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionStringName\" name=\"connectionStringName\" href=\"\"></xref> attribute is empty or does not exist in the application configuration.  \n  \n \\- or -  \n  \n The value of the connection string for the <xref uid=\"langword_csharp_connectionStringName\" name=\"connectionStringName\" href=\"\"></xref> attribute value is empty, or the specified <xref uid=\"langword_csharp_connectionStringName\" name=\"connectionStringName\" href=\"\"></xref> does not exist in the application configuration file.  \n  \n \\- or -  \n  \n The value for the <xref uid=\"langword_csharp_commandTimeout\" name=\"commandTimeout\" href=\"\"></xref> attribute is set to a value other than zero or a positive integer.  \n  \n \\- or -  \n  \n The application configuration file for this <xref href=\"System.Web.Security.SqlMembershipProvider\"></xref> instance contains an unrecognized attribute."
+    description: "The `enablePasswordRetrieval`, `enablePasswordReset`, `requiresQuestionAndAnswer`, or `requiresUniqueEmail` attribute is set to a value other than a `Boolean`.  \n  \n \\- or -  \n  \n The `maxInvalidPasswordAttempts` or the `passwordAttemptWindow` attribute is set to a value other than a positive integer.  \n  \n \\- or -  \n  \n The `minRequiredPasswordLength` attribute is set to a value other than a positive integer, or the value is greater than 128.  \n  \n \\- or -  \n  \n The `minRequiredNonalphanumericCharacters` attribute is set to a value other than zero or a positive integer, or the value is greater than 128.  \n  \n \\- or -  \n  \n The value for the `passwordStrengthRegularExpression` attribute is not a valid regular expression.  \n  \n \\- or -  \n  \n The `applicationName` attribute is set to a value that is greater than 256 characters.  \n  \n \\- or -  \n  \n The `passwordFormat` attribute specified in the application configuration file is an invalid <xref:System.Web.Security.MembershipPasswordFormat> enumeration.  \n  \n \\- or -  \n  \n The `passwordFormat` attribute is set to <xref:System.Web.Security.MembershipPasswordFormat> and the `enablePasswordRetrieval` attribute is set to `true` in the application configuration.  \n  \n \\- or -  \n  \n The `passwordFormat` attribute is set to `Encrypted` and the  configuration element specifies `AutoGenerate` for the `decryptionKey` attribute.  \n  \n \\- or -  \n  \n The `connectionStringName` attribute is empty or does not exist in the application configuration.  \n  \n \\- or -  \n  \n The value of the connection string for the `connectionStringName` attribute value is empty, or the specified `connectionStringName` does not exist in the application configuration file.  \n  \n \\- or -  \n  \n The value for the `commandTimeout` attribute is set to a value other than zero or a positive integer.  \n  \n \\- or -  \n  \n The application configuration file for this <xref href=\"System.Web.Security.SqlMembershipProvider\"></xref> instance contains an unrecognized attribute."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: The current trust level is less than <xref uid="langword_csharp_Low" name="Low" href=""></xref>.
+    description: The current trust level is less than `Low`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The provider has already been initialized prior to the current call to the Initialize method.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,7 +788,7 @@ items:
       description: The number of invalid password or password-answer attempts allowed before the membership user is locked out.
   overload: System.Web.Security.SqlMembershipProvider.MaxInvalidPasswordAttempts*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -816,7 +816,7 @@ items:
       description: The minimum number of special characters that must be present in a valid password.
   overload: System.Web.Security.SqlMembershipProvider.MinRequiredNonAlphanumericCharacters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -844,7 +844,7 @@ items:
       description: The minimum length required for a password.
   overload: System.Web.Security.SqlMembershipProvider.MinRequiredPasswordLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -872,7 +872,7 @@ items:
       description: The time window, in minutes, during which consecutive failed attempts to provide a valid password or password answers are tracked. The default is 10 minutes. If the interval between the current failed attempt and the last failed attempt is greater than the PasswordAttemptWindow property setting, each failed attempt is treated as if it were the first failed attempt.
   overload: System.Web.Security.SqlMembershipProvider.PasswordAttemptWindow*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -900,7 +900,7 @@ items:
       description: One of the <xref:System.Web.Security.MembershipPasswordFormat> values, indicating the format for storing passwords in the SQL Server database.
   overload: System.Web.Security.SqlMembershipProvider.PasswordFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -928,7 +928,7 @@ items:
       description: A regular expression used to evaluate a password.
   overload: System.Web.Security.SqlMembershipProvider.PasswordStrengthRegularExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -953,10 +953,10 @@ items:
     content: public override bool RequiresQuestionAndAnswer { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a password answer is required for password reset and retrieval; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if a password answer is required for password reset and retrieval; otherwise, `false`. The default is `true`.'
   overload: System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -981,10 +981,10 @@ items:
     content: public override bool RequiresUniqueEmail { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership provider requires a unique e-mail address; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the membership provider requires a unique e-mail address; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1024,20 +1024,20 @@ items:
     description: "<code>passwordAnswer</code> is invalid.  \n  \n \\- or -  \n  \n The user account is currently locked."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <xref:System.Web.Security.SqlMembershipProvider.EnablePasswordReset*> is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: <xref:System.Web.Security.SqlMembershipProvider.EnablePasswordReset*> is set to `false`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "<code>username</code> is not found in the membership database.  \n  \n \\- or -  \n  \n The change password action was canceled by a subscriber to the <xref href=\"System.Web.Security.Membership.ValidatingPassword\"></xref> event and the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation*> property was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An error occurred while retrieving the password from the database."
+    description: "<code>username</code> is not found in the membership database.  \n  \n \\- or -  \n  \n The change password action was canceled by a subscriber to the <xref href=\"System.Web.Security.Membership.ValidatingPassword\"></xref> event and the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation*> property was `null`.  \n  \n \\- or -  \n  \n An error occurred while retrieving the password from the database."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is an empty string, or is longer than 128 characters, and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is longer than 128 characters after encoding."
+    description: "<code>username</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is an empty string, or is longer than 128 characters, and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is `true`.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is longer than 128 characters after encoding."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>username</code> is `null`.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> is `null` and <xref:System.Web.Security.SqlMembershipProvider.RequiresQuestionAndAnswer*> is `true`."
   - type: System.Exception
     commentId: T:System.Exception
     description: An unhandled exception occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1064,7 +1064,7 @@ items:
       description: The name of the membership user to clear the locked-out status for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership user was successfully unlocked; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. A value of <xref uid="langword_csharp_false" name="false" href=""></xref> is also returned if the user does not exist in the database.
+      description: '`true` if the membership user was successfully unlocked; otherwise, `false`. A value of `false` is also returned if the user does not exist in the database.'
   overload: System.Web.Security.SqlMembershipProvider.UnlockUser*
   exceptions:
   - type: System.ArgumentException
@@ -1072,8 +1072,8 @@ items:
     description: <code>username</code> is an empty string, is longer than 256 characters, or contains a comma.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1104,14 +1104,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>user</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.UserName*> property of <code>user</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>user</code> is `null`.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.UserName*> property of <code>user</code> is `null`.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> is `null` and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is set to `true`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Web.Security.MembershipUser.UserName*> property of <code>user</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> is longer than 256 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> is an empty string and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "The <xref:System.Web.Security.MembershipUser.UserName*> property of <code>user</code> is an empty string (\"\"), contains a comma, or is longer than 256 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> is longer than 256 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> is an empty string and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is set to `true`."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: "The <xref:System.Web.Security.MembershipUser.UserName*> property of <code>user</code> was not found in the database.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property of <code>user</code> was equal to an existing e-mail address in the database and <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail*> is set to true.  \n  \n \\- or -  \n  \n The user update failed."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1143,10 +1143,10 @@ items:
       description: The password for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified username and password are valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. A value of <xref uid="langword_csharp_false" name="false" href=""></xref> is also returned if the user does not exist in the database.
+      description: '`true` if the specified username and password are valid; otherwise, `false`. A value of `false` is also returned if the user does not exist in the database.'
   overload: System.Web.Security.SqlMembershipProvider.ValidateUser*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

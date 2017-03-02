@@ -44,7 +44,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>flags</code> is not a valid combination of the <xref href="System.Security.Permissions.DataProtectionPermissionFlags"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,7 +108,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>state</code> is not a valid <xref href="System.Security.Permissions.PermissionState"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -137,7 +137,7 @@ items:
       description: A copy of the current permission.
   overload: System.Security.Permissions.DataProtectionPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -168,7 +168,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The specified value is not a valid combination of the <xref href="System.Security.Permissions.DataProtectionPermissionFlags"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,11 +199,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>securityElement</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>securityElement</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>securityElement</code> is not a valid permission element.  \n  \n -or-  \n  \n The version number of <code>securityElement</code> is not supported."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,13 +232,13 @@ items:
       description: A permission to intersect with the current permission. It must be the same type as the current permission.
     return:
       type: System.Security.IPermission
-      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty.
+      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission is `null` if the intersection is empty.
   overload: System.Security.Permissions.DataProtectionPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> and does not specify a permission of the same type as the current permission.
-  platform:
+    description: <code>target</code> is not `null` and does not specify a permission of the same type as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -267,13 +267,13 @@ items:
       description: A permission to test for the subset relationship. This permission must be the same type as the current permission.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is a subset of the specified permission; otherwise, `false`.'
   overload: System.Security.Permissions.DataProtectionPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> and does not specify a permission of the same type as the current permission.
-  platform:
+    description: <code>target</code> is not `null` and does not specify a permission of the same type as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,10 +299,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is unrestricted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is unrestricted; otherwise, `false`.'
   overload: System.Security.Permissions.DataProtectionPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,7 +331,7 @@ items:
       description: An XML encoding of the permission, including state information.
   overload: System.Security.Permissions.DataProtectionPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -365,8 +365,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> and does not specify a permission of the same type as the current permission.
-  platform:
+    description: <code>target</code> is not `null` and does not specify a permission of the same type as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

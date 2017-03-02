@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.#ctor
   id: '#ctor'
@@ -53,7 +53,7 @@ items:
     parameters: []
   overload: System.Xaml.XamlReaderSettings.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.#ctor(System.Xaml.XamlReaderSettings)
   id: '#ctor(System.Xaml.XamlReaderSettings)'
@@ -77,7 +77,7 @@ items:
       description: An existing <xref href="System.Xaml.XamlReaderSettings"></xref> object.
   overload: System.Xaml.XamlReaderSettings.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.AllowProtectedMembersOnRoot
   id: AllowProtectedMembersOnRoot
@@ -97,10 +97,10 @@ items:
     content: public bool AllowProtectedMembersOnRoot { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the root object may include members that have a protected code access model; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the root object may include members that have a protected code access model; otherwise, `false`.'
   overload: System.Xaml.XamlReaderSettings.AllowProtectedMembersOnRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.BaseUri
   id: BaseUri
@@ -120,10 +120,10 @@ items:
     content: public Uri BaseUri { get; set; }
     return:
       type: System.Uri
-      description: The base URI to use. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The base URI to use. The default is `null`.
   overload: System.Xaml.XamlReaderSettings.BaseUri*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.IgnoreUidsOnPropertyElements
   id: IgnoreUidsOnPropertyElements
@@ -137,16 +137,16 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Gets or sets a value that specifies whether the XAML reader should ignore values for <xref uid="langword_csharp_x:Uid" name="x:Uid" href=""></xref> attributes that exist on property elements.
+  summary: Gets or sets a value that specifies whether the XAML reader should ignore values for `x:Uid` attributes that exist on property elements.
   remarks: During localization, the `x:Uid` attribute is used to identify elements in markup so that localization tools can process XAML elements as discrete entities for localization. Attributes do not usually appear on property elements in XAML. However, `x:Uid` is an exception because some usages put localized text in a property element as content, instead of as a separate object that can receive its own `x:Uid`. Setting an IgnoreUidsOnPropertyElements value to `true` enables a stricter mode. The default value of `false` continues to process property element `x:Uid` attributes.
   syntax:
     content: public bool IgnoreUidsOnPropertyElements { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the reader should ignore values for <xref uid="langword_csharp_x:Uid" name="x:Uid" href=""></xref> attributes on property elements. <xref uid="langword_csharp_false" name="false" href=""></xref> if the reader should process <xref uid="langword_csharp_x:Uid" name="x:Uid" href=""></xref> attributes on property elements. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the reader should ignore values for `x:Uid` attributes on property elements. `false` if the reader should process `x:Uid` attributes on property elements. The default is `false`.'
   overload: System.Xaml.XamlReaderSettings.IgnoreUidsOnPropertyElements*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.LocalAssembly
   id: LocalAssembly
@@ -168,7 +168,7 @@ items:
       description: A CLR reflection <xref href="System.Reflection.Assembly"></xref> object.
   overload: System.Xaml.XamlReaderSettings.LocalAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.ProvideLineInfo
   id: ProvideLineInfo
@@ -188,10 +188,10 @@ items:
     content: public bool ProvideLineInfo { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the reader can provide line number and position information; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the reader can provide line number and position information; otherwise, `false`.'
   overload: System.Xaml.XamlReaderSettings.ProvideLineInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlReaderSettings.ValuesMustBeString
   id: ValuesMustBeString
@@ -205,16 +205,16 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Gets or sets a value that specifies whether the reader enforces that all <xref uid="langword_csharp_Value" name="Value" href=""></xref> nodes are processed as a <xref uid="langword_csharp_String" name="String" href=""></xref> type.
+  summary: Gets or sets a value that specifies whether the reader enforces that all `Value` nodes are processed as a `String` type.
   remarks: In addition to <xref:System.String>, a possible `Value` content under some XAML implementations is <xref:System.Windows.Markup.XData>.
   syntax:
     content: public bool ValuesMustBeString { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the reader enforces that only <xref uid="langword_csharp_String" name="String" href=""></xref> is contained in <xref uid="langword_csharp_Value" name="Value" href=""></xref> nodes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the reader enforces that only `String` is contained in `Value` nodes; otherwise, `false`. The default is `false`.'
   overload: System.Xaml.XamlReaderSettings.ValuesMustBeString*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object

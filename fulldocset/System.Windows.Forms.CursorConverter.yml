@@ -64,7 +64,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,7 +87,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.CursorConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,16 +110,16 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to extract additional information about the environment this converter is being invoked from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to extract additional information about the environment this converter is being invoked from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     - id: sourceType
       type: System.Type
       description: The type you wish to convert from.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this object can perform the conversion.
+      description: '`true` if this object can perform the conversion.'
   overload: System.Windows.Forms.CursorConverter.CanConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -149,10 +149,10 @@ items:
       description: A <xref href="System.Type"></xref> that represents the type you wish to convert to.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this converter can perform the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this converter can perform the conversion; otherwise, `false`.'
   overload: System.Windows.Forms.CursorConverter.CanConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,7 +187,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the converted value.
   overload: System.Windows.Forms.CursorConverter.ConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,7 +213,7 @@ items:
       description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: A <xref href="System.Globalization.CultureInfo"></xref>. If <xref uid="langword_csharp_null" name="null" href=""></xref> is passed, the current culture is assumed.
+      description: A <xref href="System.Globalization.CultureInfo"></xref>. If `null` is passed, the current culture is assumed.
     - id: value
       type: System.Object
       description: The <xref href="System.Object"></xref> to convert.
@@ -225,7 +225,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the converted value.
   overload: System.Windows.Forms.CursorConverter.ConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,19 +242,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Retrieves a collection containing a set of standard values for the data type this validator is designed for. This will return <xref uid="langword_csharp_null" name="null" href=""></xref> if the data type does not support a standard set of values.
+  summary: Retrieves a collection containing a set of standard values for the data type this validator is designed for. This will return `null` if the data type does not support a standard set of values.
   syntax:
     content: public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to extract additional information about the environment this converter is being invoked from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to extract additional information about the environment this converter is being invoked from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     return:
       type: System.ComponentModel.TypeConverter.StandardValuesCollection
-      description: A collection containing a standard set of valid values, or <xref uid="langword_csharp_null" name="null" href=""></xref>. The default implementation always returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A collection containing a standard set of valid values, or `null`. The default implementation always returns `null`.
   overload: System.Windows.Forms.CursorConverter.GetStandardValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,10 +280,10 @@ items:
       description: A type descriptor through which additional context may be provided.
     return:
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref uid="langword_csharp_GetStandardValues" name="GetStandardValues" href=""></xref> should be called to find a common set of values the object supports.
+      description: Returns `true` if `GetStandardValues` should be called to find a common set of values the object supports.
   overload: System.Windows.Forms.CursorConverter.GetStandardValuesSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

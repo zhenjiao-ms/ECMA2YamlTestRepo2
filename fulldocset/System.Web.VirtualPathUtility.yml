@@ -39,7 +39,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -69,7 +69,7 @@ items:
       description: The modified virtual path.
   overload: System.Web.VirtualPathUtility.AppendTrailingSlash*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,8 +107,8 @@ items:
     description: "<code>relativePath</code> is a physical path.  \n  \n -or-  \n  \n <code>relativePath</code> includes one or more colons."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>relativePath</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string.  \n  \n -or-  \n  \n <code>basePath</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string."
-  platform:
+    description: "<code>relativePath</code> is `null` or an empty string.  \n  \n -or-  \n  \n <code>basePath</code> is `null` or an empty string."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,8 +142,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> is not rooted.  \n  \n \\- or -  \n  \n <code>virtualPath</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string."
-  platform:
+    description: "<code>virtualPath</code> is not rooted.  \n  \n \\- or -  \n  \n <code>virtualPath</code> is `null` or an empty string."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,13 +172,13 @@ items:
       description: The virtual path.
     return:
       type: System.String
-      description: The file name extension string literal, including the period (.), <xref uid="langword_csharp_null" name="null" href=""></xref>, or an empty string ("").
+      description: The file name extension string literal, including the period (.), `null`, or an empty string ("").
   overload: System.Web.VirtualPathUtility.GetExtension*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>virtualPath</code> contains one or more characters that are not valid, as defined in <xref href="System.IO.Path.InvalidPathChars"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,7 +213,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>virtualPath</code> contains one or more characters that are not valid, as defined in <xref href="System.IO.Path.InvalidPathChars"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,13 +242,13 @@ items:
       description: The virtual path to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>virtualPath</code> is an absolute path and is not <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string (""); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>virtualPath</code> is an absolute path and is not `null` or an empty string (""); otherwise, `false`.'
   overload: System.Web.VirtualPathUtility.IsAbsolute*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>virtualPath</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>virtualPath</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,13 +277,13 @@ items:
       description: The virtual path to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>virtualPath</code> is relative to the application; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>virtualPath</code> is relative to the application; otherwise, `false`.'
   overload: System.Web.VirtualPathUtility.IsAppRelative*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>virtualPath</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>virtualPath</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,7 +319,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>fromPath</code> is not rooted.  \n  \n \\- or -  \n  \n <code>toPath</code> is not rooted."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,10 +346,10 @@ items:
       description: The virtual path to remove any trailing slash mark from.
     return:
       type: System.String
-      description: A virtual path without a trailing slash mark, if the virtual path is not already the root directory ("/"); otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A virtual path without a trailing slash mark, if the virtual path is not already the root directory ("/"); otherwise, `null`.
   overload: System.Web.VirtualPathUtility.RemoveTrailingSlash*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,7 +385,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: A leading double period (..) is used to exit above the top directory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -424,7 +424,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: A leading double period (..) is used in the application path to exit above the top directory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -458,8 +458,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>virtualPath</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>virtualPath</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
       description: The application-relative path representation of <code>virtualPath</code>.
   overload: System.Web.VirtualPathUtility.ToAppRelative*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

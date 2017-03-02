@@ -100,7 +100,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,7 +127,7 @@ items:
       description: A <xref href="System.IO.TextWriter"></xref> object that enables custom HTTP output.
   overload: System.Web.HttpResponse.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,11 +158,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>dependencies</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>dependencies</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This method was called too late in the cache processing pipeline, after the cached response was already created.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,7 +191,7 @@ items:
       description: The <xref href="System.Collections.ArrayList"></xref> that contains the keys of the items that the current cached response is dependent upon.
   overload: System.Web.HttpResponse.AddCacheItemDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,7 +218,7 @@ items:
       description: An array of item keys that the cached response is dependent upon.
   overload: System.Web.HttpResponse.AddCacheItemDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -247,7 +247,7 @@ items:
       description: The key of the item that the cached response is dependent upon.
   overload: System.Web.HttpResponse.AddCacheItemDependency*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: The collection of files to add.
   overload: System.Web.HttpResponse.AddFileDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
       description: An array of files to add.
   overload: System.Web.HttpResponse.AddFileDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,7 +334,7 @@ items:
       description: The name of the file to add.
   overload: System.Web.HttpResponse.AddFileDependency*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -364,7 +364,7 @@ items:
       description: The string to add to the header.
   overload: System.Web.HttpResponse.AddHeader*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,7 +396,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: A cookie is appended after the HTTP headers have been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -431,7 +431,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The header is appended after the HTTP headers have been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,7 +460,7 @@ items:
       description: The text to add to the log file.
   overload: System.Web.HttpResponse.AppendToLog*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
       description: The <code>virtualPath</code> with the session ID inserted.
   overload: System.Web.HttpResponse.ApplyAppPathModifier*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,7 +521,7 @@ items:
       description: The bytes to write to the output stream.
   overload: System.Web.HttpResponse.BinaryWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -544,10 +544,10 @@ items:
     content: public bool Buffer { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the output to client is buffered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the output to client is buffered; otherwise, `false`.'
   overload: System.Web.HttpResponse.Buffer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -572,10 +572,10 @@ items:
     content: public bool BufferOutput { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the output to client is buffered; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the output to client is buffered; otherwise `false`. The default is `true`.'
   overload: System.Web.HttpResponse.BufferOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -603,7 +603,7 @@ items:
       description: An <xref href="System.Web.HttpCachePolicy"></xref> object that contains information about the caching policy of the current response.
   overload: System.Web.HttpResponse.Cache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -620,7 +620,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: Gets or sets the <xref uid="langword_csharp_Cache-Control" name="Cache-Control" href=""></xref> HTTP header that matches one of the <xref href="System.Web.HttpCacheability"></xref> enumeration values.
+  summary: Gets or sets the `Cache-Control` HTTP header that matches one of the <xref href="System.Web.HttpCacheability"></xref> enumeration values.
   remarks: "The values for `Private`, `Public`, and `No-Cache` are strings and must be enclosed in quotation marks (\" \"). If the CacheControl property is set to a value that does not match one of the <xref:System.Web.HttpCacheability> enumeration values, then an <xref:System.ArgumentException> is thrown. If the CacheControl property is not set, the cacheability of the response is set to <xref:System.Web.HttpCacheability>.  \n  \n The `CacheControl`, <xref:System.Web.HttpResponse.Expires%2A>, and <xref:System.Web.HttpResponse.ExpiresAbsolute%2A> properties have been deprecated. Instead, the methods of the <xref:System.Web.HttpCachePolicy> class are available through the <xref:System.Web.HttpResponse.Cache%2A> intrinsic object to control the Internet Information Services (IIS) output cache and client caches."
   syntax:
     content: public string CacheControl { get; set; }
@@ -632,7 +632,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The string value set does not match one of the <xref href="System.Web.HttpCacheability"></xref> enumeration values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -662,8 +662,8 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: The <xref uid="langword_csharp_Charset" name="Charset" href=""></xref> property was set after headers were sent.
-  platform:
+    description: The `Charset` property was set after headers were sent.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -689,7 +689,7 @@ items:
     parameters: []
   overload: System.Web.HttpResponse.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -715,7 +715,7 @@ items:
     parameters: []
   overload: System.Web.HttpResponse.ClearContent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -744,7 +744,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Headers are cleared after the HTTP headers have been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -768,7 +768,7 @@ items:
     parameters: []
   overload: System.Web.HttpResponse.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -798,8 +798,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: Attempted to set ContentEncoding to <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: Attempted to set ContentEncoding to `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -824,13 +824,13 @@ items:
     content: public string ContentType { get; set; }
     return:
       type: System.String
-      description: The HTTP MIME type of the output stream. The default value is "<xref uid="langword_csharp_text/html" name="text/html" href=""></xref>".
+      description: The HTTP MIME type of the output stream. The default value is "`text/html`".
   overload: System.Web.HttpResponse.ContentType*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: The ContentType property is set to <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The ContentType property is set to `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -858,7 +858,7 @@ items:
       description: The response cookie collection.
   overload: System.Web.HttpResponse.Cookies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -882,7 +882,7 @@ items:
     parameters: []
   overload: System.Web.HttpResponse.DisableKernelCache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -909,7 +909,7 @@ items:
   - type: System.Threading.ThreadAbortException
     commentId: T:System.Threading.ThreadAbortException
     description: The call to End has terminated the current request.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -935,7 +935,7 @@ items:
       description: The number of minutes before the page expires.
   overload: System.Web.HttpResponse.Expires*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -961,7 +961,7 @@ items:
       description: The date and time at which the page expires.
   overload: System.Web.HttpResponse.ExpiresAbsolute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -992,7 +992,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Filtering is not allowed with the entity.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1021,7 +1021,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The cache is flushed after the response has been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1049,11 +1049,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The encoding value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The encoding value is `null`.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The encoding value is <xref:System.Text.Encoding.Unicode*>.  \n  \n \\- or -  \n  \n The headers have already been sent."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1082,7 +1082,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The operation requires the integrated pipeline mode in [!INCLUDE[iisver](~/add/includes/ajax-current-ext-md.md)] and at least the .NET Framework version 3.0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1107,10 +1107,10 @@ items:
     content: public bool IsClientConnected { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the client is currently connected; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the client is currently connected; otherwise, `false`.'
   overload: System.Web.HttpResponse.IsClientConnected*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1133,10 +1133,10 @@ items:
     content: public bool IsRequestBeingRedirected { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the location response header is different than the current location; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of the location response header is different than the current location; otherwise, `false`.'
   overload: System.Web.HttpResponse.IsRequestBeingRedirected*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1164,7 +1164,7 @@ items:
       description: A <xref href="System.IO.TextWriter"></xref> object that enables custom output to the client.
   overload: System.Web.HttpResponse.Output*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.OutputStream
   id: OutputStream
@@ -1192,7 +1192,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: <code>OutputStream</code> is not available.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1209,7 +1209,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: Appends a HTTP <xref uid="langword_csharp_PICS-Label" name="PICS-Label" href=""></xref> header to the output stream.
+  summary: Appends a HTTP `PICS-Label` header to the output stream.
   remarks: "Platform for Internet Content Selection (PICS) is a World Wide Web Consortium (W3C) standard for content labeling. PICS is essentially a language for creating a ratings system.  \n  \n Any value can be a PICS label; ASP.NET does not validate the label. The maximum length of the string is 255 characters. For more information about PICS standards and syntax, see the [World Wide Web Consortium](http://go.microsoft.com/fwlink/?LinkID=37125) Web site."
   example:
   - "The following example is an ASP.NET page that displays an image. The page code calls the Pics method to set the HTTP `PICS-Label` header for the response. The string that is passed as the parameter to the Pics method represents a rating label generated from the Internet Content Rating Association (ICRA) Web site.  \n  \n [!code-cs[System.Web.HttpResponse_Sample4#2](~/add/codesnippet/csharp/m-system.web.httprespons_8_1.aspx)]\n [!code-vb[System.Web.HttpResponse_Sample4#2](~/add/codesnippet/visualbasic/m-system.web.httprespons_8_1.aspx)]"
@@ -1218,10 +1218,10 @@ items:
     parameters:
     - id: value
       type: System.String
-      description: The string to add to the <xref uid="langword_csharp_PICS-Label" name="PICS-Label" href=""></xref> header.
+      description: The string to add to the `PICS-Label` header.
   overload: System.Web.HttpResponse.Pics*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1253,7 +1253,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: A redirection is attempted after the HTTP headers have been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1287,7 +1287,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>url</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>url</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>url</code> contains a newline character.
@@ -1297,7 +1297,7 @@ items:
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
     description: The page request is the result of a callback.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1314,7 +1314,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: Gets or sets the value of the HTTP <xref uid="langword_csharp_Location" name="Location" href=""></xref> header.
+  summary: Gets or sets the value of the HTTP `Location` header.
   remarks: ''
   example:
   - "The following example shows how to use this property to specify the redirect URL when you code a permanent redirect by using the HTTP 301 response code.  \n  \n```c#  \nResponse.StatusCode = 301;  \nResponse.Status = \"301 Moved Permanently\";  \nResponse.RedirectLocation = \"http://www.newurl.com \";  \nResponse.End();  \n```"
@@ -1322,13 +1322,13 @@ items:
     content: public string RedirectLocation { get; set; }
     return:
       type: System.String
-      description: The absolute URI that is transmitted to the client in the HTTP <xref uid="langword_csharp_Location" name="Location" href=""></xref> header.
+      description: The absolute URI that is transmitted to the client in the HTTP `Location` header.
   overload: System.Web.HttpResponse.RedirectLocation*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The HTTP headers have already been written.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1357,11 +1357,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>url</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>url</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>url</code> includes a newline character (`\n`).
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectPermanent(System.String,System.Boolean)
   id: RedirectPermanent(System.String,System.Boolean)
@@ -1385,16 +1385,16 @@ items:
       description: The location to redirect the request to.
     - id: endResponse
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to terminate the response; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to terminate the response; otherwise `false`. The default is `false`.'
   overload: System.Web.HttpResponse.RedirectPermanent*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>url</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>url</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>url</code> includes a newline character (`\n`).
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoute(System.Object)
   id: RedirectToRoute(System.Object)
@@ -1426,7 +1426,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoute(System.String)
   id: RedirectToRoute(System.String)
@@ -1458,7 +1458,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoute(System.Web.Routing.RouteValueDictionary)
   id: RedirectToRoute(System.Web.Routing.RouteValueDictionary)
@@ -1490,7 +1490,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoute(System.String,System.Object)
   id: RedirectToRoute(System.String,System.Object)
@@ -1525,7 +1525,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoute(System.String,System.Web.Routing.RouteValueDictionary)
   id: RedirectToRoute(System.String,System.Web.Routing.RouteValueDictionary)
@@ -1560,7 +1560,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.Object)
   id: RedirectToRoutePermanent(System.Object)
@@ -1592,7 +1592,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.String)
   id: RedirectToRoutePermanent(System.String)
@@ -1624,7 +1624,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.Web.Routing.RouteValueDictionary)
   id: RedirectToRoutePermanent(System.Web.Routing.RouteValueDictionary)
@@ -1656,7 +1656,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.String,System.Object)
   id: RedirectToRoutePermanent(System.String,System.Object)
@@ -1691,7 +1691,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RedirectToRoutePermanent(System.String,System.Web.Routing.RouteValueDictionary)
   id: RedirectToRoutePermanent(System.String,System.Web.Routing.RouteValueDictionary)
@@ -1726,7 +1726,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Redirection was attempted after the HTTP headers had been sent.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.RemoveOutputCacheItem(System.String)
   id: RemoveOutputCacheItem(System.String)
@@ -1752,11 +1752,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>path</code> is not an absolute virtual path.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1792,7 +1792,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>path</code> is an invalid path.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.HttpResponse.SetCookie(System.Web.HttpCookie)
   id: SetCookie(System.Web.HttpCookie)
@@ -1821,7 +1821,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Attempted to set the cookie after the HTTP headers were sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1838,7 +1838,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: Sets the <xref uid="langword_csharp_Status" name="Status" href=""></xref> line that is returned to the client.
+  summary: Sets the `Status` line that is returned to the client.
   remarks: Status has been deprecated in favor of <xref:System.Web.HttpResponse.StatusDescription%2A> and is provided only for compatibility with earlier versions of ASP. With ASP.NET, use <xref:System.Web.HttpResponse.StatusDescription%2A> instead.
   syntax:
     content: public string Status { get; set; }
@@ -1850,7 +1850,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: Status is set to an invalid status code.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1881,7 +1881,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: StatusCode is set after the HTTP headers have been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1915,7 +1915,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The selected value has a length greater than 512.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1949,7 +1949,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The status code is set after all HTTP headers have been sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1974,10 +1974,10 @@ items:
     content: public bool SuppressContent { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to suppress output; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to suppress output; otherwise, `false`.'
   overload: System.Web.HttpResponse.SuppressContent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2005,8 +2005,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>filename</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>
-  platform:
+    description: The <code>filename</code> parameter is `null`
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2048,7 +2048,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>offset</code> parameter is less than zero or greater than the file size.  \n  \n \\- or -  \n  \n The <code>length</code> parameter is less than -1 or greater than the value of the <code>offset</code> parameter plus the file size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2071,10 +2071,10 @@ items:
     content: public bool TrySkipIisCustomErrors { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to disable IIS custom errors; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to disable IIS custom errors; otherwise, `false`.'
   overload: System.Web.HttpResponse.TrySkipIisCustomErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2103,7 +2103,7 @@ items:
       description: The character to write to the HTTP output stream.
   overload: System.Web.HttpResponse.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2129,7 +2129,7 @@ items:
       description: The <xref href="System.Object"></xref> to write to the HTTP output stream.
   overload: System.Web.HttpResponse.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2158,7 +2158,7 @@ items:
       description: The string to write to the HTTP output stream.
   overload: System.Web.HttpResponse.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2193,7 +2193,7 @@ items:
       description: The number of characters to write, beginning at `index`.
   overload: System.Web.HttpResponse.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2224,8 +2224,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>filename</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>filename</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2259,8 +2259,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>filename</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>filename</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2297,11 +2297,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>fileHandler</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>fileHandler</code> is `null`.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "<code>offset</code> is less than 0.  \n  \n \\- or -  \n  \n <code>size</code> is greater than the file size minus <code>offset</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2341,8 +2341,8 @@ items:
     description: "<code>offset</code> is less than 0.  \n  \n \\- or -  \n  \n <code>size</code> is greater than the file size minus <code>offset</code>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>filename</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>filename</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2372,7 +2372,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The target of the <code>callback</code> parameter is of type <xref href="System.Web.UI.Control"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2450,8 +2450,8 @@ references:
 - uid: System.Web.Caching.CacheDependency[]
   parent: System.Web.Caching
   isExternal: false
-  name: CacheDependency
-  nameWithType: CacheDependency
+  name: CacheDependency[]
+  nameWithType: CacheDependency[]
   fullName: System.Web.Caching.CacheDependency[]
   spec.csharp:
   - uid: System.Web.Caching.CacheDependency
@@ -2482,8 +2482,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -2568,8 +2568,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -2978,8 +2978,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char

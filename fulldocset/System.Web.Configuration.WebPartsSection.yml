@@ -15,7 +15,7 @@ items:
   nameWithType: WebPartsSection
   fullName: System.Web.Configuration.WebPartsSection
   type: Class
-  summary: Provides programmatic access to the <xref uid="langword_csharp_webParts" name="webParts" href=""></xref> configuration file section. This class cannot be inherited.
+  summary: Provides programmatic access to the `webParts` configuration file section. This class cannot be inherited.
   remarks: The `webParts` configuration file section allows you to specify a Web Parts personalization provider, set personalization authorizations, and add custom classes that extend the <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer> class for use by Web Parts connections.
   example:
   - "This example demonstrates how to specify values declaratively for several attributes of the `webParts` section, which can also be accessed as members of the WebPartsSection class.  \n  \n The following configuration file example shows how to specify values declaratively for the `webParts` section.  \n  \n```  \n<system.web>  \n  <webParts>  \n    <personalization  \n      defaultProvider=\" AspNetSqlPersonalizationProvider \">  \n        <!—- Providers may only be defined at the   \n            application level -->  \n      <providers>  \n        <add name=\"AspNetSqlPersonalizationProvider\"  \ntype=\"System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider\"  \n        connectionStringName=\"LocalSqlServer\"  \n        applicationName=\"/\" />        \n      </providers>  \n      <authorization>  \n        <deny users=\"*\" verbs=\"enterSharedScope\" />  \n        <allow users=\"Admin\" verbs=\"modifyState\" />  \n      </authorization>  \n    </personalization>  \n    <transformers>  \n      <add name=\"RowToFieldTransformer\"  \n        type=\"System.Web.UI.WebControls.WebParts.RowToFieldTransformer\" />  \n      <add name=\"RowToFilterTransformer\"  \n        type=\"System.Web.UI.WebControls.WebParts.RowToFilterTransformer\" />  \n      <add name=\"RowToParametersTransformer\"  \ntype=\"System.Web.UI.WebControls.WebParts.RowToParametersTransformer\" />  \n    </transformers>  \n  </webParts>  \n</system.web>  \n```  \n  \n The following code example demonstrates how to use the WebPartsSection class.  \n  \n [!code-cs[System.Web.Configuration.WebPartsSection#1](~/add/codesnippet/csharp/t-system.web.configurati_23_1.cs)]\n [!code-vb[System.Web.Configuration.WebPartsSection#1](~/add/codesnippet/visualbasic/t-system.web.configurati_23_1.vb)]"
@@ -71,7 +71,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -95,7 +95,7 @@ items:
     parameters: []
   overload: System.Web.Configuration.WebPartsSection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,10 +117,10 @@ items:
     content: public bool EnableExport { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enable the export of control data to an XML description file; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to enable the export of control data to an XML description file; otherwise, `false`.'
   overload: System.Web.Configuration.WebPartsSection.EnableExport*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,7 +145,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.WebPartsSection.GetRuntimeObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -173,7 +173,7 @@ items:
       description: A <xref href="System.Web.Configuration.WebPartsPersonalization"></xref> object that allows you to specify the personalization provider and set personalization authorizations.
   overload: System.Web.Configuration.WebPartsSection.Personalization*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -197,7 +197,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.WebPartsSection.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -225,7 +225,7 @@ items:
       description: A <xref href="System.Web.Configuration.TransformerInfoCollection"></xref> collection of <xref href="System.Web.Configuration.TransformerInfo"></xref> objects.
   overload: System.Web.Configuration.WebPartsSection.Transformers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

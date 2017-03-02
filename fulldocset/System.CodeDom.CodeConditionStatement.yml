@@ -15,7 +15,7 @@ items:
   nameWithType: CodeConditionStatement
   fullName: System.CodeDom.CodeConditionStatement
   type: Class
-  summary: Represents a conditional branch statement, typically represented as an <xref uid="langword_csharp_if" name="if" href=""></xref> statement.
+  summary: Represents a conditional branch statement, typically represented as an `if` statement.
   remarks: "CodeConditionStatement can be used to represent code that consists of a conditional expression, a collection of statements to execute if the conditional expression evaluates to `true`, and an optional collection of statements to execute if the conditional expression evaluates to `false`. A CodeConditionStatement is generated in many languages as an `if` statement.  \n  \n The <xref:System.CodeDom.CodeConditionStatement.Condition%2A> property indicates the expression to test. The <xref:System.CodeDom.CodeConditionStatement.TrueStatements%2A> property contains the statements to execute if the expression to test evaluates to `true`. The <xref:System.CodeDom.CodeConditionStatement.FalseStatements%2A> property contains the statements to execute if the expression to test evaluates to `false`."
   example:
   - "This example demonstrates using a CodeConditionStatement to represent an `if` statement with an `else` block.  \n  \n [!code-cpp[CodeConditionStatementExample#2](~/add/codesnippet/cpp/t-system.codedom.codecon_1_1.cpp)]\n [!code-cs[CodeConditionStatementExample#2](~/add/codesnippet/csharp/t-system.codedom.codecon_1_1.cs)]\n [!code-vb[CodeConditionStatementExample#2](~/add/codesnippet/visualbasic/t-system.codedom.codecon_1_1.vb)]"
@@ -43,7 +43,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -66,7 +66,7 @@ items:
     parameters: []
   overload: System.CodeDom.CodeConditionStatement.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -92,10 +92,10 @@ items:
       description: A <xref href="System.CodeDom.CodeExpression"></xref> that indicates the expression to evaluate.
     - id: trueStatements
       type: System.CodeDom.CodeStatement[]
-      description: An array of type <xref href="System.CodeDom.CodeStatement"></xref> containing the statements to execute if the condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: An array of type <xref href="System.CodeDom.CodeStatement"></xref> containing the statements to execute if the condition is `true`.
   overload: System.CodeDom.CodeConditionStatement.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,13 +121,13 @@ items:
       description: A <xref href="System.CodeDom.CodeExpression"></xref> that indicates the condition to evaluate.
     - id: trueStatements
       type: System.CodeDom.CodeStatement[]
-      description: An array of type <xref href="System.CodeDom.CodeStatement"></xref> containing the statements to execute if the condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: An array of type <xref href="System.CodeDom.CodeStatement"></xref> containing the statements to execute if the condition is `true`.
     - id: falseStatements
       type: System.CodeDom.CodeStatement[]
-      description: An array of type <xref href="System.CodeDom.CodeStatement"></xref> containing the statements to execute if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: An array of type <xref href="System.CodeDom.CodeStatement"></xref> containing the statements to execute if the condition is `false`.
   overload: System.CodeDom.CodeConditionStatement.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,16 +144,16 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom
-  summary: Gets or sets the expression to evaluate <xref uid="langword_csharp_true" name="true" href=""></xref> or <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Gets or sets the expression to evaluate `true` or `false`.
   remarks: If this conditional expression evaluates to `true`, the code contained in the <xref:System.CodeDom.CodeConditionStatement.TrueStatements%2A> collection will be executed. If this conditional expression evaluates to `false` and the <xref:System.CodeDom.CodeConditionStatement.FalseStatements%2A> collection is not empty, the code contained in the <xref:System.CodeDom.CodeConditionStatement.FalseStatements%2A> collection will be executed.
   syntax:
     content: public System.CodeDom.CodeExpression Condition { get; set; }
     return:
       type: System.CodeDom.CodeExpression
-      description: A <xref href="System.CodeDom.CodeExpression"></xref> to evaluate <xref uid="langword_csharp_true" name="true" href=""></xref> or <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: A <xref href="System.CodeDom.CodeExpression"></xref> to evaluate `true` or `false`.
   overload: System.CodeDom.CodeConditionStatement.Condition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,15 +170,15 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom
-  summary: Gets the collection of statements to execute if the conditional expression evaluates to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Gets the collection of statements to execute if the conditional expression evaluates to `false`.
   syntax:
     content: public System.CodeDom.CodeStatementCollection FalseStatements { get; }
     return:
       type: System.CodeDom.CodeStatementCollection
-      description: A <xref href="System.CodeDom.CodeStatementCollection"></xref> containing the statements to execute if the conditional expression evaluates to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: A <xref href="System.CodeDom.CodeStatementCollection"></xref> containing the statements to execute if the conditional expression evaluates to `false`.
   overload: System.CodeDom.CodeConditionStatement.FalseStatements*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,15 +195,15 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom
-  summary: Gets the collection of statements to execute if the conditional expression evaluates to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Gets the collection of statements to execute if the conditional expression evaluates to `true`.
   syntax:
     content: public System.CodeDom.CodeStatementCollection TrueStatements { get; }
     return:
       type: System.CodeDom.CodeStatementCollection
-      description: A <xref href="System.CodeDom.CodeStatementCollection"></xref> containing the statements to execute if the conditional expression evaluates to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A <xref href="System.CodeDom.CodeStatementCollection"></xref> containing the statements to execute if the conditional expression evaluates to `true`.
   overload: System.CodeDom.CodeConditionStatement.TrueStatements*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,8 +233,8 @@ references:
 - uid: System.CodeDom.CodeStatement[]
   parent: System.CodeDom
   isExternal: false
-  name: CodeStatement
-  nameWithType: CodeStatement
+  name: CodeStatement[]
+  nameWithType: CodeStatement[]
   fullName: System.CodeDom.CodeStatement[]
   spec.csharp:
   - uid: System.CodeDom.CodeStatement

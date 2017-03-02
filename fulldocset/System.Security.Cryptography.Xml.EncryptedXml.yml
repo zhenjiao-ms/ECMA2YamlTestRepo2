@@ -70,7 +70,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,7 +96,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.EncryptedXml.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,7 +125,7 @@ items:
       description: An <xref href="System.Xml.XmlDocument"></xref> object used to initialize the <xref href="System.Security.Cryptography.Xml.EncryptedXml"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedXml.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,7 +155,7 @@ items:
       description: An <xref href="System.Security.Policy.Evidence"></xref> object associated with the <xref href="System.Xml.XmlDocument"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedXml.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -189,11 +189,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>keyName</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>keyObject</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The value of the <code>keyName</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>keyObject</code> parameter is `null`."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The value of the <code>keyObject</code> parameter is not an RSA algorithm or a symmetric key.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,7 +217,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.EncryptedXml.ClearKeyNameMappings*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,7 +234,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Decrypts an <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> element using the specified symmetric algorithm.
+  summary: Decrypts an `&lt;EncryptedData&gt;` element using the specified symmetric algorithm.
   remarks: "Use the DecryptData method to decrypt an <xref:System.Security.Cryptography.Xml.EncryptedData> element using a symmetric key.  \n  \n Note that the DecryptData method only decrypts top-level <`EncryptedData`> tags.  In cases where one or more <`EncryptedData`> tags have been encrypted and are contained within higher level <`EncryptedData`> tags, you can call the <xref:System.Security.Cryptography.Xml.EncryptedXml.DecryptDocument%2A> method separately for each one.  See the <xref:System.Security.Cryptography.Xml.EncryptedXml.DecryptDocument%2A> method for a code example."
   example:
   - "The following code example demonstrates how to encrypt an XML document using a symmetric key. This example does not include any key information in the encrypted XML document.  \n  \n [!code-cpp[Cryptography.XML.XMLEncMinimalDecryptData#1](~/add/codesnippet/cpp/ff5da254-8fa1-47c6-b66b-_1.cpp)]\n [!code-vb[Cryptography.XML.XMLEncMinimalDecryptData#1](~/add/codesnippet/visualbasic/ff5da254-8fa1-47c6-b66b-_1.vb)]\n [!code-cs[Cryptography.XML.XMLEncMinimalDecryptData#1](~/add/codesnippet/csharp/ff5da254-8fa1-47c6-b66b-_1.cs)]"
@@ -254,8 +254,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>encryptedData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The value of the <code>encryptedData</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -272,7 +272,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Decrypts all <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> elements of the XML document that were specified during initialization of the <xref href="System.Security.Cryptography.Xml.EncryptedXml"></xref> class.
+  summary: Decrypts all `&lt;EncryptedData&gt;` elements of the XML document that were specified during initialization of the <xref href="System.Security.Cryptography.Xml.EncryptedXml"></xref> class.
   remarks: "The DecryptDocument method decrypts all `<EncryptedData>` elements of the XML document loaded during initialization. After you call this method, all `<EncryptedData>` elements in the document are replaced with plain text versions.  \n  \n The DecryptDocument method decrypts only top-level `<EncryptedData>` elements.  If you need to decrypt a super-encrypted document (a document that is encrypted more than once), you must call the DecryptDocument method repeatedly until all the `<EncryptedData>` elements have been decrypted.  \n  \n> [!NOTE]\n>  The DecryptDocument method decrypts only valid XML data. To decrypt arbitrary data, use the <xref:System.Security.Cryptography.Xml.EncryptedXml.DecryptData%2A> method.  \n  \n To use XML Encryption with X.509 certificates, you must have the Microsoft Enhanced Cryptographic Provider installed and the X.509 certificate must use the Enhanced Provider. If you do not have the Microsoft Enhanced Cryptographic Provider installed or the X.509 certificate does not use the Enhanced Provider, a <xref:System.Security.Cryptography.CryptographicException> with an \"Unknown Error\" will be thrown when you decrypt an XML document."
   example:
   - "The following code example demonstrates how to encrypt an XML document using an asymmetric key. This example creates a symmetric session key to encrypt the document and then uses the asymmetric key to embed an encrypted version of the session key into the XML document.  \n  \n [!code-cs[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/csharp/m-system.security.crypto_11_1.cs)]\n [!code-vb[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/visualbasic/m-system.security.crypto_11_1.vb)]\n [!code-cpp[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/cpp/m-system.security.crypto_11_1.cpp)]  \n  \n The following code example demonstrates how to encrypt an XML document using an X.509 certificate. This example creates a symmetric session key to encrypt the document and then uses the X.509 certificate to embed an encrypted version of the session key into the XML document.  \n  \n [!code-cpp[Cryptography.XML.XMLEncMapKeyX509#1](~/add/codesnippet/cpp/m-system.security.crypto_11_2.cpp)]\n [!code-cs[Cryptography.XML.XMLEncMapKeyX509#1](~/add/codesnippet/csharp/m-system.security.crypto_11_2.cs)]\n [!code-vb[Cryptography.XML.XMLEncMapKeyX509#1](~/add/codesnippet/visualbasic/m-system.security.crypto_11_2.vb)]  \n  \n The following code example demonstrates how to decrypt a high level <`EncryptedData`> tag that contains another encrypted <`EncryptedData`> tag.  \n  \n [!code-vb[Cryptography.XML.EncryptedDocument.DecryptDocument-SuperEncryption#1](~/add/codesnippet/visualbasic/m-system.security.crypto_11_3.vb)]\n [!code-cs[Cryptography.XML.EncryptedDocument.DecryptDocument-SuperEncryption#1](~/add/codesnippet/csharp/m-system.security.crypto_11_3.cs)]"
@@ -284,7 +284,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The cryptographic key used to decrypt the document was not found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,11 +316,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value of the <code>encryptedKey</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value of the <code>encryptedKey</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The value of the <code>encryptedKey</code> parameter is not the Triple DES Key Wrap algorithm or the Advanced Encryption Standard (AES) Key Wrap algorithm (also called Rijndael).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -337,14 +337,14 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Decrypts an <xref uid="langword_csharp_&lt;EncryptedKey&gt;" name="&lt;EncryptedKey&gt;" href=""></xref> element using a symmetric algorithm.
+  summary: Decrypts an `&lt;EncryptedKey&gt;` element using a symmetric algorithm.
   remarks: The <xref:System.Security.Cryptography.Xml.EncryptedXml.DecryptKey%2A> method decrypts an encrypted key contained within the `<EncryptedKey>` element of an XML document. This method accepts a value for the `symmetricAlgorithm` parameter that represents either the Triple DES algorithm or the AES key wrap algorithm (also called Rijndael).
   syntax:
     content: public static byte[] DecryptKey (byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm);
     parameters:
     - id: keyData
       type: System.Byte[]
-      description: An array of bytes that represents an encrypted <xref uid="langword_csharp_&lt;EncryptedKey&gt;" name="&lt;EncryptedKey&gt;" href=""></xref> element.
+      description: An array of bytes that represents an encrypted `&lt;EncryptedKey&gt;` element.
     - id: symmetricAlgorithm
       type: System.Security.Cryptography.SymmetricAlgorithm
       description: The symmetric key used to decrypt `keyData`.
@@ -355,11 +355,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>keyData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The value of the <code>keyData</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is `null`."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The value of the <code>symmetricAlgorithm</code> element is not the Triple DES Key Wrap algorithm or the Advanced Encryption Standard (AES) Key Wrap algorithm (also called Rijndael).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -376,14 +376,14 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Decrypts an <xref uid="langword_csharp_&lt;EncryptedKey&gt;" name="&lt;EncryptedKey&gt;" href=""></xref> element using an asymmetric algorithm.
+  summary: Decrypts an `&lt;EncryptedKey&gt;` element using an asymmetric algorithm.
   remarks: The DecryptKey method decrypts an encrypted key contained within the `<EncryptedKey>` element of an XML document. This method accepts a value for the `rsa` parameter that represents either the RSA PKCS#1 v1.5 algorithm or the RSA PKCS#1 type 2 algorithm (also called OAEP padding).
   syntax:
     content: public static byte[] DecryptKey (byte[] keyData, System.Security.Cryptography.RSA rsa, bool useOAEP);
     parameters:
     - id: keyData
       type: System.Byte[]
-      description: An array of bytes that represents an encrypted <xref uid="langword_csharp_&lt;EncryptedKey&gt;" name="&lt;EncryptedKey&gt;" href=""></xref> element.
+      description: An array of bytes that represents an encrypted `&lt;EncryptedKey&gt;` element.
     - id: rsa
       type: System.Security.Cryptography.RSA
       description: The asymmetric key used to decrypt `keyData`.
@@ -397,8 +397,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>keyData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>rsa</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The value of the <code>keyData</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>rsa</code> parameter is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -424,7 +424,7 @@ items:
       description: An <xref href="System.Security.Policy.Evidence"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedXml.DocumentEvidence*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -450,7 +450,7 @@ items:
       description: An <xref href="System.Text.Encoding"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedXml.Encoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -487,11 +487,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>inputElement</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>certificate</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The value of the <code>inputElement</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>certificate</code> parameter is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The value of the <code>certificate</code> parameter does not represent an RSA key algorithm.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -528,11 +528,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>inputElement</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>keyName</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The value of the <code>inputElement</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>keyName</code> parameter is `null`."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The value of the <code>keyName</code> parameter does not match a registered key name pair.  \n  \n -or-  \n  \n The cryptographic key described by the <code>keyName</code> parameter is not supported."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -569,11 +569,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>plaintext</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The value of the <code>plaintext</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is `null`."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The data could not be encrypted using the specified parameters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,7 +605,7 @@ items:
       description: The symmetric algorithm to use for encryption.
     - id: content
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to encrypt only the contents of the element; <xref uid="langword_csharp_false" name="false" href=""></xref> to encrypt the entire element.
+      description: '`true` to encrypt only the contents of the element; `false` to encrypt the entire element.'
     return:
       type: System.Byte[]
       description: A byte array that contains the encrypted data.
@@ -613,8 +613,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>inputElement</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The value of the <code>inputElement</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -631,7 +631,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Encrypts a key using a symmetric algorithm that a recipient uses to decrypt an <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> element.
+  summary: Encrypts a key using a symmetric algorithm that a recipient uses to decrypt an `&lt;EncryptedData&gt;` element.
   remarks: "Use the EncryptKey method to encrypt the key that a recipient uses to decrypt an `<EncryptedData>` element. This method accepts a value for the `symmetricAlgorithm` parameter that represents either the Triple DES algorithm or the AES key wrap algorithm (also called Rijndael).  \n  \n Note that this method does not automatically place the encrypted key within an `<EncryptedKey>` element.  You must manually create the `<EncryptedKey>` element within your document."
   syntax:
     content: public static byte[] EncryptKey (byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm);
@@ -649,11 +649,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>keyData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The value of the <code>keyData</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithm</code> parameter is `null`."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The value of the <code>symmetricAlgorithm</code> parameter is not the Triple DES Key Wrap algorithm or the Advanced Encryption Standard (AES) Key Wrap algorithm (also called Rijndael).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -670,7 +670,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Encrypts the key that a recipient uses to decrypt an <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> element.
+  summary: Encrypts the key that a recipient uses to decrypt an `&lt;EncryptedData&gt;` element.
   remarks: "Use the EncryptKey method to encrypt the key that a recipient uses to decrypt an `<EncryptedData>` element. This method accepts a value for `rsa` that represents either the RSA PKCS#1 v1.5 algorithm or the RSA PKCS#1 type 2 algorithm (also called OAEP).  \n  \n Note that this method does not automatically place the encrypted key within an `<EncryptedKey>` element.  You must manually create the `<EncryptedKey>` element within your document."
   example:
   - "The following code example demonstrates how to encrypt an XML document using an asymmetric key. This example creates a symmetric session key to encrypt the document and then uses the asymmetric key to embed an encrypted version of the session key into the XML document.  \n  \n [!code-cs[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/csharp/f1ea466e-2516-4b63-bd31-_1.cs)]\n [!code-vb[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/visualbasic/f1ea466e-2516-4b63-bd31-_1.vb)]\n [!code-cpp[Cryptography.XML.XMLEncImbedKey#1](~/add/codesnippet/cpp/f1ea466e-2516-4b63-bd31-_1.cpp)]"
@@ -693,8 +693,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>keyData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>rsa</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The value of the <code>keyData</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>rsa</code> parameter is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -729,11 +729,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value of the <code>encryptedData</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value of the <code>encryptedData</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The value of the <code>encryptedData</code> parameter has an <xref:System.Security.Cryptography.Xml.EncryptedType.EncryptionMethod*> property that is null.  \n  \n -or-  \n  \n The value of the <code>symmetricAlgorithmUrisymAlgUri</code> parameter is not a supported algorithm."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -768,11 +768,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value of the <code>encryptedData</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value of the <code>encryptedData</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The encryptedData parameter has an <xref:System.Security.Cryptography.Xml.EncryptedType.EncryptionMethod*> property that is null.  \n  \n -or-  \n  \n The encrypted key cannot be retrieved using the specified parameters."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -805,7 +805,7 @@ items:
       description: An <xref href="System.Xml.XmlElement"></xref> object that contains an ID indicating how internal Uniform Resource Identifiers (URIs) are to be resolved.
   overload: System.Security.Cryptography.Xml.EncryptedXml.GetIdElement*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -831,7 +831,7 @@ items:
       description: One of the <xref href="System.Security.Cryptography.CipherMode"></xref> values.
   overload: System.Security.Cryptography.Xml.EncryptedXml.Mode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -857,7 +857,7 @@ items:
       description: One of the <xref href="System.Security.Cryptography.PaddingMode"></xref> values that specifies the type of padding used for encryption.
   overload: System.Security.Cryptography.Xml.EncryptedXml.Padding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -883,7 +883,7 @@ items:
       description: The recipient of the encrypted key information.
   overload: System.Security.Cryptography.Xml.EncryptedXml.Recipient*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -900,7 +900,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Replaces an <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> element with a specified decrypted sequence of bytes.
+  summary: Replaces an `&lt;EncryptedData&gt;` element with a specified decrypted sequence of bytes.
   remarks: The ReplaceData method replaces an `<EncryptedData>` element with the value of the `decryptedData` parameter.
   example:
   - "The following code example demonstrates how to encrypt an XML document using a symmetric key. This example does not include any key information in the encrypted XML document.  \n  \n [!code-cpp[Cryptography.XML.XMLEncMinimalDecryptData#1](~/add/codesnippet/cpp/0a737bfb-9606-4369-9de9-_1.cpp)]\n [!code-vb[Cryptography.XML.XMLEncMinimalDecryptData#1](~/add/codesnippet/visualbasic/0a737bfb-9606-4369-9de9-_1.vb)]\n [!code-cs[Cryptography.XML.XMLEncMinimalDecryptData#1](~/add/codesnippet/csharp/0a737bfb-9606-4369-9de9-_1.cs)]"
@@ -909,7 +909,7 @@ items:
     parameters:
     - id: inputElement
       type: System.Xml.XmlElement
-      description: The <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> element to replace.
+      description: The `&lt;EncryptedData&gt;` element to replace.
     - id: decryptedData
       type: System.Byte[]
       description: The decrypted data to replace `inputElement` with.
@@ -917,8 +917,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>inputElement</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>decryptedData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The value of the <code>inputElement</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>decryptedData</code> parameter is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -944,19 +944,19 @@ items:
     parameters:
     - id: inputElement
       type: System.Xml.XmlElement
-      description: The element to replace with an <xref uid="langword_csharp_&lt;EncryptedData&gt;" name="&lt;EncryptedData&gt;" href=""></xref> element.
+      description: The element to replace with an `&lt;EncryptedData&gt;` element.
     - id: encryptedData
       type: System.Security.Cryptography.Xml.EncryptedData
       description: The <xref href="System.Security.Cryptography.Xml.EncryptedData"></xref> object to replace the `inputElement` parameter with.
     - id: content
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to replace only the contents of the element; <xref uid="langword_csharp_false" name="false" href=""></xref> to replace the entire element.
+      description: '`true` to replace only the contents of the element; `false` to replace the entire element.'
   overload: System.Security.Cryptography.Xml.EncryptedXml.ReplaceElement*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>inputElement</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The value of the <code>encryptedData</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The value of the <code>inputElement</code> parameter is `null`.  \n  \n -or-  \n  \n The value of the <code>encryptedData</code> parameter is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -982,7 +982,7 @@ items:
       description: An <xref href="System.Xml.XmlResolver"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedXml.Resolver*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1007,7 +1007,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1034,7 +1034,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1059,7 +1059,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1086,7 +1086,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1111,7 +1111,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1138,7 +1138,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1165,7 +1165,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1190,7 +1190,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1217,7 +1217,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1234,7 +1234,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Represents the namespace Uniform Resource Identifier (URI) for the XML encryption <xref uid="langword_csharp_&lt;EncryptedKey&gt;" name="&lt;EncryptedKey&gt;" href=""></xref> element. This field is constant.
+  summary: Represents the namespace Uniform Resource Identifier (URI) for the XML encryption `&lt;EncryptedKey&gt;` element. This field is constant.
   remarks: The value of the XmlEncEncryptedKeyUrl field is "http://www.w3.org/2001/04/xmlenc#EncryptedKey".
   syntax:
     content: public const string XmlEncEncryptedKeyUrl;
@@ -1242,7 +1242,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1267,7 +1267,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1294,7 +1294,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1319,7 +1319,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1344,7 +1344,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1369,7 +1369,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1394,7 +1394,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1421,7 +1421,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1505,8 +1505,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

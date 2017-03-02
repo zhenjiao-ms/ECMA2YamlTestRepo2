@@ -131,7 +131,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,7 +155,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Process.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,11 +185,11 @@ items:
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to `false` to access this property on Windows 98 and Windows Me.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process has exited.  \n  \n -or-  \n  \n The process has not started, so there is no process ID."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,8 +217,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError%2A?displayProperty=fullName&gt; property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An asynchronous read operation is already in progress on the <xref:System.Diagnostics.Process.StandardError*> stream.  \n  \n \\- or -  \n  \n The <xref:System.Diagnostics.Process.StandardError*> stream has been used by a synchronous read operation."
-  platform:
+    description: "The &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError%2A?displayProperty=fullName&gt; property is `false`.  \n  \n \\- or -  \n  \n An asynchronous read operation is already in progress on the <xref:System.Diagnostics.Process.StandardError*> stream.  \n  \n \\- or -  \n  \n The <xref:System.Diagnostics.Process.StandardError*> stream has been used by a synchronous read operation."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -246,8 +246,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput%2A?displayProperty=fullName&gt; property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An asynchronous read operation is already in progress on the <xref:System.Diagnostics.Process.StandardOutput*> stream.  \n  \n \\- or -  \n  \n The <xref:System.Diagnostics.Process.StandardOutput*> stream has been used by a synchronous read operation."
-  platform:
+    description: "The &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput%2A?displayProperty=fullName&gt; property is `false`.  \n  \n \\- or -  \n  \n An asynchronous read operation is already in progress on the <xref:System.Diagnostics.Process.StandardOutput*> stream.  \n  \n \\- or -  \n  \n The <xref:System.Diagnostics.Process.StandardOutput*> stream has been used by a synchronous read operation."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Diagnostics.Process.StandardError*> stream is not enabled for asynchronous read operations.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Diagnostics.Process.StandardOutput*> stream is not enabled for asynchronous read operations.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,7 +331,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Process.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -357,16 +357,16 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the close message was successfully sent; <xref uid="langword_csharp_false" name="false" href=""></xref> if the associated process does not have a main window or if the main window is disabled (for example if a modal dialog is being shown).
+      description: '`true` if the close message was successfully sent; `false` if the associated process does not have a main window or if the main window is disabled (for example if a modal dialog is being shown).'
   overload: System.Diagnostics.Process.CloseMainWindow*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to `false` to access this property on Windows 98 and Windows Me.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process has already exited.  \n  \n -or-  \n  \n No process is associated with this <xref href=\"System.Diagnostics.Process\"></xref> object."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -389,10 +389,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Diagnostics.Process.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,10 +417,10 @@ items:
     content: public bool EnableRaisingEvents { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Diagnostics.Process.Exited"></xref> event should be raised when the associated process is terminated (through either an exit or a call to <xref:System.Diagnostics.Process.Kill*>); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Diagnostics.Process.Exited"></xref> event should be raised when the associated process is terminated (through either an exit or a call to <xref:System.Diagnostics.Process.Kill*>); otherwise, `false`. The default is `false`.'
   overload: System.Diagnostics.Process.EnableRaisingEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -437,14 +437,14 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Puts a <xref href="System.Diagnostics.Process"></xref> component in state to interact with operating system processes that run in a special mode by enabling the native property <xref uid="langword_csharp_SeDebugPrivilege" name="SeDebugPrivilege" href=""></xref> on the current thread.
+  summary: Puts a <xref href="System.Diagnostics.Process"></xref> component in state to interact with operating system processes that run in a special mode by enabling the native property `SeDebugPrivilege` on the current thread.
   remarks: Some operating system processes run in a special mode. Attempting to read properties of or attach to these processes is not possible unless you have called EnterDebugMode on the component. Call <xref:System.Diagnostics.Process.LeaveDebugMode%2A> when you no longer need access to these processes that run in special mode.
   syntax:
     content: public static void EnterDebugMode ();
     parameters: []
   overload: System.Diagnostics.Process.EnterDebugMode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,7 +471,7 @@ items:
       type: System.Diagnostics.DataReceivedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -505,7 +505,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are trying to access the ExitCode property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -532,7 +532,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,7 +566,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are trying to access the ExitTime property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,7 +595,7 @@ items:
       description: A new <xref href="System.Diagnostics.Process"></xref> component associated with the process resource that is running the calling application.
   overload: System.Diagnostics.Process.GetCurrentProcess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -633,7 +633,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The process was not started by this object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -673,11 +673,11 @@ items:
     description: "The process specified by the <code>processId</code> parameter is not running. The identifier might be expired.  \n  \n -or-  \n  \n The <code>machineName</code> parameter syntax is invalid. The name might have length zero (0)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>machineName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>machineName</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The process was not started by this object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -706,7 +706,7 @@ items:
       description: An array of type <xref href="System.Diagnostics.Process"></xref> that represents all the process resources running on the local computer.
   overload: System.Diagnostics.Process.GetProcesses*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -743,7 +743,7 @@ items:
     description: The <code>machineName</code> parameter syntax is invalid. It might have length zero (0).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>machineName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>machineName</code> parameter is `null`.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The operating system platform does not support this operation on remote computers.
@@ -753,7 +753,7 @@ items:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A problem occurred accessing an underlying system API.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,7 +788,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: There are problems accessing the performance counter API's used to get process information. This exception is specific to Windows NT, Windows 2000, and Windows XP.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,7 +828,7 @@ items:
     description: The <code>machineName</code> parameter syntax is invalid. It might have length zero (0).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>machineName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>machineName</code> parameter is `null`.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The operating system platform does not support this operation on remote computers.
@@ -838,7 +838,7 @@ items:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A problem occurred accessing an underlying system API.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -870,7 +870,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are trying to access the Handle property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -898,8 +898,8 @@ items:
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
-  platform:
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to `false` to access this property on Windows 98 and Windows Me.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -924,7 +924,7 @@ items:
     content: public bool HasExited { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operating system process referenced by the <xref href="System.Diagnostics.Process"></xref> component has terminated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the operating system process referenced by the <xref href="System.Diagnostics.Process"></xref> component has terminated; otherwise, `false`.'
   overload: System.Diagnostics.Process.HasExited*
   exceptions:
   - type: System.InvalidOperationException
@@ -936,7 +936,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are trying to access the HasExited property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -969,8 +969,8 @@ items:
     description: "The process's Id property has not been set.  \n  \n -or-  \n  \n There is no process associated with this <xref href=\"System.Diagnostics.Process\"></xref> object."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
-  platform:
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set the &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; property to `false` to access this property on Windows 98 and Windows Me.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1003,7 +1003,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process has already exited.  \n  \n -or-  \n  \n There is no process associated with this <xref href=\"System.Diagnostics.Process\"></xref> object."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1027,7 +1027,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Process.LeaveDebugMode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1058,7 +1058,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: There is no process associated with this <xref href="System.Diagnostics.Process"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1092,11 +1092,11 @@ items:
     description: A 32-bit process is trying to access the modules of a 64-bit process.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process <xref:System.Diagnostics.Process.Id*> is not available.  \n  \n -or-  \n  \n The process has exited."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1130,8 +1130,8 @@ items:
     description: You are trying to access the MainWindowHandle property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
-  platform:
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1167,8 +1167,8 @@ items:
     description: You are trying to access the MainWindowTitle property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
-  platform:
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1209,7 +1209,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1250,7 +1250,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1284,11 +1284,11 @@ items:
     description: The process <xref:System.Diagnostics.Process.Id*> is not available.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: You are attempting to access the Modules property for either the system process or the idle process. These processes do not have modules.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1316,7 +1316,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1347,7 +1347,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1373,7 +1373,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Process.OnExited*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1400,7 +1400,7 @@ items:
       type: System.Diagnostics.DataReceivedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1428,7 +1428,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1459,7 +1459,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1487,7 +1487,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1518,7 +1518,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1546,7 +1546,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1577,7 +1577,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1605,7 +1605,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1636,7 +1636,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1665,7 +1665,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1696,7 +1696,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1719,7 +1719,7 @@ items:
     content: public bool PriorityBoostEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if dynamic boosting of the process priority should take place for a process when it is taken out of the wait state; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if dynamic boosting of the process priority should take place for a process when it is taken out of the wait state; otherwise, `false`. The default is `false`.'
   overload: System.Diagnostics.Process.PriorityBoostEnabled*
   exceptions:
   - type: System.ComponentModel.Win32Exception
@@ -1734,7 +1734,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The process <xref:System.Diagnostics.Process.Id*> is not available.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1773,11 +1773,11 @@ items:
     description: The process <xref:System.Diagnostics.Process.Id*> is not available.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: You have set the PriorityClass to <xref uid="langword_csharp_AboveNormal" name="AboveNormal" href=""></xref> or <xref uid="langword_csharp_BelowNormal" name="BelowNormal" href=""></xref> when using Windows 98 or Windows Millennium Edition (Windows Me). These platforms do not support those values for the priority class.
+    description: You have set the PriorityClass to `AboveNormal` or `BelowNormal` when using Windows 98 or Windows Millennium Edition (Windows Me). These platforms do not support those values for the priority class.
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
     description: Priority class cannot be set because it does not use a valid value, as defined in the <xref href="System.Diagnostics.ProcessPriorityClass"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1805,7 +1805,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1836,7 +1836,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1870,7 +1870,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are attempting to access the PrivilegedProcessorTime property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1901,11 +1901,11 @@ items:
     description: "The process does not have an identifier, or no process is associated with the <xref href=\"System.Diagnostics.Process\"></xref>.  \n  \n -or-  \n  \n The associated process has exited."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The process is not on this computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1940,7 +1940,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process <xref:System.Diagnostics.Process.Id*> was not available.  \n  \n -or-  \n  \n The process has exited."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1966,7 +1966,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Process.Refresh*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1991,19 +1991,19 @@ items:
     content: public bool Responding { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user interface of the associated process is responding to the system; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user interface of the associated process is responding to the system; otherwise, `false`.'
   overload: System.Diagnostics.Process.Responding*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: There is no process associated with this <xref href="System.Diagnostics.Process"></xref> object.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are attempting to access the Responding property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2038,7 +2038,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The SessionId property is not supported on Windows 98.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2068,8 +2068,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The StandardError stream has not been defined for redirection; ensure &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError%2A?displayProperty=fullName&gt; is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; is set to <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The StandardError stream has been opened for asynchronous read operations with <xref:System.Diagnostics.Process.BeginErrorReadLine*>."
-  platform:
+    description: "The StandardError stream has not been defined for redirection; ensure &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError%2A?displayProperty=fullName&gt; is set to `true` and &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; is set to `false`.  \n  \n \\- or -  \n  \n The StandardError stream has been opened for asynchronous read operations with <xref:System.Diagnostics.Process.BeginErrorReadLine*>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2099,8 +2099,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The StandardInput stream has not been defined because &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardInput%2A?displayProperty=fullName&gt; is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The StandardInput stream has not been defined because &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardInput%2A?displayProperty=fullName&gt; is set to `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2130,8 +2130,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The StandardOutput stream has not been defined for redirection; ensure &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput%2A?displayProperty=fullName&gt; is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; is set to <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The StandardOutput stream has been opened for asynchronous read operations with <xref:System.Diagnostics.Process.BeginOutputReadLine*>."
-  platform:
+    description: "The StandardOutput stream has not been defined for redirection; ensure &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput%2A?displayProperty=fullName&gt; is set to `true` and &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; is set to `false`.  \n  \n \\- or -  \n  \n The StandardOutput stream has been opened for asynchronous read operations with <xref:System.Diagnostics.Process.BeginOutputReadLine*>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2157,19 +2157,19 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a process resource is started; <xref uid="langword_csharp_false" name="false" href=""></xref> if no new process resource is started (for example, if an existing process is reused).
+      description: '`true` if a process resource is started; `false` if no new process resource is started (for example, if an existing process is reused).'
   overload: System.Diagnostics.Process.Start*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No file name was specified in the <xref href=\"System.Diagnostics.Process\"></xref> component's <xref:System.Diagnostics.Process.StartInfo*>.  \n  \n -or-  \n  \n The &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; member of the <xref:System.Diagnostics.Process.StartInfo*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> while &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardInput%2A?displayProperty=fullName&gt;, &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput%2A?displayProperty=fullName&gt;, or &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError%2A?displayProperty=fullName&gt; is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "No file name was specified in the <xref href=\"System.Diagnostics.Process\"></xref> component's <xref:System.Diagnostics.Process.StartInfo*>.  \n  \n -or-  \n  \n The &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; member of the <xref:System.Diagnostics.Process.StartInfo*> property is `true` while &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardInput%2A?displayProperty=fullName&gt;, &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput%2A?displayProperty=fullName&gt;, or &lt;xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError%2A?displayProperty=fullName&gt; is `true`."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: There was an error in opening the associated file.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The process object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2198,15 +2198,15 @@ items:
       description: The <xref href="System.Diagnostics.ProcessStartInfo"></xref> that contains the information that is used to start the process, including the file name and any command-line arguments.
     return:
       type: System.Diagnostics.Process
-      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to <xref uid="langword_csharp_true" name="true" href=""></xref>. In this case, the started process may have activated an existing instance of itself and then exited.
+      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or `null` if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to `true`. In this case, the started process may have activated an existing instance of itself and then exited.
   overload: System.Diagnostics.Process.Start*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No file name was specified in the <code>startInfo</code> parameter's <xref:System.Diagnostics.ProcessStartInfo.FileName*> property.  \n  \n -or-  \n  \n The <xref:System.Diagnostics.ProcessStartInfo.UseShellExecute*> property of the <code>startInfo</code> parameter is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and the <xref:System.Diagnostics.ProcessStartInfo.RedirectStandardInput*>, <xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput*>, or <xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError*> property is also <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Diagnostics.ProcessStartInfo.UseShellExecute*> property of the <code>startInfo</code> parameter is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and the <xref:System.Diagnostics.ProcessStartInfo.UserName*> property is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or empty or the <xref:System.Diagnostics.ProcessStartInfo.Password*> property is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "No file name was specified in the <code>startInfo</code> parameter's <xref:System.Diagnostics.ProcessStartInfo.FileName*> property.  \n  \n -or-  \n  \n The <xref:System.Diagnostics.ProcessStartInfo.UseShellExecute*> property of the <code>startInfo</code> parameter is `true` and the <xref:System.Diagnostics.ProcessStartInfo.RedirectStandardInput*>, <xref:System.Diagnostics.ProcessStartInfo.RedirectStandardOutput*>, or <xref:System.Diagnostics.ProcessStartInfo.RedirectStandardError*> property is also `true`.  \n  \n -or-  \n  \n The <xref:System.Diagnostics.ProcessStartInfo.UseShellExecute*> property of the <code>startInfo</code> parameter is `true` and the <xref:System.Diagnostics.ProcessStartInfo.UserName*> property is not `null` or empty or the <xref:System.Diagnostics.ProcessStartInfo.Password*> property is not `null`."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>startInfo</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>startInfo</code> parameter is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The process object has already been disposed.
@@ -2216,7 +2216,7 @@ items:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: "An error occurred when opening the associated file.  \n  \n -or-  \n  \n The sum of the length of the arguments and the length of the full path to the process exceeds 2080. The error message associated with this exception can be one of the following: \"The data area passed to a system call is too small.\" or \"Access is denied.\""
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2245,7 +2245,7 @@ items:
       description: The name of a document or application file to run in the process.
     return:
       type: System.Diagnostics.Process
-      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to <xref uid="langword_csharp_true" name="true" href=""></xref>. In this case, the started process may have activated an existing instance of itself and then exited.
+      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or `null` if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to `true`. In this case, the started process may have activated an existing instance of itself and then exited.
   overload: System.Diagnostics.Process.Start*
   exceptions:
   - type: System.ComponentModel.Win32Exception
@@ -2257,7 +2257,7 @@ items:
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The PATH environment variable has a string containing quotes.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2289,12 +2289,12 @@ items:
       description: Command-line arguments to pass when starting the process.
     return:
       type: System.Diagnostics.Process
-      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to <xref uid="langword_csharp_true" name="true" href=""></xref>. In this case, the started process may have activated an existing instance of itself and then exited.
+      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or `null` if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to `true`. In this case, the started process may have activated an existing instance of itself and then exited.
   overload: System.Diagnostics.Process.Start*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <code>fileName</code> or <code>arguments</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>fileName</code> or <code>arguments</code> parameter is `null`.
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: "An error occurred when opening the associated file.  \n  \n -or-  \n  \n The sum of the length of the arguments and the length of the full path to the process exceeds 2080. The error message associated with this exception can be one of the following: \"The data area passed to a system call is too small.\" or \"Access is denied.\""
@@ -2304,7 +2304,7 @@ items:
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The PATH environment variable has a string containing quotes.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2342,7 +2342,7 @@ items:
       description: The domain to use when starting the process.
     return:
       type: System.Diagnostics.Process
-      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to <xref uid="langword_csharp_true" name="true" href=""></xref>. In this case, the started process may have activated an existing instance of itself and then exited.
+      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or `null` if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to `true`. In this case, the started process may have activated an existing instance of itself and then exited.
   overload: System.Diagnostics.Process.Start*
   exceptions:
   - type: System.InvalidOperationException
@@ -2354,7 +2354,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The process object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2393,7 +2393,7 @@ items:
       description: The domain to use when starting the process.
     return:
       type: System.Diagnostics.Process
-      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to <xref uid="langword_csharp_true" name="true" href=""></xref>. In this case, the started process may have activated an existing instance of itself and then exited.
+      description: A new <xref href="System.Diagnostics.Process"></xref> that is associated with the process resource, or `null` if no process resource is started. Note that a new process that’s started alongside already running instances of the same process will be independent from the others. In addition, Start may return a non-null Process with its <xref:System.Diagnostics.Process.HasExited*> property already set to `true`. In this case, the started process may have activated an existing instance of itself and then exited.
   overload: System.Diagnostics.Process.Start*
   exceptions:
   - type: System.InvalidOperationException
@@ -2405,7 +2405,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The process object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2435,8 +2435,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value that specifies the StartInfo is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value that specifies the StartInfo is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2473,7 +2473,7 @@ items:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: An error occurred in the call to the Windows function.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2504,7 +2504,7 @@ items:
       description: The <xref href="System.ComponentModel.ISynchronizeInvoke"></xref> used to marshal event handler calls that are issued as a result of an <xref href="System.Diagnostics.Process.Exited"></xref> event on the process.
   overload: System.Diagnostics.Process.SynchronizingObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2535,8 +2535,8 @@ items:
     description: "The process does not have an <xref:System.Diagnostics.Process.Id*>, or no process is associated with the <xref href=\"System.Diagnostics.Process\"></xref> instance.  \n  \n -or-  \n  \n The associated process has exited."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to <xref uid="langword_csharp_false" name="false" href=""></xref> to access this property on Windows 98 and Windows Me.
-  platform:
+    description: The platform is Windows 98 or Windows Millennium Edition (Windows Me); set &lt;xref:System.Diagnostics.ProcessStartInfo.UseShellExecute%2A?displayProperty=fullName&gt; to `false` to access this property on Windows 98 and Windows Me.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2568,7 +2568,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: ToString is not supported on Windows 98.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2602,7 +2602,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are attempting to access the TotalProcessorTime property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2636,7 +2636,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You are attempting to access the UserProcessorTime property for a process that is running on a remote computer. This property is available only for processes that are running on the local computer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2664,7 +2664,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2695,7 +2695,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2727,7 +2727,7 @@ items:
   - type: System.SystemException
     commentId: T:System.SystemException
     description: "No process <xref:System.Diagnostics.Process.Id*> has been set, and a <xref:System.Diagnostics.Process.Handle*> from which the <xref:System.Diagnostics.Process.Id*> property can be determined does not exist.  \n  \n -or-  \n  \n There is no process associated with this <xref href=\"System.Diagnostics.Process\"></xref> object.  \n  \n -or-  \n  \n You are attempting to call WaitForExit for a process that is running on a remote computer. This method is available only for processes that are running on the local computer."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2756,7 +2756,7 @@ items:
       description: The amount of time, in milliseconds, to wait for the associated process to exit. The maximum is the largest possible value of a 32-bit integer, which represents infinity to the operating system.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the associated process has exited; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the associated process has exited; otherwise, `false`.'
   overload: System.Diagnostics.Process.WaitForExit*
   exceptions:
   - type: System.ComponentModel.Win32Exception
@@ -2765,7 +2765,7 @@ items:
   - type: System.SystemException
     commentId: T:System.SystemException
     description: "No process <xref:System.Diagnostics.Process.Id*> has been set, and a <xref:System.Diagnostics.Process.Handle*> from which the <xref:System.Diagnostics.Process.Id*> property can be determined does not exist.  \n  \n -or-  \n  \n There is no process associated with this <xref href=\"System.Diagnostics.Process\"></xref> object.  \n  \n -or-  \n  \n You are attempting to call WaitForExit for a process that is running on a remote computer. This method is available only for processes that are running on the local computer."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2789,13 +2789,13 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the associated process has reached an idle state.
+      description: '`true` if the associated process has reached an idle state.'
   overload: System.Diagnostics.Process.WaitForInputIdle*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process does not have a graphical interface.  \n  \n -or-  \n  \n An unknown error occurred. The process failed to enter an idle state.  \n  \n -or-  \n  \n The process has already exited.  \n  \n -or-  \n  \n No process is associated with this <xref href=\"System.Diagnostics.Process\"></xref> object."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2822,13 +2822,13 @@ items:
       description: A value of 1 to <xref href="System.Int32"></xref> that specifies the amount of time, in milliseconds, to wait for the associated process to become idle. A value of 0 specifies an immediate return, and a value of -1 specifies an infinite wait.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the associated process has reached an idle state; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the associated process has reached an idle state; otherwise, `false`.'
   overload: System.Diagnostics.Process.WaitForInputIdle*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The process does not have a graphical interface.  \n  \n -or-  \n  \n An unknown error occurred. The process failed to enter an idle state.  \n  \n -or-  \n  \n The process has already exited.  \n  \n -or-  \n  \n No process is associated with this <xref href=\"System.Diagnostics.Process\"></xref> object."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2859,7 +2859,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2890,7 +2890,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The platform is Windows 98 or Windows Millennium Edition (Windows Me), which does not support this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3124,8 +3124,8 @@ references:
 - uid: System.Diagnostics.Process[]
   parent: System.Diagnostics
   isExternal: false
-  name: Process
-  nameWithType: Process
+  name: Process[]
+  nameWithType: Process[]
   fullName: System.Diagnostics.Process[]
   spec.csharp:
   - uid: System.Diagnostics.Process

@@ -18,7 +18,7 @@ items:
   syntax:
     content: public interface IErrorHandler
   implements: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -46,10 +46,10 @@ items:
       description: The exception thrown during processing.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] should not abort the session (if there is one) and instance context if the instance context is not <xref href="System.ServiceModel.InstanceContextMode"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] should not abort the session (if there is one) and instance context if the instance context is not <xref href="System.ServiceModel.InstanceContextMode"></xref>; otherwise, `false`. The default is `false`.'
   overload: System.ServiceModel.Dispatcher.IErrorHandler.HandleError*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -83,7 +83,7 @@ items:
       description: The <xref href="System.ServiceModel.Channels.Message"></xref> object that is returned to the client, or service, in the duplex case.
   overload: System.ServiceModel.Dispatcher.IErrorHandler.ProvideFault*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

@@ -16,7 +16,7 @@ items:
   nameWithType: IRunningObjectTable
   fullName: System.Runtime.InteropServices.ComTypes.IRunningObjectTable
   type: Interface
-  summary: Provides the managed definition of the <xref uid="langword_csharp_IRunningObjectTable" name="IRunningObjectTable" href=""></xref> interface.
+  summary: Provides the managed definition of the `IRunningObjectTable` interface.
   remarks: "You can retrieve an interface to the running object table by calling the COM [GetRunningObjectTable](http://go.microsoft.com/fwlink/?LinkId=163472) function.  \n  \n For more information, see the documentation for the COM [IRunningObjectTable](http://go.microsoft.com/fwlink/?LinkId=163473) interface in the MSDN library.  \n  \n The common language runtime throws an exception when a COM method in native code returns an HRESULT. For more information, see [How to: Map HRESULTs and Exceptions](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: >-
@@ -26,7 +26,7 @@ items:
 
       public interface IRunningObjectTable
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -53,7 +53,7 @@ items:
       description: When this method returns, contains the new enumerator for the Running Object Table (ROT). This parameter is passed uninitialized.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.EnumRunning*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -83,10 +83,10 @@ items:
       description: When this method returns, contains the requested running object. This parameter is passed uninitialized.
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value that indicates the success or failure of the operation.
+      description: An `HRESULT` value that indicates the success or failure of the operation.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.GetObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -116,10 +116,10 @@ items:
       description: When this object returns, contains the objects last change time. This parameter is passed uninitialized.
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value that indicates the success or failure of the operation.
+      description: An `HRESULT` value that indicates the success or failure of the operation.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.GetTimeOfLastChange*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -146,10 +146,10 @@ items:
       description: A reference to the moniker to search for in the Running Object Table (ROT).
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> value that indicates the success or failure of the operation.
+      description: An `HRESULT` value that indicates the success or failure of the operation.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.IsRunning*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -166,7 +166,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices.ComTypes
-  summary: Notes the time that a particular object changed so <xref uid="langword_csharp_IMoniker::GetTimeOfLastChange" name="IMoniker::GetTimeOfLastChange" href=""></xref> can report an appropriate change time.
+  summary: Notes the time that a particular object changed so `IMoniker::GetTimeOfLastChange` can report an appropriate change time.
   remarks: For more information, see the documentation for the [IRunningObjectTable::NoteChangeTime](http://go.microsoft.com/fwlink/?LinkId=163479) method in the MSDN library.
   syntax:
     content: public void NoteChangeTime (int dwRegister, ref System.Runtime.InteropServices.ComTypes.FILETIME pfiletime);
@@ -179,7 +179,7 @@ items:
       description: A reference to the object's last change time.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.NoteChangeTime*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,7 +215,7 @@ items:
       description: A value that can be used to identify this ROT entry in subsequent calls to <xref:System.Runtime.InteropServices.ComTypes.IRunningObjectTable.Revoke*> or <xref:System.Runtime.InteropServices.ComTypes.IRunningObjectTable.NoteChangeTime*>.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.Register*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
       description: The Running Object Table (ROT) entry to revoke.
   overload: System.Runtime.InteropServices.ComTypes.IRunningObjectTable.Revoke*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -31,7 +31,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -55,7 +55,7 @@ items:
     parameters: []
   overload: System.Xml.XmlResolver.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -80,10 +80,10 @@ items:
     content: public abstract System.Net.ICredentials Credentials { set; }
     return:
       type: System.Net.ICredentials
-      description: The credentials to be used to authenticate web requests. If this property is not set, the value defaults to <xref uid="langword_csharp_null" name="null" href=""></xref>; that is, the <xref uid="langword_csharp_XmlResolver" name="XmlResolver" href=""></xref> has no user credentials.
+      description: The credentials to be used to authenticate web requests. If this property is not set, the value defaults to `null`; that is, the `XmlResolver` has no user credentials.
   overload: System.Xml.XmlResolver.Credentials*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -118,22 +118,22 @@ items:
       description: The type of object to return. The current version only returns System.IO.Stream objects.
     return:
       type: System.Object
-      description: A stream object or <xref uid="langword_csharp_null" name="null" href=""></xref> if a type other than stream is specified.
+      description: A stream object or `null` if a type other than stream is specified.
   overload: System.Xml.XmlResolver.GetEntity*
   exceptions:
   - type: System.Xml.XmlException
     commentId: T:System.Xml.XmlException
-    description: <code>ofObjectToReturn</code> is not a <xref uid="langword_csharp_Stream" name="Stream" href=""></xref> type.
+    description: <code>ofObjectToReturn</code> is not a `Stream` type.
   - type: System.UriFormatException
     commentId: T:System.UriFormatException
     description: The specified URI is not an absolute URI.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>absoluteUri</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>absoluteUri</code> is `null`.
   - type: System.Exception
     commentId: T:System.Exception
     description: There is a runtime error (for example, an interrupted server connection).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,13 +165,13 @@ items:
       description: The URI to resolve. The URI can be absolute or relative. If absolute, this value effectively replaces the `baseUri` value. If relative, it combines with the `baseUri` to make an absolute URI.
     return:
       type: System.Uri
-      description: The absolute URI or <xref uid="langword_csharp_null" name="null" href=""></xref> if the relative URI cannot be resolved.
+      description: The absolute URI or `null` if the relative URI cannot be resolved.
   overload: System.Xml.XmlResolver.ResolveUri*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>relativeUri</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>relativeUri</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -200,10 +200,10 @@ items:
       description: The type to return.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>type</code> is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>type</code> is supported; otherwise, `false`.'
   overload: System.Xml.XmlResolver.SupportsType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object

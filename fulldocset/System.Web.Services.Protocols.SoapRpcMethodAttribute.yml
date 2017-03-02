@@ -19,7 +19,7 @@ items:
   nameWithType: SoapRpcMethodAttribute
   fullName: System.Web.Services.Protocols.SoapRpcMethodAttribute
   type: Class
-  summary: Specifies that SOAP messages sent to and from the method use <xref uid="langword_csharp_RPC" name="RPC" href=""></xref> formatting.
+  summary: Specifies that SOAP messages sent to and from the method use `RPC` formatting.
   remarks: "Web Services Description Language (WSDL) defines two styles for how an XML Web service method, or operation, can be formatted in a SOAP message: `RPC` and `Document`. `RPC` formatting refers to formatting the operation according to the SOAP specification for using SOAP for RPC; otherwise known as Section 7 of the SOAP specification. `RPC` formatting states that all parameters are encapsulated within a single XML element named after the XML Web service method and that each XML element within that XML element represents a parameter named after the parameter it is representing.  \n  \n SOAP messages formatted in both the `RPC` and `Document` styles can be used to communicate with an XML Web service in a Remote Procedure Call (RPC) manner; however the `Document` style can also easily be used to communicate in a loosely coupled manner. Therefore, `Document` style XML Web services is recommended. For more details, see the `Customizing SOAP Messages` topic.  \n  \n For more details, see [&#91;\\<topic://cpconCustomizingSOAPInASPNETWebServicesWebServiceClients>&#93;](http://msdn.microsoft.com/en-us/1d777288-c0d9-4e6a-b638-f010da031952).  \n  \n This attribute can be applied to an XML Web service method on the server and a proxy class on the client. XML Web service methods that have the <xref:System.Web.Services.Protocols.SoapRpcMethodAttribute.OneWay%2A> property set to `true` do not have access to their <xref:System.Web.HttpContext>. As such, accessing any of the properties of the <xref:System.Web.Services.WebService> class return `null`."
   example:
   - "The following code example sets the message style to `Rpc` for the `GetUserName` XML Web service method.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -79,7 +79,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -102,7 +102,7 @@ items:
     parameters: []
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: The intent of the SOAP request. Sets the <xref:System.Web.Services.Protocols.SoapRpcMethodAttribute.Action*> property.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,7 +145,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Gets or sets the <xref uid="langword_csharp_SOAPAction" name="SOAPAction" href=""></xref> HTTP header field of the SOAP request.
+  summary: Gets or sets the `SOAPAction` HTTP header field of the SOAP request.
   remarks: "Typically, the Action property is a URI indicating the intent of the SOAP request. However, the SOAP specification places no restrictions on the format and whether the URI refers to an existing document. The presence and content of the Action property can be used by Web servers such as firewalls to appropriately filter SOAP request messages in HTTP.  \n  \n By default, the .NET Framework version 1.1 publishes the Action property in the `soapAction` attribute of the `soap:operation` element for each supported SOAP binding in WSDL documents generated for an XML Web service. The supported SOAP binding is SOAP 1.1.  \n  \n For more information about the SOAP specification, see the W3C Web site (http://www.w3.org/TR/SOAP)."
   example:
   - "The following code example sets the Action property to `http://www.contoso.com/Sample`.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -153,10 +153,10 @@ items:
     content: public string Action { get; set; }
     return:
       type: System.String
-      description: The <xref uid="langword_csharp_SOAPAction" name="SOAPAction" href=""></xref> HTTP header field of the SOAP request. The default is http://tempuri.org/MethodName where MethodName is the name of the XML Web service method.
+      description: The `SOAPAction` HTTP header field of the SOAP request. The default is http://tempuri.org/MethodName where MethodName is the name of the XML Web service method.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.Action*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -184,7 +184,7 @@ items:
       description: The binding an XML Web service method implements an operation for. The default is the name of the XML Web service with "Soap" appended.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.Binding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,10 +209,10 @@ items:
     content: public bool OneWay { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the XML Web service client does not wait for the Web server to completely process an XML Web service method; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the XML Web service client does not wait for the Web server to completely process an XML Web service method; otherwise, `false`. The default is `false`.'
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.OneWay*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -240,7 +240,7 @@ items:
       description: The XML element associated with the SOAP request for an XML Web service method. The default value is the name of the XML Web service method.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.RequestElementName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,7 +268,7 @@ items:
       description: The XML namespace associated with the SOAP request for an XML Web service method. The default is http://tempuri.org/.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.RequestNamespace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -296,7 +296,7 @@ items:
       description: The XML element associated with the SOAP request for an XML Web service method. The default value is `WebServiceNameResult`, where `WebServiceName` is the name of the XML Web service method.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.ResponseElementName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -324,7 +324,7 @@ items:
       description: The XML namespace associated with the SOAP response for an XML Web service method. The default is http://tempuri.org/.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.ResponseNamespace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -350,7 +350,7 @@ items:
       description: A member of the <xref href="System.Web.Services.Description.SoapBindingUse"></xref> enumeration specifying the binding used when invoking the method.
   overload: System.Web.Services.Protocols.SoapRpcMethodAttribute.Use*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

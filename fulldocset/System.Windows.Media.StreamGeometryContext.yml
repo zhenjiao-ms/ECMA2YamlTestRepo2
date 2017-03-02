@@ -38,7 +38,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -72,19 +72,19 @@ items:
       description: The rotation angle of the oval that specifies the curve. The curvature of the arc can be rotated with this parameter.
     - id: isLargeArc
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to draw the arc greater than 180 degrees; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to draw the arc greater than 180 degrees; otherwise, `false`.'
     - id: sweepDirection
       type: System.Windows.Media.SweepDirection
       description: A value that indicates whether the arc is drawn in the <xref href="System.Windows.Media.SweepDirection"></xref> or <xref href="System.Windows.Media.SweepDirection"></xref> direction.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.ArcTo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -110,13 +110,13 @@ items:
       description: The <xref href="System.Windows.Point"></xref> where the figure begins.
     - id: isFilled
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use the area contained by this figure for hit-testing, rendering, and clipping; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to use the area contained by this figure for hit-testing, rendering, and clipping; otherwise, `false`.'
     - id: isClosed
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to close the figure; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. For example, if two connecting lines are drawn, and `isClosed` is set to <xref uid="langword_csharp_false" name="false" href=""></xref>, the drawing will just be of two lines but if `isClosed` is set to <xref uid="langword_csharp_true" name="true" href=""></xref>, the two lines will be closed to create a triangle.
+      description: '`true` to close the figure; otherwise, `false`. For example, if two connecting lines are drawn, and `isClosed` is set to `false`, the drawing will just be of two lines but if `isClosed` is set to `true`, the two lines will be closed to create a triangle.'
   overload: System.Windows.Media.StreamGeometryContext.BeginFigure*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -150,16 +150,16 @@ items:
       description: The destination point for the end of the curve.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.BezierTo*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to add a segment without starting a figure by calling the <xref:System.Windows.Media.StreamGeometryContext.BeginFigure*> method.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -185,7 +185,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This context has already been closed or disposed.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -213,16 +213,16 @@ items:
       description: The destination point for the end of the line.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.LineTo*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to add a segment without starting a figure by calling the <xref:System.Windows.Media.StreamGeometryContext.BeginFigure*> method.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -250,16 +250,16 @@ items:
       description: The list of points that specify control points and destination points for one or more Bezier curves. The number of points in this list should be a multiple of three.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.PolyBezierTo*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to add a segment without starting a figure by calling the <xref:System.Windows.Media.StreamGeometryContext.BeginFigure*> method.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -287,16 +287,16 @@ items:
       description: The collection of points that specify destination points for one or more connected straight lines.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.PolyLineTo*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to add a segment without starting a figure by calling the <xref:System.Windows.Media.StreamGeometryContext.BeginFigure*> method.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -324,16 +324,16 @@ items:
       description: The collection of points that specify control points and destination points for one or more quadratic Bezier curves. The first point in the list specifies the curve's control point, the next point specifies the destination point, the next point specifies the control point of the next curve, and so on. The list must contain an even number of points.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.PolyQuadraticBezierTo*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to add a segment without starting a figure by calling the <xref:System.Windows.Media.StreamGeometryContext.BeginFigure*> method.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -364,16 +364,16 @@ items:
       description: The destination point for the end of the curve.
     - id: isStroked
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to make the segment stroked when a <xref href="System.Windows.Media.Pen"></xref> is used to render the segment; otherwise, `false`.'
     - id: isSmoothJoin
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to treat the join between this segment and the previous segment as a corner when stroked with a <xref href="System.Windows.Media.Pen"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.StreamGeometryContext.QuadraticBezierTo*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to add a segment without starting a figure by calling the <xref:System.Windows.Media.StreamGeometryContext.BeginFigure*> method.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -396,7 +396,7 @@ items:
     parameters: []
   overload: System.Windows.Media.StreamGeometryContext.System#IDisposable#Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

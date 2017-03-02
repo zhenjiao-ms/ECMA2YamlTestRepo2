@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -71,10 +71,10 @@ items:
       description: A string specifying the name of the <xref href="System.Windows.Forms.ToolStrip"></xref> or derived <xref href="System.Windows.Forms.ToolStrip"></xref> type to find.
     return:
       type: System.Windows.Forms.ToolStrip
-      description: The <xref href="System.Windows.Forms.ToolStrip"></xref> or one of its derived types as specified by the <code>toolStripName</code> parameter, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the <xref href="System.Windows.Forms.ToolStrip"></xref> is not found.
+      description: The <xref href="System.Windows.Forms.ToolStrip"></xref> or one of its derived types as specified by the <code>toolStripName</code> parameter, or `null` if the <xref href="System.Windows.Forms.ToolStrip"></xref> is not found.
   overload: System.Windows.Forms.ToolStripManager.FindToolStrip*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,10 +100,10 @@ items:
       description: The shortcut key for which to search.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the shortcut key is used by any <xref href="System.Windows.Forms.ToolStrip"></xref> on the form; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the shortcut key is used by any <xref href="System.Windows.Forms.ToolStrip"></xref> on the form; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.IsShortcutDefined*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,10 +130,10 @@ items:
       description: The shortcut key to test for validity.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the shortcut key is valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the shortcut key is valid; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.IsValidShortcut*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -162,8 +162,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>targetForm</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>targetForm</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,8 +195,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>key</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or empty.
-  platform:
+    description: The <code>key</code> parameter is `null` or empty.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,16 +226,16 @@ items:
       description: The name of the <xref href="System.Windows.Forms.ToolStrip"></xref> that receives the <xref href="System.Windows.Forms.ToolStrip"></xref> referred to by the `sourceToolStrip` parameter.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the merge is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the merge is successful; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.Merge*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>sourceToolStrip</code> or <code>targetName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>sourceToolStrip</code> or <code>targetName</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>sourceToolStrip</code> or <code>targetName</code> parameters refer to the same <xref href="System.Windows.Forms.ToolStrip"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -267,10 +267,10 @@ items:
       description: The <xref href="System.Windows.Forms.ToolStrip"></xref> that receives the <xref href="System.Windows.Forms.ToolStrip"></xref> referred to by the `sourceToolStrip` parameter.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the merge is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the merge is successful; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.Merge*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -298,7 +298,7 @@ items:
       description: One of the <xref href="System.Windows.Forms.ToolStripRenderer"></xref> values.
   overload: System.Windows.Forms.ToolStripManager.Renderer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -325,7 +325,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -359,7 +359,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <xref href="System.Windows.Forms.ToolStripManagerRenderMode"></xref> is set to <xref href="System.Windows.Forms.ToolStripManagerRenderMode"></xref>; use the <xref:System.Windows.Forms.ToolStripManager.Renderer*> property instead.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -386,10 +386,10 @@ items:
       description: The name of the <xref href="System.Windows.Forms.ToolStripItem"></xref> for which to undo a merge operation.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the undoing of the merge is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the undoing of the merge is successful; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.RevertMerge*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -418,10 +418,10 @@ items:
       description: The <xref href="System.Windows.Forms.ToolStripItem"></xref> for which to undo a merge operation.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the undoing of the merge is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the undoing of the merge is successful; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.RevertMerge*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -451,13 +451,13 @@ items:
       description: The <xref href="System.Windows.Forms.ToolStrip"></xref> that was merged with the `targetToolStrip`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the undoing of the merge is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the undoing of the merge is successful; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.RevertMerge*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>sourceToolStrip</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>sourceToolStrip</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,8 +486,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>sourceForm</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>sourceForm</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,8 +519,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>key</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or empty.
-  platform:
+    description: The <code>key</code> parameter is `null` or empty.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -542,10 +542,10 @@ items:
     content: public static bool VisualStylesEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Windows.Forms.ToolStripItem"></xref> is rendered using themes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Windows.Forms.ToolStripItem"></xref> is rendered using themes; otherwise, `false`.'
   overload: System.Windows.Forms.ToolStripManager.VisualStylesEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

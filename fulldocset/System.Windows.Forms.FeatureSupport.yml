@@ -16,7 +16,7 @@ items:
   nameWithType: FeatureSupport
   fullName: System.Windows.Forms.FeatureSupport
   type: Class
-  summary: Provides <xref uid="langword_csharp_static" name="static" href=""></xref> methods for retrieving feature information from the current system.
+  summary: Provides `static` methods for retrieving feature information from the current system.
   remarks: "Use the `static` methods of this class when the classes you query for feature information implement the <xref:System.Windows.Forms.IFeatureSupport> interface. Otherwise, inherit from FeatureSupport and provide your own implementation. For an implementation of this class, see <xref:System.Windows.Forms.OSFeature>.  \n  \n To get the version number of a feature, call <xref:System.Windows.Forms.FeatureSupport.GetVersionPresent%2A>. Call <xref:System.Windows.Forms.FeatureSupport.IsPresent%2A> to determine if a particular feature or version of a feature is installed."
   example:
   - "The following example uses the <xref:System.Windows.Forms.OSFeature> implementation of FeatureSupport and queries for the <xref:System.Windows.Forms.OSFeature.LayeredWindows> feature. The version is checked to see if it is `null`, to determine whether the feature is present. The result is displayed in a text box. This code assumes `textBox1` has been created and placed on a form.  \n  \n [!code-cs[Classic OSFeature Example#1](~/add/codesnippet/csharp/t-system.windows.forms.f_11_1.cs)]\n [!code-vb[Classic OSFeature Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.f_11_1.vb)]\n [!code-cpp[Classic OSFeature Example#1](~/add/codesnippet/cpp/t-system.windows.forms.f_11_1.cpp)]"
@@ -34,7 +34,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -57,7 +57,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.FeatureSupport.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,10 +86,10 @@ items:
       description: The feature whose version is requested.
     return:
       type: System.Version
-      description: A <xref href="System.Version"></xref> representing the version number of the specified feature available on the system; or <xref uid="langword_csharp_null" name="null" href=""></xref> if the feature is not installed.
+      description: A <xref href="System.Version"></xref> representing the version number of the specified feature available on the system; or `null` if the feature is not installed.
   overload: System.Windows.Forms.FeatureSupport.GetVersionPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,10 +119,10 @@ items:
       description: The fully qualified name of the feature to look for.
     return:
       type: System.Version
-      description: A <xref href="System.Version"></xref> with the version number of the specified feature available on the system; or <xref uid="langword_csharp_null" name="null" href=""></xref> if the feature is not installed.
+      description: A <xref href="System.Version"></xref> with the version number of the specified feature available on the system; or `null` if the feature is not installed.
   overload: System.Windows.Forms.FeatureSupport.GetVersionPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,10 +151,10 @@ items:
       description: The feature to look for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the feature is present; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the feature is present; otherwise, `false`.'
   overload: System.Windows.Forms.FeatureSupport.IsPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -183,10 +183,10 @@ items:
       description: A <xref href="System.Version"></xref> representing the minimum version number of the feature to look for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the feature is present and its version number is greater than or equal to the specified minimum version number; <xref uid="langword_csharp_false" name="false" href=""></xref> if the feature is not installed or its version number is below the specified minimum number.
+      description: '`true` if the feature is present and its version number is greater than or equal to the specified minimum version number; `false` if the feature is not installed or its version number is below the specified minimum number.'
   overload: System.Windows.Forms.FeatureSupport.IsPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -203,7 +203,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Determines whether any version of the specified feature is installed in the system. This method is <xref uid="langword_csharp_static" name="static" href=""></xref>.
+  summary: Determines whether any version of the specified feature is installed in the system. This method is `static`.
   remarks: See the documentation for the product containing the feature to determine the names to pass to the `featureClassName` and the `featureConstName` parameters.
   syntax:
     content: public static bool IsPresent (string featureClassName, string featureConstName);
@@ -216,10 +216,10 @@ items:
       description: The fully qualified name of the feature to look for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified feature is present; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified feature is not present or if the product containing the feature is not installed.
+      description: '`true` if the specified feature is present; `false` if the specified feature is not present or if the product containing the feature is not installed.'
   overload: System.Windows.Forms.FeatureSupport.IsPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,7 +236,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Determines whether the specified or newer version of the specified feature is installed in the system. This method is <xref uid="langword_csharp_static" name="static" href=""></xref>.
+  summary: Determines whether the specified or newer version of the specified feature is installed in the system. This method is `static`.
   remarks: See the documentation for the product containing the feature to determine the names to pass to the `featureClassName` and the `featureConstName` parameters.
   syntax:
     content: public static bool IsPresent (string featureClassName, string featureConstName, Version minimumVersion);
@@ -252,10 +252,10 @@ items:
       description: A <xref href="System.Version"></xref> representing the minimum version number of the feature.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the feature is present and its version number is greater than or equal to the specified minimum version number; <xref uid="langword_csharp_false" name="false" href=""></xref> if the feature is not installed or its version number is below the specified minimum number.
+      description: '`true` if the feature is present and its version number is greater than or equal to the specified minimum version number; `false` if the feature is not installed or its version number is below the specified minimum number.'
   overload: System.Windows.Forms.FeatureSupport.IsPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

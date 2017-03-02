@@ -41,7 +41,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -65,7 +65,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Tasks.CallTarget.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,10 +89,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if all targets built successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if all targets built successfully; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.CallTarget.Execute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,15 +110,15 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Gets or sets a Boolean value that indicates whether the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once per target (<xref uid="langword_csharp_true" name="true" href=""></xref>) or the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once to build all targets (<xref uid="langword_csharp_false" name="false" href=""></xref>).
+  summary: Gets or sets a Boolean value that indicates whether the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once per target (`true`) or the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once to build all targets (`false`).
   syntax:
     content: public bool RunEachTargetSeparately { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once per target; <xref uid="langword_csharp_false" name="false" href=""></xref> if the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once to build all targets.
+      description: '`true` if the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once per target; `false` if the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine is called once to build all targets.'
   overload: Microsoft.Build.Tasks.CallTarget.RunEachTargetSeparately*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,7 +144,7 @@ items:
       description: The outputs of all built targets.
   overload: Microsoft.Build.Tasks.CallTarget.TargetOutputs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,7 +170,7 @@ items:
       description: The target or targets to build.
   overload: Microsoft.Build.Tasks.CallTarget.Targets*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,10 +194,10 @@ items:
     content: public bool UseResultsCache { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the MSBuild engine will return the built targets from the cache; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the MSBuild engine will return the built targets from the cache; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.CallTarget.UseResultsCache*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: Microsoft.Build.Tasks.TaskExtension
@@ -236,8 +236,8 @@ references:
 - uid: Microsoft.Build.Framework.ITaskItem[]
   parent: Microsoft.Build.Framework
   isExternal: false
-  name: ITaskItem
-  nameWithType: ITaskItem
+  name: ITaskItem[]
+  nameWithType: ITaskItem[]
   fullName: Microsoft.Build.Framework.ITaskItem[]
   spec.csharp:
   - uid: Microsoft.Build.Framework.ITaskItem
@@ -256,8 +256,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

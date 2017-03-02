@@ -36,7 +36,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
     parameters: []
   overload: System.Runtime.InteropServices.TypeLibConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,10 +100,10 @@ items:
       description: The <xref href="System.Runtime.InteropServices.ITypeLibExporterNotifySink"></xref> interface implemented by the caller.
     return:
       type: System.Object
-      description: An object that implements the <xref uid="langword_csharp_ITypeLib" name="ITypeLib" href=""></xref> interface.
+      description: An object that implements the `ITypeLib` interface.
   overload: System.Runtime.InteropServices.TypeLibConverter.ConvertAssemblyToTypeLib*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,7 +127,7 @@ items:
     parameters:
     - id: typeLib
       type: System.Object
-      description: The object that implements the <xref uid="langword_csharp_ITypeLib" name="ITypeLib" href=""></xref> interface.
+      description: The object that implements the `ITypeLib` interface.
     - id: asmFileName
       type: System.String
       description: The file name of the resulting assembly.
@@ -139,13 +139,13 @@ items:
       description: <xref href="System.Runtime.InteropServices.ITypeLibImporterNotifySink"></xref> interface implemented by the caller.
     - id: publicKey
       type: System.Byte[]
-      description: A <xref uid="langword_csharp_byte" name="byte" href=""></xref> array containing the public key.
+      description: A `byte` array containing the public key.
     - id: keyPair
       type: System.Reflection.StrongNameKeyPair
       description: A <xref href="System.Reflection.StrongNameKeyPair"></xref> object containing the public and private cryptographic key pair.
     - id: unsafeInterfaces
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, the interfaces require link time checks for <xref href="System.Security.Permissions.SecurityPermissionFlag"></xref> permission. If <xref uid="langword_csharp_false" name="false" href=""></xref>, the interfaces require run time checks that require a stack walk and are more expensive, but help provide greater protection.
+      description: If `true`, the interfaces require link time checks for <xref href="System.Security.Permissions.SecurityPermissionFlag"></xref> permission. If `false`, the interfaces require run time checks that require a stack walk and are more expensive, but help provide greater protection.
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: An <xref href="System.Reflection.Emit.AssemblyBuilder"></xref> object containing the converted type library.
@@ -153,17 +153,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>typeLib</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>asmFileName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>notifySink</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>typeLib</code> is `null`.  \n  \n -or-  \n  \n <code>asmFileName</code> is `null`.  \n  \n -or-  \n  \n <code>notifySink</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>asmFileName</code> is an empty string.  \n  \n -or-  \n  \n <code>asmFileName</code> is longer than MAX_PATH."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>flags</code> is not <xref href=\"System.Runtime.InteropServices.TypeLibImporterFlags\"></xref>.  \n  \n -or-  \n  \n <code>publicKey</code> and <code>keyPair</code> are <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>flags</code> is not <xref href=\"System.Runtime.InteropServices.TypeLibImporterFlags\"></xref>.  \n  \n -or-  \n  \n <code>publicKey</code> and <code>keyPair</code> are `null`."
   - type: System.Reflection.ReflectionTypeLoadException
     commentId: T:System.Reflection.ReflectionTypeLoadException
     description: The metadata produced has errors preventing any types from loading.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,7 +192,7 @@ items:
     parameters:
     - id: typeLib
       type: System.Object
-      description: The object that implements the <xref uid="langword_csharp_ITypeLib" name="ITypeLib" href=""></xref> interface.
+      description: The object that implements the `ITypeLib` interface.
     - id: asmFileName
       type: System.String
       description: The file name of the resulting assembly.
@@ -204,7 +204,7 @@ items:
       description: <xref href="System.Runtime.InteropServices.ITypeLibImporterNotifySink"></xref> interface implemented by the caller.
     - id: publicKey
       type: System.Byte[]
-      description: A <xref uid="langword_csharp_byte" name="byte" href=""></xref> array containing the public key.
+      description: A `byte` array containing the public key.
     - id: keyPair
       type: System.Reflection.StrongNameKeyPair
       description: A <xref href="System.Reflection.StrongNameKeyPair"></xref> object containing the public and private cryptographic key pair.
@@ -213,7 +213,7 @@ items:
       description: The namespace for the resulting assembly.
     - id: asmVersion
       type: System.Version
-      description: The version of the resulting assembly. If <xref uid="langword_csharp_null" name="null" href=""></xref>, the version of the type library is used.
+      description: The version of the resulting assembly. If `null`, the version of the type library is used.
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: An <xref href="System.Reflection.Emit.AssemblyBuilder"></xref> object containing the converted type library.
@@ -221,17 +221,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>typeLib</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>asmFileName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>notifySink</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>typeLib</code> is `null`.  \n  \n -or-  \n  \n <code>asmFileName</code> is `null`.  \n  \n -or-  \n  \n <code>notifySink</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>asmFileName</code> is an empty string.  \n  \n -or-  \n  \n <code>asmFileName</code> is longer than MAX_PATH."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>flags</code> is not <xref href=\"System.Runtime.InteropServices.TypeLibImporterFlags\"></xref>.  \n  \n -or-  \n  \n <code>publicKey</code> and <code>keyPair</code> are <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>flags</code> is not <xref href=\"System.Runtime.InteropServices.TypeLibImporterFlags\"></xref>.  \n  \n -or-  \n  \n <code>publicKey</code> and <code>keyPair</code> are `null`."
   - type: System.Reflection.ReflectionTypeLoadException
     commentId: T:System.Reflection.ReflectionTypeLoadException
     description: The metadata produced has errors preventing any types from loading.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -272,10 +272,10 @@ items:
       description: On successful return, the code base of the primary interop assembly associated with `g`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the primary interop assembly was found in the registry; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the primary interop assembly was found in the registry; otherwise `false`.'
   overload: System.Runtime.InteropServices.TypeLibConverter.GetPrimaryInteropAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -371,8 +371,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

@@ -50,7 +50,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
     parameters: []
   overload: System.Net.Mail.SmtpClient.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the name or IP address of the host computer used for SMTP transactions.
   overload: System.Net.Mail.SmtpClient.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,7 +140,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>port</code> cannot be less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -168,7 +168,7 @@ items:
       description: An <xref href="System.Security.Cryptography.X509Certificates.X509CertificateCollection"></xref>, holding one or more client certificates. The default value is derived from the mail configuration attributes in a configuration file.
   overload: System.Net.Mail.SmtpClient.ClientCertificates*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -193,13 +193,13 @@ items:
     content: public System.Net.ICredentialsByHost Credentials { get; set; }
     return:
       type: System.Net.ICredentialsByHost
-      description: An <xref href="System.Net.ICredentialsByHost"></xref> that represents the credentials to use for authentication; or <xref uid="langword_csharp_null" name="null" href=""></xref> if no credentials have been specified.
+      description: An <xref href="System.Net.ICredentialsByHost"></xref> that represents the credentials to use for authentication; or `null` if no credentials have been specified.
   overload: System.Net.Mail.SmtpClient.Credentials*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot change the value of this property when an email is being sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -225,7 +225,7 @@ items:
       description: An <xref href="System.Net.Mail.SmtpDeliveryMethod"></xref> that indicates how email messages are delivered.
   overload: System.Net.Mail.SmtpClient.DeliveryMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -249,7 +249,7 @@ items:
     parameters: []
   overload: System.Net.Mail.SmtpClient.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Net.Mail.SmtpClient.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -270,10 +270,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to releases only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to releases only unmanaged resources.'
   overload: System.Net.Mail.SmtpClient.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Net.Mail.SmtpClient.EnableSsl
   id: EnableSsl
@@ -295,10 +295,10 @@ items:
     content: public bool EnableSsl { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Net.Mail.SmtpClient"></xref> uses SSL; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Net.Mail.SmtpClient"></xref> uses SSL; otherwise, `false`. The default is `false`.'
   overload: System.Net.Mail.SmtpClient.EnableSsl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -328,14 +328,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value specified for a set operation is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value specified for a set operation is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The value specified for a set operation is equal to <xref href="System.String"></xref> ("").
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot change the value of this property when an email is being sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,7 +362,7 @@ items:
       description: An <xref href="System.ComponentModel.AsyncCompletedEventArgs"></xref> that contains event data.
   overload: System.Net.Mail.SmtpClient.OnSendCompleted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,7 +388,7 @@ items:
       description: A <xref href="System.String"></xref> that specifies the pickup directory for mail messages.
   overload: System.Net.Mail.SmtpClient.PickupDirectoryLocation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,7 +422,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot change the value of this property when an email is being sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -453,20 +453,20 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>message</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>message</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n &lt;xref:System.Net.Mail.MailMessage.From%2A?displayProperty=fullName&gt; is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n There are no recipients specified in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, and &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt; properties.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
+    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n &lt;xref:System.Net.Mail.MailMessage.From%2A?displayProperty=fullName&gt; is `null`.  \n  \n -or-  \n  \n There are no recipients specified in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, and &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt; properties.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is `null`.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been disposed.
   - type: System.Net.Mail.SmtpException
     commentId: T:System.Net.Mail.SmtpException
-    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true,\" name=\"true,\" href=\"\"></xref> but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command."
+    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true` but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true,` but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command."
   - type: System.Net.Mail.SmtpFailedRecipientsException
     commentId: T:System.Net.Mail.SmtpFailedRecipientsException
     description: The <code>message</code> could not be delivered to one or more of the recipients in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, or &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt;.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -504,23 +504,23 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>from</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>recipients</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>from</code> is `null`.  \n  \n -or-  \n  \n <code>recipients</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>from</code> is <xref href=\"System.String\"></xref>.  \n  \n -or-  \n  \n <code>recipients</code> is <xref href=\"System.String\"></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
+    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is `null`.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been disposed.
   - type: System.Net.Mail.SmtpException
     commentId: T:System.Net.Mail.SmtpException
-    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true,\" name=\"true,\" href=\"\"></xref> but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command."
+    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true` but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true,` but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command."
   - type: System.Net.Mail.SmtpFailedRecipientsException
     commentId: T:System.Net.Mail.SmtpFailedRecipientsException
     description: The message could not be delivered to one or more of the recipients in <code>recipients</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -554,17 +554,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n &lt;xref:System.Net.Mail.MailMessage.From%2A?displayProperty=fullName&gt; is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>message</code> is `null`.  \n  \n -or-  \n  \n &lt;xref:System.Net.Mail.MailMessage.From%2A?displayProperty=fullName&gt; is `null`."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n There are no recipients specified in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, and &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt; properties.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
+    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n There are no recipients specified in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, and &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt; properties.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is `null`.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been disposed.
   - type: System.Net.Mail.SmtpException
     commentId: T:System.Net.Mail.SmtpException
-    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true,\" name=\"true,\" href=\"\"></xref> but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command.  \n  \n -or-  \n  \n The <code>message</code> could not be delivered to one or more of the recipients in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, or &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt;."
-  platform:
+    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true` but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true,` but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command.  \n  \n -or-  \n  \n The <code>message</code> could not be delivered to one or more of the recipients in &lt;xref:System.Net.Mail.MailMessage.To%2A?displayProperty=fullName&gt;, &lt;xref:System.Net.Mail.MailMessage.CC%2A?displayProperty=fullName&gt;, or &lt;xref:System.Net.Mail.MailMessage.Bcc%2A?displayProperty=fullName&gt;."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,20 +605,20 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>from</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>recipient</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>from</code> is `null`.  \n  \n -or-  \n  \n <code>recipient</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>from</code> is <xref href=\"System.String\"></xref>.  \n  \n -or-  \n  \n <code>recipient</code> is <xref href=\"System.String\"></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
+    description: "This <xref href=\"System.Net.Mail.SmtpClient\"></xref> has a <xref:System.Net.Mail.SmtpClient.SendAsync*> call in progress.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is `null`.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Host*> is equal to the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> and <xref:System.Net.Mail.SmtpClient.Port*> is zero, a negative number, or greater than 65,535."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been disposed.
   - type: System.Net.Mail.SmtpException
     commentId: T:System.Net.Mail.SmtpException
-    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to <xref uid=\"langword_csharp_true,\" name=\"true,\" href=\"\"></xref> but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command.  \n  \n -or-  \n  \n The message could not be delivered to one or more of the recipients in <code>recipients</code>."
-  platform:
+    description: "The connection to the SMTP server failed.  \n  \n -or-  \n  \n Authentication failed.  \n  \n -or-  \n  \n The operation timed out.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true` but the <xref:System.Net.Mail.SmtpClient.DeliveryMethod*> property is set to <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref> or <xref href=\"System.Net.Mail.SmtpDeliveryMethod\"></xref>.  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.EnableSsl*> is set to `true,` but the SMTP mail server did not advertise STARTTLS in the response to the EHLO command.  \n  \n -or-  \n  \n The message could not be delivered to one or more of the recipients in <code>recipients</code>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -647,7 +647,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -674,7 +674,7 @@ items:
       type: System.Net.Mail.SendCompletedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -704,8 +704,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<xref:System.Net.Mail.SmtpClient.Host*> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.Port*> is zero."
-  platform:
+    description: "<xref:System.Net.Mail.SmtpClient.Host*> is `null` or the empty string (\"\").  \n  \n -or-  \n  \n <xref:System.Net.Mail.SmtpClient.Port*> is zero."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -731,7 +731,7 @@ items:
       description: A <xref href="System.String"></xref> that specifies the SPN to use for extended protection. The default value for this SPN is of the form "SMTPSVC/&lt;host&gt;" where &lt;host&gt; is the hostname of the SMTP mail server.
   overload: System.Net.Mail.SmtpClient.TargetName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -765,7 +765,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot change the value of this property when an email is being sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -790,13 +790,13 @@ items:
     content: public bool UseDefaultCredentials { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the default credentials are used; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the default credentials are used; otherwise `false`. The default value is `false`.'
   overload: System.Net.Mail.SmtpClient.UseDefaultCredentials*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot change the value of this property when an e-mail is being sent.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

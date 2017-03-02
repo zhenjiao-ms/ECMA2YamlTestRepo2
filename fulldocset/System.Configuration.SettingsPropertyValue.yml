@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
       description: Specifies a <xref href="System.Configuration.SettingsProperty"></xref> object.
   overload: System.Configuration.SettingsPropertyValue.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -82,10 +82,10 @@ items:
     content: public bool Deserialized { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of a <xref href="System.Configuration.SettingsProperty"></xref> object has been deserialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of a <xref href="System.Configuration.SettingsProperty"></xref> object has been deserialized; otherwise, `false`.'
   overload: System.Configuration.SettingsPropertyValue.Deserialized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,10 +108,10 @@ items:
     content: public bool IsDirty { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of a <xref href="System.Configuration.SettingsProperty"></xref> object has changed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of a <xref href="System.Configuration.SettingsProperty"></xref> object has changed; otherwise, `false`.'
   overload: System.Configuration.SettingsPropertyValue.IsDirty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -136,7 +136,7 @@ items:
       description: The name of the <xref href="System.Configuration.SettingsProperty"></xref> object.
   overload: System.Configuration.SettingsPropertyValue.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -161,7 +161,7 @@ items:
       description: The <xref href="System.Configuration.SettingsProperty"></xref> object that describes the <xref href="System.Configuration.SettingsPropertyValue"></xref> object.
   overload: System.Configuration.SettingsPropertyValue.Property*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -183,13 +183,13 @@ items:
     content: public object PropertyValue { get; set; }
     return:
       type: System.Object
-      description: "The value of the <xref href=\"System.Configuration.SettingsProperty\"></xref> object. When this value is set, the <xref:System.Configuration.SettingsPropertyValue.IsDirty*> property is set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and <xref:System.Configuration.SettingsPropertyValue.UsingDefaultValue*> is set to <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n When a value is first accessed from the PropertyValue property, and if the value was initially stored into the <xref href=\"System.Configuration.SettingsPropertyValue\"></xref> object as a serialized representation using the <xref:System.Configuration.SettingsPropertyValue.SerializedValue*> property, the PropertyValue property will trigger deserialization of the underlying value.  As a side effect, the <xref:System.Configuration.SettingsPropertyValue.Deserialized*> property will be set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n If this chain of events occurs in ASP.NET, and if an error occurs during the deserialization process, the error is logged using the health-monitoring feature of ASP.NET. By default, this means that deserialization errors will show up in the Application Event Log when running under ASP.NET. If this process occurs outside of ASP.NET, and if an error occurs during deserialization, the error is suppressed, and the remainder of the logic during deserialization occurs. If there is no serialized value to deserialize when the deserialization is attempted, then <xref href=\"System.Configuration.SettingsPropertyValue\"></xref> object will instead attempt to return a default value if one was configured as defined on the associated <xref href=\"System.Configuration.SettingsProperty\"></xref> instance. In this case, if the <xref:System.Configuration.SettingsProperty.DefaultValue*> property was set to either <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, or to the string \"[null]\", then the <xref href=\"System.Configuration.SettingsPropertyValue\"></xref> object will initialize the PropertyValue property to either <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> for reference types, or to the default value for the associated value type.  On the other hand, if <xref:System.Configuration.SettingsProperty.DefaultValue*> property holds a valid object reference or string value (other than \"[null]\"), then the <xref:System.Configuration.SettingsProperty.DefaultValue*> property is returned instead.  \n  \n If there is no serialized value to deserialize when the deserialization is attempted, and no default value was specified, then an empty string will be returned for string types. For all other types, a default instance will be returned by calling <xref:System.Activator.CreateInstance*> — for reference types this means an attempt will be made to create an object instance using the default constructor.  If this attempt fails, then <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> is returned."
+      description: "The value of the <xref href=\"System.Configuration.SettingsProperty\"></xref> object. When this value is set, the <xref:System.Configuration.SettingsPropertyValue.IsDirty*> property is set to `true` and <xref:System.Configuration.SettingsPropertyValue.UsingDefaultValue*> is set to `false`.  \n  \n When a value is first accessed from the PropertyValue property, and if the value was initially stored into the <xref href=\"System.Configuration.SettingsPropertyValue\"></xref> object as a serialized representation using the <xref:System.Configuration.SettingsPropertyValue.SerializedValue*> property, the PropertyValue property will trigger deserialization of the underlying value.  As a side effect, the <xref:System.Configuration.SettingsPropertyValue.Deserialized*> property will be set to `true`.  \n  \n If this chain of events occurs in ASP.NET, and if an error occurs during the deserialization process, the error is logged using the health-monitoring feature of ASP.NET. By default, this means that deserialization errors will show up in the Application Event Log when running under ASP.NET. If this process occurs outside of ASP.NET, and if an error occurs during deserialization, the error is suppressed, and the remainder of the logic during deserialization occurs. If there is no serialized value to deserialize when the deserialization is attempted, then <xref href=\"System.Configuration.SettingsPropertyValue\"></xref> object will instead attempt to return a default value if one was configured as defined on the associated <xref href=\"System.Configuration.SettingsProperty\"></xref> instance. In this case, if the <xref:System.Configuration.SettingsProperty.DefaultValue*> property was set to either `null`, or to the string \"[null]\", then the <xref href=\"System.Configuration.SettingsPropertyValue\"></xref> object will initialize the PropertyValue property to either `null` for reference types, or to the default value for the associated value type.  On the other hand, if <xref:System.Configuration.SettingsProperty.DefaultValue*> property holds a valid object reference or string value (other than \"[null]\"), then the <xref:System.Configuration.SettingsProperty.DefaultValue*> property is returned instead.  \n  \n If there is no serialized value to deserialize when the deserialization is attempted, and no default value was specified, then an empty string will be returned for string types. For all other types, a default instance will be returned by calling <xref:System.Activator.CreateInstance*> — for reference types this means an attempt will be made to create an object instance using the default constructor.  If this attempt fails, then `null` is returned."
   overload: System.Configuration.SettingsPropertyValue.PropertyValue*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: While attempting to use the default value from the <xref:System.Configuration.SettingsProperty.DefaultValue*> property, an error occurred.  Either the attempt to convert <xref:System.Configuration.SettingsProperty.DefaultValue*> property to a valid type failed, or the resulting value was not compatible with the type defined by <xref:System.Configuration.SettingsProperty.PropertyType*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,7 +218,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The serialization options for the property indicated the use of a string type converter, but a type converter was not available.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -240,10 +240,10 @@ items:
     content: public bool UsingDefaultValue { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the <xref href="System.Configuration.SettingsProperty"></xref> object is the default value; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of the <xref href="System.Configuration.SettingsProperty"></xref> object is the default value; otherwise, `false`.'
   overload: System.Configuration.SettingsPropertyValue.UsingDefaultValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

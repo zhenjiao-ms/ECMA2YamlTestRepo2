@@ -29,7 +29,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -53,7 +53,7 @@ items:
     parameters: []
   overload: System.Web.Security.FileAuthorizationModule.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,19 +86,19 @@ items:
       description: The HTTP verb used to make the request.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current Windows user represented by <code>token</code> has access to the file using the specified HTTP verb or if the <xref href="System.Web.Security.FileAuthorizationModule"></xref> module is not defined in the application's configuration file; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current Windows user represented by <code>token</code> has access to the file using the specified HTTP verb or if the <xref href="System.Web.Security.FileAuthorizationModule"></xref> module is not defined in the application''s configuration file; otherwise, `false`.'
   overload: System.Web.Security.FileAuthorizationModule.CheckFileAccessForUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>token</code> is <xref href=\"System.IntPtr.Zero\"></xref>.  \n  \n -or-  \n  \n <code>verb</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>virtualPath</code> is `null`.  \n  \n -or-  \n  \n <code>token</code> is <xref href=\"System.IntPtr.Zero\"></xref>.  \n  \n -or-  \n  \n <code>verb</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>virtualPath</code> is not in the application directory structure of the Web application.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The file specified by <code>virtualPath</code> does not exist.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,7 +122,7 @@ items:
     parameters: []
   overload: System.Web.Security.FileAuthorizationModule.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -149,7 +149,7 @@ items:
       description: The current <xref href="System.Web.HttpApplication"></xref> instance.
   overload: System.Web.Security.FileAuthorizationModule.Init*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

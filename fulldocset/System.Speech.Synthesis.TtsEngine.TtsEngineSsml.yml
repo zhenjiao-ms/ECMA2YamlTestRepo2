@@ -29,7 +29,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -55,7 +55,7 @@ items:
       description: Full name of the registry key for the Voice Token associated with the <xref href="System.Speech.Synthesis.TtsEngine.TtsEngineSsml"></xref> implementation. engine.
   overload: System.Speech.Synthesis.TtsEngine.TtsEngineSsml.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -71,7 +71,7 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: Adds a lexicon to the <xref uid="langword_csharp_Synthesizer" name="Synthesizer" href=""></xref><xref uid="langword_csharp_Voice" name="Voice" href=""></xref> implemented by the current <xref href="System.Speech.Synthesis.TtsEngine.TtsEngineSsml"></xref> instance.
+  summary: Adds a lexicon to the `Synthesizer``Voice` implemented by the current <xref href="System.Speech.Synthesis.TtsEngine.TtsEngineSsml"></xref> instance.
   remarks: "A pronunciation lexicon is a collection of words or phrases together with their pronunciations specified using an appropriate pronunciation alphabet.  \n  \n This method is typically called by the platform infrastructure in response to a <xref:System.Speech.Synthesis> based applications calling AddLexicon and using the `Synthesizer``Voice` implemented by the current <xref:System.Speech.Synthesis.TtsEngine.TtsEngineSsml> instance.  \n  \n The value of `mediaType` is typically a MIME specification, as the SSML specification uses MIME for media specifications."
   example:
   - "The implementation of AddLexicon uses the <xref:System.Speech.Synthesis.TtsEngine.ITtsEngineSite> interface passed in to load a lexicon from a resource. It then stores a `System.IO.Stream` to the lexicon in a `System.Collections.Generic.Dictionary` instance, indexed by the lexicon URI.  \n  \n```  \npublic static Dictionary<Uri, Stream> _aLexicons = new Dictionary<Uri, Stream>();  \n  \n public void AddLexicon(Uri uri, string mediaType, ITtsEngineSite site) {  \n    Stream stream = site.LoadResource(uri, mediaType);  \n    _aLexicons.Add(uri, stream);  \n}  \n  \n public void RemoveLexicon(Uri uri, ITtsEngineSite site) {  \n     Stream stream;  \n     if (_aLexicons.TryGetValue(uri, out stream)) {  \n         stream.Close();  \n         _aLexicons.Remove(uri);  \n     }  \n}  \n  \n```"
@@ -80,7 +80,7 @@ items:
     parameters:
     - id: uri
       type: System.Uri
-      description: A valid instance of <xref uid="langword_csharp_System.Uri" name="System.Uri" href=""></xref> indicating the location of the lexicon information.
+      description: A valid instance of `System.Uri` indicating the location of the lexicon information.
     - id: mediaType
       type: System.String
       description: A string containing the media type of the lexicon. Media types are case insensitive.
@@ -89,7 +89,7 @@ items:
       description: A reference to an <xref href="System.Speech.Synthesis.TtsEngine.ITtsEngineSite"></xref> interface used to interact with the platform infrastructure.
   overload: System.Speech.Synthesis.TtsEngine.TtsEngineSsml.AddLexicon*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -117,13 +117,13 @@ items:
       description: Valid member of the <xref href="System.Speech.Synthesis.TtsEngine.SpeakOutputFormat"></xref> enumeration indicating the type of requested audio output format.
     - id: targetWaveFormat
       type: System.IntPtr
-      description: A pointer to a <xref uid="langword_csharp_struct" name="struct" href=""></xref> containing detail setting for the audio format type requested by the `speakOutputFormat` argument.
+      description: A pointer to a `struct` containing detail setting for the audio format type requested by the `speakOutputFormat` argument.
     return:
       type: System.IntPtr
-      description: Returns a valid <xref uid="langword_csharp_IntPtr" name="IntPtr" href=""></xref> instance referring to a <xref uid="langword_csharp_struct" name="struct" href=""></xref> containing detailed information about the output format.
+      description: Returns a valid `IntPtr` instance referring to a `struct` containing detailed information about the output format.
   overload: System.Speech.Synthesis.TtsEngine.TtsEngineSsml.GetOutputFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -139,7 +139,7 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: Removes a lexicon currently loaded by the <xref uid="langword_csharp_Synthesizer" name="Synthesizer" href=""></xref><xref uid="langword_csharp_Voice" name="Voice" href=""></xref> implemented by the current <xref href="System.Speech.Synthesis.TtsEngine.TtsEngineSsml"></xref> instance.
+  summary: Removes a lexicon currently loaded by the `Synthesizer``Voice` implemented by the current <xref href="System.Speech.Synthesis.TtsEngine.TtsEngineSsml"></xref> instance.
   remarks: "A pronunciation lexicon is a collection of words or phrases together with their pronunciations specified using an appropriate pronunciation alphabet.  \n  \n This method is typically called in response to a <xref:System.Speech.Synthesis> based applications calling <xref:System.Speech.Synthesis.SpeechSynthesizer.RemoveLexicon%2A> and using the `Synthesizer``Voice` implemented by the current <xref:System.Speech.Synthesis.TtsEngine.TtsEngineSsml> instance."
   example:
   - "The implementation of RemoveLexicon uses the lexicon URI to query an instance `System.Collections.Generic.Dictionary` for the `System.IO.Stream`, closes the stream and removes the uri referring to the lexicon.  \n  \n```  \npublic static Dictionary<Uri, Stream> _aLexicons = new Dictionary<Uri, Stream>();  \n  \n public void AddLexicon(Uri uri, string mediaType, ITtsEngineSite site) {  \n    Stream stream = site.LoadResource(uri, mediaType);  \n    _aLexicons.Add(uri, stream);  \n}  \n  \n public void RemoveLexicon(Uri uri, ITtsEngineSite site) {  \n     Stream stream;  \n     if (_aLexicons.TryGetValue(uri, out stream)) {  \n         stream.Close();  \n         _aLexicons.Remove(uri);  \n     }  \n}  \n```"
@@ -148,13 +148,13 @@ items:
     parameters:
     - id: uri
       type: System.Uri
-      description: A valid instance of <xref uid="langword_csharp_System.Uri" name="System.Uri" href=""></xref> indicating the location of the lexicon information.
+      description: A valid instance of `System.Uri` indicating the location of the lexicon information.
     - id: site
       type: System.Speech.Synthesis.TtsEngine.ITtsEngineSite
       description: A reference to an <xref href="System.Speech.Synthesis.TtsEngine.ITtsEngineSite"></xref> interface passed in by the platform infrastructure to allow access to the infrastructure resources.
   overload: System.Speech.Synthesis.TtsEngine.TtsEngineSsml.RemoveLexicon*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -182,13 +182,13 @@ items:
       description: An array of <xref href="System.Speech.Synthesis.TtsEngine.TextFragment"></xref> instances containing the text to be rendered into speech.
     - id: waveHeader
       type: System.IntPtr
-      description: An <xref uid="langword_csharp_IntPtr" name="IntPtr" href=""></xref> pointing to a structure containing audio output format.
+      description: An `IntPtr` pointing to a structure containing audio output format.
     - id: site
       type: System.Speech.Synthesis.TtsEngine.ITtsEngineSite
       description: A reference to an <xref href="System.Speech.Synthesis.TtsEngine.ITtsEngineSite"></xref> interface passed in by the platform infrastructure to allow access to the infrastructure resources.
   overload: System.Speech.Synthesis.TtsEngine.TtsEngineSsml.Speak*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -259,8 +259,8 @@ references:
 - uid: System.Speech.Synthesis.TtsEngine.TextFragment[]
   parent: System.Speech.Synthesis.TtsEngine
   isExternal: false
-  name: TextFragment
-  nameWithType: TextFragment
+  name: TextFragment[]
+  nameWithType: TextFragment[]
   fullName: System.Speech.Synthesis.TtsEngine.TextFragment[]
   spec.csharp:
   - uid: System.Speech.Synthesis.TtsEngine.TextFragment

@@ -116,7 +116,7 @@ items:
   - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsSpecialName
   - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsStatic
   - System.Reflection.MethodBase.System#Runtime#InteropServices#_MethodBase#IsVirtual
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
     parameters: []
   overload: System.Reflection.MethodInfo.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -162,13 +162,13 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: An object to compare with this instance, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object to compare with this instance, or `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> equals the type and value of this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> equals the type and value of this instance; otherwise, `false`.'
   overload: System.Reflection.MethodInfo.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.MethodInfo.GetBaseDefinition
   id: GetBaseDefinition
@@ -194,7 +194,7 @@ items:
       description: A <xref href="System.Reflection.MethodInfo"></xref> object for the first implementation of this method.
   overload: System.Reflection.MethodInfo.GetBaseDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,7 +226,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,11 +257,11 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The current method is not a generic method. That is, <xref:System.Reflection.MethodInfo.IsGenericMethod*> returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: The current method is not a generic method. That is, <xref:System.Reflection.MethodInfo.IsGenericMethod*> returns `false`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,7 +287,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.Reflection.MethodInfo.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.MethodInfo.MakeGenericMethod(System.Type[])
   id: MakeGenericMethod(System.Type[])
@@ -318,17 +318,17 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The current <xref href="System.Reflection.MethodInfo"></xref> does not represent a generic method definition. That is, <xref:System.Reflection.MethodInfo.IsGenericMethodDefinition*> returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: The current <xref href="System.Reflection.MethodInfo"></xref> does not represent a generic method definition. That is, <xref:System.Reflection.MethodInfo.IsGenericMethodDefinition*> returns `false`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>typeArguments</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n Any element of <code>typeArguments</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>typeArguments</code> is `null`.  \n  \n -or-  \n  \n Any element of <code>typeArguments</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The number of elements in <code>typeArguments</code> is not the same as the number of type parameters of the current generic method definition.  \n  \n -or-  \n  \n An element of <code>typeArguments</code> does not satisfy the constraints specified for the corresponding type parameter of the current generic method definition."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -356,7 +356,7 @@ items:
       description: A <xref href="System.Reflection.MemberTypes"></xref> value indicating that this member is a method.
   overload: System.Reflection.MethodInfo.MemberType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,10 +385,10 @@ items:
       description: The second object to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> is equal to <code>right</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> is equal to <code>right</code>; otherwise, `false`.'
   overload: System.Reflection.MethodInfo.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.MethodInfo.op_Inequality(System.Reflection.MethodInfo,System.Reflection.MethodInfo)
   id: op_Inequality(System.Reflection.MethodInfo,System.Reflection.MethodInfo)
@@ -414,10 +414,10 @@ items:
       description: The second object to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> is not equal to <code>right</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> is not equal to <code>right</code>; otherwise, `false`.'
   overload: System.Reflection.MethodInfo.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.MethodInfo.ReturnParameter
   id: ReturnParameter
@@ -443,7 +443,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: This method is not implemented.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,7 +471,7 @@ items:
       description: The return type of this method.
   overload: System.Reflection.MethodInfo.ReturnType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -493,10 +493,10 @@ items:
     content: public abstract System.Reflection.ICustomAttributeProvider ReturnTypeCustomAttributes { get; }
     return:
       type: System.Reflection.ICustomAttributeProvider
-      description: An <xref uid="langword_csharp_ICustomAttributeProvider" name="ICustomAttributeProvider" href=""></xref> object representing the custom attributes for the return type.
+      description: An `ICustomAttributeProvider` object representing the custom attributes for the return type.
   overload: System.Reflection.MethodInfo.ReturnTypeCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -539,7 +539,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,7 +566,7 @@ items:
       description: A <xref href="System.Type"></xref> object representing the <xref href="System.Reflection.MethodInfo"></xref> type.
   overload: System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -603,7 +603,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -634,7 +634,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -686,7 +686,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -770,8 +770,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

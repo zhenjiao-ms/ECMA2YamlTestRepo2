@@ -63,7 +63,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,10 +90,10 @@ items:
       description: The logical path to the file. The path can be retrieved by using the Transact-SQL Pathname function on the underlying FILESTREAM column in the table.
     - id: transactionContext
       type: System.Byte[]
-      description: The transaction context for the <xref uid="langword_csharp_SqlFileStream" name="SqlFileStream" href=""></xref> object. Applications should return the byte array returned by calling the GET_FILESTREAM_TRANSACTION_CONTEXT method.
+      description: The transaction context for the `SqlFileStream` object. Applications should return the byte array returned by calling the GET_FILESTREAM_TRANSACTION_CONTEXT method.
     - id: access
       type: System.IO.FileAccess
-      description: "The access mode to use when opening the file. Supported <xref href=\"System.IO.FileAccess\"></xref> enumeration values are <xref href=\"System.IO.FileAccess\"></xref>, <xref href=\"System.IO.FileAccess\"></xref>, and <xref href=\"System.IO.FileAccess\"></xref>.  \n  \n When using <xref uid=\"langword_csharp_FileAccess.Read\" name=\"FileAccess.Read\" href=\"\"></xref>, the <xref uid=\"langword_csharp_SqlFileStream\" name=\"SqlFileStream\" href=\"\"></xref> object can be used to read all of the existing data.  \n  \n When using <xref uid=\"langword_csharp_FileAccess.Write\" name=\"FileAccess.Write\" href=\"\"></xref>, <xref uid=\"langword_csharp_SqlFileStream\" name=\"SqlFileStream\" href=\"\"></xref> points to a zero byte file. Existing data will be overwritten when the object is closed and the transaction is committed.  \n  \n When using <xref uid=\"langword_csharp_FileAccess.ReadWrite\" name=\"FileAccess.ReadWrite\" href=\"\"></xref>, the <xref uid=\"langword_csharp_SqlFileStream\" name=\"SqlFileStream\" href=\"\"></xref> points to a file which has all the existing data in it. The handle is positioned at the beginning of the file. You can use one of the <xref uid=\"langword_csharp_System.IO\" name=\"System.IO\" href=\"\"></xref><xref uid=\"langword_csharp_Seek\" name=\"Seek\" href=\"\"></xref> methods to move the handle position within the file to write or append new data."
+      description: "The access mode to use when opening the file. Supported <xref href=\"System.IO.FileAccess\"></xref> enumeration values are <xref href=\"System.IO.FileAccess\"></xref>, <xref href=\"System.IO.FileAccess\"></xref>, and <xref href=\"System.IO.FileAccess\"></xref>.  \n  \n When using `FileAccess.Read`, the `SqlFileStream` object can be used to read all of the existing data.  \n  \n When using `FileAccess.Write`, `SqlFileStream` points to a zero byte file. Existing data will be overwritten when the object is closed and the transaction is committed.  \n  \n When using `FileAccess.ReadWrite`, the `SqlFileStream` points to a file which has all the existing data in it. The handle is positioned at the beginning of the file. You can use one of the `System.IO``Seek` methods to move the handle position within the file to write or append new data."
   overload: System.Data.SqlTypes.SqlFileStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -120,7 +120,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: NtCreateFile fails with error code set to ERROR_SHARING_VIOLATION.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -147,10 +147,10 @@ items:
       description: The logical path to the file. The path can be retrieved by using the Transact-SQL Pathname function on the underlying FILESTREAM column in the table.
     - id: transactionContext
       type: System.Byte[]
-      description: The transaction context for the <xref uid="langword_csharp_SqlFileStream" name="SqlFileStream" href=""></xref> object. When set to null, an implicit transaction will be used for the <xref uid="langword_csharp_SqlFileStream" name="SqlFileStream" href=""></xref> object. Applications should return the byte array returned by calling the GET_FILESTREAM_TRANSACTION_CONTEXT method.
+      description: The transaction context for the `SqlFileStream` object. When set to null, an implicit transaction will be used for the `SqlFileStream` object. Applications should return the byte array returned by calling the GET_FILESTREAM_TRANSACTION_CONTEXT method.
     - id: access
       type: System.IO.FileAccess
-      description: "The access mode to use when opening the file. Supported <xref href=\"System.IO.FileAccess\"></xref> enumeration values are <xref href=\"System.IO.FileAccess\"></xref>, <xref href=\"System.IO.FileAccess\"></xref>, and <xref href=\"System.IO.FileAccess\"></xref>.  \n  \n When using <xref uid=\"langword_csharp_FileAccess.Read\" name=\"FileAccess.Read\" href=\"\"></xref>, the <xref uid=\"langword_csharp_SqlFileStream\" name=\"SqlFileStream\" href=\"\"></xref> object can be used to read all of the existing data.  \n  \n When using <xref uid=\"langword_csharp_FileAccess.Write\" name=\"FileAccess.Write\" href=\"\"></xref>, <xref uid=\"langword_csharp_SqlFileStream\" name=\"SqlFileStream\" href=\"\"></xref> points to a zero byte file. Existing data will be overwritten when the object is closed and the transaction is committed.  \n  \n When using <xref uid=\"langword_csharp_FileAccess.ReadWrite\" name=\"FileAccess.ReadWrite\" href=\"\"></xref>, the <xref uid=\"langword_csharp_SqlFileStream\" name=\"SqlFileStream\" href=\"\"></xref> points to a file which has all the existing data in it. The handle is positioned at the beginning of the file. You can use one of the <xref uid=\"langword_csharp_System.IO\" name=\"System.IO\" href=\"\"></xref><xref uid=\"langword_csharp_Seek\" name=\"Seek\" href=\"\"></xref> methods to move the handle position within the file to write or append new data."
+      description: "The access mode to use when opening the file. Supported <xref href=\"System.IO.FileAccess\"></xref> enumeration values are <xref href=\"System.IO.FileAccess\"></xref>, <xref href=\"System.IO.FileAccess\"></xref>, and <xref href=\"System.IO.FileAccess\"></xref>.  \n  \n When using `FileAccess.Read`, the `SqlFileStream` object can be used to read all of the existing data.  \n  \n When using `FileAccess.Write`, `SqlFileStream` points to a zero byte file. Existing data will be overwritten when the object is closed and the transaction is committed.  \n  \n When using `FileAccess.ReadWrite`, the `SqlFileStream` points to a file which has all the existing data in it. The handle is positioned at the beginning of the file. You can use one of the `System.IO``Seek` methods to move the handle position within the file to write or append new data."
     - id: options
       type: System.IO.FileOptions
       description: Specifies the option to use while opening the file. Supported <xref href="System.IO.FileOptions"></xref> values are <xref href="System.IO.FileOptions"></xref>, <xref href="System.IO.FileOptions"></xref>, <xref href="System.IO.FileOptions"></xref>, and <xref href="System.IO.FileOptions"></xref>.
@@ -183,7 +183,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: NtCreateFile fails with error code set to ERROR_SHARING_VIOLATION.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -228,7 +228,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Reading data is not supported on the stream.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -273,7 +273,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Writing data is not supported on the stream.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,10 +295,10 @@ items:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current stream supports reading; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current stream supports reading; otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlFileStream.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -320,10 +320,10 @@ items:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current stream supports seeking; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current stream supports seeking; otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlFileStream.CanSeek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -345,10 +345,10 @@ items:
     content: public override bool CanTimeout { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current stream can time out; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current stream can time out; otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlFileStream.CanTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -370,10 +370,10 @@ items:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current stream supports writing; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current stream supports writing; otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlFileStream.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -398,7 +398,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlFileStream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -429,8 +429,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref href="System.IAsyncResult"></xref> object did not come from the corresponding <xref uid="langword_csharp_BeginRead" name="BeginRead" href=""></xref> method.
-  platform:
+    description: The <xref href="System.IAsyncResult"></xref> object did not come from the corresponding `BeginRead` method.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -458,8 +458,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref href="System.IAsyncResult"></xref> object did not come from the corresponding <xref uid="langword_csharp_BeginWrite" name="BeginWrite" href=""></xref> method.
-  platform:
+    description: The <xref href="System.IAsyncResult"></xref> object did not come from the corresponding `BeginWrite` method.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -482,7 +482,7 @@ items:
     parameters: []
   overload: System.Data.SqlTypes.SqlFileStream.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -505,7 +505,7 @@ items:
     parameters: []
   overload: System.Data.SqlTypes.SqlFileStream.Flush*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -530,7 +530,7 @@ items:
       description: An <xref href="System.Int64"></xref> indicating the length of the current stream in bytes.
   overload: System.Data.SqlTypes.SqlFileStream.Length*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,7 +555,7 @@ items:
       description: A string value indicating the name of the <xref href="System.Data.SqlTypes.SqlFileStream"></xref>.
   overload: System.Data.SqlTypes.SqlFileStream.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -580,7 +580,7 @@ items:
       description: The current position within the <xref href="System.Data.SqlTypes.SqlFileStream"></xref>.
   overload: System.Data.SqlTypes.SqlFileStream.Position*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -619,7 +619,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The object does not support reading of data.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -649,7 +649,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The object does not support reading of data.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -674,7 +674,7 @@ items:
       description: A value, in milliseconds, that determines how long the stream will attempt to read before timing out.
   overload: System.Data.SqlTypes.SqlFileStream.ReadTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -706,7 +706,7 @@ items:
       description: The new position within the current stream.
   overload: System.Data.SqlTypes.SqlFileStream.Seek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -736,7 +736,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The object does not support reading of data.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -761,7 +761,7 @@ items:
       description: The <code>transactionContext</code> array that was passed to the constructor for this <xref href="System.Data.SqlTypes.SqlFileStream"></xref> object.
   overload: System.Data.SqlTypes.SqlFileStream.TransactionContext*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -797,7 +797,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The object does not support writing of data.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -827,7 +827,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The object does not support writing of data.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -852,7 +852,7 @@ items:
       description: A value, in milliseconds, that determines how long the stream will attempt to write before timing out.
   overload: System.Data.SqlTypes.SqlFileStream.WriteTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -936,8 +936,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

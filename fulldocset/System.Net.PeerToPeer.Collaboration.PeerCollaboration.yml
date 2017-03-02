@@ -44,7 +44,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.ApplicationLaunchInfo
@@ -65,10 +65,10 @@ items:
     content: public static System.Net.PeerToPeer.Collaboration.PeerApplicationLaunchInfo ApplicationLaunchInfo { get; }
     return:
       type: System.Net.PeerToPeer.Collaboration.PeerApplicationLaunchInfo
-      description: If the application was started due to an invitation, a <xref href="System.Net.PeerToPeer.Collaboration.PeerApplicationLaunchInfo"></xref> object that contains both information about the peer that sent the application invitation and the invitation itself is returned; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.  The default value for this property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If the application was started due to an invitation, a <xref href="System.Net.PeerToPeer.Collaboration.PeerApplicationLaunchInfo"></xref> object that contains both information about the peer that sent the application invitation and the invitation itself is returned; otherwise, `null` is returned.  The default value for this property is `null`.
   overload: System.Net.PeerToPeer.Collaboration.PeerCollaboration.ApplicationLaunchInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.ContactManager
@@ -88,10 +88,10 @@ items:
     content: public static System.Net.PeerToPeer.Collaboration.ContactManager ContactManager { get; }
     return:
       type: System.Net.PeerToPeer.Collaboration.ContactManager
-      description: <xref href="System.Net.PeerToPeer.Collaboration.ContactManager"></xref> object that contains all peer contact objects for remote peers. The default value for this property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: <xref href="System.Net.PeerToPeer.Collaboration.ContactManager"></xref> object that contains all peer contact objects for remote peers. The default value for this property is `null`.
   overload: System.Net.PeerToPeer.Collaboration.PeerCollaboration.ContactManager*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.DeleteObject(System.Net.PeerToPeer.Collaboration.PeerObject)
@@ -118,11 +118,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>peerObject</code> parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>peerObject</code> parameter cannot be `null`.
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: Unable to complete DeleteObject operation.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.GetLocalRegisteredApplications
@@ -150,7 +150,7 @@ items:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: An invalid value was returned when this method attempted to enumerate the application registered to this peer. Please make sure that all applications have valid registry values.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.GetLocalRegisteredApplications(System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType)
@@ -184,7 +184,7 @@ items:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: An invalid value was returned when this method attempted to enumerate the application registered to this peer. Please make sure that all applications have valid registry values.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.GetLocalSetObjects
@@ -212,7 +212,7 @@ items:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: An invalid value was returned when this method attempted to enumerate all available <xref href="System.Net.PeerToPeer.Collaboration.PeerObject"></xref> instances.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.GetPeersNearMe
@@ -245,7 +245,7 @@ items:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: An invalid value was returned when this method attempted to enumerate all known People Near Me endpoints.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalApplicationChanged
@@ -267,7 +267,7 @@ items:
       type: System.EventHandler{System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalEndPointName
@@ -288,13 +288,13 @@ items:
     content: public static string LocalEndPointName { get; set; }
     return:
       type: System.String
-      description: <xref href="System.String"></xref> that contains the name associated with the calling peer's endpoint (provided as the <xref:System.Net.PeerToPeer.Collaboration.PeerEndPoint.Name*> property). The default value for this property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: <xref href="System.String"></xref> that contains the name associated with the calling peer's endpoint (provided as the <xref:System.Net.PeerToPeer.Collaboration.PeerEndPoint.Name*> property). The default value for this property is `null`.
   overload: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalEndPointName*
   exceptions:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: Unable to set LocalEndPointName.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalNameChanged
@@ -316,7 +316,7 @@ items:
       type: System.EventHandler{System.Net.PeerToPeer.Collaboration.NameChangedEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalObjectChanged
@@ -338,7 +338,7 @@ items:
       type: System.EventHandler{System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalPresenceChanged
@@ -360,7 +360,7 @@ items:
       type: System.EventHandler{System.Net.PeerToPeer.Collaboration.PresenceChangedEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.LocalPresenceInfo
@@ -386,11 +386,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <xref href="System.Net.PeerToPeer.Collaboration.PeerPresenceInfo"></xref> cannot specify <xref uid="langword_csharp_null" name="null" href=""></xref>
+    description: <xref href="System.Net.PeerToPeer.Collaboration.PeerPresenceInfo"></xref> cannot specify `null`
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: "-   <xref href=\"System.Net.PeerToPeer.Collaboration.PeerPresenceStatus\"></xref> is offline  \n  \n-   Unable to set  <xref href=\"System.Net.PeerToPeer.Collaboration.PeerPresenceInfo\"></xref>"
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.RegisterApplication(System.Net.PeerToPeer.Collaboration.PeerApplication,System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType)
@@ -422,17 +422,17 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "-   The <xref:System.Net.PeerToPeer.Collaboration.PeerApplication.Path*> property on the <xref href=\"System.Net.PeerToPeer.Collaboration.PeerApplication\"></xref> object passed to <code>application</code> is <xref uid=\"langword_csharp_null.\" name=\"null.\" href=\"\"></xref>  \n  \n-   The peer application instance provided has the same globally unique <xref:System.Net.PeerToPeer.Collaboration.PeerApplication.Id*> as an application which is already registered.  The existing registration must be unregistered before a new application can be registered with the provided identifier."
+    description: "-   The <xref:System.Net.PeerToPeer.Collaboration.PeerApplication.Path*> property on the <xref href=\"System.Net.PeerToPeer.Collaboration.PeerApplication\"></xref> object passed to <code>application</code> is `null.`  \n  \n-   The peer application instance provided has the same globally unique <xref:System.Net.PeerToPeer.Collaboration.PeerApplication.Id*> as an application which is already registered.  The existing registration must be unregistered before a new application can be registered with the provided identifier."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>application</code> and <code>type</code> parameters cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.  Both parameters must be specified.
+    description: The <code>application</code> and <code>type</code> parameters cannot be `null`.  Both parameters must be specified.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The type parameter is not set to a known value in the <xref href="System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType"></xref> enumeration.
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: The RegisterApplication operation cannot be completed until the caller has signed-in to the infrastructure.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SetObject(System.Net.PeerToPeer.Collaboration.PeerObject)
@@ -462,11 +462,11 @@ items:
     description: Object already registered
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "-   <xref href=\"System.Net.PeerToPeer.Collaboration.PeerObject\"></xref> cannot be <xref uid=\"langword_csharp_null.\" name=\"null.\" href=\"\"></xref>  \n  \n-   <xref href=\"System.Net.PeerToPeer.Collaboration.PeerObject.Id\"></xref> cannot be <xref uid=\"langword_csharp_null.\" name=\"null.\" href=\"\"></xref>"
+    description: "-   <xref href=\"System.Net.PeerToPeer.Collaboration.PeerObject\"></xref> cannot be `null.`  \n  \n-   <xref href=\"System.Net.PeerToPeer.Collaboration.PeerObject.Id\"></xref> cannot be `null.`"
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: The SetObject operation could not be completed.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SignIn(System.Net.PeerToPeer.Collaboration.PeerScope)
@@ -502,7 +502,7 @@ items:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: The SignIn operation could not be completed.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SignInScope
@@ -523,10 +523,10 @@ items:
     content: public static System.Net.PeerToPeer.Collaboration.PeerScope SignInScope { get; }
     return:
       type: System.Net.PeerToPeer.Collaboration.PeerScope
-      description: <xref href="System.Net.PeerToPeer.Collaboration.PeerScope"></xref> object that specifies the scope in which the calling peer will participate. The default value for this property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: <xref href="System.Net.PeerToPeer.Collaboration.PeerScope"></xref> object that specifies the scope in which the calling peer will participate. The default value for this property is `null`.
   overload: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SignInScope*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SignOut(System.Net.PeerToPeer.Collaboration.PeerScope)
@@ -557,7 +557,7 @@ items:
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: The SignOut operation could not be completed.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SynchronizingObject
@@ -577,10 +577,10 @@ items:
     content: public static System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get; set; }
     return:
       type: System.ComponentModel.ISynchronizeInvoke
-      description: "An object with <xref href=\"System.ComponentModel.ISynchronizeInvoke\"></xref> implemented on it, to be used for application thread synchronization.  \n  \n The default value for this property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+      description: "An object with <xref href=\"System.ComponentModel.ISynchronizeInvoke\"></xref> implemented on it, to be used for application thread synchronization.  \n  \n The default value for this property is `null`."
   overload: System.Net.PeerToPeer.Collaboration.PeerCollaboration.SynchronizingObject*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Net.PeerToPeer.Collaboration.PeerCollaboration.UnregisterApplication(System.Net.PeerToPeer.Collaboration.PeerApplication,System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType)
@@ -613,14 +613,14 @@ items:
     description: The globally unique <xref:System.Net.PeerToPeer.Collaboration.PeerApplication.Id*> for the specified application does not exist or is empty.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>application</code> or <code>type</code> parameter is set to <xref uid="langword_csharp_null." name="null." href=""></xref>
+    description: The <code>application</code> or <code>type</code> parameter is set to `null.`
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>type</code> parameter is not set to a known value in <xref href="System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType"></xref>.
   - type: System.Net.PeerToPeer.PeerToPeerException
     commentId: T:System.Net.PeerToPeer.PeerToPeerException
     description: The  UnregisterApplication operation could not be completed.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:

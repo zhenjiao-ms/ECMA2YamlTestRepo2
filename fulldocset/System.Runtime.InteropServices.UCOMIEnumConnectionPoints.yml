@@ -25,7 +25,7 @@ items:
 
       public interface UCOMIEnumConnectionPoints
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -52,7 +52,7 @@ items:
       description: On successful return, a reference to the newly created enumerator.
   overload: System.Runtime.InteropServices.UCOMIEnumConnectionPoints.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
     parameters:
     - id: celt
       type: System.Int32
-      description: The number of <xref uid="langword_csharp_IConnectionPoint" name="IConnectionPoint" href=""></xref> references to return in `rgelt`.
+      description: The number of `IConnectionPoint` references to return in `rgelt`.
     - id: rgelt
       type: System.Runtime.InteropServices.UCOMIConnectionPoint[]
       description: On successful return, a reference to the enumerated connections.
@@ -85,10 +85,10 @@ items:
       description: On successful return, a reference to the actual number of connections enumerated in `rgelt`.
     return:
       type: System.Int32
-      description: <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref> if the <code>pceltFetched</code> parameter equals the <code>celt</code> parameter; otherwise, <xref uid="langword_csharp_S_FALSE" name="S_FALSE" href=""></xref>.
+      description: '`S_OK` if the <code>pceltFetched</code> parameter equals the <code>celt</code> parameter; otherwise, `S_FALSE`.'
   overload: System.Runtime.InteropServices.UCOMIEnumConnectionPoints.Next*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,10 +112,10 @@ items:
     parameters: []
     return:
       type: System.Int32
-      description: An HRESULT with the value <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref>.
+      description: An HRESULT with the value `S_OK`.
   overload: System.Runtime.InteropServices.UCOMIEnumConnectionPoints.Reset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,10 +142,10 @@ items:
       description: The number of elements to skip in the enumeration.
     return:
       type: System.Int32
-      description: <xref uid="langword_csharp_S_OK" name="S_OK" href=""></xref> if the number of elements skipped equals the <code>celt</code> parameter; otherwise, <xref uid="langword_csharp_S_FALSE" name="S_FALSE" href=""></xref>.
+      description: '`S_OK` if the number of elements skipped equals the <code>celt</code> parameter; otherwise, `S_FALSE`.'
   overload: System.Runtime.InteropServices.UCOMIEnumConnectionPoints.Skip*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,8 +178,8 @@ references:
 - uid: System.Runtime.InteropServices.UCOMIConnectionPoint[]
   parent: System.Runtime.InteropServices
   isExternal: false
-  name: UCOMIConnectionPoint
-  nameWithType: UCOMIConnectionPoint
+  name: UCOMIConnectionPoint[]
+  nameWithType: UCOMIConnectionPoint[]
   fullName: System.Runtime.InteropServices.UCOMIConnectionPoint[]
   spec.csharp:
   - uid: System.Runtime.InteropServices.UCOMIConnectionPoint

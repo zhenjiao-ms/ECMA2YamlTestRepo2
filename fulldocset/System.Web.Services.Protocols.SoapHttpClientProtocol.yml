@@ -79,7 +79,7 @@ items:
   - System.Web.Services.Protocols.WebClientProtocol.Timeout
   - System.Web.Services.Protocols.WebClientProtocol.Url
   - System.Web.Services.Protocols.WebClientProtocol.UseDefaultCredentials
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -102,7 +102,7 @@ items:
     parameters: []
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
       description: An array of objects containing the parameters to pass to the XML Web service. The order of the values in the array correspond to the order of the parameters in the calling method of the derived class.
     - id: callback
       type: System.AsyncCallback
-      description: The delegate to call when the asynchronous invoke is complete. If `callback` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the delegate is not called.
+      description: The delegate to call when the asynchronous invoke is complete. If `callback` is `null`, the delegate is not called.
     - id: asyncState
       type: System.Object
       description: Extra information supplied by the caller.
@@ -152,7 +152,7 @@ items:
   - type: System.Net.WebException
     commentId: T:System.Net.WebException
     description: An error occurred while accessing the network.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,7 +181,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: The proxy class does not have a binding defined.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -210,7 +210,7 @@ items:
       description: The <xref href="System.IAsyncResult"></xref> returned from the <xref:System.Web.Services.Protocols.SoapHttpClientProtocol.BeginInvoke*> method.
     return:
       type: System.Object[]
-      description: An array of objects that contains the return value and any by-reference or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters of the derived class method.
+      description: An array of objects that contains the return value and any by-reference or `out` parameters of the derived class method.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.EndInvoke*
   exceptions:
   - type: System.ArgumentException
@@ -225,7 +225,7 @@ items:
   - type: System.Net.WebException
     commentId: T:System.Net.WebException
     description: An error occurred while accessing the network.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,7 +257,7 @@ items:
       description: A <xref href="System.Xml.XmlReader"></xref> initialized with the <xref:System.Web.Services.Protocols.SoapMessage.Stream*> property of the <code>message</code> parameter.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.GetReaderForMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -289,8 +289,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <code>uri</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>uri</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -322,7 +322,7 @@ items:
       description: A <xref href="System.Xml.XmlWriter"></xref> initialized with the <xref:System.Web.Services.Protocols.SoapMessage.Stream*> property of the <code>message</code> parameter.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.GetWriterForMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -354,7 +354,7 @@ items:
       description: An array of objects that contains the parameters to pass to the XML Web service. The order of the values in the array corresponds to the order of the parameters in the calling method of the derived class.
     return:
       type: System.Object[]
-      description: An array of objects that contains the return value and any <xref uid="langword_csharp_reference" name="reference" href=""></xref> or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters of the derived class method.
+      description: An array of objects that contains the return value and any `reference` or `out` parameters of the derived class method.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke*
   exceptions:
   - type: System.Web.Services.Protocols.SoapException
@@ -366,7 +366,7 @@ items:
   - type: System.Net.WebException
     commentId: T:System.Net.WebException
     description: An error occurred while accessing the network.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -398,7 +398,7 @@ items:
       description: The delegate called when the method invocation has completed.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.InvokeAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,7 +433,7 @@ items:
       description: An object used to pass state information into the `callback` delegate.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.InvokeAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -461,7 +461,7 @@ items:
       description: One of the <xref href="System.Web.Services.Protocols.SoapProtocolVersion"></xref> values. The default is <xref href="System.Web.Services.Protocols.SoapProtocolVersion"></xref>.
   overload: System.Web.Services.Protocols.SoapHttpClientProtocol.SoapVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -524,8 +524,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

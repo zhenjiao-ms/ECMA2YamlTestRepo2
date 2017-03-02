@@ -11,7 +11,7 @@ items:
   nameWithType: DispatchWrapper
   fullName: System.Runtime.InteropServices.DispatchWrapper
   type: Class
-  summary: Wraps objects the marshaler should marshal as a <xref uid="langword_csharp_VT_DISPATCH" name="VT_DISPATCH" href=""></xref>.
+  summary: Wraps objects the marshaler should marshal as a `VT_DISPATCH`.
   remarks: "Use to wrap objects the marshaler should marshal as a `VT_DISPATCH`. This wrapper will force objects to be marshaled out as `VT_DISPATCH`. If the object does not support `IDispatch` then an exception will be thrown.  \n  \n [!code-cpp[System.Runtime.InteropServices.DispatchWrapper#1](~/add/codesnippet/cpp/t-system.runtime.interop_15_1.cpp)]\n [!code-cs[System.Runtime.InteropServices.DispatchWrapper#1](~/add/codesnippet/csharp/t-system.runtime.interop_15_1.cs)]\n [!code-vb[System.Runtime.InteropServices.DispatchWrapper#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_15_1.vb)]  \n  \n For more information on `VT_DISPATCH`, please see the existing documentation for `VARENUM::VT_DISPATCH` in the MSDN library."
   syntax:
     content: >-
@@ -29,7 +29,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -57,11 +57,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>obj</code> is not a class or an array.  \n  \n -or-  \n  \n <code>obj</code> does not support <xref uid=\"langword_csharp_IDispatch\" name=\"IDispatch\" href=\"\"></xref>."
+    description: "<code>obj</code> is not a class or an array.  \n  \n -or-  \n  \n <code>obj</code> does not support `IDispatch`."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <code>obj</code> parameter was marked with a <xref href=\"System.Runtime.InteropServices.ComVisibleAttribute\"></xref> attribute that was passed a value of <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>obj</code> parameter inherits from a type marked with a <xref href=\"System.Runtime.InteropServices.ComVisibleAttribute\"></xref> attribute that was passed a value of <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The <code>obj</code> parameter was marked with a <xref href=\"System.Runtime.InteropServices.ComVisibleAttribute\"></xref> attribute that was passed a value of `false`.  \n  \n -or-  \n  \n The <code>obj</code> parameter inherits from a type marked with a <xref href=\"System.Runtime.InteropServices.ComVisibleAttribute\"></xref> attribute that was passed a value of `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,7 +86,7 @@ items:
       description: The object wrapped by the <xref href="System.Runtime.InteropServices.DispatchWrapper"></xref>.
   overload: System.Runtime.InteropServices.DispatchWrapper.WrappedObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -74,7 +74,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.#ctor
   id: '#ctor'
@@ -95,7 +95,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Composition.ImportManyAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.#ctor(System.String)
   id: '#ctor(System.String)'
@@ -116,10 +116,10 @@ items:
     parameters:
     - id: contractName
       type: System.String
-      description: The contract name of the exports to import, or <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string ("") to use the default contract name.
+      description: The contract name of the exports to import, or `null` or an empty string ("") to use the default contract name.
   overload: System.ComponentModel.Composition.ImportManyAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.#ctor(System.Type)
   id: '#ctor(System.Type)'
@@ -140,10 +140,10 @@ items:
     parameters:
     - id: contractType
       type: System.Type
-      description: The type to derive the contract name of the exports to import, or <xref uid="langword_csharp_null" name="null" href=""></xref> to use the default contract name.
+      description: The type to derive the contract name of the exports to import, or `null` to use the default contract name.
   overload: System.ComponentModel.Composition.ImportManyAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.#ctor(System.String,System.Type)
   id: '#ctor(System.String,System.Type)'
@@ -163,13 +163,13 @@ items:
     parameters:
     - id: contractName
       type: System.String
-      description: The contract name of the exports to import, or <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string ("") to use the default contract name.
+      description: The contract name of the exports to import, or `null` or an empty string ("") to use the default contract name.
     - id: contractType
       type: System.Type
       description: The type of the export to import.
   overload: System.ComponentModel.Composition.ImportManyAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.AllowRecomposition
   id: AllowRecomposition
@@ -188,10 +188,10 @@ items:
     content: public bool AllowRecomposition { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if the property or field allows for recomposition when exports that provide the same <xref:System.ComponentModel.Composition.ImportManyAttribute.ContractName*> are added or removed from the <xref href=\"System.ComponentModel.Composition.Hosting.CompositionContainer\"></xref>; otherwise, <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n The default value is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
+      description: "`true` if the property or field allows for recomposition when exports that provide the same <xref:System.ComponentModel.Composition.ImportManyAttribute.ContractName*> are added or removed from the <xref href=\"System.ComponentModel.Composition.Hosting.CompositionContainer\"></xref>; otherwise, `false`.  \n  \n The default value is `false`."
   overload: System.ComponentModel.Composition.ImportManyAttribute.AllowRecomposition*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.ContractName
   id: ContractName
@@ -213,7 +213,7 @@ items:
       description: The contract name of the exports to import. The default value is an empty string ("").
   overload: System.ComponentModel.Composition.ImportManyAttribute.ContractName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.ContractType
   id: ContractType
@@ -232,10 +232,10 @@ items:
     content: public Type ContractType { get; }
     return:
       type: System.Type
-      description: The type of the export that this import is expecting. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>, which means that the type will be obtained by looking at the type on the member that this import is attached to. If the type is <xref href="System.Object"></xref>, the import will match any exported type.
+      description: The type of the export that this import is expecting. The default value is `null`, which means that the type will be obtained by looking at the type on the member that this import is attached to. If the type is <xref href="System.Object"></xref>, the import will match any exported type.
   overload: System.ComponentModel.Composition.ImportManyAttribute.ContractType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ImportManyAttribute.RequiredCreationPolicy
   id: RequiredCreationPolicy
@@ -257,7 +257,7 @@ items:
       description: "One of the following values:  \n  \n <xref href=\"System.ComponentModel.Composition.CreationPolicy\"></xref>, if the importer does not require a specific <xref href=\"System.ComponentModel.Composition.CreationPolicy\"></xref>. This is the default.  \n  \n <xref href=\"System.ComponentModel.Composition.CreationPolicy\"></xref> to require that all used exports be shared by all parts in the container.  \n  \n <xref href=\"System.ComponentModel.Composition.CreationPolicy\"></xref> to require that all used exports be non-shared in a container. In this case, each part receives their own instance."
   overload: System.ComponentModel.Composition.ImportManyAttribute.RequiredCreationPolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Attribute

@@ -74,7 +74,7 @@ items:
   - System.ServiceModel.Channels.Binding.SendTimeout
   - System.ServiceModel.Channels.Binding.ShouldSerializeName
   - System.ServiceModel.Channels.Binding.ShouldSerializeNamespace
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -99,7 +99,7 @@ items:
     parameters: []
   overload: System.ServiceModel.WSHttpBindingBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -121,10 +121,10 @@ items:
     parameters:
     - id: reliableSessionEnabled
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if a reliable session is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if a reliable session is enabled; otherwise, `false`.'
   overload: System.ServiceModel.WSHttpBindingBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -148,10 +148,10 @@ items:
     content: public bool BypassProxyOnLocal { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to bypass the proxy server for local addresses; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to bypass the proxy server for local addresses; otherwise, `false`. The default value is `false`.'
   overload: System.ServiceModel.WSHttpBindingBase.BypassProxyOnLocal*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -179,7 +179,7 @@ items:
       description: A <xref href="System.ServiceModel.Channels.BindingElementCollection"></xref> that contains the <xref href="System.ServiceModel.Channels.BindingElement"></xref> objects for the binding.
   overload: System.ServiceModel.WSHttpBindingBase.CreateBindingElements*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -204,7 +204,7 @@ items:
       description: A <xref href="System.ServiceModel.Channels.SecurityBindingElement"></xref> from the current binding.
   overload: System.ServiceModel.WSHttpBindingBase.CreateMessageSecurity*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -231,7 +231,7 @@ items:
       description: The value of the <xref href="System.ServiceModel.EnvelopeVersion"></xref> that is used with this binding. The value is always SOAP 1.2.
   overload: System.ServiceModel.WSHttpBindingBase.EnvelopeVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -256,7 +256,7 @@ items:
       description: The <xref href="System.ServiceModel.Channels.TransportBindingElement"></xref> from the current binding.
   overload: System.ServiceModel.WSHttpBindingBase.GetTransport*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -283,7 +283,7 @@ items:
       description: The <xref:System.ServiceModel.Configuration.WSDualHttpBindingElement.HostNameComparisonMode*> value that indicates whether the hostname is used to reach the service when matching on the URI. The default value is <xref href="System.ServiceModel.HostNameComparisonMode"></xref>, which ignores the hostname in the match.
   overload: System.ServiceModel.WSHttpBindingBase.HostNameComparisonMode*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -310,7 +310,7 @@ items:
       description: The maximum size, in bytes, for the pool of buffers used by an endpoint configured with this binding. The default value is 524,288 bytes.
   overload: System.ServiceModel.WSHttpBindingBase.MaxBufferPoolSize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -343,7 +343,7 @@ items:
   - type: System.ServiceModel.QuotaExceededException
     commentId: T:System.ServiceModel.QuotaExceededException
     description: A message exceeded the maximum size allocated.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -370,7 +370,7 @@ items:
       description: The value of <xref href="System.ServiceModel.WSMessageEncoding"></xref> that indicates whether MTOM or Text is used to encode SOAP messages. The default value is <xref href="System.ServiceModel.WSMessageEncoding"></xref>.
   overload: System.ServiceModel.WSHttpBindingBase.MessageEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -394,10 +394,10 @@ items:
     content: public Uri ProxyAddress { get; set; }
     return:
       type: System.Uri
-      description: A <xref href="System.Uri"></xref> that serves as the address of the HTTP proxy. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Uri"></xref> that serves as the address of the HTTP proxy. The default value is `null`.
   overload: System.ServiceModel.WSHttpBindingBase.ProxyAddress*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -424,7 +424,7 @@ items:
       description: The <xref href="System.Xml.XmlDictionaryReaderQuotas"></xref> that specifies the complexity constraints.
   overload: System.ServiceModel.WSHttpBindingBase.ReaderQuotas*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -451,7 +451,7 @@ items:
       description: The <xref href="System.ServiceModel.ReliableSession"></xref> that provides convenient access to the properties of a reliable session binding element that are available when using one of the system-provided bindings.
   overload: System.ServiceModel.WSHttpBindingBase.ReliableSession*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.WSHttpBindingBase.Scheme
   id: Scheme
@@ -476,7 +476,7 @@ items:
       description: "\"http\" if the security mode of the transport binding element is set to <xref href=\"System.ServiceModel.SecurityMode\"></xref> or <xref href=\"System.ServiceModel.SecurityMode\"></xref>; \"https\" if the security mode is set otherwise."
   overload: System.ServiceModel.WSHttpBindingBase.Scheme*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -498,10 +498,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.ServiceModel.WSHttpBindingBase.ReaderQuotas*> property value should be serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.ServiceModel.WSHttpBindingBase.ReaderQuotas*> property value should be serialized; otherwise, `false`.'
   overload: System.ServiceModel.WSHttpBindingBase.ShouldSerializeReaderQuotas*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.WSHttpBindingBase.ShouldSerializeReliableSession
   id: ShouldSerializeReliableSession
@@ -521,10 +521,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.ServiceModel.WSHttpBindingBase.ReliableSession*> property value should be serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.ServiceModel.WSHttpBindingBase.ReliableSession*> property value should be serialized; otherwise, `false`.'
   overload: System.ServiceModel.WSHttpBindingBase.ShouldSerializeReliableSession*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.WSHttpBindingBase.ShouldSerializeTextEncoding
   id: ShouldSerializeTextEncoding
@@ -544,10 +544,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.ServiceModel.WSHttpBindingBase.TextEncoding*> property value should be serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.ServiceModel.WSHttpBindingBase.TextEncoding*> property value should be serialized; otherwise, `false`.'
   overload: System.ServiceModel.WSHttpBindingBase.ShouldSerializeTextEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.WSHttpBindingBase.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously
   id: System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously
@@ -570,10 +570,10 @@ items:
     content: bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if requests are handled synchronously; <xref uid="langword_csharp_false" name="false" href=""></xref> if handled asynchronously. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>, to handle requests asynchronously.
+      description: '`true` if requests are handled synchronously; `false` if handled asynchronously. The default is `false`, to handle requests asynchronously.'
   overload: System.ServiceModel.WSHttpBindingBase.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -600,7 +600,7 @@ items:
       description: The <xref href="System.Text.Encoding"></xref> that indicates the character encoding that is used. The default is <xref href="System.Text.UTF8Encoding"></xref>.
   overload: System.ServiceModel.WSHttpBindingBase.TextEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -624,10 +624,10 @@ items:
     content: public bool TransactionFlow { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the flowing of transactions is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the flowing of transactions is supported; otherwise, `false`. The default value is `false`.'
   overload: System.ServiceModel.WSHttpBindingBase.TransactionFlow*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -651,10 +651,10 @@ items:
     content: public bool UseDefaultWebProxy { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the auto-configured HTTP proxy of the system should be used, if available; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the auto-configured HTTP proxy of the system should be used, if available; otherwise, `false`. The default value is `true`.'
   overload: System.ServiceModel.WSHttpBindingBase.UseDefaultWebProxy*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

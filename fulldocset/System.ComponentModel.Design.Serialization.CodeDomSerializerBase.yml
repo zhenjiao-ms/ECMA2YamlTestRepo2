@@ -57,7 +57,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -84,7 +84,7 @@ items:
       description: The <xref href="System.ComponentModel.Design.Serialization.IDesignerSerializationManager"></xref> to use for serialization.
     - id: name
       type: System.String
-      description: The name of the object that results from the expression. Can be <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no need to name the object.
+      description: The name of the object that results from the expression. Can be `null` if there is no need to name the object.
     - id: expression
       type: System.CodeDom.CodeExpression
       description: The <xref href="System.CodeDom.CodeExpression"></xref> to interpret.
@@ -93,7 +93,7 @@ items:
       description: An object resulting from interpretation of <code>expression</code>.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.DeserializeExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,7 +129,7 @@ items:
       description: The name of the deserialized object.
     - id: addToContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to add this object to the design container; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The object must implement <xref href="System.ComponentModel.IComponent"></xref> for this to have any effect.
+      description: '`true` to add this object to the design container; otherwise, `false`. The object must implement <xref href="System.ComponentModel.IComponent"></xref> for this to have any effect.'
     return:
       type: System.Object
       description: An instance of <code>type</code>.
@@ -137,8 +137,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>type</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
       description: An <xref href="System.Attribute"></xref> array that filters which properties will be deserialized.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.DeserializePropertiesFromResources*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,7 +201,7 @@ items:
       description: The <xref href="System.CodeDom.CodeStatement"></xref> to deserialize.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.DeserializeStatement*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,7 +233,7 @@ items:
       description: A collection of attributes as defined in the project's target version of the .NET Framework.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetAttributesFromTypeHelper*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetAttributesHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
   id: GetAttributesHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
@@ -262,7 +262,7 @@ items:
       description: A collection of attributes as defined in the project's target version of the .NET Framework.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetAttributesHelper*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetEventsHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object,System.Attribute[])
   id: GetEventsHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object,System.Attribute[])
@@ -294,7 +294,7 @@ items:
       description: A collection of events as defined in the project's target version of the .NET Framework.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetEventsHelper*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
   id: GetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
@@ -321,13 +321,13 @@ items:
       description: The object for which to get an expression.
     return:
       type: System.CodeDom.CodeExpression
-      description: A <xref href="System.CodeDom.CodeExpression"></xref> representing v<code>alue</code>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no existing expression for v<code>alue</code>.
+      description: A <xref href="System.CodeDom.CodeExpression"></xref> representing v<code>alue</code>, or `null` if there is no existing expression for v<code>alue</code>.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetExpression*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,7 +362,7 @@ items:
       description: A collection of properties as defined in the project's target version of the .NET Framework.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetPropertiesHelper*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetReflectionTypeFromTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Type)
   id: GetReflectionTypeFromTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Type)
@@ -392,7 +392,7 @@ items:
       description: A reflection type generated from the metadata of <code>type</code>.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetReflectionTypeFromTypeHelper*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetReflectionTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
   id: GetReflectionTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
@@ -422,7 +422,7 @@ items:
       description: A reflection type generated from the metadata of <code>object</code>.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetReflectionTypeHelper*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
   id: GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
@@ -454,8 +454,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -490,8 +490,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>valueType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>valueType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -517,13 +517,13 @@ items:
       description: The type description provider service.
     - id: instance
       type: System.Object
-      description: An object from which the type description provider service can be derived, if `provider` is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object from which the type description provider service can be derived, if `provider` is `null`.
     return:
       type: System.ComponentModel.TypeDescriptionProvider
       description: A .NET Framework-aware type description provider.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetTargetFrameworkProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.GetUniqueName(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
   id: GetUniqueName(System.ComponentModel.Design.Serialization.IDesignerSerializationManager,System.Object)
@@ -555,8 +555,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -586,13 +586,13 @@ items:
       description: The object to test for previous serialization.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> has been serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> has been serialized; otherwise, `false`.'
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.IsSerialized*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -622,16 +622,16 @@ items:
       description: The object to test for previous serialization.
     - id: honorPreset
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include preset expressions; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include preset expressions; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> has been serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> has been serialized; otherwise, `false`.'
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.IsSerialized*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -661,7 +661,7 @@ items:
       description: The object to serialize.
     - id: isComplete
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if `value` was fully serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if `value` was fully serialized; otherwise, `false`.'
     return:
       type: System.CodeDom.CodeExpression
       description: An expression representing the creation of <code>value</code>.
@@ -669,8 +669,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> or <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> or <code>value</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -708,11 +708,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code>, <code>value</code>, <code>statements</code>, or <code>descriptor</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>manager</code>, <code>value</code>, <code>statements</code>, or <code>descriptor</code> is `null`.
   - type: System.ComponentModel.Design.Serialization.CodeDomSerializerException
     commentId: T:System.ComponentModel.Design.Serialization.CodeDomSerializerException
     description: <xref href="System.ComponentModel.Design.IEventBindingService"></xref> is not available.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -750,8 +750,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code>, <code>value</code>, or <code>statements</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code>, <code>value</code>, or <code>statements</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -789,8 +789,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code>, <code>value</code>, or <code>statements</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code>, <code>value</code>, or <code>statements</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,8 +828,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code>, <code>value</code>, or <code>statements</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code>, <code>value</code>, or <code>statements</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -867,8 +867,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code>, <code>value</code>, <code>statements</code>, or <code>propertyToSerialize</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code>, <code>value</code>, <code>statements</code>, or <code>propertyToSerialize</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -901,7 +901,7 @@ items:
       description: The object to serialize.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeResource*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -934,7 +934,7 @@ items:
       description: The object to serialize.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeResourceInvariant*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -961,16 +961,16 @@ items:
       description: The <xref href="System.ComponentModel.Design.Serialization.IDesignerSerializationManager"></xref> to use for serialization.
     - id: value
       type: System.Object
-      description: The object to serialize. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The object to serialize. Can be `null`.
     return:
       type: System.CodeDom.CodeExpression
-      description: A <xref href="System.CodeDom.CodeExpression"></xref> object if <code>value</code> can be serialized; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.CodeDom.CodeExpression"></xref> object if <code>value</code> can be serialized; otherwise, `null`.
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SerializeToExpression*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1005,8 +1005,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1036,7 +1036,7 @@ items:
       description: The object to serialize.
     - id: ensureInvariant
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to serialize into the invariant culture; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to serialize into the invariant culture; otherwise, `false`.'
     return:
       type: System.CodeDom.CodeExpression
       description: A <xref href="System.CodeDom.CodeExpression"></xref> containing <code>value</code> as a serialized expression.
@@ -1044,8 +1044,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1080,8 +1080,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>manager</code>, <code>value</code>, or <code>expression</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>manager</code>, <code>value</code>, or <code>expression</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1114,10 +1114,10 @@ items:
       description: The <xref href="System.CodeDom.CodeExpression"></xref> with which to associate `value`.
     - id: isPreset
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify a preset expression; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to specify a preset expression; otherwise, `false`.'
   overload: System.ComponentModel.Design.Serialization.CodeDomSerializerBase.SetExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1177,8 +1177,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1203,8 +1203,8 @@ references:
 - uid: System.Attribute[]
   parent: System
   isExternal: false
-  name: Attribute
-  nameWithType: Attribute
+  name: Attribute[]
+  nameWithType: Attribute[]
   fullName: System.Attribute[]
   spec.csharp:
   - uid: System.Attribute

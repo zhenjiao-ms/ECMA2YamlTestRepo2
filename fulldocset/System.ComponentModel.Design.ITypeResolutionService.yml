@@ -23,7 +23,7 @@ items:
   syntax:
     content: public interface ITypeResolutionService
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -49,10 +49,10 @@ items:
       description: The name of the assembly to retrieve.
     return:
       type: System.Reflection.Assembly
-      description: An instance of the requested assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no assembly can be located.
+      description: An instance of the requested assembly, or `null` if no assembly can be located.
   overload: System.ComponentModel.Design.ITypeResolutionService.GetAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,13 +78,13 @@ items:
       description: The name of the assembly to retrieve.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method should throw an exception if the assembly cannot be located; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>, and this method returns <xref uid="langword_csharp_null" name="null" href=""></xref> if the assembly cannot be located.
+      description: '`true` if this method should throw an exception if the assembly cannot be located; otherwise, `false`, and this method returns `null` if the assembly cannot be located.'
     return:
       type: System.Reflection.Assembly
-      description: An instance of the requested assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no assembly can be located.
+      description: An instance of the requested assembly, or `null` if no assembly can be located.
   overload: System.ComponentModel.Design.ITypeResolutionService.GetAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -113,7 +113,7 @@ items:
       description: The path to the file from which the assembly was loaded.
   overload: System.ComponentModel.Design.ITypeResolutionService.GetPathOfAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,10 +139,10 @@ items:
       description: The name of the type. If the type name is not a fully qualified name that indicates an assembly, this service will search its internal set of referenced assemblies.
     return:
       type: System.Type
-      description: An instance of <xref href="System.Type"></xref> that corresponds to the specified name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no type can be found.
+      description: An instance of <xref href="System.Type"></xref> that corresponds to the specified name, or `null` if no type can be found.
   overload: System.ComponentModel.Design.ITypeResolutionService.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,13 +169,13 @@ items:
       description: The name of the type. If the type name is not a fully qualified name that indicates an assembly, this service will search its internal set of referenced assemblies.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method should throw an exception if the assembly cannot be located; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>, and this method returns <xref uid="langword_csharp_null" name="null" href=""></xref> if the assembly cannot be located.
+      description: '`true` if this method should throw an exception if the assembly cannot be located; otherwise, `false`, and this method returns `null` if the assembly cannot be located.'
     return:
       type: System.Type
-      description: An instance of <xref href="System.Type"></xref> that corresponds to the specified name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no type can be found.
+      description: An instance of <xref href="System.Type"></xref> that corresponds to the specified name, or `null` if no type can be found.
   overload: System.ComponentModel.Design.ITypeResolutionService.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,16 +202,16 @@ items:
       description: The name of the type. If the type name is not a fully qualified name that indicates an assembly, this service will search its internal set of referenced assemblies.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method should throw an exception if the assembly cannot be located; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>, and this method returns <xref uid="langword_csharp_null" name="null" href=""></xref> if the assembly cannot be located.
+      description: '`true` if this method should throw an exception if the assembly cannot be located; otherwise, `false`, and this method returns `null` if the assembly cannot be located.'
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case when searching for types; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case when searching for types; otherwise, `false`.'
     return:
       type: System.Type
-      description: An instance of <xref href="System.Type"></xref> that corresponds to the specified name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no type can be found.
+      description: An instance of <xref href="System.Type"></xref> that corresponds to the specified name, or `null` if no type can be found.
   overload: System.ComponentModel.Design.ITypeResolutionService.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -238,7 +238,7 @@ items:
       description: An <xref href="System.Reflection.AssemblyName"></xref> that indicates the assembly to reference.
   overload: System.ComponentModel.Design.ITypeResolutionService.ReferenceAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

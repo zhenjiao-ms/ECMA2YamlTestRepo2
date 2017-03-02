@@ -13,7 +13,7 @@ items:
   nameWithType: VBMath
   fullName: Microsoft.VisualBasic.VBMath
   type: Class
-  summary: The <xref uid="langword_csharp_VbMath" name="VbMath" href=""></xref> module contains procedures used to perform mathematical operations.
+  summary: The `VbMath` module contains procedures used to perform mathematical operations.
   remarks: This module supports the Visual Basic language keywords and run-time library members for generating random numbers.
   example:
   - "This example uses the `Rnd` function to generate a random integer value in the range from 1 to 6.  \n  \n [!code-vb[VbVbalrMath#21](~/add/codesnippet/visualbasic/t-microsoft.visualbasic._30_1.vb)]"
@@ -33,7 +33,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
     parameters: []
   overload: Microsoft.VisualBasic.VBMath.Randomize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,10 +85,10 @@ items:
     parameters:
     - id: Number
       type: System.Double
-      description: Optional. An <xref uid="langword_csharp_Object" name="Object" href=""></xref> or any valid numeric expression.
+      description: Optional. An `Object` or any valid numeric expression.
   overload: Microsoft.VisualBasic.VBMath.Randomize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns a random number of type <xref uid="langword_csharp_Single" name="Single" href=""></xref>.
+  summary: Returns a random number of type `Single`.
   remarks: "The `Rnd` function returns a value less than 1, but greater than or equal to zero.  \n  \n Before calling `Rnd`, use the `Randomize` statement without an argument to initialize the random-number generator with a seed based on the system timer.  \n  \n To produce random integers in a given range, use the following formula.  \n  \n [!code-vb[VbVbalrMath#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._94_1.vb)]  \n  \n Here, `upperbound` is the highest number in the range, and `lowerbound` is the lowest number in the range.  \n  \n> [!NOTE]\n>  To repeat sequences of random numbers, call `Rnd` with a negative argument immediately before using `Randomize` with a numeric argument.  \n  \n> [!IMPORTANT]\n>  Because the `Random` statement and the `Rnd` function start with a seed value and generate numbers that fall within a finite range, the results may be predictable by someone who knows the algorithm used to generate them. Consequently, the `Random` statement and the `Rnd` function should not be used to generate random numbers for use in cryptography."
   example:
   - "This example uses the `Rnd` function to generate a random integer value in the range from 1 to 6.  \n  \n [!code-vb[VbVbalrMath#21](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._94_2.vb)]"
@@ -117,7 +117,7 @@ items:
       description: The next random number in the sequence.
   overload: Microsoft.VisualBasic.VBMath.Rnd*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns a random number of type <xref uid="langword_csharp_Single" name="Single" href=""></xref>.
+  summary: Returns a random number of type `Single`.
   remarks: "The `Rnd` function returns a value less than 1, but greater than or equal to zero.  \n  \n The value of `Number` determines how `Rnd` generates a random number.  \n  \n For any given initial seed, the same number sequence is generated because each successive call to the `Rnd` function uses the previously generated number as a seed for the next number in the sequence.  \n  \n Before calling `Rnd`, use the `Randomize` statement without an argument to initialize the random-number generator with a seed based on the system timer.  \n  \n To produce random integers in a given range, use the following formula.  \n  \n [!code-vb[VbVbalrMath#30](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._212_1.vb)]  \n  \n Here, `upperbound` is the highest number in the range, and `lowerbound` is the lowest number in the range.  \n  \n> [!NOTE]\n>  To repeat sequences of random numbers, call `Rnd` with a negative argument immediately before using `Randomize` with a numeric argument. Using `Randomize` with the same value for `Number` does not repeat the previous sequence.  \n  \n> [!IMPORTANT]\n>  Because the `Random` statement and the `Rnd` function start with a seed value and generate numbers that fall within a finite range, the results may be predictable by someone who knows the algorithm used to generate them. Consequently, the `Random` statement and the `Rnd` function should not be used to generate random numbers for use in cryptography."
   example:
   - "This example uses the `Rnd` function to generate a random integer value in the range from 1 to 6.  \n  \n [!code-vb[VbVbalrMath#21](~/add/codesnippet/visualbasic/m-microsoft.visualbasic._212_2.vb)]"
@@ -143,13 +143,13 @@ items:
     parameters:
     - id: Number
       type: System.Single
-      description: Optional. A <xref uid="langword_csharp_Single" name="Single" href=""></xref> value or any valid <xref uid="langword_csharp_Single" name="Single" href=""></xref> expression.
+      description: Optional. A `Single` value or any valid `Single` expression.
     return:
       type: System.Single
       description: If number is less than zero, Rnd generates the same number every time, using <code>Number</code> as the seed. If number is greater than zero, Rnd generates the next random number in the sequence. If number is equal to zero, Rnd generates the most recently generated number. If number is not supplied, Rnd generates the next random number in the sequence.
   overload: Microsoft.VisualBasic.VBMath.Rnd*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -58,7 +58,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.#ctor
   id: '#ctor'
@@ -78,7 +78,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.#ctor(System.Boolean)
   id: '#ctor(System.Boolean)'
@@ -98,10 +98,10 @@ items:
     parameters:
     - id: isThreadSafe
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.ComponentModel.Composition.Hosting.ComposablePartExportProvider"></xref> object must be thread-safe; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.ComponentModel.Composition.Hosting.ComposablePartExportProvider"></xref> object must be thread-safe; otherwise, `false`.'
   overload: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.Compose(System.ComponentModel.Composition.Hosting.CompositionBatch)
   id: Compose(System.ComponentModel.Composition.Hosting.CompositionBatch)
@@ -127,7 +127,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The container is already in the process of composing.
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.Dispose
   id: Dispose
@@ -148,7 +148,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -168,10 +168,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.GetExportsCore(System.ComponentModel.Composition.Primitives.ImportDefinition,System.ComponentModel.Composition.Hosting.AtomicComposition)
   id: GetExportsCore(System.ComponentModel.Composition.Primitives.ImportDefinition,System.ComponentModel.Composition.Hosting.AtomicComposition)
@@ -195,13 +195,13 @@ items:
       description: The <xref href="System.ComponentModel.Composition.Primitives.ImportDefinition"></xref> that defines the conditions of the <xref href="System.ComponentModel.Composition.Primitives.Export"></xref> to get.
     - id: atomicComposition
       type: System.ComponentModel.Composition.Hosting.AtomicComposition
-      description: The composition transaction to use, or <xref uid="langword_csharp_null" name="null" href=""></xref> to disable transactional composition.
+      description: The composition transaction to use, or `null` to disable transactional composition.
     return:
       type: System.Collections.Generic.IEnumerable{System.ComponentModel.Composition.Primitives.Export}
       description: A collection of all exports in this provider that match the specified conditions.
   overload: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.GetExportsCore*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.SourceProvider
   id: SourceProvider
@@ -221,7 +221,7 @@ items:
     content: public System.ComponentModel.Composition.Hosting.ExportProvider SourceProvider { get; set; }
     return:
       type: System.ComponentModel.Composition.Hosting.ExportProvider
-      description: "A provider that provides the <xref href=\"System.ComponentModel.Composition.Hosting.ComposablePartExportProvider\"></xref> access to <xref href=\"System.ComponentModel.Composition.Primitives.Export\"></xref> objects.  \n  \n The default is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+      description: "A provider that provides the <xref href=\"System.ComponentModel.Composition.Hosting.ComposablePartExportProvider\"></xref> access to <xref href=\"System.ComponentModel.Composition.Primitives.Export\"></xref> objects.  \n  \n The default is `null`."
   overload: System.ComponentModel.Composition.Hosting.ComposablePartExportProvider.SourceProvider*
   exceptions:
   - type: System.ObjectDisposedException
@@ -229,11 +229,11 @@ items:
     description: The <xref href="System.ComponentModel.Composition.Hosting.ComposablePartExportProvider"></xref> has been disposed of.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "This property has already been set.  \n  \n -or-  \n  \n The methods on the <xref href=\"System.ComponentModel.Composition.Hosting.ComposablePartExportProvider\"></xref> have already been accessed."
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.ComponentModel.Composition.Hosting.ExportProvider

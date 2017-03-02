@@ -75,7 +75,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -106,7 +106,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>fileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>fileName</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -122,7 +122,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>fileName</code> contains a colon (:) in the middle of the string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -148,10 +148,10 @@ items:
     parameters: []
     return:
       type: System.IO.StreamWriter
-      description: A new <xref uid="langword_csharp_StreamWriter" name="StreamWriter" href=""></xref>.
+      description: A new `StreamWriter`.
   overload: System.IO.FileInfo.AppendText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
     description: The caller does not have the required permission.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destFileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destFileName</code> is `null`.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: A directory path is passed in, or the file is being moved to a different drive.
@@ -207,7 +207,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>destFileName</code> contains a colon (:) within the string but does not specify the volume.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,10 +236,10 @@ items:
       description: The name of the new file to copy to.
     - id: overwrite
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to allow an existing file to be overwritten; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to allow an existing file to be overwritten; otherwise, `false`.'
     return:
       type: System.IO.FileInfo
-      description: A new file, or an overwrite of an existing file if <code>overwrite</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>. If the file exists and <code>overwrite</code> is <xref uid="langword_csharp_false" name="false" href=""></xref>, an <xref href="System.IO.IOException"></xref> is thrown.
+      description: A new file, or an overwrite of an existing file if <code>overwrite</code> is `true`. If the file exists and <code>overwrite</code> is `false`, an <xref href="System.IO.IOException"></xref> is thrown.
   overload: System.IO.FileInfo.CopyTo*
   exceptions:
   - type: System.ArgumentException
@@ -247,13 +247,13 @@ items:
     description: <code>destFileName</code> is empty, contains only white spaces, or contains invalid characters.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: An error occurs, or the destination file already exists and <code>overwrite</code> is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: An error occurs, or the destination file already exists and <code>overwrite</code> is `false`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destFileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destFileName</code> is `null`.
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The directory specified in <code>destFileName</code> does not exist.
@@ -266,7 +266,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>destFileName</code> contains a colon (:) in the middle of the string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,7 +295,7 @@ items:
       description: A new file.
   overload: System.IO.FileInfo.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -321,7 +321,7 @@ items:
     parameters: []
     return:
       type: System.IO.StreamWriter
-      description: A new <xref uid="langword_csharp_StreamWriter" name="StreamWriter" href=""></xref>.
+      description: A new `StreamWriter`.
   overload: System.IO.FileInfo.CreateText*
   exceptions:
   - type: System.UnauthorizedAccessException
@@ -333,7 +333,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -377,7 +377,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The file described by the current <xref href=\"System.IO.FileInfo\"></xref> object is read-only.  \n  \n -or-  \n  \n This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -412,7 +412,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The path is a directory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -446,7 +446,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -476,14 +476,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <xref uid="langword_csharp_null" name="null" href=""></xref> was passed in for the directory name.
+    description: '`null` was passed in for the directory name.'
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The fully qualified path is 260 or more characters.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -527,7 +527,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The file described by the current <xref href=\"System.IO.FileInfo\"></xref> object is read-only.  \n  \n -or-  \n  \n This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -552,10 +552,10 @@ items:
     content: public override bool Exists { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the file exists; <xref uid="langword_csharp_false" name="false" href=""></xref> if the file does not exist or if the file is a directory.
+      description: '`true` if the file exists; `false` if the file does not exist or if the file is a directory.'
   overload: System.IO.FileInfo.Exists*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -599,7 +599,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -644,7 +644,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -669,7 +669,7 @@ items:
     content: public bool IsReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current file is read only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current file is read only; otherwise, `false`.'
   overload: System.IO.FileInfo.IsReadOnly*
   exceptions:
   - type: System.IO.FileNotFoundException
@@ -683,8 +683,8 @@ items:
     description: "This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The user does not have write permission, but attempted to set this property to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The user does not have write permission, but attempted to set this property to `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -717,8 +717,8 @@ items:
     description: <xref:System.IO.FileSystemInfo.Refresh*> cannot update the state of the file or directory.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file does not exist.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Length\" name=\"Length\" href=\"\"></xref> property is called for a directory."
-  platform:
+    description: "The file does not exist.  \n  \n -or-  \n  \n The `Length` property is called for a directory."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -752,7 +752,7 @@ items:
     description: An I/O error occurs, such as the destination file already exists or the destination device is not ready.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destFileName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destFileName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>destFileName</code> is empty, contains only white spaces, or contains invalid characters.
@@ -774,7 +774,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>destFileName</code> contains a colon (:) in the middle of the string.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -802,7 +802,7 @@ items:
       description: The name of the file.
   overload: System.IO.FileInfo.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,7 +828,7 @@ items:
     parameters:
     - id: mode
       type: System.IO.FileMode
-      description: A <xref href="System.IO.FileMode"></xref> constant specifying the mode (for example, <xref uid="langword_csharp_Open" name="Open" href=""></xref> or <xref uid="langword_csharp_Append" name="Append" href=""></xref>) in which to open the file.
+      description: A <xref href="System.IO.FileMode"></xref> constant specifying the mode (for example, `Open` or `Append`) in which to open the file.
     return:
       type: System.IO.FileStream
       description: A file opened in the specified mode, with read/write access and unshared.
@@ -846,7 +846,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The file is already open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -872,10 +872,10 @@ items:
     parameters:
     - id: mode
       type: System.IO.FileMode
-      description: A <xref href="System.IO.FileMode"></xref> constant specifying the mode (for example, <xref uid="langword_csharp_Open" name="Open" href=""></xref> or <xref uid="langword_csharp_Append" name="Append" href=""></xref>) in which to open the file.
+      description: A <xref href="System.IO.FileMode"></xref> constant specifying the mode (for example, `Open` or `Append`) in which to open the file.
     - id: access
       type: System.IO.FileAccess
-      description: A <xref href="System.IO.FileAccess"></xref> constant specifying whether to open the file with <xref uid="langword_csharp_Read" name="Read" href=""></xref>, <xref uid="langword_csharp_Write" name="Write" href=""></xref>, or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> file access.
+      description: A <xref href="System.IO.FileAccess"></xref> constant specifying whether to open the file with `Read`, `Write`, or `ReadWrite` file access.
     return:
       type: System.IO.FileStream
       description: A <xref href="System.IO.FileStream"></xref> object opened in the specified mode and access, and unshared.
@@ -896,7 +896,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The file is already open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -922,13 +922,13 @@ items:
     parameters:
     - id: mode
       type: System.IO.FileMode
-      description: A <xref href="System.IO.FileMode"></xref> constant specifying the mode (for example, <xref uid="langword_csharp_Open" name="Open" href=""></xref> or <xref uid="langword_csharp_Append" name="Append" href=""></xref>) in which to open the file.
+      description: A <xref href="System.IO.FileMode"></xref> constant specifying the mode (for example, `Open` or `Append`) in which to open the file.
     - id: access
       type: System.IO.FileAccess
-      description: A <xref href="System.IO.FileAccess"></xref> constant specifying whether to open the file with <xref uid="langword_csharp_Read" name="Read" href=""></xref>, <xref uid="langword_csharp_Write" name="Write" href=""></xref>, or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> file access.
+      description: A <xref href="System.IO.FileAccess"></xref> constant specifying whether to open the file with `Read`, `Write`, or `ReadWrite` file access.
     - id: share
       type: System.IO.FileShare
-      description: A <xref href="System.IO.FileShare"></xref> constant specifying the type of access other <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> objects have to this file.
+      description: A <xref href="System.IO.FileShare"></xref> constant specifying the type of access other `FileStream` objects have to this file.
     return:
       type: System.IO.FileStream
       description: A <xref href="System.IO.FileStream"></xref> object opened with the specified mode, access, and sharing options.
@@ -949,7 +949,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The file is already open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -987,7 +987,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The file is already open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1013,7 +1013,7 @@ items:
     parameters: []
     return:
       type: System.IO.StreamReader
-      description: A new <xref uid="langword_csharp_StreamReader" name="StreamReader" href=""></xref> with UTF8 encoding.
+      description: A new `StreamReader` with UTF8 encoding.
   overload: System.IO.FileInfo.OpenText*
   exceptions:
   - type: System.Security.SecurityException
@@ -1028,7 +1028,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid, such as being on an unmapped drive.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1063,7 +1063,7 @@ items:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The path specified when creating an instance of the <xref href="System.IO.FileInfo"></xref> object is invalid, such as being on an unmapped drive.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1103,14 +1103,14 @@ items:
     description: "The path described by the <code>destFileName</code> parameter was not of a legal form.  \n  \n -or-  \n  \n The path described by the <code>destBackupFileName</code> parameter was not of a legal form."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>destFileName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>destFileName</code> parameter is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: "The file described by the current <xref href=\"System.IO.FileInfo\"></xref> object could not be found.  \n  \n -or-  \n  \n The file described by the <code>destinationFileName</code> parameter could not be found."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Microsoft Windows NT or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1142,7 +1142,7 @@ items:
       description: The name of a file with which to create a backup of the file described by the `destFileName` parameter.
     - id: ignoreMetadataErrors
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore merge errors (such as attributes and ACLs) from the replaced file to the replacement file; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore merge errors (such as attributes and ACLs) from the replaced file to the replacement file; otherwise `false`.'
     return:
       type: System.IO.FileInfo
       description: A <xref href="System.IO.FileInfo"></xref> object that encapsulates information about the file described by the <code>destFileName</code> parameter.
@@ -1153,14 +1153,14 @@ items:
     description: "The path described by the <code>destFileName</code> parameter was not of a legal form.  \n  \n -or-  \n  \n The path described by the <code>destBackupFileName</code> parameter was not of a legal form."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>destFileName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>destFileName</code> parameter is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: "The file described by the current <xref href=\"System.IO.FileInfo\"></xref> object could not be found.  \n  \n -or-  \n  \n The file described by the <code>destinationFileName</code> parameter could not be found."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Microsoft Windows NT or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1191,7 +1191,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>fileSecurity</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>fileSecurity</code> parameter is `null`.
   - type: System.SystemException
     commentId: T:System.SystemException
     description: The file could not be found or modified.
@@ -1201,7 +1201,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Microsoft Windows 2000 or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1228,7 +1228,7 @@ items:
       description: A string representing the path.
   overload: System.IO.FileInfo.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

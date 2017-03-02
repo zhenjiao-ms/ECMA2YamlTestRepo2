@@ -152,7 +152,7 @@ items:
   - System.Object.GetHashCode
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,10 +174,10 @@ items:
     content: public ActivationContext ActivationContext { get; }
     return:
       type: System.ActivationContext
-      description: An object that represents the activation context for the current application domain, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the domain has no activation context.
+      description: An object that represents the activation context for the current application domain, or `null` if the domain has no activation context.
   overload: System.AppDomain.ActivationContext*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,7 +207,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,7 +232,7 @@ items:
       description: An object that identifies the application in the application domain.
   overload: System.AppDomain.ApplicationIdentity*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,7 +257,7 @@ items:
       description: An object that encapsulates permission and trust information for the application in the application domain.
   overload: System.AppDomain.ApplicationTrust*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,7 +287,7 @@ items:
       description: A string containing the assembly display name after policy has been applied.
   overload: System.AppDomain.ApplyPolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -314,7 +314,7 @@ items:
       type: System.AssemblyLoadEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -341,7 +341,7 @@ items:
       type: System.ResolveEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -372,7 +372,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -401,7 +401,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -428,7 +428,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -465,7 +465,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: The type cannot be loaded.
@@ -495,8 +495,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: The COM object that is being referred to is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The COM object that is being referred to is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -537,7 +537,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: The type cannot be loaded.
@@ -567,8 +567,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: The COM object that is being referred to is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The COM object that is being referred to is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -602,8 +602,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>friendlyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>friendlyName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -632,7 +632,7 @@ items:
       description: The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <xref:System.AppDomain.FriendlyName*>.
     - id: securityInfo
       type: System.Security.Policy.Evidence
-      description: Evidence that establishes the identity of the code that runs in the application domain. Pass <xref uid="langword_csharp_null" name="null" href=""></xref> to use the evidence of the current application domain.
+      description: Evidence that establishes the identity of the code that runs in the application domain. Pass `null` to use the evidence of the current application domain.
     return:
       type: System.AppDomain
       description: The newly created application domain.
@@ -640,8 +640,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>friendlyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>friendlyName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -670,7 +670,7 @@ items:
       description: The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <xref:System.AppDomain.FriendlyName*>.
     - id: securityInfo
       type: System.Security.Policy.Evidence
-      description: Evidence that establishes the identity of the code that runs in the application domain. Pass <xref uid="langword_csharp_null" name="null" href=""></xref> to use the evidence of the current application domain.
+      description: Evidence that establishes the identity of the code that runs in the application domain. Pass `null` to use the evidence of the current application domain.
     - id: info
       type: System.AppDomainSetup
       description: An object that contains application domain initialization information.
@@ -681,8 +681,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>friendlyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>friendlyName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -709,7 +709,7 @@ items:
       description: The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see the description of <xref:System.AppDomain.FriendlyName*>.
     - id: securityInfo
       type: System.Security.Policy.Evidence
-      description: Evidence that establishes the identity of the code that runs in the application domain. Pass <xref uid="langword_csharp_null" name="null" href=""></xref> to use the evidence of the current application domain.
+      description: Evidence that establishes the identity of the code that runs in the application domain. Pass `null` to use the evidence of the current application domain.
     - id: info
       type: System.AppDomainSetup
       description: An object that contains application domain initialization information.
@@ -726,11 +726,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>friendlyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>friendlyName</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The application domain is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref:System.AppDomainSetup.ApplicationBase*> property is not set on the <xref href=\"System.AppDomainSetup\"></xref> object that is supplied for <code>info</code>."
-  platform:
+    description: "The application domain is `null`.  \n  \n -or-  \n  \n The <xref:System.AppDomainSetup.ApplicationBase*> property is not set on the <xref href=\"System.AppDomainSetup\"></xref> object that is supplied for <code>info</code>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -759,7 +759,7 @@ items:
       description: The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <xref:System.AppDomain.FriendlyName*>.
     - id: securityInfo
       type: System.Security.Policy.Evidence
-      description: Evidence that establishes the identity of the code that runs in the application domain. Pass <xref uid="langword_csharp_null" name="null" href=""></xref> to use the evidence of the current application domain.
+      description: Evidence that establishes the identity of the code that runs in the application domain. Pass `null` to use the evidence of the current application domain.
     - id: appBasePath
       type: System.String
       description: The base directory that the assembly resolver uses to probe for assemblies. For more information, see <xref:System.AppDomain.BaseDirectory*>.
@@ -768,7 +768,7 @@ items:
       description: The path relative to the base directory where the assembly resolver should probe for private assemblies. For more information, see <xref:System.AppDomain.RelativeSearchPath*>.
     - id: shadowCopyFiles
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, a shadow copy of an assembly is loaded into this application domain.
+      description: If `true`, a shadow copy of an assembly is loaded into this application domain.
     return:
       type: System.AppDomain
       description: The newly created application domain.
@@ -776,8 +776,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>friendlyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>friendlyName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -804,7 +804,7 @@ items:
       description: The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <xref:System.AppDomain.FriendlyName*>.
     - id: securityInfo
       type: System.Security.Policy.Evidence
-      description: Evidence that establishes the identity of the code that runs in the application domain. Pass <xref uid="langword_csharp_null" name="null" href=""></xref> to use the evidence of the current application domain.
+      description: Evidence that establishes the identity of the code that runs in the application domain. Pass `null` to use the evidence of the current application domain.
     - id: appBasePath
       type: System.String
       description: The base directory that the assembly resolver uses to probe for assemblies. For more information, see <xref:System.AppDomain.BaseDirectory*>.
@@ -813,7 +813,7 @@ items:
       description: The path relative to the base directory where the assembly resolver should probe for private assemblies. For more information, see <xref:System.AppDomain.RelativeSearchPath*>.
     - id: shadowCopyFiles
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to load a shadow copy of an assembly into the application domain.
+      description: '`true` to load a shadow copy of an assembly into the application domain.'
     - id: adInit
       type: System.AppDomainInitializer
       description: An <xref href="System.AppDomainInitializer"></xref> delegate that represents a callback method to invoke when the new <xref href="System.AppDomain"></xref> object is initialized.
@@ -827,8 +827,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>friendlyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>friendlyName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -866,7 +866,7 @@ items:
     description: The operation is attempted on an unloaded application domain.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n Version 2.0 or later of the common language runtime is currently loaded and <code>assemblyName</code> was compiled with a later version."
@@ -887,8 +887,8 @@ items:
     description: <code>typename</code> was not found in <code>assemblyName</code>.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -929,7 +929,7 @@ items:
     description: The operation is attempted on an unloaded application domain.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n Version 2.0 or later of the common language runtime is currently loaded and <code>assemblyName</code> was compiled with a later version."
@@ -953,8 +953,8 @@ items:
     description: <code>typename</code> was not found in <code>assemblyName</code>.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -996,7 +996,7 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1010,7 +1010,7 @@ items:
     description: The operation is attempted on an unloaded application domain.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n <code>assemblyName</code> was compiled with a later version of the common language runtime than the version that is currently loaded."
@@ -1034,8 +1034,8 @@ items:
     description: <code>typename</code> was not found in <code>assemblyName</code>.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-40
 - uid: System.AppDomain.CreateInstance(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
   id: CreateInstance(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
@@ -1074,7 +1074,7 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects.Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1091,7 +1091,7 @@ items:
     description: The operation is attempted on an unloaded application domain.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n Version 2.0 or later of the common language runtime is currently loaded and <code>assemblyName</code> was compiled with a later version."
@@ -1109,14 +1109,14 @@ items:
     description: No matching constructor was found.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The caller cannot provide activation attributes for an object that does not inherit from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n <code>securityAttributes</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>. When legacy CAS policy is not enabled, <code>securityAttributes</code> should be <xref uid=\"langword_csharp_null.\" name=\"null.\" href=\"\"></xref>"
+    description: "The caller cannot provide activation attributes for an object that does not inherit from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n <code>securityAttributes</code> is not `null`. When legacy CAS policy is not enabled, <code>securityAttributes</code> should be `null.`"
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>typename</code> was not found in <code>assemblyName</code>.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1153,7 +1153,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -1175,7 +1175,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1218,7 +1218,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -1243,7 +1243,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1287,7 +1287,7 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: A culture-specific object used to govern the coercion of types. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> for the current thread is used.
+      description: A culture-specific object used to govern the coercion of types. If `culture` is `null`, the `CultureInfo` for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object. that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1298,7 +1298,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1323,7 +1323,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.CreateInstanceAndUnwrap(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
   id: CreateInstanceAndUnwrap(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
@@ -1364,7 +1364,7 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: A culture-specific object used to govern the coercion of types. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> for the current thread is used.
+      description: A culture-specific object used to govern the coercion of types. If `culture` is `null`, the `CultureInfo` for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1378,7 +1378,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1403,7 +1403,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1435,12 +1435,12 @@ items:
       description: The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the &lt;xref:System.Type.FullName%2A?displayProperty=fullName&gt; property.
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: An object that is a wrapper for the new instance, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
+      description: An object that is a wrapper for the new instance, or `null` if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
   overload: System.AppDomain.CreateInstanceFrom*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyFile</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyFile</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> was not found.
@@ -1464,8 +1464,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1498,12 +1498,12 @@ items:
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects.Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: An object that is a wrapper for the new instance, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
+      description: An object that is a wrapper for the new instance, or `null` if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
   overload: System.AppDomain.CreateInstanceFrom*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> was not found.
@@ -1530,8 +1530,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1573,18 +1573,18 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: An object that is a wrapper for the new instance, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
+      description: An object that is a wrapper for the new instance, or `null` if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
   overload: System.AppDomain.CreateInstanceFrom*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyFile</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyFile</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The caller cannot provide activation attributes for an object that does not inherit from <xref href="System.MarshalByRefObject"></xref>.
@@ -1611,8 +1611,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-40
 - uid: System.AppDomain.CreateInstanceFrom(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
   id: CreateInstanceFrom(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
@@ -1651,7 +1651,7 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1660,15 +1660,15 @@ items:
       description: Information used to authorize creation of `typeName`.
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: An object that is a wrapper for the new instance, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
+      description: An object that is a wrapper for the new instance, or `null` if <code>typeName</code> is not found. The return value needs to be unwrapped to access the real object.
   overload: System.AppDomain.CreateInstanceFrom*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyFile</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyFile</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The caller cannot provide activation attributes for an object that does not inherit from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n <code>securityAttributes</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>. When legacy CAS policy is not enabled, <code>securityAttributes</code> should be <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The caller cannot provide activation attributes for an object that does not inherit from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n <code>securityAttributes</code> is not `null`. When legacy CAS policy is not enabled, <code>securityAttributes</code> should be `null`."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
@@ -1692,8 +1692,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: This instance is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: This instance is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1723,12 +1723,12 @@ items:
       description: The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the &lt;xref:System.Type.FullName%2A?displayProperty=fullName&gt; property.
     return:
       type: System.Object
-      description: The requested object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found.
+      description: The requested object, or `null` if <code>typeName</code> is not found.
   overload: System.AppDomain.CreateInstanceFromAndUnwrap*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyName</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
@@ -1750,7 +1750,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1783,12 +1783,12 @@ items:
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects.Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
     return:
       type: System.Object
-      description: The requested object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found.
+      description: The requested object, or `null` if <code>typeName</code> is not found.
   overload: System.AppDomain.CreateInstanceFromAndUnwrap*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyName</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The caller cannot provide activation attributes for an object that does not inherit from <xref href="System.MarshalByRefObject"></xref>.
@@ -1813,7 +1813,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1855,18 +1855,18 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
     return:
       type: System.Object
-      description: The requested object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found.
+      description: The requested object, or `null` if <code>typeName</code> is not found.
   overload: System.AppDomain.CreateInstanceFromAndUnwrap*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyName</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The caller cannot provide activation attributes for an object that does not inherit from <xref href="System.MarshalByRefObject"></xref>.
@@ -1891,7 +1891,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.CreateInstanceFromAndUnwrap(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
   id: CreateInstanceFromAndUnwrap(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
@@ -1930,7 +1930,7 @@ items:
       description: The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, `args` must be an empty array or null.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. Typically, an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1939,12 +1939,12 @@ items:
       description: Information used to authorize creation of `typeName`.
     return:
       type: System.Object
-      description: The requested object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>typeName</code> is not found.
+      description: The requested object, or `null` if <code>typeName</code> is not found.
   overload: System.AppDomain.CreateInstanceFromAndUnwrap*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assemblyName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>typeName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>assemblyName</code> is `null`.  \n  \n -or-  \n  \n <code>typeName</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The caller cannot provide activation attributes for an object that does not inherit from <xref href="System.MarshalByRefObject"></xref>.
@@ -1969,7 +1969,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1997,7 +1997,7 @@ items:
       description: The current application domain.
   overload: System.AppDomain.CurrentDomain*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2034,14 +2034,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2073,7 +2073,7 @@ items:
       description: The access mode for the dynamic assembly.
     - id: assemblyAttributes
       type: System.Collections.Generic.IEnumerable{System.Reflection.Emit.CustomAttributeBuilder}
-      description: An enumerable list of attributes to be applied to the assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there are no attributes.
+      description: An enumerable list of attributes to be applied to the assembly, or `null` if there are no attributes.
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: A dynamic assembly with the specified name and features.
@@ -2081,14 +2081,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> starts with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> starts with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2128,14 +2128,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2167,7 +2167,7 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the directory defaults to the current directory.
+      description: The name of the directory where the assembly will be saved. If `dir` is `null`, the directory defaults to the current directory.
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: A dynamic assembly with the specified name and features.
@@ -2175,14 +2175,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2212,7 +2212,7 @@ items:
       description: The access mode for the dynamic assembly.
     - id: assemblyAttributes
       type: System.Collections.Generic.IEnumerable{System.Reflection.Emit.CustomAttributeBuilder}
-      description: An enumerable list of attributes to be applied to the assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there are no attributes.
+      description: An enumerable list of attributes to be applied to the assembly, or `null` if there are no attributes.
     - id: securityContextSource
       type: System.Security.SecurityContextSource
       description: The source of the security context.
@@ -2223,17 +2223,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> starts with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> starts with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of <code>securityContextSource</code> was not one of the enumeration values.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess,System.String,System.Security.Policy.Evidence)
   id: DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess,System.String,System.Security.Policy.Evidence)
@@ -2262,7 +2262,7 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the directory defaults to the current directory.
+      description: The name of the directory where the assembly will be saved. If `dir` is `null`, the directory defaults to the current directory.
     - id: evidence
       type: System.Security.Policy.Evidence
       description: The evidence supplied for the dynamic assembly. The evidence is used unaltered as the final set of evidence used for policy resolution.
@@ -2273,14 +2273,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2326,14 +2326,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2363,13 +2363,13 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the dynamic assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the current directory is used.
+      description: The name of the directory where the dynamic assembly will be saved. If `dir` is `null`, the current directory is used.
     - id: isSynchronized
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to synchronize the creation of modules, types, and members in the dynamic assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to synchronize the creation of modules, types, and members in the dynamic assembly; otherwise, `false`.'
     - id: assemblyAttributes
       type: System.Collections.Generic.IEnumerable{System.Reflection.Emit.CustomAttributeBuilder}
-      description: An enumerable list of attributes to be applied to the assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there are no attributes.
+      description: An enumerable list of attributes to be applied to the assembly, or `null` if there are no attributes.
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: A dynamic assembly with the specified name and features.
@@ -2377,14 +2377,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> starts with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> starts with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess,System.Security.Policy.Evidence,System.Security.PermissionSet,System.Security.PermissionSet,System.Security.PermissionSet)
   id: DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess,System.Security.Policy.Evidence,System.Security.PermissionSet,System.Security.PermissionSet,System.Security.PermissionSet)
@@ -2430,14 +2430,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2469,7 +2469,7 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the directory defaults to the current directory.
+      description: The name of the directory where the assembly will be saved. If `dir` is `null`, the directory defaults to the current directory.
     - id: requiredPermissions
       type: System.Security.PermissionSet
       description: The required permissions request.
@@ -2486,14 +2486,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2525,7 +2525,7 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the directory defaults to the current directory.
+      description: The name of the directory where the assembly will be saved. If `dir` is `null`, the directory defaults to the current directory.
     - id: evidence
       type: System.Security.Policy.Evidence
       description: The evidence supplied for the dynamic assembly. The evidence is used unaltered as the final set of evidence used for policy resolution.
@@ -2545,14 +2545,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2584,7 +2584,7 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the dynamic assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the directory defaults to the current directory.
+      description: The name of the directory where the dynamic assembly will be saved. If `dir` is `null`, the directory defaults to the current directory.
     - id: evidence
       type: System.Security.Policy.Evidence
       description: The evidence supplied for the dynamic assembly. The evidence is used unaltered as the final set of evidence used for policy resolution.
@@ -2599,7 +2599,7 @@ items:
       description: The refused permissions request.
     - id: isSynchronized
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to synchronize the creation of modules, types, and members in the dynamic assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to synchronize the creation of modules, types, and members in the dynamic assembly; otherwise, `false`.'
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: A dynamic assembly with the specified name and features.
@@ -2607,14 +2607,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> begins with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> begins with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2644,7 +2644,7 @@ items:
       description: The mode in which the dynamic assembly will be accessed.
     - id: dir
       type: System.String
-      description: The name of the directory where the dynamic assembly will be saved. If `dir` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the current directory is used.
+      description: The name of the directory where the dynamic assembly will be saved. If `dir` is `null`, the current directory is used.
     - id: evidence
       type: System.Security.Policy.Evidence
       description: The evidence that is supplied for the dynamic assembly. The evidence is used unaltered as the final set of evidence used for policy resolution.
@@ -2659,10 +2659,10 @@ items:
       description: The refused permissions request.
     - id: isSynchronized
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to synchronize the creation of modules, types, and members in the dynamic assembly; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to synchronize the creation of modules, types, and members in the dynamic assembly; otherwise, `false`.'
     - id: assemblyAttributes
       type: System.Collections.Generic.IEnumerable{System.Reflection.Emit.CustomAttributeBuilder}
-      description: An enumerable list of attributes to be applied to the assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there are no attributes.
+      description: An enumerable list of attributes to be applied to the assembly, or `null` if there are no attributes.
     return:
       type: System.Reflection.Emit.AssemblyBuilder
       description: A dynamic assembly with the specified name and features.
@@ -2670,14 +2670,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref uid=\"langword_csharp_Name\" name=\"Name\" href=\"\"></xref> property of <code>name</code> starts with white space, or contains a forward or backward slash."
+    description: "The `Name` property of <code>name</code> is `null`.  \n  \n -or-  \n  \n The `Name` property of <code>name</code> starts with white space, or contains a forward or backward slash."
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2708,8 +2708,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>callBackDelegate</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>callBackDelegate</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2732,10 +2732,10 @@ items:
     content: public AppDomainManager DomainManager { get; }
     return:
       type: System.AppDomainManager
-      description: An object that represents the domain manager provided by the host when the application domain was initialized, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no domain manager was provided.
+      description: An object that represents the domain manager provided by the host when the application domain was initialized, or `null` if no domain manager was provided.
   overload: System.AppDomain.DomainManager*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2760,7 +2760,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2791,7 +2791,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2819,7 +2819,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2853,7 +2853,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> is not found.
@@ -2869,7 +2869,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2906,7 +2906,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> is not found.
@@ -2922,7 +2922,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2959,7 +2959,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> is not found.
@@ -2975,7 +2975,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.ExecuteAssembly(System.String,System.Security.Policy.Evidence,System.String[])
   id: ExecuteAssembly(System.String,System.Security.Policy.Evidence,System.String[])
@@ -3012,7 +3012,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> is not found.
@@ -3027,11 +3027,11 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>assemblySecurity</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblySecurity</code> is not `null`. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3074,7 +3074,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> is not found.
@@ -3090,7 +3090,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.ExecuteAssembly(System.String,System.Security.Policy.Evidence,System.String[],System.Byte[],System.Configuration.Assemblies.AssemblyHashAlgorithm)
   id: ExecuteAssembly(System.String,System.Security.Policy.Evidence,System.String[],System.Byte[],System.Configuration.Assemblies.AssemblyHashAlgorithm)
@@ -3133,7 +3133,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyFile</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyFile</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyFile</code> is not found.
@@ -3148,11 +3148,11 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>assemblySecurity</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblySecurity</code> is not `null`. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3184,7 +3184,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The assembly specified by <code>assemblyName</code> is not found.
@@ -3200,7 +3200,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3248,7 +3248,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.ExecuteAssemblyByName(System.String,System.Security.Policy.Evidence)
   id: ExecuteAssemblyByName(System.String,System.Security.Policy.Evidence)
@@ -3280,7 +3280,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The assembly specified by <code>assemblyName</code> is not found.
@@ -3296,7 +3296,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3331,7 +3331,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The assembly specified by <code>assemblyName</code> is not found.
@@ -3347,7 +3347,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.ExecuteAssemblyByName(System.Reflection.AssemblyName,System.Security.Policy.Evidence,System.String[])
   id: ExecuteAssemblyByName(System.Reflection.AssemblyName,System.Security.Policy.Evidence,System.String[])
@@ -3394,11 +3394,11 @@ items:
     description: The operation is attempted on an unloaded application domain.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>assemblySecurity</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblySecurity</code> is not `null`. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3436,7 +3436,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyName</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: The assembly specified by <code>assemblyName</code> is not found.
@@ -3451,11 +3451,11 @@ items:
     description: The operation is attempted on an unloaded application domain.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>assemblySecurity</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblySecurity</code> is not `null`. When legacy CAS policy is not enabled, <code>assemblySecurity</code> should be `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: The specified assembly has no entry point.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3482,7 +3482,7 @@ items:
       type: System.EventHandler{System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.FriendlyName
   id: FriendlyName
@@ -3510,7 +3510,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3542,7 +3542,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3569,7 +3569,7 @@ items:
       description: A 32-bit signed integer that is the identifier of the current thread.
   overload: System.AppDomain.GetCurrentThreadId*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3598,16 +3598,16 @@ items:
       description: The name of a predefined application domain property, or the name of an application domain property you have defined.
     return:
       type: System.Object
-      description: The value of the <code>name</code> property, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the property does not exist.
+      description: The value of the <code>name</code> property, or `null` if the property does not exist.
   overload: System.AppDomain.GetData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3633,7 +3633,7 @@ items:
       description: The type of the current instance.
   overload: System.AppDomain.GetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3661,7 +3661,7 @@ items:
       description: An integer that identifies the application domain.
   overload: System.AppDomain.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3684,13 +3684,13 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: Always <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Always `null`.
   overload: System.AppDomain.InitializeLifetimeService*
   exceptions:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3717,10 +3717,10 @@ items:
       description: The compatibility switch to test.
     return:
       type: System.Nullable{System.Boolean}
-      description: A null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) if no compatibility switches are set; otherwise, a Boolean value that indicates whether the compatibility switch that is specified by <code>value</code> is set.
+      description: A null reference (`Nothing` in Visual Basic) if no compatibility switches are set; otherwise, a Boolean value that indicates whether the compatibility switch that is specified by <code>value</code> is set.
   overload: System.AppDomain.IsCompatibilitySwitchSet*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.IsDefaultAppDomain
   id: IsDefaultAppDomain
@@ -3743,10 +3743,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current <xref href="System.AppDomain"></xref> object represents the default application domain for the process; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current <xref href="System.AppDomain"></xref> object represents the default application domain for the process; otherwise, `false`.'
   overload: System.AppDomain.IsDefaultAppDomain*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3770,10 +3770,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this application domain is unloading and the common language runtime has started invoking finalizers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this application domain is unloading and the common language runtime has started invoking finalizers; otherwise, `false`.'
   overload: System.AppDomain.IsFinalizingForUnload*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3798,10 +3798,10 @@ items:
     content: public bool IsFullyTrusted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if assemblies that are loaded into the current application domain execute with full trust; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if assemblies that are loaded into the current application domain execute with full trust; otherwise, `false`.'
   overload: System.AppDomain.IsFullyTrusted*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.IsHomogenous
   id: IsHomogenous
@@ -3821,10 +3821,10 @@ items:
     content: public bool IsHomogenous { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current application domain has a homogenous set of permissions; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current application domain has a homogenous set of permissions; otherwise, `false`.'
   overload: System.AppDomain.IsHomogenous*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.Load(System.Byte[])
   id: Load(System.Byte[])
@@ -3847,7 +3847,7 @@ items:
     parameters:
     - id: rawAssembly
       type: System.Byte[]
-      description: An array of type <xref uid="langword_csharp_byte" name="byte" href=""></xref> that is a COFF-based image containing an emitted assembly.
+      description: An array of type `byte` that is a COFF-based image containing an emitted assembly.
     return:
       type: System.Reflection.Assembly
       description: The loaded assembly.
@@ -3855,7 +3855,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rawAssembly</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>rawAssembly</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>rawAssembly</code> is not a valid assembly.  \n  \n -or-  \n  \n Version 2.0 or later of the common language runtime is currently loaded and <code>rawAssembly</code> was compiled with a later version."
@@ -3865,7 +3865,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3897,7 +3897,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyRef</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assemblyRef</code> is `null`.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyRef</code> is not found.
@@ -3910,7 +3910,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3942,7 +3942,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyString</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>
+    description: <code>assemblyString</code> is `null`
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyString</code> is not found.
@@ -3955,7 +3955,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3981,10 +3981,10 @@ items:
     parameters:
     - id: rawAssembly
       type: System.Byte[]
-      description: An array of type <xref uid="langword_csharp_byte" name="byte" href=""></xref> that is a COFF-based image containing an emitted assembly.
+      description: An array of type `byte` that is a COFF-based image containing an emitted assembly.
     - id: rawSymbolStore
       type: System.Byte[]
-      description: An array of type <xref uid="langword_csharp_byte" name="byte" href=""></xref> containing the raw bytes representing the symbols for the assembly.
+      description: An array of type `byte` containing the raw bytes representing the symbols for the assembly.
     return:
       type: System.Reflection.Assembly
       description: The loaded assembly.
@@ -3992,7 +3992,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rawAssembly</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>rawAssembly</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>rawAssembly</code> is not a valid assembly.  \n  \n -or-  \n  \n Version 2.0 or later of the common language runtime is currently loaded and <code>rawAssembly</code> was compiled with a later version."
@@ -4002,7 +4002,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4037,7 +4037,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyRef</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>
+    description: <code>assemblyRef</code> is `null`
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyRef</code> is not found.
@@ -4050,7 +4050,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4085,7 +4085,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assemblyString</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>
+    description: <code>assemblyString</code> is `null`
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>assemblyString</code> is not found.
@@ -4098,7 +4098,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: An assembly or module was loaded twice with two different evidences.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4124,10 +4124,10 @@ items:
     parameters:
     - id: rawAssembly
       type: System.Byte[]
-      description: An array of type <xref uid="langword_csharp_byte" name="byte" href=""></xref> that is a COFF-based image containing an emitted assembly.
+      description: An array of type `byte` that is a COFF-based image containing an emitted assembly.
     - id: rawSymbolStore
       type: System.Byte[]
-      description: An array of type <xref uid="langword_csharp_byte" name="byte" href=""></xref> containing the raw bytes representing the symbols for the assembly.
+      description: An array of type `byte` containing the raw bytes representing the symbols for the assembly.
     - id: securityEvidence
       type: System.Security.Policy.Evidence
       description: Evidence for loading the assembly.
@@ -4138,7 +4138,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rawAssembly</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>rawAssembly</code> is `null`.
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>rawAssembly</code> is not a valid assembly.  \n  \n -or-  \n  \n Version 2.0 or later of the common language runtime is currently loaded and <code>rawAssembly</code> was compiled with a later version."
@@ -4150,8 +4150,8 @@ items:
     description: An assembly or module was loaded twice with two different evidences.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>securityEvidence</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>. When legacy CAS policy is not enabled, <code>securityEvidence</code> should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>securityEvidence</code> is not `null`. When legacy CAS policy is not enabled, <code>securityEvidence</code> should be `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4174,13 +4174,13 @@ items:
     content: public static bool MonitoringIsEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if monitoring is enabled; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if monitoring is enabled; otherwise `false`.'
   overload: System.AppDomain.MonitoringIsEnabled*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The current process attempted to assign the value <xref uid="langword_csharp_false" name="false" href=""></xref> to this property.
-  platform:
+    description: The current process attempted to assign the value `false` to this property.
+  version:
   - netframework-40
 - uid: System.AppDomain.MonitoringSurvivedMemorySize
   id: MonitoringSurvivedMemorySize
@@ -4205,8 +4205,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref uid="langword_csharp_static" name="static" href=""></xref> (<xref uid="langword_csharp_Shared" name="Shared" href=""></xref> in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The `static` (`Shared` in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to `false`.
+  version:
   - netframework-40
 - uid: System.AppDomain.MonitoringSurvivedProcessMemorySize
   id: MonitoringSurvivedProcessMemorySize
@@ -4231,8 +4231,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref uid="langword_csharp_static" name="static" href=""></xref> (<xref uid="langword_csharp_Shared" name="Shared" href=""></xref> in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The `static` (`Shared` in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to `false`.
+  version:
   - netframework-40
 - uid: System.AppDomain.MonitoringTotalAllocatedMemorySize
   id: MonitoringTotalAllocatedMemorySize
@@ -4256,8 +4256,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref uid="langword_csharp_static" name="static" href=""></xref> (<xref uid="langword_csharp_Shared" name="Shared" href=""></xref> in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The `static` (`Shared` in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to `false`.
+  version:
   - netframework-40
 - uid: System.AppDomain.MonitoringTotalProcessorTime
   id: MonitoringTotalProcessorTime
@@ -4282,8 +4282,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref uid="langword_csharp_static" name="static" href=""></xref> (<xref uid="langword_csharp_Shared" name="Shared" href=""></xref> in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The `static` (`Shared` in Visual Basic) <xref:System.AppDomain.MonitoringIsEnabled*> property is set to `false`.
+  version:
   - netframework-40
 - uid: System.AppDomain.PermissionSet
   id: PermissionSet
@@ -4306,7 +4306,7 @@ items:
       description: The permission set of the sandboxed application domain.
   overload: System.AppDomain.PermissionSet*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.AppDomain.ProcessExit
   id: ProcessExit
@@ -4328,7 +4328,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4353,7 +4353,7 @@ items:
       type: System.ResolveEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4385,7 +4385,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: An operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4414,7 +4414,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4439,7 +4439,7 @@ items:
       type: System.ResolveEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4470,14 +4470,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domainPolicy</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domainPolicy</code> is `null`.
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
     description: The security policy level has already been set.
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4507,7 +4507,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4542,7 +4542,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4577,11 +4577,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>name</code> specifies a system-defined property string and <code>permission</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> specifies a system-defined property string and <code>permission</code> is not `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4613,7 +4613,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4645,7 +4645,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4674,7 +4674,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4706,7 +4706,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4737,14 +4737,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>principal</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>principal</code> is `null`.
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
     description: The thread principal has already been set.
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4772,7 +4772,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4795,13 +4795,13 @@ items:
     content: public bool ShadowCopyFiles { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the application domain is configured to shadow copy files; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the application domain is configured to shadow copy files; otherwise, `false`.'
   overload: System.AppDomain.ShadowCopyFiles*
   exceptions:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The operation is attempted on an unloaded application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4844,7 +4844,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4881,7 +4881,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4912,7 +4912,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4964,7 +4964,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -4996,7 +4996,7 @@ items:
   - type: System.AppDomainUnloadedException
     commentId: T:System.AppDomainUnloadedException
     description: The application domain represented by the current <xref href="System.AppDomain"></xref> has been unloaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5023,7 +5023,7 @@ items:
       type: System.ResolveEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5050,7 +5050,7 @@ items:
       type: System.UnhandledExceptionEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5081,14 +5081,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domain</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domain</code> is `null`.
   - type: System.CannotUnloadAppDomainException
     commentId: T:System.CannotUnloadAppDomainException
     description: <code>domain</code> could not be unloaded.
   - type: System.Exception
     commentId: T:System.Exception
     description: An error occurred during the unload process.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -5322,8 +5322,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -5390,8 +5390,8 @@ references:
 - uid: System.Security.Policy.StrongName[]
   parent: System.Security.Policy
   isExternal: false
-  name: StrongName
-  nameWithType: StrongName
+  name: StrongName[]
+  nameWithType: StrongName[]
   fullName: System.Security.Policy.StrongName[]
   spec.csharp:
   - uid: System.Security.Policy.StrongName
@@ -5428,8 +5428,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -5454,8 +5454,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -5870,8 +5870,8 @@ references:
 - uid: System.Reflection.Assembly[]
   parent: System.Reflection
   isExternal: false
-  name: Assembly
-  nameWithType: Assembly
+  name: Assembly[]
+  nameWithType: Assembly[]
   fullName: System.Reflection.Assembly[]
   spec.csharp:
   - uid: System.Reflection.Assembly

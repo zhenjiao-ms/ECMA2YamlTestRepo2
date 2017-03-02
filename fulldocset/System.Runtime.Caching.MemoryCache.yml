@@ -61,7 +61,7 @@ items:
   - System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration
   - System.Runtime.Caching.ObjectCache.NoSlidingExpiration
   - System.Runtime.Caching.ObjectCache.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#String,System#Object}}#GetEnumerator
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.#ctor(System.String,System.Collections.Specialized.NameValueCollection)
   id: '#ctor(System.String,System.Collections.Specialized.NameValueCollection)'
@@ -90,14 +90,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A name or value in the <code>config</code> parameter could not be parsed.
   - type: System.Configuration.ConfigurationException
     commentId: T:System.Configuration.ConfigurationException
     description: A value in the <code>config</code> collection is invalid.
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
   id: AddOrGetExisting(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
@@ -124,19 +124,19 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     return:
       type: System.Runtime.Caching.CacheItem
-      description: If a cache entry with the same key exists, the existing cache entry; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If a cache entry with the same key exists, the existing cache entry; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.AddOrGetExisting*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref:System.Runtime.Caching.CacheItem.Value*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref:System.Runtime.Caching.CacheItem.Value*> property is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Both the absolute and sliding expiration values for the <xref href="System.Runtime.Caching.CacheItemPolicy"></xref> object are set to values other than the defaults of <xref href="System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration"></xref> and <xref href="System.Runtime.Caching.ObjectCache.NoSlidingExpiration"></xref> fields. The <xref href="System.Runtime.Caching.MemoryCache"></xref> class cannot set expiration policy based on a combination of an absolute expiration and a sliding expiration. Only one expiration setting can be explicitly set when you use the <xref href="System.Runtime.Caching.MemoryCache"></xref> instance. The other expiration setting must be set to <xref href="System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration"></xref> field or <xref href="System.Runtime.Caching.ObjectCache.NoSlidingExpiration"></xref> field.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value less than <xref href=\"System.TimeSpan.Zero\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value greater than one year.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.Priority*> property is not a value of the <xref href=\"System.Runtime.Caching.CacheItemPriority\"></xref> enumeration."
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)
   id: AddOrGetExisting(System.String,System.Object,System.DateTimeOffset,System.String)
@@ -166,25 +166,25 @@ items:
       description: The fixed date and time at which the cache entry will expire.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Object
-      description: If a cache entry with the same key exists, the existing cache entry; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If a cache entry with the same key exists, the existing cache entry; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.AddOrGetExisting*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value </code>is not `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Both the absolute and sliding expiration values for the <xref href="System.Runtime.Caching.CacheItemPolicy"></xref> object are set to values other than the defaults of <xref href="System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration"></xref> and <xref href="System.Runtime.Caching.ObjectCache.NoSlidingExpiration"></xref> fields. The <xref href="System.Runtime.Caching.MemoryCache"></xref> class cannot set expiration policy based on a combination of an absolute expiration and a sliding expiration. Only one expiration setting can be explicitly set when you use the <xref href="System.Runtime.Caching.MemoryCache"></xref> instance. The other expiration setting must be set to <xref href="System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration"></xref> or <xref href="System.Runtime.Caching.ObjectCache.NoSlidingExpiration"></xref>
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value less than <xref href=\"System.TimeSpan.Zero\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value greater than one year.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.Priority*> property is not a value of the <xref href=\"System.Runtime.Caching.CacheItemPriority\"></xref> enumeration."
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
   id: AddOrGetExisting(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
@@ -217,22 +217,22 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. By default, this parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. By default, this parameter is `null`, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Object
-      description: If a matching cache entry already exists, a cache entry; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If a matching cache entry already exists, a cache entry; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.AddOrGetExisting*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "Both the absolute and sliding expiration values of <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> object are set to values other than the defaults of <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> and <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref>. The <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class cannot set expiration policy based on a combination of both an absolute and a sliding expiration. Only one expiration setting can be explicitly set when you use the <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class. The other setting must be set to <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> or <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref>.  \n  \n -or-  \n  \n Both the removal callback and the update callback have been specified for <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref>. The <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> only supports using one type of callback per cache entry."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value less than <xref href=\"System.TimeSpan.Zero\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> has been set to a value greater than one year.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.Priority*> property is not a value of the <xref href=\"System.Runtime.Caching.CacheItemPriority\"></xref> enumeration."
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.CacheMemoryLimit
   id: CacheMemoryLimit
@@ -255,7 +255,7 @@ items:
       description: The amount of memory in bytes.
   overload: System.Runtime.Caching.MemoryCache.CacheMemoryLimit*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Contains(System.String,System.String)
   id: Contains(System.String,System.String)
@@ -278,19 +278,19 @@ items:
       description: A unique identifier for the cache entry to search for.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the cache contains a cache entry whose key matches <code>key</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the cache contains a cache entry whose key matches <code>key</code>; otherwise, `false`.'
   overload: System.Runtime.Caching.MemoryCache.Contains*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>key</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>regionName </code>is not `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)
   id: CreateCacheEntryChangeMonitor(System.Collections.Generic.IEnumerable{System.String},System.String)
@@ -314,7 +314,7 @@ items:
       description: An enumeration of unique cache entry keys for the <xref href="System.Runtime.Caching.CacheEntryChangeMonitor"></xref> object.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Runtime.Caching.CacheEntryChangeMonitor
       description: A change monitor that monitors entries in the cache.
@@ -322,14 +322,14 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keys</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>keys</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: An item in the <code>keys</code> collection is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: An item in the <code>keys</code> collection is `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Default
   id: Default
@@ -352,7 +352,7 @@ items:
       description: The default instance of the cache.
   overload: System.Runtime.Caching.MemoryCache.Default*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.DefaultCacheCapabilities
   id: DefaultCacheCapabilities
@@ -375,7 +375,7 @@ items:
       description: A bitwise combination of flags that indicate the default capabilities of the cache implementation.
   overload: System.Runtime.Caching.MemoryCache.DefaultCacheCapabilities*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Dispose
   id: Dispose
@@ -396,7 +396,7 @@ items:
     parameters: []
   overload: System.Runtime.Caching.MemoryCache.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Get(System.String,System.String)
   id: Get(System.String,System.String)
@@ -419,19 +419,19 @@ items:
       description: A unique identifier for the cache entry to get.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Object
-      description: A reference to the cache entry that is identified by <code>key</code>, if the entry exists; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A reference to the cache entry that is identified by <code>key</code>, if the entry exists; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.Get*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>key</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.GetCacheItem(System.String,System.String)
   id: GetCacheItem(System.String,System.String)
@@ -455,19 +455,19 @@ items:
       description: A unique identifier for the cache entry to get.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Runtime.Caching.CacheItem
-      description: A reference to the cache entry identified by <code>key</code> if the entry exists; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A reference to the cache entry identified by <code>key</code> if the entry exists; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.GetCacheItem*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>key</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.GetCount(System.String)
   id: GetCount(System.String)
@@ -487,7 +487,7 @@ items:
     parameters:
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Int64
       description: The number of entries in the cache.
@@ -495,8 +495,8 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>regionName </code>is not `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.GetEnumerator
   id: GetEnumerator
@@ -520,7 +520,7 @@ items:
       description: The enumerator object that provides access to the items in the cache.
   overload: System.Runtime.Caching.MemoryCache.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)
   id: GetValues(System.Collections.Generic.IEnumerable{System.String},System.String)
@@ -544,7 +544,7 @@ items:
       description: A set of unique identifiers for the cache entries to return.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.Object}
       description: A set of cache entries that correspond to the specified keys.
@@ -552,14 +552,14 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keys</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>keys</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: An individual key in the collection is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: An individual key in the collection is `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Item(System.String)
   id: Item(System.String)
@@ -583,13 +583,13 @@ items:
       description: A unique identifier for the cache value to get or set.
     return:
       type: System.Object
-      description: The value in the cache instance for the specified key, if the entry exists; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The value in the cache instance for the specified key, if the entry exists; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>key</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The inserted value is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>key</code> is `null`.  \n  \n -or-  \n  \n The inserted value is `null`."
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Name
   id: Name
@@ -612,7 +612,7 @@ items:
       description: The name of the cache.
   overload: System.Runtime.Caching.MemoryCache.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.PhysicalMemoryLimit
   id: PhysicalMemoryLimit
@@ -635,7 +635,7 @@ items:
       description: The percentage of physical memory that the cache can use.
   overload: System.Runtime.Caching.MemoryCache.PhysicalMemoryLimit*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.PollingInterval
   id: PollingInterval
@@ -658,7 +658,7 @@ items:
       description: The maximum time that can occur before memory statistics are updated.
   overload: System.Runtime.Caching.MemoryCache.PollingInterval*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Remove(System.String,System.String)
   id: Remove(System.String,System.String)
@@ -682,19 +682,19 @@ items:
       description: A unique identifier for the cache entry to remove.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry was added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
     return:
       type: System.Object
-      description: If the entry is found in the cache, the removed cache entry; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: If the entry is found in the cache, the removed cache entry; otherwise, `null`.
   overload: System.Runtime.Caching.MemoryCache.Remove*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>key</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>key</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
   id: Set(System.Runtime.Caching.CacheItem,System.Runtime.Caching.CacheItemPolicy)
@@ -723,14 +723,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>item</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItem.Key*> property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItem.Value*> property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>item</code> is `null`.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItem.Key*> property is `null`.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItem.Value*> property is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "An invalid combination of arguments for the cache entry was passed. This occurs if the following expiration details are set on the policy object for the cache entry:  \n  \n-   If both the absolute and sliding expiration values of the <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> object are set to values other than the defaults of <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> and <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref> fields. The <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class cannot set expiration policy based on both an absolute expiration and a sliding expiration. Only one expiration setting can be explicitly set when you use the <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class. The other setting must be set to <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> or <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref> property.  \n  \n-   If both the removal callback and the update callback are specified for <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> object. The <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class only supports using one type of callback per cache entry."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value less than <xref href=\"System.TimeSpan.Zero\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value greater than one year.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.Priority*> is not a value of the <xref href=\"System.Runtime.Caching.CacheItemPriority\"></xref> enumeration."
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Set(System.String,System.Object,System.DateTimeOffset,System.String)
   id: Set(System.String,System.Object,System.DateTimeOffset,System.String)
@@ -760,22 +760,22 @@ items:
       description: The fixed date and time at which the cache entry will expire.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
   overload: System.Runtime.Caching.MemoryCache.Set*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>regionName </code>is not `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>key</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>Value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>key</code> is `null`.  \n  \n -or-  \n  \n <code>Value</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "-   An invalid combination of arguments for the cache entry was passed. This occurs if the following expiration details are set on the policy object for the cache entry:  \n  \n-   If both the absolute and sliding expiration values on <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> object are set to values other than the defaults of <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> and <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref>. This occurs because the <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class does not support expiring entries based on both an absolute and a sliding expiration. Only one expiration setting can be explicitly set when you use the <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class. The other setting must be set to <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> or <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref>.  \n  \n-   If both the removal callback and the update callback are specified on <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> object. The <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class only supports using one type of callback per cache entry."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value less than <xref href=\"System.TimeSpan.Zero\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value greater than one year.  \n  \n -or-  \n  \n-   The <xref:System.Runtime.Caching.CacheItemPolicy.Priority*> property is not a value of the <xref href=\"System.Runtime.Caching.CacheItemPriority\"></xref> enumeration."
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
   id: Set(System.String,System.Object,System.Runtime.Caching.CacheItemPolicy,System.String)
@@ -805,12 +805,12 @@ items:
       description: An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration.
     - id: regionName
       type: System.String
-      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
+      description: A named region in the cache to which a cache entry can be added. Do not pass a value for this parameter. This parameter is `null` by default, because the <xref href="System.Runtime.Caching.MemoryCache"></xref> class does not implement regions.
   overload: System.Runtime.Caching.MemoryCache.Set*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>key</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n The callback reference that was passed to the helper method in the <xref:System.Runtime.Caching.CacheItemPolicy.UpdateCallback*> property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>key</code> is `null`.  \n  \n -or-  \n  \n <code>value</code> is `null`  \n  \n -or-  \n  \n The callback reference that was passed to the helper method in the <xref:System.Runtime.Caching.CacheItemPolicy.UpdateCallback*> property is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "-   An invalid combination of arguments for the cache entry exists. This occurs if the following expiration details are set on the policy object for the cache entry:  \n  \n-   If both the absolute and sliding expiration values on <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> object are set to values other than the defaults of <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> and <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref>. This is because the <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class does not support expiring entries based on both an absolute and a sliding expiration. Only one expiration setting can be explicitly set when you use the <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class. The other setting must be set to <xref href=\"System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration\"></xref> or <xref href=\"System.Runtime.Caching.ObjectCache.NoSlidingExpiration\"></xref>.  \n  \n-   If both the removal callback and the update callback are specified on <xref href=\"System.Runtime.Caching.CacheItemPolicy\"></xref> class. The <xref href=\"System.Runtime.Caching.MemoryCache\"></xref> class only supports using one type of callback per cache entry."
@@ -819,8 +819,8 @@ items:
     description: "The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value less than <xref href=\"System.TimeSpan.Zero\"></xref>.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*> property is set to a value greater than one year.  \n  \n -or-  \n  \n The <xref:System.Runtime.Caching.CacheItemPolicy.Priority*> property is not a value of the <xref href=\"System.Runtime.Caching.CacheItemPriority\"></xref> enumeration."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>regionName </code>is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>regionName </code>is not `null`.
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.System#Collections#IEnumerable#GetEnumerator
   id: System#Collections#IEnumerable#GetEnumerator
@@ -845,7 +845,7 @@ items:
       description: The enumerator object that provides access to the entries in the cache.
   overload: System.Runtime.Caching.MemoryCache.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Runtime.Caching.MemoryCache.Trim(System.Int32)
   id: Trim(System.Int32)
@@ -872,7 +872,7 @@ items:
       description: The number of entries removed from the cache.
   overload: System.Runtime.Caching.MemoryCache.Trim*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Runtime.Caching.ObjectCache

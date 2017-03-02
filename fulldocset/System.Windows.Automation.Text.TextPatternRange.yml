@@ -43,7 +43,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -68,8 +68,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: If text provider does not support multiple, disjoint selections (for example, <xref:System.Windows.Automation.TextPattern.SupportedTextSelection*> must have a value of <xref uid="langword_csharp_Multiple" name="Multiple" href=""></xref>).
-  platform:
+    description: If text provider does not support multiple, disjoint selections (for example, <xref:System.Windows.Automation.TextPattern.SupportedTextSelection*> must have a value of `Multiple`).
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -94,10 +94,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Automation.Text.TextPatternRange
-      description: The new text range. A null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]) is never returned.
+      description: The new text range. A null reference (`Nothing` in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]) is never returned.
   overload: System.Windows.Automation.Text.TextPatternRange.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -125,13 +125,13 @@ items:
       description: A text range to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the span of both text ranges is identical; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the span of both text ranges is identical; otherwise `false`.'
   overload: System.Windows.Automation.Text.TextPatternRange.Compare*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: If the range being compared does not come from the same text provider.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -170,11 +170,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: If range is a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]).
+    description: If range is a null reference (`Nothing` in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]).
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: If range is from another container.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -202,7 +202,7 @@ items:
       description: The textual unit.
   overload: System.Windows.Automation.Text.TextPatternRange.ExpandToEnclosingUnit*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -233,13 +233,13 @@ items:
       description: The attribute value to search for. This value must match the type specified for the attribute.
     - id: backward
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the last occurring text range should be returned instead of the first; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the last occurring text range should be returned instead of the first; otherwise `false`.'
     return:
       type: System.Windows.Automation.Text.TextPatternRange
-      description: A text range having a matching attribute and attribute value; otherwise null (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]).
+      description: A text range having a matching attribute and attribute value; otherwise null (`Nothing` in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]).
   overload: System.Windows.Automation.Text.TextPatternRange.FindAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -267,16 +267,16 @@ items:
       description: The text string to search for.
     - id: backward
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the last occurring text range should be returned instead of the first; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the last occurring text range should be returned instead of the first; otherwise `false`.'
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if case should be ignored; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if case should be ignored; otherwise `false`.'
     return:
       type: System.Windows.Automation.Text.TextPatternRange
-      description: A text range matching the specified text; otherwise null (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]).
+      description: A text range matching the specified text; otherwise null (`Nothing` in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]).
   overload: System.Windows.Automation.Text.TextPatternRange.FindText*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -310,7 +310,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: If the specified attribute is not valid.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -338,7 +338,7 @@ items:
       description: "An array of bounding rectangles for each full or partial line of text in a text range.  \n  \n An empty array for a degenerate text range.  \n  \n An empty array for a text range that has screen coordinates placing it completely off-screen, scrolled out of view, or obscured by an overlapping window."
   overload: System.Windows.Automation.Text.TextPatternRange.GetBoundingRectangles*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -366,7 +366,7 @@ items:
       description: "A collection of all child objects that fall within the range. Children that overlap with the range but are not entirely enclosed by it will also be included in the collection.  \n  \n Returns an empty collection if there are no child objects."
   overload: System.Windows.Automation.Text.TextPatternRange.GetChildren*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -394,7 +394,7 @@ items:
       description: The innermost element enclosing the caller.
   overload: System.Windows.Automation.Text.TextPatternRange.GetEnclosingElement*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -428,7 +428,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: If <code>maxLength</code> is less than -1.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -462,7 +462,7 @@ items:
       description: The number of units actually moved. This can be less than the number requested if either of the new text range endpoints is greater than or less than the <xref:System.Windows.Automation.TextPattern.DocumentRange*> endpoints.
   overload: System.Windows.Automation.Text.TextPatternRange.Move*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -496,7 +496,7 @@ items:
       description: An endpoint on the other range.
   overload: System.Windows.Automation.Text.TextPatternRange.MoveEndpointByRange*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -533,7 +533,7 @@ items:
       description: The number of units actually moved, which can be less than the number requested if moving the endpoint runs into the beginning or end of the document.
   overload: System.Windows.Automation.Text.TextPatternRange.MoveEndpointByUnit*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -558,8 +558,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: If text provider does not support multiple, disjoint selections (for example, <xref:System.Windows.Automation.TextPattern.SupportedTextSelection*> must have a value of <xref uid="langword_csharp_Multiple" name="Multiple" href=""></xref>).
-  platform:
+    description: If text provider does not support multiple, disjoint selections (for example, <xref:System.Windows.Automation.TextPattern.SupportedTextSelection*> must have a value of `Multiple`).
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -584,13 +584,13 @@ items:
     parameters:
     - id: alignToTop
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the text control should be scrolled so the text range is flush with the top of the viewport; <xref uid="langword_csharp_false" name="false" href=""></xref> if it should be flush with the bottom of the viewport.
+      description: '`true` if the text control should be scrolled so the text range is flush with the top of the viewport; `false` if it should be flush with the bottom of the viewport.'
   overload: System.Windows.Automation.Text.TextPatternRange.ScrollIntoView*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: If scrolling is not supported by the control.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -618,7 +618,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Occurs when text selection is not supported by the text control.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -645,7 +645,7 @@ items:
       description: The text provider.
   overload: System.Windows.Automation.Text.TextPatternRange.TextPattern*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -776,8 +776,8 @@ references:
 - uid: System.Windows.Rect[]
   parent: System.Windows
   isExternal: false
-  name: Rect
-  nameWithType: Rect
+  name: Rect[]
+  nameWithType: Rect[]
   fullName: System.Windows.Rect[]
   spec.csharp:
   - uid: System.Windows.Rect
@@ -796,8 +796,8 @@ references:
 - uid: System.Windows.Automation.AutomationElement[]
   parent: System.Windows.Automation
   isExternal: false
-  name: AutomationElement
-  nameWithType: AutomationElement
+  name: AutomationElement[]
+  nameWithType: AutomationElement[]
   fullName: System.Windows.Automation.AutomationElement[]
   spec.csharp:
   - uid: System.Windows.Automation.AutomationElement

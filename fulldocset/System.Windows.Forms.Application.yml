@@ -55,7 +55,7 @@ items:
   nameWithType: Application
   fullName: System.Windows.Forms.Application
   type: Class
-  summary: Provides <xref uid="langword_csharp_static" name="static" href=""></xref> methods and properties to manage an application, such as methods to start and stop an application, to process Windows messages, and properties to get information about an application. This class cannot be inherited.
+  summary: Provides `static` methods and properties to manage an application, such as methods to start and stop an application, to process Windows messages, and properties to get information about an application. This class cannot be inherited.
   remarks: "The Application class has methods to start and stop applications and threads, and to process Windows messages, as follows:  \n  \n-   <xref:System.Windows.Forms.Application.Run%2A> starts an application message loop on the current thread and, optionally, makes a form visible.  \n  \n-   <xref:System.Windows.Forms.Application.Exit%2A> or <xref:System.Windows.Forms.Application.ExitThread%2A> stops a message loop.  \n  \n-   <xref:System.Windows.Forms.Application.DoEvents%2A> processes messages while your program is in a loop.  \n  \n-   <xref:System.Windows.Forms.Application.AddMessageFilter%2A> adds a message filter to the application message pump to monitor Windows messages.  \n  \n-   <xref:System.Windows.Forms.IMessageFilter> lets you stop an event from being raised or perform special operations before invoking an event handler.  \n  \n This class has <xref:System.Windows.Forms.Application.CurrentCulture%2A> and <xref:System.Windows.Forms.Application.CurrentInputLanguage%2A> properties to get or set culture information for the current thread.  \n  \n You cannot create an instance of this class."
   example:
   - "The following code example lists numbers in a list box on a form. Each time you click `button1`, the application adds another number to the list.  \n  \n The `Main` method calls <xref:System.Windows.Forms.Application.Run%2A> to start the application, which creates the form, `listBox1` and `button1`. When the user clicks `button1`, the `button1_Click` method displays a <xref:System.Windows.Forms.MessageBox>. If the user clicks `No` on the <xref:System.Windows.Forms.MessageBox>, the `button1_Click` method adds a number to the list. If the user clicks `Yes`, the application calls <xref:System.Windows.Forms.Application.Exit%2A> to process all remaining messages in the queue and then to quit.  \n  \n> [!NOTE]\n>  The call to <xref:System.Windows.Forms.Application.Exit%2A> will fail in partial trust.  \n  \n [!code-cpp[Classic Application Example#1](~/add/codesnippet/cpp/t-system.windows.forms.a_1_1.cpp)]\n [!code-vb[Classic Application Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.a_1_1.vb)]\n [!code-cs[Classic Application Example#1](~/add/codesnippet/csharp/t-system.windows.forms.a_1_1.cs)]"
@@ -72,7 +72,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -101,7 +101,7 @@ items:
       description: The implementation of the <xref href="System.Windows.Forms.IMessageFilter"></xref> interface you want to install.
   overload: System.Windows.Forms.Application.AddMessageFilter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,10 +124,10 @@ items:
     content: public static bool AllowQuit { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the caller can quit this application; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the caller can quit this application; otherwise, `false`.'
   overload: System.Windows.Forms.Application.AllowQuit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,7 +154,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,7 +180,7 @@ items:
       description: The path for the application data that is shared among all users.
   overload: System.Windows.Forms.Application.CommonAppDataPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,7 +206,7 @@ items:
       description: A <xref href="Microsoft.Win32.RegistryKey"></xref> representing the registry key of the application data that is shared among all users.
   overload: System.Windows.Forms.Application.CommonAppDataRegistry*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,7 +234,7 @@ items:
       description: The company name.
   overload: System.Windows.Forms.Application.CompanyName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
       description: A <xref href="System.Globalization.CultureInfo"></xref> representing the culture information for the current thread.
   overload: System.Windows.Forms.Application.CurrentCulture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,7 +290,7 @@ items:
       description: An <xref href="System.Windows.Forms.InputLanguage"></xref> representing the current input language for the current thread.
   overload: System.Windows.Forms.Application.CurrentInputLanguage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.Application.DoEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,7 +342,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.Application.EnableVisualStyles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -372,7 +372,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,7 +397,7 @@ items:
       description: "The path and executable name for the executable file that started the application.  \n  \n This path will be different depending on whether the Windows Forms application is deployed using [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]. [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] applications are stored in a per-user application cache in the C:\\Documents and Settings\\\\*username* directory. For more information, see [Accessing Local and Remote Data in ClickOnce Applications](~/add/includes/ajax-current-ext-md.md)."
   overload: System.Windows.Forms.Application.ExecutablePath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -423,7 +423,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.Application.Exit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -449,7 +449,7 @@ items:
       description: Returns whether any <xref href="System.Windows.Forms.Form"></xref> within the application cancelled the exit.
   overload: System.Windows.Forms.Application.Exit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -473,7 +473,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.Application.ExitThread*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -499,10 +499,10 @@ items:
       description: The Windows event message to filter.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_True" name="True" href=""></xref> if the filters were processed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`True` if the filters were processed; otherwise, `false`.'
   overload: System.Windows.Forms.Application.FilterMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -529,7 +529,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -559,7 +559,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -587,7 +587,7 @@ items:
       description: The path for the application data of a local, non-roaming user.
   overload: System.Windows.Forms.Application.LocalUserAppDataPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -610,10 +610,10 @@ items:
     content: public static bool MessageLoop { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a message loop exists; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a message loop exists; otherwise, `false`.'
   overload: System.Windows.Forms.Application.MessageLoop*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -640,7 +640,7 @@ items:
       description: One of the <xref href="System.Threading.ApartmentState"></xref> values.
   overload: System.Windows.Forms.Application.OleRequired*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -667,7 +667,7 @@ items:
       description: An <xref href="System.Exception"></xref> that represents the exception that was thrown.
   overload: System.Windows.Forms.Application.OnThreadException*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -693,7 +693,7 @@ items:
       description: A <xref href="System.Windows.Forms.FormCollection"></xref> containing all the currently open forms owned by this application.
   overload: System.Windows.Forms.Application.OpenForms*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -721,7 +721,7 @@ items:
       description: The product name.
   overload: System.Windows.Forms.Application.ProductName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -749,7 +749,7 @@ items:
       description: The product version.
   overload: System.Windows.Forms.Application.ProductVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -776,7 +776,7 @@ items:
       description: The <xref href="System.EventArgs"></xref> objects to pass to the <xref href="System.Windows.Forms.Application.Idle"></xref> event.
   overload: System.Windows.Forms.Application.RaiseIdle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -801,7 +801,7 @@ items:
       description: To be added.
   overload: System.Windows.Forms.Application.RegisterMessageLoop*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -830,7 +830,7 @@ items:
       description: The implementation of the <xref href="System.Windows.Forms.IMessageFilter"></xref> to remove from the application.
   overload: System.Windows.Forms.Application.RemoveMessageFilter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -853,10 +853,10 @@ items:
     content: public static bool RenderWithVisualStyles { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if visual styles are enabled for controls in the client area of application windows; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if visual styles are enabled for controls in the client area of application windows; otherwise, `false`.'
   overload: System.Windows.Forms.Application.RenderWithVisualStyles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -883,7 +883,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Your code is not a Windows Forms application. You cannot call this method in this context.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -910,7 +910,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A main message loop is already running on this thread.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -942,7 +942,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A main message loop is already running on this thread.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -974,7 +974,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A main message loop is already running on the current thread.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -999,7 +999,7 @@ items:
       description: The format string to apply to top-level window captions.
   overload: System.Windows.Forms.Application.SafeTopLevelCaptionFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1025,13 +1025,13 @@ items:
     parameters:
     - id: defaultValue
       type: System.Boolean
-      description: The default value to use for new controls. If <xref uid="langword_csharp_true" name="true" href=""></xref>, new controls that support `UseCompatibleTextRendering` use the [!INCLUDE[ndptecgdiplus](~/add/includes/ndptecgdiplus-md.md)] based <xref href="System.Drawing.Graphics"></xref> class for text rendering; if <xref uid="langword_csharp_false" name="false" href=""></xref>, new controls use the [!INCLUDE[ndptecgdi](~/add/includes/ndptecgdi-md.md)] based <xref href="System.Windows.Forms.TextRenderer"></xref> class.
+      description: The default value to use for new controls. If `true`, new controls that support `UseCompatibleTextRendering` use the [!INCLUDE[ndptecgdiplus](~/add/includes/ndptecgdiplus-md.md)] based <xref href="System.Drawing.Graphics"></xref> class for text rendering; if `false`, new controls use the [!INCLUDE[ndptecgdi](~/add/includes/ndptecgdi-md.md)] based <xref href="System.Windows.Forms.TextRenderer"></xref> class.
   overload: System.Windows.Forms.Application.SetCompatibleTextRenderingDefault*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You can only call this method before the first window is created by your Windows Forms application.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1058,16 +1058,16 @@ items:
       description: A <xref href="System.Windows.Forms.PowerState"></xref> indicating the power activity mode to which to transition.
     - id: force
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to force the suspended mode immediately; <xref uid="langword_csharp_false" name="false" href=""></xref> to cause Windows to send a suspend request to every application.
+      description: '`true` to force the suspended mode immediately; `false` to cause Windows to send a suspend request to every application.'
     - id: disableWakeEvent
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to disable restoring the system's power status to active on a wake event, <xref uid="langword_csharp_false" name="false" href=""></xref> to enable restoring the system's power status to active on a wake event.
+      description: '`true` to disable restoring the system''s power status to active on a wake event, `false` to enable restoring the system''s power status to active on a wake event.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the system is being suspended, otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the system is being suspended, otherwise, `false`.'
   overload: System.Windows.Forms.Application.SetSuspendState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1099,7 +1099,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot set the exception mode after the application has created its first window.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1128,13 +1128,13 @@ items:
       description: An <xref href="System.Windows.Forms.UnhandledExceptionMode"></xref> value describing how the application should behave if an exception is thrown without being caught.
     - id: threadScope
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the thread exception mode; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to set the thread exception mode; otherwise, `false`.'
   overload: System.Windows.Forms.Application.SetUnhandledExceptionMode*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: You cannot set the exception mode after the application has created its first window.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1162,7 +1162,7 @@ items:
       description: "The path for the executable file that started the application.  \n  \n This path will be different depending on whether the Windows Forms application is deployed using [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]. [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] applications are stored in a per-user application cache in the C:\\Documents and Settings\\\\*username* directory. For more information, see [Accessing Local and Remote Data in ClickOnce Applications](~/add/includes/ajax-current-ext-md.md)."
   overload: System.Windows.Forms.Application.StartupPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1189,7 +1189,7 @@ items:
       type: System.Threading.ThreadExceptionEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1216,7 +1216,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1239,7 +1239,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.Application.UnregisterMessageLoop*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1267,7 +1267,7 @@ items:
       description: The path for the application data of a user.
   overload: System.Windows.Forms.Application.UserAppDataPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1293,7 +1293,7 @@ items:
       description: A <xref href="Microsoft.Win32.RegistryKey"></xref> representing the registry key for the application data specific to the user.
   overload: System.Windows.Forms.Application.UserAppDataRegistry*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1316,10 +1316,10 @@ items:
     content: public static bool UseWaitCursor { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> is the wait cursor is used for all open forms; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` is the wait cursor is used for all open forms; otherwise, `false`.'
   overload: System.Windows.Forms.Application.UseWaitCursor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1347,7 +1347,7 @@ items:
       description: A bitwise combination of the <xref href="System.Windows.Forms.VisualStyles.VisualStyleState"></xref> values.
   overload: System.Windows.Forms.Application.VisualStyleState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

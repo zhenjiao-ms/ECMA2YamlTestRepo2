@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.SymbolStore.SymDocument.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,7 +89,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.SymDocument.{dtor}*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,7 +117,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: The type of the current document.
   overload: System.Diagnostics.SymbolStore.SymDocument.DocumentType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -166,7 +166,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.SymDocument.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,7 +195,7 @@ items:
       description: The line number of the closest sequence point to the specified line.
   overload: System.Diagnostics.SymbolStore.SymDocument.FindClosestLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -224,7 +224,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,7 +265,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,7 +290,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.SymbolStore.SymDocument.GetUnmanaged*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -312,10 +312,10 @@ items:
     content: public override bool HasEmbeddedSource { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the source for the current document is stored in the symbol store; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the source for the current document is stored in the symbol store; otherwise, `false`.'
   overload: System.Diagnostics.SymbolStore.SymDocument.HasEmbeddedSource*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -341,7 +341,7 @@ items:
       description: A <xref href="System.Guid"></xref> representing the language of the current document.
   overload: System.Diagnostics.SymbolStore.SymDocument.Language*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -367,7 +367,7 @@ items:
       description: A <xref href="System.Guid"></xref> representing the language vendor of the current document.
   overload: System.Diagnostics.SymbolStore.SymDocument.LanguageVendor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -392,7 +392,7 @@ items:
       description: The source length of the current document.
   overload: System.Diagnostics.SymbolStore.SymDocument.SourceLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,7 +417,7 @@ items:
       description: The URL of the current document.
   overload: System.Diagnostics.SymbolStore.SymDocument.URL*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -438,6 +438,20 @@ references:
   name: SymDocument(ISymUnmanagedDocument*)
   nameWithType: SymDocument.SymDocument(ISymUnmanagedDocument*)
   fullName: System.Diagnostics.SymbolStore.SymDocument.SymDocument(ISymUnmanagedDocument*)
+- uid: System.Diagnostics.SymbolStore.Private.ISymUnmanagedDocument*
+  parent: System.Diagnostics.SymbolStore.Private
+  isExternal: true
+  name: ISymUnmanagedDocument*
+  nameWithType: ISymUnmanagedDocument*
+  fullName: System.Diagnostics.SymbolStore.Private.ISymUnmanagedDocument*
+  spec.csharp:
+  - uid: System.Diagnostics.SymbolStore.Private.ISymUnmanagedDocument
+    name: ISymUnmanagedDocument
+    nameWithType: ISymUnmanagedDocument
+    fullName: ISymUnmanagedDocument
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.Diagnostics.SymbolStore.SymDocument.{dtor}
   parent: System.Diagnostics.SymbolStore.SymDocument
   isExternal: false
@@ -489,8 +503,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

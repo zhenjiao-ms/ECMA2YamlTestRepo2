@@ -57,7 +57,7 @@ items:
   - System.Windows.Data.DataSourceProvider.Refresh
   - System.Windows.Data.DataSourceProvider.System#ComponentModel#ISupportInitialize#BeginInit
   - System.Windows.Data.DataSourceProvider.System#ComponentModel#ISupportInitialize#EndInit
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -79,7 +79,7 @@ items:
     parameters: []
   overload: System.Windows.Data.ObjectDataProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -102,7 +102,7 @@ items:
     parameters: []
   overload: System.Windows.Data.ObjectDataProvider.BeginQuery*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -126,10 +126,10 @@ items:
     content: public System.Collections.IList ConstructorParameters { get; }
     return:
       type: System.Collections.IList
-      description: The list of parameters to pass to the constructor. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The list of parameters to pass to the constructor. The default value is `null`.
   overload: System.Windows.Data.ObjectDataProvider.ConstructorParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -151,10 +151,10 @@ items:
     content: public bool IsAsynchronous { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to perform object creation in a worker thread; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to perform object creation in a worker thread; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Data.ObjectDataProvider.IsAsynchronous*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -176,10 +176,10 @@ items:
     content: public string MethodName { get; set; }
     return:
       type: System.String
-      description: The name of the method to call. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the method to call. The default value is `null`.
   overload: System.Windows.Data.ObjectDataProvider.MethodName*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -204,7 +204,7 @@ items:
       description: The list of parameters to pass to the method. The default is an empty list.
   overload: System.Windows.Data.ObjectDataProvider.MethodParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -232,7 +232,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <xref href="System.Windows.Data.ObjectDataProvider"></xref> is assigned both an <xref:System.Windows.Data.ObjectDataProvider.ObjectType*> and an ObjectInstance; only one is allowed.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -254,13 +254,13 @@ items:
     content: public Type ObjectType { get; set; }
     return:
       type: System.Type
-      description: This property is <xref uid="langword_csharp_null" name="null" href=""></xref> when the <xref href="System.Windows.Data.ObjectDataProvider"></xref> is uninitialized or explicitly set to null. If <xref:System.Windows.Data.ObjectDataProvider.ObjectInstance*> is assigned, ObjectType returns the type of the object or null if the object is null. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: This property is `null` when the <xref href="System.Windows.Data.ObjectDataProvider"></xref> is uninitialized or explicitly set to null. If <xref:System.Windows.Data.ObjectDataProvider.ObjectInstance*> is assigned, ObjectType returns the type of the object or null if the object is null. The default value is `null`.
   overload: System.Windows.Data.ObjectDataProvider.ObjectType*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <xref href="System.Windows.Data.ObjectDataProvider"></xref> is assigned both an ObjectType and an <xref:System.Windows.Data.ObjectDataProvider.ObjectInstance*>; only one is allowed.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -283,10 +283,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value has changed from its default; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value has changed from its default; otherwise, `false`.'
   overload: System.Windows.Data.ObjectDataProvider.ShouldSerializeConstructorParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -309,10 +309,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value has changed from its default; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value has changed from its default; otherwise, `false`.'
   overload: System.Windows.Data.ObjectDataProvider.ShouldSerializeMethodParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -335,10 +335,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value has changed from its default; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value has changed from its default; otherwise, `false`.'
   overload: System.Windows.Data.ObjectDataProvider.ShouldSerializeObjectInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -361,10 +361,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value has changed from its default; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value has changed from its default; otherwise, `false`.'
   overload: System.Windows.Data.ObjectDataProvider.ShouldSerializeObjectType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

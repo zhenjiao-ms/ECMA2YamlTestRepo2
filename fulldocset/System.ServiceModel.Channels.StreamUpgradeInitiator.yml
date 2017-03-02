@@ -14,7 +14,7 @@ items:
   nameWithType: StreamUpgradeInitiator
   fullName: System.ServiceModel.Channels.StreamUpgradeInitiator
   type: Class
-  summary: To implement a custom upgrade initiator, inherit from this <xref uid="langword_csharp_abstract" name="abstract" href=""></xref> base class.
+  summary: To implement a custom upgrade initiator, inherit from this `abstract` base class.
   remarks: "An example of a stream upgrade is to build a compression stream directly on top of the transport stream. This class is used with <xref:System.ServiceModel.Channels.StreamUpgradeAcceptor> and <xref:System.ServiceModel.Channels.StreamUpgradeProvider> to implement a custom stream upgrade.  \n  \n For a detailed description of the upgrade process, see <xref:System.ServiceModel.Channels.StreamUpgradeProvider>."
   syntax:
     content: public abstract class StreamUpgradeInitiator
@@ -29,7 +29,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -51,7 +51,7 @@ items:
     parameters: []
   overload: System.ServiceModel.Channels.StreamUpgradeInitiator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -67,7 +67,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: This <xref uid="langword_csharp_abstract" name="abstract" href=""></xref> method can be implemented to do asynchronous processing that initiates an upgrade.
+  summary: This `abstract` method can be implemented to do asynchronous processing that initiates an upgrade.
   remarks: This method calls <xref:System.ServiceModel.Channels.StreamUpgradeInitiator.InitiateUpgrade%2A> and returns.
   syntax:
     content: public abstract IAsyncResult BeginInitiateUpgrade (System.IO.Stream stream, AsyncCallback callback, object state);
@@ -86,7 +86,7 @@ items:
       description: Returns an <xref href="System.IAsyncResult"></xref> to be passed into the <xref:System.ServiceModel.Channels.StreamUpgradeInitiator.EndInitiateUpgrade*> method.
   overload: System.ServiceModel.Channels.StreamUpgradeInitiator.BeginInitiateUpgrade*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -109,13 +109,13 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: The <xref uid="langword_csharp_IAsyncResult" name="IAsyncResult" href=""></xref> returned from the <xref:System.ServiceModel.Channels.StreamUpgradeInitiator.BeginInitiateUpgrade*> method.
+      description: The `IAsyncResult` returned from the <xref:System.ServiceModel.Channels.StreamUpgradeInitiator.BeginInitiateUpgrade*> method.
     return:
       type: System.IO.Stream
       description: Returns the upgraded stream.
   overload: System.ServiceModel.Channels.StreamUpgradeInitiator.EndInitiateUpgrade*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -141,7 +141,7 @@ items:
       description: Returns the content type of the next upgrade.
   overload: System.ServiceModel.Channels.StreamUpgradeInitiator.GetNextUpgrade*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -170,7 +170,7 @@ items:
       description: Returns the upgraded stream.
   overload: System.ServiceModel.Channels.StreamUpgradeInitiator.InitiateUpgrade*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

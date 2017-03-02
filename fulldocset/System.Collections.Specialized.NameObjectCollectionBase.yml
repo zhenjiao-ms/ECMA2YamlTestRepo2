@@ -38,7 +38,7 @@ items:
   nameWithType: NameObjectCollectionBase
   fullName: System.Collections.Specialized.NameObjectCollectionBase
   type: Class
-  summary: Provides the <xref uid="langword_csharp_abstract" name="abstract" href=""></xref> base class for a collection of associated <xref href="System.String"></xref> keys and <xref href="System.Object"></xref> values that can be accessed either with the key or with the index.
+  summary: Provides the `abstract` base class for a collection of associated <xref href="System.String"></xref> keys and <xref href="System.Object"></xref> values that can be accessed either with the key or with the index.
   remarks: "The underlying structure for this class is a hash table.  \n  \n Each element is a key/value pair.  \n  \n The capacity of a NameObjectCollectionBase is the number of elements the NameObjectCollectionBase can hold. As elements are added to a NameObjectCollectionBase, the capacity is automatically increased as required through reallocation.  \n  \n The hash code provider dispenses hash codes for keys in the NameObjectCollectionBase instance. The default hash code provider is the <xref:System.Collections.CaseInsensitiveHashCodeProvider>.  \n  \n The comparer determines whether two keys are equal. The default comparer is the <xref:System.Collections.CaseInsensitiveComparer>.  \n  \n In .NET Framework version 1.0, this class uses culture-sensitive string comparisons. However, in .NET Framework version 1.1 and later, this class uses <xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName> when comparing strings. For more information about how culture affects comparisons and sorting, see [Performing Culture-Insensitive String Operations](~/add/includes/ajax-current-ext-md.md).  \n  \n `null` is allowed as a key or as a value.  \n  \n> [!CAUTION]\n>  The <xref:System.Collections.Specialized.NameObjectCollectionBase.BaseGet%2A> method does not distinguish between `null` which is returned because the specified key is not found and `null` which is returned because the value associated with the key is `null`."
   example:
   - "The following code example shows how to implement and use the NameObjectCollectionBase class.  \n  \n [!code-cpp[System.Collections.Specialized.NameObjectCollectionBase#1](~/add/codesnippet/cpp/t-system.collections.spe_0_1.cpp)]\n [!code-cs[System.Collections.Specialized.NameObjectCollectionBase#1](~/add/codesnippet/csharp/t-system.collections.spe_0_1.cs)]\n [!code-vb[System.Collections.Specialized.NameObjectCollectionBase#1](~/add/codesnippet/visualbasic/t-system.collections.spe_0_1.vb)]"
@@ -58,7 +58,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -82,7 +82,7 @@ items:
     parameters: []
   overload: System.Collections.Specialized.NameObjectCollectionBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -109,7 +109,7 @@ items:
       description: The <xref href="System.Collections.IEqualityComparer"></xref> object to use to determine whether two keys are equal and to generate hash codes for the keys in the collection.
   overload: System.Collections.Specialized.NameObjectCollectionBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>capacity</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,7 +169,7 @@ items:
       description: The <xref href="System.Collections.IComparer"></xref> to use to determine whether two keys are equal.
   overload: System.Collections.Specialized.NameObjectCollectionBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,7 +202,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>capacity</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,7 +232,7 @@ items:
       description: A <xref href="System.Runtime.Serialization.StreamingContext"></xref> object that contains the source and destination of the serialized stream associated with the new <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance.
   overload: System.Collections.Specialized.NameObjectCollectionBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,7 +268,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>capacity</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,16 +294,16 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The <xref href="System.String"></xref> key of the entry to add. The key can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.String"></xref> key of the entry to add. The key can be `null`.
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> value of the entry to add. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> value of the entry to add. The value can be `null`.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseAdd*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The collection is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The collection is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -367,7 +367,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is outside the valid range of indexes for the collection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -393,13 +393,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The <xref href="System.String"></xref> key of the entry to get. The key can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.String"></xref> key of the entry to get. The key can be `null`.
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> that represents the value of the first entry with the specified key, if found; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Object"></xref> that represents the value of the first entry with the specified key, if found; otherwise, `null`.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseGet*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -428,7 +428,7 @@ items:
       description: A <xref href="System.String"></xref> array that contains all the keys in the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseGetAllKeys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -457,7 +457,7 @@ items:
       description: An <xref href="System.Object"></xref> array that contains all the values in the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseGetAllValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -489,11 +489,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>type</code> is not a valid <xref href="System.Type"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -528,7 +528,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is outside the valid range of indexes for the collection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -545,7 +545,7 @@ items:
   assemblies:
   - System
   namespace: System.Collections.Specialized
-  summary: Gets a value indicating whether the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance contains entries whose keys are not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  summary: Gets a value indicating whether the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance contains entries whose keys are not `null`.
   remarks: This method is an O(1) operation.
   example:
   - "The following code example uses BaseHasKeys to determine if the collection contains keys that are not `null`.  \n  \n [!code-cpp[System.Collections.Specialized.NameObjectCollectionBase.BaseHasKeys#1](~/add/codesnippet/cpp/m-system.collections.spe_17_1.cpp)]\n [!code-vb[System.Collections.Specialized.NameObjectCollectionBase.BaseHasKeys#1](~/add/codesnippet/visualbasic/m-system.collections.spe_17_1.vb)]\n [!code-cs[System.Collections.Specialized.NameObjectCollectionBase.BaseHasKeys#1](~/add/codesnippet/csharp/m-system.collections.spe_17_1.cs)]"
@@ -554,10 +554,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance contains entries whose keys are not <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance contains entries whose keys are not `null`; otherwise, `false`.'
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseHasKeys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -583,13 +583,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The <xref href="System.String"></xref> key of the entries to remove. The key can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.String"></xref> key of the entries to remove. The key can be `null`.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseRemove*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The collection is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -624,7 +624,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The collection is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -653,7 +653,7 @@ items:
       description: The zero-based index of the entry to set.
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> that represents the new value of the entry to set. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> that represents the new value of the entry to set. The value can be `null`.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseSet*
   exceptions:
   - type: System.NotSupportedException
@@ -662,7 +662,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is outside the valid range of indexes for the collection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -688,16 +688,16 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The <xref href="System.String"></xref> key of the entry to set. The key can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.String"></xref> key of the entry to set. The key can be `null`.
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> that represents the new value of the entry to set. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> that represents the new value of the entry to set. The value can be `null`.
   overload: System.Collections.Specialized.NameObjectCollectionBase.BaseSet*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The collection is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -723,7 +723,7 @@ items:
       description: The number of key/value pairs contained in the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance.
   overload: System.Collections.Specialized.NameObjectCollectionBase.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -750,7 +750,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> for the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance.
   overload: System.Collections.Specialized.NameObjectCollectionBase.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -782,8 +782,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>info</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>info</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -808,10 +808,10 @@ items:
     content: protected bool IsReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance is read-only; otherwise, `false`.'
   overload: System.Collections.Specialized.NameObjectCollectionBase.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -837,7 +837,7 @@ items:
       description: A <xref:System.Collections.Specialized.NameObjectCollectionBase.KeysCollection> instance that contains all the keys in the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance.
   overload: System.Collections.Specialized.NameObjectCollectionBase.Keys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -867,7 +867,7 @@ items:
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <xref href="System.Runtime.Serialization.SerializationInfo"></xref> object associated with the current <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> instance is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -900,7 +900,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than zero.
@@ -910,7 +910,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> cannot be cast automatically to the type of the destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -934,10 +934,10 @@ items:
     content: bool System.Collections.ICollection.IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> object is synchronized (thread safe); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> object is synchronized (thread safe); otherwise, `false`. The default is `false`.'
   overload: System.Collections.Specialized.NameObjectCollectionBase.System#Collections#ICollection#IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -964,7 +964,7 @@ items:
       description: An object that can be used to synchronize access to the <xref href="System.Collections.Specialized.NameObjectCollectionBase"></xref> object.
   overload: System.Collections.Specialized.NameObjectCollectionBase.System#Collections#ICollection#SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1126,8 +1126,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -1146,8 +1146,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

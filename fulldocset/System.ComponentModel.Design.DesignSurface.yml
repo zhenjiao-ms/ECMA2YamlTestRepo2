@@ -59,7 +59,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -109,13 +109,13 @@ items:
     parameters:
     - id: parentProvider
       type: System.IServiceProvider
-      description: The parent service provider, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no parent used to resolve services.
+      description: The parent service provider, or `null` if there is no parent used to resolve services.
   overload: System.ComponentModel.Design.DesignSurface.#ctor*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,11 +144,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rootComponent</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>rootComponent</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,7 +172,7 @@ items:
     parameters:
     - id: parentProvider
       type: System.IServiceProvider
-      description: The parent service provider, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no parent used to resolve services.
+      description: The parent service provider, or `null` if there is no parent used to resolve services.
     - id: rootComponentType
       type: System.Type
       description: The type of root component to create.
@@ -180,11 +180,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rootComponent</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>rootComponent</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,11 +213,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>loader</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>loader</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -246,11 +246,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rootComponentType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>rootComponentType</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -311,11 +311,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>componentType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>componentType</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,19 +342,19 @@ items:
       description: The component for which the designer should be created.
     - id: rootDesigner
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to create a root designer; <xref uid="langword_csharp_false" name="false" href=""></xref> to create a normal designer.
+      description: '`true` to create a root designer; `false` to create a normal designer.'
     return:
       type: System.ComponentModel.Design.IDesigner
-      description: An instance of the requested designer, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no matching designer could be found.
+      description: An instance of the requested designer, or `null` if no matching designer could be found.
   overload: System.ComponentModel.Design.DesignSurface.CreateDesigner*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>component</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>component</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -386,11 +386,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,11 +422,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>owningComponent</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>owningComponent</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -461,11 +461,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>owningComponent</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>owningComponent</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -489,7 +489,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.DesignSurface.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -513,10 +513,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.ComponentModel.Design.DesignSurface.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -541,7 +541,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -563,10 +563,10 @@ items:
     content: public bool DtelLoading { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the **Design-time Error List** is loading; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the **Design-time Error List** is loading; otherwise, `false`.'
   overload: System.ComponentModel.Design.DesignSurface.DtelLoading*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Design.DesignSurface.Flush
   id: Flush
@@ -587,7 +587,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.DesignSurface.Flush*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -612,7 +612,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -639,10 +639,10 @@ items:
       description: The type of service to retrieve.
     return:
       type: System.Object
-      description: An object that implements, or is a derived class of, <code>serviceType</code>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the service does not exist in the service container.
+      description: An object that implements, or is a derived class of, <code>serviceType</code>, or `null` if the service does not exist in the service container.
   overload: System.ComponentModel.Design.DesignSurface.GetService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -664,10 +664,10 @@ items:
     content: public bool IsLoaded { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the design surface is currently loaded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the design surface is currently loaded; otherwise, `false`.'
   overload: System.ComponentModel.Design.DesignSurface.IsLoaded*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -692,7 +692,7 @@ items:
       type: System.ComponentModel.Design.LoadedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -717,7 +717,7 @@ items:
       description: A <xref href="System.Collections.ICollection"></xref> of loading errors.
   overload: System.ComponentModel.Design.DesignSurface.LoadErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -741,7 +741,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -767,7 +767,7 @@ items:
       description: A <xref href="System.ComponentModel.Design.LoadedEventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.DesignSurface.OnLoaded*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -793,7 +793,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.DesignSurface.OnLoading*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -819,7 +819,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.DesignSurface.OnUnloaded*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -845,7 +845,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.DesignSurface.OnUnloading*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -871,7 +871,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.ComponentModel.Design.DesignSurface.OnViewActivate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -900,7 +900,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -924,7 +924,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -949,7 +949,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -986,7 +986,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.ComponentModel.Design.IDesignerHost"></xref> attached to the <xref href="System.ComponentModel.Design.DesignSurface"></xref> has been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1011,7 +1011,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -87,7 +87,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,7 +111,7 @@ items:
     parameters: []
   overload: System.Collections.ArrayList.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,8 +140,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>c</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>c</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>capacity</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -203,8 +203,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -230,7 +230,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to be added to the end of the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to be added to the end of the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     return:
       type: System.Int32
       description: The <xref href="System.Collections.ArrayList"></xref> index at which the <code>value</code> has been added.
@@ -239,7 +239,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,16 +265,16 @@ items:
     parameters:
     - id: c
       type: System.Collections.ICollection
-      description: The <xref href="System.Collections.ICollection"></xref> whose elements should be added to the end of the <xref href="System.Collections.ArrayList"></xref>. The collection itself cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>, but it can contain elements that are <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Collections.ICollection"></xref> whose elements should be added to the end of the <xref href="System.Collections.ArrayList"></xref>. The collection itself cannot be `null`, but it can contain elements that are `null`.
   overload: System.Collections.ArrayList.AddRange*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>c</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>c</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -300,7 +300,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate. The value can be `null`.
     return:
       type: System.Int32
       description: The zero-based index of <code>value</code> in the sorted <xref href="System.Collections.ArrayList"></xref>, if <code>value</code> is found; otherwise, a negative number, which is the bitwise complement of the index of the next element that is larger than <code>value</code> or, if there is no larger element, the bitwise complement of <xref:System.Collections.ArrayList.Count*>.
@@ -312,7 +312,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>value</code> is not of the same type as the elements of the <xref href="System.Collections.ArrayList"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -338,10 +338,10 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate. The value can be `null`.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the default comparer that is the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the default comparer that is the <xref href=\"System.IComparable\"></xref> implementation of each element."
     return:
       type: System.Int32
       description: The zero-based index of <code>value</code> in the sorted <xref href="System.Collections.ArrayList"></xref>, if <code>value</code> is found; otherwise, a negative number, which is the bitwise complement of the index of the next element that is larger than <code>value</code> or, if there is no larger element, the bitwise complement of <xref:System.Collections.ArrayList.Count*>.
@@ -349,11 +349,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> and neither <code>value</code> nor the elements of <xref href="System.Collections.ArrayList"></xref> implement the <xref href="System.IComparable"></xref> interface.
+    description: <code>comparer</code> is `null` and neither <code>value</code> nor the elements of <xref href="System.Collections.ArrayList"></xref> implement the <xref href="System.IComparable"></xref> interface.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> and <code>value</code> is not of the same type as the elements of the <xref href="System.Collections.ArrayList"></xref>.
-  platform:
+    description: <code>comparer</code> is `null` and <code>value</code> is not of the same type as the elements of the <xref href="System.Collections.ArrayList"></xref>.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,10 +383,10 @@ items:
       description: The length of the range to search.
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate. The value can be `null`.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> to use the default comparer that is the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n `null` to use the default comparer that is the <xref href=\"System.IComparable\"></xref> implementation of each element."
     return:
       type: System.Int32
       description: The zero-based index of <code>value</code> in the sorted <xref href="System.Collections.ArrayList"></xref>, if <code>value</code> is found; otherwise, a negative number, which is the bitwise complement of the index of the next element that is larger than <code>value</code> or, if there is no larger element, the bitwise complement of <xref:System.Collections.ArrayList.Count*>.
@@ -394,14 +394,14 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>index</code> and <code>count</code> do not denote a valid range in the <xref href=\"System.Collections.ArrayList\"></xref>.  \n  \n -or-  \n  \n <code>comparer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and neither <code>value</code> nor the elements of <xref href=\"System.Collections.ArrayList\"></xref> implement the <xref href=\"System.IComparable\"></xref> interface."
+    description: "<code>index</code> and <code>count</code> do not denote a valid range in the <xref href=\"System.Collections.ArrayList\"></xref>.  \n  \n -or-  \n  \n <code>comparer</code> is `null` and neither <code>value</code> nor the elements of <xref href=\"System.Collections.ArrayList\"></xref> implement the <xref href=\"System.IComparable\"></xref> interface."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>comparer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> and <code>value</code> is not of the same type as the elements of the <xref href="System.Collections.ArrayList"></xref>.
+    description: <code>comparer</code> is `null` and <code>value</code> is not of the same type as the elements of the <xref href="System.Collections.ArrayList"></xref>.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>count</code> is less than zero."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,7 +433,7 @@ items:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: There is not enough memory available on the system.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -462,7 +462,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -489,7 +489,7 @@ items:
       description: A shallow copy of the <xref href="System.Collections.ArrayList"></xref>.
   overload: System.Collections.ArrayList.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -513,13 +513,13 @@ items:
     parameters:
     - id: item
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>item</code> is found in the <xref href="System.Collections.ArrayList"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>item</code> is found in the <xref href="System.Collections.ArrayList"></xref>; otherwise, `false`.'
   overload: System.Collections.ArrayList.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -550,14 +550,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>array</code> is multidimensional.  \n  \n -or-  \n  \n The number of elements in the source <xref href=\"System.Collections.ArrayList\"></xref> is greater than the number of elements that the destination <code>array</code> can contain."
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="System.Collections.ArrayList"></xref> cannot be cast automatically to the type of the destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -591,7 +591,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>arrayIndex</code> is less than zero.
@@ -601,7 +601,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="System.Collections.ArrayList"></xref> cannot be cast automatically to the type of the destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -641,7 +641,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>arrayIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>count</code> is less than zero."
@@ -651,7 +651,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="System.Collections.ArrayList"></xref> cannot be cast automatically to the type of the destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,7 +677,7 @@ items:
       description: The number of elements actually contained in the <xref href="System.Collections.ArrayList"></xref>.
   overload: System.Collections.ArrayList.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -711,8 +711,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -744,8 +744,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -774,7 +774,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> for the entire <xref href="System.Collections.ArrayList"></xref>.
   overload: System.Collections.ArrayList.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -815,7 +815,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>index</code> and <code>count</code> do not specify a valid range in the <xref href="System.Collections.ArrayList"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -856,7 +856,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>index</code> and <code>count</code> do not denote a valid range of elements in the <xref href="System.Collections.ArrayList"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -882,13 +882,13 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     return:
       type: System.Int32
       description: The zero-based index of the first occurrence of <code>value</code> within the entire <xref href="System.Collections.ArrayList"></xref>, if found; otherwise, -1.
   overload: System.Collections.ArrayList.IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -914,7 +914,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     - id: startIndex
       type: System.Int32
       description: The zero-based starting index of the search. 0 (zero) is valid in an empty list.
@@ -926,7 +926,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is outside the range of valid indexes for the <xref href="System.Collections.ArrayList"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -952,7 +952,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     - id: startIndex
       type: System.Int32
       description: The zero-based starting index of the search. 0 (zero) is valid in an empty list.
@@ -967,7 +967,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> is outside the range of valid indexes for the <xref href=\"System.Collections.ArrayList\"></xref>.  \n  \n -or-  \n  \n <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> and <code>count</code> do not specify a valid section in the <xref href=\"System.Collections.ArrayList\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -996,7 +996,7 @@ items:
       description: The zero-based index at which `value` should be inserted.
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to insert. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to insert. The value can be `null`.
   overload: System.Collections.ArrayList.Insert*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -1005,7 +1005,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1034,19 +1034,19 @@ items:
       description: The zero-based index at which the new elements should be inserted.
     - id: c
       type: System.Collections.ICollection
-      description: The <xref href="System.Collections.ICollection"></xref> whose elements should be inserted into the <xref href="System.Collections.ArrayList"></xref>. The collection itself cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>, but it can contain elements that are <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Collections.ICollection"></xref> whose elements should be inserted into the <xref href="System.Collections.ArrayList"></xref>. The collection itself cannot be `null`, but it can contain elements that are `null`.
   overload: System.Collections.ArrayList.InsertRange*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>c</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>c</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is greater than <xref:System.Collections.ArrayList.Count*>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1071,10 +1071,10 @@ items:
     content: public virtual bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Collections.ArrayList"></xref> has a fixed size; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Collections.ArrayList"></xref> has a fixed size; otherwise, `false`. The default is `false`.'
   overload: System.Collections.ArrayList.IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1099,10 +1099,10 @@ items:
     content: public virtual bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Collections.ArrayList"></xref> is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Collections.ArrayList"></xref> is read-only; otherwise, `false`. The default is `false`.'
   overload: System.Collections.ArrayList.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1127,10 +1127,10 @@ items:
     content: public virtual bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to the <xref href="System.Collections.ArrayList"></xref> is synchronized (thread safe); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to the <xref href="System.Collections.ArrayList"></xref> is synchronized (thread safe); otherwise, `false`. The default is `false`.'
   overload: System.Collections.ArrayList.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1165,7 +1165,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is equal to or greater than <xref:System.Collections.ArrayList.Count*>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1191,13 +1191,13 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     return:
       type: System.Int32
       description: The zero-based index of the last occurrence of <code>value</code> within the entire the <xref href="System.Collections.ArrayList"></xref>, if found; otherwise, -1.
   overload: System.Collections.ArrayList.LastIndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1223,7 +1223,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     - id: startIndex
       type: System.Int32
       description: The zero-based starting index of the backward search.
@@ -1235,7 +1235,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>startIndex</code> is outside the range of valid indexes for the <xref href="System.Collections.ArrayList"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1261,7 +1261,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     - id: startIndex
       type: System.Int32
       description: The zero-based starting index of the backward search.
@@ -1276,7 +1276,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>startIndex</code> is outside the range of valid indexes for the <xref href=\"System.Collections.ArrayList\"></xref>.  \n  \n -or-  \n  \n <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>startIndex</code> and <code>count</code> do not specify a valid section in the <xref href=\"System.Collections.ArrayList\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1310,8 +1310,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1343,8 +1343,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1370,13 +1370,13 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: The <xref href="System.Object"></xref> to remove from the <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to remove from the <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
   overload: System.Collections.ArrayList.Remove*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1411,7 +1411,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1452,7 +1452,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1478,7 +1478,7 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The <xref href="System.Object"></xref> to copy multiple times in the new <xref href="System.Collections.ArrayList"></xref>. The value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Object"></xref> to copy multiple times in the new <xref href="System.Collections.ArrayList"></xref>. The value can be `null`.
     - id: count
       type: System.Int32
       description: The number of times `value` should be copied.
@@ -1490,7 +1490,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>count</code> is less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1519,7 +1519,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.ArrayList"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1560,7 +1560,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.ArrayList"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1589,7 +1589,7 @@ items:
       description: The zero-based <xref href="System.Collections.ArrayList"></xref> index at which to start copying the elements of `c`.
     - id: c
       type: System.Collections.ICollection
-      description: The <xref href="System.Collections.ICollection"></xref> whose elements to copy to the <xref href="System.Collections.ArrayList"></xref>. The collection itself cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>, but it can contain elements that are <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Collections.ICollection"></xref> whose elements to copy to the <xref href="System.Collections.ArrayList"></xref>. The collection itself cannot be `null`, but it can contain elements that are `null`.
   overload: System.Collections.ArrayList.SetRange*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -1597,11 +1597,11 @@ items:
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> plus the number of elements in <code>c</code> is greater than <xref:System.Collections.ArrayList.Count*>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>c</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>c</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.ArrayList"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1630,7 +1630,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.ArrayList"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1656,7 +1656,7 @@ items:
     parameters:
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n A null reference (<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> in Visual Basic) to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n A null reference (`Nothing` in Visual Basic) to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
   overload: System.Collections.ArrayList.Sort*
   exceptions:
   - type: System.NotSupportedException
@@ -1667,8 +1667,8 @@ items:
     description: An error occurred while comparing two elements.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <xref uid="langword_csharp_null" name="null" href=""></xref> is passed for <code>comparer</code>, and the elements in the list do not implement <xref href="System.IComparable"></xref>.
-  platform:
+    description: '`null` is passed for <code>comparer</code>, and the elements in the list do not implement <xref href="System.IComparable"></xref>.'
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1700,7 +1700,7 @@ items:
       description: The length of the range to sort.
     - id: comparer
       type: System.Collections.IComparer
-      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n A null reference (<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> in Visual Basic) to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
+      description: "The <xref href=\"System.Collections.IComparer\"></xref> implementation to use when comparing elements.  \n  \n -or-  \n  \n A null reference (`Nothing` in Visual Basic) to use the <xref href=\"System.IComparable\"></xref> implementation of each element."
   overload: System.Collections.ArrayList.Sort*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -1715,7 +1715,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An error occurred while comparing two elements.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1749,8 +1749,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1784,8 +1784,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>list</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>list</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1813,7 +1813,7 @@ items:
       description: An object that can be used to synchronize access to the <xref href="System.Collections.ArrayList"></xref>.
   overload: System.Collections.ArrayList.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1840,7 +1840,7 @@ items:
       description: An <xref href="System.Object"></xref> array containing copies of the elements of the <xref href="System.Collections.ArrayList"></xref>.
   overload: System.Collections.ArrayList.ToArray*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1874,11 +1874,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="System.Collections.ArrayList"></xref> cannot be cast automatically to the specified type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1907,7 +1907,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Collections.ArrayList\"></xref> is read-only.  \n  \n -or-  \n  \n The <xref href=\"System.Collections.ArrayList\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2309,8 +2309,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

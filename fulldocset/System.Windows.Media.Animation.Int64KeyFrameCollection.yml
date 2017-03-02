@@ -91,7 +91,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -113,7 +113,7 @@ items:
     parameters: []
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -141,7 +141,7 @@ items:
       description: The index at which the <code>keyFrame</code> was added.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -163,7 +163,7 @@ items:
     parameters: []
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -186,10 +186,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Media.Animation.Int64KeyFrameCollection
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property will be <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property was <xref uid="langword_csharp_true." name="true." href=""></xref>
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property will be `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property was `true.`
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -215,7 +215,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref> to clone.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.CloneCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -241,7 +241,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref> to clone.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.CloneCurrentValueCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -267,10 +267,10 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Int64KeyFrame"></xref> to locate in the collection.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the collection contains <code>keyFrame</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the collection contains <code>keyFrame</code>; otherwise, `false`.'
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -298,7 +298,7 @@ items:
       description: Index position in the array to which the contents of the collection are copied.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.CopyTo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -322,7 +322,7 @@ items:
       description: The number of key frames contained in the <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref>.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -347,7 +347,7 @@ items:
       description: A frozen instance of <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref>.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.CreateInstanceCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -371,7 +371,7 @@ items:
       description: An empty <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref>.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Empty*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -393,13 +393,13 @@ items:
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method should simply determine whether this instance can be frozen. <xref uid="langword_csharp_false" name="false" href=""></xref> if this instance should actually freeze itself when this method is called.
+      description: '`true` if this method should simply determine whether this instance can be frozen. `false` if this instance should actually freeze itself when this method is called.'
     return:
       type: System.Boolean
-      description: If <code>isChecking</code> is true, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if this instance can be made read-only, or <xref uid="langword_csharp_false" name="false" href=""></xref> if it cannot be made read-only. If <code>isChecking</code> is false, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if this instance is now read-only, or <xref uid="langword_csharp_false" name="false" href=""></xref> if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object.
+      description: If <code>isChecking</code> is true, this method returns `true` if this instance can be made read-only, or `false` if it cannot be made read-only. If <code>isChecking</code> is false, this method returns `true` if this instance is now read-only, or `false` if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.FreezeCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -425,7 +425,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref> object to clone.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.GetAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -451,7 +451,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Int64KeyFrameCollection"></xref> to copy and freeze.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.GetCurrentValueAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -477,7 +477,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> that can iterate through the collection.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -506,7 +506,7 @@ items:
       description: The zero-based index of the first occurrence of <code>keyFrame</code> within the entire collection, if found; otherwise, `-1`.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -534,7 +534,7 @@ items:
       description: The <xref href="System.Windows.Media.Animation.Int64KeyFrame"></xref> object to insert in the collection.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Insert*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -555,10 +555,10 @@ items:
     content: public bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the collection is frozen; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the collection is frozen; otherwise, `false`.'
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -579,10 +579,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the collection is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the collection is read-only; otherwise, `false`.'
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -604,10 +604,10 @@ items:
     content: public bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to the collection is synchronized (thread-safe); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to the collection is synchronized (thread-safe); otherwise, `false`.'
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -641,7 +641,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> is equal to or greater than <xref:System.Windows.Media.Animation.Int64KeyFrameCollection.Count*>."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -666,7 +666,7 @@ items:
       description: Identifies the <xref href="System.Windows.Media.Animation.Int64KeyFrame"></xref> to remove from the collection.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -691,7 +691,7 @@ items:
       description: Index position of the <xref href="System.Windows.Media.Animation.Int64KeyFrame"></xref> to be removed.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.RemoveAt*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -715,7 +715,7 @@ items:
       description: An object that can be used to synchronize access to the collection.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -744,7 +744,7 @@ items:
       description: The zero-based index in `array` at which copying begins.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#ICollection#CopyTo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -773,7 +773,7 @@ items:
       description: The position into which the new element was inserted, or -1 to indicate that the item was not inserted into the collection.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#IList#Add*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -799,10 +799,10 @@ items:
       description: The object to locate in the <xref href="System.Collections.IList"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Object"></xref> is found in the <xref href="System.Collections.IList"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Object"></xref> is found in the <xref href="System.Collections.IList"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#IList#Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -831,7 +831,7 @@ items:
       description: The index of <code>value</code> if found in the list; otherwise, -1.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#IList#IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -860,7 +860,7 @@ items:
       description: The object to insert into the <xref href="System.Collections.IList"></xref>.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#IList#Insert*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -889,7 +889,7 @@ items:
       description: The element at the specified index.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#IList#Item*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -915,7 +915,7 @@ items:
       description: The object to remove from the <xref href="System.Collections.IList"></xref>.
   overload: System.Windows.Media.Animation.Int64KeyFrameCollection.System#Collections#IList#Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1010,8 +1010,8 @@ references:
 - uid: System.Windows.Media.Animation.Int64KeyFrame[]
   parent: System.Windows.Media.Animation
   isExternal: false
-  name: Int64KeyFrame
-  nameWithType: Int64KeyFrame
+  name: Int64KeyFrame[]
+  nameWithType: Int64KeyFrame[]
   fullName: System.Windows.Media.Animation.Int64KeyFrame[]
   spec.csharp:
   - uid: System.Windows.Media.Animation.Int64KeyFrame

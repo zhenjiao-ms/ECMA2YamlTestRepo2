@@ -42,7 +42,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -72,7 +72,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>state</code> parameter is not a valid <xref href="System.Security.Permissions.PermissionState"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -104,7 +104,7 @@ items:
       description: The role of the <xref href="System.Security.Principal.IPrincipal"></xref> object's user (for example, Administrator).
   overload: System.Security.Permissions.PrincipalPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,10 +134,10 @@ items:
       description: The role of the <xref href="System.Security.Principal.IPrincipal"></xref> object's user (for example, Administrator).
     - id: isAuthenticated
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to signify that the user is authenticated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to signify that the user is authenticated; otherwise, `false`.'
   overload: System.Security.Permissions.PrincipalPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -164,7 +164,7 @@ items:
       description: A copy of the current permission.
   overload: System.Security.Permissions.PrincipalPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -190,8 +190,8 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The current principal does not pass the security check for the principal specified by the current permission.  \n  \n -or-  \n  \n The current <xref href=\"System.Security.Principal.IPrincipal\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "The current principal does not pass the security check for the principal specified by the current permission.  \n  \n -or-  \n  \n The current <xref href=\"System.Security.Principal.IPrincipal\"></xref> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,10 +218,10 @@ items:
       description: The <xref href="System.Security.Permissions.PrincipalPermission"></xref> object to compare with the current <xref href="System.Security.Permissions.PrincipalPermission"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Security.Permissions.PrincipalPermission"></xref> is equal to the current <xref href="System.Security.Permissions.PrincipalPermission"></xref> object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <xref href="System.Security.Permissions.PrincipalPermission"></xref> is equal to the current <xref href="System.Security.Permissions.PrincipalPermission"></xref> object; otherwise, `false`.'
   overload: System.Security.Permissions.PrincipalPermission.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -249,11 +249,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>elem</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>elem</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>elem</code> parameter is not a valid permission element.  \n  \n -or-  \n  \n The <code>elem</code> parameter's version number is not valid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,7 +280,7 @@ items:
       description: A hash code for the current <xref href="System.Security.Permissions.PrincipalPermission"></xref> object.
   overload: System.Security.Permissions.PrincipalPermission.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,13 +307,13 @@ items:
       description: A permission to intersect with the current permission. It must be of the same type as the current permission.
     return:
       type: System.Security.IPermission
-      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission will be <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty.
+      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission will be `null` if the intersection is empty.
   overload: System.Security.Permissions.PrincipalPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>target</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref> and is not an instance of the same class as the current permission.
-  platform:
+    description: The <code>target</code> parameter is not `null` and is not an instance of the same class as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,13 +342,13 @@ items:
       description: A permission that is to be tested for the subset relationship. This permission must be of the same type as the current permission.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is a subset of the specified permission; otherwise, `false`.'
   overload: System.Security.Permissions.PrincipalPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>target</code> parameter is an object that is not of the same type as the current permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -372,10 +372,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is unrestricted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is unrestricted; otherwise, `false`.'
   overload: System.Security.Permissions.PrincipalPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -401,7 +401,7 @@ items:
       description: A representation of the current permission.
   overload: System.Security.Permissions.PrincipalPermission.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -427,7 +427,7 @@ items:
       description: An XML encoding of the permission, including any state information.
   overload: System.Security.Permissions.PrincipalPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,7 +460,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>other</code> parameter is an object that is not of the same type as the current permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

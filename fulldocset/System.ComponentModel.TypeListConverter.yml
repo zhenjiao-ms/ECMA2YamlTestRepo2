@@ -64,7 +64,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
       description: The array of type <xref href="System.Type"></xref> to use as the available types.
   overload: System.ComponentModel.TypeListConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -120,10 +120,10 @@ items:
       description: The <xref href="System.Type"></xref> of the source object.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this converter can perform the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this converter can perform the conversion; otherwise, `false`.'
   overload: System.ComponentModel.TypeListConverter.CanConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -153,10 +153,10 @@ items:
       description: A <xref href="System.Type"></xref> that represents the type you wish to convert to.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this converter can perform the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this converter can perform the conversion; otherwise, `false`.'
   overload: System.ComponentModel.TypeListConverter.CanConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,7 +191,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the converted value.
   overload: System.ComponentModel.TypeListConverter.ConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,11 +232,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destinationType</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be performed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,10 +263,10 @@ items:
       description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context.
     return:
       type: System.ComponentModel.TypeConverter.StandardValuesCollection
-      description: A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> that holds a standard set of valid values, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data type does not support a standard set of values.
+      description: A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> that holds a standard set of valid values, or `null` if the data type does not support a standard set of values.
   overload: System.ComponentModel.TypeListConverter.GetStandardValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -293,10 +293,10 @@ items:
       description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> because the <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> returned from <xref:System.ComponentModel.TypeListConverter.GetStandardValues*> is an exhaustive list of possible values. This method never returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` because the <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> returned from <xref:System.ComponentModel.TypeListConverter.GetStandardValues*> is an exhaustive list of possible values. This method never returns `false`.'
   overload: System.ComponentModel.TypeListConverter.GetStandardValuesExclusive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,10 +323,10 @@ items:
       description: An <xref href="System.ComponentModel.ITypeDescriptorContext"></xref> that provides a format context.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> because <xref:System.ComponentModel.TypeListConverter.GetStandardValues*> should be called to find a common set of values the object supports. This method never returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` because <xref:System.ComponentModel.TypeListConverter.GetStandardValues*> should be called to find a common set of values the object supports. This method never returns `false`.'
   overload: System.ComponentModel.TypeListConverter.GetStandardValuesSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -356,8 +356,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

@@ -14,7 +14,7 @@ items:
   nameWithType: WebItem
   fullName: Microsoft.VisualBasic.Compatibility.VB6.WebItem
   type: Class
-  summary: Enables upgraded Visual Basic 6.0 <xref uid="langword_csharp_WebClass" name="WebClass" href=""></xref> projects to run in [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)].
+  summary: Enables upgraded Visual Basic 6.0 `WebClass` projects to run in [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)].
   remarks: "When a Visual Basic 6.0 `WebClass` project is upgraded to [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], it is converted to an [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] Web site project.  \n  \n Declarations are added to your project: one for the `WebClass` and one for each of the `WebItems` and `Templates` in the `WebClass` project. A `Page_Load` event procedure is added to the project, creating first a <xref:Microsoft.VisualBasic.Compatibility.VB6.WebClass> object and then `WebItem` objects for each of the `WebItems` and `Templates` associated with the Visual Basic 6.0 `WebClass` project. Finally, in the `Page_Load` event procedure, you will see a call to the `WebClass` Compatibility runtime: <xref:Microsoft.VisualBasic.Compatibility.VB6.WebClass.ProcessEvents%2A>. This enables the runtime to render the WebItem specified in the Request URL. This code is the only new code added to your upgraded project and only serves to emulate the underlying behavior of the Visual Basic 6.0 `WebClass` runtime.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: >-
@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -56,16 +56,16 @@ items:
     parameters:
     - id: Name
       type: System.String
-      description: A <xref href="System.String"></xref> that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> property for the Visual Basic 6.0 <xref uid="langword_csharp_WebClass" name="WebClass" href=""></xref> object.
+      description: A <xref href="System.String"></xref> that contains the `Name` property for the Visual Basic 6.0 `WebClass` object.
     - id: AssociatedWebClass
       type: Microsoft.VisualBasic.Compatibility.VB6.WebClass
       description: The <xref href="Microsoft.VisualBasic.Compatibility.VB6.WebClass"></xref> object that contains this <xref href="Microsoft.VisualBasic.Compatibility.VB6.WebItem"></xref>.
     - id: HtmlTemplateFilename
       type: System.String
-      description: Optional. The file name of a Visual Basic 6.0 <xref uid="langword_csharp_Template" name="Template" href=""></xref> that was associated with the Visual Basic 6.0 <xref uid="langword_csharp_WebItem" name="WebItem" href=""></xref>.
+      description: Optional. The file name of a Visual Basic 6.0 `Template` that was associated with the Visual Basic 6.0 `WebItem`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.WebItem.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the name for the <xref href="Microsoft.VisualBasic.Compatibility.VB6.WebItem"></xref> object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.WebItem.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,10 +114,10 @@ items:
     content: public bool ReScanReplacements { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the text should be rescanned; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the text should be rescanned; otherwise `false`. The default is `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.WebItem.ReScanReplacements*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,10 +140,10 @@ items:
     content: public string TagPrefix { get; set; }
     return:
       type: System.String
-      description: A <xref href="System.String"></xref> that identifies the <xref uid="langword_csharp_TagPrefix" name="TagPrefix" href=""></xref> sequence used to recognize replacement tags in an HTML template.
+      description: A <xref href="System.String"></xref> that identifies the `TagPrefix` sequence used to recognize replacement tags in an HTML template.
   overload: Microsoft.VisualBasic.Compatibility.VB6.WebItem.TagPrefix*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Processes an HTML template attached to a <xref uid="langword_csharp_WebItem" name="WebItem" href=""></xref> object and returns it to the browser.
+  summary: Processes an HTML template attached to a `WebItem` object and returns it to the browser.
   remarks: "The <xref:Microsoft.VisualBasic.Compatibility.VB6.WebItem> class is used by the upgrade tools to upgrade a Visual Basic 6.0 `WebClass` project to an [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] Web site project.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public void WriteTemplate (System.Web.HttpResponse Response, string HtmlTemplateFilename = "");
@@ -170,10 +170,10 @@ items:
       description: A <xref href="System.Web.HttpResponse"></xref> object.
     - id: HtmlTemplateFilename
       type: System.String
-      description: Optional. The file name of a Visual Basic 6.0 <xref uid="langword_csharp_Template" name="Template" href=""></xref> that was associated with the Visual Basic 6.0 <xref uid="langword_csharp_WebItem" name="WebItem" href=""></xref>.
+      description: Optional. The file name of a Visual Basic 6.0 `Template` that was associated with the Visual Basic 6.0 `WebItem`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.WebItem.WriteTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

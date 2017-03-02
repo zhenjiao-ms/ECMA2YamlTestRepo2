@@ -56,7 +56,7 @@ items:
   - System.ServiceModel.Channels.TransportBindingElement.MaxBufferPoolSize
   - System.ServiceModel.Channels.TransportBindingElement.MaxReceivedMessageSize
   - System.ServiceModel.Channels.TransportBindingElement.Scheme
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -81,7 +81,7 @@ items:
       description: The URI of the custom dead-letter queue.
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.CustomDeadLetterQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -109,7 +109,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is not within the range of values defined in <xref href="System.ServiceModel.DeadLetterQueue"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -131,10 +131,10 @@ items:
     content: public bool Durable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the messages processed by this binding are durable; <xref uid="langword_csharp_false" name="false" href=""></xref> if they are volatile. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the messages processed by this binding are durable; `false` if they are volatile. The default is `true`.'
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.Durable*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -156,10 +156,10 @@ items:
     content: public bool ExactlyOnce { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if messages sent with this binding have exactly once assurances; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if messages sent with this binding have exactly once assurances; otherwise, `false`.'
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.ExactlyOnce*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -186,7 +186,7 @@ items:
       description: To be added.
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.GetProperty<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -214,7 +214,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is less than zero.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -239,7 +239,7 @@ items:
       description: The <xref href="System.ServiceModel.MsmqTransportSecurity"></xref> that is associated with this binding element.
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.MsmqTransportSecurity*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -260,10 +260,10 @@ items:
     content: public bool ReceiveContextEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the binding supports receive contextbehavior ; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the binding supports receive contextbehavior ; otherwise, `false`.'
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveContextEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveErrorHandling
   id: ReceiveErrorHandling
@@ -289,7 +289,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is not within the range of values defined in <xref href="System.ServiceModel.ReceiveErrorHandling"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -317,7 +317,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is less than zero.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -345,7 +345,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is not infinite and larger than Int32.MaxValue milliseconds.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -375,7 +375,7 @@ items:
       description: A <xref href="System.ServiceModel.Description.PolicyConversionContext"></xref> that you can use to insert a custom policy assertion.
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -405,7 +405,7 @@ items:
       description: Provides mappings from exported WSDL elements to the contract description.
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.System#ServiceModel#Description#IWsdlExportExtension#ExportContract*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -435,7 +435,7 @@ items:
       description: Provides mappings from exported WSDL elements to the endpoint description.
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.System#ServiceModel#Description#IWsdlExportExtension#ExportEndpoint*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -451,7 +451,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: Gets or sets a value that specifies how long messages are valid. When this time has elapsed the message is placed in a dead-letter queue depending on the <xref uid="langword_csharp_DeadLetterQueue" name="DeadLetterQueue" href=""></xref> setting.
+  summary: Gets or sets a value that specifies how long messages are valid. When this time has elapsed the message is placed in a dead-letter queue depending on the `DeadLetterQueue` setting.
   remarks: Queued applications work in a disconnected manner. This means that the sending and receiving applications may not be running at the same time; therefore, a message sent by the sending application may not be processed immediately by the receiving application. Some messages contain information that is valid only for a certain period of time. If such a message is not delivered within that period of time, it no longer contains useful information and should be dropped. This property enables you to specify a time limit for how long a message is kept prior to delivery to the application queue. If this time limit elapses prior to the message being delivered to the application queue, the message is placed in the dead-letter queue if one is available (determined by the <xref:System.ServiceModel.Configuration.MsmqBindingElementBase.DeadLetterQueue%2A> property); otherwise, the message is dropped.
   syntax:
     content: public TimeSpan TimeToLive { get; set; }
@@ -463,7 +463,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is not infinite and larger than Int32.MaxValue milliseconds.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -485,10 +485,10 @@ items:
     content: public bool TransactedReceiveEnabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the binding requires a transaction for a receive operation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the binding requires a transaction for a receive operation; otherwise, `false`.'
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.TransactedReceiveEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -510,10 +510,10 @@ items:
     content: public bool UseMsmqTracing { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if Message Queuing (MSMQ) built-in message tracing should be enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if Message Queuing (MSMQ) built-in message tracing should be enabled; otherwise, `false`.'
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.UseMsmqTracing*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -535,10 +535,10 @@ items:
     content: public bool UseSourceJournal { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if messages processed by this binding are copied to the source journal queue; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if messages processed by this binding are copied to the source journal queue; otherwise, `false`. The default value is `false`.'
   overload: System.ServiceModel.Channels.MsmqBindingElementBase.UseSourceJournal*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -566,7 +566,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value is less than zero or is larger than Int32.MaxValue.
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.ServiceModel.Channels.TransportBindingElement

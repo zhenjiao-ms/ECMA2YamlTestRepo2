@@ -138,7 +138,7 @@ items:
   - System.IEquatable<System.Decimal>
   - System.IFormattable
   - System.Runtime.Serialization.IDeserializationCallback
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,7 +170,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>value</code> is greater than <xref href=\"System.Decimal.MaxValue\"></xref> or less than <xref href=\"System.Decimal.MinValue\"></xref>.  \n  \n -or-  \n  \n <code>value</code> is <xref href=\"System.Double.NaN\"></xref>, <xref href=\"System.Double.PositiveInfinity\"></xref>, or <xref href=\"System.Double.NegativeInfinity\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,7 +199,7 @@ items:
       description: The value to represent as a <xref href="System.Decimal"></xref>.
   overload: System.Decimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -230,11 +230,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>bits</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>bits</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The length of the <code>bits</code> is not 4.  \n  \n -or-  \n  \n The representation of the decimal value in <code>bits</code> is not valid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,7 +263,7 @@ items:
       description: The value to represent as a <xref href="System.Decimal"></xref>.
   overload: System.Decimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,7 +295,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>value</code> is greater than <xref href=\"System.Decimal.MaxValue\"></xref> or less than <xref href=\"System.Decimal.MinValue\"></xref>.  \n  \n -or-  \n  \n <code>value</code> is <xref href=\"System.Single.NaN\"></xref>, <xref href=\"System.Single.PositiveInfinity\"></xref>, or <xref href=\"System.Single.NegativeInfinity\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -324,7 +324,7 @@ items:
       description: The value to represent as a <xref href="System.Decimal"></xref>.
   overload: System.Decimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -353,7 +353,7 @@ items:
       description: The value to represent as a <xref href="System.Decimal"></xref>.
   overload: System.Decimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,7 +388,7 @@ items:
       description: The high 32 bits of a 96-bit integer.
     - id: isNegative
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate a negative number; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate a positive number.
+      description: '`true` to indicate a negative number; `false` to indicate a positive number.'
     - id: scale
       type: System.Byte
       description: A power of 10 ranging from 0 to 28.
@@ -397,7 +397,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>scale</code> is greater than 28.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,7 +433,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The sum of <code>d1</code> and <code>d2</code> is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -465,7 +465,7 @@ items:
       description: The smallest integral value that is greater than or equal to the <code>d</code> parameter. Note that this method returns a <xref href="System.Decimal"></xref> instead of an integral type.
   overload: System.Decimal.Ceiling*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -500,7 +500,7 @@ items:
       description: "A signed number indicating the relative values of <code>d1</code> and <code>d2</code>.  \n  \n|Return value|Meaning|  \n|------------------|-------------|  \n|Less than zero|<code>d1</code> is less than <code>d2</code>.|  \n|Zero|<code>d1</code> and <code>d2</code> are equal.|  \n|Greater than zero|<code>d1</code> is greater than <code>d2</code>.|"
   overload: System.Decimal.Compare*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -532,7 +532,7 @@ items:
       description: "A signed number indicating the relative values of this instance and <code>value</code>.  \n  \n|Return value|Meaning|  \n|------------------|-------------|  \n|Less than zero|This instance is less than <code>value</code>.|  \n|Zero|This instance is equal to <code>value</code>.|  \n|Greater than zero|This instance is greater than <code>value</code>.|"
   overload: System.Decimal.CompareTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -558,16 +558,16 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: The object to compare with this instance, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The object to compare with this instance, or `null`.
     return:
       type: System.Int32
-      description: "A signed number indicating the relative values of this instance and <code>value</code>.  \n  \n|Return value|Meaning|  \n|------------------|-------------|  \n|Less than zero|This instance is less than <code>value</code>.|  \n|Zero|This instance is equal to <code>value</code>.|  \n|Greater than zero|This instance is greater than <code>value</code>.<br /><br /> -or-<br /><br /><code>value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|"
+      description: "A signed number indicating the relative values of this instance and <code>value</code>.  \n  \n|Return value|Meaning|  \n|------------------|-------------|  \n|Less than zero|This instance is less than <code>value</code>.|  \n|Zero|This instance is equal to <code>value</code>.|  \n|Greater than zero|This instance is greater than <code>value</code>.<br /><br /> -or-<br /><br /><code>value</code> is `null`.|"
   overload: System.Decimal.CompareTo*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is not a <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -608,7 +608,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value (that is, the quotient) is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -635,10 +635,10 @@ items:
       description: An object to compare to this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> is equal to this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> is equal to this instance; otherwise, `false`.'
   overload: System.Decimal.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -667,10 +667,10 @@ items:
       description: The object to compare with this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> is a <xref href="System.Decimal"></xref> and equal to this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> is a <xref href="System.Decimal"></xref> and equal to this instance; otherwise, `false`.'
   overload: System.Decimal.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -702,10 +702,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> and <code>d2</code> are equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> and <code>d2</code> are equal; otherwise, `false`.'
   overload: System.Decimal.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -737,7 +737,7 @@ items:
       description: "If <code>d</code> has a fractional part, the next whole <xref href=\"System.Decimal\"></xref> number toward negative infinity that is less than <code>d</code>.  \n  \n -or-  \n  \n If <code>d</code> doesn't have a fractional part, <code>d</code> is returned unchanged. Note that the method returns an integral value of type <xref href=\"System.Decimal\"></xref>."
   overload: System.Decimal.Floor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -769,7 +769,7 @@ items:
       description: A <xref href="System.Decimal"></xref> that contains the equivalent of <code>cy</code>.
   overload: System.Decimal.FromOACurrency*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -801,7 +801,7 @@ items:
       description: A 32-bit signed integer array with four elements that contain the binary representation of <code>d</code>.
   overload: System.Decimal.GetBits*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -827,7 +827,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.Decimal.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -856,7 +856,7 @@ items:
       description: The enumerated constant <xref href="System.TypeCode"></xref>.
   overload: System.Decimal.GetTypeCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -883,7 +883,7 @@ items:
       type: System.Decimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -910,7 +910,7 @@ items:
       type: System.Decimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -937,7 +937,7 @@ items:
       type: System.Decimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -975,7 +975,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1007,7 +1007,7 @@ items:
       description: "A decimal number with the value of <code>d</code>, but the opposite sign.  \n  \n -or-  \n  \n Zero, if <code>d</code> is zero."
   overload: System.Decimal.Negate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1034,7 +1034,7 @@ items:
       type: System.Decimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1070,7 +1070,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1103,7 +1103,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1142,7 +1142,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1172,10 +1172,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> and <code>d2</code> are equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> and <code>d2</code> are equal; otherwise, `false`.'
   overload: System.Decimal.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1203,7 +1203,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1231,7 +1231,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1259,7 +1259,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1287,7 +1287,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1315,7 +1315,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1343,7 +1343,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1371,7 +1371,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1399,7 +1399,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1427,7 +1427,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1455,7 +1455,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1483,7 +1483,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1511,7 +1511,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1539,7 +1539,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1569,10 +1569,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> is greater than <code>d2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> is greater than <code>d2</code>; otherwise, `false`.'
   overload: System.Decimal.op_GreaterThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1602,10 +1602,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> is greater than or equal to <code>d2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> is greater than or equal to <code>d2</code>; otherwise, `false`.'
   overload: System.Decimal.op_GreaterThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1633,7 +1633,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1661,7 +1661,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1689,7 +1689,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1717,7 +1717,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1745,7 +1745,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1773,7 +1773,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1801,7 +1801,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1829,7 +1829,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1857,7 +1857,7 @@ items:
       description: To be added.
   overload: System.Decimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1890,7 +1890,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1920,10 +1920,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> and <code>d2</code> are not equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> and <code>d2</code> are not equal; otherwise, `false`.'
   overload: System.Decimal.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1953,10 +1953,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> is less than <code>d2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> is less than <code>d2</code>; otherwise, `false`.'
   overload: System.Decimal.op_LessThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1986,10 +1986,10 @@ items:
       description: The second value to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> is less than or equal to <code>d2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> is less than or equal to <code>d2</code>; otherwise, `false`.'
   overload: System.Decimal.op_LessThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2024,11 +2024,11 @@ items:
   exceptions:
   - type: System.DivideByZeroException
     commentId: T:System.DivideByZeroException
-    description: <code>d2</code> is <xref uid="langword_csharp_zero" name="zero" href=""></xref>.
+    description: <code>d2</code> is `zero`.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2064,7 +2064,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2100,7 +2100,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2130,7 +2130,7 @@ items:
       description: The result of <code>d</code> multiplied by negative one (-1).
   overload: System.Decimal.op_UnaryNegation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2160,7 +2160,7 @@ items:
       description: The value of the operand, <code>d</code>.
   overload: System.Decimal.op_UnaryPlus*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2194,14 +2194,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>s</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>s</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>s</code> is not in the correct format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>s</code> represents a number less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2238,7 +2238,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>s</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>s</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>style</code> is not a <xref href=\"System.Globalization.NumberStyles\"></xref> value.  \n  \n -or-  \n  \n <code>style</code> is the <xref href=\"System.Globalization.NumberStyles\"></xref> value."
@@ -2248,7 +2248,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>s</code> represents a number less than <xref href="System.Decimal.MinValue"></xref> or greater than <xref href="System.Decimal.MaxValue"></xref>
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2285,14 +2285,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>s</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>s</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>s</code> is not of the correct format
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>s</code> represents a number less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2338,11 +2338,11 @@ items:
     description: <code>s</code> represents a number less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>s</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>s</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>style</code> is not a <xref href=\"System.Globalization.NumberStyles\"></xref> value.  \n  \n -or-  \n  \n <code>style</code> is the <xref href=\"System.Globalization.NumberStyles\"></xref> value."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2383,7 +2383,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2418,7 +2418,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The result is outside the range of a <xref href="System.Decimal"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2456,7 +2456,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>decimals</code> is not a value from 0 to 28.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2497,7 +2497,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The result is outside the range of a <xref href="System.Decimal"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2544,7 +2544,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The result is outside the range of a <xref href="System.Decimal"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2582,7 +2582,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.Decimal"></xref> or greater than <xref href="System.Decimal"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2610,10 +2610,10 @@ items:
       description: This parameter is ignored.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of the current instance is not zero; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of the current instance is not zero; otherwise, `false`.'
   overload: System.Decimal.System#IConvertible#ToBoolean*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2647,7 +2647,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.Byte"></xref> or greater than <xref href="System.Byte"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2680,7 +2680,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2713,7 +2713,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2744,7 +2744,7 @@ items:
       description: The value of the current instance, unchanged.
   overload: System.Decimal.System#IConvertible#ToDecimal*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2775,7 +2775,7 @@ items:
       description: The value of the current instance, converted to a <xref href="System.Double"></xref>.
   overload: System.Decimal.System#IConvertible#ToDouble*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2809,7 +2809,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.Int16"></xref> or greater than <xref href="System.Int16"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2843,7 +2843,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.Int32"></xref> or greater than <xref href="System.Int32"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2877,7 +2877,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.Int64"></xref> or greater than <xref href="System.Int64"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2911,7 +2911,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.SByte"></xref> or greater than <xref href="System.SByte"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2942,7 +2942,7 @@ items:
       description: The value of the current instance, converted to a <xref href="System.Single"></xref>.
   overload: System.Decimal.System#IConvertible#ToSingle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2978,11 +2978,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The requested type conversion is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3016,7 +3016,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.UInt16"></xref> or greater than <xref href="System.UInt16"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3050,7 +3050,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.UInt32"></xref> or greater than <xref href="System.UInt32"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3084,7 +3084,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting integer value is less than <xref href="System.UInt64"></xref> or greater than <xref href="System.UInt64"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3114,7 +3114,7 @@ items:
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <xref href="System.Decimal"></xref> object contains invalid or corrupted data.
-  platform:
+  version:
   - netframework-40
 - uid: System.Decimal.ToByte(System.Decimal)
   id: ToByte(System.Decimal)
@@ -3146,7 +3146,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>value</code> is less than <xref href="System.Byte"></xref> or greater than <xref href="System.Byte"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3178,7 +3178,7 @@ items:
       description: A double-precision floating-point number equivalent to <code>d</code>.
   overload: System.Decimal.ToDouble*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3213,7 +3213,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>value</code> is less than <xref href="System.Int16"></xref> or greater than <xref href="System.Int16"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3248,7 +3248,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>d</code> is less than <xref href="System.Int32"></xref> or greater than <xref href="System.Int32"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3283,7 +3283,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>d</code> is less than <xref href="System.Int64"></xref> or greater than <xref href="System.Int64"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3315,7 +3315,7 @@ items:
       description: A 64-bit signed integer that contains the OLE Automation equivalent of <code>value</code>.
   overload: System.Decimal.ToOACurrency*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3350,7 +3350,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>value</code> is less than <xref href="System.SByte"></xref> or greater than <xref href="System.SByte"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3382,7 +3382,7 @@ items:
       description: A single-precision floating-point number equivalent to the value of <code>d</code>.
   overload: System.Decimal.ToSingle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3411,7 +3411,7 @@ items:
       description: A string that represents the value of this instance.
   overload: System.Decimal.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3443,7 +3443,7 @@ items:
       description: The string representation of the value of this instance as specified by <code>provider</code>.
   overload: System.Decimal.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3478,7 +3478,7 @@ items:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>format</code> is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3516,7 +3516,7 @@ items:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>format</code> is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3551,7 +3551,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>value</code> is greater than <xref href="System.UInt16"></xref> or less than <xref href="System.UInt16"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3586,7 +3586,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>d</code> is negative or greater than <xref href="System.UInt32"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3621,7 +3621,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>d</code> is negative or greater than <xref href="System.UInt64"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3653,7 +3653,7 @@ items:
       description: The result of <code>d</code> rounded toward zero, to the nearest whole number.
   overload: System.Decimal.Truncate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3685,10 +3685,10 @@ items:
       description: To be added.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>s</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>s</code> was converted successfully; otherwise, `false`.'
   overload: System.Decimal.TryParse*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3726,13 +3726,13 @@ items:
       description: To be added.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>s</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>s</code> was converted successfully; otherwise, `false`.'
   overload: System.Decimal.TryParse*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>style</code> is not a <xref href=\"System.Globalization.NumberStyles\"></xref> value.  \n  \n -or-  \n  \n <code>style</code> is the <xref href=\"System.Globalization.NumberStyles\"></xref> value."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3759,7 +3759,7 @@ items:
       type: System.Decimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -3849,8 +3849,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32

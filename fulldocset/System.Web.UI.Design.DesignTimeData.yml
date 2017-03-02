@@ -34,7 +34,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,7 +61,7 @@ items:
       description: A new <xref href="System.Data.DataTable"></xref> object with three columns and no data.
   overload: System.Web.UI.Design.DesignTimeData.CreateDummyDataBoundDataTable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -88,7 +88,7 @@ items:
       description: A new <xref href="System.Data.DataTable"></xref> with three columns. These columns can contain data of type string.
   overload: System.Web.UI.Design.DesignTimeData.CreateDummyDataTable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -118,7 +118,7 @@ items:
       description: A <xref href="System.Data.DataTable"></xref> object that contains columns with the same names and data types as the provided <code>referenceData</code>.
   overload: System.Web.UI.Design.DesignTimeData.CreateSampleDataTable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,13 +145,13 @@ items:
       description: An <xref href="System.Collections.IEnumerable"></xref> object containing data.
     - id: useDataBoundData
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, the column names indicate that they contain bound data.
+      description: If `true`, the column names indicate that they contain bound data.
     return:
       type: System.Data.DataTable
       description: A <xref href="System.Data.DataTable"></xref> object.
   overload: System.Web.UI.Design.DesignTimeData.CreateSampleDataTable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -175,7 +175,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -204,7 +204,7 @@ items:
       description: A <xref href="System.ComponentModel.PropertyDescriptorCollection"></xref> object that describes the data fields of the specified data source.
   overload: System.Web.UI.Design.DesignTimeData.GetDataFields*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -239,8 +239,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>dataSource</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>dataMember</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>dataSource</code> is `null`  \n  \n -or-  \n  \n <code>dataMember</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -266,10 +266,10 @@ items:
       description: The data source from which to retrieve the names of the members.
     return:
       type: System.String[]
-      description: An array of type <xref uid="langword_csharp_String" name="String" href=""></xref> that contains the names of the data members in the specified data source.
+      description: An array of type `String` that contains the names of the data members in the specified data source.
   overload: System.Web.UI.Design.DesignTimeData.GetDataMembers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -301,7 +301,7 @@ items:
       description: An object implementing <xref href="System.Collections.IEnumerable"></xref> containing sample data for use at design time.
   overload: System.Web.UI.Design.DesignTimeData.GetDesignTimeDataSource*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -330,10 +330,10 @@ items:
       description: The name of the data source to retrieve.
     return:
       type: System.Object
-      description: An object implementing either <xref href="System.ComponentModel.IListSource"></xref> or <xref href="System.Collections.IEnumerable"></xref> representing the selected data source, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data source or the designer host could not be accessed.
+      description: An object implementing either <xref href="System.ComponentModel.IListSource"></xref> or <xref href="System.Collections.IEnumerable"></xref> representing the selected data source, or `null` if the data source or the designer host could not be accessed.
   overload: System.Web.UI.Design.DesignTimeData.GetSelectedDataSource*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -365,10 +365,10 @@ items:
       description: The data member to retrieve.
     return:
       type: System.Collections.IEnumerable
-      description: An object implementing <xref href="System.Collections.IEnumerable"></xref> containing the data member, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data source, member, or component's site could not be accessed.
+      description: An object implementing <xref href="System.Collections.IEnumerable"></xref> containing the data member, or `null` if the data source, member, or component's site could not be accessed.
   overload: System.Web.UI.Design.DesignTimeData.GetSelectedDataSource*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -476,8 +476,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

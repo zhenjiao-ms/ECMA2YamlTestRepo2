@@ -55,7 +55,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,7 +79,7 @@ items:
     parameters: []
   overload: System.Resources.ResourceManager.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,8 +110,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>resourceSource</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>resourceSource</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,8 +145,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>baseName</code> or <code>assembly</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>baseName</code> or <code>assembly</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -176,7 +176,7 @@ items:
       description: The main assembly for the resources.
     - id: usingResourceSet
       type: System.Type
-      description: The type of the custom <xref href="System.Resources.ResourceSet"></xref> to use. If <xref uid="langword_csharp_null" name="null" href=""></xref>, the default runtime <xref href="System.Resources.ResourceSet"></xref> object is used.
+      description: The type of the custom <xref href="System.Resources.ResourceSet"></xref> to use. If `null`, the default runtime <xref href="System.Resources.ResourceSet"></xref> object is used.
   overload: System.Resources.ResourceManager.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -184,8 +184,8 @@ items:
     description: <code>usingResourceset</code> is not a derived class of <xref href="System.Resources.ResourceSet"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>baseName</code> or <code>assembly</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>baseName</code> or <code>assembly</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,7 +213,7 @@ items:
       description: The root name of the resource files that the <xref href="System.Resources.ResourceManager"></xref> searches for resources.
   overload: System.Resources.ResourceManager.BaseName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -238,7 +238,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,7 +268,7 @@ items:
       description: The name of the directory to search for the resources. `resourceDir` can be an absolute path or a relative path from the application directory.
     - id: usingResourceSet
       type: System.Type
-      description: The type of the custom <xref href="System.Resources.ResourceSet"></xref> to use. If <xref uid="langword_csharp_null" name="null" href=""></xref>, the default runtime <xref href="System.Resources.ResourceSet"></xref> object is used.
+      description: The type of the custom <xref href="System.Resources.ResourceSet"></xref> to use. If `null`, the default runtime <xref href="System.Resources.ResourceSet"></xref> object is used.
     return:
       type: System.Resources.ResourceManager
       description: A new instance of a resource manager that searches the specified directory instead of an assembly manifest for resources.
@@ -276,8 +276,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>baseName</code> or <code>resourceDir</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>baseName</code> or <code>resourceDir</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,7 +303,7 @@ items:
       description: One of the enumeration values that specifies where the resource manager can look for fallback resources.
   overload: System.Resources.ResourceManager.FallbackLocation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
       description: The culture from the <xref href="System.Resources.NeutralResourcesLanguageAttribute"></xref> attribute, if found; otherwise, the invariant culture.
   overload: System.Resources.ResourceManager.GetNeutralResourcesLanguage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -361,19 +361,19 @@ items:
       description: The name of the resource to get.
     return:
       type: System.Object
-      description: The value of the resource localized for the caller's current culture settings. If an appropriate resource set exists but <code>name</code> cannot be found, the method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The value of the resource localized for the caller's current culture settings. If an appropriate resource set exists but <code>name</code> cannot be found, the method returns `null`.
   overload: System.Resources.ResourceManager.GetObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>name</code> parameter is `null`.
   - type: System.Resources.MissingManifestResourceException
     commentId: T:System.Resources.MissingManifestResourceException
     description: No usable set of localized resources has been found, and there are no default culture resources. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The default culture's resources reside in a satellite assembly that could not be found. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -402,22 +402,22 @@ items:
       description: The name of the resource to get.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The culture for which the resource is localized. If the resource is not localized for this culture, the resource manager uses fallback rules to locate an appropriate resource.  \n  \n If this value is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, the <xref href=\"System.Globalization.CultureInfo\"></xref> object is obtained by using the &lt;xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=fullName&gt; property."
+      description: "The culture for which the resource is localized. If the resource is not localized for this culture, the resource manager uses fallback rules to locate an appropriate resource.  \n  \n If this value is `null`, the <xref href=\"System.Globalization.CultureInfo\"></xref> object is obtained by using the &lt;xref:System.Globalization.CultureInfo.CurrentUICulture%2A?displayProperty=fullName&gt; property."
     return:
       type: System.Object
-      description: The value of the resource, localized for the specified culture. If an appropriate resource set exists but <code>name</code> cannot be found, the method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The value of the resource, localized for the specified culture. If an appropriate resource set exists but <code>name</code> cannot be found, the method returns `null`.
   overload: System.Resources.ResourceManager.GetObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>name</code> parameter is `null`.
   - type: System.Resources.MissingManifestResourceException
     commentId: T:System.Resources.MissingManifestResourceException
     description: No usable set of resources have been found, and there are no default culture resources. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The default culture's resources reside in a satellite assembly that could not be found. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -447,7 +447,7 @@ items:
       description: The name that can be used for a resource file for the given <xref href="System.Globalization.CultureInfo"></xref> object.
   overload: System.Resources.ResourceManager.GetResourceFileName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -476,10 +476,10 @@ items:
       description: The culture whose resources are to be retrieved.
     - id: createIfNotExists
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to load the resource set, if it has not been loaded yet; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to load the resource set, if it has not been loaded yet; otherwise, `false`.'
     - id: tryParents
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use resource fallback to load an appropriate resource if the resource set cannot be found; <xref uid="langword_csharp_false" name="false" href=""></xref> to bypass the resource fallback process. (See the Remarks section.)
+      description: '`true` to use resource fallback to load an appropriate resource if the resource set cannot be found; `false` to bypass the resource fallback process. (See the Remarks section.)'
     return:
       type: System.Resources.ResourceSet
       description: The resource set for the specified culture.
@@ -487,11 +487,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>culture</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>culture</code> parameter is `null`.
   - type: System.Resources.MissingManifestResourceException
     commentId: "  \n            T:System.Resources.MissingManifestResourceException"
-    description: <code>tryParents</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, no usable set of resources has been found, and there are no default culture resources.
-  platform:
+    description: <code>tryParents</code> is `true`, no usable set of resources has been found, and there are no default culture resources.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,7 +518,7 @@ items:
       description: The assembly to check for the <xref href="System.Resources.SatelliteContractVersionAttribute"></xref> attribute.
     return:
       type: System.Version
-      description: The satellite contract version of the given assembly, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no version was found.
+      description: The satellite contract version of the given assembly, or `null` if no version was found.
   overload: System.Resources.ResourceManager.GetSatelliteContractVersion*
   exceptions:
   - type: System.ArgumentException
@@ -526,8 +526,8 @@ items:
     description: The <xref href="System.Version"></xref> found in the assembly <code>a</code> is invalid.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>a</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>a</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -564,14 +564,14 @@ items:
     description: The value of the specified resource is not a <xref href="System.IO.MemoryStream"></xref> object.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Resources.MissingManifestResourceException
     commentId: T:System.Resources.MissingManifestResourceException
     description: No usable set of resources is found, and there are no default resources. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The default culture's resources reside in a satellite assembly that could not be found. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -598,7 +598,7 @@ items:
       description: The name of a resource.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: An  object that specifies the culture to use for the resource lookup. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the culture for the current thread is used.
+      description: An  object that specifies the culture to use for the resource lookup. If `culture` is `null`, the culture for the current thread is used.
     return:
       type: System.IO.UnmanagedMemoryStream
       description: An unmanaged memory stream object that represents a resource.
@@ -609,14 +609,14 @@ items:
     description: The value of the specified resource is not a <xref href="System.IO.MemoryStream"></xref> object.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.Resources.MissingManifestResourceException
     commentId: T:System.Resources.MissingManifestResourceException
     description: No usable set of resources is found, and there are no default resources. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The default culture's resources reside in a satellite assembly that could not be found. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -645,12 +645,12 @@ items:
       description: The name of the resource to retrieve.
     return:
       type: System.String
-      description: The value of the resource localized for the caller's current UI culture, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>name</code> cannot be found in a resource set.
+      description: The value of the resource localized for the caller's current UI culture, or `null` if <code>name</code> cannot be found in a resource set.
   overload: System.Resources.ResourceManager.GetString*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>name</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The value of the specified resource is not a string.
@@ -660,7 +660,7 @@ items:
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The default culture's resources reside in a satellite assembly that could not be found. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -692,12 +692,12 @@ items:
       description: An object that represents the culture for which the resource is localized.
     return:
       type: System.String
-      description: The value of the resource localized for the specified culture, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>name</code> cannot be found in a resource set.
+      description: The value of the resource localized for the specified culture, or `null` if <code>name</code> cannot be found in a resource set.
   overload: System.Resources.ResourceManager.GetString*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>name</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The value of the specified resource is not a string.
@@ -707,7 +707,7 @@ items:
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The default culture's resources reside in a satellite assembly that could not be found. For information about how to handle this exception, see the "Handling MissingManifestResourceException and MissingSatelliteAssemblyException Exceptions" section in the <xref href="System.Resources.ResourceManager"></xref> class topic.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -731,7 +731,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -754,10 +754,10 @@ items:
     content: public virtual bool IgnoreCase { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to ignore case during resource lookup; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to ignore case during resource lookup; otherwise, `false`.'
   overload: System.Resources.ResourceManager.IgnoreCase*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -783,10 +783,10 @@ items:
       description: The culture object to look for.
     - id: createIfNotExists
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to load the resource set, if it has not been loaded yet; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to load the resource set, if it has not been loaded yet; otherwise, `false`.'
     - id: tryParents
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to check parent <xref href="System.Globalization.CultureInfo"></xref> objects if the resource set cannot be loaded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to check parent <xref href="System.Globalization.CultureInfo"></xref> objects if the resource set cannot be loaded; otherwise, `false`.'
     return:
       type: System.Resources.ResourceSet
       description: The specified resource set.
@@ -801,7 +801,7 @@ items:
   - type: System.Resources.MissingSatelliteAssemblyException
     commentId: T:System.Resources.MissingSatelliteAssemblyException
     description: The satellite assembly associated with <code>culture</code> could not be located.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -826,7 +826,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -851,7 +851,7 @@ items:
       type: System.Reflection.Assembly
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -875,7 +875,7 @@ items:
     parameters: []
   overload: System.Resources.ResourceManager.ReleaseAllResources*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -899,7 +899,7 @@ items:
       type: System.Collections.Hashtable
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -924,7 +924,7 @@ items:
       description: The type of the resource set object that the resource manager uses to construct a <xref href="System.Resources.ResourceSet"></xref> object.
   overload: System.Resources.ResourceManager.ResourceSetType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

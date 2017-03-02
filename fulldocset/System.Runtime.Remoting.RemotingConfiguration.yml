@@ -50,7 +50,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,7 +79,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,7 +110,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels. This exception is thrown only when setting the property value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,13 +139,13 @@ items:
     parameters:
     - id: filename
       type: System.String
-      description: The name of the remoting configuration file. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the remoting configuration file. Can be `null`.
   overload: System.Runtime.Remoting.RemotingConfiguration.Configure*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,16 +169,16 @@ items:
     parameters:
     - id: filename
       type: System.String
-      description: The name of the remoting configuration file. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the remoting configuration file. Can be `null`.
     - id: ensureSecurity
       type: System.Boolean
-      description: If set to <xref uid="langword_csharp_true" name="true" href=""></xref> security is required. If set to <xref uid="langword_csharp_false" name="false" href=""></xref>, security is not required but still may be used.
+      description: If set to `true` security is required. If set to `false`, security is not required but still may be used.
   overload: System.Runtime.Remoting.RemotingConfiguration.Configure*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,13 +202,13 @@ items:
     parameters:
     - id: isLocalRequest
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify local callers; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify remote callers.
+      description: '`true` to specify local callers; `false` to specify remote callers.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if only filtered exception information is returned to local or remote callers, as specified by the <code>isLocalRequest</code> parameter; <xref uid="langword_csharp_false" name="false" href=""></xref> if complete exception information is returned.
+      description: '`true` if only filtered exception information is returned to local or remote callers, as specified by the <code>isLocalRequest</code> parameter; `false` if complete exception information is returned.'
   overload: System.Runtime.Remoting.RemotingConfiguration.CustomErrorsEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,7 +233,7 @@ items:
       description: A member of the <xref href="System.Runtime.Remoting.CustomErrorsModes"></xref> enumeration that indicates how custom errors are handled.
   overload: System.Runtime.Remoting.RemotingConfiguration.CustomErrorsMode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,7 +263,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -298,7 +298,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -333,7 +333,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -368,7 +368,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,13 +400,13 @@ items:
       description: The object <xref href="System.Type"></xref> to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Type"></xref> is allowed to be client activated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <xref href="System.Type"></xref> is allowed to be client activated; otherwise, `false`.'
   overload: System.Runtime.Remoting.RemotingConfiguration.IsActivationAllowed*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -444,7 +444,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -485,7 +485,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -523,7 +523,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -564,7 +564,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -592,7 +592,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -622,7 +622,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -656,11 +656,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>typeName</code> or <code>URI</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>typeName</code> or <code>URI</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -690,7 +690,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -722,7 +722,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -752,7 +752,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -787,7 +787,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,7 +822,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -860,7 +860,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -944,8 +944,8 @@ references:
 - uid: System.Runtime.Remoting.ActivatedClientTypeEntry[]
   parent: System.Runtime.Remoting
   isExternal: false
-  name: ActivatedClientTypeEntry
-  nameWithType: ActivatedClientTypeEntry
+  name: ActivatedClientTypeEntry[]
+  nameWithType: ActivatedClientTypeEntry[]
   fullName: System.Runtime.Remoting.ActivatedClientTypeEntry[]
   spec.csharp:
   - uid: System.Runtime.Remoting.ActivatedClientTypeEntry
@@ -964,8 +964,8 @@ references:
 - uid: System.Runtime.Remoting.ActivatedServiceTypeEntry[]
   parent: System.Runtime.Remoting
   isExternal: false
-  name: ActivatedServiceTypeEntry
-  nameWithType: ActivatedServiceTypeEntry
+  name: ActivatedServiceTypeEntry[]
+  nameWithType: ActivatedServiceTypeEntry[]
   fullName: System.Runtime.Remoting.ActivatedServiceTypeEntry[]
   spec.csharp:
   - uid: System.Runtime.Remoting.ActivatedServiceTypeEntry
@@ -984,8 +984,8 @@ references:
 - uid: System.Runtime.Remoting.WellKnownClientTypeEntry[]
   parent: System.Runtime.Remoting
   isExternal: false
-  name: WellKnownClientTypeEntry
-  nameWithType: WellKnownClientTypeEntry
+  name: WellKnownClientTypeEntry[]
+  nameWithType: WellKnownClientTypeEntry[]
   fullName: System.Runtime.Remoting.WellKnownClientTypeEntry[]
   spec.csharp:
   - uid: System.Runtime.Remoting.WellKnownClientTypeEntry
@@ -1004,8 +1004,8 @@ references:
 - uid: System.Runtime.Remoting.WellKnownServiceTypeEntry[]
   parent: System.Runtime.Remoting
   isExternal: false
-  name: WellKnownServiceTypeEntry
-  nameWithType: WellKnownServiceTypeEntry
+  name: WellKnownServiceTypeEntry[]
+  nameWithType: WellKnownServiceTypeEntry[]
   fullName: System.Runtime.Remoting.WellKnownServiceTypeEntry[]
   spec.csharp:
   - uid: System.Runtime.Remoting.WellKnownServiceTypeEntry

@@ -23,7 +23,7 @@ items:
   syntax:
     content: public interface ISessionIDManager
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -55,7 +55,7 @@ items:
       description: A unique session identifier.
   overload: System.Web.SessionState.ISessionIDManager.CreateSessionID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,7 +87,7 @@ items:
       description: The current session identifier sent with the HTTP request.
   overload: System.Web.SessionState.ISessionIDManager.GetSessionID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,7 +111,7 @@ items:
     parameters: []
   overload: System.Web.SessionState.ISessionIDManager.Initialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -138,16 +138,16 @@ items:
       description: The <xref href="System.Web.HttpContext"></xref> object that contains information about the current request.
     - id: suppressAutoDetectRedirect
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the session-ID manager should redirect to determine cookie support; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> to suppress automatic redirection to determine cookie support.
+      description: '`true` if the session-ID manager should redirect to determine cookie support; otherwise, `false` to suppress automatic redirection to determine cookie support.'
     - id: supportSessionIDReissue
       type: System.Boolean
       description: "When this method returns, contains a Boolean that indicates whether the <xref href=\"System.Web.SessionState.ISessionIDManager\"></xref> object supports issuing new session IDs when the original ID is out of date. This parameter is passed uninitialized.  \n  \n Session ID reuse is appropriate when the session-state ID is encoded on a URL and the potential exists for the URL to be shared or emailed.  \n  \n If a custom session-state implementation partitions cookies by virtual path, session state should also be supported."
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the initialization performed a redirect; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the initialization performed a redirect; otherwise, `false`.'
   overload: System.Web.SessionState.ISessionIDManager.InitializeRequest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -176,7 +176,7 @@ items:
       description: The current <xref href="System.Web.HttpContext"></xref> object that references server objects used to process HTTP requests (for example, the <xref:System.Web.HttpContext.Request*> and <xref:System.Web.HttpContext.Response*> properties).
   overload: System.Web.SessionState.ISessionIDManager.RemoveSessionID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -208,13 +208,13 @@ items:
       description: The session identifier.
     - id: redirected
       type: System.Boolean
-      description: When this method returns, contains a Boolean value that is <xref uid="langword_csharp_true" name="true" href=""></xref> if the response is redirected to the current URL with the session identifier added to the URL; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: When this method returns, contains a Boolean value that is `true` if the response is redirected to the current URL with the session identifier added to the URL; otherwise, `false`.
     - id: cookieAdded
       type: System.Boolean
-      description: When this method returns, contains a Boolean value that is <xref uid="langword_csharp_true" name="true" href=""></xref> if a cookie has been added to the HTTP response; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: When this method returns, contains a Boolean value that is `true` if a cookie has been added to the HTTP response; otherwise, `false`.
   overload: System.Web.SessionState.ISessionIDManager.SaveSessionID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,10 +243,10 @@ items:
       description: The session identifier to validate.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the session identifier is valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the session identifier is valid; otherwise, `false`.'
   overload: System.Web.SessionState.ISessionIDManager.Validate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

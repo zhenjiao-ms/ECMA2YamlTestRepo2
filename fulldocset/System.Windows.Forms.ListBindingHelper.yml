@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -62,7 +62,7 @@ items:
       description: An <xref href="System.Object"></xref> representing the underlying list if it exists; otherwise, the original data source specified by <code>list</code>.
   overload: System.Windows.Forms.ListBindingHelper.GetList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,7 +89,7 @@ items:
       description: The data source from which to find the list.
     - id: dataMember
       type: System.String
-      description: The name of the data source property that contains the list. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the data source property that contains the list. This can be `null`.
     return:
       type: System.Object
       description: An <xref href="System.Object"></xref> representing the underlying list if it was found; otherwise, <code>dataSource</code>.
@@ -98,7 +98,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The specified data member name did not match any of the properties found for the data source.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: The <xref href="System.ComponentModel.PropertyDescriptorCollection"></xref> containing the properties of the items contained in <code>list</code>, or properties of <code>list.</code>
   overload: System.Windows.Forms.ListBindingHelper.GetListItemProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,13 +155,13 @@ items:
       description: The data source to be examined for property information.
     - id: listAccessors
       type: System.ComponentModel.PropertyDescriptor[]
-      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> array describing which properties of the data source to examine. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> array describing which properties of the data source to examine. This can be `null`.
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
       description: The <xref href="System.ComponentModel.PropertyDescriptorCollection"></xref> describing the properties of the item type contained in a collection property of the data source.
   overload: System.Windows.Forms.ListBindingHelper.GetListItemProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -188,10 +188,10 @@ items:
       description: The data source to be examined for property information.
     - id: dataMember
       type: System.String
-      description: The optional data member to be examined for property information. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The optional data member to be examined for property information. This can be `null`.
     - id: listAccessors
       type: System.ComponentModel.PropertyDescriptor[]
-      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> array describing which properties of the data member to examine. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.ComponentModel.PropertyDescriptor"></xref> array describing which properties of the data member to examine. This can be `null`.
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
       description: The <xref href="System.ComponentModel.PropertyDescriptorCollection"></xref> describing the properties of an item type contained in a collection property of the specified data source.
@@ -200,7 +200,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The specified data member could not be found in the specified data source.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -230,7 +230,7 @@ items:
       description: The <xref href="System.Type"></xref> of the items contained in the list.
   overload: System.Windows.Forms.ListBindingHelper.GetListItemType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,13 +257,13 @@ items:
       description: The data source to examine for items.
     - id: dataMember
       type: System.String
-      description: The optional name of the property on the data source that is to be used as the data member. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The optional name of the property on the data source that is to be used as the data member. This can be `null`.
     return:
       type: System.Type
       description: For complex data binding, the <xref href="System.Type"></xref> of the items represented by the <code>dataMember</code> in the data source; otherwise, the <xref href="System.Type"></xref> of the item in the list itself.
   overload: System.Windows.Forms.ListBindingHelper.GetListItemType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,13 +290,13 @@ items:
       description: The data source to examine for the list name.
     - id: listAccessors
       type: System.ComponentModel.PropertyDescriptor[]
-      description: An array of <xref href="System.ComponentModel.PropertyDescriptor"></xref> objects to find in the data source. This can be<xref uid="langword_csharp_ null" name=" null" href=""></xref>.
+      description: An array of <xref href="System.ComponentModel.PropertyDescriptor"></xref> objects to find in the data source. This can be` null`.
     return:
       type: System.String
       description: The name of the list in the data source, as described by <code>listAccessors</code>, or the name of the data source type.
   overload: System.Windows.Forms.ListBindingHelper.GetListName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -350,8 +350,8 @@ references:
 - uid: System.ComponentModel.PropertyDescriptor[]
   parent: System.ComponentModel
   isExternal: false
-  name: PropertyDescriptor
-  nameWithType: PropertyDescriptor
+  name: PropertyDescriptor[]
+  nameWithType: PropertyDescriptor[]
   fullName: System.ComponentModel.PropertyDescriptor[]
   spec.csharp:
   - uid: System.ComponentModel.PropertyDescriptor

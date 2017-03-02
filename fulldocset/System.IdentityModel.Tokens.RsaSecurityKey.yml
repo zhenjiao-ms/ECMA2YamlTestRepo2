@@ -37,7 +37,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -64,8 +64,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rsa</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>rsa</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -101,8 +101,8 @@ items:
     description: <code>algorithm</code> is not supported. The supported algorithms are <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap"></xref> and <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keyData</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>keyData</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -138,8 +138,8 @@ items:
     description: <code>algorithm</code> is not supported. The supported algorithms are <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap"></xref> and <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>keyData</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>keyData</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -164,7 +164,7 @@ items:
       description: The asymmetric algorithm to create.
     - id: requiresPrivateKey
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when a private key is required to create the algorithm; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when a private key is required to create the algorithm; otherwise, `false`.'
     return:
       type: System.Security.Cryptography.AsymmetricAlgorithm
       description: An <xref href="System.Security.Cryptography.AsymmetricAlgorithm"></xref> that represents the specified asymmetric cryptographic algorithm.
@@ -172,8 +172,8 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: <code>requiresPrivateKey </code>is <xref uid="langword_csharp_true" name="true" href=""></xref> and a private key is not available.
-  platform:
+    description: <code>requiresPrivateKey </code>is `true` and a private key is not available.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -204,7 +204,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: <code>algorithm </code>is not supported. The supported algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -235,7 +235,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: <code>algorithm </code>is not supported. The supported algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -266,7 +266,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: <code>algorithm </code>is not supported. The supported algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -288,10 +288,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the private key is available; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the private key is available; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.RsaSecurityKey.HasPrivateKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -316,10 +316,10 @@ items:
       description: The cryptographic algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the specified algorithm uses asymmetric keys; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the specified algorithm uses asymmetric keys; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.RsaSecurityKey.IsAsymmetricAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -344,10 +344,10 @@ items:
       description: The cryptographic algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the specified algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the specified algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.RsaSecurityKey.IsSupportedAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -372,10 +372,10 @@ items:
       description: The cryptographic algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the specified algorithm uses symmetric keys; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the specified algorithm uses symmetric keys; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.RsaSecurityKey.IsSymmetricAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -400,7 +400,7 @@ items:
       description: The size, in bits, of the key.
   overload: System.IdentityModel.Tokens.RsaSecurityKey.KeySize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -441,8 +441,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

@@ -44,7 +44,7 @@ items:
   - System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState(System.Web.UI.WebControls.WebParts.WebPartManager,System.Boolean)
   - System.Web.UI.WebControls.WebParts.PersonalizationProvider.ResetPersonalizationState(System.Web.UI.WebControls.WebParts.WebPartManager)
   - System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState(System.Web.UI.WebControls.WebParts.PersonalizationState)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -68,7 +68,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,7 +97,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: The property was set to a string with a length greater than 256 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,10 +121,10 @@ items:
     parameters:
     - id: scope
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be queried. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be queried. This value cannot be `null`.
     - id: query
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateQuery
-      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationStateQuery"></xref> containing a query. This value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationStateQuery"></xref> containing a query. This value can be `null`.
     - id: pageIndex
       type: System.Int32
       description: The location where the query starts.
@@ -141,11 +141,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n \\- or -  \n  \n The combination of <code>pageIndex</code> and <code>pageSize</code> results in a value greater than <xref href=\"System.Int32.MaxValue\"></xref>.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is greater than 256 characters when the value is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is an empty string after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is greater than 256 characters when the value is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n \\- or -  \n  \n The combination of <code>pageIndex</code> and <code>pageSize</code> results in a value greater than <xref href=\"System.Int32.MaxValue\"></xref>.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is non-`null` and is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is greater than 256 characters when the value is non-`null`.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is non-`null` and is an empty string after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is greater than 256 characters when the value is non-`null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The<code> scope</code> specified is not a valid value from the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,10 +169,10 @@ items:
     parameters:
     - id: scope
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be queried. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be queried. This value cannot be `null`.
     - id: query
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateQuery
-      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationStateQuery"></xref> containing a query. This value can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationStateQuery"></xref> containing a query. This value can be `null`.
     return:
       type: System.Int32
       description: The number of rows in the underlying data store that exist for the specified <code>scope</code> parameter.
@@ -180,11 +180,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is greater than 256 characters when the value is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is an empty string after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is greater than 256 characters when the value is non-<xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is non-`null` and is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch*> is greater than 256 characters when the value is non-`null`.  \n  \n \\- or -  \n  \n <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is non-`null` and is an empty string after trimming.  \n  \n \\- or -  \n  \n The length of <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch*> is greater than 256 characters when the value is non-`null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The<code> scope</code> specified is not a valid value from the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -216,11 +216,11 @@ items:
   exceptions:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "No connection string is configured for the provider.  \n  \n \\- or -  \n  \n The connection string for the provider cannot be found.  \n  \n \\- or -  \n  \n There are additional attributes on the provider's <xref uid=\"langword_csharp_&lt;add&gt;\" name=\"&lt;add&gt;\" href=\"\"></xref> element beyond those described in the configuration settings.  \n  \n \\- or -  \n  \n The length of the application name is greater than 256 characters.  \n  \n \\- or -  \n  \n The application domain hosting the application is running at a trust level below <xref href=\"System.Web.AspNetHostingPermissionLevel\"></xref> trust."
+    description: "No connection string is configured for the provider.  \n  \n \\- or -  \n  \n The connection string for the provider cannot be found.  \n  \n \\- or -  \n  \n There are additional attributes on the provider's `&lt;add&gt;` element beyond those described in the configuration settings.  \n  \n \\- or -  \n  \n The length of the application name is greater than 256 characters.  \n  \n \\- or -  \n  \n The application domain hosting the application is running at a trust level below <xref href=\"System.Web.AspNetHostingPermissionLevel\"></xref> trust."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>configSettings</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>configSettings</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,7 +259,7 @@ items:
       description: The returned data for the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> scope.
   overload: System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider.LoadPersonalizationBlobs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -292,7 +292,7 @@ items:
       description: The user name for personalization information in the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> scope to be used as the retrieval key.
   overload: System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider.ResetPersonalizationBlob*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
     parameters:
     - id: scope
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be queried. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be queried. This value cannot be `null`.
     - id: paths
       type: System.String[]
       description: The paths for personalization information in the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> scope to be deleted.
@@ -334,7 +334,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The<code> scope</code> specified is not a member of the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -358,7 +358,7 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: The path of the personalization data to be deleted. This value can be <xref uid="langword_csharp_null" name="null" href=""></xref> but cannot be an empty string ("").
+      description: The path of the personalization data to be deleted. This value can be `null` but cannot be an empty string ("").
     - id: userInactiveSinceDate
       type: System.DateTime
       description: The date indicating the last activity.
@@ -370,7 +370,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string.  \n  \n \\- or -  \n  \n The path is greater than 256 characters in length."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,7 +397,7 @@ items:
       description: The <xref href="System.Web.UI.WebControls.WebParts.WebPartManager"></xref> managing the personalization data.
     - id: path
       type: System.String
-      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be saved. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> indicating the personalization information to be saved. This value cannot be `null`.
     - id: userName
       type: System.String
       description: The user name for personalization information in the <xref href="System.Web.UI.WebControls.WebParts.PersonalizationScope"></xref> scope to be used as the key.
@@ -406,7 +406,7 @@ items:
       description: The byte array of data to be saved.
   overload: System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider.SavePersonalizationBlob*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -520,8 +520,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -546,8 +546,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

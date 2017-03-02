@@ -59,7 +59,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
     parameters: []
   overload: System.Timers.Timer.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,7 +117,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The value of the <code>interval</code> parameter is less than or equal to zero, or greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
   assemblies:
   - System
   namespace: System.Timers
-  summary: Gets or sets a Boolean indicating whether the <xref href="System.Timers.Timer"></xref> should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event only once (<xref uid="langword_csharp_false" name="false" href=""></xref>) or repeatedly (<xref uid="langword_csharp_true" name="true" href=""></xref>).
+  summary: Gets or sets a Boolean indicating whether the <xref href="System.Timers.Timer"></xref> should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event only once (`false`) or repeatedly (`true`).
   remarks: "If the <xref:System.Timers.Timer> is already enabled when the <xref:System.Timers.Timer.Start%2A> method is called, the interval is reset. If AutoReset is `false`, the <xref:System.Timers.Timer.Start%2A> method must be called in order to start the count again.  \n  \n Resetting the interval affects when the <xref:System.Timers.Timer.Elapsed> event is raised. For example, if you set the interval to 5 seconds and then set the <xref:System.Timers.Timer.Enabled%2A> property to `true`, the count starts at the time <xref:System.Timers.Timer.Enabled%2A> is set. If you reset the interval to 10 seconds when the count is 3 seconds, the <xref:System.Timers.Timer.Elapsed> event is raised for the first time 13 seconds after the <xref:System.Timers.Timer.Enabled%2A> property was set to `true`."
   example:
   - "The following example creates a <xref:System.Timers.Timer> whose <xref:System.Timers.Timer.Elapsed> event fires after 1.5 seconds. Its event handler then displays \"Hello World!\" on the console.  \n  \n [!code-vb[Classic Timer.Timer1 Example#1](~/add/codesnippet/visualbasic/p-system.timers.timer.au_1.vb)]\n [!code-cs[Classic Timer.Timer1 Example#1](~/add/codesnippet/csharp/p-system.timers.timer.au_1.cs)]\n [!code-cpp[Classic Timer.Timer1 Example#1](~/add/codesnippet/cpp/p-system.timers.timer.au_1.cpp)]"
@@ -142,10 +142,10 @@ items:
     content: public bool AutoReset { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Timers.Timer"></xref> should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event each time the interval elapses; <xref uid="langword_csharp_false" name="false" href=""></xref> if it should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event only once, after the first time the interval elapses. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the <xref href="System.Timers.Timer"></xref> should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event each time the interval elapses; `false` if it should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event only once, after the first time the interval elapses. The default is `true`.'
   overload: System.Timers.Timer.AutoReset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,7 +169,7 @@ items:
     parameters: []
   overload: System.Timers.Timer.BeginInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -193,7 +193,7 @@ items:
     parameters: []
   overload: System.Timers.Timer.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -216,10 +216,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Timers.Timer.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -246,7 +246,7 @@ items:
       type: System.Timers.ElapsedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -271,7 +271,7 @@ items:
     content: public bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Timers.Timer"></xref> should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Timers.Timer"></xref> should raise the <xref href="System.Timers.Timer.Elapsed"></xref> event; otherwise, `false`. The default is `false`.'
   overload: System.Timers.Timer.Enabled*
   exceptions:
   - type: System.ObjectDisposedException
@@ -280,7 +280,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <xref:System.Timers.Timer.Interval*> property was set to a value greater than <xref href="System.Int32.MaxValue"></xref> before the timer was enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,7 +304,7 @@ items:
     parameters: []
   overload: System.Timers.Timer.EndInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -335,7 +335,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The interval is less than or equal to zero.  \n  \n -or-  \n  \n The interval is greater than <xref href=\"System.Int32.MaxValue\"></xref>, and the timer is currently enabled. (If the timer is not currently enabled, no exception is thrown until it becomes enabled.)"
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -361,7 +361,7 @@ items:
       description: An <xref href="System.ComponentModel.ISite"></xref> interface representing the site that binds the <xref href="System.Timers.Timer"></xref> object to its container.
   overload: System.Timers.Timer.Site*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -378,7 +378,7 @@ items:
   assemblies:
   - System
   namespace: System.Timers
-  summary: Starts raising the <xref href="System.Timers.Timer.Elapsed"></xref> event by setting <xref:System.Timers.Timer.Enabled*> to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Starts raising the <xref href="System.Timers.Timer.Elapsed"></xref> event by setting <xref:System.Timers.Timer.Enabled*> to `true`.
   remarks: "If Start is called and <xref:System.Timers.Timer.AutoReset%2A> is set to `false`, the <xref:System.Timers.Timer> raises the <xref:System.Timers.Timer.Elapsed> event only once, the first time the interval elapses. If Start is called and <xref:System.Timers.Timer.AutoReset%2A> is `true`, the <xref:System.Timers.Timer> raises the <xref:System.Timers.Timer.Elapsed> event the first time the interval elapses and continues to raise the event on the specified interval.  \n  \n You can also start timing by setting <xref:System.Timers.Timer.Enabled%2A> to `true`.  \n  \n> [!NOTE]\n>  If <xref:System.Timers.Timer.AutoReset%2A> is `false`, the Start method must be called in order to start the count again.  \n  \n A call to the Start method when the timer is enabled has no effect."
   syntax:
     content: public void Start ();
@@ -388,7 +388,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <xref href="System.Timers.Timer"></xref> is created with an interval equal to or greater than <xref href="System.Int32.MaxValue"></xref> + 1, or set to an interval less than zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -405,7 +405,7 @@ items:
   assemblies:
   - System
   namespace: System.Timers
-  summary: Stops raising the <xref href="System.Timers.Timer.Elapsed"></xref> event by setting <xref:System.Timers.Timer.Enabled*> to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Stops raising the <xref href="System.Timers.Timer.Elapsed"></xref> event by setting <xref:System.Timers.Timer.Enabled*> to `false`.
   remarks: "You can also stop timing by setting <xref:System.Timers.Timer.Enabled%2A> to `false`.  \n  \n> [!NOTE]\n>  The signal to raise the <xref:System.Timers.Timer.Elapsed> event is always queued for execution on a <xref:System.Threading.ThreadPool> thread, so the event-handling method might run on one thread at the same time that a call to the Stop method runs on another thread. This might result in the <xref:System.Timers.Timer.Elapsed> event being raised after the Stop method is called. The code example in the next section shows one way to work around this race condition."
   example:
   - "The following example instantiates a `System.Timers.Timer` object that fires its <xref:System.Timers.Timer.Elapsed?displayProperty=fullName> event every two seconds (2,000 milliseconds), sets up an event handler for the  event, and starts the timer. The event handler displays the value of the <xref:System.Timers.ElapsedEventArgs.SignalTime%2A?displayProperty=fullName> property each time it is raised. When the user presses the Enter key, the application calls the  Stop method before terminating the application.  \n  \n [!code-cs[System.Timers.Timer#2](~/add/codesnippet/csharp/m-system.timers.timer.stop_1.cs)]\n [!code-vb[System.Timers.Timer#2](~/add/codesnippet/visualbasic/m-system.timers.timer.stop_1.vb)]  \n  \n The following code example shows one way to prevent the thread that calls the Stop method from continuing until a currently executing <xref:System.Timers.Timer.Elapsed> event ends, and also to prevent two <xref:System.Timers.Timer.Elapsed> events from executing the event handler at the same time (often referred to as reentrancy).  \n  \n The example executes 100 test runs. Each time the test is run, the timer is started with an interval of 150 milliseconds. The event handler uses the <xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName> method to simulate a task that randomly varies in length from 50 to 200 milliseconds. The test method also starts a control thread that waits for a second and then stops the timer. If an event is being handled when the control thread stops the timer, the control thread must wait until the event is finished before proceeding.  \n  \n The <xref:System.Threading.Interlocked.CompareExchange%28System.Int32%40%2CSystem.Int32%2CSystem.Int32%29?displayProperty=fullName> method overload is used to avoid reentrancy and to prevent the control thread from continuing until an executing event ends. The event handler uses the <xref:System.Threading.Interlocked.CompareExchange%28System.Int32%40%2CSystem.Int32%2CSystem.Int32%29> method to set a control variable to 1, but only if the value is currently zero. This is an atomic operation. If the return value is zero, the control variable has been set to 1 and the event handler proceeds. If the return value is non-zero, the event is simply discarded to avoid reentrancy. (If it were necessary to execute every event, the <xref:System.Threading.Monitor> class would be a better way to synchronize the events.) When the event handler ends, it sets the control variable back to zero. The example records the total number of events that executed, that were discarded because of reentrancy, and that occurred after the Stop method was called.  \n  \n The control thread uses the <xref:System.Threading.Interlocked.CompareExchange%28System.Int32%40%2CSystem.Int32%2CSystem.Int32%29> method to set the control variable to -1 (minus one), but only if the value is currently zero. If the atomic operation returns non-zero, an event is currently executing. The control thread waits and tries again. The example records the number of times the control thread had to wait for an event to finish.  \n  \n [!code-cs[Timer.Stop#1](~/add/codesnippet/csharp/m-system.timers.timer.stop_2.cs)]\n [!code-vb[Timer.Stop#1](~/add/codesnippet/visualbasic/m-system.timers.timer.stop_2.vb)]"
@@ -414,7 +414,7 @@ items:
     parameters: []
   overload: System.Timers.Timer.Stop*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -439,10 +439,10 @@ items:
     content: public System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get; set; }
     return:
       type: System.ComponentModel.ISynchronizeInvoke
-      description: The <xref href="System.ComponentModel.ISynchronizeInvoke"></xref> representing the object used to marshal the event-handler calls that are issued when an interval has elapsed. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.ComponentModel.ISynchronizeInvoke"></xref> representing the object used to marshal the event-handler calls that are issued when an interval has elapsed. The default is `null`.
   overload: System.Timers.Timer.SynchronizingObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -56,7 +56,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -80,7 +80,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,7 +107,7 @@ items:
       description: Specifies another instance to duplicate.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
       description: Specifies the simple name of the assembly.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -164,7 +164,7 @@ items:
       description: Specifies the version of the assembly.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -200,7 +200,7 @@ items:
       description: Specifies the culture of the assembly. A blank string indicates the invariant culture.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,10 +236,10 @@ items:
       description: Specifies the culture of the assembly. A blank string indicates the invariant culture.
     - id: processorArchitecture
       type: System.String
-      description: Specifies the processor architecture of the assembly. Valid values are <xref uid="langword_csharp_msil" name="msil" href=""></xref>, <xref uid="langword_csharp_x86" name="x86" href=""></xref>, <xref uid="langword_csharp_ia64" name="ia64" href=""></xref>, and <xref uid="langword_csharp_amd64" name="amd64" href=""></xref>.
+      description: Specifies the processor architecture of the assembly. Valid values are `msil`, `x86`, `ia64`, and `amd64`.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -275,13 +275,13 @@ items:
       description: Specifies the culture of the assembly. A blank string indicates the invariant culture.
     - id: processorArchitecture
       type: System.String
-      description: Specifies the processor architecture of the assembly. Valid values are <xref uid="langword_csharp_msil" name="msil" href=""></xref>, <xref uid="langword_csharp_x86" name="x86" href=""></xref>, <xref uid="langword_csharp_ia64" name="ia64" href=""></xref>, and <xref uid="langword_csharp_amd64" name="amd64" href=""></xref>.
+      description: Specifies the processor architecture of the assembly. Valid values are `msil`, `x86`, `ia64`, and `amd64`.
     - id: type
       type: System.String
-      description: Specifies the type attribute of the assembly. Valid values are <xref uid="langword_csharp_win32" name="win32" href=""></xref> or a blank string.
+      description: Specifies the type attribute of the assembly. Valid values are `win32` or a blank string.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,7 +307,7 @@ items:
       description: A string indicating the culture of the assembly. A blank string indicates the invariant culture.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.Culture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -337,7 +337,7 @@ items:
       description: The resulting assembly identity.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.FromAssemblyName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -367,7 +367,7 @@ items:
       description: The assembly identity of the specified file.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.FromFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,7 +397,7 @@ items:
       description: The assembly identity of the specified file.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.FromManagedAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -427,7 +427,7 @@ items:
       description: The assembly identity of the specified file.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.FromManifest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -457,7 +457,7 @@ items:
       description: The assembly identity of the specified file.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.FromNativeAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,7 +486,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.GetFullName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -504,15 +504,15 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
-  summary: Returns <xref uid="langword_csharp_True" name="True" href=""></xref> if this assembly is part of the .NET Framework.
+  summary: Returns `True` if this assembly is part of the .NET Framework.
   syntax:
     content: public bool IsFrameworkAssembly { get; }
     return:
       type: System.Boolean
-      description: A <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> value indicating whether this assembly is part of the .NET Framework. <xref uid="langword_csharp_True" name="True" href=""></xref> if this assembly is part of the .NET Framework; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: A `Boolean` value indicating whether this assembly is part of the .NET Framework. `True` if this assembly is part of the .NET Framework; otherwise `False`.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.IsFrameworkAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -535,10 +535,10 @@ items:
     content: public bool IsNeutralPlatform { get; }
     return:
       type: System.Boolean
-      description: A <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> value indicating whether the assembly identity represents a neutral platform assembly. <xref uid="langword_csharp_True" name="True" href=""></xref> if the assembly identity is a neutral platform assembly; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: A `Boolean` value indicating whether the assembly identity represents a neutral platform assembly. `True` if the assembly identity is a neutral platform assembly; otherwise `False`.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.IsNeutralPlatform*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -561,10 +561,10 @@ items:
     content: public bool IsStrongName { get; }
     return:
       type: System.Boolean
-      description: A <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> value indicating whether the assembly identity is a strong name. <xref uid="langword_csharp_True" name="True" href=""></xref> if the assembly identity is a strong name; otherwise <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: A `Boolean` value indicating whether the assembly identity is a strong name. `True` if the assembly identity is a strong name; otherwise `False`.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.IsStrongName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,7 +590,7 @@ items:
       description: A string indicating the simple name of the assembly.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -617,7 +617,7 @@ items:
       description: A string representing the processor architecture of the assembly.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.ProcessorArchitecture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -643,7 +643,7 @@ items:
       description: A string indicating the public key token of the assembly.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.PublicKeyToken*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -670,7 +670,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -697,7 +697,7 @@ items:
       description: A string indicating the type attribute of the assembly.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.Type*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -723,7 +723,7 @@ items:
       description: A string indicating the assembly version.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.Version*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -749,7 +749,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.XmlCulture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -775,7 +775,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.XmlName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -801,7 +801,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.XmlProcessorArchitecture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -827,7 +827,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.XmlPublicKeyToken*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -853,7 +853,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.XmlType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -879,7 +879,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.AssemblyIdentity.XmlVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

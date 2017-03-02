@@ -35,7 +35,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
     parameters: []
   overload: System.Xml.Schema.XmlSchemaDatatype.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,11 +94,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Object"></xref> or <xref href="System.Type"></xref> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref href="System.Object"></xref> or <xref href="System.Type"></xref> parameter is `null`.
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type represented by the <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref> does not support a conversion from type of the value specified to the type specified.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -136,11 +136,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Object"></xref> or <xref href="System.Type"></xref> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref href="System.Object"></xref> or <xref href="System.Type"></xref> parameter is `null`.
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type represented by the <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref> does not support a conversion from type of the value specified to the type specified.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -157,7 +157,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: The IsDerivedFrom method always returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: The IsDerivedFrom method always returns `false`.
   syntax:
     content: public virtual bool IsDerivedFrom (System.Xml.Schema.XmlSchemaDatatype datatype);
     parameters:
@@ -166,10 +166,10 @@ items:
       description: The <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref>.
     return:
       type: System.Boolean
-      description: Always returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Always returns `false`.
   overload: System.Xml.Schema.XmlSchemaDatatype.IsDerivedFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,7 +186,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: When overridden in a derived class, validates the <xref uid="langword_csharp_string" name="string" href=""></xref> specified against a built-in or user-defined simple type.
+  summary: When overridden in a derived class, validates the `string` specified against a built-in or user-defined simple type.
   remarks: "The ParseValue method validates the `string` specified against a built-in or user-defined simple type. For example, if this <xref:System.Xml.Schema.XmlSchemaDatatype> represents the type xs:date, then an instance of <xref:System.DateTime> is returned.  \n  \n The following are the steps performed during the ParseValue method's validation process.  \n  \n1.  Convert the value specified as a `string` to its corresponding Common Language Runtime (CLR) type.  \n  \n2.  Verify that the value does not violate any facets defined for the simple type.  \n  \n The converted value is then returned as an <xref:System.Object> and can be cast safely to the type returned by the <xref:System.Xml.Schema.XmlSchemaDatatype.ValueType%2A> property.  \n  \n When the <xref:System.Xml.Schema.XmlSchemaDatatype> object represents a list type, the input `string` value is converted to a list of one or more objects. When the <xref:System.Xml.Schema.XmlSchemaDatatype> object represents a list type, an attempt is made to parse the input value as a member type of the union. If the parse attempt fails, then the conversion is attempted with the next member of the union until the parse is successful or there are no other member types to parse. If the parse is unsuccessful, an exception is thrown."
   example:
   - "The following example retrieves the `LotteryNumber` simple type from the example.xsd file as an <xref:System.Xml.Schema.XmlSchemaSimpleType> and then validates the `string` value of `5` using the ParseValue method.  \n  \n [!code-cpp[Classic Webdata XmlSchemaDatatype Example#1](~/add/codesnippet/cpp/b4af643f-b5cd-41ee-8b57-_1.cpp)]\n [!code-cs[Classic Webdata XmlSchemaDatatype Example#1](~/add/codesnippet/csharp/b4af643f-b5cd-41ee-8b57-_1.cs)]\n [!code-vb[Classic Webdata XmlSchemaDatatype Example#1](~/add/codesnippet/visualbasic/b4af643f-b5cd-41ee-8b57-_1.vb)]  \n  \n The following XML file is used for the preceding code example.  \n  \n [!code-xml[Classic Webdata XmlSchemaDatatype Example#2](~/add/codesnippet/xml/b4af643f-b5cd-41ee-8b57-_2.xsd)]"
@@ -195,13 +195,13 @@ items:
     parameters:
     - id: s
       type: System.String
-      description: The <xref uid="langword_csharp_string" name="string" href=""></xref> to validate against the simple type.
+      description: The `string` to validate against the simple type.
     - id: nameTable
       type: System.Xml.XmlNameTable
-      description: The <xref href="System.Xml.XmlNameTable"></xref> to use for atomization while parsing the <xref uid="langword_csharp_string" name="string" href=""></xref> if this <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref> object represents the xs:NCName type.
+      description: The <xref href="System.Xml.XmlNameTable"></xref> to use for atomization while parsing the `string` if this <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref> object represents the xs:NCName type.
     - id: nsmgr
       type: System.Xml.IXmlNamespaceResolver
-      description: The <xref href="System.Xml.IXmlNamespaceResolver"></xref> object to use while parsing the <xref uid="langword_csharp_string" name="string" href=""></xref> if this <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref> object represents the xs:QName type.
+      description: The <xref href="System.Xml.IXmlNamespaceResolver"></xref> object to use while parsing the `string` if this <xref href="System.Xml.Schema.XmlSchemaDatatype"></xref> object represents the xs:QName type.
     return:
       type: System.Object
       description: An <xref href="System.Object"></xref> that can be cast safely to the type returned by the <xref:System.Xml.Schema.XmlSchemaDatatype.ValueType*> property.
@@ -212,8 +212,8 @@ items:
     description: The input value is not a valid instance of this W3C XML Schema type.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value to parse cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value to parse cannot be `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -230,16 +230,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: When overridden in a derived class, gets the type for the <xref uid="langword_csharp_string" name="string" href=""></xref> as specified in the World Wide Web Consortium (W3C) XML 1.0 specification.
+  summary: When overridden in a derived class, gets the type for the `string` as specified in the World Wide Web Consortium (W3C) XML 1.0 specification.
   remarks: "Allows the `string` to be read as a particular XML type, for example, a CDATA section type.  \n  \n The following table shows the token types.  \n  \n|XmlTokenizedType|Description|  \n|----------------------|-----------------|  \n|`CDATA`|CDATA type|  \n|`ID`|ID type|  \n|`IDREF`|IDREF type|  \n|`IDREFS`|IDREFS type|  \n|`ENTITY`|ENTITY type|  \n|`ENTITIES`|ENTITIES type|  \n|`NMTOKEN`|NMTOKEN type|  \n|`NMTOKENS`|NMTOKENS type|  \n|`NOTATION`|NOTATION type|  \n|`ENUMERATION`|ENUMERATION type|  \n|`QName`|QName type|  \n|`NCName`|NCName type|  \n|`None`|No type|"
   syntax:
     content: public abstract System.Xml.XmlTokenizedType TokenizedType { get; }
     return:
       type: System.Xml.XmlTokenizedType
-      description: An <xref href="System.Xml.XmlTokenizedType"></xref> value for the <xref uid="langword_csharp_string" name="string" href=""></xref>.
+      description: An <xref href="System.Xml.XmlTokenizedType"></xref> value for the `string`.
   overload: System.Xml.Schema.XmlSchemaDatatype.TokenizedType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -267,7 +267,7 @@ items:
       description: The <xref href="System.Xml.Schema.XmlTypeCode"></xref> value for the simple type.
   overload: System.Xml.Schema.XmlSchemaDatatype.TypeCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,7 +295,7 @@ items:
       description: The Common Language Runtime (CLR) type of the item.
   overload: System.Xml.Schema.XmlSchemaDatatype.ValueType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -320,7 +320,7 @@ items:
       description: The <xref href="System.Xml.Schema.XmlSchemaDatatypeVariety"></xref> value for the simple type.
   overload: System.Xml.Schema.XmlSchemaDatatype.Variety*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -86,7 +86,7 @@ items:
   - System.Windows.Forms.DataGridViewElement.RaiseDataError(System.Windows.Forms.DataGridViewDataErrorEventArgs)
   - System.Windows.Forms.DataGridViewElement.RaiseMouseWheel(System.Windows.Forms.MouseEventArgs)
   - System.Windows.Forms.DataGridViewElement.State
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,7 +110,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,10 +134,10 @@ items:
     parameters:
     - id: threeState
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to display check boxes with three states; <xref uid="langword_csharp_false" name="false" href=""></xref> to display check boxes with two states.
+      description: '`true` to display check boxes with three states; `false` to display check boxes with two states.'
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -168,7 +168,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The property is set to a value that is not of type <xref href="System.Windows.Forms.DataGridViewCheckBoxCell"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -196,7 +196,7 @@ items:
       description: The <xref href="System.Windows.Forms.DataGridViewCellStyle"></xref> to be applied as the default style.
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.DefaultCellStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,7 +213,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Gets or sets the underlying value corresponding to a cell value of <xref uid="langword_csharp_false" name="false" href=""></xref>, which appears as an unchecked box.
+  summary: Gets or sets the underlying value corresponding to a cell value of `false`, which appears as an unchecked box.
   remarks: "The FalseValue, <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.TrueValue%2A>, and <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.IndeterminateValue%2A> properties determine the associated values of these states as they occur in the underlying data source.  \n  \n Getting or setting this property gets or sets the <xref:System.Windows.Forms.DataGridViewCheckBoxCell.FalseValue%2A> property of the cell object returned by the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate%2A> property. Setting this property also sets the <xref:System.Windows.Forms.DataGridViewCheckBoxCell.FalseValue%2A> property of every cell in the column and refreshes the column display. To override the specified value for individual cells, set the cell values after you set the column value."
   example:
   - "The following code example uses a <xref:System.Windows.Forms.DataGridViewCheckBoxColumn> to track the status of office lighting. The FalseValue property associates \"turnedOff\" with `false`, the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.TrueValue%2A> property associates \"turnedOn\" with `true`, and the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.IndeterminateValue%2A> property associates \"unknown\" to indeterminate.  \n  \n [!code-cpp[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/cpp/p-system.windows.forms.d_273_1.cpp)]\n [!code-vb[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/visualbasic/p-system.windows.forms.d_273_1.vb)]\n [!code-cs[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/csharp/p-system.windows.forms.d_273_1.cs)]"
@@ -221,13 +221,13 @@ items:
     content: public object FalseValue { get; set; }
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> representing a value that the cells in this column will treat as a <xref uid="langword_csharp_false" name="false" href=""></xref> value. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Object"></xref> representing a value that the cells in this column will treat as a `false` value. The default is `null`.
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.FalseValue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,8 +257,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -275,7 +275,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Gets or sets the underlying value corresponding to an indeterminate or <xref uid="langword_csharp_null" name="null" href=""></xref> cell value, which appears as a disabled checkbox.
+  summary: Gets or sets the underlying value corresponding to an indeterminate or `null` cell value, which appears as a disabled checkbox.
   remarks: "The <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.FalseValue%2A>, <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.TrueValue%2A>, and IndeterminateValue properties determine the associated values of these states as they occur in the underlying data source.  \n  \n Getting or setting this property gets or sets the <xref:System.Windows.Forms.DataGridViewCheckBoxCell.IndeterminateValue%2A> property of the cell object returned by the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate%2A> property. Setting this property also sets the <xref:System.Windows.Forms.DataGridViewCheckBoxCell.IndeterminateValue%2A> property of every cell in the column and refreshes the column display. To override the specified value for individual cells, set the cell values after you set the column value."
   example:
   - "The following code example uses a <xref:System.Windows.Forms.DataGridViewCheckBoxColumn> to track the status of office lighting. The <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.FalseValue%2A> property associates \"turnedOff\" with `false`, the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.TrueValue%2A> property associates \"turnedOn\" with `true`, and the IndeterminateValue property associates \"unknown\" to indeterminate.  \n  \n [!code-cpp[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/cpp/p-system.windows.forms.d_336_1.cpp)]\n [!code-vb[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/visualbasic/p-system.windows.forms.d_336_1.vb)]\n [!code-cs[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/csharp/p-system.windows.forms.d_336_1.cs)]"
@@ -283,13 +283,13 @@ items:
     content: public object IndeterminateValue { get; set; }
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> representing a value that the cells in this column will treat as an indeterminate value. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Object"></xref> representing a value that the cells in this column will treat as an indeterminate value. The default is `null`.
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.IndeterminateValue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -314,13 +314,13 @@ items:
     content: public bool ThreeState { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the hosted <xref href="System.Windows.Forms.DataGridViewCheckBoxCell"></xref> objects are able to have a third, indeterminate, state; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the hosted <xref href="System.Windows.Forms.DataGridViewCheckBoxCell"></xref> objects are able to have a third, indeterminate, state; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.ThreeState*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,7 +346,7 @@ items:
       description: A <xref href="System.String"></xref> that describes the column.
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -363,7 +363,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: Gets or sets the underlying value corresponding to a cell value of <xref uid="langword_csharp_true" name="true" href=""></xref>, which appears as a checked box.
+  summary: Gets or sets the underlying value corresponding to a cell value of `true`, which appears as a checked box.
   remarks: "The <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.FalseValue%2A>, TrueValue, and <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.IndeterminateValue%2A> properties determine the associated values of these states as they occur in the underlying data source.  \n  \n Getting or setting this property gets or sets the <xref:System.Windows.Forms.DataGridViewCheckBoxCell.TrueValue%2A> property of the cell object returned by the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate%2A> property. Setting this property also sets the <xref:System.Windows.Forms.DataGridViewCheckBoxCell.TrueValue%2A> property of every cell in the column and refreshes the column display. To override the specified value for individual cells, set the cell values after you set the column value."
   example:
   - "The following code example uses a <xref:System.Windows.Forms.DataGridViewCheckBoxColumn> to track the status of office lighting. The <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.FalseValue%2A> property associates \"turnedOff\" with `false`, the TrueValue property associates \"turnedOn\" with `true`, and the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.IndeterminateValue%2A> property associates \"unknown\" to indeterminate.  \n  \n [!code-cpp[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/cpp/p-system.windows.forms.d_115_1.cpp)]\n [!code-vb[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/visualbasic/p-system.windows.forms.d_115_1.vb)]\n [!code-cs[System.Windows.Forms.DataGridViewTrinaryVirtualCheckBox#0](~/add/codesnippet/csharp/p-system.windows.forms.d_115_1.cs)]"
@@ -371,13 +371,13 @@ items:
     content: public object TrueValue { get; set; }
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> representing a value that the cell will treat as a <xref uid="langword_csharp_true" name="true" href=""></xref> value. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Object"></xref> representing a value that the cell will treat as a `true` value. The default is `null`.
   overload: System.Windows.Forms.DataGridViewCheckBoxColumn.TrueValue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The value of the <xref:System.Windows.Forms.DataGridViewCheckBoxColumn.CellTemplate*> property is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

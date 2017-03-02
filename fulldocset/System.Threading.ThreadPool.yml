@@ -45,7 +45,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -71,13 +71,13 @@ items:
       description: An <xref href="System.IntPtr"></xref> that holds the handle. The handle must have been opened for overlapped I/O on the unmanaged side.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle is bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the handle is bound; otherwise, `false`.'
   overload: System.Threading.ThreadPool.BindHandle*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -104,13 +104,13 @@ items:
       description: A <xref href="System.Runtime.InteropServices.SafeHandle"></xref> that holds the operating system handle. The handle must have been opened for overlapped I/O on the unmanaged side.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle is bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the handle is bound; otherwise, `false`.'
   overload: System.Threading.ThreadPool.BindHandle*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>osHandle</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>osHandle</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: The number of available asynchronous I/O threads.
   overload: System.Threading.ThreadPool.GetAvailableThreads*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,7 +174,7 @@ items:
       description: The maximum number of asynchronous I/O threads in the thread pool.
   overload: System.Threading.ThreadPool.GetMaxThreads*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,7 +206,7 @@ items:
       description: When this method returns, contains the minimum number of asynchronous I/O threads that the thread pool creates on demand.
   overload: System.Threading.ThreadPool.GetMinThreads*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,16 +235,16 @@ items:
       description: A <xref href="System.Threading.WaitCallback"></xref> that represents the method to be executed.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is successfully queued; <xref href="System.NotSupportedException"></xref> is thrown if the work item could not be queued.
+      description: '`true` if the method is successfully queued; <xref href="System.NotSupportedException"></xref> is thrown if the work item could not be queued.'
   overload: System.Threading.ThreadPool.QueueUserWorkItem*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>callBack</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>callBack</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The common language runtime (CLR) is hosted, and the host does not support this action.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: An object containing data to be used by the method.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is successfully queued; <xref href="System.NotSupportedException"></xref> is thrown if the work item could not be queued.
+      description: '`true` if the method is successfully queued; <xref href="System.NotSupportedException"></xref> is thrown if the work item could not be queued.'
   overload: System.Threading.ThreadPool.QueueUserWorkItem*
   exceptions:
   - type: System.NotSupportedException
@@ -284,8 +284,8 @@ items:
     description: The common language runtime (CLR) is hosted, and the host does not support this action.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>callBack</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>callBack</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -321,7 +321,7 @@ items:
       description: The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object's state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> that encapsulates the native handle.
@@ -330,7 +330,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>millisecondsTimeOutInterval</code> parameter is less than -1.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
       description: The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object's state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> that encapsulates the native handle.
@@ -375,7 +375,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>millisecondsTimeOutInterval</code> parameter is less than -1.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,7 +411,7 @@ items:
       description: The time-out represented by a <xref href="System.TimeSpan"></xref>. If `timeout` is 0 (zero), the function tests the object's state and returns immediately. If `timeout` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> that encapsulates the native handle.
@@ -423,7 +423,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <code>timeout</code> parameter is greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -461,7 +461,7 @@ items:
       description: The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object's state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> that can be used to cancel the registered wait operation.
@@ -470,7 +470,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>millisecondsTimeOutInterval</code> parameter is less than -1.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -500,10 +500,10 @@ items:
       description: The maximum number of asynchronous I/O threads in the thread pool.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the change is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the change is successful; otherwise, `false`.'
   overload: System.Threading.ThreadPool.SetMaxThreads*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -535,10 +535,10 @@ items:
       description: The minimum number of asynchronous I/O threads that the thread pool creates on demand.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the change is successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the change is successful; otherwise, `false`.'
   overload: System.Threading.ThreadPool.SetMinThreads*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -565,10 +565,10 @@ items:
       description: The <xref href="System.Threading.NativeOverlapped"></xref> structure to queue.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation was successfully queued to an I/O completion port; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the operation was successfully queued to an I/O completion port; otherwise, `false`.'
   overload: System.Threading.ThreadPool.UnsafeQueueNativeOverlapped*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -598,7 +598,7 @@ items:
       description: The object that is passed to the delegate when serviced from the thread pool.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method succeeds; <xref href="System.OutOfMemoryException"></xref> is thrown if the work item could not be queued.
+      description: '`true` if the method succeeds; <xref href="System.OutOfMemoryException"></xref> is thrown if the work item could not be queued.'
   overload: System.Threading.ThreadPool.UnsafeQueueUserWorkItem*
   exceptions:
   - type: System.Security.SecurityException
@@ -612,8 +612,8 @@ items:
     description: The work item could not be queued.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>callBack</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>callBack</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -649,7 +649,7 @@ items:
       description: The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object's state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> object that can be used to cancel the registered wait operation.
@@ -661,7 +661,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -697,7 +697,7 @@ items:
       description: The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object's state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> object that can be used to cancel the registered wait operation.
@@ -709,7 +709,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -745,7 +745,7 @@ items:
       description: The time-out represented by a <xref href="System.TimeSpan"></xref>. If `timeout` is 0 (zero), the function tests the object's state and returns immediately. If `timeout` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> object that can be used to cancel the registered wait operation.
@@ -760,7 +760,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -796,7 +796,7 @@ items:
       description: The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object's state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function's time-out interval never elapses.
     - id: executeOnlyOnce
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.
+      description: '`true` to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; `false` to indicate that the timer is reset every time the wait operation completes until the wait is unregistered.'
     return:
       type: System.Threading.RegisteredWaitHandle
       description: The <xref href="System.Threading.RegisteredWaitHandle"></xref> object that can be used to cancel the registered wait operation.
@@ -805,7 +805,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1000,6 +1000,20 @@ references:
   name: UnsafeQueueNativeOverlapped(NativeOverlapped*)
   nameWithType: ThreadPool.UnsafeQueueNativeOverlapped(NativeOverlapped*)
   fullName: System.Threading.ThreadPool.UnsafeQueueNativeOverlapped(NativeOverlapped*)
+- uid: System.Threading.NativeOverlapped*
+  parent: System.Threading
+  isExternal: false
+  name: NativeOverlapped*
+  nameWithType: NativeOverlapped*
+  fullName: System.Threading.NativeOverlapped*
+  spec.csharp:
+  - uid: System.Threading.NativeOverlapped
+    name: NativeOverlapped
+    nameWithType: NativeOverlapped
+    fullName: NativeOverlapped
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.Threading.ThreadPool.UnsafeQueueUserWorkItem(System.Threading.WaitCallback,System.Object)
   parent: System.Threading.ThreadPool
   isExternal: false

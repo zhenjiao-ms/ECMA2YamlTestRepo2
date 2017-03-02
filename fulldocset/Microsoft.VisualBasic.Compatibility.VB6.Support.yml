@@ -102,7 +102,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,7 +119,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Duplicates Visual Basic 6.0 functionality of assigning an <xref uid="langword_csharp_Array" name="Array" href=""></xref> to a <xref uid="langword_csharp_Variant" name="Variant" href=""></xref>.
+  summary: Duplicates Visual Basic 6.0 functionality of assigning an `Array` to a `Variant`.
   remarks: "The Visual Basic 6.0 `Variant` data type is no longer supported in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]. The `CopyArray` function is used by the upgrade tools to copy an `Array` to or from a `Variant` array.  \n  \n To copy an array in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], use the <xref:System.Array.Clone%2A>, <xref:System.Array.Copy%2A> or <xref:System.Array.CopyTo%2A> methods of the <xref:System.Array> class.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static Array CopyArray (Array SourceArray);
@@ -132,7 +132,7 @@ items:
       description: The array to copy.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.CopyArray*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -149,7 +149,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Returns an OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object that corresponds to the specified <xref href="System.Windows.Forms.Cursor"></xref>.
+  summary: Returns an OLE `IPicture` object that corresponds to the specified <xref href="System.Windows.Forms.Cursor"></xref>.
   remarks: "In Visual Basic 6.0, the `MouseIcon` property of a form or control could be used to load a custom `MousePointer` (cursor). In some cases, the image for the `MouseIcon` was stored as a `stdOle``IPicture`; this function is used by the upgrade tool to convert a <xref:System.Windows.Forms.Cursor> to a `stdOle``IPicture`.  \n  \n To convert a <xref:System.Windows.Forms.Cursor> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], use the <xref:System.Windows.Forms.AxHost.GetIPictureFromCursor%2A> method of the <xref:System.Windows.Forms.AxHost> class.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static object CursorToIPicture (System.Windows.Forms.Cursor curs);
@@ -159,10 +159,10 @@ items:
       description: The <xref href="System.Windows.Forms.Cursor"></xref> to convert.
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> that represents the OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object.
+      description: An <xref href="System.Object"></xref> that represents the OLE `IPicture` object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.CursorToIPicture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,10 +192,10 @@ items:
       description: A <xref href="System.Boolean"></xref> to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the two expressions are equal; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the two expressions are equal; otherwise `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Eqv*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -228,7 +228,7 @@ items:
       description: A <xref href="System.Byte"></xref> that contains the result of the bitwise comparison.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Eqv*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -261,7 +261,7 @@ items:
       description: A <xref href="System.Int16"></xref> that contains the result of the comparison.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Eqv*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,7 +294,7 @@ items:
       description: A <xref href="System.Int32"></xref> that contains the result of the comparison.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Eqv*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -327,7 +327,7 @@ items:
       description: A <xref href="System.Int64"></xref> that contains the result of the comparison.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Eqv*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -360,7 +360,7 @@ items:
       description: A <xref href="System.Object"></xref> that contains the result of the comparison.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Eqv*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -387,13 +387,13 @@ items:
       description: A <xref href="System.Drawing.Font"></xref>.
     - id: Bold
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise `false`.'
     return:
       type: System.Drawing.Font
       description: A <xref href="System.Drawing.Font"></xref> with the new style applied.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeBold*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -426,7 +426,7 @@ items:
       description: A <xref href="System.Drawing.Font"></xref> for the specified GDI character set.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeGdiCharSet*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -453,13 +453,13 @@ items:
       description: A <xref href="System.Drawing.Font"></xref>.
     - id: Italic
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise `false`.'
     return:
       type: System.Drawing.Font
       description: A <xref href="System.Drawing.Font"></xref> with the new style applied.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeItalic*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -476,7 +476,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Returns a new <xref href="System.Drawing.Font"></xref> for a given Visual Basic 6.0 <xref uid="langword_csharp_Font" name="Font" href=""></xref>.
+  summary: Returns a new <xref href="System.Drawing.Font"></xref> for a given Visual Basic 6.0 `Font`.
   remarks: "In Visual Basic 6.0, the name of a font was specified by the `Font` property; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], <xref:System.Drawing.Font.Name%2A> is a property of the <xref:System.Drawing.Font> object. This function is used by the upgrade tools to convert a Visual Basic 6.0 `Font` to a <xref:System.Drawing.Font>.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static System.Drawing.Font FontChangeName (System.Drawing.Font CurrentFont, string Name);
@@ -486,13 +486,13 @@ items:
       description: A <xref href="System.Drawing.Font"></xref>.
     - id: Name
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_Font" name="Font" href=""></xref> property.
+      description: A `String` that represents the Visual Basic 6.0 `Font` property.
     return:
       type: System.Drawing.Font
-      description: A <xref href="System.Drawing.Font"></xref> that matches the Visual Basic 6.0 <xref uid="langword_csharp_Font" name="Font" href=""></xref>.
+      description: A <xref href="System.Drawing.Font"></xref> that matches the Visual Basic 6.0 `Font`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,13 +519,13 @@ items:
       description: A <xref href="System.Drawing.Font"></xref>.
     - id: Size
       type: System.Single
-      description: A <xref uid="langword_csharp_Single" name="Single" href=""></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_FontSize" name="FontSize" href=""></xref> property.
+      description: A `Single` that represents the Visual Basic 6.0 `FontSize` property.
     return:
       type: System.Drawing.Font
-      description: A <xref href="System.Drawing.Font"></xref> that matches the Visual Basic 6.0 <xref uid="langword_csharp_FontSize" name="FontSize" href=""></xref>.
+      description: A <xref href="System.Drawing.Font"></xref> that matches the Visual Basic 6.0 `FontSize`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -552,13 +552,13 @@ items:
       description: A <xref href="System.Drawing.Font"></xref>.
     - id: Strikeout
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise `false`.'
     return:
       type: System.Drawing.Font
       description: A <xref href="System.Drawing.Font"></xref> with the new style applied.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeStrikeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -585,13 +585,13 @@ items:
       description: A <xref href="System.Drawing.Font"></xref>.
     - id: Underline
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to set the <xref href="System.Drawing.FontStyle"></xref> style bit; otherwise `false`.'
     return:
       type: System.Drawing.Font
       description: A <xref href="System.Drawing.Font"></xref> with the new style applied.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontChangeUnderline*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -608,7 +608,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a <xref href="System.Drawing.Font"></xref> to a Visual Basic 6.0 <xref uid="langword_csharp_stdFont" name="stdFont" href=""></xref> object.
+  summary: Converts a <xref href="System.Drawing.Font"></xref> to a Visual Basic 6.0 `stdFont` object.
   remarks: "The Visual Basic 6.0 `stdFont` object was COM-based and has no equivalent in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]. This function is used by the upgrade tools to convert between a <xref:System.Drawing.Font> and a `stdFont` during project upgrade.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static object FontToIFont (System.Drawing.Font fnt);
@@ -618,10 +618,10 @@ items:
       description: The <xref href="System.Drawing.Font"></xref> to convert.
     return:
       type: System.Object
-      description: A <xref uid="langword_csharp_stdFont" name="stdFont" href=""></xref> object.
+      description: A `stdFont` object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FontToIFont*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -638,7 +638,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts the Visual Basic 6.0 <xref uid="langword_csharp_Format" name="Format" href=""></xref> function to be compatible with [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)].
+  summary: Converts the Visual Basic 6.0 `Format` function to be compatible with [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)].
   remarks: "The Visual Basic 6.0 `Format` function could operate on a `Variant` data type; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] the `Variant` data type no longer exists. This function is used by the upgrade tools to convert a `Variant` formatted by using the `Format` function to a common language runtime-compliant type.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static string Format (object Expression, string Style = "", Microsoft.VisualBasic.FirstDayOfWeek DayOfWeek = Microsoft.VisualBasic.FirstDayOfWeek.Sunday, Microsoft.VisualBasic.FirstWeekOfYear WeekOfYear = Microsoft.VisualBasic.FirstWeekOfYear.Jan1);
@@ -660,7 +660,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the formatted data.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Format*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,7 +677,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a pixel measurement to a Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref> measurement.
+  summary: Converts a pixel measurement to a Visual Basic 6.0 `ScaleHeight` measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double FromPixelsUserHeight (double Height, double ScaleHeight, int OriginalHeightInPixels);
@@ -687,16 +687,16 @@ items:
       description: A <xref href="System.Double"></xref> that represents the height.
     - id: ScaleHeight
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleHeight` for the current `ScaleMode`.
     - id: OriginalHeightInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the height in pixels.
+      description: An `Integer` that represents the height in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleHeight`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FromPixelsUserHeight*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -713,7 +713,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a pixel measurement to a Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref> measurement.
+  summary: Converts a pixel measurement to a Visual Basic 6.0 `ScaleWidth` measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double FromPixelsUserWidth (double Width, double ScaleWidth, int OriginalWidthInPixels);
@@ -723,16 +723,16 @@ items:
       description: A <xref href="System.Double"></xref> that represents the width.
     - id: ScaleWidth
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleWidth` for the current `ScaleMode`.
     - id: OriginalWidthInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the width in pixels.
+      description: An `Integer` that represents the width in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleWidth`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FromPixelsUserWidth*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -749,7 +749,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a pixel measurement to a Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref> measurement.
+  summary: Converts a pixel measurement to a Visual Basic 6.0 `ScaleLeft` measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double FromPixelsUserX (double X, double ScaleLeft, double ScaleWidth, int OriginalWidthInPixels);
@@ -759,19 +759,19 @@ items:
       description: A <xref href="System.Double"></xref> that represents the X coordinate.
     - id: ScaleLeft
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleLeft` for the current `ScaleMode`.
     - id: ScaleWidth
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleWidth` for the current `ScaleMode`.
     - id: OriginalWidthInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the width in pixels.
+      description: An `Integer` that represents the width in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleLeft`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FromPixelsUserX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,7 +788,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a pixel measurement to a Visual Basic 6.0 <xref uid="langword_csharp_ScaleTop" name="ScaleTop" href=""></xref> measurement.
+  summary: Converts a pixel measurement to a Visual Basic 6.0 `ScaleTop` measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double FromPixelsUserY (double Y, double ScaleTop, double ScaleHeight, int OriginalHeightInPixels);
@@ -798,19 +798,19 @@ items:
       description: A <xref href="System.Double"></xref> that represents the X coordinate.
     - id: ScaleTop
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleTop" name="ScaleTop" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleTop` for the current `ScaleMode`.
     - id: ScaleHeight
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleHeight` for the current `ScaleMode`.
     - id: OriginalHeightInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the height in pixels.
+      description: An `Integer` that represents the height in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleTop" name="ScaleTop" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleTop`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FromPixelsUserY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -837,13 +837,13 @@ items:
       description: A <xref href="System.Double"></xref> that represents the X coordinate in pixels.
     - id: ToScale
       type: Microsoft.VisualBasic.Compatibility.VB6.ScaleMode
-      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleMode " name="ScaleMode " href=""></xref>to convert to.
+      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 `ScaleMode `to convert to.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the Visual Basic 6.0 value for the specified <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the Visual Basic 6.0 value for the specified `ScaleMode`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FromPixelsX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -870,13 +870,13 @@ items:
       description: A <xref href="System.Double"></xref> that represents the Y coordinate in pixels.
     - id: ToScale
       type: Microsoft.VisualBasic.Compatibility.VB6.ScaleMode
-      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleMode " name="ScaleMode " href=""></xref>to convert to.
+      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 `ScaleMode `to convert to.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the Visual Basic 6.0 value for the specified <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the Visual Basic 6.0 value for the specified `ScaleMode`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.FromPixelsY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -903,7 +903,7 @@ items:
       description: The control that currently has focus.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetActiveControl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -930,10 +930,10 @@ items:
       description: A <xref href="System.Windows.Forms.Button"></xref> control.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>btn</code> is the cancel button; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>btn</code> is the cancel button; otherwise `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetCancel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -960,10 +960,10 @@ items:
       description: A <xref href="System.Windows.Forms.Button"></xref> control.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>btn</code> is the default button; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>btn</code> is the default button; otherwise `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetDefault*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -990,7 +990,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the name without a file name extension.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetEXEName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1017,7 +1017,7 @@ items:
       description: An <xref href="System.IntPtr"></xref> for the current application instance.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetHInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1034,7 +1034,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Gets an <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> associated with a <xref href="System.Windows.Forms.ListBox"></xref> or <xref href="System.Windows.Forms.ComboBox"></xref> item.
+  summary: Gets an `Integer` associated with a <xref href="System.Windows.Forms.ListBox"></xref> or <xref href="System.Windows.Forms.ComboBox"></xref> item.
   remarks: "In Visual Basic 6.0, the `ItemData` property for a `ListBox` or `ComboBox` control could be set at design time in the **Properties** window to associate an `Integer` with a `ListBox` or `ComboBox` item. In [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the `ItemData` property no longer exists; the `GetItemData` and <xref:Microsoft.VisualBasic.Compatibility.VB6.Support.SetItemData%2A> methods can be used to emulate the behavior of `ItemData`.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static int GetItemData (System.Windows.Forms.Control Control, int Index);
@@ -1044,13 +1044,13 @@ items:
       description: A <xref href="System.Windows.Forms.ListBox"></xref> or <xref href="System.Windows.Forms.ComboBox"></xref> control.
     - id: Index
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the index of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
+      description: An `Integer` that represents the index of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
     return:
       type: System.Int32
-      description: The <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> associated with the specified <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
+      description: The `Integer` associated with the specified <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetItemData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1077,13 +1077,13 @@ items:
       description: A <xref href="System.Windows.Forms.ListBox"></xref> or <xref href="System.Windows.Forms.ComboBox"></xref> control.
     - id: Index
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the index of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
+      description: An `Integer` that represents the index of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
     return:
       type: System.String
       description: The <xref href="System.String"></xref> associated with the specified <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetItemString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1110,7 +1110,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the path of the currently executing assembly.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.GetPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1127,7 +1127,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Gets an OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object for a given <xref href="System.Drawing.Icon"></xref>.
+  summary: Gets an OLE `IPicture` object for a given <xref href="System.Drawing.Icon"></xref>.
   remarks: "In Visual Basic 6.0, an OLE `IPicture` object could be used to specify an icon; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the OLE `IPicture` format is no longer supported. This function is used by the upgrade tools to convert between an `IPicture` and a <xref:System.Drawing.Icon>.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static object IconToIPicture (System.Drawing.Icon ico);
@@ -1137,10 +1137,10 @@ items:
       description: A <xref href="System.Drawing.Icon"></xref>.
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> representing the OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object.
+      description: An <xref href="System.Object"></xref> representing the OLE `IPicture` object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.IconToIPicture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1157,20 +1157,20 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a Visual Basic 6.0 <xref uid="langword_csharp_stdFont" name="stdFont" href=""></xref> object to a <xref href="System.Drawing.Font"></xref>.
+  summary: Converts a Visual Basic 6.0 `stdFont` object to a <xref href="System.Drawing.Font"></xref>.
   remarks: "The Visual Basic 6.0 `stdFont` object was COM-based and has no equivalent in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]. This function is used by the upgrade tools to convert between a <xref:System.Drawing.Font> and a `stdFont` during project upgrade.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static System.Drawing.Font IFontToFont (object objFnt);
     parameters:
     - id: objFnt
       type: System.Object
-      description: An <xref href="System.Object"></xref> that contains a Visual Basic 6.0 <xref uid="langword_csharp_stdFont" name="stdFont" href=""></xref>.
+      description: An <xref href="System.Object"></xref> that contains a Visual Basic 6.0 `stdFont`.
     return:
       type: System.Drawing.Font
       description: A specified object to convert.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.IFontToFont*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1187,7 +1187,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Gets an OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object for a given <xref href="System.Drawing.Image"></xref>.
+  summary: Gets an OLE `IPicture` object for a given <xref href="System.Drawing.Image"></xref>.
   remarks: "In Visual Basic 6.0, an OLE `IPicture` object could be used to specify an image; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the OLE `IPicture` format is no longer supported. This function is used by the upgrade tools to convert between an `IPicture` and a <xref:System.Drawing.Image>.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static object ImageToIPicture (System.Drawing.Image img);
@@ -1197,10 +1197,10 @@ items:
       description: A <xref href="System.Drawing.Image"></xref>.
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> representing the OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object.
+      description: An <xref href="System.Object"></xref> representing the OLE `IPicture` object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ImageToIPicture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1217,7 +1217,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Gets an OLE <xref uid="langword_csharp_IPictureDisp" name="IPictureDisp" href=""></xref> object for a given <xref href="System.Drawing.Image"></xref>.
+  summary: Gets an OLE `IPictureDisp` object for a given <xref href="System.Drawing.Image"></xref>.
   remarks: "In Visual Basic 6.0, an OLE `IPictureDisp` object could be used to specify an image; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the OLE `IPicture` format is no longer supported. This function is used by the upgrade tools to convert between an `IPicture` and a <xref:System.Drawing.Image>.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static object ImageToIPictureDisp (System.Drawing.Image img);
@@ -1227,10 +1227,10 @@ items:
       description: A <xref href="System.Drawing.Image"></xref>.
     return:
       type: System.Object
-      description: An <xref href="System.Object"></xref> representing the OLE <xref uid="langword_csharp_IPictureDisp" name="IPictureDisp" href=""></xref> object.
+      description: An <xref href="System.Object"></xref> representing the OLE `IPictureDisp` object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ImageToIPictureDisp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1263,7 +1263,7 @@ items:
       description: A <xref href="System.Boolean"></xref> that contains the result.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Imp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1296,7 +1296,7 @@ items:
       description: A <xref href="System.Byte"></xref> that contains the result.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Imp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1320,16 +1320,16 @@ items:
     parameters:
     - id: a
       type: System.Int16
-      description: A <xref uid="langword_csharp_Short" name="Short" href=""></xref> expression.
+      description: A `Short` expression.
     - id: b
       type: System.Int16
-      description: A <xref uid="langword_csharp_Short" name="Short" href=""></xref> expression.
+      description: A `Short` expression.
     return:
       type: System.Int16
-      description: A <xref uid="langword_csharp_Short" name="Short" href=""></xref> that contains the result.
+      description: A `Short` that contains the result.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Imp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1353,16 +1353,16 @@ items:
     parameters:
     - id: a
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> expression.
+      description: An `Integer` expression.
     - id: b
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> expression.
+      description: An `Integer` expression.
     return:
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that contains the result.
+      description: An `Integer` that contains the result.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Imp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1386,16 +1386,16 @@ items:
     parameters:
     - id: a
       type: System.Int64
-      description: A <xref uid="langword_csharp_Long" name="Long" href=""></xref> expression.
+      description: A `Long` expression.
     - id: b
       type: System.Int64
-      description: A <xref uid="langword_csharp_Long" name="Long" href=""></xref> expression.
+      description: A `Long` expression.
     return:
       type: System.Int64
-      description: A <xref uid="langword_csharp_Long" name="Long" href=""></xref> that contains the result.
+      description: A `Long` that contains the result.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Imp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1428,7 +1428,7 @@ items:
       description: An <xref href="System.Object"></xref> that contains the result.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.Imp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1445,20 +1445,20 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Gets an <xref href="System.Drawing.Image"></xref> for a given OLE <xref uid="langword_csharp_IPictureDisp" name="IPictureDisp" href=""></xref> object.
+  summary: Gets an <xref href="System.Drawing.Image"></xref> for a given OLE `IPictureDisp` object.
   remarks: "In Visual Basic 6.0, an OLE `IPictureDisp` object could be used to specify an image; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the OLE `IPicture` format is no longer supported. This function is used by the upgrade tools to convert between an `IPictureDisp` and a <xref:System.Drawing.Image>.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static System.Drawing.Image IPictureDispToImage (object pict);
     parameters:
     - id: pict
       type: System.Object
-      description: An OLE <xref uid="langword_csharp_IPictureDisp" name="IPictureDisp" href=""></xref> object.
+      description: An OLE `IPictureDisp` object.
     return:
       type: System.Drawing.Image
       description: An image object.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.IPictureDispToImage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1475,20 +1475,20 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Gets an <xref href="System.Drawing.Image"></xref> for a given OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object.
+  summary: Gets an <xref href="System.Drawing.Image"></xref> for a given OLE `IPicture` object.
   remarks: "In Visual Basic 6.0, an OLE `IPicture` object could be used to specify an image; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the OLE `IPicture` format is no longer supported. This function is used by the upgrade tools to convert between an `IPicture` and a <xref:System.Drawing.Image>.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static System.Drawing.Image IPictureToImage (object pict);
     parameters:
     - id: pict
       type: System.Object
-      description: An OLE <xref uid="langword_csharp_IPicture" name="IPicture" href=""></xref> object.
+      description: An OLE `IPicture` object.
     return:
       type: System.Drawing.Image
       description: A converted object to image.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.IPictureToImage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1521,7 +1521,7 @@ items:
       description: An <xref href="System.Object"></xref> that contains the resource.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.LoadResData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1557,7 +1557,7 @@ items:
       description: An <xref href="System.Object"></xref> that contains the resource.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.LoadResData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1590,7 +1590,7 @@ items:
       description: An <xref href="System.Object"></xref> that contains the resource.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.LoadResPicture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1626,7 +1626,7 @@ items:
       description: An <xref href="System.Object"></xref> that contains the resource.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.LoadResPicture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1656,7 +1656,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the resource.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.LoadResString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1689,7 +1689,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the resource.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.LoadResString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1713,13 +1713,13 @@ items:
     parameters:
     - id: X
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the X coordinate to convert.
+      description: A `Double` that contains the X coordinate to convert.
     return:
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the X coordinate expressed in twips.
+      description: A `Double` that contains the X coordinate expressed in twips.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.PixelsToTwipsX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1743,13 +1743,13 @@ items:
     parameters:
     - id: Y
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the Y coordinate to convert.
+      description: A `Double` that contains the Y coordinate to convert.
     return:
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the Y coordinate expressed in twips.
+      description: A `Double` that contains the Y coordinate expressed in twips.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.PixelsToTwipsY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1776,10 +1776,10 @@ items:
       description: A <xref href="System.String"></xref> that contains the key values.
     - id: Wait
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to process keystrokes before control is returned to the procedure; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to process keystrokes before control is returned to the procedure; otherwise `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SendKeys*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1806,10 +1806,10 @@ items:
       description: A <xref href="System.Windows.Forms.Button"></xref>.
     - id: Cancel
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Visual Basic 6.0 <xref uid="langword_csharp_CommandButton" name="CommandButton" href=""></xref> control's <xref uid="langword_csharp_Cancel" name="Cancel" href=""></xref> property is <xref uid="langword_csharp_true" name="true" href=""></xref>; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Visual Basic 6.0 `CommandButton` control''s `Cancel` property is `true`; otherwise `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SetCancel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1836,10 +1836,10 @@ items:
       description: A <xref href="System.Windows.Forms.Button"></xref>.
     - id: Default
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Visual Basic 6.0 <xref uid="langword_csharp_CommandButton" name="CommandButton" href=""></xref> control's <xref uid="langword_csharp_Default" name="Default" href=""></xref> property is <xref uid="langword_csharp_true" name="true" href=""></xref>; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Visual Basic 6.0 `CommandButton` control''s `Default` property is `true`; otherwise `false`.'
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SetDefault*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1866,13 +1866,13 @@ items:
       description: A <xref href="System.Windows.Forms.ListBox"></xref> or <xref href="System.Windows.Forms.ComboBox"></xref> control.
     - id: Index
       type: System.Int32
-      description: The <xref uid="langword_csharp_Index" name="Index" href=""></xref> of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
+      description: The `Index` of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
     - id: ItemData
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> to assign to the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem.ItemData"></xref> property.
+      description: An `Integer` to assign to the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem.ItemData"></xref> property.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SetItemData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1899,13 +1899,13 @@ items:
       description: A <xref href="System.Windows.Forms.ListBox"></xref><xref href="System.Windows.Forms.ListBox"></xref> or <xref href="System.Windows.Forms.ComboBox"></xref> control.
     - id: Index
       type: System.Int32
-      description: The <xref uid="langword_csharp_Index" name="Index" href=""></xref> of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
+      description: The `Index` of the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem"></xref>.
     - id: ItemString
       type: System.String
       description: A <xref href="System.String"></xref> to assign to the <xref href="Microsoft.VisualBasic.Compatibility.VB6.ListBoxItem.ItemString"></xref> property.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SetItemString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1932,7 +1932,7 @@ items:
       description: A resource file (.res).
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SetResourceBaseName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1956,13 +1956,13 @@ items:
     parameters:
     - id: ProjectNamespace
       type: System.String
-      description: A <xref href="System.String"></xref> that contains the <xref uid="langword_csharp_Namespace" name="Namespace" href=""></xref> for the resource file.
+      description: A <xref href="System.String"></xref> that contains the `Namespace` for the resource file.
     - id: BaseFileName
       type: System.String
       description: A resource file (.res).
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.SetResourceBaseName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1995,7 +1995,7 @@ items:
       description: Optional. The `owner` parameter of the <xref:System.Windows.Forms.Form.ShowDialog*> method.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ShowForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2012,7 +2012,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Formats strings to simulate the Visual Basic 6.0 <xref uid="langword_csharp_Debug.Print" name="Debug.Print" href=""></xref> functionality.
+  summary: Formats strings to simulate the Visual Basic 6.0 `Debug.Print` functionality.
   remarks: "In Visual Basic 6.0, the `Debug.Print` method had an `outputlist` parameter that specified how output was formatted in the **Immediate** window. This function is used by the upgrade tools to translate the `outputlist` parameter into a string for display in the **Immediate** window.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static string TabLayout (object[] Args);
@@ -2025,7 +2025,7 @@ items:
       description: A formatted <xref href="System.String"></xref>.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.TabLayout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2042,7 +2042,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref> measurement to a pixel measurement.
+  summary: Converts a Visual Basic 6.0 `ScaleHeight` measurement to a pixel measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double ToPixelsUserHeight (double Height, double ScaleHeight, int OriginalHeightInPixels);
@@ -2052,16 +2052,16 @@ items:
       description: A <xref href="System.Double"></xref> that represents the height.
     - id: ScaleHeight
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleHeight` for the current `ScaleMode`.
     - id: OriginalHeightInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the height in pixels.
+      description: An `Integer` that represents the height in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleHeight`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ToPixelsUserHeight*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2078,7 +2078,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref> measurement to a pixel measurement.
+  summary: Converts a Visual Basic 6.0 `ScaleWidth` measurement to a pixel measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double ToPixelsUserWidth (double Width, double ScaleWidth, int OriginalWidthInPixels);
@@ -2088,16 +2088,16 @@ items:
       description: A <xref href="System.Double"></xref> that represents the width.
     - id: ScaleWidth
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleWidth` for the current `ScaleMode`.
     - id: OriginalWidthInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the width in pixels.
+      description: An `Integer` that represents the width in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleWidth`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ToPixelsUserWidth*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2114,7 +2114,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref> measurement to a pixel measurement.
+  summary: Converts a Visual Basic 6.0 `ScaleLeft` measurement to a pixel measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double ToPixelsUserX (double X, double ScaleLeft, double ScaleWidth, int OriginalWidthInPixels);
@@ -2124,19 +2124,19 @@ items:
       description: A <xref href="System.Double"></xref> that represents the X coordinate.
     - id: ScaleLeft
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleLeft` for the current `ScaleMode`.
     - id: ScaleWidth
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleWidth" name="ScaleWidth" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleWidth` for the current `ScaleMode`.
     - id: OriginalWidthInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the width in pixels.
+      description: An `Integer` that represents the width in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleLeft`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ToPixelsUserX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2153,7 +2153,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts a Visual Basic 6.0 <xref uid="langword_csharp_ScaleTop" name="ScaleTop" href=""></xref> measurement to a pixel measurement.
+  summary: Converts a Visual Basic 6.0 `ScaleTop` measurement to a pixel measurement.
   remarks: "Visual Basic 6.0 supported multiple coordinate systems defined by a `ScaleMode` property. This included a user-defined value. [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] only supports a coordinate system that is based on pixels. This function is used by the upgrade tools to convert between pixels and a user-defined scale value.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static double ToPixelsUserY (double Y, double ScaleTop, double ScaleHeight, int OriginalHeightInPixels);
@@ -2163,19 +2163,19 @@ items:
       description: A <xref href="System.Double"></xref> that represents the Y coordinate.
     - id: ScaleTop
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleTop" name="ScaleTop" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleTop` for the current `ScaleMode`.
     - id: ScaleHeight
       type: System.Double
-      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleHeight" name="ScaleHeight" href=""></xref> for the current <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that represents the Visual Basic 6.0 `ScaleHeight` for the current `ScaleMode`.
     - id: OriginalHeightInPixels
       type: System.Int32
-      description: An <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> that represents the height in pixels.
+      description: An `Integer` that represents the height in pixels.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 <xref uid="langword_csharp_ScaleLeft" name="ScaleLeft" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the converted Visual Basic 6.0 `ScaleLeft`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ToPixelsUserY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2202,13 +2202,13 @@ items:
       description: A <xref href="System.Double"></xref> that represents the X coordinate.
     - id: FromScale
       type: Microsoft.VisualBasic.Compatibility.VB6.ScaleMode
-      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref> to convert from.
+      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 `ScaleMode` to convert from.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the pixel value for the specified <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the pixel value for the specified `ScaleMode`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ToPixelsX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2235,13 +2235,13 @@ items:
       description: A <xref href="System.Double"></xref> that represents the Y coordinate.
     - id: FromScale
       type: Microsoft.VisualBasic.Compatibility.VB6.ScaleMode
-      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 <xref uid="langword_csharp_ScaleMode " name="ScaleMode " href=""></xref>to convert from.
+      description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ScaleMode"></xref> enumeration that represents the Visual Basic 6.0 `ScaleMode `to convert from.
     return:
       type: System.Double
-      description: A <xref href="System.Double"></xref> that contains the pixel value for the specified <xref uid="langword_csharp_ScaleMode" name="ScaleMode" href=""></xref>.
+      description: A <xref href="System.Double"></xref> that contains the pixel value for the specified `ScaleMode`.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ToPixelsY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2265,10 +2265,10 @@ items:
     parameters: []
     return:
       type: System.Single
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the conversion factor.
+      description: A `Double` that contains the conversion factor.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.TwipsPerPixelX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2292,10 +2292,10 @@ items:
     parameters: []
     return:
       type: System.Single
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the conversion factor.
+      description: A `Double` that contains the conversion factor.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.TwipsPerPixelY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2319,13 +2319,13 @@ items:
     parameters:
     - id: X
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the X coordinate to convert.
+      description: A `Double` that contains the X coordinate to convert.
     return:
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the X coordinate expressed in pixels.
+      description: A `Double` that contains the X coordinate expressed in pixels.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.TwipsToPixelsX*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2349,13 +2349,13 @@ items:
     parameters:
     - id: Y
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the X coordinate to convert.
+      description: A `Double` that contains the X coordinate to convert.
     return:
       type: System.Double
-      description: A <xref uid="langword_csharp_Double" name="Double" href=""></xref> that contains the Y coordinate expressed in pixels.
+      description: A `Double` that contains the Y coordinate expressed in pixels.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.TwipsToPixelsY*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2372,7 +2372,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Emulates the behavior of the Visual Basic 6.0 <xref uid="langword_csharp_ValidateControls" name="ValidateControls" href=""></xref> method.
+  summary: Emulates the behavior of the Visual Basic 6.0 `ValidateControls` method.
   remarks: "In Visual Basic 6.0, the `ValidateControls` method was used to force the `Validate` event for the control that has focus when a form is closed; if the `Validate` event fails, an error was raised. In [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)], the `ValidateControls` method is replaced by the <xref:System.Windows.Forms.ContainerControl.Validate%2A> method, which returns `true` or `false`.  \n  \n This function is used by the upgrade tools to emulate the Visual Basic 6.0 behavior.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static void ValidateControls (System.Windows.Forms.ContainerControl Form);
@@ -2382,7 +2382,7 @@ items:
       description: The <xref href="System.Windows.Forms.ContainerControl"></xref> where the control is parented.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ValidateControls*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2409,7 +2409,7 @@ items:
       description: A <xref href="System.Windows.Forms.Form"></xref>.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.WhatsThisMode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2426,7 +2426,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: Converts the Visual Basic <xref uid="langword_csharp_ZOrder" name="ZOrder" href=""></xref> method for use in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)].
+  summary: Converts the Visual Basic `ZOrder` method for use in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)].
   remarks: "In Visual Basic 6.0, the `ZOrder` method was used to specify the layering of controls; in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)] .it is replaced by the <xref:System.Windows.Forms.Control.BringToFront%2A> and <xref:System.Windows.Forms.Control.SendToBack%2A> methods. This function is used by the upgrade tools to map between the methods.  \n  \n [!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]"
   syntax:
     content: public static void ZOrder (System.Windows.Forms.Control Control, int Position);
@@ -2439,7 +2439,7 @@ items:
       description: A <xref href="Microsoft.VisualBasic.Compatibility.VB6.ZOrderConstants"></xref> enumeration.
   overload: Microsoft.VisualBasic.Compatibility.VB6.Support.ZOrder*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2943,8 +2943,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

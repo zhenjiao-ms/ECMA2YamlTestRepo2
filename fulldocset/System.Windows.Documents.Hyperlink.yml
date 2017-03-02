@@ -517,7 +517,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -539,7 +539,7 @@ items:
     parameters: []
   overload: System.Windows.Documents.Hyperlink.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -567,7 +567,7 @@ items:
       description: An <xref href="System.Windows.Documents.Inline"></xref> object specifying the initial contents of the new <xref href="System.Windows.Documents.Hyperlink"></xref>.
   overload: System.Windows.Documents.Hyperlink.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -592,13 +592,13 @@ items:
     parameters:
     - id: childInline
       type: System.Windows.Documents.Inline
-      description: An <xref href="System.Windows.Documents.Inline"></xref> object specifying the initial contents of the new <xref href="System.Windows.Documents.Hyperlink"></xref>.  This parameter may be <xref uid="langword_csharp_null" name="null" href=""></xref>, in which case no <xref href="System.Windows.Documents.Inline"></xref> is inserted.
+      description: An <xref href="System.Windows.Documents.Inline"></xref> object specifying the initial contents of the new <xref href="System.Windows.Documents.Hyperlink"></xref>.  This parameter may be `null`, in which case no <xref href="System.Windows.Documents.Inline"></xref> is inserted.
     - id: insertionPosition
       type: System.Windows.Documents.TextPointer
-      description: A <xref href="System.Windows.Documents.TextPointer"></xref> specifying an insertion position at which to insert the <xref href="System.Windows.Documents.Hyperlink"></xref> element after it is created, or <xref uid="langword_csharp_null" name="null" href=""></xref> for no automatic insertion.
+      description: A <xref href="System.Windows.Documents.TextPointer"></xref> specifying an insertion position at which to insert the <xref href="System.Windows.Documents.Hyperlink"></xref> element after it is created, or `null` for no automatic insertion.
   overload: System.Windows.Documents.Hyperlink.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -631,11 +631,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>start</code> or <code>end</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>start</code> or <code>end</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>start</code> and <code>end</code> do not resolve to a range of content suitable for enclosure by a <xref href="System.Windows.Documents.Span"></xref> element; for example, if <code>start</code> and <code>end</code> indicate positions in different paragraphs.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -659,7 +659,7 @@ items:
       description: A base URI for the <xref href="System.Windows.Documents.Hyperlink"></xref>.
   overload: System.Windows.Documents.Hyperlink.BaseUri*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -683,7 +683,7 @@ items:
       type: System.Windows.RoutedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -706,7 +706,7 @@ items:
       type: System.Windows.RoutedEvent
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -728,10 +728,10 @@ items:
     content: public System.Windows.Input.ICommand Command { get; set; }
     return:
       type: System.Windows.Input.ICommand
-      description: A command to associate with the <xref href="System.Windows.Documents.Hyperlink"></xref>. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A command to associate with the <xref href="System.Windows.Documents.Hyperlink"></xref>. The default is `null`.
   overload: System.Windows.Documents.Hyperlink.Command*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -753,10 +753,10 @@ items:
     content: public object CommandParameter { get; set; }
     return:
       type: System.Object
-      description: An object specifying parameters for the command specified by the <xref:System.Windows.Documents.Hyperlink.Command*> property. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object specifying parameters for the command specified by the <xref:System.Windows.Documents.Hyperlink.Command*> property. The default is `null`.
   overload: System.Windows.Documents.Hyperlink.CommandParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -779,7 +779,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -802,7 +802,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -824,10 +824,10 @@ items:
     content: public System.Windows.IInputElement CommandTarget { get; set; }
     return:
       type: System.Windows.IInputElement
-      description: A target element on which to execute the command specified by the <xref:System.Windows.Documents.Hyperlink.Command*> property. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A target element on which to execute the command specified by the <xref:System.Windows.Documents.Hyperlink.Command*> property. The default is `null`.
   overload: System.Windows.Documents.Hyperlink.CommandTarget*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -850,7 +850,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -873,7 +873,7 @@ items:
     parameters: []
   overload: System.Windows.Documents.Hyperlink.DoClick*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -895,10 +895,10 @@ items:
     content: protected override bool IsEnabledCore { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Windows.Documents.Hyperlink"></xref> is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Windows.Documents.Hyperlink"></xref> is enabled; otherwise, `false`.'
   overload: System.Windows.Documents.Hyperlink.IsEnabledCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -922,10 +922,10 @@ items:
     content: public Uri NavigateUri { get; set; }
     return:
       type: System.Uri
-      description: "The <xref href=\"System.Uri\"></xref> to navigate to when the <xref href=\"System.Windows.Documents.Hyperlink\"></xref> is activated. The default is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n <div class=\"alert NOTE\"><xref href=\"System.Windows.Documents.Hyperlink\"></xref> can navigate to the value of the NavigateUri property only if either the direct or indirect parent of a <xref href=\"System.Windows.Documents.Hyperlink\"></xref> is a navigation host, including <xref href=\"System.Windows.Navigation.NavigationWindow\"></xref>, <xref href=\"System.Windows.Controls.Frame\"></xref>, or any browser that can host [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] (which includes [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)], [!INCLUDE[TLA2#tla_ie6](~/add/includes/tla2sharptla-ie6-md.md)], and Firefox 2.0+). For more information, see the **Navigation Hosts** section in [Navigation Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n</div>"
+      description: "The <xref href=\"System.Uri\"></xref> to navigate to when the <xref href=\"System.Windows.Documents.Hyperlink\"></xref> is activated. The default is `null`.  \n  \n <div class=\"alert NOTE\"><xref href=\"System.Windows.Documents.Hyperlink\"></xref> can navigate to the value of the NavigateUri property only if either the direct or indirect parent of a <xref href=\"System.Windows.Documents.Hyperlink\"></xref> is a navigation host, including <xref href=\"System.Windows.Navigation.NavigationWindow\"></xref>, <xref href=\"System.Windows.Controls.Frame\"></xref>, or any browser that can host [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] (which includes [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)], [!INCLUDE[TLA2#tla_ie6](~/add/includes/tla2sharptla-ie6-md.md)], and Firefox 2.0+). For more information, see the **Navigation Hosts** section in [Navigation Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n</div>"
   overload: System.Windows.Documents.Hyperlink.NavigateUri*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -948,7 +948,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -971,7 +971,7 @@ items:
     parameters: []
   overload: System.Windows.Documents.Hyperlink.OnClick*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -997,7 +997,7 @@ items:
       description: An <xref href="System.Windows.Automation.Peers.AutomationPeer"></xref> object for this <xref href="System.Windows.Documents.Hyperlink"></xref>.
   overload: System.Windows.Documents.Hyperlink.OnCreateAutomationPeer*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1023,7 +1023,7 @@ items:
       description: Arguments associated with the <xref href="System.Windows.ContentElement.KeyDown"></xref> event.
   overload: System.Windows.Documents.Hyperlink.OnKeyDown*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1049,7 +1049,7 @@ items:
       description: Arguments associated with the <xref href="System.Windows.ContentElement.MouseLeftButtonDown"></xref> event.
   overload: System.Windows.Documents.Hyperlink.OnMouseLeftButtonDown*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1075,7 +1075,7 @@ items:
       description: Arguments associated with the <xref href="System.Windows.ContentElement.MouseLeftButtonUp"></xref> event.
   overload: System.Windows.Documents.Hyperlink.OnMouseLeftButtonUp*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1099,7 +1099,7 @@ items:
       type: System.Windows.Navigation.RequestNavigateEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1122,7 +1122,7 @@ items:
       type: System.Windows.RoutedEvent
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1147,7 +1147,7 @@ items:
       description: A base URI for the <xref href="System.Windows.Documents.Hyperlink"></xref>.
   overload: System.Windows.Documents.Hyperlink.System#Windows#Markup#IUriContext#BaseUri*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1172,7 +1172,7 @@ items:
       description: A string specifying the name of a target window or frame for the <xref href="System.Windows.Documents.Hyperlink"></xref>.
   overload: System.Windows.Documents.Hyperlink.TargetName*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1195,7 +1195,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

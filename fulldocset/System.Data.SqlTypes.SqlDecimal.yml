@@ -104,7 +104,7 @@ items:
   - System.Data.SqlTypes.INullable
   - System.IComparable
   - System.Xml.Serialization.IXmlSerializable
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,7 +130,7 @@ items:
       description: The <xref href="System.Decimal"></xref> value to be stored as a <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -156,7 +156,7 @@ items:
       description: A double, representing the value for the new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,7 +182,7 @@ items:
       description: The supplied integer value which will the used as the value of the new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -208,7 +208,7 @@ items:
       description: The supplied long integer value which will the used as the value of the new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
       description: The 128-bit unsigned integer that provides the value of the new <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,7 +287,7 @@ items:
       description: An 32-bit unsigned integer which will be combined with data1, data2, and data3 to make up the 128-bit unsigned integer that represents the new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structures value.
   overload: System.Data.SqlTypes.SqlDecimal.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the unsigned number representing the absolute value of the <xref href="System.Data.SqlTypes.SqlDecimal"></xref> parameter.
   overload: System.Data.SqlTypes.SqlDecimal.Abs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,7 +348,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the sum.
   overload: System.Data.SqlTypes.SqlDecimal.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -377,13 +377,13 @@ items:
       description: The number of digits in the adjusted structure.
     - id: fRound
       type: System.Boolean
-      description: If this parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>, the new Value will be rounded, if <xref uid="langword_csharp_false" name="false" href=""></xref>, the value will be truncated.
+      description: If this parameter is `true`, the new Value will be rounded, if `false`, the value will be truncated.
     return:
       type: System.Data.SqlTypes.SqlDecimal
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the adjusted number.
   overload: System.Data.SqlTypes.SqlDecimal.AdjustScale*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,7 +408,7 @@ items:
       description: An array of bytes that contains the binary representation of the <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure's value.
   overload: System.Data.SqlTypes.SqlDecimal.BinData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -437,7 +437,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> representing the smallest whole number greater than or equal to the specified <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.Ceiling*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,10 +463,10 @@ items:
       description: The <xref href="System.Data.SqlTypes.SqlDecimal"></xref> to be compared.
     return:
       type: System.Int32
-      description: "A signed number that indicates the relative values of the instance and the object.  \n  \n <table><thead><tr><th> Return value  \n  \n </th><th> Condition  \n  \n </th></tr></thead><tbody><tr><td> Less than zero  \n  \n </td><td> This instance is less than the object.  \n  \n </td></tr><tr><td> Zero  \n  \n </td><td> This instance is the same as the object.  \n  \n </td></tr><tr><td> Greater than zero  \n  \n </td><td> This instance is greater than the object  \n  \n -or-  \n  \n The object is a null reference (<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> in Visual Basic)  \n  \n </td></tr></tbody></table>"
+      description: "A signed number that indicates the relative values of the instance and the object.  \n  \n <table><thead><tr><th> Return value  \n  \n </th><th> Condition  \n  \n </th></tr></thead><tbody><tr><td> Less than zero  \n  \n </td><td> This instance is less than the object.  \n  \n </td></tr><tr><td> Zero  \n  \n </td><td> This instance is the same as the object.  \n  \n </td></tr><tr><td> Greater than zero  \n  \n </td><td> This instance is greater than the object  \n  \n -or-  \n  \n The object is a null reference (`Nothing` in Visual Basic)  \n  \n </td></tr></tbody></table>"
   overload: System.Data.SqlTypes.SqlDecimal.CompareTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,10 +492,10 @@ items:
       description: The <xref href="System.Object"></xref> to be compared.
     return:
       type: System.Int32
-      description: "A signed number that indicates the relative values of the instance and the object.  \n  \n <table><thead><tr><th> Return Value  \n  \n </th><th> Condition  \n  \n </th></tr></thead><tbody><tr><td> Less than zero  \n  \n </td><td> This instance is less than the object.  \n  \n </td></tr><tr><td> Zero  \n  \n </td><td> This instance is the same as the object.  \n  \n </td></tr><tr><td> Greater than zero  \n  \n </td><td> This instance is greater than the object  \n  \n -or-  \n  \n The object is a null reference (<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref> in Visual Basic)  \n  \n </td></tr></tbody></table>"
+      description: "A signed number that indicates the relative values of the instance and the object.  \n  \n <table><thead><tr><th> Return Value  \n  \n </th><th> Condition  \n  \n </th></tr></thead><tbody><tr><td> Less than zero  \n  \n </td><td> This instance is less than the object.  \n  \n </td></tr><tr><td> Zero  \n  \n </td><td> This instance is the same as the object.  \n  \n </td></tr><tr><td> Greater than zero  \n  \n </td><td> This instance is greater than the object  \n  \n -or-  \n  \n The object is a null reference (`Nothing` in Visual Basic)  \n  \n </td></tr></tbody></table>"
   overload: System.Data.SqlTypes.SqlDecimal.CompareTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -530,7 +530,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose Value has been adjusted to the precision and scale indicated in the parameters.
   overload: System.Data.SqlTypes.SqlDecimal.ConvertToPrecScale*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,7 +555,7 @@ items:
       description: An array of integers that contains the binary representation of this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.Data*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -587,7 +587,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the results of the division.
   overload: System.Data.SqlTypes.SqlDecimal.Divide*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -613,10 +613,10 @@ items:
       description: The <xref href="System.Object"></xref> to be compared.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if object is an instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> and the two are equal. Otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if object is an instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> and the two are equal. Otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlDecimal.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -645,10 +645,10 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
     return:
       type: System.Data.SqlTypes.SqlBoolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the two values are equal. Otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If either instance is null, the value of the <xref uid="langword_csharp_SqlDecimal" name="SqlDecimal" href=""></xref> will be null.
+      description: '`true` if the two values are equal. Otherwise, `false`. If either instance is null, the value of the `SqlDecimal` will be null.'
   overload: System.Data.SqlTypes.SqlDecimal.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,7 +677,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure that contains the whole number part of this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.Floor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -703,7 +703,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.Data.SqlTypes.SqlDecimal.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -729,10 +729,10 @@ items:
       description: A <xref href="System.Xml.Schema.XmlSchemaSet"></xref>.
     return:
       type: System.Xml.XmlQualifiedName
-      description: A <xref uid="langword_csharp_string" name="string" href=""></xref> value that indicates the XSD of the specified <xref href="System.Xml.Schema.XmlSchemaSet"></xref>.
+      description: A `string` value that indicates the XSD of the specified <xref href="System.Xml.Schema.XmlSchemaSet"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.GetXsdType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -764,7 +764,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is less than the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.GreaterThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -796,7 +796,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is greater than or equal to the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.GreaterThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -819,10 +819,10 @@ items:
     content: public bool IsNull { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure is null. Otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure is null. Otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlDecimal.IsNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -844,10 +844,10 @@ items:
     content: public bool IsPositive { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Data.SqlTypes.SqlDecimal.Value*> is assigned to null. Otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Data.SqlTypes.SqlDecimal.Value*> is assigned to null. Otherwise, `false`.'
   overload: System.Data.SqlTypes.SqlDecimal.IsPositive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -879,7 +879,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is less than the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.LessThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -911,7 +911,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is less than or equal to the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.LessThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -936,7 +936,7 @@ items:
       type: System.Byte
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -960,7 +960,7 @@ items:
       type: System.Byte
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -985,7 +985,7 @@ items:
       type: System.Data.SqlTypes.SqlDecimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1010,7 +1010,7 @@ items:
       type: System.Data.SqlTypes.SqlDecimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1042,7 +1042,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the product of the multiplication.
   overload: System.Data.SqlTypes.SqlDecimal.Multiply*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1074,7 +1074,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the two instances are not equal or <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the two instances are equal. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.NotEquals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1099,7 +1099,7 @@ items:
       type: System.Data.SqlTypes.SqlDecimal
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1131,7 +1131,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the sum.
   overload: System.Data.SqlTypes.SqlDecimal.op_Addition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1163,7 +1163,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the results of the division.
   overload: System.Data.SqlTypes.SqlDecimal.op_Division*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1195,7 +1195,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the two instances are equal or <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the two instances are not equal. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1223,7 +1223,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1251,7 +1251,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1279,7 +1279,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1307,7 +1307,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1335,7 +1335,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1363,7 +1363,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Explicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1395,7 +1395,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is less than the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.op_GreaterThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1427,7 +1427,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is greater than or equal to the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.op_GreaterThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1455,7 +1455,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1483,7 +1483,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1511,7 +1511,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1539,7 +1539,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1567,7 +1567,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1595,7 +1595,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1623,7 +1623,7 @@ items:
       description: To be added.
   overload: System.Data.SqlTypes.SqlDecimal.op_Implicit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1655,7 +1655,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the two instances are not equal or <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the two instances are equal. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1687,7 +1687,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is less than the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.op_LessThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1719,7 +1719,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlBoolean"></xref> that is <xref href="System.Data.SqlTypes.SqlBoolean"></xref> if the first instance is less than or equal to the second instance. Otherwise, <xref href="System.Data.SqlTypes.SqlBoolean"></xref>. If either instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref> is null, the <xref:System.Data.SqlTypes.SqlBoolean.Value*> of the <xref href="System.Data.SqlTypes.SqlBoolean"></xref> will be <xref href="System.Data.SqlTypes.SqlBoolean.Null"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.op_LessThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1751,7 +1751,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose <xref:System.Data.SqlTypes.SqlDecimal.Value*> property contains the product of the multiplication.
   overload: System.Data.SqlTypes.SqlDecimal.op_Multiply*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1783,7 +1783,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose Value property contains the results of the subtraction.
   overload: System.Data.SqlTypes.SqlDecimal.op_Subtraction*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1812,7 +1812,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose value contains the results of the negation.
   overload: System.Data.SqlTypes.SqlDecimal.op_UnaryNegation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1835,13 +1835,13 @@ items:
     parameters:
     - id: s
       type: System.String
-      description: The <xref uid="langword_csharp_String" name="String" href=""></xref> to be parsed.
+      description: The `String` to be parsed.
     return:
       type: System.Data.SqlTypes.SqlDecimal
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> equivalent to the value that is contained in the specified <xref href="System.String"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.Parse*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1873,7 +1873,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure that contains the results.
   overload: System.Data.SqlTypes.SqlDecimal.Power*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1895,10 +1895,10 @@ items:
     content: public byte Precision { get; }
     return:
       type: System.Byte
-      description: The maximum number of digits used to represent the <xref uid="langword_csharp_Value" name="Value" href=""></xref> of this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
+      description: The maximum number of digits used to represent the `Value` of this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.Precision*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1930,7 +1930,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure that contains the results of the rounding operation.
   overload: System.Data.SqlTypes.SqlDecimal.Round*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1952,10 +1952,10 @@ items:
     content: public byte Scale { get; }
     return:
       type: System.Byte
-      description: The number of decimal places to which the <xref uid="langword_csharp_Value" name="Value" href=""></xref> property is resolved.
+      description: The number of decimal places to which the `Value` property is resolved.
   overload: System.Data.SqlTypes.SqlDecimal.Scale*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1984,7 +1984,7 @@ items:
       description: A number that indicates the sign of the <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.Sign*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2016,7 +2016,7 @@ items:
       description: A new <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure whose Value property contains the results of the subtraction.
   overload: System.Data.SqlTypes.SqlDecimal.Subtract*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2040,10 +2040,10 @@ items:
     parameters: []
     return:
       type: System.Xml.Schema.XmlSchema
-      description: An <xref uid="langword_csharp_XmlSchema" name="XmlSchema" href=""></xref>.
+      description: An `XmlSchema`.
   overload: System.Data.SqlTypes.SqlDecimal.System#Xml#Serialization#IXmlSerializable#GetSchema*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2067,10 +2067,10 @@ items:
     parameters:
     - id: reader
       type: System.Xml.XmlReader
-      description: <xref uid="langword_csharp_XmlReader " name="XmlReader " href=""></xref>
+      description: '`XmlReader `'
   overload: System.Data.SqlTypes.SqlDecimal.System#Xml#Serialization#IXmlSerializable#ReadXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2094,10 +2094,10 @@ items:
     parameters:
     - id: writer
       type: System.Xml.XmlWriter
-      description: <xref uid="langword_csharp_XmlWriter " name="XmlWriter " href=""></xref>
+      description: '`XmlWriter `'
   overload: System.Data.SqlTypes.SqlDecimal.System#Xml#Serialization#IXmlSerializable#WriteXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2123,7 +2123,7 @@ items:
       description: The decimal representation of the <xref:System.Data.SqlTypes.SqlDecimal.Value*> property.
   overload: System.Data.SqlTypes.SqlDecimal.ToDouble*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2146,10 +2146,10 @@ items:
     parameters: []
     return:
       type: System.Data.SqlTypes.SqlBoolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Data.SqlTypes.SqlDecimal.Value*> is non-zero; <xref uid="langword_csharp_false" name="false" href=""></xref> if zero; otherwise Null.
+      description: '`true` if the <xref:System.Data.SqlTypes.SqlDecimal.Value*> is non-zero; `false` if zero; otherwise Null.'
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlBoolean*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2172,10 +2172,10 @@ items:
     parameters: []
     return:
       type: System.Data.SqlTypes.SqlByte
-      description: A <xref href="System.Data.SqlTypes.SqlByte"></xref> structure whose <xref uid="langword_csharp_Value" name="Value" href=""></xref> equals the <xref uid="langword_csharp_Value" name="Value" href=""></xref> of this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure. If the <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure's Value is <xref uid="langword_csharp_true" name="true" href=""></xref>, the <xref href="System.Data.SqlTypes.SqlByte"></xref> structure's <xref uid="langword_csharp_Value" name="Value" href=""></xref> will be 1. Otherwise, the <xref href="System.Data.SqlTypes.SqlByte"></xref> structure's <xref uid="langword_csharp_Value" name="Value" href=""></xref> will be 0.
+      description: A <xref href="System.Data.SqlTypes.SqlByte"></xref> structure whose `Value` equals the `Value` of this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure. If the <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure's Value is `true`, the <xref href="System.Data.SqlTypes.SqlByte"></xref> structure's `Value` will be 1. Otherwise, the <xref href="System.Data.SqlTypes.SqlByte"></xref> structure's `Value` will be 0.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlByte*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2201,7 +2201,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlDouble"></xref> structure with the same value as this instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlDouble*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2227,7 +2227,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlInt16"></xref> structure with the same value as this instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlInt16*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2253,7 +2253,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlInt32"></xref> structure with the same value as this instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlInt32*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2279,7 +2279,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlInt64"></xref> structure with the same value as this instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlInt64*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2305,7 +2305,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlMoney"></xref> structure with the same value as this instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlMoney*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2331,7 +2331,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlSingle"></xref> structure with the same value as this instance of <xref href="System.Data.SqlTypes.SqlDecimal"></xref>.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlSingle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2357,7 +2357,7 @@ items:
       description: A <xref href="System.Data.SqlTypes.SqlString"></xref> structure whose value is a string representing the value contained in this <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure.
   overload: System.Data.SqlTypes.SqlDecimal.ToSqlString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2383,7 +2383,7 @@ items:
       description: A new <xref href="System.String"></xref> object that contains the string representation of the <xref href="System.Data.SqlTypes.SqlDecimal"></xref> structure's <xref:System.Data.SqlTypes.SqlDecimal.Value*> property.
   overload: System.Data.SqlTypes.SqlDecimal.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2415,7 +2415,7 @@ items:
       description: Supply a negative value for the <code>position</code> parameter in order to truncate the value to the corresponding position to the left of the decimal point.
   overload: System.Data.SqlTypes.SqlDecimal.Truncate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2440,7 +2440,7 @@ items:
       description: A number in the range -79,228,162,514,264,337,593,543,950,335 through 79,228,162,514,162,514,264,337,593,543,950,335.
   overload: System.Data.SqlTypes.SqlDecimal.Value*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2518,8 +2518,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32
@@ -2568,8 +2568,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

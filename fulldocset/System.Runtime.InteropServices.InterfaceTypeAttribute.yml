@@ -12,7 +12,7 @@ items:
   nameWithType: InterfaceTypeAttribute
   fullName: System.Runtime.InteropServices.InterfaceTypeAttribute
   type: Class
-  summary: Indicates whether a managed interface is dual, dispatch-only, or <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> -only when exposed to COM.
+  summary: Indicates whether a managed interface is dual, dispatch-only, or `IUnknown` -only when exposed to COM.
   remarks: "You can apply this attribute to interfaces.  \n  \n By default, the [Tlbexp.exe (Type Library Exporter)](~/add/includes/ajax-current-ext-md.md) exposes a managed interface to COM as a dual interface, giving you the flexibility of late binding or the performance of early binding. The <xref:System.Runtime.InteropServices.ComInterfaceType> enumeration enables you to override the default behavior and specify late binding only or early binding only. For example, you can apply `InterfaceType (ComInterfaceType.InterfaceIsIDispatch)` to an interface to produce metadata to restrict callers to late binding only. Although interfaces that derive from the `IDispatch` interface are often dual, the `InterfaceIsIDispatch` enumeration member allows only late-bound calls to the interface methods. This attribute has no effect on the managed view of the interface. For additional information on how interfaces are exposed to COM, see [Exported Type Conversion](http://msdn.microsoft.com/en-us/1dfe55f4-07a2-4b61-aabf-a8cf65783a6b).  \n  \n The [Tlbimp.exe (Type Library Importer)](~/add/includes/ajax-current-ext-md.md) also applies this attribute to imported, nondual interfaces; it applies the appropriate enumeration member to indicate that the interface is dispatch-only or `IUnknown` -only."
   example:
   - "The following example shows how `InterfaceTypeAttribute` controls how the interface is exposed to COM.  \n  \n [!code-cs[Classic InterfaceTypeAttribute Example#1](~/add/codesnippet/csharp/t-system.runtime.interop_35_1.cs)]\n [!code-cpp[Classic InterfaceTypeAttribute Example#1](~/add/codesnippet/cpp/t-system.runtime.interop_35_1.cpp)]\n [!code-vb[Classic InterfaceTypeAttribute Example#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_35_1.vb)]"
@@ -74,7 +74,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -101,7 +101,7 @@ items:
       description: Describes how the interface should be exposed to COM clients.
   overload: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: One of the <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> values that describes how the interface should be exposed to COM clients.
   overload: System.Runtime.InteropServices.InterfaceTypeAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -153,7 +153,7 @@ items:
       description: The <xref href="System.Runtime.InteropServices.ComInterfaceType"></xref> value that describes how the interface should be exposed to COM.
   overload: System.Runtime.InteropServices.InterfaceTypeAttribute.Value*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

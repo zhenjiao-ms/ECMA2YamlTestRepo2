@@ -34,14 +34,14 @@ items:
   nameWithType: IDataRecord
   fullName: System.Data.IDataRecord
   type: Interface
-  summary: Provides access to the column values within each row for a <xref uid="langword_csharp_DataReader" name="DataReader" href=""></xref>, and is implemented by .NET Framework data providers that access relational databases.
+  summary: Provides access to the column values within each row for a `DataReader`, and is implemented by .NET Framework data providers that access relational databases.
   remarks: "The <xref:System.Data.IDataReader> and IDataRecord interfaces enable an inheriting class to implement a `DataReader` class. This provides a way of reading one or more forward-only streams of result sets. For more information about `DataReader` classes, see [Retrieving Data Using a DataReader](~/add/includes/ajax-current-ext-md.md).  \n  \n An application does not create an instance of the IDataRecord interface directly, but creates an instance of a class that inherits IDataRecord. Typically, you do this by obtaining a `DataReader` through the `ExecuteReader` method of the `Command` object.  \n  \n Classes that inherit IDataRecord must implement all inherited members, and typically define additional members to add provider-specific functionality.  \n  \n Providers implementing a `DataReader` are required to expose data in common language runtime (CLR) types. Type coercion is defined for some types not included in the CLR. These values may be accessed as alternative types that comply with CLR types. As an example, the following table lists suggested mappings from OLE DB data types to CLR types, with alternative types in parentheses.  \n  \n|OLE DB type|CLR type|  \n|-----------------|--------------|  \n|DBTYPE_BOOL|Int16|  \n|DBTYPE_BSTR|string|  \n|DBTYPE_BYTES|byte[]|  \n|DBTYPE_CY|Decimal|  \n|DBTYPE_DATE|DateTime|  \n|DBTYPE_DBDATE|DateTime|  \n|DBTYPE_DBTIME|DateTime|  \n|DBTYPE_DBTIMESTAMP|DateTime|  \n|DBTYPE_DECIMAL|Decimal|  \n|DBTYPE_EMPTY|null|  \n|DBTYPE_ERROR|ExternalException|  \n|DBTYPE_FILETIME|DateTime|  \n|DBTYPE_GUID|Guid|  \n|DBTYPE_HCHAPTER|not supported|  \n|DBTYPE_I1|SByte|  \n|DBTYPE_I2|Int16|  \n|DBTYPE_I4|Int32|  \n|DBTYPE_I8|Int64|  \n|DBTYPE_IDISPATCH|object|  \n|DBTYPE_IUNKNOWN|object|  \n|DBTYPE_NULL|DBNull.Value|  \n|DBTYPE_NUMERIC|Decimal|  \n|DBTYPE_PROPVARIANT|object|  \n|DBTYPE_R4|Single|  \n|DBTYPE_R8|Double|  \n|DBTYPE_STR|string|  \n|DBTYPE_UDT|not supported|  \n|DBTYPE_UI1|byte (Int16)|  \n|DBTYPE_UI2|UInt16 (Int32)|  \n|DBTYPE_UI4|UInt32 (Int64)|  \n|DBTYPE_UI8|UInt64 (Decimal)|  \n|DBTYPE_VARIANT|object|  \n|DBTYPE_VARNUMERIC|not supported|  \n|DBTYPE_WSTR|string|"
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection>, <xref:System.Data.SqlClient.SqlCommand>, and <xref:System.Data.SqlClient.SqlDataReader>. The example reads through the data, writing it out to the console. Finally, the example closes the <xref:System.Data.SqlClient.SqlDataReader>, and then the <xref:System.Data.SqlClient.SqlConnection>.  \n  \n [!code-cs[Classic WebData SqlDataReader.Read Example#1](~/add/codesnippet/csharp/t-system.data.idatarecord_1.cs)]\n [!code-vb[Classic WebData SqlDataReader.Read Example#1](~/add/codesnippet/visualbasic/t-system.data.idatarecord_1.vb)]"
   syntax:
     content: public interface IDataRecord
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
       description: When not positioned in a valid recordset, 0; otherwise, the number of columns in the current record. The default is -1.
   overload: System.Data.IDataRecord.FieldCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,7 +100,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -177,7 +177,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,7 +209,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -254,7 +254,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,7 +286,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,7 +319,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -351,7 +351,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,7 +383,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -415,7 +415,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -448,7 +448,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -480,7 +480,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,7 +512,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -544,7 +544,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -576,7 +576,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -608,7 +608,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -640,7 +640,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -672,7 +672,7 @@ items:
       description: The index of the named field.
   overload: System.Data.IDataRecord.GetOrdinal*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -704,7 +704,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -736,7 +736,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -766,7 +766,7 @@ items:
       description: The number of instances of <xref href="System.Object"></xref> in the array.
   overload: System.Data.IDataRecord.GetValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -793,13 +793,13 @@ items:
       description: The index of the field to find.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified field is set to null; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified field is set to null; otherwise, `false`.'
   overload: System.Data.IDataRecord.IsDBNull*
   exceptions:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -831,7 +831,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -864,7 +864,7 @@ items:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: No column with the specified name was found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -927,8 +927,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -959,8 +959,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char
@@ -1129,8 +1129,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

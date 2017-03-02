@@ -19,16 +19,16 @@ items:
   syntax:
     content: public interface IAttachedPropertyStore
   implements: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo(System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
   id: CopyPropertiesTo(System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
   parent: System.Xaml.IAttachedPropertyStore
   langs:
   - csharp
-  name: CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  nameWithType: IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  fullName: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
+  name: CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  nameWithType: IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  fullName: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
   type: Method
   assemblies:
   - System.Xaml
@@ -39,13 +39,13 @@ items:
     parameters:
     - id: array
       type: System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[]
-      description: The destination array. The array is a generic array, should be passed undimensioned, and should have components of <xref href="System.Xaml.AttachableMemberIdentifier"></xref> and <xref uid="langword_csharp_object" name="object" href=""></xref>.
+      description: The destination array. The array is a generic array, should be passed undimensioned, and should have components of <xref href="System.Xaml.AttachableMemberIdentifier"></xref> and `object`.
     - id: index
       type: System.Int32
       description: The source index where copying should begin.
   overload: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAttachedPropertyStore.PropertyCount
   id: PropertyCount
@@ -67,7 +67,7 @@ items:
       description: The integer count of entries in the store.
   overload: System.Xaml.IAttachedPropertyStore.PropertyCount*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAttachedPropertyStore.RemoveProperty(System.Xaml.AttachableMemberIdentifier)
   id: RemoveProperty(System.Xaml.AttachableMemberIdentifier)
@@ -90,10 +90,10 @@ items:
       description: The XAML type system identifier for the attachable member entry to remove.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an attachable member entry for <code>attachableMemberIdentifier</code> was found in the store and removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an attachable member entry for <code>attachableMemberIdentifier</code> was found in the store and removed; otherwise, `false`.'
   overload: System.Xaml.IAttachedPropertyStore.RemoveProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAttachedPropertyStore.SetProperty(System.Xaml.AttachableMemberIdentifier,System.Object)
   id: SetProperty(System.Xaml.AttachableMemberIdentifier,System.Object)
@@ -120,7 +120,7 @@ items:
       description: The value to set.
   overload: System.Xaml.IAttachedPropertyStore.SetProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAttachedPropertyStore.TryGetProperty(System.Xaml.AttachableMemberIdentifier,System.Object@)
   id: TryGetProperty(System.Xaml.AttachableMemberIdentifier,System.Object@)
@@ -147,23 +147,23 @@ items:
       description: Out parameter. When this method returns, contains the destination object for the value if `attachableMemberIdentifier` exists in the store and has a value.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an attachable member entry for <code>attachableMemberIdentifier</code> was found in the store and a value was posted to <code>value</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an attachable member entry for <code>attachableMemberIdentifier</code> was found in the store and a value was posted to <code>value</code>; otherwise, `false`.'
   overload: System.Xaml.IAttachedPropertyStore.TryGetProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo(System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[],System.Int32)
   parent: System.Xaml.IAttachedPropertyStore
   isExternal: false
-  name: CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  nameWithType: IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
-  fullName: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>,Int32)
+  name: CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  nameWithType: IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
+  fullName: System.Xaml.IAttachedPropertyStore.CopyPropertiesTo(KeyValuePair<AttachableMemberIdentifier,Object>[],Int32)
 - uid: System.Collections.Generic.KeyValuePair{System.Xaml.AttachableMemberIdentifier,System.Object}[]
   parent: System.Collections.Generic
   isExternal: false
-  name: KeyValuePair<AttachableMemberIdentifier,Object>
-  nameWithType: KeyValuePair<AttachableMemberIdentifier,Object>
+  name: KeyValuePair<AttachableMemberIdentifier,Object>[]
+  nameWithType: KeyValuePair<AttachableMemberIdentifier,Object>[]
   fullName: System.Collections.Generic.KeyValuePair<System.Xaml.AttachableMemberIdentifier,System.Object>[]
   spec.csharp:
   - uid: System.Collections.Generic.KeyValuePair`2

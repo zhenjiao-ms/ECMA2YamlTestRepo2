@@ -48,7 +48,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -75,7 +75,7 @@ items:
       description: The <xref href="System.Windows.PresentationSource"></xref> that reports current input for the stylus.
   overload: System.Windows.Input.StylusDevice.ActiveSource*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -103,16 +103,16 @@ items:
       description: The element to which the stylus is bound.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the input element is captured successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the input element is captured successfully; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.StylusDevice.Capture*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>element</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>element</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>element</code> is neither <xref href="System.Windows.UIElement"></xref> or <xref href="System.Windows.FrameworkContentElement"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -143,16 +143,16 @@ items:
       description: One of the <xref href="System.Windows.Input.CaptureMode"></xref> values.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the input element is captured successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the input element is captured successfully; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.StylusDevice.Capture*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>element</code> or <code>captureMode</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>element</code> or <code>captureMode</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>element</code> is neither <xref href="System.Windows.UIElement"></xref> or <xref href="System.Windows.FrameworkContentElement"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -179,7 +179,7 @@ items:
       description: The <xref href="System.Windows.IInputElement"></xref> that captured the stylus.
   overload: System.Windows.Input.StylusDevice.Captured*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -206,7 +206,7 @@ items:
       description: The element the pointer is over.
   overload: System.Windows.Input.StylusDevice.DirectlyOver*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -240,7 +240,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>relativeTo</code> is neither <xref href="System.Windows.UIElement"></xref> or <xref href="System.Windows.FrameworkContentElement"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -274,7 +274,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>relativeTo</code> is neither <xref href="System.Windows.UIElement"></xref> or <xref href="System.Windows.FrameworkContentElement"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -311,7 +311,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>relativeTo</code> is neither <xref href="System.Windows.UIElement"></xref> or <xref href="System.Windows.FrameworkContentElement"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -338,7 +338,7 @@ items:
       description: The identifier for the stylus device.
   overload: System.Windows.Input.StylusDevice.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -362,10 +362,10 @@ items:
     content: public bool InAir { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the pen is positioned above, yet not in contact with, the digitizer; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the pen is positioned above, yet not in contact with, the digitizer; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.StylusDevice.InAir*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -389,10 +389,10 @@ items:
     content: public bool InRange { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the pen is within range of the digitizer; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the pen is within range of the digitizer; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.StylusDevice.InRange*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -416,10 +416,10 @@ items:
     content: public bool Inverted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the secondary tip of the stylus is in use; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the secondary tip of the stylus is in use; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.StylusDevice.Inverted*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -446,7 +446,7 @@ items:
       description: The name of the stylus.
   overload: System.Windows.Input.StylusDevice.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -473,7 +473,7 @@ items:
       description: A reference to a <xref href="System.Windows.Input.StylusButtonCollection"></xref> object representing all of the buttons on the stylus.
   overload: System.Windows.Input.StylusDevice.StylusButtons*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -498,7 +498,7 @@ items:
     parameters: []
   overload: System.Windows.Input.StylusDevice.Synchronize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -525,7 +525,7 @@ items:
       description: The <xref href="System.Windows.Input.TabletDevice"></xref> represents the digitizer associated with the current <xref href="System.Windows.Input.StylusDevice"></xref>.
   overload: System.Windows.Input.StylusDevice.TabletDevice*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -552,7 +552,7 @@ items:
       description: The <xref href="System.Windows.IInputElement"></xref> object that receives input.
   overload: System.Windows.Input.StylusDevice.Target*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -580,7 +580,7 @@ items:
       description: The name of the <xref href="System.Windows.Input.StylusDevice"></xref>.
   overload: System.Windows.Input.StylusDevice.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

@@ -30,7 +30,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -54,25 +54,25 @@ items:
     parameters:
     - id: text
       type: System.String
-      description: The contents for the <xref uid="langword_csharp_script" name="script" href=""></xref> element; a string of script statements to run on the client.
+      description: The contents for the `script` element; a string of script statements to run on the client.
     - id: source
       type: System.String
-      description: The <xref uid="langword_csharp_src" name="src" href=""></xref> attribute value for the <xref uid="langword_csharp_script" name="script" href=""></xref> element, specifying an external source location for the client script contents.
+      description: The `src` attribute value for the `script` element, specifying an external source location for the client script contents.
     - id: language
       type: System.String
-      description: The <xref uid="langword_csharp_language" name="language" href=""></xref> attribute value for the <xref uid="langword_csharp_script" name="script" href=""></xref> element, specifying the language of the script statements.
+      description: The `language` attribute value for the `script` element, specifying the language of the script statements.
     - id: type
       type: System.String
-      description: The type attribute value for the <xref uid="langword_csharp_script" name="script" href=""></xref> element, indicating the MIME type for the associated scripting engine.
+      description: The type attribute value for the `script` element, indicating the MIME type for the associated scripting engine.
     - id: id
       type: System.String
-      description: The ID for the <xref uid="langword_csharp_script" name="script" href=""></xref> element. This argument is required by the design host (for example, [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)]).
+      description: The ID for the `script` element. This argument is required by the design host (for example, [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)]).
   overload: System.Web.UI.Design.ClientScriptItem.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>id</code> is null (thrown by the design host).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,15 +89,15 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: Gets the <xref uid="langword_csharp_ID" name="ID" href=""></xref> attribute value for the client script element.
+  summary: Gets the `ID` attribute value for the client script element.
   syntax:
     content: public string Id { get; }
     return:
       type: System.String
-      description: The <xref uid="langword_csharp_ID" name="ID" href=""></xref> value of the <xref uid="langword_csharp_script" name="script" href=""></xref> element.
+      description: The `ID` value of the `script` element.
   overload: System.Web.UI.Design.ClientScriptItem.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,16 +114,16 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: Gets the <xref uid="langword_csharp_language" name="language" href=""></xref> attribute value for the client script element.
+  summary: Gets the `language` attribute value for the client script element.
   remarks: "The Language property represents the language in which the script statements are written. If the Language property is `null` or an empty string (\"\"), the `language` attribute is not set in the `script` element. When a client script block does not specify the script language, the client browser determines the language.  \n  \n The Language property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor."
   syntax:
     content: public string Language { get; }
     return:
       type: System.String
-      description: The language name specified for the <xref uid="langword_csharp_language" name="language" href=""></xref> attribute in the <xref uid="langword_csharp_script" name="script" href=""></xref> element.
+      description: The language name specified for the `language` attribute in the `script` element.
   overload: System.Web.UI.Design.ClientScriptItem.Language*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,16 +140,16 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: Gets the <xref uid="langword_csharp_src" name="src" href=""></xref> attribute value for the client script element.
+  summary: Gets the `src` attribute value for the client script element.
   remarks: "The Source property specifies an external source location for the client script contents. Typically, the script statements for a `script` element are specified using either the <xref:System.Web.UI.Design.ClientScriptItem.Text%2A> or Source property.  \n  \n If the Source property is `null` or an empty string (\"\"), the `src` attribute is not set in the `script` element.  \n  \n The Source property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>."
   syntax:
     content: public string Source { get; }
     return:
       type: System.String
-      description: The path to the source file specified for the <xref uid="langword_csharp_src" name="src" href=""></xref> attribute in the <xref uid="langword_csharp_script" name="script" href=""></xref> element.
+      description: The path to the source file specified for the `src` attribute in the `script` element.
   overload: System.Web.UI.Design.ClientScriptItem.Source*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,10 +172,10 @@ items:
     content: public string Text { get; }
     return:
       type: System.String
-      description: The script statements contained in the <xref uid="langword_csharp_script" name="script" href=""></xref> element.
+      description: The script statements contained in the `script` element.
   overload: System.Web.UI.Design.ClientScriptItem.Text*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,15 +192,15 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: Gets the <xref uid="langword_csharp_type" name="type" href=""></xref> attribute value for the client script element.
+  summary: Gets the `type` attribute value for the client script element.
   syntax:
     content: public string Type { get; }
     return:
       type: System.String
-      description: The name of the MIME type associated with the <xref uid="langword_csharp_script" name="script" href=""></xref> element.
+      description: The name of the MIME type associated with the `script` element.
   overload: System.Web.UI.Design.ClientScriptItem.Type*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -54,7 +54,7 @@ items:
   nameWithType: TypeDelegator
   fullName: System.Reflection.TypeDelegator
   type: Class
-  summary: Wraps a <xref href="System.Type"></xref> object and delegates methods to that <xref uid="langword_csharp_Type" name="Type" href=""></xref>.
+  summary: Wraps a <xref href="System.Type"></xref> object and delegates methods to that `Type`.
   remarks: "Derive from this type and override only those members you have to provide customization in, plus any members that are required by your program and not already implemented by TypeDelegator.  \n  \n TypeDelegator derives from <xref:System.Type?displayProperty=fullName> and implements most of the properties and methods of <xref:System.Type>. For each member it implements, TypeDelegator automatically delegates to the corresponding member of an internal <xref:System.Type> object, which is supplied as an argument to the constructor. This internal <xref:System.Type> object is exposed to deriving classes by the `protected`<xref:System.Reflection.TypeDelegator.typeImpl> field.  \n  \n> [!NOTE]\n>  Some members of TypeDelegator have implementations even though the members themselves are simply inherited from <xref:System.Type>. In these cases, the implementation is provided by an overridden `protected` method that has a name that ends in \"Impl\". For example, the implementation for all overloads of the <xref:System.Reflection.TypeDelegator.GetMethod%2A> method is supplied by the overridden <xref:System.Reflection.TypeDelegator.GetMethodImpl%2A> method. The implementation for inherited properties such as <xref:System.Type.IsPublic%2A> and <xref:System.Type.IsNestedAssembly%2A> is provided by the overridden <xref:System.Reflection.TypeDelegator.GetAttributeFlagsImpl%2A> method.  \n  \n Deriving classes can provide a public constructor that takes a <xref:System.Type> object as its parameter and simply passes that object to the <xref:System.Reflection.TypeDelegator.%23ctor%28System.Type%29> constructor, or can set the internal <xref:System.Type> object in some other way.  \n  \n If a deriving class uses a member that is not implemented by TypeDelegator, it must override that member and provide an implementation. The simplest implementation is to call the corresponding member on the internal <xref:System.Type> object exposed by the <xref:System.Reflection.TypeDelegator.typeImpl> field, but you can provide any implementation your application requires. It is not necessary to override these members if they are not used by your application or by library functions your application calls (for example, by the <xref:System.CodeDom.CodeTypeReference.%23ctor%28System.Type%29?displayProperty=fullName> constructor).  \n  \n The following virtual methods (`Overridable` methods in Visual Basic) of <xref:System.Type> are not implemented by TypeDelegator: <xref:System.Type.MakeGenericType%2A>, <xref:System.Type.GetGenericTypeDefinition%2A>, <xref:System.Type.GetGenericArguments%2A>, <xref:System.Type.GetGenericParameterConstraints%2A>, <xref:System.Type.MakeArrayType%2A>, <xref:System.Type.MakeByRefType%2A>, <xref:System.Type.MakePointerType%2A>, <xref:System.Type.GetEnumNames%2A>, <xref:System.Type.GetEnumValues%2A>, <xref:System.Type.GetEnumUnderlyingType%2A>, <xref:System.Type.GetTypeCodeImpl%2A>, <xref:System.Type.IsEnumDefined%2A>, <xref:System.Type.IsEquivalentTo%2A>.  \n  \n The following virtual properties (`Overridable` properties in Visual Basic) of <xref:System.Type> are not implemented by TypeDelegator: <xref:System.Type.IsGenericType%2A>, <xref:System.Type.IsGenericTypeDefinition%2A>, <xref:System.Type.IsGenericParameter%2A>, <xref:System.Type.ContainsGenericParameters%2A>, <xref:System.Type.DeclaringMethod%2A>, <xref:System.Type.GenericParameterAttributes%2A>, <xref:System.Type.GenericParameterPosition%2A>, <xref:System.Type.IsSecurityCritical%2A>, <xref:System.Type.IsSecuritySafeCritical%2A>, <xref:System.Type.IsSecurityTransparent%2A>."
   syntax:
     content: >-
@@ -218,7 +218,7 @@ items:
   - System.Type.System#Runtime#InteropServices#_Type#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
   - System.Type.ToString
   - System.Type.TypeInitializer
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -241,7 +241,7 @@ items:
     parameters: []
   overload: System.Reflection.TypeDelegator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -270,8 +270,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>delegatingType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>delegatingType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -297,7 +297,7 @@ items:
       description: An <xref href="System.Reflection.Assembly"></xref> object representing the assembly of the implemented type.
   overload: System.Reflection.TypeDelegator.Assembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,10 +319,10 @@ items:
     content: public override string AssemblyQualifiedName { get; }
     return:
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> containing the assembly's fully qualified name.
+      description: A `String` containing the assembly's fully qualified name.
   overload: System.Reflection.TypeDelegator.AssemblyQualifiedName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,7 +348,7 @@ items:
       description: The base type for a type.
   overload: System.Reflection.TypeDelegator.BaseType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -371,10 +371,10 @@ items:
     content: public override string FullName { get; }
     return:
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> containing the type's fully qualified name.
+      description: A `String` containing the type's fully qualified name.
   overload: System.Reflection.TypeDelegator.FullName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -391,17 +391,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Gets the attributes assigned to the <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>.
+  summary: Gets the attributes assigned to the `TypeDelegator`.
   remarks: This method can be used to determine if the `TypeDelegator` is abstract, public, and so on.
   syntax:
     content: protected override System.Reflection.TypeAttributes GetAttributeFlagsImpl ();
     parameters: []
     return:
       type: System.Reflection.TypeAttributes
-      description: A <xref uid="langword_csharp_TypeAttributes" name="TypeAttributes" href=""></xref> object representing the implementation attribute flags.
+      description: A `TypeAttributes` object representing the implementation attribute flags.
   overload: System.Reflection.TypeDelegator.GetAttributeFlagsImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -418,7 +418,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Gets the constructor that implemented the <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>.
+  summary: Gets the constructor that implemented the `TypeDelegator`.
   remarks: The `callConvention` parameter indicates the calling convention for the entry point. If no calling convention is specified, a default <xref:System.Reflection.CallingConventions> value of `Standard` is used.
   syntax:
     content: protected override System.Reflection.ConstructorInfo GetConstructorImpl (System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, Type[] types, System.Reflection.ParameterModifier[] modifiers);
@@ -428,22 +428,22 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> objects using reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of `MemberInfo` objects using reflection. If `binder` is `null`, the default binder is used.
     - id: callConvention
       type: System.Reflection.CallingConventions
       description: The calling conventions.
     - id: types
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing a list of the parameter number, order, and types. Types cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>; use an appropriate <xref uid="langword_csharp_GetMethod" name="GetMethod" href=""></xref> method or an empty array to search for a method without parameters.
+      description: An array of type `Type` containing a list of the parameter number, order, and types. Types cannot be `null`; use an appropriate `GetMethod` method or an empty array to search for a method without parameters.
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: An array of type <xref uid="langword_csharp_ParameterModifier" name="ParameterModifier" href=""></xref> having the same length as the `types` array, whose elements represent the attributes associated with the parameters of the method to get.
+      description: An array of type `ParameterModifier` having the same length as the `types` array, whose elements represent the attributes associated with the parameters of the method to get.
     return:
       type: System.Reflection.ConstructorInfo
-      description: A <xref uid="langword_csharp_ConstructorInfo" name="ConstructorInfo" href=""></xref> object for the method that matches the specified criteria, or <xref uid="langword_csharp_null" name="null" href=""></xref> if a match cannot be found.
+      description: A `ConstructorInfo` object for the method that matches the specified criteria, or `null` if a match cannot be found.
   overload: System.Reflection.TypeDelegator.GetConstructorImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,10 +470,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.ConstructorInfo[]
-      description: An array of type <xref uid="langword_csharp_ConstructorInfo" name="ConstructorInfo" href=""></xref> containing the specified constructors defined for this class. If no constructors are defined, an empty array is returned. Depending on the value of a specified parameter, only public constructors or both public and non-public constructors will be returned.
+      description: An array of type `ConstructorInfo` containing the specified constructors defined for this class. If no constructors are defined, an empty array is returned. Depending on the value of a specified parameter, only public constructors or both public and non-public constructors will be returned.
   overload: System.Reflection.TypeDelegator.GetConstructors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -505,7 +505,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: A custom attribute type cannot be loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -534,16 +534,16 @@ items:
       description: Specifies whether to search this type's inheritance chain to find the attributes.
     return:
       type: System.Object[]
-      description: An array of objects containing the custom attributes defined in this type that match the <code>attributeType</code> parameter, specifying whether to search the type's inheritance chain, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no custom attributes are defined on this type.
+      description: An array of objects containing the custom attributes defined in this type that match the <code>attributeType</code> parameter, specifying whether to search the type's inheritance chain, or `null` if no custom attributes are defined on this type.
   overload: System.Reflection.TypeDelegator.GetCustomAttributes*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>attributeType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>attributeType</code> is `null`.
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: A custom attribute type cannot be loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,10 +566,10 @@ items:
     parameters: []
     return:
       type: System.Type
-      description: The <xref href="System.Type"></xref> of the object encompassed or referred to by the current array, pointer or <xref uid="langword_csharp_ByRef" name="ByRef" href=""></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the current <xref href="System.Type"></xref> is not an array, a pointer or a <xref uid="langword_csharp_ByRef" name="ByRef" href=""></xref>.
+      description: The <xref href="System.Type"></xref> of the object encompassed or referred to by the current array, pointer or `ByRef`, or `null` if the current <xref href="System.Type"></xref> is not an array, a pointer or a `ByRef`.
   overload: System.Reflection.TypeDelegator.GetElementType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -599,13 +599,13 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.EventInfo
-      description: An <xref href="System.Reflection.EventInfo"></xref> object representing the event declared or inherited by this type with the specified name. This method returns <xref uid="langword_csharp_null" name="null" href=""></xref> if no such event is found.
+      description: An <xref href="System.Reflection.EventInfo"></xref> object representing the event declared or inherited by this type with the specified name. This method returns `null` if no such event is found.
   overload: System.Reflection.TypeDelegator.GetEvent*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -622,16 +622,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Returns an array of <xref href="System.Reflection.EventInfo"></xref> objects representing all the public events declared or inherited by the current <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>.
+  summary: Returns an array of <xref href="System.Reflection.EventInfo"></xref> objects representing all the public events declared or inherited by the current `TypeDelegator`.
   syntax:
     content: public override System.Reflection.EventInfo[] GetEvents ();
     parameters: []
     return:
       type: System.Reflection.EventInfo[]
-      description: Returns an array of type <xref uid="langword_csharp_EventInfo" name="EventInfo" href=""></xref> containing all the events declared or inherited by the current type. If there are no events, an empty array is returned.
+      description: Returns an array of type `EventInfo` containing all the events declared or inherited by the current type. If there are no events, an empty array is returned.
   overload: System.Reflection.TypeDelegator.GetEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -648,7 +648,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Returns the events specified in <code>bindingAttr</code> that are declared or inherited by the current <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>.
+  summary: Returns the events specified in <code>bindingAttr</code> that are declared or inherited by the current `TypeDelegator`.
   syntax:
     content: public override System.Reflection.EventInfo[] GetEvents (System.Reflection.BindingFlags bindingAttr);
     parameters:
@@ -657,10 +657,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.EventInfo[]
-      description: An array of type <xref uid="langword_csharp_EventInfo" name="EventInfo" href=""></xref> containing the events specified in <code>bindingAttr</code>. If there are no events, an empty array is returned.
+      description: An array of type `EventInfo` containing the events specified in <code>bindingAttr</code>. If there are no events, an empty array is returned.
   overload: System.Reflection.TypeDelegator.GetEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -690,13 +690,13 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.FieldInfo
-      description: A <xref uid="langword_csharp_FieldInfo" name="FieldInfo" href=""></xref> object representing the field declared or inherited by this <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref> with the specified name. Returns <xref uid="langword_csharp_null" name="null" href=""></xref> if no such field is found.
+      description: A `FieldInfo` object representing the field declared or inherited by this `TypeDelegator` with the specified name. Returns `null` if no such field is found.
   overload: System.Reflection.TypeDelegator.GetField*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -723,10 +723,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.FieldInfo[]
-      description: An array of type <xref uid="langword_csharp_FieldInfo" name="FieldInfo" href=""></xref> containing the fields declared or inherited by the current <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>. An empty array is returned if there are no matched fields.
+      description: An array of type `FieldInfo` containing the fields declared or inherited by the current `TypeDelegator`. An empty array is returned if there are no matched fields.
   overload: System.Reflection.TypeDelegator.GetFields*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -752,16 +752,16 @@ items:
       description: The fully qualified name of the interface implemented by the current class.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the case is to be ignored; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the case is to be ignored; otherwise, `false`.'
     return:
       type: System.Type
-      description: A <xref uid="langword_csharp_Type" name="Type" href=""></xref> object representing the interface implemented (directly or indirectly) by the current class with the fully qualified name matching the specified name. If no interface that matches name is found, null is returned.
+      description: A `Type` object representing the interface implemented (directly or indirectly) by the current class with the fully qualified name matching the specified name. If no interface that matches name is found, null is returned.
   overload: System.Reflection.TypeDelegator.GetInterface*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -791,7 +791,7 @@ items:
       description: An <xref href="System.Reflection.InterfaceMapping"></xref> object representing the interface mapping for <code>interfaceType</code>.
   overload: System.Reflection.TypeDelegator.GetInterfaceMap*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -814,10 +814,10 @@ items:
     parameters: []
     return:
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing all the interfaces implemented on the current class and its base classes. If none are defined, an empty array is returned.
+      description: An array of type `Type` containing all the interfaces implemented on the current class and its base classes. If none are defined, an empty array is returned.
   overload: System.Reflection.TypeDelegator.GetInterfaces*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -850,13 +850,13 @@ items:
       description: The type of members to get.
     return:
       type: System.Reflection.MemberInfo[]
-      description: An array of type <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> containing all the members of the current class and its base class meeting the specified criteria.
+      description: An array of type `MemberInfo` containing all the members of the current class and its base class meeting the specified criteria.
   overload: System.Reflection.TypeDelegator.GetMember*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -883,10 +883,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.MemberInfo[]
-      description: An array of type <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> containing all the members of the current class and its base classes that meet the <code>bindingAttr</code> filter.
+      description: An array of type `MemberInfo` containing all the members of the current class and its base classes that meet the <code>bindingAttr</code> filter.
   overload: System.Reflection.TypeDelegator.GetMembers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -916,22 +916,22 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> objects using reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of `MemberInfo` objects using reflection. If `binder` is `null`, the default binder is used.
     - id: callConvention
       type: System.Reflection.CallingConventions
       description: The calling conventions.
     - id: types
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing a list of the parameter number, order, and types. Types cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>; use an appropriate <xref uid="langword_csharp_GetMethod" name="GetMethod" href=""></xref> method or an empty array to search for a method without parameters.
+      description: An array of type `Type` containing a list of the parameter number, order, and types. Types cannot be `null`; use an appropriate `GetMethod` method or an empty array to search for a method without parameters.
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: An array of type <xref uid="langword_csharp_ParameterModifier" name="ParameterModifier" href=""></xref> having the same length as the `types` array, whose elements represent the attributes associated with the parameters of the method to get.
+      description: An array of type `ParameterModifier` having the same length as the `types` array, whose elements represent the attributes associated with the parameters of the method to get.
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfoInfo" name="MethodInfoInfo" href=""></xref> object for the implementation method that matches the specified criteria, or <xref uid="langword_csharp_null" name="null" href=""></xref> if a match cannot be found.
+      description: A `MethodInfoInfo` object for the implementation method that matches the specified criteria, or `null` if a match cannot be found.
   overload: System.Reflection.TypeDelegator.GetMethodImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -957,10 +957,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.MethodInfo[]
-      description: An array of <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> objects representing the methods defined on this <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>.
+      description: An array of `MethodInfo` objects representing the methods defined on this `TypeDelegator`.
   overload: System.Reflection.TypeDelegator.GetMethods*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -989,13 +989,13 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Type
-      description: A <xref uid="langword_csharp_Type" name="Type" href=""></xref> object representing the nested type.
+      description: A `Type` object representing the nested type.
   overload: System.Reflection.TypeDelegator.GetNestedType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1021,10 +1021,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing the nested types.
+      description: An array of type `Type` containing the nested types.
   overload: System.Reflection.TypeDelegator.GetNestedTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1050,10 +1050,10 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     return:
       type: System.Reflection.PropertyInfo[]
-      description: An array of <xref uid="langword_csharp_PropertyInfo" name="PropertyInfo" href=""></xref> objects representing properties defined on this <xref uid="langword_csharp_TypeDelegator" name="TypeDelegator" href=""></xref>.
+      description: An array of `PropertyInfo` objects representing properties defined on this `TypeDelegator`.
   overload: System.Reflection.TypeDelegator.GetProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1082,13 +1082,13 @@ items:
       description: A bitmask that affects the way in which the search is conducted. The value is a combination of zero or more bit flags from <xref href="System.Reflection.BindingFlags"></xref>.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> objects via reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used. See <xref href="System.Reflection.Binder"></xref>.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of `MemberInfo` objects via reflection. If `binder` is `null`, the default binder is used. See <xref href="System.Reflection.Binder"></xref>.
     - id: returnType
       type: System.Type
       description: The return type of the property.
     - id: types
       type: System.Type[]
-      description: A list of parameter types. The list represents the number, order, and types of the parameters. Types cannot be null; use an appropriate <xref uid="langword_csharp_GetMethod" name="GetMethod" href=""></xref> method or an empty array to search for a method without parameters.
+      description: A list of parameter types. The list represents the number, order, and types of the parameters. Types cannot be null; use an appropriate `GetMethod` method or an empty array to search for a method without parameters.
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
       description: An array of the same length as types with elements that represent the attributes associated with the parameters of the method to get.
@@ -1097,7 +1097,7 @@ items:
       description: A <xref href="System.Reflection.PropertyInfo"></xref> object for the property that matches the specified criteria, or null if a match cannot be found.
   overload: System.Reflection.TypeDelegator.GetPropertyImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1123,7 +1123,7 @@ items:
       description: A GUID.
   overload: System.Reflection.TypeDelegator.GUID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1146,10 +1146,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Type"></xref> is an array, a pointer or a ByRef; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Type"></xref> is an array, a pointer or a ByRef; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.HasElementTypeImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1176,31 +1176,31 @@ items:
       description: The name of the member to invoke. This may be a constructor, method, property, or field. If an empty string ("") is passed, the default member is invoked.
     - id: invokeAttr
       type: System.Reflection.BindingFlags
-      description: 'The invocation attribute. This must be one of the following <xref href="System.Reflection.BindingFlags"></xref> : <xref uid="langword_csharp_InvokeMethod" name="InvokeMethod" href=""></xref>, <xref uid="langword_csharp_CreateInstance" name="CreateInstance" href=""></xref>, <xref uid="langword_csharp_Static" name="Static" href=""></xref>, <xref uid="langword_csharp_GetField" name="GetField" href=""></xref>, <xref uid="langword_csharp_SetField" name="SetField" href=""></xref>, <xref uid="langword_csharp_GetProperty" name="GetProperty" href=""></xref>, or <xref uid="langword_csharp_SetProperty" name="SetProperty" href=""></xref>. A suitable invocation attribute must be specified. If a static member is to be invoked, the <xref uid="langword_csharp_Static" name="Static" href=""></xref> flag must be set.'
+      description: 'The invocation attribute. This must be one of the following <xref href="System.Reflection.BindingFlags"></xref> : `InvokeMethod`, `CreateInstance`, `Static`, `GetField`, `SetField`, `GetProperty`, or `SetProperty`. A suitable invocation attribute must be specified. If a static member is to be invoked, the `Static` flag must be set.'
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <xref uid="langword_csharp_MemberInfo" name="MemberInfo" href=""></xref> objects via reflection. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used. See <xref href="System.Reflection.Binder"></xref>.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of `MemberInfo` objects via reflection. If `binder` is `null`, the default binder is used. See <xref href="System.Reflection.Binder"></xref>.
     - id: target
       type: System.Object
       description: The object on which to invoke the specified member.
     - id: args
       type: System.Object[]
-      description: An array of type <xref uid="langword_csharp_Object" name="Object" href=""></xref> that contains the number, order, and type of the parameters of the member to be invoked. If `args` contains an uninitialized <xref uid="langword_csharp_Object" name="Object" href=""></xref>, it is treated as empty, which, with the default binder, can be widened to 0, 0.0 or a string.
+      description: An array of type `Object` that contains the number, order, and type of the parameters of the member to be invoked. If `args` contains an uninitialized `Object`, it is treated as empty, which, with the default binder, can be widened to 0, 0.0 or a string.
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: An array of type <xref uid="langword_csharp_ParameterModifer" name="ParameterModifer" href=""></xref> that is the same length as `args`, with elements that represent the attributes associated with the arguments of the member to be invoked. A parameter has attributes associated with it in the member's signature. For ByRef, use <xref uid="langword_csharp_ParameterModifer.ByRef" name="ParameterModifer.ByRef" href=""></xref>, and for none, use <xref uid="langword_csharp_ParameterModifer.None" name="ParameterModifer.None" href=""></xref>. The default binder does exact matching on these. Attributes such as <xref uid="langword_csharp_In" name="In" href=""></xref> and <xref uid="langword_csharp_InOut" name="InOut" href=""></xref> are not used in binding, and can be viewed using <xref uid="langword_csharp_ParameterInfo" name="ParameterInfo" href=""></xref>.
+      description: An array of type `ParameterModifer` that is the same length as `args`, with elements that represent the attributes associated with the arguments of the member to be invoked. A parameter has attributes associated with it in the member's signature. For ByRef, use `ParameterModifer.ByRef`, and for none, use `ParameterModifer.None`. The default binder does exact matching on these. Attributes such as `In` and `InOut` are not used in binding, and can be viewed using `ParameterInfo`.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: An instance of <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> used to govern the coercion of types. This is necessary, for example, to convert a string that represents 1000 to a <xref uid="langword_csharp_Double" name="Double" href=""></xref> value, since 1000 is represented differently by different cultures. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> for the current thread's <xref uid="langword_csharp_CultureInfo" name="CultureInfo" href=""></xref> is used.
+      description: An instance of `CultureInfo` used to govern the coercion of types. This is necessary, for example, to convert a string that represents 1000 to a `Double` value, since 1000 is represented differently by different cultures. If `culture` is `null`, the `CultureInfo` for the current thread's `CultureInfo` is used.
     - id: namedParameters
       type: System.String[]
-      description: An array of type <xref uid="langword_csharp_String" name="String" href=""></xref> containing parameter names that match up, starting at element zero, with the `args` array. There must be no holes in the array. If `args`. <xref uid="langword_csharp_Length" name="Length" href=""></xref> is greater than `namedParameters`. <xref uid="langword_csharp_Length" name="Length" href=""></xref>, the remaining parameters are filled in order.
+      description: An array of type `String` containing parameter names that match up, starting at element zero, with the `args` array. There must be no holes in the array. If `args`. `Length` is greater than `namedParameters`. `Length`, the remaining parameters are filled in order.
     return:
       type: System.Object
-      description: An <xref uid="langword_csharp_Object" name="Object" href=""></xref> representing the return value of the invoked member.
+      description: An `Object` representing the return value of the invoked member.
   overload: System.Reflection.TypeDelegator.InvokeMember*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1223,10 +1223,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Type"></xref> is an array; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Type"></xref> is an array; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsArrayImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1249,10 +1249,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Type"></xref> is passed by reference; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Type"></xref> is passed by reference; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsByRefImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1275,10 +1275,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Type"></xref> is a COM object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Type"></xref> is a COM object; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsCOMObjectImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1307,16 +1307,16 @@ items:
       description: An array of custom attributes identified by type.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a custom attribute identified by <code>attributeType</code> is defined; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a custom attribute identified by <code>attributeType</code> is defined; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsDefined*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>attributeType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>attributeType</code> is `null`.
   - type: System.Reflection.ReflectionTypeLoadException
     commentId: T:System.Reflection.ReflectionTypeLoadException
     description: The custom attribute type cannot be loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1339,10 +1339,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Type"></xref> is a pointer; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Type"></xref> is a pointer; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsPointerImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1365,10 +1365,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Type"></xref> is one of the primitive types; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Type"></xref> is one of the primitive types; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsPrimitiveImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1391,10 +1391,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the type is a value type; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the type is a value type; otherwise, `false`.'
   overload: System.Reflection.TypeDelegator.IsValueTypeImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1420,7 +1420,7 @@ items:
       description: A value which, in combination with the module, uniquely identifies this entity in metadata.
   overload: System.Reflection.TypeDelegator.MetadataToken*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1446,7 +1446,7 @@ items:
       description: A <xref href="System.Reflection.Module"></xref> object representing the module of the implemented type.
   overload: System.Reflection.TypeDelegator.Module*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1469,10 +1469,10 @@ items:
     content: public override string Name { get; }
     return:
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> containing the type's non-qualified name.
+      description: A `String` containing the type's non-qualified name.
   overload: System.Reflection.TypeDelegator.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1495,10 +1495,10 @@ items:
     content: public override string Namespace { get; }
     return:
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> containing the type's namespace.
+      description: A `String` containing the type's namespace.
   overload: System.Reflection.TypeDelegator.Namespace*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1521,10 +1521,10 @@ items:
     content: public override RuntimeTypeHandle TypeHandle { get; }
     return:
       type: System.RuntimeTypeHandle
-      description: A <xref uid="langword_csharp_RuntimeTypeHandle" name="RuntimeTypeHandle" href=""></xref> object.
+      description: A `RuntimeTypeHandle` object.
   overload: System.Reflection.TypeDelegator.TypeHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1548,7 +1548,7 @@ items:
       type: System.Type
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1573,7 +1573,7 @@ items:
       description: The underlying type.
   overload: System.Reflection.TypeDelegator.UnderlyingSystemType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1699,8 +1699,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -1713,8 +1713,8 @@ references:
 - uid: System.Reflection.ParameterModifier[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterModifier
-  nameWithType: ParameterModifier
+  name: ParameterModifier[]
+  nameWithType: ParameterModifier[]
   fullName: System.Reflection.ParameterModifier[]
   spec.csharp:
   - uid: System.Reflection.ParameterModifier
@@ -1733,8 +1733,8 @@ references:
 - uid: System.Reflection.ConstructorInfo[]
   parent: System.Reflection
   isExternal: false
-  name: ConstructorInfo
-  nameWithType: ConstructorInfo
+  name: ConstructorInfo[]
+  nameWithType: ConstructorInfo[]
   fullName: System.Reflection.ConstructorInfo[]
   spec.csharp:
   - uid: System.Reflection.ConstructorInfo
@@ -1753,8 +1753,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1803,8 +1803,8 @@ references:
 - uid: System.Reflection.EventInfo[]
   parent: System.Reflection
   isExternal: false
-  name: EventInfo
-  nameWithType: EventInfo
+  name: EventInfo[]
+  nameWithType: EventInfo[]
   fullName: System.Reflection.EventInfo[]
   spec.csharp:
   - uid: System.Reflection.EventInfo
@@ -1841,8 +1841,8 @@ references:
 - uid: System.Reflection.FieldInfo[]
   parent: System.Reflection
   isExternal: false
-  name: FieldInfo
-  nameWithType: FieldInfo
+  name: FieldInfo[]
+  nameWithType: FieldInfo[]
   fullName: System.Reflection.FieldInfo[]
   spec.csharp:
   - uid: System.Reflection.FieldInfo
@@ -1885,8 +1885,8 @@ references:
 - uid: System.Reflection.MemberInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MemberInfo
-  nameWithType: MemberInfo
+  name: MemberInfo[]
+  nameWithType: MemberInfo[]
   fullName: System.Reflection.MemberInfo[]
   spec.csharp:
   - uid: System.Reflection.MemberInfo
@@ -1929,8 +1929,8 @@ references:
 - uid: System.Reflection.MethodInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MethodInfo
-  nameWithType: MethodInfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
   fullName: System.Reflection.MethodInfo[]
   spec.csharp:
   - uid: System.Reflection.MethodInfo
@@ -1961,8 +1961,8 @@ references:
 - uid: System.Reflection.PropertyInfo[]
   parent: System.Reflection
   isExternal: false
-  name: PropertyInfo
-  nameWithType: PropertyInfo
+  name: PropertyInfo[]
+  nameWithType: PropertyInfo[]
   fullName: System.Reflection.PropertyInfo[]
   spec.csharp:
   - uid: System.Reflection.PropertyInfo
@@ -2023,8 +2023,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

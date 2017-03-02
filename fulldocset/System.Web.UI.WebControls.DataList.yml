@@ -255,7 +255,7 @@ items:
   - System.Web.UI.WebControls.WebControl.TagName
   - System.Web.UI.WebControls.WebControl.ToolTip
   - System.Web.UI.WebControls.WebControl.Width
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -281,7 +281,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.DataList.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -309,7 +309,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that represents the style properties for alternating items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.AlternatingItemStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,10 +334,10 @@ items:
     content: public virtual System.Web.UI.ITemplate AlternatingItemTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> object that contains the template for alternating items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> object that contains the template for alternating items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.AlternatingItemTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -354,7 +354,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Occurs when the <xref uid="langword_csharp_Cancel" name="Cancel" href=""></xref> button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
+  summary: Occurs when the `Cancel` button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
   remarks: "The CancelCommand event is raised when the `Cancel` button is clicked for an item in the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n A typical handler for the CancelCommand event sets the <xref:System.Web.UI.WebControls.DataList.EditItemIndex%2A> property to `-1` (to deselect the item) and then rebinds the data to the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n> [!CAUTION]\n>  Text is not HTML encoded before it is displayed in the <xref:System.Web.UI.WebControls.DataList> control. This makes it possible to embed script within HTML tags in the text. If the values for the control come from user input, be sure to validate the values to reduce security vulnerabilities.  \n  \n For more information about handling events, see [How to: Consume Events in a Web Forms Application](~/add/includes/ajax-current-ext-md.md).  \n  \n> [!CAUTION]\n>  This control can be used to display user input, which might include malicious client script. Check any information that is sent from a client for executable script, SQL statements, or other code before displaying it in your application. You can use validation controls to verify user input before displaying the input text in a control. ASP.NET provides an input request validation feature to block script and HTML in user input. For more information, see [Securing Standard Controls](~/add/includes/ajax-current-ext-md.md), [How to: Protect Against Script Exploits in a Web Application by Applying HTML Encoding to Strings](~/add/includes/ajax-current-ext-md.md), and [Validating User Input in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to specify and code a handler for the CancelCommand event. It cancels any edits made to an item in the <xref:System.Web.UI.WebControls.DataList> control when the `Cancel` button is clicked.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[DataListEdit#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_29_1.aspx)]\n [!code-vb[DataListEdit#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_29_1.aspx)]  \n  \n [!code-vb[DataListEdit2#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_29_2.aspx)]\n [!code-cs[DataListEdit2#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_29_2.aspx)]"
@@ -364,7 +364,7 @@ items:
       type: System.Web.UI.WebControls.DataListCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,7 +381,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Represents the <xref uid="langword_csharp_Cancel" name="Cancel" href=""></xref> command name. This field is read-only.
+  summary: Represents the `Cancel` command name. This field is read-only.
   remarks: Use the CancelCommandName field to represent the `Cancel` command name.
   syntax:
     content: public const string CancelCommandName;
@@ -389,7 +389,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -413,10 +413,10 @@ items:
     parameters:
     - id: useDataSource
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use the control's data source; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that the control is being recreated from view state and should not be data-bound.
+      description: '`true` to use the control''s data source; `false` to indicate that the control is being recreated from view state and should not be data-bound.'
   overload: System.Web.UI.WebControls.DataList.CreateControlHierarchy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -445,7 +445,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableStyle"></xref> that contains the default style properties for the control.
   overload: System.Web.UI.WebControls.DataList.CreateControlStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -478,7 +478,7 @@ items:
       description: A new <xref href="System.Web.UI.WebControls.DataListItem"></xref> created with the specified list-item type.
   overload: System.Web.UI.WebControls.DataList.CreateItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -495,7 +495,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Occurs when the <xref uid="langword_csharp_Delete" name="Delete" href=""></xref> button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
+  summary: Occurs when the `Delete` button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
   remarks: "The DeleteCommand event is raised when the `Delete` button is clicked for an item in the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n A typical handler for the DeleteCommand event removes the selected item from the data source and then rebinds the data to the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n For more information about handling events, see [How to: Consume Events in a Web Forms Application](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to specify and code a handler for the DeleteCommand event. It deletes the selected item in the <xref:System.Web.UI.WebControls.DataList> control when the `Delete` button is clicked.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[DataListEdit#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_109_1.aspx)]\n [!code-vb[DataListEdit#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_109_1.aspx)]  \n  \n [!code-vb[DataListEdit2#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_109_2.aspx)]\n [!code-cs[DataListEdit2#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_109_2.aspx)]"
@@ -505,7 +505,7 @@ items:
       type: System.Web.UI.WebControls.DataListCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,7 +522,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Represents the <xref uid="langword_csharp_Delete" name="Delete" href=""></xref> command name. This field is read-only.
+  summary: Represents the `Delete` command name. This field is read-only.
   remarks: Use the DeleteCommandName field to represent the `Delete` command name.
   syntax:
     content: public const string DeleteCommandName;
@@ -530,7 +530,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -547,7 +547,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Occurs when the <xref uid="langword_csharp_Edit" name="Edit" href=""></xref> button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
+  summary: Occurs when the `Edit` button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
   remarks: "The EditCommand event is raised when the `Edit` button is clicked for an item in the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n A typical handler for the EditCommand event sets the <xref:System.Web.UI.WebControls.DataList.EditItemIndex%2A> property to the selected row and then rebinds the data to the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n> [!CAUTION]\n>  Text is not HTML encoded before it is displayed in the <xref:System.Web.UI.WebControls.DataList> control. This makes it possible to embed script within HTML tags in the text. If the values for the control come from user input, be sure to validate the values to reduce security vulnerabilities.  \n  \n For more information about handling events, see [How to: Consume Events in a Web Forms Application](~/add/includes/ajax-current-ext-md.md).  \n  \n> [!CAUTION]\n>  This control can be used to display user input, which might include malicious client script. Check any information that is sent from a client for executable script, SQL statements, or other code before displaying it in your application. You can use validation controls to verify user input before displaying the input text in a control. ASP.NET provides an input request validation feature to block script and HTML in user input. For more information, see [Securing Standard Controls](~/add/includes/ajax-current-ext-md.md), [How to: Protect Against Script Exploits in a Web Application by Applying HTML Encoding to Strings](~/add/includes/ajax-current-ext-md.md), and [Validating User Input in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to specify and code a handler for the EditCommand event. It allows you to edit the selected item in the <xref:System.Web.UI.WebControls.DataList> control when the `Edit` button is clicked.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[DataListEdit#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_64_1.aspx)]\n [!code-vb[DataListEdit#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_64_1.aspx)]  \n  \n [!code-vb[DataListEdit2#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_64_2.aspx)]\n [!code-cs[DataListEdit2#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_64_2.aspx)]"
@@ -557,7 +557,7 @@ items:
       type: System.Web.UI.WebControls.DataListCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -574,7 +574,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Represents the <xref uid="langword_csharp_Edit" name="Edit" href=""></xref> command name. This field is read-only.
+  summary: Represents the `Edit` command name. This field is read-only.
   remarks: Use the EditCommandName field to represent the `Edit` command name.
   syntax:
     content: public const string EditCommandName;
@@ -582,7 +582,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -612,8 +612,8 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The selected value is less than <xref uid="langword_csharp_0" name="0" href=""></xref>.
-  platform:
+    description: The selected value is less than `0`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -641,7 +641,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that contains the style properties for the item selected for editing in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.EditItemStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -666,10 +666,10 @@ items:
     content: public virtual System.Web.UI.ITemplate EditItemTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> object that contains the template for the item selected for editing in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> object that contains the template for the item selected for editing in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.EditItemTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -694,10 +694,10 @@ items:
     content: public virtual bool ExtractTemplateRows { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the rows of a <xref href="System.Web.UI.WebControls.Table"></xref> control, defined in each template of a <xref href="System.Web.UI.WebControls.DataList"></xref> control, are extracted and displayed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the rows of a <xref href="System.Web.UI.WebControls.Table"></xref> control, defined in each template of a <xref href="System.Web.UI.WebControls.DataList"></xref> control, are extracted and displayed; otherwise, `false`. The default value is `false`.'
   overload: System.Web.UI.WebControls.DataList.ExtractTemplateRows*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -725,7 +725,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that contains the style properties for the footer section of the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.FooterStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -750,10 +750,10 @@ items:
     content: public virtual System.Web.UI.ITemplate FooterTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> object that contains the template for the footer section of the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> object that contains the template for the footer section of the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.FooterTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -770,7 +770,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets the grid line style for the <xref href="System.Web.UI.WebControls.DataList"></xref> control when the <xref:System.Web.UI.WebControls.DataList.RepeatLayout*> property is set to <xref uid="langword_csharp_RepeatLayout.Table" name="RepeatLayout.Table" href=""></xref>.
+  summary: Gets or sets the grid line style for the <xref href="System.Web.UI.WebControls.DataList"></xref> control when the <xref:System.Web.UI.WebControls.DataList.RepeatLayout*> property is set to `RepeatLayout.Table`.
   remarks: "Use the GridLines property to specify the grid line style for the <xref:System.Web.UI.WebControls.DataList> control. The following table lists the possible styles.  \n  \n|Style|Description|  \n|-----------|-----------------|  \n|<xref:System.Web.UI.WebControls.GridLines>|No grid lines.|  \n|<xref:System.Web.UI.WebControls.GridLines>|Displays the horizontal grid lines.|  \n|<xref:System.Web.UI.WebControls.GridLines>|Displays the vertical grid line.|  \n|<xref:System.Web.UI.WebControls.GridLines>|Displays both the horizontal and vertical grid lines.|  \n  \n> [!NOTE]\n>  This property only applies if the <xref:System.Web.UI.WebControls.DataList.RepeatLayout%2A> property is set to `RepeatLayout.Table`."
   example:
   - "The following code example demonstrates how to use the GridLines property to display the vertical and horizontal grid lines of the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[DataListLayout#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1324_1.aspx)]\n [!code-cs[DataListLayout#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1324_1.aspx)]"
@@ -778,10 +778,10 @@ items:
     content: public override System.Web.UI.WebControls.GridLines GridLines { get; set; }
     return:
       type: System.Web.UI.WebControls.GridLines
-      description: One of the <xref href="System.Web.UI.WebControls.GridLines"></xref> enumeration values. The default value is <xref uid="langword_csharp_None" name="None" href=""></xref>.
+      description: One of the <xref href="System.Web.UI.WebControls.GridLines"></xref> enumeration values. The default value is `None`.
   overload: System.Web.UI.WebControls.DataList.GridLines*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -809,7 +809,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that contains the style properties for the heading section of the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.HeaderStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -834,10 +834,10 @@ items:
     content: public virtual System.Web.UI.ITemplate HeaderTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the heading section of the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the heading section of the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.HeaderTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -864,7 +864,7 @@ items:
       description: The <xref href="System.Web.UI.WebControls.DataListItem"></xref> to initialize.
   overload: System.Web.UI.WebControls.DataList.InitializeItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -891,7 +891,7 @@ items:
       type: System.Web.UI.WebControls.DataListCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -918,7 +918,7 @@ items:
       type: System.Web.UI.WebControls.DataListItemEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -945,7 +945,7 @@ items:
       type: System.Web.UI.WebControls.DataListItemEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -973,7 +973,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListItemCollection"></xref> that contains a collection of <xref href="System.Web.UI.WebControls.DataListItem"></xref> objects representing the individual items within the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
   overload: System.Web.UI.WebControls.DataList.Items*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1001,7 +1001,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that contains the style properties for the items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.ItemStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1026,10 +1026,10 @@ items:
     content: public virtual System.Web.UI.ITemplate ItemTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.ItemTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1056,7 +1056,7 @@ items:
       description: An object that represents the state of the <xref href="System.Web.UI.WebControls.DataList"></xref>.
   overload: System.Web.UI.WebControls.DataList.LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1085,10 +1085,10 @@ items:
       description: The event data.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the event has been canceled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the event has been canceled; otherwise, `false`. The default is `false`.'
   overload: System.Web.UI.WebControls.DataList.OnBubbleEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1117,7 +1117,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListCommandEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnCancelCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1146,7 +1146,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListCommandEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnDeleteCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1175,7 +1175,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListCommandEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnEditCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1202,7 +1202,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.DataList.OnInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1231,7 +1231,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListCommandEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnItemCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1260,7 +1260,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListItemEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnItemCreated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1289,7 +1289,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListItemEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnItemDataBound*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1318,7 +1318,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListItemEventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.DataList.OnUpdateCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1342,7 +1342,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.DataList.PrepareControlHierarchy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1371,7 +1371,7 @@ items:
       description: A <xref href="System.Web.UI.HtmlTextWriter"></xref> that represents the output stream to render HTML content on the client.
   overload: System.Web.UI.WebControls.DataList.RenderContents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1396,13 +1396,13 @@ items:
     content: public virtual int RepeatColumns { get; set; }
     return:
       type: System.Int32
-      description: The number of columns to display in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_0" name="0" href=""></xref>, which indicates that the items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control are displayed in a single row or column, based on the value of the <xref:System.Web.UI.WebControls.DataList.RepeatDirection*> property.
+      description: The number of columns to display in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `0`, which indicates that the items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control are displayed in a single row or column, based on the value of the <xref:System.Web.UI.WebControls.DataList.RepeatDirection*> property.
   overload: System.Web.UI.WebControls.DataList.RepeatColumns*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The specified number of columns is a negative value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1427,13 +1427,13 @@ items:
     content: public virtual System.Web.UI.WebControls.RepeatDirection RepeatDirection { get; set; }
     return:
       type: System.Web.UI.WebControls.RepeatDirection
-      description: One of the <xref href="System.Web.UI.WebControls.RepeatDirection"></xref> values. The default is <xref uid="langword_csharp_Vertical" name="Vertical" href=""></xref>.
+      description: One of the <xref href="System.Web.UI.WebControls.RepeatDirection"></xref> values. The default is `Vertical`.
   overload: System.Web.UI.WebControls.DataList.RepeatDirection*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The specified value is not one of the <xref href="System.Web.UI.WebControls.RepeatDirection"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1464,7 +1464,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The specified value is not one of the supported <xref href="System.Web.UI.WebControls.RepeatLayout"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1491,7 +1491,7 @@ items:
       description: The object that contains the changes to the <xref href="System.Web.UI.WebControls.DataList"></xref> view state.
   overload: System.Web.UI.WebControls.DataList.SaveViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1508,7 +1508,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Represents the <xref uid="langword_csharp_Select" name="Select" href=""></xref> command name. This field is read-only.
+  summary: Represents the `Select` command name. This field is read-only.
   remarks: Use the SelectCommandName field to represent the `Select` command name.
   syntax:
     content: public const string SelectCommandName;
@@ -1516,7 +1516,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1546,8 +1546,8 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The specified value is less than <xref uid="langword_csharp_-1" name="-1" href=""></xref>.
-  platform:
+    description: The specified value is less than `-1`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1575,7 +1575,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.DataListItem"></xref> that represents the item selected in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
   overload: System.Web.UI.WebControls.DataList.SelectedItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1603,7 +1603,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that contains the style properties for the selected item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.SelectedItemStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1628,10 +1628,10 @@ items:
     content: public virtual System.Web.UI.ITemplate SelectedItemTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the selected item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the selected item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.SelectedItemTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1653,13 +1653,13 @@ items:
     content: public object SelectedValue { get; }
     return:
       type: System.Object
-      description: The key field value for the selected data list item. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>, which indicates that no data list item is currently selected.
+      description: The key field value for the selected data list item. The default is `null`, which indicates that no data list item is currently selected.
   overload: System.Web.UI.WebControls.DataList.SelectedValue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Web.UI.WebControls.BaseDataList.DataKeyField*> property has not been set.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1687,7 +1687,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object that contains the style properties of the separator between each item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is an empty <xref href="System.Web.UI.WebControls.TableItemStyle"></xref> object.
   overload: System.Web.UI.WebControls.DataList.SeparatorStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1712,10 +1712,10 @@ items:
     content: public virtual System.Web.UI.ITemplate SeparatorTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the separator between items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.ITemplate"></xref> that contains the template for the separator between items in the <xref href="System.Web.UI.WebControls.DataList"></xref> control. The default value is `null`.
   overload: System.Web.UI.WebControls.DataList.SeparatorTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1740,10 +1740,10 @@ items:
     content: public virtual bool ShowFooter { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the footer section is displayed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>, however this property is only examined when the <xref:System.Web.UI.WebControls.DataList.FooterTemplate*> property is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`true` if the footer section is displayed; otherwise, `false`. The default value is `true`, however this property is only examined when the <xref:System.Web.UI.WebControls.DataList.FooterTemplate*> property is not `null`.'
   overload: System.Web.UI.WebControls.DataList.ShowFooter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1768,10 +1768,10 @@ items:
     content: public virtual bool ShowHeader { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the header is displayed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>, however this property is only examined when the <xref:System.Web.UI.WebControls.DataList.HeaderTemplate*> property is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`true` if the header is displayed; otherwise, `false`. The default value is `true`, however this property is only examined when the <xref:System.Web.UI.WebControls.DataList.HeaderTemplate*> property is not `null`.'
   overload: System.Web.UI.WebControls.DataList.ShowHeader*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1805,7 +1805,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.Style"></xref> that represents the style of the specified item type at the specified index in the list control.
   overload: System.Web.UI.WebControls.DataList.System#Web#UI#WebControls#IRepeatInfoUser#GetItemStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1832,7 +1832,7 @@ items:
       description: To be added.
   overload: System.Web.UI.WebControls.DataList.System#Web#UI#WebControls#IRepeatInfoUser#HasFooter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1859,7 +1859,7 @@ items:
       description: To be added.
   overload: System.Web.UI.WebControls.DataList.System#Web#UI#WebControls#IRepeatInfoUser#HasHeader*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1886,7 +1886,7 @@ items:
       description: To be added.
   overload: System.Web.UI.WebControls.DataList.System#Web#UI#WebControls#IRepeatInfoUser#HasSeparators*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1923,7 +1923,7 @@ items:
       description: The <xref href="System.Web.UI.HtmlTextWriter"></xref> object to use to render the item.
   overload: System.Web.UI.WebControls.DataList.System#Web#UI#WebControls#IRepeatInfoUser#RenderItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1950,7 +1950,7 @@ items:
       description: To be added.
   overload: System.Web.UI.WebControls.DataList.System#Web#UI#WebControls#IRepeatInfoUser#RepeatedItemCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1976,7 +1976,7 @@ items:
       description: Returns the <xref href="System.Web.UI.HtmlTextWriterTag"></xref> tag if the <xref:System.Web.UI.WebControls.DataList.RepeatLayout*> is set to <xref href="System.Web.UI.WebControls.RepeatLayout"></xref>; otherwise, returns the <xref href="System.Web.UI.HtmlTextWriterTag"></xref> tag. The default is <xref href="System.Web.UI.WebControls.RepeatLayout"></xref>.
   overload: System.Web.UI.WebControls.DataList.TagKey*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2000,7 +2000,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.DataList.TrackViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2017,7 +2017,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Occurs when the <xref uid="langword_csharp_Update" name="Update" href=""></xref> button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
+  summary: Occurs when the `Update` button is clicked for an item in the <xref href="System.Web.UI.WebControls.DataList"></xref> control.
   remarks: "The UpdateCommand event is raised when the `Update` button for an item is clicked.  \n  \n A typical handler for the UpdateCommand event updates the data, sets the <xref:System.Web.UI.WebControls.DataList.EditItemIndex%2A> property to `-1` (to deselect the item), and then rebinds the data to the <xref:System.Web.UI.WebControls.DataList> control.  \n  \n> [!CAUTION]\n>  This control can be used to display user input, which might include malicious client script. Check any information that is sent from a client for executable script, SQL statements, or other code before displaying it in your application. You can use validation controls to verify user input before displaying the input text in a control. ASP.NET provides an input request validation feature to block script and HTML in user input. For more information, see [Securing Standard Controls](~/add/includes/ajax-current-ext-md.md), [How to: Protect Against Script Exploits in a Web Application by Applying HTML Encoding to Strings](~/add/includes/ajax-current-ext-md.md), and [Validating User Input in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md).  \n  \n For more information about handling events, see [How to: Consume Events in a Web Forms Application](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to specify and code a handler for the UpdateCommand event. It allows you to update the selected item in the <xref:System.Web.UI.WebControls.DataList> control with the new values entered by the user when the `Update` button is clicked.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[DataListEdit#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_128_1.aspx)]\n [!code-vb[DataListEdit#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_128_1.aspx)]  \n  \n [!code-vb[DataListEdit2#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_128_2.aspx)]\n [!code-cs[DataListEdit2#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_128_2.aspx)]"
@@ -2027,7 +2027,7 @@ items:
       type: System.Web.UI.WebControls.DataListCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2044,7 +2044,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Represents the <xref uid="langword_csharp_Update" name="Update" href=""></xref> command name. This field is read-only.
+  summary: Represents the `Update` command name. This field is read-only.
   remarks: Use the UpdateCommandName field to represent the `Update` command name.
   syntax:
     content: public const string UpdateCommandName;
@@ -2052,7 +2052,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

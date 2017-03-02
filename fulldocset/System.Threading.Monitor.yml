@@ -45,7 +45,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,8 +76,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>obj</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -106,16 +106,16 @@ items:
       description: The object on which to wait.
     - id: lockTaken
       type: System.Boolean
-      description: "The result of the attempt to acquire the lock, passed by reference. The input must be <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>. The output is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if the lock is acquired; otherwise, the output is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>. The output is set even if an exception occurs during the attempt to acquire the lock.  \n  \n Note   If no exception occurs, the output of this method is always <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+      description: "The result of the attempt to acquire the lock, passed by reference. The input must be `false`. The output is `true` if the lock is acquired; otherwise, the output is `false`. The output is set even if an exception occurs during the attempt to acquire the lock.  \n  \n Note   If no exception occurs, the output of this method is always `true`."
   overload: System.Threading.Monitor.Enter*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The input to <code>lockTaken</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+    description: The input to <code>lockTaken</code> is `true`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>obj</code> parameter is `null`.
+  version:
   - netframework-40
 - uid: System.Threading.Monitor.Exit(System.Object)
   id: Exit(System.Object)
@@ -143,11 +143,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
     description: The current thread does not own the lock for the specified object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -176,11 +176,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
     description: The calling thread does not own the lock for the specified object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,11 +209,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
     description: The calling thread does not own the lock for the specified object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,13 +242,13 @@ items:
       description: The object on which to acquire the lock.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread acquires the lock; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread acquires the lock; otherwise, `false`.'
   overload: System.Threading.Monitor.TryEnter*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>obj</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,16 +277,16 @@ items:
       description: The object on which to acquire the lock.
     - id: lockTaken
       type: System.Boolean
-      description: The result of the attempt to acquire the lock, passed by reference. The input must be <xref uid="langword_csharp_false" name="false" href=""></xref>. The output is <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock is acquired; otherwise, the output is <xref uid="langword_csharp_false" name="false" href=""></xref>. The output is set even if an exception occurs during the attempt to acquire the lock.
+      description: The result of the attempt to acquire the lock, passed by reference. The input must be `false`. The output is `true` if the lock is acquired; otherwise, the output is `false`. The output is set even if an exception occurs during the attempt to acquire the lock.
   overload: System.Threading.Monitor.TryEnter*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The input to <code>lockTaken</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+    description: The input to <code>lockTaken</code> is `true`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>obj</code> parameter is `null`.
+  version:
   - netframework-40
 - uid: System.Threading.Monitor.TryEnter(System.Object,System.Int32)
   id: TryEnter(System.Object,System.Int32)
@@ -313,16 +313,16 @@ items:
       description: The number of milliseconds to wait for the lock.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread acquires the lock; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread acquires the lock; otherwise, `false`.'
   overload: System.Threading.Monitor.TryEnter*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>millisecondsTimeout</code> is negative, and not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -352,16 +352,16 @@ items:
       description: A <xref href="System.TimeSpan"></xref> representing the amount of time to wait for the lock. A value of –1 millisecond specifies an infinite wait.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread acquires the lock; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread acquires the lock; otherwise, `false`.'
   overload: System.Threading.Monitor.TryEnter*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of <code>timeout</code> in milliseconds is negative and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref> (–1 millisecond), or is greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -393,19 +393,19 @@ items:
       description: The number of milliseconds to wait for the lock.
     - id: lockTaken
       type: System.Boolean
-      description: The result of the attempt to acquire the lock, passed by reference. The input must be <xref uid="langword_csharp_false" name="false" href=""></xref>. The output is <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock is acquired; otherwise, the output is <xref uid="langword_csharp_false" name="false" href=""></xref>. The output is set even if an exception occurs during the attempt to acquire the lock.
+      description: The result of the attempt to acquire the lock, passed by reference. The input must be `false`. The output is `true` if the lock is acquired; otherwise, the output is `false`. The output is set even if an exception occurs during the attempt to acquire the lock.
   overload: System.Threading.Monitor.TryEnter*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The input to <code>lockTaken</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+    description: The input to <code>lockTaken</code> is `true`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>millisecondsTimeout</code> is negative, and not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Monitor.TryEnter(System.Object,System.TimeSpan,System.Boolean@)
   id: TryEnter(System.Object,System.TimeSpan,System.Boolean@)
@@ -432,19 +432,19 @@ items:
       description: The amount of time to wait for the lock. A value of –1 millisecond specifies an infinite wait.
     - id: lockTaken
       type: System.Boolean
-      description: The result of the attempt to acquire the lock, passed by reference. The input must be <xref uid="langword_csharp_false" name="false" href=""></xref>. The output is <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock is acquired; otherwise, the output is <xref uid="langword_csharp_false" name="false" href=""></xref>. The output is set even if an exception occurs during the attempt to acquire the lock.
+      description: The result of the attempt to acquire the lock, passed by reference. The input must be `false`. The output is `true` if the lock is acquired; otherwise, the output is `false`. The output is set even if an exception occurs during the attempt to acquire the lock.
   overload: System.Threading.Monitor.TryEnter*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The input to <code>lockTaken</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+    description: The input to <code>lockTaken</code> is `true`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of <code>timeout</code> in milliseconds is negative and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref> (–1 millisecond), or is greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Monitor.Wait(System.Object)
   id: Wait(System.Object)
@@ -468,19 +468,19 @@ items:
       description: The object on which to wait.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the call returned because the caller reacquired the lock for the specified object. This method does not return if the lock is not reacquired.
+      description: '`true` if the call returned because the caller reacquired the lock for the specified object. This method does not return if the lock is not reacquired.'
   overload: System.Threading.Monitor.Wait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
     description: The calling thread does not own the lock for the specified object.
   - type: System.Threading.ThreadInterruptedException
     commentId: T:System.Threading.ThreadInterruptedException
-    description: The thread that invokes <xref uid="langword_csharp_Wait" name="Wait" href=""></xref> is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
-  platform:
+    description: The thread that invokes `Wait` is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -510,22 +510,22 @@ items:
       description: The number of milliseconds to wait before the thread enters the ready queue.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock was reacquired before the specified time elapsed; <xref uid="langword_csharp_false" name="false" href=""></xref> if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.
+      description: '`true` if the lock was reacquired before the specified time elapsed; `false` if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.'
   overload: System.Threading.Monitor.Wait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
     description: The calling thread does not own the lock for the specified object.
   - type: System.Threading.ThreadInterruptedException
     commentId: T:System.Threading.ThreadInterruptedException
-    description: The thread that invokes <xref uid="langword_csharp_Wait" name="Wait" href=""></xref> is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
+    description: The thread that invokes `Wait` is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of the <code>millisecondsTimeout</code> parameter is negative, and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,22 +555,22 @@ items:
       description: A <xref href="System.TimeSpan"></xref> representing the amount of time to wait before the thread enters the ready queue.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock was reacquired before the specified time elapsed; <xref uid="langword_csharp_false" name="false" href=""></xref> if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.
+      description: '`true` if the lock was reacquired before the specified time elapsed; `false` if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.'
   overload: System.Threading.Monitor.Wait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
     description: The calling thread does not own the lock for the specified object.
   - type: System.Threading.ThreadInterruptedException
     commentId: T:System.Threading.ThreadInterruptedException
-    description: The thread that invokes <xref uid="langword_csharp_Wait" name="Wait" href=""></xref> is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
+    description: The thread that invokes `Wait` is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of the <code>timeout</code> parameter in milliseconds is negative and does not represent <xref href="System.Threading.Timeout.Infinite"></xref> (–1 millisecond), or is greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -600,25 +600,25 @@ items:
       description: The number of milliseconds to wait before the thread enters the ready queue.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit and reacquire the synchronization domain for the context (if in a synchronized context) before the wait; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit and reacquire the synchronization domain for the context (if in a synchronized context) before the wait; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock was reacquired before the specified time elapsed; <xref uid="langword_csharp_false" name="false" href=""></xref> if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.
+      description: '`true` if the lock was reacquired before the specified time elapsed; `false` if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.'
   overload: System.Threading.Monitor.Wait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
-    description: <xref uid="langword_csharp_Wait" name="Wait" href=""></xref> is not invoked from within a synchronized block of code.
+    description: '`Wait` is not invoked from within a synchronized block of code.'
   - type: System.Threading.ThreadInterruptedException
     commentId: T:System.Threading.ThreadInterruptedException
-    description: The thread that invokes <xref uid="langword_csharp_Wait" name="Wait" href=""></xref> is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
+    description: The thread that invokes `Wait` is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value of the <code>millisecondsTimeout</code> parameter is negative, and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -648,25 +648,25 @@ items:
       description: A <xref href="System.TimeSpan"></xref> representing the amount of time to wait before the thread enters the ready queue.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit and reacquire the synchronization domain for the context (if in a synchronized context) before the wait; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit and reacquire the synchronization domain for the context (if in a synchronized context) before the wait; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the lock was reacquired before the specified time elapsed; <xref uid="langword_csharp_false" name="false" href=""></xref> if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.
+      description: '`true` if the lock was reacquired before the specified time elapsed; `false` if the lock was reacquired after the specified time elapsed. The method does not return until the lock is reacquired.'
   overload: System.Threading.Monitor.Wait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Threading.SynchronizationLockException
     commentId: T:System.Threading.SynchronizationLockException
-    description: <xref uid="langword_csharp_Wait" name="Wait" href=""></xref> is not invoked from within a synchronized block of code.
+    description: '`Wait` is not invoked from within a synchronized block of code.'
   - type: System.Threading.ThreadInterruptedException
     commentId: T:System.Threading.ThreadInterruptedException
     description: The thread that invokes Wait is later interrupted from the waiting state. This happens when another thread calls this thread's <xref:System.Threading.Thread.Interrupt*> method.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>timeout</code> parameter is negative and does not represent <xref href="System.Threading.Timeout.Infinite"></xref> (–1 millisecond), or is greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

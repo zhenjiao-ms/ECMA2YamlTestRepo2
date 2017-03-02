@@ -44,7 +44,7 @@ items:
   - System.Workflow.Runtime.Hosting.WorkflowRuntimeService.Start
   - System.Workflow.Runtime.Hosting.WorkflowRuntimeService.State
   - System.Workflow.Runtime.Hosting.WorkflowRuntimeService.Stop
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -69,7 +69,7 @@ items:
     parameters: []
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -97,7 +97,7 @@ items:
       description: The serialized default form of the <xref href="System.Workflow.ComponentModel.Activity"></xref>.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.GetDefaultSerializedForm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -122,10 +122,10 @@ items:
       description: The root activity of the workflow instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the given activity is blocked; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the given activity is blocked; otherwise, `false`.'
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.GetIsBlocked*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -153,7 +153,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the termination or suspend information.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.GetSuspendOrTerminateInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -181,7 +181,7 @@ items:
       description: A <xref href="System.Workflow.Runtime.WorkflowStatus"></xref> enumeration value that denotes the status of the workflow.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.GetWorkflowStatus*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -215,7 +215,7 @@ items:
       description: An <xref href="System.Workflow.ComponentModel.Activity"></xref> that represents the completed scope.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.LoadCompletedContextActivity*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -246,7 +246,7 @@ items:
       description: An <xref href="System.Workflow.ComponentModel.Activity"></xref> that represents the root activity of the workflow instance.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.LoadWorkflowInstanceState*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -280,7 +280,7 @@ items:
       description: The restored <xref href="System.Workflow.ComponentModel.Activity"></xref>.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.RestoreFromDefaultSerializedForm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -308,7 +308,7 @@ items:
       description: An <xref href="System.Workflow.ComponentModel.Activity"></xref> that represents the completed scope.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.SaveCompletedContextActivity*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -336,10 +336,10 @@ items:
       description: The root activity of the workflow instance.
     - id: unlock
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the workflow instance should not be locked; <xref uid="langword_csharp_false" name="false" href=""></xref> if the workflow instance should be locked.
+      description: '`true` if the workflow instance should not be locked; `false` if the workflow instance should be locked.'
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.SaveWorkflowInstanceState*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -367,10 +367,10 @@ items:
       description: An <xref href="System.Workflow.ComponentModel.Activity"></xref> that represents the completed scope.
     return:
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, the workflow runtime engine unloads the specified workflow when it becomes idle.
+      description: If `true`, the workflow runtime engine unloads the specified workflow when it becomes idle.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.UnloadOnIdle*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -398,7 +398,7 @@ items:
       description: The root activity of the workflow instance.
   overload: System.Workflow.Runtime.Hosting.WorkflowPersistenceService.UnlockWorkflowInstanceState*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -421,8 +421,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

@@ -61,7 +61,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,7 +90,7 @@ items:
       description: The physical path to the application root.
   overload: System.Web.Compilation.ClientBuildManager.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -123,7 +123,7 @@ items:
       description: The target directory for precompilation.
   overload: System.Web.Compilation.ClientBuildManager.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -159,7 +159,7 @@ items:
       description: Values that determine the precompilation behavior.
   overload: System.Web.Compilation.ClientBuildManager.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -197,7 +197,7 @@ items:
       description: The type-description provider to use. This parameter is primarily used to support the multi-targeting infrastructure in Visual Studio. It is used to retrieve metadata about types that is filtered for specific versions of the .NET Framework.
   overload: System.Web.Compilation.ClientBuildManager.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.ClientBuildManager.AppDomainShutdown
   id: AppDomainShutdown
@@ -218,7 +218,7 @@ items:
       type: System.Web.Compilation.BuildManagerHostUnloadEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -266,7 +266,7 @@ items:
       type: System.Web.Compilation.BuildManagerHostUnloadEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -292,7 +292,7 @@ items:
       description: A <xref href="System.String"></xref> containing the directory path used for code generation.
   overload: System.Web.Compilation.ClientBuildManager.CodeGenDir*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
     parameters: []
   overload: System.Web.Compilation.ClientBuildManager.CompileApplicationDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,7 +342,7 @@ items:
       description: The path to the file to be compiled.
   overload: System.Web.Compilation.ClientBuildManager.CompileFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -374,7 +374,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,7 +400,7 @@ items:
       description: The type of object to be created.
     - id: failIfExists
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if the object has already been created in the application domain of the ASP.NET runtime; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if the object has already been created in the application domain of the ASP.NET runtime; otherwise, `false`.'
     return:
       type: System.Web.Hosting.IRegisteredObject
       description: An object in the application domain of the ASP.NET runtime.
@@ -408,11 +408,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The object already exists in the application domain and <code>failIfExists</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>.
-  platform:
+    description: The object already exists in the application domain and <code>failIfExists</code> is `true`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -450,7 +450,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -489,7 +489,7 @@ items:
       description: A <xref href="System.CodeDom.CodeCompileUnit"></xref> for the given file.
   overload: System.Web.Compilation.ClientBuildManager.GenerateCodeCompileUnit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -534,7 +534,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -561,7 +561,7 @@ items:
       description: A <xref href="System.String"></xref> array containing the top-level directory names.
   overload: System.Web.Compilation.ClientBuildManager.GetAppDomainShutdownDirectories*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -588,7 +588,7 @@ items:
       description: An <xref href="System.Collections.IDictionary"></xref> containing browser elements.
   overload: System.Web.Compilation.ClientBuildManager.GetBrowserDefinitions*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -627,7 +627,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualCodeDir</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -659,7 +659,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -694,7 +694,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -726,7 +726,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>filePath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -758,7 +758,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -775,7 +775,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: Returns an array of the assemblies defined in the Bin directory and the <xref uid="langword_csharp_&lt;assembly&gt;" name="&lt;assembly&gt;" href=""></xref> section of the Web configuration file.
+  summary: Returns an array of the assemblies defined in the Bin directory and the `&lt;assembly&gt;` section of the Web configuration file.
   syntax:
     content: public string[] GetTopLevelAssemblyReferences (string virtualPath);
     parameters:
@@ -784,13 +784,13 @@ items:
       description: The configuration name and path.
     return:
       type: System.String[]
-      description: A <xref href="System.String"></xref> array containing paths to code bases in the Bin directory and the <xref uid="langword_csharp_&lt;assembly&gt;" name="&lt;assembly&gt;" href=""></xref> section of the Web configuration file.
+      description: A <xref href="System.String"></xref> array containing paths to code bases in the Bin directory and the `&lt;assembly&gt;` section of the Web configuration file.
   overload: System.Web.Compilation.ClientBuildManager.GetTopLevelAssemblyReferences*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>virtualPath</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -816,7 +816,7 @@ items:
       description: A <xref href="System.String"></xref> array containing all the virtual paths to code directories in an application.
   overload: System.Web.Compilation.ClientBuildManager.GetVirtualCodeDirectories*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -840,10 +840,10 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: Always <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Always `null`.
   overload: System.Web.Compilation.ClientBuildManager.InitializeLifetimeService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -869,13 +869,13 @@ items:
       description: The name of the assembly to be identified as a code assembly.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>assemblyName</code> parameter matches one of the generated code assemblies; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>assemblyName</code> parameter matches one of the generated code assemblies; otherwise, `false`.'
   overload: System.Web.Compilation.ClientBuildManager.IsCodeAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>assemblyName</code> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -897,10 +897,10 @@ items:
     content: public bool IsHostCreated { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the application domain for compiling ASP.NET Web applications has been created; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the application domain for compiling ASP.NET Web applications has been created; otherwise, `false`.'
   overload: System.Web.Compilation.ClientBuildManager.IsHostCreated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -924,7 +924,7 @@ items:
     parameters: []
   overload: System.Web.Compilation.ClientBuildManager.PrecompileApplication*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -951,7 +951,7 @@ items:
       description: A <xref href="System.Web.Compilation.ClientBuildManagerCallback"></xref> containing the method to call when reporting the result of compilation.
   overload: System.Web.Compilation.ClientBuildManager.PrecompileApplication*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -978,10 +978,10 @@ items:
       description: A <xref href="System.Web.Compilation.ClientBuildManagerCallback"></xref> containing the method to call when reporting the result of compilation.
     - id: forceCleanBuild
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to perform a clean build, which will first delete all object and intermediate files; <xref uid="langword_csharp_false" name="false" href=""></xref> to rebuild only those files that have changed. Set to true if there is a chance that a dependency might not be picked up by the build environment.
+      description: '`true` to perform a clean build, which will first delete all object and intermediate files; `false` to rebuild only those files that have changed. Set to true if there is a chance that a dependency might not be picked up by the build environment.'
   overload: System.Web.Compilation.ClientBuildManager.PrecompileApplication*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1005,7 +1005,7 @@ items:
     parameters: []
   overload: System.Web.Compilation.ClientBuildManager.System#IDisposable#Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1028,10 +1028,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the application domain is unloaded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the application domain is unloaded; otherwise, `false`.'
   overload: System.Web.Compilation.ClientBuildManager.Unload*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1223,8 +1223,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

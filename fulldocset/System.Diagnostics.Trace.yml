@@ -64,7 +64,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -81,7 +81,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Checks for a condition; if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>, displays a message box that shows the call stack.
+  summary: Checks for a condition; if the condition is `false`, displays a message box that shows the call stack.
   remarks: "Use the <xref:System.Diagnostics.Trace.Assert%2A?displayProperty=fullName> method if you want to do assertions in release builds. The <xref:System.Diagnostics.Debug.Assert%2A?displayProperty=fullName> method works only in debug builds. For more information, see [Assertions in Managed Code](~/add/includes/ajax-current-ext-md.md).  \n  \n Typically, the Assert method is used to identify logic errors during program development. Assert evaluates the condition. If the result is `false`, it sends a failure message to the <xref:System.Diagnostics.Trace.Listeners%2A> collection. You can customize this behavior by adding a <xref:System.Diagnostics.TraceListener> to, or removing one from, the <xref:System.Diagnostics.Trace.Listeners%2A> collection.  \n  \n When the application runs in user-interface mode, it displays a message box that shows the call stack with file and line numbers. The message box contains three buttons: **Abort**, **Retry**, and **Ignore**. Clicking the **Abort** button terminates the application. Clicking **Retry** sends you to the code in the debugger if your application is running in a debugger, or offers to open a debugger if it is not. Clicking **Ignore** continues with the next instruction in the code.  \n  \n> [!NOTE]\n>  The display of the message box depends on the presence of the <xref:System.Diagnostics.DefaultTraceListener>. If the <xref:System.Diagnostics.DefaultTraceListener> is not in the <xref:System.Diagnostics.Trace.Listeners%2A> collection, the message box is not displayed. The <xref:System.Diagnostics.DefaultTraceListener> can be removed by the [\\&lt;clear\\&gt;](../Topic/%3Cclear%3E%20Element%20for%20%3Clisteners%3E%20for%20%3Ctrace%3E.md), the [\\&lt;remove\\&gt;](../Topic/%3Cremove%3E%20Element%20for%20%3Clisteners%3E%20for%20%3Ctrace%3E.md), or by calling the <xref:System.Diagnostics.TraceListenerCollection.Clear%2A> method on the <xref:System.Diagnostics.Trace.Listeners%2A> property (`System.Diagnostics.Trace.Listeners.Clear()`).  \n  \n You can change the behavior of the <xref:System.Diagnostics.DefaultTraceListener> in the configuration file that corresponds to the name of your application. In this file, you can enable and disable the assert message box or set the <xref:System.Diagnostics.DefaultTraceListener.LogFileName%2A?displayProperty=fullName> property. The configuration file should be formatted as follows:  \n  \n```  \n<configuration>  \n  <system.diagnostics>  \n    <switches>  \n      <add name=\"mySwitch\" value=\"4\"/>  \n    </switches>  \n    <trace autoflush=\"false\" indentsize=\"4\"/>  \n    <assert assertuienabled=\"true\" logfilename=\".\\TraceLog.txt\"/>  \n  </system.diagnostics>  \n</configuration>  \n```"
   example:
   - "The following example creates an index for an array. Then some action is performed that sets the value of the index. Next the code calls Assert to verify the index value is valid. If it is not valid, the Assert outputs the call stack.  \n  \n [!code-cs[Classic Trace.Assert Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_23_1.cs)]\n [!code-cpp[Classic Trace.Assert Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_23_1.cpp)]\n [!code-vb[Classic Trace.Assert Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_23_1.vb)]"
@@ -90,10 +90,10 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: The conditional expression to evaluate. If the condition is <xref uid="langword_csharp_true" name="true" href=""></xref>, a failure message is not sent and the message box is not displayed.
+      description: The conditional expression to evaluate. If the condition is `true`, a failure message is not sent and the message box is not displayed.
   overload: System.Diagnostics.Trace.Assert*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,7 +110,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Checks for a condition; if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>, outputs a specified message and displays a message box that shows the call stack.
+  summary: Checks for a condition; if the condition is `false`, outputs a specified message and displays a message box that shows the call stack.
   remarks: "Use the <xref:System.Diagnostics.Trace.Assert%2A?displayProperty=fullName> method if you want to do assertions in release builds. The <xref:System.Diagnostics.Debug.Assert%2A?displayProperty=fullName> method works only in debug builds. For more information, see [Assertions in Managed Code](~/add/includes/ajax-current-ext-md.md).  \n  \n Typically, the Assert method is used to identify logic errors during program development. Assert evaluates the condition. If the result is `false`, it sends the specified diagnostic message to the <xref:System.Diagnostics.Trace.Listeners%2A> collection. You can customize this behavior by adding a <xref:System.Diagnostics.TraceListener> to, or removing one from, the <xref:System.Diagnostics.Trace.Listeners%2A> collection.  \n  \n When the application runs in user-interface mode, it displays a message box that shows the call stack with file and line numbers. The message box contains three buttons: **Abort**, **Retry**, and **Ignore**. Clicking the **Abort** button terminates the application. Clicking **Retry** sends you to the code in the debugger if your application is running in a debugger, or offers to open a debugger if it is not. Clicking **Ignore** continues with the next instruction in the code.  \n  \n> [!NOTE]\n>  The display of the message box depends on the presence of the <xref:System.Diagnostics.DefaultTraceListener>. If the <xref:System.Diagnostics.DefaultTraceListener> is not in the <xref:System.Diagnostics.Trace.Listeners%2A> collection, the message box is not displayed. The <xref:System.Diagnostics.DefaultTraceListener> can be removed by the [\\&lt;clear\\&gt;](../Topic/%3Cclear%3E%20Element%20for%20%3Clisteners%3E%20for%20%3Ctrace%3E.md), the [\\&lt;remove\\&gt;](../Topic/%3Cremove%3E%20Element%20for%20%3Clisteners%3E%20for%20%3Ctrace%3E.md), or by calling the <xref:System.Diagnostics.TraceListenerCollection.Clear%2A> method on the <xref:System.Diagnostics.Trace.Listeners%2A> property (`System.Diagnostics.Trace.Listeners.Clear()`).  \n  \n You can change the behavior of the <xref:System.Diagnostics.DefaultTraceListener> in the configuration file that corresponds to the name of your application. In this file, you can enable and disable the assert message box or set the <xref:System.Diagnostics.DefaultTraceListener.LogFileName%2A?displayProperty=fullName> property. The configuration file should be formatted as follows:  \n  \n```  \n<configuration>  \n  <system.diagnostics>  \n    <switches>  \n      <add name=\"mySwitch\" value=\"4\"/>  \n    </switches>  \n    <trace autoflush=\"false\" indentsize=\"4\"/>  \n    <assert assertuienabled=\"true\" logfilename=\".\\TraceLog.txt\"/>  \n  </system.diagnostics>  \n</configuration>  \n```"
   example:
   - "The following example checks to see that the `type` parameter is valid. If the `type` passed in is `null`, the <xref:System.Diagnostics.Trace.Assert%2A> outputs a message.  \n  \n [!code-cs[Classic Trace.Assert1 Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_20_1.cs)]\n [!code-cpp[Classic Trace.Assert1 Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_20_1.cpp)]\n [!code-vb[Classic Trace.Assert1 Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_20_1.vb)]"
@@ -119,13 +119,13 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: The conditional expression to evaluate. If the condition is <xref uid="langword_csharp_true" name="true" href=""></xref>, the specified message is not sent and the message box is not displayed.
+      description: The conditional expression to evaluate. If the condition is `true`, the specified message is not sent and the message box is not displayed.
     - id: message
       type: System.String
       description: The message to send to the <xref:System.Diagnostics.Trace.Listeners*> collection.
   overload: System.Diagnostics.Trace.Assert*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Checks for a condition; if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>, outputs two specified messages and displays a message box that shows the call stack.
+  summary: Checks for a condition; if the condition is `false`, outputs two specified messages and displays a message box that shows the call stack.
   remarks: "Use the <xref:System.Diagnostics.Trace.Assert%2A?displayProperty=fullName> method if you want to do assertions in release builds. The <xref:System.Diagnostics.Debug.Assert%2A?displayProperty=fullName> method works only in debug builds. For more information, see [Assertions in Managed Code](~/add/includes/ajax-current-ext-md.md).  \n  \n Typically, the Assert method is used to identify logic errors during program development. Assert evaluates the condition. If the result is `false`, it sends the specified diagnostic message and detailed message to the <xref:System.Diagnostics.Trace.Listeners%2A> collection. You can customize this behavior by adding a <xref:System.Diagnostics.TraceListener> to, or removing one from, the <xref:System.Diagnostics.Trace.Listeners%2A> collection.  \n  \n When the application runs in user-interface mode, it displays a message box that shows the call stack with file and line numbers. The message box contains three buttons: **Abort**, **Retry**, and **Ignore**. Clicking the **Abort** button terminates the application. Clicking **Retry** sends you to the code in the debugger if your application is running in a debugger, or offers to open a debugger if it is not. Clicking **Ignore** continues with the next instruction in the code.  \n  \n> [!NOTE]\n>  The display of the message box depends on the presence of the <xref:System.Diagnostics.DefaultTraceListener>. If the <xref:System.Diagnostics.DefaultTraceListener> is not in the <xref:System.Diagnostics.Trace.Listeners%2A> collection, the message box is not displayed. The <xref:System.Diagnostics.DefaultTraceListener> can be removed by the [\\&lt;clear\\&gt;](../Topic/%3Cclear%3E%20Element%20for%20%3Clisteners%3E%20for%20%3Ctrace%3E.md), the [\\&lt;remove\\&gt;](../Topic/%3Cremove%3E%20Element%20for%20%3Clisteners%3E%20for%20%3Ctrace%3E.md), or by calling the <xref:System.Diagnostics.TraceListenerCollection.Clear%2A> method on the <xref:System.Diagnostics.Trace.Listeners%2A> property (`System.Diagnostics.Trace.Listeners.Clear()`).  \n  \n You can change the behavior of the <xref:System.Diagnostics.DefaultTraceListener> in the configuration file that corresponds to the name of your application. In this file, you can enable and disable the assert message box or set the <xref:System.Diagnostics.DefaultTraceListener.LogFileName%2A?displayProperty=fullName> property. The configuration file should be formatted as follows:  \n  \n```  \n<configuration>  \n  <system.diagnostics>  \n    <switches>  \n      <add name=\"mySwitch\" value=\"4\"/>  \n    </switches>  \n    <trace autoflush=\"false\" indentsize=\"4\"/>  \n    <assert assertuienabled=\"true\" logfilename=\".\\TraceLog.txt\"/>  \n  </system.diagnostics>  \n</configuration>  \n```"
   example:
   - "The following example checks to see that the `type` parameter is valid. If the `type` passed in is `null`, the <xref:System.Diagnostics.Trace.Assert%2A> outputs a message.  \n  \n [!code-cs[Classic Trace.Assert2 Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_24_1.cs)]\n [!code-vb[Classic Trace.Assert2 Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_24_1.vb)]\n [!code-cpp[Classic Trace.Assert2 Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_24_1.cpp)]"
@@ -151,7 +151,7 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: The conditional expression to evaluate. If the condition is <xref uid="langword_csharp_true" name="true" href=""></xref>, the specified messages are not sent and the message box is not displayed.
+      description: The conditional expression to evaluate. If the condition is `true`, the specified messages are not sent and the message box is not displayed.
     - id: message
       type: System.String
       description: The message to send to the <xref:System.Diagnostics.Trace.Listeners*> collection.
@@ -160,7 +160,7 @@ items:
       description: The detailed message to send to the <xref:System.Diagnostics.Trace.Listeners*> collection.
   overload: System.Diagnostics.Trace.Assert*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -183,10 +183,10 @@ items:
     content: public static bool AutoFlush { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref:System.Diagnostics.Trace.Flush*> is called on the <xref:System.Diagnostics.Trace.Listeners*> after every write; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <xref:System.Diagnostics.Trace.Flush*> is called on the <xref:System.Diagnostics.Trace.Listeners*> after every write; otherwise, `false`.'
   overload: System.Diagnostics.Trace.AutoFlush*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,7 +212,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Trace.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -238,7 +238,7 @@ items:
       description: The <xref href="System.Diagnostics.CorrelationManager"></xref> object associated with the thread for this trace.
   overload: System.Diagnostics.Trace.CorrelationManager*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -267,7 +267,7 @@ items:
       description: A message to emit.
   overload: System.Diagnostics.Trace.Fail*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,7 +299,7 @@ items:
       description: A detailed message to emit.
   overload: System.Diagnostics.Trace.Fail*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -325,7 +325,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Trace.Flush*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -351,7 +351,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Trace.Indent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -379,7 +379,7 @@ items:
       description: The indent level. The default is zero.
   overload: System.Diagnostics.Trace.IndentLevel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -405,7 +405,7 @@ items:
       description: The number of spaces in an indent. The default is four.
   overload: System.Diagnostics.Trace.IndentSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,7 +433,7 @@ items:
       description: A <xref href="System.Diagnostics.TraceListenerCollection"></xref> that represents a collection of type <xref href="System.Diagnostics.TraceListener"></xref> monitoring the trace output.
   overload: System.Diagnostics.Trace.Listeners*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -457,7 +457,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Trace.Refresh*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -484,7 +484,7 @@ items:
       description: The informative message to write.
   overload: System.Diagnostics.Trace.TraceError*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -511,10 +511,10 @@ items:
       description: A format string that contains zero or more format items, which correspond to objects in the `args` array.
     - id: args
       type: System.Object[]
-      description: An <xref uid="langword_csharp_object" name="object" href=""></xref> array containing zero or more objects to format.
+      description: An `object` array containing zero or more objects to format.
   overload: System.Diagnostics.Trace.TraceError*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -541,7 +541,7 @@ items:
       description: The informative message to write.
   overload: System.Diagnostics.Trace.TraceInformation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -568,10 +568,10 @@ items:
       description: A format string that contains zero or more format items, which correspond to objects in the `args` array.
     - id: args
       type: System.Object[]
-      description: An <xref uid="langword_csharp_object" name="object" href=""></xref> array containing zero or more objects to format.
+      description: An `object` array containing zero or more objects to format.
   overload: System.Diagnostics.Trace.TraceInformation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -598,7 +598,7 @@ items:
       description: The informative message to write.
   overload: System.Diagnostics.Trace.TraceWarning*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -625,10 +625,10 @@ items:
       description: A format string that contains zero or more format items, which correspond to objects in the `args` array.
     - id: args
       type: System.Object[]
-      description: An <xref uid="langword_csharp_object" name="object" href=""></xref> array containing zero or more objects to format.
+      description: An `object` array containing zero or more objects to format.
   overload: System.Diagnostics.Trace.TraceWarning*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -654,7 +654,7 @@ items:
     parameters: []
   overload: System.Diagnostics.Trace.Unindent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,10 +677,10 @@ items:
     content: public static bool UseGlobalLock { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the global lock is to be used; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the global lock is to be used; otherwise, `false`. The default is `true`.'
   overload: System.Diagnostics.Trace.UseGlobalLock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -709,7 +709,7 @@ items:
       description: An <xref href="System.Object"></xref> whose name is sent to the <xref:System.Diagnostics.Trace.Listeners*>.
   overload: System.Diagnostics.Trace.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -738,7 +738,7 @@ items:
       description: A message to write.
   overload: System.Diagnostics.Trace.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -770,7 +770,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -802,7 +802,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -819,7 +819,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.Write%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Error` or higher, the example outputs the first name of the value parameter to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Verbose`, the example outputs a message on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cpp[Classic Trace.WriteIf1 Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_2_1.cpp)]\n [!code-vb[Classic Trace.WriteIf1 Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_2_1.vb)]\n [!code-cs[Classic Trace.WriteIf1 Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_2_1.cs)]"
@@ -828,13 +828,13 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: value
       type: System.Object
       description: An <xref href="System.Object"></xref> whose name is sent to the <xref:System.Diagnostics.Trace.Listeners*>.
   overload: System.Diagnostics.Trace.WriteIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -851,7 +851,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes a message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes a message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.Write%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Error` or higher, the example outputs the first error message to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Verbose`, the example outputs the second error message on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cs[Classic Trace.WriteIf Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_10_1.cs)]\n [!code-cpp[Classic Trace.WriteIf Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_10_1.cpp)]\n [!code-vb[Classic Trace.WriteIf Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_10_1.vb)]"
@@ -860,13 +860,13 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: message
       type: System.String
       description: A message to write.
   overload: System.Diagnostics.Trace.WriteIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -883,7 +883,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes a category name and the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes a category name and the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n The `category` parameter can be used to group output messages.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.Write%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Verbose`, the example outputs the name of the `myObject` and the `category` to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Error` or higher, the example outputs the second error message on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cs[Classic Trace.WriteIf3 Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_8_1.cs)]\n [!code-vb[Classic Trace.WriteIf3 Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_8_1.vb)]\n [!code-cpp[Classic Trace.WriteIf3 Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_8_1.cpp)]"
@@ -892,7 +892,7 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: value
       type: System.Object
       description: An <xref href="System.Object"></xref> whose name is sent to the <xref:System.Diagnostics.Trace.Listeners*>.
@@ -901,7 +901,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.WriteIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -918,7 +918,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes a category name and message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes a category name and message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n The `category` parameter can be used to group output messages.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.Write%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Verbose`, the example outputs the first error message to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Error` or higher, the example outputs the second error message on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cs[Classic Trace.WriteIf2 Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_7_1.cs)]\n [!code-cpp[Classic Trace.WriteIf2 Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_7_1.cpp)]\n [!code-vb[Classic Trace.WriteIf2 Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_7_1.vb)]"
@@ -927,7 +927,7 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: message
       type: System.String
       description: A message to write.
@@ -936,7 +936,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.WriteIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -965,7 +965,7 @@ items:
       description: An <xref href="System.Object"></xref> whose name is sent to the <xref:System.Diagnostics.Trace.Listeners*>.
   overload: System.Diagnostics.Trace.WriteLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -994,7 +994,7 @@ items:
       description: A message to write.
   overload: System.Diagnostics.Trace.WriteLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1026,7 +1026,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.WriteLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1058,7 +1058,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.WriteLine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1075,7 +1075,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.WriteLine%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Error` or higher, the example outputs the first error message to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Verbose`, the example outputs the name of the object on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cpp[Classic Trace.WriteLineIf1 Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_5_1.cpp)]\n [!code-vb[Classic Trace.WriteLineIf1 Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_5_1.vb)]\n [!code-cs[Classic Trace.WriteLineIf1 Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_5_1.cs)]"
@@ -1084,13 +1084,13 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: value
       type: System.Object
       description: An <xref href="System.Object"></xref> whose name is sent to the <xref:System.Diagnostics.Trace.Listeners*>.
   overload: System.Diagnostics.Trace.WriteLineIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1107,7 +1107,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes a message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes a message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.WriteLine%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Error` or higher, the example outputs the first error message to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Verbose`, the example outputs the second error message on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cs[Classic Trace.WriteIf Example#1](~/add/codesnippet/csharp/m-system.diagnostics.tra_11_1.cs)]\n [!code-cpp[Classic Trace.WriteIf Example#1](~/add/codesnippet/cpp/m-system.diagnostics.tra_11_1.cpp)]\n [!code-vb[Classic Trace.WriteIf Example#1](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_11_1.vb)]"
@@ -1116,13 +1116,13 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: message
       type: System.String
       description: A message to write.
   overload: System.Diagnostics.Trace.WriteLineIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1139,7 +1139,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes a category name and the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes a category name and the value of the object's <xref:System.Object.ToString*> method to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n The `category` parameter can be used to group output messages.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.WriteLine%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Error` or higher, the example outputs the first error message to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Verbose`, the example outputs the second error message on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-cs[Classic Trace.WriteLineIf3 Example#1](~/add/codesnippet/csharp/96a954ed-2f0b-4ec7-91f9-_1.cs)]\n [!code-vb[Classic Trace.WriteLineIf3 Example#1](~/add/codesnippet/visualbasic/96a954ed-2f0b-4ec7-91f9-_1.vb)]\n [!code-cpp[Classic Trace.WriteLineIf3 Example#1](~/add/codesnippet/cpp/96a954ed-2f0b-4ec7-91f9-_1.cpp)]"
@@ -1148,7 +1148,7 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: value
       type: System.Object
       description: An <xref href="System.Object"></xref> whose name is sent to the <xref:System.Diagnostics.Trace.Listeners*>.
@@ -1157,7 +1157,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.WriteLineIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1174,7 +1174,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Writes a category name and message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Writes a category name and message to the trace listeners in the <xref:System.Diagnostics.Trace.Listeners*> collection if a condition is `true`.
   remarks: "By default, the output is written to an instance of <xref:System.Diagnostics.DefaultTraceListener>.  \n  \n The `category` parameter can be used to group output messages.  \n  \n This method calls the <xref:System.Diagnostics.TraceListener.WriteLine%2A> method of the trace listener."
   example:
   - "The following example creates a <xref:System.Diagnostics.TraceSwitch> named `generalSwitch`. This switch is set outside the code sample.  \n  \n If the switch is set to the <xref:System.Diagnostics.TraceLevel>`Error` or higher, the example outputs the first error message to the <xref:System.Diagnostics.Trace.Listeners%2A>. For information on adding a listener to the <xref:System.Diagnostics.Trace.Listeners%2A> collection, see the <xref:System.Diagnostics.TraceListenerCollection> class.  \n  \n Then, if the <xref:System.Diagnostics.TraceLevel> is set to `Verbose`, the example outputs the second error message and the `category` on the same line as the first message. The second message is followed by a line terminator.  \n  \n [!code-vb[Classic Trace.WriteLineIf2 Example#1](~/add/codesnippet/visualbasic/7f54460b-5f74-4be1-a3dd-_1.vb)]\n [!code-cs[Classic Trace.WriteLineIf2 Example#1](~/add/codesnippet/csharp/7f54460b-5f74-4be1-a3dd-_1.cs)]\n [!code-cpp[Classic Trace.WriteLineIf2 Example#1](~/add/codesnippet/cpp/7f54460b-5f74-4be1-a3dd-_1.cpp)]"
@@ -1183,7 +1183,7 @@ items:
     parameters:
     - id: condition
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to cause a message to be written; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to cause a message to be written; otherwise, `false`.'
     - id: message
       type: System.String
       description: A message to write.
@@ -1192,7 +1192,7 @@ items:
       description: A category name used to organize the output.
   overload: System.Diagnostics.Trace.WriteLineIf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1330,8 +1330,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

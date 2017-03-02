@@ -61,7 +61,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -93,11 +93,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: There was an error binding to the target method.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,11 +129,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>target</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> represents an open generic type."
-  platform:
+    description: "<code>target</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> represents an open generic type."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
       description: A shallow copy of the delegate.
   overload: System.Delegate.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,13 +187,13 @@ items:
       description: The array of delegates to combine.
     return:
       type: System.Delegate
-      description: A new delegate with an invocation list that concatenates the invocation lists of the delegates in the <code>delegates</code> array. Returns <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>delegates</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, if <code>delegates</code> contains zero elements, or if every entry in <code>delegates</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A new delegate with an invocation list that concatenates the invocation lists of the delegates in the <code>delegates</code> array. Returns `null` if <code>delegates</code> is `null`, if <code>delegates</code> contains zero elements, or if every entry in <code>delegates</code> is `null`.
   overload: System.Delegate.Combine*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Not all the non-null entries in <code>delegates</code> are instances of the same delegate type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,13 +223,13 @@ items:
       description: The delegate whose invocation list comes last.
     return:
       type: System.Delegate
-      description: A new delegate with an invocation list that concatenates the invocation lists of <code>a</code> and <code>b</code> in that order. Returns <code>a</code> if <code>b</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, returns <code>b</code> if <code>a</code> is a null reference, and returns a null reference if both <code>a</code> and <code>b</code> are null references.
+      description: A new delegate with an invocation list that concatenates the invocation lists of <code>a</code> and <code>b</code> in that order. Returns <code>a</code> if <code>b</code> is `null`, returns <code>b</code> if <code>a</code> is a null reference, and returns a null reference if both <code>a</code> and <code>b</code> are null references.
   overload: System.Delegate.Combine*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: Both <code>a</code> and <code>b</code> are not <xref uid="langword_csharp_null" name="null" href=""></xref>, and <code>a</code> and <code>b</code> are not instances of the same delegate type.
-  platform:
+    description: Both <code>a</code> and <code>b</code> are not `null`, and <code>a</code> and <code>b</code> are not instances of the same delegate type.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -256,13 +256,13 @@ items:
       description: The multicast (combinable) delegate whose invocation list to append to the end of the invocation list of the current multicast (combinable) delegate.
     return:
       type: System.Delegate
-      description: A new multicast (combinable) delegate with an invocation list that concatenates the invocation list of the current multicast (combinable) delegate and the invocation list of <code>d</code>, or the current multicast (combinable) delegate if <code>d</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A new multicast (combinable) delegate with an invocation list that concatenates the invocation list of the current multicast (combinable) delegate and the invocation list of <code>d</code>, or the current multicast (combinable) delegate if <code>d</code> is `null`.
   overload: System.Delegate.CombineImpl*
   exceptions:
   - type: System.MulticastNotSupportedException
     commentId: T:System.MulticastNotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,17 +299,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not a static method, and the .NET Framework version is 1.0 or 1.1.  \n  \n -or-  \n  \n <code>method</code> cannot be bound.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_RuntimeMethodInfo\" name=\"RuntimeMethodInfo\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not a static method, and the .NET Framework version is 1.0 or 1.1.  \n  \n -or-  \n  \n <code>method</code> cannot be bound.  \n  \n -or-  \n  \n <code>method</code> is not a `RuntimeMethodInfo`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -338,7 +338,7 @@ items:
       description: The <xref href="System.Type"></xref> of delegate to create.
     - id: firstArgument
       type: System.Object
-      description: The object to which the delegate is bound, or <xref uid="langword_csharp_null" name="null" href=""></xref> to treat `method` as <xref uid="langword_csharp_static" name="static" href=""></xref> (<xref uid="langword_csharp_Shared" name="Shared" href=""></xref> in Visual Basic).
+      description: The object to which the delegate is bound, or `null` to treat `method` as `static` (`Shared` in Visual Basic).
     - id: method
       type: System.Reflection.MethodInfo
       description: The <xref href="System.Reflection.MethodInfo"></xref> describing the static or instance method the delegate is to represent.
@@ -349,17 +349,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> cannot be bound.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_RuntimeMethodInfo\" name=\"RuntimeMethodInfo\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> cannot be bound.  \n  \n -or-  \n  \n <code>method</code> is not a `RuntimeMethodInfo`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,17 +397,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not an instance method.  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not an instance method.  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -439,7 +439,7 @@ items:
       description: The <xref href="System.Reflection.MethodInfo"></xref> describing the static or instance method the delegate is to represent.
     - id: throwOnBindFailure
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if `method` cannot be bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if `method` cannot be bound; otherwise, `false`.'
     return:
       type: System.Delegate
       description: A delegate of the specified type to represent the specified static method.
@@ -447,17 +447,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, and <code>throwOnBindFailure</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_RuntimeMethodInfo\" name=\"RuntimeMethodInfo\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, and <code>throwOnBindFailure</code> is `true`.  \n  \n -or-  \n  \n <code>method</code> is not a `RuntimeMethodInfo`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -495,17 +495,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is an open generic type. That is, its <xref:System.Type.ContainsGenericParameters*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_static\" name=\"static\" href=\"\"></xref> method (<xref uid=\"langword_csharp_Shared\" name=\"Shared\" href=\"\"></xref> method in Visual Basic).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found, and <code>throwOnBindFailure</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>target</code> is an open generic type. That is, its <xref:System.Type.ContainsGenericParameters*> property is `true`.  \n  \n -or-  \n  \n <code>method</code> is not a `static` method (`Shared` method in Visual Basic).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found, and <code>throwOnBindFailure</code> is `true`."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -540,25 +540,25 @@ items:
       description: The <xref href="System.Reflection.MethodInfo"></xref> describing the static or instance method the delegate is to represent.
     - id: throwOnBindFailure
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if `method` cannot be bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if `method` cannot be bound; otherwise, `false`.'
     return:
       type: System.Delegate
-      description: A delegate of the specified type that represents the specified static or instance method, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>throwOnBindFailure</code> is <xref uid="langword_csharp_false" name="false" href=""></xref> and the delegate cannot be bound to <code>method</code>.
+      description: A delegate of the specified type that represents the specified static or instance method, or `null` if <code>throwOnBindFailure</code> is `false` and the delegate cannot be bound to <code>method</code>.
   overload: System.Delegate.CreateDelegate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, and <code>throwOnBindFailure</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_RuntimeMethodInfo\" name=\"RuntimeMethodInfo\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, and <code>throwOnBindFailure</code> is `true`.  \n  \n -or-  \n  \n <code>method</code> is not a `RuntimeMethodInfo`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858)."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -599,17 +599,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not an instance method.  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not an instance method.  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -650,17 +650,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is an open generic type. That is, its <xref:System.Type.ContainsGenericParameters*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_static\" name=\"static\" href=\"\"></xref> method (<xref uid=\"langword_csharp_Shared\" name=\"Shared\" href=\"\"></xref> method in Visual Basic).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>target</code> is an open generic type. That is, its <xref:System.Type.ContainsGenericParameters*> property is `true`.  \n  \n -or-  \n  \n <code>method</code> is not a `static` method (`Shared` method in Visual Basic).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -696,7 +696,7 @@ items:
       description: A Boolean indicating whether to ignore the case when comparing the name of the method.
     - id: throwOnBindFailure
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if `method` cannot be bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if `method` cannot be bound; otherwise, `false`.'
     return:
       type: System.Delegate
       description: A delegate of the specified type that represents the specified instance method to invoke on the specified class instance.
@@ -704,17 +704,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not an instance method.  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found, and <code>throwOnBindFailure</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>method</code> is not an instance method.  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found, and <code>throwOnBindFailure</code> is `true`."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -750,7 +750,7 @@ items:
       description: A Boolean indicating whether to ignore the case when comparing the name of the method.
     - id: throwOnBindFailure
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if `method` cannot be bound; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to throw an exception if `method` cannot be bound; otherwise, `false`.'
     return:
       type: System.Delegate
       description: A delegate of the specified type that represents the specified static method of the specified class.
@@ -758,17 +758,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>type</code> is `null`.  \n  \n -or-  \n  \n <code>target</code> is `null`.  \n  \n -or-  \n  \n <code>method</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>target</code> is an open generic type. That is, its <xref:System.Type.ContainsGenericParameters*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>method</code> is not a <xref uid=\"langword_csharp_static\" name=\"static\" href=\"\"></xref> method (<xref uid=\"langword_csharp_Shared\" name=\"Shared\" href=\"\"></xref> method in Visual Basic).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found, and <code>throwOnBindFailure</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>type</code> does not inherit <xref href=\"System.MulticastDelegate\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is not a `RuntimeType`. See [Runtime Types in Reflection](http://msdn.microsoft.com/en-us/c1439fb5-cf76-475d-a9d2-fe64ba858858).  \n  \n -or-  \n  \n <code>target</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>target</code> is an open generic type. That is, its <xref:System.Type.ContainsGenericParameters*> property is `true`.  \n  \n -or-  \n  \n <code>method</code> is not a `static` method (`Shared` method in Visual Basic).  \n  \n -or-  \n  \n <code>method</code> cannot be bound, for example because it cannot be found, and <code>throwOnBindFailure</code> is `true`."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: The <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> method of <code>type</code> is not found.
+    description: The `Invoke` method of <code>type</code> is not found.
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
     description: The caller does not have the permissions necessary to access <code>method</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -792,7 +792,7 @@ items:
     parameters:
     - id: args
       type: System.Object[]
-      description: "An array of objects that are the arguments to pass to the method represented by the current delegate.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, if the method represented by the current delegate does not require arguments."
+      description: "An array of objects that are the arguments to pass to the method represented by the current delegate.  \n  \n -or-  \n  \n `null`, if the method represented by the current delegate does not require arguments."
     return:
       type: System.Object
       description: The object returned by the method represented by the delegate.
@@ -806,8 +806,8 @@ items:
     description: The method represented by the delegate is invoked on an object or a class that does not support it.
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
-    description: "The method represented by the delegate is an instance method and the target object is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One of the encapsulated methods throws an exception."
-  platform:
+    description: "The method represented by the delegate is an instance method and the target object is `null`.  \n  \n -or-  \n  \n One of the encapsulated methods throws an exception."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -831,7 +831,7 @@ items:
     parameters:
     - id: args
       type: System.Object[]
-      description: "An array of objects that are the arguments to pass to the method represented by the current delegate.  \n  \n -or-  \n  \n <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, if the method represented by the current delegate does not require arguments."
+      description: "An array of objects that are the arguments to pass to the method represented by the current delegate.  \n  \n -or-  \n  \n `null`, if the method represented by the current delegate does not require arguments."
     return:
       type: System.Object
       description: The object returned by the method represented by the delegate.
@@ -845,8 +845,8 @@ items:
     description: The method represented by the delegate is invoked on an object or a class that does not support it.
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
-    description: "The method represented by the delegate is an instance method and the target object is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One of the encapsulated methods throws an exception."
-  platform:
+    description: "The method represented by the delegate is an instance method and the target object is `null`.  \n  \n -or-  \n  \n One of the encapsulated methods throws an exception."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -873,13 +873,13 @@ items:
       description: The object to compare with the current delegate.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> and the current delegate have the same targets, methods, and invocation list; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> and the current delegate have the same targets, methods, and invocation list; otherwise, `false`.'
   overload: System.Delegate.Equals*
   exceptions:
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: The caller does not have access to the method represented by the delegate (for example, if the method is private).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -906,7 +906,7 @@ items:
       description: A hash code for the delegate.
   overload: System.Delegate.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -935,7 +935,7 @@ items:
       description: An array of delegates representing the invocation list of the current delegate.
   overload: System.Delegate.GetInvocationList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -965,7 +965,7 @@ items:
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: The caller does not have access to the method represented by the delegate (for example, if the method is private).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -997,7 +997,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1025,7 +1025,7 @@ items:
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: The caller does not have access to the method represented by the delegate (for example, if the method is private).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1055,10 +1055,10 @@ items:
       description: The second delegate to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> is equal to <code>d2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> is equal to <code>d2</code>; otherwise, `false`.'
   overload: System.Delegate.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1088,10 +1088,10 @@ items:
       description: The second delegate to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>d1</code> is not equal to <code>d2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>d1</code> is not equal to <code>d2</code>; otherwise, `false`.'
   overload: System.Delegate.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1121,7 +1121,7 @@ items:
       description: The delegate that supplies the invocation list to remove from the invocation list of `source`.
     return:
       type: System.Delegate
-      description: A new delegate with an invocation list formed by taking the invocation list of <code>source</code> and removing the last occurrence of the invocation list of <code>value</code>, if the invocation list of <code>value</code> is found within the invocation list of <code>source</code>. Returns <code>source</code> if <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or if the invocation list of <code>value</code> is not found within the invocation list of <code>source</code>. Returns a null reference if the invocation list of <code>value</code> is equal to the invocation list of <code>source</code> or if <code>source</code> is a null reference.
+      description: A new delegate with an invocation list formed by taking the invocation list of <code>source</code> and removing the last occurrence of the invocation list of <code>value</code>, if the invocation list of <code>value</code> is found within the invocation list of <code>source</code>. Returns <code>source</code> if <code>value</code> is `null` or if the invocation list of <code>value</code> is not found within the invocation list of <code>source</code>. Returns a null reference if the invocation list of <code>value</code> is equal to the invocation list of <code>source</code> or if <code>source</code> is a null reference.
   overload: System.Delegate.Remove*
   exceptions:
   - type: System.MemberAccessException
@@ -1130,7 +1130,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The delegate types do not match.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1160,7 +1160,7 @@ items:
       description: The delegate that supplies the invocation list to remove from the invocation list of `source`.
     return:
       type: System.Delegate
-      description: A new delegate with an invocation list formed by taking the invocation list of <code>source</code> and removing all occurrences of the invocation list of <code>value</code>, if the invocation list of <code>value</code> is found within the invocation list of <code>source</code>. Returns <code>source</code> if <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or if the invocation list of <code>value</code> is not found within the invocation list of <code>source</code>. Returns a null reference if the invocation list of <code>value</code> is equal to the invocation list of <code>source</code>, if <code>source</code> contains only a series of invocation lists that are equal to the invocation list of <code>value</code>, or if <code>source</code> is a null reference.
+      description: A new delegate with an invocation list formed by taking the invocation list of <code>source</code> and removing all occurrences of the invocation list of <code>value</code>, if the invocation list of <code>value</code> is found within the invocation list of <code>source</code>. Returns <code>source</code> if <code>value</code> is `null` or if the invocation list of <code>value</code> is not found within the invocation list of <code>source</code>. Returns a null reference if the invocation list of <code>value</code> is equal to the invocation list of <code>source</code>, if <code>source</code> contains only a series of invocation lists that are equal to the invocation list of <code>value</code>, or if <code>source</code> is a null reference.
   overload: System.Delegate.RemoveAll*
   exceptions:
   - type: System.MemberAccessException
@@ -1169,7 +1169,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The delegate types do not match.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1196,13 +1196,13 @@ items:
       description: The delegate that supplies the invocation list to remove from the invocation list of the current delegate.
     return:
       type: System.Delegate
-      description: A new delegate with an invocation list formed by taking the invocation list of the current delegate and removing the invocation list of <code>value</code>, if the invocation list of <code>value</code> is found within the current delegate's invocation list. Returns the current delegate if <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or if the invocation list of <code>value</code> is not found within the current delegate's invocation list. Returns <xref uid="langword_csharp_null" name="null" href=""></xref> if the invocation list of <code>value</code> is equal to the current delegate's invocation list.
+      description: A new delegate with an invocation list formed by taking the invocation list of the current delegate and removing the invocation list of <code>value</code>, if the invocation list of <code>value</code> is found within the current delegate's invocation list. Returns the current delegate if <code>value</code> is `null` or if the invocation list of <code>value</code> is not found within the current delegate's invocation list. Returns `null` if the invocation list of <code>value</code> is equal to the current delegate's invocation list.
   overload: System.Delegate.RemoveImpl*
   exceptions:
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: The caller does not have access to the method represented by the delegate (for example, if the method is private).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1225,10 +1225,10 @@ items:
     content: public object Target { get; }
     return:
       type: System.Object
-      description: The object on which the current delegate invokes the instance method, if the delegate represents an instance method; <xref uid="langword_csharp_null" name="null" href=""></xref> if the delegate represents a static method.
+      description: The object on which the current delegate invokes the instance method, if the delegate represents an instance method; `null` if the delegate represents a static method.
   overload: System.Delegate.Target*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1330,8 +1330,8 @@ references:
 - uid: System.Delegate[]
   parent: System
   isExternal: false
-  name: Delegate
-  nameWithType: Delegate
+  name: Delegate[]
+  nameWithType: Delegate[]
   fullName: System.Delegate[]
   spec.csharp:
   - uid: System.Delegate
@@ -1434,8 +1434,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

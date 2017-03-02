@@ -52,7 +52,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,7 +78,7 @@ items:
     parameters: []
   overload: System.Diagnostics.PerformanceCounterCategory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,8 +112,8 @@ items:
     description: The <code>categoryName</code> is an empty string ("").
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>categoryName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>categoryName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,8 +150,8 @@ items:
     description: "The <code>categoryName</code> is an empty string (\"\").  \n  \n -or-  \n  \n The <code>machineName</code> syntax is invalid."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>categoryName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>categoryName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,11 +181,11 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>. The category name must be set before getting the category help.
+    description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is `null`. The category name must be set before getting the category help.
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,8 +218,8 @@ items:
     description: The CategoryName is an empty string ("").
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The CategoryName is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The CategoryName is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -245,7 +245,7 @@ items:
       description: One of the <xref href="System.Diagnostics.PerformanceCounterCategoryType"></xref> values.
   overload: System.Diagnostics.PerformanceCounterCategory.CategoryType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -274,12 +274,12 @@ items:
       description: The name of the performance counter to look for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the counter is registered to the category that is specified by the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> properties; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the counter is registered to the category that is specified by the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> properties; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.CounterExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>counterName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>counterName</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property has not been set.
@@ -289,7 +289,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -321,12 +321,12 @@ items:
       description: The name of the performance counter category, or performance object, with which the specified performance counter is associated.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the counter is registered to the specified category on the local computer; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the counter is registered to the specified category on the local computer; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.CounterExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>categoryName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>counterName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>categoryName</code> is `null`.  \n  \n -or-  \n  \n The <code>counterName</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>categoryName</code> is an empty string ("").
@@ -339,7 +339,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -374,12 +374,12 @@ items:
       description: The name of the computer on which the performance counter category and its associated counters exist.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the counter is registered to the specified category on the specified computer; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the counter is registered to the specified category on the specified computer; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.CounterExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>categoryName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>counterName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>categoryName</code> is `null`.  \n  \n -or-  \n  \n The <code>counterName</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>categoryName</code> is an empty string (\"\").  \n  \n -or-  \n  \n The <code>machineName</code> is invalid."
@@ -392,7 +392,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,20 +432,20 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "A counter name that is specified within the <code>counterData</code> collection is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string (\"\").  \n  \n -or-  \n  \n A counter that is specified within the <code>counterData</code> collection already exists.  \n  \n -or-  \n  \n The <code>counterName</code> parameter has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
+    description: "A counter name that is specified within the <code>counterData</code> collection is `null` or an empty string (\"\").  \n  \n -or-  \n  \n A counter that is specified within the <code>counterData</code> collection already exists.  \n  \n -or-  \n  \n The <code>counterName</code> parameter has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>categoryName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>categoryName</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category already exists on the local computer.  \n  \n -or-  \n  \n The layout of the <code>counterData</code> collection is incorrect for base counters. A counter of type <xref uid=\"langword_csharp_AverageCount64\" name=\"AverageCount64\" href=\"\"></xref>, <xref uid=\"langword_csharp_AverageTimer32\" name=\"AverageTimer32\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimer\" name=\"CounterMultiTimer\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimerInverse\" name=\"CounterMultiTimerInverse\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimer100Ns\" name=\"CounterMultiTimer100Ns\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimer100NsInverse\" name=\"CounterMultiTimer100NsInverse\" href=\"\"></xref>, <xref uid=\"langword_csharp_RawFraction\" name=\"RawFraction\" href=\"\"></xref>, <xref uid=\"langword_csharp_SampleFraction\" name=\"SampleFraction\" href=\"\"></xref> or <xref uid=\"langword_csharp_SampleCounter\" name=\"SampleCounter\" href=\"\"></xref> has to be immediately followed by one of the base counter types (<xref uid=\"langword_csharp_AverageBase\" name=\"AverageBase\" href=\"\"></xref>, <xref uid=\"langword_csharp_MultiBase\" name=\"MultiBase\" href=\"\"></xref>, <xref uid=\"langword_csharp_RawBase\" name=\"RawBase\" href=\"\"></xref>, or <xref uid=\"langword_csharp_SampleBase\" name=\"SampleBase\" href=\"\"></xref>)."
+    description: "The category already exists on the local computer.  \n  \n -or-  \n  \n The layout of the <code>counterData</code> collection is incorrect for base counters. A counter of type `AverageCount64`, `AverageTimer32`, `CounterMultiTimer`, `CounterMultiTimerInverse`, `CounterMultiTimer100Ns`, `CounterMultiTimer100NsInverse`, `RawFraction`, `SampleFraction` or `SampleCounter` has to be immediately followed by one of the base counter types (`AverageBase`, `MultiBase`, `RawBase`, or `SampleBase`)."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -488,23 +488,23 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "A counter name that is specified within the <code>counterData</code> collection is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string (\"\").  \n  \n -or-  \n  \n A counter that is specified within the <code>counterData</code> collection already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
+    description: "A counter name that is specified within the <code>counterData</code> collection is `null` or an empty string (\"\").  \n  \n -or-  \n  \n A counter that is specified within the <code>counterData</code> collection already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>categoryName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>counterData</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>categoryName</code> is `null`.  \n  \n -or-  \n  \n <code>counterData</code> is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: '<code>categoryType</code> value is outside of the range of the following values: <xref uid="langword_csharp_MultiInstance" name="MultiInstance" href=""></xref>, <xref uid="langword_csharp_SingleInstance" name="SingleInstance" href=""></xref>, or <xref uid="langword_csharp_Unknown" name="Unknown" href=""></xref>.'
+    description: '<code>categoryType</code> value is outside of the range of the following values: `MultiInstance`, `SingleInstance`, or `Unknown`.'
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category already exists on the local computer.  \n  \n -or-  \n  \n The layout of the <code>counterData</code> collection is incorrect for base counters. A counter of type <xref uid=\"langword_csharp_AverageCount64\" name=\"AverageCount64\" href=\"\"></xref>, <xref uid=\"langword_csharp_AverageTimer32\" name=\"AverageTimer32\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimer\" name=\"CounterMultiTimer\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimerInverse\" name=\"CounterMultiTimerInverse\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimer100Ns\" name=\"CounterMultiTimer100Ns\" href=\"\"></xref>, <xref uid=\"langword_csharp_CounterMultiTimer100NsInverse\" name=\"CounterMultiTimer100NsInverse\" href=\"\"></xref>, <xref uid=\"langword_csharp_RawFraction\" name=\"RawFraction\" href=\"\"></xref>, <xref uid=\"langword_csharp_SampleFraction\" name=\"SampleFraction\" href=\"\"></xref>, or <xref uid=\"langword_csharp_SampleCounter\" name=\"SampleCounter\" href=\"\"></xref> must be immediately followed by one of the base counter types (<xref uid=\"langword_csharp_AverageBase\" name=\"AverageBase\" href=\"\"></xref>, <xref uid=\"langword_csharp_MultiBase\" name=\"MultiBase\" href=\"\"></xref>, <xref uid=\"langword_csharp_RawBase\" name=\"RawBase\" href=\"\"></xref>, or <xref uid=\"langword_csharp_SampleBase\" name=\"SampleBase\" href=\"\"></xref>)."
+    description: "The category already exists on the local computer.  \n  \n -or-  \n  \n The layout of the <code>counterData</code> collection is incorrect for base counters. A counter of type `AverageCount64`, `AverageTimer32`, `CounterMultiTimer`, `CounterMultiTimerInverse`, `CounterMultiTimer100Ns`, `CounterMultiTimer100NsInverse`, `RawFraction`, `SampleFraction`, or `SampleCounter` must be immediately followed by one of the base counter types (`AverageBase`, `MultiBase`, `RawBase`, or `SampleBase`)."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,7 +521,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: Registers a custom performance counter category containing a single counter of type <xref uid="langword_csharp_NumberOfItems32" name="NumberOfItems32" href=""></xref> on the local computer.
+  summary: Registers a custom performance counter category containing a single counter of type `NumberOfItems32` on the local computer.
   remarks: "> [!NOTE]\n>  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.  \n>   \n>  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.  \n>   \n>  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
   example:
   - "The following code example creates a <xref:System.Diagnostics.PerformanceCounterCategory> and single <xref:System.Diagnostics.PerformanceCounter> with help text for each, using the Create method.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#2](~/add/codesnippet/visualbasic/012c8ef3-108d-4e71-bb01-_1.vb)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#2](~/add/codesnippet/csharp/012c8ef3-108d-4e71-bb01-_1.cs)]"
@@ -536,7 +536,7 @@ items:
       description: A description of the custom category.
     - id: counterName
       type: System.String
-      description: The name of a new counter, of type <xref uid="langword_csharp_NumberOfItems32" name="NumberOfItems32" href=""></xref>, to create as part of the new category.
+      description: The name of a new counter, of type `NumberOfItems32`, to create as part of the new category.
     - id: counterHelp
       type: System.String
       description: A description of the counter that is associated with the new custom category.
@@ -547,20 +547,20 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>counterName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or is an empty string (\"\").  \n  \n -or-  \n  \n The counter that is specified by <code>counterName</code> already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
+    description: "<code>counterName</code> is `null` or is an empty string (\"\").  \n  \n -or-  \n  \n The counter that is specified by <code>counterName</code> already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The category already exists on the local computer.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>categoryName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>counterHelp</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>categoryName</code> is `null`.  \n  \n -or-  \n  \n <code>counterHelp</code> is `null`."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -606,20 +606,20 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>counterName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or is an empty string (\"\").  \n  \n -or-  \n  \n The counter that is specified by <code>counterName</code> already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
+    description: "<code>counterName</code> is `null` or is an empty string (\"\").  \n  \n -or-  \n  \n The counter that is specified by <code>counterName</code> already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The category already exists on the local computer.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>categoryName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>counterHelp</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>categoryName</code> is `null`.  \n  \n -or-  \n  \n <code>counterHelp</code> is `null`."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -650,7 +650,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>categoryName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>categoryName</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>categoryName</code> parameter has invalid syntax. It might contain backslash characters ("\\") or have length greater than 80 characters.
@@ -663,7 +663,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -692,12 +692,12 @@ items:
       description: The name of the performance counter category to look for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the category is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the category is registered; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.Exists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>categoryName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>categoryName</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>categoryName</code> parameter is an empty string ("").
@@ -707,7 +707,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -739,12 +739,12 @@ items:
       description: The name of the computer to examine for the category.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the category is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the category is registered; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.Exists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>categoryName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>categoryName</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>categoryName</code> parameter is an empty string (\"\").  \n  \n -or-  \n  \n The <code>machineName</code> parameter is invalid."
@@ -757,7 +757,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "The caller does not have the required permission.  \n  \n -or-  \n  \n Code that is executing without administrative privileges attempted to read a performance counter."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -792,7 +792,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -833,7 +833,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -874,7 +874,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -908,7 +908,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>instanceName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>instanceName</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property for this <xref href=\"System.Diagnostics.PerformanceCounterCategory\"></xref> instance has not been set.  \n  \n -or-  \n  \n The category does not contain the instance that is specified by the <code>instanceName</code> parameter."
@@ -918,7 +918,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -949,14 +949,14 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>. The property might not have been set.  \n  \n -or-  \n  \n The category does not have an associated instance."
+    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is `null`. The property might not have been set.  \n  \n -or-  \n  \n The category does not have an associated instance."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -985,22 +985,22 @@ items:
       description: The performance object instance in this performance counter category to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the category contains the specified performance object instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the category contains the specified performance object instance; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.InstanceExists*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>. The property might not have been set.
+    description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is `null`. The property might not have been set.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>instanceName</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>instanceName</code> parameter is `null`.
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1032,12 +1032,12 @@ items:
       description: The performance counter category to search.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the category contains the specified performance object instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the category contains the specified performance object instance; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.InstanceExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>instanceName</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>categoryName</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>instanceName</code> parameter is `null`.  \n  \n -or-  \n  \n The <code>categoryName</code> parameter is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>categoryName</code> parameter is an empty string ("").
@@ -1047,7 +1047,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1082,12 +1082,12 @@ items:
       description: The name of the computer on which to look for the category instance pair.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the category contains the specified performance object instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the category contains the specified performance object instance; otherwise, `false`.'
   overload: System.Diagnostics.PerformanceCounterCategory.InstanceExists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>instanceName</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>categoryName</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>instanceName</code> parameter is `null`.  \n  \n -or-  \n  \n The <code>categoryName</code> parameter is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>categoryName</code> parameter is an empty string (\"\").  \n  \n -or-  \n  \n The <code>machineName</code> parameter is invalid."
@@ -1097,7 +1097,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1128,7 +1128,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The MachineName syntax is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1159,14 +1159,14 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid="langword_csharp_null" name="null" href=""></xref>. The property might not have been set.
+    description: The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is `null`. The property might not have been set.
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: A call to an underlying system API failed.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: Code that is executing without administrative privileges attempted to read a performance counter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1352,8 +1352,8 @@ references:
 - uid: System.Diagnostics.PerformanceCounterCategory[]
   parent: System.Diagnostics
   isExternal: false
-  name: PerformanceCounterCategory
-  nameWithType: PerformanceCounterCategory
+  name: PerformanceCounterCategory[]
+  nameWithType: PerformanceCounterCategory[]
   fullName: System.Diagnostics.PerformanceCounterCategory[]
   spec.csharp:
   - uid: System.Diagnostics.PerformanceCounterCategory
@@ -1378,8 +1378,8 @@ references:
 - uid: System.Diagnostics.PerformanceCounter[]
   parent: System.Diagnostics
   isExternal: false
-  name: PerformanceCounter
-  nameWithType: PerformanceCounter
+  name: PerformanceCounter[]
+  nameWithType: PerformanceCounter[]
   fullName: System.Diagnostics.PerformanceCounter[]
   spec.csharp:
   - uid: System.Diagnostics.PerformanceCounter
@@ -1404,8 +1404,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

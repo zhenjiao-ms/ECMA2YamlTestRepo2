@@ -55,7 +55,7 @@ items:
   - System.Transactions.Transaction.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
   - System.Transactions.Transaction.TransactionCompleted
   - System.Transactions.Transaction.TransactionInformation
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -84,7 +84,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -113,7 +113,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -148,7 +148,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>options</code> is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,7 +172,7 @@ items:
     parameters:
     - id: asyncCallback
       type: System.AsyncCallback
-      description: The <xref href="System.AsyncCallback"></xref> delegate that is invoked when the transaction completes. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>, in which case the application is not notified of the transaction's completion. Instead, the application must use the <xref href="System.IAsyncResult"></xref> interface to check for completion and wait accordingly, or call <xref:System.Transactions.CommittableTransaction.EndCommit*> to wait for completion.
+      description: The <xref href="System.AsyncCallback"></xref> delegate that is invoked when the transaction completes. This parameter can be `null`, in which case the application is not notified of the transaction's completion. Instead, the application must use the <xref href="System.IAsyncResult"></xref> interface to check for completion and wait accordingly, or call <xref:System.Transactions.CommittableTransaction.EndCommit*> to wait for completion.
     - id: asyncState
       type: System.Object
       description: An object, which might contain arbitrary state information, associated with the asynchronous commitment. This object is passed to the callback, and is not interpreted by <xref href="System.Transactions"></xref>. A null reference is permitted.
@@ -181,7 +181,7 @@ items:
       description: An <xref href="System.IAsyncResult"></xref> interface that can be used by the caller to check the status of the asynchronous operation, or to wait for the operation to complete.
   overload: System.Transactions.CommittableTransaction.BeginCommit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -211,7 +211,7 @@ items:
   - type: System.Transactions.TransactionAbortedException
     commentId: T:System.Transactions.TransactionAbortedException
     description: Commit is called and the transaction rolls back for the first time.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -241,7 +241,7 @@ items:
   - type: System.Transactions.TransactionAbortedException
     commentId: T:System.Transactions.TransactionAbortedException
     description: <xref:System.Transactions.CommittableTransaction.BeginCommit*> is called and the transaction rolls back for the first time.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -267,7 +267,7 @@ items:
       description: The object provided as the last parameter of the <xref:System.Transactions.CommittableTransaction.BeginCommit*> method call.
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -293,7 +293,7 @@ items:
       description: A <xref href="System.Threading.WaitHandle"></xref> that is used to wait for an asynchronous operation to complete.
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncWaitHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,10 +316,10 @@ items:
     content: bool System.IAsyncResult.CompletedSynchronously { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the asynchronous commit operation completed synchronously; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. This property always returns <xref uid="langword_csharp_false" name="false" href=""></xref> even if the operation completed synchronously.
+      description: '`true` if the asynchronous commit operation completed synchronously; otherwise, `false`. This property always returns `false` even if the operation completed synchronously.'
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#CompletedSynchronously*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,10 +342,10 @@ items:
     content: bool System.IAsyncResult.IsCompleted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the operation is complete; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the operation is complete; otherwise, `false`.'
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#IsCompleted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

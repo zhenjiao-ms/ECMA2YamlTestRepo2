@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -65,7 +65,7 @@ items:
       description: The message to dispatch.
     - id: replySink
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: The sink that will process the return message if it is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The sink that will process the return message if it is not `null`.
     return:
       type: System.Runtime.Remoting.Messaging.IMessageCtrl
       description: A <xref href="System.Runtime.Remoting.Messaging.IMessageCtrl"></xref> object used to control the asynchronously dispatched message.
@@ -73,11 +73,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>msg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>msg</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,7 +112,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,11 +150,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>msg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>msg</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,13 +186,13 @@ items:
       description: The channel name.
     return:
       type: System.Runtime.Remoting.Channels.IChannel
-      description: An interface to a registered channel, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the channel is not registered.
+      description: An interface to a registered channel, or `null` if the channel is not registered.
   overload: System.Runtime.Remoting.Channels.ChannelServices.GetChannel*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -224,13 +224,13 @@ items:
       description: The proxy to retrieve properties for.
     return:
       type: System.Collections.IDictionary
-      description: An interface to the dictionary of properties, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no properties were found.
+      description: An interface to the dictionary of properties, or `null` if no properties were found.
   overload: System.Runtime.Remoting.Channels.ChannelServices.GetChannelSinkProperties*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers that is higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,13 +262,13 @@ items:
       description: The object to retrieve the URL array for.
     return:
       type: System.String[]
-      description: An array of strings that contains the URLs that can be used to remotely identify the object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if none were found.
+      description: An array of strings that contains the URLs that can be used to remotely identify the object, or `null` if none were found.
   overload: System.Runtime.Remoting.Channels.ChannelServices.GetUrlsForObject*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -302,14 +302,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>chnl</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>chnl</code> parameter is `null`.
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
     description: The channel has already been registered.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -336,12 +336,12 @@ items:
       description: The channel to register.
     - id: ensureSecurity
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> ensures that security is enabled; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. Setting the value to <xref uid="langword_csharp_false" name="false" href=""></xref> does not effect the security setting on the TCP or IPC channel.
+      description: '`true` ensures that security is enabled; otherwise `false`. Setting the value to `false` does not effect the security setting on the TCP or IPC channel.'
   overload: System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>chnl</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>chnl</code> parameter is `null`.
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
     description: The channel has already been registered.
@@ -351,7 +351,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Not supported in Windows 98 for <xref href="System.Runtime.Remoting.Channels.Tcp.TcpServerChannel"></xref> and on all platforms for <xref href="System.Runtime.Remoting.Channels.Http.HttpServerChannel"></xref>. Host the service using Internet Information Services (IIS) if you require a secure HTTP channel.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,7 +385,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,11 +422,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>msg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>msg</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,14 +460,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>chnl</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>chnl</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The channel is not registered.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: At least one of the callers higher in the callstack does not have permission to configure remoting types and channels.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -611,8 +611,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -655,8 +655,8 @@ references:
 - uid: System.Runtime.Remoting.Channels.IChannel[]
   parent: System.Runtime.Remoting.Channels
   isExternal: false
-  name: IChannel
-  nameWithType: IChannel
+  name: IChannel[]
+  nameWithType: IChannel[]
   fullName: System.Runtime.Remoting.Channels.IChannel[]
   spec.csharp:
   - uid: System.Runtime.Remoting.Channels.IChannel

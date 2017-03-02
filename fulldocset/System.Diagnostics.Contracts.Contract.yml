@@ -47,7 +47,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Assert(System.Boolean)
   id: Assert(System.Boolean)
@@ -61,7 +61,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts
-  summary: Checks for a condition; if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>, follows the escalation policy set for the analyzer.
+  summary: Checks for a condition; if the condition is `false`, follows the escalation policy set for the analyzer.
   remarks: The default escalation policy is to notify the attached debugger about a contract failure or to display an **Assert** dialog box if a debugger is not attached. Optionally, the analyzer can be instructed to throw an exception.
   syntax:
     content: public static void Assert (bool condition);
@@ -71,7 +71,7 @@ items:
       description: The conditional expression to test.
   overload: System.Diagnostics.Contracts.Contract.Assert*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Assert(System.Boolean,System.String)
   id: Assert(System.Boolean,System.String)
@@ -85,7 +85,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts
-  summary: Checks for a condition; if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>, follows the escalation policy set by the analyzer and displays the specified message.
+  summary: Checks for a condition; if the condition is `false`, follows the escalation policy set by the analyzer and displays the specified message.
   remarks: The default escalation policy is to notify the attached debugger about a contract failure or to display an **Assert** dialog box if a debugger is not attached. Optionally, the analyzer can be instructed to throw an exception. The `userMessage` parameter is passed to the debugger output. If `userMessage` is not a constant string literal, tools may not be able to read it.
   syntax:
     content: public static void Assert (bool condition, string userMessage);
@@ -98,7 +98,7 @@ items:
       description: A message to display if the condition is not met.
   overload: System.Diagnostics.Contracts.Contract.Assert*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Assume(System.Boolean)
   id: Assume(System.Boolean)
@@ -112,17 +112,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts
-  summary: Instructs code analysis tools to assume that the specified condition is <xref uid="langword_csharp_true" name="true" href=""></xref>, even if it cannot be statically proven to always be <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Instructs code analysis tools to assume that the specified condition is `true`, even if it cannot be statically proven to always be `true`.
   remarks: At run time, using this method is equivalent to using the <xref:System.Diagnostics.Contracts.Contract.Assert%28System.Boolean%29> method.
   syntax:
     content: public static void Assume (bool condition);
     parameters:
     - id: condition
       type: System.Boolean
-      description: The conditional expression to assume <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: The conditional expression to assume `true`.
   overload: System.Diagnostics.Contracts.Contract.Assume*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Assume(System.Boolean,System.String)
   id: Assume(System.Boolean,System.String)
@@ -136,20 +136,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts
-  summary: Instructs code analysis tools to assume that a condition is <xref uid="langword_csharp_true" name="true" href=""></xref>, even if it cannot be statically proven to always be <xref uid="langword_csharp_true" name="true" href=""></xref>, and displays a message if the assumption fails.
+  summary: Instructs code analysis tools to assume that a condition is `true`, even if it cannot be statically proven to always be `true`, and displays a message if the assumption fails.
   remarks: "If `userMessage` is not a constant string literal, the contract may not be understood by tools.  \n  \n At run time, using this method is equivalent to using the <xref:System.Diagnostics.Contracts.Contract.Assert%28System.Boolean%2CSystem.String%29> method."
   syntax:
     content: public static void Assume (bool condition, string userMessage);
     parameters:
     - id: condition
       type: System.Boolean
-      description: The conditional expression to assume <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: The conditional expression to assume `true`.
     - id: userMessage
       type: System.String
       description: The message to post if the assumption fails.
   overload: System.Diagnostics.Contracts.Contract.Assume*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.ContractFailed
   id: ContractFailed
@@ -171,7 +171,7 @@ items:
       type: System.EventHandler{System.Diagnostics.Contracts.ContractFailedEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.EndContractBlock
   id: EndContractBlock
@@ -185,14 +185,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts
-  summary: Marks the end of the contract section when a method's contracts contain only preconditions in the <xref uid="langword_csharp_if" name="if" href=""></xref>-<xref uid="langword_csharp_then" name="then" href=""></xref>-<xref uid="langword_csharp_throw" name="throw" href=""></xref> form.
+  summary: Marks the end of the contract section when a method's contracts contain only preconditions in the `if`-`then`-`throw` form.
   remarks: "Most code already contains some parameter validation in the form of `if`-`then`-`throw` code. The contract tools recognize `if`-`then`-`throw` statements as preconditions when the statements appear first inside a method, and the entire set of such statements is followed by an explicit <xref:System.Diagnostics.Contracts.Contract> method call, such as a <xref:System.Diagnostics.Contracts.Contract.Requires%2A>, <xref:System.Diagnostics.Contracts.Contract.Ensures%2A>, <xref:System.Diagnostics.Contracts.Contract.EnsuresOnThrow%2A>, or EndContractBlock.  \n  \n When `if`-`then`-`throw` statements appear in this form, the contract tools recognize them as legacy-require statements. The EndContractBlock form is used only if no other contracts follow the `if`-`then`-`throw` sequences, but they should still be tagged as legacy-requires."
   syntax:
     content: public static void EndContractBlock ();
     parameters: []
   overload: System.Diagnostics.Contracts.Contract.EndContractBlock*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Ensures(System.Boolean)
   id: Ensures(System.Boolean)
@@ -218,7 +218,7 @@ items:
       description: The conditional expression to test. The expression may include <xref:System.Diagnostics.Contracts.Contract.OldValue*>, <xref:System.Diagnostics.Contracts.Contract.ValueAtReturn*>, and <xref:System.Diagnostics.Contracts.Contract.Result*> values.
   overload: System.Diagnostics.Contracts.Contract.Ensures*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Ensures(System.Boolean,System.String)
   id: Ensures(System.Boolean,System.String)
@@ -232,7 +232,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts
-  summary: Specifies a postcondition contract for a provided exit condition and a message to display if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Specifies a postcondition contract for a provided exit condition and a message to display if the condition is `false`.
   remarks: "The `condition` parameter specifies a postcondition that is expected to be `true` when the enclosing method or property returns normally.  \n  \n-   This method call must be at the beginning of a method or property, before any other code.  \n  \n-   This contract is exposed to clients; therefore, it must only reference members that are at least as visible as the enclosing method.  \n  \n-   You must use the binary rewriter (available at [Code Contracts](http://go.microsoft.com/fwlink/?LinkId=152461) on the MSDN DevLabs Web site) for run-time enforcement of this postcondition.  \n  \n-   If `userMessage` is not a constant string literal, the contract may not be understood by tools."
   syntax:
     content: public static void Ensures (bool condition, string userMessage);
@@ -242,10 +242,10 @@ items:
       description: The conditional expression to test. The expression may include <xref:System.Diagnostics.Contracts.Contract.OldValue*> and <xref:System.Diagnostics.Contracts.Contract.Result*> values.
     - id: userMessage
       type: System.String
-      description: The message to display if the expression is not <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: The message to display if the expression is not `true`.
   overload: System.Diagnostics.Contracts.Contract.Ensures*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.EnsuresOnThrow``1(System.Boolean)
   id: EnsuresOnThrow``1(System.Boolean)
@@ -267,7 +267,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.EnsuresOnThrow<TException>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.EnsuresOnThrow``1(System.Boolean,System.String)
   id: EnsuresOnThrow``1(System.Boolean,System.String)
@@ -292,7 +292,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.EnsuresOnThrow<TException>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Exists(System.Int32,System.Int32,System.Predicate{System.Int32})
   id: Exists(System.Int32,System.Int32,System.Predicate{System.Int32})
@@ -322,16 +322,16 @@ items:
       description: The function to evaluate for any value of the integer in the specified range.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>predicate</code> returns <xref uid="langword_csharp_true" name="true" href=""></xref> for any integer starting from <code>fromInclusive</code> to <code>toExclusive</code> - 1.
+      description: '`true` if <code>predicate</code> returns `true` for any integer starting from <code>fromInclusive</code> to <code>toExclusive</code> - 1.'
   overload: System.Diagnostics.Contracts.Contract.Exists*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>predicate</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>predicate</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>toExclusive </code>is less than <code>fromInclusive</code>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Exists``1(System.Collections.Generic.IEnumerable`1,System.Predicate`1)
   id: Exists``1(System.Collections.Generic.IEnumerable`1,System.Predicate`1)
@@ -359,7 +359,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.Exists<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.ForAll(System.Int32,System.Int32,System.Predicate{System.Int32})
   id: ForAll(System.Int32,System.Int32,System.Predicate{System.Int32})
@@ -391,16 +391,16 @@ items:
       description: The function to evaluate for the existence of the integers in the specified range.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>predicate</code> returns <xref uid="langword_csharp_true" name="true" href=""></xref> for all integers starting from <code>fromInclusive</code> to <code>toExclusive</code> - 1.
+      description: '`true` if <code>predicate</code> returns `true` for all integers starting from <code>fromInclusive</code> to <code>toExclusive</code> - 1.'
   overload: System.Diagnostics.Contracts.Contract.ForAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>predicate</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>predicate</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>toExclusive </code>is less than <code>fromInclusive</code>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.ForAll``1(System.Collections.Generic.IEnumerable`1,System.Predicate`1)
   id: ForAll``1(System.Collections.Generic.IEnumerable`1,System.Predicate`1)
@@ -428,7 +428,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.ForAll<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Invariant(System.Boolean)
   id: Invariant(System.Boolean)
@@ -452,7 +452,7 @@ items:
       description: The conditional expression to test.
   overload: System.Diagnostics.Contracts.Contract.Invariant*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Invariant(System.Boolean,System.String)
   id: Invariant(System.Boolean,System.String)
@@ -476,10 +476,10 @@ items:
       description: The conditional expression to test.
     - id: userMessage
       type: System.String
-      description: The message to display if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: The message to display if the condition is `false`.
   overload: System.Diagnostics.Contracts.Contract.Invariant*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.OldValue``1(``0)
   id: OldValue``1(``0)
@@ -504,7 +504,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.OldValue<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Requires(System.Boolean)
   id: Requires(System.Boolean)
@@ -528,7 +528,7 @@ items:
       description: The conditional expression to test.
   overload: System.Diagnostics.Contracts.Contract.Requires*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Requires(System.Boolean,System.String)
   id: Requires(System.Boolean,System.String)
@@ -552,10 +552,10 @@ items:
       description: The conditional expression to test.
     - id: userMessage
       type: System.String
-      description: The message to display if the condition is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: The message to display if the condition is `false`.
   overload: System.Diagnostics.Contracts.Contract.Requires*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Requires``1(System.Boolean)
   id: Requires``1(System.Boolean)
@@ -577,7 +577,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.Requires<TException>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Requires``1(System.Boolean,System.String)
   id: Requires``1(System.Boolean,System.String)
@@ -602,7 +602,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.Requires<TException>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.Result``1
   id: Result``1
@@ -624,7 +624,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.Result<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Diagnostics.Contracts.Contract.ValueAtReturn``1(``0@)
   id: ValueAtReturn``1(``0@)
@@ -649,7 +649,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.Contracts.Contract.ValueAtReturn<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object

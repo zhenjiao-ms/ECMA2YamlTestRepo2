@@ -46,7 +46,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -69,7 +69,7 @@ items:
     parameters: []
   overload: System.StringComparer.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,13 +99,13 @@ items:
       description: An object to compare to `x`.
     return:
       type: System.Int32
-      description: "A signed integer that indicates the relative values of <code>x</code> and <code>y</code>, as shown in the following table.  \n  \n|Value|Meaning|  \n|-----------|-------------|  \n|Less than zero|<code>x</code> precedes  <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>x</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <code>y</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|  \n|Zero|<code>x</code> is equal to <code>y</code>.<br /><br /> -or-<br /><br /><code>x</code> and <code>y</code> are both <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|  \n|Greater than zero|<code>x</code> follows <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>y</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <code>x</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|"
+      description: "A signed integer that indicates the relative values of <code>x</code> and <code>y</code>, as shown in the following table.  \n  \n|Value|Meaning|  \n|-----------|-------------|  \n|Less than zero|<code>x</code> precedes  <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>x</code> is `null` and <code>y</code> is not `null`.|  \n|Zero|<code>x</code> is equal to <code>y</code>.<br /><br /> -or-<br /><br /><code>x</code> and <code>y</code> are both `null`.|  \n|Greater than zero|<code>x</code> follows <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>y</code> is `null` and <code>x</code> is not `null`.|"
   overload: System.StringComparer.Compare*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Neither <code>x</code> nor <code>y</code> is a <xref href="System.String"></xref> object, and neither <code>x</code> nor <code>y</code> implements the <xref href="System.IComparable"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -135,10 +135,10 @@ items:
       description: A string to compare to `x`.
     return:
       type: System.Int32
-      description: "A signed integer that indicates the relative values of <code>x</code> and <code>y</code>, as shown in the following table.  \n  \n|Value|Meaning|  \n|-----------|-------------|  \n|Less than zero|<code>x</code> precedes <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>x</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <code>y</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|  \n|Zero|<code>x</code> is equal to <code>y</code>.<br /><br /> -or-<br /><br /><code>x</code> and <code>y</code> are both <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|  \n|Greater than zero|<code>x</code> follows <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>y</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <code>x</code> is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|"
+      description: "A signed integer that indicates the relative values of <code>x</code> and <code>y</code>, as shown in the following table.  \n  \n|Value|Meaning|  \n|-----------|-------------|  \n|Less than zero|<code>x</code> precedes <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>x</code> is `null` and <code>y</code> is not `null`.|  \n|Zero|<code>x</code> is equal to <code>y</code>.<br /><br /> -or-<br /><br /><code>x</code> and <code>y</code> are both `null`.|  \n|Greater than zero|<code>x</code> follows <code>y</code> in the sort order.<br /><br /> -or-<br /><br /><code>y</code> is `null` and <code>x</code> is not `null`.|"
   overload: System.StringComparer.Compare*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
       description: A culture whose linguistic rules are used to perform a string comparison.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that comparison operations be case-insensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that comparison operations be case-sensitive.
+      description: '`true` to specify that comparison operations be case-insensitive; `false` to specify that comparison operations be case-sensitive.'
     return:
       type: System.StringComparer
       description: A new <xref href="System.StringComparer"></xref> object that performs string comparisons according to the comparison rules used by the <code>culture</code> parameter and the case rule specified by the <code>ignoreCase</code> parameter.
@@ -175,8 +175,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>culture</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>culture</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -204,7 +204,7 @@ items:
       description: A new <xref href="System.StringComparer"></xref> object.
   overload: System.StringComparer.CurrentCulture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -230,7 +230,7 @@ items:
       description: A new <xref href="System.StringComparer"></xref> object.
   overload: System.StringComparer.CurrentCultureIgnoreCase*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,10 +260,10 @@ items:
       description: An object to compare to `x`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>x</code> and <code>y</code> refer to the same object, or <code>x</code> and <code>y</code> are both the same type of object and those objects are equal, or both <code>x</code> and <code>y</code> are <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>x</code> and <code>y</code> refer to the same object, or <code>x</code> and <code>y</code> are both the same type of object and those objects are equal, or both <code>x</code> and <code>y</code> are `null`; otherwise, `false`.'
   overload: System.StringComparer.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -293,10 +293,10 @@ items:
       description: A string to compare to `x`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>x</code> and <code>y</code> refer to the same object, or <code>x</code> and <code>y</code> are equal, or <code>x</code> and <code>y</code> are <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>x</code> and <code>y</code> refer to the same object, or <code>x</code> and <code>y</code> are equal, or <code>x</code> and <code>y</code> are `null`; otherwise, `false`.'
   overload: System.StringComparer.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,8 +331,8 @@ items:
     description: Not enough memory is available to allocate the buffer that is required to compute the hash code.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>obj</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>obj</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -367,8 +367,8 @@ items:
     description: Not enough memory is available to allocate the buffer that is required to compute the hash code.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>obj</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>obj</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,7 +396,7 @@ items:
       description: A new <xref href="System.StringComparer"></xref> object.
   overload: System.StringComparer.InvariantCulture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,7 +422,7 @@ items:
       description: A new <xref href="System.StringComparer"></xref> object.
   overload: System.StringComparer.InvariantCultureIgnoreCase*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -450,7 +450,7 @@ items:
       description: A <xref href="System.StringComparer"></xref> object.
   overload: System.StringComparer.Ordinal*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -478,7 +478,7 @@ items:
       description: A <xref href="System.StringComparer"></xref> object.
   overload: System.StringComparer.OrdinalIgnoreCase*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

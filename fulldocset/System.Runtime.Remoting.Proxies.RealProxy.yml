@@ -51,7 +51,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -80,7 +80,7 @@ items:
     parameters: []
   overload: System.Runtime.Remoting.Proxies.RealProxy.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>classToProxy</code> is not an interface, and is not derived from <xref href="System.MarshalByRefObject"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,7 +151,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>classToProxy</code> is not an interface, and is not derived from <xref href="System.MarshalByRefObject"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,7 +180,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,7 +215,7 @@ items:
       description: A new instance of <xref href="System.Runtime.Remoting.ObjRef"></xref> that is created for the specified type.
   overload: System.Runtime.Remoting.Proxies.RealProxy.CreateObjRef*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -273,13 +273,13 @@ items:
     parameters:
     - id: fIsMarshalled
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object reference is requested for marshaling to a remote location; <xref uid="langword_csharp_false" name="false" href=""></xref> if the object reference is requested for communication with unmanaged objects in the current process through COM.
+      description: '`true` if the object reference is requested for marshaling to a remote location; `false` if the object reference is requested for communication with unmanaged objects in the current process through COM.'
     return:
       type: System.IntPtr
-      description: A pointer to a [COM Callable Wrapper](~/add/includes/ajax-current-ext-md.md) if the object reference is requested for communication with unmanaged objects in the current process through COM, or a pointer to a cached or newly generated <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> COM interface if the object reference is requested for marshaling to a remote location.
+      description: A pointer to a [COM Callable Wrapper](~/add/includes/ajax-current-ext-md.md) if the object reference is requested for communication with unmanaged objects in the current process through COM, or a pointer to a cached or newly generated `IUnknown` COM interface if the object reference is requested for marshaling to a remote location.
   overload: System.Runtime.Remoting.Proxies.RealProxy.GetCOMIUnknown*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,11 +316,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>info</code> or <code>context</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>info</code> or <code>context</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have SerializationFormatter permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -352,7 +352,7 @@ items:
       description: The <xref href="System.Type"></xref> of the object that the current instance of <xref href="System.Runtime.Remoting.Proxies.RealProxy"></xref> represents.
   overload: System.Runtime.Remoting.Proxies.RealProxy.GetProxiedType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,7 +422,7 @@ items:
       description: The transparent proxy for the current proxy instance.
   overload: System.Runtime.Remoting.Proxies.RealProxy.GetTransparentProxy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -452,7 +452,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -481,7 +481,7 @@ items:
     parameters:
     - id: ctorMsg
       type: System.Runtime.Remoting.Activation.IConstructionCallMessage
-      description: A construction call message that contains the constructor parameters for the new instance of the remote object that is represented by the current <xref href="System.Runtime.Remoting.Proxies.RealProxy"></xref>. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A construction call message that contains the constructor parameters for the new instance of the remote object that is represented by the current <xref href="System.Runtime.Remoting.Proxies.RealProxy"></xref>. Can be `null`.
     return:
       type: System.Runtime.Remoting.Activation.IConstructionReturnMessage
       description: The result of the construction request.
@@ -490,7 +490,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,10 +522,10 @@ items:
       description: A <xref href="System.Runtime.Remoting.Messaging.IMessage"></xref> that contains a <xref href="System.Collections.IDictionary"></xref> of information about the method call.
     return:
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: The message returned by the invoked method, containing the return value and any <xref uid="langword_csharp_out" name="out" href=""></xref> or <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameters.
+      description: The message returned by the invoked method, containing the return value and any `out` or `ref` parameters.
   overload: System.Runtime.Remoting.Proxies.RealProxy.Invoke*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -554,10 +554,10 @@ items:
     parameters:
     - id: i
       type: System.IntPtr
-      description: A pointer to the <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> interface for the object that is represented by the current proxy instance.
+      description: A pointer to the `IUnknown` interface for the object that is represented by the current proxy instance.
   overload: System.Runtime.Remoting.Proxies.RealProxy.SetCOMIUnknown*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,7 +595,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -630,7 +630,7 @@ items:
       description: A pointer to the requested interface.
   overload: System.Runtime.Remoting.Proxies.RealProxy.SupportsInterface*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

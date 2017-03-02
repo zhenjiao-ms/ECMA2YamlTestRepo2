@@ -50,7 +50,7 @@ items:
   - System.Security.AccessControl.QualifiedAce.IsCallback
   - System.Security.AccessControl.QualifiedAce.OpaqueLength
   - System.Security.AccessControl.QualifiedAce.SetOpaque(System.Byte[])
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,7 +94,7 @@ items:
       description: A GUID that identifies the object type that can inherit the new ACE.
     - id: isCallback
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new ACE is a callback type ACE.
+      description: '`true` if the new ACE is a callback type ACE.'
     - id: opaque
       type: System.Byte[]
       description: Opaque data associated with the new ACE. This is allowed only for callback ACE types. The length of this array must not be greater than the return value of the <xref:System.Security.AccessControl.ObjectAce.MaxOpaqueLength*> method.
@@ -103,7 +103,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The qualifier parameter contains an invalid value or the length of the value of the opaque parameter is greater than the return value of the <xref:System.Security.AccessControl.ObjectAce.MaxOpaqueLength*> method.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
       description: The length, in bytes, of the binary representation of the current <xref href="System.Security.AccessControl.ObjectAce"></xref> object.
   overload: System.Security.AccessControl.ObjectAce.BinaryLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> is negative or too high to allow the entire <xref href="System.Security.AccessControl.ObjectAce"></xref> to be copied into <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,7 +186,7 @@ items:
       description: The GUID of the object type that can inherit the Access Control Entry (ACE) that this <xref href="System.Security.AccessControl.ObjectAce"></xref> object represents.
   overload: System.Security.AccessControl.ObjectAce.InheritedObjectAceType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,7 +215,7 @@ items:
       description: The maximum allowed length, in bytes, of an opaque data BLOB for callback Access Control Entries (ACEs).
   overload: System.Security.AccessControl.ObjectAce.MaxOpaqueLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -240,7 +240,7 @@ items:
       description: On or more members of the <xref href="System.Security.AccessControl.ObjectAceFlags"></xref> enumeration combined with a logical OR operation.
   overload: System.Security.AccessControl.ObjectAce.ObjectAceFlags*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -266,7 +266,7 @@ items:
       description: The GUID of the object type associated with this <xref href="System.Security.AccessControl.ObjectAce"></xref> object.
   overload: System.Security.AccessControl.ObjectAce.ObjectAceType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,8 +332,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

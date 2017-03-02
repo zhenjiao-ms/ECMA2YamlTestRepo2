@@ -58,7 +58,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,8 +89,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The stream does not support reading, is <xref uid="langword_csharp_null" name="null" href=""></xref>, or is already closed.
-  platform:
+    description: The stream does not support reading, is `null`, or is already closed.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,11 +122,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The stream does not support reading, is <xref uid="langword_csharp_null" name="null" href=""></xref>, or is already closed.
+    description: The stream does not support reading, is `null`, or is already closed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>encoding</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>encoding</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,10 +151,10 @@ items:
     content: public virtual System.IO.Stream BaseStream { get; }
     return:
       type: System.IO.Stream
-      description: The underlying stream associated with the <xref uid="langword_csharp_BinaryReader" name="BinaryReader" href=""></xref>.
+      description: The underlying stream associated with the `BinaryReader`.
   overload: System.IO.BinaryReader.BaseStream*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
     parameters: []
   overload: System.IO.BinaryReader.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,7 +202,7 @@ items:
     parameters: []
   overload: System.IO.BinaryReader.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.BinaryReader.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -223,10 +223,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.IO.BinaryReader.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Requested <code>numBytes</code> is larger than the internal buffer size.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,7 +295,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current character cannot be decoded into the internal character buffer by using the <xref href="System.Text.Encoding"></xref> selected for the stream.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -312,7 +312,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Reads characters from the underlying stream and advances the current position of the stream in accordance with the <xref uid="langword_csharp_Encoding" name="Encoding" href=""></xref> used and the specific character being read from the stream.
+  summary: Reads characters from the underlying stream and advances the current position of the stream in accordance with the `Encoding` used and the specific character being read from the stream.
   remarks: "<xref:System.IO.BinaryReader> does not restore the file position after an unsuccessful read.  \n  \n For a list of common I/O tasks, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to read and write data using memory as a backing store. This example displays a list of invalid file path characters to the console. Although the code tries to display a list of all invalid file path characters, not all of the characters are within the displayable set of characters. Because the list of invalid characters can vary based on the system, output for this code may also vary.  \n  \n [!code-cs[System.IO.BinaryReaderWriter.RWChar2#1](~/add/codesnippet/csharp/m-system.io.binaryreader_8_1.cs)]\n [!code-vb[System.IO.BinaryReaderWriter.RWChar2#1](~/add/codesnippet/visualbasic/m-system.io.binaryreader_8_1.vb)]\n [!code-cpp[System.IO.BinaryReaderWriter.RWChar2#1](~/add/codesnippet/cpp/m-system.io.binaryreader_8_1.cpp)]"
@@ -330,7 +330,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,7 +373,7 @@ items:
     description: "The buffer length minus <code>index</code> is less than <code>count</code>.  \n  \n -or-  \n  \n The number of decoded characters to read is greater than <code>count</code>. This can happen if a Unicode decoder returns fallback characters or a surrogate pair."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> or <code>count</code> is negative.
@@ -383,7 +383,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -426,7 +426,7 @@ items:
     description: "The buffer length minus <code>index</code> is less than <code>count</code>.  \n  \n -or-  \n  \n The number of decoded characters to read is greater than <code>count</code>. This can happen if a Unicode decoder returns fallback characters or a surrogate pair."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> or <code>count</code> is negative.
@@ -436,7 +436,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -475,7 +475,7 @@ items:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: The stream is corrupted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Reads a <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> value from the current stream and advances the current position of the stream by one byte.
+  summary: Reads a `Boolean` value from the current stream and advances the current position of the stream by one byte.
   remarks: "<xref:System.IO.BinaryReader> does not restore the file position after an unsuccessful read.  \n  \n For a list of common I/O tasks, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to store and retrieve application settings in a file.  \n  \n [!code-cs[System.IO.BinaryReaderWriter#1](~/add/codesnippet/csharp/m-system.io.binaryreader_7_1.cs)]\n [!code-vb[System.IO.BinaryReaderWriter#1](~/add/codesnippet/visualbasic/m-system.io.binaryreader_7_1.vb)]"
@@ -501,7 +501,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the byte is nonzero; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the byte is nonzero; otherwise, `false`.'
   overload: System.IO.BinaryReader.ReadBoolean*
   exceptions:
   - type: System.IO.EndOfStreamException
@@ -513,7 +513,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -551,7 +551,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,7 +595,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>count</code> is negative.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -612,7 +612,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Reads the next character from the current stream and advances the current position of the stream in accordance with the <xref uid="langword_csharp_Encoding" name="Encoding" href=""></xref> used and the specific character being read from the stream.
+  summary: Reads the next character from the current stream and advances the current position of the stream in accordance with the `Encoding` used and the specific character being read from the stream.
   remarks: "If the ReadChar method attempts to read a surrogate character in the stream an exception will be raised and the position in the stream will advance. The position is restored to the original location before ReadChar was called if the stream is seekable; however, if the stream is unseekable, the position will not be corrected. If surrogate characters can be expected in the stream, use the <xref:System.IO.BinaryReader.ReadChars%2A> method instead.  \n  \n Because of data formatting conflicts, using this method with the following encodings is not recommended:  \n  \n-   UTF-7  \n  \n-   ISO-2022-JP  \n  \n-   ISCII  \n  \n For a list of common I/O tasks, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example shows how to read and write data using memory as a backing store.  \n  \n [!code-cs[System.IO.BinaryReaderWriter.RWChar1#1](~/add/codesnippet/csharp/m-system.io.binaryreader_6_1.cs)]\n [!code-vb[System.IO.BinaryReaderWriter.RWChar1#1](~/add/codesnippet/visualbasic/m-system.io.binaryreader_6_1.vb)]\n [!code-cpp[System.IO.BinaryReaderWriter.RWChar1#1](~/add/codesnippet/cpp/m-system.io.binaryreader_6_1.cpp)]"
@@ -636,7 +636,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A surrogate character was read.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -653,7 +653,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Reads the specified number of characters from the current stream, returns the data in a character array, and advances the current position in accordance with the <xref uid="langword_csharp_Encoding" name="Encoding" href=""></xref> used and the specific character being read from the stream.
+  summary: Reads the specified number of characters from the current stream, returns the data in a character array, and advances the current position in accordance with the `Encoding` used and the specific character being read from the stream.
   remarks: "<xref:System.IO.BinaryReader> does not restore the file position after an unsuccessful read operation.  \n  \n When reading from network streams, in some rare cases, the ReadChars method might read an extra character from the stream if the <xref:System.IO.BinaryReader> was constructed with Unicode encoding. If this occurs, you can use the <xref:System.IO.BinaryReader.ReadBytes%2A> method to read a fixed-length byte array, and then pass that array to the ReadChars method."
   example:
   - "The following code example shows how to read and write data using memory as a backing store.  \n  \n [!code-cpp[System.IO.BinaryReaderWriter.RWChars1#1](~/add/codesnippet/cpp/m-system.io.binaryreader_2_1.cpp)]\n [!code-vb[System.IO.BinaryReaderWriter.RWChars1#1](~/add/codesnippet/visualbasic/m-system.io.binaryreader_2_1.vb)]\n [!code-cs[System.IO.BinaryReaderWriter.RWChars1#1](~/add/codesnippet/csharp/m-system.io.binaryreader_2_1.cs)]"
@@ -680,7 +680,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>count</code> is negative.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -716,7 +716,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -754,7 +754,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -790,7 +790,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,7 +828,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -864,7 +864,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -900,7 +900,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -938,7 +938,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -976,7 +976,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1012,7 +1012,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1048,7 +1048,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurs.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1084,7 +1084,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1222,8 +1222,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -1242,8 +1242,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char

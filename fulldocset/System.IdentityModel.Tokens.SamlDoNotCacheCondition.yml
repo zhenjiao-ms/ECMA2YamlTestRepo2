@@ -30,7 +30,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -53,7 +53,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SamlDoNotCacheCondition.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -75,10 +75,10 @@ items:
     content: public override bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the properties of this instance are read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the properties of this instance are read-only; otherwise, `false`. The default is `false`.'
   overload: System.IdentityModel.Tokens.SamlDoNotCacheCondition.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -101,7 +101,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SamlDoNotCacheCondition.MakeReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -117,20 +117,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the <xref uid="langword_csharp_&lt;saml:DoNotCacheCondition&gt;" name="&lt;saml:DoNotCacheCondition&gt;" href=""></xref> element from the specified XML reader.
+  summary: Reads the `&lt;saml:DoNotCacheCondition&gt;` element from the specified XML reader.
   remarks: The ReadXml method does note set any properties.
   syntax:
     content: public override void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: A <xref href="System.Xml.XmlDictionaryReader"></xref> to read the <xref uid="langword_csharp_&lt;saml:DoNotCacheCondition&gt;" name="&lt;saml:DoNotCacheCondition&gt;" href=""></xref>.
+      description: A <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:DoNotCacheCondition&gt;`.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in the SAML authorization statement that is defined in the SAML specification.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that reads the <xref uid="langword_csharp_KeyInfo" name="KeyInfo" href=""></xref> clause of the digital signature.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that reads the `KeyInfo` clause of the digital signature.
     - id: outOfBandTokenResolver
       type: System.IdentityModel.Selectors.SecurityTokenResolver
       description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature.
@@ -138,11 +138,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>reader</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>samlSerializer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>"
+    description: "<code>reader</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`"
   - type: System.IdentityModel.Tokens.SecurityTokenException
     commentId: T:System.IdentityModel.Tokens.SecurityTokenException
-    description: <code>reader</code> does not point to a <xref uid="langword_csharp_&lt;saml:DoNotCacheCondition&gt;" name="&lt;saml:DoNotCacheCondition&gt;" href=""></xref> element.
-  platform:
+    description: <code>reader</code> does not point to a `&lt;saml:DoNotCacheCondition&gt;` element.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -158,26 +158,26 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes the <xref uid="langword_csharp_&lt;saml:DoNotCacheCondition&gt;" name="&lt;saml:DoNotCacheCondition&gt;" href=""></xref> element into the specified XML serializer.
+  summary: Writes the `&lt;saml:DoNotCacheCondition&gt;` element into the specified XML serializer.
   remarks: Use the WriteXml method to write the current <xref:System.IdentityModel.Tokens.SamlDoNotCacheCondition> instance into a `<saml:DoNotCacheCondition>` element.
   syntax:
     content: public override void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the <xref uid="langword_csharp_&lt;saml:DoNotCacheCondition&gt;" name="&lt;saml:DoNotCacheCondition&gt;" href=""></xref> element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:DoNotCacheCondition&gt;` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing XML elements in a SAML assertion.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing <xref uid="langword_csharp_KeyInfo" name="KeyInfo" href=""></xref> clauses.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing `KeyInfo` clauses.
   overload: System.IdentityModel.Tokens.SamlDoNotCacheCondition.WriteXml*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>writer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>samlSerializer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>"
-  platform:
+    description: "<code>writer</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`"
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

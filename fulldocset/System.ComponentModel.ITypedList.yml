@@ -18,7 +18,7 @@ items:
   syntax:
     content: public interface ITypedList
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -44,13 +44,13 @@ items:
     parameters:
     - id: listAccessors
       type: System.ComponentModel.PropertyDescriptor[]
-      description: An array of <xref href="System.ComponentModel.PropertyDescriptor"></xref> objects to find in the collection as bindable. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of <xref href="System.ComponentModel.PropertyDescriptor"></xref> objects to find in the collection as bindable. This can be `null`.
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
       description: The <xref href="System.ComponentModel.PropertyDescriptorCollection"></xref> that represents the properties on each item used to bind data.
   overload: System.ComponentModel.ITypedList.GetItemProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,13 +76,13 @@ items:
     parameters:
     - id: listAccessors
       type: System.ComponentModel.PropertyDescriptor[]
-      description: An array of <xref href="System.ComponentModel.PropertyDescriptor"></xref> objects, for which the list name is returned. This can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of <xref href="System.ComponentModel.PropertyDescriptor"></xref> objects, for which the list name is returned. This can be `null`.
     return:
       type: System.String
       description: The name of the list.
   overload: System.ComponentModel.ITypedList.GetListName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -103,8 +103,8 @@ references:
 - uid: System.ComponentModel.PropertyDescriptor[]
   parent: System.ComponentModel
   isExternal: false
-  name: PropertyDescriptor
-  nameWithType: PropertyDescriptor
+  name: PropertyDescriptor[]
+  nameWithType: PropertyDescriptor[]
   fullName: System.ComponentModel.PropertyDescriptor[]
   spec.csharp:
   - uid: System.ComponentModel.PropertyDescriptor

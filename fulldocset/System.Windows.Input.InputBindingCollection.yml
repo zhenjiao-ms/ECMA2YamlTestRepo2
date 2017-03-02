@@ -52,7 +52,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -74,7 +74,7 @@ items:
     parameters: []
   overload: System.Windows.Input.InputBindingCollection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -99,7 +99,7 @@ items:
       description: The collection whose items are copied to the new <xref href="System.Windows.Input.InputBindingCollection"></xref>.
   overload: System.Windows.Input.InputBindingCollection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -127,13 +127,13 @@ items:
       description: The binding to add to the collection.
     return:
       type: System.Int32
-      description: Always returns 0. This deviates from the standard <xref href="System.Collections.IList"></xref> implementation for <xref uid="langword_csharp_Add" name="Add" href=""></xref>, which should return the index where the new item was added to the collection.
+      description: Always returns 0. This deviates from the standard <xref href="System.Collections.IList"></xref> implementation for `Add`, which should return the index where the new item was added to the collection.
   overload: System.Windows.Input.InputBindingCollection.Add*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>inputBinding</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>inputBinding</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -158,7 +158,7 @@ items:
       description: The collection of items to add to the end of this <xref href="System.Windows.Input.InputBindingCollection"></xref>.
   overload: System.Windows.Input.InputBindingCollection.AddRange*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -180,7 +180,7 @@ items:
     parameters: []
   overload: System.Windows.Input.InputBindingCollection.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -205,10 +205,10 @@ items:
       description: The binding to locate in the collection.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Windows.Input.InputBinding"></xref> is in the collection; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <xref href="System.Windows.Input.InputBinding"></xref> is in the collection; otherwise, `false`.'
   overload: System.Windows.Input.InputBindingCollection.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -238,11 +238,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>inputBindings</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>inputBindings</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than 0.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -266,7 +266,7 @@ items:
       description: The number of items in the collection.
   overload: System.Windows.Input.InputBindingCollection.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -291,7 +291,7 @@ items:
       description: The enumerator for this collection.
   overload: System.Windows.Input.InputBindingCollection.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -319,7 +319,7 @@ items:
       description: The index of the first occurrence of <code>value</code>, if found; otherwise, –1.
   overload: System.Windows.Input.InputBindingCollection.IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -349,8 +349,8 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <code>inputBinding</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>inputBinding</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -372,10 +372,10 @@ items:
     content: public bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the collection has a fixed size; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the collection has a fixed size; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.InputBindingCollection.IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -397,10 +397,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the collection is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the collection is read-only; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.InputBindingCollection.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -422,10 +422,10 @@ items:
     content: public bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the collection is thread safe; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the collection is thread safe; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Input.InputBindingCollection.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -453,7 +453,7 @@ items:
       description: The <xref href="System.Windows.Input.InputBinding"></xref> at the specified index.
   overload: System.Windows.Input.InputBindingCollection.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -478,7 +478,7 @@ items:
       description: The binding to remove.
   overload: System.Windows.Input.InputBindingCollection.Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -503,7 +503,7 @@ items:
       description: The zero-based index of the <xref href="System.Windows.Input.InputBinding"></xref> to remove.
   overload: System.Windows.Input.InputBindingCollection.RemoveAt*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -527,7 +527,7 @@ items:
       description: An object that can be used to synchronize access to the <xref href="System.Windows.Input.InputBindingCollection"></xref>.
   overload: System.Windows.Input.InputBindingCollection.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -557,7 +557,7 @@ items:
       description: The first position in the specified <xref href="System.Array"></xref> to receive the copied contents.
   overload: System.Windows.Input.InputBindingCollection.System#Collections#ICollection#CopyTo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -587,7 +587,7 @@ items:
       description: The position into which the new element was inserted.
   overload: System.Windows.Input.InputBindingCollection.System#Collections#IList#Add*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -614,10 +614,10 @@ items:
       description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Windows.Media.TextEffectCollection"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Object"></xref> is found in the <xref href="System.Windows.Input.InputBindingCollection"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Object"></xref> is found in the <xref href="System.Windows.Input.InputBindingCollection"></xref>; otherwise, `false`.'
   overload: System.Windows.Input.InputBindingCollection.System#Collections#IList#Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -647,7 +647,7 @@ items:
       description: The index of <code>value</code> if found in the list; otherwise, -1.
   overload: System.Windows.Input.InputBindingCollection.System#Collections#IList#IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -677,7 +677,7 @@ items:
       description: The <xref href="System.Object"></xref> to insert into the <xref href="System.Windows.Input.InputBindingCollection"></xref>.
   overload: System.Windows.Input.InputBindingCollection.System#Collections#IList#Insert*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -707,7 +707,7 @@ items:
       description: The element at the specified index.
   overload: System.Windows.Input.InputBindingCollection.System#Collections#IList#Item*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -734,7 +734,7 @@ items:
       description: The <xref href="System.Object"></xref> to remove from the <xref href="System.Windows.Input.InputBindingCollection"></xref>.
   overload: System.Windows.Input.InputBindingCollection.System#Collections#IList#Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -835,8 +835,8 @@ references:
 - uid: System.Windows.Input.InputBinding[]
   parent: System.Windows.Input
   isExternal: false
-  name: InputBinding
-  nameWithType: InputBinding
+  name: InputBinding[]
+  nameWithType: InputBinding[]
   fullName: System.Windows.Input.InputBinding[]
   spec.csharp:
   - uid: System.Windows.Input.InputBinding

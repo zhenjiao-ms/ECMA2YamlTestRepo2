@@ -33,7 +33,7 @@ items:
   nameWithType: WorkflowItemPresenter
   fullName: System.Activities.Presentation.WorkflowItemPresenter
   type: Class
-  summary: Provides a visual editor to edit <xref uid="langword_csharp_ModelItem" name="ModelItem" href=""></xref> objects, and provides an area for the user to drag and drop, and otherwise edit composed elements.
+  summary: Provides a visual editor to edit `ModelItem` objects, and provides an area for the user to drag and drop, and otherwise edit composed elements.
   remarks: This is a WPF control that acts as an editing container that displays the visualization for the data it is bound to in the <xref:System.Activities.Presentation.WorkflowItemPresenter.Item%2A> property. The WorkflowItemPresenter is one of two controls (the other being <xref:System.Activities.Presentation.WorkflowItemsPresenter>) that can be used to create a container for visualizing and editing a composed element. It is important to note that the visualization of the composed element is not controlled by the WorkflowItemPresenter but it renders with the visualization associated in the metadata store for a given type. The WorkflowItemPresenter is a specialized subclass of the [!INCLUDE[avalon1](~/add/includes/avalon1-md.md)]<xref:System.Windows.Controls.ContentControl> that has been modified to support drag and drop, copy and paste, and other visual editing actions.
   example:
   - "The primary use of this control will be in an activity designer, as seen in the sample code below. The XAML below shows the declarative usage of the control to build a simple designer for the If activity. The If activity has two properties of type Activity, Then and Else, and the Item for each WorkflowItemPresenter is linked to that respective property.  \n  \n For an example of the WorkflowItemPresenter in use, see the [Custom Composite Designers - Workflow Item Presenter](~/add/includes/ajax-current-ext-md.md) sample.  \n  \n```xaml  \n<sap:ActivityDesigner x:Class=\"Microsoft.Documentation.SimpleIfDesigner\"  \n    xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"  \n    xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"  \n    xmlns:sap=\"clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation\"  \n    xmlns:sapv=\"clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation\">  \n    <StackPanel>  \n        <StackPanel Orientation=\"Horizontal\">  \n            <sap:WorkflowItemPresenter Margin=\"4\" HintText=\"Drop Then Here\" Item=\"{Binding Path=ModelItem.Then, Mode=TwoWay}\" />  \n            <sap:WorkflowItemPresenter Margin=\"4\" HintText=\"Drop Else Here\" Item=\"{Binding Path=ModelItem.Else, Mode=TwoWay}\" />  \n        </StackPanel>  \n    </StackPanel>  \n</sap:ActivityDesigner>  \n  \n```  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -672,7 +672,7 @@ items:
   - System.Windows.UIElement.UpdateLayout
   - System.Windows.UIElement.Visibility
   - System.Windows.UIElement.VisibilityProperty
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.#ctor
   id: '#ctor'
@@ -692,7 +692,7 @@ items:
     parameters: []
   overload: System.Activities.Presentation.WorkflowItemPresenter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.AllowedItemType
   id: AllowedItemType
@@ -706,16 +706,16 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: Gets or sets the <xref uid="langword_csharp_AllowedItemType" name="AllowedItemType" href=""></xref>.
+  summary: Gets or sets the `AllowedItemType`.
   remarks: When this property is set, the <xref:System.Activities.Presentation.WorkflowItemPresenter> disallows dropping objects that do not conform to the `Type`.
   syntax:
     content: public Type AllowedItemType { get; set; }
     return:
       type: System.Type
-      description: A <xref uid="langword_csharp_Type" name="Type" href=""></xref> that contains the allowed item.
+      description: A `Type` that contains the allowed item.
   overload: System.Activities.Presentation.WorkflowItemPresenter.AllowedItemType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.AllowedItemTypeProperty
   id: AllowedItemTypeProperty
@@ -736,7 +736,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.DroppingTypeResolvingOptions
   id: DroppingTypeResolvingOptions
@@ -758,7 +758,7 @@ items:
       description: Returns a <xref href="System.Activities.Presentation.View.TypeResolvingOptions"></xref>.
   overload: System.Activities.Presentation.WorkflowItemPresenter.DroppingTypeResolvingOptions*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.DroppingTypeResolvingOptionsProperty
   id: DroppingTypeResolvingOptionsProperty
@@ -779,7 +779,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.HintText
   id: HintText
@@ -801,7 +801,7 @@ items:
       description: The hint text for the <xref href="System.Activities.Presentation.WorkflowItemPresenter"></xref> control.
   overload: System.Activities.Presentation.WorkflowItemPresenter.HintText*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.HintTextProperty
   id: HintTextProperty
@@ -822,7 +822,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.IsDefaultContainer
   id: IsDefaultContainer
@@ -841,10 +841,10 @@ items:
     content: public bool IsDefaultContainer { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this is the default container; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this is the default container; otherwise, `false`.'
   overload: System.Activities.Presentation.WorkflowItemPresenter.IsDefaultContainer*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.IsDefaultContainerProperty
   id: IsDefaultContainerProperty
@@ -865,7 +865,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.Item
   id: Item
@@ -884,10 +884,10 @@ items:
     content: public System.Activities.Presentation.Model.ModelItem Item { get; set; }
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: The <xref uid="langword_csharp_ModelItem" name="ModelItem" href=""></xref> associated with the <xref href="System.Activities.Presentation.WorkflowItemPresenter"></xref> control.
+      description: The `ModelItem` associated with the <xref href="System.Activities.Presentation.WorkflowItemPresenter"></xref> control.
   overload: System.Activities.Presentation.WorkflowItemPresenter.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.ItemProperty
   id: ItemProperty
@@ -908,7 +908,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnCreateAutomationPeer
   id: OnCreateAutomationPeer
@@ -930,7 +930,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnCreateAutomationPeer*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnDragEnter(System.Windows.DragEventArgs)
   id: OnDragEnter(System.Windows.DragEventArgs)
@@ -952,7 +952,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnDragEnter*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnDragOver(System.Windows.DragEventArgs)
   id: OnDragOver(System.Windows.DragEventArgs)
@@ -974,7 +974,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnDragOver*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnDrop(System.Windows.DragEventArgs)
   id: OnDrop(System.Windows.DragEventArgs)
@@ -996,7 +996,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnDrop*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnInitialized(System.EventArgs)
   id: OnInitialized(System.EventArgs)
@@ -1018,7 +1018,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnInitialized*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnMouseDown(System.Windows.Input.MouseButtonEventArgs)
   id: OnMouseDown(System.Windows.Input.MouseButtonEventArgs)
@@ -1040,7 +1040,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnMouseDown*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.OnRender(System.Windows.Media.DrawingContext)
   id: OnRender(System.Windows.Media.DrawingContext)
@@ -1062,7 +1062,7 @@ items:
       description: To be added.
   overload: System.Activities.Presentation.WorkflowItemPresenter.OnRender*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#CanPasteItems(System.Collections.Generic.List{System.Object})
   id: System#Activities#Presentation#ICompositeView#CanPasteItems(System.Collections.Generic.List{System.Object})
@@ -1086,10 +1086,10 @@ items:
       description: A list of items to be pasted.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified objects can be pasted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified objects can be pasted; otherwise, `false`.'
   overload: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#CanPasteItems*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemMoved(System.Activities.Presentation.Model.ModelItem)
   id: System#Activities#Presentation#ICompositeView#OnItemMoved(System.Activities.Presentation.Model.ModelItem)
@@ -1113,7 +1113,7 @@ items:
       description: The item to move.
   overload: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemMoved*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsCopied(System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem})
   id: System#Activities#Presentation#ICompositeView#OnItemsCopied(System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem})
@@ -1140,7 +1140,7 @@ items:
       description: The items cloned from the specified items.
   overload: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsCopied*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsCut(System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem})
   id: System#Activities#Presentation#ICompositeView#OnItemsCut(System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem})
@@ -1167,7 +1167,7 @@ items:
       description: The items cloned from the specified items.
   overload: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsCut*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsDelete(System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem})
   id: System#Activities#Presentation#ICompositeView#OnItemsDelete(System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem})
@@ -1191,7 +1191,7 @@ items:
       description: The items to delete.
   overload: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsDelete*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsPasted(System.Collections.Generic.List{System.Object},System.Collections.Generic.List{System.Object},System.Windows.Point,System.Activities.Presentation.WorkflowViewElement)
   id: System#Activities#Presentation#ICompositeView#OnItemsPasted(System.Collections.Generic.List{System.Object},System.Collections.Generic.List{System.Object},System.Windows.Point,System.Activities.Presentation.WorkflowViewElement)
@@ -1224,7 +1224,7 @@ items:
       description: A reference to the paste location.
   overload: System.Activities.Presentation.WorkflowItemPresenter.System#Activities#Presentation#ICompositeView#OnItemsPasted*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Windows.Controls.ContentControl

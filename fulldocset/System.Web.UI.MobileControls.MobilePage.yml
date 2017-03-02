@@ -320,7 +320,7 @@ items:
   - System.Web.UI.TemplateControl.XPath(System.String,System.Xml.IXmlNamespaceResolver)
   - System.Web.UI.TemplateControl.XPathSelect(System.String)
   - System.Web.UI.TemplateControl.XPathSelect(System.String,System.Xml.IXmlNamespaceResolver)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,7 +343,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.MobilePage.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -369,7 +369,7 @@ items:
       description: A rooted URL to the current page.
   overload: System.Web.UI.MobileControls.MobilePage.AbsoluteFilePath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,7 +400,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: The page does not contain any forms.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -425,7 +425,7 @@ items:
       description: The device-specific adapter for the control.
   overload: System.Web.UI.MobileControls.MobilePage.Adapter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -452,10 +452,10 @@ items:
       description: The <xref href="System.Web.UI.MobileControls.MobileControl"></xref> that has been added.
     - id: index
       type: System.Int32
-      description: The index of the control in the <xref uid="langword_csharp_Controls" name="Controls" href=""></xref> collection.
+      description: The index of the control in the `Controls` collection.
   overload: System.Web.UI.MobileControls.MobilePage.AddedControl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -485,7 +485,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: The <xref:System.Web.UI.MobileControls.MobilePage.StyleSheet*> property has already been set.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -502,7 +502,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Gets a value indicating whether controls on the page can have custom attributes defined. The default value is the value of the <xref uid="langword_csharp_allowCustomAttributes" name="allowCustomAttributes" href=""></xref> attribute of the &lt;<xref uid="langword_csharp_mobilecontrols" name="mobilecontrols" href=""></xref>&gt; section of the Web.config file. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Gets a value indicating whether controls on the page can have custom attributes defined. The default value is the value of the `allowCustomAttributes` attribute of the &lt;`mobilecontrols`&gt; section of the Web.config file. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: "In addition to the <xref:System.Web.UI.IAttributeAccessor> interface, the ASP.NET page framework provides a `CustomAttributes` dictionary that allows you to specify additional attributes, enable or disable custom attributing, or adjust a control's behavior or rendering. To enable or disable custom attributing, you can either set the AllowCustomAttributes property to `true`, or you can set the `allowCustomAttributes` attribute of the <`mobileControls`> section of Web.config to `true`.  \n  \n> [!NOTE]\n>  When custom attributes are enabled, typographic errors in property names can be interpreted as custom attributes. For example, if a developer incorrectly specifies the <xref:System.Web.UI.MobileControls.TextControl.Text%2A> property of a control as \"Txet\", the parser would save it as a custom attribute called \"Txet\" instead of raising an exception. For this reason, custom attributes are disabled by default."
   example:
   - "The following example demonstrates how to use the AllowCustomAttributes property to enable the custom `AccessKey` attribute on the <xref:System.Web.UI.MobileControls.Command>.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if you copy it directly into a code-behind file. You must copy this code sample into an empty text file that has an .aspx extension. For more information, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[MobileMobilePageSample#1](~/add/codesnippet/csharp/p-system.web.ui.mobileco_2_1.aspx)]\n [!code-vb[MobileMobilePageSample#1](~/add/codesnippet/visualbasic/p-system.web.ui.mobileco_2_1.aspx)]"
@@ -510,10 +510,10 @@ items:
     content: public bool AllowCustomAttributes { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the controls on the page can have custom attributes defined; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the controls on the page can have custom attributes defined; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.MobilePage.AllowCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -538,7 +538,7 @@ items:
       description: The view-state information, which combines private view state and an identifier for application view state.
   overload: System.Web.UI.MobileControls.MobilePage.ClientViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -568,7 +568,7 @@ items:
       description: "An <xref href=\"System.Web.UI.HtmlTextWriter\"></xref> or a text writer derived from <xref href=\"System.Web.UI.HtmlTextWriter\"></xref>, such as  \n  \n <xref href=\"System.Web.UI.MobileControls.Adapters.HtmlMobileTextWriter\"></xref>, <xref href=\"System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter\"></xref>, <xref href=\"System.Web.UI.MobileControls.Adapters.ChtmlMobileTextWriter\"></xref>, or <xref href=\"System.Web.UI.MobileControls.Adapters.XhtmlAdapters.XhtmlMobileTextWriter\"></xref>."
   overload: System.Web.UI.MobileControls.MobilePage.CreateHtmlTextWriter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,10 +590,10 @@ items:
     content: public bool DesignMode { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the page is being instantiated in design mode; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the page is being instantiated in design mode; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.MobilePage.DesignMode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -620,7 +620,7 @@ items:
       description: A <xref href="System.Collections.Specialized.NameValueCollection"></xref> object that contains the form data.
   overload: System.Web.UI.MobileControls.MobilePage.DeterminePostBackMode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -646,7 +646,7 @@ items:
       description: The <xref href="System.Web.Mobile.MobileCapabilities"></xref> for the current requesting device.
   overload: System.Web.UI.MobileControls.MobilePage.Device*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -669,13 +669,13 @@ items:
     content: public override bool EnableEventValidation { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`false`.'
   overload: System.Web.UI.MobileControls.MobilePage.EnableEventValidation*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to set this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -698,13 +698,13 @@ items:
     content: public override bool EnableTheming { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`false`.'
   overload: System.Web.UI.MobileControls.MobilePage.EnableTheming*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to set this property. The value of this property cannot be changed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -729,7 +729,7 @@ items:
       description: The collection of forms that is contained in the page.
   overload: System.Web.UI.MobileControls.MobilePage.Forms*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -759,7 +759,7 @@ items:
       description: A new device-specific adapter for the specified control.
   overload: System.Web.UI.MobileControls.MobilePage.GetControlAdapter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -792,7 +792,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The requested form was not found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,7 +822,7 @@ items:
       description: The <xref href="System.Web.UI.StateBag"></xref> object associated with the control.
   overload: System.Web.UI.MobileControls.MobilePage.GetPrivateViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -845,10 +845,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the page has any hidden variables defined; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the page has any hidden variables defined; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.MobilePage.HasHiddenVariables*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -873,7 +873,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -898,7 +898,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -922,7 +922,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -947,7 +947,7 @@ items:
       description: A dictionary of the hidden variables that is contained in the page.
   overload: System.Web.UI.MobileControls.MobilePage.HiddenVariables*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -973,7 +973,7 @@ items:
       description: The character that is used to separate control identifiers. The default is set by the <xref href="System.Web.UI.Adapters.PageAdapter"></xref> instance that renders the page. The <xref:System.Web.UI.Page.IdSeparator*> property is a server-side field and should not be modified.
   overload: System.Web.UI.MobileControls.MobilePage.IdSeparator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1003,7 +1003,7 @@ items:
       description: A semicolon-separated list of headers that content from the output cache will vary by.
     - id: varyByCustom
       type: System.String
-      description: The <xref uid="langword_csharp_Vary" name="Vary" href=""></xref> HTTP header.
+      description: The `Vary` HTTP header.
     - id: location
       type: System.Web.UI.OutputCacheLocation
       description: One of the <xref href="System.Web.UI.OutputCacheLocation"></xref> values.
@@ -1012,7 +1012,7 @@ items:
       description: A semicolon-separated list of parameters, received by a GET or POST method, that content from the output cache will vary by.
   overload: System.Web.UI.MobileControls.MobilePage.InitOutputCache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1045,7 +1045,7 @@ items:
       description: A semicolon-separated list of headers that content from the output cache will vary by.
     - id: varyByCustom
       type: System.String
-      description: The <xref uid="langword_csharp_Vary" name="Vary" href=""></xref> HTTP header.
+      description: The `Vary` HTTP header.
     - id: location
       type: System.Web.UI.OutputCacheLocation
       description: One of the <xref href="System.Web.UI.OutputCacheLocation"></xref> values.
@@ -1054,7 +1054,7 @@ items:
       description: A semicolon-separated list of parameters, received by a GET or POST method, that content from the output cache will vary by.
   overload: System.Web.UI.MobileControls.MobilePage.InitOutputCache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1081,7 +1081,7 @@ items:
       description: An object containing the saved view state. Internally, this is typically a <xref href="System.Web.UI.StateBag"></xref> or <xref href="System.Collections.IDictionary"></xref> object.
   overload: System.Web.UI.MobileControls.MobilePage.LoadPageStateFromPersistenceMedium*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1108,7 +1108,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the page state to be restored.
   overload: System.Web.UI.MobileControls.MobilePage.LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1138,7 +1138,7 @@ items:
       description: The absolute path corresponding to the specified virtual path.
   overload: System.Web.UI.MobileControls.MobilePage.MakePathAbsolute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1161,13 +1161,13 @@ items:
     content: public override sealed string MasterPageFile { get; set; }
     return:
       type: System.String
-      description: <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`null`.'
   overload: System.Web.UI.MobileControls.MobilePage.MasterPageFile*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to set this property. Master pages are not supported on mobile pages.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1194,7 +1194,7 @@ items:
       description: An object defined by an <xref href="System.EventArgs"></xref> object that contains event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnDeviceCustomize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1221,7 +1221,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains the event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnError*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1248,7 +1248,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains the event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1275,7 +1275,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains the event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnLoad*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1302,7 +1302,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains the event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnPreInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1329,7 +1329,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains the event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnPreRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1356,7 +1356,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains the event data.
   overload: System.Web.UI.MobileControls.MobilePage.OnUnload*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1386,7 +1386,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: "The session state has expired.  \n  \n -or-  \n  \n The session cookie from the client is invalid.  \n  \n -or-  \n  \n The session state history has exceeded its allocated size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1411,7 +1411,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1437,7 +1437,7 @@ items:
       description: The query string that accompanied the request.
   overload: System.Web.UI.MobileControls.MobilePage.QueryStringText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1467,7 +1467,7 @@ items:
       description: The postback argument.
   overload: System.Web.UI.MobileControls.MobilePage.RaisePostBackEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1493,7 +1493,7 @@ items:
       description: The URL of the redirect action.
   overload: System.Web.UI.MobileControls.MobilePage.RedirectToMobilePage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1519,10 +1519,10 @@ items:
       description: The URL of the redirect action.
     - id: endResponse
       type: System.Boolean
-      description: Specifies whether the response should be ended at that point. The default of the first form of the method is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: Specifies whether the response should be ended at that point. The default of the first form of the method is `true`.
   overload: System.Web.UI.MobileControls.MobilePage.RedirectToMobilePage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1547,7 +1547,7 @@ items:
       description: A relative URL to the page.
   overload: System.Web.UI.MobileControls.MobilePage.RelativeFilePath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1574,7 +1574,7 @@ items:
       description: The <xref href="System.Web.UI.MobileControls.MobileControl"></xref> that has been removed.
   overload: System.Web.UI.MobileControls.MobilePage.RemovedControl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1601,7 +1601,7 @@ items:
       description: The text writer that creates the markup.
   overload: System.Web.UI.MobileControls.MobilePage.Render*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1628,7 +1628,7 @@ items:
       description: The <xref href="System.IO.TextWriter"></xref> to receive control content.
   overload: System.Web.UI.MobileControls.MobilePage.RenderControl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1658,7 +1658,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: Session state is disabled or read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1685,7 +1685,7 @@ items:
       description: The page's current view state.
   overload: System.Web.UI.MobileControls.MobilePage.SaveViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1711,7 +1711,7 @@ items:
       description: The current style sheet for the page.
   overload: System.Web.UI.MobileControls.MobilePage.StyleSheet*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1734,13 +1734,13 @@ items:
     content: public override string StyleSheetTheme { get; set; }
     return:
       type: System.String
-      description: <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`null`.'
   overload: System.Web.UI.MobileControls.MobilePage.StyleSheetTheme*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to set this property. Themes are not supported on Mobile Web Forms pages.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1769,7 +1769,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to set this property. Themes are not supported on Mobile Web Forms pages.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1797,7 +1797,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to set the Title property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1823,7 +1823,7 @@ items:
       description: A unique key that can be added to generate a unique URL for the current page.
   overload: System.Web.UI.MobileControls.MobilePage.UniqueFilePathSuffix*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1846,7 +1846,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.MobilePage.Validate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1876,7 +1876,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: <code>control</code> must be contained in a <xref href="System.Web.UI.MobileControls.Form"></xref> control.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1901,7 +1901,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

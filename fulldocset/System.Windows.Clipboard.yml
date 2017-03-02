@@ -50,7 +50,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -73,7 +73,7 @@ items:
     parameters: []
   overload: System.Windows.Clipboard.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -96,10 +96,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Clipboard contains data in the <xref href="System.Windows.DataFormats.WaveAudio"></xref> data format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Clipboard contains data in the <xref href="System.Windows.DataFormats.WaveAudio"></xref> data format; otherwise, `false`.'
   overload: System.Windows.Clipboard.ContainsAudio*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -127,13 +127,13 @@ items:
       description: The format of the data to look for. See <xref href="System.Windows.DataFormats"></xref> for predefined formats.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data in the specified format is available on the Clipboard; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. See Remarks.
+      description: '`true` if data in the specified format is available on the Clipboard; otherwise, `false`. See Remarks.'
   overload: System.Windows.Clipboard.ContainsData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>format</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -156,10 +156,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Clipboard contains data in the <xref href="System.Windows.DataFormats.FileDrop"></xref> data format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Clipboard contains data in the <xref href="System.Windows.DataFormats.FileDrop"></xref> data format; otherwise, `false`.'
   overload: System.Windows.Clipboard.ContainsFileDropList*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -182,10 +182,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Clipboard contains data in the <xref href="System.Windows.DataFormats.Bitmap"></xref> data format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Clipboard contains data in the <xref href="System.Windows.DataFormats.Bitmap"></xref> data format; otherwise, `false`.'
   overload: System.Windows.Clipboard.ContainsImage*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -208,10 +208,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Clipboard contains data in the <xref href="System.Windows.DataFormats.UnicodeText"></xref> data format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Clipboard contains data in the <xref href="System.Windows.DataFormats.UnicodeText"></xref> data format; otherwise, `false`.'
   overload: System.Windows.Clipboard.ContainsText*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -237,13 +237,13 @@ items:
       description: A member of the <xref href="System.Windows.TextDataFormat"></xref> enumeration that specifies the text data format to query for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Clipboard contains data in the specified text data format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Clipboard contains data in the specified text data format; otherwise, `false`.'
   overload: System.Windows.Clipboard.ContainsText*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
     description: <code>format</code> does not specify a valid member of <xref href="System.Windows.TextDataFormat"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -266,10 +266,10 @@ items:
     parameters: []
     return:
       type: System.IO.Stream
-      description: A stream that contains the data in the <xref href="System.Windows.DataFormats.WaveAudio"></xref> format, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the Clipboard does not contain data in this format.
+      description: A stream that contains the data in the <xref href="System.Windows.DataFormats.WaveAudio"></xref> format, or `null` if the Clipboard does not contain data in this format.
   overload: System.Windows.Clipboard.GetAudioStream*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -297,13 +297,13 @@ items:
       description: A string that specifies the format of the data to retrieve. For a set of predefined data formats, see the <xref href="System.Windows.DataFormats"></xref> class.
     return:
       type: System.Object
-      description: An object that contains the data in the specified format, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data is unavailable in the specified format.
+      description: An object that contains the data in the specified format, or `null` if the data is unavailable in the specified format.
   overload: System.Windows.Clipboard.GetData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>format</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>format</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -326,10 +326,10 @@ items:
     parameters: []
     return:
       type: System.Windows.IDataObject
-      description: A data object that enables access to the entire contents of the system Clipboard, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no data on the Clipboard.
+      description: A data object that enables access to the entire contents of the system Clipboard, or `null` if there is no data on the Clipboard.
   overload: System.Windows.Clipboard.GetDataObject*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -351,10 +351,10 @@ items:
     parameters: []
     return:
       type: System.Collections.Specialized.StringCollection
-      description: A collection of strings, where each string specifies the name of a file in the list of dropped files on the Clipboard, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data is unavailable in this format.
+      description: A collection of strings, where each string specifies the name of a file in the list of dropped files on the Clipboard, or `null` if the data is unavailable in this format.
   overload: System.Windows.Clipboard.GetFileDropList*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -377,10 +377,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Media.Imaging.BitmapSource
-      description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> object that contains data in the <xref href="System.Windows.DataFormats.Bitmap"></xref> format, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data is unavailable in this format.
+      description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> object that contains data in the <xref href="System.Windows.DataFormats.Bitmap"></xref> format, or `null` if the data is unavailable in this format.
   overload: System.Windows.Clipboard.GetImage*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -406,7 +406,7 @@ items:
       description: A string containing the <xref href="System.Windows.DataFormats.UnicodeText"></xref> data , or an empty string if no <xref href="System.Windows.DataFormats.UnicodeText"></xref> data is available on the Clipboard.
   overload: System.Windows.Clipboard.GetText*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -434,7 +434,7 @@ items:
       description: A string containing text data in the specified data format, or an empty string if no corresponding text data is available.
   overload: System.Windows.Clipboard.GetText*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -462,16 +462,16 @@ items:
       description: A data object to compare to the contents of the system Clipboard.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified data object matches what is on the system Clipboard; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified data object matches what is on the system Clipboard; otherwise, `false`.'
   overload: System.Windows.Clipboard.IsCurrent*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>data</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>data</code> is `null`.
   - type: System.Runtime.InteropServices.ExternalException
     commentId: T:System.Runtime.InteropServices.ExternalException
-    description: An error occurred when accessing the Clipboard. The exception details will include an <xref uid="langword_csharp_HResult" name="HResult" href=""></xref> that identifies the specific error; see &lt;xref:System.Runtime.InteropServices.ErrorWrapper.ErrorCode%2A?displayProperty=fullName&gt;.
-  platform:
+    description: An error occurred when accessing the Clipboard. The exception details will include an `HResult` that identifies the specific error; see &lt;xref:System.Runtime.InteropServices.ErrorWrapper.ErrorCode%2A?displayProperty=fullName&gt;.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -499,8 +499,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>audioBytes</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>audioBytes</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -528,8 +528,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>audioStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>audioStream</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -560,7 +560,7 @@ items:
       description: An object representing the data to store on the Clipboard.
   overload: System.Windows.Clipboard.SetData*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -588,11 +588,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>data</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>data</code> is `null`.
   - type: System.Runtime.InteropServices.ExternalException
     commentId: T:System.Runtime.InteropServices.ExternalException
-    description: An error occurred when accessing the Clipboard. The exception details will include an <xref uid="langword_csharp_HResult" name="HResult" href=""></xref> that identifies the specific error; see &lt;xref:System.Runtime.InteropServices.ErrorWrapper.ErrorCode%2A?displayProperty=fullName&gt;.
-  platform:
+    description: An error occurred when accessing the Clipboard. The exception details will include an `HResult` that identifies the specific error; see &lt;xref:System.Runtime.InteropServices.ErrorWrapper.ErrorCode%2A?displayProperty=fullName&gt;.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -620,16 +620,16 @@ items:
       description: A data object (an object that implements <xref href="System.Windows.IDataObject"></xref>) to place on the system Clipboard.
     - id: copy
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to leave the data on the system Clipboard when the application exits; <xref uid="langword_csharp_false" name="false" href=""></xref> to clear the data from the system Clipboard when the application exits.
+      description: '`true` to leave the data on the system Clipboard when the application exits; `false` to clear the data from the system Clipboard when the application exits.'
   overload: System.Windows.Clipboard.SetDataObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>data</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>data</code> is `null`.
   - type: System.Runtime.InteropServices.ExternalException
     commentId: T:System.Runtime.InteropServices.ExternalException
-    description: An error occured when accessing the Clipboard.  The exception details will include an <xref uid="langword_csharp_HResult" name="HResult" href=""></xref> that identifies the specific error; see &lt;xref:System.Runtime.InteropServices.ErrorWrapper.ErrorCode%2A?displayProperty=fullName&gt;.
-  platform:
+    description: An error occured when accessing the Clipboard.  The exception details will include an `HResult` that identifies the specific error; see &lt;xref:System.Runtime.InteropServices.ErrorWrapper.ErrorCode%2A?displayProperty=fullName&gt;.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -657,11 +657,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>fileDropList</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>fileDropList</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>fileDropList</code> contains zero strings, or the full path to file specified in the list cannot be resolved.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -687,7 +687,7 @@ items:
       description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> object that contains the image data to store on the Clipboard.
   overload: System.Windows.Clipboard.SetImage*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -715,8 +715,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>text</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>text</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -747,8 +747,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>text</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>text</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -921,8 +921,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

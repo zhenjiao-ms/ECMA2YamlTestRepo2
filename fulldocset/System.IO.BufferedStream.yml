@@ -65,7 +65,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,8 +94,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>stream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,11 +129,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>stream</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>bufferSize</code> is negative.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,10 +158,10 @@ items:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports reading; <xref uid="langword_csharp_false" name="false" href=""></xref> if the stream is closed or was opened with write-only access.
+      description: '`true` if the stream supports reading; `false` if the stream is closed or was opened with write-only access.'
   overload: System.IO.BufferedStream.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,10 +186,10 @@ items:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports seeking; <xref uid="langword_csharp_false" name="false" href=""></xref> if the stream is closed or if the stream was constructed from an operating system handle such as a pipe or output to the console.
+      description: '`true` if the stream supports seeking; `false` if the stream is closed or if the stream was constructed from an operating system handle such as a pipe or output to the console.'
   overload: System.IO.BufferedStream.CanSeek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -214,10 +214,10 @@ items:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports writing; <xref uid="langword_csharp_false" name="false" href=""></xref> if the stream is closed or was opened with read-only access.
+      description: '`true` if the stream supports writing; `false` if the stream is closed or was opened with read-only access.'
   overload: System.IO.BufferedStream.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
       description: To be added.
   overload: System.IO.BufferedStream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -274,7 +274,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The data source or repository is not open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -301,14 +301,14 @@ items:
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The underlying stream is <xref uid="langword_csharp_null" name="null" href=""></xref> or closed.
+    description: The underlying stream is `null` or closed.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The stream does not support seeking.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,7 +346,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -389,20 +389,20 @@ items:
     description: Length of <code>array</code> minus <code>offset</code> is less than <code>count</code>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>count</code> is negative.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The stream is not open or is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The stream is not open or is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The stream does not support reading.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -419,13 +419,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Reads a byte from the underlying stream and returns the byte cast to an <xref uid="langword_csharp_int" name="int" href=""></xref>, or returns -1 if reading from the end of the stream.
+  summary: Reads a byte from the underlying stream and returns the byte cast to an `int`, or returns -1 if reading from the end of the stream.
   syntax:
     content: public override int ReadByte ();
     parameters: []
     return:
       type: System.Int32
-      description: The byte cast to an <xref uid="langword_csharp_int" name="int" href=""></xref>, or -1 if reading from the end of the stream.
+      description: The byte cast to an `int`, or -1 if reading from the end of the stream.
   overload: System.IO.BufferedStream.ReadByte*
   exceptions:
   - type: System.IO.IOException
@@ -437,7 +437,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -472,14 +472,14 @@ items:
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The stream is not open or is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The stream is not open or is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The stream does not support seeking.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -511,14 +511,14 @@ items:
     description: <code>value</code> is negative.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The stream is not open or is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The stream is not open or is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The stream does not support both writing and seeking.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -558,20 +558,20 @@ items:
     description: Length of <code>array</code> minus <code>offset</code> is less than <code>count</code>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>count</code> is negative.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: The stream is closed or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The stream is closed or `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The stream does not support writing.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -602,11 +602,11 @@ items:
     description: The stream does not support writing.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -732,8 +732,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

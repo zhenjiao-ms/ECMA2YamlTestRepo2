@@ -31,7 +31,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -53,7 +53,7 @@ items:
     parameters: []
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -74,10 +74,10 @@ items:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler AlwaysHandle { get; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: An <xref href="System.ServiceModel.Dispatcher.ExceptionHandler"></xref> object that returns <xref uid="langword_csharp_true" name="true" href=""></xref> for all exceptions.
+      description: An <xref href="System.ServiceModel.Dispatcher.ExceptionHandler"></xref> object that returns `true` for all exceptions.
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -102,7 +102,7 @@ items:
       description: Assign a custom <xref href="System.ServiceModel.Dispatcher.ExceptionHandler"></xref> object that receives unhandled exceptions that occur on asynchronous [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] threads.
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -118,7 +118,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: When overridden in a derived class, returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the exception has been handled, or <xref uid="langword_csharp_false" name="false" href=""></xref> if the exception should be rethrown and the application terminated.
+  summary: When overridden in a derived class, returns `true` if the exception has been handled, or `false` if the exception should be rethrown and the application terminated.
   remarks: The HandleException property returns `true` if the exception has been handled. If it returns `false` or throws a different exception, the original exception is rethrown.
   example:
   - "The following code example shows an implementation of the <xref:System.ServiceModel.Dispatcher.ExceptionHandler> abstract class that overrides the HandleException method.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following code example shows how to enable the custom `MyExceptionHandler` for unhandled exceptions that occur within the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] runtime.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -130,10 +130,10 @@ items:
       description: The exception the occurred within the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime and which may terminate the application.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the exception has been handled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the exception has been handled; otherwise, `false`.'
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.HandleException*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -158,7 +158,7 @@ items:
       description: A custom <xref href="System.ServiceModel.Dispatcher.ExceptionHandler"></xref> object that receives unhandled exceptions that occur within the global [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] transports.
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

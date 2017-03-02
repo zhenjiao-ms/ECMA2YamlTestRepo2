@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -66,7 +66,7 @@ items:
       description: The associated package.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -87,10 +87,10 @@ items:
     content: public bool DocumentPropertiesRestricted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if changing the properties of the document invalidates the signature; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if changing the properties of the document invalidates the signature; otherwise, `false`.'
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.DocumentPropertiesRestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -117,7 +117,7 @@ items:
       description: The [!INCLUDE[TLA#tla_guid](~/add/includes/ajax-current-ext-md.md)] of the signature.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -139,10 +139,10 @@ items:
     content: public bool IsCertificateAvailable { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the X.509 certificate of the signer is embedded in the document <xref href="System.IO.Packaging.Package"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the X.509 certificate of the signer is embedded in the document <xref href="System.IO.Packaging.Package"></xref>; otherwise, `false`.'
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.IsCertificateAvailable*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -164,10 +164,10 @@ items:
     content: public bool SignatureOriginRestricted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the signature is invalidated if an additional digital signature is applied; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the signature is invalidated if an additional digital signature is applied; otherwise, `false`.'
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.SignatureOriginRestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -191,7 +191,7 @@ items:
       description: A [!INCLUDE[TLA2#tla_url](~/add/includes/tla2sharptla-url-md.md)] string that identifies the signature type. The default signature type is <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigC14NTransformUrl"></xref>.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.SignatureType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -215,7 +215,7 @@ items:
       description: A <xref href="System.Byte"></xref> array that contains the encrypted hash value of the signature.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.SignatureValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -236,10 +236,10 @@ items:
     content: public System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader SignedDocumentSequence { get; }
     return:
       type: System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader
-      description: An <xref href="System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader"></xref>; or <xref uid="langword_csharp_null" name="null" href=""></xref> if not all valid [!INCLUDE[TLA2#tla_xps](~/add/includes/ajax-current-ext-md.md)] parts have been signed in the document.
+      description: An <xref href="System.Windows.Xps.Packaging.IXpsFixedDocumentSequenceReader"></xref>; or `null` if not all valid [!INCLUDE[TLA2#tla_xps](~/add/includes/ajax-current-ext-md.md)] parts have been signed in the document.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.SignedDocumentSequence*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -261,10 +261,10 @@ items:
     content: public System.Security.Cryptography.X509Certificates.X509Certificate SignerCertificate { get; }
     return:
       type: System.Security.Cryptography.X509Certificates.X509Certificate
-      description: The X.509 certificate of the signer; or <xref uid="langword_csharp_null" name="null" href=""></xref> when there is no certificate embedded in the document package.
+      description: The X.509 certificate of the signer; or `null` when there is no certificate embedded in the document package.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.SignerCertificate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -289,7 +289,7 @@ items:
       description: The date and time when the pages, document, or document sequence was signed.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.SigningTime*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -315,7 +315,7 @@ items:
       description: One of the <xref href="System.IO.Packaging.VerifyResult"></xref> enumeration values that specify the result of the verification attempt.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.Verify*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -343,7 +343,7 @@ items:
       description: One of the <xref href="System.IO.Packaging.VerifyResult"></xref> enumeration values that specify the result of the verification attempt.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.Verify*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -369,7 +369,7 @@ items:
       description: A bitwise combination of the enumeration values that specify the result of the verification attempt.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.VerifyCertificate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -398,7 +398,7 @@ items:
       description: A bitwise combination of the enumeration values that specify the result of the verification attempt.
   overload: System.Windows.Xps.Packaging.XpsDigitalSignature.VerifyCertificate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -496,8 +496,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

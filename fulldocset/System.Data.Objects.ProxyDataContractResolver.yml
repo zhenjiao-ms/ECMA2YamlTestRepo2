@@ -28,7 +28,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Data.Objects.ProxyDataContractResolver.#ctor
   id: '#ctor'
@@ -48,7 +48,7 @@ items:
     parameters: []
   overload: System.Data.Objects.ProxyDataContractResolver.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Data.Objects.ProxyDataContractResolver.ResolveName(System.String,System.String,System.Type,System.Runtime.Serialization.DataContractResolver)
   id: ResolveName(System.String,System.String,System.Type,System.Runtime.Serialization.DataContractResolver)
@@ -62,17 +62,17 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: During deserialization, maps any <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref> information to the actual type of the [persistence-ignorant](http://msdn.microsoft.com/en-us/5e0fb82a-b6d1-41a1-b37b-c12db61629d3) object.
+  summary: During deserialization, maps any `xsi:type` information to the actual type of the [persistence-ignorant](http://msdn.microsoft.com/en-us/5e0fb82a-b6d1-41a1-b37b-c12db61629d3) object.
   remarks: 'For more information, see: [Working with POCO Entities](http://msdn.microsoft.com/en-us/5e0fb82a-b6d1-41a1-b37b-c12db61629d3).'
   syntax:
     content: public override Type ResolveName (string typeName, string typeNamespace, Type declaredType, System.Runtime.Serialization.DataContractResolver knownTypeResolver);
     parameters:
     - id: typeName
       type: System.String
-      description: The <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref> information to map.
+      description: The `xsi:type` information to map.
     - id: typeNamespace
       type: System.String
-      description: The namespace of the <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref>.
+      description: The namespace of the `xsi:type`.
     - id: declaredType
       type: System.Type
       description: The declared type.
@@ -81,10 +81,10 @@ items:
       description: An instance of <xref href="System.Data.Objects.ProxyDataContractResolver"></xref>.
     return:
       type: System.Type
-      description: Returns the type that the <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref> is mapped to. Returns <xref uid="langword_csharp_null" name="null" href=""></xref> if no known type was found that matches the <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref>.
+      description: Returns the type that the `xsi:type` is mapped to. Returns `null` if no known type was found that matches the `xsi:type`.
   overload: System.Data.Objects.ProxyDataContractResolver.ResolveName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Data.Objects.ProxyDataContractResolver.TryResolveType(System.Type,System.Type,System.Runtime.Serialization.DataContractResolver,System.Xml.XmlDictionaryString@,System.Xml.XmlDictionaryString@)
   id: TryResolveType(System.Type,System.Type,System.Runtime.Serialization.DataContractResolver,System.Xml.XmlDictionaryString@,System.Xml.XmlDictionaryString@)
@@ -98,7 +98,7 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: During serialization, maps actual types to <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref> information.
+  summary: During serialization, maps actual types to `xsi:type` information.
   remarks: 'For more information, see: [Working with POCO Entities](http://msdn.microsoft.com/en-us/5e0fb82a-b6d1-41a1-b37b-c12db61629d3).'
   syntax:
     content: public override bool TryResolveType (Type dataContractType, Type declaredType, System.Runtime.Serialization.DataContractResolver knownTypeResolver, out System.Xml.XmlDictionaryString typeName, out System.Xml.XmlDictionaryString typeNamespace);
@@ -114,16 +114,16 @@ items:
       description: An instance of <xref href="System.Data.Objects.ProxyDataContractResolver"></xref>.
     - id: typeName
       type: System.Xml.XmlDictionaryString
-      description: When this method returns, contains a list of <xref uid="langword_csharp_xsi:type" name="xsi:type" href=""></xref> declarations.
+      description: When this method returns, contains a list of `xsi:type` declarations.
     - id: typeNamespace
       type: System.Xml.XmlDictionaryString
       description: When this method returns, contains a list of namespaces used.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the type was resolved; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the type was resolved; otherwise, `false`.'
   overload: System.Data.Objects.ProxyDataContractResolver.TryResolveType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Runtime.Serialization.DataContractResolver

@@ -39,7 +39,7 @@ items:
   - System.ServiceModel.Description.ServiceEndpoint.ListenUri
   - System.ServiceModel.Description.ServiceEndpoint.ListenUriMode
   - System.ServiceModel.Description.ServiceEndpoint.Name
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor
   id: '#ctor'
@@ -60,7 +60,7 @@ items:
     parameters: []
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
   id: '#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)'
@@ -87,7 +87,7 @@ items:
       description: The endpoint address.
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode)
   id: '#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode)'
@@ -113,7 +113,7 @@ items:
       description: An enumerated value representing one of the modes used to send discovery messages.
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode,System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)
   id: '#ctor(System.ServiceModel.Discovery.DiscoveryVersion,System.ServiceModel.Discovery.ServiceDiscoveryMode,System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)'
@@ -145,7 +145,7 @@ items:
       description: The unique address of the discovery endpoint.
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryMode
   id: DiscoveryMode
@@ -168,7 +168,7 @@ items:
       description: One of the DiscoveryMode enumeration values.
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryMode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryVersion
   id: DiscoveryVersion
@@ -190,7 +190,7 @@ items:
       description: One of the <xref href="System.ServiceModel.Discovery.DiscoveryVersion"></xref> enumeration values.
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.DiscoveryVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Discovery.DiscoveryEndpoint.MaxResponseDelay
   id: MaxResponseDelay
@@ -204,16 +204,16 @@ items:
   assemblies:
   - System.ServiceModel.Discovery
   namespace: System.ServiceModel.Discovery
-  summary: Gets or sets the maximum <xref href="System.TimeSpan"></xref> within which all of the <xref uid="langword_csharp_ProbeMatches" name="ProbeMatches" href=""></xref> for a service that respond to a probe operation are sent.
+  summary: Gets or sets the maximum <xref href="System.TimeSpan"></xref> within which all of the `ProbeMatches` for a service that respond to a probe operation are sent.
   remarks: This value is a <xref:System.TimeSpan> that specifies a time span in which all `ProbeMatches` for a service that respond to a single probe operation are sent. If all `ProbeMatches` are sent at the same time, a network storm may result. To prevent this from occurring, `ProbeMatches` are sent with a random delay between each ProbeMatch. The random delay is in the range of 0 to MaxResponseDelay. If MaxResponseDelay is set to 0, then the `ProbeMatches` messages are sent in a tight loop without any delay. Otherwise, the `ProbeMatches` messages are sent with some random delay such that the total time taken to send all `ProbeMatches` messages does not exceed the MaxResponseDelay. This value is only relevant for services, it is not used by clients.
   syntax:
     content: public TimeSpan MaxResponseDelay { get; set; }
     return:
       type: System.TimeSpan
-      description: A <xref href="System.TimeSpan"></xref> instance that contains the maximum time span within which all of the <xref uid="langword_csharp_ProbeMatches" name="ProbeMatches" href=""></xref> for a service that respond to a probe operation are sent.
+      description: A <xref href="System.TimeSpan"></xref> instance that contains the maximum time span within which all of the `ProbeMatches` for a service that respond to a probe operation are sent.
   overload: System.ServiceModel.Discovery.DiscoveryEndpoint.MaxResponseDelay*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.ServiceModel.Description.ServiceEndpoint

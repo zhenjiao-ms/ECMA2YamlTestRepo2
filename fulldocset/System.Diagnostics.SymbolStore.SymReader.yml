@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.SymbolStore.SymReader.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,7 +89,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.SymReader.{dtor}*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -113,7 +113,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.SymReader.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -149,10 +149,10 @@ items:
       description: The type of the document. You can specify this parameter as <xref href="System.Guid"></xref> to indicate any document type.
     return:
       type: System.Diagnostics.SymbolStore.ISymbolDocument
-      description: The document with the specified URL if found in the symbol store, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the document does not exist.
+      description: The document with the specified URL if found in the symbol store, or `null` if the document does not exist.
   overload: System.Diagnostics.SymbolStore.SymReader.GetDocument*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,7 +181,7 @@ items:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: There is insufficient memory to satisfy the request.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -210,7 +210,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -239,7 +239,7 @@ items:
       description: The symbol reader method object for the specified method identifier.
   overload: System.Diagnostics.SymbolStore.SymReader.GetMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -271,7 +271,7 @@ items:
       description: The symbol reader method object for the specified method identifier and version.
   overload: System.Diagnostics.SymbolStore.SymReader.GetMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -306,7 +306,7 @@ items:
       description: The symbol reader method object for the specified position in the document.
   overload: System.Diagnostics.SymbolStore.SymReader.GetMethodFromDocumentPosition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -335,7 +335,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -370,7 +370,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -402,7 +402,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -426,13 +426,13 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: The name of the file containing the symbol store, or <xref uid="langword_csharp_null" name="null" href=""></xref> if using an in-memory store.
+      description: The name of the file containing the symbol store, or `null` if using an in-memory store.
     - id: stream
       type: System.IntPtr
       description: The pointer to the input stream for the symbol store, or <xref href="System.IntPtr"></xref> if using an on-disk store.
   overload: System.Diagnostics.SymbolStore.SymReader.ReplaceSymbolStore*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -456,13 +456,13 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: The name of the file containing the symbol store, or <xref uid="langword_csharp_null" name="null" href=""></xref> if using an in-memory store.
+      description: The name of the file containing the symbol store, or `null` if using an in-memory store.
     - id: stream
       type: System.IntPtr
       description: The pointer to the input stream for the symbol store, or <xref href="System.IntPtr"></xref> if using an on-disk store.
   overload: System.Diagnostics.SymbolStore.SymReader.UpdateSymbolStore*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -491,7 +491,7 @@ items:
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: An entry point was not found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -524,6 +524,20 @@ references:
   name: SymReader(ISymUnmanagedReader*)
   nameWithType: SymReader.SymReader(ISymUnmanagedReader*)
   fullName: System.Diagnostics.SymbolStore.SymReader.SymReader(ISymUnmanagedReader*)
+- uid: System.Diagnostics.SymbolStore.Private.ISymUnmanagedReader*
+  parent: System.Diagnostics.SymbolStore.Private
+  isExternal: true
+  name: ISymUnmanagedReader*
+  nameWithType: ISymUnmanagedReader*
+  fullName: System.Diagnostics.SymbolStore.Private.ISymUnmanagedReader*
+  spec.csharp:
+  - uid: System.Diagnostics.SymbolStore.Private.ISymUnmanagedReader
+    name: ISymUnmanagedReader
+    nameWithType: ISymUnmanagedReader
+    fullName: ISymUnmanagedReader
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.Diagnostics.SymbolStore.SymReader.{dtor}
   parent: System.Diagnostics.SymbolStore.SymReader
   isExternal: false
@@ -569,8 +583,8 @@ references:
 - uid: System.Diagnostics.SymbolStore.ISymbolDocument[]
   parent: System.Diagnostics.SymbolStore
   isExternal: false
-  name: ISymbolDocument
-  nameWithType: ISymbolDocument
+  name: ISymbolDocument[]
+  nameWithType: ISymbolDocument[]
   fullName: System.Diagnostics.SymbolStore.ISymbolDocument[]
   spec.csharp:
   - uid: System.Diagnostics.SymbolStore.ISymbolDocument
@@ -589,8 +603,8 @@ references:
 - uid: System.Diagnostics.SymbolStore.ISymbolVariable[]
   parent: System.Diagnostics.SymbolStore
   isExternal: false
-  name: ISymbolVariable
-  nameWithType: ISymbolVariable
+  name: ISymbolVariable[]
+  nameWithType: ISymbolVariable[]
   fullName: System.Diagnostics.SymbolStore.ISymbolVariable[]
   spec.csharp:
   - uid: System.Diagnostics.SymbolStore.ISymbolVariable
@@ -645,8 +659,8 @@ references:
 - uid: System.Diagnostics.SymbolStore.ISymbolNamespace[]
   parent: System.Diagnostics.SymbolStore
   isExternal: false
-  name: ISymbolNamespace
-  nameWithType: ISymbolNamespace
+  name: ISymbolNamespace[]
+  nameWithType: ISymbolNamespace[]
   fullName: System.Diagnostics.SymbolStore.ISymbolNamespace[]
   spec.csharp:
   - uid: System.Diagnostics.SymbolStore.ISymbolNamespace
@@ -665,8 +679,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

@@ -37,7 +37,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -64,8 +64,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>certificate</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>certificate</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -99,8 +99,8 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The X.509 certificate specified in the constructor does not have a private key.  \n  \n -or-  \n  \n The X.509 certificate has a private key, but it was not generated using the <xref href=\"System.Security.Cryptography.RSA\"></xref> algorithm.  \n  \n -or-  \n  \n The X.509 certificate has a private key, it was generated using the <xref href=\"System.Security.Cryptography.RSA\"></xref> algorithm, but the <xref:System.Security.Cryptography.AsymmetricAlgorithm.KeyExchangeAlgorithm*> property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>algorithm</code> parameter is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref> and <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>."
-  platform:
+    description: "The X.509 certificate specified in the constructor does not have a private key.  \n  \n -or-  \n  \n The X.509 certificate has a private key, but it was not generated using the <xref href=\"System.Security.Cryptography.RSA\"></xref> algorithm.  \n  \n -or-  \n  \n The X.509 certificate has a private key, it was generated using the <xref href=\"System.Security.Cryptography.RSA\"></xref> algorithm, but the <xref:System.Security.Cryptography.AsymmetricAlgorithm.KeyExchangeAlgorithm*> property is `null`.  \n  \n -or-  \n  \n The <code>algorithm</code> parameter is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref> and <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -135,7 +135,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The X.509 certificate specified in the constructor has a public key that was not generated using the <xref href=\"System.Security.Cryptography.RSA\"></xref> algorithm.  \n  \n -or-  \n  \n The <code>algorithm</code> parameter is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref> and <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -161,7 +161,7 @@ items:
       description: The asymmetric algorithm to create.
     - id: privateKey
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when a private key is required to create the algorithm; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when a private key is required to create the algorithm; otherwise, `false`.'
     return:
       type: System.Security.Cryptography.AsymmetricAlgorithm
       description: An <xref href="System.Security.Cryptography.AsymmetricAlgorithm"></xref> that represents the specified asymmetric cryptographic algorithm.
@@ -169,8 +169,8 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>privateKey</code> is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and the X.509 certificate specified in the constructor does not have a private key.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref> and the public or private key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.DSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref>, <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>, <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref> or <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref> and the public or private key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.RSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref>, <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref>, <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>, <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref>, and <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref>."
-  platform:
+    description: "<code>privateKey</code> is `true` and the X.509 certificate specified in the constructor does not have a private key.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref> and the public or private key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.DSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref>, <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>, <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref> or <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref> and the public or private key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.RSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref>, <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url\"></xref>, <xref href=\"System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl\"></xref>, <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref>, and <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref>."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -202,7 +202,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: <code>algorithm</code> is not supported. The supported algorithms are <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl"></xref>, <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url"></xref>, and <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature"></xref>.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -234,7 +234,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "<code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref> and the public key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.DSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref> or <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref> and the public key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.RSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref>,  \n  \n <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref>, and <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref>."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -266,7 +266,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The X.509 certificate specified in the constructor does not have a private key.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref> and the private key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.DSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref> or <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref> and the private key for the X.509 certificate specified in the constructor is not of type <xref href=\"System.Security.Cryptography.RSA\"></xref>.  \n  \n -or-  \n  \n <code>algorithm</code> is not supported. The supported algorithms are <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl\"></xref>,  \n  \n <xref href=\"System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url\"></xref>, and <xref href=\"System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature\"></xref>."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -288,10 +288,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the private key is available; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the private key is available; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.X509AsymmetricSecurityKey.HasPrivateKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -316,10 +316,10 @@ items:
       description: The cryptographic algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the specified algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.DsaSha1Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the specified algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.DsaSha1Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha1Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap"></xref>; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.X509AsymmetricSecurityKey.IsAsymmetricAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -345,10 +345,10 @@ items:
       description: The cryptographic algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the specified algorithm is <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl"></xref>, <xref href="System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url"></xref>, <xref href="System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl"></xref>, <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature"></xref> and the public key is of the right type; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. See the remarks for details.
+      description: '`true` when the specified algorithm is <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigDSAUrl"></xref>, <xref href="System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSA15Url"></xref>, <xref href="System.Security.Cryptography.Xml.EncryptedXml.XmlEncRSAOAEPUrl"></xref>, <xref href="System.Security.Cryptography.Xml.SignedXml.XmlDsigRSASHA1Url"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature"></xref> and the public key is of the right type; otherwise, `false`. See the remarks for details.'
   overload: System.IdentityModel.Tokens.X509AsymmetricSecurityKey.IsSupportedAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -373,10 +373,10 @@ items:
       description: The cryptographic algorithm.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when the specified algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.HmacSha1Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes128Encryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes192Encryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes256Encryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.TripleDesEncryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes128KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes192KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes256KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.TripleDesKeyWrap"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Psha1KeyDerivation"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when the specified algorithm is <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.HmacSha1Signature"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes128Encryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes192Encryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes256Encryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.TripleDesEncryption"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes128KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes192KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Aes256KeyWrap"></xref>, <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.TripleDesKeyWrap"></xref>, or <xref href="System.IdentityModel.Tokens.SecurityAlgorithms.Psha1KeyDerivation"></xref>; otherwise, `false`.'
   overload: System.IdentityModel.Tokens.X509AsymmetricSecurityKey.IsSymmetricAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -400,7 +400,7 @@ items:
       description: The size, in bits, of the public key associated with the X.509 certificate.
   overload: System.IdentityModel.Tokens.X509AsymmetricSecurityKey.KeySize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -441,8 +441,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

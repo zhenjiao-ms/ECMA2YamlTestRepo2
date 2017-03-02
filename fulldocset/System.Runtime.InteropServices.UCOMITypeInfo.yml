@@ -40,7 +40,7 @@ items:
 
       public interface UCOMITypeInfo
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -64,16 +64,16 @@ items:
     parameters:
     - id: memid
       type: System.Int32
-      description: Member ID of the <xref uid="langword_csharp_static" name="static" href=""></xref> member's address to retrieve.
+      description: Member ID of the `static` member's address to retrieve.
     - id: invKind
       type: System.Runtime.InteropServices.INVOKEKIND
       description: Specifies whether the member is a property, and if so, what kind.
     - id: ppv
       type: System.IntPtr
-      description: On successful return, a reference to the <xref uid="langword_csharp_static" name="static" href=""></xref> member.
+      description: On successful return, a reference to the `static` member.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.AddressOfMember*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,7 +97,7 @@ items:
     parameters:
     - id: pUnkOuter
       type: System.Object
-      description: Object which acts as the controlling <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref>.
+      description: Object which acts as the controlling `IUnknown`.
     - id: riid
       type: System.Guid
       description: The IID of the interface that the caller will use to communicate with the resulting object.
@@ -106,7 +106,7 @@ items:
       description: On successful return, a reference to the created object.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -136,7 +136,7 @@ items:
       description: On successful return, a reference to the index of the type description within the containing type library.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetContainingTypeLib*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -166,16 +166,16 @@ items:
       description: Specifies the kind of member identified by `memid`.
     - id: pBstrDllName
       type: System.String
-      description: If not <xref uid="langword_csharp_null" name="null" href=""></xref>, the function sets `pBstrDllName` to a <xref uid="langword_csharp_BSTR" name="BSTR" href=""></xref> that contains the name of the DLL.
+      description: If not `null`, the function sets `pBstrDllName` to a `BSTR` that contains the name of the DLL.
     - id: pBstrName
       type: System.String
-      description: If not <xref uid="langword_csharp_null" name="null" href=""></xref>, the function sets `lpbstrName` to a <xref uid="langword_csharp_BSTR" name="BSTR" href=""></xref> that contains the name of the entry point.
+      description: If not `null`, the function sets `lpbstrName` to a `BSTR` that contains the name of the entry point.
     - id: pwOrdinal
       type: System.Int16
-      description: If not <xref uid="langword_csharp_null" name="null" href=""></xref>, and the function is defined by an ordinal, then `lpwOrdinal` is set to point to the ordinal.
+      description: If not `null`, and the function is defined by an ordinal, then `lpwOrdinal` is set to point to the ordinal.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetDllEntry*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -214,7 +214,7 @@ items:
       description: On successful return, the fully qualified name of the Help file.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetDocumentation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -241,10 +241,10 @@ items:
       description: Index of the function description to return.
     - id: ppFuncDesc
       type: System.IntPtr
-      description: Reference to a <xref uid="langword_csharp_FUNCDESC" name="FUNCDESC" href=""></xref> that describes the specified function.
+      description: Reference to a `FUNCDESC` that describes the specified function.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetFuncDesc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,7 +277,7 @@ items:
       description: Reference to an array in which name mappings are placed.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetIDsOfNames*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,10 +304,10 @@ items:
       description: Index of the implemented interface or base interface.
     - id: pImplTypeFlags
       type: System.Int32
-      description: On successful return, a reference to the <xref uid="langword_csharp_IMPLTYPEFLAGS" name="IMPLTYPEFLAGS" href=""></xref> enumeration.
+      description: On successful return, a reference to the `IMPLTYPEFLAGS` enumeration.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetImplTypeFlags*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,10 +334,10 @@ items:
       description: The member ID that indicates which marshaling information is needed.
     - id: pBstrMops
       type: System.String
-      description: A reference to the opcode string used in marshaling the fields of the structure described by the referenced type description, or returns <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no information to return.
+      description: A reference to the opcode string used in marshaling the fields of the structure described by the referenced type description, or returns `null` if there is no information to return.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetMops*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,7 +373,7 @@ items:
       description: On succesful return, the number of names in the `rgBstrNames` array.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetNames*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,7 +403,7 @@ items:
       description: On successful return, the referenced type description.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetRefTypeInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,7 +433,7 @@ items:
       description: Reference to a handle for the implemented interface.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetRefTypeOfImplType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,7 +460,7 @@ items:
       description: On successful return, a reference to the structure that contains the attributes of this type description.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetTypeAttr*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -477,17 +477,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: Retrieves the <xref uid="langword_csharp_ITypeComp" name="ITypeComp" href=""></xref> interface for the type description, which enables a client compiler to bind to the type description's members.
+  summary: Retrieves the `ITypeComp` interface for the type description, which enables a client compiler to bind to the type description's members.
   remarks: For additional information about `ITypeInfo::GetTypeComp`, see the MSDN Library.
   syntax:
     content: public void GetTypeComp (out System.Runtime.InteropServices.UCOMITypeComp ppTComp);
     parameters:
     - id: ppTComp
       type: System.Runtime.InteropServices.UCOMITypeComp
-      description: On successful return, a reference to the <xref uid="langword_csharp_UCOMITypeComp" name="UCOMITypeComp" href=""></xref> of the containing type library.
+      description: On successful return, a reference to the `UCOMITypeComp` of the containing type library.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetTypeComp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -504,7 +504,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: Retrieves a <xref uid="langword_csharp_VARDESC" name="VARDESC" href=""></xref> structure that describes the specified variable.
+  summary: Retrieves a `VARDESC` structure that describes the specified variable.
   remarks: "The values of `ppVarDesc` can be accessed through <xref:System.Runtime.InteropServices.Marshal.PtrToStructure%2A>.  \n  \n For additional information about `ITypeInfo::GetVarDesc`, see the MSDN Library."
   syntax:
     content: public void GetVarDesc (int index, out IntPtr ppVarDesc);
@@ -514,10 +514,10 @@ items:
       description: Index of the variable description to return.
     - id: ppVarDesc
       type: System.IntPtr
-      description: On successful return, a reference to the <xref uid="langword_csharp_VARDESC" name="VARDESC" href=""></xref> that describes the specified variable.
+      description: On successful return, a reference to the `VARDESC` that describes the specified variable.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.GetVarDesc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -553,16 +553,16 @@ items:
       description: Reference to a structure that contains an array of arguments, an array of DISPIDs for named arguments, and counts of the number of elements in each array.
     - id: pVarResult
       type: System.Object
-      description: Reference to the location at which the result is to be stored. If `wFlags` specifies <xref uid="langword_csharp_DISPATCH_PROPERTYPUT" name="DISPATCH_PROPERTYPUT" href=""></xref> or <xref uid="langword_csharp_DISPATCH_PROPERTYPUTREF" name="DISPATCH_PROPERTYPUTREF" href=""></xref>, `pVarResult` is ignored. Set to <xref uid="langword_csharp_null" name="null" href=""></xref> if no result is desired.
+      description: Reference to the location at which the result is to be stored. If `wFlags` specifies `DISPATCH_PROPERTYPUT` or `DISPATCH_PROPERTYPUTREF`, `pVarResult` is ignored. Set to `null` if no result is desired.
     - id: pExcepInfo
       type: System.Runtime.InteropServices.EXCEPINFO
-      description: Points to an exception information structure, which is filled in only if <xref uid="langword_csharp_DISP_E_EXCEPTION" name="DISP_E_EXCEPTION" href=""></xref> is returned.
+      description: Points to an exception information structure, which is filled in only if `DISP_E_EXCEPTION` is returned.
     - id: puArgErr
       type: System.Int32
-      description: If <xref uid="langword_csharp_Invoke" name="Invoke" href=""></xref> returns <xref uid="langword_csharp_DISP_E_TYPEMISMATCH" name="DISP_E_TYPEMISMATCH" href=""></xref>, `puArgErr` indicates the index within `rgvarg` of the argument with incorrect type. If more than one argument returns an error, `puArgErr` indicates only the first argument with an error.
+      description: If `Invoke` returns `DISP_E_TYPEMISMATCH`, `puArgErr` indicates the index within `rgvarg` of the argument with incorrect type. If more than one argument returns an error, `puArgErr` indicates only the first argument with an error.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.Invoke*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -586,10 +586,10 @@ items:
     parameters:
     - id: pFuncDesc
       type: System.IntPtr
-      description: Reference to the <xref uid="langword_csharp_FUNCDESC" name="FUNCDESC" href=""></xref> to release.
+      description: Reference to the `FUNCDESC` to release.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.ReleaseFuncDesc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -613,10 +613,10 @@ items:
     parameters:
     - id: pTypeAttr
       type: System.IntPtr
-      description: Reference to the <xref uid="langword_csharp_TYPEATTR" name="TYPEATTR" href=""></xref> to release.
+      description: Reference to the `TYPEATTR` to release.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.ReleaseTypeAttr*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -633,17 +633,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: Releases a <xref uid="langword_csharp_VARDESC" name="VARDESC" href=""></xref> previously returned by &lt;xref:System.Runtime.InteropServices.UCOMITypeInfo.GetVarDesc%2A?displayProperty=fullName&gt;.
+  summary: Releases a `VARDESC` previously returned by &lt;xref:System.Runtime.InteropServices.UCOMITypeInfo.GetVarDesc%2A?displayProperty=fullName&gt;.
   remarks: For additional information about `ITypeInfo::ReleaseVarDesc`, see the MSDN Library.
   syntax:
     content: public void ReleaseVarDesc (IntPtr pVarDesc);
     parameters:
     - id: pVarDesc
       type: System.IntPtr
-      description: Reference to the <xref uid="langword_csharp_VARDESC" name="VARDESC" href=""></xref> to release.
+      description: Reference to the `VARDESC` to release.
   overload: System.Runtime.InteropServices.UCOMITypeInfo.ReleaseVarDesc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -742,8 +742,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -756,8 +756,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32

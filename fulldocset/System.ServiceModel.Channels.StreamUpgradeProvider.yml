@@ -16,7 +16,7 @@ items:
   nameWithType: StreamUpgradeProvider
   fullName: System.ServiceModel.Channels.StreamUpgradeProvider
   type: Class
-  summary: Implements a custom upgrade provider, inherited from this <xref uid="langword_csharp_abstract" name="abstract" href=""></xref> base class.
+  summary: Implements a custom upgrade provider, inherited from this `abstract` base class.
   remarks: "An example of a stream upgrade is to build a compression stream directly on top of the transport stream. To add a security upgrade, you additionally implement a class that derives from <xref:System.ServiceModel.Channels.StreamSecurityUpgradeProvider>. You can implement multiple upgrades, each wrapping the preceding one.  \n  \n The upgrade process has the following steps:  \n  \n1.  Implement a class that derives from StreamUpgradeProvider.  \n  \n2.  Register it. You do this by creating a binding element for it, and registering the provider in a custom binding.  \n  \n3.  The derived class that you implement creates an instance of <xref:System.ServiceModel.Channels.StreamUpgradeInitiator>, which at run time initiates a request to the other end of its connection to upgrade the channel transport layer.  \n  \n4.  The derived class that you implement creates an instance of <xref:System.ServiceModel.Channels.StreamUpgradeAcceptor>, which at run time receives the upgrade request from the preceding step and, if possible, accepts the upgrade and returns the upgraded stream to the other side of its connection.  \n  \n5.  If there are additional upgrade requests, they are processed sequentially, as described in the preceding two steps."
   syntax:
     content: 'public abstract class StreamUpgradeProvider : System.ServiceModel.Channels.CommunicationObject'
@@ -68,7 +68,7 @@ items:
   - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposed
   - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrImmutable
   - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -91,7 +91,7 @@ items:
     parameters: []
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -117,7 +117,7 @@ items:
       description: The default communication time-outs.
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -143,7 +143,7 @@ items:
       description: Returns an instance of <xref href="System.ServiceModel.Channels.StreamUpgradeAcceptor"></xref>.
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.CreateUpgradeAcceptor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -175,7 +175,7 @@ items:
       description: Returns an instance of <xref href="System.ServiceModel.Channels.StreamUpgradeInitiator"></xref>.
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.CreateUpgradeInitiator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -199,7 +199,7 @@ items:
       description: Returns a <xref href="System.TimeSpan"></xref> for the DefaultCloseTimeout.
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.DefaultCloseTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -223,7 +223,7 @@ items:
       description: Returns a <xref href="System.TimeSpan"></xref> for the DefaultOpenTimeout.
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.DefaultOpenTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -247,7 +247,7 @@ items:
       description: To be added.
   overload: System.ServiceModel.Channels.StreamUpgradeProvider.GetProperty<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.ServiceModel.Channels.CommunicationObject

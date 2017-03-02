@@ -43,7 +43,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -69,7 +69,7 @@ items:
     parameters: []
   overload: System.Web.SessionState.SessionStateStoreProviderBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -104,7 +104,7 @@ items:
       description: A new <xref href="System.Web.SessionState.SessionStateStoreData"></xref> for the current request.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
       description: The session <xref:System.Web.SessionState.HttpSessionState.Timeout*> for the current request.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,7 +165,7 @@ items:
     parameters: []
   overload: System.Web.SessionState.SessionStateStoreProviderBase.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
       description: The <xref href="System.Web.HttpContext"></xref> for the current request.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.EndRequest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,7 +226,7 @@ items:
       description: The <xref:System.Web.SessionState.HttpSessionState.SessionID*> for the current request.
     - id: locked
       type: System.Boolean
-      description: When this method returns, contains a Boolean value that is set to <xref uid="langword_csharp_true" name="true" href=""></xref> if the requested session item is locked at the session data store; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: When this method returns, contains a Boolean value that is set to `true` if the requested session item is locked at the session data store; otherwise, `false`.
     - id: lockAge
       type: System.TimeSpan
       description: When this method returns, contains a <xref href="System.TimeSpan"></xref> object that is set to the amount of time that an item in the session data store has been locked.
@@ -241,7 +241,7 @@ items:
       description: A <xref href="System.Web.SessionState.SessionStateStoreData"></xref> populated with session values and information from the session data store.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.GetItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -273,7 +273,7 @@ items:
       description: The <xref:System.Web.SessionState.HttpSessionState.SessionID*> for the current request.
     - id: locked
       type: System.Boolean
-      description: When this method returns, contains a Boolean value that is set to <xref uid="langword_csharp_true" name="true" href=""></xref> if a lock is successfully obtained; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: When this method returns, contains a Boolean value that is set to `true` if a lock is successfully obtained; otherwise, `false`.
     - id: lockAge
       type: System.TimeSpan
       description: When this method returns, contains a <xref href="System.TimeSpan"></xref> object that is set to the amount of time that an item in the session data store has been locked.
@@ -288,7 +288,7 @@ items:
       description: A <xref href="System.Web.SessionState.SessionStateStoreData"></xref> populated with session values and information from the session data store.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -317,7 +317,7 @@ items:
       description: The <xref href="System.Web.HttpContext"></xref> for the current request.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.InitializeRequest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -352,7 +352,7 @@ items:
       description: The lock identifier for the current request.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
       description: The <xref href="System.Web.SessionState.SessionStateStoreData"></xref> that represents the item to delete from the data store.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -422,7 +422,7 @@ items:
       description: The session identifier for the current request.
   overload: System.Web.SessionState.SessionStateStoreProviderBase.ResetItemTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,10 +460,10 @@ items:
       description: The lock identifier for the current request.
     - id: newItem
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to identify the session item as a new item; <xref uid="langword_csharp_false" name="false" href=""></xref> to identify the session item as an existing item.
+      description: '`true` to identify the session item as a new item; `false` to identify the session item as an existing item.'
   overload: System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -480,7 +480,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: Sets a reference to the <xref href="System.Web.SessionState.SessionStateItemExpireCallback"></xref> delegate for the <xref uid="langword_csharp_Session_OnEnd" name="Session_OnEnd" href=""></xref> event defined in the Global.asax file.
+  summary: Sets a reference to the <xref href="System.Web.SessionState.SessionStateItemExpireCallback"></xref> delegate for the `Session_OnEnd` event defined in the Global.asax file.
   remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the SetItemExpireCallback method when the module is initialized to determine whether calls to the `Session_OnEnd` event are supported by the <xref:System.Web.SessionState.SessionStateStoreProviderBase> implementation and to associate the <xref:System.Web.SessionState.SessionStateItemExpireCallback> delegate with the `Session_OnEnd` event.  \n  \n Custom session-state store provider implementers should use the SetItemExpireCallback method to inform the <xref:System.Web.SessionState.SessionStateModule> object whether calls to the `Session_OnEnd` event are supported and to set a local reference to the <xref:System.Web.SessionState.SessionStateItemExpireCallback> delegate supplied by the `expireCallback` parameter. The custom implementation must decide when the local <xref:System.Web.SessionState.SessionStateItemExpireCallback> delegate will be called. For example, the delegate could be called during the call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A> method, which is called when a session is abandoned."
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
@@ -489,13 +489,13 @@ items:
     parameters:
     - id: expireCallback
       type: System.Web.SessionState.SessionStateItemExpireCallback
-      description: The <xref href="System.Web.SessionState.SessionStateItemExpireCallback"></xref> delegate for the <xref uid="langword_csharp_Session_OnEnd" name="Session_OnEnd" href=""></xref> event defined in the Global.asax file.
+      description: The <xref href="System.Web.SessionState.SessionStateItemExpireCallback"></xref> delegate for the `Session_OnEnd` event defined in the Global.asax file.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the session-state store provider supports calling the <xref uid="langword_csharp_Session_OnEnd" name="Session_OnEnd" href=""></xref> event; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the session-state store provider supports calling the `Session_OnEnd` event; otherwise, `false`.'
   overload: System.Web.SessionState.SessionStateStoreProviderBase.SetItemExpireCallback*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

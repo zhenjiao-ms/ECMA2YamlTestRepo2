@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -64,7 +64,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.EncryptedType.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -81,7 +81,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Adds an <xref uid="langword_csharp_&lt;EncryptionProperty&gt;" name="&lt;EncryptionProperty&gt;" href=""></xref> child element to the <xref uid="langword_csharp_&lt;EncryptedProperties&gt;" name="&lt;EncryptedProperties&gt;" href=""></xref> element in the current <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> object in XML encryption.
+  summary: Adds an `&lt;EncryptionProperty&gt;` child element to the `&lt;EncryptedProperties&gt;` element in the current <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> object in XML encryption.
   remarks: This method can be used to add `<EncryptionProperty>` child elements to the `<EncryptedProperties>` element. The `<EncryptedProperties>` element provides additional information for the `<EncryptedType>` element.
   syntax:
     content: public void AddProperty (System.Security.Cryptography.Xml.EncryptionProperty ep);
@@ -91,7 +91,7 @@ items:
       description: An <xref href="System.Security.Cryptography.Xml.EncryptionProperty"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedType.AddProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,8 +121,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The CipherData property was set to <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The CipherData property was set to `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the <xref uid="langword_csharp_Encoding" name="Encoding" href=""></xref> attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
+  summary: Gets or sets the `Encoding` attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
   remarks: This property describes the encoding of the encrypted data. For example, if the encrypted data is a base64-encoded PNG, the encoding could be specified as 'http://www.w3.org/2000/09/xmldsig#base64'.
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class. This sample then displays various properties of the <xref:System.Security.Cryptography.Xml.EncryptedData> class to the console.  \n  \n [!code-vb[Cryptography.XML.EncryptedData#1](~/add/codesnippet/visualbasic/p-system.security.crypto_118_1.vb)]\n [!code-cs[Cryptography.XML.EncryptedData#1](~/add/codesnippet/csharp/p-system.security.crypto_118_1.cs)]"
@@ -150,7 +150,7 @@ items:
       description: A string that describes the encoding of the encrypted data.
   overload: System.Security.Cryptography.Xml.EncryptedType.Encoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the <xref uid="langword_csharp_&lt;EncryptionMethod&gt;" name="&lt;EncryptionMethod&gt;" href=""></xref> element for XML encryption.
+  summary: Gets or sets the `&lt;EncryptionMethod&gt;` element for XML encryption.
   remarks: The `<EncryptionMethod>` is an optional element that describes the encryption algorithm applied to the encrypted data. If the element is absent, the encryption algorithm must be known by the recipient or decryption will fail.
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class.  \n  \n [!code-cs[Cryptography.XML-EncryptedData - EncryptedType#1](~/add/codesnippet/csharp/p-system.security.crypto_36_1.cs)]\n [!code-vb[Cryptography.XML-EncryptedData - EncryptedType#1](~/add/codesnippet/visualbasic/p-system.security.crypto_36_1.vb)]"
@@ -175,10 +175,10 @@ items:
     content: public virtual System.Security.Cryptography.Xml.EncryptionMethod EncryptionMethod { get; set; }
     return:
       type: System.Security.Cryptography.Xml.EncryptionMethod
-      description: An <xref href="System.Security.Cryptography.Xml.EncryptionMethod"></xref> object that represents the <xref uid="langword_csharp_&lt;EncryptionMethod&gt;" name="&lt;EncryptionMethod&gt;" href=""></xref> element.
+      description: An <xref href="System.Security.Cryptography.Xml.EncryptionMethod"></xref> object that represents the `&lt;EncryptionMethod&gt;` element.
   overload: System.Security.Cryptography.Xml.EncryptedType.EncryptionMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,7 +195,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the <xref uid="langword_csharp_&lt;EncryptionProperties&gt;" name="&lt;EncryptionProperties&gt;" href=""></xref> element in XML encryption.
+  summary: Gets or sets the `&lt;EncryptionProperties&gt;` element in XML encryption.
   remarks: The `<EncryptionProperties>` element can contain additional information about the creation of the <xref:System.Security.Cryptography.Xml.EncryptedType> instance, such as a date and time stamp or the serial number of cryptographic hardware used during encryption.
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class. This sample then displays various properties of the <xref:System.Security.Cryptography.Xml.EncryptedData> class to the console.  \n  \n [!code-vb[Cryptography.XML.EncryptedData#1](~/add/codesnippet/visualbasic/p-system.security.crypto_42_1.vb)]\n [!code-cs[Cryptography.XML.EncryptedData#1](~/add/codesnippet/csharp/p-system.security.crypto_42_1.cs)]"
@@ -206,7 +206,7 @@ items:
       description: An <xref href="System.Security.Cryptography.Xml.EncryptionPropertyCollection"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedType.EncryptionProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -230,10 +230,10 @@ items:
     parameters: []
     return:
       type: System.Xml.XmlElement
-      description: An <xref href="System.Xml.XmlElement"></xref> object that represents the <xref uid="langword_csharp_&lt;EncryptedType&gt;" name="&lt;EncryptedType&gt;" href=""></xref> element in XML encryption.
+      description: An <xref href="System.Xml.XmlElement"></xref> object that represents the `&lt;EncryptedType&gt;` element in XML encryption.
   overload: System.Security.Cryptography.Xml.EncryptedType.GetXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -250,7 +250,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the <xref uid="langword_csharp_Id" name="Id" href=""></xref> attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
+  summary: Gets or sets the `Id` attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
   remarks: The `Id` attribute is an optional attribute of the `<EncryptedType>` element that provides a standard method for assigning a string identifier to an element within an XML document.
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class. This sample then displays various properties of the <xref:System.Security.Cryptography.Xml.EncryptedData> class to the console.  \n  \n [!code-vb[Cryptography.XML.EncryptedData#1](~/add/codesnippet/visualbasic/p-system.security.crypto_111_1.vb)]\n [!code-cs[Cryptography.XML.EncryptedData#1](~/add/codesnippet/csharp/p-system.security.crypto_111_1.cs)]"
@@ -258,10 +258,10 @@ items:
     content: public virtual string Id { get; set; }
     return:
       type: System.String
-      description: A string of the <xref uid="langword_csharp_Id" name="Id" href=""></xref> attribute of the <xref uid="langword_csharp_&lt;EncryptedType&gt;" name="&lt;EncryptedType&gt;" href=""></xref> element.
+      description: A string of the `Id` attribute of the `&lt;EncryptedType&gt;` element.
   overload: System.Security.Cryptography.Xml.EncryptedType.Id*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -278,7 +278,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets of sets the <xref uid="langword_csharp_&lt;KeyInfo&gt;" name="&lt;KeyInfo&gt;" href=""></xref> element in XML encryption.
+  summary: Gets of sets the `&lt;KeyInfo&gt;` element in XML encryption.
   remarks: The `<KeyInfo>` element is an optional element that contains information about the key used to encrypt the data.
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class. This sample then displays various properties of the <xref:System.Security.Cryptography.Xml.EncryptedData> class to the console.  \n  \n [!code-vb[Cryptography.XML.EncryptedData#1](~/add/codesnippet/visualbasic/p-system.security.crypto_79_1.vb)]\n [!code-cs[Cryptography.XML.EncryptedData#1](~/add/codesnippet/csharp/p-system.security.crypto_79_1.cs)]"
@@ -289,7 +289,7 @@ items:
       description: A <xref href="System.Security.Cryptography.Xml.KeyInfo"></xref> object.
   overload: System.Security.Cryptography.Xml.EncryptedType.KeyInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -306,7 +306,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Loads XML information into the <xref uid="langword_csharp_&lt;EncryptedType&gt;" name="&lt;EncryptedType&gt;" href=""></xref> element in XML encryption.
+  summary: Loads XML information into the `&lt;EncryptedType&gt;` element in XML encryption.
   remarks: Use this method to load an existing XML element into the <xref:System.Security.Cryptography.Xml.EncryptedType> object.
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class.  \n  \n [!code-cs[Cryptography.XML-EncryptedData - EncryptedType#1](~/add/codesnippet/csharp/m-system.security.crypto_42_1.cs)]\n [!code-vb[Cryptography.XML-EncryptedData - EncryptedType#1](~/add/codesnippet/visualbasic/m-system.security.crypto_42_1.vb)]"
@@ -315,13 +315,13 @@ items:
     parameters:
     - id: value
       type: System.Xml.XmlElement
-      description: An <xref href="System.Xml.XmlElement"></xref> object representing an XML element to use in the <xref uid="langword_csharp_&lt;EncryptedType&gt;" name="&lt;EncryptedType&gt;" href=""></xref> element.
+      description: An <xref href="System.Xml.XmlElement"></xref> object representing an XML element to use in the `&lt;EncryptedType&gt;` element.
   overload: System.Security.Cryptography.Xml.EncryptedType.LoadXml*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>value</code> provided is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>value</code> provided is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -338,7 +338,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the <xref uid="langword_csharp_MimeType" name="MimeType" href=""></xref> attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
+  summary: Gets or sets the `MimeType` attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
   remarks: 'The `MimeType` attribute is an optional attribute that describes the media type of the encrypted data. The value of this attribute is a string with values defined by [RFC 2045: Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies](http://www.ietf.org/rfc/rfc2045.txt). For example, if the data that is encrypted is a base64-encoded PNG, the `Encoding` attribute would be ''http://www.w3.org/2000/09/xmldsig#base64'' and the `MimeType` would be ''image/png''. This attribute is optional and no validation of the `MimeType` information is required. The attribute does not indicate that the encryption application must do any additional processing. Note that this information may not be necessary if it is already bound to the identifier in the `Type` attribute.'
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class. This sample then displays various properties of the <xref:System.Security.Cryptography.Xml.EncryptedData> class to the console.  \n  \n [!code-vb[Cryptography.XML.EncryptedData#1](~/add/codesnippet/visualbasic/p-system.security.crypto_19_1.vb)]\n [!code-cs[Cryptography.XML.EncryptedData#1](~/add/codesnippet/csharp/p-system.security.crypto_19_1.cs)]"
@@ -349,7 +349,7 @@ items:
       description: A string that describes the media type of the encrypted data.
   overload: System.Security.Cryptography.Xml.EncryptedType.MimeType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Gets or sets the <xref uid="langword_csharp_Type" name="Type" href=""></xref> attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
+  summary: Gets or sets the `Type` attribute of an <xref href="System.Security.Cryptography.Xml.EncryptedType"></xref> instance in XML encryption.
   remarks: 'The `Type` attribute is an optional attribute that identifies type information about the text form of the encrypted content. While optional, this is an important attribute and is used in mandatory processing described in [Processing Rules: Decryption](http://www.w3.org/TR/xmlenc-core/) (section 4.2) of the XML Encryption Syntax and Processing specification (http://www.w3.org/TR/xmlenc-core/). If the `<EncryptedData>` element contains data of type `''element''` or element `''content''`, and replaces that data in an XML document, it is strongly recommended that the `Type` attribute be provided. Without this information, the application attempting to decrypt the information will be unable to automatically restore the XML document to its original text form.'
   example:
   - "The following code example demonstrates how to encrypt and decrypt an XML element using the <xref:System.Security.Cryptography.Xml.EncryptedData> class that derives from the <xref:System.Security.Cryptography.Xml.EncryptedType> class.  \n  \n [!code-cs[Cryptography.XML-EncryptedData - EncryptedType#1](~/add/codesnippet/csharp/p-system.security.crypto_47_1.cs)]\n [!code-vb[Cryptography.XML-EncryptedData - EncryptedType#1](~/add/codesnippet/visualbasic/p-system.security.crypto_47_1.vb)]"
@@ -377,7 +377,7 @@ items:
       description: A string that describes the text form of the encrypted data.
   overload: System.Security.Cryptography.Xml.EncryptedType.Type*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

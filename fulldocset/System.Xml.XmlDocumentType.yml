@@ -78,7 +78,7 @@ items:
   - System.Xml.XmlNode.System#Collections#IEnumerable#GetEnumerator
   - System.Xml.XmlNode.System#ICloneable#Clone
   - System.Xml.XmlNode.Value
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,7 +117,7 @@ items:
       description: The parent document.
   overload: System.Xml.XmlDocumentType.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,13 +141,13 @@ items:
     parameters:
     - id: deep
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to recursively clone the subtree under the specified node; <xref uid="langword_csharp_false" name="false" href=""></xref> to clone only the node itself. For document type nodes, the cloned node always includes the subtree, regardless of the parameter setting.
+      description: '`true` to recursively clone the subtree under the specified node; `false` to clone only the node itself. For document type nodes, the cloned node always includes the subtree, regardless of the parameter setting.'
     return:
       type: System.Xml.XmlNode
       description: The cloned node.
   overload: System.Xml.XmlDocumentType.CloneNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -172,10 +172,10 @@ items:
     content: public System.Xml.XmlNamedNodeMap Entities { get; }
     return:
       type: System.Xml.XmlNamedNodeMap
-      description: An <xref href="System.Xml.XmlNamedNodeMap"></xref> containing the <xref uid="langword_csharp_XmlEntity" name="XmlEntity" href=""></xref> nodes. The returned <xref uid="langword_csharp_XmlNamedNodeMap" name="XmlNamedNodeMap" href=""></xref> is read-only.
+      description: An <xref href="System.Xml.XmlNamedNodeMap"></xref> containing the `XmlEntity` nodes. The returned `XmlNamedNodeMap` is read-only.
   overload: System.Xml.XmlDocumentType.Entities*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -203,7 +203,7 @@ items:
       description: The DTD internal subset on the DOCTYPE. If there is no DTD internal subset, String.Empty is returned.
   overload: System.Xml.XmlDocumentType.InternalSubset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -228,10 +228,10 @@ items:
     content: public override bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if the node is read-only; otherwise <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n Because DocumentType nodes are read-only, this property always returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+      description: "`true` if the node is read-only; otherwise `false`.  \n  \n Because DocumentType nodes are read-only, this property always returns `true`."
   overload: System.Xml.XmlDocumentType.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -256,7 +256,7 @@ items:
       description: For DocumentType nodes, this property returns the name of the document type.
   overload: System.Xml.XmlDocumentType.LocalName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -284,7 +284,7 @@ items:
       description: For DocumentType nodes, this property returns the name of the document type.
   overload: System.Xml.XmlDocumentType.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -309,7 +309,7 @@ items:
       description: For DocumentType nodes, this value is XmlNodeType.DocumentType.
   overload: System.Xml.XmlDocumentType.NodeType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,10 +334,10 @@ items:
     content: public System.Xml.XmlNamedNodeMap Notations { get; }
     return:
       type: System.Xml.XmlNamedNodeMap
-      description: An <xref href="System.Xml.XmlNamedNodeMap"></xref> containing the <xref uid="langword_csharp_XmlNotation" name="XmlNotation" href=""></xref> nodes. The returned <xref uid="langword_csharp_XmlNamedNodeMap" name="XmlNamedNodeMap" href=""></xref> is read-only.
+      description: An <xref href="System.Xml.XmlNamedNodeMap"></xref> containing the `XmlNotation` nodes. The returned `XmlNamedNodeMap` is read-only.
   overload: System.Xml.XmlDocumentType.Notations*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -359,10 +359,10 @@ items:
     content: public string PublicId { get; }
     return:
       type: System.String
-      description: The public identifier on the DOCTYPE. If there is no public identifier, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: The public identifier on the DOCTYPE. If there is no public identifier, `null` is returned.
   overload: System.Xml.XmlDocumentType.PublicId*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -384,10 +384,10 @@ items:
     content: public string SystemId { get; }
     return:
       type: System.String
-      description: The system identifier on the DOCTYPE. If there is no system identifier, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: The system identifier on the DOCTYPE. If there is no system identifier, `null` is returned.
   overload: System.Xml.XmlDocumentType.SystemId*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -404,16 +404,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Saves all the children of the node to the specified <xref href="System.Xml.XmlWriter"></xref>. For <xref uid="langword_csharp_XmlDocumentType" name="XmlDocumentType" href=""></xref> nodes, this method has no effect.
+  summary: Saves all the children of the node to the specified <xref href="System.Xml.XmlWriter"></xref>. For `XmlDocumentType` nodes, this method has no effect.
   syntax:
     content: public override void WriteContentTo (System.Xml.XmlWriter w);
     parameters:
     - id: w
       type: System.Xml.XmlWriter
-      description: The <xref uid="langword_csharp_XmlWriter" name="XmlWriter" href=""></xref> to which you want to save.
+      description: The `XmlWriter` to which you want to save.
   overload: System.Xml.XmlDocumentType.WriteContentTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -436,10 +436,10 @@ items:
     parameters:
     - id: w
       type: System.Xml.XmlWriter
-      description: The <xref uid="langword_csharp_XmlWriter" name="XmlWriter" href=""></xref> to which you want to save.
+      description: The `XmlWriter` to which you want to save.
   overload: System.Xml.XmlDocumentType.WriteTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

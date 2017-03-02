@@ -17,7 +17,7 @@ items:
   nameWithType: EditCommandColumn
   fullName: System.Web.UI.WebControls.EditCommandColumn
   type: Class
-  summary: A special column type for the <xref href="System.Web.UI.WebControls.DataGrid"></xref> control that contains the <xref uid="langword_csharp_Edit" name="Edit" href=""></xref> buttons for editing data items in each row.
+  summary: A special column type for the <xref href="System.Web.UI.WebControls.DataGrid"></xref> control that contains the `Edit` buttons for editing data items in each row.
   remarks: "Use the EditCommandColumn class to create a special column for the <xref:System.Web.UI.WebControls.DataGrid> control that contains the `Edit`, `Update`, and `Cancel` buttons for each data row in the grid. These buttons allow you to edit the values of a row in the <xref:System.Web.UI.WebControls.DataGrid> control.  \n  \n If no row is selected, an `Edit` button displays in the EditCommandColumn object for each data row in the <xref:System.Web.UI.WebControls.DataGrid> control. When the `Edit` button for an item is clicked, the <xref:System.Web.UI.WebControls.DataGrid.EditCommand> event is raised and the `Edit` button is replaced with the `Update` and `Cancel` buttons. You need to provide code to handle the <xref:System.Web.UI.WebControls.DataGrid.EditCommand> event. A typical event handler sets the <xref:System.Web.UI.WebControls.DataGrid.EditItemIndex%2A> property to the selected row, and then rebinds the data to the <xref:System.Web.UI.WebControls.DataGrid> control.  \n  \n> [!NOTE]\n>  You must provide values for the <xref:System.Web.UI.WebControls.EditCommandColumn.CancelText%2A>, <xref:System.Web.UI.WebControls.EditCommandColumn.EditText%2A>, and <xref:System.Web.UI.WebControls.EditCommandColumn.UpdateText%2A> properties. Otherwise, the associated buttons will not appear in the EditCommandColumn.  \n  \n The buttons in the EditCommandColumn can be set to display as hyperlinks or push buttons by setting the <xref:System.Web.UI.WebControls.EditCommandColumn.ButtonType%2A> property.  \n  \n Clicking the `Update` or `Cancel` button raises the <xref:System.Web.UI.WebControls.DataGrid.UpdateCommand> or <xref:System.Web.UI.WebControls.DataGrid.CancelCommand> event, respectively. You need to provide code to handle these events.  \n  \n A typical handler for the <xref:System.Web.UI.WebControls.DataGrid.UpdateCommand> event updates the data, sets the <xref:System.Web.UI.WebControls.DataGrid.EditItemIndex%2A> property to `-1` (to deselect the item), and then rebinds the data to the <xref:System.Web.UI.WebControls.DataGrid> control.  \n  \n A typical handler for the <xref:System.Web.UI.WebControls.DataGrid.CancelCommand> event sets the <xref:System.Web.UI.WebControls.DataGrid.EditItemIndex%2A> property to `-1` (to deselect the item), and then rebinds the data to the <xref:System.Web.UI.WebControls.DataGrid> control.  \n  \n> [!CAUTION]\n>  The EditCommandColumn object can be used to display user input, which might include malicious client script. Check any information that is sent from a client for executable script, SQL statements, or other code before displaying it in your application. You can use validation controls to verify user input before displaying the input text in a <xref:System.Web.UI.WebControls.DataGrid> control.  ASP.NET provides an input request validation feature to block script and HTML in user input. For more information, see [Securing Standard Controls](~/add/includes/ajax-current-ext-md.md), [How to: Protect Against Script Exploits in a Web Application by Applying HTML Encoding to Strings](~/add/includes/ajax-current-ext-md.md), and [Validating User Input in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md).  \n  \n By default, page validation is performed when an `Update` button in the  EditCommandColumn control is clicked. Page validation determines whether the input controls that are associated with a validation control on the page all pass the validation rules that are specified by the validation control. To prevent page validation from occurring, set the <xref:System.Web.UI.WebControls.EditCommandColumn.CausesValidation%2A> property to `false`."
   example:
   - "The following code example demonstrates how to add an EditCommandColumn object to a <xref:System.Web.UI.WebControls.DataGrid> control.  \n  \n [!code-cs[DataGridEdit#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_2_1.aspx)]\n [!code-vb[DataGridEdit#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_2_1.aspx)]"
@@ -56,7 +56,7 @@ items:
   - System.Web.UI.WebControls.DataGridColumn.TrackViewState
   - System.Web.UI.WebControls.DataGridColumn.ViewState
   - System.Web.UI.WebControls.DataGridColumn.Visible
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -82,7 +82,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.EditCommandColumn.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,13 +107,13 @@ items:
     content: public virtual System.Web.UI.WebControls.ButtonColumnType ButtonType { get; set; }
     return:
       type: System.Web.UI.WebControls.ButtonColumnType
-      description: One of the <xref href="System.Web.UI.WebControls.ButtonColumnType"></xref> values. The default value is <xref uid="langword_csharp_LinkButton" name="LinkButton" href=""></xref>.
+      description: One of the <xref href="System.Web.UI.WebControls.ButtonColumnType"></xref> values. The default value is `LinkButton`.
   overload: System.Web.UI.WebControls.EditCommandColumn.ButtonType*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The specified button type is not one of the <xref href="System.Web.UI.WebControls.ButtonColumnType"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,7 +130,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets the text to display for the <xref uid="langword_csharp_Cancel" name="Cancel" href=""></xref> command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
+  summary: Gets or sets the text to display for the `Cancel` command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
   remarks: "Use the CancelText property to specify the text to display for the `Cancel` command button in the <xref:System.Web.UI.WebControls.EditCommandColumn>.  \n  \n> [!NOTE]\n>  You must provide a value for the CancelText property. Otherwise, the `Cancel` command button will not appear in the <xref:System.Web.UI.WebControls.EditCommandColumn>.  \n  \n The value of this property is stored in view state.  \n  \n The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example demonstrates how to use the CancelText property to provide custom text for the `Cancel` command button.  \n  \n [!code-cs[DataGridEdit#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_925_1.aspx)]\n [!code-vb[DataGridEdit#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_925_1.aspx)]"
@@ -138,10 +138,10 @@ items:
     content: public virtual string CancelText { get; set; }
     return:
       type: System.String
-      description: The caption to display for the <xref uid="langword_csharp_Cancel" name="Cancel" href=""></xref> command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
+      description: The caption to display for the `Cancel` command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
   overload: System.Web.UI.WebControls.EditCommandColumn.CancelText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,16 +158,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets a value indicating whether validation is performed when an <xref uid="langword_csharp_Update" name="Update" href=""></xref> button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref> object is clicked.
+  summary: Gets or sets a value indicating whether validation is performed when an `Update` button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref> object is clicked.
   remarks: "By default, page validation is performed when an `Update` button in a <xref:System.Web.UI.WebControls.EditCommandColumn> control is clicked. Page validation determines whether the input controls that are associated with a validation control on the page all pass the validation rules that are specified by the validation control.  \n  \n You can specify or determine whether validation is performed on both the client and the server when an `Update` button in an <xref:System.Web.UI.WebControls.EditCommandColumn> control is clicked by using the CausesValidation property. To prevent validation from being performed, set the CausesValidation property to `false`.  \n  \n When the value of the CausesValidation property is set to `true`, you can also use the <xref:System.Web.UI.WebControls.EditCommandColumn.ValidationGroup%2A> property to specify the name of the validation group for which an `Update` button in the <xref:System.Web.UI.WebControls.EditCommandColumn> object causes validation.  \n  \n The value of this property is stored in view state."
   syntax:
     content: public virtual bool CausesValidation { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if validation is performed when an <xref uid="langword_csharp_Update" name="Update" href=""></xref> button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref> is clicked; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if validation is performed when an `Update` button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref> is clicked; otherwise, `false`. The default is `true`.'
   overload: System.Web.UI.WebControls.EditCommandColumn.CausesValidation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -184,7 +184,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets the text to display for the <xref uid="langword_csharp_Edit" name="Edit" href=""></xref> button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
+  summary: Gets or sets the text to display for the `Edit` button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
   remarks: "Use the EditText property to specify the text to display for the `Edit` button in the <xref:System.Web.UI.WebControls.EditCommandColumn> control.  \n  \n> [!NOTE]\n>  You must provide a value for the EditText property. Otherwise, the `Edit` button will not appear in the <xref:System.Web.UI.WebControls.EditCommandColumn>.  \n  \n The value of this property is stored in view state.  \n  \n The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to use the EditText property to provide custom text for the `Edit` button.  \n  \n [!code-cs[DataGridEdit#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1331_1.aspx)]\n [!code-vb[DataGridEdit#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1331_1.aspx)]"
@@ -192,10 +192,10 @@ items:
     content: public virtual string EditText { get; set; }
     return:
       type: System.String
-      description: The caption to display for the <xref uid="langword_csharp_Edit" name="Edit" href=""></xref> button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
+      description: The caption to display for the `Edit` button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
   overload: System.Web.UI.WebControls.EditCommandColumn.EditText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -227,7 +227,7 @@ items:
       description: One of the <xref href="System.Web.UI.WebControls.ListItemType"></xref> values.
   overload: System.Web.UI.WebControls.EditCommandColumn.InitializeCell*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets the text to display for the <xref uid="langword_csharp_Update" name="Update" href=""></xref> command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
+  summary: Gets or sets the text to display for the `Update` command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
   remarks: "Use the UpdateText property to specify the text to display for the `Update` command button in the <xref:System.Web.UI.WebControls.EditCommandColumn>.  \n  \n> [!NOTE]\n>  You must provide a value for the UpdateText property. Otherwise, the `Update` command button will not appear in the <xref:System.Web.UI.WebControls.EditCommandColumn>.  \n  \n The value of this property is stored in view state.  \n  \n The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example demonstrates how to use the UpdateText property to provide custom text for the `Update` command button.  \n  \n [!code-cs[DataGridEdit#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_790_1.aspx)]\n [!code-vb[DataGridEdit#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_790_1.aspx)]"
@@ -252,10 +252,10 @@ items:
     content: public virtual string UpdateText { get; set; }
     return:
       type: System.String
-      description: The caption to display for the <xref uid="langword_csharp_Update" name="Update" href=""></xref> command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
+      description: The caption to display for the `Update` command button in the <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref>.
   overload: System.Web.UI.WebControls.EditCommandColumn.UpdateText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -281,7 +281,7 @@ items:
       description: The group of validation controls for which the Update button in an <xref href="System.Web.UI.WebControls.EditCommandColumn"></xref> causes validation when it posts back to the server. The default is an empty string ("").
   overload: System.Web.UI.WebControls.EditCommandColumn.ValidationGroup*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -65,7 +65,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
     parameters: []
   overload: Microsoft.Build.BuildEngine.Engine.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,7 +117,7 @@ items:
       description: A <xref href="Microsoft.Build.BuildEngine.BuildPropertyGroup"></xref> that represents properties to be passed to the child engine.
   overload: Microsoft.Build.BuildEngine.Engine.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.#ctor(Microsoft.Build.BuildEngine.ToolsetDefinitionLocations)
@@ -141,7 +141,7 @@ items:
       description: A <xref href="Microsoft.Build.BuildEngine.ToolsetDefinitionLocations"></xref> enumeration that specifies the location of the Toolset definition.
   overload: Microsoft.Build.BuildEngine.Engine.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.#ctor(System.String)
@@ -165,7 +165,7 @@ items:
       description: The path to MSBuild.exe.
   overload: Microsoft.Build.BuildEngine.Engine.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
       description: A <xref href="Microsoft.Build.BuildEngine.ToolsetDefinitionLocations"></xref> enumeration specifies the location of the Toolset definition.
   overload: Microsoft.Build.BuildEngine.Engine.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.#ctor(Microsoft.Build.BuildEngine.BuildPropertyGroup,Microsoft.Build.BuildEngine.ToolsetDefinitionLocations,System.Int32,System.String)
@@ -224,10 +224,10 @@ items:
       description: An integer that specifies the number of CPUs or cores in the system.
     - id: localNodeProviderParameters
       type: System.String
-      description: "A string of parameters that are used to configure the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine. You must format the parameters as `ParameterName`=`ParameterValue`. The valid semicolon-separated, optional parameters are as follows:  \n  \n <xref uid=\"langword_csharp_MSBUILDLOCATION\" name=\"MSBUILDLOCATION\" href=\"\"></xref> Indicates where the build process can find MSBuild.exe. This path enables the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine to locate MSBuild.exe and start it as a local node. <xref uid=\"langword_csharp_MSBUILDLOCATION\" name=\"MSBUILDLOCATION\" href=\"\"></xref> is the only essential parameter for a host. The default value is C:\\Windows\\Microsoft.Net\\Framework\\v3.5\\\\.  \n  \n <xref uid=\"langword_csharp_NODEREUSE\" name=\"NODEREUSE\" href=\"\"></xref> Indicates whether the child nodes should remain after the build finishes, in case they can be used later by another build. The nodes are discarded automatically after one minute of non-use. The default value is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+      description: "A string of parameters that are used to configure the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine. You must format the parameters as `ParameterName`=`ParameterValue`. The valid semicolon-separated, optional parameters are as follows:  \n  \n `MSBUILDLOCATION` Indicates where the build process can find MSBuild.exe. This path enables the [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] engine to locate MSBuild.exe and start it as a local node. `MSBUILDLOCATION` is the only essential parameter for a host. The default value is C:\\Windows\\Microsoft.Net\\Framework\\v3.5\\\\.  \n  \n `NODEREUSE` Indicates whether the child nodes should remain after the build finishes, in case they can be used later by another build. The nodes are discarded automatically after one minute of non-use. The default value is `true`."
   overload: Microsoft.Build.BuildEngine.Engine.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.BinPath
@@ -253,7 +253,7 @@ items:
       description: The path to MSBuild.exe.
   overload: Microsoft.Build.BuildEngine.Engine.BinPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -275,10 +275,10 @@ items:
     content: public bool BuildEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the building of targets in the project is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the building of targets in the project is enabled; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,10 +304,10 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> to build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -333,13 +333,13 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> to build.
     - id: targetName
       type: System.String
-      description: The <xref uid="langword_csharp_Name" name="Name" href=""></xref> attribute of the Target element to build.
+      description: The `Name` attribute of the Target element to build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -365,13 +365,13 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> to build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -397,16 +397,16 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> to build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     - id: targetOutputs
       type: System.Collections.IDictionary
-      description: The outputs of the built targets. This parameter can be a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
+      description: The outputs of the built targets. This parameter can be a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,19 +432,19 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> to build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     - id: targetOutputs
       type: System.Collections.IDictionary
-      description: The outputs of the built targets. This parameter can be a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
+      description: The outputs of the built targets. This parameter can be a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
     - id: buildFlags
       type: Microsoft.Build.BuildEngine.BuildSettings
       description: The <xref href="Microsoft.Build.BuildEngine.BuildSettings"></xref> to apply to the build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -473,10 +473,10 @@ items:
       description: The project file to load and build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -502,13 +502,13 @@ items:
       description: The project file to load and build.
     - id: targetName
       type: System.String
-      description: The <xref uid="langword_csharp_Name" name="Name" href=""></xref> attribute of the Target element to build.
+      description: The `Name` attribute of the Target element to build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -534,13 +534,13 @@ items:
       description: The project file to load and build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,16 +566,16 @@ items:
       description: The project file to load and build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     - id: globalProperties
       type: Microsoft.Build.BuildEngine.BuildPropertyGroup
       description: The <xref:Microsoft.Build.BuildEngine.Engine.GlobalProperties*> to apply to the build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -601,19 +601,19 @@ items:
       description: The project file to load and build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     - id: globalProperties
       type: Microsoft.Build.BuildEngine.BuildPropertyGroup
       description: The <xref:Microsoft.Build.BuildEngine.Engine.GlobalProperties*> to apply to the build.
     - id: targetOutputs
       type: System.Collections.IDictionary
-      description: The outputs of the built targets. This parameter can be a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
+      description: The outputs of the built targets. This parameter can be a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -639,22 +639,22 @@ items:
       description: The project file to load and build.
     - id: targetNames
       type: System.String[]
-      description: An array that contains the <xref uid="langword_csharp_Name" name="Name" href=""></xref> attributes of the Target elements to build.
+      description: An array that contains the `Name` attributes of the Target elements to build.
     - id: globalProperties
       type: Microsoft.Build.BuildEngine.BuildPropertyGroup
       description: The <xref:Microsoft.Build.BuildEngine.Engine.GlobalProperties*> to apply to the build.
     - id: targetOutputs
       type: System.Collections.IDictionary
-      description: The outputs of the built targets. This parameter can be a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
+      description: The outputs of the built targets. This parameter can be a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if outputs are not required.
     - id: buildFlags
       type: Microsoft.Build.BuildEngine.BuildSettings
       description: The <xref href="Microsoft.Build.BuildEngine.BuildSettings"></xref> to apply to the build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build was successful; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -681,13 +681,13 @@ items:
       description: The name of the project to build.
     - id: targetNames
       type: System.String[]
-      description: A <xref href="Microsoft.Build.BuildEngine.BuildPropertyGroup"></xref> array of targets for each project. Can be <xref uid="langword_csharp_null" name="null" href=""></xref> if you want to build the default targets for the project.
+      description: A <xref href="Microsoft.Build.BuildEngine.BuildPropertyGroup"></xref> array of targets for each project. Can be `null` if you want to build the default targets for the project.
     - id: globalProperties
       type: Microsoft.Build.BuildEngine.BuildPropertyGroup
-      description: An <xref href="System.Collections.IDictionary"></xref> array of properties for each project. Can be <xref uid="langword_csharp_null" name="null" href=""></xref> if no global properties are required.
+      description: An <xref href="System.Collections.IDictionary"></xref> array of properties for each project. Can be `null` if no global properties are required.
     - id: targetOutputs
       type: System.Collections.IDictionary
-      description: A <xref href="Microsoft.Build.BuildEngine.BuildSettings"></xref> array of tables for target outputs. Can be <xref uid="langword_csharp_null" name="null" href=""></xref> if outputs are not required.
+      description: A <xref href="Microsoft.Build.BuildEngine.BuildSettings"></xref> array of tables for target outputs. Can be `null` if outputs are not required.
     - id: buildFlags
       type: Microsoft.Build.BuildEngine.BuildSettings
       description: A string array of additional build flags.
@@ -696,10 +696,10 @@ items:
       description: The ToolsVersion to impose on the project in this build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the build succeeds; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the build succeeds; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFile*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.BuildProjectFiles(System.String[],System.String[][],Microsoft.Build.BuildEngine.BuildPropertyGroup[],System.Collections.IDictionary[],Microsoft.Build.BuildEngine.BuildSettings,System.String[])
@@ -721,16 +721,16 @@ items:
     parameters:
     - id: projectFiles
       type: System.String[]
-      description: A string list of project files to build. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A string list of project files to build. This value cannot be `null`.
     - id: targetNamesPerProject
       type: System.String[][]
       description: A <xref href="Microsoft.Build.BuildEngine.BuildPropertyGroup"></xref> array of targets for each project.
     - id: globalPropertiesPerProject
       type: Microsoft.Build.BuildEngine.BuildPropertyGroup[]
-      description: An <xref href="System.Collections.IDictionary"></xref> array of properties for each project. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> array of properties for each project. This value cannot be `null`.
     - id: targetOutputsPerProject
       type: System.Collections.IDictionary[]
-      description: A <xref href="Microsoft.Build.BuildEngine.BuildSettings"></xref> array of tables for target outputs. This value cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="Microsoft.Build.BuildEngine.BuildSettings"></xref> array of tables for target outputs. This value cannot be `null`.
     - id: buildFlags
       type: Microsoft.Build.BuildEngine.BuildSettings
       description: A string array of additional build flags.
@@ -739,10 +739,10 @@ items:
       description: The ToolsVersion to impose on the project in this build.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the project built successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the project built successfully; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.BuildProjectFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.CreateNewProject
@@ -766,7 +766,7 @@ items:
       description: The created <xref href="Microsoft.Build.BuildEngine.Project"></xref> object.
   overload: Microsoft.Build.BuildEngine.Engine.CreateNewProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -792,7 +792,7 @@ items:
       description: A string that represents the default ToolsVersion.
   overload: Microsoft.Build.BuildEngine.Engine.DefaultToolsVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.GetLoadedProject(System.String)
@@ -816,10 +816,10 @@ items:
       description: The fully qualified file path to the project file of the <xref href="Microsoft.Build.BuildEngine.Project"></xref> object.
     return:
       type: Microsoft.Build.BuildEngine.Project
-      description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> object that associated with the specified project file. If no <xref href="Microsoft.Build.BuildEngine.Project"></xref> object is associated with the specified project file, the method returns a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]).
+      description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> object that associated with the specified project file. If no <xref href="Microsoft.Build.BuildEngine.Project"></xref> object is associated with the specified project file, the method returns a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]).
   overload: Microsoft.Build.BuildEngine.Engine.GetLoadedProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -844,7 +844,7 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Engine"></xref> that is global (shared) for this <xref href="System.AppDomain"></xref>.
   overload: Microsoft.Build.BuildEngine.Engine.GlobalEngine*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -870,7 +870,7 @@ items:
       description: A <xref href="Microsoft.Build.BuildEngine.BuildPropertyGroup"></xref> that contains the global properties for the project.
   overload: Microsoft.Build.BuildEngine.Engine.GlobalProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -893,10 +893,10 @@ items:
     content: public bool IsBuilding { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a build is in progress; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a build is in progress; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.IsBuilding*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.OnlyLogCriticalEvents
@@ -916,10 +916,10 @@ items:
     content: public bool OnlyLogCriticalEvents { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if only critical events should be logged; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if only critical events should be logged; otherwise, `false`.'
   overload: Microsoft.Build.BuildEngine.Engine.OnlyLogCriticalEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -949,7 +949,7 @@ items:
       description: A <xref href="Microsoft.Build.BuildEngine.LoggerDescription"></xref> that represents the forwarding logger.
   overload: Microsoft.Build.BuildEngine.Engine.RegisterDistributedLogger*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.RegisterLogger(Microsoft.Build.Framework.ILogger)
@@ -976,7 +976,7 @@ items:
       description: The logger to associate with the <xref href="Microsoft.Build.BuildEngine.Engine"></xref>.
   overload: Microsoft.Build.BuildEngine.Engine.RegisterLogger*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -999,7 +999,7 @@ items:
     parameters: []
   overload: Microsoft.Build.BuildEngine.Engine.Shutdown*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.Toolsets
@@ -1023,7 +1023,7 @@ items:
       description: A <xref href="Microsoft.Build.BuildEngine.ToolsetCollection"></xref> of the tools sets recognized by this engine instance.
   overload: Microsoft.Build.BuildEngine.Engine.Toolsets*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.BuildEngine.Engine.UnloadAllProjects
@@ -1044,7 +1044,7 @@ items:
     parameters: []
   overload: Microsoft.Build.BuildEngine.Engine.UnloadAllProjects*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1070,7 +1070,7 @@ items:
       description: The <xref href="Microsoft.Build.BuildEngine.Project"></xref> to remove from the <xref href="Microsoft.Build.BuildEngine.Engine"></xref>.
   overload: Microsoft.Build.BuildEngine.Engine.UnloadProject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1096,7 +1096,7 @@ items:
     parameters: []
   overload: Microsoft.Build.BuildEngine.Engine.UnregisterAllLoggers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1121,7 +1121,7 @@ items:
       description: The version of the <xref href="Microsoft.Build.BuildEngine.Engine"></xref>.
   overload: Microsoft.Build.BuildEngine.Engine.Version*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1235,8 +1235,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -1321,8 +1321,8 @@ references:
 - uid: System.String[][]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[][]
+  nameWithType: String[][]
   fullName: System.String[][]
   spec.csharp:
   - uid: System.String
@@ -1338,8 +1338,8 @@ references:
 - uid: Microsoft.Build.BuildEngine.BuildPropertyGroup[]
   parent: Microsoft.Build.BuildEngine
   isExternal: false
-  name: BuildPropertyGroup
-  nameWithType: BuildPropertyGroup
+  name: BuildPropertyGroup[]
+  nameWithType: BuildPropertyGroup[]
   fullName: Microsoft.Build.BuildEngine.BuildPropertyGroup[]
   spec.csharp:
   - uid: Microsoft.Build.BuildEngine.BuildPropertyGroup
@@ -1352,8 +1352,8 @@ references:
 - uid: System.Collections.IDictionary[]
   parent: System.Collections
   isExternal: false
-  name: IDictionary
-  nameWithType: IDictionary
+  name: IDictionary[]
+  nameWithType: IDictionary[]
   fullName: System.Collections.IDictionary[]
   spec.csharp:
   - uid: System.Collections.IDictionary

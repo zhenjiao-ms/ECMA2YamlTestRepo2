@@ -37,7 +37,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -70,13 +70,13 @@ items:
       description: The <xref:System.Net.ICredentials> associated with this request.
     return:
       type: System.Net.Authorization
-      description: An instance of the <xref href="System.Net.Authorization"></xref> class containing the result of the authorization attempt. If there is no authentication module to respond to the challenge, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An instance of the <xref href="System.Net.Authorization"></xref> class containing the result of the authorization attempt. If there is no authentication module to respond to the challenge, this method returns `null`.
   overload: System.Net.AuthenticationManager.Authenticate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>challenge</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>request</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>credentials</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>challenge</code> is `null`.  \n  \n -or-  \n  \n <code>request</code> is `null`.  \n  \n -or-  \n  \n <code>credentials</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -101,10 +101,10 @@ items:
     content: public static System.Net.ICredentialPolicy CredentialPolicy { get; set; }
     return:
       type: System.Net.ICredentialPolicy
-      description: An object that implements the <xref href="System.Net.ICredentialPolicy"></xref> interface that determines whether credentials are sent with requests. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object that implements the <xref href="System.Net.ICredentialPolicy"></xref> interface that determines whether credentials are sent with requests. The default value is `null`.
   overload: System.Net.AuthenticationManager.CredentialPolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
       description: A writable <xref href="System.Collections.Specialized.StringDictionary"></xref> that contains the SPN values for keys composed of host information.
   overload: System.Net.AuthenticationManager.CustomTargetNameDictionary*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -162,13 +162,13 @@ items:
       description: The <xref:System.Net.ICredentials> associated with the request.
     return:
       type: System.Net.Authorization
-      description: An instance of the <xref href="System.Net.Authorization"></xref> class if the request can be preauthenticated; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>. If <code>credentials</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An instance of the <xref href="System.Net.Authorization"></xref> class if the request can be preauthenticated; otherwise, `null`. If <code>credentials</code> is `null`, this method returns `null`.
   overload: System.Net.AuthenticationManager.PreAuthenticate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>request</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>request</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,8 +199,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>authenticationModule</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>authenticationModule</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -228,7 +228,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> that enables the registered authentication modules to be read.
   overload: System.Net.AuthenticationManager.RegisteredModules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,11 +259,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>authenticationModule</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>authenticationModule</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified <xref href="System.Net.IAuthenticationModule"></xref> is not registered.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,11 +294,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>authenticationScheme</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>authenticationScheme</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: A module for this authentication scheme is not registered.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

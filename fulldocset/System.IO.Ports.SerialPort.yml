@@ -96,7 +96,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,7 +122,7 @@ items:
     parameters: []
   overload: System.IO.Ports.SerialPort.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -152,7 +152,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The specified port could not be found or opened.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,7 +182,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The specified port could not be found or opened.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,7 +215,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The specified port could not be found or opened.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -251,7 +251,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The specified port could not be found or opened.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,7 +290,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The specified port could not be found or opened.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The specified port could not be found or opened.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -364,7 +364,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The stream is in a .NET Compact Framework application and one of the following methods was called:  \n  \n <xref:System.IO.Stream.BeginRead*>  \n  \n <xref:System.IO.Stream.BeginWrite*>  \n  \n <xref:System.IO.Stream.EndRead*>  \n  \n <xref:System.IO.Stream.EndWrite*>  \n  \n The .NET Compact Framework does not support the asynchronous model with base streams."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -398,7 +398,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -421,7 +421,7 @@ items:
     content: public bool BreakState { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the port is in a break state; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the port is in a break state; otherwise, `false`.'
   overload: System.IO.Ports.SerialPort.BreakState*
   exceptions:
   - type: System.IO.IOException
@@ -430,7 +430,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,7 +459,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The port is not open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -491,7 +491,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -514,7 +514,7 @@ items:
     content: public bool CDHolding { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the carrier is detected; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the carrier is detected; otherwise, `false`.'
   overload: System.IO.Ports.SerialPort.CDHolding*
   exceptions:
   - type: System.IO.IOException
@@ -523,7 +523,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -540,7 +540,7 @@ items:
   assemblies:
   - System
   namespace: System.IO.Ports
-  summary: Closes the port connection, sets the <xref:System.IO.Ports.SerialPort.IsOpen*> property to <xref uid="langword_csharp_false" name="false" href=""></xref>, and disposes of the internal <xref href="System.IO.Stream"></xref> object.
+  summary: Closes the port connection, sets the <xref:System.IO.Ports.SerialPort.IsOpen*> property to `false`, and disposes of the internal <xref href="System.IO.Stream"></xref> object.
   remarks: "Calling this method closes the <xref:System.IO.Ports.SerialPort> object and clears both the receive and transmit buffers. This method calls the <xref:System.ComponentModel.Component.Dispose?displayProperty=fullName> method, which invokes the protected <xref:System.IO.Ports.SerialPort.Dispose%28System.Boolean%29?displayProperty=fullName> method with the `disposing` parameter set to `true`.  \n  \n The best practice for any application is to wait for some amount of time after calling the Close method before attempting to call the <xref:System.IO.Ports.SerialPort.Open%2A> method, as the port may not be closed instantly."
   example:
   - "The following code example demonstrates the use of the <xref:System.IO.Ports.SerialPort> class to allow two users to chat from two separate computers connected by a null modem cable. In this example, the users are prompted for the port settings and a username before chatting. This code example is part of a larger code example provided for the <xref:System.IO.Ports.SerialPort> class.  \n  \n [!code-cpp[System.IO.Ports.SerialPort#01](~/add/codesnippet/cpp/m-system.io.ports.serial_5_1.cpp)]\n [!code-cs[System.IO.Ports.SerialPort#01](~/add/codesnippet/csharp/m-system.io.ports.serial_5_1.cs)]\n [!code-vb[System.IO.Ports.SerialPort#01](~/add/codesnippet/visualbasic/m-system.io.ports.serial_5_1.vb)]"
@@ -552,7 +552,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -575,7 +575,7 @@ items:
     content: public bool CtsHolding { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the Clear-to-Send line is detected; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the Clear-to-Send line is detected; otherwise, `false`.'
   overload: System.IO.Ports.SerialPort.CtsHolding*
   exceptions:
   - type: System.IO.IOException
@@ -584,7 +584,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -618,7 +618,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The data bits value is less than 5 or more than 8.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -645,7 +645,7 @@ items:
       type: System.IO.Ports.SerialDataReceivedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -675,7 +675,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -698,7 +698,7 @@ items:
     content: public bool DiscardNull { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if null bytes are ignored; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if null bytes are ignored; otherwise `false`. The default is `false`.'
   overload: System.IO.Ports.SerialPort.DiscardNull*
   exceptions:
   - type: System.IO.IOException
@@ -707,7 +707,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -737,7 +737,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -761,13 +761,13 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.IO.Ports.SerialPort.Dispose*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -790,7 +790,7 @@ items:
     content: public bool DsrHolding { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a Data Set Ready signal has been sent to the port; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a Data Set Ready signal has been sent to the port; otherwise, `false`.'
   overload: System.IO.Ports.SerialPort.DsrHolding*
   exceptions:
   - type: System.IO.IOException
@@ -799,7 +799,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The stream is closed. This can occur because the <xref:System.IO.Ports.SerialPort.Open*> method has not been called or the <xref:System.IO.Ports.SerialPort.Close*> method has been called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -822,13 +822,13 @@ items:
     content: public bool DtrEnable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enable Data Terminal Ready (DTR); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to enable Data Terminal Ready (DTR); otherwise, `false`. The default is `false`.'
   overload: System.IO.Ports.SerialPort.DtrEnable*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -855,11 +855,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The Encoding property was set to <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The Encoding property was set to `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The Encoding property was set to an encoding that is not <xref href="System.Text.ASCIIEncoding"></xref>, <xref href="System.Text.UTF8Encoding"></xref>, <xref href="System.Text.UTF32Encoding"></xref>, <xref href="System.Text.UnicodeEncoding"></xref>, one of the Windows single byte encodings, or one of the Windows double byte encodings.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -884,7 +884,7 @@ items:
       type: System.IO.Ports.SerialErrorReceivedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -916,7 +916,7 @@ items:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
     description: The serial port names could not be queried.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -941,7 +941,7 @@ items:
     content: public System.IO.Ports.Handshake Handshake { get; set; }
     return:
       type: System.IO.Ports.Handshake
-      description: One of the <xref href="System.IO.Ports.Handshake"></xref> values. The default is <xref uid="langword_csharp_None" name="None" href=""></xref>.
+      description: One of the <xref href="System.IO.Ports.Handshake"></xref> values. The default is `None`.
   overload: System.IO.Ports.SerialPort.Handshake*
   exceptions:
   - type: System.IO.IOException
@@ -950,7 +950,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value passed is not a valid value in the <xref href="System.IO.Ports.Handshake"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -975,7 +975,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -998,16 +998,16 @@ items:
     content: public bool IsOpen { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the serial port is open; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the serial port is open; otherwise, `false`. The default is `false`.'
   overload: System.IO.Ports.SerialPort.IsOpen*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The IsOpen value passed is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The IsOpen value passed is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The IsOpen value passed is an empty string ("").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1038,8 +1038,8 @@ items:
     description: The property value is empty.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The property value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The property value is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1080,7 +1080,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port on the current instance of the <xref href="System.IO.Ports.SerialPort"></xref> is already open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1114,7 +1114,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The Parity value passed is not a valid value in the <xref href="System.IO.Ports.Parity"></xref> enumeration.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1143,7 +1143,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1168,7 +1168,7 @@ items:
       type: System.IO.Ports.SerialPinChangedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1201,11 +1201,11 @@ items:
     description: "The PortName property was set to a value with a length of zero.  \n  \n -or-  \n  \n The PortName property was set to a value that starts with \"\\\\\\\\\".  \n  \n -or-  \n  \n The port name was not valid."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The PortName property was set to <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The PortName property was set to `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1243,7 +1243,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The buffer passed is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The buffer passed is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is not open.
@@ -1256,7 +1256,7 @@ items:
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
     description: No bytes were available to read.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1297,7 +1297,7 @@ items:
     description: "<code>offset</code> plus <code>count</code> is greater than the length of the buffer.  \n  \n \\- or -  \n  \n <code>count</code> is 1 and there is a surrogate character in the buffer."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>buffer</code> passed is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>buffer</code> passed is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>offset</code> or <code>count</code> parameters are outside a valid region of the <code>buffer</code> being passed. Either <code>offset</code> or <code>count</code> is less than zero.
@@ -1307,7 +1307,7 @@ items:
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
     description: No characters were available to read.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1342,7 +1342,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The ReadBufferSize property was set to an odd integer value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1375,7 +1375,7 @@ items:
   - type: System.ServiceProcess.TimeoutException
     commentId: T:System.ServiceProcess.TimeoutException
     description: "The operation did not complete before the time-out period ended.  \n  \n \\- or -  \n  \n No byte was read."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1408,7 +1408,7 @@ items:
   - type: System.ServiceProcess.TimeoutException
     commentId: T:System.ServiceProcess.TimeoutException
     description: "The operation did not complete before the time-out period ended.  \n  \n \\- or -  \n  \n No character was available in the allotted time-out period."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1438,7 +1438,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is not open.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1473,7 +1473,7 @@ items:
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
     description: "The operation did not complete before the time-out period ended.  \n  \n \\- or -  \n  \n No bytes were read."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1507,7 +1507,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The read time-out value is less than zero and not equal to <xref href="System.IO.Ports.SerialPort.InfiniteTimeout"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1542,14 +1542,14 @@ items:
     description: The length of the <code>value</code> parameter is 0.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>value</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>value</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is not open.
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
     description: The operation did not complete before the time-out period ended.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1578,7 +1578,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The ReceivedBytesThreshold value is less than or equal to zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1601,7 +1601,7 @@ items:
     content: public bool RtsEnable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enable Request to Transmit (RTS); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to enable Request to Transmit (RTS); otherwise, `false`. The default is `false`.'
   overload: System.IO.Ports.SerialPort.RtsEnable*
   exceptions:
   - type: System.InvalidOperationException
@@ -1610,7 +1610,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1644,7 +1644,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: "The port is in an invalid state.  \n  \n \\- or -  \n  \n An attempt to set the state of the underlying port failed. For example, the parameters passed from this <xref href=\"System.IO.Ports.SerialPort\"></xref> object were invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1676,11 +1676,11 @@ items:
     description: The specified port is not open.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>str</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>str</code> is `null`.
   - type: System.ServiceProcess.TimeoutException
     commentId: T:System.ServiceProcess.TimeoutException
     description: The operation did not complete before the time-out period ended.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1715,7 +1715,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>buffer</code> passed is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>buffer</code> passed is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is not open.
@@ -1728,7 +1728,7 @@ items:
   - type: System.ServiceProcess.TimeoutException
     commentId: T:System.ServiceProcess.TimeoutException
     description: The operation did not complete before the time-out period ended.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1763,7 +1763,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>buffer</code> passed is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>buffer</code> passed is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is not open.
@@ -1776,7 +1776,7 @@ items:
   - type: System.ServiceProcess.TimeoutException
     commentId: T:System.ServiceProcess.TimeoutException
     description: The operation did not complete before the time-out period ended.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1811,7 +1811,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The WriteBufferSize property was set to an odd integer value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1842,14 +1842,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>str</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>str</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The specified port is not open.
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
     description: The WriteLine method could not write to the stream.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1883,7 +1883,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The WriteTimeout value is less than zero and not equal to <xref href="System.IO.Ports.SerialPort.InfiniteTimeout"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2171,8 +2171,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -2263,8 +2263,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -2283,8 +2283,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char

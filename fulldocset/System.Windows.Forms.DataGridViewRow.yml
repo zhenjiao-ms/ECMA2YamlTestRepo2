@@ -82,7 +82,7 @@ items:
   - System.Windows.Forms.DataGridViewElement.RaiseCellValueChanged(System.Windows.Forms.DataGridViewCellEventArgs)
   - System.Windows.Forms.DataGridViewElement.RaiseDataError(System.Windows.Forms.DataGridViewDataErrorEventArgs)
   - System.Windows.Forms.DataGridViewElement.RaiseMouseWheel(System.Windows.Forms.MouseEventArgs)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -106,7 +106,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.DataGridViewRow.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
       description: The <xref:System.Windows.Forms.DataGridViewRow.DataGridViewRowAccessibleObject> assigned to the <xref href="System.Windows.Forms.DataGridViewRow"></xref>.
   overload: System.Windows.Forms.DataGridViewRow.AccessibilityObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -164,22 +164,22 @@ items:
       description: A <xref href="System.Windows.Forms.DataGridViewAdvancedBorderStyle"></xref> that is used to store intermediate changes to the row header border style.
     - id: singleVerticalBorderAdded
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to add a single vertical border to the result; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to add a single vertical border to the result; otherwise, `false`.'
     - id: singleHorizontalBorderAdded
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to add a single horizontal border to the result; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to add a single horizontal border to the result; otherwise, `false`.'
     - id: isFirstDisplayedRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, `false`.'
     - id: isLastVisibleRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has its <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to <xref uid="langword_csharp_true" name="true" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has its <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to `true`; otherwise, `false`.'
     return:
       type: System.Windows.Forms.DataGridViewAdvancedBorderStyle
       description: A <xref href="System.Windows.Forms.DataGridViewAdvancedBorderStyle"></xref> that represents the new border style used.
   overload: System.Windows.Forms.DataGridViewRow.AdjustRowHeaderBorderStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,7 +207,7 @@ items:
       description: A <xref href="System.Windows.Forms.DataGridViewCellCollection"></xref> that contains all of the cells in the row.
   overload: System.Windows.Forms.DataGridViewRow.Cells*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,7 +236,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the cloned <xref href="System.Windows.Forms.DataGridViewRow"></xref>.
   overload: System.Windows.Forms.DataGridViewRow.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -261,13 +261,13 @@ items:
     content: public override System.Windows.Forms.ContextMenuStrip ContextMenuStrip { get; set; }
     return:
       type: System.Windows.Forms.ContextMenuStrip
-      description: The <xref href="System.Windows.Forms.ContextMenuStrip"></xref> associated with the current <xref href="System.Windows.Forms.DataGridViewRow"></xref>. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Windows.Forms.ContextMenuStrip"></xref> associated with the current <xref href="System.Windows.Forms.DataGridViewRow"></xref>. The default is `null`.
   overload: System.Windows.Forms.DataGridViewRow.ContextMenuStrip*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: When getting the value of this property, the row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,7 +294,7 @@ items:
       description: A new <xref:System.Windows.Forms.DataGridViewRow.DataGridViewRowAccessibleObject> for the <xref href="System.Windows.Forms.DataGridViewRow"></xref>.
   overload: System.Windows.Forms.DataGridViewRow.CreateAccessibilityInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,11 +323,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>dataGridView</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>dataGridView</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "A row that already belongs to the <xref href=\"System.Windows.Forms.DataGridView\"></xref> was added.  \n  \n -or-  \n  \n A column that has no cell template was added."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -359,11 +359,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: Either of the parameters is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: Either of the parameters is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "A row that already belongs to the <xref href=\"System.Windows.Forms.DataGridView\"></xref> was added.  \n  \n -or-  \n  \n A column that has no cell template was added."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
       description: The newly created <xref href="System.Windows.Forms.DataGridViewCellCollection"></xref>.
   overload: System.Windows.Forms.DataGridViewRow.CreateCellsInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -418,7 +418,7 @@ items:
       description: The data-bound <xref href="System.Object"></xref>.
   overload: System.Windows.Forms.DataGridViewRow.DataBoundItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -449,7 +449,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: When setting this property, the row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,13 +471,13 @@ items:
     content: public override bool Displayed { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is currently displayed on the screen; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is currently displayed on the screen; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.Displayed*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -508,7 +508,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: When setting this property, the row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -550,7 +550,7 @@ items:
       description: The <xref href="System.Windows.Forms.DataGridViewCellStyle"></xref> used to paint the focus rectangle.
     - id: cellsPaintSelectionBackground
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use the <xref:System.Windows.Forms.DataGridViewCellStyle.SelectionBackColor*> property of `cellStyle` as the color of the focus rectangle; <xref uid="langword_csharp_false" name="false" href=""></xref> to use the <xref:System.Windows.Forms.DataGridViewCellStyle.BackColor*> property of `cellStyle` as the color of the focus rectangle.
+      description: '`true` to use the <xref:System.Windows.Forms.DataGridViewCellStyle.SelectionBackColor*> property of `cellStyle` as the color of the focus rectangle; `false` to use the <xref:System.Windows.Forms.DataGridViewCellStyle.BackColor*> property of `cellStyle` as the color of the focus rectangle.'
   overload: System.Windows.Forms.DataGridViewRow.DrawFocus*
   exceptions:
   - type: System.InvalidOperationException
@@ -558,8 +558,8 @@ items:
     description: The row has not been added to a <xref href="System.Windows.Forms.DataGridView"></xref> control.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>graphics</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>cellStyle</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>graphics</code> is `null`.  \n  \n -or-  \n  \n <code>cellStyle</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,7 +590,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: When getting the value of this property, the row is a shared row in a <xref href="System.Windows.Forms.DataGridView"></xref> control.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -615,13 +615,13 @@ items:
     content: public override bool Frozen { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is frozen; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is frozen; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.Frozen*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -657,7 +657,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>rowIndex</code> is less than zero or greater than or equal to the number of rows in the control minus one.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -693,7 +693,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The row belongs to a <xref href="System.Windows.Forms.DataGridView"></xref> control and <code>rowIndex</code> is less than zero or greater than the number of rows in the control minus one.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -725,7 +725,7 @@ items:
       description: A <xref href="System.Windows.Forms.DataGridViewAutoSizeRowMode"></xref> that specifies an automatic sizing mode.
     - id: fixedWidth
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to calculate the preferred height for a fixed cell width; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to calculate the preferred height for a fixed cell width; otherwise, `false`.'
     return:
       type: System.Int32
       description: The ideal height of the row, in pixels.
@@ -737,7 +737,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>rowIndex</code> is not in the valid range of 0 to the number of rows in the control minus 1.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -773,7 +773,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The row is not a shared row, but the <code>rowIndex</code> value does not match the row's <xref:System.Windows.Forms.DataGridViewBand.Index*> property value.  \n  \n -or-  \n  \n The row has not been added to a <xref href=\"System.Windows.Forms.DataGridView\"></xref> control, but the <code>rowIndex</code> value does not match the row's <xref:System.Windows.Forms.DataGridViewBand.Index*> property value."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -801,7 +801,7 @@ items:
       description: A <xref href="System.Windows.Forms.DataGridViewRowHeaderCell"></xref> that represents the header cell of row.
   overload: System.Windows.Forms.DataGridViewRow.HeaderCell*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -832,7 +832,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: When setting this property, the row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -861,7 +861,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -886,10 +886,10 @@ items:
     content: public bool IsNewRow { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref>, which is used for the entry of a new row of data; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref>, which is used for the entry of a new row of data; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.IsNewRow*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -923,7 +923,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The specified value when setting this property is less than 2.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -962,10 +962,10 @@ items:
       description: A bitwise combination of <xref href="System.Windows.Forms.DataGridViewElementStates"></xref> values that specifies the state of the row.
     - id: isFirstDisplayedRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate whether the current row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate whether the current row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, `false`.'
     - id: isLastVisibleRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate whether the current row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has the <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to <xref uid="langword_csharp_true" name="true" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate whether the current row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has the <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to `true`; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.Paint*
   exceptions:
   - type: System.InvalidOperationException
@@ -974,7 +974,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and <code>rowIndex</code> is less than zero or greater than the number of rows in the control minus one.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1013,10 +1013,10 @@ items:
       description: A bitwise combination of <xref href="System.Windows.Forms.DataGridViewElementStates"></xref> values that specifies the state of the row.
     - id: isFirstDisplayedRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate whether the current row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate whether the current row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, `false`.'
     - id: isLastVisibleRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate whether the current row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has the <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to <xref uid="langword_csharp_true" name="true" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate whether the current row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has the <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to `true`; otherwise, `false`.'
     - id: paintParts
       type: System.Windows.Forms.DataGridViewPaintParts
       description: A bitwise combination of <xref href="System.Windows.Forms.DataGridViewPaintParts"></xref> values indicating the parts of the cells to paint.
@@ -1028,7 +1028,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>paintParts</code> in not a valid bitwise combination of <xref href="System.Windows.Forms.DataGridViewPaintParts"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1067,10 +1067,10 @@ items:
       description: A bitwise combination of <xref href="System.Windows.Forms.DataGridViewElementStates"></xref> values that specifies the state of the row.
     - id: isFirstDisplayedRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the current row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the current row is the first row displayed in the <xref href="System.Windows.Forms.DataGridView"></xref>; otherwise, `false`.'
     - id: isLastVisibleRow
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the current row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has the <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to <xref uid="langword_csharp_true" name="true" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the current row is the last row in the <xref href="System.Windows.Forms.DataGridView"></xref> that has the <xref:System.Windows.Forms.DataGridViewRow.Visible*> property set to `true`; otherwise, `false`.'
     - id: paintParts
       type: System.Windows.Forms.DataGridViewPaintParts
       description: A bitwise combination of <xref href="System.Windows.Forms.DataGridViewPaintParts"></xref> values indicating the parts of the cells to paint.
@@ -1082,7 +1082,7 @@ items:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
     description: <code>paintParts</code> in not a valid bitwise combination of <xref href="System.Windows.Forms.DataGridViewPaintParts"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1107,13 +1107,13 @@ items:
     content: public override bool ReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is read-only; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.ReadOnly*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1138,13 +1138,13 @@ items:
     content: public override System.Windows.Forms.DataGridViewTriState Resizable { get; set; }
     return:
       type: System.Windows.Forms.DataGridViewTriState
-      description: A <xref href="System.Windows.Forms.DataGridViewTriState"></xref> value that indicates whether the row can be resized or whether it can be resized only when the &lt;xref:System.Windows.Forms.DataGridView.AllowUserToResizeRows%2A?displayProperty=fullName&gt; property is set to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A <xref href="System.Windows.Forms.DataGridViewTriState"></xref> value that indicates whether the row can be resized or whether it can be resized only when the &lt;xref:System.Windows.Forms.DataGridView.AllowUserToResizeRows%2A?displayProperty=fullName&gt; property is set to `true`.
   overload: System.Windows.Forms.DataGridViewRow.Resizable*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1169,13 +1169,13 @@ items:
     content: public override bool Selected { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is selected; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is selected; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.Selected*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1202,16 +1202,16 @@ items:
       description: "One or more objects that represent the cell values in the row.  \n  \n -or-  \n  \n An <xref href=\"System.Array\"></xref> of <xref href=\"System.Object\"></xref> values."
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if all values have been set; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if all values have been set; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.SetValues*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>values</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>values</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "This method is called when the associated <xref href=\"System.Windows.Forms.DataGridView\"></xref> is operating in virtual mode.  \n  \n -or-  \n  \n This row is a shared row."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1240,7 +1240,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1267,7 +1267,7 @@ items:
       description: A <xref href="System.String"></xref> that describes this row.
   overload: System.Windows.Forms.DataGridViewRow.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1292,13 +1292,13 @@ items:
     content: public override bool Visible { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the row is visible; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the row is visible; otherwise, `false`.'
   overload: System.Windows.Forms.DataGridViewRow.Visible*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The row is in a <xref href="System.Windows.Forms.DataGridView"></xref> control and is a shared row.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1436,8 +1436,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

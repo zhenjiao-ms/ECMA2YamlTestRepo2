@@ -39,7 +39,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -61,7 +61,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -102,7 +102,7 @@ items:
       description: An array of <xref href="System.Byte"></xref> that contains the derived key.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GenerateDerivedKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -128,13 +128,13 @@ items:
       description: A cryptographic algorithm that decrypts cipher text, such as encrypted XML.
     - id: iv
       type: System.Byte[]
-      description: An array of <xref href="System.Byte"></xref> that contains the initialization vector (<xref uid="langword_csharp_IV" name="IV" href=""></xref>) for the specified algorithm.
+      description: An array of <xref href="System.Byte"></xref> that contains the initialization vector (`IV`) for the specified algorithm.
     return:
       type: System.Security.Cryptography.ICryptoTransform
       description: An <xref href="System.Security.Cryptography.ICryptoTransform"></xref> that represents the decryption transform.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GetDecryptionTransform*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -160,13 +160,13 @@ items:
       description: A cryptographic algorithm that encrypts XML.
     - id: iv
       type: System.Byte[]
-      description: An array of <xref href="System.Byte"></xref> that contains the initialization vector (<xref uid="langword_csharp_IV" name="IV" href=""></xref>) for the specified algorithm.
+      description: An array of <xref href="System.Byte"></xref> that contains the initialization vector (`IV`) for the specified algorithm.
     return:
       type: System.Security.Cryptography.ICryptoTransform
       description: An <xref href="System.Security.Cryptography.ICryptoTransform"></xref> that represents the encryption transform.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GetEncryptionTransform*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -182,19 +182,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: When overridden in a derived class, gets the size, in bits, of the initialization vector (<xref uid="langword_csharp_IV" name="IV" href=""></xref>) that is required for the specified cryptographic algorithm.
+  summary: When overridden in a derived class, gets the size, in bits, of the initialization vector (`IV`) that is required for the specified cryptographic algorithm.
   syntax:
     content: public abstract int GetIVSize (string algorithm);
     parameters:
     - id: algorithm
       type: System.String
-      description: The cryptographic algorithm to get the size of the initialization vector (<xref uid="langword_csharp_IV" name="IV" href=""></xref>).
+      description: The cryptographic algorithm to get the size of the initialization vector (`IV`).
     return:
       type: System.Int32
-      description: The size, in bits, of the initialization vector (<xref uid="langword_csharp_IV" name="IV" href=""></xref>) that is required for the cryptographic algorithm specified in the <code>algorithm</code> parameter.
+      description: The size, in bits, of the initialization vector (`IV`) that is required for the cryptographic algorithm specified in the <code>algorithm</code> parameter.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GetIVSize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -223,7 +223,7 @@ items:
       description: A <xref href="System.Security.Cryptography.KeyedHashAlgorithm"></xref> that represents the keyed hash algorithm.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GetKeyedHashAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -252,7 +252,7 @@ items:
       description: A <xref href="System.Security.Cryptography.SymmetricAlgorithm"></xref> that represents the symmetric algorithm.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GetSymmetricAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -277,7 +277,7 @@ items:
       description: An array of <xref href="System.Byte"></xref> that contains the symmetric key.
   overload: System.IdentityModel.Tokens.SymmetricSecurityKey.GetSymmetricKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -300,8 +300,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

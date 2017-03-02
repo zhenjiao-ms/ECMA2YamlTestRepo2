@@ -225,7 +225,7 @@ items:
   - System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WritePostFieldVariable(System.String,System.String)
   - System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WriteText(System.String,System.Boolean)
   - System.Web.UI.MobileControls.Adapters.WmlMobileTextWriter.WriteTextEncodedAttribute(System.String,System.String)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,7 +258,7 @@ items:
       description: A reference to the <xref href="System.Web.UI.MobileControls.MobilePage"></xref> object.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -281,13 +281,13 @@ items:
     parameters:
     - id: includeVariables
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include in the post fields the information for all <xref href="System.Web.UI.IPostBackDataHandler"></xref> interfaces in the form; <xref uid="langword_csharp_false" name="false" href=""></xref> to include no <xref href="System.Web.UI.IPostBackDataHandler"></xref> information.
+      description: '`true` to include in the post fields the information for all <xref href="System.Web.UI.IPostBackDataHandler"></xref> interfaces in the form; `false` to include no <xref href="System.Web.UI.IPostBackDataHandler"></xref> information.'
     - id: postBackType
       type: System.Web.UI.MobileControls.Adapters.WmlPostFieldType
       description: The <xref href="System.Web.UI.MobileControls.Adapters.WmlPostFieldType"></xref>.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.AnalyzePostBack*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,7 +310,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.BeginCustomMarkup*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -336,7 +336,7 @@ items:
       description: The form to begin.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.BeginForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -359,16 +359,16 @@ items:
     parameters:
     - id: externalSubmit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the current form submits to an external URL; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the current form submits to an external URL; otherwise, `false`.'
     - id: encode
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to encode the URL string; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to encode the URL string; otherwise, `false`.'
     return:
       type: System.String
       description: The calculated URL required to post the form to the server.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.CalculateFormPostBackUrl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -394,7 +394,7 @@ items:
       description: The query string.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.CalculateFormQueryString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,7 +417,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.EndForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -448,7 +448,7 @@ items:
       description: To be added.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.OpenParagraph*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,7 +471,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.PostAnalyzeForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -498,22 +498,22 @@ items:
       description: The URL target.
     - id: encodeUrl
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if the URL is encoded.
+      description: Set to `true` if the URL is encoded.
     - id: softkeyLabel
       type: System.String
-      description: The softkey text to use for the link if the `mapToSoftkey` parameter is set to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: The softkey text to use for the link if the `mapToSoftkey` parameter is set to `true`.
     - id: implicitSoftkeyLabel
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if the softkey label comes from the adapter itself (the default label, or something else that is adapter-specified, such as "Call" for a <xref href="System.Web.UI.MobileControls.PhoneCall"></xref> control), rather than being a softkey label explicitly specified by the application author.
+      description: Set to `true` if the softkey label comes from the adapter itself (the default label, or something else that is adapter-specified, such as "Call" for a <xref href="System.Web.UI.MobileControls.PhoneCall"></xref> control), rather than being a softkey label explicitly specified by the application author.
     - id: mapToSoftkey
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if mapping to a softkey on the device.
+      description: Set to `true` if mapping to a softkey on the device.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderBeginHyperlink*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: "the writer has already begun to write a hyperlink,  \n  \n -or-  \n  \n the response is a postback."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -536,19 +536,19 @@ items:
     parameters:
     - id: softkeyLabel
       type: System.String
-      description: The softkey text to use for the link if the `mapToSoftkey` parameter is set to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: The softkey text to use for the link if the `mapToSoftkey` parameter is set to `true`.
     - id: implicitSoftkeyLabel
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if the softkey label comes from the adapter itself (the default label, or something else that is adapter-specified, such as "Call" for a <xref href="System.Web.UI.MobileControls.PhoneCall"></xref> control), rather than being a softkey label explicitly specified by the application author.
+      description: Set to `true` if the softkey label comes from the adapter itself (the default label, or something else that is adapter-specified, such as "Call" for a <xref href="System.Web.UI.MobileControls.PhoneCall"></xref> control), rather than being a softkey label explicitly specified by the application author.
     - id: mapToSoftkey
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if mapping to a softkey on the device.
+      description: Set to `true` if mapping to a softkey on the device.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderBeginPostBack*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: "the writer has begun to write a hyperlink,  \n  \n -or-  \n  \n the response is a postback."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -580,13 +580,13 @@ items:
       description: The initial value.
     - id: title
       type: System.String
-      description: The <xref uid="langword_csharp_Title" name="Title" href=""></xref> attribute on WML devices.
+      description: The `Title` attribute on WML devices.
     - id: multiSelect
       type: System.Boolean
       description: Whether to allow multiple selections.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderBeginSelect*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -609,7 +609,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderEndForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -632,13 +632,13 @@ items:
     parameters:
     - id: breakAfter
       type: System.Boolean
-      description: Contains <xref uid="langword_csharp_true" name="true" href=""></xref> if a line break should follow the control. Contains <xref uid="langword_csharp_false" name="false" href=""></xref> otherwise.
+      description: Contains `true` if a line break should follow the control. Contains `false` otherwise.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderEndHyperlink*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: the writer is not writing a hyperlink.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -673,13 +673,13 @@ items:
       description: Contains a Boolean value indicating whether postback variables should be calculated.
     - id: breakAfter
       type: System.Boolean
-      description: Contains <xref uid="langword_csharp_true" name="true" href=""></xref> if a line break should follow the control. Contains <xref uid="langword_csharp_false" name="false" href=""></xref> otherwise.
+      description: Contains `true` if a line break should follow the control. Contains `false` otherwise.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderEndPostBack*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: the writer has not begun writing a postback.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -705,7 +705,7 @@ items:
       description: Indicates whether a break must follow the selection list.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderEndSelect*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -722,7 +722,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Renders any <xref uid="langword_csharp_i-mode" name="i-mode" href=""></xref> or <xref uid="langword_csharp_J-Phone" name="J-Phone" href=""></xref> image references. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Renders any `i-mode` or `J-Phone` image references. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: public override void RenderImage (string source, string localSource, string alternateText, bool breakAfter);
     parameters:
@@ -737,10 +737,10 @@ items:
       description: Specifies text to display if the image cannot be displayed.
     - id: breakAfter
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if a break is required after the image.
+      description: Set to `true` if a break is required after the image.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderImage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -766,7 +766,7 @@ items:
       description: The option text.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderSelectOption*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -795,7 +795,7 @@ items:
       description: (Optional.) The option value.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderSelectOption*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -827,7 +827,7 @@ items:
       description: Specifies whether the text must be encoded.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -874,10 +874,10 @@ items:
       description: Determines whether the identifier for the control (ID) is encrypted.
     - id: breakAfter
       type: System.Boolean
-      description: Set to <xref uid="langword_csharp_true" name="true" href=""></xref> if a break is required after the control is rendered.
+      description: Set to `true` if a break is required after the control is rendered.
   overload: System.Web.UI.MobileControls.Adapters.UpWmlMobileTextWriter.RenderTextBox*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

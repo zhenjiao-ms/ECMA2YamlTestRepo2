@@ -36,7 +36,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
     parameters: []
   overload: System.Runtime.Remoting.Services.EnterpriseServicesHelper.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
       description: A <xref href="System.Runtime.Remoting.Activation.IConstructionReturnMessage"></xref> returned from the construction call that is specified in the <code>ctorMsg</code> parameter.
   overload: System.Runtime.Remoting.Services.EnterpriseServicesHelper.CreateConstructionReturnMessage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,7 +127,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,23 +144,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Services
-  summary: Wraps the specified <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> COM interface with a [Runtime Callable Wrapper](~/add/includes/ajax-current-ext-md.md) (RCW).
+  summary: Wraps the specified `IUnknown` COM interface with a [Runtime Callable Wrapper](~/add/includes/ajax-current-ext-md.md) (RCW).
   remarks: The WrapIUnknownWithComObject method is similar to the <xref:System.Runtime.InteropServices.Marshal.GetObjectForIUnknown%2A?displayProperty=fullName> method, but does not attempt to maintain the identity of the unmanaged object. For example, two calls with the same `IUnknown` to the current method return two different RCWs, but two calls to the <xref:System.Runtime.InteropServices.Marshal.GetObjectForIUnknown%2A> method with the same `IUnknown` return the same RCW.
   syntax:
     content: public static object WrapIUnknownWithComObject (IntPtr punk);
     parameters:
     - id: punk
       type: System.IntPtr
-      description: A pointer to the <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> COM interface to wrap.
+      description: A pointer to the `IUnknown` COM interface to wrap.
     return:
       type: System.Object
-      description: The RCW where the specified <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> is wrapped.
+      description: The RCW where the specified `IUnknown` is wrapped.
   overload: System.Runtime.Remoting.Services.EnterpriseServicesHelper.WrapIUnknownWithComObject*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have UnmanagedCode permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

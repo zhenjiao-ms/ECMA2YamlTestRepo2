@@ -49,7 +49,7 @@ items:
   nameWithType: HtmlSelect
   fullName: System.Web.UI.HtmlControls.HtmlSelect
   type: Class
-  summary: Allows programmatic access to the HTML <xref uid="langword_csharp_&lt;select&gt;" name="&lt;select&gt;" href=""></xref> element on the server.
+  summary: Allows programmatic access to the HTML `&lt;select&gt;` element on the server.
   remarks: "Use the HtmlSelect control to create a selection box. Specify item listings in the control by placing HTML `<option>` elements between the opening and closing `<select>` tags. Each item is represented by a <xref:System.Web.UI.WebControls.ListItem?displayProperty=fullName> object. To specify the text that is displayed for each item in the control, you can set the <xref:System.Web.UI.WebControls.ListItem.Text%2A?displayProperty=fullName> property of the item, or simply place text between the opening and closing `<option>` tags. By setting the <xref:System.Web.UI.WebControls.ListItem.Value%2A?displayProperty=fullName> property of the item, you can associate a value with the item that is different from the text. To select an item from the list by default, set the <xref:System.Web.UI.WebControls.ListItem.Selected%2A?displayProperty=fullName> property of the item to `true`.  \n  \n You can control the appearance and behavior of the HtmlSelect control by setting the <xref:System.Web.UI.HtmlControls.HtmlSelect.Size%2A> and <xref:System.Web.UI.HtmlControls.HtmlSelect.Multiple%2A> properties. The <xref:System.Web.UI.HtmlControls.HtmlSelect.Size%2A> property specifies the height (in rows) of the control. The <xref:System.Web.UI.HtmlControls.HtmlSelect.Multiple%2A> property specifies whether more than one item can be concurrently selected in the HtmlSelect control.  \n  \n By default, the HtmlSelect control is displayed as a drop-down list box. If you allow multiple selections (by setting the <xref:System.Web.UI.HtmlControls.HtmlSelect.Multiple%2A> property to `true`) or specify a height greater than one row (by setting the <xref:System.Web.UI.HtmlControls.HtmlSelect.Size%2A> property to a value greater than `1`), the control is displayed as a list box.  \n  \n To determine the selected item in a single-selection HtmlSelect control, use the <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex%2A> property to get the index of the selected item. You can then use this value to retrieve the item from the <xref:System.Web.UI.HtmlControls.HtmlSelect.Items%2A> collection.  \n  \n To determine the selected items from an HtmlSelect control that allows multiple selections, iterate through the <xref:System.Web.UI.HtmlControls.HtmlSelect.Items%2A> collection and test the <xref:System.Web.UI.WebControls.ListItem.Selected%2A?displayProperty=fullName> property of each item.  \n  \n The HtmlSelect class provides two properties to support data binding. To bind data to any object that implements the <xref:System.Collections.IEnumerable?displayProperty=fullName> interface (such as <xref:System.Data.DataView?displayProperty=fullName>, <xref:System.Collections.ArrayList?displayProperty=fullName>, and <xref:System.Collections.Generic.List%601?displayProperty=fullName>), or the <xref:System.ComponentModel.IListSource> interface, use the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSource%2A> property to specify the data source to bind to. When you set the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSource%2A> property, you must manually write the code to perform the data binding. To automatically bind an HtmlSelect control to a data source represented by a data source control, use the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID%2A> property and set its value to the <xref:System.Web.UI.Control.ID%2A> property of the data source control to use. When you set the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID%2A> property, the HtmlSelect control automatically binds to the specified data source control. Therefore, you do not need to explicitly call the <xref:System.Web.UI.Control.DataBind%2A> method.  \n  \n You can also specify which fields in the data source bind to the <xref:System.Web.UI.WebControls.ListItem.Text%2A?displayProperty=fullName> and <xref:System.Web.UI.WebControls.ListItem.Value%2A?displayProperty=fullName> properties of an item in the control by setting the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataTextField%2A> and <xref:System.Web.UI.HtmlControls.HtmlSelect.DataValueField%2A> properties, respectively. If the data source contains multiple sources of data, use the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataMember%2A> property to specify the specific source to bind to the control. For example, if you have a <xref:System.Data.DataSet?displayProperty=fullName> object with multiple tables, you must specify which table to bind to the control with the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataMember%2A> property.  \n  \n For a list of initial property values for an instance of HtmlSelect, see the <xref:System.Web.UI.HtmlControls.HtmlSelect.%23ctor%2A> constructor."
   example:
   - "The following code example demonstrates how to create an HtmlSelect control by explicitly declaring the items that appear in the control.  \n  \n [!code-cs[htmlselect#1](~/add/codesnippet/csharp/t-system.web.ui.htmlcont_15_1.aspx)]\n [!code-vb[htmlselect#1](~/add/codesnippet/visualbasic/t-system.web.ui.htmlcont_15_1.aspx)]  \n  \n The following code example demonstrates how to create an HtmlSelect control by binding the control to a data source.  \n  \n [!code-cs[HtmlSelectDataSource#1](~/add/codesnippet/csharp/t-system.web.ui.htmlcont_15_2.aspx)]\n [!code-vb[HtmlSelectDataSource#1](~/add/codesnippet/visualbasic/t-system.web.ui.htmlcont_15_2.aspx)]  \n  \n The following code example demonstrates how to use the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID%2A> property to specify the data source for an HtmlSelect control. The <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID%2A> property is set to the <xref:System.Web.UI.Control.ID%2A> property of the <xref:System.Web.UI.WebControls.SqlDataSource> control used to retrieve the data. When the page is loaded, the HtmlSelect control automatically binds to the data source specified by the <xref:System.Web.UI.WebControls.SqlDataSource> control and the data is displayed to the user.  \n  \n [!code-cs[HtmlSelect.DataSourceID#1](~/add/codesnippet/csharp/t-system.web.ui.htmlcont_15_3.aspx)]\n [!code-vb[HtmlSelect.DataSourceID#1](~/add/codesnippet/visualbasic/t-system.web.ui.htmlcont_15_3.aspx)]"
@@ -183,7 +183,7 @@ items:
   - System.Web.UI.HtmlControls.HtmlControl.System#Web#UI#IAttributeAccessor#SetAttribute(System.String,System.String)
   - System.Web.UI.HtmlControls.HtmlControl.TagName
   - System.Web.UI.HtmlControls.HtmlControl.ViewStateIgnoresCase
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,7 +209,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlSelect.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -241,7 +241,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The child control specified by the <code>obj</code> parameter must be of the type <xref href="System.Web.UI.WebControls.ListItem"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,7 +258,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.HtmlControls
-  summary: Clears the list selection of the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control and sets the &lt;xref:System.Web.UI.WebControls.ListItem.Selected%2A?displayProperty=fullName&gt; property of all items to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Clears the list selection of the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control and sets the &lt;xref:System.Web.UI.WebControls.ListItem.Selected%2A?displayProperty=fullName&gt; property of all items to `false`.
   remarks: The ClearSelection method iterates through the <xref:System.Web.UI.WebControls.ListItemCollection> collection represented by the <xref:System.Web.UI.HtmlControls.HtmlSelect> control's <xref:System.Web.UI.HtmlControls.HtmlSelect.Items%2A> property and sets the <xref:System.Web.UI.WebControls.ListItem.Selected%2A> property of each <xref:System.Web.UI.WebControls.ListItem> object to `false`.
   example:
   - "The following code example demonstrates how to override the ClearSelection method in a custom server control so that it always clears all selected items of an <xref:System.Web.UI.HtmlControls.HtmlSelect> collection.  \n  \n [!code-cs[CustomHtmlSelectClearSelection#1](~/add/codesnippet/csharp/m-system.web.ui.htmlcont_28_1.aspx)]\n [!code-vb[CustomHtmlSelectClearSelection#1](~/add/codesnippet/visualbasic/m-system.web.ui.htmlcont_28_1.aspx)]  \n  \n [!code-vb[CustomHtmlSelectClearSelection#2](~/add/codesnippet/visualbasic/m-system.web.ui.htmlcont_28_2.vb)]\n [!code-cs[CustomHtmlSelectClearSelection#2](~/add/codesnippet/csharp/m-system.web.ui.htmlcont_28_2.cs)]"
@@ -267,7 +267,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlSelect.ClearSelection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,7 +294,7 @@ items:
       description: A <xref href="System.Web.UI.ControlCollection"></xref> to contain the current server control's child server controls.
   overload: System.Web.UI.HtmlControls.HtmlSelect.CreateControlCollection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -325,7 +325,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The DataMember property is set during the data-binding phase of the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -350,16 +350,16 @@ items:
     content: public virtual object DataSource { get; set; }
     return:
       type: System.Object
-      description: An <xref href="System.Collections.IEnumerable"></xref> or <xref href="System.ComponentModel.IListSource"></xref> that contains a collection of values used to supply data to this control. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IEnumerable"></xref> or <xref href="System.ComponentModel.IListSource"></xref> that contains a collection of values used to supply data to this control. The default value is `null`.
   overload: System.Web.UI.HtmlControls.HtmlSelect.DataSource*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The specified data source is not compatible with either <xref href="System.Collections.IEnumerable"></xref> or <xref href="System.ComponentModel.IListSource"></xref>, and it is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The specified data source is not compatible with either <xref href="System.Collections.IEnumerable"></xref> or <xref href="System.ComponentModel.IListSource"></xref>, and it is not `null`.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The data source cannot be resolved because a value is specified for both the DataSource property and the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID*> property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The data source cannot be resolved because a value is specified for both the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSource*> property and the DataSourceID property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -418,7 +418,7 @@ items:
       description: The field from the data source to bind to the &lt;xref:System.Web.UI.WebControls.ListItem.Text%2A?displayProperty=fullName&gt; property of each item in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control. The default value is an empty string (""), which indicates that the property has not been set.
   overload: System.Web.UI.HtmlControls.HtmlSelect.DataTextField*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -446,7 +446,7 @@ items:
       description: The field from the data source to bind to the &lt;xref:System.Web.UI.WebControls.ListItem.Value%2A?displayProperty=fullName&gt; property of each item in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control. The default value is an empty string (""), which indicates that the property has not been set.
   overload: System.Web.UI.HtmlControls.HtmlSelect.DataValueField*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,7 +470,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlSelect.EnsureDataBound*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -494,7 +494,7 @@ items:
     parameters: []
     return:
       type: System.Collections.IEnumerable
-      description: An <xref href="System.Collections.IEnumerable"></xref> object. If no data source is specified, a default value of <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: An <xref href="System.Collections.IEnumerable"></xref> object. If no data source is specified, a default value of `null` is returned.
   overload: System.Web.UI.HtmlControls.HtmlSelect.GetData*
   exceptions:
   - type: System.Web.HttpException
@@ -503,7 +503,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "Both a <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSource*> and a <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID*> property are defined for the <xref href=\"System.Web.UI.HtmlControls.HtmlSelect\"></xref> control.  \n  \n \\- or -  \n  \n The requested data view cannot be found."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -535,7 +535,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt is made to read from or assign a value to this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -567,7 +567,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt is made to read from or assign a value to this property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,10 +590,10 @@ items:
     content: protected bool IsBoundUsingDataSourceID { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a data source control is defined; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a data source control is defined; otherwise, `false`.'
   overload: System.Web.UI.HtmlControls.HtmlSelect.IsBoundUsingDataSourceID*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -621,7 +621,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ListItemCollection"></xref> that contains the items listed in an <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control.
   overload: System.Web.UI.HtmlControls.HtmlSelect.Items*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -651,13 +651,13 @@ items:
       description: The collection of all incoming name values.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control's state has changed as a result of a postback; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control''s state has changed as a result of a postback; otherwise, `false`.'
   overload: System.Web.UI.HtmlControls.HtmlSelect.LoadPostData*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*> property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than <xref uid="langword_csharp_-1" name="-1" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*> property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than `-1`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -684,7 +684,7 @@ items:
       description: An <xref href="System.Object"></xref> that represents the control state to be restored.
   overload: System.Web.UI.HtmlControls.HtmlSelect.LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -709,10 +709,10 @@ items:
     content: public bool Multiple { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if multiple items can be concurrently selected in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if multiple items can be concurrently selected in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control; otherwise, `false`. The default value is `false`.'
   overload: System.Web.UI.HtmlControls.HtmlSelect.Multiple*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -740,7 +740,7 @@ items:
       description: The unique identifier name associated with the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control.
   overload: System.Web.UI.HtmlControls.HtmlSelect.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -775,8 +775,8 @@ items:
     description: "Both a <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSource*> and a <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID*> property are defined for the <xref href=\"System.Web.UI.HtmlControls.HtmlSelect\"></xref> control.  \n  \n \\- or -  \n  \n The requested data view cannot be found."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*> property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than <xref uid="langword_csharp_-1" name="-1" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*> property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than `-1`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -803,7 +803,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: An attempt was made to change the property value during the data-binding phase of the control.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -833,7 +833,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Web.UI.HtmlControls.HtmlSelect.OnDataSourceViewChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -860,7 +860,7 @@ items:
       description: A <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Web.UI.HtmlControls.HtmlSelect.OnInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -893,7 +893,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The data source cannot be resolved because a value is specified for both the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSource*> property and the <xref:System.Web.UI.HtmlControls.HtmlSelect.DataSourceID*> property.  \n  \n \\- or -  \n  \n The requested <xref:System.Web.UI.HtmlControls.HtmlSelect.DataMember*> property could not be found."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -922,7 +922,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Web.UI.HtmlControls.HtmlSelect.OnPreRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -951,7 +951,7 @@ items:
       description: A <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Web.UI.HtmlControls.HtmlSelect.OnServerChange*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -975,7 +975,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlSelect.RaisePostDataChangedEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1004,7 +1004,7 @@ items:
       description: The <xref href="System.Web.UI.HtmlTextWriter"></xref> that receives the rendered content.
   overload: System.Web.UI.HtmlControls.HtmlSelect.RenderAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1035,8 +1035,8 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: Multiple items were selected but the <xref:System.Web.UI.HtmlControls.HtmlSelect.Multiple*> property is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: Multiple items were selected but the <xref:System.Web.UI.HtmlControls.HtmlSelect.Multiple*> property is set to `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1059,10 +1059,10 @@ items:
     content: protected bool RequiresDataBinding { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the control needs to bind to a data source; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the control needs to bind to a data source; otherwise, `false`.'
   overload: System.Web.UI.HtmlControls.HtmlSelect.RequiresDataBinding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1086,10 +1086,10 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: The <xref href="System.Object"></xref> that contains the changes to the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> view state. If no view state is associated with the object, this method returns a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic).
+      description: The <xref href="System.Object"></xref> that contains the changes to the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> view state. If no view state is associated with the object, this method returns a null reference (`Nothing` in Visual Basic).
   overload: System.Web.UI.HtmlControls.HtmlSelect.SaveViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1116,7 +1116,7 @@ items:
       description: An <xref href="System.Array"></xref> of type <xref href="System.Int32"></xref> that contains the items to select.
   overload: System.Web.UI.HtmlControls.HtmlSelect.Select*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1141,13 +1141,13 @@ items:
     content: public virtual int SelectedIndex { get; set; }
     return:
       type: System.Int32
-      description: The ordinal index of the selected item in an <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control. A value of <xref uid="langword_csharp_-1" name="-1" href=""></xref> indicates that no item is selected.
+      description: The ordinal index of the selected item in an <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control. A value of `-1` indicates that no item is selected.
   overload: System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than <xref uid="langword_csharp_-1" name="-1" href=""></xref>.
-  platform:
+    description: The property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than `-1`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1173,7 +1173,7 @@ items:
       description: A collection that contains the zero-based indexes of all currently selected items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control.
   overload: System.Web.UI.HtmlControls.HtmlSelect.SelectedIndices*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1200,7 +1200,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1228,7 +1228,7 @@ items:
       description: The height (in rows) of the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control.
   overload: System.Web.UI.HtmlControls.HtmlSelect.Size*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1259,13 +1259,13 @@ items:
       description: The collection of all incoming name values.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control's state has changed as a result of a postback; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control''s state has changed as a result of a postback; otherwise, `false`.'
   overload: System.Web.UI.HtmlControls.HtmlSelect.System#Web#UI#IPostBackDataHandler#LoadPostData*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*> property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than <xref uid="langword_csharp_-1" name="-1" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.HtmlControls.HtmlSelect.SelectedIndex*> property was set to a value greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than `-1`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1290,7 +1290,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlSelect.System#Web#UI#IPostBackDataHandler#RaisePostDataChangedEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1314,7 +1314,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlSelect.TrackViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1344,8 +1344,8 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The Value property was set to an item greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than <xref uid="langword_csharp_-1" name="-1" href=""></xref>.
-  platform:
+    description: The Value property was set to an item greater than the number of items in the <xref href="System.Web.UI.HtmlControls.HtmlSelect"></xref> control or less than `-1`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1633,8 +1633,8 @@ references:
 - uid: System.Int32[]
   parent: System
   isExternal: false
-  name: Int32
-  nameWithType: Int32
+  name: Int32[]
+  nameWithType: Int32[]
   fullName: System.Int32[]
   spec.csharp:
   - uid: System.Int32

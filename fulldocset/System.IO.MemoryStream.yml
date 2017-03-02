@@ -74,7 +74,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -98,7 +98,7 @@ items:
     parameters: []
   overload: System.IO.MemoryStream.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,8 +127,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>buffer</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>capacity</code> is negative.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,8 +192,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>buffer</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -228,14 +228,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> or <code>count</code> is less than zero.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The buffer length minus <code>index</code> is less than <code>count</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -273,14 +273,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> or <code>count</code> are negative.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The buffer length minus <code>index</code> is less than <code>count</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,19 +316,19 @@ items:
       description: The setting of the <xref:System.IO.MemoryStream.CanWrite*> property, which determines whether the stream supports writing.
     - id: publiclyVisible
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enable <xref:System.IO.MemoryStream.GetBuffer*>, which returns the unsigned byte array from which the stream was created; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to enable <xref:System.IO.MemoryStream.GetBuffer*>, which returns the unsigned byte array from which the stream was created; otherwise, `false`.'
   overload: System.IO.MemoryStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> or <code>count</code> is negative.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The buffer length minus <code>index</code> is less than <code>count</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -351,10 +351,10 @@ items:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream is open.
+      description: '`true` if the stream is open.'
   overload: System.IO.MemoryStream.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -377,10 +377,10 @@ items:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream is open.
+      description: '`true` if the stream is open.'
   overload: System.IO.MemoryStream.CanSeek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,10 +403,10 @@ items:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports writing; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the stream supports writing; otherwise, `false`.'
   overload: System.IO.MemoryStream.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -442,8 +442,8 @@ items:
     description: The current stream is closed.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <xref uid="langword_csharp_set" name="set" href=""></xref> is invoked on a stream whose capacity cannot be modified.
-  platform:
+    description: '`set` is invoked on a stream whose capacity cannot be modified.'
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,10 +467,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.IO.MemoryStream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -494,7 +494,7 @@ items:
     parameters: []
   overload: System.IO.MemoryStream.Flush*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -523,8 +523,8 @@ items:
   exceptions:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <xref uid="langword_csharp_MemoryStream" name="MemoryStream" href=""></xref> instance was not created with a publicly visible buffer.
-  platform:
+    description: The `MemoryStream` instance was not created with a publicly visible buffer.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,7 +555,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -577,7 +577,7 @@ items:
     parameters: []
   overload: System.IO.MemoryStream.ObjectInvariant*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.MemoryStream.Position
   id: Position
@@ -608,7 +608,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -648,7 +648,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>count</code> is negative.
@@ -658,7 +658,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current stream instance is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -690,7 +690,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current stream instance is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -737,7 +737,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current stream instance is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -770,7 +770,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>value</code> is negative or is greater than the maximum length of the <xref href="System.IO.MemoryStream"></xref>, where the maximum length is(<xref href="System.Int32.MaxValue"></xref> - origin), and origin is the index into the underlying buffer at which the stream starts.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -797,7 +797,7 @@ items:
       description: A new byte array.
   overload: System.IO.MemoryStream.ToArray*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -834,7 +834,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The stream does not support writing. For additional information see <xref:System.IO.Stream.CanWrite*>.  \n  \n -or-  \n  \n The current position is closer than <code>count</code> bytes to the end of the stream, and the capacity cannot be modified."
@@ -850,7 +850,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current stream instance is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -885,7 +885,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -914,11 +914,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>stream</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current or target stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -984,8 +984,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

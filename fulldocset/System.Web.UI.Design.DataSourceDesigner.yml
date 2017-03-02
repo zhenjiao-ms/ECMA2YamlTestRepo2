@@ -143,7 +143,7 @@ items:
   - System.Web.UI.Design.HtmlControlDesigner.OnSetParent
   - System.Web.UI.Design.HtmlControlDesigner.PreFilterEvents(System.Collections.IDictionary)
   - System.Web.UI.Design.HtmlControlDesigner.ShouldCodeSerialize
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
     parameters: []
   overload: System.Web.UI.Design.DataSourceDesigner.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,7 +195,7 @@ items:
       description: A <xref href="System.ComponentModel.Design.DesignerActionListCollection"></xref> object containing the action list items for the control designer.
   overload: System.Web.UI.Design.DataSourceDesigner.ActionLists*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,10 +218,10 @@ items:
     content: public virtual bool CanConfigure { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref:System.Web.UI.Design.DataSourceDesigner.Configure*> can be called; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <xref:System.Web.UI.Design.DataSourceDesigner.Configure*> can be called; otherwise, `false`. The default is `false`.'
   overload: System.Web.UI.Design.DataSourceDesigner.CanConfigure*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,10 +244,10 @@ items:
     content: public virtual bool CanRefreshSchema { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Web.UI.Design.DataSourceDesigner.RefreshSchema*> can be called; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Web.UI.Design.DataSourceDesigner.RefreshSchema*> can be called; otherwise, `false`. The default is `false`.'
   overload: System.Web.UI.Design.DataSourceDesigner.CanRefreshSchema*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -274,7 +274,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to invoke this method in the base class.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -298,7 +298,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -325,7 +325,7 @@ items:
       description: The markup for the design-time display.
   overload: System.Web.UI.Design.DataSourceDesigner.GetDesignTimeHtml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -352,10 +352,10 @@ items:
       description: The name of the view.
     return:
       type: System.Web.UI.Design.DesignerDataSourceView
-      description: This implementation always returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: This implementation always returns `null`.
   overload: System.Web.UI.Design.DataSourceDesigner.GetView*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,7 +381,7 @@ items:
       description: An array of view names.
   overload: System.Web.UI.Design.DataSourceDesigner.GetViewNames*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -398,7 +398,7 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: Raises the <xref href="System.Web.UI.Design.DataSourceDesigner.DataSourceChanged"></xref> event when the properties of the data source have changed and the <xref:System.Web.UI.Design.DataSourceDesigner.SuppressingDataSourceEvents*> value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Raises the <xref href="System.Web.UI.Design.DataSourceDesigner.DataSourceChanged"></xref> event when the properties of the data source have changed and the <xref:System.Web.UI.Design.DataSourceDesigner.SuppressingDataSourceEvents*> value is `false`.
   remarks: The OnDataSourceChanged method notifies the control designers of each control that is bound to the associated data source to refresh its control in the design host. The OnDataSourceChanged method can be suppressed with the <xref:System.Web.UI.Design.DataSourceDesigner.SuppressDataSourceEvents%2A> method or by calling the <xref:System.Web.UI.Design.DataSourceDesigner.RefreshSchema%2A> method with an argument of `false`.
   syntax:
     content: protected virtual void OnDataSourceChanged (EventArgs e);
@@ -408,7 +408,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object provided by the calling object.
   overload: System.Web.UI.Design.DataSourceDesigner.OnDataSourceChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -425,7 +425,7 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: Raises the <xref href="System.Web.UI.Design.DataSourceDesigner.SchemaRefreshed"></xref> event when the schema of the data source has changed and the <xref:System.Web.UI.Design.DataSourceDesigner.SuppressingDataSourceEvents*> value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Raises the <xref href="System.Web.UI.Design.DataSourceDesigner.SchemaRefreshed"></xref> event when the schema of the data source has changed and the <xref:System.Web.UI.Design.DataSourceDesigner.SuppressingDataSourceEvents*> value is `false`.
   remarks: The OnSchemaRefreshed method notifies the control designers of each control that is bound to the associated data source that the fields in the schema have changed. The OnSchemaRefreshed method can be suppressed with the <xref:System.Web.UI.Design.DataSourceDesigner.SuppressDataSourceEvents%2A> method or by calling the <xref:System.Web.UI.Design.DataSourceDesigner.RefreshSchema%2A> property with an argument of `false`.
   syntax:
     content: protected virtual void OnSchemaRefreshed (EventArgs e);
@@ -435,7 +435,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object.
   overload: System.Web.UI.Design.DataSourceDesigner.OnSchemaRefreshed*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,13 +459,13 @@ items:
     parameters:
     - id: preferSilent
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to allow events when refreshing the schema; <xref uid="langword_csharp_false" name="false" href=""></xref> to disable the <xref href="System.Web.UI.Design.DataSourceDesigner.DataSourceChanged"></xref> and <xref href="System.Web.UI.Design.DataSourceDesigner.SchemaRefreshed"></xref> events when refreshing the schema.
+      description: '`true` to allow events when refreshing the schema; `false` to disable the <xref href="System.Web.UI.Design.DataSourceDesigner.DataSourceChanged"></xref> and <xref href="System.Web.UI.Design.DataSourceDesigner.SchemaRefreshed"></xref> events when refreshing the schema.'
   overload: System.Web.UI.Design.DataSourceDesigner.RefreshSchema*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: An attempt was made to invoke this method in the base class.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to invoke this method in the base class.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -516,7 +516,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -546,10 +546,10 @@ items:
       description: The second schema to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if both schemas are equivalent; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if both schemas are equivalent; otherwise, `false`.'
   overload: System.Web.UI.Design.DataSourceDesigner.SchemasEquivalent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -572,7 +572,7 @@ items:
     parameters: []
   overload: System.Web.UI.Design.DataSourceDesigner.SuppressDataSourceEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,10 +595,10 @@ items:
     content: protected bool SuppressingDataSourceEvents { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if events are being suppressed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if events are being suppressed; otherwise, `false`.'
   overload: System.Web.UI.Design.DataSourceDesigner.SuppressingDataSourceEvents*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -628,10 +628,10 @@ items:
       description: The second view to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if both views are equivalent; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if both views are equivalent; otherwise, `false`.'
   overload: System.Web.UI.Design.DataSourceDesigner.ViewSchemasEquivalent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -739,8 +739,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

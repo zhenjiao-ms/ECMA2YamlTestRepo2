@@ -96,7 +96,7 @@ items:
   - System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm(System.String,System.Security.AccessControl.AccessControlSections)
   - System.Security.AccessControl.ObjectSecurity.WriteLock
   - System.Security.AccessControl.ObjectSecurity.WriteUnlock
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,7 +122,7 @@ items:
       description: A <xref href="System.Type"></xref> object representing the <xref href="System.Security.AccessControl.FileSystemRights"></xref> enumeration.
   overload: System.Security.AccessControl.FileSystemSecurity.AccessRightType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -152,7 +152,7 @@ items:
       description: An integer that specifies an access type.
     - id: isInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rule is inherited; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rule is inherited; otherwise, `false`.'
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
       description: One of the <xref href="System.Security.AccessControl.InheritanceFlags"></xref> values that specifies how to propagate access masks to child objects.
@@ -172,11 +172,11 @@ items:
     description: The <code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>type</code> parameters specify an invalid value.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>identityReference</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>accessMask</code> parameter is zero."
+    description: "The <code>identityReference</code> parameter is `null`.  \n  \n -or-  \n  \n The <code>accessMask</code> parameter is zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>identityReference</code> parameter is neither of type <xref href="System.Security.Principal.SecurityIdentifier"></xref>, nor of a type such as <xref href="System.Security.Principal.NTAccount"></xref> that can be converted to type <xref href="System.Security.Principal.SecurityIdentifier"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,7 +202,7 @@ items:
       description: A <xref href="System.Type"></xref> object representing the <xref href="System.Security.AccessControl.FileSystemAccessRule"></xref> class.
   overload: System.Security.AccessControl.FileSystemSecurity.AccessRuleType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,8 +233,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,8 +265,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -296,7 +296,7 @@ items:
       description: An integer that specifies an access type.
     - id: isInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rule is inherited; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rule is inherited; otherwise, `false`.'
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
       description: One of the <xref href="System.Security.AccessControl.InheritanceFlags"></xref> values that specifies how to propagate access masks to child objects.
@@ -316,11 +316,11 @@ items:
     description: The <code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>flags</code> properties specify an invalid value.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>identityReference</code> property is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>accessMask</code> property is zero."
+    description: "The <code>identityReference</code> property is `null`.  \n  \n -or-  \n  \n The <code>accessMask</code> property is zero."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>identityReference</code> property is neither of type <xref href="System.Security.Principal.SecurityIdentifier"></xref>, nor of a type such as <xref href="System.Security.Principal.NTAccount"></xref> that can be converted to type <xref href="System.Security.Principal.SecurityIdentifier"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,7 +346,7 @@ items:
       description: A <xref href="System.Type"></xref> object representing the <xref href="System.Security.AccessControl.FileSystemAuditRule"></xref> class.
   overload: System.Security.AccessControl.FileSystemSecurity.AuditRuleType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -375,13 +375,13 @@ items:
       description: A <xref href="System.Security.AccessControl.FileSystemAccessRule"></xref> object that represents an access control list (ACL) permission to remove from a file or directory.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rule was removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rule was removed; otherwise, `false`.'
   overload: System.Security.AccessControl.FileSystemSecurity.RemoveAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -410,8 +410,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,8 +440,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,13 +470,13 @@ items:
       description: A <xref href="System.Security.AccessControl.FileSystemAuditRule"></xref> object that represents an audit rule to remove from a file or directory.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the audit rule was removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>
+      description: '`true` if the audit rule was removed; otherwise, `false`'
   overload: System.Security.AccessControl.FileSystemSecurity.RemoveAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -505,8 +505,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -535,8 +535,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -565,8 +565,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,8 +595,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -625,8 +625,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rule</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>rule</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

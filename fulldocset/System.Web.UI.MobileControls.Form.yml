@@ -211,7 +211,7 @@ items:
   - System.Web.UI.MobileControls.Panel.AddLinkedForms(System.Collections.IList)
   - System.Web.UI.MobileControls.Panel.Content
   - System.Web.UI.MobileControls.Panel.Paginate
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,7 +234,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.Form.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,7 +260,7 @@ items:
       description: The URL to which the form is submitted.
   overload: System.Web.UI.MobileControls.Form.Action*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,7 +287,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,19 +304,19 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Gets or sets a property that determines whether an additional trailing break is rendered after the control. This break causes subsequent content to start on the next line. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Gets or sets a property that determines whether an additional trailing break is rendered after the control. This break causes subsequent content to start on the next line. The default is `true`. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: This property is ignored by the <xref:System.Web.UI.MobileControls.Form> control.
   syntax:
     content: public override bool BreakAfter { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an additional trailing break is rendered after the control; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an additional trailing break is rendered after the control; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Form.BreakAfter*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: "The property was read at design time.  \n  \n -or-  \n  \n An attempt was made to set the property."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -333,7 +333,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Gets or sets the control on the form that can be paginated. The default is <xref uid="langword_csharp_null" name="null" href=""></xref> (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic). This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Gets or sets the control on the form that can be paginated. The default is `null` (`Nothing` in Visual Basic). This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: The ControlToPaginate property is used to allow a single control on a form to paginate its contents across several views on mobile devices and providing next and previous navigation between views. A control can paginate its contents even if a containing <xref:System.Web.UI.MobileControls.Panel> control has its <xref:System.Web.UI.MobileControls.Panel.Paginate%2A> property set to `false`.
   example:
   - "The following code example demonstrates how to use the ControlToPaginate property of the <xref:System.Web.UI.MobileControls.Form> class to specify which control to paginate.  \n  \n The example creates a page with two forms. One form has a very long string that on some devices must be paginated to give the user access to the entire text. In order to see the pagination in action, you must view the example on a device that handles pagination. In [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)], you can use one of the device emulators available with the **Device Emulator Manager** on the **Tools** menu.  \n  \n> [!NOTE]\n>  The following code example uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code example must be copied into an empty text file that has an .aspx extension. For more information, see [ASP.NET Web Forms Page Syntax Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[MobileFormSample#4](~/add/codesnippet/csharp/p-system.web.ui.mobileco_20_1.aspx)]\n [!code-vb[MobileFormSample#4](~/add/codesnippet/visualbasic/p-system.web.ui.mobileco_20_1.aspx)]"
@@ -344,7 +344,7 @@ items:
       description: The control on the form that can be paginated.
   overload: System.Web.UI.MobileControls.Form.ControlToPaginate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -370,7 +370,7 @@ items:
       description: Set to true if the instantiated templates must bind to available data (which usually happens on the first request). Set to false if the templates must not bind to data, and instead rely on view state to fill them in (which usually happens on subsequent postbacks).
   overload: System.Web.UI.MobileControls.Form.CreateDefaultTemplatedUI*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -387,7 +387,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Gets or sets the index of the current page in the active form. The default value is <xref uid="langword_csharp_0" name="0" href=""></xref>. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Gets or sets the index of the current page in the active form. The default value is `0`. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: This property is used for form pagination.
   syntax:
     content: public int CurrentPage { get; set; }
@@ -396,7 +396,7 @@ items:
       description: The index of the current page in the active form.
   overload: System.Web.UI.MobileControls.Form.CurrentPage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -423,7 +423,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -451,7 +451,7 @@ items:
       description: The <xref href="System.Web.UI.MobileControls.Panel"></xref> that represents the footer for the form.
   overload: System.Web.UI.MobileControls.Form.Footer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -481,7 +481,7 @@ items:
       description: A set of forms that are linked to the current form.
   overload: System.Web.UI.MobileControls.Form.GetLinkedForms*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -498,16 +498,16 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the form has a handler for the <xref href="System.Web.UI.MobileControls.Form.Activate"></xref> event. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if the form has a handler for the <xref href="System.Web.UI.MobileControls.Form.Activate"></xref> event. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: public virtual bool HasActivateHandler ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the form has a handler for the <xref href="System.Web.UI.MobileControls.Form.Activate"></xref> event; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the form has a handler for the <xref href="System.Web.UI.MobileControls.Form.Activate"></xref> event; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Form.HasActivateHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -524,16 +524,16 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Web.UI.MobileControls.Form.Deactivate"></xref> event exists. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if the <xref href="System.Web.UI.MobileControls.Form.Deactivate"></xref> event exists. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: public virtual bool HasDeactivateHandler ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Web.UI.MobileControls.Form.Deactivate"></xref> event exists; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Web.UI.MobileControls.Form.Deactivate"></xref> event exists; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Form.HasDeactivateHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -561,7 +561,7 @@ items:
       description: The <xref href="System.Web.UI.MobileControls.Panel"></xref> that represents the header for the form.
   overload: System.Web.UI.MobileControls.Form.Header*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -587,7 +587,7 @@ items:
       description: Current view state of the control.
   overload: System.Web.UI.MobileControls.Form.LoadPrivateViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -604,7 +604,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Gets or sets the method used to submit the form. The default value is <xref uid="langword_csharp_post" name="post" href=""></xref>. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Gets or sets the method used to submit the form. The default value is `post`. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: A `get` request is limited in the amount of data it can post. Some types of postbacks might fail when using a `get` request. The advantage of a `get` request is that all the parameters are specified as part of the URL, and the URL can be cached or saved. The elements of a `post` request are contained within the <xref:System.Web.HttpRequest.Form%2A?displayProperty=fullName>.
   syntax:
     content: public System.Web.UI.MobileControls.FormMethod Method { get; set; }
@@ -613,7 +613,7 @@ items:
       description: The method used to submit the form.
   overload: System.Web.UI.MobileControls.Form.Method*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -642,7 +642,7 @@ items:
       description: An object defined by the <xref href="System.EventArgs"></xref> object that contains event data.
   overload: System.Web.UI.MobileControls.Form.OnActivate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -665,10 +665,10 @@ items:
     parameters:
     - id: e
       type: System.EventArgs
-      description: An <xref uid="langword_csharp_EventArgs" name="EventArgs" href=""></xref> object that contains the event data.
+      description: An `EventArgs` object that contains the event data.
   overload: System.Web.UI.MobileControls.Form.OnDataBinding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -697,7 +697,7 @@ items:
       description: An object defined by an <xref href="System.EventArgs"></xref> object that contains event data.
   overload: System.Web.UI.MobileControls.Form.OnDeactivate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -727,7 +727,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: The form is contained by another form.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -756,7 +756,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> object that contains event data.
   overload: System.Web.UI.MobileControls.Form.OnPaginated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -782,7 +782,7 @@ items:
       description: An EventArgs object that contains the event data.
   overload: System.Web.UI.MobileControls.Form.OnPreRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -810,7 +810,7 @@ items:
       description: The number of pages in the form after the form is paginated.
   overload: System.Web.UI.MobileControls.Form.PageCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -838,7 +838,7 @@ items:
       description: The style used to render the form's pagination UI.
   overload: System.Web.UI.MobileControls.Form.PagerStyle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -860,10 +860,10 @@ items:
     content: protected override bool PaginateChildren { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the children of the control must be paginated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the children of the control must be paginated; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Form.PaginateChildren*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -890,7 +890,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -916,7 +916,7 @@ items:
       description: The pager.
   overload: System.Web.UI.MobileControls.Form.PaginateRecursive*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -942,7 +942,7 @@ items:
       description: A <xref href="System.String"></xref> that represents an optional event argument to be passed to the event handler.
   overload: System.Web.UI.MobileControls.Form.RaisePostBackEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -968,7 +968,7 @@ items:
       description: Writes markup characters and text to an output stream.
   overload: System.Web.UI.MobileControls.Form.Render*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -994,7 +994,7 @@ items:
       description: An object containing the altered private view state.
   overload: System.Web.UI.MobileControls.Form.SavePrivateViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1019,7 +1019,7 @@ items:
       description: The panel that contains any device-specific script for the form.
   overload: System.Web.UI.MobileControls.Form.Script*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1047,7 +1047,7 @@ items:
       description: A <xref href="System.String"></xref> that represents an optional event argument to be passed to the event handler.
   overload: System.Web.UI.MobileControls.Form.System#Web#UI#IPostBackEventHandler#RaisePostBackEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1064,7 +1064,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Gets or sets the title of the specified form. The default value is an empty <xref uid="langword_csharp_string" name="string" href=""></xref>. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Gets or sets the title of the specified form. The default value is an empty `string`. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: For devices that support a title separate from the page content, you can render the title as part of the form.
   syntax:
     content: public string Title { get; set; }
@@ -1073,7 +1073,7 @@ items:
       description: The title can be rendered as part of the form, on devices that support a title separate from page content (for example, on the title bar of a browser using the title tag in HTML).
   overload: System.Web.UI.MobileControls.Form.Title*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

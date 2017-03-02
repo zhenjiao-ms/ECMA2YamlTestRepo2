@@ -60,7 +60,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int32,System.Int32,System.Action{System.Int32,System.Threading.Tasks.ParallelLoopState})
   id: For(System.Int32,System.Int32,System.Action{System.Int32,System.Threading.Tasks.ParallelLoopState})
@@ -74,7 +74,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop in which iterations may run in parallel and the state of the loop can be monitored and manipulated.
+  summary: Executes a `for` (`For` in Visual Basic) loop in which iterations may run in parallel and the state of the loop can be monitored and manipulated.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with two arguments:  \n  \n-   An <xref:System.Int32> value that represents the iteration count.  \n  \n-   A <xref:System.Threading.Tasks.ParallelLoopState> instance that can be used to break out of the loop prematurely. The <xref:System.Threading.Tasks.ParallelLoopState> object is created by the compiler; it cannot be instantiated in user code.  \n  \n Calling the <xref:System.Threading.Tasks.ParallelLoopState.Break%2A> method informs the `for` operation that iterations after the current one don't have to execute. However, all iterations before the current one will still have to be executed if they haven't already.  \n  \n Therefore, calling <xref:System.Threading.Tasks.ParallelLoopState.Break%2A> is similar to using a break operation within a conventional `for` loop in a language like C#, but it is not a perfect substitute: For example, there is no guarantee that iterations after the current one will definitely not execute.  \n  \n If executing all iterations before the current one is not necessary, use the <xref:System.Threading.Tasks.ParallelLoopState.Stop%2A> method instead of using <xref:System.Threading.Tasks.ParallelLoopState.Break%2A>. Calling <xref:System.Threading.Tasks.ParallelLoopState.Stop%2A> informs the `for` loop that it may abandon all remaining iterations, regardless of whether they're before or after the current iteration, because all required work will have already been completed. However, as with <xref:System.Threading.Tasks.ParallelLoopState.Break%2A>, there are no guarantees regarding which other iterations will not execute.  \n  \n If a loop is ended prematurely, the <xref:System.Threading.Tasks.ParallelLoopResult> structure that is returned will contain relevant information about the loop's completion.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, the method returns immediately without performing any iterations."
   example:
   - "The following example executes up to 100 iterations of a loop in parallel. Each iteration pauses for a random interval from 1 to 1,000 milliseconds. A randomly generated value determines on which iteration of the loop the <xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=fullName> method is called. As the output from the example shows, no iterations whose index is greater than the <xref:System.Threading.Tasks.ParallelLoopState.LowestBreakIteration%2A?displayProperty=fullName> property value start after the call to the <xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=fullName> method.  \n  \n [!code-cs[System.Threading.Tasks.ParallelLoopState#2](~/add/codesnippet/csharp/23d1267c-f208-4c8f-9353-_1.cs)]\n [!code-vb[System.Threading.Tasks.ParallelLoopState#2](~/add/codesnippet/visualbasic/23d1267c-f208-4c8f-9353-_1.vb)]  \n  \n Because iterations of the loop are still likely to be executing when the <xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=fullName> method is called, each iteration calls the <xref:System.Threading.Tasks.ParallelLoopState.ShouldExitCurrentIteration%2A?displayProperty=fullName> property to check whether another iteration has called the <xref:System.Threading.Tasks.ParallelLoopState.Break%2A?displayProperty=fullName> method. If  the property value is `true`, the iteration checks the value of the <xref:System.Threading.Tasks.ParallelLoopState.LowestBreakIteration%2A?displayProperty=fullName> property and, if it is greater than the current iteration's index value, returns immediately."
@@ -97,11 +97,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>body</code> argument is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>body</code> argument is `null`.
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int32,System.Int32,System.Action{System.Int32})
   id: For(System.Int32,System.Int32,System.Action{System.Int32})
@@ -115,7 +115,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop in which iterations may run in parallel.
+  summary: Executes a `for` (`For` in Visual Basic) loop in which iterations may run in parallel.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the iteration count (<xref:System.Int32>) as a parameter.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, the method returns immediately without performing any iterations."
   example:
   - "The following example uses the For method for 100 invocations of a delegate that generates random byte values and computes their sum.  \n  \n [!code-vb[System.Threading.Tasks.Parallel.For#1](~/add/codesnippet/visualbasic/08251bbd-6afb-4a6a-8357-_1.vb)]\n [!code-cs[System.Threading.Tasks.Parallel.For#1](~/add/codesnippet/csharp/08251bbd-6afb-4a6a-8357-_1.cs)]"
@@ -138,11 +138,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>body</code> argument is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>body</code> argument is `null`.
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int64,System.Int64,System.Action{System.Int64,System.Threading.Tasks.ParallelLoopState})
   id: For(System.Int64,System.Int64,System.Action{System.Int64,System.Threading.Tasks.ParallelLoopState})
@@ -156,7 +156,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop with 64-bit indexes in which iterations may run in parallel and the state of the loop can be monitored and manipulated.
+  summary: Executes a `for` (`For` in Visual Basic) loop with 64-bit indexes in which iterations may run in parallel and the state of the loop can be monitored and manipulated.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the following parameters: the iteration count (<xref:System.Int64>), and a <xref:System.Threading.Tasks.ParallelLoopState> instance that may be used to break out of the loop prematurely.  \n  \n Calling the <xref:System.Threading.Tasks.ParallelLoopState.Break%2A> method informs the `for` operation that iterations after the current one don’t have to be executed, but all iterations before the current one do.  \n  \n Therefore, calling Break is similar to using a break operation within a conventional `for` loop in a language like C#, but it is not a perfect substitute: For example, there is no guarantee that iterations after the current one will definitely not execute.  \n  \n If executing all iterations before the current one is not necessary, use the <xref:System.Threading.Tasks.ParallelLoopState.Stop%2A> method instead of using <xref:System.Threading.Tasks.ParallelLoopState.Break%2A>. Calling <xref:System.Threading.Tasks.ParallelLoopState.Stop%2A> informs the `for` loop that it may abandon all remaining iterations, regardless of whether they're before or after the current iteration, because all required work will have already been completed. However, as with <xref:System.Threading.Tasks.ParallelLoopState.Break%2A>, there are no guarantees regarding which other iterations will not execute.  \n  \n If a loop is ended prematurely, the <xref:System.Threading.Tasks.ParallelLoopResult> structure that is returned will contain relevant information about the loop's completion.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, then the method returns immediately without performing any iterations."
   syntax:
     content: public static System.Threading.Tasks.ParallelLoopResult For (long fromInclusive, long toExclusive, Action<long,System.Threading.Tasks.ParallelLoopState> body);
@@ -177,11 +177,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>body</code> argument is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>body</code> argument is `null`.
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int64,System.Int64,System.Action{System.Int64})
   id: For(System.Int64,System.Int64,System.Action{System.Int64})
@@ -195,7 +195,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop with 64-bit indexes in which iterations may run in parallel.
+  summary: Executes a `for` (`For` in Visual Basic) loop with 64-bit indexes in which iterations may run in parallel.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the iteration count (<xref:System.Int64>) as a parameter.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, the method returns immediately without performing any iterations."
   syntax:
     content: public static System.Threading.Tasks.ParallelLoopResult For (long fromInclusive, long toExclusive, Action<long> body);
@@ -216,11 +216,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>body</code> argument is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>body</code> argument is `null`.
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int32,System.Int32,System.Threading.Tasks.ParallelOptions,System.Action{System.Int32,System.Threading.Tasks.ParallelLoopState})
   id: For(System.Int32,System.Int32,System.Threading.Tasks.ParallelOptions,System.Action{System.Int32,System.Threading.Tasks.ParallelLoopState})
@@ -234,7 +234,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop in which iterations may run in parallel, loop options can be configured, and the state of the loop can be monitored and manipulated.
+  summary: Executes a `for` (`For` in Visual Basic) loop in which iterations may run in parallel, loop options can be configured, and the state of the loop can be monitored and manipulated.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the following parameters: the iteration count (<xref:System.Int32>), and a <xref:System.Threading.Tasks.ParallelLoopState> instance that may be used to break out of the loop prematurely.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, the method returns immediately without performing any iterations."
   syntax:
     content: public static System.Threading.Tasks.ParallelLoopResult For (int fromInclusive, int toExclusive, System.Threading.Tasks.ParallelOptions parallelOptions, Action<int,System.Threading.Tasks.ParallelLoopState> body);
@@ -261,14 +261,14 @@ items:
     description: The <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> argument is canceled.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>body</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>body</code> argument is `null`.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is `null`."
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.CancellationTokenSource"></xref> associated with the <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int32,System.Int32,System.Threading.Tasks.ParallelOptions,System.Action{System.Int32})
   id: For(System.Int32,System.Int32,System.Threading.Tasks.ParallelOptions,System.Action{System.Int32})
@@ -282,7 +282,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop in which iterations may run in parallel and loop options can be configured.
+  summary: Executes a `for` (`For` in Visual Basic) loop in which iterations may run in parallel and loop options can be configured.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the iteration count (<xref:System.Int32>) as a parameter.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, then the method returns immediately without performing any iterations."
   example:
   - "The following example shows how to cancel a parallel loop:  \n  \n [!code-vb[System.Threading.Tasks.Parallel#05](~/add/codesnippet/visualbasic/789e8c99-e45e-4bd9-99b9-_1.vb)]\n [!code-cs[System.Threading.Tasks.Parallel#05](~/add/codesnippet/csharp/789e8c99-e45e-4bd9-99b9-_1.cs)]"
@@ -311,14 +311,14 @@ items:
     description: The <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> argument is canceled.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>body</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>body</code> argument is `null`.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is `null`."
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.CancellationTokenSource"></xref> associated with the <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int64,System.Int64,System.Threading.Tasks.ParallelOptions,System.Action{System.Int64,System.Threading.Tasks.ParallelLoopState})
   id: For(System.Int64,System.Int64,System.Threading.Tasks.ParallelOptions,System.Action{System.Int64,System.Threading.Tasks.ParallelLoopState})
@@ -332,7 +332,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic)  loop with 64-bit indexes in which iterations may run in parallel, loop options can be configured, and the state of the loop can be monitored and manipulated.
+  summary: Executes a `for` (`For` in Visual Basic)  loop with 64-bit indexes in which iterations may run in parallel, loop options can be configured, and the state of the loop can be monitored and manipulated.
   remarks: "The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the following parameters: the iteration count (<xref:System.Int64>), and a <xref:System.Threading.Tasks.ParallelLoopState> instance that may be used to break out of the loop prematurely.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, the method returns immediately without performing any iterations."
   example:
   - "The following example shows how to use the <xref:System.Threading.Tasks.Parallel.For%2A?displayProperty=fullName> method with a <xref:System.Threading.Tasks.ParallelOptions> object:  \n  \n [!code-cs[System.Threading.Tasks.Parallel#03](~/add/codesnippet/csharp/ed9ad7ed-5ee9-4e9d-8b57-_1.cs)]\n [!code-vb[System.Threading.Tasks.Parallel#03](~/add/codesnippet/visualbasic/ed9ad7ed-5ee9-4e9d-8b57-_1.vb)]"
@@ -361,14 +361,14 @@ items:
     description: The <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> argument is canceled.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>body</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>body</code> argument is `null`.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is `null`."
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.CancellationTokenSource"></xref> associated with the <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For(System.Int64,System.Int64,System.Threading.Tasks.ParallelOptions,System.Action{System.Int64})
   id: For(System.Int64,System.Int64,System.Threading.Tasks.ParallelOptions,System.Action{System.Int64})
@@ -382,7 +382,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading.Tasks
-  summary: Executes a <xref uid="langword_csharp_for" name="for" href=""></xref> (<xref uid="langword_csharp_For" name="For" href=""></xref> in Visual Basic) loop with 64-bit indexes in which iterations may run in parallel and loop options can be configured.
+  summary: Executes a `for` (`For` in Visual Basic) loop with 64-bit indexes in which iterations may run in parallel and loop options can be configured.
   remarks: "Supports 64-bit indexes. The `body` delegate is invoked once for each value in the iteration range (`fromInclusive`, `toExclusive`). It is provided with the iteration count (<xref:System.Int64>) as a parameter.  \n  \n If `fromInclusive` is greater than or equal to `toExclusive`, then the method returns immediately without performing any iterations."
   example:
   - "The following example shows how to use <xref:System.Threading.Tasks.ParallelOptions> to specify a custom task scheduler:  \n  \n [!code-cs[System.Threading.Tasks.Parallel#06](~/add/codesnippet/csharp/234c3869-666f-4db3-b820-_1.cs)]\n [!code-vb[System.Threading.Tasks.Parallel#06](~/add/codesnippet/visualbasic/234c3869-666f-4db3-b820-_1.vb)]"
@@ -411,14 +411,14 @@ items:
     description: The <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> argument is canceled.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>body</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>body</code> argument is `null`.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is `null`."
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that contains all the individual exceptions thrown on all threads.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.CancellationTokenSource"></xref> associated with the <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For``1(System.Int32,System.Int32,System.Func{``0},System.Func{System.Int32,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
   id: For``1(System.Int32,System.Int32,System.Func{``0},System.Func{System.Int32,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
@@ -455,7 +455,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.For<TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For``1(System.Int64,System.Int64,System.Func{``0},System.Func{System.Int64,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
   id: For``1(System.Int64,System.Int64,System.Func{``0},System.Func{System.Int64,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
@@ -492,7 +492,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.For<TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For``1(System.Int32,System.Int32,System.Threading.Tasks.ParallelOptions,System.Func{``0},System.Func{System.Int32,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
   id: For``1(System.Int32,System.Int32,System.Threading.Tasks.ParallelOptions,System.Func{``0},System.Func{System.Int32,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
@@ -532,7 +532,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.For<TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.For``1(System.Int64,System.Int64,System.Threading.Tasks.ParallelOptions,System.Func{``0},System.Func{System.Int64,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
   id: For``1(System.Int64,System.Int64,System.Threading.Tasks.ParallelOptions,System.Func{``0},System.Func{System.Int64,System.Threading.Tasks.ParallelLoopState,``0,``0},System.Action{``0})
@@ -572,7 +572,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.For<TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Concurrent.OrderablePartitioner`1,System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
   id: ForEach``1(System.Collections.Concurrent.OrderablePartitioner`1,System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
@@ -600,7 +600,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Action{``0,System.Threading.Tasks.ParallelLoopState})
   id: ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Action{``0,System.Threading.Tasks.ParallelLoopState})
@@ -628,7 +628,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Action{``0})
   id: ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Action{``0})
@@ -656,7 +656,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
   id: ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
@@ -684,7 +684,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Threading.Tasks.ParallelLoopState})
   id: ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0,System.Threading.Tasks.ParallelLoopState})
@@ -712,7 +712,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
   id: ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
@@ -740,7 +740,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Concurrent.OrderablePartitioner`1,System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
   id: ForEach``1(System.Collections.Concurrent.OrderablePartitioner`1,System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
@@ -771,7 +771,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState})
   id: ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState})
@@ -802,7 +802,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Threading.Tasks.ParallelOptions,System.Action{``0})
   id: ForEach``1(System.Collections.Concurrent.Partitioner`1,System.Threading.Tasks.ParallelOptions,System.Action{``0})
@@ -833,7 +833,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
   id: ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState,System.Int64})
@@ -864,7 +864,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState})
   id: ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Action{``0,System.Threading.Tasks.ParallelLoopState})
@@ -895,7 +895,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Action{``0})
   id: ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Action{``0})
@@ -926,7 +926,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Concurrent.OrderablePartitioner`1,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Concurrent.OrderablePartitioner`1,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
@@ -960,7 +960,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Concurrent.Partitioner`1,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Concurrent.Partitioner`1,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
@@ -994,7 +994,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
@@ -1028,7 +1028,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
@@ -1062,7 +1062,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Concurrent.OrderablePartitioner`1,System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Concurrent.OrderablePartitioner`1,System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
@@ -1099,7 +1099,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Concurrent.Partitioner`1,System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Concurrent.Partitioner`1,System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
@@ -1136,7 +1136,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,System.Int64,``1,``1},System.Action{``1})
@@ -1173,7 +1173,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
   id: ForEach``2(System.Collections.Generic.IEnumerable{``0},System.Threading.Tasks.ParallelOptions,System.Func{``1},System.Func{``0,System.Threading.Tasks.ParallelLoopState,``1,``1},System.Action{``1})
@@ -1210,7 +1210,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.Parallel.ForEach<TSource,TLocal>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.Invoke(System.Action[])
   id: Invoke(System.Action[])
@@ -1238,14 +1238,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>actions</code> argument is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>actions</code> argument is `null`.
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that is thrown when any action in the <code>actions</code> array throws an exception.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>actions</code> array contains a <xref uid="langword_csharp_null" name="null" href=""></xref> element.
-  platform:
+    description: The <code>actions</code> array contains a `null` element.
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.Parallel.Invoke(System.Threading.Tasks.ParallelOptions,System.Action[])
   id: Invoke(System.Threading.Tasks.ParallelOptions,System.Action[])
@@ -1277,17 +1277,17 @@ items:
     description: The <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> is set.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>actions</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>actions</code> argument is `null`.  \n  \n -or-  \n  \n The <code>parallelOptions</code> argument is `null`."
   - type: System.AggregateException
     commentId: T:System.AggregateException
     description: The exception that is thrown when any action in the <code>actions</code> array throws an exception.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>actions</code> array contains a <xref uid="langword_csharp_null" name="null" href=""></xref> element.
+    description: The <code>actions</code> array contains a `null` element.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.CancellationTokenSource"></xref> associated with the <xref href="System.Threading.CancellationToken"></xref> in the <code>parallelOptions</code> has been disposed.
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -1980,8 +1980,8 @@ references:
 - uid: System.Action[]
   parent: System
   isExternal: false
-  name: Action
-  nameWithType: Action
+  name: Action[]
+  nameWithType: Action[]
   fullName: System.Action[]
   spec.csharp:
   - uid: System.Action

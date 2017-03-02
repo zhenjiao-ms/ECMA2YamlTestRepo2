@@ -65,7 +65,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,7 +100,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> or <code>assemblyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> or <code>assemblyName</code> is `null`.
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: "An instance cannot be created through COM.  \n  \n -or-  \n  \n <code>typename</code> was not found in <code>assemblyName</code>."
@@ -119,7 +119,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>assemblyName</code> is the empty string ("").
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> or <code>assemblyName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> or <code>assemblyName</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>assemblyName</code> is the empty string ("").
@@ -178,7 +178,7 @@ items:
     description: <code>assemblyName</code> is not a valid assembly.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: A code base that does not start with "file://" was specified without the required <xref uid="langword_csharp_WebPermission" name="WebPermission" href=""></xref>.
+    description: A code base that does not start with "file://" was specified without the required `WebPermission`.
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: "An instance cannot be created through COM.  \n  \n -or-  \n  \n <code>typename</code> was not found in <code>assemblyName</code>."
@@ -191,7 +191,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The caller cannot provide activation attributes for an object that does not inherit from <xref href="System.MarshalByRefObject"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -221,7 +221,7 @@ items:
       description: A handle that must be unwrapped to access the newly created object.
   overload: System.Activator.CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -255,10 +255,10 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>)."
+    description: "<code>type</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns `true`)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>."
@@ -283,7 +283,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>type</code> is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
       description: A handle that must be unwrapped to access the newly created object.
   overload: System.Activator.CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,7 +342,7 @@ items:
     parameters:
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. For more information, see the Remarks section. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. For more information, see the Remarks section. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
@@ -353,7 +353,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -384,7 +384,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: "An assembly or module was loaded twice with two different evidences.  \n  \n -or-  \n  \n The assembly name or code base is invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,7 +411,7 @@ items:
       description: The type of object to create.
     - id: nonPublic
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a public or nonpublic default constructor can match; <xref uid="langword_csharp_false" name="false" href=""></xref> if only a public default constructor can match.
+      description: '`true` if a public or nonpublic default constructor can match; `false` if only a public default constructor can match.'
     return:
       type: System.Object
       description: A reference to the newly created object.
@@ -419,10 +419,10 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>)."
+    description: "<code>type</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns `true`)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>."
@@ -447,7 +447,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>type</code> is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -476,7 +476,7 @@ items:
       description: The type of object to create.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     return:
       type: System.Object
       description: A reference to the newly created object.
@@ -484,13 +484,13 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>)."
+    description: "<code>type</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns `true`)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The constructor being called throws an exception.
@@ -512,7 +512,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>type</code> is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -539,7 +539,7 @@ items:
       description: The remote domain where the type named `typeName` is created.
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
@@ -550,7 +550,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> or <code>domain</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> or <code>domain</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -581,7 +581,7 @@ items:
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: "An assembly or module was loaded twice with two different evidences.  \n  \n -or-  \n  \n The assembly name or code base is invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,7 +605,7 @@ items:
     parameters:
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
@@ -619,7 +619,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -650,7 +650,7 @@ items:
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: An error occurred when attempting remote activation in a target specified in <code>activationAttributes</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,7 +677,7 @@ items:
       description: The type of object to create.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -688,13 +688,13 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>)."
+    description: "<code>type</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns `true`)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The constructor being called throws an exception.
@@ -716,7 +716,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>type</code> is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -746,13 +746,13 @@ items:
       description: A combination of zero or more bit flags that affect the search for the `type` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `type` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `type` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `type` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `type` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     return:
       type: System.Object
       description: A reference to the newly created object.
@@ -760,13 +760,13 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>)."
+    description: "<code>type</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns `true`)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The constructor being called throws an exception.
@@ -788,7 +788,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>type</code> is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -818,13 +818,13 @@ items:
       description: A combination of zero or more bit flags that affect the search for the `type` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `type` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `type` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `type` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `type` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -835,13 +835,13 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>)."
+    description: "<code>type</code> is not a `RuntimeType`.  \n  \n -or-  \n  \n <code>type</code> is an open generic type (that is, the <xref:System.Type.ContainsGenericParameters*> property returns `true`)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "<code>type</code> cannot be a <xref href=\"System.Reflection.Emit.TypeBuilder\"></xref>.  \n  \n -or-  \n  \n Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The assembly that contains <code>type</code> is a dynamic assembly that was created with <xref href=\"System.Reflection.Emit.AssemblyBuilderAccess\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The constructor being called throws an exception.
@@ -863,7 +863,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: <code>type</code> is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -887,25 +887,25 @@ items:
     parameters:
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -916,7 +916,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -940,14 +940,14 @@ items:
     description: The COM type was not obtained through <xref:System.Type.GetTypeFromProgID*> or <xref:System.Type.GetTypeFromCLSID*>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: "An assembly or module was loaded twice with two different evidences.  \n  \n -or-  \n  \n The assembly name or code base is invalid."
-  platform:
+  version:
   - netframework-40
 - uid: System.Activator.CreateInstance(System.AppDomain,System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[])
   id: CreateInstance(System.AppDomain,System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[])
@@ -971,25 +971,25 @@ items:
       description: The domain where the type named `typeName` is created.
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1000,7 +1000,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domain</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domain</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1024,14 +1024,14 @@ items:
     description: The COM type was not obtained through <xref:System.Type.GetTypeFromProgID*> or <xref:System.Type.GetTypeFromCLSID*>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: "An assembly or module was loaded twice with two different evidences.  \n  \n -or-  \n  \n The assembly name or code base is invalid."
-  platform:
+  version:
   - netframework-40
 - uid: System.Activator.CreateInstance(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
   id: CreateInstance(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
@@ -1052,25 +1052,25 @@ items:
     parameters:
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1084,7 +1084,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1108,14 +1108,14 @@ items:
     description: The COM type was not obtained through <xref:System.Type.GetTypeFromProgID*> or <xref:System.Type.GetTypeFromCLSID*>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: "An assembly or module was loaded twice with two different evidences.  \n  \n -or-  \n  \n The assembly name or code base is invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1142,25 +1142,25 @@ items:
       description: The domain where the type named `typeName` is created.
     - id: assemblyName
       type: System.String
-      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the executing assembly is searched.
+      description: The name of the assembly where the type named `typeName` is sought. If `assemblyName` is `null`, the executing assembly is searched.
     - id: typeName
       type: System.String
       description: The fully qualified name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href="System.Runtime.Remoting.Activation.UrlAttribute"></xref> object. The <xref href="System.Runtime.Remoting.Activation.UrlAttribute"></xref> specifies the URL that is required to activate a remote object.
@@ -1174,7 +1174,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domain</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domain</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1198,14 +1198,14 @@ items:
     description: The COM type was not obtained through <xref:System.Type.GetTypeFromProgID*> or <xref:System.Type.GetTypeFromCLSID*>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has <xref uid=\"langword_csharp_varargs\" name=\"varargs\" href=\"\"></xref> arguments."
+    description: "Creation of <xref href=\"System.TypedReference\"></xref>, <xref href=\"System.ArgIterator\"></xref>, <xref href=\"System.Void\"></xref>, and <xref href=\"System.RuntimeArgumentHandle\"></xref> types, or arrays of those types, is not supported.  \n  \n -or-  \n  \n <code>activationAttributes</code> is not an empty array, and the type being created does not derive from <xref href=\"System.MarshalByRefObject\"></xref>.  \n  \n -or-  \n  \n The constructor that best matches <code>args</code> has `varargs` arguments."
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyName</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
     description: "An assembly or module was loaded twice with two different evidences.  \n  \n -or-  \n  \n The assembly name or code base is invalid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1230,7 +1230,7 @@ items:
       description: To be added.
   overload: System.Activator.CreateInstance<T>*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1267,7 +1267,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -1292,7 +1292,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1330,7 +1330,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domain</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domain</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -1355,7 +1355,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1393,7 +1393,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching public constructor was found.
@@ -1421,7 +1421,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1451,19 +1451,19 @@ items:
       description: The name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1474,7 +1474,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1502,7 +1502,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
-  platform:
+  version:
   - netframework-40
 - uid: System.Activator.CreateInstanceFrom(System.AppDomain,System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[])
   id: CreateInstanceFrom(System.AppDomain,System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[])
@@ -1532,19 +1532,19 @@ items:
       description: The name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1555,7 +1555,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domain</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domain</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1583,7 +1583,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n <code>assemblyName</code> was compiled for a version of the common language runtime that is later than the version that is currently loaded."
-  platform:
+  version:
   - netframework-40
 - uid: System.Activator.CreateInstanceFrom(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
   id: CreateInstanceFrom(System.String,System.String,System.Boolean,System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo,System.Object[],System.Security.Policy.Evidence)
@@ -1610,19 +1610,19 @@ items:
       description: The name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1636,7 +1636,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1664,7 +1664,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1697,19 +1697,19 @@ items:
       description: The name of the preferred type.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the search for `typeName` is not case-sensitive; <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the search is case-sensitive.
+      description: '`true` to specify that the search for `typeName` is not case-sensitive; `false` to specify that the search is case-sensitive.'
     - id: bindingAttr
       type: System.Reflection.BindingFlags
       description: A combination of zero or more bit flags that affect the search for the `typeName` constructor. If `bindingAttr` is zero, a case-sensitive search for public constructors is conducted.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used.
+      description: An object that uses `bindingAttr` and `args` to seek and identify the `typeName` constructor. If `binder` is `null`, the default binder is used.
     - id: args
       type: System.Object[]
-      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or <xref uid="langword_csharp_null" name="null" href=""></xref>, the constructor that takes no parameters (the default constructor) is invoked.
+      description: An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If `args` is an empty array or `null`, the constructor that takes no parameters (the default constructor) is invoked.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: Culture-specific information that governs the coercion of `args` to the formal types declared for the `typeName` constructor. If `culture` is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: activationAttributes
       type: System.Object[]
       description: "An array of one or more attributes that can participate in activation. This is typically an array that contains a single <xref href=\"System.Runtime.Remoting.Activation.UrlAttribute\"></xref> object that specifies the URL that is required to activate a remote object.  \n  \n This parameter is related to client-activated objects. Client activation is a legacy technology that is retained for backward compatibility but is not recommended for new development. Distributed applications should instead use Windows Communication Foundation."
@@ -1723,7 +1723,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>domain</code> or <code>typeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>domain</code> or <code>typeName</code> is `null`.
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: No matching constructor was found.
@@ -1751,7 +1751,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>assemblyFile</code> is not a valid assembly.  \n  \n -or-  \n  \n The common language runtime (CLR) version 2.0 or later is currently loaded, and <code>assemblyName</code> was compiled for a version of the CLR that is later than the currently loaded version. Note that the .NET Framework versions 2.0, 3.0, and 3.5 all use CLR version 2.0."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1786,14 +1786,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> or <code>url</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> or <code>url</code> is `null`.
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
     description: <code>type</code> is not marshaled by reference and is not an interface.
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: This member was invoked with a late-binding mechanism.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1823,7 +1823,7 @@ items:
       description: The URL of the well-known object.
     - id: state
       type: System.Object
-      description: Channel-specific data or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Channel-specific data or `null`.
     return:
       type: System.Object
       description: A proxy that points to an endpoint served by the requested well-known object.
@@ -1831,14 +1831,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> or <code>url</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>type</code> or <code>url</code> is `null`.
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
     description: <code>type</code> is not marshaled by reference and is not an interface.
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: This member was invoked with a late-binding mechanism.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1881,7 +1881,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1918,7 +1918,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1949,7 +1949,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2001,7 +2001,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2139,8 +2139,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -2189,8 +2189,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -2227,8 +2227,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

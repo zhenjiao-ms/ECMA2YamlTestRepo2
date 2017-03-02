@@ -72,7 +72,7 @@ items:
   - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposed
   - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrImmutable
   - System.ServiceModel.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.Collections.Specialized.NameValueCollection)
@@ -96,10 +96,10 @@ items:
     parameters:
     - id: parameters
       type: System.Collections.Specialized.NameValueCollection
-      description: The collection of parameters used by the new persistence provider factory. Valid parameters include <xref uid="langword_csharp_lockTimeout" name="lockTimeout" href=""></xref>, <xref uid="langword_csharp_connectionStringName" name="connectionStringName" href=""></xref>, and <xref uid="langword_csharp_serializeAsText" name="serializeAsText" href=""></xref>.
+      description: The collection of parameters used by the new persistence provider factory. Valid parameters include `lockTimeout`, `connectionStringName`, and `serializeAsText`.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.String)
@@ -126,7 +126,7 @@ items:
       description: The connection parameters for the new persistence provider instance.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.String,System.Boolean)
@@ -141,7 +141,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: Initializes a new instance of the <xref href="System.ServiceModel.Persistence.SqlPersistenceProviderFactory"></xref> class, configured with the specified connection string and <xref uid="langword_csharp_serializeAsText" name="serializeAsText" href=""></xref> parameters.
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Persistence.SqlPersistenceProviderFactory"></xref> class, configured with the specified connection string and `serializeAsText` parameters.
   remarks: The default value for `serializeAsText` is `false`, which indicates that persistence information is serialized as binary data.
   example:
   - "The following code example shows how to create a new instance of the <xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory> class.  \n  \n [!code-cs[SqlPersistenceProviderFactory#1](~/add/codesnippet/csharp/sqlpersistenceproviderfactory/sqlpersistenceproviderfactory.cs#1)]"
@@ -156,7 +156,7 @@ items:
       description: Specifies whether data is serialized as text rather than binary.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor(System.String,System.Boolean,System.TimeSpan)
@@ -171,7 +171,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: Initializes a new instance of the <xref href="System.ServiceModel.Persistence.SqlPersistenceProviderFactory"></xref> class, configured with the specified connection string, <xref uid="langword_csharp_serializeAsText" name="serializeAsText" href=""></xref>, and <xref uid="langword_csharp_lockTimeout" name="lockTimeout" href=""></xref> parameters.
+  summary: Initializes a new instance of the <xref href="System.ServiceModel.Persistence.SqlPersistenceProviderFactory"></xref> class, configured with the specified connection string, `serializeAsText`, and `lockTimeout` parameters.
   remarks: "The default value for `serializeAsText` is `false`, which indicates that persistence information is serialized as binary data.  \n  \n The default value for `lockTimeout` is `TimeSpan.Zero`, which indicates that locking is not used. If `TimeSpan.MaxValue` is used, then locks are maintained indefinitely."
   example:
   - "The following code example shows how to create a new instance of the <xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory> class.  \n  \n [!code-cs[SqlPersistenceProviderFactory#0](~/add/codesnippet/csharp/sqlpersistenceproviderfactory/sqlpersistenceproviderfactory.cs#0)]"
@@ -186,10 +186,10 @@ items:
       description: Specifies whether data is serialized as text rather than binary.
     - id: lockTimeout
       type: System.TimeSpan
-      description: The time-out for lock ownership. Locked instances are automatically unlocked after this time period. A time-out of <xref uid="langword_csharp_TimeSpan.Zero" name="TimeSpan.Zero" href=""></xref> specifies that no locking is used.
+      description: The time-out for lock ownership. Locked instances are automatically unlocked after this time period. A time-out of `TimeSpan.Zero` specifies that no locking is used.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.ConnectionString
@@ -215,7 +215,7 @@ items:
       description: The connection parameters for persistence provider instances created with this factory.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.ConnectionString*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.CreateProvider(System.Guid)
@@ -245,7 +245,7 @@ items:
       description: A newly-created <xref href="System.ServiceModel.Persistence.PersistenceProvider"></xref>.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.CreateProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.DefaultCloseTimeout
@@ -269,7 +269,7 @@ items:
       description: The default time-out value.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.DefaultCloseTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.DefaultOpenTimeout
@@ -293,7 +293,7 @@ items:
       description: The default time-out value.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.DefaultOpenTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.LockTimeout
@@ -319,7 +319,7 @@ items:
       description: The time-out value for lock ownership.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.LockTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnAbort
@@ -341,7 +341,7 @@ items:
     parameters: []
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnAbort*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginClose(System.TimeSpan,System.AsyncCallback,System.Object)
@@ -375,7 +375,7 @@ items:
       description: The state of the OnBeginClose asynchronous method call.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginClose*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginOpen(System.TimeSpan,System.AsyncCallback,System.Object)
@@ -409,7 +409,7 @@ items:
       description: The state of the OnBeginOpen asynchronous method call.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnBeginOpen*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnClose(System.TimeSpan)
@@ -434,7 +434,7 @@ items:
       description: The time period after which the persistence provider aborts this attempt.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnClose*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnEndClose(System.IAsyncResult)
@@ -459,7 +459,7 @@ items:
       description: A reference to the result of the operation.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnEndClose*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnEndOpen(System.IAsyncResult)
@@ -484,7 +484,7 @@ items:
       description: A reference to the result of the operation.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnEndOpen*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnOpen(System.TimeSpan)
@@ -509,7 +509,7 @@ items:
       description: The time period after which the persistence provider aborts this attempt.
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.OnOpen*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.SerializeAsText
@@ -532,10 +532,10 @@ items:
     content: public bool SerializeAsText { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the service information is serialized as text; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the service information is serialized as text; otherwise, `false`.'
   overload: System.ServiceModel.Persistence.SqlPersistenceProviderFactory.SerializeAsText*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:

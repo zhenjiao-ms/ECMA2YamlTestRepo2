@@ -31,7 +31,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.#ctor
   id: '#ctor'
@@ -52,7 +52,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.#ctor(System.Linq.Expressions.Expression{System.Func{System.ComponentModel.Composition.Primitives.ExportDefinition,System.Boolean}},System.String,System.ComponentModel.Composition.Primitives.ImportCardinality,System.Boolean,System.Boolean)
   id: '#ctor(System.Linq.Expressions.Expression{System.Func{System.ComponentModel.Composition.Primitives.ExportDefinition,System.Boolean}},System.String,System.ComponentModel.Composition.Primitives.ImportCardinality,System.Boolean,System.Boolean)'
@@ -81,19 +81,19 @@ items:
       description: One of the enumeration values that indicates the cardinality of the <xref href="System.ComponentModel.Composition.Primitives.Export"></xref> objects required by the import definition.
     - id: isRecomposable
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the import definition can be satisfied multiple times throughout the lifetime of a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to specify that the import definition can be satisfied multiple times throughout the lifetime of a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> object; otherwise, `false`.'
     - id: isPrerequisite
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the import definition must be satisfied before a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> can start producing exported objects; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to specify that the import definition must be satisfied before a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> can start producing exported objects; otherwise, `false`.'
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>constraint</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>constraint</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>cardinality</code> is not one of the values of <xref href="System.ComponentModel.Composition.Primitives.ImportCardinality"></xref>.
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.Cardinality
   id: Cardinality
@@ -115,7 +115,7 @@ items:
       description: One of the enumeration values that indicates the cardinality of the <xref href="System.ComponentModel.Composition.Primitives.Export"></xref> objects required by the <xref href="System.ComponentModel.Composition.Primitives.ImportDefinition"></xref>. The default is <xref href="System.ComponentModel.Composition.Primitives.ImportCardinality"></xref>.
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.Cardinality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.Constraint
   id: Constraint
@@ -141,7 +141,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The property was not overridden by a derived class.
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.ContractName
   id: ContractName
@@ -163,7 +163,7 @@ items:
       description: The contract name.
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.ContractName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.IsConstraintSatisfiedBy(System.ComponentModel.Composition.Primitives.ExportDefinition)
   id: IsConstraintSatisfiedBy(System.ComponentModel.Composition.Primitives.ExportDefinition)
@@ -186,10 +186,10 @@ items:
       description: The export definition to test.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the constraints are satisfied; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the constraints are satisfied; otherwise, `false`.'
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.IsConstraintSatisfiedBy*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.IsPrerequisite
   id: IsPrerequisite
@@ -208,10 +208,10 @@ items:
     content: public virtual bool IsPrerequisite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.ComponentModel.Composition.Primitives.ImportDefinition"></xref> must be satisfied before a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> object can start producing exported objects; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the <xref href="System.ComponentModel.Composition.Primitives.ImportDefinition"></xref> must be satisfied before a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> object can start producing exported objects; otherwise, `false`. The default is `true`.'
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.IsPrerequisite*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.IsRecomposable
   id: IsRecomposable
@@ -230,10 +230,10 @@ items:
     content: public virtual bool IsRecomposable { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.ComponentModel.Composition.Primitives.ImportDefinition"></xref> can be satisfied multiple times throughout the lifetime of a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.ComponentModel.Composition.Primitives.ImportDefinition"></xref> can be satisfied multiple times throughout the lifetime of a <xref href="System.ComponentModel.Composition.Primitives.ComposablePart"></xref> object; otherwise, `false`. The default is `false`.'
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.IsRecomposable*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.Primitives.ImportDefinition.ToString
   id: ToString
@@ -256,7 +256,7 @@ items:
       description: A string representation of the import definition.
   overload: System.ComponentModel.Composition.Primitives.ImportDefinition.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object

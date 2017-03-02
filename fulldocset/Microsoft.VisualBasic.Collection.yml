@@ -37,7 +37,7 @@ items:
   nameWithType: Collection
   fullName: Microsoft.VisualBasic.Collection
   type: Class
-  summary: A Visual Basic <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> is an ordered set of items that can be referred to as a unit.
+  summary: A Visual Basic `Collection` is an ordered set of items that can be referred to as a unit.
   remarks: "> [!NOTE]\n>  Whenever possible, you should use the generic collections in the <xref:System.Collections.Generic?displayProperty=fullName> namespace or the <xref:System.Collections.Concurrent> namespace instead of a Visual Basic `Collection`. For more information, see [Collections](~/add/includes/ajax-current-ext-md.md).  \n  \n The Visual Basic `Collection` object provides a convenient way to refer to a related group of items as a single object. The items, or *elements*, in a collection need only be related by the fact that they exist in the collection. Elements of a collection do not have to share the same data type.  \n  \n You can create a collection the same way you create other objects, as the following example illustrates.  \n  \n```  \nDim coll As New Microsoft.VisualBasic.Collection()  \n```  \n  \n Once you have created a collection, you can do any of the following:  \n  \n-   Add an element with the <xref:Microsoft.VisualBasic.Collection.Add%2A> method.  \n  \n-   Remove an element with the <xref:Microsoft.VisualBasic.Collection.Remove%2A> method.  \n  \n-   Remove all elements with the <xref:Microsoft.VisualBasic.Collection.Clear%2A> method.  \n  \n-   Find out how many elements the collection contains with the <xref:Microsoft.VisualBasic.Collection.Count%2A> property.  \n  \n-   Check whether a specific element is present with the <xref:Microsoft.VisualBasic.Collection.Contains%2A> method.  \n  \n-   Return a specific element from the collection with the <xref:Microsoft.VisualBasic.Collection.Item%2A> property.  \n  \n-   Iterate through the entire collection with the [For Each...Next Statement](~/add/includes/ajax-current-ext-md.md).  \n  \n    > [!NOTE]\n    >  Although the Visual Basic `Collection` object has functionality identical to the `Collection` object in Visual Basic 6.0, the two cannot interoperate in a COM environment.  \n  \n    > [!CAUTION]\n    >  Iterating through a Visual Basic `Collection` is not a thread-safe procedure. Even if the collection is synchronized, other threads can still modify the collection, causing the enumerator to throw an exception. To guarantee thread safety during enumeration, either lock the collection or catch the exceptions resulting from changes made by other threads. For more information on locking a programming element, see [SyncLock Statement](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example creates the `Collection` object `names` and a dialog box with which a user can add objects (names) to the collection. It then displays the names in the collection, and finally empties the collection without disposing of the `Collection` object itself.  \n  \n To see how this works, choose the **Add Class** command from the **Project** menu and declare a public variable called `instanceName` at the module level of `nameClass` (type `Public instanceName`) to hold the names of each instance. Leave the default name as `nameClass`. Copy and paste the following code into the **General** section of another module, and then start it with the statement `classNamer` in another procedure. (This example works only with host applications that support classes.)  \n  \n [!code-vb[VbVbalrCollectionObject#1](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#1)]"
@@ -62,7 +62,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -88,7 +88,7 @@ items:
     parameters: []
   overload: Microsoft.VisualBasic.Collection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Adds an element to a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object.
+  summary: Adds an element to a `Collection` object.
   remarks: "The `Before` or `After` argument must refer to an existing element of the collection; otherwise, an error occurs.  \n  \n If both the `Before` and `After` arguments are omitted, the new object is added to the end of the collection.  \n  \n An error also occurs if a specified `Key` value matches the key for an existing element of the collection."
   example:
   - "The following example uses the `Add` method to add `child` objects — instances of a class called `child` containing a `Public` property `name` — to a collection called `family`. To see how this works, create a <xref:System.Windows.Forms.Form> with two <xref:System.Windows.Forms.Button> controls and set their <xref:System.Windows.Forms.Control.Text%2A> properties to `Add` and `List`. Add the `child` class definition and the `family` declaration to the form code. Modify the `_Click` event handlers for the **Add** and **List** buttons as shown. The **Add** button allows you to add children. The **List** button displays the names of all the children.  \n  \n [!code-vb[VbVbalrCollectionObject#2](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Form1.vb#2)]"
@@ -117,16 +117,16 @@ items:
       description: Required. An object of any type that specifies the element to add to the collection.
     - id: Key
       type: System.String
-      description: Optional. A unique <xref uid="langword_csharp_String" name="String" href=""></xref> expression that specifies a key string that can be used instead of a positional index to access this new element in the collection.
+      description: Optional. A unique `String` expression that specifies a key string that can be used instead of a positional index to access this new element in the collection.
     - id: Before
       type: System.Object
-      description: Optional. An expression that specifies a relative position in the collection. The element to be added is placed in the collection before the element identified by the `Before` argument. If `Before` is a numeric expression, it must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property. If `Before` is a <xref uid="langword_csharp_String" name="String" href=""></xref> expression, it must correspond to the key string specified when the element being referred to was added to the collection. You cannot specify both `Before` and `After`.
+      description: Optional. An expression that specifies a relative position in the collection. The element to be added is placed in the collection before the element identified by the `Before` argument. If `Before` is a numeric expression, it must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property. If `Before` is a `String` expression, it must correspond to the key string specified when the element being referred to was added to the collection. You cannot specify both `Before` and `After`.
     - id: After
       type: System.Object
-      description: Optional. An expression that specifies a relative position in the collection. The element to be added is placed in the collection after the element identified by the `After` argument. If `After` is a numeric expression, it must be a number from 1 through the value of the collection's <xref uid="langword_csharp_Count" name="Count" href=""></xref> property. If `After` is a <xref uid="langword_csharp_String" name="String" href=""></xref> expression, it must correspond to the key string specified when the element referred to was added to the collection. You cannot specify both `Before` and `After`.
+      description: Optional. An expression that specifies a relative position in the collection. The element to be added is placed in the collection after the element identified by the `After` argument. If `After` is a numeric expression, it must be a number from 1 through the value of the collection's `Count` property. If `After` is a `String` expression, it must correspond to the key string specified when the element referred to was added to the collection. You cannot specify both `Before` and `After`.
   overload: Microsoft.VisualBasic.Collection.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -143,7 +143,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Deletes all elements of a Visual Basic <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object.
+  summary: Deletes all elements of a Visual Basic `Collection` object.
   remarks: The `Clear` method empties the collection and resets its <xref:Microsoft.VisualBasic.Collection.Count%2A> property to 0.
   example:
   - '[!code-vb[VbVbalrCollectionObject#3](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#3)]'
@@ -152,7 +152,7 @@ items:
     parameters: []
   overload: Microsoft.VisualBasic.Collection.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,7 +169,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns a <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> value indicating whether a Visual Basic <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object contains an element with a specific key.
+  summary: Returns a `Boolean` value indicating whether a Visual Basic `Collection` object contains an element with a specific key.
   remarks: "`Contains` returns `True` if the collection contains an element with a key exactly matching `Key`. Otherwise, `Contains` returns `False`. Case is ignored when matching key values.  \n  \n A Visual Basic `Collection` can hold some elements that have keys and other elements without keys. This depends on whether the call to the <xref:Microsoft.VisualBasic.Collection.Add%2A> method supplies an argument to the optional `Key` parameter."
   example:
   - "[!code-vb[VbVbalrCollectionObject#4](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#4)]  \n  \n If you intend to search the collection for elements using their keys, remember to supply the `Key` argument every time you call the `Add` method."
@@ -178,13 +178,13 @@ items:
     parameters:
     - id: Key
       type: System.String
-      description: Required. A <xref uid="langword_csharp_String" name="String" href=""></xref> expression that specifies the key for which to search the elements of the collection.
+      description: Required. A `String` expression that specifies the key for which to search the elements of the collection.
     return:
       type: System.Boolean
-      description: Returns a <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> value indicating whether a Visual Basic <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object contains an element with a specific key.
+      description: Returns a `Boolean` value indicating whether a Visual Basic `Collection` object contains an element with a specific key.
   overload: Microsoft.VisualBasic.Collection.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,7 +201,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns an <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> containing the number of elements in a collection. Read-only.
+  summary: Returns an `Integer` containing the number of elements in a collection. Read-only.
   remarks: Use the `Count` property to determine the number of elements in a `Collection` object.
   example:
   - "This example illustrates the use of the `Count` property to display the number of elements in a <xref:Microsoft.VisualBasic.Collection> object in the variable `birthdays`.  \n  \n [!code-vb[VbVbalrCollectionObject#5](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#5)]  \n[!code-vb[VbVbalrCollectionObject#6](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#6)]  \n  \n The `Collection` object is one-based, which means that the index values of the elements range from 1 through the value of the `Count` property."
@@ -209,10 +209,10 @@ items:
     content: public int Count { get; }
     return:
       type: System.Int32
-      description: Returns an <xref uid="langword_csharp_Integer" name="Integer" href=""></xref> containing the number of elements in a collection. Read-only.
+      description: Returns an `Integer` containing the number of elements in a collection. Read-only.
   overload: Microsoft.VisualBasic.Collection.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -241,7 +241,7 @@ items:
       description: Returns a reference to an enumerator object, which is used to iterate over a <xref href="Microsoft.VisualBasic.Collection"></xref> object.
   overload: Microsoft.VisualBasic.Collection.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,7 +258,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns a specific element of a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object either by position or by key. Read-only.
+  summary: Returns a specific element of a `Collection` object either by position or by key. Read-only.
   remarks: "If `Index` is of type `Object`, the `Item` property attempts to treat it as a `String`, `Char`, `Char` array, or integer value. If `Item` cannot convert `Index` to `String` or `Integer`, it throws an <xref:System.ArgumentException> exception.  \n  \n The `Item` property is the default property for a collection. Therefore, the following lines of code are equivalent.  \n  \n```  \nMsgBox(CStr(customers.Item(1)))  \nMsgBox(CStr(customers(1)))  \n```"
   example:
   - "The following example uses the `Item` property to retrieve a reference to an object in a collection. It creates `birthdays` as a `Collection` object and then retrieves the object representing Bill's birthday, using the key `\"Bill\"` as the `Index` argument.  \n  \n [!code-vb[VbVbalrCollectionObject#5](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#5)]  \n[!code-vb[VbVbalrCollectionObject#8](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#8)]  \n  \n Note that the first call explicitly specifies the `Item` property, but the second does not. Both calls work because the `Item` property is the default property for a `Collection` object."
@@ -267,13 +267,13 @@ items:
     parameters:
     - id: Index
       type: System.Int32
-      description: (A) A numeric expression that specifies the position of an element of the collection. `Index` must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property. Or (B) An <xref uid="langword_csharp_Object" name="Object" href=""></xref> expression that specifies the position or key string of an element of the collection.
+      description: (A) A numeric expression that specifies the position of an element of the collection. `Index` must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property. Or (B) An `Object` expression that specifies the position or key string of an element of the collection.
     return:
       type: System.Object
-      description: Returns a specific element of a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object either by position or by key. Read-only.
+      description: Returns a specific element of a `Collection` object either by position or by key. Read-only.
   overload: Microsoft.VisualBasic.Collection.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,7 +290,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns a specific element of a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object either by position or by key. Read-only.
+  summary: Returns a specific element of a `Collection` object either by position or by key. Read-only.
   remarks: "If `Index` is of type `Object`, the `Item` property attempts to treat it as a `String`, `Char`, `Char` array, or integer value. If `Item` cannot convert `Index` to `String` or `Integer`, it throws an <xref:System.ArgumentException> exception.  \n  \n The `Item` property is the default property for a collection. Therefore, the following lines of code are equivalent.  \n  \n```  \nMsgBox(CStr(customers.Item(1)))  \nMsgBox(CStr(customers(1)))  \n```"
   example:
   - "The following example uses the `Item` property to retrieve a reference to an object in a collection. It creates `birthdays` as a `Collection` object and then retrieves the object representing Bill's birthday, using the key `\"Bill\"` as the `Index` argument.  \n  \n [!code-vb[VbVbalrCollectionObject#5](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#5)]  \n[!code-vb[VbVbalrCollectionObject#8](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#8)]  \n  \n Note that the first call explicitly specifies the `Item` property, but the second does not. Both calls work because the `Item` property is the default property for a `Collection` object."
@@ -299,13 +299,13 @@ items:
     parameters:
     - id: Index
       type: System.Object
-      description: (A) A numeric expression that specifies the position of an element of the collection. `Index` must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property. Or (B) An <xref uid="langword_csharp_Object" name="Object" href=""></xref> expression that specifies the position or key string of an element of the collection.
+      description: (A) A numeric expression that specifies the position of an element of the collection. `Index` must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property. Or (B) An `Object` expression that specifies the position or key string of an element of the collection.
     return:
       type: System.Object
-      description: Returns a specific element of a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object either by position or by key. Read-only.
+      description: Returns a specific element of a `Collection` object either by position or by key. Read-only.
   overload: Microsoft.VisualBasic.Collection.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -322,7 +322,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Returns a specific element of a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object either by position or by key. Read-only.
+  summary: Returns a specific element of a `Collection` object either by position or by key. Read-only.
   remarks: "If `Index` is of type `Object`, the `Item` property attempts to treat it as a `String`, `Char`, `Char` array, or integer value. If `Item` cannot convert `Index` to `String` or `Integer`, it throws an <xref:System.ArgumentException> exception.  \n  \n The `Item` property is the default property for a collection. Therefore, the following lines of code are equivalent.  \n  \n```  \nMsgBox(CStr(customers.Item(1)))  \nMsgBox(CStr(customers(1)))  \n```"
   example:
   - "The following example uses the `Item` property to retrieve a reference to an object in a collection. It creates `birthdays` as a `Collection` object and then retrieves the object representing Bill's birthday, using the key `\"Bill\"` as the `Index` argument.  \n  \n [!code-vb[VbVbalrCollectionObject#5](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#5)]  \n[!code-vb[VbVbalrCollectionObject#8](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#8)]  \n  \n Note that the first call explicitly specifies the `Item` property, but the second does not. Both calls work because the `Item` property is the default property for a `Collection` object."
@@ -331,13 +331,13 @@ items:
     parameters:
     - id: Key
       type: System.String
-      description: A unique <xref uid="langword_csharp_String" name="String" href=""></xref> expression that specifies a key string that can be used, instead of a positional index, to access an element of the collection. `Key` must correspond to the `Key` argument specified when the element was added to the collection.
+      description: A unique `String` expression that specifies a key string that can be used, instead of a positional index, to access an element of the collection. `Key` must correspond to the `Key` argument specified when the element was added to the collection.
     return:
       type: System.Object
-      description: Returns a specific element of a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object either by position or by key. Read-only.
+      description: Returns a specific element of a `Collection` object either by position or by key. Read-only.
   overload: Microsoft.VisualBasic.Collection.Item*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -354,7 +354,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Removes an element from a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object.
+  summary: Removes an element from a `Collection` object.
   remarks: "When `Remove` deletes an element from a collection, it decrements the collection's <xref:Microsoft.VisualBasic.Collection.Count%2A> property by one. It also decrements the `Index` value of every element that formerly followed the deleted element in the collection.  \n  \n If an element was added to the collection without a `Key`, you must use its `Index` to remove it."
   example:
   - "This example illustrates the use of the `Remove` method to remove objects from a <xref:Microsoft.VisualBasic.Collection> object in the variable `birthdays`.  \n  \n [!code-vb[VbVbalrCollectionObject#5](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#5)]  \n[!code-vb[VbVbalrCollectionObject#9](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#9)]  \n  \n Following the four calls to the `Add` method, the `Count` property contains 4, element `\"Bill\"` has index value 1, and element `\"Pete\"` has index value 4.  \n  \n Following the first call to `Remove`, `Count` is 3, element `\"Bill\"` is deleted, and element `\"Pete\"` has index value 3.  \n  \n Following the second call to `Remove`, `Count` is 2, element `\"Mike\"` is deleted, and element `\"Pete\"` has index value 2."
@@ -366,7 +366,7 @@ items:
       description: A numeric expression that specifies the position of an element of the collection. `Index` must be a number from 1 through the value of the collection's <xref:Microsoft.VisualBasic.Collection.Count*> property.
   overload: Microsoft.VisualBasic.Collection.Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,7 +383,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic
-  summary: Removes an element from a <xref uid="langword_csharp_Collection" name="Collection" href=""></xref> object.
+  summary: Removes an element from a `Collection` object.
   remarks: "When `Remove` deletes an element from a collection, it decrements the collection's <xref:Microsoft.VisualBasic.Collection.Count%2A> property by one. It also decrements the `Index` value of every element that formerly followed the deleted element in the collection.  \n  \n If an element was added to the collection without a `Key`, you must use its `Index` to remove it."
   example:
   - "This example illustrates the use of the `Remove` method to remove objects from a <xref:Microsoft.VisualBasic.Collection> object in the variable `birthdays`.  \n  \n [!code-vb[VbVbalrCollectionObject#5](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#5)]  \n[!code-vb[VbVbalrCollectionObject#9](~/add/codesnippet/visualbasic/VbVbalrCollectionObject/Class1.vb#9)]  \n  \n Following the four calls to the `Add` method, the `Count` property contains 4, element `\"Bill\"` has index value 1, and element `\"Pete\"` has index value 4.  \n  \n Following the first call to `Remove`, `Count` is 3, element `\"Bill\"` is deleted, and element `\"Pete\"` has index value 3.  \n  \n Following the second call to `Remove`, `Count` is 2, element `\"Mike\"` is deleted, and element `\"Pete\"` has index value 2."
@@ -392,10 +392,10 @@ items:
     parameters:
     - id: Key
       type: System.String
-      description: A unique <xref uid="langword_csharp_String" name="String" href=""></xref> expression that specifies a key string that can be used, instead of a positional index, to access an element of the collection. `Key` must correspond to the `Key` argument specified when the element was added to the collection.
+      description: A unique `String` expression that specifies a key string that can be used, instead of a positional index, to access an element of the collection. `Key` must correspond to the `Key` argument specified when the element was added to the collection.
   overload: Microsoft.VisualBasic.Collection.Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -428,7 +428,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than zero.
@@ -438,7 +438,7 @@ items:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
     description: The type of the source <xref href="Microsoft.VisualBasic.Collection"></xref> object cannot be cast automatically to the type of the destination <code>array</code>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,7 +463,7 @@ items:
       description: To be added.
   overload: Microsoft.VisualBasic.Collection.System#Collections#ICollection#ICollectionCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -488,7 +488,7 @@ items:
       description: To be added.
   overload: Microsoft.VisualBasic.Collection.System#Collections#ICollection#ICollectionIsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -513,7 +513,7 @@ items:
       description: To be added.
   overload: Microsoft.VisualBasic.Collection.System#Collections#ICollection#ICollectionSyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -541,7 +541,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> object that can be used to iterate through the collection.
   overload: Microsoft.VisualBasic.Collection.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -575,7 +575,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"Microsoft.VisualBasic.Collection\"></xref> object is read-only.  \n  \n -or-  \n  \n The <xref href=\"Microsoft.VisualBasic.Collection\"></xref> object has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -603,7 +603,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Collections.IList"></xref> is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -631,10 +631,10 @@ items:
       description: The <xref href="System.Object"></xref> to locate in the <xref href="Microsoft.VisualBasic.Collection"></xref> object.
     return:
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_True" name="True" href=""></xref> if the <xref href="System.Object"></xref> is found in the <xref href="Microsoft.VisualBasic.Collection"></xref> object; otherwise, <xref uid="langword_csharp_False" name="False" href=""></xref>.
+      description: Returns `True` if the <xref href="System.Object"></xref> is found in the <xref href="Microsoft.VisualBasic.Collection"></xref> object; otherwise, `False`.
   overload: Microsoft.VisualBasic.Collection.System#Collections#IList#Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -659,7 +659,7 @@ items:
       description: To be added.
   overload: Microsoft.VisualBasic.Collection.System#Collections#IList#IListIsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -684,7 +684,7 @@ items:
       description: To be added.
   overload: Microsoft.VisualBasic.Collection.System#Collections#IList#IListIsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -713,7 +713,7 @@ items:
       description: To be added.
   overload: Microsoft.VisualBasic.Collection.System#Collections#IList#IListItem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -744,7 +744,7 @@ items:
       description: The index of <code>value</code> if found in the collection; otherwise, -1.
   overload: Microsoft.VisualBasic.Collection.System#Collections#IList#IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -784,7 +784,7 @@ items:
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
     description: <code>value</code> is null reference in the <xref href="Microsoft.VisualBasic.Collection"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -815,7 +815,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"Microsoft.VisualBasic.Collection\"></xref> object is read-only.  \n  \n -or-  \n  \n The <xref href=\"Microsoft.VisualBasic.Collection\"></xref> object has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -849,7 +849,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"Microsoft.VisualBasic.Collection\"></xref> object is read-only.  \n  \n -or-  \n  \n The <xref href=\"Microsoft.VisualBasic.Collection\"></xref> object has a fixed size."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -877,7 +877,7 @@ items:
       description: The object that initiated the callback.
   overload: Microsoft.VisualBasic.Collection.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -908,7 +908,7 @@ items:
       description: A <xref href="System.Runtime.Serialization.StreamingContext"></xref> object containing the source and destination of the serialized stream associated with the <xref href="Microsoft.VisualBasic.Collection"></xref> object.
   overload: Microsoft.VisualBasic.Collection.System#Runtime#Serialization#ISerializable#GetObjectData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.#ctor
   id: '#ctor'
@@ -62,7 +62,7 @@ items:
     parameters: []
   overload: System.Xaml.XamlSchemaContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})
   id: '#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})'
@@ -85,7 +85,7 @@ items:
       description: An enumerable set of assembly information items. Each assembly information item is specified by an <xref href="System.Reflection.Assembly"></xref> value.
   overload: System.Xaml.XamlSchemaContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.#ctor(System.Xaml.XamlSchemaContextSettings)
   id: '#ctor(System.Xaml.XamlSchemaContextSettings)'
@@ -109,7 +109,7 @@ items:
       description: The settings object to use to construct the <xref href="System.Xaml.XamlSchemaContext"></xref>.
   overload: System.Xaml.XamlSchemaContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Xaml.XamlSchemaContextSettings)
   id: '#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Xaml.XamlSchemaContextSettings)'
@@ -135,7 +135,7 @@ items:
       description: The settings object to use to construct the <xref href="System.Xaml.XamlSchemaContext"></xref>.
   overload: System.Xaml.XamlSchemaContext.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.Finalize
   id: Finalize
@@ -149,14 +149,14 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: Provides a nonstandard <xref uid="langword_csharp_Finalize" name="Finalize" href=""></xref> implementation that does not invoke <xref uid="langword_csharp_Dispose" name="Dispose" href=""></xref>.
+  summary: Provides a nonstandard `Finalize` implementation that does not invoke `Dispose`.
   remarks: "XAML schema contexts should not be disposed by automatic garbage collection or by manual operations. Although XAML schema contexts  have no unmanaged resources, <xref:System.Windows.Markup.XamlDeferLoadAttribute> properties might still be active, and disposing a XAML schema context can interfere with the related defer-load operation.  \n  \n <xref:System.AppDomain.AssemblyLoad> event handlers, which are hooked internally as weak references, are cleaned up by this implementation."
   syntax:
     content: ~XamlSchemaContext ();
     parameters: []
   overload: System.Xaml.XamlSchemaContext.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.FullyQualifyAssemblyNamesInClrNamespaces
   id: FullyQualifyAssemblyNamesInClrNamespaces
@@ -176,10 +176,10 @@ items:
     content: public bool FullyQualifyAssemblyNamesInClrNamespaces { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a XAML schema and its context use fully qualified assembly names in the values that are returned by the lookup APIs; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a XAML schema and its context use fully qualified assembly names in the values that are returned by the lookup APIs; otherwise, `false`.'
   overload: System.Xaml.XamlSchemaContext.FullyQualifyAssemblyNamesInClrNamespaces*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetAllXamlNamespaces
   id: GetAllXamlNamespaces
@@ -203,7 +203,7 @@ items:
       description: An enumerable set of namespace identifiers. These identifiers are provided as strings.
   overload: System.Xaml.XamlSchemaContext.GetAllXamlNamespaces*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetAllXamlTypes(System.String)
   id: GetAllXamlTypes(System.String)
@@ -229,7 +229,7 @@ items:
       description: An enumerable set of XAML types. Each XAML type in the set is represented by a <xref href="System.Xaml.XamlType"></xref> object.
   overload: System.Xaml.XamlSchemaContext.GetAllXamlTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetPreferredPrefix(System.String)
   id: GetPreferredPrefix(System.String)
@@ -259,7 +259,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>xmlns</code> is null.
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetValueConverter``1(System.Type,System.Xaml.XamlType)
   id: GetValueConverter``1(System.Type,System.Xaml.XamlType)
@@ -287,7 +287,7 @@ items:
       description: To be added.
   overload: System.Xaml.XamlSchemaContext.GetValueConverter<TConverterBase>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetXamlDirective(System.String,System.String)
   id: GetXamlDirective(System.String,System.String)
@@ -319,8 +319,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>xamlNamespace</code> or <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>xamlNamespace</code> or <code>name</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetXamlType(System.Type)
   id: GetXamlType(System.Type)
@@ -349,8 +349,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>type</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetXamlType(System.Xaml.Schema.XamlTypeName)
   id: GetXamlType(System.Xaml.Schema.XamlTypeName)
@@ -378,11 +378,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: A component of <code>xamlTypeName</code> (<xref:System.Xaml.Schema.XamlTypeName.Name*> or <xref:System.Xaml.Schema.XamlTypeName.Namespace*>) is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: A component of <code>xamlTypeName</code> (<xref:System.Xaml.Schema.XamlTypeName.Name*> or <xref:System.Xaml.Schema.XamlTypeName.Namespace*>) is `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>xamlTypeName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>xamlTypeName</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.GetXamlType(System.String,System.String,System.Xaml.XamlType[])
   id: GetXamlType(System.String,System.String,System.Xaml.XamlType[])
@@ -414,7 +414,7 @@ items:
       description: The <xref href="System.Xaml.XamlType"></xref> that matches the input criteria.
   overload: System.Xaml.XamlSchemaContext.GetXamlType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.OnAssemblyResolve(System.String)
   id: OnAssemblyResolve(System.String)
@@ -441,7 +441,7 @@ items:
       description: The resolved assembly.
   overload: System.Xaml.XamlSchemaContext.OnAssemblyResolve*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.ReferenceAssemblies
   id: ReferenceAssemblies
@@ -463,7 +463,7 @@ items:
       description: An enumerable set of reference assemblies for the schema context. Each assembly information item is specified by an <xref href="System.Reflection.Assembly"></xref> value.
   overload: System.Xaml.XamlSchemaContext.ReferenceAssemblies*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.SupportMarkupExtensionsWithDuplicateArity
   id: SupportMarkupExtensionsWithDuplicateArity
@@ -483,10 +483,10 @@ items:
     content: public bool SupportMarkupExtensionsWithDuplicateArity { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the schema context permits markup extensions that have duplicate arity; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the schema context permits markup extensions that have duplicate arity; otherwise, `false`. The default is `false`.'
   overload: System.Xaml.XamlSchemaContext.SupportMarkupExtensionsWithDuplicateArity*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.XamlSchemaContext.TryGetCompatibleXamlNamespace(System.String,System.String@)
   id: TryGetCompatibleXamlNamespace(System.String,System.String@)
@@ -507,19 +507,19 @@ items:
     parameters:
     - id: xamlNamespace
       type: System.String
-      description: The <xref uid="langword_csharp_xmlns" name="xmlns" href=""></xref> string for the XAML namespace to be checked for a compatible result.
+      description: The `xmlns` string for the XAML namespace to be checked for a compatible result.
     - id: compatibleNamespace
       type: System.String
-      description: When this method returns, the <xref uid="langword_csharp_xmlns" name="xmlns" href=""></xref> string for a compatible XAML namespace request. This might be identical to `xamlNamespace` if the method returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: When this method returns, the `xmlns` string for a compatible XAML namespace request. This might be identical to `xamlNamespace` if the method returns `false`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>compatibleNamespace</code> contains a usable result; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>compatibleNamespace</code> contains a usable result; otherwise, `false`.'
   overload: System.Xaml.XamlSchemaContext.TryGetCompatibleXamlNamespace*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>xamlNamespace</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>xamlNamespace</code> is `null`.
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -735,8 +735,8 @@ references:
 - uid: System.Xaml.XamlType[]
   parent: System.Xaml
   isExternal: false
-  name: XamlType
-  nameWithType: XamlType
+  name: XamlType[]
+  nameWithType: XamlType[]
   fullName: System.Xaml.XamlType[]
   spec.csharp:
   - uid: System.Xaml.XamlType

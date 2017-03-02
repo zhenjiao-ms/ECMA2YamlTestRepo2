@@ -195,7 +195,7 @@ items:
   - System.Web.UI.DataSourceControl.System#Web#UI#IDataSource#GetView(System.String)
   - System.Web.UI.DataSourceControl.System#Web#UI#IDataSource#GetViewNames
   - System.Web.UI.DataSourceControl.Visible
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,7 +218,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.ObjectDataSource.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -248,7 +248,7 @@ items:
       description: The name of the method or function that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> invokes to retrieve data.
   overload: System.Web.UI.WebControls.ObjectDataSource.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: The number of seconds that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> caches the results of a <xref:System.Web.UI.WebControls.ObjectDataSource.SelectMethod*> property invocation. The default is 0. The value cannot be negative.
   overload: System.Web.UI.WebControls.ObjectDataSource.CacheDuration*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,7 +304,7 @@ items:
       description: One of the <xref href="System.Web.UI.DataSourceCacheExpiry"></xref> values. The default is <xref href="System.Web.UI.DataSourceCacheExpiry"></xref>.
   overload: System.Web.UI.WebControls.ObjectDataSource.CacheExpirationPolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
       description: A key that identifies all cache objects created by the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref>.
   overload: System.Web.UI.WebControls.ObjectDataSource.CacheKeyDependency*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -349,7 +349,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets a value that determines whether or not just the new values are passed to the <xref uid="langword_csharp_Update" name="Update" href=""></xref> method or both the old and new values are passed to the <xref uid="langword_csharp_Update" name="Update" href=""></xref> method.
+  summary: Gets or sets a value that determines whether or not just the new values are passed to the `Update` method or both the old and new values are passed to the `Update` method.
   remarks: "This property determines whether parameters for old and new values are applied to the method specified by the <xref:System.Web.UI.WebControls.ObjectDataSource.UpdateMethod%2A> property. For example, if the method that is specified by the <xref:System.Web.UI.WebControls.ObjectDataSource.SelectMethod%2A> property returns a <xref:System.Data.DataTable> control with the columns `Name` and `Number`, and the ConflictDetection property is set to the <xref:System.Web.UI.ConflictOptions> field, parameters are created for `Name` and `Number` for the `Update` method. If the ConflictDetection property is set to the <xref:System.Web.UI.ConflictOptions> value, parameters are created for `Name`, `Number`, `original_Name`, and `original_Number`. (The exact name of the parameters for the original values depends on the <xref:System.Web.UI.WebControls.ObjectDataSource.OldValuesParameterFormatString%2A> property.) The <xref:System.Web.UI.WebControls.ObjectDataSource> then determines whether the method that is specified in the <xref:System.Web.UI.WebControls.ObjectDataSource.UpdateMethod%2A> property has parameters that match.  \n  \n Concurrency control is a technique that data stores use to control how data is read and changed in the store when multiple clients are accessing and manipulating the same data. For example, one client reads data and presents it to a user, while another client reads the same data and presents it to a different user. If both users update the data and submit it to the data storage, an unexpected result might occur, because both clients might provide different values for the same data. This is considered a conflict. By setting the ConflictDetection property to the <xref:System.Web.UI.ConflictOptions> value, the `Update` method can then compare the old and new values to the original data source to detect conflicts and handle them as necessary.  \n  \n The ConflictDetection property delegates to the <xref:System.Web.UI.WebControls.ObjectDataSourceView.ConflictDetection%2A> property of the <xref:System.Web.UI.WebControls.ObjectDataSourceView> object that is associated with the <xref:System.Web.UI.WebControls.ObjectDataSource> control."
   syntax:
     content: public System.Web.UI.ConflictOptions ConflictDetection { get; set; }
@@ -358,7 +358,7 @@ items:
       description: One of the <xref href="System.Web.UI.ConflictOptions"></xref> values. The default is <xref href="System.Web.UI.ConflictOptions"></xref>.
   overload: System.Web.UI.WebControls.ObjectDataSource.ConflictDetection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -375,16 +375,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets a value indicating whether the <xref href="System.Web.UI.WebControls.Parameter"></xref> values that are passed to an update, insert, or delete operation are automatically converted from <xref uid="langword_csharp_null" name="null" href=""></xref> to the <xref href="System.DBNull.Value"></xref> value by the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> control.
+  summary: Gets or sets a value indicating whether the <xref href="System.Web.UI.WebControls.Parameter"></xref> values that are passed to an update, insert, or delete operation are automatically converted from `null` to the <xref href="System.DBNull.Value"></xref> value by the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> control.
   remarks: Not converting `null` to the <xref:System.DBNull.Value> value can result in errors at run time. Use the ConvertNullToDBNull property to indicate whether <xref:System.Web.UI.WebControls.Parameter> values that are passed to an update, insert, or delete operation are automatically converted from `null` to the <xref:System.DBNull.Value> value by the <xref:System.Web.UI.WebControls.ObjectDataSource> control.
   syntax:
     content: public bool ConvertNullToDBNull { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if any <xref uid="langword_csharp_null" name="null" href=""></xref> values in <xref href="System.Web.UI.WebControls.Parameter"></xref> objects passed to the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> control are automatically converted to <xref href="System.DBNull.Value"></xref> values; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if any `null` values in <xref href="System.Web.UI.WebControls.Parameter"></xref> objects passed to the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> control are automatically converted to <xref href="System.DBNull.Value"></xref> values; otherwise, `false`. The default is `false`.'
   overload: System.Web.UI.WebControls.ObjectDataSource.ConvertNullToDBNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -412,7 +412,7 @@ items:
       description: A partially or fully qualified class name that identifies the type of the object that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> can use as a parameter for an <xref:System.Web.UI.WebControls.ObjectDataSource.Insert*>, <xref:System.Web.UI.WebControls.ObjectDataSource.Update*>, or a <xref:System.Web.UI.WebControls.ObjectDataSource.Delete*> operation. The default is an empty string ("").
   overload: System.Web.UI.WebControls.ObjectDataSource.DataObjectTypeName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -439,7 +439,7 @@ items:
       description: A value that represents the number of rows deleted from the underlying data storage, if the <xref:System.Web.UI.WebControls.ObjectDataSourceStatusEventArgs.AffectedRows*> property of the <xref href="System.Web.UI.WebControls.ObjectDataSourceStatusEventArgs"></xref> is set in the <xref href="System.Web.UI.WebControls.ObjectDataSource.Deleted"></xref> event; otherwise, -1.
   overload: System.Web.UI.WebControls.ObjectDataSource.Delete*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -466,7 +466,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -494,7 +494,7 @@ items:
       description: A string that represents the name of the method or function that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> uses to delete data. The default is an empty string ("").
   overload: System.Web.UI.WebControls.ObjectDataSource.DeleteMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,7 +522,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the <xref:System.Web.UI.WebControls.ObjectDataSource.DeleteMethod*> method.
   overload: System.Web.UI.WebControls.ObjectDataSource.DeleteParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -549,7 +549,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceMethodEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -574,13 +574,13 @@ items:
     content: public virtual bool EnableCaching { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data caching is enabled for the data source control; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if data caching is enabled for the data source control; otherwise, `false`. The default is `false`.'
   overload: System.Web.UI.WebControls.ObjectDataSource.EnableCaching*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The EnableCaching property is set to <xref uid="langword_csharp_true" name="true" href=""></xref> when the method specified by the <xref:System.Web.UI.WebControls.ObjectDataSource.SelectMethod*> property returns a <xref href="System.Data.Common.DbDataReader"></xref>.
-  platform:
+    description: The EnableCaching property is set to `true` when the method specified by the <xref:System.Web.UI.WebControls.ObjectDataSource.SelectMethod*> property returns a <xref href="System.Data.Common.DbDataReader"></xref>.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,10 +605,10 @@ items:
     content: public bool EnablePaging { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data source control supports paging through the data it retrieves; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data source control supports paging through the data it retrieves; otherwise, `false`.'
   overload: System.Web.UI.WebControls.ObjectDataSource.EnablePaging*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -639,7 +639,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The FilterExpression property was set and the <xref:System.Web.UI.WebControls.ObjectDataSource.Select*> method does not return a <xref href="System.Data.DataSet"></xref> or <xref href="System.Data.DataTable"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -664,7 +664,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceFilteringEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -695,7 +695,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: You set the <xref:System.Web.UI.WebControls.ObjectDataSource.FilterExpression*> property and the <xref:System.Web.UI.WebControls.ObjectDataSource.Select*> method does not return a <xref href="System.Data.DataSet"></xref> or <xref href="System.Data.DataTable"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -722,13 +722,13 @@ items:
       description: The name of the view to retrieve. Because the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> supports only one view, `viewName` is ignored.
     return:
       type: System.Web.UI.DataSourceView
-      description: The <xref href="System.Web.UI.WebControls.ObjectDataSourceView"></xref> named <xref uid="langword_csharp_DefaultView" name="DefaultView" href=""></xref> that is associated with the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref>.
+      description: The <xref href="System.Web.UI.WebControls.ObjectDataSourceView"></xref> named `DefaultView` that is associated with the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref>.
   overload: System.Web.UI.WebControls.ObjectDataSource.GetView*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The specified <code>viewName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or something other than <xref uid="langword_csharp_DefaultView" name="DefaultView" href=""></xref>.
-  platform:
+    description: The specified <code>viewName</code> is `null` or something other than `DefaultView`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -755,7 +755,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> that contains the names of the views associated with the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref>.
   overload: System.Web.UI.WebControls.ObjectDataSource.GetViewNames*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -782,7 +782,7 @@ items:
       description: A value that represents the number of rows inserted into the underlying data storage.
   overload: System.Web.UI.WebControls.ObjectDataSource.Insert*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -807,7 +807,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -834,7 +834,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceMethodEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -862,7 +862,7 @@ items:
       description: A string that represents the name of the method or function that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> uses to insert data. The default is an empty string ("").
   overload: System.Web.UI.WebControls.ObjectDataSource.InsertMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -890,7 +890,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the method identified by the <xref:System.Web.UI.WebControls.ObjectDataSource.InsertMethod*> property.
   overload: System.Web.UI.WebControls.ObjectDataSource.InsertParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -917,7 +917,7 @@ items:
       description: An object that contains the saved view state values for the control.
   overload: System.Web.UI.WebControls.ObjectDataSource.LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -945,7 +945,7 @@ items:
       description: The name of the <xref:System.Web.UI.WebControls.ObjectDataSource.SelectMethod*> parameter that is used to indicate the number of records to retrieve. The default is `"maximumRows"`.
   overload: System.Web.UI.WebControls.ObjectDataSource.MaximumRowsParameterName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -970,7 +970,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceObjectEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -997,7 +997,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceObjectEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1024,7 +1024,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceDisposingEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1041,7 +1041,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets a format string to apply to the names of the parameters for original values that are passed to the <xref uid="langword_csharp_Delete" name="Delete" href=""></xref> or <xref uid="langword_csharp_Update" name="Update" href=""></xref> methods.
+  summary: Gets or sets a format string to apply to the names of the parameters for original values that are passed to the `Delete` or `Update` methods.
   remarks: "The value of the <xref:System.Web.UI.WebControls.ObjectDataSourceView.OldValuesParameterFormatString%2A> property is applied to primary keys only, such as those that are identified with the `DataKeyNames` property of a data-bound control, or in delete and update scenarios where the <xref:System.Web.UI.WebControls.ObjectDataSourceView.ConflictDetection%2A> property is set to the <xref:System.Web.UI.ConflictOptions> value, and the set of original values are passed to the corresponding data method.  \n  \n The following are two common scenarios where you might change the <xref:System.Web.UI.WebControls.ObjectDataSourceView.OldValuesParameterFormatString%2A> property:  \n  \n-   You might want to change the property to differentiate between old and new values in updates. When the <xref:System.Web.UI.WebControls.ObjectDataSourceView.ConflictDetection%2A> property is set to the <xref:System.Web.UI.ConflictOptions> value, parameters for both the original and new values are added to the <xref:System.Web.UI.WebControls.ObjectDataSource.UpdateParameters%2A> collection. Without the formatting string, two parameters with the same name would be created for each data field. By changing the name of the original value parameter, you can compare the data to the original data source to detect conflicts and compare key values.  \n  \n-   Some visual designers implement a particular naming scheme for original values and keys.  \n  \n The OldValuesParameterFormatString property delegates to the <xref:System.Web.UI.WebControls.ObjectDataSourceView.OldValuesParameterFormatString%2A> property of the <xref:System.Web.UI.WebControls.ObjectDataSourceView> object that is associated with the <xref:System.Web.UI.WebControls.ObjectDataSource> control."
   syntax:
     content: public string OldValuesParameterFormatString { get; set; }
@@ -1050,7 +1050,7 @@ items:
       description: A string that represents a format string applied to the names of any <code>oldValues</code> or key parameters passed to the <xref:System.Web.UI.WebControls.ObjectDataSource.Delete*> or <xref:System.Web.UI.WebControls.ObjectDataSource.Update*> methods. The default is `"{0}"`, which means the parameter name is the field name.
   overload: System.Web.UI.WebControls.ObjectDataSource.OldValuesParameterFormatString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1077,7 +1077,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains event data.
   overload: System.Web.UI.WebControls.ObjectDataSource.OnInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1100,10 +1100,10 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: Returns the server control's current view state; otherwise, returns <xref uid="langword_csharp_null" name="null" href=""></xref>, if there is no view state associated with the control.
+      description: Returns the server control's current view state; otherwise, returns `null`, if there is no view state associated with the control.
   overload: System.Web.UI.WebControls.ObjectDataSource.SaveViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1132,7 +1132,7 @@ items:
       description: An <xref href="System.Collections.IEnumerable"></xref> list of data rows.
   overload: System.Web.UI.WebControls.ObjectDataSource.Select*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1160,7 +1160,7 @@ items:
       description: A string that represents the name of the method or function that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> uses to retrieve a row count. The method must return an integer (<xref href="System.Int32"></xref>). The default is an empty string ("").
   overload: System.Web.UI.WebControls.ObjectDataSource.SelectCountMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1187,7 +1187,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1212,7 +1212,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceSelectingEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1240,7 +1240,7 @@ items:
       description: A string that represents the name of the method or function that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> uses to retrieve data. The default is an empty string ("").
   overload: System.Web.UI.WebControls.ObjectDataSource.SelectMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1268,7 +1268,7 @@ items:
       description: A collection of parameters that are used by the method specified by the <xref:System.Web.UI.WebControls.ObjectDataSource.SelectMethod*> property.
   overload: System.Web.UI.WebControls.ObjectDataSource.SelectParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1296,7 +1296,7 @@ items:
       description: The name of the method parameter used to indicate the parameter which is used to sort the data. The default is an empty string.
   overload: System.Web.UI.WebControls.ObjectDataSource.SortParameterName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1324,7 +1324,7 @@ items:
       description: A string that indicates which databases and tables to use for the SQL Server cache dependency.
   overload: System.Web.UI.WebControls.ObjectDataSource.SqlCacheDependency*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1352,7 +1352,7 @@ items:
       description: The name of the business object method parameter used to indicate the first record to retrieve. The parameter must return an integer value. The default is `"startRowIndex"`.
   overload: System.Web.UI.WebControls.ObjectDataSource.StartRowIndexParameterName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1376,7 +1376,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.ObjectDataSource.TrackViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1404,7 +1404,7 @@ items:
       description: A partially or fully qualified class name that identifies the type of the object that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> represents. The default is an empty string ("").
   overload: System.Web.UI.WebControls.ObjectDataSource.TypeName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1433,7 +1433,7 @@ items:
       description: A value that represents the number of rows updated in the underlying data storage.
   overload: System.Web.UI.WebControls.ObjectDataSource.Update*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1458,7 +1458,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1486,7 +1486,7 @@ items:
       description: A string that represents the name of the method or function that the <xref href="System.Web.UI.WebControls.ObjectDataSource"></xref> uses to update data. The default is an empty string.
   overload: System.Web.UI.WebControls.ObjectDataSource.UpdateMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1514,7 +1514,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the method that is specified by the <xref:System.Web.UI.WebControls.ObjectDataSource.UpdateMethod*> property.
   overload: System.Web.UI.WebControls.ObjectDataSource.UpdateParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1541,7 +1541,7 @@ items:
       type: System.Web.UI.WebControls.ObjectDataSourceMethodEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

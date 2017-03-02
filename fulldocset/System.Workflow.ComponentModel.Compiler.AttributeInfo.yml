@@ -29,7 +29,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -54,7 +54,7 @@ items:
       description: A collection that contains values for each of the arguments associated with this instance.
   overload: System.Workflow.ComponentModel.Compiler.AttributeInfo.ArgumentValues*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -78,7 +78,7 @@ items:
       description: The <xref href="System.Type"></xref> of this instance.
   overload: System.Workflow.ComponentModel.Compiler.AttributeInfo.AttributeType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -99,10 +99,10 @@ items:
     content: public bool Creatable { get; }
     return:
       type: System.Boolean
-      description: "Returns a value which is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> if either of the following conditions are true:  \n  \n-   The <xref href=\"System.Type\"></xref> defining this attribute has an <xref:System.Type.Assembly*> which is a null reference (Visual Basic <xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>).  \n  \n-   Any one of the objects in the array <xref:System.Workflow.ComponentModel.Compiler.AttributeInfo.ArgumentValues*> is of <xref href=\"System.Type\"></xref><xref href=\"System.Exception\"></xref>  \n  \n Otherwise the value returned is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+      description: "Returns a value which is `false` if either of the following conditions are true:  \n  \n-   The <xref href=\"System.Type\"></xref> defining this attribute has an <xref:System.Type.Assembly*> which is a null reference (Visual Basic `Nothing`).  \n  \n-   Any one of the objects in the array <xref:System.Workflow.ComponentModel.Compiler.AttributeInfo.ArgumentValues*> is of <xref href=\"System.Type\"></xref><xref href=\"System.Exception\"></xref>  \n  \n Otherwise the value returned is `true`."
   overload: System.Workflow.ComponentModel.Compiler.AttributeInfo.Creatable*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -129,8 +129,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <xref:System.Workflow.ComponentModel.Compiler.AttributeInfo.Creatable*> is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: <xref:System.Workflow.ComponentModel.Compiler.AttributeInfo.Creatable*> is `false`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -155,7 +155,7 @@ items:
       description: The <xref href="System.IServiceProvider"></xref> helping this operation.
     - id: argumentIndex
       type: System.Int32
-      description: The <xref uid="langword_csharp_integer" name="integer" href=""></xref> index of the requested argument in the collection of arguments.
+      description: The `integer` index of the requested argument in the collection of arguments.
     - id: requestedType
       type: System.Type
       description: The <xref href="System.Type"></xref> of the argument.
@@ -169,8 +169,8 @@ items:
     description: <code>argumentIndex</code> is out of range of the argument collection.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>requestedType</code> is a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic).
-  platform:
+    description: <code>requestedType</code> is a null reference (`Nothing` in Visual Basic).
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

@@ -41,7 +41,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,7 +67,7 @@ items:
     parameters: []
   overload: System.Text.Decoder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -103,7 +103,7 @@ items:
       description: The maximum number of characters in `chars` to use in the conversion.
     - id: flush
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate no further data is to be converted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate no further data is to be converted; otherwise, `false`.'
     - id: bytesUsed
       type: System.Int32
       description: When this method returns, contains the number of bytes that were produced by the conversion. This parameter is passed uninitialized.
@@ -112,12 +112,12 @@ items:
       description: When this method returns, contains the number of characters from `chars` that were used in the conversion. This parameter is passed uninitialized.
     - id: completed
       type: System.Boolean
-      description: When this method returns, contains <xref uid="langword_csharp_true" name="true" href=""></xref> if all the characters specified by `byteCount` were converted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains `true` if all the characters specified by `byteCount` were converted; otherwise, `false`. This parameter is passed uninitialized.
   overload: System.Text.Decoder.Convert*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>chars</code> or <code>bytes</code> is <xref uid="langword_csharp_null " name="null " href=""></xref>(<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>).
+    description: <code>chars</code> or <code>bytes</code> is `null `(`Nothing`).
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>charCount</code> or <code>byteCount</code> is less than zero.
@@ -127,7 +127,7 @@ items:
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
       description: The maximum number of elements of `chars` to use in the conversion.
     - id: flush
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that no further data is to be converted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that no further data is to be converted; otherwise, `false`.'
     - id: bytesUsed
       type: System.Int32
       description: When this method returns, contains the number of bytes that were used in the conversion. This parameter is passed uninitialized.
@@ -180,12 +180,12 @@ items:
       description: When this method returns, contains the number of characters from `chars` that were produced by the conversion. This parameter is passed uninitialized.
     - id: completed
       type: System.Boolean
-      description: When this method returns, contains <xref uid="langword_csharp_true" name="true" href=""></xref> if all the characters specified by `byteCount` were converted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. This parameter is passed uninitialized.
+      description: When this method returns, contains `true` if all the characters specified by `byteCount` were converted; otherwise, `false`. This parameter is passed uninitialized.
   overload: System.Text.Decoder.Convert*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>chars</code> or <code>bytes</code> is <xref uid="langword_csharp_null " name="null " href=""></xref>(<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>).
+    description: <code>chars</code> or <code>bytes</code> is `null `(`Nothing`).
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>charIndex</code>, <code>charCount</code>, <code>byteIndex</code>, or <code>byteCount</code> is less than zero.  \n  \n -or-  \n  \n The length of <code>chars</code> - <code>charIndex</code> is less than <code>charCount</code>.  \n  \n -or-  \n  \n The length of <code>bytes</code> - <code>byteIndex</code> is less than <code>byteCount</code>."
@@ -195,7 +195,7 @@ items:
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,11 +223,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value in a set operation is <xref uid="langword_csharp_null " name="null " href=""></xref>(<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>).
+    description: The value in a set operation is `null `(`Nothing`).
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A new value cannot be assigned in a set operation because the current <xref href="System.Text.DecoderFallbackBuffer"></xref> object contains data that has not been decoded yet.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,7 +253,7 @@ items:
       description: A <xref href="System.Text.DecoderFallbackBuffer"></xref> object.
   overload: System.Text.Decoder.FallbackBuffer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -283,7 +283,7 @@ items:
       description: The number of bytes to decode.
     - id: flush
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to simulate clearing the internal state of the encoder after the calculation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to simulate clearing the internal state of the encoder after the calculation; otherwise, `false`.'
     return:
       type: System.Int32
       description: The number of characters produced by decoding the specified sequence of bytes and any bytes in the internal buffer.
@@ -291,14 +291,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>bytes</code> is <xref uid="langword_csharp_null " name="null " href=""></xref>(<xref uid="langword_csharp_Nothing " name="Nothing " href=""></xref>in Visual Basic .NET).
+    description: <code>bytes</code> is `null `(`Nothing `in Visual Basic .NET).
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>count</code> is less than zero.
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -338,14 +338,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>bytes</code> is <xref uid="langword_csharp_null " name="null " href=""></xref>(<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>).
+    description: <code>bytes</code> is `null `(`Nothing`).
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> or <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> and <code>count</code> do not denote a valid range in <code>bytes</code>."
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -378,7 +378,7 @@ items:
       description: The number of bytes to decode.
     - id: flush
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to simulate clearing the internal state of the encoder after the calculation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to simulate clearing the internal state of the encoder after the calculation; otherwise, `false`.'
     return:
       type: System.Int32
       description: The number of characters produced by decoding the specified sequence of bytes and any bytes in the internal buffer.
@@ -386,14 +386,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>bytes</code> is <xref uid="langword_csharp_null " name="null " href=""></xref>(<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>).
+    description: <code>bytes</code> is `null `(`Nothing`).
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>index</code> or <code>count</code> is less than zero.  \n  \n -or-  \n  \n <code>index</code> and <code>count</code> do not denote a valid range in <code>bytes</code>."
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -429,7 +429,7 @@ items:
       description: The maximum number of characters to write.
     - id: flush
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to clear the internal state of the decoder after the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to clear the internal state of the decoder after the conversion; otherwise, `false`.'
     return:
       type: System.Int32
       description: The actual number of characters written at the location indicated by the <code>chars</code> parameter.
@@ -437,7 +437,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>bytes</code> is <xref uid=\"langword_csharp_null \" name=\"null \" href=\"\"></xref>(<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>).  \n  \n -or-  \n  \n <code>chars</code> is <xref uid=\"langword_csharp_null \" name=\"null \" href=\"\"></xref>(<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>)."
+    description: "<code>bytes</code> is `null `(`Nothing`).  \n  \n -or-  \n  \n <code>chars</code> is `null `(`Nothing`)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>byteCount</code> or <code>charCount</code> is less than zero.
@@ -447,7 +447,7 @@ items:
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -493,7 +493,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>bytes</code> is <xref uid=\"langword_csharp_null \" name=\"null \" href=\"\"></xref>(<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>).  \n  \n -or-  \n  \n <code>chars</code> is <xref uid=\"langword_csharp_null \" name=\"null \" href=\"\"></xref>(<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>)."
+    description: "<code>bytes</code> is `null `(`Nothing`).  \n  \n -or-  \n  \n <code>chars</code> is `null `(`Nothing`)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>byteIndex</code> or <code>byteCount</code> or <code>charIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>byteindex</code> and <code>byteCount</code> do not denote a valid range in <code>bytes</code>.  \n  \n -or-  \n  \n <code>charIndex</code> is not a valid index in <code>chars</code>."
@@ -503,7 +503,7 @@ items:
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -542,7 +542,7 @@ items:
       description: The index at which to start writing the resulting set of characters.
     - id: flush
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to clear the internal state of the decoder after the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to clear the internal state of the decoder after the conversion; otherwise, `false`.'
     return:
       type: System.Int32
       description: The actual number of characters written into the <code>chars</code> parameter.
@@ -550,7 +550,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>bytes</code> is <xref uid=\"langword_csharp_null \" name=\"null \" href=\"\"></xref>(<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>).  \n  \n -or-  \n  \n <code>chars</code> is <xref uid=\"langword_csharp_null \" name=\"null \" href=\"\"></xref>(<xref uid=\"langword_csharp_Nothing\" name=\"Nothing\" href=\"\"></xref>)."
+    description: "<code>bytes</code> is `null `(`Nothing`).  \n  \n -or-  \n  \n <code>chars</code> is `null `(`Nothing`)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>byteIndex</code> or <code>byteCount</code> or <code>charIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>byteindex</code> and <code>byteCount</code> do not denote a valid range in <code>bytes</code>.  \n  \n -or-  \n  \n <code>charIndex</code> is not a valid index in <code>chars</code>."
@@ -560,7 +560,7 @@ items:
   - type: System.Text.DecoderFallbackException
     commentId: T:System.Text.DecoderFallbackException
     description: "A fallback occurred (see [Character Encoding in the .NET Framework](~/add/includes/ajax-current-ext-md.md) for fuller explanation)  \n  \n -and-  \n  \n <xref:System.Text.Decoder.Fallback*> is set to <xref href=\"System.Text.DecoderExceptionFallback\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -584,7 +584,7 @@ items:
     parameters: []
   overload: System.Text.Decoder.Reset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -629,12 +629,40 @@ references:
   name: Convert(Byte*,Int32,Char*,Int32,Boolean,Int32,Int32,Boolean)
   nameWithType: Decoder.Convert(Byte*,Int32,Char*,Int32,Boolean,Int32,Int32,Boolean)
   fullName: System.Text.Decoder.Convert(Byte*,Int32,Char*,Int32,Boolean,Int32,Int32,Boolean)
+- uid: System.Byte*
+  parent: System
+  isExternal: false
+  name: Byte*
+  nameWithType: Byte*
+  fullName: System.Byte*
+  spec.csharp:
+  - uid: System.Byte
+    name: Byte
+    nameWithType: Byte
+    fullName: Byte
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.Int32
   parent: System
   isExternal: false
   name: Int32
   nameWithType: Int32
   fullName: System.Int32
+- uid: System.Char*
+  parent: System
+  isExternal: false
+  name: Char*
+  nameWithType: Char*
+  fullName: System.Char*
+  spec.csharp:
+  - uid: System.Char
+    name: Char
+    nameWithType: Char
+    fullName: Char
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.Boolean
   parent: System
   isExternal: false
@@ -650,8 +678,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -664,8 +692,8 @@ references:
 - uid: System.Char[]
   parent: System
   isExternal: false
-  name: Char
-  nameWithType: Char
+  name: Char[]
+  nameWithType: Char[]
   fullName: System.Char[]
   spec.csharp:
   - uid: System.Char

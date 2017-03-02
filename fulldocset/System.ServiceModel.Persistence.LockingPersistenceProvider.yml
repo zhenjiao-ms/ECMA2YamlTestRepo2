@@ -92,7 +92,7 @@ items:
   - System.ServiceModel.Persistence.PersistenceProvider.EndLoadIfChanged(System.IAsyncResult,System.Object@)
   - System.ServiceModel.Persistence.PersistenceProvider.EndUpdate(System.IAsyncResult)
   - System.ServiceModel.Persistence.PersistenceProvider.Id
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.#ctor(System.Guid)
@@ -116,7 +116,7 @@ items:
       description: The unique identifier to be associated with this persistence provider instance.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)
@@ -153,7 +153,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate(System.Object,System.TimeSpan,System.Boolean,System.AsyncCallback,System.Object)
@@ -168,7 +168,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method unlocks the instance after saving the instance state if the value of the <code>unlockInstance</code> parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method unlocks the instance after saving the instance state if the value of the <code>unlockInstance</code> parameter is `true`.
   syntax:
     content: public abstract IAsyncResult BeginCreate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
@@ -180,7 +180,7 @@ items:
       description: The interval in which the operation must be completed without timing out.
     - id: unlockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance must be unlocked in the persistence store; otherwise `false`.'
     - id: callback
       type: System.AsyncCallback
       description: The delegate that receives the notification when the operation completes.
@@ -192,7 +192,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad(System.TimeSpan,System.AsyncCallback,System.Object)
@@ -226,7 +226,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad(System.TimeSpan,System.Boolean,System.AsyncCallback,System.Object)
@@ -241,7 +241,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method locks the instance after loading the instance state if the value of the <code>lockInstance</code> parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method locks the instance after loading the instance state if the value of the <code>lockInstance</code> parameter is `true`.
   syntax:
     content: public abstract IAsyncResult BeginLoad (TimeSpan timeout, bool lockInstance, AsyncCallback callback, object state);
     parameters:
@@ -250,7 +250,7 @@ items:
       description: An interval in which the operation must be completed before timing out.
     - id: lockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance must be locked; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance must be locked; otherwise `false`.'
     - id: callback
       type: System.AsyncCallback
       description: The delegate that receives the notification when the operation completes.
@@ -262,7 +262,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged(System.TimeSpan,System.Object,System.AsyncCallback,System.Object)
@@ -286,7 +286,7 @@ items:
       description: The time period after which the persistence provider aborts this operation.
     - id: instanceToken
       type: System.Object
-      description: The token returned by a previous <xref uid="langword_csharp_Create" name="Create" href=""></xref> or <xref uid="langword_csharp_Update" name="Update" href=""></xref> method that represents the current state held by the caller.
+      description: The token returned by a previous `Create` or `Update` method that represents the current state held by the caller.
     - id: callback
       type: System.AsyncCallback
       description: The method to be called when the operation is completed.
@@ -298,7 +298,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged(System.TimeSpan,System.Object,System.Boolean,System.AsyncCallback,System.Object)
@@ -322,10 +322,10 @@ items:
       description: The time period after which the persistence provider aborts this operation.
     - id: instanceToken
       type: System.Object
-      description: The token returned by a previous <xref uid="langword_csharp_Create" name="Create" href=""></xref> or <xref uid="langword_csharp_Update" name="Update" href=""></xref> method that represents the current state held by the caller.
+      description: The token returned by a previous `Create` or `Update` method that represents the current state held by the caller.
     - id: lockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance is locked in the persistence store; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance is locked in the persistence store; otherwise `false`.'
     - id: callback
       type: System.AsyncCallback
       description: The method to be called when the operation is completed.
@@ -337,7 +337,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUnlock(System.TimeSpan,System.AsyncCallback,System.Object)
@@ -370,7 +370,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUnlock*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate(System.Object,System.TimeSpan,System.AsyncCallback,System.Object)
@@ -407,7 +407,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate(System.Object,System.TimeSpan,System.Boolean,System.AsyncCallback,System.Object)
@@ -422,7 +422,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation locks the instance in the persistence store if the value of the <code>unlockInstance</code> parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation locks the instance in the persistence store if the value of the <code>unlockInstance</code> parameter is `true`.
   syntax:
     content: public abstract IAsyncResult BeginUpdate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
@@ -434,7 +434,7 @@ items:
       description: The interval in which the operation must complete without timing out.
     - id: unlockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance must be locked after the instance state is updated in the persistence store; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance must be locked after the instance state is updated in the persistence store; otherwise `false`.'
     - id: callback
       type: System.AsyncCallback
       description: The delegate that receives the notification when the operation completes.
@@ -446,7 +446,7 @@ items:
       description: The status of an asynchronous operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Create(System.Object,System.TimeSpan)
@@ -476,7 +476,7 @@ items:
       description: The state information.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Create(System.Object,System.TimeSpan,System.Boolean)
@@ -491,7 +491,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: This method creates instance state information in the persistence store using parameters passed into the method. The method unlocks the instance in the instance store if the value of the <code>unlockInstance</code> parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: This method creates instance state information in the persistence store using parameters passed into the method. The method unlocks the instance in the instance store if the value of the <code>unlockInstance</code> parameter is `true`.
   syntax:
     content: public abstract object Create (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
@@ -503,13 +503,13 @@ items:
       description: The interval within which the operation must complete before timing out.
     - id: unlockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance must be unlocked in the persistence store; otherwise `false`.'
     return:
       type: System.Object
       description: The state information.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.EndUnlock(System.IAsyncResult)
@@ -533,7 +533,7 @@ items:
       description: The result returned by the unlock operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.EndUnlock*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Load(System.TimeSpan)
@@ -561,7 +561,7 @@ items:
       description: The service state information.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Load(System.TimeSpan,System.Boolean)
@@ -585,13 +585,13 @@ items:
       description: The period after which the persistence provider aborts this operation.
     - id: lockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance should be locked; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance should be locked; otherwise `false`.'
     return:
       type: System.Object
       description: The state information.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Object@)
@@ -615,16 +615,16 @@ items:
       description: The time period after which the persistence provider aborts this operation.
     - id: instanceToken
       type: System.Object
-      description: The token returned by the previous <xref uid="langword_csharp_Create" name="Create" href=""></xref> or <xref uid="langword_csharp_Update" name="Update" href=""></xref> method calls, which represents the current state held by the caller.
+      description: The token returned by the previous `Create` or `Update` method calls, which represents the current state held by the caller.
     - id: instance
       type: System.Object
       description: The actual instance state information.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance should be locked in the persistence store at the end of this operation; otherwise `false`.'
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged(System.TimeSpan,System.Object,System.Boolean,System.Object@)
@@ -651,16 +651,16 @@ items:
       description: The token returned by the previous Create or Update method calls, which represents the current state held by the caller.
     - id: lockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance should be locked in the persistence store at the end of this operation; otherwise `false`.'
     - id: instance
       type: System.Object
       description: The instance state information.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance should be locked in the persistence store at the end of this operation; otherwise `false`.'
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Unlock(System.TimeSpan)
@@ -684,7 +684,7 @@ items:
       description: The time period after which the persistence provider aborts the operation.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Unlock*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Update(System.Object,System.TimeSpan)
@@ -714,7 +714,7 @@ items:
       description: The instance state information.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ServiceModel.Persistence.LockingPersistenceProvider.Update(System.Object,System.TimeSpan,System.Boolean)
@@ -741,13 +741,13 @@ items:
       description: The time period after which the persistence provider aborts the operation.
     - id: unlockInstance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the instance is unlocked after the instance state information is updated; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the instance is unlocked after the instance state information is updated; otherwise `false`.'
     return:
       type: System.Object
       description: The instance state information.
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:

@@ -29,7 +29,7 @@ items:
   - System.Windows.Markup.MarkupExtension
   implements: []
   inheritedMembers: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -56,7 +56,7 @@ items:
       description: The name of the <xref href="System.Windows.Data.BindingGroup"></xref> to which this binding belongs.
   overload: System.Windows.Data.BindingBase.BindingGroupName*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -81,7 +81,7 @@ items:
       description: The default value is <xref href="System.Windows.DependencyProperty.UnsetValue"></xref>.
   overload: System.Windows.Data.BindingBase.FallbackValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -104,13 +104,13 @@ items:
     parameters:
     - id: serviceProvider
       type: System.IServiceProvider
-      description: The object that can provide services for the markup extension. May be <xref uid="langword_csharp_null" name="null" href=""></xref>; see the Remarks section for more information.
+      description: The object that can provide services for the markup extension. May be `null`; see the Remarks section for more information.
     return:
       type: System.Object
       description: The value to set on the binding target property.
   overload: System.Windows.Data.BindingBase.ProvideValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -132,10 +132,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Windows.Data.BindingBase.FallbackValue*> property value should be serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Windows.Data.BindingBase.FallbackValue*> property value should be serialized; otherwise, `false`.'
   overload: System.Windows.Data.BindingBase.ShouldSerializeFallbackValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -157,10 +157,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Windows.Data.BindingBase.TargetNullValue*> property should be serialized; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.Windows.Data.BindingBase.TargetNullValue*> property should be serialized; otherwise, `false`.'
   overload: System.Windows.Data.BindingBase.ShouldSerializeTargetNullValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -187,7 +187,7 @@ items:
       description: A string that specifies how to format the binding if it displays the bound value as a string.
   overload: System.Windows.Data.BindingBase.StringFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -203,7 +203,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Data
-  summary: Gets or sets the value that is used in the target when the value of the source is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  summary: Gets or sets the value that is used in the target when the value of the source is `null`.
   remarks: "<a name=\"xamlTextUsage_TargetNullValue\"></a>   \n## XAML Text Usage  \n  \n```  \n<object TargetNullValue=\"nullValue\" />  \n```  \n  \n **- or –**  \n  \n```  \n<object>  \n  <object.TargetNullValue>  \n    nullValue  \n    </object.TargetNullValue>  \n</object>  \n```  \n  \n<a name=\"xamlValues_TargetNullValue\"></a>   \n## XAML Values  \n *nullValue*  \n An attribute or object element value of the same type as the target property. See that type's documentation for XAML usage information. That type may or may not support attribute syntax for its values, or may or may not support object element syntax (which requires a default constructor on that type)."
   example:
   - "The following example binds a <xref:System.Windows.Controls.TextBox> to a property of an object.  If the property is `null`, the <xref:System.Windows.Controls.TextBox> displays \"please enter a string.\"  \n  \n [!code-xml[BindingGroupSnippets#TargetNullValue](~/add/codesnippet/xaml/BindingGroupSnippets/Window3.xaml#targetnullvalue)]"
@@ -211,10 +211,10 @@ items:
     content: public object TargetNullValue { get; set; }
     return:
       type: System.Object
-      description: The value that is used in the target when the value of the source is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The value that is used in the target when the value of the source is `null`.
   overload: System.Windows.Data.BindingBase.TargetNullValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

@@ -62,7 +62,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,11 +105,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Web.UI.Control"></xref> specified is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref href="System.Web.UI.Control"></xref> specified is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Web.UI.Control"></xref> specified does not implement the <xref href="System.Web.UI.ICallbackEventHandler"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,7 +145,7 @@ items:
       description: The client script that is evaluated on the client prior to initiating the callback. The result of the script is passed back to the client event handler.
     - id: useAsync
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to perform the callback asynchronously; <xref uid="langword_csharp_false" name="false" href=""></xref> to perform the callback synchronously.
+      description: '`true` to perform the callback asynchronously; `false` to perform the callback synchronously.'
     return:
       type: System.String
       description: The name of a client function that invokes the client callback.
@@ -153,11 +153,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Web.UI.Control"></xref> specified is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref href="System.Web.UI.Control"></xref> specified is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Web.UI.Control"></xref> specified does not implement the <xref href="System.Web.UI.ICallbackEventHandler"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,13 +198,13 @@ items:
       description: The name of the client event handler that receives the result when an error occurs in the server event handler.
     - id: useAsync
       type: System.Boolean
-      description: <xref uid="langword_csharp_true " name="true " href=""></xref> to perform the callback asynchronously; <xref uid="langword_csharp_false" name="false" href=""></xref> to perform the callback synchronously.
+      description: '`true ` to perform the callback asynchronously; `false` to perform the callback synchronously.'
     return:
       type: System.String
       description: The name of a client function that invokes the client callback.
   overload: System.Web.UI.ClientScriptManager.GetCallbackEventReference*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
       description: The name of the client event handler that receives the result when an error occurs in the server event handler.
     - id: useAsync
       type: System.Boolean
-      description: <xref uid="langword_csharp_true " name="true " href=""></xref>to perform the callback asynchronously; <xref uid="langword_csharp_false" name="false" href=""></xref> to perform the callback synchronously.
+      description: '`true `to perform the callback asynchronously; `false` to perform the callback synchronously.'
     return:
       type: System.String
       description: The name of a client function that invokes the client callback.
@@ -251,11 +251,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Web.UI.Control"></xref> specified is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref href="System.Web.UI.Control"></xref> specified is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Web.UI.Control"></xref> specified does not implement the <xref href="System.Web.UI.ICallbackEventHandler"></xref> interface.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -272,7 +272,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Gets a reference, with <xref uid="langword_csharp_javascript:" name="javascript:" href=""></xref> appended to the beginning of it, that can be used in a client event to post back to the server for the specified control and with the specified event arguments.
+  summary: Gets a reference, with `javascript:` appended to the beginning of it, that can be used in a client event to post back to the server for the specified control and with the specified event arguments.
   remarks: Using the <xref:System.Web.UI.ClientScriptManager.GetPostBackEventReference%2A> method requires the control that handles the postback to implement the <xref:System.Web.UI.IPostBackEventHandler> interface. To implement the <xref:System.Web.UI.IPostBackEventHandler> interface for a <xref:System.Web.UI.Page>,  use the  directive.
   example:
   - "The following code example demonstrates the use of the GetPostBackClientHyperlink method. The custom control, `MyControl`, implements the <xref:System.Web.UI.IPostBackEventHandler> interface. When the HTML anchor element on the page is clicked, the <xref:System.Web.UI.IPostBackEventHandler.RaisePostBackEvent%2A> method of the custom control is invoked.  \n  \n [!code-vb[System.Web.UI.ClientScriptManager8#1](~/add/codesnippet/visualbasic/366d34c0-2826-48a7-a56d-_1.aspx)]\n [!code-cs[System.Web.UI.ClientScriptManager8#1](~/add/codesnippet/csharp/366d34c0-2826-48a7-a56d-_1.aspx)]  \n  \n The following code example has the same functionality as the preceding one, except that instead of a custom control, the <xref:System.Web.UI.Page> class implements the <xref:System.Web.UI.IPostBackEventHandler> interface.  \n  \n [!code-cs[System.Web.UI.ClientScriptManager8#2](~/add/codesnippet/csharp/366d34c0-2826-48a7-a56d-_2.aspx)]\n [!code-vb[System.Web.UI.ClientScriptManager8#2](~/add/codesnippet/visualbasic/366d34c0-2826-48a7-a56d-_2.aspx)]"
@@ -290,7 +290,7 @@ items:
       description: A string representing a JavaScript call to the postback function that includes the target control's ID and event arguments.
   overload: System.Web.UI.ClientScriptManager.GetPostBackClientHyperlink*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,7 +307,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Gets a reference, with <xref uid="langword_csharp_javascript:" name="javascript:" href=""></xref> appended to the beginning of it, that can be used in a client event to post back to the server for the specified control with the specified event arguments and Boolean indication whether to register the post back for event validation.
+  summary: Gets a reference, with `javascript:` appended to the beginning of it, that can be used in a client event to post back to the server for the specified control with the specified event arguments and Boolean indication whether to register the post back for event validation.
   remarks: Using the <xref:System.Web.UI.ClientScriptManager.GetPostBackEventReference%2A> method requires the control that handles the postback to implement the <xref:System.Web.UI.IPostBackEventHandler> interface. To implement the <xref:System.Web.UI.IPostBackEventHandler> interface for a <xref:System.Web.UI.Page>, use the  directive.
   syntax:
     content: public string GetPostBackClientHyperlink (System.Web.UI.Control control, string argument, bool registerForEventValidation);
@@ -320,13 +320,13 @@ items:
       description: The parameter passed to the server control.
     - id: registerForEventValidation
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to register the postback event for validation; <xref uid="langword_csharp_false" name="false" href=""></xref> to not register the post back event for validation.
+      description: '`true` to register the postback event for validation; `false` to not register the post back event for validation.'
     return:
       type: System.String
       description: A string representing a JavaScript call to the postback function that includes the target control's ID and event arguments.
   overload: System.Web.UI.ClientScriptManager.GetPostBackClientHyperlink*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -358,8 +358,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Web.UI.PostBackOptions"></xref> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>
-  platform:
+    description: The <xref href="System.Web.UI.PostBackOptions"></xref> parameter is `null`
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -396,8 +396,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The specified <xref href="System.Web.UI.Control"></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The specified <xref href="System.Web.UI.Control"></xref> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -424,7 +424,7 @@ items:
       description: A <xref href="System.Web.UI.PostBackOptions"></xref> that defines the postback.
     - id: registerForEventValidation
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to register the event reference for validation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to register the event reference for validation; otherwise, `false`.'
     return:
       type: System.String
       description: A string that, when treated as script on the client, initiates the client postback.
@@ -432,8 +432,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Web.UI.PostBackOptions"></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <xref href="System.Web.UI.PostBackOptions"></xref> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,7 +463,7 @@ items:
       description: A string of optional arguments to pass to `control`.
     - id: registerForEventValidation
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to register the event reference for validation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to register the event reference for validation; otherwise, `false`.'
     return:
       type: System.String
       description: A string that, when treated as script on the client, initiates the postback.
@@ -471,8 +471,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The specified <xref href="System.Web.UI.Control"></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The specified <xref href="System.Web.UI.Control"></xref> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -509,8 +509,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The web resource name is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The web resource name has a length of zero."
-  platform:
+    description: "The web resource name is `null`.  \n  \n \\- or -  \n  \n The web resource name has a length of zero."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -541,10 +541,10 @@ items:
       description: The key of the client script block to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the client script block is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the client script block is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsClientScriptBlockRegistered*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -576,13 +576,13 @@ items:
       description: The key of the client script block to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the client script block is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the client script block is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsClientScriptBlockRegistered*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The client script type is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The client script type is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -609,10 +609,10 @@ items:
       description: The key of the client script include to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the client script include is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the client script include is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsClientScriptIncludeRegistered*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -644,13 +644,13 @@ items:
       description: The key of the client script include to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the client script include is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the client script include is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsClientScriptIncludeRegistered*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The client script include type is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The client script include type is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -677,10 +677,10 @@ items:
       description: The key of the OnSubmit statement to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the OnSubmit statement is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the OnSubmit statement is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsOnSubmitStatementRegistered*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -712,13 +712,13 @@ items:
       description: The key of the OnSubmit statement to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the OnSubmit statement is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the OnSubmit statement is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsOnSubmitStatementRegistered*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The OnSubmit statement type is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The OnSubmit statement type is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -745,10 +745,10 @@ items:
       description: The key of the startup script to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the startup script is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the startup script is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsStartupScriptRegistered*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -780,13 +780,13 @@ items:
       description: The key of the startup script to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the startup script is registered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the startup script is registered; otherwise, `false`.'
   overload: System.Web.UI.ClientScriptManager.IsStartupScriptRegistered*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The startup script type is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The startup script type is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -820,8 +820,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>arrayName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>arrayName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -856,7 +856,7 @@ items:
       description: The client script literal to register.
   overload: System.Web.UI.ClientScriptManager.RegisterClientScriptBlock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -896,8 +896,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The client script block type is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The client script block type is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -929,7 +929,7 @@ items:
       description: The URL of the client script include to register.
   overload: System.Web.UI.ClientScriptManager.RegisterClientScriptInclude*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -966,11 +966,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The client script include type is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The client script include type is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The URL is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The URL is empty."
-  platform:
+    description: "The URL is `null`.  \n  \n \\- or -  \n  \n The URL is empty."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1004,8 +1004,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The client resource name is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The client resource name has a length of zero."
-  platform:
+    description: "The client resource name is `null`.  \n  \n \\- or -  \n  \n The client resource name has a length of zero."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1038,7 +1038,7 @@ items:
       description: The value of the custom attribute.
   overload: System.Web.UI.ClientScriptManager.RegisterExpandoAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1076,7 +1076,7 @@ items:
       description: A Boolean value indicating whether to encode the custom attribute to register.
   overload: System.Web.UI.ClientScriptManager.RegisterExpandoAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1105,7 +1105,7 @@ items:
       description: A unique ID representing the client control generating the event.
   overload: System.Web.UI.ClientScriptManager.RegisterForEventValidation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1132,7 +1132,7 @@ items:
       description: A <xref href="System.Web.UI.PostBackOptions"></xref> object that specifies how client JavaScript is generated to initiate a postback event.
   overload: System.Web.UI.ClientScriptManager.RegisterForEventValidation*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1167,7 +1167,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called prior to the <xref:System.Web.UI.Page.Render*> method.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1201,8 +1201,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>hiddenFieldName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>hiddenFieldName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1239,8 +1239,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>type</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1275,7 +1275,7 @@ items:
       description: The startup script literal to register.
   overload: System.Web.UI.ClientScriptManager.RegisterStartupScript*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1315,8 +1315,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>type</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1342,7 +1342,7 @@ items:
       description: A unique ID representing the client control generating the event.
   overload: System.Web.UI.ClientScriptManager.ValidateEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1376,8 +1376,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>uniqueId</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string ("").
-  platform:
+    description: <code>uniqueId</code> is `null` or an empty string ("").
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

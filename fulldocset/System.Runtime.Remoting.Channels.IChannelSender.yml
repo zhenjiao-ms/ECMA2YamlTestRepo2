@@ -24,7 +24,7 @@ items:
       public interface IChannelSender : System.Runtime.Remoting.Channels.IChannel
   implements:
   - System.Runtime.Remoting.Channels.IChannel
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -53,22 +53,22 @@ items:
     parameters:
     - id: url
       type: System.String
-      description: The URL to which the new sink will deliver messages. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The URL to which the new sink will deliver messages. Can be `null`.
     - id: remoteChannelData
       type: System.Object
-      description: The channel data object of the remote host to which the new sink will deliver messages. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The channel data object of the remote host to which the new sink will deliver messages. Can be `null`.
     - id: objectURI
       type: System.String
       description: When this method returns, contains a URI of the new channel message sink that delivers messages to the specified URL or channel data object. This parameter is passed uninitialized.
     return:
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: A channel message sink that delivers messages to the specified URL or channel data object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the channel cannot connect to the given endpoint.
+      description: A channel message sink that delivers messages to the specified URL or channel data object, or `null` if the channel cannot connect to the given endpoint.
   overload: System.Runtime.Remoting.Channels.IChannelSender.CreateMessageSink*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

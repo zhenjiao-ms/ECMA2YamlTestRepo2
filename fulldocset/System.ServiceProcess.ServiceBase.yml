@@ -67,7 +67,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
     parameters: []
   overload: System.ServiceProcess.ServiceBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,10 +114,10 @@ items:
     content: public bool AutoLog { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to report information in the event log; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to report information in the event log; otherwise, `false`.'
   overload: System.ServiceProcess.ServiceBase.AutoLog*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,13 +140,13 @@ items:
     content: public bool CanHandlePowerEvent { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the service handles the computer power status changes indicated in the <xref href="System.ServiceProcess.PowerBroadcastStatus"></xref> class, otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the service handles the computer power status changes indicated in the <xref href="System.ServiceProcess.PowerBroadcastStatus"></xref> class, otherwise, `false`.'
   overload: System.ServiceProcess.ServiceBase.CanHandlePowerEvent*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property is modified after the service was started.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -168,13 +168,13 @@ items:
     content: public bool CanHandleSessionChangeEvent { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the service can handle Terminal Server session change events; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the service can handle Terminal Server session change events; otherwise, `false`.'
   overload: System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This property is modified after the service was started.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -197,13 +197,13 @@ items:
     content: public bool CanPauseAndContinue { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the service can be paused; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the service can be paused; otherwise, `false`.'
   overload: System.ServiceProcess.ServiceBase.CanPauseAndContinue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The service has already been started. The CanPauseAndContinue property cannot be changed once the service has started.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,13 +226,13 @@ items:
     content: public bool CanShutdown { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the service should be notified when the system is shutting down; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.  The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the service should be notified when the system is shutting down; otherwise, `false`.  The default is `false`.'
   overload: System.ServiceProcess.ServiceBase.CanShutdown*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The service has already been started. The CanShutdown property cannot be changed once the service has started.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -255,13 +255,13 @@ items:
     content: public bool CanStop { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the service can be stopped and the <xref:System.ServiceProcess.ServiceBase.OnStop*> method called; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the service can be stopped and the <xref:System.ServiceProcess.ServiceBase.OnStop*> method called; otherwise, `false`.'
   overload: System.ServiceProcess.ServiceBase.CanStop*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The service has already been started. The CanStop property cannot be changed once the service has started.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -285,10 +285,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.ServiceProcess.ServiceBase.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -314,7 +314,7 @@ items:
       description: An <xref href="System.Diagnostics.EventLog"></xref> instance whose source is registered to the Application log.
   overload: System.ServiceProcess.ServiceBase.EventLog*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -340,7 +340,7 @@ items:
       description: The exit code for the service.
   overload: System.ServiceProcess.ServiceBase.ExitCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -365,7 +365,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -389,7 +389,7 @@ items:
     parameters: []
   overload: System.ServiceProcess.ServiceBase.OnContinue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -416,7 +416,7 @@ items:
       description: The command message sent to the service.
   overload: System.ServiceProcess.ServiceBase.OnCustomCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,7 +440,7 @@ items:
     parameters: []
   overload: System.ServiceProcess.ServiceBase.OnPause*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,10 +467,10 @@ items:
       description: A <xref href="System.ServiceProcess.PowerBroadcastStatus"></xref> that indicates a notification from the system about its power status.
     return:
       type: System.Boolean
-      description: When implemented in a derived class, the needs of your application determine what value to return. For example, if a <xref uid="langword_csharp_QuerySuspend" name="QuerySuspend" href=""></xref> broadcast status is passed, you could cause your application to reject the query by returning <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: When implemented in a derived class, the needs of your application determine what value to return. For example, if a `QuerySuspend` broadcast status is passed, you could cause your application to reject the query by returning `false`.
   overload: System.ServiceProcess.ServiceBase.OnPowerEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -497,7 +497,7 @@ items:
       description: A structure that identifies the change type.
   overload: System.ServiceProcess.ServiceBase.OnSessionChange*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,7 +521,7 @@ items:
     parameters: []
   overload: System.ServiceProcess.ServiceBase.OnShutdown*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -548,7 +548,7 @@ items:
       description: Data passed by the start command.
   overload: System.ServiceProcess.ServiceBase.OnStart*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -572,7 +572,7 @@ items:
     parameters: []
   overload: System.ServiceProcess.ServiceBase.OnStop*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -602,7 +602,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The service is not in a pending state.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -631,8 +631,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>service</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>service</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -661,8 +661,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: You did not supply a service to start. The array might be <xref uid="langword_csharp_null" name="null" href=""></xref> or empty.
-  platform:
+    description: You did not supply a service to start. The array might be `null` or empty.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -688,7 +688,7 @@ items:
       description: An <xref href="System.IntPtr"></xref> structure that contains the service control handle for the service.
   overload: System.ServiceProcess.ServiceBase.ServiceHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -717,7 +717,7 @@ items:
       description: An <xref href="System.IntPtr"></xref> structure that points to an array of arguments.
   overload: System.ServiceProcess.ServiceBase.ServiceMainCallback*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -749,7 +749,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The specified name is a zero-length string or is longer than <xref href="System.ServiceProcess.ServiceBase.MaxNameLength"></xref>, or the specified name contains forward slash or backslash characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -773,7 +773,7 @@ items:
     parameters: []
   overload: System.ServiceProcess.ServiceBase.Stop*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -935,8 +935,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -979,8 +979,8 @@ references:
 - uid: System.ServiceProcess.ServiceBase[]
   parent: System.ServiceProcess
   isExternal: false
-  name: ServiceBase
-  nameWithType: ServiceBase
+  name: ServiceBase[]
+  nameWithType: ServiceBase[]
   fullName: System.ServiceProcess.ServiceBase[]
   spec.csharp:
   - uid: System.ServiceProcess.ServiceBase

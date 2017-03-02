@@ -34,7 +34,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,7 +61,7 @@ items:
       description: An <xref href="System.Threading.ExecutionContext"></xref> object representing the execution context for the current thread.
   overload: System.Threading.ExecutionContext.Capture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This context cannot be copied because it is used. Only newly captured contexts can be copied.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
     parameters: []
   overload: System.Threading.ExecutionContext.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.ExecutionContext.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
   id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -144,8 +144,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>info</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>info</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,10 +169,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the flow is suppressed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the flow is suppressed; otherwise, `false`.'
   overload: System.Threading.ExecutionContext.IsFlowSuppressed*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,7 +199,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The context flow cannot be restored because it is not being suppressed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,8 +234,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>executionContext</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>executionContext</code> was not acquired through a capture operation.  \n  \n -or-  \n  \n <code>executionContext</code> has already been used as the argument to a Run call."
-  platform:
+    description: "<code>executionContext</code> is `null`.  \n  \n -or-  \n  \n <code>executionContext</code> was not acquired through a capture operation.  \n  \n -or-  \n  \n <code>executionContext</code> has already been used as the argument to a Run call."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,7 +265,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The context flow is already suppressed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

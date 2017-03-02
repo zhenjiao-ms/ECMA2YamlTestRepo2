@@ -43,7 +43,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -72,7 +72,7 @@ items:
     parameters: []
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,13 +96,13 @@ items:
     parameters:
     - id: selector
       type: System.Runtime.Serialization.ISurrogateSelector
-      description: The <xref href="System.Runtime.Serialization.ISurrogateSelector"></xref> to use with the new instance of <xref href="System.Runtime.Serialization.Formatters.Soap.SoapFormatter"></xref>. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Runtime.Serialization.ISurrogateSelector"></xref> to use with the new instance of <xref href="System.Runtime.Serialization.Formatters.Soap.SoapFormatter"></xref>. Can be `null`.
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> that holds the source and destination of the serialization. If the `context` parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>, then the <xref:System.Runtime.Serialization.Formatters.Soap.SoapFormatter.Context*> defaults to <xref href="System.Runtime.Serialization.StreamingContextStates"></xref>.
+      description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> that holds the source and destination of the serialization. If the `context` parameter is `null`, then the <xref:System.Runtime.Serialization.Formatters.Soap.SoapFormatter.Context*> defaults to <xref href="System.Runtime.Serialization.StreamingContextStates"></xref>.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,7 +127,7 @@ items:
       description: One of the <xref href="System.Runtime.Serialization.Formatters.FormatterAssemblyStyle"></xref> values that specifies the deserializer behavior.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.AssemblyFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -152,7 +152,7 @@ items:
       description: The <xref href="System.Runtime.Serialization.SerializationBinder"></xref> used with this <xref href="System.Runtime.Serialization.Formatters.Soap.SoapFormatter"></xref>.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.Binder*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
       description: The <xref href="System.Runtime.Serialization.StreamingContext"></xref> used with this <xref href="System.Runtime.Serialization.Formatters.Soap.SoapFormatter"></xref>.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.Context*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,8 +215,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>serializationStream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
       description: The stream that contains the data to deserialize.
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: Delegate to handle any headers found on the stream. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Delegate to handle any headers found on the stream. Can be `null`.
     return:
       type: System.Object
       description: The top object of the deserialized graph (root).
@@ -251,11 +251,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: <code>serializationStream</code> supports seeking, and its length is 0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -281,7 +281,7 @@ items:
       description: The <xref href="System.Runtime.Serialization.Formatters.TypeFilterLevel"></xref> that represents the current automatic deserialization level.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.FilterLevel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -318,8 +318,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>serializationStream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -349,13 +349,13 @@ items:
       description: The object or root of the object graph to serialize. All child objects of this root object are automatically serialized.
     - id: headers
       type: System.Runtime.Remoting.Messaging.Header[]
-      description: Remoting headers to include in the serialization. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Remoting headers to include in the serialization. Can be `null`.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.Serialize*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>serializationStream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,7 +381,7 @@ items:
       description: The <xref href="System.Runtime.Serialization.SurrogateSelector"></xref> used with this <xref href="System.Runtime.Serialization.Formatters.Soap.SoapFormatter"></xref>.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.SurrogateSelector*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -407,7 +407,7 @@ items:
       description: The <xref href="System.Runtime.Serialization.Formatters.ISoapMessage"></xref> into which the SOAP top object is deserialized.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.TopObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,7 +432,7 @@ items:
       description: The format in which type descriptions are laid out in the serialized stream.
   overload: System.Runtime.Serialization.Formatters.Soap.SoapFormatter.TypeFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -558,8 +558,8 @@ references:
 - uid: System.Runtime.Remoting.Messaging.Header[]
   parent: System.Runtime.Remoting.Messaging
   isExternal: false
-  name: Header
-  nameWithType: Header
+  name: Header[]
+  nameWithType: Header[]
   fullName: System.Runtime.Remoting.Messaging.Header[]
   spec.csharp:
   - uid: System.Runtime.Remoting.Messaging.Header

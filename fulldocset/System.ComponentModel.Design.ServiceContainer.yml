@@ -41,7 +41,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -64,7 +64,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.ServiceContainer.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
       description: A parent service provider.
   overload: System.ComponentModel.Design.ServiceContainer.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,11 +125,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> or <code>callback</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>serviceType</code> or <code>callback</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A service of type <code>serviceType</code> already exists in the container.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,11 +163,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> or <code>serviceInstance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>serviceType</code> or <code>serviceInstance</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A service of type <code>serviceType</code> already exists in the container.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -196,16 +196,16 @@ items:
       description: A callback object that can create the service. This allows a service to be declared as available, but delays creation of the object until the service is requested.
     - id: promote
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this service should be added to any parent service containers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this service should be added to any parent service containers; otherwise, `false`.'
   overload: System.ComponentModel.Design.ServiceContainer.AddService*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> or <code>callback</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>serviceType</code> or <code>callback</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A service of type <code>serviceType</code> already exists in the container.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,16 +234,16 @@ items:
       description: An instance of the service type to add. This object must implement or inherit from the type indicated by the `serviceType` parameter.
     - id: promote
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this service should be added to any parent service containers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this service should be added to any parent service containers; otherwise, `false`.'
   overload: System.ComponentModel.Design.ServiceContainer.AddService*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> or <code>serviceInstance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>serviceType</code> or <code>serviceInstance</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: A service of type <code>serviceType</code> already exists in the container.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -269,7 +269,7 @@ items:
       description: The default services.
   overload: System.ComponentModel.Design.ServiceContainer.DefaultServices*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -293,7 +293,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.ServiceContainer.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -317,10 +317,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.ComponentModel.Design.ServiceContainer"></xref> is in the process of being disposed of; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.ComponentModel.Design.ServiceContainer"></xref> is in the process of being disposed of; otherwise, `false`.'
   overload: System.ComponentModel.Design.ServiceContainer.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,10 +346,10 @@ items:
       description: The type of service to retrieve.
     return:
       type: System.Object
-      description: An instance of the service if it could be found, or <xref uid="langword_csharp_null" name="null" href=""></xref> if it could not be found.
+      description: An instance of the service if it could be found, or `null` if it could not be found.
   overload: System.ComponentModel.Design.ServiceContainer.GetService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,8 +380,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>serviceType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -407,13 +407,13 @@ items:
       description: The type of service to remove.
     - id: promote
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this service should be removed from any parent service containers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this service should be removed from any parent service containers; otherwise, `false`.'
   overload: System.ComponentModel.Design.ServiceContainer.RemoveService*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>serviceType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>serviceType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -503,8 +503,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -61,7 +61,7 @@ items:
     parameters: []
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -101,13 +101,13 @@ items:
       description: The relative order in which the user event associated with this tracking record occurred in the workflow instance.
     - id: userDataKey
       type: System.String
-      description: A key associated with the user data for this tracking record, or a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic).
+      description: A key associated with the user data for this tracking record, or a null reference (`Nothing` in Visual Basic).
     - id: userData
       type: System.Object
       description: The user data associated with the user event.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -132,7 +132,7 @@ items:
       description: The <xref href="System.Type"></xref> of the activity that emitted the user data.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.ActivityType*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -159,7 +159,7 @@ items:
       description: A <xref href="System.Workflow.Runtime.Tracking.TrackingAnnotationCollection"></xref> that contains the annotations that are associated with the user event by the <xref href="System.Workflow.Runtime.Tracking.UserTrackPoint"></xref> that was matched in the <xref href="System.Workflow.Runtime.Tracking.TrackingProfile"></xref>.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.Annotations*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -184,7 +184,7 @@ items:
       description: A list of <xref href="System.Workflow.Runtime.Tracking.TrackingDataItem"></xref> objects each of which contains a single piece of extracted data and its associated annotations.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.Body*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -208,7 +208,7 @@ items:
       description: A number that identifies the context of the activity.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.ContextGuid*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -224,16 +224,16 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Tracking
-  summary: Always a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) for a <xref href="System.Workflow.Runtime.Tracking.UserTrackingRecord"></xref>.
+  summary: Always a null reference (`Nothing` in Visual Basic) for a <xref href="System.Workflow.Runtime.Tracking.UserTrackingRecord"></xref>.
   remarks: "There is no event data associated with a user event, therefore, EventArgs has no meaning and is always a null reference (`Nothing`).  \n  \n The user data that is pushed to the runtime tracking infrastructure by whichever one of the <xref:System.Workflow.ComponentModel.Activity.TrackData%2A> or <xref:System.Workflow.ComponentModel.ActivityExecutionContext.TrackData%2A> methods that caused the user event is sent in <xref:System.Workflow.Runtime.Tracking.UserTrackingRecord.UserData%2A>. Any data extracts that are associated with the user event by the <xref:System.Workflow.Runtime.Tracking.UserTrackPoint> are encapsulated in <xref:System.Workflow.Runtime.Tracking.TrackingDataItem> objects and sent in <xref:System.Workflow.Runtime.Tracking.UserTrackingRecord.Body%2A>.  \n  \n This property is set by the runtime tracking infrastructure."
   syntax:
     content: public override EventArgs EventArgs { get; set; }
     return:
       type: System.EventArgs
-      description: A null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref>) for a <xref href="System.Workflow.Runtime.Tracking.UserTrackingRecord"></xref>.
+      description: A null reference (`Nothing`) for a <xref href="System.Workflow.Runtime.Tracking.UserTrackingRecord"></xref>.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.EventArgs*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -258,7 +258,7 @@ items:
       description: A <xref href="System.DateTime"></xref> value.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.EventDateTime*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -283,7 +283,7 @@ items:
       description: A value that indicates the order of the user event in the workflow instance.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.EventOrder*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -307,7 +307,7 @@ items:
       description: A number that identifies the context of the parent activity.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.ParentContextGuid*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -332,7 +332,7 @@ items:
       description: The &lt;xref:System.Workflow.ComponentModel.Activity.QualifiedName%2A?displayProperty=fullName&gt; of the <xref href="System.Workflow.ComponentModel.Activity"></xref> from which the user data for this user event was emitted.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.QualifiedName*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -357,7 +357,7 @@ items:
       description: The user data for which the <xref href="System.Workflow.Runtime.Tracking.UserTrackingRecord"></xref> was created.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.UserData*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -379,10 +379,10 @@ items:
     content: public string UserDataKey { get; set; }
     return:
       type: System.String
-      description: A <xref uid="langword_csharp_string" name="string" href=""></xref> key associated with the user data for this tracking record.
+      description: A `string` key associated with the user data for this tracking record.
   overload: System.Workflow.Runtime.Tracking.UserTrackingRecord.UserDataKey*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

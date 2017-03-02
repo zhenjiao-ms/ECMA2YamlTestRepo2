@@ -52,7 +52,7 @@ items:
   - System.Web.Security.MembershipProvider
   implements: []
   inheritedMembers: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
     parameters: []
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,7 +108,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the ApplicationName property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,15 +141,15 @@ items:
       description: The new password for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the password was updated successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the password was updated successfully; otherwise, `false`.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.ChangePassword*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> attribute and the <code>username</code> parameter contains backslashes.  \n  \n \\- or -  \n  \n <code>oldPassword</code> or <code>newPassword</code> is a zero-length string.  \n  \n \\- or -  \n  \n <code>oldPassword</code> or <code>newPassword</code> exceeds the maximum password length (usually 128 characters).  \n  \n \\- or -  \n  \n <code>newPassword</code> is less than the minimum password size specified in the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.MinRequiredPasswordLength*> property  \n  \n \\- or -  \n  \n <code>newPassword</code> contains fewer than the number of non-alphabetic characters specified in the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.MinRequiredNonAlphanumericCharacters*> property.  \n  \n \\- or -  \n  \n <code>newPassword</code> fails validation by the regular expression defined in the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.PasswordStrengthRegularExpression*> property."
+    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the `userPrincipalName` attribute and the <code>username</code> parameter contains backslashes.  \n  \n \\- or -  \n  \n <code>oldPassword</code> or <code>newPassword</code> is a zero-length string.  \n  \n \\- or -  \n  \n <code>oldPassword</code> or <code>newPassword</code> exceeds the maximum password length (usually 128 characters).  \n  \n \\- or -  \n  \n <code>newPassword</code> is less than the minimum password size specified in the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.MinRequiredPasswordLength*> property  \n  \n \\- or -  \n  \n <code>newPassword</code> contains fewer than the number of non-alphabetic characters specified in the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.MinRequiredNonAlphanumericCharacters*> property.  \n  \n \\- or -  \n  \n <code>newPassword</code> fails validation by the regular expression defined in the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.PasswordStrengthRegularExpression*> property."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>oldPassword</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPassword</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>username</code> is `null`.  \n  \n \\- or -  \n  \n <code>oldPassword</code> is `null`.  \n  \n \\- or -  \n  \n <code>newPassword</code> is `null`."
   - type: System.Web.Security.MembershipPasswordException
     commentId: T:System.Web.Security.MembershipPasswordException
     description: <code>newPassword</code> does not meet the complexity requirements defined by the Active Directory server.
@@ -162,7 +162,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: An unhandled exception occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,7 +198,7 @@ items:
       description: The new password answer for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the update was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. A value of <xref uid="langword_csharp_false" name="false" href=""></xref> is also returned if the password is incorrect, the user is locked out, or the user does not exist in the Active Directory data store.
+      description: '`true` if the update was successful; otherwise, `false`. A value of `false` is also returned if the password is incorrect, the user is locked out, or the user does not exist in the Active Directory data store.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.ChangePasswordQuestionAndAnswer*
   exceptions:
   - type: System.NotSupportedException
@@ -206,17 +206,17 @@ items:
     description: The administrator has not mapped the password question-and-answer fields to attributes of the Active Directory schema.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> attribute and the <code>username</code> parameter contains backslashes.  \n  \n \\- or -  \n  \n <code>password</code> is a zero-length string.  \n  \n \\- or -  \n  \n <code>password</code> exceeds the maximum password length (usually 128 characters).  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is empty and the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*> property value is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> exceeds 256 characters.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> exceeds 128 characters after the answer is encrypted."
+    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the `userPrincipalName` attribute and the <code>username</code> parameter contains backslashes.  \n  \n \\- or -  \n  \n <code>password</code> is a zero-length string.  \n  \n \\- or -  \n  \n <code>password</code> exceeds the maximum password length (usually 128 characters).  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is empty and the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*> property value is `true`.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> exceeds 256 characters.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> exceeds 128 characters after the answer is encrypted."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>password</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>."
+    description: "<code>username</code> is `null`.  \n  \n \\- or -  \n  \n <code>password</code> is `null`.  \n  \n \\- or -  \n  \n <code>newPasswordQuestion</code> is `null` and <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*> property is `true`.  \n  \n \\- or -  \n  \n <code>newPasswordAnswer</code> is `null` and <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*> property is `true`."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: The [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) configuration element indicates an auto-generated machine encryption key. You must explicitly set the <xref uid="langword_csharp_decriptionKey" name="decriptionKey" href=""></xref> attribute of the [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) element to store password answers with the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref>.
+    description: The [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) configuration element indicates an auto-generated machine encryption key. You must explicitly set the `decriptionKey` attribute of the [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) element to store password answers with the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref>.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The ChangePasswordQuestionAndAnswer method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,31 +258,31 @@ items:
       description: Whether or not the new user is approved to be validated.
     - id: providerUserKey
       type: System.Object
-      description: The unique identifier from the membership data source for the user. This parameter must be <xref uid="langword_csharp_null" name="null" href=""></xref> when using the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> class.
+      description: The unique identifier from the membership data source for the user. This parameter must be `null` when using the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> class.
     - id: status
       type: System.Web.Security.MembershipCreateStatus
       description: When this method returns, contains one of the <xref:System.Web.Security.MembershipCreateStatus> enumeration values indicating whether the user was created successfully.
     return:
       type: System.Web.Security.MembershipUser
-      description: An <xref href="System.Web.Security.ActiveDirectoryMembershipUser"></xref> instance containing the information for the newly created user, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the user was not successfully created.
+      description: An <xref href="System.Web.Security.ActiveDirectoryMembershipUser"></xref> instance containing the information for the newly created user, or `null` if the user was not successfully created.
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.CreateUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>providerUserKey</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>providerUserKey</code> parameter is not `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The administrator has not mapped the password question-and-answer fields to attributes of the Active Directory schema, and either the <code>passwordQuestion</code> or <code>passwordAnswer</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The administrator has not mapped the password question-and-answer fields to attributes of the Active Directory schema, and either the <code>passwordQuestion</code> or <code>passwordAnswer</code> parameter is not `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "The [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) configuration element indicates an auto-generated machine encryption key. You must explicitly set the <xref uid=\"langword_csharp_decriptionKey\" name=\"decriptionKey\" href=\"\"></xref> attribute of the [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) element to store password answers with the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref>.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> was unable to establish a secure connection to the directory when attempting to set the password for the new user."
+    description: "The [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) configuration element indicates an auto-generated machine encryption key. You must explicitly set the `decriptionKey` attribute of the [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46) element to store password answers with the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref>.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> was unable to establish a secure connection to the directory when attempting to set the password for the new user."
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: An error occurred while attempting to create the user.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The CreateUser method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -313,7 +313,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the CurrentConnectionProtection property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,22 +343,22 @@ items:
       description: This parameter is ignored by the DeleteUser method.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user was deleted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> if the user was not found in the data store.
+      description: '`true` if the user was deleted; otherwise, `false` if the user was not found in the data store.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.DeleteUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> attribute and the <code>userName</code> parameter contains backslashes."
+    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the `userPrincipalName` attribute and the <code>userName</code> parameter contains backslashes."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>username</code> is `null`.
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: An error occurred while attempting to delete the user.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The DeleteUser method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,13 +383,13 @@ items:
     content: public override bool EnablePasswordReset { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if password reset is allowed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if password reset is allowed; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.EnablePasswordReset*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the EnablePasswordReset property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -406,19 +406,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: Gets a value indicating whether the user's password can be retrieved from the Active Directory data store. This property always returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Gets a value indicating whether the user's password can be retrieved from the Active Directory data store. This property always returns `false`.
   remarks: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider> class does not support password retrieval.
   syntax:
     content: public override bool EnablePasswordRetrieval { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that password retrieval is not supported by the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> class.
+      description: '`false` to indicate that password retrieval is not supported by the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> class.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.EnablePasswordRetrieval*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the EnablePasswordRetrieval property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -443,13 +443,13 @@ items:
     content: public bool EnableSearchMethods { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if search methods are available; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if search methods are available; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the EnableSearchMethods property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -496,8 +496,8 @@ items:
     description: "<code>emailToMatch</code> is empty.  \n  \n \\- or -  \n  \n <code>emailToMatch</code> exceeds 256 characters.  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than 0.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageSize</code> multiplied by <code>pageIndex</code>, plus <code>pageSize</code>, minus 1 is greater than <xref href=\"System.Int32.MaxValue\"></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -544,11 +544,11 @@ items:
     description: "<code>usernameToMatch</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>usernameToMatch</code> contains commas.  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than 0.  \n  \n -or  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageSize</code> multiplied by <code>pageIndex</code>, plus <code>pageSize</code>, minus 1 is greater than <xref href=\"System.Int32.MaxValue\"></xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>usernameToMatch</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -575,7 +575,7 @@ items:
       description: A random password.
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.GeneratePassword*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -619,8 +619,8 @@ items:
     description: "<code>pageIndex</code> is less than 0.  \n  \n -or  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageSize</code> multiplied by <code>pageIndex</code>, plus <code>pageSize</code>, minus 1 is greater than <xref href=\"System.Int32.MaxValue\"></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnableSearchMethods*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -650,7 +650,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Any call to the GetNumberOfUsersOnline method.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -686,7 +686,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> does not support password retrieval.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -716,7 +716,7 @@ items:
       description: The GetUser method ignores this parameter.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> instance representing the user specified. If no user is found in the Active Directory data store for the specified <code>providerUserKey</code> value, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: A <xref:System.Web.Security.MembershipUser> instance representing the user specified. If no user is found in the Active Directory data store for the specified <code>providerUserKey</code> value, `null` is returned.
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.GetUser*
   exceptions:
   - type: System.InvalidOperationException
@@ -727,8 +727,8 @@ items:
     description: <code>providerUserKey</code> is not of type <xref href="System.Security.Principal.SecurityIdentifier"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>providerUserKey</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>providerUserKey</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -758,19 +758,19 @@ items:
       description: The GetUser method ignores this parameter.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> instance representing the user specified. If no user is found in the Active Directory data store for the specified <code>username</code> value, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: A <xref:System.Web.Security.MembershipUser> instance representing the user specified. If no user is found in the Active Directory data store for the specified <code>username</code> value, `null` is returned.
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.GetUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> attribute and the <code>username</code> parameter contains backslashes."
+    description: "<code>username</code> is empty, or exceeds the maximum length for the user name (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to the `userPrincipalName` attribute and the <code>username</code> parameter contains backslashes."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>username</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The GetUser method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -805,11 +805,11 @@ items:
     description: "<code>email</code> exceeds 256 characters  \n  \n \\- or -  \n  \n after trimming, <code>email</code> is empty."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: More than one user exists in the data store with the same e-mail address and the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*> property value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+    description: More than one user exists in the data store with the same e-mail address and the <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*> property value is `true`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The provider is not initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -841,17 +841,17 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>config</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>config</code> is `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "The <xref uid=\"langword_csharp_applicationName\" name=\"applicationName\" href=\"\"></xref> attribute specified in the application configuration exceeds 256 characters.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionStringName\" name=\"connectionStringName\" href=\"\"></xref> attribute is empty or does not exist in the application configuration.  \n  \n \\- or -  \n  \n The connection string specified in the <xref uid=\"langword_csharp_connectionStringName\" name=\"connectionStringName\" href=\"\"></xref> attribute in the application configuration file is empty or does not exist.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionProtection\" name=\"connectionProtection\" href=\"\"></xref> attribute is set to a value other than <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> or <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> in the application configuration file.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionUsername\" name=\"connectionUsername\" href=\"\"></xref> attribute is specified in the application configuration file but its value is empty.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionPassword\" name=\"connectionPassword\" href=\"\"></xref> attribute is specified in the application configuration file but its value is empty.  \n  \n \\- or -  \n  \n Either the <xref uid=\"langword_csharp_connectionUsername\" name=\"connectionUsername\" href=\"\"></xref> attribute or the <xref uid=\"langword_csharp_connectionPassword\" name=\"connectionPassword\" href=\"\"></xref> attribute is specified in the application configuration file, but not both.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_clientSearchTimeout\" name=\"clientSearchTimeout\" href=\"\"></xref> attribute is specified but is not a positive integer.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_serverSearchTimeout\" name=\"serverSearchTimeout\" href=\"\"></xref> attribute is specified but is not a positive integer.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_enableSearchMethods\" name=\"enableSearchMethods\" href=\"\"></xref> attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_requiresUniqueEmail\" name=\"requiresUniqueEmail\" href=\"\"></xref> attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_enablePasswordReset\" name=\"enablePasswordReset\" href=\"\"></xref> attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_requiresQuestionAndAnswer\" name=\"requiresQuestionAndAnswer\" href=\"\"></xref> attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_minRequiredPasswordLength\" name=\"minRequiredPasswordLength\" href=\"\"></xref> attribute is specified and it is either negative or greater than 128.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_minRequiredNonalphanumericCharacters\" name=\"minRequiredNonalphanumericCharacters\" href=\"\"></xref> attribute is specified and it is either negative or greater than 128.  \n  \n \\- or -  \n  \n The regular expression specified in the <xref uid=\"langword_csharp_passwordStrengthRegularExpression\" name=\"passwordStrengthRegularExpression\" href=\"\"></xref> attribute in the application configuration file is not a valid regular expression  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_attributeMapUsername\" name=\"attributeMapUsername\" href=\"\"></xref> attribute is specified, but it is an empty string.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute does not begin with \"LDAP\".  \n  \n \\- or -  \n  \n The connection string specified in the <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute is invalid.  \n  \n \\- or -  \n  \n The connection string in the <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies a server-less bind.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not establish a connection with the domain or directory server.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionProtection\" name=\"connectionProtection\" href=\"\"></xref> attribute is set to <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref>, but neither an SSL nor a signed and sealed connection can be established with the server.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionProtection\" name=\"connectionProtection\" href=\"\"></xref> attribute is set to <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> but the <xref uid=\"langword_csharp_connectionUsername\" name=\"connectionUsername\" href=\"\"></xref> and <xref uid=\"langword_csharp_connectionPassword\" name=\"connectionPassword\" href=\"\"></xref> attributes are not set.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionProtection\" name=\"connectionProtection\" href=\"\"></xref> attribute is set to <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> but the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not establish an SSL connection with an ADAM server.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies either the global catalog (GC) or an SSL global catalog port.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies an Active Directory server or domain, but the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not retrieve the default naming context for the domain.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies an Active Directory server or domain, but the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not retrieve the default users container.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies an ADAM server, but it does not specify an application partition or container.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies an application partition or container, but the specified container does not exist.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_connectionString\" name=\"connectionString\" href=\"\"></xref> attribute specifies a container that is not allowed to contain user instances.  \n  \n An attribute mapping is specified but its value was empty.  \n  \n \\- or -  \n  \n An attribute mapping is specified twice.  \n  \n \\- or -  \n  \n An attribute mapping is specified but the attribute does not exist on the user instance.  \n  \n \\- or -  \n  \n An attribute mapping is specified but the directory attribute is not of the correct data type.  \n  \n \\- or -  \n  \n An attribute mapping is specified but the directory attribute is multi-valued.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_attributeMapUserName\" name=\"attributeMapUserName\" href=\"\"></xref> attribute is specified but was mapped to neither the `sAMAccountName` nor the `userPrincipalName` directory attribute when connecting to an Active Directory.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_attributeMapUserName\" name=\"attributeMapUserName\" href=\"\"></xref> attribute is specified but was not mapped to the `userPrincipalName` directory attribute when connecting to an ADAM server.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_enablePasswordReset\" name=\"enablePasswordReset\" href=\"\"></xref> attribute is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and the <xref uid=\"langword_csharp_requiresQuestionAndAnswer\" name=\"requiresQuestionAndAnswer\" href=\"\"></xref> attribute is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> in the application configuration file.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_maxInvalidPasswordAttempts\" name=\"maxInvalidPasswordAttempts\" href=\"\"></xref> attribute was specified but is not a non-zero positive integer.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_passwordAttemptWindow\" name=\"passwordAttemptWindow\" href=\"\"></xref> attribute was specified but is not a non-zero positive integer.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_passwordAnswerAttemptLockoutDuration\" name=\"passwordAnswerAttemptLockoutDuration\" href=\"\"></xref> attribute was specified but is not a non-zero positive integer.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_enablePasswordReset\" name=\"enablePasswordReset\" href=\"\"></xref> attribute is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and any of the <xref uid=\"langword_csharp_attributeMapFailedPasswordAnswerCount\" name=\"attributeMapFailedPasswordAnswerCount\" href=\"\"></xref>, <xref uid=\"langword_csharp_attributeMapFailedPasswordAnswerTime\" name=\"attributeMapFailedPasswordAnswerTime\" href=\"\"></xref>, and <xref uid=\"langword_csharp_attributeMapFailedPasswordAnswerLockoutTime\" name=\"attributeMapFailedPasswordAnswerLockoutTime\" href=\"\"></xref> attributes are empty.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_requiresQuestionAndAnswer\" name=\"requiresQuestionAndAnswer\" href=\"\"></xref> attribute is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> but either the <xref uid=\"langword_csharp_attributeMapPasswordQuestion\" name=\"attributeMapPasswordQuestion\" href=\"\"></xref> or the <xref uid=\"langword_csharp_attributeMapPasswordAnswer\" name=\"attributeMapPasswordAnswer\" href=\"\"></xref> attribute is empty.  \n  \n \\- or -  \n  \n An attribute specified in the application configuration file is not valid."
+    description: "The `applicationName` attribute specified in the application configuration exceeds 256 characters.  \n  \n \\- or -  \n  \n The `connectionStringName` attribute is empty or does not exist in the application configuration.  \n  \n \\- or -  \n  \n The connection string specified in the `connectionStringName` attribute in the application configuration file is empty or does not exist.  \n  \n \\- or -  \n  \n The `connectionProtection` attribute is set to a value other than <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> or <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> in the application configuration file.  \n  \n \\- or -  \n  \n The `connectionUsername` attribute is specified in the application configuration file but its value is empty.  \n  \n \\- or -  \n  \n The `connectionPassword` attribute is specified in the application configuration file but its value is empty.  \n  \n \\- or -  \n  \n Either the `connectionUsername` attribute or the `connectionPassword` attribute is specified in the application configuration file, but not both.  \n  \n \\- or -  \n  \n The `clientSearchTimeout` attribute is specified but is not a positive integer.  \n  \n \\- or -  \n  \n The `serverSearchTimeout` attribute is specified but is not a positive integer.  \n  \n \\- or -  \n  \n The `enableSearchMethods` attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The `requiresUniqueEmail` attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The `enablePasswordReset` attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The `requiresQuestionAndAnswer` attribute is specified, but is not a Boolean value.  \n  \n \\- or -  \n  \n The `minRequiredPasswordLength` attribute is specified and it is either negative or greater than 128.  \n  \n \\- or -  \n  \n The `minRequiredNonalphanumericCharacters` attribute is specified and it is either negative or greater than 128.  \n  \n \\- or -  \n  \n The regular expression specified in the `passwordStrengthRegularExpression` attribute in the application configuration file is not a valid regular expression  \n  \n \\- or -  \n  \n The `attributeMapUsername` attribute is specified, but it is an empty string.  \n  \n \\- or -  \n  \n The `connectionString` attribute does not begin with \"LDAP\".  \n  \n \\- or -  \n  \n The connection string specified in the `connectionString` attribute is invalid.  \n  \n \\- or -  \n  \n The connection string in the `connectionString` attribute specifies a server-less bind.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not establish a connection with the domain or directory server.  \n  \n \\- or -  \n  \n The `connectionProtection` attribute is set to <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref>, but neither an SSL nor a signed and sealed connection can be established with the server.  \n  \n \\- or -  \n  \n The `connectionProtection` attribute is set to <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> but the `connectionUsername` and `connectionPassword` attributes are not set.  \n  \n \\- or -  \n  \n The `connectionProtection` attribute is set to <xref href=\"System.Web.Security.ActiveDirectoryConnectionProtection\"></xref> but the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not establish an SSL connection with an ADAM server.  \n  \n \\- or -  \n  \n The `connectionString` attribute specifies either the global catalog (GC) or an SSL global catalog port.  \n  \n \\- or -  \n  \n The `connectionString` attribute specifies an Active Directory server or domain, but the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not retrieve the default naming context for the domain.  \n  \n \\- or -  \n  \n The `connectionString` attribute specifies an Active Directory server or domain, but the <xref href=\"System.Web.Security.ActiveDirectoryMembershipProvider\"></xref> could not retrieve the default users container.  \n  \n \\- or -  \n  \n The `connectionString` attribute specifies an ADAM server, but it does not specify an application partition or container.  \n  \n \\- or -  \n  \n The `connectionString` attribute specifies an application partition or container, but the specified container does not exist.  \n  \n \\- or -  \n  \n The `connectionString` attribute specifies a container that is not allowed to contain user instances.  \n  \n An attribute mapping is specified but its value was empty.  \n  \n \\- or -  \n  \n An attribute mapping is specified twice.  \n  \n \\- or -  \n  \n An attribute mapping is specified but the attribute does not exist on the user instance.  \n  \n \\- or -  \n  \n An attribute mapping is specified but the directory attribute is not of the correct data type.  \n  \n \\- or -  \n  \n An attribute mapping is specified but the directory attribute is multi-valued.  \n  \n \\- or -  \n  \n The `attributeMapUserName` attribute is specified but was mapped to neither the `sAMAccountName` nor the `userPrincipalName` directory attribute when connecting to an Active Directory.  \n  \n \\- or -  \n  \n The `attributeMapUserName` attribute is specified but was not mapped to the `userPrincipalName` directory attribute when connecting to an ADAM server.  \n  \n \\- or -  \n  \n The `enablePasswordReset` attribute is `true` and the `requiresQuestionAndAnswer` attribute is `false` in the application configuration file.  \n  \n \\- or -  \n  \n The `maxInvalidPasswordAttempts` attribute was specified but is not a non-zero positive integer.  \n  \n \\- or -  \n  \n The `passwordAttemptWindow` attribute was specified but is not a non-zero positive integer.  \n  \n \\- or -  \n  \n The `passwordAnswerAttemptLockoutDuration` attribute was specified but is not a non-zero positive integer.  \n  \n \\- or -  \n  \n The `enablePasswordReset` attribute is `true` and any of the `attributeMapFailedPasswordAnswerCount`, `attributeMapFailedPasswordAnswerTime`, and `attributeMapFailedPasswordAnswerLockoutTime` attributes are empty.  \n  \n \\- or -  \n  \n The `requiresQuestionAndAnswer` attribute is `true` but either the `attributeMapPasswordQuestion` or the `attributeMapPasswordAnswer` attribute is empty.  \n  \n \\- or -  \n  \n An attribute specified in the application configuration file is not valid."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The application is running in a hosted environment and the <xref href="System.Web.AspNetHostingPermissionLevel"></xref> is set to <xref href="System.Web.AspNetHostingPermissionLevel"></xref>.
   - type: System.Runtime.InteropServices.COMException
     commentId: T:System.Runtime.InteropServices.COMException
     description: An error occurred while querying the directory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -882,7 +882,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the MaxInvalidPasswordAttempts property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -913,7 +913,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The MinRequiredNonAlphanumericCharacters property is accessed before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -944,7 +944,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The MinRequiredPasswordLength property is accessed before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -975,7 +975,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the PasswordAnswerAttemptLockoutDuration property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1006,7 +1006,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the PasswordAttemptWindow property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1032,7 +1032,7 @@ items:
       description: One of the <xref:System.Web.Security.MembershipPasswordFormat> values. The PasswordFormat property always returns <xref:System.Web.Security.MembershipPasswordFormat>.
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.PasswordFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1063,7 +1063,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The PasswordStrengthRegularExpression property is accessed before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1088,13 +1088,13 @@ items:
     content: public override bool RequiresQuestionAndAnswer { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> object is configured to require a password question and answer for a user; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> object is configured to require a password question and answer for a user; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.RequiresQuestionAndAnswer*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the RequiresQuestionAndAnswer property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1119,13 +1119,13 @@ items:
     content: public override bool RequiresUniqueEmail { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if e-mail addresses must be unique; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if e-mail addresses must be unique; otherwise, `false`. The default is `false`.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt to access the RequiresUniqueEmail property was made before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance was initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1163,13 +1163,13 @@ items:
     description: The ResetPassword method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnablePasswordReset*> property value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.EnablePasswordReset*> property value is `false`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>passwordAnswer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>passwordAnswer</code> is `null`.  \n  \n \\- or -  \n  \n <code>username</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>passwordAnswer</code> is empty after trimming  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> exceeds 128 characters.  \n  \n \\- or -  \n  \n <code>username</code> is empty, or exceeds the maximum length allowed for user names (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> but the <code>username</code> parameter contains backslashes."
+    description: "<code>passwordAnswer</code> is empty after trimming  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> exceeds 128 characters.  \n  \n \\- or -  \n  \n <code>username</code> is empty, or exceeds the maximum length allowed for user names (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to `userPrincipalName` but the <code>username</code> parameter contains backslashes."
   - type: System.Web.Security.MembershipPasswordException
     commentId: T:System.Web.Security.MembershipPasswordException
     description: "The user is locked out because of too many bad logon attempts or too many attempted password-answer reset attempts.  \n  \n \\- or -  \n  \n <code>passwordAnswer</code> does not match the stored password answer."
@@ -1179,7 +1179,7 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: An unhandled exception occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1206,19 +1206,19 @@ items:
       description: The name of the membership user to clear the lock status for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership user was successfully unlocked; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The UnlockUser method also returns <xref uid="langword_csharp_false" name="false" href=""></xref> when the membership user is not found in the data store.
+      description: '`true` if the membership user was successfully unlocked; otherwise, `false`. The UnlockUser method also returns `false` when the membership user is not found in the data store.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.UnlockUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is empty, or exceeds the maximum length allowed for user names (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> but the <code>username</code> parameter contains backslashes."
+    description: "<code>username</code> is empty, or exceeds the maximum length allowed for user names (usually 256 characters).  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to `userPrincipalName` but the <code>username</code> parameter contains backslashes."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>username</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The UnlockUser method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1250,14 +1250,14 @@ items:
     description: The UpdateUser method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>user</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> but the email address from the supplied <xref:System.Web.Security.MembershipUser> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>user</code> is `null`.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*> property is `true` but the email address from the supplied <xref:System.Web.Security.MembershipUser> instance is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Web.Security.MembershipUser.Email*> property is empty after trimming.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property exceeds 256 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Comment*> property exceeds 1024 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Comment*> property is empty.  \n  \n \\- or -  \n  \n The user name from the supplied <xref:System.Web.Security.MembershipUser> instance is empty, or exceeds the maximum length allowed for user names (usually 256 characters).  \n  \n \\- or -  \n  \n The user name from the supplied <xref:System.Web.Security.MembershipUser> instance contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to <xref uid=\"langword_csharp_userPrincipalName\" name=\"userPrincipalName\" href=\"\"></xref> but the user name from the supplied <xref:System.Web.Security.MembershipUser> instance contains backslashes."
+    description: "The <xref:System.Web.Security.MembershipUser.Email*> property is empty after trimming.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Email*> property exceeds 256 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Comment*> property exceeds 1024 characters.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.MembershipUser.Comment*> property is empty.  \n  \n \\- or -  \n  \n The user name from the supplied <xref:System.Web.Security.MembershipUser> instance is empty, or exceeds the maximum length allowed for user names (usually 256 characters).  \n  \n \\- or -  \n  \n The user name from the supplied <xref:System.Web.Security.MembershipUser> instance contains commas.  \n  \n \\- or -  \n  \n The user name is mapped to `userPrincipalName` but the user name from the supplied <xref:System.Web.Security.MembershipUser> instance contains backslashes."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "The specified user is not found in the Active Directory data store.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, and the new value of the <xref:System.Web.Security.MembershipUser.Email*> property duplicates an existing e-mail address."
-  platform:
+    description: "The specified user is not found in the Active Directory data store.  \n  \n \\- or -  \n  \n The <xref:System.Web.Security.ActiveDirectoryMembershipProvider.RequiresUniqueEmail*> property is `true`, and the new value of the <xref:System.Web.Security.MembershipUser.Email*> property duplicates an existing e-mail address."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1287,13 +1287,13 @@ items:
       description: The password for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <code>username</code> and <code>password</code> are valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If the user specified does not exist in the Active Directory data store, the ValidateUser method returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <code>username</code> and <code>password</code> are valid; otherwise, `false`. If the user specified does not exist in the Active Directory data store, the ValidateUser method returns `false`.'
   overload: System.Web.Security.ActiveDirectoryMembershipProvider.ValidateUser*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The ValidateUser method is called before the <xref href="System.Web.Security.ActiveDirectoryMembershipProvider"></xref> instance is initialized.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

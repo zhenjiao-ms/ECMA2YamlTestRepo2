@@ -44,7 +44,7 @@ items:
   - System.Object.GetHashCode
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -67,13 +67,13 @@ items:
     parameters:
     - id: classes
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing the classes that were defined in the module and loaded. This array can contain null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) values.
+      description: An array of type `Type` containing the classes that were defined in the module and loaded. This array can contain null reference (`Nothing` in Visual Basic) values.
     - id: exceptions
       type: System.Exception[]
-      description: An array of type <xref uid="langword_csharp_Exception" name="Exception" href=""></xref> containing the exceptions that were thrown by the class loader. The null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) values in the `classes` array line up with the exceptions in this `exceptions` array.
+      description: An array of type `Exception` containing the exceptions that were thrown by the class loader. The null reference (`Nothing` in Visual Basic) values in the `classes` array line up with the exceptions in this `exceptions` array.
   overload: System.Reflection.ReflectionTypeLoadException.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,16 +96,16 @@ items:
     parameters:
     - id: classes
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing the classes that were defined in the module and loaded. This array can contain null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) values.
+      description: An array of type `Type` containing the classes that were defined in the module and loaded. This array can contain null reference (`Nothing` in Visual Basic) values.
     - id: exceptions
       type: System.Exception[]
-      description: An array of type <xref uid="langword_csharp_Exception" name="Exception" href=""></xref> containing the exceptions that were thrown by the class loader. The null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) values in the `classes` array line up with the exceptions in this `exceptions` array.
+      description: An array of type `Exception` containing the exceptions that were thrown by the class loader. The null reference (`Nothing` in Visual Basic) values in the `classes` array line up with the exceptions in this `exceptions` array.
     - id: message
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> describing the reason the exception was thrown.
+      description: A `String` describing the reason the exception was thrown.
   overload: System.Reflection.ReflectionTypeLoadException.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -136,8 +136,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <xref uid="langword_csharp_info" name="info" href=""></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: '`info` is `null`.'
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,10 +160,10 @@ items:
     content: public Exception[] LoaderExceptions { get; }
     return:
       type: System.Exception[]
-      description: An array of type <xref uid="langword_csharp_Exception" name="Exception" href=""></xref> containing the exceptions thrown by the class loader. The null values in the <xref:System.Reflection.ReflectionTypeLoadException.Types*> array of this instance line up with the exceptions in this array.
+      description: An array of type `Exception` containing the exceptions thrown by the class loader. The null values in the <xref:System.Reflection.ReflectionTypeLoadException.Types*> array of this instance line up with the exceptions in this array.
   overload: System.Reflection.ReflectionTypeLoadException.LoaderExceptions*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,10 +186,10 @@ items:
     content: public Type[] Types { get; }
     return:
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing the classes that were defined in the module and loaded. This array can contain some <xref uid="langword_csharp_null" name="null" href=""></xref> values.
+      description: An array of type `Type` containing the classes that were defined in the module and loaded. This array can contain some `null` values.
   overload: System.Reflection.ReflectionTypeLoadException.Types*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,8 +213,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -227,8 +227,8 @@ references:
 - uid: System.Exception[]
   parent: System
   isExternal: false
-  name: Exception
-  nameWithType: Exception
+  name: Exception[]
+  nameWithType: Exception[]
   fullName: System.Exception[]
   spec.csharp:
   - uid: System.Exception

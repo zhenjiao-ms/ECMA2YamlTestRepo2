@@ -49,7 +49,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -66,13 +66,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Initializes a new instance of a <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> class.
+  summary: Initializes a new instance of a `DBDataPermission` class.
   syntax:
     content: protected DBDataPermission ();
     parameters: []
   overload: System.Data.Common.DBDataPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,16 +89,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Initializes a new instance of a <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> class using an existing <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref>.
+  summary: Initializes a new instance of a `DBDataPermission` class using an existing `DBDataPermission`.
   syntax:
     content: protected DBDataPermission (System.Data.Common.DBDataPermission permission);
     parameters:
     - id: permission
       type: System.Data.Common.DBDataPermission
-      description: An existing <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> used to create a new <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref>.
+      description: An existing `DBDataPermission` used to create a new `DBDataPermission`.
   overload: System.Data.Common.DBDataPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,7 +115,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Initializes a new instance of a <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> class with the specified <xref uid="langword_csharp_DBDataPermissionAttribute" name="DBDataPermissionAttribute" href=""></xref>.
+  summary: Initializes a new instance of a `DBDataPermission` class with the specified `DBDataPermissionAttribute`.
   syntax:
     content: protected DBDataPermission (System.Data.Common.DBDataPermissionAttribute permissionAttribute);
     parameters:
@@ -124,7 +124,7 @@ items:
       description: A security action associated with a custom security attribute.
   overload: System.Data.Common.DBDataPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,7 +141,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Initializes a new instance of a <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> class with the specified <xref href="System.Security.Permissions.PermissionState"></xref> value.
+  summary: Initializes a new instance of a `DBDataPermission` class with the specified <xref href="System.Security.Permissions.PermissionState"></xref> value.
   syntax:
     content: protected DBDataPermission (System.Security.Permissions.PermissionState state);
     parameters:
@@ -150,7 +150,7 @@ items:
       description: One of the <xref href="System.Security.Permissions.PermissionState"></xref> values.
   overload: System.Data.Common.DBDataPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Initializes a new instance of a <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> class with the specified <xref href="System.Security.Permissions.PermissionState"></xref> value, and a value indicating whether a blank password is allowed.
+  summary: Initializes a new instance of a `DBDataPermission` class with the specified <xref href="System.Security.Permissions.PermissionState"></xref> value, and a value indicating whether a blank password is allowed.
   remarks: The <xref:System.Security.Permissions.PermissionState> enumeration takes precedence over the <xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A> property. Therefore, if you set <xref:System.Data.Common.DBDataPermission.AllowBlankPassword%2A> to `false`, you must also set <xref:System.Security.Permissions.PermissionState> to `None` to prevent a user from making a connection using a blank password.
   syntax:
     content: protected DBDataPermission (System.Security.Permissions.PermissionState state, bool allowBlankPassword);
@@ -180,7 +180,7 @@ items:
       description: Indicates whether a blank password is allowed.
   overload: System.Data.Common.DBDataPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -197,7 +197,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Adds access for the specified connection string to the existing state of the <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref>.
+  summary: Adds access for the specified connection string to the existing state of the `DBDataPermission`.
   remarks: "This method can be useful when implementing:  \n  \n-   A .NET framework data provider.  \n  \n-   An API that must assert for data access permission.  \n  \n-   An administrative tool or installation program that must modify security policy.  \n  \n-   When more than one rule is specified, the more restrictive rule is selected."
   syntax:
     content: public virtual void Add (string connectionString, string restrictions, System.Data.KeyRestrictionBehavior behavior);
@@ -213,7 +213,7 @@ items:
       description: One of the <xref href="System.Data.KeyRestrictionBehavior"></xref> properties.
   overload: System.Data.Common.DBDataPermission.Add*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,10 +236,10 @@ items:
     content: public bool AllowBlankPassword { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a blank password is allowed, otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a blank password is allowed, otherwise, `false`.'
   overload: System.Data.Common.DBDataPermission.AllowBlankPassword*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
     parameters: []
   overload: System.Data.Common.DBDataPermission.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -289,7 +289,7 @@ items:
       description: A copy of the current permission object.
   overload: System.Data.Common.DBDataPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -306,16 +306,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: Creates a new instance of the <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> class.
+  summary: Creates a new instance of the `DBDataPermission` class.
   syntax:
     content: protected virtual System.Data.Common.DBDataPermission CreateInstance ();
     parameters: []
     return:
       type: System.Data.Common.DBDataPermission
-      description: A new <xref uid="langword_csharp_DBDataPermission" name="DBDataPermission" href=""></xref> object.
+      description: A new `DBDataPermission` object.
   overload: System.Data.Common.DBDataPermission.CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,7 +342,7 @@ items:
       description: The XML encoding to use to reconstruct the security object.
   overload: System.Data.Common.DBDataPermission.FromXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -369,13 +369,13 @@ items:
       description: A permission object to intersect with the current permission object. It must be of the same type as the current permission object.
     return:
       type: System.Security.IPermission
-      description: A new permission object that represents the intersection of the current permission object and the specified permission object. This new permission object is a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) if the intersection is empty.
+      description: A new permission object that represents the intersection of the current permission object and the specified permission object. This new permission object is a null reference (`Nothing` in Visual Basic) if the intersection is empty.
   overload: System.Data.Common.DBDataPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>target</code> parameter is not a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in Visual Basic) and is not an instance of the same class as the current permission object.
-  platform:
+    description: The <code>target</code> parameter is not a null reference (`Nothing` in Visual Basic) and is not an instance of the same class as the current permission object.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -402,13 +402,13 @@ items:
       description: A permission object that is to be tested for the subset relationship. This object must be of the same type as the current permission object.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission object is a subset of the specified permission object, otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission object is a subset of the specified permission object, otherwise `false`.'
   overload: System.Data.Common.DBDataPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>target</code> parameter is an object that is not of the same type as the current permission object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -431,10 +431,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the permission can be represented as unrestricted.
+      description: '`true` if the permission can be represented as unrestricted.'
   overload: System.Data.Common.DBDataPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -461,7 +461,7 @@ items:
       description: An XML encoding of the security object, including any state information.
   overload: System.Data.Common.DBDataPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -494,7 +494,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>target</code> object is not the same type as the current permission object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

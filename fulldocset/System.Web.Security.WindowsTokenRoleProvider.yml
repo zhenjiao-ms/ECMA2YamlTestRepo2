@@ -33,7 +33,7 @@ items:
   - System.Web.Security.RoleProvider
   implements: []
   inheritedMembers: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -57,7 +57,7 @@ items:
     parameters: []
   overload: System.Web.Security.WindowsTokenRoleProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,7 +90,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,7 +124,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An attempt was made to set the ApplicationName to a string that is longer than 256 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,7 +154,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,7 +180,7 @@ items:
       description: The name of the role to delete.
     - id: throwOnPopulatedRole
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, an exception will be thrown on an attempt to delete a role that contains one or more members.
+      description: If `true`, an exception will be thrown on an attempt to delete a role that contains one or more members.
     return:
       type: System.Boolean
       description: None. The method is not supported by the <xref href="System.Web.Security.WindowsTokenRoleProvider"></xref> class and always throws a <xref href="System.Configuration.Provider.ProviderException"></xref>.
@@ -189,7 +189,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -224,7 +224,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,7 +253,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,11 +290,11 @@ items:
     description: "The currently executing user does not have an authenticated <xref href=\"System.Security.Principal.WindowsIdentity\"></xref> attached to &lt;xref:System.Web.UI.Page.User%2A?displayProperty=fullName&gt;. For non-HTTP scenarios, the currently executing user does not have an authenticated <xref href=\"System.Security.Principal.WindowsIdentity\"></xref> attached to &lt;xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName&gt;.  \n  \n -or-  \n  \n <code>username</code> does not match the <xref:System.Security.Principal.WindowsIdentity.Name*> of the current <xref href=\"System.Security.Principal.WindowsIdentity\"></xref>.  \n  \n -or-  \n  \n A failure occurred while retrieving the user's Windows group information."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>username</code> is `null`.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The trust level is less than <xref href="System.Web.AspNetHostingPermissionLevel"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,7 +326,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -358,11 +358,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>config</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>config</code> is `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "The <xref uid=\"langword_csharp_applicationName\" name=\"applicationName\" href=\"\"></xref> attribute in the configuration is longer than 256 characters.  \n  \n -or-  \n  \n The application configuration file for this <xref href=\"System.Web.Security.WindowsTokenRoleProvider\"></xref> instance contains an unrecognized attribute."
-  platform:
+    description: "The `applicationName` attribute in the configuration is longer than 256 characters.  \n  \n -or-  \n  \n The application configuration file for this <xref href=\"System.Web.Security.WindowsTokenRoleProvider\"></xref> instance contains an unrecognized attribute."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -394,16 +394,16 @@ items:
       description: The Windows role to search in.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified user is in the specified Windows role; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified user is in the specified Windows role; otherwise, `false`.'
   overload: System.Web.Security.WindowsTokenRoleProvider.IsUserInRole*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>username</code> is `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: "The currently executing user does not have an authenticated <xref href=\"System.Security.Principal.WindowsIdentity\"></xref> attached to &lt;xref:System.Web.UI.Page.User%2A?displayProperty=fullName&gt;. For non-HTTP scenarios, the currently executing user does not have an authenticated <xref href=\"System.Security.Principal.WindowsIdentity\"></xref> attached to &lt;xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName&gt;.  \n  \n -or-  \n  \n <code>username</code> does not match the <xref:System.Security.Principal.WindowsIdentity.Name*> of the current <xref href=\"System.Security.Principal.WindowsIdentity\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -435,16 +435,16 @@ items:
       description: The Windows group to search in the form DOMAIN\rolename.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified user name is in the specified Windows group; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified user name is in the specified Windows group; otherwise, `false`.'
   overload: System.Web.Security.WindowsTokenRoleProvider.IsUserInRole*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>roleName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>username</code> is `null`.  \n  \n -or-  \n  \n <code>roleName</code> is `null`."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: "The currently executing user does not have an authenticated <xref href=\"System.Security.Principal.WindowsIdentity\"></xref> attached to &lt;xref:System.Web.UI.Page.User%2A?displayProperty=fullName&gt;. For non-HTTP scenarios, the currently executing user does not have an authenticated <xref href=\"System.Security.Principal.WindowsIdentity\"></xref> attached to &lt;xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName&gt;.  \n  \n -or-  \n  \n <code>username</code> does not match the <xref:System.Security.Principal.WindowsIdentity.Name*> of the current <xref href=\"System.Security.Principal.WindowsIdentity\"></xref>.  \n  \n -or-  \n  \n A failure occurred while retrieving the user's Windows group information."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -477,7 +477,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -509,7 +509,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: An unsupported method was called.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -551,8 +551,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

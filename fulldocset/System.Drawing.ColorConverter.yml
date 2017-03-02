@@ -66,7 +66,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -89,7 +89,7 @@ items:
     parameters: []
   overload: System.Drawing.ColorConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -118,10 +118,10 @@ items:
       description: The type from which you want to convert.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this object can perform the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this object can perform the conversion; otherwise, `false`.'
   overload: System.Drawing.ColorConverter.CanConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,10 +150,10 @@ items:
       description: A <xref href="System.Type"></xref> that represents the type to which you want to convert.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this converter can perform the operation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this converter can perform the operation; otherwise, `false`.'
   overload: System.Drawing.ColorConverter.CanConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,7 +192,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The conversion cannot be performed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -216,7 +216,7 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. Use this object to extract additional information about the environment from which this converter is being invoked. Always check whether this value is <xref uid="langword_csharp_null" name="null" href=""></xref>. Also, properties on the context object may return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. Use this object to extract additional information about the environment from which this converter is being invoked. Always check whether this value is `null`. Also, properties on the context object may return `null`.
     - id: culture
       type: System.Globalization.CultureInfo
       description: A <xref href="System.Globalization.CultureInfo"></xref> that specifies the culture to represent the color.
@@ -233,11 +233,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationtype</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>destinationtype</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be performed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -254,19 +254,19 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing
-  summary: Retrieves a collection containing a set of standard values for the data type for which this validator is designed. This will return <xref uid="langword_csharp_null" name="null" href=""></xref> if the data type does not support a standard set of values.
+  summary: Retrieves a collection containing a set of standard values for the data type for which this validator is designed. This will return `null` if the data type does not support a standard set of values.
   syntax:
     content: public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. Use this object to extract additional information about the environment from which this converter is being invoked. Always check whether this value is <xref uid="langword_csharp_null" name="null" href=""></xref>. Also, properties on the context object may return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. Use this object to extract additional information about the environment from which this converter is being invoked. Always check whether this value is `null`. Also, properties on the context object may return `null`.
     return:
       type: System.ComponentModel.TypeConverter.StandardValuesCollection
-      description: A collection containing <xref uid="langword_csharp_null" name="null" href=""></xref> or a standard set of valid values. The default implementation always returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A collection containing `null` or a standard set of valid values. The default implementation always returns `null`.
   overload: System.Drawing.ColorConverter.GetStandardValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -292,10 +292,10 @@ items:
       description: A <xref href="System.ComponentModel.TypeDescriptor"></xref> through which additional context can be provided.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref:System.Drawing.ColorConverter.GetStandardValues*> must be called to find a common set of values the object supports; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <xref:System.Drawing.ColorConverter.GetStandardValues*> must be called to find a common set of values the object supports; otherwise, `false`.'
   overload: System.Drawing.ColorConverter.GetStandardValuesSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -75,7 +75,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.#ctor
@@ -96,7 +96,7 @@ items:
     parameters: []
   overload: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.ApplyFormatInEditMode
@@ -119,10 +119,10 @@ items:
     content: public bool ApplyFormatInEditMode { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the formatting string applies to the field value in edit mode; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the formatting string applies to the field value in edit mode; otherwise, `false`. The default is `false`.'
   overload: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.ApplyFormatInEditMode*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.ConvertEmptyStringToNull
@@ -137,7 +137,7 @@ items:
   assemblies:
   - System.ComponentModel.DataAnnotations
   namespace: System.ComponentModel.DataAnnotations
-  summary: Gets or sets a value that indicates whether empty string values ("") are automatically converted to <xref uid="langword_csharp_null" name="null" href=""></xref> when the data field is updated in the data source.
+  summary: Gets or sets a value that indicates whether empty string values ("") are automatically converted to `null` when the data field is updated in the data source.
   remarks: "Users might enter an empty string for a field value. Use the ConvertEmptyStringToNull property to specify whether an empty string value is automatically converted to `null` when the data field is updated in the database.  \n  \n> [!NOTE]\n>  By default, a <xref:System.Web.DynamicData.DynamicField> object displays `null` values as empty strings. To display a different value, set the <xref:System.ComponentModel.DataAnnotations.DisplayFormatAttribute.NullDisplayText%2A> property."
   example:
   - "The following example shows how to use the ConvertEmptyStringToNull to enable the conversion of empty string values to `null`.  \n  \n [!code-cs[System.ComponentModel.DataAnnotations.DisplayFormatAttribute#2](~/add/codesnippet/csharp/21d1a9f1-e94f-4089-8d51-_1.cs)]\n [!code-vb[System.ComponentModel.DataAnnotations.DisplayFormatAttribute#2](~/add/codesnippet/visualbasic/21d1a9f1-e94f-4089-8d51-_1.vb)]"
@@ -145,10 +145,10 @@ items:
     content: public bool ConvertEmptyStringToNull { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if empty string values are automatically converted to <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if empty string values are automatically converted to `null`; otherwise, `false`. The default is `true`.'
   overload: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.ConvertEmptyStringToNull*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.DataFormatString
@@ -174,7 +174,7 @@ items:
       description: A formatting string that specifies the display format for the value of the data field. The default is an empty string (""), which indicates that no special formatting is applied to the field value.
   overload: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.DataFormatString*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.HtmlEncode
@@ -194,10 +194,10 @@ items:
     content: public bool HtmlEncode { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the field should be HTML-encoded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the field should be HTML-encoded; otherwise, `false`.'
   overload: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.HtmlEncode*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.NullDisplayText
   id: NullDisplayText
@@ -211,7 +211,7 @@ items:
   assemblies:
   - System.ComponentModel.DataAnnotations
   namespace: System.ComponentModel.DataAnnotations
-  summary: Gets or sets the text that is displayed for a field when the field's value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  summary: Gets or sets the text that is displayed for a field when the field's value is `null`.
   remarks: "Sometimes a data field's value is stored as null values in the source. You can specify custom text to display for data fields that have a null value by setting the NullDisplayText property. If this property is not set, null field values are displayed as empty strings (\"\").  \n  \n> [!NOTE]\n>  To convert an empty string field value to a null value, you must set the <xref:System.ComponentModel.DataAnnotations.DisplayFormatAttribute.ConvertEmptyStringToNull%2A> property to `true`."
   example:
   - "The following example shows how to use the NullDisplayText to define a caption to display when the data field is `null`.  \n  \n [!code-cs[System.ComponentModel.DataAnnotations.DisplayFormatAttribute#2](~/add/codesnippet/csharp/p-system.componentmodel._29_1.cs)]\n [!code-vb[System.ComponentModel.DataAnnotations.DisplayFormatAttribute#2](~/add/codesnippet/visualbasic/p-system.componentmodel._29_1.vb)]"
@@ -219,10 +219,10 @@ items:
     content: public string NullDisplayText { get; set; }
     return:
       type: System.String
-      description: The text that is displayed for a field when the field's value is <xref uid="langword_csharp_null" name="null" href=""></xref>. The default is an empty string (""), which indicates that this property is not set.
+      description: The text that is displayed for a field when the field's value is `null`. The default is an empty string (""), which indicates that this property is not set.
   overload: System.ComponentModel.DataAnnotations.DisplayFormatAttribute.NullDisplayText*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:

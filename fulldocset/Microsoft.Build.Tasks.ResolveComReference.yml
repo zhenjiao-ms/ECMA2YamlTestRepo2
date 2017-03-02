@@ -55,7 +55,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,7 +79,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Tasks.ResolveComReference.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,15 +97,15 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Gets or sets a Boolean value that specifies whether the `ResolveComReference` task places the public key in the assembly (<xref uid="langword_csharp_true" name="true" href=""></xref>) or fully signs the assembly (<xref uid="langword_csharp_false" name="false" href=""></xref>).
+  summary: Gets or sets a Boolean value that specifies whether the `ResolveComReference` task places the public key in the assembly (`true`) or fully signs the assembly (`false`).
   syntax:
     content: public bool DelaySign { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the `ResolveComReference` task places the public key in the assembly; <xref uid="langword_csharp_false" name="false" href=""></xref> if the `ResolveComReference` task fully signs the assembly.
+      description: '`true` if the `ResolveComReference` task places the public key in the assembly; `false` if the `ResolveComReference` task fully signs the assembly.'
   overload: Microsoft.Build.Tasks.ResolveComReference.DelaySign*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -131,7 +131,7 @@ items:
       description: Returns an array of name-value pairs of environment variables.
   overload: Microsoft.Build.Tasks.ResolveComReference.EnvironmentVariables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveComReference.Execute
   id: Execute
@@ -152,10 +152,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if task execution succeeded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if task execution succeeded; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveComReference.Execute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,7 +181,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.ResolveComReference.ExecuteAsTool*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveComReference.IncludeVersionInInteropName
   id: IncludeVersionInInteropName
@@ -204,7 +204,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.ResolveComReference.IncludeVersionInInteropName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveComReference.KeyContainer
   id: KeyContainer
@@ -227,7 +227,7 @@ items:
       description: A container that holds a key pair.
   overload: Microsoft.Build.Tasks.ResolveComReference.KeyContainer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,7 +253,7 @@ items:
       description: An item that contains a key pair.
   overload: Microsoft.Build.Tasks.ResolveComReference.KeyFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,10 +276,10 @@ items:
     content: public bool NoClassMembers { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the task should pass the <xref href="System.Runtime.InteropServices.TypeLibImporterFlags"></xref> flag to .tlb wrapper generation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the task should pass the <xref href="System.Runtime.InteropServices.TypeLibImporterFlags"></xref> flag to .tlb wrapper generation; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveComReference.NoClassMembers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
       description: The resolved assembly references.
   overload: Microsoft.Build.Tasks.ResolveComReference.ResolvedAssemblyReferences*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,7 +331,7 @@ items:
       description: The fully qualified files on disk that correspond to the physical locations of the type libraries that were provided as input to this task.
   overload: Microsoft.Build.Tasks.ResolveComReference.ResolvedFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -357,7 +357,7 @@ items:
       description: The paths to the modules that were found.
   overload: Microsoft.Build.Tasks.ResolveComReference.ResolvedModules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,7 +383,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.ResolveComReference.SdkToolsPath*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveComReference.StateFile
   id: StateFile
@@ -406,7 +406,7 @@ items:
       description: The cache file for COM component timestamps.
   overload: Microsoft.Build.Tasks.ResolveComReference.StateFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,7 +432,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.ResolveComReference.TargetFrameworkVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveComReference.TargetProcessorArchitecture
   id: TargetProcessorArchitecture
@@ -455,7 +455,7 @@ items:
       description: Returns the name of the preferred target processor architecture.
   overload: Microsoft.Build.Tasks.ResolveComReference.TargetProcessorArchitecture*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveComReference.TypeLibFiles
   id: TypeLibFiles
@@ -479,7 +479,7 @@ items:
       description: The type library file path to COM references.
   overload: Microsoft.Build.Tasks.ResolveComReference.TypeLibFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -506,7 +506,7 @@ items:
       description: The type library names to resolve.
   overload: Microsoft.Build.Tasks.ResolveComReference.TypeLibNames*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -532,7 +532,7 @@ items:
       description: The location on disk where the generated interop assembly is placed.
   overload: Microsoft.Build.Tasks.ResolveComReference.WrapperOutputDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -568,8 +568,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -630,8 +630,8 @@ references:
 - uid: Microsoft.Build.Framework.ITaskItem[]
   parent: Microsoft.Build.Framework
   isExternal: false
-  name: ITaskItem
-  nameWithType: ITaskItem
+  name: ITaskItem[]
+  nameWithType: ITaskItem[]
   fullName: Microsoft.Build.Framework.ITaskItem[]
   spec.csharp:
   - uid: Microsoft.Build.Framework.ITaskItem

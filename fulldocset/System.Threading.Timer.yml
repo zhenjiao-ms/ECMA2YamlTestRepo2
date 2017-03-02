@@ -46,7 +46,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -75,7 +75,7 @@ items:
       description: A <xref href="System.Threading.TimerCallback"></xref> delegate representing a method to be executed.
   overload: System.Threading.Timer.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -92,7 +92,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: Initializes a new instance of the <xref uid="langword_csharp_Timer" name="Timer" href=""></xref> class, using a 32-bit signed integer to specify the time interval.
+  summary: Initializes a new instance of the `Timer` class, using a 32-bit signed integer to specify the time interval.
   remarks: "The delegate specified by the `callback` parameter is invoked once after `dueTime` elapses, and thereafter each time the `period` time interval elapses.  \n  \n If `dueTime` is zero (0), `callback` is invoked immediately. If `dueTime` is <xref:System.Threading.Timeout.Infinite?displayProperty=fullName>, `callback` is not invoked; the timer is disabled, but can be re-enabled by calling the <xref:System.Threading.Timer.Change%2A> method.  \n  \n Because the <xref:System.Threading.Timer> class has the same resolution as the system clock, which is approximately 15 milliseconds on Windows 7 and Windows 8 systems, the `callback` delegate executes at intervals defined by the resolution of the system clock if `period` is less than the resolution of the system clock. If `period` is zero (0) or <xref:System.Threading.Timeout.Infinite?displayProperty=fullName> and `dueTime` is not <xref:System.Threading.Timeout.Infinite?displayProperty=fullName>, `callback` is invoked once; the periodic behavior of the timer is disabled, but can be re-enabled using the <xref:System.Threading.Timer.Change%2A> method.  \n  \n The method specified for `callback` should be reentrant, because it is called on <xref:System.Threading.ThreadPool> threads. The method can be executed simultaneously on two thread pool threads if the timer interval is less than the time required to execute the method, or if all thread pool threads are in use and the method is queued multiple times."
   example:
   - "The following code example shows how to create a `TimerCallback` delegate and initialize a new instance of the `Timer` class.  \n  \n [!code-cpp[System.Threading.Timer#1](~/add/codesnippet/cpp/5fb22f67-d1d4-482b-8586-_1.cpp)]\n [!code-cs[System.Threading.Timer#1](~/add/codesnippet/csharp/5fb22f67-d1d4-482b-8586-_1.cs)]\n [!code-vb[System.Threading.Timer#1](~/add/codesnippet/visualbasic/5fb22f67-d1d4-482b-8586-_1.vb)]"
@@ -104,7 +104,7 @@ items:
       description: A <xref href="System.Threading.TimerCallback"></xref> delegate representing a method to be executed.
     - id: state
       type: System.Object
-      description: An object containing information to be used by the callback method, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object containing information to be used by the callback method, or `null`.
     - id: dueTime
       type: System.Int32
       description: The amount of time to delay before `callback` is invoked, in milliseconds. Specify <xref href="System.Threading.Timeout.Infinite"></xref> to prevent the timer from starting. Specify zero (0) to start the timer immediately.
@@ -118,8 +118,8 @@ items:
     description: The <code>dueTime</code> or <code>period</code> parameter is negative and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>callback</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>callback</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -136,7 +136,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: Initializes a new instance of the <xref uid="langword_csharp_Timer" name="Timer" href=""></xref> class, using 64-bit signed integers to measure time intervals.
+  summary: Initializes a new instance of the `Timer` class, using 64-bit signed integers to measure time intervals.
   remarks: "The delegate specified by the `callback` parameter is invoked once after `dueTime` elapses, and thereafter each time the `period` time interval elapses.  \n  \n If `dueTime` is zero (0), `callback` is invoked immediately. If `dueTime` is <xref:System.Threading.Timeout.Infinite?displayProperty=fullName>, `callback` is not invoked; the timer is disabled, but can be re-enabled by calling the <xref:System.Threading.Timer.Change%2A> method.  \n  \n Because the <xref:System.Threading.Timer> class has the same resolution as the system clock, which is approximately 15 milliseconds on Windows 7 and Windows 8 systems, the `callback` delegate executes at intervals defined by the resolution of the system clock if `period` is less than the resolution of the system clock. If `period` is zero (0) or <xref:System.Threading.Timeout.Infinite?displayProperty=fullName> and `dueTime` is not <xref:System.Threading.Timeout.Infinite?displayProperty=fullName>, `callback` is invoked once; the periodic behavior of the timer is disabled, but can be re-enabled using the <xref:System.Threading.Timer.Change%2A> method.  \n  \n The method specified for `callback` should be reentrant, because it is called on <xref:System.Threading.ThreadPool> threads. The method can be executed simultaneously on two thread pool threads if the timer interval is less than the time required to execute the method, or if all thread pool threads are in use and the method is queued multiple times."
   syntax:
     content: public Timer (System.Threading.TimerCallback callback, object state, long dueTime, long period);
@@ -146,7 +146,7 @@ items:
       description: A <xref href="System.Threading.TimerCallback"></xref> delegate representing a method to be executed.
     - id: state
       type: System.Object
-      description: An object containing information to be used by the callback method, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object containing information to be used by the callback method, or `null`.
     - id: dueTime
       type: System.Int64
       description: The amount of time to delay before `callback` is invoked, in milliseconds. Specify <xref href="System.Threading.Timeout.Infinite"></xref> to prevent the timer from starting. Specify zero (0) to start the timer immediately.
@@ -161,7 +161,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <code>dueTime</code> or <code>period</code> parameter is greater than 4294967294.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: Initializes a new instance of the <xref uid="langword_csharp_Timer" name="Timer" href=""></xref> class, using <xref href="System.TimeSpan"></xref> values to measure time intervals.
+  summary: Initializes a new instance of the `Timer` class, using <xref href="System.TimeSpan"></xref> values to measure time intervals.
   remarks: "The delegate specified by the `callback` parameter is invoked once after `dueTime` elapses, and thereafter each time the `period` time interval elapses.  \n  \n If `dueTime` is zero (0), `callback` is invoked immediately. If `dueTime` is negative one (-1) milliseconds, `callback` is not invoked; the timer is disabled, but can be re-enabled by calling the <xref:System.Threading.Timer.Change%2A> method.  \n  \n Because the <xref:System.Threading.Timer> class has the same resolution as the system clock, which is approximately 15 milliseconds on Windows 7 and Windows 8 systems, the `callback` delegate executes at intervals defined by the resolution of the system clock if `period` is less than the resolution of the system clock. If `period` is zero (0) or negative one (-1) milliseconds and `dueTime` is positive, `callback` is invoked once; the periodic behavior of the timer is disabled, but can be re-enabled using the <xref:System.Threading.Timer.Change%2A> method.  \n  \n The method specified for `callback` should be reentrant, because it is called on <xref:System.Threading.ThreadPool> threads. The method can be executed simultaneously on two thread pool threads if the timer interval is less than the time required to execute the method, or if all thread pool threads are in use and the method is queued multiple times."
   example:
   - "The following code example shows how to create a `TimerCallback` delegate and initialize a new instance of the `Timer` class.  \n  \n [!code-cs[System.Threading.Timer2#1](~/add/codesnippet/csharp/07ee9457-123d-4247-baee-_1.cs)]\n [!code-vb[System.Threading.Timer2#1](~/add/codesnippet/visualbasic/07ee9457-123d-4247-baee-_1.vb)]\n [!code-cpp[System.Threading.Timer2#1](~/add/codesnippet/cpp/07ee9457-123d-4247-baee-_1.cpp)]"
@@ -190,7 +190,7 @@ items:
       description: A delegate representing a method to be executed.
     - id: state
       type: System.Object
-      description: An object containing information to be used by the callback method, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object containing information to be used by the callback method, or `null`.
     - id: dueTime
       type: System.TimeSpan
       description: The amount of time to delay before the `callback` parameter invokes its methods. Specify negative one (-1) milliseconds to prevent the timer from starting. Specify zero (0) to start the timer immediately.
@@ -204,8 +204,8 @@ items:
     description: The number of milliseconds in the value of <code>dueTime</code> or <code>period</code> is negative and not equal to <xref href="System.Threading.Timeout.Infinite"></xref>, or is greater than <xref href="System.Int32.MaxValue"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>callback</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>callback</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -222,7 +222,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: Initializes a new instance of the <xref uid="langword_csharp_Timer" name="Timer" href=""></xref> class, using 32-bit unsigned integers to measure time intervals.
+  summary: Initializes a new instance of the `Timer` class, using 32-bit unsigned integers to measure time intervals.
   remarks: "The delegate specified by the `callback` parameter is invoked once after `dueTime` elapses, and thereafter each time the `period` time interval elapses.  \n  \n If `dueTime` is zero (0), `callback` is invoked immediately. If `dueTime` is <xref:System.Threading.Timeout.Infinite?displayProperty=fullName>, `callback` is not invoked; the timer is disabled, but can be re-enabled by calling the <xref:System.Threading.Timer.Change%2A> method.  \n  \n Because the <xref:System.Threading.Timer> class has the same resolution as the system clock, which is approximately 15 milliseconds on Windows 7 and Windows 8 systems, the `callback` delegate executes at intervals defined by the resolution of the system clock if `period` is less than the resolution of the system clock. If `period` is zero (0) or <xref:System.Threading.Timeout.Infinite?displayProperty=fullName> and `dueTime` is not <xref:System.Threading.Timeout.Infinite?displayProperty=fullName>, `callback` is invoked once; the periodic behavior of the timer is disabled, but can be re-enabled using the <xref:System.Threading.Timer.Change%2A> method.  \n  \n The method specified for `callback` should be reentrant, because it is called on <xref:System.Threading.ThreadPool> threads. The method can be executed simultaneously on two thread pool threads if the timer interval is less than the time required to execute the method, or if all thread pool threads are in use and the method is queued multiple times."
   syntax:
     content: public Timer (System.Threading.TimerCallback callback, object state, uint dueTime, uint period);
@@ -232,7 +232,7 @@ items:
       description: A delegate representing a method to be executed.
     - id: state
       type: System.Object
-      description: An object containing information to be used by the callback method, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object containing information to be used by the callback method, or `null`.
     - id: dueTime
       type: System.UInt32
       description: The amount of time to delay before `callback` is invoked, in milliseconds. Specify <xref href="System.Threading.Timeout.Infinite"></xref> to prevent the timer from starting. Specify zero (0) to start the timer immediately.
@@ -246,8 +246,8 @@ items:
     description: The <code>dueTime</code> or <code>period</code> parameter is negative and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>callback</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>callback</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
       description: The time interval between invocations of the callback method specified when the <xref href="System.Threading.Timer"></xref> was constructed, in milliseconds. Specify <xref href="System.Threading.Timeout.Infinite"></xref> to disable periodic signaling.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the timer was successfully updated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the timer was successfully updated; otherwise, `false`.'
   overload: System.Threading.Timer.Change*
   exceptions:
   - type: System.ObjectDisposedException
@@ -288,7 +288,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>dueTime</code> or <code>period</code> parameter is negative and is not equal to <xref href="System.Threading.Timeout.Infinite"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -318,7 +318,7 @@ items:
       description: The time interval between invocations of the callback method specified when the <xref href="System.Threading.Timer"></xref> was constructed, in milliseconds. Specify <xref href="System.Threading.Timeout.Infinite"></xref> to disable periodic signaling.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the timer was successfully updated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the timer was successfully updated; otherwise, `false`.'
   overload: System.Threading.Timer.Change*
   exceptions:
   - type: System.ObjectDisposedException
@@ -330,7 +330,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <code>dueTime</code> or <code>period</code> parameter is greater than 4294967294.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -362,7 +362,7 @@ items:
       description: The time interval between invocations of the callback method specified when the <xref href="System.Threading.Timer"></xref> was constructed. Specify negative one (-1) milliseconds to disable periodic signaling.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the timer was successfully updated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the timer was successfully updated; otherwise, `false`.'
   overload: System.Threading.Timer.Change*
   exceptions:
   - type: System.ObjectDisposedException
@@ -374,7 +374,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <code>dueTime</code> or <code>period</code> parameter, in milliseconds, is greater than 4294967294.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -404,13 +404,13 @@ items:
       description: The time interval between invocations of the callback method specified when the <xref href="System.Threading.Timer"></xref> was constructed, in milliseconds. Specify <xref href="System.Threading.Timeout.Infinite"></xref> to disable periodic signaling.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the timer was successfully updated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the timer was successfully updated; otherwise, `false`.'
   overload: System.Threading.Timer.Change*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.Timer"></xref> has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -436,7 +436,7 @@ items:
     parameters: []
   overload: System.Threading.Timer.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,16 +460,16 @@ items:
     parameters:
     - id: notifyObject
       type: System.Threading.WaitHandle
-      description: The <xref href="System.Threading.WaitHandle"></xref> to be signaled when the <xref uid="langword_csharp_Timer" name="Timer" href=""></xref> has been disposed of.
+      description: The <xref href="System.Threading.WaitHandle"></xref> to be signaled when the `Timer` has been disposed of.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the function succeeds; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the function succeeds; otherwise, `false`.'
   overload: System.Threading.Timer.Dispose*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>notifyObject</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>notifyObject</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

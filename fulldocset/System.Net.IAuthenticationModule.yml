@@ -20,7 +20,7 @@ items:
   syntax:
     content: public interface IAuthenticationModule
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -55,10 +55,10 @@ items:
       description: The credentials associated with the challenge.
     return:
       type: System.Net.Authorization
-      description: An <xref href="System.Net.Authorization"></xref> instance containing the authorization message for the request, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the challenge cannot be handled.
+      description: An <xref href="System.Net.Authorization"></xref> instance containing the authorization message for the request, or `null` if the challenge cannot be handled.
   overload: System.Net.IAuthenticationModule.Authenticate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,7 +86,7 @@ items:
       description: A string indicating the authentication type provided by this authentication module.
   overload: System.Net.IAuthenticationModule.AuthenticationType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,10 +111,10 @@ items:
     content: public bool CanPreAuthenticate { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the authorization module supports preauthentication; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the authorization module supports preauthentication; otherwise `false`.'
   overload: System.Net.IAuthenticationModule.CanPreAuthenticate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -149,7 +149,7 @@ items:
       description: An <xref href="System.Net.Authorization"></xref> instance containing the authorization message for the request.
   overload: System.Net.IAuthenticationModule.PreAuthenticate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

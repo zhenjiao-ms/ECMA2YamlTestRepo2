@@ -31,7 +31,7 @@ items:
 
       public interface IReflect
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -66,7 +66,7 @@ items:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
     description: The object implements multiple fields with the same name.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,7 +96,7 @@ items:
       description: An array of <xref href="System.Reflection.FieldInfo"></xref> objects containing all the field information for this reflection object that meets the search constraints specified in <code>bindingAttr</code>.
   overload: System.Reflection.IReflect.GetFields*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,7 +129,7 @@ items:
       description: An array of <xref href="System.Reflection.MemberInfo"></xref> objects matching the <code>name</code> parameter.
   overload: System.Reflection.IReflect.GetMember*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -159,7 +159,7 @@ items:
       description: An array of <xref href="System.Reflection.MemberInfo"></xref> objects containing all the member information for this reflection object.
   overload: System.Reflection.IReflect.GetMembers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
     description: The object implements multiple methods with the same name.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -239,7 +239,7 @@ items:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
     description: The object implements multiple methods with the same name.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -269,7 +269,7 @@ items:
       description: An array of <xref href="System.Reflection.MethodInfo"></xref> objects containing all the methods defined for this reflection object that meet the search constraints specified in <code>bindingAttr</code>.
   overload: System.Reflection.IReflect.GetMethods*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -298,7 +298,7 @@ items:
       description: An array of <xref href="System.Reflection.PropertyInfo"></xref> objects for all the properties defined on the reflection object.
   overload: System.Reflection.IReflect.GetProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -327,13 +327,13 @@ items:
       description: The binding attributes used to control the search.
     return:
       type: System.Reflection.PropertyInfo
-      description: A <xref href="System.Reflection.PropertyInfo"></xref> object for the located property that meets the search constraints specified in <code>bindingAttr</code>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the property was not located.
+      description: A <xref href="System.Reflection.PropertyInfo"></xref> object for the located property that meets the search constraints specified in <code>bindingAttr</code>, or `null` if the property was not located.
   overload: System.Reflection.IReflect.GetProperty*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
     description: The object implements multiple fields with the same name.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -375,10 +375,10 @@ items:
       description: An array used to choose the parameter modifiers.
     return:
       type: System.Reflection.PropertyInfo
-      description: A <xref href="System.Reflection.PropertyInfo"></xref> object for the located property, if a property with the specified name was located in this reflection object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the property was not located.
+      description: A <xref href="System.Reflection.PropertyInfo"></xref> object for the located property, if a property with the specified name was located in this reflection object, or `null` if the property was not located.
   overload: System.Reflection.IReflect.GetProperty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -419,13 +419,13 @@ items:
       description: An array of objects that contains the number, order, and type of the parameters of the member to be invoked. This is an empty array if there are no parameters.
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: 'An array of <xref href="System.Reflection.ParameterModifier"></xref> objects. This array has the same length as the `args` parameter, representing the invoked member''s argument attributes in the metadata. A parameter can have the following attributes: <xref uid="langword_csharp_pdIn" name="pdIn" href=""></xref>, <xref uid="langword_csharp_pdOut" name="pdOut" href=""></xref>, <xref uid="langword_csharp_pdRetval" name="pdRetval" href=""></xref>, <xref uid="langword_csharp_pdOptional" name="pdOptional" href=""></xref>, and <xref uid="langword_csharp_pdHasDefault" name="pdHasDefault" href=""></xref>. These represent [In], [Out], [retval], [optional], and a default parameter, respectively. These attributes are used by various interoperability services.'
+      description: 'An array of <xref href="System.Reflection.ParameterModifier"></xref> objects. This array has the same length as the `args` parameter, representing the invoked member''s argument attributes in the metadata. A parameter can have the following attributes: `pdIn`, `pdOut`, `pdRetval`, `pdOptional`, and `pdHasDefault`. These represent [In], [Out], [retval], [optional], and a default parameter, respectively. These attributes are used by various interoperability services.'
     - id: culture
       type: System.Globalization.CultureInfo
-      description: An instance of <xref href="System.Globalization.CultureInfo"></xref> used to govern the coercion of types. For example, `culture` converts a <xref uid="langword_csharp_String" name="String" href=""></xref> that represents 1000 to a <xref uid="langword_csharp_Double" name="Double" href=""></xref> value, since 1000 is represented differently by different cultures. If this parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
+      description: An instance of <xref href="System.Globalization.CultureInfo"></xref> used to govern the coercion of types. For example, `culture` converts a `String` that represents 1000 to a `Double` value, since 1000 is represented differently by different cultures. If this parameter is `null`, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used.
     - id: namedParameters
       type: System.String[]
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> array of parameters.
+      description: A `String` array of parameters.
     return:
       type: System.Object
       description: The specified member.
@@ -433,7 +433,7 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: More than one argument is specified for a field <xref uid="langword_csharp_set" name="set" href=""></xref>.
+    description: More than one argument is specified for a field `set`.
   - type: System.MissingFieldException
     commentId: T:System.MissingFieldException
     description: The field or property cannot be found.
@@ -443,7 +443,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: A private member is invoked without the necessary <xref href="System.Security.Permissions.ReflectionPermission"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -468,7 +468,7 @@ items:
       description: The underlying type that represents the <xref href="System.Reflection.IReflect"></xref> object.
   overload: System.Reflection.IReflect.UnderlyingSystemType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -537,8 +537,8 @@ references:
 - uid: System.Reflection.FieldInfo[]
   parent: System.Reflection
   isExternal: false
-  name: FieldInfo
-  nameWithType: FieldInfo
+  name: FieldInfo[]
+  nameWithType: FieldInfo[]
   fullName: System.Reflection.FieldInfo[]
   spec.csharp:
   - uid: System.Reflection.FieldInfo
@@ -557,8 +557,8 @@ references:
 - uid: System.Reflection.MemberInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MemberInfo
-  nameWithType: MemberInfo
+  name: MemberInfo[]
+  nameWithType: MemberInfo[]
   fullName: System.Reflection.MemberInfo[]
   spec.csharp:
   - uid: System.Reflection.MemberInfo
@@ -601,8 +601,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -615,8 +615,8 @@ references:
 - uid: System.Reflection.ParameterModifier[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterModifier
-  nameWithType: ParameterModifier
+  name: ParameterModifier[]
+  nameWithType: ParameterModifier[]
   fullName: System.Reflection.ParameterModifier[]
   spec.csharp:
   - uid: System.Reflection.ParameterModifier
@@ -635,8 +635,8 @@ references:
 - uid: System.Reflection.MethodInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MethodInfo
-  nameWithType: MethodInfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
   fullName: System.Reflection.MethodInfo[]
   spec.csharp:
   - uid: System.Reflection.MethodInfo
@@ -655,8 +655,8 @@ references:
 - uid: System.Reflection.PropertyInfo[]
   parent: System.Reflection
   isExternal: false
-  name: PropertyInfo
-  nameWithType: PropertyInfo
+  name: PropertyInfo[]
+  nameWithType: PropertyInfo[]
   fullName: System.Reflection.PropertyInfo[]
   spec.csharp:
   - uid: System.Reflection.PropertyInfo
@@ -705,8 +705,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -725,8 +725,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

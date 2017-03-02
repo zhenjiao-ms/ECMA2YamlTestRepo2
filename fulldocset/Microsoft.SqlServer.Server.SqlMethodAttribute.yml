@@ -81,7 +81,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -104,7 +104,7 @@ items:
     parameters: []
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -127,10 +127,10 @@ items:
     content: public bool InvokeIfReceiverIsNull { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if SQL Server should invoke the method on null instances; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]<xref uid="langword_csharp_DbNull" name="DbNull" href=""></xref> is returned.
+      description: '`true` if SQL Server should invoke the method on null instances; otherwise, `false`. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]`DbNull` is returned.'
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.InvokeIfReceiverIsNull*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -153,10 +153,10 @@ items:
     content: public bool IsMutator { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is a mutator; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method is a mutator; otherwise `false`.'
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.IsMutator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -173,16 +173,16 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: Indicates whether the method on a user-defined type (UDT) is called when <xref uid="langword_csharp_null" name="null" href=""></xref> input arguments are specified in the method invocation.
+  summary: Indicates whether the method on a user-defined type (UDT) is called when `null` input arguments are specified in the method invocation.
   remarks: The default value of the OnNullCall property is `true`.
   syntax:
     content: public bool OnNullCall { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is called when <xref uid="langword_csharp_null" name="null" href=""></xref> input arguments are specified in the method invocation; <xref uid="langword_csharp_false" name="false" href=""></xref> if the method returns a <xref uid="langword_csharp_null" name="null" href=""></xref> value when any of its input parameters are <xref uid="langword_csharp_null" name="null" href=""></xref>. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]<xref uid="langword_csharp_DbNull" name="DbNull" href=""></xref> is returned.
+      description: '`true` if the method is called when `null` input arguments are specified in the method invocation; `false` if the method returns a `null` value when any of its input parameters are `null`. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]`DbNull` is returned.'
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.OnNullCall*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

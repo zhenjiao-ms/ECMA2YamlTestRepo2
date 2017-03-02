@@ -86,7 +86,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,7 +110,7 @@ items:
     parameters: []
   overload: System.Reflection.Module.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.Assembly
   id: Assembly
@@ -132,10 +132,10 @@ items:
     content: public virtual System.Reflection.Assembly Assembly { get; }
     return:
       type: System.Reflection.Assembly
-      description: An <xref uid="langword_csharp_Assembly" name="Assembly" href=""></xref> object.
+      description: An `Assembly` object.
   overload: System.Reflection.Module.Assembly*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.Equals(System.Object)
   id: Equals(System.Object)
@@ -158,10 +158,10 @@ items:
       description: The object to compare with this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>o</code> is equal to this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>o</code> is equal to this instance; otherwise, `false`.'
   overload: System.Reflection.Module.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: A <xref uid="langword_csharp_TypeFilter" name="TypeFilter" href=""></xref> object that filters the list of types defined in this module based upon the name. This field is case-sensitive and read-only.
+  summary: A `TypeFilter` object that filters the list of types defined in this module based upon the name. This field is case-sensitive and read-only.
   remarks: The filter supports a trailing "*" wildcard.
   example:
   - "The following example displays the module names that match the specified search criteria.  \n  \n [!code-cpp[System.Reflection.Module.FilterTypeName Example#1](~/add/codesnippet/cpp/f-system.reflection.modu_0_1.cpp)]\n [!code-cs[System.Reflection.Module.FilterTypeName Example#1](~/add/codesnippet/csharp/f-system.reflection.modu_0_1.cs)]\n [!code-vb[System.Reflection.Module.FilterTypeName Example#1](~/add/codesnippet/visualbasic/f-system.reflection.modu_0_1.vb)]"
@@ -188,7 +188,7 @@ items:
       type: System.Reflection.TypeFilter
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -205,7 +205,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: A <xref uid="langword_csharp_TypeFilter" name="TypeFilter" href=""></xref> object that filters the list of types defined in this module based upon the name. This field is case-insensitive and read-only.
+  summary: A `TypeFilter` object that filters the list of types defined in this module based upon the name. This field is case-insensitive and read-only.
   remarks: The filter supports a trailing "*" wildcard.
   example:
   - "The following example displays the module names that match the specified search criteria, ignoring the case.  \n  \n [!code-cs[System.Reflection.Module.FilterTypeNameIgnoreCase Example#1](~/add/codesnippet/csharp/f-system.reflection.modu_1_1.cs)]\n [!code-cpp[System.Reflection.Module.FilterTypeNameIgnoreCase Example#1](~/add/codesnippet/cpp/f-system.reflection.modu_1_1.cpp)]\n [!code-vb[System.Reflection.Module.FilterTypeNameIgnoreCase Example#1](~/add/codesnippet/visualbasic/f-system.reflection.modu_1_1.vb)]"
@@ -215,7 +215,7 @@ items:
       type: System.Reflection.TypeFilter
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -247,13 +247,13 @@ items:
       description: An Object used to filter the classes.
     return:
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing classes that were accepted by the filter.
+      description: An array of type `Type` containing classes that were accepted by the filter.
   overload: System.Reflection.Module.FindTypes*
   exceptions:
   - type: System.Reflection.ReflectionTypeLoadException
     commentId: T:System.Reflection.ReflectionTypeLoadException
     description: One or more classes in a module could not be loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -284,7 +284,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -313,10 +313,10 @@ items:
       description: This argument is ignored for objects of this type.
     return:
       type: System.Object[]
-      description: An array of type <xref uid="langword_csharp_Object" name="Object" href=""></xref> containing all custom attributes.
+      description: An array of type `Object` containing all custom attributes.
   overload: System.Reflection.Module.GetCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,16 +348,16 @@ items:
       description: This argument is ignored for objects of this type.
     return:
       type: System.Object[]
-      description: An array of type <xref uid="langword_csharp_Object" name="Object" href=""></xref> containing all custom attributes of the specified type.
+      description: An array of type `Object` containing all custom attributes of the specified type.
   overload: System.Reflection.Module.GetCustomAttributes*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>attributeType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>attributeType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>attributeType</code> is not a <xref href="System.Type"></xref> object supplied by the runtime. For example, <code>attributeType</code> is a <xref href="System.Reflection.Emit.TypeBuilder"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -384,7 +384,7 @@ items:
       description: A generic list of <xref href="System.Reflection.CustomAttributeData"></xref> objects representing data about the attributes that have been applied to the current module.
   overload: System.Reflection.Module.GetCustomAttributesData*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.GetField(System.String)
   id: GetField(System.String)
@@ -407,13 +407,13 @@ items:
       description: The field name.
     return:
       type: System.Reflection.FieldInfo
-      description: A <xref uid="langword_csharp_FieldInfo" name="FieldInfo" href=""></xref> object having the specified name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the field does not exist.
+      description: A `FieldInfo` object having the specified name, or `null` if the field does not exist.
   overload: System.Reflection.Module.GetField*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -439,16 +439,16 @@ items:
       description: The field name.
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: One of the <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> bit flags used to control the search.
+      description: One of the `BindingFlags` bit flags used to control the search.
     return:
       type: System.Reflection.FieldInfo
-      description: A <xref uid="langword_csharp_FieldInfo" name="FieldInfo" href=""></xref> object having the specified name and binding attributes, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the field does not exist.
+      description: A `FieldInfo` object having the specified name and binding attributes, or `null` if the field does not exist.
   overload: System.Reflection.Module.GetField*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>name</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>name</code> parameter is `null`.
+  version:
   - netframework-40
 - uid: System.Reflection.Module.GetFields
   id: GetFields
@@ -472,7 +472,7 @@ items:
       description: An array of <xref href="System.Reflection.FieldInfo"></xref> objects representing the global fields defined on the module; if there are no global fields, an empty array is returned.
   overload: System.Reflection.Module.GetFields*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -502,7 +502,7 @@ items:
       description: An array of type <xref href="System.Reflection.FieldInfo"></xref> representing the global fields defined on the module that match the specified binding flags; if no global fields match the binding flags, an empty array is returned.
   overload: System.Reflection.Module.GetFields*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.GetHashCode
   id: GetHashCode
@@ -525,7 +525,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.Reflection.Module.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -551,13 +551,13 @@ items:
       description: The method name.
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object having the specified name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method does not exist.
+      description: A `MethodInfo` object having the specified name, or `null` if the method does not exist.
   overload: System.Reflection.Module.GetMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -586,13 +586,13 @@ items:
       description: The parameter types to search for.
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object in accordance with the specified criteria, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method does not exist.
+      description: A `MethodInfo` object in accordance with the specified criteria, or `null` if the method does not exist.
   overload: System.Reflection.Module.GetMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, <code>types</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, or <code>types</code> (i) is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`, <code>types</code> is `null`, or <code>types</code> (i) is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -618,10 +618,10 @@ items:
       description: The method name.
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: One of the <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> bit flags used to control the search.
+      description: One of the `BindingFlags` bit flags used to control the search.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that implements <xref uid="langword_csharp_Binder" name="Binder" href=""></xref>, containing properties related to this method.
+      description: An object that implements `Binder`, containing properties related to this method.
     - id: callConvention
       type: System.Reflection.CallingConventions
       description: The calling convention for the method.
@@ -633,13 +633,13 @@ items:
       description: An array of parameter modifiers used to make binding work with parameter signatures in which the types have been modified.
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object in accordance with the specified criteria, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method does not exist.
+      description: A `MethodInfo` object in accordance with the specified criteria, or `null` if the method does not exist.
   overload: System.Reflection.Module.GetMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, <code>types</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, or <code>types</code> (i) is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`, <code>types</code> is `null`, or <code>types</code> (i) is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -665,10 +665,10 @@ items:
       description: The method name.
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: One of the <xref uid="langword_csharp_BindingFlags" name="BindingFlags" href=""></xref> bit flags used to control the search.
+      description: One of the `BindingFlags` bit flags used to control the search.
     - id: binder
       type: System.Reflection.Binder
-      description: An object that implements <xref uid="langword_csharp_Binder" name="Binder" href=""></xref>, containing properties related to this method.
+      description: An object that implements `Binder`, containing properties related to this method.
     - id: callConvention
       type: System.Reflection.CallingConventions
       description: The calling convention for the method.
@@ -680,13 +680,13 @@ items:
       description: An array of parameter modifiers used to make binding work with parameter signatures in which the types have been modified.
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref uid="langword_csharp_MethodInfo" name="MethodInfo" href=""></xref> object containing implementation information as specified, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method does not exist.
+      description: A `MethodInfo` object containing implementation information as specified, or `null` if the method does not exist.
   overload: System.Reflection.Module.GetMethodImpl*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: <code>types</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>types</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -712,7 +712,7 @@ items:
       description: An array of <xref href="System.Reflection.MethodInfo"></xref> objects representing all the global methods defined on the module; if there are no global methods, an empty array is returned.
   overload: System.Reflection.Module.GetMethods*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -741,7 +741,7 @@ items:
       description: An array of type <xref href="System.Reflection.MethodInfo"></xref> representing the global methods defined on the module that match the specified binding flags; if no global methods match the binding flags, an empty array is returned.
   overload: System.Reflection.Module.GetMethods*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
   id: GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -769,8 +769,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>info</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>info</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -799,7 +799,7 @@ items:
       description: When this method returns, one of the <xref href="System.Reflection.ImageFileMachine"></xref> values indicating the platform targeted by the module.
   overload: System.Reflection.Module.GetPEKind*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.GetSignerCertificate
   id: GetSignerCertificate
@@ -813,16 +813,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Returns an <xref uid="langword_csharp_X509Certificate" name="X509Certificate" href=""></xref> object corresponding to the certificate included in the Authenticode signature of the assembly which this module belongs to. If the assembly has not been Authenticode signed, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+  summary: Returns an `X509Certificate` object corresponding to the certificate included in the Authenticode signature of the assembly which this module belongs to. If the assembly has not been Authenticode signed, `null` is returned.
   syntax:
     content: public virtual System.Security.Cryptography.X509Certificates.X509Certificate GetSignerCertificate ();
     parameters: []
     return:
       type: System.Security.Cryptography.X509Certificates.X509Certificate
-      description: An <xref uid="langword_csharp_X509Certificate" name="X509Certificate" href=""></xref> object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the assembly to which this module belongs has not been Authenticode signed.
+      description: An `X509Certificate` object, or `null` if the assembly to which this module belongs has not been Authenticode signed.
   overload: System.Reflection.Module.GetSignerCertificate*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.GetType(System.String)
   id: GetType(System.String)
@@ -848,12 +848,12 @@ items:
       description: The name of the type to locate. The name must be fully qualified with the namespace.
     return:
       type: System.Type
-      description: A <xref uid="langword_csharp_Type" name="Type" href=""></xref> object representing the given type, if the type is in this module; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A `Type` object representing the given type, if the type is in this module; otherwise, `null`.
   overload: System.Reflection.Module.GetType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>className</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>className</code> is `null`.
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The class initializers are invoked and an exception is thrown.
@@ -869,7 +869,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>className</code> requires a dependent assembly, but the file is not a valid assembly.  \n  \n -or-  \n  \n <code>className</code> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -898,15 +898,15 @@ items:
       description: The name of the type to locate. The name must be fully qualified with the namespace.
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> for case-insensitive search; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` for case-insensitive search; otherwise, `false`.'
     return:
       type: System.Type
-      description: A <xref uid="langword_csharp_Type" name="Type" href=""></xref> object representing the given type, if the type is in this module; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A `Type` object representing the given type, if the type is in this module; otherwise, `null`.
   overload: System.Reflection.Module.GetType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>className</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>className</code> is `null`.
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The class initializers are invoked and an exception is thrown.
@@ -922,7 +922,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>className</code> requires a dependent assembly, but the file is not a valid assembly.  \n  \n -or-  \n  \n <code>className</code> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -951,18 +951,18 @@ items:
       description: The name of the type to locate. The name must be fully qualified with the namespace.
     - id: throwOnError
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to throw an exception if the type cannot be found; <xref uid="langword_csharp_false" name="false" href=""></xref> to return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: '`true` to throw an exception if the type cannot be found; `false` to return `null`.'
     - id: ignoreCase
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> for case-insensitive search; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` for case-insensitive search; otherwise, `false`.'
     return:
       type: System.Type
-      description: A <xref href="System.Type"></xref> object representing the specified type, if the type is declared in this module; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Type"></xref> object representing the specified type, if the type is declared in this module; otherwise, `null`.
   overload: System.Reflection.Module.GetType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>className</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>className</code> is `null`.
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The class initializers are invoked and an exception is thrown.
@@ -971,7 +971,7 @@ items:
     description: <code>className</code> is a zero-length string.
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
-    description: <code>throwOnError</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, and the type cannot be found.
+    description: <code>throwOnError</code> is `true`, and the type cannot be found.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
     description: <code>className</code> requires a dependent assembly that could not be found.
@@ -981,7 +981,7 @@ items:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
     description: "<code>className</code> requires a dependent assembly, but the file is not a valid assembly.  \n  \n -or-  \n  \n <code>className</code> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1005,7 +1005,7 @@ items:
     parameters: []
     return:
       type: System.Type[]
-      description: An array of type <xref uid="langword_csharp_Type" name="Type" href=""></xref> containing types defined within the module that is reflected by this instance.
+      description: An array of type `Type` containing types defined within the module that is reflected by this instance.
   overload: System.Reflection.Module.GetTypes*
   exceptions:
   - type: System.Reflection.ReflectionTypeLoadException
@@ -1014,7 +1014,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1046,16 +1046,16 @@ items:
       description: This argument is ignored for objects of this type.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if one or more instances of <code>attributeType</code> have been applied to this module; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if one or more instances of <code>attributeType</code> have been applied to this module; otherwise, `false`.'
   overload: System.Reflection.Module.IsDefined*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>attributeType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>attributeType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>attributeType</code> is not a <xref href="System.Type"></xref> object supplied by the runtime. For example, <code>attributeType</code> is a <xref href="System.Reflection.Emit.TypeBuilder"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1081,10 +1081,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object is a resource; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object is a resource; otherwise, `false`.'
   overload: System.Reflection.Module.IsResource*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.MDStreamVersion
   id: MDStreamVersion
@@ -1110,7 +1110,7 @@ items:
       description: A 32-bit integer representing the metadata stream version. The high-order two bytes represent the major version number, and the low-order two bytes represent the minor version number.
   overload: System.Reflection.Module.MDStreamVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.MetadataToken
   id: MetadataToken
@@ -1133,7 +1133,7 @@ items:
       description: An integer token that identifies the current module in metadata.
   overload: System.Reflection.Module.MetadataToken*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ModuleHandle
   id: ModuleHandle
@@ -1155,7 +1155,7 @@ items:
       description: A <xref href="System.ModuleHandle"></xref> structure for the current module.
   overload: System.Reflection.Module.ModuleHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1181,7 +1181,7 @@ items:
       description: A <xref href="System.Guid"></xref> that can be used to distinguish between two versions of a module.
   overload: System.Reflection.Module.ModuleVersionId*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.Name
   id: Name
@@ -1195,7 +1195,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Gets a <xref uid="langword_csharp_String" name="String" href=""></xref> representing the name of the module with the path removed.
+  summary: Gets a `String` representing the name of the module with the path removed.
   remarks: "`Name` is a platform-dependent string.  \n  \n If the assembly for this module was loaded from a byte array then the `FullyQualifiedName` for the module will be: \\<Unknown>.  \n  \n To get the name and the path, use <xref:System.Reflection.Module.FullyQualifiedName%2A>."
   example:
   - "This example shows the effect of the `ScopeName`, `FullyQualifiedName`, and `Name` properties.  \n  \n [!code-vb[Classic Module.Name Example#1](~/add/codesnippet/visualbasic/p-system.reflection.modu_1_1.vb)]\n [!code-cpp[Classic Module.Name Example#1](~/add/codesnippet/cpp/p-system.reflection.modu_1_1.cpp)]\n [!code-cs[Classic Module.Name Example#1](~/add/codesnippet/csharp/p-system.reflection.modu_1_1.cs)]"
@@ -1206,7 +1206,7 @@ items:
       description: The module name with no path.
   overload: System.Reflection.Module.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.op_Equality(System.Reflection.Module,System.Reflection.Module)
   id: op_Equality(System.Reflection.Module,System.Reflection.Module)
@@ -1232,10 +1232,10 @@ items:
       description: The second object to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> is equal to <code>right</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> is equal to <code>right</code>; otherwise, `false`.'
   overload: System.Reflection.Module.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.op_Inequality(System.Reflection.Module,System.Reflection.Module)
   id: op_Inequality(System.Reflection.Module,System.Reflection.Module)
@@ -1261,10 +1261,10 @@ items:
       description: The second object to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>left</code> is not equal to <code>right</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>left</code> is not equal to <code>right</code>; otherwise, `false`.'
   overload: System.Reflection.Module.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ResolveField(System.Int32)
   id: ResolveField(System.Int32)
@@ -1293,11 +1293,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a field in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a field whose parent <xref uid=\"langword_csharp_TypeSpec\" name=\"TypeSpec\" href=\"\"></xref> has a signature containing element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method)."
+    description: "<code>metadataToken</code> is not a token for a field in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a field whose parent `TypeSpec` has a signature containing element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1324,10 +1324,10 @@ items:
       description: A metadata token that identifies a field in the module.
     - id: genericTypeArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that type is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or `null` if that type is not generic.
     - id: genericMethodArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that method is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or `null` if that method is not generic.
     return:
       type: System.Reflection.FieldInfo
       description: A <xref href="System.Reflection.FieldInfo"></xref> object representing the field that is identified by the specified metadata token.
@@ -1335,11 +1335,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a field in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a field whose parent <xref uid=\"langword_csharp_TypeSpec\" name=\"TypeSpec\" href=\"\"></xref> has a signature containing element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>."
+    description: "<code>metadataToken</code> is not a token for a field in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a field whose parent `TypeSpec` has a signature containing element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ResolveMember(System.Int32)
   id: ResolveMember(System.Int32)
@@ -1368,11 +1368,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a type or member in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a <xref uid=\"langword_csharp_MethodSpec\" name=\"MethodSpec\" href=\"\"></xref> or <xref uid=\"langword_csharp_TypeSpec\" name=\"TypeSpec\" href=\"\"></xref> whose signature contains element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method).  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a property or event."
+    description: "<code>metadataToken</code> is not a token for a type or member in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a `MethodSpec` or `TypeSpec` whose signature contains element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method).  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a property or event."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1399,10 +1399,10 @@ items:
       description: A metadata token that identifies a type or member in the module.
     - id: genericTypeArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that type is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or `null` if that type is not generic.
     - id: genericMethodArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that method is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or `null` if that method is not generic.
     return:
       type: System.Reflection.MemberInfo
       description: A <xref href="System.Reflection.MemberInfo"></xref> object representing the type or member that is identified by the specified metadata token.
@@ -1410,11 +1410,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a type or member in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a <xref uid=\"langword_csharp_MethodSpec\" name=\"MethodSpec\" href=\"\"></xref> or <xref uid=\"langword_csharp_TypeSpec\" name=\"TypeSpec\" href=\"\"></xref> whose signature contains element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>.  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a property or event."
+    description: "<code>metadataToken</code> is not a token for a type or member in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a `MethodSpec` or `TypeSpec` whose signature contains element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>.  \n  \n -or-  \n  \n <code>metadataToken</code> identifies a property or event."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ResolveMethod(System.Int32)
   id: ResolveMethod(System.Int32)
@@ -1445,11 +1445,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a method or constructor in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a <xref uid=\"langword_csharp_MethodSpec\" name=\"MethodSpec\" href=\"\"></xref> whose signature contains element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method)."
+    description: "<code>metadataToken</code> is not a token for a method or constructor in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a `MethodSpec` whose signature contains element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1478,10 +1478,10 @@ items:
       description: A metadata token that identifies a method or constructor in the module.
     - id: genericTypeArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that type is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or `null` if that type is not generic.
     - id: genericMethodArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that method is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or `null` if that method is not generic.
     return:
       type: System.Reflection.MethodBase
       description: A <xref href="System.Reflection.MethodBase"></xref> object representing the method that is identified by the specified metadata token.
@@ -1489,11 +1489,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a method or constructor in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a <xref uid=\"langword_csharp_MethodSpec\" name=\"MethodSpec\" href=\"\"></xref> whose signature contains element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>."
+    description: "<code>metadataToken</code> is not a token for a method or constructor in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a `MethodSpec` whose signature contains element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ResolveSignature(System.Int32)
   id: ResolveSignature(System.Int32)
@@ -1525,11 +1525,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>metadataToken</code> is not a valid <xref uid="langword_csharp_MemberRef" name="MemberRef" href=""></xref>, <xref uid="langword_csharp_MethodDef" name="MethodDef" href=""></xref>, <xref uid="langword_csharp_TypeSpec" name="TypeSpec" href=""></xref>, signature, or <xref uid="langword_csharp_FieldDef" name="FieldDef" href=""></xref> token in the scope of the current module.
+    description: <code>metadataToken</code> is not a valid `MemberRef`, `MethodDef`, `TypeSpec`, signature, or `FieldDef` token in the scope of the current module.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ResolveString(System.Int32)
   id: ResolveString(System.Int32)
@@ -1565,7 +1565,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ResolveType(System.Int32)
   id: ResolveType(System.Int32)
@@ -1594,11 +1594,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a type in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a <xref uid=\"langword_csharp_TypeSpec\" name=\"TypeSpec\" href=\"\"></xref> whose signature contains element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method)."
+    description: "<code>metadataToken</code> is not a token for a type in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a `TypeSpec` whose signature contains element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1625,10 +1625,10 @@ items:
       description: A metadata token that identifies a type in the module.
     - id: genericTypeArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that type is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the type where the token is in scope, or `null` if that type is not generic.
     - id: genericMethodArguments
       type: System.Type[]
-      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or <xref uid="langword_csharp_null" name="null" href=""></xref> if that method is not generic.
+      description: An array of <xref href="System.Type"></xref> objects representing the generic type arguments of the method where the token is in scope, or `null` if that method is not generic.
     return:
       type: System.Type
       description: A <xref href="System.Type"></xref> object representing the type that is identified by the specified metadata token.
@@ -1636,11 +1636,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>metadataToken</code> is not a token for a type in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a <xref uid=\"langword_csharp_TypeSpec\" name=\"TypeSpec\" href=\"\"></xref> whose signature contains element type <xref uid=\"langword_csharp_var\" name=\"var\" href=\"\"></xref> (a type parameter of a generic type) or <xref uid=\"langword_csharp_mvar\" name=\"mvar\" href=\"\"></xref> (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>."
+    description: "<code>metadataToken</code> is not a token for a type in the scope of the current module.  \n  \n -or-  \n  \n <code>metadataToken</code> is a `TypeSpec` whose signature contains element type `var` (a type parameter of a generic type) or `mvar` (a type parameter of a generic method), and the necessary generic type arguments were not supplied for either or both of <code>genericTypeArguments</code> and <code>genericMethodArguments</code>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>metadataToken</code> is not a valid token in the scope of the current module.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.ScopeName
   id: ScopeName
@@ -1665,7 +1665,7 @@ items:
       description: The module name.
   overload: System.Reflection.Module.ScopeName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Module.System#Runtime#InteropServices#_Module#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
   id: System#Runtime#InteropServices#_Module#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
@@ -1705,7 +1705,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1742,7 +1742,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1773,7 +1773,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1825,7 +1825,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1851,10 +1851,10 @@ items:
     parameters: []
     return:
       type: System.String
-      description: A <xref uid="langword_csharp_String" name="String" href=""></xref> representing the name of this module.
+      description: A `String` representing the name of this module.
   overload: System.Reflection.Module.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1992,8 +1992,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -2024,8 +2024,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -2107,8 +2107,8 @@ references:
 - uid: System.Reflection.FieldInfo[]
   parent: System.Reflection
   isExternal: false
-  name: FieldInfo
-  nameWithType: FieldInfo
+  name: FieldInfo[]
+  nameWithType: FieldInfo[]
   fullName: System.Reflection.FieldInfo[]
   spec.csharp:
   - uid: System.Reflection.FieldInfo
@@ -2175,8 +2175,8 @@ references:
 - uid: System.Reflection.ParameterModifier[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterModifier
-  nameWithType: ParameterModifier
+  name: ParameterModifier[]
+  nameWithType: ParameterModifier[]
   fullName: System.Reflection.ParameterModifier[]
   spec.csharp:
   - uid: System.Reflection.ParameterModifier
@@ -2201,8 +2201,8 @@ references:
 - uid: System.Reflection.MethodInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MethodInfo
-  nameWithType: MethodInfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
   fullName: System.Reflection.MethodInfo[]
   spec.csharp:
   - uid: System.Reflection.MethodInfo
@@ -2419,8 +2419,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

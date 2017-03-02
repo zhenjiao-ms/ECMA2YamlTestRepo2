@@ -105,7 +105,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.#ctor
   id: '#ctor'
@@ -126,7 +126,7 @@ items:
     parameters: []
   overload: System.Threading.Tasks.TaskFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.#ctor(System.Threading.CancellationToken)
   id: '#ctor(System.Threading.CancellationToken)'
@@ -150,7 +150,7 @@ items:
       description: The <xref:System.Threading.Tasks.TaskFactory.CancellationToken*> that will be assigned to tasks created by this <xref href="System.Threading.Tasks.TaskFactory"></xref> unless another CancellationToken is explicitly specified while calling the factory methods.
   overload: System.Threading.Tasks.TaskFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.#ctor(System.Threading.Tasks.TaskScheduler)
   id: '#ctor(System.Threading.Tasks.TaskScheduler)'
@@ -174,7 +174,7 @@ items:
       description: The <xref href="System.Threading.Tasks.TaskScheduler"></xref> to use to schedule any tasks created with this TaskFactory. A null value indicates that the current TaskScheduler should be used.
   overload: System.Threading.Tasks.TaskFactory.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.#ctor(System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions)
   id: '#ctor(System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions)'
@@ -204,7 +204,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <code>creationOptions</code> argument specifies an invalid <xref href=\"System.Threading.Tasks.TaskCreationOptions\"></xref> value. For more information, see the Remarks for <xref:System.Threading.Tasks.TaskFactory.FromAsync*>.  \n  \n -or-  \n  \n The <code>continuationOptions</code> argument specifies an invalid value."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.#ctor(System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: '#ctor(System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)'
@@ -240,7 +240,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "The <code>creationOptions</code> argument specifies an invalid <xref href=\"System.Threading.Tasks.TaskCreationOptions\"></xref> value. For more information, see the Remarks for <xref:System.Threading.Tasks.TaskFactory.FromAsync*>.  \n  \n -or-  \n  \n The <code>continuationOptions</code> argument specifies an invalid value."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.CancellationToken
   id: CancellationToken
@@ -263,7 +263,7 @@ items:
       description: The default task cancellation token for this task factory.
   overload: System.Threading.Tasks.TaskFactory.CancellationToken*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinuationOptions
   id: ContinuationOptions
@@ -286,16 +286,16 @@ items:
       description: The default task continuation options for this task factory.
   overload: System.Threading.Tasks.TaskFactory.ContinuationOptions*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]})
   id: ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]})
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Action<Task>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>)
+  name: ContinueWhenAll(Task[],Action<Task[]>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>)
   type: Method
   assemblies:
   - mscorlib
@@ -323,20 +323,20 @@ items:
     description: An element in the <code>tasks</code> array has been disposed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>tasks</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>tasks</code> array is `null`.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>tasks</code> array is empty or contains a null value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.CancellationToken)
   id: ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Action<Task>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken)
+  name: ContinueWhenAll(Task[],Action<Task[]>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken)
   type: Method
   assemblies:
   - mscorlib
@@ -367,20 +367,20 @@ items:
     description: "An element in the <code>tasks</code> array has been disposed.  \n  \n -or-  \n  \n The <xref href=\"System.Threading.CancellationTokenSource\"></xref> that created <code>cancellationToken</code> has already been disposed."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>tasks</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>tasks</code> array is `null`.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>tasks</code> array is empty or contains a null value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Action<Task>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task[],Action<Task[]>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,TaskContinuationOptions)
   type: Method
   assemblies:
   - mscorlib
@@ -408,23 +408,23 @@ items:
     description: An element in the <code>tasks</code> array has been disposed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>tasks</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>tasks</code> array is `null`.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The <code>continuationOptions</code> argument specifies an invalid value.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>tasks</code> array is empty or contains a null value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Action<Task>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task[],Action<Task[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
   type: Method
   assemblies:
   - mscorlib
@@ -455,20 +455,20 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>tasks</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>scheduler</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>tasks</code> array is `null`.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is `null`.  \n  \n -or-  \n  \n The <code>scheduler</code> argument is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>tasks</code> array is empty or contains a null value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]})
   id: ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]})
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>)
   type: Method
   assemblies:
   - mscorlib
@@ -487,16 +487,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.CancellationToken)
   id: ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken)
   type: Method
   assemblies:
   - mscorlib
@@ -518,16 +518,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,TaskContinuationOptions)
   type: Method
   assemblies:
   - mscorlib
@@ -549,16 +549,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
   type: Method
   assemblies:
   - mscorlib
@@ -586,16 +586,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0})
   id: ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0})
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Func<Task,TResult>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>)
   type: Method
   assemblies:
   - mscorlib
@@ -614,16 +614,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.CancellationToken)
   id: ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken)
   type: Method
   assemblies:
   - mscorlib
@@ -645,16 +645,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Func<Task,TResult>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,TaskContinuationOptions)
   type: Method
   assemblies:
   - mscorlib
@@ -676,16 +676,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
   type: Method
   assemblies:
   - mscorlib
@@ -713,16 +713,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1})
   id: ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1})
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>)
   type: Method
   assemblies:
   - mscorlib
@@ -741,16 +741,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.CancellationToken)
   id: ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken)
   type: Method
   assemblies:
   - mscorlib
@@ -772,16 +772,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,TaskContinuationOptions)
   type: Method
   assemblies:
   - mscorlib
@@ -803,16 +803,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
   type: Method
   assemblies:
   - mscorlib
@@ -840,7 +840,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAll<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task})
   id: ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task})
@@ -877,11 +877,11 @@ items:
     description: One of the elements in the <code>tasks</code> array has been disposed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>tasks</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>tasks</code> array is `null`.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>tasks</code> array contains a <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> value.  \n  \n -or-  \n  \n The <code>tasks</code> array is empty."
-  platform:
+    description: "The <code>tasks</code> array contains a `null` value.  \n  \n -or-  \n  \n The <code>tasks</code> array is empty."
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task},System.Threading.CancellationToken)
   id: ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task},System.Threading.CancellationToken)
@@ -918,11 +918,11 @@ items:
     description: "One of the elements in the <code>tasks</code> array has been disposed.  \n  \n -or-  \n  \n <code>cancellationToken</code> has already been disposed."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>tasks</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>tasks</code> array is `null`.  \n  \n -or-  \n  \n The <code>continuationAction</code> argument is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>tasks</code> array contains a <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> value.  \n  \n -or-  \n  \n The <code>tasks</code> array is empty ."
-  platform:
+    description: "The <code>tasks</code> array contains a `null` value.  \n  \n -or-  \n  \n The <code>tasks</code> array is empty ."
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task},System.Threading.Tasks.TaskContinuationOptions)
@@ -967,7 +967,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The exception that is thrown when the <code>tasks</code> array contains a null value.  \n  \n -or-  \n  \n The exception that is thrown when the <code>tasks</code> array is empty."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
@@ -1011,16 +1011,16 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The exception that is thrown when the <code>tasks</code> array contains a null value.  \n  \n -or-  \n  \n The exception that is thrown when the <code>tasks</code> array is empty."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}})
   id: ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}})
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>)
   type: Method
   assemblies:
   - mscorlib
@@ -1039,16 +1039,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)
   id: ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken)
   type: Method
   assemblies:
   - mscorlib
@@ -1070,16 +1070,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,TaskContinuationOptions)
   type: Method
   assemblies:
   - mscorlib
@@ -1101,16 +1101,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
   type: Method
   assemblies:
   - mscorlib
@@ -1138,7 +1138,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0})
   id: ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0})
@@ -1166,7 +1166,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0},System.Threading.CancellationToken)
   id: ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0},System.Threading.CancellationToken)
@@ -1197,7 +1197,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0},System.Threading.Tasks.TaskContinuationOptions)
@@ -1228,7 +1228,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
@@ -1265,16 +1265,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1})
   id: ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1})
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>)
   type: Method
   assemblies:
   - mscorlib
@@ -1293,16 +1293,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.CancellationToken)
   id: ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken)
   type: Method
   assemblies:
   - mscorlib
@@ -1324,16 +1324,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.Tasks.TaskContinuationOptions)
   id: ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
   type: Method
   assemblies:
   - mscorlib
@@ -1355,16 +1355,16 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   id: ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   langs:
   - csharp
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
   type: Method
   assemblies:
   - mscorlib
@@ -1392,7 +1392,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.ContinueWhenAny<TAntecedentResult,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.CreationOptions
   id: CreationOptions
@@ -1415,7 +1415,7 @@ items:
       description: The default task creation options for this task factory.
   overload: System.Threading.Tasks.TaskFactory.CreationOptions*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync(System.IAsyncResult,System.Action{System.IAsyncResult})
   id: FromAsync(System.IAsyncResult,System.Action{System.IAsyncResult})
@@ -1451,7 +1451,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The exception that is thrown when the <code>asyncResult</code> argument is null.  \n  \n -or-  \n  \n The exception that is thrown when the <code>endMethod</code> argument is null."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object)
   id: FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object)
@@ -1487,7 +1487,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The exception that is thrown when the <code>beginMethod</code> argument is null.  \n  \n -or-  \n  \n The exception that is thrown when the <code>endMethod</code> argument is null."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync(System.IAsyncResult,System.Action{System.IAsyncResult},System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync(System.IAsyncResult,System.Action{System.IAsyncResult},System.Threading.Tasks.TaskCreationOptions)
@@ -1529,7 +1529,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <xref:System.Threading.Tasks.TaskFactory.FromAsync*>
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -1571,7 +1571,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync(System.IAsyncResult,System.Action{System.IAsyncResult},System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
   id: FromAsync(System.IAsyncResult,System.Action{System.IAsyncResult},System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
@@ -1616,7 +1616,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <xref:System.Threading.Tasks.TaskFactory.FromAsync*>
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,System.Object)
   id: FromAsync``1(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,System.Object)
@@ -1650,7 +1650,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``1(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -1687,7 +1687,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.IAsyncResult,System.Func{System.IAsyncResult,``0})
   id: FromAsync``1(System.IAsyncResult,System.Func{System.IAsyncResult,``0})
@@ -1715,7 +1715,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``0},System.Object)
   id: FromAsync``1(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``0},System.Object)
@@ -1746,7 +1746,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.IAsyncResult,System.Func{System.IAsyncResult,``0},System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``1(System.IAsyncResult,System.Func{System.IAsyncResult,``0},System.Threading.Tasks.TaskCreationOptions)
@@ -1777,7 +1777,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``0},System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``1(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``0},System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -1811,7 +1811,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``1(System.IAsyncResult,System.Func{System.IAsyncResult,``0},System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
   id: FromAsync``1(System.IAsyncResult,System.Func{System.IAsyncResult,``0},System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
@@ -1845,7 +1845,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``2(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,System.Object)
   id: FromAsync``2(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,System.Object)
@@ -1882,7 +1882,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``2(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``2(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -1922,7 +1922,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``2(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``1},``0,System.Object)
   id: FromAsync``2(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``1},``0,System.Object)
@@ -1956,7 +1956,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``2(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``1},``0,System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``2(System.Func{``0,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``1},``0,System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -1993,7 +1993,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``3(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,``2,System.Object)
   id: FromAsync``3(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,``2,System.Object)
@@ -2033,7 +2033,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2,TArg3>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``3(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,``2,System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``3(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},``0,``1,``2,System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -2076,7 +2076,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2,TArg3>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``3(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``2},``0,``1,System.Object)
   id: FromAsync``3(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``2},``0,``1,System.Object)
@@ -2113,7 +2113,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``3(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``2},``0,``1,System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``3(System.Func{``0,``1,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``2},``0,``1,System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -2153,7 +2153,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``4(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``3},``0,``1,``2,System.Object)
   id: FromAsync``4(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``3},``0,``1,``2,System.Object)
@@ -2193,7 +2193,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2,TArg3,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.FromAsync``4(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``3},``0,``1,``2,System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: FromAsync``4(System.Func{``0,``1,``2,System.AsyncCallback,System.Object,System.IAsyncResult},System.Func{System.IAsyncResult,``3},``0,``1,``2,System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -2236,7 +2236,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.FromAsync<TArg1,TArg2,TArg3,TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.Scheduler
   id: Scheduler
@@ -2259,7 +2259,7 @@ items:
       description: The default task scheduler for this task factory.
   overload: System.Threading.Tasks.TaskFactory.Scheduler*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action)
   id: StartNew(System.Action)
@@ -2291,7 +2291,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: The <code>action</code> argument is null.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action,System.Threading.CancellationToken)
   id: StartNew(System.Action,System.Threading.CancellationToken)
@@ -2329,7 +2329,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: The exception that is thrown when the <code>action</code> argument is null.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action,System.Threading.Tasks.TaskCreationOptions)
   id: StartNew(System.Action,System.Threading.Tasks.TaskCreationOptions)
@@ -2365,7 +2365,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action{System.Object},System.Object)
   id: StartNew(System.Action{System.Object},System.Object)
@@ -2399,8 +2399,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>action</code> argument is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>action</code> argument is `null`.
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action{System.Object},System.Object,System.Threading.CancellationToken)
   id: StartNew(System.Action{System.Object},System.Object,System.Threading.CancellationToken)
@@ -2441,7 +2441,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: The exception that is thrown when the <code>action</code> argument is null.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action{System.Object},System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: StartNew(System.Action{System.Object},System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -2480,7 +2480,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
   id: StartNew(System.Action,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
@@ -2525,7 +2525,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <xref:System.Threading.Tasks.TaskFactory.FromAsync*>
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew(System.Action{System.Object},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
   id: StartNew(System.Action{System.Object},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
@@ -2573,7 +2573,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <code>creationOptions</code> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <xref:System.Threading.Tasks.TaskFactory.FromAsync*>
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func`1)
   id: StartNew``1(System.Func`1)
@@ -2598,7 +2598,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func{System.Object,``0},System.Object)
   id: StartNew``1(System.Func{System.Object,``0},System.Object)
@@ -2626,7 +2626,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func`1,System.Threading.CancellationToken)
   id: StartNew``1(System.Func`1,System.Threading.CancellationToken)
@@ -2654,7 +2654,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func`1,System.Threading.Tasks.TaskCreationOptions)
   id: StartNew``1(System.Func`1,System.Threading.Tasks.TaskCreationOptions)
@@ -2682,7 +2682,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func{System.Object,``0},System.Object,System.Threading.CancellationToken)
   id: StartNew``1(System.Func{System.Object,``0},System.Object,System.Threading.CancellationToken)
@@ -2713,7 +2713,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func{System.Object,``0},System.Object,System.Threading.Tasks.TaskCreationOptions)
   id: StartNew``1(System.Func{System.Object,``0},System.Object,System.Threading.Tasks.TaskCreationOptions)
@@ -2744,7 +2744,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func`1,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
   id: StartNew``1(System.Func`1,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
@@ -2778,7 +2778,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.Tasks.TaskFactory.StartNew``1(System.Func{System.Object,``0},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
   id: StartNew``1(System.Func{System.Object,``0},System.Object,System.Threading.CancellationToken,System.Threading.Tasks.TaskCreationOptions,System.Threading.Tasks.TaskScheduler)
@@ -2815,7 +2815,7 @@ items:
       description: To be added.
   overload: System.Threading.Tasks.TaskFactory.StartNew<TResult>*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -2914,9 +2914,9 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Action<Task>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>)
+  name: ContinueWhenAll(Task[],Action<Task[]>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>)
 - uid: System.Threading.Tasks.Task
   parent: System.Threading.Tasks
   isExternal: false
@@ -2926,8 +2926,8 @@ references:
 - uid: System.Threading.Tasks.Task[]
   parent: System.Threading.Tasks
   isExternal: false
-  name: Task
-  nameWithType: Task
+  name: Task[]
+  nameWithType: Task[]
   fullName: System.Threading.Tasks.Task[]
   spec.csharp:
   - uid: System.Threading.Tasks.Task
@@ -2940,8 +2940,8 @@ references:
 - uid: System.Action{System.Threading.Tasks.Task[]}
   parent: System
   isExternal: false
-  name: Action<Task>
-  nameWithType: Action<Task>
+  name: Action<Task[]>
+  nameWithType: Action<Task[]>
   fullName: System.Action<System.Threading.Tasks.Task[]>
   spec.csharp:
   - uid: System.Action`1
@@ -2964,32 +2964,32 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Action<Task>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken)
+  name: ContinueWhenAll(Task[],Action<Task[]>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Action<Task>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task[],Action<Task[]>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,TaskContinuationOptions)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task[]},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Action<Task>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task[],Action<Task[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Action<Task[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>)
 - uid: System.Threading.Tasks.Task{TAntecedentResult}[]
   parent: System.Threading.Tasks
   isExternal: false
-  name: Task<TAntecedentResult>
-  nameWithType: Task<TAntecedentResult>
+  name: Task<TAntecedentResult>[]
+  nameWithType: Task<TAntecedentResult>[]
   fullName: System.Threading.Tasks.Task<TAntecedentResult>[]
   spec.csharp:
   - uid: System.Threading.Tasks.Task`1
@@ -3012,8 +3012,8 @@ references:
 - uid: System.Action{System.Threading.Tasks.Task{TAntecedentResult}[]}
   parent: System
   isExternal: false
-  name: Action<Task<TAntecedentResult>>
-  nameWithType: Action<Task<TAntecedentResult>>
+  name: Action<Task<TAntecedentResult>[]>
+  nameWithType: Action<Task<TAntecedentResult>[]>
   fullName: System.Action<System.Threading.Tasks.Task<TAntecedentResult>[]>
   spec.csharp:
   - uid: System.Action`1
@@ -3046,27 +3046,27 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,TaskContinuationOptions)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}[]},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>[]>,CancellationToken,TaskContinuationOptions,TaskScheduler)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Func<Task,TResult>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>)
 - uid: System.Threading.Tasks.Task`1
   parent: System.Threading.Tasks
   isExternal: false
@@ -3076,8 +3076,8 @@ references:
 - uid: System.Func{System.Threading.Tasks.Task[],TResult}
   parent: System
   isExternal: false
-  name: Func<Task,TResult>
-  nameWithType: Func<Task,TResult>
+  name: Func<Task[],TResult>
+  nameWithType: Func<Task[],TResult>
   fullName: System.Func<System.Threading.Tasks.Task[],TResult>
   spec.csharp:
   - uid: System.Func`2
@@ -3107,32 +3107,32 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Func<Task,TResult>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,TaskContinuationOptions)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task[],``0},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task[],Func<Task[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>)
 - uid: System.Func{System.Threading.Tasks.Task{TAntecedentResult}[],TResult}
   parent: System
   isExternal: false
-  name: Func<Task<TAntecedentResult>,TResult>
-  nameWithType: Func<Task<TAntecedentResult>,TResult>
+  name: Func<Task<TAntecedentResult>[],TResult>
+  nameWithType: Func<Task<TAntecedentResult>[],TResult>
   fullName: System.Func<System.Threading.Tasks.Task<TAntecedentResult>[],TResult>
   spec.csharp:
   - uid: System.Func`2
@@ -3172,21 +3172,21 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,TaskContinuationOptions)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAll``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0}[],``1},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAll(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>[],TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny(System.Threading.Tasks.Task[],System.Action{System.Threading.Tasks.Task})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
@@ -3235,9 +3235,9 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>)
 - uid: System.Action{System.Threading.Tasks.Task{TAntecedentResult}}
   parent: System
   isExternal: false
@@ -3272,21 +3272,21 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,TaskContinuationOptions)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task{``0}[],System.Action{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Action<Task<TAntecedentResult>>,CancellationToken,TaskContinuationOptions,TaskScheduler)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``1(System.Threading.Tasks.Task[],System.Func{System.Threading.Tasks.Task,``0})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
@@ -3342,9 +3342,9 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1})
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>)
 - uid: System.Func{System.Threading.Tasks.Task{TAntecedentResult},TResult}
   parent: System
   isExternal: false
@@ -3386,21 +3386,21 @@ references:
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.CancellationToken)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.Tasks.TaskContinuationOptions)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,TaskContinuationOptions)
 - uid: System.Threading.Tasks.TaskFactory.ContinueWhenAny``2(System.Threading.Tasks.Task{``0}[],System.Func{System.Threading.Tasks.Task{``0},``1},System.Threading.CancellationToken,System.Threading.Tasks.TaskContinuationOptions,System.Threading.Tasks.TaskScheduler)
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false
-  name: ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
-  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>,Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  name: ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  nameWithType: TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
+  fullName: System.Threading.Tasks.TaskFactory.ContinueWhenAny(Task<TAntecedentResult>[],Func<Task<TAntecedentResult>,TResult>,CancellationToken,TaskContinuationOptions,TaskScheduler)
 - uid: System.Threading.Tasks.TaskFactory.CreationOptions
   parent: System.Threading.Tasks.TaskFactory
   isExternal: false

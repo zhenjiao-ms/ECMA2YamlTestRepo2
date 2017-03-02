@@ -49,7 +49,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -73,7 +73,7 @@ items:
     parameters: []
   overload: System.Net.HttpListenerResponse.Abort*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,14 +107,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty string ("").
+    description: <code>name</code> is `null` or an empty string ("").
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "You are not allowed to specify a value for the specified header.  \n  \n -or-  \n  \n <code>name</code> or <code>value</code> contains invalid characters."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The length of <code>value</code> is greater than 65,535 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -145,8 +145,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>cookie</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>cookie</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,11 +178,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string (\"\").  \n  \n -or-  \n  \n You are not allowed to specify a value for the specified header.  \n  \n -or-  \n  \n <code>name</code> or <code>value</code> contains invalid characters."
+    description: "<code>name</code> is `null` or an empty string (\"\").  \n  \n -or-  \n  \n You are not allowed to specify a value for the specified header.  \n  \n -or-  \n  \n <code>name</code> or <code>value</code> contains invalid characters."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The length of <code>value</code> is greater than 65,535 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -208,7 +208,7 @@ items:
     parameters: []
   overload: System.Net.HttpListenerResponse.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -237,16 +237,16 @@ items:
       description: A <xref href="System.Byte"></xref> array that contains the response to send to the client.
     - id: willBlock
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to block execution while flushing the stream to the client; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to block execution while flushing the stream to the client; otherwise, `false`.'
   overload: System.Net.HttpListenerResponse.Close*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>responseEntity</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>responseEntity</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -271,10 +271,10 @@ items:
     content: public System.Text.Encoding ContentEncoding { get; set; }
     return:
       type: System.Text.Encoding
-      description: An <xref href="System.Text.Encoding"></xref> object suitable for use with the data in the <xref:System.Net.HttpListenerResponse.OutputStream*> property, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no encoding is specified.
+      description: An <xref href="System.Text.Encoding"></xref> object suitable for use with the data in the <xref:System.Net.HttpListenerResponse.OutputStream*> property, or `null` if no encoding is specified.
   overload: System.Net.HttpListenerResponse.ContentEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,7 +299,7 @@ items:
     content: public long ContentLength64 { get; set; }
     return:
       type: System.Int64
-      description: The value of the response's <xref uid="langword_csharp_Content-Length" name="Content-Length" href=""></xref> header.
+      description: The value of the response's `Content-Length` header.
   overload: System.Net.HttpListenerResponse.ContentLength64*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -311,7 +311,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,19 +334,19 @@ items:
     content: public string ContentType { get; set; }
     return:
       type: System.String
-      description: A <xref href="System.String"></xref> instance that contains the text of the response's <xref uid="langword_csharp_Content-Type" name="Content-Type" href=""></xref> header.
+      description: A <xref href="System.String"></xref> instance that contains the text of the response's `Content-Type` header.
   overload: System.Net.HttpListenerResponse.ContentType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value specified for a set operation is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value specified for a set operation is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The value specified for a set operation is an empty string ("").
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -374,7 +374,7 @@ items:
       description: A <xref:System.Net.CookieCollection> that contains cookies to accompany the response. The collection is empty if no cookies have been added to the response.
   overload: System.Net.HttpListenerResponse.Cookies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,7 +403,7 @@ items:
       description: The <xref href="System.Net.HttpListenerResponse"></xref> instance to copy.
   overload: System.Net.HttpListenerResponse.CopyFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -434,7 +434,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Net.WebHeaderCollection> instance specified for a set operation is not valid for a response.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,13 +459,13 @@ items:
     content: public bool KeepAlive { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the server requests a persistent connection; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the server requests a persistent connection; otherwise, `false`. The default is `true`.'
   overload: System.Net.HttpListenerResponse.KeepAlive*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -496,7 +496,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -526,14 +526,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value specified for a set operation is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value specified for a set operation is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The value specified for a set operation does not have its <xref:System.Version.Major*> property set to 1 or does not have its <xref:System.Version.Minor*> property set to either 0 or 1.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -562,7 +562,7 @@ items:
       description: The URL that the client should use to locate the requested resource.
   overload: System.Net.HttpListenerResponse.Redirect*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -579,7 +579,7 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: Gets or sets the value of the HTTP <xref uid="langword_csharp_Location" name="Location" href=""></xref> header in this response.
+  summary: Gets or sets the value of the HTTP `Location` header in this response.
   remarks: "The `Location` header specifies the URL to which the client is directed to locate a requested resource.  \n  \n> [!NOTE]\n>  Setting this property does not automatically set the <xref:System.Net.HttpListenerResponse.StatusCode%2A> property."
   example:
   - "The following code example demonstrates setting this property.  \n  \n [!code-cs[Net_Listener_Basic#25](~/add/codesnippet/csharp/p-system.net.httplistene_25_1.cs)]"
@@ -587,7 +587,7 @@ items:
     content: public string RedirectLocation { get; set; }
     return:
       type: System.String
-      description: A <xref href="System.String"></xref> that contains the absolute URL to be sent to the client in the <xref uid="langword_csharp_Location" name="Location" href=""></xref> header.
+      description: A <xref href="System.String"></xref> that contains the absolute URL to be sent to the client in the `Location` header.
   overload: System.Net.HttpListenerResponse.RedirectLocation*
   exceptions:
   - type: System.ArgumentException
@@ -596,7 +596,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -619,10 +619,10 @@ items:
     content: public bool SendChunked { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the response is set to use chunked transfer encoding; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the response is set to use chunked transfer encoding; otherwise, `false`. The default is `false`.'
   overload: System.Net.HttpListenerResponse.SendChunked*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -653,11 +653,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>cookie</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>cookie</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The cookie already exists in the collection and could not be replaced.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -691,7 +691,7 @@ items:
   - type: System.Net.ProtocolViolationException
     commentId: T:System.Net.ProtocolViolationException
     description: The value specified for a set operation is not valid. Valid values are between 100 and 999 inclusive.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -721,11 +721,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The value specified for a set operation is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The value specified for a set operation is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The value specified for a set operation contains non-printable characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -750,7 +750,7 @@ items:
     parameters: []
   overload: System.Net.HttpListenerResponse.System#IDisposable#Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -843,8 +843,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

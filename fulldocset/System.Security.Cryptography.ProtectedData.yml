@@ -28,7 +28,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -57,7 +57,7 @@ items:
       description: A byte array that contains data to encrypt.
     - id: optionalEntropy
       type: System.Byte[]
-      description: An optional additional byte array used to increase the complexity of the encryption, or <xref uid="langword_csharp_null" name="null" href=""></xref> for no additional complexity.
+      description: An optional additional byte array used to increase the complexity of the encryption, or `null` for no additional complexity.
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
       description: One of the enumeration values that specifies the scope of encryption.
@@ -68,7 +68,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>userData</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>userData</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The encryption failed.
@@ -78,7 +78,7 @@ items:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: The system ran out of memory while encrypting the data.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,7 +107,7 @@ items:
       description: A byte array containing data encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect*> method.
     - id: optionalEntropy
       type: System.Byte[]
-      description: An optional additional byte array that was used to encrypt the data, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the additional byte array was not used.
+      description: An optional additional byte array that was used to encrypt the data, or `null` if the additional byte array was not used.
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
       description: One of the enumeration values that specifies the scope of data protection that was used to encrypt the data.
@@ -118,7 +118,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>encryptedData</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>encryptedData</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The decryption failed.
@@ -128,7 +128,7 @@ items:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: Out of memory.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,8 +170,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

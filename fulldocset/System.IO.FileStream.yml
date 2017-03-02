@@ -88,7 +88,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,10 +112,10 @@ items:
     parameters:
     - id: handle
       type: Microsoft.Win32.SafeHandles.SafeFileHandle
-      description: A file handle for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that the current `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -129,8 +129,8 @@ items:
     description: "An I/O error, such as a disk error, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,10 +154,10 @@ items:
     parameters:
     - id: handle
       type: System.IntPtr
-      description: A file handle for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that the current `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -171,8 +171,8 @@ items:
     description: "An I/O error, such as a disk error, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -198,7 +198,7 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: A relative or absolute path for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A relative or absolute path for the file that the current `FileStream` object will encapsulate.
     - id: mode
       type: System.IO.FileMode
       description: A constant that determines how to open or create the file.
@@ -212,16 +212,16 @@ items:
     description: <code>path</code> refers to a non-file device, such as "con:", "com1:", "lpt1:", etc. in a non-NTFS environment.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
     description: The specified path is invalid, such as being on an unmapped drive.
@@ -231,7 +231,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>mode</code> contains an invalid value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -255,10 +255,10 @@ items:
     parameters:
     - id: handle
       type: Microsoft.Win32.SafeHandles.SafeFileHandle
-      description: A file handle for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that the current `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A <xref href="System.IO.FileAccess"></xref> constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A <xref href="System.IO.FileAccess"></xref> constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
     - id: bufferSize
       type: System.Int32
       description: A positive <xref href="System.Int32"></xref> value greater than 0 indicating the buffer size. The default buffer size is 4096.
@@ -278,8 +278,8 @@ items:
     description: The caller does not have the required permission.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -296,20 +296,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Initializes a new instance of the <xref href="System.IO.FileStream"></xref> class for the specified file handle, with the specified read/write permission and <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> instance ownership.
+  summary: Initializes a new instance of the <xref href="System.IO.FileStream"></xref> class for the specified file handle, with the specified read/write permission and `FileStream` instance ownership.
   remarks: "The `FileStream` object is given the specified access to the file. The ownership of the handle will be as specified. If this process owns the handle, a call to the <xref:System.IO.Stream.Close%2A> method will also close the handle and the file's handle count is decremented. The `FileStream` object is given the default buffer size of 4096 bytes.  \n  \n `FileStream` assumes that it has exclusive control over the handle. Reading, writing, or seeking while a `FileStream` is also holding a handle could result in data corruption. For data safety, call <xref:System.IO.FileStream.Flush%2A> before using the handle, and avoid calling methods other than `Close` after you are done using the handle.  \n  \n `FileShare.Read` is the default for those <xref:System.IO.FileStream> constructors without a `FileShare` parameter.  \n  \n> [!CAUTION]\n>  When you compile a set of characters with a particular cultural setting and retrieve those same characters with a different cultural setting, the characters might not be interpretable, and could cause an exception to be thrown.  \n  \n For a list of common file and directory operations, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public FileStream (IntPtr handle, System.IO.FileAccess access, bool ownsHandle);
     parameters:
     - id: handle
       type: System.IntPtr
-      description: A file handle for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that the current `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
     - id: ownsHandle
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the file handle will be owned by this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the file handle will be owned by this `FileStream` instance; otherwise, `false`.'
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -323,8 +323,8 @@ items:
     description: "An I/O error, such as a disk error, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,18 +348,18 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: A relative or absolute path for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A relative or absolute path for the file that the current `FileStream` object will encapsulate.
     - id: mode
       type: System.IO.FileMode
       description: A constant that determines how to open or create the file.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that determines how the file can be accessed by the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. <xref:System.IO.FileStream.CanSeek*> is <xref uid="langword_csharp_true" name="true" href=""></xref> if `path` specifies a disk file.
+      description: A constant that determines how the file can be accessed by the `FileStream` object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object. <xref:System.IO.FileStream.CanSeek*> is `true` if `path` specifies a disk file.
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -368,10 +368,10 @@ items:
     description: <code>path</code> refers to a non-file device, such as "con:", "com1:", "lpt1:", etc. in a non-NTFS environment.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -380,14 +380,14 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file or directory is set for read-only access.
+    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>mode</code> contains an invalid value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,16 +411,16 @@ items:
     parameters:
     - id: handle
       type: Microsoft.Win32.SafeHandles.SafeFileHandle
-      description: A file handle for the file that this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that this `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
     - id: bufferSize
       type: System.Int32
       description: A positive <xref href="System.Int32"></xref> value greater than 0 indicating the buffer size. The default buffer size is 4096.
     - id: isAsync
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle was opened asynchronously (that is, in overlapped I/O mode); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the handle was opened asynchronously (that is, in overlapped I/O mode); otherwise, `false`.'
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -437,8 +437,8 @@ items:
     description: The caller does not have the required permission.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -455,20 +455,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Initializes a new instance of the <xref href="System.IO.FileStream"></xref> class for the specified file handle, with the specified read/write permission, <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> instance ownership, and buffer size.
+  summary: Initializes a new instance of the <xref href="System.IO.FileStream"></xref> class for the specified file handle, with the specified read/write permission, `FileStream` instance ownership, and buffer size.
   remarks: "The `FileStream` object is given the specified access to the file. The ownership of the handle will be as specified. If this `FileStream` owns the handle, a call to the <xref:System.IO.Stream.Close%2A> method will also close the handle. In particular, the file's handle count is decremented. The `FileStream` object is given the specified buffer size.  \n  \n `FileStream` assumes that it has exclusive control over the handle. Reading, writing, or seeking while a `FileStream` is also holding a handle could result in data corruption. For data safety, call <xref:System.IO.FileStream.Flush%2A> before using the handle, and avoid calling any methods other than `Close` after you are done using the handle. Alternately, read and write to the handle before calling this `FileStream` constructor.  \n  \n `FileShare.Read` is the default for those <xref:System.IO.FileStream> constructors without a `FileShare` parameter.  \n  \n> [!CAUTION]\n>  When you compile a set of characters with a particular cultural setting and retrieve those same characters with a different cultural setting, the characters might not be interpretable, and could cause an exception to be thrown.  \n  \n For a list of common file and directory operations, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public FileStream (IntPtr handle, System.IO.FileAccess access, bool ownsHandle, int bufferSize);
     parameters:
     - id: handle
       type: System.IntPtr
-      description: A file handle for the file that this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that this `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
     - id: ownsHandle
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the file handle will be owned by this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the file handle will be owned by this `FileStream` instance; otherwise, `false`.'
     - id: bufferSize
       type: System.Int32
       description: A positive <xref href="System.Int32"></xref> value greater than 0 indicating the buffer size. The default buffer size is 4096.
@@ -485,8 +485,8 @@ items:
     description: The caller does not have the required permission.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,13 +512,13 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: A relative or absolute path for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A relative or absolute path for the file that the current `FileStream` object will encapsulate.
     - id: mode
       type: System.IO.FileMode
       description: A constant that determines how to open or create the file.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that determines how the file can be accessed by the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. <xref:System.IO.FileStream.CanSeek*> is <xref uid="langword_csharp_true" name="true" href=""></xref> if `path` specifies a disk file.
+      description: A constant that determines how the file can be accessed by the `FileStream` object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object. <xref:System.IO.FileStream.CanSeek*> is `true` if `path` specifies a disk file.
     - id: share
       type: System.IO.FileShare
       description: A constant that determines how the file will be shared by processes.
@@ -526,7 +526,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -535,10 +535,10 @@ items:
     description: <code>path</code> refers to a non-file device, such as "con:", "com1:", "lpt1:", etc. in a non-NTFS environment.
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The system is running Windows 98 or Windows 98 Second Edition and <code>share</code> is set to <xref uid=\"langword_csharp_FileShare.Delete\" name=\"FileShare.Delete\" href=\"\"></xref>.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The system is running Windows 98 or Windows 98 Second Edition and <code>share</code> is set to `FileShare.Delete`.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -547,14 +547,14 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file or directory is set for read-only access.
+    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>mode</code> contains an invalid value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -571,31 +571,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Initializes a new instance of the <xref href="System.IO.FileStream"></xref> class for the specified file handle, with the specified read/write permission, <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> instance ownership, buffer size, and synchronous or asynchronous state.
+  summary: Initializes a new instance of the <xref href="System.IO.FileStream"></xref> class for the specified file handle, with the specified read/write permission, `FileStream` instance ownership, buffer size, and synchronous or asynchronous state.
   remarks: "The `FileStream` object is given the specified access to the file. The ownership of the handle will be as specified. If this `FileStream` owns the handle, a call to the <xref:System.IO.Stream.Close%2A> method will also close the handle. In particular, the file's handle count is decremented. The `FileStream` object is given the specified buffer size.  \n  \n `FileStream` assumes that it has exclusive control over the handle. Reading, writing, or seeking while a `FileStream` is also holding a handle could result in data corruption. For data safety, call <xref:System.IO.FileStream.Flush%2A> before using the handle, and avoid calling any methods other than `Close` after you are done using the handle. Alternately, read and write to the handle before calling this `FileStream` constructor.  \n  \n `FileShare.Read` is the default for those <xref:System.IO.FileStream> constructors without a `FileShare` parameter.  \n  \n> [!CAUTION]\n>  When you compile a set of characters with a particular cultural setting and retrieve those same characters with a different cultural setting, the characters might not be interpretable, and could cause an exception to be thrown.  \n  \n For a list of common file and directory operations, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public FileStream (IntPtr handle, System.IO.FileAccess access, bool ownsHandle, int bufferSize, bool isAsync);
     parameters:
     - id: handle
       type: System.IntPtr
-      description: A file handle for the file that this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A file handle for the file that this `FileStream` object will encapsulate.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object.
+      description: A constant that sets the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object.
     - id: ownsHandle
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the file handle will be owned by this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the file handle will be owned by this `FileStream` instance; otherwise, `false`.'
     - id: bufferSize
       type: System.Int32
       description: A positive <xref href="System.Int32"></xref> value greater than 0 indicating the buffer size. The default buffer size is 4096.
     - id: isAsync
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle was opened asynchronously (that is, in overlapped I/O mode); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the handle was opened asynchronously (that is, in overlapped I/O mode); otherwise, `false`.'
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: <code>access</code> is less than <xref uid="langword_csharp_FileAccess.Read" name="FileAccess.Read" href=""></xref> or greater than <xref uid="langword_csharp_FileAccess.ReadWrite" name="FileAccess.ReadWrite" href=""></xref> or <code>bufferSize</code> is less than or equal to 0.
+    description: <code>access</code> is less than `FileAccess.Read` or greater than `FileAccess.ReadWrite` or <code>bufferSize</code> is less than or equal to 0.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The handle is invalid.
@@ -607,8 +607,8 @@ items:
     description: The caller does not have the required permission.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file handle is set for read-only access.
-  platform:
+    description: The <code>access</code> requested is not permitted by the operating system for the specified file handle, such as when <code>access</code> is `Write` or `ReadWrite` and the file handle is set for read-only access.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -632,13 +632,13 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: A relative or absolute path for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A relative or absolute path for the file that the current `FileStream` object will encapsulate.
     - id: mode
       type: System.IO.FileMode
       description: A constant that determines how to open or create the file.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that determines how the file can be accessed by the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. <xref:System.IO.FileStream.CanSeek*> is <xref uid="langword_csharp_true" name="true" href=""></xref> if `path` specifies a disk file.
+      description: A constant that determines how the file can be accessed by the `FileStream` object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object. <xref:System.IO.FileStream.CanSeek*> is `true` if `path` specifies a disk file.
     - id: share
       type: System.IO.FileShare
       description: A constant that determines how the file will be shared by processes.
@@ -649,7 +649,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -661,10 +661,10 @@ items:
     description: "<code>bufferSize</code> is negative or zero.  \n  \n -or-  \n  \n <code>mode</code>, <code>access</code>, or <code>share</code> contain an invalid value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The system is running Windows 98 or Windows 98 Second Edition and <code>share</code> is set to <xref uid=\"langword_csharp_FileShare.Delete\" name=\"FileShare.Delete\" href=\"\"></xref>.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The system is running Windows 98 or Windows 98 Second Edition and <code>share</code> is set to `FileShare.Delete`.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -673,11 +673,11 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file or directory is set for read-only access.
+    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -703,13 +703,13 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: A relative or absolute path for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A relative or absolute path for the file that the current `FileStream` object will encapsulate.
     - id: mode
       type: System.IO.FileMode
       description: A constant that determines how to open or create the file.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that determines how the file can be accessed by the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. <xref:System.IO.FileStream.CanSeek*> is <xref uid="langword_csharp_true" name="true" href=""></xref> if `path` specifies a disk file.
+      description: A constant that determines how the file can be accessed by the `FileStream` object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object. <xref:System.IO.FileStream.CanSeek*> is `true` if `path` specifies a disk file.
     - id: share
       type: System.IO.FileShare
       description: A constant that determines how the file will be shared by processes.
@@ -718,12 +718,12 @@ items:
       description: A positive <xref href="System.Int32"></xref> value greater than 0 indicating the buffer size. The default buffer size is 4096..
     - id: useAsync
       type: System.Boolean
-      description: Specifies whether to use asynchronous I/O or synchronous I/O. However, note that the underlying operating system might not support asynchronous I/O, so when specifying <xref uid="langword_csharp_true" name="true" href=""></xref>, the handle might be opened synchronously depending on the platform. When opened asynchronously, the <xref:System.IO.FileStream.BeginRead*> and <xref:System.IO.FileStream.BeginWrite*> methods perform better on large reads or writes, but they might be much slower for small reads or writes. If the application is designed to take advantage of asynchronous I/O, set the `useAsync` parameter to <xref uid="langword_csharp_true" name="true" href=""></xref>. Using asynchronous I/O correctly can speed up applications by as much as a factor of 10, but using it without redesigning the application for asynchronous I/O can decrease performance by as much as a factor of 10.
+      description: Specifies whether to use asynchronous I/O or synchronous I/O. However, note that the underlying operating system might not support asynchronous I/O, so when specifying `true`, the handle might be opened synchronously depending on the platform. When opened asynchronously, the <xref:System.IO.FileStream.BeginRead*> and <xref:System.IO.FileStream.BeginWrite*> methods perform better on large reads or writes, but they might be much slower for small reads or writes. If the application is designed to take advantage of asynchronous I/O, set the `useAsync` parameter to `true`. Using asynchronous I/O correctly can speed up applications by as much as a factor of 10, but using it without redesigning the application for asynchronous I/O can decrease performance by as much as a factor of 10.
   overload: System.IO.FileStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -735,10 +735,10 @@ items:
     description: "<code>bufferSize</code> is negative or zero.  \n  \n -or-  \n  \n <code>mode</code>, <code>access</code>, or <code>share</code> contain an invalid value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The system is running Windows 98 or Windows 98 Second Edition and <code>share</code> is set to <xref uid=\"langword_csharp_FileShare.Delete\" name=\"FileShare.Delete\" href=\"\"></xref>.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The system is running Windows 98 or Windows 98 Second Edition and <code>share</code> is set to `FileShare.Delete`.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -747,11 +747,11 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid="langword_csharp_Write" name="Write" href=""></xref> or <xref uid="langword_csharp_ReadWrite" name="ReadWrite" href=""></xref> and the file or directory is set for read-only access.
+    description: The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -777,13 +777,13 @@ items:
     parameters:
     - id: path
       type: System.String
-      description: A relative or absolute path for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object will encapsulate.
+      description: A relative or absolute path for the file that the current `FileStream` object will encapsulate.
     - id: mode
       type: System.IO.FileMode
       description: A constant that determines how to open or create the file.
     - id: access
       type: System.IO.FileAccess
-      description: A constant that determines how the file can be accessed by the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object. <xref:System.IO.FileStream.CanSeek*> is <xref uid="langword_csharp_true" name="true" href=""></xref> if `path` specifies a disk file.
+      description: A constant that determines how the file can be accessed by the `FileStream` object. This also determines the values returned by the <xref:System.IO.FileStream.CanRead*> and <xref:System.IO.FileStream.CanWrite*> properties of the `FileStream` object. <xref:System.IO.FileStream.CanSeek*> is `true` if `path` specifies a disk file.
     - id: share
       type: System.IO.FileShare
       description: A constant that determines how the file will be shared by processes.
@@ -797,7 +797,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -809,10 +809,10 @@ items:
     description: "<code>bufferSize</code> is negative or zero.  \n  \n -or-  \n  \n <code>mode</code>, <code>access</code>, or <code>share</code> contain an invalid value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -821,11 +821,11 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid=\"langword_csharp_Write\" name=\"Write\" href=\"\"></xref> or <xref uid=\"langword_csharp_ReadWrite\" name=\"ReadWrite\" href=\"\"></xref> and the file or directory is set for read-only access.  \n  \n -or-  \n  \n <xref href=\"System.IO.FileOptions\"></xref> is specified for <code>options</code>, but file encryption is not supported on the current platform."
+    description: "The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.  \n  \n -or-  \n  \n <xref href=\"System.IO.FileOptions\"></xref> is specified for <code>options</code>, but file encryption is not supported on the current platform."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -869,7 +869,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -881,13 +881,13 @@ items:
     description: "<code>bufferSize</code> is negative or zero.  \n  \n -or-  \n  \n <code>mode</code>, <code>access</code>, or <code>share</code> contain an invalid value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Windows NT or later.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -896,11 +896,11 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid=\"langword_csharp_Write\" name=\"Write\" href=\"\"></xref> or <xref uid=\"langword_csharp_ReadWrite\" name=\"ReadWrite\" href=\"\"></xref> and the file or directory is set for read-only access.  \n  \n -or-  \n  \n <xref href=\"System.IO.FileOptions\"></xref> is specified for <code>options</code>, but file encryption is not supported on the current platform."
+    description: "The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.  \n  \n -or-  \n  \n <xref href=\"System.IO.FileOptions\"></xref> is specified for <code>options</code>, but file encryption is not supported on the current platform."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -949,7 +949,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>path</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>path</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n -or-  \n  \n <code>path</code> refers to a non-file device, such as \"con:\", \"com1:\", \"lpt1:\", etc. in an NTFS environment."
@@ -961,10 +961,10 @@ items:
     description: "<code>bufferSize</code> is negative or zero.  \n  \n -or-  \n  \n <code>mode</code>, <code>access</code>, or <code>share</code> contain an invalid value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: The file cannot be found, such as when <code>mode</code> is <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> or <xref uid="langword_csharp_FileMode.Open" name="FileMode.Open" href=""></xref>, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
+    description: The file cannot be found, such as when <code>mode</code> is `FileMode.Truncate` or `FileMode.Open`, and the file specified by <code>path</code> does not exist. The file must already exist in these modes.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error, such as specifying <xref uid=\"langword_csharp_FileMode.CreateNew\" name=\"FileMode.CreateNew\" href=\"\"></xref> when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
+    description: "An I/O error, such as specifying `FileMode.CreateNew` when the file specified by <code>path</code> already exists, occurred.  \n  \n -or-  \n  \n The stream has been closed."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
@@ -973,14 +973,14 @@ items:
     description: The specified path is invalid, such as being on an unmapped drive.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is <xref uid=\"langword_csharp_Write\" name=\"Write\" href=\"\"></xref> or <xref uid=\"langword_csharp_ReadWrite\" name=\"ReadWrite\" href=\"\"></xref> and the file or directory is set for read-only access.  \n  \n -or-  \n  \n <xref href=\"System.IO.FileOptions\"></xref> is specified for <code>options</code>, but file encryption is not supported on the current platform."
+    description: "The <code>access</code> requested is not permitted by the operating system for the specified <code>path</code>, such as when <code>access</code> is `Write` or `ReadWrite` and the file or directory is set for read-only access.  \n  \n -or-  \n  \n <xref href=\"System.IO.FileOptions\"></xref> is specified for <code>options</code>, but file encryption is not supported on the current platform."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
     description: The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters.
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The current operating system is not Windows NT or later.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1029,14 +1029,14 @@ items:
     description: The array length minus <code>offset</code> is less than <code>numBytes</code>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>numBytes</code> is negative.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An asynchronous read was attempted past the end of the file.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1085,7 +1085,7 @@ items:
     description: <code>array</code> length minus <code>offset</code> is less than <code>numBytes</code>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>numBytes</code> is negative.
@@ -1098,7 +1098,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1123,10 +1123,10 @@ items:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports reading; <xref uid="langword_csharp_false" name="false" href=""></xref> if the stream is closed or was opened with write-only access.
+      description: '`true` if the stream supports reading; `false` if the stream is closed or was opened with write-only access.'
   overload: System.IO.FileStream.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1151,10 +1151,10 @@ items:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports seeking; <xref uid="langword_csharp_false" name="false" href=""></xref> if the stream is closed or if the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> was constructed from an operating-system handle such as a pipe or output to the console.
+      description: '`true` if the stream supports seeking; `false` if the stream is closed or if the `FileStream` was constructed from an operating-system handle such as a pipe or output to the console.'
   overload: System.IO.FileStream.CanSeek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1179,10 +1179,10 @@ items:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the stream supports writing; <xref uid="langword_csharp_false" name="false" href=""></xref> if the stream is closed or was opened with read-only access.
+      description: '`true` if the stream supports writing; `false` if the stream is closed or was opened with read-only access.'
   overload: System.IO.FileStream.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1206,10 +1206,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.IO.FileStream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1243,7 +1243,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: This <xref href="System.IAsyncResult"></xref> object was not created by calling <xref:System.IO.FileStream.BeginRead*> on this class.
@@ -1253,7 +1253,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The stream is closed or an internal error has occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1284,7 +1284,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: This <xref href="System.IAsyncResult"></xref> object was not created by calling <xref:System.IO.Stream.BeginWrite*> on this class.
@@ -1294,7 +1294,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The stream is closed or an internal error has occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1311,14 +1311,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Ensures that resources are freed and other cleanup operations are performed when the garbage collector reclaims the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref>.
+  summary: Ensures that resources are freed and other cleanup operations are performed when the garbage collector reclaims the `FileStream`.
   remarks: The garbage collector calls `Finalize` when the current object is ready to be finalized. `Finalize` closes the `FileStream`.
   syntax:
     content: ~FileStream ();
     parameters: []
   overload: System.IO.FileStream.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1350,7 +1350,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1374,10 +1374,10 @@ items:
     parameters:
     - id: flushToDisk
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to flush all intermediate file buffers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to flush all intermediate file buffers; otherwise, `false`.'
   overload: System.IO.FileStream.Flush*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.IO.FileStream.GetAccessControl
   id: GetAccessControl
@@ -1413,7 +1413,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: "This operation is not supported on the current platform.  \n  \n -or-  \n  \n The caller does not have the required permission."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1430,19 +1430,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Gets the operating system file handle for the file that the current <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object encapsulates.
+  summary: Gets the operating system file handle for the file that the current `FileStream` object encapsulates.
   remarks: "This property is an operating system handle for use with operating-system-provided system calls (such as `ReadFile` on Windows). It will not work with C library functions that expect a file descriptor, such as `fread`.  \n  \n The operating system handle might have been opened synchronously or asynchronously, depending on which `FileStream` constructor was called. Use the <xref:System.IO.FileStream.IsAsync%2A> property to discover whether this handle was opened asynchronously. In Win32, this means the handle was opened for overlapped IO, and it requires different parameters to `ReadFile` and `WriteFile`.  \n  \n> [!CAUTION]\n>  Data corruption might occur if a `FileStream` is created, its handle is passed, some operation moves the handle's file pointer, and then the `FileStream` is used again. Multiple threads cannot safely write to the same file simultaneously, and `FileStream` buffering code assumes that it exclusively controls the handle. `FileStream` might throw an <xref:System.IO.IOException> if `FileStream` detects that some other process has moved the file pointer. To avoid this, do not write any data into a portion of the file that `FileStream` might have buffered, and restore the file pointer to the location it had when methods were last called on `FileStream`."
   syntax:
     content: public virtual IntPtr Handle { get; }
     return:
       type: System.IntPtr
-      description: The operating system file handle for the file encapsulated by this <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> object, or -1 if the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> has been closed.
+      description: The operating system file handle for the file encapsulated by this `FileStream` object, or -1 if the `FileStream` has been closed.
   overload: System.IO.FileStream.Handle*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1459,7 +1459,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Gets a value indicating whether the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> was opened asynchronously or synchronously.
+  summary: Gets a value indicating whether the `FileStream` was opened asynchronously or synchronously.
   remarks: "The `IsAsync` property detects whether the `FileStream` handle was opened asynchronously, enabling your code to use the <xref:System.IO.FileStream.Handle%2A> property correctly. In Win32, `IsAsync` being true means the handle was opened for overlapped I/O, and thus requires different parameters to `ReadFile` and `WriteFile`.  \n  \n You specify this value when you create an instance of the <xref:System.IO.FileStream> class using a constructor that has an `isAsync`, `useAsync`, or `options` parameter. When the property is `true`, the stream utilizes overlapped I/O to perform file operations asynchronously. However, the IsAsync property does not have to be `true` to call the <xref:System.IO.FileStream.ReadAsync%2A>, <xref:System.IO.FileStream.WriteAsync%2A>, or <xref:System.IO.Stream.CopyToAsync%2A> method. When the IsAsync property is `false` and you call the asynchronous read and write operations, the UI thread is still not blocked, but the actual I/O operation is performed synchronously."
   example:
   - "This code example is part of a larger example provided for the <xref:System.IO.FileStream.%23ctor%28System.String%2CSystem.IO.FileMode%2CSystem.IO.FileAccess%2CSystem.IO.FileShare%2CSystem.Int32%2CSystem.Boolean%29> constructor.  \n  \n [!code-cs[System.IO.FileStream2#2](~/add/codesnippet/csharp/p-system.io.filestream.i_1.cs)]\n [!code-vb[System.IO.FileStream2#2](~/add/codesnippet/visualbasic/p-system.io.filestream.i_1.vb)]\n [!code-cpp[System.IO.FileStream2#2](~/add/codesnippet/cpp/p-system.io.filestream.i_1.cpp)]"
@@ -1467,10 +1467,10 @@ items:
     content: public virtual bool IsAsync { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> was opened asynchronously; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the `FileStream` was opened asynchronously; otherwise, `false`.'
   overload: System.IO.FileStream.IsAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1500,11 +1500,11 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: <xref:System.IO.FileStream.CanSeek*> for this stream is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+    description: <xref:System.IO.FileStream.CanSeek*> for this stream is `false`.
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: An I/O error, such as the file being closed, occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1545,7 +1545,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The process cannot access the file because another process has locked a portion of the file.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1562,7 +1562,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Gets the name of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> that was passed to the constructor.
+  summary: Gets the name of the `FileStream` that was passed to the constructor.
   remarks: For a list of common file and directory operations, see [Common I/O Tasks](~/add/includes/ajax-current-ext-md.md).
   example:
   - "This code example is part of a larger example provided for the <xref:System.IO.FileStream.%23ctor%28System.String%2CSystem.IO.FileMode%2CSystem.IO.FileAccess%2CSystem.IO.FileShare%2CSystem.Int32%2CSystem.Boolean%29> constructor.  \n  \n [!code-cs[System.IO.FileStream2#4](~/add/codesnippet/csharp/p-system.io.filestream.n_1.cs)]\n [!code-vb[System.IO.FileStream2#4](~/add/codesnippet/visualbasic/p-system.io.filestream.n_1.vb)]\n [!code-cpp[System.IO.FileStream2#4](~/add/codesnippet/cpp/p-system.io.filestream.n_1.cpp)]"
@@ -1570,10 +1570,10 @@ items:
     content: public string Name { get; }
     return:
       type: System.String
-      description: A string that is the name of the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref>.
+      description: A string that is the name of the `FileStream`.
   overload: System.IO.FileStream.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1613,7 +1613,7 @@ items:
   - type: System.IO.EndOfStreamException
     commentId: T:System.IO.EndOfStreamException
     description: Attempted seeking past the end of a stream that does not support this.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1653,7 +1653,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> or <code>count</code> is negative.
@@ -1669,7 +1669,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1704,7 +1704,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current stream is closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1730,7 +1730,7 @@ items:
       description: An object that represents the operating system file handle for the file that the current <xref href="System.IO.FileStream"></xref> object encapsulates.
   overload: System.IO.FileStream.SafeFileHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1770,14 +1770,14 @@ items:
     description: An I/O error occurred.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The stream does not support seeking, such as if the <xref uid="langword_csharp_FileStream" name="FileStream" href=""></xref> is constructed from a pipe or console output.
+    description: The stream does not support seeking, such as if the `FileStream` is constructed from a pipe or console output.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Seeking is attempted before the beginning of the stream.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: Methods were called after the stream was closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1809,14 +1809,14 @@ items:
     description: The file is closed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>fileSecurity</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>fileSecurity</code> parameter is `null`.
   - type: System.SystemException
     commentId: T:System.SystemException
     description: The file could not be found or modified.
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The current process does not have access to open the file.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1852,7 +1852,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: Attempted to set the <code>value</code> parameter to less than 0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1887,7 +1887,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>position</code> or <code>length</code> is negative.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1924,7 +1924,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>offset</code> and <code>count</code> describe an invalid range in <code>array</code>.
@@ -1940,7 +1940,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The current stream instance does not support writing.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1975,7 +1975,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The stream does not support writing.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2245,8 +2245,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

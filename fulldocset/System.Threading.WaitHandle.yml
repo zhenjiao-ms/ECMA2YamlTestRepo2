@@ -61,7 +61,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -84,7 +84,7 @@ items:
     parameters: []
   overload: System.Threading.WaitHandle.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,7 +108,7 @@ items:
     parameters: []
   overload: System.Threading.WaitHandle.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
     parameters: []
   overload: System.Threading.WaitHandle.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.WaitHandle.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -153,10 +153,10 @@ items:
     parameters:
     - id: explicitDisposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Threading.WaitHandle.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -179,10 +179,10 @@ items:
     content: public virtual IntPtr Handle { get; set; }
     return:
       type: System.IntPtr
-      description: An <xref uid="langword_csharp_IntPtr" name="IntPtr" href=""></xref> representing the native operating system handle. The default is the value of the <xref href="System.Threading.WaitHandle.InvalidHandle"></xref> field.
+      description: An `IntPtr` representing the native operating system handle. The default is the value of the <xref href="System.Threading.WaitHandle.InvalidHandle"></xref> field.
   overload: System.Threading.WaitHandle.Handle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,7 +207,7 @@ items:
       type: System.IntPtr
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,7 +233,7 @@ items:
       description: A <xref href="Microsoft.Win32.SafeHandles.SafeWaitHandle"></xref> representing the native operating system handle.
   overload: System.Threading.WaitHandle.SafeWaitHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,12 +265,12 @@ items:
       description: The <xref href="System.Threading.WaitHandle"></xref> to wait on.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if both the signal and the wait complete successfully; if the wait does not complete, the method does not return.
+      description: '`true` if both the signal and the wait complete successfully; if the wait does not complete, the method does not return.'
   overload: System.Threading.WaitHandle.SignalAndWait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>toSignal</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>toWaitOn</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>toSignal</code> is `null`.  \n  \n -or-  \n  \n <code>toWaitOn</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The method was called on a thread that has <xref href="System.STAThreadAttribute"></xref>.
@@ -283,7 +283,7 @@ items:
   - type: System.Threading.AbandonedMutexException
     commentId: T:System.Threading.AbandonedMutexException
     description: The wait completed because a thread exited without releasing a mutex. This exception is not thrown on Windows 98 or Windows Millennium Edition.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,15 +316,15 @@ items:
       description: An integer that represents the interval to wait. If the value is <xref href="System.Threading.Timeout.Infinite"></xref>, that is, -1, the wait is infinite.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if both the signal and the wait completed successfully, or <xref uid="langword_csharp_false" name="false" href=""></xref> if the signal completed but the wait timed out.
+      description: '`true` if both the signal and the wait completed successfully, or `false` if the signal completed but the wait timed out.'
   overload: System.Threading.WaitHandle.SignalAndWait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>toSignal</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>toWaitOn</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>toSignal</code> is `null`.  \n  \n -or-  \n  \n <code>toWaitOn</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The method is called on a thread that has <xref href="System.STAThreadAttribute"></xref>.
@@ -340,7 +340,7 @@ items:
   - type: System.Threading.AbandonedMutexException
     commentId: T:System.Threading.AbandonedMutexException
     description: The wait completed because a thread exited without releasing a mutex. This exception is not thrown on Windows 98 or Windows Millennium Edition.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,15 +373,15 @@ items:
       description: A <xref href="System.TimeSpan"></xref> that represents the interval to wait. If the value is -1, the wait is infinite.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if both the signal and the wait completed successfully, or <xref uid="langword_csharp_false" name="false" href=""></xref> if the signal completed but the wait timed out.
+      description: '`true` if both the signal and the wait completed successfully, or `false` if the signal completed but the wait timed out.'
   overload: System.Threading.WaitHandle.SignalAndWait*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>toSignal</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>toWaitOn</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>toSignal</code> is `null`.  \n  \n -or-  \n  \n <code>toWaitOn</code> is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The method was called on a thread that has <xref href="System.STAThreadAttribute"></xref>.
@@ -397,7 +397,7 @@ items:
   - type: System.Threading.AbandonedMutexException
     commentId: T:System.Threading.AbandonedMutexException
     description: The wait completed because a thread exited without releasing a mutex. This exception is not thrown on Windows 98 or Windows Millennium Edition.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -423,15 +423,15 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when every element in <code>waitHandles</code> has received a signal; otherwise the method never returns.
+      description: '`true` when every element in <code>waitHandles</code> has received a signal; otherwise the method never returns.'
   overload: System.Threading.WaitHandle.WaitAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>. -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array are <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements and the .NET Framework version is 2.0 or later."
+    description: "The <code>waitHandles</code> parameter is `null`. -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array are `null`.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements and the .NET Framework version is 2.0 or later."
   - type: System.DuplicateWaitObjectException
     commentId: T:System.DuplicateWaitObjectException
     description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch the base class exception, <xref href=\"System.ArgumentException\"></xref>, instead.  \n  \n The <code>waitHandles</code> array contains elements that are duplicates."
@@ -447,7 +447,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -471,18 +471,18 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object (duplicates).
+      description: A `WaitHandle` array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object (duplicates).
     - id: millisecondsTimeout
       type: System.Int32
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref> (-1) to wait indefinitely.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when every element in <code>waitHandles</code> has received a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when every element in <code>waitHandles</code> has received a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements."
   - type: System.DuplicateWaitObjectException
     commentId: T:System.DuplicateWaitObjectException
     description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch the base class exception, <xref href=\"System.ArgumentException\"></xref>, instead.  \n  \n The <code>waitHandles</code> array contains elements that are duplicates."
@@ -498,7 +498,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,18 +522,18 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object.
     - id: timeout
       type: System.TimeSpan
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds, to wait indefinitely.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when every element in <code>waitHandles</code> has received a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when every element in <code>waitHandles</code> has received a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements."
   - type: System.DuplicateWaitObjectException
     commentId: T:System.DuplicateWaitObjectException
     description: "&gt; [!NOTE]\n&gt;  In the [.NET for Windows Store apps](http://go.microsoft.com/fwlink/?LinkID=247912) or the [Portable Class Library](~/add/includes/ajax-current-ext-md.md), catch the base class exception, <xref href=\"System.ArgumentException\"></xref>, instead.  \n  \n The <code>waitHandles</code> array contains elements that are duplicates."
@@ -549,7 +549,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -575,21 +575,21 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object (duplicates).
+      description: A `WaitHandle` array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object (duplicates).
     - id: millisecondsTimeout
       type: System.Int32
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref> (-1) to wait indefinitely.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when every element in <code>waitHandles</code> has received a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when every element in <code>waitHandles</code> has received a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements and the .NET Framework version is 2.0 or later."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements and the .NET Framework version is 2.0 or later."
   - type: System.DuplicateWaitObjectException
     commentId: T:System.DuplicateWaitObjectException
     description: The <code>waitHandles</code> array contains elements that are duplicates.
@@ -608,7 +608,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -634,21 +634,21 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait. This array cannot contain multiple references to the same object.
     - id: timeout
       type: System.TimeSpan
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds, to wait indefinitely.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> when every element in <code>waitHandles</code> has received a signal; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` when every element in <code>waitHandles</code> has received a signal; otherwise `false`.'
   overload: System.Threading.WaitHandle.WaitAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements and the .NET Framework version is 2.0 or later."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`.  \n  \n -or-  \n  \n <code>waitHandles</code> is an array with no elements and the .NET Framework version is 2.0 or later."
   - type: System.DuplicateWaitObjectException
     commentId: T:System.DuplicateWaitObjectException
     description: The <code>waitHandles</code> array contains elements that are duplicates.
@@ -667,7 +667,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -693,7 +693,7 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait.
     return:
       type: System.Int32
       description: The array index of the object that satisfied the wait.
@@ -701,7 +701,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The number of objects in <code>waitHandles</code> is greater than the system permits.
@@ -717,7 +717,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -741,7 +741,7 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait.
     - id: millisecondsTimeout
       type: System.Int32
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref> (-1) to wait indefinitely.
@@ -752,7 +752,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The number of objects in <code>waitHandles</code> is greater than the system permits.
@@ -768,7 +768,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -792,7 +792,7 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait.
     - id: timeout
       type: System.TimeSpan
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds to wait indefinitely.
@@ -803,7 +803,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The number of objects in <code>waitHandles</code> is greater than the system permits.
@@ -819,7 +819,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -845,13 +845,13 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait.
     - id: millisecondsTimeout
       type: System.Int32
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref> (-1) to wait indefinitely.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Int32
       description: The array index of the object that satisfied the wait, or <xref href="System.Threading.WaitHandle.WaitTimeout"></xref> if no object satisfied the wait and a time interval equivalent to <code>millisecondsTimeout</code> has passed.
@@ -859,7 +859,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The number of objects in <code>waitHandles</code> is greater than the system permits.
@@ -878,7 +878,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -904,13 +904,13 @@ items:
     parameters:
     - id: waitHandles
       type: System.Threading.WaitHandle[]
-      description: A <xref uid="langword_csharp_WaitHandle" name="WaitHandle" href=""></xref> array containing the objects for which the current instance will wait.
+      description: A `WaitHandle` array containing the objects for which the current instance will wait.
     - id: timeout
       type: System.TimeSpan
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds to wait indefinitely.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Int32
       description: The array index of the object that satisfied the wait, or <xref href="System.Threading.WaitHandle.WaitTimeout"></xref> if no object satisfied the wait and a time interval equivalent to <code>timeout</code> has passed.
@@ -918,7 +918,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>waitHandles</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>waitHandles</code> parameter is `null`.  \n  \n -or-  \n  \n One or more of the objects in the <code>waitHandles</code> array is `null`."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The number of objects in <code>waitHandles</code> is greater than the system permits.
@@ -937,7 +937,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <code>waitHandles</code> array contains a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -963,7 +963,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance receives a signal. If the current instance is never signaled, <xref:System.Threading.WaitHandle.WaitOne*> never returns.
+      description: '`true` if the current instance receives a signal. If the current instance is never signaled, <xref:System.Threading.WaitHandle.WaitOne*> never returns.'
   overload: System.Threading.WaitHandle.WaitOne*
   exceptions:
   - type: System.ObjectDisposedException
@@ -975,7 +975,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The current instance is a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1004,7 +1004,7 @@ items:
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref> (-1) to wait indefinitely.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance receives a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current instance receives a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitOne*
   exceptions:
   - type: System.ObjectDisposedException
@@ -1019,7 +1019,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The current instance is a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1046,7 +1046,7 @@ items:
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds to wait indefinitely.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance receives a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current instance receives a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitOne*
   exceptions:
   - type: System.ObjectDisposedException
@@ -1061,7 +1061,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The current instance is a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1090,10 +1090,10 @@ items:
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref> (-1) to wait indefinitely.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance receives a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current instance receives a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitOne*
   exceptions:
   - type: System.ObjectDisposedException
@@ -1108,7 +1108,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The current instance is a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1137,10 +1137,10 @@ items:
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds to wait indefinitely.
     - id: exitContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to exit the synchronization domain for the context before the wait (if in a synchronized context), and reacquire it afterward; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current instance receives a signal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current instance receives a signal; otherwise, `false`.'
   overload: System.Threading.WaitHandle.WaitOne*
   exceptions:
   - type: System.ObjectDisposedException
@@ -1155,7 +1155,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The current instance is a transparent proxy for a <xref href="System.Threading.WaitHandle"></xref> in another application domain.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1182,7 +1182,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1356,8 +1356,8 @@ references:
 - uid: System.Threading.WaitHandle[]
   parent: System.Threading
   isExternal: false
-  name: WaitHandle
-  nameWithType: WaitHandle
+  name: WaitHandle[]
+  nameWithType: WaitHandle[]
   fullName: System.Threading.WaitHandle[]
   spec.csharp:
   - uid: System.Threading.WaitHandle

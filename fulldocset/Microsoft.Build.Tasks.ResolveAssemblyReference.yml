@@ -74,7 +74,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -98,7 +98,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,7 +125,7 @@ items:
       description: The assembly extensions that will be considered during references resolution.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.AllowedAssemblyExtensions*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -152,7 +152,7 @@ items:
       description: The extensions that will be considered when searching for related files.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.AllowedRelatedFileExtensions*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -179,7 +179,7 @@ items:
       description: The App.Config file path.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.AppConfigFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,7 +206,7 @@ items:
       description: The assembly names to resolve into full paths and to find dependencies for.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.Assemblies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,7 +232,7 @@ items:
       description: The list of fully qualified assembly paths to find dependencies for.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.AssemblyFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -256,10 +256,10 @@ items:
     content: public bool AutoUnify { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the resulting dependency graph is automatically treated as if there were an App.Config file passed in to the <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.AppConfigFile*> property.
+      description: '`true` if the resulting dependency graph is automatically treated as if there were an App.Config file passed in to the <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.AppConfigFile*> property.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.AutoUnify*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,7 +286,7 @@ items:
       description: The list of assemblies to use for the search and resolution process.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.CandidateAssemblyFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -312,7 +312,7 @@ items:
       description: "Returns true if when determining if a dependency should be copied locally one of the checks done is to see if the parent reference in the project file has the Private metadata set or not. If that metadata is set then we will use that for the dependency as well.  \n  \n If the metadata is not set then the dependency will go through the same checks as the parent reference. One of these checks is to see if the reference is in the GAC. If a reference is in the GAC then we will not copy it locally as it is assumed it will be in the gac on the target machine as well. However this only applies to that specific reference and not its dependencies.  \n  \n This means a reference in the project file may be copy local false due to it being in the GAC but the dependencies may still be copied locally because they are not in the GAC. This is the default behavior for RAR and causes the default value for this property to be true.  \n  \n Returns false if we will still check project file references to see if they are in the GAC and set their copy local state as appropriate.  \n  \n However for dependencies we will not only check to see if they are in the GAC but we will also check to see if the parent reference from the project file is in the GAC.  \n  \n If the parent reference from the project file is in the GAC then we will not copy the dependency locally.  \n  \n <div class=\"alert NOTE\">  \n If there are multiple parent reference and ANY of them does not come from the GAC then we will set copy local to true.  \n  \n</div>"
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.CopyLocalDependenciesWhenParentReferenceInGac*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.CopyLocalFiles
   id: CopyLocalFiles
@@ -327,15 +327,15 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Returns all files in the <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedDependencyFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.RelatedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.SatelliteFiles*>, and <xref href="Microsoft.Build.Tasks.ResolveAssemblyReference"></xref> properties that have the `CopyLocal` item metadata with a value of <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Returns all files in the <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedDependencyFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.RelatedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.SatelliteFiles*>, and <xref href="Microsoft.Build.Tasks.ResolveAssemblyReference"></xref> properties that have the `CopyLocal` item metadata with a value of `true`.
   syntax:
     content: public Microsoft.Build.Framework.ITaskItem[] CopyLocalFiles { get; }
     return:
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: All files in the <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedDependencyFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.RelatedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.SatelliteFiles*>, and <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ScatterFiles*> properties that have the `CopyLocal` item metadata with a value of <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: All files in the <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedDependencyFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.RelatedFiles*>, <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.SatelliteFiles*>, and <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.ScatterFiles*> properties that have the `CopyLocal` item metadata with a value of `true`.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.CopyLocalFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -359,10 +359,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if task execution succeeded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if task execution succeeded; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.Execute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,7 +388,7 @@ items:
       description: The items written to disk.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FilesWritten*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -406,16 +406,16 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Gets or sets a Boolean value that specifies whether dependencies will be found (<xref uid="langword_csharp_true" name="true" href=""></xref>) or only primary references will be found (<xref uid="langword_csharp_false" name="false" href=""></xref>).
+  summary: Gets or sets a Boolean value that specifies whether dependencies will be found (`true`) or only primary references will be found (`false`).
   remarks: The default value is `true`.
   syntax:
     content: public bool FindDependencies { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if dependencies will be found; <xref uid="langword_csharp_false" name="false" href=""></xref> if only primary references will be found.
+      description: '`true` if dependencies will be found; `false` if only primary references will be found.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FindDependencies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -439,10 +439,10 @@ items:
     content: public bool FindRelatedFiles { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if related files such as .pdb files and .xml files will be found; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if related files such as .pdb files and .xml files will be found; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FindRelatedFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -466,10 +466,10 @@ items:
     content: public bool FindSatellites { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if satellite assemblies will be found; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if satellite assemblies will be found; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FindSatellites*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -493,10 +493,10 @@ items:
     content: public bool FindSerializationAssemblies { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the serialization assemblies will be found; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the serialization assemblies will be found; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FindSerializationAssemblies*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -523,7 +523,7 @@ items:
       description: Returns a list of items representing XML files that contain the full framework for the profile.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FullFrameworkAssemblyTables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.FullFrameworkFolders
   id: FullFrameworkFolders
@@ -546,7 +546,7 @@ items:
       description: Returns a list of folders which contain a RedistList directory which represent the full framework for a given client profile
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FullFrameworkFolders*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.FullTargetFrameworkSubsetNames
   id: FullTargetFrameworkSubsetNames
@@ -570,7 +570,7 @@ items:
       description: A string value that contains subset names.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.FullTargetFrameworkSubsetNames*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.IgnoreDefaultInstalledAssemblySubsetTables
   id: IgnoreDefaultInstalledAssemblySubsetTables
@@ -590,10 +590,10 @@ items:
     content: public bool IgnoreDefaultInstalledAssemblySubsetTables { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if additional assembly subset tables are used; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if additional assembly subset tables are used; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.IgnoreDefaultInstalledAssemblySubsetTables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.IgnoreDefaultInstalledAssemblyTables
   id: IgnoreDefaultInstalledAssemblyTables
@@ -608,16 +608,16 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Gets or sets a Boolean value that specifies whether the `ResolveAssemblyReference` task should ignore additional installed assembly tables found in the RedistList directory underneath the provided <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkDirectories*> (<xref uid="langword_csharp_true" name="true" href=""></xref>) or should search for and use these installed assembly tables (<xref uid="langword_csharp_false" name="false" href=""></xref>).
+  summary: Gets or sets a Boolean value that specifies whether the `ResolveAssemblyReference` task should ignore additional installed assembly tables found in the RedistList directory underneath the provided <xref:Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkDirectories*> (`true`) or should search for and use these installed assembly tables (`false`).
   remarks: The default value is `false`.
   syntax:
     content: public bool IgnoreDefaultInstalledAssemblyTables { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the task should ignore the additional installed assembly tables; <xref uid="langword_csharp_false" name="false" href=""></xref> if the task should search for and use the additional installed assembly tables.
+      description: '`true` if the task should ignore the additional installed assembly tables; `false` if the task should search for and use the additional installed assembly tables.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.IgnoreDefaultInstalledAssemblyTables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.InstalledAssemblySubsetTables
   id: InstalledAssemblySubsetTables
@@ -641,7 +641,7 @@ items:
       description: An <xref href="Microsoft.Build.Framework.ITaskItem"></xref> list of XML files.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.InstalledAssemblySubsetTables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.InstalledAssemblyTables
   id: InstalledAssemblyTables
@@ -664,7 +664,7 @@ items:
       description: A list of XML files that contain assemblies that are expected to be installed on the target machine.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.InstalledAssemblyTables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.LatestTargetFrameworkDirectories
   id: LatestTargetFrameworkDirectories
@@ -687,7 +687,7 @@ items:
       description: Returns the list of directories which contain the redist lists for the most current framework which can be targeted on the machine.  If this is not set Then we will looks for the highest framework installed on the machine for a given target framework identifier and use that.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.LatestTargetFrameworkDirectories*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.ProfileName
   id: ProfileName
@@ -710,7 +710,7 @@ items:
       description: Returns the name of the target framework profile we are targeting, for example  Client, Web, or Network
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.ProfileName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.RelatedFiles
   id: RelatedFiles
@@ -733,7 +733,7 @@ items:
       description: The related files.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.RelatedFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -759,7 +759,7 @@ items:
       description: The *n*th order paths to dependencies.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedDependencyFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -785,7 +785,7 @@ items:
       description: The list of all primary references resolved to full paths.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.ResolvedFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -812,7 +812,7 @@ items:
       description: Any satellite files found.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.SatelliteFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -838,7 +838,7 @@ items:
       description: The scatter files associated with one of the given assemblies.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.ScatterFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -864,7 +864,7 @@ items:
       description: The directories or special locations that are searched to find the files on disk that represent the assemblies.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.SearchPaths*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -890,7 +890,7 @@ items:
       description: The serialization assemblies.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.SerializationAssemblyFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -914,10 +914,10 @@ items:
     content: public bool Silent { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if no messages are logged; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if no messages are logged; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.Silent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -943,7 +943,7 @@ items:
       description: The file name that indicates where to save the intermediate build state for this task.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.StateFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -970,7 +970,7 @@ items:
       description: The items that correspond to distinct conflicting assembly identities.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.SuggestedRedirects*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -996,7 +996,7 @@ items:
       description: Returns the name of the runtime we are targeting, for example, 2.0.57027. A "v" may be prefixed to the name.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetedRuntimeVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkDirectories
   id: TargetFrameworkDirectories
@@ -1020,7 +1020,7 @@ items:
       description: The path to the target framework directory.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkDirectories*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1047,7 +1047,7 @@ items:
       description: Returns the target framework moniker being targeted, if any. Returns an empty string by default.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkMoniker*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkMonikerDisplayName
   id: TargetFrameworkMonikerDisplayName
@@ -1071,7 +1071,7 @@ items:
       description: Returns the display name of the target framework moniker being targeted, if any.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkMonikerDisplayName*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkSubsets
   id: TargetFrameworkSubsets
@@ -1094,7 +1094,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkSubsets*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkVersion
   id: TargetFrameworkVersion
@@ -1118,7 +1118,7 @@ items:
       description: The project target framework version used for reference filtering.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetFrameworkVersion*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetProcessorArchitecture
   id: TargetProcessorArchitecture
@@ -1141,7 +1141,7 @@ items:
       description: The preferred target processor architecture used for resolving Global Assembly Cache (GAC) references.
   overload: Microsoft.Build.Tasks.ResolveAssemblyReference.TargetProcessorArchitecture*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1165,8 +1165,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -1203,8 +1203,8 @@ references:
 - uid: Microsoft.Build.Framework.ITaskItem[]
   parent: Microsoft.Build.Framework
   isExternal: false
-  name: ITaskItem
-  nameWithType: ITaskItem
+  name: ITaskItem[]
+  nameWithType: ITaskItem[]
   fullName: Microsoft.Build.Framework.ITaskItem[]
   spec.csharp:
   - uid: Microsoft.Build.Framework.ITaskItem

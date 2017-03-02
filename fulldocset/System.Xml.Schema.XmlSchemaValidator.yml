@@ -51,7 +51,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,11 +91,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: One or more of the parameters specified are <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: One or more of the parameters specified are `null`.
   - type: System.Xml.Schema.XmlSchemaException
     commentId: T:System.Xml.Schema.XmlSchemaException
     description: An error occurred while compiling schemas in the <xref href="System.Xml.Schema.XmlSchemaSet"></xref> parameter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,14 +124,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Xml.Schema.XmlSchema"></xref> parameter specified is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref href="System.Xml.Schema.XmlSchema"></xref> parameter specified is `null`.
   - type: System.Xml.Schema.XmlSchemaValidationException
     commentId: T:System.Xml.Schema.XmlSchemaValidationException
     description: The target namespace of the <xref href="System.Xml.Schema.XmlSchema"></xref> parameter matches that of any element or attribute already encountered by the <xref href="System.Xml.Schema.XmlSchemaValidator"></xref> object.
   - type: System.Xml.Schema.XmlSchemaException
     commentId: T:System.Xml.Schema.XmlSchemaException
     description: The <xref href="System.Xml.Schema.XmlSchema"></xref> parameter is invalid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,7 +158,7 @@ items:
   - type: System.Xml.Schema.XmlSchemaValidationException
     commentId: T:System.Xml.Schema.XmlSchemaValidationException
     description: An identity constraint error was found in the XML document.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,7 +185,7 @@ items:
       description: An array of <xref href="System.Xml.Schema.XmlSchemaAttribute"></xref> objects or an empty array if there are no expected attributes.
   overload: System.Xml.Schema.XmlSchemaValidator.GetExpectedAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,7 +212,7 @@ items:
       description: An array of <xref href="System.Xml.Schema.XmlSchemaParticle"></xref> objects or an empty array if there are no expected particles.
   overload: System.Xml.Schema.XmlSchemaValidator.GetExpectedParticles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -239,7 +239,7 @@ items:
       description: An <xref href="System.Collections.ArrayList"></xref> to populate with <xref href="System.Xml.Schema.XmlSchemaAttribute"></xref> objects for any attributes not yet encountered during validation in the element context.
   overload: System.Xml.Schema.XmlSchemaValidator.GetUnspecifiedDefaultAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,7 +268,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Calling the <xref:System.Xml.Schema.XmlSchemaValidator.Initialize*> method is valid immediately after the construction of an <xref href="System.Xml.Schema.XmlSchemaValidator"></xref> object or after a call to <xref:System.Xml.Schema.XmlSchemaValidator.EndValidation*> only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,8 +305,8 @@ items:
     description: The <xref href="System.Xml.Schema.XmlSchemaObject"></xref> parameter is not an <xref href="System.Xml.Schema.XmlSchemaElement"></xref>, <xref href="System.Xml.Schema.XmlSchemaAttribute"></xref>, or <xref href="System.Xml.Schema.XmlSchemaType"></xref> object.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <xref href="System.Xml.Schema.XmlSchemaObject"></xref> parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <xref href="System.Xml.Schema.XmlSchemaObject"></xref> parameter cannot be `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,7 +332,7 @@ items:
       description: An <xref href="System.Xml.IXmlLineInfo"></xref> object.
   overload: System.Xml.Schema.XmlSchemaValidator.LineInfoProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -356,13 +356,13 @@ items:
     parameters:
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set if the current element content is successfully skipped. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set if the current element content is successfully skipped. This parameter can be `null`.
   overload: System.Xml.Schema.XmlSchemaValidator.SkipToEndElement*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The SkipToEndElement method was not called in the correct sequence. For example, calling SkipToEndElement after calling SkipToEndElement.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,10 +385,10 @@ items:
     content: public Uri SourceUri { get; set; }
     return:
       type: System.Uri
-      description: A <xref href="System.Uri"></xref> object representing the source URI for the XML node being validated; the default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Uri"></xref> object representing the source URI for the XML node being validated; the default is `null`.
   overload: System.Xml.Schema.XmlSchemaValidator.SourceUri*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -423,7 +423,7 @@ items:
       description: The value of the attribute to validate.
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the attribute. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the attribute. This parameter can be `null`.
     return:
       type: System.Object
       description: The validated attribute's value.
@@ -437,8 +437,8 @@ items:
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*> method was not called in the correct sequence. For example, calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*> after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndOfAttributes*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: One or more of the parameters specified are <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: One or more of the parameters specified are `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,10 +470,10 @@ items:
       description: The namespace URI of the attribute to validate.
     - id: attributeValue
       type: System.Xml.Schema.XmlValueGetter
-      description: An <xref href="System.Xml.Schema.XmlValueGetter"></xref><xref uid="langword_csharp_delegate" name="delegate" href=""></xref> used to pass the attribute's value as a Common Language Runtime (CLR) type compatible with the XML Schema Definition Language (XSD) type of the attribute.
+      description: An <xref href="System.Xml.Schema.XmlValueGetter"></xref>`delegate` used to pass the attribute's value as a Common Language Runtime (CLR) type compatible with the XML Schema Definition Language (XSD) type of the attribute.
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the attribute. This parameter and can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the attribute. This parameter and can be `null`.
     return:
       type: System.Object
       description: The validated attribute's value.
@@ -487,8 +487,8 @@ items:
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*> method was not called in the correct sequence. For example, calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*> after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndOfAttributes*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: One or more of the parameters specified are <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: One or more of the parameters specified are `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -520,7 +520,7 @@ items:
       description: The namespace URI of the element to validate.
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the element's name. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the element's name. This parameter can be `null`.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateElement*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
@@ -529,7 +529,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateElement*> method was not called in the correct sequence. For example, the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateElement*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -559,19 +559,19 @@ items:
       description: The namespace URI of the element to validate.
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the element's name. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the element's name. This parameter can be `null`.
     - id: xsiType
       type: System.String
-      description: The `xsi:Type` attribute value of the element. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The `xsi:Type` attribute value of the element. This parameter can be `null`.
     - id: xsiNil
       type: System.String
-      description: The `xsi:Nil` attribute value of the element. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The `xsi:Nil` attribute value of the element. This parameter can be `null`.
     - id: xsiSchemaLocation
       type: System.String
-      description: The `xsi:SchemaLocation` attribute value of the element. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The `xsi:SchemaLocation` attribute value of the element. This parameter can be `null`.
     - id: xsiNoNamespaceSchemaLocation
       type: System.String
-      description: The `xsi:NoNamespaceSchemaLocation` attribute value of the element. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The `xsi:NoNamespaceSchemaLocation` attribute value of the element. This parameter can be `null`.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateElement*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
@@ -580,7 +580,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateElement*> method was not called in the correct sequence. For example, the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateElement*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -604,7 +604,7 @@ items:
     parameters:
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the element. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the element. This parameter can be `null`.
     return:
       type: System.Object
       description: The parsed, typed text value of the element if the element has simple content.
@@ -616,7 +616,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndElement*> method was not called in the correct sequence. For example, if the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndElement*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.SkipToEndElement*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -642,7 +642,7 @@ items:
     parameters:
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the text content of the element. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful validation of the text content of the element. This parameter can be `null`.
     - id: typedValue
       type: System.Object
       description: The typed text content of the element.
@@ -659,8 +659,8 @@ items:
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndElement*> method was not called in the correct sequence (for example, if the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndElement*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.SkipToEndElement*>), calls to the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateText*> method have been previously made, or the element has complex content.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The typed text content parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The typed text content parameter cannot be `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -686,7 +686,7 @@ items:
     parameters:
     - id: schemaInfo
       type: System.Xml.Schema.XmlSchemaInfo
-      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful verification that all the required attributes in the element context are present. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Xml.Schema.XmlSchemaInfo"></xref> object whose properties are set on successful verification that all the required attributes in the element context are present. This parameter can be `null`.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateEndOfAttributes*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
@@ -697,8 +697,8 @@ items:
     description: The ValidateEndOfAttributes method was not called in the correct sequence. For example, calling ValidateEndOfAttributes after calling <xref:System.Xml.Schema.XmlSchemaValidator.SkipToEndElement*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: One or more of the parameters specified are <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: One or more of the parameters specified are `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -715,26 +715,26 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: Validates whether the text <xref uid="langword_csharp_string" name="string" href=""></xref> specified is allowed in the current element context, and accumulates the text for validation if the current element has simple content.
+  summary: Validates whether the text `string` specified is allowed in the current element context, and accumulates the text for validation if the current element has simple content.
   remarks: "The following are important notes to consider when using the ValidateText method.  \n  \n-   If the element has simple content, the text `string` specified is concatenated on each call to the ValidateText method until the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndElement%2A> method is called. When the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateEndElement%2A> method is called, all the text is validated.  \n  \n-   If the element has complex content, no text concatenation occurs."
   syntax:
     content: public void ValidateText (string elementValue);
     parameters:
     - id: elementValue
       type: System.String
-      description: A text <xref uid="langword_csharp_string" name="string" href=""></xref> to validate in the current element context.
+      description: A text `string` to validate in the current element context.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateText*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
     commentId: T:System.Xml.Schema.XmlSchemaValidationException
-    description: The text <xref uid="langword_csharp_string" name="string" href=""></xref> specified is not allowed in the current element context.
+    description: The text `string` specified is not allowed in the current element context.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateText*> method was not called in the correct sequence. For example, the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateText*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The text <xref uid="langword_csharp_string" name="string" href=""></xref> parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The text `string` parameter cannot be `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -758,19 +758,19 @@ items:
     parameters:
     - id: elementValue
       type: System.Xml.Schema.XmlValueGetter
-      description: An <xref href="System.Xml.Schema.XmlValueGetter"></xref><xref uid="langword_csharp_delegate" name="delegate" href=""></xref> used to pass the text value as a Common Language Runtime (CLR) type compatible with the XML Schema Definition Language (XSD) type of the attribute.
+      description: An <xref href="System.Xml.Schema.XmlValueGetter"></xref>`delegate` used to pass the text value as a Common Language Runtime (CLR) type compatible with the XML Schema Definition Language (XSD) type of the attribute.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateText*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
     commentId: T:System.Xml.Schema.XmlSchemaValidationException
-    description: The text <xref uid="langword_csharp_string" name="string" href=""></xref> specified is not allowed in the current element context.
+    description: The text `string` specified is not allowed in the current element context.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateText*> method was not called in the correct sequence. For example, the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateText*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*>.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The text <xref uid="langword_csharp_string" name="string" href=""></xref> parameter cannot be <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The text `string` parameter cannot be `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -787,13 +787,13 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Schema
-  summary: Validates whether the white space in the <xref uid="langword_csharp_string" name="string" href=""></xref> specified is allowed in the current element context, and accumulates the white space for validation if the current element has simple content.
+  summary: Validates whether the white space in the `string` specified is allowed in the current element context, and accumulates the white space for validation if the current element has simple content.
   syntax:
     content: public void ValidateWhitespace (string elementValue);
     parameters:
     - id: elementValue
       type: System.String
-      description: A white space <xref uid="langword_csharp_string" name="string" href=""></xref> to validate in the current element context.
+      description: A white space `string` to validate in the current element context.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateWhitespace*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
@@ -802,7 +802,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateWhitespace*> method was not called in the correct sequence. For example, if the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateWhitespace*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -825,7 +825,7 @@ items:
     parameters:
     - id: elementValue
       type: System.Xml.Schema.XmlValueGetter
-      description: An <xref href="System.Xml.Schema.XmlValueGetter"></xref><xref uid="langword_csharp_delegate" name="delegate" href=""></xref> used to pass the white space value as a Common Language Runtime (CLR) type compatible with the XML Schema Definition Language (XSD) type of the attribute.
+      description: An <xref href="System.Xml.Schema.XmlValueGetter"></xref>`delegate` used to pass the white space value as a Common Language Runtime (CLR) type compatible with the XML Schema Definition Language (XSD) type of the attribute.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidateWhitespace*
   exceptions:
   - type: System.Xml.Schema.XmlSchemaValidationException
@@ -834,7 +834,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref:System.Xml.Schema.XmlSchemaValidator.ValidateWhitespace*> method was not called in the correct sequence. For example, if the <xref:System.Xml.Schema.XmlSchemaValidator.ValidateWhitespace*> method is called after calling <xref:System.Xml.Schema.XmlSchemaValidator.ValidateAttribute*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -861,7 +861,7 @@ items:
       type: System.Xml.Schema.ValidationEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -889,7 +889,7 @@ items:
       description: An <xref href="System.Object"></xref>; the default is this <xref href="System.Xml.Schema.XmlSchemaValidator"></xref> object.
   overload: System.Xml.Schema.XmlSchemaValidator.ValidationEventSender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -918,7 +918,7 @@ items:
       description: An <xref href="System.Xml.XmlResolver"></xref> object; the default is an <xref href="System.Xml.XmlUrlResolver"></xref> object.
   overload: System.Xml.Schema.XmlSchemaValidator.XmlResolver*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1014,8 +1014,8 @@ references:
 - uid: System.Xml.Schema.XmlSchemaAttribute[]
   parent: System.Xml.Schema
   isExternal: false
-  name: XmlSchemaAttribute
-  nameWithType: XmlSchemaAttribute
+  name: XmlSchemaAttribute[]
+  nameWithType: XmlSchemaAttribute[]
   fullName: System.Xml.Schema.XmlSchemaAttribute[]
   spec.csharp:
   - uid: System.Xml.Schema.XmlSchemaAttribute
@@ -1034,8 +1034,8 @@ references:
 - uid: System.Xml.Schema.XmlSchemaParticle[]
   parent: System.Xml.Schema
   isExternal: false
-  name: XmlSchemaParticle
-  nameWithType: XmlSchemaParticle
+  name: XmlSchemaParticle[]
+  nameWithType: XmlSchemaParticle[]
   fullName: System.Xml.Schema.XmlSchemaParticle[]
   spec.csharp:
   - uid: System.Xml.Schema.XmlSchemaParticle

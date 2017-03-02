@@ -52,7 +52,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,8 +86,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The &lt;xref:System.Reflection.MethodBase.IsStatic%2A?displayProperty=fullName&gt; property of the <code>methodInfo</code> parameter is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>.  \n  \n -or-  \n  \n The &lt;xref:System.Reflection.MethodBase.GetParameters%2A?displayProperty=fullName&gt; method of the <code>methodInfo</code> parameter does not contain all the parameters required by the method represented by the instance of <xref href=\"System.Web.Services.Protocols.LogicalMethodInfo\"></xref>."
-  platform:
+    description: "The &lt;xref:System.Reflection.MethodBase.IsStatic%2A?displayProperty=fullName&gt; property of the <code>methodInfo</code> parameter is `true`.  \n  \n -or-  \n  \n The &lt;xref:System.Reflection.MethodBase.GetParameters%2A?displayProperty=fullName&gt; method of the <code>methodInfo</code> parameter does not contain all the parameters required by the method represented by the instance of <xref href=\"System.Web.Services.Protocols.LogicalMethodInfo\"></xref>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -115,10 +115,10 @@ items:
     content: public System.Reflection.ParameterInfo AsyncCallbackParameter { get; }
     return:
       type: System.Reflection.ParameterInfo
-      description: A <xref href="System.Reflection.ParameterInfo"></xref> representing the <code>AsyncCallback</code> parameter of a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> asynchronous method invocation.
+      description: A <xref href="System.Reflection.ParameterInfo"></xref> representing the <code>AsyncCallback</code> parameter of a `Begin` asynchronous method invocation.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.AsyncCallbackParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -135,7 +135,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Gets the return value of a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> asynchronous method invocation.
+  summary: Gets the return value of a `Begin` asynchronous method invocation.
   remarks: "The asynchronous design pattern in the common language runtime involves calling a `Begin` method to start the asynchronous method invocation and an `End` method to complete the invocation. The `Begin` method typically returns immediately with an object implementing the <xref:System.IAsyncResult> interface, which can then be passed to the `End` method at a later time to complete the asynchronous method invocation. The returned object implementing the <xref:System.IAsyncResult> interface is represented by this property.  \n  \n For more information on invoking XML Web services asynchronously, see [&#91;\\<topic://cpconInvokingWebServicesAsynchronously>&#93;](http://msdn.microsoft.com/en-us/f9e26a43-063a-440a-8c73-a02f2ccf3ea0)."
   example:
   - >-
@@ -146,10 +146,10 @@ items:
     content: public System.Reflection.ParameterInfo AsyncResultParameter { get; }
     return:
       type: System.Reflection.ParameterInfo
-      description: A <xref href="System.Reflection.ParameterInfo"></xref> representing the <xref href="System.IAsyncResult"></xref> returned from a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> asynchronous method invocation.
+      description: A <xref href="System.Reflection.ParameterInfo"></xref> representing the <xref href="System.IAsyncResult"></xref> returned from a `Begin` asynchronous method invocation.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.AsyncResultParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -166,7 +166,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Gets the parameter information for the <code>AsyncState</code> parameter of a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> method in an asynchronous invocation.
+  summary: Gets the parameter information for the <code>AsyncState</code> parameter of a `Begin` method in an asynchronous invocation.
   remarks: "The asynchronous design pattern in the common language runtime involves calling a `Begin` method to start the asynchronous method invocation and an `End` method to complete the invocation. The `Begin` method takes two additional parameters besides the parameters defined by the synchronous version of the method: one to store a delegate and one to store any state information that needs to be passed on to the delegate. This property represents the state information that needs to be passed into the delegate.  \n  \n For more information on invoking XML Web services asynchronously, see [&#91;\\<topic://cpconInvokingWebServicesAsynchronously>&#93;](http://msdn.microsoft.com/en-us/f9e26a43-063a-440a-8c73-a02f2ccf3ea0)."
   example:
   - >-
@@ -177,10 +177,10 @@ items:
     content: public System.Reflection.ParameterInfo AsyncStateParameter { get; }
     return:
       type: System.Reflection.ParameterInfo
-      description: A <xref href="System.Reflection.ParameterInfo"></xref> representing the <code>AsyncState</code> parameter of a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> method in an asynchronous invocation.
+      description: A <xref href="System.Reflection.ParameterInfo"></xref> representing the <code>AsyncState</code> parameter of a `Begin` method in an asynchronous invocation.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.AsyncStateParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -212,10 +212,10 @@ items:
       description: The instance of the <xref href="System.Object"></xref> on which to invoke the method on.
     - id: values
       type: System.Object[]
-      description: An argument list for the invoked method. This is an array of objects with the same number, order, and type as the parameters of the method. If the method does not require any parameters, `values` should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An argument list for the invoked method. This is an array of objects with the same number, order, and type as the parameters of the method. If the method does not require any parameters, `values` should be `null`.
     - id: callback
       type: System.AsyncCallback
-      description: The delegate to call when the asynchronous invoke is complete. If `callback` is <xref uid="langword_csharp_null" name="null" href=""></xref>, the delegate is not called.
+      description: The delegate to call when the asynchronous invoke is complete. If `callback` is `null`, the delegate is not called.
     - id: asyncState
       type: System.Object
       description: State information that is passed on to the delegate.
@@ -226,14 +226,14 @@ items:
   exceptions:
   - type: System.Reflection.TargetException
     commentId: T:System.Reflection.TargetException
-    description: The <code>target</code> parameteris <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>target</code> parameteris `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The number, type, and order of parameters in <code>values</code> do not match the signature of the invoked method.
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: The caller does not have permission to invoke the method.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -250,7 +250,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Gets the attributes and metadata for a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> method in an asynchronous invocation.
+  summary: Gets the attributes and metadata for a `Begin` method in an asynchronous invocation.
   remarks: ''
   example:
   - >-
@@ -261,10 +261,10 @@ items:
     content: public System.Reflection.MethodInfo BeginMethodInfo { get; }
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the attributes and metadata for a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> asynchronous method invocation.
+      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the attributes and metadata for a `Begin` asynchronous method invocation.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.BeginMethodInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -301,8 +301,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: A <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> asynchronous method is included in <code>methodInfos</code> without a corresponding <xref uid="langword_csharp_End" name="End" href=""></xref> method.
-  platform:
+    description: A `Begin` asynchronous method is included in <code>methodInfos</code> without a corresponding `End` method.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,8 +342,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: A <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> asynchronous method is included in <code>methodInfos</code> without a corresponding <xref uid="langword_csharp_End" name="End" href=""></xref> method.
-  platform:
+    description: A `Begin` asynchronous method is included in <code>methodInfos</code> without a corresponding `End` method.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -374,7 +374,7 @@ items:
       description: An <xref href="System.Reflection.ICustomAttributeProvider"></xref> representing the custom attributes for the method.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.CustomAttributeProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -405,7 +405,7 @@ items:
       description: The <xref href="System.Type"></xref> for the class declaring the method represented by the <xref href="System.Web.Services.Protocols.LogicalMethodInfo"></xref>.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.DeclaringType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -445,14 +445,14 @@ items:
   exceptions:
   - type: System.Reflection.TargetException
     commentId: T:System.Reflection.TargetException
-    description: The <code>target</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>target</code> parameter is `null`.
   - type: System.MemberAccessException
     commentId: T:System.MemberAccessException
     description: The caller does not have permission to invoke the method.
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The invoked method throws an exception.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -469,7 +469,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Gets the attributes and metadata for an <xref uid="langword_csharp_End" name="End" href=""></xref> method of an asynchronous invocation to a method.
+  summary: Gets the attributes and metadata for an `End` method of an asynchronous invocation to a method.
   remarks: ''
   example:
   - >-
@@ -480,10 +480,10 @@ items:
     content: public System.Reflection.MethodInfo EndMethodInfo { get; }
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the attributes and metadata for an <xref uid="langword_csharp_End" name="End" href=""></xref> asynchronous method invocation.
+      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the attributes and metadata for an `End` asynchronous method invocation.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.EndMethodInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,7 +521,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: The custom attribute type can not be loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -559,7 +559,7 @@ items:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: The custom attribute type can not be loaded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -590,7 +590,7 @@ items:
       description: An array of type <xref href="System.Reflection.ParameterInfo"></xref> containing the parameters passed into the method represented by the instance of <xref href="System.Web.Services.Protocols.LogicalMethodInfo"></xref>.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.InParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -622,7 +622,7 @@ items:
       description: The instance of the <xref href="System.Object"></xref> to invoke the method.
     - id: values
       type: System.Object[]
-      description: An argument list for the invoked method. This is an array of objects with the same number, order, and type as the parameters of the method. If the method does not require any parameters, the `values` parameter should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An argument list for the invoked method. This is an array of objects with the same number, order, and type as the parameters of the method. If the method does not require any parameters, the `values` parameter should be `null`.
     return:
       type: System.Object[]
       description: An array of type <xref href="System.Object"></xref> representing the return value and out parameters of the invoked method.
@@ -630,7 +630,7 @@ items:
   exceptions:
   - type: System.Reflection.TargetException
     commentId: T:System.Reflection.TargetException
-    description: The <code>target</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>target</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The number, type, and order of parameters in the <code>values</code> parameter do not match the signature of the invoked method.
@@ -640,7 +640,7 @@ items:
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
     description: The invoked method throws an exception.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -668,10 +668,10 @@ items:
     content: public bool IsAsync { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is invoked asynchronously; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method is invoked asynchronously; otherwise, `false`.'
   overload: System.Web.Services.Protocols.LogicalMethodInfo.IsAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -688,7 +688,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Returns a value indicating whether the method passed in represents a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> method of an asynchronous invocation.
+  summary: Returns a value indicating whether the method passed in represents a `Begin` method of an asynchronous invocation.
   remarks: ''
   example:
   - >-
@@ -700,13 +700,13 @@ items:
     parameters:
     - id: methodInfo
       type: System.Reflection.MethodInfo
-      description: The <xref href="System.Reflection.MethodInfo"></xref> that might be a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> method of an asynchronous invocation.
+      description: The <xref href="System.Reflection.MethodInfo"></xref> that might be a `Begin` method of an asynchronous invocation.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>methodInfo</code> parameter is a <xref uid="langword_csharp_Begin" name="Begin" href=""></xref> method of an asynchronous invocation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>methodInfo</code> parameter is a `Begin` method of an asynchronous invocation; otherwise, `false`.'
   overload: System.Web.Services.Protocols.LogicalMethodInfo.IsBeginMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -723,7 +723,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Returns a value indicating whether the method passed in represents an <xref uid="langword_csharp_End" name="End" href=""></xref> method of an asynchronous invocation.
+  summary: Returns a value indicating whether the method passed in represents an `End` method of an asynchronous invocation.
   remarks: ''
   example:
   - >-
@@ -735,13 +735,13 @@ items:
     parameters:
     - id: methodInfo
       type: System.Reflection.MethodInfo
-      description: The <xref href="System.Reflection.MethodInfo"></xref> that might be an <xref uid="langword_csharp_End" name="End" href=""></xref> method of an asynchronous invocation.
+      description: The <xref href="System.Reflection.MethodInfo"></xref> that might be an `End` method of an asynchronous invocation.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <code>methodInfo</code> parameter is an <xref uid="langword_csharp_End" name="End" href=""></xref> method of an asynchronous invocation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <code>methodInfo</code> parameter is an `End` method of an asynchronous invocation; otherwise, `false`.'
   overload: System.Web.Services.Protocols.LogicalMethodInfo.IsEndMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -758,7 +758,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: Gets a value indicating whether the return type for the method represented by the instance of <xref href="System.Web.Services.Protocols.LogicalMethodInfo"></xref> is <xref uid="langword_csharp_void" name="void" href=""></xref>.
+  summary: Gets a value indicating whether the return type for the method represented by the instance of <xref href="System.Web.Services.Protocols.LogicalMethodInfo"></xref> is `void`.
   remarks: ''
   example:
   - >-
@@ -769,10 +769,10 @@ items:
     content: public bool IsVoid { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the return type is void; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the return type is void; otherwise, `false`.'
   overload: System.Web.Services.Protocols.LogicalMethodInfo.IsVoid*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -800,10 +800,10 @@ items:
     content: public System.Reflection.MethodInfo MethodInfo { get; }
     return:
       type: System.Reflection.MethodInfo
-      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the attributes and metadata for a method. If <xref:System.Web.Services.Protocols.LogicalMethodInfo.IsAsync*> is <xref uid="langword_csharp_true" name="true" href=""></xref>, then the value of this property is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Reflection.MethodInfo"></xref> representing the attributes and metadata for a method. If <xref:System.Web.Services.Protocols.LogicalMethodInfo.IsAsync*> is `true`, then the value of this property is `null`.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.MethodInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -834,7 +834,7 @@ items:
       description: The name of the method represented by this <xref href="System.Web.Services.Protocols.LogicalMethodInfo"></xref>.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -865,7 +865,7 @@ items:
       description: An array of <xref href="System.Reflection.ParameterInfo"></xref> representing the out parameters for the method, in order.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.OutParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -896,7 +896,7 @@ items:
       description: An array of <xref href="System.Reflection.ParameterInfo"></xref> representing the parameters for the method.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.Parameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -927,7 +927,7 @@ items:
       description: The <xref href="System.Type"></xref> returned by this method.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.ReturnType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -958,7 +958,7 @@ items:
       description: An <xref href="System.Reflection.ICustomAttributeProvider"></xref> representing the custom attributes for the return type.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.ReturnTypeCustomAttributeProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -990,7 +990,7 @@ items:
       description: A <xref href="System.String"></xref> that represents the current <xref href="System.Web.Services.Protocols.LogicalMethodInfo"></xref>.
   overload: System.Web.Services.Protocols.LogicalMethodInfo.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1086,8 +1086,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1118,8 +1118,8 @@ references:
 - uid: System.Web.Services.Protocols.LogicalMethodInfo[]
   parent: System.Web.Services.Protocols
   isExternal: false
-  name: LogicalMethodInfo
-  nameWithType: LogicalMethodInfo
+  name: LogicalMethodInfo[]
+  nameWithType: LogicalMethodInfo[]
   fullName: System.Web.Services.Protocols.LogicalMethodInfo[]
   spec.csharp:
   - uid: System.Web.Services.Protocols.LogicalMethodInfo
@@ -1132,8 +1132,8 @@ references:
 - uid: System.Reflection.MethodInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MethodInfo
-  nameWithType: MethodInfo
+  name: MethodInfo[]
+  nameWithType: MethodInfo[]
   fullName: System.Reflection.MethodInfo[]
   spec.csharp:
   - uid: System.Reflection.MethodInfo
@@ -1212,8 +1212,8 @@ references:
 - uid: System.Reflection.ParameterInfo[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterInfo
-  nameWithType: ParameterInfo
+  name: ParameterInfo[]
+  nameWithType: ParameterInfo[]
   fullName: System.Reflection.ParameterInfo[]
   spec.csharp:
   - uid: System.Reflection.ParameterInfo

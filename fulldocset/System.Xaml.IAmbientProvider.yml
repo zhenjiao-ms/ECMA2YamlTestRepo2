@@ -19,7 +19,7 @@ items:
   syntax:
     content: public interface IAmbientProvider
   implements: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAmbientProvider.GetAllAmbientValues(System.Xaml.XamlType[])
   id: GetAllAmbientValues(System.Xaml.XamlType[])
@@ -45,7 +45,7 @@ items:
       description: An enumerable set of objects that represent the values for the requested set of <xref href="System.Xaml.XamlType"></xref> identifiers.
   overload: System.Xaml.IAmbientProvider.GetAllAmbientValues*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAmbientProvider.GetAllAmbientValues(System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Xaml.XamlMember[])
   id: GetAllAmbientValues(System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Xaml.XamlMember[])
@@ -66,7 +66,7 @@ items:
     parameters:
     - id: ceilingTypes
       type: System.Collections.Generic.IEnumerable{System.Xaml.XamlType}
-      description: Specifies one or more types that should stop the evaluation when they are encountered traversing upward in the object graph. This type holds the desired ambient property. May be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Specifies one or more types that should stop the evaluation when they are encountered traversing upward in the object graph. This type holds the desired ambient property. May be `null`.
     - id: properties
       type: System.Xaml.XamlMember[]
       description: Specifies one or more property identifier objects that identify the properties to be considered ambient.
@@ -75,7 +75,7 @@ items:
       description: An enumerable set of ambient property information items for the requested set of properties. The property information for each <xref href="System.Xaml.AmbientPropertyValue"></xref> that is returned will match one of the input <code>properties</code>.
   overload: System.Xaml.IAmbientProvider.GetAllAmbientValues*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAmbientProvider.GetAllAmbientValues(System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Boolean,System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Xaml.XamlMember[])
   id: GetAllAmbientValues(System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Boolean,System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Xaml.XamlMember[])
@@ -96,10 +96,10 @@ items:
     parameters:
     - id: ceilingTypes
       type: System.Collections.Generic.IEnumerable{System.Xaml.XamlType}
-      description: Specifies one or more types that should stop the evaluation when they are encountered traversing upward in the object graph. This type holds the desired ambient property. May be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Specifies one or more types that should stop the evaluation when they are encountered traversing upward in the object graph. This type holds the desired ambient property. May be `null`.
     - id: searchLiveStackOnly
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to not use a saved context; <xref uid="langword_csharp_false" name="false" href=""></xref> to use a saved context. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>. See Remarks.
+      description: '`true` to not use a saved context; `false` to use a saved context. The default is `false`. See Remarks.'
     - id: types
       type: System.Collections.Generic.IEnumerable{System.Xaml.XamlType}
       description: To be added.
@@ -111,7 +111,7 @@ items:
       description: An enumerable set of ambient property information items for the requested set of types and properties. The property information for each <xref href="System.Xaml.AmbientPropertyValue"></xref> that is returned will match one of the input <code>types</code> or <code>properties</code>.
   overload: System.Xaml.IAmbientProvider.GetAllAmbientValues*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAmbientProvider.GetFirstAmbientValue(System.Xaml.XamlType[])
   id: GetFirstAmbientValue(System.Xaml.XamlType[])
@@ -137,7 +137,7 @@ items:
       description: The first result object for the requested set.
   overload: System.Xaml.IAmbientProvider.GetFirstAmbientValue*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.IAmbientProvider.GetFirstAmbientValue(System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Xaml.XamlMember[])
   id: GetFirstAmbientValue(System.Collections.Generic.IEnumerable{System.Xaml.XamlType},System.Xaml.XamlMember[])
@@ -167,7 +167,7 @@ items:
       description: A single ambient property information item for the first ambient property value from the <code>properties</code> list that is found.
   overload: System.Xaml.IAmbientProvider.GetFirstAmbientValue*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Xaml.IAmbientProvider.GetAllAmbientValues(System.Xaml.XamlType[])
@@ -200,8 +200,8 @@ references:
 - uid: System.Xaml.XamlType[]
   parent: System.Xaml
   isExternal: false
-  name: XamlType
-  nameWithType: XamlType
+  name: XamlType[]
+  nameWithType: XamlType[]
   fullName: System.Xaml.XamlType[]
   spec.csharp:
   - uid: System.Xaml.XamlType
@@ -262,8 +262,8 @@ references:
 - uid: System.Xaml.XamlMember[]
   parent: System.Xaml
   isExternal: false
-  name: XamlMember
-  nameWithType: XamlMember
+  name: XamlMember[]
+  nameWithType: XamlMember[]
   fullName: System.Xaml.XamlMember[]
   spec.csharp:
   - uid: System.Xaml.XamlMember

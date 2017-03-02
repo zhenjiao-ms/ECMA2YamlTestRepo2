@@ -40,7 +40,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.#ctor
@@ -61,7 +61,7 @@ items:
     parameters: []
   overload: System.AddIn.Pipeline.ContractBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.AcquireLifetimeToken
@@ -88,7 +88,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: All previously acquired tokens have been revoked.  No further tokens are available.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.GetRemoteHashCode
@@ -112,7 +112,7 @@ items:
       description: A hash code for the current <xref href="System.AddIn.Pipeline.ContractBase"></xref> object.
   overload: System.AddIn.Pipeline.ContractBase.GetRemoteHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.OnFinalRevoke
@@ -134,7 +134,7 @@ items:
     parameters: []
   overload: System.AddIn.Pipeline.ContractBase.OnFinalRevoke*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.QueryContract(System.String)
@@ -149,7 +149,7 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: Reflects over the instance of a contract and returns the <xref uid="langword_csharp_this" name="this" href=""></xref> pointer if the current object implements that contract.
+  summary: Reflects over the instance of a contract and returns the `this` pointer if the current object implements that contract.
   remarks: This method can be overridden.
   syntax:
     content: public virtual System.AddIn.Contract.IContract QueryContract (string contractIdentifier);
@@ -159,13 +159,13 @@ items:
       description: The full name of the contract, including its assembly name.
     return:
       type: System.AddIn.Contract.IContract
-      description: The <xref uid="langword_csharp_this" name="this" href=""></xref> pointer to an <xref href="System.AddIn.Contract.IContract"></xref> interface, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the contract is not implemented.
+      description: The `this` pointer to an <xref href="System.AddIn.Contract.IContract"></xref> interface, or `null` if the contract is not implemented.
   overload: System.AddIn.Pipeline.ContractBase.QueryContract*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>contractIdentifier</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>contractIdentifier</code> is `null`.
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.RemoteEquals(System.AddIn.Contract.IContract)
@@ -189,10 +189,10 @@ items:
       description: The object to test for equality with the remote object.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object is equal to the remote object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the object is equal to the remote object; otherwise, `false`.'
   overload: System.AddIn.Pipeline.ContractBase.RemoteEquals*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.RemoteToString
@@ -216,7 +216,7 @@ items:
       description: A string that identifies the remote object.
   overload: System.AddIn.Pipeline.ContractBase.RemoteToString*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.Renewal(System.Runtime.Remoting.Lifetime.ILease)
@@ -245,8 +245,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>lease</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>lease</code> is `null`.
+  version:
   - netframework-35
   - netframework-40
 - uid: System.AddIn.Pipeline.ContractBase.RevokeLifetimeToken(System.Int32)
@@ -274,7 +274,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: <code>token</code> is not found in the list of outstanding lifetime tokens.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:

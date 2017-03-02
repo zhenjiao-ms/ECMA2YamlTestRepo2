@@ -22,7 +22,7 @@ items:
 
       public interface IDtcTransaction
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -46,16 +46,16 @@ items:
     parameters:
     - id: reason
       type: System.IntPtr
-      description: An optional <xref:System.EnterpriseServices.BOID> that indicates why the transaction is being aborted. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>, indicating that no reason for the abort is provided.
+      description: An optional <xref:System.EnterpriseServices.BOID> that indicates why the transaction is being aborted. This parameter can be `null`, indicating that no reason for the abort is provided.
     - id: retaining
       type: System.Int32
-      description: This value must be <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This value must be `false`.
     - id: async
       type: System.Int32
-      description: When `async` is <xref uid="langword_csharp_true" name="true" href=""></xref>, an asynchronous abort is performed and the caller must use <xref uid="langword_csharp_ITransactionOutcomeEvents" name="ITransactionOutcomeEvents" href=""></xref> to learn about the outcome of the transaction.
+      description: When `async` is `true`, an asynchronous abort is performed and the caller must use `ITransactionOutcomeEvents` to learn about the outcome of the transaction.
   overload: System.Transactions.IDtcTransaction.Abort*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,16 +79,16 @@ items:
     parameters:
     - id: retaining
       type: System.Int32
-      description: This value must be <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This value must be `false`.
     - id: commitType
       type: System.Int32
-      description: A value taken from the OLE DB enumeration <xref uid="langword_csharp_XACTTC" name="XACTTC" href=""></xref>.
+      description: A value taken from the OLE DB enumeration `XACTTC`.
     - id: reserved
       type: System.Int32
       description: This value must be zero.
   overload: System.Transactions.IDtcTransaction.Commit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,10 +112,10 @@ items:
     parameters:
     - id: transactionInformation
       type: System.IntPtr
-      description: Pointer to the caller-allocated <xref:System.EnterpriseServices.XACTTRANSINFO> structure that will receive information about the transaction. This value must not be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Pointer to the caller-allocated <xref:System.EnterpriseServices.XACTTRANSINFO> structure that will receive information about the transaction. This value must not be `null`.
   overload: System.Transactions.IDtcTransaction.GetTransactionInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

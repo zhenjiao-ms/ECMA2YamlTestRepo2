@@ -92,7 +92,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,7 +121,7 @@ items:
       description: A <xref href="System.IO.Stream"></xref> object used by the <xref href="System.Net.Security.NegotiateStream"></xref> for sending and receiving data.
   overload: System.Net.Security.NegotiateStream.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -150,13 +150,13 @@ items:
       description: A <xref href="System.IO.Stream"></xref> object used by the <xref href="System.Net.Security.NegotiateStream"></xref> for sending and receiving data.
     - id: leaveInnerStreamOpen
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that closing this <xref href="System.Net.Security.NegotiateStream"></xref> has no effect on `innerstream`; <xref uid="langword_csharp_false" name="false" href=""></xref> to indicate that closing this <xref href="System.Net.Security.NegotiateStream"></xref> also closes `innerStream`. See the Remarks section for more information.
+      description: '`true` to indicate that closing this <xref href="System.Net.Security.NegotiateStream"></xref> has no effect on `innerstream`; `false` to indicate that closing this <xref href="System.Net.Security.NegotiateStream"></xref> also closes `innerStream`. See the Remarks section for more information.'
   overload: System.Net.Security.NegotiateStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>innerStream</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>innerStream</code> is equal to <xref href=\"System.IO.Stream.Null\"></xref>."
-  platform:
+    description: "<code>innerStream</code> is `null`.  \n  \n \\- or -  \n  \n <code>innerStream</code> is equal to <xref href=\"System.IO.Stream.Null\"></xref>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,7 +192,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "Authentication has already occurred.  \n  \n \\- or -  \n  \n This stream was used previously to attempt authentication as the server. You cannot use the stream to retry authentication as the client."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,8 +236,8 @@ items:
     description: "Authentication has already occurred.  \n  \n \\- or -  \n  \n This stream was used previously to attempt authentication as the server. You cannot use the stream to retry authentication as the client."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>targetName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>targetName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -272,7 +272,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>credential</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>targetName</code> is `null`.  \n  \n \\- or -  \n  \n <code>credential</code> is `null`."
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -285,7 +285,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -339,7 +339,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "Authentication has already occurred.  \n  \n \\- or -  \n  \n This stream was used previously to attempt authentication as the server. You cannot use the stream to retry authentication as the client."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,7 +380,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>credential</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>targetName</code> is `null`.  \n  \n \\- or -  \n  \n <code>credential</code> is `null`."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>allowedImpersonationLevel</code> is not a valid value.
@@ -396,7 +396,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,7 +432,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Windows 95 and Windows 98 are not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -461,7 +461,7 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both `null`.
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -477,7 +477,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The <code>policy</code> parameter was set to <xref href="System.Security.Authentication.ExtendedProtection.PolicyEnforcement"></xref> on a platform that does not support extended protection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,7 +512,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>credential </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>credential </code>is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>requiredImpersonationLevel</code> must be <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, or <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>,
@@ -531,7 +531,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Windows 95 and Windows 98 are not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -569,10 +569,10 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>credential </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>credential </code>is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>requiredImpersonationLevel</code> must be <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, or <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>,
@@ -594,7 +594,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The <code>policy</code> parameter was set to <xref href="System.Security.Authentication.ExtendedProtection.PolicyEnforcement"></xref> on a platform that does not support extended protection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -641,7 +641,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "Authentication has already occurred.  \n  \n \\- or -  \n  \n This stream was used previously to attempt authentication as the server. You cannot use the stream to retry authentication as the client."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -682,7 +682,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>credential</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>targetName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>credential</code> is `null`.  \n  \n \\- or -  \n  \n <code>targetName</code> is `null`."
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -695,7 +695,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "Authentication has already occurred.  \n  \n \\- or -  \n  \n This stream was used previously to attempt authentication as the server. You cannot use the stream to retry authentication as the client."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -739,7 +739,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>credential</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>targetName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>credential</code> is `null`.  \n  \n \\- or -  \n  \n <code>targetName</code> is `null`."
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -752,7 +752,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -799,7 +799,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>credential</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>targetName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>credential</code> is `null`.  \n  \n \\- or -  \n  \n <code>targetName</code> is `null`."
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -812,7 +812,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "Authentication has already occurred.  \n  \n \\- or -  \n  \n This stream was used previously to attempt authentication as the server. You cannot use the stream to retry authentication as the client."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -862,7 +862,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>credential</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>targetName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>credential</code> is `null`.  \n  \n \\- or -  \n  \n <code>targetName</code> is `null`."
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -875,7 +875,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: This object has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -920,7 +920,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Windows 95 and Windows 98 are not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -958,7 +958,7 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both `null`.
   - type: System.Security.Authentication.AuthenticationException
     commentId: T:System.Security.Authentication.AuthenticationException
     description: The authentication failed. You can use this object to retry the authentication.
@@ -974,7 +974,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The <code>policy</code> parameter was set to <xref href="System.Security.Authentication.ExtendedProtection.PolicyEnforcement"></xref> on a platform that does not support extended protection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1018,7 +1018,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>credential</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>credential</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>requiredImpersonationLevel</code> must be <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, or <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>,
@@ -1037,7 +1037,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Windows 95 and Windows 98 are not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1084,10 +1084,10 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> and <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames*> on the extended protection policy passed in the <code>policy</code> parameter are both `null`.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>credential</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>credential</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>requiredImpersonationLevel</code> must be <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>, or <xref href="System.Security.Principal.TokenImpersonationLevel"></xref>,
@@ -1109,7 +1109,7 @@ items:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
     description: The <code>policy</code> parameter was set to <xref href="System.Security.Authentication.ExtendedProtection.PolicyEnforcement"></xref> on a platform that does not support extended protection.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1155,7 +1155,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>offset</code> is less than 0.  \n  \n \\- or -  \n  \n <code>offset</code> is greater than the length of <code>buffer</code>.  \n  \n \\- or -  \n  \n <code>offset</code> plus <code>count</code> is greater than the length of <code>buffer</code>."
@@ -1171,7 +1171,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Authentication has not occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1217,7 +1217,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>offset is less than 0</code>.  \n  \n \\- or -  \n  \n <code>offset</code> is greater than the length of <code>buffer</code>.  \n  \n \\- or -  \n  \n <code>offset</code> plus count is greater than the length of <code>buffer</code>."
@@ -1233,7 +1233,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Authentication has not occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1258,10 +1258,10 @@ items:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if authentication has occurred and the underlying stream is readable; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if authentication has occurred and the underlying stream is readable; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.CanRead*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1286,10 +1286,10 @@ items:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: This property always returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This property always returns `false`.
   overload: System.Net.Security.NegotiateStream.CanSeek*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1314,10 +1314,10 @@ items:
     content: public override bool CanTimeout { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the underlying stream supports time-outs; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the underlying stream supports time-outs; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.CanTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1342,10 +1342,10 @@ items:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if authentication has occurred and the underlying stream is writable; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if authentication has occurred and the underlying stream is writable; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.CanWrite*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1369,10 +1369,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Net.Security.NegotiateStream.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1401,7 +1401,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>asyncResult</code> was not created by a call to <xref:System.Net.Security.NegotiateStream.BeginAuthenticateAsClient*>.
@@ -1414,7 +1414,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: There is no pending client authentication to complete.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1443,7 +1443,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>asyncResult</code> was not created by a call to <xref:System.Net.Security.NegotiateStream.BeginAuthenticateAsServer*>.
@@ -1456,7 +1456,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: There is no pending authentication to complete.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1490,7 +1490,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The asyncResult was not created by a call to <xref:System.Net.Security.NegotiateStream.BeginRead*>.
@@ -1500,7 +1500,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The read operation failed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1531,7 +1531,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>asyncResult</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>asyncResult</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The asyncResult was not created by a call to <xref:System.Net.Security.NegotiateStream.BeginWrite*>.
@@ -1541,7 +1541,7 @@ items:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
     description: The write operation failed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1567,7 +1567,7 @@ items:
     parameters: []
   overload: System.Net.Security.NegotiateStream.Flush*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1598,7 +1598,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Authentication failed or has not occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1623,10 +1623,10 @@ items:
     content: public override bool IsAuthenticated { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if successful authentication occurred; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if successful authentication occurred; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.IsAuthenticated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1651,10 +1651,10 @@ items:
     content: public override bool IsEncrypted { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data is encrypted before being transmitted over the network and decrypted when it reaches the remote endpoint; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if data is encrypted before being transmitted over the network and decrypted when it reaches the remote endpoint; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.IsEncrypted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1679,10 +1679,10 @@ items:
     content: public override bool IsMutuallyAuthenticated { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the server has been authenticated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the server has been authenticated; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.IsMutuallyAuthenticated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1707,10 +1707,10 @@ items:
     content: public override bool IsServer { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the local endpoint was successfully authenticated as the server side of the authenticated connection; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the local endpoint was successfully authenticated as the server side of the authenticated connection; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.IsServer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1735,10 +1735,10 @@ items:
     content: public override bool IsSigned { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data is signed before being transmitted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data is signed before being transmitted; otherwise, `false`.'
   overload: System.Net.Security.NegotiateStream.IsSigned*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1769,7 +1769,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Getting the value of this property is not supported when the underlying stream is a <xref href="System.Net.Sockets.NetworkStream"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1798,7 +1798,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "Setting this property is not supported.  \n  \n \\- or -  \n  \n Getting the value of this property is not supported when the underlying stream is a <xref href=\"System.Net.Sockets.NetworkStream\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1845,7 +1845,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: A Read operation is already in progress.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1873,7 +1873,7 @@ items:
       description: A <xref href="System.Int32"></xref> that specifies the amount of time that will elapse before a read operation fails.
   overload: System.Net.Security.NegotiateStream.ReadTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1904,7 +1904,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Authentication failed or has not occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1940,7 +1940,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Seeking is not supported on <xref href="System.Net.Security.NegotiateStream"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1966,7 +1966,7 @@ items:
       description: An <xref href="System.Int64"></xref> value that specifies the length of the stream.
   overload: System.Net.Security.NegotiateStream.SetLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2003,7 +2003,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>offset is less than 0</code>.  \n  \n \\- or -  \n  \n <code>offset</code> is greater than the length of <code>buffer</code>.  \n  \n \\- or -  \n  \n <code>offset</code> plus count is greater than the length of <code>buffer</code>."
@@ -2019,7 +2019,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: Authentication has not occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2047,7 +2047,7 @@ items:
       description: A <xref href="System.Int32"></xref> that specifies the amount of time that will elapse before a write operation fails.
   overload: System.Net.Security.NegotiateStream.WriteTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2311,8 +2311,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

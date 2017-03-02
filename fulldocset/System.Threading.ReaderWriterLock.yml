@@ -47,7 +47,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -73,7 +73,7 @@ items:
     parameters: []
   overload: System.Threading.ReaderWriterLock.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
     description: <code>millisecondsTimeout</code> expires before the lock request is granted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,7 +129,7 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: A <xref uid="langword_csharp_TimeSpan" name="TimeSpan" href=""></xref> specifying the time-out period.
+      description: A `TimeSpan` specifying the time-out period.
   overload: System.Threading.ReaderWriterLock.AcquireReaderLock*
   exceptions:
   - type: System.ApplicationException
@@ -138,7 +138,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>timeout</code> specifies a negative value other than -1 milliseconds.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,7 +170,7 @@ items:
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
     description: <code>timeout</code> expires before the lock request is granted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: The <xref uid="langword_csharp_TimeSpan" name="TimeSpan" href=""></xref> specifying the time-out period.
+      description: The `TimeSpan` specifying the time-out period.
   overload: System.Threading.ReaderWriterLock.AcquireWriterLock*
   exceptions:
   - type: System.ApplicationException
@@ -203,7 +203,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>timeout</code> specifies a negative value other than -1 milliseconds.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,10 +232,10 @@ items:
       description: The sequence number.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the writer lock has been granted to any thread since the sequence number was obtained; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the writer lock has been granted to any thread since the sequence number was obtained; otherwise, `false`.'
   overload: System.Threading.ReaderWriterLock.AnyWritersSince*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -270,7 +270,7 @@ items:
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
     description: The address of <code>lockCookie</code> is a null pointer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,7 +294,7 @@ items:
     parameters: []
   overload: System.Threading.ReaderWriterLock.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,10 +319,10 @@ items:
     content: public bool IsReaderLockHeld { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread holds a reader lock; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread holds a reader lock; otherwise, `false`.'
   overload: System.Threading.ReaderWriterLock.IsReaderLockHeld*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -347,10 +347,10 @@ items:
     content: public bool IsWriterLockHeld { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread holds the writer lock; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread holds the writer lock; otherwise, `false`.'
   overload: System.Threading.ReaderWriterLock.IsWriterLockHeld*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -379,7 +379,7 @@ items:
       description: A <xref href="System.Threading.LockCookie"></xref> value representing the released lock.
   overload: System.Threading.ReaderWriterLock.ReleaseLock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,7 +408,7 @@ items:
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
     description: The thread does not have any reader or writer locks.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -437,7 +437,7 @@ items:
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
     description: The thread does not have the writer lock.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -469,7 +469,7 @@ items:
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
     description: The address of <code>lockCookie</code> is a null pointer.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,7 +486,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: Upgrades a reader lock to the writer lock, using an <xref uid="langword_csharp_Int32" name="Int32" href=""></xref> value for the time-out.
+  summary: Upgrades a reader lock to the writer lock, using an `Int32` value for the time-out.
   remarks: "When a thread calls `UpgradeToWriterLock` the reader lock is released, regardless of the lock count, and the thread goes to the end of the queue for the writer lock. Thus, other threads might write to the resource before the thread that requested the upgrade is granted the writer lock.  \n  \n> [!IMPORTANT]\n>  The time-out exception is not thrown until the thread that called the UpgradeToWriterLock method can reacquire the reader lock. If there are no other threads waiting for the writer lock, this happens immediately. However, if another thread is queued for the writer lock, the thread that called the UpgradeToWriterLock method cannot reacquire the reader lock until all current readers have released their locks, and one thread has acquired and released the writer lock. This is true even if the other thread that requested the writer lock requested it after the current thread called the UpgradeToWriterLock method.  \n  \n To restore the lock state, call <xref:System.Threading.ReaderWriterLock.DowngradeFromWriterLock%2A> using the <xref:System.Threading.LockCookie> returned by `UpgradeToWriterLock`. Do not use this `LockCookie` with <xref:System.Threading.ReaderWriterLock.RestoreLock%2A>.  \n  \n When a thread has no reader lock, do not use `UpgradeToWriterLock`. Use <xref:System.Threading.ReaderWriterLock.AcquireWriterLock%2A> instead.  \n  \n For valid time-out values, see <xref:System.Threading.ReaderWriterLock>."
   example:
   - "The following code example shows how to request a reader lock, upgrade the reader lock to a writer lock, and downgrade to a reader lock again.  \n  \n This code is part of a larger example provided for the <xref:System.Threading.ReaderWriterLock> class.  \n  \n [!code-cpp[System.Threading.ReaderWriterLock#2](~/add/codesnippet/cpp/m-system.threading.reade_7_1.cpp)]\n [!code-cs[System.Threading.ReaderWriterLock#2](~/add/codesnippet/csharp/m-system.threading.reade_7_1.cs)]\n [!code-vb[System.Threading.ReaderWriterLock#2](~/add/codesnippet/visualbasic/m-system.threading.reade_7_1.vb)]  \n[!code-cpp[System.Threading.ReaderWriterLock#5](~/add/codesnippet/cpp/m-system.threading.reade_7_2.cpp)]\n[!code-cs[System.Threading.ReaderWriterLock#5](~/add/codesnippet/csharp/m-system.threading.reade_7_2.cs)]\n[!code-vb[System.Threading.ReaderWriterLock#5](~/add/codesnippet/visualbasic/m-system.threading.reade_7_2.vb)]  \n[!code-cpp[System.Threading.ReaderWriterLock#7](~/add/codesnippet/cpp/m-system.threading.reade_7_3.cpp)]\n[!code-cs[System.Threading.ReaderWriterLock#7](~/add/codesnippet/csharp/m-system.threading.reade_7_3.cs)]\n[!code-vb[System.Threading.ReaderWriterLock#7](~/add/codesnippet/visualbasic/m-system.threading.reade_7_3.vb)]"
@@ -504,7 +504,7 @@ items:
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
     description: <code>millisecondsTimeout</code> expires before the lock request is granted.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -521,14 +521,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: Upgrades a reader lock to the writer lock, using a <xref uid="langword_csharp_TimeSpan" name="TimeSpan" href=""></xref> value for the time-out.
+  summary: Upgrades a reader lock to the writer lock, using a `TimeSpan` value for the time-out.
   remarks: "When a thread calls `UpgradeToWriterLock` the reader lock is released, regardless of the lock count, and the thread goes to the end of the queue for the writer lock. Thus, other threads might write to the resource before the thread that requested the upgrade is granted the writer lock.  \n  \n> [!IMPORTANT]\n>  The time-out exception is not thrown until the thread that called the <xref:System.Threading.ReaderWriterLock.UpgradeToWriterLock%2A> method can reacquire the reader lock. If there are no other threads waiting for the writer lock, this happens immediately. However, if another thread is queued for the writer lock, the thread that called the <xref:System.Threading.ReaderWriterLock.UpgradeToWriterLock%2A> method cannot reacquire the reader lock until all current readers have released their locks, and one thread has acquired and released the writer lock. This is true even if the other thread that requested the writer lock requested it after the current thread called the <xref:System.Threading.ReaderWriterLock.UpgradeToWriterLock%2A> method.  \n  \n To restore the lock state, call <xref:System.Threading.ReaderWriterLock.DowngradeFromWriterLock%2A> using the <xref:System.Threading.LockCookie> returned by `UpgradeToWriterLock`. Do not use this `LockCookie` with <xref:System.Threading.ReaderWriterLock.RestoreLock%2A>.  \n  \n When a thread has no reader lock, do not use `UpgradeToWriterLock`. Use <xref:System.Threading.ReaderWriterLock.AcquireWriterLock%2A> instead.  \n  \n For valid time-out values, see <xref:System.Threading.ReaderWriterLock>."
   syntax:
     content: public System.Threading.LockCookie UpgradeToWriterLock (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: The <xref uid="langword_csharp_TimeSpan" name="TimeSpan" href=""></xref> specifying the time-out period.
+      description: The `TimeSpan` specifying the time-out period.
     return:
       type: System.Threading.LockCookie
       description: A <xref href="System.Threading.LockCookie"></xref> value.
@@ -540,7 +540,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>timeout</code> specifies a negative value other than -1 milliseconds.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -568,7 +568,7 @@ items:
       description: The current sequence number.
   overload: System.Threading.ReaderWriterLock.WriterSeqNum*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

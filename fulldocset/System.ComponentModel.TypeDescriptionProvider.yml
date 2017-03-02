@@ -39,7 +39,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -63,7 +63,7 @@ items:
     parameters: []
   overload: System.ComponentModel.TypeDescriptionProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,7 +90,7 @@ items:
       description: The parent type description provider.
   overload: System.ComponentModel.TypeDescriptionProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -117,10 +117,10 @@ items:
       description: An optional service provider.
     - id: objectType
       type: System.Type
-      description: The type of object to create. This parameter is never <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The type of object to create. This parameter is never `null`.
     - id: argTypes
       type: System.Type[]
-      description: An optional array of types that represent the parameter types to be passed to the object's constructor. This array can be <xref uid="langword_csharp_null" name="null" href=""></xref> or of zero length.
+      description: An optional array of types that represent the parameter types to be passed to the object's constructor. This array can be `null` or of zero length.
     - id: args
       type: System.Object[]
       description: An optional array of parameter values to pass to the object's constructor.
@@ -129,7 +129,7 @@ items:
       description: The substitute <xref href="System.Object"></xref>.
   overload: System.ComponentModel.TypeDescriptionProvider.CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -156,10 +156,10 @@ items:
       description: The object for which to get the cache.
     return:
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> if the provided object supports caching; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> if the provided object supports caching; otherwise, `null`.
   overload: System.ComponentModel.TypeDescriptionProvider.GetCache*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -189,7 +189,7 @@ items:
       description: An <xref href="System.ComponentModel.ICustomTypeDescriptor"></xref> that can provide extended metadata for the object.
   overload: System.ComponentModel.TypeDescriptionProvider.GetExtendedTypeDescriptor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -220,8 +220,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>instance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>instance</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.TypeDescriptionProvider.GetFullComponentName(System.Object)
   id: GetFullComponentName(System.Object)
@@ -235,7 +235,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: Gets the name of the specified component, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the component has no name.
+  summary: Gets the name of the specified component, or `null` if the component has no name.
   syntax:
     content: public virtual string GetFullComponentName (object component);
     parameters:
@@ -249,8 +249,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>component</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>component</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -274,7 +274,7 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: An instance of the type (should not be <xref uid="langword_csharp_null" name="null" href=""></xref>).
+      description: An instance of the type (should not be `null`).
     return:
       type: System.Type
       description: The type of reflection for this <code>instance</code>.
@@ -282,8 +282,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>instance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>instance</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -315,8 +315,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>objectType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>objectType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,13 +343,13 @@ items:
       description: The type of object for which to retrieve the <xref href="System.Reflection.IReflect"></xref>.
     - id: instance
       type: System.Object
-      description: An instance of the type. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An instance of the type. Can be `null`.
     return:
       type: System.Type
       description: The type of reflection for this <code>objectType</code>.
   overload: System.ComponentModel.TypeDescriptionProvider.GetReflectionType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -381,8 +381,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>reflectionType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>reflectionType</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.TypeDescriptionProvider.GetTypeDescriptor(System.Object)
   id: GetTypeDescriptor(System.Object)
@@ -402,7 +402,7 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: An instance of the type. Can be <xref uid="langword_csharp_null" name="null" href=""></xref> if no instance was passed to the <xref href="System.ComponentModel.TypeDescriptor"></xref>.
+      description: An instance of the type. Can be `null` if no instance was passed to the <xref href="System.ComponentModel.TypeDescriptor"></xref>.
     return:
       type: System.ComponentModel.ICustomTypeDescriptor
       description: An <xref href="System.ComponentModel.ICustomTypeDescriptor"></xref> that can provide metadata for the type.
@@ -410,8 +410,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>instance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>instance</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,7 +440,7 @@ items:
       description: An <xref href="System.ComponentModel.ICustomTypeDescriptor"></xref> that can provide metadata for the type.
   overload: System.ComponentModel.TypeDescriptionProvider.GetTypeDescriptor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,13 +467,13 @@ items:
       description: The type of object for which to retrieve the type descriptor.
     - id: instance
       type: System.Object
-      description: An instance of the type. Can be <xref uid="langword_csharp_null" name="null" href=""></xref> if no instance was passed to the <xref href="System.ComponentModel.TypeDescriptor"></xref>.
+      description: An instance of the type. Can be `null` if no instance was passed to the <xref href="System.ComponentModel.TypeDescriptor"></xref>.
     return:
       type: System.ComponentModel.ICustomTypeDescriptor
       description: An <xref href="System.ComponentModel.ICustomTypeDescriptor"></xref> that can provide metadata for the type.
   overload: System.ComponentModel.TypeDescriptionProvider.GetTypeDescriptor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -499,13 +499,13 @@ items:
       description: The type to test for compatibility.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>type</code> is compatible with the type description and its chain of type description providers; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>type</code> is compatible with the type description and its chain of type description providers; otherwise, `false`.'
   overload: System.ComponentModel.TypeDescriptionProvider.IsSupportedType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>type</code> is `null`.
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -556,8 +556,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -570,8 +570,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -614,8 +614,8 @@ references:
 - uid: System.ComponentModel.IExtenderProvider[]
   parent: System.ComponentModel
   isExternal: false
-  name: IExtenderProvider
-  nameWithType: IExtenderProvider
+  name: IExtenderProvider[]
+  nameWithType: IExtenderProvider[]
   fullName: System.ComponentModel.IExtenderProvider[]
   spec.csharp:
   - uid: System.ComponentModel.IExtenderProvider

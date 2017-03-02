@@ -28,7 +28,7 @@ items:
   - System.Object
   - System.ValueType
   - System.Enum
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -45,14 +45,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Opens the file if it exists and seeks to the end of the file, or creates a new file. This requires &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Append?displayProperty=fullName&gt; permission. <xref uid="langword_csharp_FileMode.Append" name="FileMode.Append" href=""></xref> can be used only in conjunction with <xref uid="langword_csharp_FileAccess.Write" name="FileAccess.Write" href=""></xref>. Trying to seek to a position before the end of the file throws an <xref href="System.IO.IOException"></xref> exception, and any attempt to read fails and throws a <xref href="System.NotSupportedException"></xref> exception.
+  summary: Opens the file if it exists and seeks to the end of the file, or creates a new file. This requires &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Append?displayProperty=fullName&gt; permission. `FileMode.Append` can be used only in conjunction with `FileAccess.Write`. Trying to seek to a position before the end of the file throws an <xref href="System.IO.IOException"></xref> exception, and any attempt to read fails and throws a <xref href="System.NotSupportedException"></xref> exception.
   syntax:
     content: Append
     return:
       type: System.IO.FileMode
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -69,14 +69,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Specifies that the operating system should create a new file. If the file already exists, it will be overwritten. This requires &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permission. <xref uid="langword_csharp_FileMode.Create" name="FileMode.Create" href=""></xref> is equivalent to requesting that if the file does not exist, use CreateNew; otherwise, use Truncate. If the file already exists but is a hidden file, an <xref href="System.UnauthorizedAccessException"></xref> exception is thrown.
+  summary: Specifies that the operating system should create a new file. If the file already exists, it will be overwritten. This requires &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permission. `FileMode.Create` is equivalent to requesting that if the file does not exist, use CreateNew; otherwise, use Truncate. If the file already exists but is a hidden file, an <xref href="System.UnauthorizedAccessException"></xref> exception is thrown.
   syntax:
     content: Create
     return:
       type: System.IO.FileMode
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -100,7 +100,7 @@ items:
       type: System.IO.FileMode
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,7 +124,7 @@ items:
       type: System.IO.FileMode
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,14 +141,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Specifies that the operating system should open a file if it exists; otherwise, a new file should be created. If the file is opened with <xref uid="langword_csharp_FileAccess.Read" name="FileAccess.Read" href=""></xref>, &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Read?displayProperty=fullName&gt; permission is required. If the file access is <xref uid="langword_csharp_FileAccess.Write" name="FileAccess.Write" href=""></xref>, &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permission is required. If the file is opened with <xref uid="langword_csharp_FileAccess.ReadWrite" name="FileAccess.ReadWrite" href=""></xref>, both &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Read?displayProperty=fullName&gt; and &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permissions are required.
+  summary: Specifies that the operating system should open a file if it exists; otherwise, a new file should be created. If the file is opened with `FileAccess.Read`, &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Read?displayProperty=fullName&gt; permission is required. If the file access is `FileAccess.Write`, &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permission is required. If the file is opened with `FileAccess.ReadWrite`, both &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Read?displayProperty=fullName&gt; and &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permissions are required.
   syntax:
     content: OpenOrCreate
     return:
       type: System.IO.FileMode
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,14 +165,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: Specifies that the operating system should open an existing file. When the file is opened, it should be truncated so that its size is zero bytes. This requires &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permission. Attempts to read from a file opened with <xref uid="langword_csharp_FileMode.Truncate" name="FileMode.Truncate" href=""></xref> cause an <xref href="System.ArgumentException"></xref> exception.
+  summary: Specifies that the operating system should open an existing file. When the file is opened, it should be truncated so that its size is zero bytes. This requires &lt;xref:System.Security.Permissions.FileIOPermissionAccess.Write?displayProperty=fullName&gt; permission. Attempts to read from a file opened with `FileMode.Truncate` cause an <xref href="System.ArgumentException"></xref> exception.
   syntax:
     content: Truncate
     return:
       type: System.IO.FileMode
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

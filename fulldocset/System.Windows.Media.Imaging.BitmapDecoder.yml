@@ -47,7 +47,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -69,7 +69,7 @@ items:
     parameters: []
   overload: System.Windows.Media.Imaging.BitmapDecoder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -96,7 +96,7 @@ items:
       description: An instance of <xref href="System.Windows.Media.Imaging.BitmapCodecInfo"></xref>. This property has no default value.
   overload: System.Windows.Media.Imaging.BitmapDecoder.CodecInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -117,10 +117,10 @@ items:
     content: public virtual System.Collections.ObjectModel.ReadOnlyCollection<System.Windows.Media.ColorContext> ColorContexts { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.Windows.Media.ColorContext}
-      description: An instance of <xref href="System.Windows.Media.ColorContext"></xref> that represents the embedded color profile of the bitmap. If no color profile has been defined, this property returns <xref uid="langword_csharp_null" name="null" href=""></xref>. This property has no default value.
+      description: An instance of <xref href="System.Windows.Media.ColorContext"></xref> that represents the embedded color profile of the bitmap. If no color profile has been defined, this property returns `null`. This property has no default value.
   overload: System.Windows.Media.Imaging.BitmapDecoder.ColorContexts*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -157,7 +157,7 @@ items:
       description: A <xref href="System.Windows.Media.Imaging.BitmapDecoder"></xref> from a <xref href="System.IO.Stream"></xref> by using the specified <xref href="System.Windows.Media.Imaging.BitmapCreateOptions"></xref> and <xref href="System.Windows.Media.Imaging.BitmapCacheOption"></xref>.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -196,11 +196,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>bitmapUri</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>bitmapUri</code> is `null`.
   - type: System.IO.FileFormatException
     commentId: T:System.IO.FileFormatException
     description: The <code>bitmapUri</code> specifies a class ID of an unsupported format type.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -238,7 +238,7 @@ items:
       description: A <xref href="System.Windows.Media.Imaging.BitmapDecoder"></xref> from a <xref href="System.Uri"></xref> by using the specified <xref href="System.Windows.Media.Imaging.BitmapCreateOptions"></xref>, <xref href="System.Windows.Media.Imaging.BitmapCacheOption"></xref> and <xref href="System.Net.Cache.RequestCachePolicy"></xref>.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -272,7 +272,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: The decoder is not a built in decoder.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -296,7 +296,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -320,7 +320,7 @@ items:
       type: System.EventHandler{System.Windows.Media.ExceptionEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -344,7 +344,7 @@ items:
       type: System.EventHandler{System.Windows.Media.Imaging.DownloadProgressEventArgs}
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -367,7 +367,7 @@ items:
     parameters: []
   overload: System.Windows.Media.Imaging.BitmapDecoder.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Windows.Media.Imaging.BitmapDecoder.Frames
   id: Frames
@@ -392,7 +392,7 @@ items:
       description: An instance of <xref href="System.Windows.Media.Imaging.BitmapFrame"></xref>. This property has no default value.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Frames*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -413,10 +413,10 @@ items:
     content: public virtual bool IsDownloading { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the decoder is downloading content; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the decoder is downloading content; otherwise, `false`.'
   overload: System.Windows.Media.Imaging.BitmapDecoder.IsDownloading*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -438,10 +438,10 @@ items:
     content: public virtual System.Windows.Media.Imaging.BitmapMetadata Metadata { get; }
     return:
       type: System.Windows.Media.Imaging.BitmapMetadata
-      description: An instance of <xref href="System.Windows.Media.Imaging.BitmapMetadata"></xref> that represents global metadata associated with a bitmap. If no metadata is defined, this property returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An instance of <xref href="System.Windows.Media.Imaging.BitmapMetadata"></xref> that represents global metadata associated with a bitmap. If no metadata is defined, this property returns `null`.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Metadata*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -462,10 +462,10 @@ items:
     content: public virtual System.Windows.Media.Imaging.BitmapPalette Palette { get; }
     return:
       type: System.Windows.Media.Imaging.BitmapPalette
-      description: The <xref href="System.Windows.Media.Imaging.BitmapPalette"></xref> associated with this decoder. If the bitmap has no palette, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned. This property has no default value.
+      description: The <xref href="System.Windows.Media.Imaging.BitmapPalette"></xref> associated with this decoder. If the bitmap has no palette, `null` is returned. This property has no default value.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Palette*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -487,10 +487,10 @@ items:
     content: public virtual System.Windows.Media.Imaging.BitmapSource Preview { get; }
     return:
       type: System.Windows.Media.Imaging.BitmapSource
-      description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> that represents the global preview of the bitmap. If no preview is defined, this property returns <xref uid="langword_csharp_null" name="null" href=""></xref>. This property has no default value.
+      description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> that represents the global preview of the bitmap. If no preview is defined, this property returns `null`. This property has no default value.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Preview*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -512,10 +512,10 @@ items:
     content: public virtual System.Windows.Media.Imaging.BitmapSource Thumbnail { get; }
     return:
       type: System.Windows.Media.Imaging.BitmapSource
-      description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> that represents a thumbnail of the bitmap. If no thumbnail is defined, this property returns <xref uid="langword_csharp_null" name="null" href=""></xref>. This property has no default value.
+      description: A <xref href="System.Windows.Media.Imaging.BitmapSource"></xref> that represents a thumbnail of the bitmap. If no thumbnail is defined, this property returns `null`. This property has no default value.
   overload: System.Windows.Media.Imaging.BitmapDecoder.Thumbnail*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -540,7 +540,7 @@ items:
       description: A string representation of the <xref href="System.Windows.Media.Imaging.BitmapDecoder"></xref>.
   overload: System.Windows.Media.Imaging.BitmapDecoder.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

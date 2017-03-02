@@ -29,7 +29,7 @@ items:
   implements:
   - System.Collections.IEnumerable
   - System.Linq.IQueryable
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.Attach(System.Object)
@@ -54,7 +54,7 @@ items:
       description: The entity to be attached.
   overload: System.Data.Linq.ITable.Attach*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.Attach(System.Object,System.Boolean)
@@ -79,10 +79,10 @@ items:
       description: The collection of entities.
     - id: asModified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to attach the entities as modified.
+      description: '`true` to attach the entities as modified.'
   overload: System.Data.Linq.ITable.Attach*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.Attach(System.Object,System.Object)
@@ -110,7 +110,7 @@ items:
       description: An instance of the same entity type with data members that contain the original values.
   overload: System.Data.Linq.ITable.Attach*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.AttachAll(System.Collections.IEnumerable)
@@ -135,7 +135,7 @@ items:
       description: The collection of entities.
   overload: System.Data.Linq.ITable.AttachAll*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.AttachAll(System.Collections.IEnumerable,System.Boolean)
@@ -160,10 +160,10 @@ items:
       description: The collection of entities.
     - id: asModified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to attach the entities as modified.
+      description: '`true` to attach the entities as modified.'
   overload: System.Data.Linq.ITable.AttachAll*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.Context
@@ -186,7 +186,7 @@ items:
       description: The <xref href="System.Data.Linq.DataContext"></xref> used to retrieve the <xref href="System.Data.Linq.ITable"></xref>.
   overload: System.Data.Linq.ITable.Context*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.DeleteAllOnSubmit(System.Collections.IEnumerable)
@@ -201,7 +201,7 @@ items:
   assemblies:
   - System.Data.Linq
   namespace: System.Data.Linq
-  summary: Puts all entities from the collection into a <xref uid="langword_csharp_pending delete" name="pending delete" href=""></xref> state.
+  summary: Puts all entities from the collection into a `pending delete` state.
   remarks: Call <xref:System.Data.Linq.DataContext.SubmitChanges%2A> to perform the actual deletion in the database.
   syntax:
     content: public void DeleteAllOnSubmit (System.Collections.IEnumerable entities);
@@ -211,7 +211,7 @@ items:
       description: The collection from which all items are removed.
   overload: System.Data.Linq.ITable.DeleteAllOnSubmit*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.DeleteOnSubmit(System.Object)
@@ -226,7 +226,7 @@ items:
   assemblies:
   - System.Data.Linq
   namespace: System.Data.Linq
-  summary: Puts an entity from this table into a <xref uid="langword_csharp_pending delete" name="pending delete" href=""></xref> state.
+  summary: Puts an entity from this table into a `pending delete` state.
   remarks: Disconnected entities must be attached before they can be deleted. Call <xref:System.Data.Linq.DataContext.SubmitChanges%2A> to perform the actual deletion in the database.
   syntax:
     content: public void DeleteOnSubmit (object entity);
@@ -236,7 +236,7 @@ items:
       description: The entity to be removed.
   overload: System.Data.Linq.ITable.DeleteOnSubmit*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.GetModifiedMembers(System.Object)
@@ -263,7 +263,7 @@ items:
       description: To be added.
   overload: System.Data.Linq.ITable.GetModifiedMembers*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.GetOriginalEntityState(System.Object)
@@ -291,7 +291,7 @@ items:
       description: A copy of the original entity. The value is null if the entity passed in is not tracked. Disconnected entities sent back by a client must be attached before the <xref href="System.Data.Linq.DataContext"></xref> can begin to track their state. The "original state" of a newly attached entity is established based on values supplied by the client. The data context does not track the state of disconnected entities.
   overload: System.Data.Linq.ITable.GetOriginalEntityState*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.InsertAllOnSubmit(System.Collections.IEnumerable)
@@ -306,7 +306,7 @@ items:
   assemblies:
   - System.Data.Linq
   namespace: System.Data.Linq
-  summary: Adds all entities of a collection to the <xref href="System.Data.Linq.DataContext"></xref> in a <xref uid="langword_csharp_pending insert" name="pending insert" href=""></xref> state.
+  summary: Adds all entities of a collection to the <xref href="System.Data.Linq.DataContext"></xref> in a `pending insert` state.
   remarks: Call <xref:System.Data.Linq.DataContext.SubmitChanges%2A> to perform the actual insertion into the database.
   syntax:
     content: public void InsertAllOnSubmit (System.Collections.IEnumerable entities);
@@ -316,7 +316,7 @@ items:
       description: The entities to add.
   overload: System.Data.Linq.ITable.InsertAllOnSubmit*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.InsertOnSubmit(System.Object)
@@ -331,7 +331,7 @@ items:
   assemblies:
   - System.Data.Linq
   namespace: System.Data.Linq
-  summary: Adds an entity in a <xref uid="langword_csharp_pending insert" name="pending insert" href=""></xref> state to this table.
+  summary: Adds an entity in a `pending insert` state to this table.
   remarks: Call <xref:System.Data.Linq.DataContext.SubmitChanges%2A> to perform the actual insertion into the database.
   syntax:
     content: public void InsertOnSubmit (object entity);
@@ -341,7 +341,7 @@ items:
       description: The entity to be added.
   overload: System.Data.Linq.ITable.InsertOnSubmit*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Data.Linq.ITable.IsReadOnly
@@ -361,10 +361,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the entity type does not have a primary key; otherwise, false.
+      description: Returns `true` if the entity type does not have a primary key; otherwise, false.
   overload: System.Data.Linq.ITable.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:
@@ -449,8 +449,8 @@ references:
 - uid: System.Data.Linq.ModifiedMemberInfo[]
   parent: System.Data.Linq
   isExternal: false
-  name: ModifiedMemberInfo
-  nameWithType: ModifiedMemberInfo
+  name: ModifiedMemberInfo[]
+  nameWithType: ModifiedMemberInfo[]
   fullName: System.Data.Linq.ModifiedMemberInfo[]
   spec.csharp:
   - uid: System.Data.Linq.ModifiedMemberInfo

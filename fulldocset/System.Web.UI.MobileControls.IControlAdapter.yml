@@ -31,7 +31,7 @@ items:
 
       public interface IControlAdapter
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -56,7 +56,7 @@ items:
       description: A strongly typed reference to the associated control.
   overload: System.Web.UI.MobileControls.IControlAdapter.Control*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,10 +79,10 @@ items:
     parameters:
     - id: doDataBind
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the instantiated templates must bind to available data (which usually happens on the first request). Returns <xref uid="langword_csharp_false" name="false" href=""></xref> if the templates must not bind to data, and instead rely on view state to fill them in (which usually happens on subsequent postbacks).
+      description: Returns `true` if the instantiated templates must bind to available data (which usually happens on the first request). Returns `false` if the templates must not bind to data, and instead rely on view state to fill them in (which usually happens on subsequent postbacks).
   overload: System.Web.UI.MobileControls.IControlAdapter.CreateTemplatedUI*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,7 +99,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the event was handled. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if the event was handled. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: This method is called by a control when it receives a postback event notification, to check whether the event is adapter specific. If the control implements <xref:System.Web.UI.IPostBackEventHandler> and receives a postback event, the <xref:System.Web.UI.IPostBackEventHandler.RaisePostBackEvent%2A> method of the control adapter is called. If events sent to the control can vary depending on the target device, the control implementation of this method must call the HandlePostBackEvent method of the control adapter. This method returns `true` or `false`, indicating whether the device adapter handled the event. It returns `false` by default.
   syntax:
     content: public bool HandlePostBackEvent (string eventArgument);
@@ -109,10 +109,10 @@ items:
       description: Name of the event.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the postback event was handled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the postback event was handled; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.IControlAdapter.HandlePostBackEvent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -138,7 +138,7 @@ items:
       description: The approximate weight of a single item in the control.
   overload: System.Web.UI.MobileControls.IControlAdapter.ItemWeight*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,7 +165,7 @@ items:
       description: The current view state.
   overload: System.Web.UI.MobileControls.IControlAdapter.LoadAdapterState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,7 +182,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the adapter handles loading the post data. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if the adapter handles loading the post data. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: "This method is called when a control that implements the <xref:System.Web.UI.IPostBackDataHandler> interface has its own <xref:System.Web.UI.IPostBackDataHandler.LoadPostData%2A> method invoked.  \n  \n> [!NOTE]\n>  Different devices might provide their data back to the calling server in different ways. An example is the difference between how WML and HTML report back the results of a <xref:System.Web.UI.MobileControls.SelectionList>."
   syntax:
     content: public bool LoadPostData (string postDataKey, System.Collections.Specialized.NameValueCollection postCollection, object controlPrivateData, out bool dataChanged);
@@ -198,13 +198,13 @@ items:
       description: Provides a place to send private data to the control that might be required for loading of post data. The control determines the type that is passed to the parameter.
     - id: dataChanged
       type: System.Boolean
-      description: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the required the object in `privateControlData` was changed, so the <xref:System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent*> event can be raised.
+      description: Returns `true` if the required the object in `privateControlData` was changed, so the <xref:System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent*> event can be raised.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the adapter handles loading the post data; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the adapter handles loading the post data; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.IControlAdapter.LoadPostData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -231,7 +231,7 @@ items:
       description: An object (defined by <xref href="System.EventArgs"></xref>) that contains event data.
   overload: System.Web.UI.MobileControls.IControlAdapter.OnInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,7 +258,7 @@ items:
       description: An object (defined by <xref href="System.EventArgs"></xref>) that contains event data.
   overload: System.Web.UI.MobileControls.IControlAdapter.OnLoad*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -284,7 +284,7 @@ items:
       description: An object (defined by <xref href="System.EventArgs"></xref>) that contains event data.
   overload: System.Web.UI.MobileControls.IControlAdapter.OnPreRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -311,7 +311,7 @@ items:
       description: An object (defined by <xref href="System.EventArgs"></xref>) that contains event data.
   overload: System.Web.UI.MobileControls.IControlAdapter.OnUnload*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -337,7 +337,7 @@ items:
       description: The page associated with the device adapter.
   overload: System.Web.UI.MobileControls.IControlAdapter.Page*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -364,7 +364,7 @@ items:
       description: The text writer to receive output.
   overload: System.Web.UI.MobileControls.IControlAdapter.Render*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -391,7 +391,7 @@ items:
       description: The newly saved adapter state.
   overload: System.Web.UI.MobileControls.IControlAdapter.SaveAdapterState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -417,7 +417,7 @@ items:
       description: The approximate weight of the control, in characters.
   overload: System.Web.UI.MobileControls.IControlAdapter.VisibleWeight*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

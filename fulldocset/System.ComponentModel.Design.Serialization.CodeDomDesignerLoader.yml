@@ -63,7 +63,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,7 +86,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,7 +112,7 @@ items:
       description: The CodeDomProvider this designer loader will use
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.CodeDomProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -136,7 +136,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,7 +163,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.ComponentModel.Design.Serialization.IDesignerLoaderHost"></xref> has not been initialized, or the designer loader did not supply a type resolution service, which is required for CodeDom serialization.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,7 +187,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.CodeDomProvider*> decides a reload is required; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref:System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.CodeDomProvider*> decides a reload is required; otherwise, `false`.'
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.IsReloadNeeded*
   exceptions:
   - type: System.NotSupportedException
@@ -196,7 +196,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The class can be designed, but it is not the first class in the file, or the designer could not be shown for this file because none of the classes within it can be designed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -220,7 +220,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.OnBeginLoad*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
     parameters: []
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.OnBeginUnload*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -276,7 +276,7 @@ items:
       description: The new name of the component.
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.OnComponentRename*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -300,13 +300,13 @@ items:
     parameters:
     - id: successful
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the load completed successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the load completed successfully; otherwise, `false`.'
     - id: errors
       type: System.Collections.ICollection
       description: An <xref href="System.Collections.ICollection"></xref> of objects (usually exceptions) that were reported as errors.
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.OnEndLoad*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -333,7 +333,7 @@ items:
       description: A <xref href="System.CodeDom.CodeCompileUnit"></xref> resulting from a parse operation.
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.Parse*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The class can be designed, but it is not the first class in the file, or the designer could not be shown for this file because none of the classes within it can be designed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -399,7 +399,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The class can be designed, but it is not the first class in the file, or the designer could not be shown for this file because none of the classes within it can be designed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -432,7 +432,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>serializationData</code> is not a <xref href="System.ComponentModel.Design.Serialization.SerializationStore"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -465,7 +465,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.ComponentModel.Design.Serialization.ComponentSerializationService"></xref> was not found.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -500,8 +500,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>dataType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>dataType</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -528,13 +528,13 @@ items:
       description: The name to validate.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the name is valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the name is valid; otherwise, `false`.'
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.System#ComponentModel#Design#Serialization#INameCreationService#IsValidName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>name</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -563,11 +563,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>name</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>name</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>name</code> is not a valid identifier, or there is already a component with the same name.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -593,7 +593,7 @@ items:
       description: An <xref href="System.ComponentModel.Design.ITypeResolutionService"></xref> that the CodeDOM serializers will use when resolving types.
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.TypeResolutionService*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -620,7 +620,7 @@ items:
       description: The <xref href="System.CodeDom.CodeCompileUnit"></xref> to be persisted.
   overload: System.ComponentModel.Design.Serialization.CodeDomDesignerLoader.Write*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

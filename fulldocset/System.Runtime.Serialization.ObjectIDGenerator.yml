@@ -30,7 +30,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -53,7 +53,7 @@ items:
     parameters: []
   overload: System.Runtime.Serialization.ObjectIDGenerator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -79,19 +79,19 @@ items:
       description: The object you want an ID for.
     - id: firstTime
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if `obj` was not previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if `obj` was not previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, `false`.'
     return:
       type: System.Int64
-      description: The object's ID is used for serialization. <code>firstTime</code> is set to <xref uid="langword_csharp_true" name="true" href=""></xref> if this is the first time the object has been identified; otherwise, it is set to <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: The object's ID is used for serialization. <code>firstTime</code> is set to `true` if this is the first time the object has been identified; otherwise, it is set to `false`.
   overload: System.Runtime.Serialization.ObjectIDGenerator.GetId*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref> has been asked to keep track of too many objects.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -118,7 +118,7 @@ items:
       description: The object you are asking for.
     - id: firstTime
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if `obj` was not previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if `obj` was not previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, `false`.'
     return:
       type: System.Int64
       description: The object ID of <code>obj</code> if previously known to the <xref href="System.Runtime.Serialization.ObjectIDGenerator"></xref>; otherwise, zero.
@@ -126,8 +126,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The <code>obj</code> parameter is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

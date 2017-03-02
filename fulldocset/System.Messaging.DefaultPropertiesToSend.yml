@@ -49,7 +49,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -73,7 +73,7 @@ items:
     parameters: []
   overload: System.Messaging.DefaultPropertiesToSend.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,10 +96,10 @@ items:
     content: public System.Messaging.AcknowledgeTypes AcknowledgeType { get; set; }
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: One of the <xref href="System.Messaging.AcknowledgeTypes"></xref> enumeration values. This value is used to determine the type of acknowledgment messages the system posts in the administration queue and when acknowledgments are returned to the sending application. The default is <xref uid="langword_csharp_AcknowledgeTypes.None" name="AcknowledgeTypes.None" href=""></xref>.
+      description: One of the <xref href="System.Messaging.AcknowledgeTypes"></xref> enumeration values. This value is used to determine the type of acknowledgment messages the system posts in the administration queue and when acknowledgments are returned to the sending application. The default is `AcknowledgeTypes.None`.
   overload: System.Messaging.DefaultPropertiesToSend.AcknowledgeType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,10 +122,10 @@ items:
     content: public System.Messaging.MessageQueue AdministrationQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: The <xref href="System.Messaging.MessageQueue"></xref> that specifies the administration queue used for system-generated acknowledgment messages. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Messaging.MessageQueue"></xref> that specifies the administration queue used for system-generated acknowledgment messages. The default is `null`.
   overload: System.Messaging.DefaultPropertiesToSend.AdministrationQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,7 +151,7 @@ items:
       description: Information specific to the application. The default is 0.
   overload: System.Messaging.DefaultPropertiesToSend.AppSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,10 +174,10 @@ items:
     content: public bool AttachSenderId { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if sender ID should be attached to the message; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if sender ID should be attached to the message; otherwise, `false`. The default is `true`.'
   overload: System.Messaging.DefaultPropertiesToSend.AttachSenderId*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -200,10 +200,10 @@ items:
     content: public System.Messaging.EncryptionAlgorithm EncryptionAlgorithm { get; set; }
     return:
       type: System.Messaging.EncryptionAlgorithm
-      description: One of the <xref href="System.Messaging.EncryptionAlgorithm"></xref> enumeration values. The default is <xref uid="langword_csharp_RC2" name="RC2" href=""></xref>.
+      description: One of the <xref href="System.Messaging.EncryptionAlgorithm"></xref> enumeration values. The default is `RC2`.
   overload: System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -229,7 +229,7 @@ items:
       description: An array of bytes that provides additional, application-defined information associated with the message. The default is a zero-length array.
   overload: System.Messaging.DefaultPropertiesToSend.Extension*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -252,10 +252,10 @@ items:
     content: public System.Messaging.HashAlgorithm HashAlgorithm { get; set; }
     return:
       type: System.Messaging.HashAlgorithm
-      description: One of the <xref href="System.Messaging.HashAlgorithm"></xref> enumeration values. The default is <xref uid="langword_csharp_MD5" name="MD5" href=""></xref>.
+      description: One of the <xref href="System.Messaging.HashAlgorithm"></xref> enumeration values. The default is `MD5`.
   overload: System.Messaging.DefaultPropertiesToSend.HashAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -281,7 +281,7 @@ items:
       description: The label of the message. The default is an empty string ("").
   overload: System.Messaging.DefaultPropertiesToSend.Label*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -304,10 +304,10 @@ items:
     content: public System.Messaging.MessagePriority Priority { get; set; }
     return:
       type: System.Messaging.MessagePriority
-      description: One of the <xref href="System.Messaging.MessagePriority"></xref> enumeration values that represents the priority level of a non-transactional message. The default is <xref uid="langword_csharp_Normal" name="Normal" href=""></xref>.
+      description: One of the <xref href="System.Messaging.MessagePriority"></xref> enumeration values that represents the priority level of a non-transactional message. The default is `Normal`.
   overload: System.Messaging.DefaultPropertiesToSend.Priority*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -330,10 +330,10 @@ items:
     content: public bool Recoverable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the message is guaranteed delivery by saving it to disk while en route; <xref uid="langword_csharp_false" name="false" href=""></xref> if delivery is not assured. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the message is guaranteed delivery by saving it to disk while en route; `false` if delivery is not assured. The default is `false`.'
   overload: System.Messaging.DefaultPropertiesToSend.Recoverable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -356,10 +356,10 @@ items:
     content: public System.Messaging.MessageQueue ResponseQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: The <xref href="System.Messaging.MessageQueue"></xref> to which application-generated response messages are returned. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Messaging.MessageQueue"></xref> to which application-generated response messages are returned. The default is `null`.
   overload: System.Messaging.DefaultPropertiesToSend.ResponseQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,7 +385,7 @@ items:
       description: The total time, in seconds, for a sent message to be received from the destination queue. The default is <xref href="System.Messaging.Message.InfiniteTimeout"></xref>.
   overload: System.Messaging.DefaultPropertiesToSend.TimeToBeReceived*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,7 +411,7 @@ items:
       description: The time limit in seconds for a message to reach the destination queue, from the time the message is sent. The default is <xref href="System.Messaging.Message.InfiniteTimeout"></xref>.
   overload: System.Messaging.DefaultPropertiesToSend.TimeToReachQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -434,10 +434,10 @@ items:
     content: public System.Messaging.MessageQueue TransactionStatusQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: The transaction status queue on the source computer, which is used for sending acknowledgement messages back to the sending application. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The transaction status queue on the source computer, which is used for sending acknowledgement messages back to the sending application. The default is `null`.
   overload: System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -460,10 +460,10 @@ items:
     content: public bool UseAuthentication { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the sending application requested authentication for the message; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the sending application requested authentication for the message; otherwise, `false`. The default is `false`.'
   overload: System.Messaging.DefaultPropertiesToSend.UseAuthentication*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,10 +486,10 @@ items:
     content: public bool UseDeadLetterQueue { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if message delivery failure should result in a copy of the message being sent to a dead-letter queue; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if message delivery failure should result in a copy of the message being sent to a dead-letter queue; otherwise, `false`. The default is `false`.'
   overload: System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,10 +512,10 @@ items:
     content: public bool UseEncryption { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to require Message Queuing to encrypt the message; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to require Message Queuing to encrypt the message; otherwise, `false`. The default is `false`.'
   overload: System.Messaging.DefaultPropertiesToSend.UseEncryption*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -538,10 +538,10 @@ items:
     content: public bool UseJournalQueue { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to require that a copy of a message be kept in the originating computer's machine journal after it has been successfully transmitted from the originating computer to the next step; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to require that a copy of a message be kept in the originating computer''s machine journal after it has been successfully transmitted from the originating computer to the next step; otherwise, `false`. The default is `false`.'
   overload: System.Messaging.DefaultPropertiesToSend.UseJournalQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -564,10 +564,10 @@ items:
     content: public bool UseTracing { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if each intermediate step made by the original message en route to the destination queue will generate a report to be sent to the system's report queue; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if each intermediate step made by the original message en route to the destination queue will generate a report to be sent to the system''s report queue; otherwise, `false`. The default is `false`.'
   overload: System.Messaging.DefaultPropertiesToSend.UseTracing*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -651,8 +651,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

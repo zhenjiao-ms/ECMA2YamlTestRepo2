@@ -42,7 +42,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -64,7 +64,7 @@ items:
     parameters: []
   overload: System.Windows.Documents.DocumentPaginator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -90,7 +90,7 @@ items:
       description: The original `userState` passed to <xref:System.Windows.Documents.DocumentPaginator.GetPageAsync*>, &lt;xref:System.Windows.Documents.DynamicDocumentPaginator.GetPageNumberAsync%2A?displayProperty=fullName&gt;, or <xref:System.Windows.Documents.DocumentPaginator.ComputePageCountAsync*> that identifies the asynchronous task to cancel.
   overload: System.Windows.Documents.DocumentPaginator.CancelAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -106,14 +106,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Documents
-  summary: Forces a pagination of the content, updates <xref:System.Windows.Documents.DocumentPaginator.PageCount*> with the new total, and sets <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid*> to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Forces a pagination of the content, updates <xref:System.Windows.Documents.DocumentPaginator.PageCount*> with the new total, and sets <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid*> to `true`.
   remarks: <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid%2A> will be `true` immediately after this is called. If content is modified or <xref:System.Windows.Documents.DocumentPaginator.PageSize%2A> is changed after this method is called, <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid%2A> will likely revert to `false`.
   syntax:
     content: public virtual void ComputePageCount ();
     parameters: []
   overload: System.Windows.Documents.DocumentPaginator.ComputePageCount*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -129,14 +129,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Documents
-  summary: Asynchronously, forces a pagination of the content, updates <xref:System.Windows.Documents.DocumentPaginator.PageCount*> with the new total, and sets <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid*> to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Asynchronously, forces a pagination of the content, updates <xref:System.Windows.Documents.DocumentPaginator.PageCount*> with the new total, and sets <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid*> to `true`.
   remarks: 'The only way to cancel the asynchronous operation of this method is to cancel all asynchronous operations. Contrast this with the other overload of this method: <xref:System.Windows.Documents.DocumentPaginator.ComputePageCountAsync%28System.Object%29>.'
   syntax:
     content: public virtual void ComputePageCountAsync ();
     parameters: []
   overload: System.Windows.Documents.DocumentPaginator.ComputePageCountAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -152,7 +152,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Documents
-  summary: Asynchronously, forces a pagination of the content, updates <xref:System.Windows.Documents.DocumentPaginator.PageCount*> with the new total, sets <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid*> to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Asynchronously, forces a pagination of the content, updates <xref:System.Windows.Documents.DocumentPaginator.PageCount*> with the new total, sets <xref:System.Windows.Documents.DocumentPaginator.IsPageCountValid*> to `true`.
   remarks: "The specified ID is assigned to the asynchronous task.  \n  \n This overload of the method makes it possible to cancel this asynchronous operation without cancelling all asynchronous operations."
   syntax:
     content: public virtual void ComputePageCountAsync (object userState);
@@ -162,7 +162,7 @@ items:
       description: A unique identifier for the asynchronous task.
   overload: System.Windows.Documents.DocumentPaginator.ComputePageCountAsync*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -185,7 +185,7 @@ items:
       type: System.ComponentModel.AsyncCompletedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -217,7 +217,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>pageNumber</code> is negative.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -246,7 +246,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>pageNumber</code> is negative.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -278,7 +278,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>pageNumber</code> is negative.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -301,7 +301,7 @@ items:
       type: System.Windows.Documents.GetPageCompletedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -322,10 +322,10 @@ items:
     content: public abstract bool IsPageCountValid { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if pagination is complete and <xref:System.Windows.Documents.DocumentPaginator.PageCount*> is the total number of pages; otherwise, <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>, if pagination is in process and <xref:System.Windows.Documents.DocumentPaginator.PageCount*> is the number of pages currently formatted (not the total).  \n  \n This value may revert to <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>, after being <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, if <xref:System.Windows.Documents.DocumentPaginator.PageSize*> or content changes; because those events would force a repagination."
+      description: "`true` if pagination is complete and <xref:System.Windows.Documents.DocumentPaginator.PageCount*> is the total number of pages; otherwise, `false`, if pagination is in process and <xref:System.Windows.Documents.DocumentPaginator.PageCount*> is the number of pages currently formatted (not the total).  \n  \n This value may revert to `false`, after being `true`, if <xref:System.Windows.Documents.DocumentPaginator.PageSize*> or content changes; because those events would force a repagination."
   overload: System.Windows.Documents.DocumentPaginator.IsPageCountValid*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -350,7 +350,7 @@ items:
       description: An <xref href="System.ComponentModel.AsyncCompletedEventArgs"></xref> that contains the event data.
   overload: System.Windows.Documents.DocumentPaginator.OnComputePageCountCompleted*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -375,7 +375,7 @@ items:
       description: A <xref href="System.Windows.Documents.GetPageCompletedEventArgs"></xref> that contains the event data.
   overload: System.Windows.Documents.DocumentPaginator.OnGetPageCompleted*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -400,7 +400,7 @@ items:
       description: A <xref href="System.Windows.Documents.PagesChangedEventArgs"></xref> that contains the event data.
   overload: System.Windows.Documents.DocumentPaginator.OnPagesChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -425,7 +425,7 @@ items:
       description: A count of the number of pages that have been formatted.
   overload: System.Windows.Documents.DocumentPaginator.PageCount*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -448,7 +448,7 @@ items:
       type: System.Windows.Documents.PagesChangedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -475,7 +475,7 @@ items:
       description: A <xref href="System.Windows.Size"></xref> representing the width and height of each page.
   overload: System.Windows.Documents.DocumentPaginator.PageSize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -500,7 +500,7 @@ items:
       description: An <xref href="System.Windows.Documents.IDocumentPaginatorSource"></xref> representing the element being paginated.
   overload: System.Windows.Documents.DocumentPaginator.Source*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

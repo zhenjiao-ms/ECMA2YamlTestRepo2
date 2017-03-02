@@ -63,7 +63,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,7 +86,7 @@ items:
     parameters: []
   overload: System.Drawing.ImageConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -116,10 +116,10 @@ items:
       description: A <xref href="System.Type"></xref> that specifies the type you want to convert from.
     return:
       type: System.Boolean
-      description: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if this <xref href="System.Drawing.ImageConverter"></xref> can perform the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This method returns `true` if this <xref href="System.Drawing.ImageConverter"></xref> can perform the conversion; otherwise, `false`.
   overload: System.Drawing.ImageConverter.CanConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -149,10 +149,10 @@ items:
       description: A <xref href="System.Type"></xref> that specifies the type you want to convert to.
     return:
       type: System.Boolean
-      description: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if this <xref href="System.Drawing.ImageConverter"></xref> can perform the conversion; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: This method returns `true` if this <xref href="System.Drawing.ImageConverter"></xref> can perform the conversion; otherwise, `false`.
   overload: System.Drawing.ImageConverter.CanConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -190,7 +190,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be completed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -214,7 +214,7 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     - id: culture
       type: System.Globalization.CultureInfo
       description: A <xref href="System.Globalization.CultureInfo"></xref> object that specifies formatting conventions used by a particular culture.
@@ -232,7 +232,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be completed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,10 +265,10 @@ items:
       description: An array of <xref href="System.Attribute"></xref> objects that describe the properties.
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: The set of properties that should be exposed for this data type. If no properties should be exposed, this can return <xref uid="langword_csharp_null" name="null" href=""></xref>. The default implementation always returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The set of properties that should be exposed for this data type. If no properties should be exposed, this can return `null`. The default implementation always returns `null`.
   overload: System.Drawing.ImageConverter.GetProperties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -285,7 +285,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing
-  summary: Indicates whether this object supports properties. By default, this is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+  summary: Indicates whether this object supports properties. By default, this is `false`.
   syntax:
     content: public override bool GetPropertiesSupported (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
@@ -294,10 +294,10 @@ items:
       description: A type descriptor through which additional context can be provided.
     return:
       type: System.Boolean
-      description: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Drawing.ImageConverter.GetProperties*> method should be called to find the properties of this object.
+      description: This method returns `true` if the <xref:System.Drawing.ImageConverter.GetProperties*> method should be called to find the properties of this object.
   overload: System.Drawing.ImageConverter.GetPropertiesSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -387,8 +387,8 @@ references:
 - uid: System.Attribute[]
   parent: System
   isExternal: false
-  name: Attribute
-  nameWithType: Attribute
+  name: Attribute[]
+  nameWithType: Attribute[]
   fullName: System.Attribute[]
   spec.csharp:
   - uid: System.Attribute

@@ -36,7 +36,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreateExportDefinition(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo,System.String,System.Lazy{System.Collections.Generic.IDictionary{System.String,System.Object}},System.ComponentModel.Composition.Primitives.ICompositionElement)
   id: CreateExportDefinition(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo,System.String,System.Lazy{System.Collections.Generic.IDictionary{System.String,System.Object}},System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -71,7 +71,7 @@ items:
       description: An export definition created from the specified parameters.
   overload: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreateExportDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreateImportDefinition(System.Lazy{System.Reflection.ParameterInfo},System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Type}},System.ComponentModel.Composition.Primitives.ImportCardinality,System.ComponentModel.Composition.CreationPolicy,System.ComponentModel.Composition.Primitives.ICompositionElement)
   id: CreateImportDefinition(System.Lazy{System.Reflection.ParameterInfo},System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Type}},System.ComponentModel.Composition.Primitives.ImportCardinality,System.ComponentModel.Composition.CreationPolicy,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -115,7 +115,7 @@ items:
       description: An import definition created from the specified parameters.
   overload: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreateImportDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreateImportDefinition(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Type}},System.ComponentModel.Composition.Primitives.ImportCardinality,System.Boolean,System.ComponentModel.Composition.CreationPolicy,System.ComponentModel.Composition.Primitives.ICompositionElement)
   id: CreateImportDefinition(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Type}},System.ComponentModel.Composition.Primitives.ImportCardinality,System.Boolean,System.ComponentModel.Composition.CreationPolicy,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -150,7 +150,7 @@ items:
       description: The cardinality of the import.
     - id: isRecomposable
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the import is recomposable; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the import is recomposable; otherwise, `false`.'
     - id: requiredCreationPolicy
       type: System.ComponentModel.Composition.CreationPolicy
       description: One of the enumeration values that specifies the import's creation policy.
@@ -162,7 +162,7 @@ items:
       description: An import definition created from the specified parameters.
   overload: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreateImportDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreatePartDefinition(System.Lazy{System.Type},System.Boolean,System.Lazy{System.Collections.Generic.IEnumerable{System.ComponentModel.Composition.Primitives.ImportDefinition}},System.Lazy{System.Collections.Generic.IEnumerable{System.ComponentModel.Composition.Primitives.ExportDefinition}},System.Lazy{System.Collections.Generic.IDictionary{System.String,System.Object}},System.ComponentModel.Composition.Primitives.ICompositionElement)
   id: CreatePartDefinition(System.Lazy{System.Type},System.Boolean,System.Lazy{System.Collections.Generic.IEnumerable{System.ComponentModel.Composition.Primitives.ImportDefinition}},System.Lazy{System.Collections.Generic.IEnumerable{System.ComponentModel.Composition.Primitives.ExportDefinition}},System.Lazy{System.Collections.Generic.IDictionary{System.String,System.Object}},System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -185,7 +185,7 @@ items:
       description: The type of the part.
     - id: isDisposalRequired
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the part requires disposal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the part requires disposal; otherwise, `false`.'
     - id: imports
       type: System.Lazy{System.Collections.Generic.IEnumerable{System.ComponentModel.Composition.Primitives.ImportDefinition}}
       description: A collection of the part's imports.
@@ -203,7 +203,7 @@ items:
       description: A part definition created from the specified parameters.
   overload: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.CreatePartDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.GetExportingMember(System.ComponentModel.Composition.Primitives.ExportDefinition)
   id: GetExportingMember(System.ComponentModel.Composition.Primitives.ExportDefinition)
@@ -231,8 +231,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>exportDefinition</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>exportDefinition</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.GetImportingMember(System.ComponentModel.Composition.Primitives.ImportDefinition)
   id: GetImportingMember(System.ComponentModel.Composition.Primitives.ImportDefinition)
@@ -260,8 +260,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>importDefinition</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>importDefinition</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.GetImportingParameter(System.ComponentModel.Composition.Primitives.ImportDefinition)
   id: GetImportingParameter(System.ComponentModel.Composition.Primitives.ImportDefinition)
@@ -289,8 +289,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>importDefinition</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>importDefinition</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.GetPartType(System.ComponentModel.Composition.Primitives.ComposablePartDefinition)
   id: GetPartType(System.ComponentModel.Composition.Primitives.ComposablePartDefinition)
@@ -318,8 +318,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>partDefinition</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>partDefinition</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.IsDisposalRequired(System.ComponentModel.Composition.Primitives.ComposablePartDefinition)
   id: IsDisposalRequired(System.ComponentModel.Composition.Primitives.ComposablePartDefinition)
@@ -342,13 +342,13 @@ items:
       description: The part to examine.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the part requires disposal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the part requires disposal; otherwise, `false`.'
   overload: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.IsDisposalRequired*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>partDefinition</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>partDefinition</code> is `null`.
+  version:
   - netframework-40
 - uid: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.IsImportingParameter(System.ComponentModel.Composition.Primitives.ImportDefinition)
   id: IsImportingParameter(System.ComponentModel.Composition.Primitives.ImportDefinition)
@@ -371,13 +371,13 @@ items:
       description: The import definition to examine.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the import definition represents a parameter; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the import definition represents a parameter; otherwise, `false`.'
   overload: System.ComponentModel.Composition.ReflectionModel.ReflectionModelServices.IsImportingParameter*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>importDefinition</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>importDefinition</code> is `null`.
+  version:
   - netframework-40
 references:
 - uid: System.Object

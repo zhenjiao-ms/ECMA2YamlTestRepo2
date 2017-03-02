@@ -42,7 +42,7 @@ items:
   - System.Security.Cryptography.Xml.Transform.GetXml
   - System.Security.Cryptography.Xml.Transform.PropagatedNamespaces
   - System.Security.Cryptography.Xml.Transform.Resolver
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -68,7 +68,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,10 +94,10 @@ items:
     parameters:
     - id: includeComments
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include comments; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include comments; otherwise, `false`.'
   overload: System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -114,16 +114,16 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Returns an XML representation of the parameters of an <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: Returns an XML representation of the parameters of an <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object that are suitable to be included as subelements of an XMLDSIG `&lt;Transform&gt;` element.
   syntax:
     content: protected override System.Xml.XmlNodeList GetInnerXml ();
     parameters: []
     return:
       type: System.Xml.XmlNodeList
-      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object in an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object in an XMLDSIG `&lt;Transform&gt;` element.
   overload: System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.GetInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -154,8 +154,8 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: The containing XML document is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The containing XML document is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -190,7 +190,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>type</code> parameter is not an <xref href="System.Xml.XmlNodeList"></xref> object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,7 +218,7 @@ items:
       description: An array of valid input types for the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object; you can pass only objects of one of these types to the <xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.LoadInput*> method of the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.InputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,7 +235,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> as transform-specific content of a <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object to match the <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: Parses the specified <xref href="System.Xml.XmlNodeList"></xref> as transform-specific content of a `&lt;Transform&gt;` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object to match the `&lt;Transform&gt;` element.
   remarks: Because no transform-specific content is defined for <xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform>, a call to this method does not change the state of the transform.
   example:
   - "The following code example demonstrates how to call the LoadInnerXml method using the specified <xref:System.Xml.XmlNodeList> object to configure the current <xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform> object. This code example is part of a larger example provided for the <xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform> class.  \n  \n [!code-cs[System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform#11](~/add/codesnippet/csharp/55fe57a8-7cde-4c1b-bd19-_1.cs)]\n [!code-cpp[System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform#11](~/add/codesnippet/cpp/55fe57a8-7cde-4c1b-bd19-_1.cpp)]\n [!code-vb[System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform#11](~/add/codesnippet/visualbasic/55fe57a8-7cde-4c1b-bd19-_1.vb)]"
@@ -247,7 +247,7 @@ items:
       description: An <xref href="System.Xml.XmlNodeList"></xref> to load into the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.LoadInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -278,11 +278,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>obj</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>obj</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: The containing XML document is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The containing XML document is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,7 +310,7 @@ items:
       description: An array of valid output types for the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object; only objects of one of these types are returned from the <xref:System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.GetOutput*> methods of the current <xref href="System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform"></xref> object.
   overload: System.Security.Cryptography.Xml.XmlDsigEnvelopedSignatureTransform.OutputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,8 +400,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

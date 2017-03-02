@@ -98,7 +98,7 @@ items:
   - System.Web.UI.DataSourceView.OnDataSourceViewChanged(System.EventArgs)
   - System.Web.UI.DataSourceView.Select(System.Web.UI.DataSourceSelectArguments,System.Web.UI.DataSourceViewSelectCallback)
   - System.Web.UI.DataSourceView.Update(System.Collections.IDictionary,System.Collections.IDictionary,System.Collections.IDictionary,System.Web.UI.DataSourceViewOperationCallback)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -131,7 +131,7 @@ items:
       description: The current <xref href="System.Web.HttpContext"></xref>.
   overload: System.Web.UI.WebControls.SqlDataSourceView.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -148,16 +148,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: Gets or sets a value indicating whether a data retrieval operation is canceled when any parameter that is contained in the <xref:System.Web.UI.WebControls.SqlDataSourceView.SelectParameters*> collection evaluates to <xref uid="langword_csharp_null" name="null" href=""></xref>.
+  summary: Gets or sets a value indicating whether a data retrieval operation is canceled when any parameter that is contained in the <xref:System.Web.UI.WebControls.SqlDataSourceView.SelectParameters*> collection evaluates to `null`.
   remarks: The value of the <xref:System.Web.UI.WebControls.SqlDataSource.CancelSelectOnNullParameter%2A> property is stored in view state.
   syntax:
     content: public bool CancelSelectOnNullParameter { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if a data retrieval operation is canceled when a parameter contained in the <xref:System.Web.UI.WebControls.SqlDataSourceView.SelectParameters*> collection evaluated to <xref uid="langword_csharp_null" name="null" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true`, if a data retrieval operation is canceled when a parameter contained in the <xref:System.Web.UI.WebControls.SqlDataSourceView.SelectParameters*> collection evaluated to `null`; otherwise, `false`. The default is `true`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CancelSelectOnNullParameter*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,10 +180,10 @@ items:
     content: public override bool CanDelete { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the operation is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the operation is supported; otherwise, `false`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CanDelete*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,10 +206,10 @@ items:
     content: public override bool CanInsert { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the operation is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the operation is supported; otherwise, `false`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CanInsert*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,10 +232,10 @@ items:
     content: public override bool CanPage { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> in all cases.
+      description: '`false` in all cases.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CanPage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,10 +258,10 @@ items:
     content: public override bool CanRetrieveTotalRowCount { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> in all cases.
+      description: '`false` in all cases.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CanRetrieveTotalRowCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -284,10 +284,10 @@ items:
     content: public override bool CanSort { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if sorting is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if sorting is supported; otherwise, `false`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CanSort*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,10 +310,10 @@ items:
     content: public override bool CanUpdate { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the operation is supported; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the operation is supported; otherwise, `false`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.CanUpdate*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,7 +342,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The selected value is not one of the <xref href="System.Web.UI.ConflictOptions"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,8 +380,8 @@ items:
     description: "The <xref href=\"System.Web.UI.WebControls.SqlDataSource\"></xref> cannot establish a connection with the underlying data source.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.WebControls.SqlDataSourceView.ConflictDetection*> property is set to the <xref href=\"System.Web.UI.ConflictOptions\"></xref> value and no <code>oldValues</code> parameters are passed."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanDelete*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanDelete*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -409,7 +409,7 @@ items:
       description: An SQL string that the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> uses to delete data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.DeleteCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -438,7 +438,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The selected value is not one of the <xref href="System.Web.UI.WebControls.SqlDataSourceCommandType"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,7 +463,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -491,7 +491,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the <xref:System.Web.UI.WebControls.SqlDataSourceView.DeleteCommand*> property.
   overload: System.Web.UI.WebControls.SqlDataSourceView.DeleteParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,7 +518,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -559,8 +559,8 @@ items:
     description: "The current user does not have the correct permissions to access to the database.  \n  \n \\- or -  \n  \n The instance of the control is an <xref href=\"System.Web.UI.WebControls.AccessDataSource\"></xref> control and access is denied to the path specified for the <xref:System.Web.UI.WebControls.AccessDataSource.DataFile*> property."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanDelete*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n A design-time relative path was not mapped correctly by the designer before using an instance of the <xref href=\"System.Web.UI.WebControls.AccessDataSource\"></xref> control."
-  platform:
+    description: "The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanDelete*> property is `false`.  \n  \n \\- or -  \n  \n A design-time relative path was not mapped correctly by the designer before using an instance of the <xref href=\"System.Web.UI.WebControls.AccessDataSource\"></xref> control."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -584,7 +584,7 @@ items:
     parameters:
     - id: values
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> of values used with the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property to perform the insert database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> of values used with the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property to perform the insert database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property is not a parameterized SQL query, pass `null`.
     return:
       type: System.Int32
       description: A value that represents the number of rows inserted into the underlying database.
@@ -598,8 +598,8 @@ items:
     description: The current user does not have the correct permissions to gain access to the database.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanInsert*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanInsert*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -635,7 +635,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The data source cannot create a database connection.  \n  \n \\- or -  \n  \n Caching is enabled but the internal cache and command types do not match."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -659,13 +659,13 @@ items:
     parameters:
     - id: keys
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> of primary keys to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no keys associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> of primary keys to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no keys associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property is not a parameterized SQL query, pass `null`.
     - id: values
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> of values to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> of values to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass `null`.
     - id: oldValues
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> that represents the original values in the database. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> that represents the original values in the database. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property is not a parameterized SQL query, pass `null`.
     return:
       type: System.Int32
       description: A value that represents the number of rows updated in the underlying database.
@@ -679,8 +679,8 @@ items:
     description: The current user does not have the correct permissions to gain access to the database.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanUpdate*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanUpdate*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -711,7 +711,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The FilterExpression property was set when the <xref href="System.Web.UI.WebControls.SqlDataSource"></xref> is in the <xref href="System.Web.UI.WebControls.SqlDataSourceMode"></xref> mode.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -736,7 +736,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceFilteringEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -764,7 +764,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains a set of parameters associated with any parameter placeholders found in the <xref:System.Web.UI.WebControls.SqlDataSourceView.FilterExpression*> property.
   overload: System.Web.UI.WebControls.SqlDataSourceView.FilterParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,7 +788,7 @@ items:
     parameters:
     - id: values
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> of parameters for the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property to use to perform the insert database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> of parameters for the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property to use to perform the insert database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> is not a parameterized SQL query, pass `null`.
     return:
       type: System.Int32
       description: A value that represents the number of rows inserted into the underlying database.
@@ -799,8 +799,8 @@ items:
     description: The <xref href="System.Web.UI.WebControls.SqlDataSource"></xref> cannot establish a connection with the underlying data source.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanInsert*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanInsert*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -828,7 +828,7 @@ items:
       description: An SQL string that the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> uses to insert data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -859,7 +859,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The selected value is not one of the <xref href="System.Web.UI.WebControls.SqlDataSourceCommandType"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -886,7 +886,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -913,7 +913,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -941,7 +941,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the <xref:System.Web.UI.WebControls.SqlDataSourceView.InsertCommand*> property.
   overload: System.Web.UI.WebControls.SqlDataSourceView.InsertParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -963,10 +963,10 @@ items:
     content: protected bool IsTrackingViewState { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the data source view is marked to save its state; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the data source view is marked to save its state; otherwise, `false`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.IsTrackingViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -993,7 +993,7 @@ items:
       description: An object that represents the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> state to restore.
   overload: System.Web.UI.WebControls.SqlDataSourceView.LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1019,7 +1019,7 @@ items:
       description: A string that represents a format string applied to the names of any <code>oldValues</code> parameters passed to the <xref:System.Web.UI.WebControls.SqlDataSourceView.Delete*> or <xref:System.Web.UI.WebControls.SqlDataSourceView.Update*> methods. The default is "{0}".
   overload: System.Web.UI.WebControls.SqlDataSourceView.OldValuesParameterFormatString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1046,7 +1046,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceStatusEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnDeleted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1075,7 +1075,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceCommandEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnDeleting*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1102,7 +1102,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceFilteringEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnFiltering*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1131,7 +1131,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceStatusEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnInserted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1160,7 +1160,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceCommandEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnInserting*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1187,7 +1187,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceStatusEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnSelected*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1214,7 +1214,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnSelecting*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1243,7 +1243,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceStatusEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnUpdated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1272,7 +1272,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.SqlDataSourceCommandEventArgs"></xref> that contains the event data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.OnUpdating*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1298,7 +1298,7 @@ items:
       description: The "@" string.
   overload: System.Web.UI.WebControls.SqlDataSourceView.ParameterPrefix*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1328,7 +1328,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The data source does not have the selected <code>capability</code> enabled.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1352,10 +1352,10 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: The object that contains the changes to the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> view state; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if there is no view state associated with the object.
+      description: The object that contains the changes to the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> view state; otherwise, `null`, if there is no view state associated with the object.
   overload: System.Web.UI.WebControls.SqlDataSourceView.SaveViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1391,7 +1391,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Web.UI.WebControls.SqlDataSource"></xref> cannot establish a connection with the underlying data source.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1419,7 +1419,7 @@ items:
       description: An SQL string that the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> uses to retrieve data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.SelectCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1450,7 +1450,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The selected value is not one of the <xref href="System.Web.UI.WebControls.SqlDataSourceCommandType"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1475,7 +1475,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1500,7 +1500,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceSelectingEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1528,7 +1528,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the <xref:System.Web.UI.WebControls.SqlDataSourceView.SelectCommand*> property.
   overload: System.Web.UI.WebControls.SqlDataSourceView.SelectParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1554,7 +1554,7 @@ items:
       description: The name of a stored procedure parameter used to sort retrieved data when data retrieval is performed using a stored procedure.
   overload: System.Web.UI.WebControls.SqlDataSourceView.SortParameterName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1578,10 +1578,10 @@ items:
     content: bool System.Web.UI.IStateManager.IsTrackingViewState { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref>, if the data source view is marked to save its state; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true`, if the data source view is marked to save its state; otherwise, `false`.'
   overload: System.Web.UI.WebControls.SqlDataSourceView.System#Web#UI#IStateManager#IsTrackingViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1609,7 +1609,7 @@ items:
       description: An object that represents the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> state to restore.
   overload: System.Web.UI.WebControls.SqlDataSourceView.System#Web#UI#IStateManager#LoadViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1634,10 +1634,10 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: The object that contains the changes to the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> view state; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if there is no view state associated with the object.
+      description: The object that contains the changes to the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> view state; otherwise, `null`, if there is no view state associated with the object.
   overload: System.Web.UI.WebControls.SqlDataSourceView.System#Web#UI#IStateManager#SaveViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1662,7 +1662,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.SqlDataSourceView.System#Web#UI#IStateManager#TrackViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1685,7 +1685,7 @@ items:
     parameters: []
   overload: System.Web.UI.WebControls.SqlDataSourceView.TrackViewState*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1711,13 +1711,13 @@ items:
     parameters:
     - id: keys
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> of primary keys to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no keys associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> of primary keys to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no keys associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass `null`.
     - id: values
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> of values to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> of values to use with the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property to perform the update database operation. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass `null`.
     - id: oldValues
       type: System.Collections.IDictionary
-      description: An <xref href="System.Collections.IDictionary"></xref> that represents the original values in the database. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IDictionary"></xref> that represents the original values in the database. If there are no parameters associated with the query or if the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> is not a parameterized SQL query, pass `null`.
     return:
       type: System.Int32
       description: A value that represents the number of rows updated in the underlying database.
@@ -1728,8 +1728,8 @@ items:
     description: The <xref href="System.Web.UI.WebControls.SqlDataSource"></xref> cannot establish a connection with the underlying data source.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanUpdate*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The <xref:System.Web.UI.WebControls.SqlDataSourceView.CanUpdate*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1757,7 +1757,7 @@ items:
       description: A SQL string that the <xref href="System.Web.UI.WebControls.SqlDataSourceView"></xref> uses to update data.
   overload: System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1786,7 +1786,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The selected value is not one of the <xref href="System.Web.UI.WebControls.SqlDataSourceCommandType"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1813,7 +1813,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceStatusEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1841,7 +1841,7 @@ items:
       description: A <xref href="System.Web.UI.WebControls.ParameterCollection"></xref> that contains the parameters used by the <xref:System.Web.UI.WebControls.SqlDataSourceView.UpdateCommand*> property.
   overload: System.Web.UI.WebControls.SqlDataSourceView.UpdateParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1868,7 +1868,7 @@ items:
       type: System.Web.UI.WebControls.SqlDataSourceCommandEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

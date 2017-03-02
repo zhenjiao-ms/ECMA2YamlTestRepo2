@@ -752,7 +752,7 @@ items:
   - System.Windows.Window.WindowStateProperty
   - System.Windows.Window.WindowStyle
   - System.Windows.Window.WindowStyleProperty
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -774,7 +774,7 @@ items:
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -802,8 +802,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: <code>state</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, and a <xref href="System.Windows.Navigation.CustomContentState"></xref> object isn't returned from <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>.
-  platform:
+    description: <code>state</code> is `null`, and a <xref href="System.Windows.Navigation.CustomContentState"></xref> object isn't returned from <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -831,7 +831,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: when this method is called. This prevents content from being added to <xref href="System.Windows.Navigation.NavigationWindow"></xref> using [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)].
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -859,7 +859,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: if the text parameter value contains non-whitespace characters.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -881,10 +881,10 @@ items:
     content: public System.Collections.IEnumerable BackStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: <xref href="System.Collections.IEnumerable"></xref> if at least one entry has been added to back navigation history, or <xref uid="langword_csharp_null" name="null" href=""></xref> if there are not entries or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.
+      description: <xref href="System.Collections.IEnumerable"></xref> if at least one entry has been added to back navigation history, or `null` if there are not entries or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.
   overload: System.Windows.Navigation.NavigationWindow.BackStack*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -907,7 +907,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -929,10 +929,10 @@ items:
     content: public bool CanGoBack { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if there is at least one entry in back navigation history; <xref uid="langword_csharp_false" name="false" href=""></xref> if there are no entries in back navigation history or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.
+      description: '`true` if there is at least one entry in back navigation history; `false` if there are no entries in back navigation history or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.'
   overload: System.Windows.Navigation.NavigationWindow.CanGoBack*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -955,7 +955,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -977,10 +977,10 @@ items:
     content: public bool CanGoForward { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if there is at least one entry in forward navigation history; <xref uid="langword_csharp_false" name="false" href=""></xref> if there are no entries in forward navigation history, or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.
+      description: '`true` if there is at least one entry in forward navigation history; `false` if there are no entries in forward navigation history, or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.'
   overload: System.Windows.Navigation.NavigationWindow.CanGoForward*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1003,7 +1003,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1025,10 +1025,10 @@ items:
     content: public Uri CurrentSource { get; }
     return:
       type: System.Uri
-      description: The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the content that was last navigated to, if navigated to by using a [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)]; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the content that was last navigated to, if navigated to by using a [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)]; otherwise, `null`.
   overload: System.Windows.Navigation.NavigationWindow.CurrentSource*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1053,7 +1053,7 @@ items:
       description: <xref href="System.Collections.IEnumerable"></xref> if at least one entry has been added to forward navigation history, or null if there are no entries or the <xref href="System.Windows.Navigation.NavigationWindow"></xref> does not own its own navigation history.
   overload: System.Windows.Navigation.NavigationWindow.ForwardStack*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1076,7 +1076,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1100,7 +1100,7 @@ items:
       type: System.Windows.Navigation.FragmentNavigationEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1125,7 +1125,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: GoBack is called when there are no entries in back navigation history.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1150,7 +1150,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: GoForward is called when there are no entries in forward navigation history.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1174,7 +1174,7 @@ items:
       type: System.Windows.Navigation.LoadCompletedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1202,10 +1202,10 @@ items:
       description: An <xref href="System.Object"></xref> that contains the content to navigate to.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a navigation is not canceled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a navigation is not canceled; otherwise, `false`.'
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1233,10 +1233,10 @@ items:
       description: A <xref href="System.Uri"></xref> object initialized with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a navigation is not canceled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a navigation is not canceled; otherwise, `false`.'
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1265,10 +1265,10 @@ items:
       description: A <xref href="System.Object"></xref> that contains data to be used for processing during navigation.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a navigation is not canceled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a navigation is not canceled; otherwise, `false`.'
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1297,10 +1297,10 @@ items:
       description: A <xref href="System.Object"></xref> that contains data to be used for processing during navigation.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a navigation is not canceled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a navigation is not canceled; otherwise, `false`.'
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1324,7 +1324,7 @@ items:
       type: System.Windows.Navigation.NavigatedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1348,7 +1348,7 @@ items:
       type: System.Windows.Navigation.NavigatingCancelEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1372,7 +1372,7 @@ items:
       type: System.Windows.Navigation.NavigationFailedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1396,7 +1396,7 @@ items:
       type: System.Windows.Navigation.NavigationProgressEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1421,7 +1421,7 @@ items:
       description: The navigation service used by this <xref href="System.Windows.Navigation.NavigationWindow"></xref>.
   overload: System.Windows.Navigation.NavigationWindow.NavigationService*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1445,7 +1445,7 @@ items:
       type: System.Windows.Navigation.NavigationStoppedEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1467,7 +1467,7 @@ items:
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.OnApplyTemplate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1493,7 +1493,7 @@ items:
       description: An <xref href="System.EventArgs"></xref> that contains the event data.
   overload: System.Windows.Navigation.NavigationWindow.OnClosed*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1519,7 +1519,7 @@ items:
       description: A <xref href="System.Windows.Automation.Peers.NavigationWindowAutomationPeer"></xref> object for this <xref href="System.Windows.Navigation.NavigationWindow"></xref>.
   overload: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1544,7 +1544,7 @@ items:
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.Refresh*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1570,7 +1570,7 @@ items:
       description: The most recent <xref href="System.Windows.Navigation.JournalEntry"></xref> in back navigation history, if there is one.
   overload: System.Windows.Navigation.NavigationWindow.RemoveBackEntry*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1592,13 +1592,13 @@ items:
     content: public bool SandboxExternalContent { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if content is isolated within a partial trust security sandbox; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if content is isolated within a partial trust security sandbox; otherwise, `false`. The default is `false`.'
   overload: System.Windows.Navigation.NavigationWindow.SandboxExternalContent*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: SandboxExternalContent is set when an application is executing in partial trust.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1621,7 +1621,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1644,10 +1644,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the property value has changed from its default; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the property value has changed from its default; otherwise, `false`.'
   overload: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1669,10 +1669,10 @@ items:
     content: public bool ShowsNavigationUI { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed; otherwise, `false`. The default is `true`.'
   overload: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1695,7 +1695,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1722,7 +1722,7 @@ items:
       description: The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the current content, or the content that is currently being navigated to.
   overload: System.Windows.Navigation.NavigationWindow.Source*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1745,7 +1745,7 @@ items:
       type: System.Windows.DependencyProperty
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1770,7 +1770,7 @@ items:
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.StopLoading*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1796,7 +1796,7 @@ items:
       description: The base URI of the current context.
   overload: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Windows.Window

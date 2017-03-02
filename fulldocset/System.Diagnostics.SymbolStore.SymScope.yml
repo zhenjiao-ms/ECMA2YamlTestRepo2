@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -63,7 +63,7 @@ items:
       description: To be added.
   overload: System.Diagnostics.SymbolStore.SymScope.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -85,7 +85,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.SymScope.{dtor}*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,7 +110,7 @@ items:
       description: The ending Microsoft intermediate language (MSIL) offset. The offset is from the beginning of the method of the current lexical scope.
   overload: System.Diagnostics.SymbolStore.SymScope.EndOffset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
     parameters: []
   overload: System.Diagnostics.SymbolStore.SymScope.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,7 +163,7 @@ items:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: There is insufficient memory to satisfy the request.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -193,7 +193,7 @@ items:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: There is insufficient memory to satisfy the request.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -219,7 +219,7 @@ items:
       description: Throws a <xref href="System.NotSupportedException"></xref> in all cases.
   overload: System.Diagnostics.SymbolStore.SymScope.GetNamespaces*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
       description: The method that contains the current lexical scope.
   overload: System.Diagnostics.SymbolStore.SymScope.Method*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -269,7 +269,7 @@ items:
       description: The enclosing lexical scope of the current scope.
   overload: System.Diagnostics.SymbolStore.SymScope.Parent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,7 +294,7 @@ items:
       description: The starting Microsoft intermediate language (MSIL) offset. The offset is from the beginning of the method of the current lexical scope.
   overload: System.Diagnostics.SymbolStore.SymScope.StartOffset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -315,6 +315,20 @@ references:
   name: SymScope(ISymUnmanagedScope*)
   nameWithType: SymScope.SymScope(ISymUnmanagedScope*)
   fullName: System.Diagnostics.SymbolStore.SymScope.SymScope(ISymUnmanagedScope*)
+- uid: System.Diagnostics.SymbolStore.Private.ISymUnmanagedScope*
+  parent: System.Diagnostics.SymbolStore.Private
+  isExternal: true
+  name: ISymUnmanagedScope*
+  nameWithType: ISymUnmanagedScope*
+  fullName: System.Diagnostics.SymbolStore.Private.ISymUnmanagedScope*
+  spec.csharp:
+  - uid: System.Diagnostics.SymbolStore.Private.ISymUnmanagedScope
+    name: ISymUnmanagedScope
+    nameWithType: ISymUnmanagedScope
+    fullName: ISymUnmanagedScope
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.Diagnostics.SymbolStore.SymScope.{dtor}
   parent: System.Diagnostics.SymbolStore.SymScope
   isExternal: false
@@ -348,8 +362,8 @@ references:
 - uid: System.Diagnostics.SymbolStore.ISymbolScope[]
   parent: System.Diagnostics.SymbolStore
   isExternal: false
-  name: ISymbolScope
-  nameWithType: ISymbolScope
+  name: ISymbolScope[]
+  nameWithType: ISymbolScope[]
   fullName: System.Diagnostics.SymbolStore.ISymbolScope[]
   spec.csharp:
   - uid: System.Diagnostics.SymbolStore.ISymbolScope
@@ -368,8 +382,8 @@ references:
 - uid: System.Diagnostics.SymbolStore.ISymbolVariable[]
   parent: System.Diagnostics.SymbolStore
   isExternal: false
-  name: ISymbolVariable
-  nameWithType: ISymbolVariable
+  name: ISymbolVariable[]
+  nameWithType: ISymbolVariable[]
   fullName: System.Diagnostics.SymbolStore.ISymbolVariable[]
   spec.csharp:
   - uid: System.Diagnostics.SymbolStore.ISymbolVariable
@@ -388,8 +402,8 @@ references:
 - uid: System.Diagnostics.SymbolStore.ISymbolNamespace[]
   parent: System.Diagnostics.SymbolStore
   isExternal: false
-  name: ISymbolNamespace
-  nameWithType: ISymbolNamespace
+  name: ISymbolNamespace[]
+  nameWithType: ISymbolNamespace[]
   fullName: System.Diagnostics.SymbolStore.ISymbolNamespace[]
   spec.csharp:
   - uid: System.Diagnostics.SymbolStore.ISymbolNamespace

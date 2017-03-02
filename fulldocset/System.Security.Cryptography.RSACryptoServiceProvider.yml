@@ -67,7 +67,7 @@ items:
   - System.Security.Cryptography.RSA.Create(System.String)
   - System.Security.Cryptography.RSA.FromXmlString(System.String)
   - System.Security.Cryptography.RSA.ToXmlString(System.Boolean)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,7 +96,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The cryptographic service provider (CSP) cannot be acquired.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -128,7 +128,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The cryptographic service provider (CSP) cannot be acquired.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The CSP cannot be acquired.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,7 +195,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The CSP cannot be acquired.  \n  \n -or-  \n  \n The key cannot be created."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,7 +223,7 @@ items:
       description: A <xref href="System.Security.Cryptography.CspKeyContainerInfo"></xref> object that describes additional information about a cryptographic key pair.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.CspKeyContainerInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -252,7 +252,7 @@ items:
       description: The data to be decrypted.
     - id: fOAEP
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to perform direct <xref href="System.Security.Cryptography.RSA"></xref> decryption using OAEP padding (only available on a computer running Microsoft Windows XP or later); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> to use PKCS#1 v1.5 padding.
+      description: '`true` to perform direct <xref href="System.Security.Cryptography.RSA"></xref> decryption using OAEP padding (only available on a computer running Microsoft Windows XP or later); otherwise, `false` to use PKCS#1 v1.5 padding.'
     return:
       type: System.Byte[]
       description: The decrypted data, which is the original plain text before encryption.
@@ -260,11 +260,11 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n The <code>fOAEP</code> parameter is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and the length of the <code>rgb</code> parameter is greater than <xref:System.Security.Cryptography.RSACryptoServiceProvider.KeySize*>.  \n  \n -or-  \n  \n The <code>fOAEP</code> parameter is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and OAEP is not supported.  \n  \n -or-  \n  \n The key does not match the encrypted data. However, the exception wording may not be accurate. For example, it may say `Not enough storage is available to process this command`."
+    description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n The <code>fOAEP</code> parameter is `true` and the length of the <code>rgb</code> parameter is greater than <xref:System.Security.Cryptography.RSACryptoServiceProvider.KeySize*>.  \n  \n -or-  \n  \n The <code>fOAEP</code> parameter is `true` and OAEP is not supported.  \n  \n -or-  \n  \n The key does not match the encrypted data. However, the exception wording may not be accurate. For example, it may say `Not enough storage is available to process this command`."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rgb </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>rgb </code>is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -296,7 +296,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported in the current version.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -321,7 +321,7 @@ items:
       description: To be added.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -350,7 +350,7 @@ items:
       description: The data to be encrypted.
     - id: fOAEP
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to perform direct <xref href="System.Security.Cryptography.RSA"></xref> encryption using OAEP padding (only available on a computer running Windows XP or later); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> to use PKCS#1 v1.5 padding.
+      description: '`true` to perform direct <xref href="System.Security.Cryptography.RSA"></xref> encryption using OAEP padding (only available on a computer running Windows XP or later); otherwise, `false` to use PKCS#1 v1.5 padding.'
     return:
       type: System.Byte[]
       description: The encrypted data.
@@ -358,11 +358,11 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n The length of the <code>rgb</code> parameter is greater than the maximum allowed length.  \n  \n -or-  \n  \n The <code>fOAEP</code> parameter is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> and OAEP padding is not supported."
+    description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n The length of the <code>rgb</code> parameter is greater than the maximum allowed length.  \n  \n -or-  \n  \n The <code>fOAEP</code> parameter is `true` and OAEP padding is not supported."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>rgb </code>is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>rgb </code>is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -394,7 +394,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported in the current version.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -418,13 +418,13 @@ items:
     parameters:
     - id: includePrivateParameters
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include the private key; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include the private key; otherwise, `false`.'
     return:
       type: System.Byte[]
       description: A byte array containing the key information associated with an <xref href="System.Security.Cryptography.RSACryptoServiceProvider"></xref> object.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.ExportCspBlob*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -450,7 +450,7 @@ items:
     parameters:
     - id: includePrivateParameters
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include private parameters; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to include private parameters; otherwise, `false`.'
     return:
       type: System.Security.Cryptography.RSAParameters
       description: The parameters for <xref href="System.Security.Cryptography.RSA"></xref>.
@@ -459,7 +459,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: The key cannot be exported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,7 +486,7 @@ items:
       description: A byte array that represents an RSA key blob.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.ImportCspBlob*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,7 +518,7 @@ items:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n The <code>parameters</code> parameter has missing fields."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -541,10 +541,10 @@ items:
     content: public override string KeyExchangeAlgorithm { get; }
     return:
       type: System.String
-      description: The name of the key exchange algorithm if it exists; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the key exchange algorithm if it exists; otherwise, `null`.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.KeyExchangeAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -570,7 +570,7 @@ items:
       description: The size of the key in bits.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.KeySize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -595,10 +595,10 @@ items:
     content: public bool PersistKeyInCsp { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the key should be persisted in the CSP; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the key should be persisted in the CSP; otherwise, `false`.'
   overload: System.Security.Cryptography.RSACryptoServiceProvider.PersistKeyInCsp*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -621,10 +621,10 @@ items:
     content: public bool PublicOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.Cryptography.RSACryptoServiceProvider"></xref> object contains only a public key; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.Cryptography.RSACryptoServiceProvider"></xref> object contains only a public key; otherwise, `false`.'
   overload: System.Security.Cryptography.RSACryptoServiceProvider.PublicOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -650,7 +650,7 @@ items:
       description: The name of the signature algorithm.
   overload: System.Security.Cryptography.RSACryptoServiceProvider.SignatureAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -687,11 +687,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>halg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>halg</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>halg</code> parameter is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -728,11 +728,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>halg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>halg</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>halg</code> parameter is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -775,11 +775,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>halg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>halg</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>halg</code> parameter is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -816,11 +816,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>rgbHash</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>rgbHash</code> parameter is `null`.
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n There is no private key."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -845,10 +845,10 @@ items:
     content: public static bool UseMachineKeyStore { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the key should be persisted in the computer key store; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the key should be persisted in the computer key store; otherwise, `false`.'
   overload: System.Security.Cryptography.RSACryptoServiceProvider.UseMachineKeyStore*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -883,16 +883,16 @@ items:
       description: The signature data to be verified.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the signature is valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the signature is valid; otherwise, `false`.'
   overload: System.Security.Cryptography.RSACryptoServiceProvider.VerifyData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>halg</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>halg</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>halg</code> parameter is not a valid type.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -927,16 +927,16 @@ items:
       description: The signature data to be verified.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the signature is valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the signature is valid; otherwise, `false`.'
   overload: System.Security.Cryptography.RSACryptoServiceProvider.VerifyHash*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>rgbHash</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>rgbSignature</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>rgbHash</code> parameter is `null`.  \n  \n -or-  \n  \n The <code>rgbSignature</code> parameter is `null`."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
     description: "The cryptographic service provider (CSP) cannot be acquired.  \n  \n -or-  \n  \n The signature cannot be verified."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1026,8 +1026,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

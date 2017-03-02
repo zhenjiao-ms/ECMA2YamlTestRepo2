@@ -53,7 +53,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -77,7 +77,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.HashAlgorithm.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -99,10 +99,10 @@ items:
     content: public virtual bool CanReuseTransform { get; }
     return:
       type: System.Boolean
-      description: Always <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: Always `true`.
   overload: System.Security.Cryptography.HashAlgorithm.CanReuseTransform*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -124,10 +124,10 @@ items:
     content: public virtual bool CanTransformMultipleBlocks { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if multiple blocks can be transformed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if multiple blocks can be transformed; otherwise, `false`.'
   overload: System.Security.Cryptography.HashAlgorithm.CanTransformMultipleBlocks*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,7 +151,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.HashAlgorithm.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,11 +185,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -224,7 +224,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -264,14 +264,14 @@ items:
     description: "<code>count</code> is an invalid value.  \n  \n -or-  \n  \n <code>buffer</code> length is invalid."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>buffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>buffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>offset</code> is out of range. This parameter requires a non-negative number.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -298,7 +298,7 @@ items:
       description: A new <xref href="System.Security.Cryptography.SHA1CryptoServiceProvider"></xref> instance, unless the default settings have been changed using the .
   overload: System.Security.Cryptography.HashAlgorithm.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -324,10 +324,10 @@ items:
       description: "The hash algorithm implementation to use. The following table shows the valid values for the `hashName` parameter and the algorithms they map to.  \n  \n <table><thead><tr><th> Parameter value  \n  \n </th><th> Implements  \n  \n </th></tr></thead><tbody><tr><td> SHA  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA1CryptoServiceProvider\"></xref></td></tr><tr><td> SHA1  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA1CryptoServiceProvider\"></xref></td></tr><tr><td> System.Security.Cryptography.SHA1  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA1CryptoServiceProvider\"></xref></td></tr><tr><td> System.Security.Cryptography.HashAlgorithm  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA1CryptoServiceProvider\"></xref></td></tr><tr><td> MD5  \n  \n </td><td><xref href=\"System.Security.Cryptography.MD5CryptoServiceProvider\"></xref></td></tr><tr><td> System.Security.Cryptography.MD5  \n  \n </td><td><xref href=\"System.Security.Cryptography.MD5CryptoServiceProvider\"></xref></td></tr><tr><td> SHA256  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA256Managed\"></xref></td></tr><tr><td> SHA-256  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA256Managed\"></xref></td></tr><tr><td> System.Security.Cryptography.SHA256  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA256Managed\"></xref></td></tr><tr><td> SHA384  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA384Managed\"></xref></td></tr><tr><td> SHA-384  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA384Managed\"></xref></td></tr><tr><td> System.Security.Cryptography.SHA384  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA384Managed\"></xref></td></tr><tr><td> SHA512  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA512Managed\"></xref></td></tr><tr><td> SHA-512  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA512Managed\"></xref></td></tr><tr><td> System.Security.Cryptography.SHA512  \n  \n </td><td><xref href=\"System.Security.Cryptography.SHA512Managed\"></xref></td></tr></tbody></table>"
     return:
       type: System.Security.Cryptography.HashAlgorithm
-      description: A new instance of the specified hash algorithm, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>hashName</code> is not a valid hash algorithm.
+      description: A new instance of the specified hash algorithm, or `null` if <code>hashName</code> is not a valid hash algorithm.
   overload: System.Security.Cryptography.HashAlgorithm.Create*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -351,7 +351,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.HashAlgorithm.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Security.Cryptography.HashAlgorithm.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -372,10 +372,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Security.Cryptography.HashAlgorithm.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,11 +403,11 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicUnexpectedOperationException
     commentId: T:System.Security.Cryptography.CryptographicUnexpectedOperationException
-    description: <xref href="System.Security.Cryptography.HashAlgorithm.HashValue"></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <xref href="System.Security.Cryptography.HashAlgorithm.HashValue"></xref> is `null`.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,7 +440,7 @@ items:
       description: The number of bytes in the byte array to use as data.
   overload: System.Security.Cryptography.HashAlgorithm.HashCore*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,7 +467,7 @@ items:
       description: The computed hash code.
   overload: System.Security.Cryptography.HashAlgorithm.HashFinal*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
       description: The size, in bits, of the computed hash code.
   overload: System.Security.Cryptography.HashAlgorithm.HashSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -517,7 +517,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -542,7 +542,7 @@ items:
       type: System.Byte[]
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -565,7 +565,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.HashAlgorithm.Initialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -591,7 +591,7 @@ items:
       description: The input block size.
   overload: System.Security.Cryptography.HashAlgorithm.InputBlockSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -617,7 +617,7 @@ items:
       description: The output block size.
   overload: System.Security.Cryptography.HashAlgorithm.OutputBlockSize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -642,7 +642,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -691,14 +691,14 @@ items:
     description: "<code>inputCount</code> uses an invalid value.  \n  \n -or-  \n  \n <code>inputBuffer</code> has an invalid length."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>inputBuffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>inputBuffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>inputOffset</code> is out of range. This parameter requires a non-negative number.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -741,14 +741,14 @@ items:
     description: "<code>inputCount</code> uses an invalid value.  \n  \n -or-  \n  \n <code>inputBuffer</code> has an invalid offset length."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>inputBuffer</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>inputBuffer</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>inputOffset</code> is out of range. This parameter requires a non-negative number.
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The object has already been disposed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -826,8 +826,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

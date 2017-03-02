@@ -48,7 +48,7 @@ items:
   - System.Windows.Annotations.Storage.AnnotationStore.OnCargoChanged(System.Windows.Annotations.AnnotationResourceChangedEventArgs)
   - System.Windows.Annotations.Storage.AnnotationStore.StoreContentChanged
   - System.Windows.Annotations.Storage.AnnotationStore.SyncRoot
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -74,7 +74,7 @@ items:
       description: The I/O stream for reading and writing user annotations.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -105,14 +105,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>stream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>stream</code> is `null`.
   - type: System.Xml.XmlException
     commentId: T:System.Xml.XmlException
     description: <code>stream</code> contains invalid XML.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>knownNamespaces</code> dictionary contains a duplicate namespace.  \n  \n -or-  \n  \n The <code>knownNamespaces</code> dictionary contains an element that has a <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> key."
-  platform:
+    description: "The <code>knownNamespaces</code> dictionary contains a duplicate namespace.  \n  \n -or-  \n  \n The <code>knownNamespaces</code> dictionary contains an element that has a `null` key."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -140,7 +140,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>newAnnotation</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>newAnnotation</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: An <xref href="System.Windows.Annotations.Annotation"></xref> with the same <xref:System.Windows.Annotations.Annotation.Id*> already is in the store.
@@ -150,7 +150,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: <xref:System.Windows.Annotations.Storage.AnnotationStore.Dispose*> has been called on the store.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -171,10 +171,10 @@ items:
     content: public override bool AutoFlush { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data in annotation buffers is to be written immediately to the physical data store for each operation; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> if data in the annotation buffers is to be written when the application explicitly calls <xref:System.Windows.Annotations.Storage.XmlStreamStore.Flush*>.
+      description: '`true` if data in annotation buffers is to be written immediately to the physical data store for each operation; otherwise, `false` if data in the annotation buffers is to be written when the application explicitly calls <xref:System.Windows.Annotations.Storage.XmlStreamStore.Flush*>.'
   overload: System.Windows.Annotations.Storage.XmlStreamStore.AutoFlush*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -202,7 +202,7 @@ items:
       description: The [!INCLUDE[TLA#tla_guid](~/add/includes/ajax-current-ext-md.md)] <xref:System.Windows.Annotations.Annotation.Id*> property of the annotation to be deleted.
     return:
       type: System.Windows.Annotations.Annotation
-      description: The annotation that was deleted; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> if an annotation with the specified <code>annotationId</code> was not found in the store.
+      description: The annotation that was deleted; otherwise, `null` if an annotation with the specified <code>annotationId</code> was not found in the store.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.DeleteAnnotation*
   exceptions:
   - type: System.ObjectDisposedException
@@ -211,7 +211,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An I/O <xref href="System.IO.Stream"></xref> has not been set for the store.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -235,7 +235,7 @@ items:
       description: To be added.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -269,7 +269,7 @@ items:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
     description: The store I/O <xref href="System.IO.Stream"></xref> is read-only and cannot be accessed for output.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -294,13 +294,13 @@ items:
       description: The [!INCLUDE[TLA#tla_guid](~/add/includes/ajax-current-ext-md.md)] <xref:System.Windows.Annotations.Annotation.Id*> property of the annotation to be returned.
     return:
       type: System.Windows.Annotations.Annotation
-      description: The annotation with the given <code>annotationId</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> if an annotation with the specified <code>annotationId</code> was not found in the store.
+      description: The annotation with the given <code>annotationId</code>; otherwise, `null` if an annotation with the specified <code>annotationId</code> was not found in the store.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.GetAnnotation*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: <xref:System.Windows.Annotations.Storage.AnnotationStore.Dispose*> has been called on the store.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -331,7 +331,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: <xref:System.Windows.Annotations.Storage.AnnotationStore.Dispose*> has been called on the store.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -359,10 +359,10 @@ items:
       description: The starting <xref href="System.Windows.Annotations.ContentLocatorPart"></xref> sequence to return matching annotations for.
     return:
       type: System.Collections.Generic.IList{System.Windows.Annotations.Annotation}
-      description: The list of annotations that have <xref:System.Windows.Annotations.Annotation.Anchors*> with locators that start and match the given <code>anchorLocator</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> if no matching annotations were found.
+      description: The list of annotations that have <xref:System.Windows.Annotations.Annotation.Anchors*> with locators that start and match the given <code>anchorLocator</code>; otherwise, `null` if no matching annotations were found.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.GetAnnotations*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -388,10 +388,10 @@ items:
       description: The starting URI sequence to return the list of namespaces for.
     return:
       type: System.Collections.Generic.IList{System.Uri}
-      description: A list of compatible namespaces that match <code>name</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> if there are no compatible namespaces found.
+      description: A list of compatible namespaces that match <code>name</code>; otherwise, `null` if there are no compatible namespaces found.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.GetWellKnownCompatibleNamespaces*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -416,7 +416,7 @@ items:
       description: The list of the namespaces that were ignored when the XML stream was loaded.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.IgnoredNamespaces*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -440,7 +440,7 @@ items:
       description: To be added.
   overload: System.Windows.Annotations.Storage.XmlStreamStore.OnStoreContentChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -465,7 +465,7 @@ items:
       description: The list of namespaces that are predefined by the [!INCLUDE[TLA#tla_caf](~/add/includes/tlasharptla-caf-md.md)].
   overload: System.Windows.Annotations.Storage.XmlStreamStore.WellKnownNamespaces*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

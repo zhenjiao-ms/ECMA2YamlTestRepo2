@@ -48,7 +48,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -77,7 +77,7 @@ items:
     parameters: []
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -101,13 +101,13 @@ items:
     parameters:
     - id: selector
       type: System.Runtime.Serialization.ISurrogateSelector
-      description: The <xref href="System.Runtime.Serialization.ISurrogateSelector"></xref> to use. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Runtime.Serialization.ISurrogateSelector"></xref> to use. Can be `null`.
     - id: context
       type: System.Runtime.Serialization.StreamingContext
       description: The source and destination for the serialized data.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
       description: One of the <xref href="System.Runtime.Serialization.Formatters.FormatterAssemblyStyle"></xref> values that specifies the deserializer behavior.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.AssemblyFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,7 +163,7 @@ items:
       description: The serialization binder to use with this formatter.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -189,7 +189,7 @@ items:
       description: The streaming context to use with this formatter.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Context*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,14 +226,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: "The <code>serializationStream</code> supports seeking, but its length is 0.  \n  \n -or-  \n  \n The target type is a <xref href=\"System.Decimal\"></xref>, but the value is out of range of the <xref href=\"System.Decimal\"></xref> type."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,7 +260,7 @@ items:
       description: The stream from which to deserialize the object graph.
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be `null`.
     return:
       type: System.Object
       description: The deserialized object or the top object (root) of the object graph.
@@ -268,14 +268,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: "The <code>serializationStream</code> supports seeking, but its length is 0.  \n  \n -or-  \n  \n The target type is a <xref href=\"System.Decimal\"></xref>, but the value is out of range of the <xref href=\"System.Decimal\"></xref> type."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -302,7 +302,7 @@ items:
       description: The stream from which to deserialize the object graph.
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be `null`.
     - id: methodCallMessage
       type: System.Runtime.Remoting.Messaging.IMethodCallMessage
       description: The <xref href="System.Runtime.Remoting.Messaging.IMethodCallMessage"></xref> that contains details about where the call came from.
@@ -313,14 +313,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <code>serializationStream</code> supports seeking, but its length is 0.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -346,7 +346,7 @@ items:
       description: The <xref href="System.Runtime.Serialization.Formatters.TypeFilterLevel"></xref> that represents the current automatic deserialization level.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.FilterLevel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,14 +383,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>serializationStream</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The <code>graph</code> is null."
+    description: "The <code>serializationStream</code> is `null`.  \n  \n -or-  \n  \n The <code>graph</code> is null."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: An error has occurred during serialization, such as if an object in the <code>graph</code> parameter is not marked as serializable.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -420,19 +420,19 @@ items:
       description: The object at the root of the graph to serialize.
     - id: headers
       type: System.Runtime.Remoting.Messaging.Header[]
-      description: Remoting headers to include in the serialization. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: Remoting headers to include in the serialization. Can be `null`.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: An error has occurred during serialization, such as if an object in the <code>graph</code> parameter is not marked as serializable.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -458,7 +458,7 @@ items:
       description: The surrogate selector to use with this formatter.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.SurrogateSelector*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -483,7 +483,7 @@ items:
       description: The style of type layouts to use.
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.TypeFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -510,7 +510,7 @@ items:
       description: The stream from which to deserialize the object graph.
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be `null`.
     return:
       type: System.Object
       description: The deserialized object or the top object (root) of the object graph.
@@ -518,14 +518,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <code>serializationStream</code> supports seeking, but its length is 0.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -552,7 +552,7 @@ items:
       description: The stream from which to deserialize the object graph.
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Runtime.Remoting.Messaging.HeaderHandler"></xref> that handles any headers in the `serializationStream`. Can be `null`.
     - id: methodCallMessage
       type: System.Runtime.Remoting.Messaging.IMethodCallMessage
       description: The <xref href="System.Runtime.Remoting.Messaging.IMethodCallMessage"></xref> that contains details about where the call came from.
@@ -563,14 +563,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>serializationStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>serializationStream</code> is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <code>serializationStream</code> supports seeking, but its length is 0.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -714,8 +714,8 @@ references:
 - uid: System.Runtime.Remoting.Messaging.Header[]
   parent: System.Runtime.Remoting.Messaging
   isExternal: false
-  name: Header
-  nameWithType: Header
+  name: Header[]
+  nameWithType: Header[]
   fullName: System.Runtime.Remoting.Messaging.Header[]
   spec.csharp:
   - uid: System.Runtime.Remoting.Messaging.Header

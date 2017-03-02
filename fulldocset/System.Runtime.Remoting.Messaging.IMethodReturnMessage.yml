@@ -26,7 +26,7 @@ items:
       public interface IMethodReturnMessage : System.Runtime.Remoting.Messaging.IMethodMessage
   implements:
   - System.Runtime.Remoting.Messaging.IMethodMessage
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -51,13 +51,13 @@ items:
     content: public Exception Exception { get; }
     return:
       type: System.Exception
-      description: The exception object for the method call, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method did not throw an exception.
+      description: The exception object for the method call, or `null` if the method did not throw an exception.
   overload: System.Runtime.Remoting.Messaging.IMethodReturnMessage.Exception*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -74,7 +74,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the specified argument marked as a `ref` or an `out` parameter.
   syntax:
     content: public object GetOutArg (int argNum);
     parameters:
@@ -83,13 +83,13 @@ items:
       description: The number of the requested argument.
     return:
       type: System.Object
-      description: The specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+      description: The specified argument marked as a `ref` or an `out` parameter.
   overload: System.Runtime.Remoting.Messaging.IMethodReturnMessage.GetOutArg*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -106,7 +106,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the name of the specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the name of the specified argument marked as a `ref` or an `out` parameter.
   syntax:
     content: public string GetOutArgName (int index);
     parameters:
@@ -115,13 +115,13 @@ items:
       description: The number of the requested argument name.
     return:
       type: System.String
-      description: The argument name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the current method is not implemented.
+      description: The argument name, or `null` if the current method is not implemented.
   overload: System.Runtime.Remoting.Messaging.IMethodReturnMessage.GetOutArgName*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -138,7 +138,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets the number of arguments in the method call marked as <xref uid="langword_csharp_ref" name="ref" href=""></xref> or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+  summary: Gets the number of arguments in the method call marked as `ref` or `out` parameters.
   remarks: ''
   example:
   - "The following example code shows a custom proxy that overrides `RealProxy.Invoke` in order to write the return message information to the console.  \n  \n [!code-cpp[IMethodReturnMessage_ReturnValue#2](~/add/codesnippet/cpp/p-system.runtime.remotin_55_1.cpp)]\n [!code-vb[IMethodReturnMessage_ReturnValue#2](~/add/codesnippet/visualbasic/p-system.runtime.remotin_55_1.vb)]\n [!code-cs[IMethodReturnMessage_ReturnValue#2](~/add/codesnippet/csharp/p-system.runtime.remotin_55_1.cs)]"
@@ -146,13 +146,13 @@ items:
     content: public int OutArgCount { get; }
     return:
       type: System.Int32
-      description: The number of arguments in the method call marked as <xref uid="langword_csharp_ref" name="ref" href=""></xref> or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+      description: The number of arguments in the method call marked as `ref` or `out` parameters.
   overload: System.Runtime.Remoting.Messaging.IMethodReturnMessage.OutArgCount*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,7 +169,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the specified argument marked as a `ref` or an `out` parameter.
   remarks: "Although the OutArgs property is redundant since the same functionality can be achieved through the <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage.OutArgCount%2A> field and <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage.GetOutArg%2A> method, there might be performance optimization available if the implementer understands when all the arguments will be retrieved.  \n  \n> [!WARNING]\n>  If <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage.Exception%2A> is not `null`, a <xref:System.IndexOutOfRangeException?displayProperty=fullName> exception is thrown when OutArgs is accessed."
   example:
   - >-
@@ -180,13 +180,13 @@ items:
     content: public object[] OutArgs { get; }
     return:
       type: System.Object[]
-      description: The specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+      description: The specified argument marked as a `ref` or an `out` parameter.
   overload: System.Runtime.Remoting.Messaging.IMethodReturnMessage.OutArgs*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -214,7 +214,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The immediate caller makes the call through a reference to the interface and does not have infrastructure permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -283,8 +283,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

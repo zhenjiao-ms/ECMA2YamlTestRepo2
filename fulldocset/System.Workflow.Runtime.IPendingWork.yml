@@ -17,7 +17,7 @@ items:
   syntax:
     content: public interface IPendingWork
   implements: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -46,7 +46,7 @@ items:
       description: The work items to be committed.
   overload: System.Workflow.Runtime.IPendingWork.Commit*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -69,13 +69,13 @@ items:
     parameters:
     - id: succeeded
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the transaction succeeded; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the transaction succeeded; otherwise, `false`.'
     - id: items
       type: System.Collections.ICollection
       description: An <xref href="System.Collections.ICollection"></xref> of work items.
   overload: System.Workflow.Runtime.IPendingWork.Complete*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -101,10 +101,10 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> of work items.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if any item in the collection must be committed immediately; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if any item in the collection must be committed immediately; otherwise, `false`.'
   overload: System.Workflow.Runtime.IPendingWork.MustCommit*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

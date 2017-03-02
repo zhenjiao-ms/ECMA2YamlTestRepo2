@@ -34,7 +34,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -57,13 +57,13 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The server ID. A string specifying the server which can be a domain name, LDAP server name or dotted strings representing the IP address of the LDAP server, or <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>. If <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, it represents the identity of any domain controller in the domain associated with the computer account.  \n  \n Optionally, this parameter may also include a port number, separated from the ID itself by a colon (:)."
+      description: "The server ID. A string specifying the server which can be a domain name, LDAP server name or dotted strings representing the IP address of the LDAP server, or `null`. If `null`, it represents the identity of any domain controller in the domain associated with the computer account.  \n  \n Optionally, this parameter may also include a port number, separated from the ID itself by a colon (:)."
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Thrown if <code>server</code> has space.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -95,7 +95,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Thrown if <code>server</code> has space.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -121,16 +121,16 @@ items:
       description: The server ID. A string specifying the server which can be a domain name, LDAP server name or dotted strings representing the IP address of the LDAP server. Optionally, this parameter may also include a port number, separated from the ID itself by a colon (:).
     - id: fullyQualifiedDnsHostName
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if each element in servers is a fully-qualified DNS host name. If <xref uid="langword_csharp_false" name="false" href=""></xref>, an element can be an IP address, a DNS domain or host name, or <xref uid="langword_csharp_null" name="null" href=""></xref>. If <xref uid="langword_csharp_null" name="null" href=""></xref>, it represents the identity of any domain controller in the domain associated with the computer account.
+      description: '`true` if each element in servers is a fully-qualified DNS host name. If `false`, an element can be an IP address, a DNS domain or host name, or `null`. If `null`, it represents the identity of any domain controller in the domain associated with the computer account.'
     - id: connectionless
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the connection is UDP or <xref uid="langword_csharp_false" name="false" href=""></xref> if the connection uses TCP/IP.
+      description: '`true` if the connection is UDP or `false` if the connection uses TCP/IP.'
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Thrown if <code>server</code> contains only white space.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -156,16 +156,16 @@ items:
       description: The server ID. A string specifying the server which can be a domain name, LDAP server name or dotted strings representing the IP address of the LDAP server. Optionally, this parameter may also include a port number, separated from the ID itself by a colon (:).
     - id: fullyQualifiedDnsHostName
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if each element in servers is a fully-qualified DNS host name. If <xref uid="langword_csharp_false" name="false" href=""></xref>, an element can be an IP address, a DNS domain or host name, or null. If null, it represents the identity of any domain controller in the domain associated with the computer account.
+      description: '`true` if each element in servers is a fully-qualified DNS host name. If `false`, an element can be an IP address, a DNS domain or host name, or null. If null, it represents the identity of any domain controller in the domain associated with the computer account.'
     - id: connectionless
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the connection is UDP or <xref uid="langword_csharp_false" name="false" href=""></xref> if the connection uses TCP/IP.
+      description: '`true` if the connection is UDP or `false` if the connection uses TCP/IP.'
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Thrown if <code>server</code> has space.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,16 +194,16 @@ items:
       description: The port number to be used when connecting to the server.
     - id: fullyQualifiedDnsHostName
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if each element in servers is a fully-qualified DNS host name. If <xref uid="langword_csharp_false" name="false" href=""></xref>, an element can be an IP address, a DNS domain or host name, or null. If null, it represents the identity of any domain controller in the domain associated with the computer account.
+      description: '`true` if each element in servers is a fully-qualified DNS host name. If `false`, an element can be an IP address, a DNS domain or host name, or null. If null, it represents the identity of any domain controller in the domain associated with the computer account.'
     - id: connectionless
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the connection is UDP or <xref uid="langword_csharp_false" name="false" href=""></xref> if the connection uses TCP/IP.
+      description: '`true` if the connection is UDP or `false` if the connection uses TCP/IP.'
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Thrown if <code>server</code> has space.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -232,16 +232,16 @@ items:
       description: the port number to be used when connecting to a server.
     - id: fullyQualifiedDnsHostName
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if each element in servers is a fully-qualified DNS host name. If <xref uid="langword_csharp_false" name="false" href=""></xref>, an element can be an IP address, a DNS domain or host name, or null. If null, it represents the identity of any domain controller in the domain associated with the computer account.
+      description: '`true` if each element in servers is a fully-qualified DNS host name. If `false`, an element can be an IP address, a DNS domain or host name, or null. If null, it represents the identity of any domain controller in the domain associated with the computer account.'
     - id: connectionless
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the connection is UDP or <xref uid="langword_csharp_false" name="false" href=""></xref> if the connection uses TCP/IP.
+      description: '`true` if the connection is UDP or `false` if the connection uses TCP/IP.'
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: Thrown if <code>server</code> has space.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,10 +263,10 @@ items:
     content: public bool Connectionless { get; }
     return:
       type: System.Boolean
-      description: This property is <xref uid="langword_csharp_true" name="true" href=""></xref> if the connection is UDP. This property is <xref uid="langword_csharp_false" name="false" href=""></xref> if the LDAP connection is over TCP/IP.
+      description: This property is `true` if the connection is UDP. This property is `false` if the LDAP connection is over TCP/IP.
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.Connectionless*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -288,10 +288,10 @@ items:
     content: public bool FullyQualifiedDnsHostName { get; }
     return:
       type: System.Boolean
-      description: This property is <xref uid="langword_csharp_true" name="true" href=""></xref> if a server name is a fully-qualified DNS host name.
+      description: This property is `true` if a server name is a fully-qualified DNS host name.
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.FullyQualifiedDnsHostName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -316,7 +316,7 @@ items:
       description: Returns an integer representing the port number.
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.PortNumber*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -341,7 +341,7 @@ items:
       description: The set of servers this object identifies.
   overload: System.DirectoryServices.Protocols.LdapDirectoryIdentifier.Servers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -401,8 +401,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

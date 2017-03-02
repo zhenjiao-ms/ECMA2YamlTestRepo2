@@ -20,7 +20,7 @@ items:
   nameWithType: ProfilePropertySettings
   fullName: System.Web.Configuration.ProfilePropertySettings
   type: Class
-  summary: The ProfilePropertySettings class provides a way to programmatically access and modify the <xref uid="langword_csharp_profiles" name="profiles" href=""></xref> section of a configuration file. This class cannot be inherited.
+  summary: The ProfilePropertySettings class provides a way to programmatically access and modify the `profiles` section of a configuration file. This class cannot be inherited.
   remarks: "The ProfilePropertySettings class provides a way to programmatically create, access, and modify the definition of an individual property added to the `properties` subsection of the `profile` section of a configuration file.  \n  \n The `profile` section of the configuration file specifies a schema for user profiles. At run time, the ASP.NET compilation system uses the information specified in the `profile` section to generate a class called `ProfileCommon`, which is derived from <xref:System.Web.Profile.ProfileBase>. The `ProfileCommon` class definition is based on the properties defined in the `properties` subsection of the `profile` section of the configuration file. An instance of this class is created for each user profile, and you can access the individual profile values in your code through the <xref:System.Web.HttpContext.Profile%2A?displayProperty=fullName> property. For more information about profile properties, see [ASP.NET Profile Properties Overview](~/add/includes/ajax-current-ext-md.md). For more information about the profile features added to [!INCLUDE[vstecasplong](~/add/includes/vstecasplong-md.md)], see [ASP.NET Profile Properties Overview](../Topic/ASP.NET%20Profile%20Properties%20Overview.md)."
   example:
   - "The following code example shows how to access the <xref:System.Web.Configuration.ProfileSection.PropertySettings%2A> property value, which contains a collection of ProfilePropertySettings objects. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#10](~/add/codesnippet/csharp/t-system.web.configurati_33_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#10](~/add/codesnippet/visualbasic/t-system.web.configurati_33_1.vb)]"
@@ -69,7 +69,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,7 +96,7 @@ items:
       description: A unique name for the <xref href="System.Web.Configuration.ProfilePropertySettings"></xref> object.
   overload: System.Web.Configuration.ProfilePropertySettings.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -123,7 +123,7 @@ items:
       description: A unique name for the <xref href="System.Web.Configuration.ProfilePropertySettings"></xref> object.
     - id: readOnly
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class should be read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the associated property in the dynamically generated `ProfileCommon` class should be read-only; otherwise, `false`.'
     - id: serializeAs
       type: System.Web.Configuration.SerializationMode
       description: One of the <xref href="System.Web.Configuration.SerializationMode"></xref> values.
@@ -138,13 +138,13 @@ items:
       description: A valid type reference or an empty string.
     - id: allowAnonymous
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class should support anonymous users; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>, to indicate that anonymous users cannot change the named property.
+      description: '`true` to indicate associated property in the dynamically generated `ProfileCommon` class should support anonymous users; otherwise, `false`, to indicate that anonymous users cannot change the named property.'
     - id: customProviderData
       type: System.String
       description: A string containing provider-specific information used by the provider associated with the property.
   overload: System.Web.Configuration.ProfilePropertySettings.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -161,7 +161,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets a value indicating whether the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class can be set by anonymous users.
+  summary: Gets or sets a value indicating whether the associated property in the dynamically generated `ProfileCommon` class can be set by anonymous users.
   remarks: "At run time, the ASP.NET compilation system uses the information specified in the `profile` section of the configuration file to generate a class called `ProfileCommon`, which is derived from <xref:System.Web.Profile.ProfileBase>. The class allows you to access and modify the values for individual user profiles.  \n  \n The `ProfileCommon` class definition is based on the properties defined in the `properties` subsection of the `profile` section of the configuration file. The property values that you specify for an instance of the <xref:System.Web.Configuration.ProfilePropertySettings> class will be used to define an associated property in the `ProfileCommon` class.  \n  \n An exception is thrown if a property in the `ProfileCommon` class is changed by an anonymous user when the AllowAnonymous property value is `false`."
   example:
   - "The following code example shows how to use the AllowAnonymous property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#16](~/add/codesnippet/csharp/p-system.web.configurati_374_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#16](~/add/codesnippet/visualbasic/p-system.web.configurati_374_1.vb)]"
@@ -169,10 +169,10 @@ items:
     content: public bool AllowAnonymous { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the associated property in the <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class can be set by anonymous users; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>, indicating that anonymous users cannot change the property value. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the associated property in the `ProfileCommon` class can be set by anonymous users; otherwise, `false`, indicating that anonymous users cannot change the property value. The default is `false`.'
   overload: System.Web.Configuration.ProfilePropertySettings.AllowAnonymous*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,10 +194,10 @@ items:
     content: public string CustomProviderData { get; set; }
     return:
       type: System.String
-      description: A string of custom data for the profile property provider. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A string of custom data for the profile property provider. The default is `null`.
   overload: System.Web.Configuration.ProfilePropertySettings.CustomProviderData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -214,7 +214,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets the default value used for the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class.
+  summary: Gets or sets the default value used for the associated property in the dynamically generated `ProfileCommon` class.
   remarks: "At run time, the ASP.NET compilation system uses the information specified in the `profile` section of the configuration file to generate a class called `ProfileCommon`, which is derived from <xref:System.Web.Profile.ProfileBase>. The class allows you to access and modify the values for individual user profiles.  \n  \n The `ProfileCommon` class definition is based on the properties defined in the `properties` subsection of the `profile` section of the configuration file. The property values that you specify for an instance of the <xref:System.Web.Configuration.ProfilePropertySettings> class will be used to define an associated property in the `ProfileCommon` class.  \n  \n The default value is used as the initial value for the associated `ProfileCommon` class property when an individual user profile does not contain a value for the property. The DefaultValue property may be a string value, an XML-encoded value (serialization mode for the property is XML serialization) or a base-64-encoded binary string (if the serialization mode for the property is binary serialization)."
   example:
   - "The following code example shows how to use the DefaultValue property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#19](~/add/codesnippet/csharp/p-system.web.configurati_212_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#19](~/add/codesnippet/visualbasic/p-system.web.configurati_212_1.vb)]"
@@ -222,10 +222,10 @@ items:
     content: public string DefaultValue { get; set; }
     return:
       type: System.String
-      description: A string containing the default value used for the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class. The default is an empty string ("").
+      description: A string containing the default value used for the associated property in the dynamically generated `ProfileCommon` class. The default is an empty string ("").
   overload: System.Web.Configuration.ProfilePropertySettings.DefaultValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -242,7 +242,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets the name of the <xref href="System.Web.Configuration.ProfilePropertySettings"></xref> object and the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class.
+  summary: Gets or sets the name of the <xref href="System.Web.Configuration.ProfilePropertySettings"></xref> object and the associated property in the dynamically generated `ProfileCommon` class.
   remarks: "At run time, the ASP.NET compilation system uses the information specified in the `profile` section of the configuration file to generate a class called `ProfileCommon`, which is derived from <xref:System.Web.Profile.ProfileBase>. The class allows you to access and modify the values for individual user profiles.  \n  \n The `ProfileCommon` class definition is based on the properties defined in the `properties` subsection of the `profile` section of the configuration file. The property values that you specify for an instance of the <xref:System.Web.Configuration.ProfilePropertySettings> class will be used to define an associated property in the `ProfileCommon` class."
   example:
   - "The following code example shows how to use the Name property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#21](~/add/codesnippet/csharp/p-system.web.configurati_118_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#21](~/add/codesnippet/visualbasic/p-system.web.configurati_118_1.vb)]"
@@ -250,10 +250,10 @@ items:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: A string containing the name of the <xref href="System.Web.Configuration.ProfilePropertySettings"></xref> object. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A string containing the name of the <xref href="System.Web.Configuration.ProfilePropertySettings"></xref> object. The default is `null`.
   overload: System.Web.Configuration.ProfilePropertySettings.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -277,7 +277,7 @@ items:
       description: To be added.
   overload: System.Web.Configuration.ProfilePropertySettings.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
       description: The name of a provider from the &lt;xref:System.Web.Configuration.ProfileSection.Providers%2A?displayProperty=fullName&gt; property, or an empty string (""). The default is an empty string.
   overload: System.Web.Configuration.ProfilePropertySettings.Provider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -322,7 +322,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets a value that determines whether the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class is read-only.
+  summary: Gets or sets a value that determines whether the associated property in the dynamically generated `ProfileCommon` class is read-only.
   remarks: "At run time, the ASP.NET compilation system uses the information specified in the `profile` section of the configuration file to generate a class called `ProfileCommon`, which is derived from <xref:System.Web.Profile.ProfileBase>. The class allows you to access and modify the values for individual user profiles.  \n  \n The `ProfileCommon` class definition is based on the properties defined in the `properties` subsection of the `profile` section of the configuration file. The property values that you specify for an instance of the <xref:System.Web.Configuration.ProfilePropertySettings> class will be used to define an associated property in the `ProfileCommon` class."
   example:
   - "The following code example shows how to use the ReadOnly property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#15](~/add/codesnippet/csharp/p-system.web.configurati_26_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#15](~/add/codesnippet/visualbasic/p-system.web.configurati_26_1.vb)]"
@@ -330,10 +330,10 @@ items:
     content: public bool ReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the associated property in the <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the associated property in the `ProfileCommon` class is read-only; otherwise, `false`. The default is `false`.'
   overload: System.Web.Configuration.ProfilePropertySettings.ReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -350,7 +350,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets the serialization method used for the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class.
+  summary: Gets or sets the serialization method used for the associated property in the dynamically generated `ProfileCommon` class.
   remarks: For more information about profile properties, see [ASP.NET Profile Properties Overview](~/add/includes/ajax-current-ext-md.md).
   example:
   - "The following code example shows how to use the SerializeAs property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#17](~/add/codesnippet/csharp/p-system.web.configurati_307_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#17](~/add/codesnippet/visualbasic/p-system.web.configurati_307_1.vb)]"
@@ -361,7 +361,7 @@ items:
       description: One of the <xref href="System.Web.Configuration.SerializationMode"></xref> values. The default is <xref href="System.Web.Configuration.SerializationMode"></xref>.
   overload: System.Web.Configuration.ProfilePropertySettings.SerializeAs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -378,7 +378,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: Gets or sets the name of the type of the associated property in the dynamically generated <xref uid="langword_csharp_ProfileCommon" name="ProfileCommon" href=""></xref> class.
+  summary: Gets or sets the name of the type of the associated property in the dynamically generated `ProfileCommon` class.
   remarks: "When set to a valid type reference, this type is used for the named property in the generated `ProfileCommon` class.  \n  \n The type reference is formed as follows (items in brackets are not required): `Namespace.Typename, Assemblyname[,] [Version=x,] [Culture=y,] [PublicKeyToken=z]`  \n  \n For example:  \n  \n `\"ExampleNameSpace.ExampleType, Example.Assembly, Version=%ASSEMBLY_VERSION%, Culture=neutral, PublicKeyToken=%MICROSOFT_PUBLICKEY%\"`"
   example:
   - "The following code example shows how to use the Type property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.ProfileSection> class.  \n  \n [!code-cs[System.Web.Configuration.ProfileSection#18](~/add/codesnippet/csharp/p-system.web.configurati_385_1.cs)]\n [!code-vb[System.Web.Configuration.ProfileSection#18](~/add/codesnippet/visualbasic/p-system.web.configurati_385_1.vb)]"
@@ -389,7 +389,7 @@ items:
       description: A valid, fully qualified type reference, or an empty string (""). The default is an empty string.
   overload: System.Web.Configuration.ProfilePropertySettings.Type*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

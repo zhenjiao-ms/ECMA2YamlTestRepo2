@@ -57,7 +57,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -84,7 +84,7 @@ items:
     parameters: []
   overload: System.Web.SiteMapProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,7 +111,7 @@ items:
       description: The <xref href="System.Web.SiteMapNode"></xref> to add to the node collection maintained by the provider.
   overload: System.Web.SiteMapProvider.AddNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -144,7 +144,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -169,10 +169,10 @@ items:
     content: public virtual System.Web.SiteMapNode CurrentNode { get; }
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if the <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, `null`, if the <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
   overload: System.Web.SiteMapProvider.CurrentNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,10 +195,10 @@ items:
     content: public bool EnableLocalization { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a localized value of the <xref href="System.Web.SiteMapNode"></xref> attributes are returned; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a localized value of the <xref href="System.Web.SiteMapNode"></xref> attributes are returned; otherwise, `false`. The default is `false`.'
   overload: System.Web.SiteMapProvider.EnableLocalization*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -227,10 +227,10 @@ items:
       description: A URL that identifies the page for which to retrieve a <xref href="System.Web.SiteMapNode"></xref>.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the page identified by <code>rawURL</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if no corresponding <xref href="System.Web.SiteMapNode"></xref> is found or if security trimming is enabled and the <xref href="System.Web.SiteMapNode"></xref> cannot be returned for the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the page identified by <code>rawURL</code>; otherwise, `null`, if no corresponding <xref href="System.Web.SiteMapNode"></xref> is found or if security trimming is enabled and the <xref href="System.Web.SiteMapNode"></xref> cannot be returned for the current user.
   overload: System.Web.SiteMapProvider.FindSiteMapNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -257,10 +257,10 @@ items:
       description: The <xref href="System.Web.HttpContext"></xref> used to match node information with the URL of the requested page.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if no corresponding <xref href="System.Web.SiteMapNode"></xref> can be found in the <xref href="System.Web.SiteMapNode"></xref> or if the page context is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, `null`, if no corresponding <xref href="System.Web.SiteMapNode"></xref> can be found in the <xref href="System.Web.SiteMapNode"></xref> or if the page context is `null`.
   overload: System.Web.SiteMapProvider.FindSiteMapNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,10 +287,10 @@ items:
       description: A lookup key with which a <xref href="System.Web.SiteMapNode"></xref> is created.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the page identified by <code>key</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if no corresponding <xref href="System.Web.SiteMapNode"></xref> is found or if security trimming is enabled and the <xref href="System.Web.SiteMapNode"></xref> cannot be returned for the current user. The default is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the page identified by <code>key</code>; otherwise, `null`, if no corresponding <xref href="System.Web.SiteMapNode"></xref> is found or if security trimming is enabled and the <xref href="System.Web.SiteMapNode"></xref> cannot be returned for the current user. The default is `null`.
   overload: System.Web.SiteMapProvider.FindSiteMapNodeFromKey*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -319,10 +319,10 @@ items:
       description: The <xref href="System.Web.SiteMapNode"></xref> for which to retrieve all child nodes.
     return:
       type: System.Web.SiteMapNodeCollection
-      description: A read-only <xref href="System.Web.SiteMapNodeCollection"></xref> that contains the immediate child nodes of the specified <xref href="System.Web.SiteMapNode"></xref>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty collection, if no child nodes exist.
+      description: A read-only <xref href="System.Web.SiteMapNodeCollection"></xref> that contains the immediate child nodes of the specified <xref href="System.Web.SiteMapNode"></xref>; otherwise, `null` or an empty collection, if no child nodes exist.
   overload: System.Web.SiteMapProvider.GetChildNodes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -349,13 +349,13 @@ items:
       description: The number of ancestor site map node generations to get. A value of -1 indicates that all ancestors might be retrieved and cached by the provider.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if the <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, `null`, if the <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
   overload: System.Web.SiteMapProvider.GetCurrentNodeAndHintAncestorNodes*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>upLevel</code> is less than -1.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,13 +385,13 @@ items:
       description: The number of child <xref href="System.Web.SiteMapNode"></xref> generations to fetch. 0 indicates no descendant nodes are retrieved and a -1 indicates that all descendant nodes might be retrieved and cached by the provider.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if the <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the currently requested page; otherwise, `null`, if the <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
   overload: System.Web.SiteMapProvider.GetCurrentNodeAndHintNeighborhoodNodes*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>upLevel</code> or <code>downLevel</code> is less than -1.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -420,10 +420,10 @@ items:
       description: The <xref href="System.Web.SiteMapNode"></xref> for which to retrieve the parent node.
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=\"System.Web.SiteMapNode\"></xref> that represents the parent of <code>node</code>; otherwise, <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, if the <xref href=\"System.Web.SiteMapNode\"></xref> has no parent or security trimming is enabled and the parent node is not accessible to the current user.  \n  \n <div class=\"alert NOTE\">  \n GetParentNode might also return <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> if the parent node belongs to a different provider. In this case, use the <xref:System.Web.SiteMapNode.ParentNode*> property of <code>node</code> instead.  \n  \n</div>"
+      description: "A <xref href=\"System.Web.SiteMapNode\"></xref> that represents the parent of <code>node</code>; otherwise, `null`, if the <xref href=\"System.Web.SiteMapNode\"></xref> has no parent or security trimming is enabled and the parent node is not accessible to the current user.  \n  \n <div class=\"alert NOTE\">  \n GetParentNode might also return `null` if the parent node belongs to a different provider. In this case, use the <xref:System.Web.SiteMapNode.ParentNode*> property of <code>node</code> instead.  \n  \n</div>"
   overload: System.Web.SiteMapProvider.GetParentNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -453,13 +453,13 @@ items:
       description: The number of descendant node levels to retrieve from the target ancestor node.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents an ancestor <xref href="System.Web.SiteMapNode"></xref> of the currently requested page; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if the current or ancestor <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents an ancestor <xref href="System.Web.SiteMapNode"></xref> of the currently requested page; otherwise, `null`, if the current or ancestor <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
   overload: System.Web.SiteMapProvider.GetParentNodeRelativeToCurrentNodeAndHintDownFromParent*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>walkupLevels</code> or <code>relativeDepthFromWalkup</code> is less than 0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
       description: The number of descendant node levels to retrieve from the target ancestor node.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents an ancestor of <code>node</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if the current or ancestor <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents an ancestor of <code>node</code>; otherwise, `null`, if the current or ancestor <xref href="System.Web.SiteMapNode"></xref> is not found or cannot be returned for the current user.
   overload: System.Web.SiteMapProvider.GetParentNodeRelativeToNodeAndHintDownFromParent*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -500,8 +500,8 @@ items:
     description: The value specified for <code>walkupLevels</code> or <code>relativeDepthFromWalkup</code> is less than 0.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>node</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>node</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -532,7 +532,7 @@ items:
       description: A <xref href="System.Web.SiteMapNode"></xref> that represents the root node of the set of nodes that the current provider manages.
   overload: System.Web.SiteMapProvider.GetRootNodeCore*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -562,7 +562,7 @@ items:
       description: A <xref href="System.Web.SiteMapNode"></xref> that represents the root node of the set of nodes that is managed by <code>provider</code>.
   overload: System.Web.SiteMapProvider.GetRootNodeCoreFromProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -597,8 +597,8 @@ items:
     description: <code>upLevel</code> is less than -1.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>node</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>node</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -636,8 +636,8 @@ items:
     description: <code>upLevel</code> or <code>downLevel</code> is less than -1.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>node</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>node</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -669,7 +669,7 @@ items:
       description: A <xref href="System.Collections.Specialized.NameValueCollection"></xref> that can contain additional attributes to help initialize the provider. These attributes are read from the site map provider configuration in the Web.config file.
   overload: System.Web.SiteMapProvider.Initialize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -699,13 +699,13 @@ items:
       description: The <xref href="System.Web.SiteMapNode"></xref> that is requested by the user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if security trimming is enabled and <code>node</code> can be viewed by the user or security trimming is not enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if security trimming is enabled and <code>node</code> can be viewed by the user or security trimming is not enabled; otherwise, `false`.'
   overload: System.Web.SiteMapProvider.IsAccessibleToUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>context</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>node</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "<code>context</code> is `null`.  \n  \n \\- or -  \n  \n <code>node</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -733,7 +733,7 @@ items:
       description: The parent provider of the current <xref href="System.Web.SiteMapProvider"></xref>.
   overload: System.Web.SiteMapProvider.ParentProvider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -763,7 +763,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -790,10 +790,10 @@ items:
       description: The <xref href="System.Web.HttpContext"></xref> for which the site map currently exists.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> provided by the event handler delegate that is registered to handle the event or, if more than one delegate is registered to handle the event, the return value of the last delegate in the delegate chain; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.SiteMapNode"></xref> provided by the event handler delegate that is registered to handle the event or, if more than one delegate is registered to handle the event, the return value of the last delegate in the delegate chain; otherwise, `null`.
   overload: System.Web.SiteMapProvider.ResolveSiteMapNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -819,7 +819,7 @@ items:
       description: A string containing the resource key name.
   overload: System.Web.SiteMapProvider.ResourceKey*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -847,7 +847,7 @@ items:
       description: The root <xref href="System.Web.SiteMapNode"></xref> of the current site map data provider. The default implementation performs security trimming on the returned node.
   overload: System.Web.SiteMapProvider.RootNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -878,7 +878,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: There is a circular reference to the current site map provider.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -901,10 +901,10 @@ items:
     content: public bool SecurityTrimmingEnabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the provider is configured to filter nodes based on role; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the provider is configured to filter nodes based on role; otherwise, `false`.'
   overload: System.Web.SiteMapProvider.SecurityTrimmingEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -929,7 +929,7 @@ items:
       type: System.Web.SiteMapResolveEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

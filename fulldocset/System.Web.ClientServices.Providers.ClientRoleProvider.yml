@@ -34,7 +34,7 @@ items:
   - System.Web.Security.RoleProvider
   implements: []
   inheritedMembers: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.#ctor
@@ -55,7 +55,7 @@ items:
     parameters: []
   overload: System.Web.ClientServices.Providers.ClientRoleProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.AddUsersToRoles(System.String[],System.String[])
@@ -85,7 +85,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.ApplicationName
@@ -109,7 +109,7 @@ items:
       description: The name of the application for the provider.
   overload: System.Web.ClientServices.Providers.ClientRoleProvider.ApplicationName*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.CreateRole(System.String)
@@ -136,7 +136,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.DeleteRole(System.String,System.Boolean)
@@ -169,7 +169,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.FindUsersInRole(System.String,System.String)
@@ -202,7 +202,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.GetAllRoles
@@ -229,7 +229,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.GetRolesForUser(System.String)
@@ -261,8 +261,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is <xref href=\"System.String\"></xref> or <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is not the user name of the current, authenticated user."
-  platform:
+    description: "<code>username</code> is <xref href=\"System.String\"></xref> or `null`.  \n  \n -or-  \n  \n <code>username</code> is not the user name of the current, authenticated user."
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.GetUsersInRole(System.String)
@@ -292,7 +292,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)
@@ -322,7 +322,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>config</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>name</code> is `null`.  \n  \n -or-  \n  \n <code>config</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>name</code> is empty.  \n  \n -or-  \n  \n <code>config</code> contains an unrecognized value. For more information, see the Remarks section."
@@ -335,7 +335,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: <code>config</code> contains a `cacheTimeout` value that represents a number less than <xref href="System.Int32.MinValue"></xref> or greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.IsUserInRole(System.String,System.String)
@@ -365,16 +365,16 @@ items:
       description: The name of the role.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified user is in the specified role; <xref uid="langword_csharp_false" name="false" href=""></xref> if the specified user is not authenticated or is not in the specified role.
+      description: '`true` if the specified user is in the specified role; `false` if the specified user is not authenticated or is not in the specified role.'
   overload: System.Web.ClientServices.Providers.ClientRoleProvider.IsUserInRole*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is <xref href=\"System.String\"></xref> or <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n <code>username</code> is not the user name of the current, authenticated user."
+    description: "<code>username</code> is <xref href=\"System.String\"></xref> or `null`.  \n  \n -or-  \n  \n <code>username</code> is not the user name of the current, authenticated user."
   - type: System.Net.WebException
     commentId: T:System.Net.WebException
     description: "The user is no longer authenticated.  \n  \n -or-  \n  \n The roles service is not available."
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.RemoveUsersFromRoles(System.String[],System.String[])
@@ -404,7 +404,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.ResetCache
@@ -428,7 +428,7 @@ items:
     parameters: []
   overload: System.Web.ClientServices.Providers.ClientRoleProvider.ResetCache*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.RoleExists(System.String)
@@ -458,7 +458,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: Always thrown.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: System.Web.ClientServices.Providers.ClientRoleProvider.ServiceUri
@@ -487,7 +487,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: When getting this property, no service URI was found in the application configuration file, and this property has not been previously set.
-  platform:
+  version:
   - netframework-35
   - netframework-40
 references:
@@ -548,8 +548,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

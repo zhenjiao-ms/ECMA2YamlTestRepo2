@@ -65,7 +65,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -88,13 +88,13 @@ items:
     parameters:
     - id: isContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a container object.
+      description: '`true` if the new <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a container object.'
     - id: isDS
       type: System.Boolean
       description: True if the new <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a directory object.
   overload: System.Security.AccessControl.ObjectSecurity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,7 +119,7 @@ items:
       description: The type of the securable object associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object.
   overload: System.Security.AccessControl.ObjectSecurity.AccessRightType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -163,7 +163,7 @@ items:
       description: The <xref href="System.Security.AccessControl.AccessRule"></xref> object that this method creates.
   overload: System.Security.AccessControl.ObjectSecurity.AccessRuleFactory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -185,10 +185,10 @@ items:
     content: protected bool AccessRulesModified { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object have been modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object have been modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.AccessRulesModified*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,7 +213,7 @@ items:
       description: The type of the object associated with the access rules of this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object.
   overload: System.Security.AccessControl.ObjectSecurity.AccessRuleType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,10 +235,10 @@ items:
     content: public bool AreAccessRulesCanonical { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rules are in canonical order; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rules are in canonical order; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.AreAccessRulesCanonical*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,10 +260,10 @@ items:
     content: public bool AreAccessRulesProtected { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is protected; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is protected; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.AreAccessRulesProtected*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -285,10 +285,10 @@ items:
     content: public bool AreAuditRulesCanonical { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the audit rules are in canonical order; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the audit rules are in canonical order; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.AreAuditRulesCanonical*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -310,10 +310,10 @@ items:
     content: public bool AreAuditRulesProtected { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is protected; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is protected; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.AreAuditRulesProtected*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -342,7 +342,7 @@ items:
       description: The access mask of this rule. The access mask is a 32-bit collection of anonymous bits, the meaning of which is defined by the individual integrators.
     - id: isInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this rule is inherited from a parent container.
+      description: '`true` if this rule is inherited from a parent container.'
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
       description: Specifies the inheritance properties of the audit rule.
@@ -357,7 +357,7 @@ items:
       description: The <xref href="System.Security.AccessControl.AuditRule"></xref> object that this method creates.
   overload: System.Security.AccessControl.ObjectSecurity.AuditRuleFactory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -379,10 +379,10 @@ items:
     content: protected bool AuditRulesModified { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the audit rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object have been modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the audit rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object have been modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.AuditRulesModified*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -407,7 +407,7 @@ items:
       description: The type of the object associated with the audit rules of this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object.
   overload: System.Security.AccessControl.ObjectSecurity.AuditRuleType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -436,7 +436,7 @@ items:
       description: The primary group associated with the specified owner.
   overload: System.Security.AccessControl.ObjectSecurity.GetGroup*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,7 +467,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>targetType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>targetType</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>targetType</code> is not an <xref href="System.Security.Principal.IdentityReference"></xref> type.
@@ -477,7 +477,7 @@ items:
   - type: System.SystemException
     commentId: T:System.SystemException
     description: A Win32 error code was returned.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -501,10 +501,10 @@ items:
     parameters: []
     return:
       type: System.Byte[]
-      description: An array of byte values that represents the security descriptor for this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object. This method returns <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no security information in this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object.
+      description: An array of byte values that represents the security descriptor for this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object. This method returns `null` if there is no security information in this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object.
   overload: System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorBinaryForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -533,7 +533,7 @@ items:
       description: The SDDL representation of the specified sections of the security descriptor associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object.
   overload: System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -555,10 +555,10 @@ items:
     content: protected bool GroupModified { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the group associated with the securable object has been modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the group associated with the securable object has been modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.GroupModified*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -580,10 +580,10 @@ items:
     content: protected bool IsContainer { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a container object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a container object; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.IsContainer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,10 +605,10 @@ items:
     content: protected bool IsDS { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a directory object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object is a directory object; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.IsDS*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -631,10 +631,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the security descriptor associated with this  <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object can be converted to the Security Descriptor Definition Language (SDDL) format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the security descriptor associated with this  <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object can be converted to the Security Descriptor Definition Language (SDDL) format; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.IsSddlConversionSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -664,13 +664,13 @@ items:
       description: The access rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.ModifyAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -700,13 +700,13 @@ items:
       description: The access rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.ModifyAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -735,13 +735,13 @@ items:
       description: The audit rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.ModifyAudit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -770,13 +770,13 @@ items:
       description: The audit rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.ModifyAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -798,10 +798,10 @@ items:
     content: protected bool OwnerModified { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the owner of the securable object has been modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the owner of the securable object has been modified; otherwise, `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.OwnerModified*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -831,7 +831,7 @@ items:
       description: One of the <xref href="System.Security.AccessControl.AccessControlSections"></xref> enumeration values that specifies the sections of the security descriptor (access rules, audit rules, owner, primary group) of the securable object to save.
   overload: System.Security.AccessControl.ObjectSecurity.Persist*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -861,7 +861,7 @@ items:
       description: One of the <xref href="System.Security.AccessControl.AccessControlSections"></xref> enumeration values that specifies the sections of the security descriptor (access rules, audit rules, owner, primary group) of the securable object to save.
   overload: System.Security.AccessControl.ObjectSecurity.Persist*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -885,7 +885,7 @@ items:
     parameters:
     - id: enableOwnershipPrivilege
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enable the privilege that allows the caller to take ownership of the object.
+      description: '`true` to enable the privilege that allows the caller to take ownership of the object.'
     - id: name
       type: System.String
       description: The name used to retrieve the persisted information.
@@ -894,7 +894,7 @@ items:
       description: One of the <xref href="System.Security.AccessControl.AccessControlSections"></xref> enumeration values that specifies the sections of the security descriptor (access rules, audit rules, owner, primary group) of the securable object to save.
   overload: System.Security.AccessControl.ObjectSecurity.Persist*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -923,7 +923,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: All access rules are not in canonical order.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -952,7 +952,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: All audit rules are not in canonical order.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -975,7 +975,7 @@ items:
     parameters: []
   overload: System.Security.AccessControl.ObjectSecurity.ReadLock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -998,7 +998,7 @@ items:
     parameters: []
   overload: System.Security.AccessControl.ObjectSecurity.ReadUnlock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1021,16 +1021,16 @@ items:
     parameters:
     - id: isProtected
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to protect the access rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object from inheritance; <xref uid="langword_csharp_false" name="false" href=""></xref> to allow inheritance.
+      description: '`true` to protect the access rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object from inheritance; `false` to allow inheritance.'
     - id: preserveInheritance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to preserve inherited access rules; <xref uid="langword_csharp_false" name="false" href=""></xref> to remove inherited access rules. This parameter is ignored if `isProtected` is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to preserve inherited access rules; `false` to remove inherited access rules. This parameter is ignored if `isProtected` is `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.SetAccessRuleProtection*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This method attempts to remove inherited rules from a non-canonical Discretionary Access Control List (DACL).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1053,16 +1053,16 @@ items:
     parameters:
     - id: isProtected
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to protect the audit rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object from inheritance; <xref uid="langword_csharp_false" name="false" href=""></xref> to allow inheritance.
+      description: '`true` to protect the audit rules associated with this <xref href="System.Security.AccessControl.ObjectSecurity"></xref> object from inheritance; `false` to allow inheritance.'
     - id: preserveInheritance
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to preserve inherited audit rules; <xref uid="langword_csharp_false" name="false" href=""></xref> to remove inherited audit rules. This parameter is ignored if `isProtected` is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to preserve inherited audit rules; `false` to remove inherited audit rules. This parameter is ignored if `isProtected` is `false`.'
   overload: System.Security.AccessControl.ObjectSecurity.SetAuditRuleProtection*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: This method attempts to remove inherited rules from a non-canonical System Access Control List (SACL).
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1088,7 +1088,7 @@ items:
       description: The primary group to set.
   overload: System.Security.AccessControl.ObjectSecurity.SetGroup*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1114,7 +1114,7 @@ items:
       description: The owner to set.
   overload: System.Security.AccessControl.ObjectSecurity.SetOwner*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1141,7 +1141,7 @@ items:
       description: The array of bytes from which to set the security descriptor.
   overload: System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorBinaryForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1171,7 +1171,7 @@ items:
       description: The sections (access rules, audit rules, owner, primary group) of the security descriptor to set.
   overload: System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorBinaryForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1198,7 +1198,7 @@ items:
       description: The SDDL string from which to set the security descriptor.
   overload: System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1228,7 +1228,7 @@ items:
       description: The sections (access rules, audit rules, owner, primary group) of the security descriptor to set.
   overload: System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1251,7 +1251,7 @@ items:
     parameters: []
   overload: System.Security.AccessControl.ObjectSecurity.WriteLock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1274,7 +1274,7 @@ items:
     parameters: []
   overload: System.Security.AccessControl.ObjectSecurity.WriteUnlock*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1466,8 +1466,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

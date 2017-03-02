@@ -23,7 +23,7 @@ items:
   syntax:
     content: public interface IDataParameter
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -52,7 +52,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The property was not set to a valid <xref href="System.Data.DbType"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -77,13 +77,13 @@ items:
     content: public System.Data.ParameterDirection Direction { get; set; }
     return:
       type: System.Data.ParameterDirection
-      description: One of the <xref href="System.Data.ParameterDirection"></xref> values. The default is <xref uid="langword_csharp_Input" name="Input" href=""></xref>.
+      description: One of the <xref href="System.Data.ParameterDirection"></xref> values. The default is `Input`.
   overload: System.Data.IDataParameter.Direction*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The property was not set to one of the valid <xref href="System.Data.ParameterDirection"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,10 +108,10 @@ items:
     content: public bool IsNullable { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if null values are accepted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if null values are accepted; otherwise, `false`. The default is `false`.'
   overload: System.Data.IDataParameter.IsNullable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
       description: The name of the <xref href="System.Data.IDataParameter"></xref>. The default is an empty string.
   overload: System.Data.IDataParameter.ParameterName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
       description: The name of the source column that is mapped to the <xref href="System.Data.DataSet"></xref>. The default is an empty string.
   overload: System.Data.IDataParameter.SourceColumn*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -192,13 +192,13 @@ items:
     content: public System.Data.DataRowVersion SourceVersion { get; set; }
     return:
       type: System.Data.DataRowVersion
-      description: One of the <xref href="System.Data.DataRowVersion"></xref> values. The default is <xref uid="langword_csharp_Current" name="Current" href=""></xref>.
+      description: One of the <xref href="System.Data.DataRowVersion"></xref> values. The default is `Current`.
   overload: System.Data.IDataParameter.SourceVersion*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The property was not set one of the <xref href="System.Data.DataRowVersion"></xref> values.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -226,7 +226,7 @@ items:
       description: An <xref href="System.Object"></xref> that is the value of the parameter. The default value is null.
   overload: System.Data.IDataParameter.Value*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

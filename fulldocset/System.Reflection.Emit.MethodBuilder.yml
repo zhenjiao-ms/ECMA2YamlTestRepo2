@@ -140,7 +140,7 @@ items:
   - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
   - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#GetTypeInfoCount(System.UInt32@)
   - System.Reflection.MethodInfo.System#Runtime#InteropServices#_MethodInfo#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,14 +174,14 @@ items:
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The <code>action</code> is invalid (<xref uid="langword_csharp_RequestMinimum" name="RequestMinimum" href=""></xref>, <xref uid="langword_csharp_RequestOptional" name="RequestOptional" href=""></xref>, and <xref uid="langword_csharp_RequestRefuse" name="RequestRefuse" href=""></xref> are invalid).
+    description: The <code>action</code> is invalid (`RequestMinimum`, `RequestOptional`, and `RequestRefuse` are invalid).
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The containing type has been created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n The permission set <code>pset</code> contains an action that was added earlier by AddDeclarativeSecurity.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
+    description: "The containing type has been created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n The permission set <code>pset</code> contains an action that was added earlier by AddDeclarativeSecurity.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>pset</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>pset</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -203,10 +203,10 @@ items:
     content: public override System.Reflection.MethodAttributes Attributes { get; }
     return:
       type: System.Reflection.MethodAttributes
-      description: Read-only. Retrieves the <xref uid="langword_csharp_MethodAttributes" name="MethodAttributes" href=""></xref> for this method.
+      description: Read-only. Retrieves the `MethodAttributes` for this method.
   overload: System.Reflection.Emit.MethodBuilder.Attributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -231,7 +231,7 @@ items:
       description: Read-only. The calling convention of the method.
   overload: System.Reflection.Emit.MethodBuilder.CallingConvention*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -260,7 +260,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The invoked method is not supported in the base class.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -286,19 +286,19 @@ items:
     parameters:
     - id: il
       type: System.Byte[]
-      description: An array containing valid MSIL instructions. If this parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>, the method's body is cleared.
+      description: An array containing valid MSIL instructions. If this parameter is `null`, the method's body is cleared.
     - id: count
       type: System.Int32
-      description: The number of valid bytes in the MSIL array. This value is ignored if MSIL is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The number of valid bytes in the MSIL array. This value is ignored if MSIL is `null`.
   overload: System.Reflection.Emit.MethodBuilder.CreateMethodBody*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: The <code>count</code> is not within the range of indexes of the supplied MSIL instruction array and <code>il</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>count</code> is not within the range of indexes of the supplied MSIL instruction array and <code>il</code> is not `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n This method was called previously on this <xref uid=\"langword_csharp_MethodBuilder\" name=\"MethodBuilder\" href=\"\"></xref> with an <code>il</code> argument that was not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n This method was called previously on this `MethodBuilder` with an <code>il</code> argument that was not `null`.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,7 +326,7 @@ items:
       description: Read-only. The type that declares this method.
   overload: System.Reflection.Emit.MethodBuilder.DeclaringType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -363,11 +363,11 @@ items:
     description: "Generic type parameters have already been defined for this method.  \n  \n -or-  \n  \n The method has been completed already.  \n  \n -or-  \n  \n The <xref:System.Reflection.Emit.MethodBuilder.SetImplementationFlags*> method has been called for the current method."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>names</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n An element of <code>names</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "<code>names</code> is `null`.  \n  \n -or-  \n  \n An element of <code>names</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>names</code> is an empty array.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -400,7 +400,7 @@ items:
       description: The name of the parameter. The name can be the null string.
     return:
       type: System.Reflection.Emit.ParameterBuilder
-      description: Returns a <xref uid="langword_csharp_ParameterBuilder" name="ParameterBuilder" href=""></xref> object that represents a parameter of this method or the return value of this method.
+      description: Returns a `ParameterBuilder` object that represents a parameter of this method or the return value of this method.
   overload: System.Reflection.Emit.MethodBuilder.DefineParameter*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -408,8 +408,8 @@ items:
     description: "The method has no parameters.  \n  \n -or-  \n  \n <code>position</code> is less than zero.  \n  \n -or-  \n  \n <code>position</code> is greater than the number of the method's parameters."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -433,13 +433,13 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: The object to compare with this <xref uid="langword_csharp_MethodBuilder" name="MethodBuilder" href=""></xref> instance.
+      description: The object to compare with this `MethodBuilder` instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> is an instance of <xref uid="langword_csharp_MethodBuilder" name="MethodBuilder" href=""></xref> and is equal to this object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> is an instance of `MethodBuilder` and is equal to this object; otherwise, `false`.'
   overload: System.Reflection.Emit.MethodBuilder.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -466,7 +466,7 @@ items:
       description: The base implementation of this method.
   overload: System.Reflection.Emit.MethodBuilder.GetBaseDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -498,7 +498,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call <xref:System.Reflection.MemberInfo.GetCustomAttributes*> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -533,7 +533,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call <xref:System.Reflection.MemberInfo.GetCustomAttributes*> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -557,10 +557,10 @@ items:
     parameters: []
     return:
       type: System.Type[]
-      description: An array of <xref href="System.Reflection.Emit.GenericTypeParameterBuilder"></xref> objects representing the type parameters, if the method is generic, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method is not generic.
+      description: An array of <xref href="System.Reflection.Emit.GenericTypeParameterBuilder"></xref> objects representing the type parameters, if the method is generic, or `null` if the method is not generic.
   overload: System.Reflection.Emit.MethodBuilder.GetGenericArguments*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -589,8 +589,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The current method is not generic. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property returns <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The current method is not generic. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property returns `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -616,7 +616,7 @@ items:
       description: The hash code for this method.
   overload: System.Reflection.Emit.MethodBuilder.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -633,7 +633,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Returns an <xref uid="langword_csharp_ILGenerator" name="ILGenerator" href=""></xref> for this method with a default Microsoft intermediate language (MSIL) stream size of 64 bytes.
+  summary: Returns an `ILGenerator` for this method with a default Microsoft intermediate language (MSIL) stream size of 64 bytes.
   remarks: ''
   example:
   - "The code sample below demonstrates the contextual usage of the `GetILGenerator` method, creating and emitting a dynamic assembly that will calculate the dot product of two points in 3D space.  \n  \n [!code-cpp[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/cpp/m-system.reflection.emit_19_1.cpp)]\n [!code-vb[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_19_1.vb)]\n [!code-cs[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/csharp/m-system.reflection.emit_19_1.cs)]"
@@ -642,13 +642,13 @@ items:
     parameters: []
     return:
       type: System.Reflection.Emit.ILGenerator
-      description: Returns an <xref uid="langword_csharp_ILGenerator" name="ILGenerator" href=""></xref> object for this method.
+      description: Returns an `ILGenerator` object for this method.
   overload: System.Reflection.Emit.MethodBuilder.GetILGenerator*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The method should not have a body because of its <xref href=\"System.Reflection.MethodAttributes\"></xref> or <xref href=\"System.Reflection.MethodImplAttributes\"></xref> flags, for example because it has the <xref href=\"System.Reflection.MethodAttributes\"></xref> flag.  \n  \n -or-  \n  \n The method is a generic method, but not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The method should not have a body because of its <xref href=\"System.Reflection.MethodAttributes\"></xref> or <xref href=\"System.Reflection.MethodImplAttributes\"></xref> flags, for example because it has the <xref href=\"System.Reflection.MethodAttributes\"></xref> flag.  \n  \n -or-  \n  \n The method is a generic method, but not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -665,7 +665,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Returns an <xref uid="langword_csharp_ILGenerator" name="ILGenerator" href=""></xref> for this method with the specified Microsoft intermediate language (MSIL) stream size.
+  summary: Returns an `ILGenerator` for this method with the specified Microsoft intermediate language (MSIL) stream size.
   remarks: ''
   example:
   - "The code sample below demonstrates the contextual usage of the `GetILGenerator` method, creating and emitting a dynamic assembly that will calculate the dot product of two points in 3D space.  \n  \n [!code-cpp[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/cpp/m-system.reflection.emit_42_1.cpp)]\n [!code-vb[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/visualbasic/m-system.reflection.emit_42_1.vb)]\n [!code-cs[System.Reflection.Emit ILGenerator Example#1](~/add/codesnippet/csharp/m-system.reflection.emit_42_1.cs)]"
@@ -677,13 +677,13 @@ items:
       description: The size of the MSIL stream, in bytes.
     return:
       type: System.Reflection.Emit.ILGenerator
-      description: Returns an <xref uid="langword_csharp_ILGenerator" name="ILGenerator" href=""></xref> object for this method.
+      description: Returns an `ILGenerator` object for this method.
   overload: System.Reflection.Emit.MethodBuilder.GetILGenerator*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The method should not have a body because of its <xref href=\"System.Reflection.MethodAttributes\"></xref> or <xref href=\"System.Reflection.MethodImplAttributes\"></xref> flags, for example because it has the <xref href=\"System.Reflection.MethodAttributes\"></xref> flag.  \n  \n -or-  \n  \n The method is a generic method, but not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The method should not have a body because of its <xref href=\"System.Reflection.MethodAttributes\"></xref> or <xref href=\"System.Reflection.MethodImplAttributes\"></xref> flags, for example because it has the <xref href=\"System.Reflection.MethodAttributes\"></xref> flag.  \n  \n -or-  \n  \n The method is a generic method, but not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -709,7 +709,7 @@ items:
       description: Returns the implementation flags for the method.
   overload: System.Reflection.Emit.MethodBuilder.GetMethodImplementationFlags*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -738,7 +738,7 @@ items:
       description: Returns a reference to the module that contains this method.
   overload: System.Reflection.Emit.MethodBuilder.GetModule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -764,13 +764,13 @@ items:
     parameters: []
     return:
       type: System.Reflection.ParameterInfo[]
-      description: An array of <xref uid="langword_csharp_ParameterInfo" name="ParameterInfo" href=""></xref> objects that represent the parameters of the method.
+      description: An array of `ParameterInfo` objects that represent the parameters of the method.
   overload: System.Reflection.Emit.MethodBuilder.GetParameters*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call <xref uid="langword_csharp_GetParameters" name="GetParameters" href=""></xref> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
-  platform:
+    description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call `GetParameters` on the returned <xref href="System.Reflection.MethodInfo"></xref>.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -787,16 +787,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Returns the <xref uid="langword_csharp_MethodToken" name="MethodToken" href=""></xref> that represents the token for this method.
+  summary: Returns the `MethodToken` that represents the token for this method.
   syntax:
     content: public System.Reflection.Emit.MethodToken GetToken ();
     parameters: []
     return:
       type: System.Reflection.Emit.MethodToken
-      description: Returns the <xref uid="langword_csharp_MethodToken" name="MethodToken" href=""></xref> of this method.
+      description: Returns the `MethodToken` of this method.
   overload: System.Reflection.Emit.MethodBuilder.GetToken*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -813,19 +813,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Gets or sets a Boolean value that specifies whether the local variables in this method are zero initialized. The default value of this property is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Gets or sets a Boolean value that specifies whether the local variables in this method are zero initialized. The default value of this property is `true`.
   remarks: If this property is set to `true`, the emitted MSIL includes initialization of local variables. If it is set to `false`, local variables are not initialized and the generated code is unverifiable.
   syntax:
     content: public bool InitLocals { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the local variables in this method should be zero initialized; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the local variables in this method should be zero initialized; otherwise `false`.'
   overload: System.Reflection.Emit.MethodBuilder.InitLocals*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>. (Get or set.)
-  platform:
+    description: For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`. (Get or set.)
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -852,13 +852,13 @@ items:
       description: The object on which to invoke the specified method. If the method is static, this parameter is ignored.
     - id: invokeAttr
       type: System.Reflection.BindingFlags
-      description: 'This must be a bit flag from <xref href="System.Reflection.BindingFlags"></xref> : <xref uid="langword_csharp_InvokeMethod" name="InvokeMethod" href=""></xref>, <xref uid="langword_csharp_NonPublic" name="NonPublic" href=""></xref>, and so on.'
+      description: 'This must be a bit flag from <xref href="System.Reflection.BindingFlags"></xref> : `InvokeMethod`, `NonPublic`, and so on.'
     - id: binder
       type: System.Reflection.Binder
-      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of MemberInfo objects via reflection. If binder is <xref uid="langword_csharp_null" name="null" href=""></xref>, the default binder is used. For more details, see <xref href="System.Reflection.Binder"></xref>.
+      description: An object that enables the binding, coercion of argument types, invocation of members, and retrieval of MemberInfo objects via reflection. If binder is `null`, the default binder is used. For more details, see <xref href="System.Reflection.Binder"></xref>.
     - id: parameters
       type: System.Object[]
-      description: An argument list. This is an array of arguments with the same number, order, and type as the parameters of the method to be invoked. If there are no parameters this should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An argument list. This is an array of arguments with the same number, order, and type as the parameters of the method to be invoked. If there are no parameters this should be `null`.
     - id: culture
       type: System.Globalization.CultureInfo
       description: An instance of <xref href="System.Globalization.CultureInfo"></xref> used to govern the coercion of types. If this is null, the <xref href="System.Globalization.CultureInfo"></xref> for the current thread is used. (Note that this is necessary to, for example, convert a <xref href="System.String"></xref> that represents 1000 to a <xref href="System.Double"></xref> value, since 1000 is represented differently by different cultures.)
@@ -870,7 +870,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call <xref:System.Type.InvokeMember*> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -899,13 +899,13 @@ items:
       description: Specifies whether to search this member's inheritance chain to find the custom attributes.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified custom attribute type is defined; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified custom attribute type is defined; otherwise, `false`.'
   overload: System.Reflection.Emit.MethodBuilder.IsDefined*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call <xref:System.Reflection.MemberInfo.IsDefined*> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -930,10 +930,10 @@ items:
     content: public override bool IsGenericMethod { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method is generic; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method is generic; otherwise, `false`.'
   overload: System.Reflection.Emit.MethodBuilder.IsGenericMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -958,10 +958,10 @@ items:
     content: public override bool IsGenericMethodDefinition { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current <xref href="System.Reflection.Emit.MethodBuilder"></xref> object represents the definition of a generic method; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current <xref href="System.Reflection.Emit.MethodBuilder"></xref> object represents the definition of a generic method; otherwise, `false`.'
   overload: System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -990,7 +990,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases. This property is not supported in dynamic assemblies. See Remarks.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.MethodBuilder.IsSecuritySafeCritical
   id: IsSecuritySafeCritical
@@ -1016,7 +1016,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases. This property is not supported in dynamic assemblies. See Remarks.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.MethodBuilder.IsSecurityTransparent
   id: IsSecurityTransparent
@@ -1042,7 +1042,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: In all cases. This property is not supported in dynamic assemblies. See Remarks.
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.MethodBuilder.MakeGenericMethod(System.Type[])
   id: MakeGenericMethod(System.Type[])
@@ -1071,7 +1071,7 @@ items:
       description: A <xref href="System.Reflection.MethodInfo"></xref> representing the generic method constructed from the current generic method definition using the specified generic type arguments.
   overload: System.Reflection.Emit.MethodBuilder.MakeGenericMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1099,7 +1099,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not currently supported. Retrieve the method using <xref:System.Type.GetMethod*> and call <xref:System.Reflection.MethodBase.MethodHandle*> on the returned <xref href="System.Reflection.MethodInfo"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1125,7 +1125,7 @@ items:
       description: The <xref href="System.Reflection.Module"></xref> in which the member represented by the current <xref href="System.Reflection.MemberInfo"></xref> is being defined.
   overload: System.Reflection.Emit.MethodBuilder.Module*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1150,7 +1150,7 @@ items:
       description: Read-only. Retrieves a string containing the simple name of this method.
   overload: System.Reflection.Emit.MethodBuilder.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1175,7 +1175,7 @@ items:
       description: Read-only. The type used to obtain this method.
   overload: System.Reflection.Emit.MethodBuilder.ReflectedType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1204,7 +1204,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The declaring type has not been created.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1233,7 +1233,7 @@ items:
       description: The return type of the method.
   overload: System.Reflection.Emit.MethodBuilder.ReturnType*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes
   id: ReturnTypeCustomAttributes
@@ -1256,7 +1256,7 @@ items:
       description: Read-only. The custom attributes of the method's return type.
   overload: System.Reflection.Emit.MethodBuilder.ReturnTypeCustomAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1285,11 +1285,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>customBuilder</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>customBuilder</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1321,11 +1321,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>con</code> or <code>binaryAttribute</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>con</code> or <code>binaryAttribute</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1356,8 +1356,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1388,8 +1388,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1420,8 +1420,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The current method is generic, but is not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The current method is generic, but is not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1452,8 +1452,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The current method is generic, but is not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The current method is generic, but is not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1482,25 +1482,25 @@ items:
       description: The return type of the method.
     - id: returnTypeRequiredCustomModifiers
       type: System.Type[]
-      description: An array of types representing the required custom modifiers, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>, for the return type of the method. If the return type has no required custom modifiers, specify <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of types representing the required custom modifiers, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>, for the return type of the method. If the return type has no required custom modifiers, specify `null`.
     - id: returnTypeOptionalCustomModifiers
       type: System.Type[]
-      description: An array of types representing the optional custom modifiers, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>, for the return type of the method. If the return type has no optional custom modifiers, specify <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An array of types representing the optional custom modifiers, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>, for the return type of the method. If the return type has no optional custom modifiers, specify `null`.
     - id: parameterTypes
       type: System.Type[]
       description: The types of the parameters of the method.
     - id: parameterTypeRequiredCustomModifiers
       type: System.Type[][]
-      description: An array of arrays of types. Each array of types represents the required custom modifiers for the corresponding parameter, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>. If a particular parameter has no required custom modifiers, specify <xref uid="langword_csharp_null" name="null" href=""></xref> instead of an array of types. If none of the parameters have required custom modifiers, specify <xref uid="langword_csharp_null" name="null" href=""></xref> instead of an array of arrays.
+      description: An array of arrays of types. Each array of types represents the required custom modifiers for the corresponding parameter, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>. If a particular parameter has no required custom modifiers, specify `null` instead of an array of types. If none of the parameters have required custom modifiers, specify `null` instead of an array of arrays.
     - id: parameterTypeOptionalCustomModifiers
       type: System.Type[][]
-      description: An array of arrays of types. Each array of types represents the optional custom modifiers for the corresponding parameter, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>. If a particular parameter has no optional custom modifiers, specify <xref uid="langword_csharp_null" name="null" href=""></xref> instead of an array of types. If none of the parameters have optional custom modifiers, specify <xref uid="langword_csharp_null" name="null" href=""></xref> instead of an array of arrays.
+      description: An array of arrays of types. Each array of types represents the optional custom modifiers for the corresponding parameter, such as <xref href="System.Runtime.CompilerServices.IsConst"></xref>. If a particular parameter has no optional custom modifiers, specify `null` instead of an array of types. If none of the parameters have optional custom modifiers, specify `null` instead of an array of arrays.
   overload: System.Reflection.Emit.MethodBuilder.SetSignature*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The current method is generic, but is not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid="langword_csharp_true" name="true" href=""></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid="langword_csharp_false" name="false" href=""></xref>.
-  platform:
+    description: The current method is generic, but is not a generic method definition. That is, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1534,8 +1534,8 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n The module that contains this method is not a debug module.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>."
-  platform:
+    description: "The containing type was previously created using <xref:System.Reflection.Emit.TypeBuilder.CreateType*>.  \n  \n -or-  \n  \n The module that contains this method is not a debug module.  \n  \n -or-  \n  \n For the current method, the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethod*> property is `true`, but the <xref:System.Reflection.Emit.MethodBuilder.IsGenericMethodDefinition*> property is `false`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1557,10 +1557,10 @@ items:
     content: public string Signature { get; }
     return:
       type: System.String
-      description: Read-only. A String containing the signature of the method reflected by this <xref uid="langword_csharp_MethodBase" name="MethodBase" href=""></xref> instance.
+      description: Read-only. A String containing the signature of the method reflected by this `MethodBase` instance.
   overload: System.Reflection.Emit.MethodBuilder.Signature*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1603,7 +1603,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1640,7 +1640,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1671,7 +1671,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1723,7 +1723,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: Late-bound access using the COM `IDispatch` interface is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1740,7 +1740,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: Returns this <xref uid="langword_csharp_MethodBuilder" name="MethodBuilder" href=""></xref> instance as a string.
+  summary: Returns this `MethodBuilder` instance as a string.
   syntax:
     content: public override string ToString ();
     parameters: []
@@ -1749,7 +1749,7 @@ items:
       description: Returns a string containing the name, attributes, method signature, exceptions, and local signature of this method followed by the current Microsoft intermediate language (MSIL) stream.
   overload: System.Reflection.Emit.MethodBuilder.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1857,8 +1857,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -1895,8 +1895,8 @@ references:
 - uid: System.Reflection.Emit.GenericTypeParameterBuilder[]
   parent: System.Reflection.Emit
   isExternal: false
-  name: GenericTypeParameterBuilder
-  nameWithType: GenericTypeParameterBuilder
+  name: GenericTypeParameterBuilder[]
+  nameWithType: GenericTypeParameterBuilder[]
   fullName: System.Reflection.Emit.GenericTypeParameterBuilder[]
   spec.csharp:
   - uid: System.Reflection.Emit.GenericTypeParameterBuilder
@@ -1909,8 +1909,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -1971,8 +1971,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -1997,8 +1997,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -2071,8 +2071,8 @@ references:
 - uid: System.Reflection.ParameterInfo[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterInfo
-  nameWithType: ParameterInfo
+  name: ParameterInfo[]
+  nameWithType: ParameterInfo[]
   fullName: System.Reflection.ParameterInfo[]
   spec.csharp:
   - uid: System.Reflection.ParameterInfo
@@ -2289,8 +2289,8 @@ references:
 - uid: System.Type[][]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[][]
+  nameWithType: Type[][]
   fullName: System.Type[][]
   spec.csharp:
   - uid: System.Type

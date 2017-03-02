@@ -64,7 +64,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -88,7 +88,7 @@ items:
     parameters: []
   overload: System.Drawing.ImageFormatConverter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -112,16 +112,16 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     - id: sourceType
       type: System.Type
       description: The type you want to convert from.
     return:
       type: System.Boolean
-      description: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if this object can perform the conversion.
+      description: This method returns `true` if this object can perform the conversion.
   overload: System.Drawing.ImageFormatConverter.CanConvertFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -151,10 +151,10 @@ items:
       description: The <xref href="System.Type"></xref> that represents the type to which you want to convert this <xref href="System.Drawing.Imaging.ImageFormat"></xref> object.
     return:
       type: System.Boolean
-      description: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if this object can perform the conversion.
+      description: This method returns `true` if this object can perform the conversion.
   overload: System.Drawing.ImageFormatConverter.CanConvertTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     - id: culture
       type: System.Globalization.CultureInfo
       description: A <xref href="System.Globalization.CultureInfo"></xref> object that specifies formatting conventions for a particular culture.
@@ -193,7 +193,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The conversion cannot be completed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,7 +217,7 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     - id: culture
       type: System.Globalization.CultureInfo
       description: A <xref href="System.Globalization.CultureInfo"></xref> object that specifies formatting conventions for a particular culture.
@@ -237,8 +237,8 @@ items:
     description: The conversion cannot be completed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>destinationType</code> is <xref uid="langword_csharp_null." name="null." href=""></xref>
-  platform:
+    description: <code>destinationType</code> is `null.`
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -255,19 +255,19 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing
-  summary: Gets a collection that contains a set of standard values for the data type this validator is designed for. Returns <xref uid="langword_csharp_null" name="null" href=""></xref> if the data type does not support a standard set of values.
+  summary: Gets a collection that contains a set of standard values for the data type this validator is designed for. Returns `null` if the data type does not support a standard set of values.
   syntax:
     content: public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be <xref uid="langword_csharp_null" name="null" href=""></xref>, so you should always check. Also, properties on the context object may also return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A formatter context. This object can be used to get more information about the environment this converter is being called from. This may be `null`, so you should always check. Also, properties on the context object may also return `null`.
     return:
       type: System.ComponentModel.TypeConverter.StandardValuesCollection
-      description: A collection that contains a standard set of valid values, or <xref uid="langword_csharp_null" name="null" href=""></xref>. The default implementation always returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A collection that contains a standard set of valid values, or `null`. The default implementation always returns `null`.
   overload: System.Drawing.ImageFormatConverter.GetStandardValues*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -293,10 +293,10 @@ items:
       description: A type descriptor through which additional context can be provided.
     return:
       type: System.Boolean
-      description: This method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref:System.Drawing.ImageFormatConverter.GetStandardValues*> method should be called to find a common set of values the object supports.
+      description: This method returns `true` if the <xref:System.Drawing.ImageFormatConverter.GetStandardValues*> method should be called to find a common set of values the object supports.
   overload: System.Drawing.ImageFormatConverter.GetStandardValuesSupported*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

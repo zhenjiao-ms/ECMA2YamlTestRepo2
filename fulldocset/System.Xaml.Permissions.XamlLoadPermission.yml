@@ -46,7 +46,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.#ctor(System.Collections.Generic.IEnumerable{System.Xaml.Permissions.XamlAccessLevel})
   id: '#ctor(System.Collections.Generic.IEnumerable{System.Xaml.Permissions.XamlAccessLevel})'
@@ -72,11 +72,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>allowedAccess</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>allowedAccess</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>allowedAccess</code> contained invalid information, such as a null item.
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.#ctor(System.Security.Permissions.PermissionState)
   id: '#ctor(System.Security.Permissions.PermissionState)'
@@ -100,7 +100,7 @@ items:
       description: A <xref href="System.Security.Permissions.PermissionState"></xref> enumeration value.
   overload: System.Xaml.Permissions.XamlLoadPermission.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.#ctor(System.Xaml.Permissions.XamlAccessLevel)
   id: '#ctor(System.Xaml.Permissions.XamlAccessLevel)'
@@ -126,8 +126,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>allowedAccess</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>allowedAccess</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.AllowedAccess
   id: AllowedAccess
@@ -147,10 +147,10 @@ items:
     content: public System.Collections.Generic.IList<System.Xaml.Permissions.XamlAccessLevel> AllowedAccess { get; }
     return:
       type: System.Collections.Generic.IList{System.Xaml.Permissions.XamlAccessLevel}
-      description: A read-only list of <xref href="System.Xaml.Permissions.XamlAccessLevel"></xref> values, or <xref uid="langword_csharp_null" name="null" href=""></xref>. See Remarks.
+      description: A read-only list of <xref href="System.Xaml.Permissions.XamlAccessLevel"></xref> values, or `null`. See Remarks.
   overload: System.Xaml.Permissions.XamlLoadPermission.AllowedAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.Copy
   id: Copy
@@ -174,7 +174,7 @@ items:
       description: A copy of the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
   overload: System.Xaml.Permissions.XamlLoadPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.FromXml(System.Security.SecurityElement)
   id: FromXml(System.Security.SecurityElement)
@@ -199,11 +199,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>elem</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>elem</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>elem</code> does not contain the XML encoding for a <xref href=\"System.Xaml.Permissions.XamlLoadPermission\"></xref>.  \n  \n -or-  \n  \n The version attribute within <code>elem</code> is not supported."
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.Includes(System.Xaml.Permissions.XamlAccessLevel)
   id: Includes(System.Xaml.Permissions.XamlAccessLevel)
@@ -226,13 +226,13 @@ items:
       description: The specific <xref href="System.Xaml.Permissions.XamlAccessLevel"></xref> to check for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>requestedAccess</code> exists as an item in the <xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess*> list of the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. Otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>requestedAccess</code> exists as an item in the <xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess*> list of the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. Otherwise, `false`.'
   overload: System.Xaml.Permissions.XamlLoadPermission.Includes*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: <code>requestedAccess</code> is null.
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.Intersect(System.Security.IPermission)
   id: Intersect(System.Security.IPermission)
@@ -253,16 +253,16 @@ items:
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: A <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> to intersect with the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> to intersect with the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. Can be `null`.
     return:
       type: System.Security.IPermission
-      description: A new permission that represents the intersection of the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> and the specified <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. This new permission is <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty.
+      description: A new permission that represents the intersection of the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> and the specified <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. This new permission is `null` if the intersection is empty.
   overload: System.Xaml.Permissions.XamlLoadPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> or is not a <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
-  platform:
+    description: <code>target</code> is not `null` or is not a <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.IsSubsetOf(System.Security.IPermission)
   id: IsSubsetOf(System.Security.IPermission)
@@ -283,16 +283,16 @@ items:
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: A permission that is to be tested for the subset relationship. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A permission that is to be tested for the subset relationship. Can be `null`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> is a subset of the specified permission; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> is a subset of the specified permission; otherwise, `false`.'
   overload: System.Xaml.Permissions.XamlLoadPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> or is not a <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
-  platform:
+    description: <code>target</code> is not `null` or is not a <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted
   id: IsUnrestricted
@@ -312,10 +312,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> denotes unrestricted permissions. <xref uid="langword_csharp_false" name="false" href=""></xref> if this <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> has specific access level restrictions in <xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess*>, or has no permissions.
+      description: '`true` if this <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> denotes unrestricted permissions. `false` if this <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> has specific access level restrictions in <xref:System.Xaml.Permissions.XamlLoadPermission.AllowedAccess*>, or has no permissions.'
   overload: System.Xaml.Permissions.XamlLoadPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.ToXml
   id: ToXml
@@ -338,7 +338,7 @@ items:
       description: An XML encoding of this <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>, including any state information.
   overload: System.Xaml.Permissions.XamlLoadPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Permissions.XamlLoadPermission.Union(System.Security.IPermission)
   id: Union(System.Security.IPermission)
@@ -359,7 +359,7 @@ items:
     parameters:
     - id: other
       type: System.Security.IPermission
-      description: A <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> to combine with the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. Can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> to combine with the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>. Can be `null`.
     return:
       type: System.Security.IPermission
       description: A new <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> that represents the union of the current <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref> and the specified <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
@@ -367,8 +367,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>other</code> is not <xref uid="langword_csharp_null" name="null" href=""></xref> or is not a <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
-  platform:
+    description: <code>other</code> is not `null` or is not a <xref href="System.Xaml.Permissions.XamlLoadPermission"></xref>.
+  version:
   - netframework-40
 references:
 - uid: System.Security.CodeAccessPermission

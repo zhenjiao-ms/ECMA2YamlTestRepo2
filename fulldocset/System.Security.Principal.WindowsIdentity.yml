@@ -61,7 +61,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,7 +94,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n A Win32 error occurred."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,7 +130,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n The computer is not attached to a Windows 2003 or later domain.  \n  \n -or-  \n  \n The computer is not running Windows 2003 or later.  \n  \n -or-  \n  \n The user is not a member of the domain the computer is attached to."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -168,7 +168,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n A Win32 error occurred."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -207,7 +207,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n A Win32 error occurred."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -246,7 +246,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n The computer is not attached to a Windows 2003 or later domain.  \n  \n -or-  \n  \n The computer is not running Windows 2003 or later.  \n  \n -or-  \n  \n The user is not a member of the domain the computer is attached to."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,7 +287,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n A Win32 error occurred."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -322,7 +322,7 @@ items:
       description: One of the enumeration values.
     - id: isAuthenticated
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to indicate that the user is authenticated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to indicate that the user is authenticated; otherwise, `false`.'
   overload: System.Security.Principal.WindowsIdentity.#ctor*
   exceptions:
   - type: System.ArgumentException
@@ -331,7 +331,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n A Win32 error occurred."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The caller does not have the correct permissions.  \n  \n -or-  \n  \n The computer is not attached to a Windows 2003 or later domain.  \n  \n -or-  \n  \n The computer is not running Windows 2003 or later.  \n  \n -or-  \n  \n The user is not a member of the domain the computer is attached to."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
     parameters: []
   overload: System.Security.Principal.WindowsIdentity.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -414,10 +414,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Security.Principal.WindowsIdentity.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -446,7 +446,7 @@ items:
       description: An object that represents an anonymous user.
   overload: System.Security.Principal.WindowsIdentity.GetAnonymous*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -478,7 +478,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the correct permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -502,13 +502,13 @@ items:
     parameters:
     - id: ifImpersonating
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to return the <xref href="System.Security.Principal.WindowsIdentity"></xref> only if the thread is currently impersonating; <xref uid="langword_csharp_false" name="false" href=""></xref> to return the <xref href="System.Security.Principal.WindowsIdentity"></xref> of the thread if it is impersonating or the <xref href="System.Security.Principal.WindowsIdentity"></xref> of the process if the thread is not currently impersonating.
+      description: '`true` to return the <xref href="System.Security.Principal.WindowsIdentity"></xref> only if the thread is currently impersonating; `false` to return the <xref href="System.Security.Principal.WindowsIdentity"></xref> of the thread if it is impersonating or the <xref href="System.Security.Principal.WindowsIdentity"></xref> of the process if the thread is not currently impersonating.'
     return:
       type: System.Security.Principal.WindowsIdentity
       description: An object that represents a Windows user.
   overload: System.Security.Principal.WindowsIdentity.GetCurrent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -538,7 +538,7 @@ items:
       description: An object that represents the current user.
   overload: System.Security.Principal.WindowsIdentity.GetCurrent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,7 +566,7 @@ items:
       description: An object representing the groups the current Windows user belongs to.
   overload: System.Security.Principal.WindowsIdentity.Groups*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -601,7 +601,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: A Win32 error occurred.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -627,7 +627,7 @@ items:
     parameters:
     - id: userToken
       type: System.IntPtr
-      description: The handle of a Windows account token. This token is usually retrieved through a call to unmanaged code, such as a call to the Win32 API <xref uid="langword_csharp_LogonUser" name="LogonUser" href=""></xref> function.
+      description: The handle of a Windows account token. This token is usually retrieved through a call to unmanaged code, such as a call to the Win32 API `LogonUser` function.
     return:
       type: System.Security.Principal.WindowsImpersonationContext
       description: An object that represents the Windows user prior to impersonation; this object can be used to revert to the original user's context.
@@ -642,7 +642,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the correct permissions.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -670,7 +670,7 @@ items:
       description: One of the enumeration values that specifies the impersonation level.
   overload: System.Security.Principal.WindowsIdentity.ImpersonationLevel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -695,10 +695,10 @@ items:
     content: public virtual bool IsAnonymous { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user account is an anonymous account; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user account is an anonymous account; otherwise, `false`.'
   overload: System.Security.Principal.WindowsIdentity.IsAnonymous*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -720,10 +720,10 @@ items:
     content: public virtual bool IsAuthenticated { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user was authenticated; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user was authenticated; otherwise, `false`.'
   overload: System.Security.Principal.WindowsIdentity.IsAuthenticated*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -748,10 +748,10 @@ items:
     content: public virtual bool IsGuest { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user account is a <xref href="System.Security.Principal.WindowsAccountType"></xref> account; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user account is a <xref href="System.Security.Principal.WindowsAccountType"></xref> account; otherwise, `false`.'
   overload: System.Security.Principal.WindowsIdentity.IsGuest*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -776,10 +776,10 @@ items:
     content: public virtual bool IsSystem { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user account is a <xref href="System.Security.Principal.WindowsAccountType"></xref> account; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user account is a <xref href="System.Security.Principal.WindowsAccountType"></xref> account; otherwise, `false`.'
   overload: System.Security.Principal.WindowsIdentity.IsSystem*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -807,7 +807,7 @@ items:
       description: The Windows logon name of the user on whose behalf the code is being run.
   overload: System.Security.Principal.WindowsIdentity.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -835,7 +835,7 @@ items:
       description: An object for the token owner.
   overload: System.Security.Principal.WindowsIdentity.Owner*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -862,7 +862,7 @@ items:
       description: The source of the deserialization event.
   overload: System.Security.Principal.WindowsIdentity.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -893,7 +893,7 @@ items:
       description: An object containing the source and destination of the serialized stream associated with the <xref href="System.Collections.Hashtable"></xref>.
   overload: System.Security.Principal.WindowsIdentity.System#Runtime#Serialization#ISerializable#GetObjectData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -921,7 +921,7 @@ items:
       description: The handle of the access token associated with the current execution thread.
   overload: System.Security.Principal.WindowsIdentity.Token*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -947,7 +947,7 @@ items:
       description: An object for the user.
   overload: System.Security.Principal.WindowsIdentity.User*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

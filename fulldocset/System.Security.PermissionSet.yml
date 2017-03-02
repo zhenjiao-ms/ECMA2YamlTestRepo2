@@ -66,7 +66,7 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -98,7 +98,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>state</code> parameter is not a valid <xref href="System.Security.Permissions.PermissionState"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -122,10 +122,10 @@ items:
     parameters:
     - id: permSet
       type: System.Security.PermissionSet
-      description: The set from which to take the value of the new <xref href="System.Security.PermissionSet"></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> to create an empty <xref href="System.Security.PermissionSet"></xref>.
+      description: The set from which to take the value of the new <xref href="System.Security.PermissionSet"></xref>, or `null` to create an empty <xref href="System.Security.PermissionSet"></xref>.
   overload: System.Security.PermissionSet.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -160,7 +160,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called from a <xref href="System.Security.ReadOnlyPermissionSet"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -187,13 +187,13 @@ items:
       description: The permission to add.
     return:
       type: System.Security.IPermission
-      description: The union of the permission added and any permission of the same type that already exists in the <xref href="System.Security.PermissionSet"></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>perm</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The union of the permission added and any permission of the same type that already exists in the <xref href="System.Security.PermissionSet"></xref>, or `null` if <code>perm</code> is `null`.
   overload: System.Security.PermissionSet.AddPermissionImpl*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called from a <xref href="System.Security.ReadOnlyPermissionSet"></xref>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Security.PermissionSet.Assert
   id: Assert
@@ -217,7 +217,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: "The <xref href=\"System.Security.PermissionSet\"></xref> instance asserted has not been granted to the asserting code.  \n  \n -or-  \n  \n There is already an active Assert for the current frame."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,10 +243,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.PermissionSet"></xref> contains permissions that are not derived from <xref href="System.Security.CodeAccessPermission"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.PermissionSet"></xref> contains permissions that are not derived from <xref href="System.Security.CodeAccessPermission"></xref>; otherwise, `false`.'
   overload: System.Security.PermissionSet.ContainsNonCodeAccessPermissions*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -285,7 +285,7 @@ items:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: In all cases.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -314,7 +314,7 @@ items:
       description: A copy of the <xref href="System.Security.PermissionSet"></xref>.
   overload: System.Security.PermissionSet.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -345,14 +345,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>array</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>array</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>array</code> parameter has more than one dimension.
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
     description: The <code>index</code> parameter is out of the range of the <code>array</code> parameter.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,7 +380,7 @@ items:
       description: The number of permission objects contained in the <xref href="System.Security.PermissionSet"></xref>.
   overload: System.Security.PermissionSet.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -409,7 +409,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: A caller in the call chain does not have the permission demanded.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -436,7 +436,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: A previous call to Deny has already restricted the permissions for the current stack frame.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,10 +463,10 @@ items:
       description: The object to compare with the current <xref href="System.Security.PermissionSet"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified object is equal to the current <xref href="System.Security.PermissionSet"></xref> object; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified object is equal to the current <xref href="System.Security.PermissionSet"></xref> object; otherwise, `false`.'
   overload: System.Security.PermissionSet.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -497,11 +497,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>et</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>et</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>et</code> parameter is not a valid permission element.  \n  \n -or-  \n  \n The <code>et</code> parameter's version number is not supported."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -530,7 +530,7 @@ items:
       description: An enumerator object for the permissions of the set.
   overload: System.Security.PermissionSet.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -557,7 +557,7 @@ items:
       description: An enumerator object for the permissions of the set.
   overload: System.Security.PermissionSet.GetEnumeratorImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Security.PermissionSet.GetHashCode
   id: GetHashCode
@@ -581,7 +581,7 @@ items:
       description: A hash code for the current <xref href="System.Security.PermissionSet"></xref> object.
   overload: System.Security.PermissionSet.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -608,10 +608,10 @@ items:
       description: The type of the desired permission object.
     return:
       type: System.Security.IPermission
-      description: A copy of the permission object of the type specified by the <code>permClass</code> parameter contained in the <xref href="System.Security.PermissionSet"></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if none exists.
+      description: A copy of the permission object of the type specified by the <code>permClass</code> parameter contained in the <xref href="System.Security.PermissionSet"></xref>, or `null` if none exists.
   overload: System.Security.PermissionSet.GetPermission*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -638,10 +638,10 @@ items:
       description: The type of the permission object.
     return:
       type: System.Security.IPermission
-      description: A copy of the permission object, of the type specified by the <code>permClass</code> parameter, contained in the <xref href="System.Security.PermissionSet"></xref>, or <xref uid="langword_csharp_null" name="null" href=""></xref> if none exists.
+      description: A copy of the permission object, of the type specified by the <code>permClass</code> parameter, contained in the <xref href="System.Security.PermissionSet"></xref>, or `null` if none exists.
   overload: System.Security.PermissionSet.GetPermissionImpl*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Security.PermissionSet.Intersect(System.Security.PermissionSet)
   id: Intersect(System.Security.PermissionSet)
@@ -667,10 +667,10 @@ items:
       description: A permission set to intersect with the current <xref href="System.Security.PermissionSet"></xref>.
     return:
       type: System.Security.PermissionSet
-      description: A new permission set that represents the intersection of the current <xref href="System.Security.PermissionSet"></xref> and the specified target. This object is <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty.
+      description: A new permission set that represents the intersection of the current <xref href="System.Security.PermissionSet"></xref> and the specified target. This object is `null` if the intersection is empty.
   overload: System.Security.PermissionSet.Intersect*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -694,10 +694,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.PermissionSet"></xref> is empty; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.PermissionSet"></xref> is empty; otherwise, `false`.'
   overload: System.Security.PermissionSet.IsEmpty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -722,10 +722,10 @@ items:
     content: public virtual bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: Always <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Always `false`.
   overload: System.Security.PermissionSet.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -754,10 +754,10 @@ items:
       description: The permission set to test for the subset relationship. This must be either a <xref href="System.Security.PermissionSet"></xref> or a <xref href="System.Security.NamedPermissionSet"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current <xref href="System.Security.PermissionSet"></xref> is a subset of the <code>target</code> parameter; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current <xref href="System.Security.PermissionSet"></xref> is a subset of the <code>target</code> parameter; otherwise, `false`.'
   overload: System.Security.PermissionSet.IsSubsetOf*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -782,10 +782,10 @@ items:
     content: public virtual bool IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: Always <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: Always `false`.
   overload: System.Security.PermissionSet.IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -802,7 +802,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: Determines whether the <xref href="System.Security.PermissionSet"></xref> is <xref uid="langword_csharp_Unrestricted" name="Unrestricted" href=""></xref>.
+  summary: Determines whether the <xref href="System.Security.PermissionSet"></xref> is `Unrestricted`.
   remarks: An `Unrestricted`<xref:System.Security.PermissionSet> effectively contains all permissions that implement the <xref:System.Security.Permissions.IUnrestrictedPermission> interface.
   example:
   - "The following code example shows the use of the IsUnrestricted method. This code example is part of a larger example provided for the <xref:System.Security.PermissionSet> class.  \n  \n [!code-cs[System.Security.PermissionSet#19](~/add/codesnippet/csharp/m-system.security.permis_1_1.cs)]\n [!code-vb[System.Security.PermissionSet#19](~/add/codesnippet/visualbasic/m-system.security.permis_1_1.vb)]\n [!code-cpp[System.Security.PermissionSet#19](~/add/codesnippet/cpp/m-system.security.permis_1_1.cpp)]"
@@ -811,10 +811,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Security.PermissionSet"></xref> is <xref uid="langword_csharp_Unrestricted" name="Unrestricted" href=""></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Security.PermissionSet"></xref> is `Unrestricted`; otherwise, `false`.'
   overload: System.Security.PermissionSet.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -838,7 +838,7 @@ items:
     parameters: []
   overload: System.Security.PermissionSet.PermitOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -873,7 +873,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called from a <xref href="System.Security.ReadOnlyPermissionSet"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -906,7 +906,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called from a <xref href="System.Security.ReadOnlyPermissionSet"></xref>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Security.PermissionSet.RevertAssert
   id: RevertAssert
@@ -930,7 +930,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: There is no previous <xref:System.Security.CodeAccessPermission.Assert*> for the current frame.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -965,7 +965,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called from a <xref href="System.Security.ReadOnlyPermissionSet"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -998,7 +998,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method is called from a <xref href="System.Security.ReadOnlyPermissionSet"></xref>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Security.PermissionSet.SyncRoot
   id: SyncRoot
@@ -1023,7 +1023,7 @@ items:
       description: The root object of the current collection.
   overload: System.Security.PermissionSet.SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1050,7 +1050,7 @@ items:
       description: The object that initiated the callback. The functionality for this parameter is not currently implemented.
   overload: System.Security.PermissionSet.System#Runtime#Serialization#IDeserializationCallback#OnDeserialization*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1079,7 +1079,7 @@ items:
       description: A representation of the <xref href="System.Security.PermissionSet"></xref>.
   overload: System.Security.PermissionSet.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1108,7 +1108,7 @@ items:
       description: An XML encoding of the security object, including any state information.
   overload: System.Security.PermissionSet.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1140,7 +1140,7 @@ items:
       description: A new permission set that represents the union of the current <xref href="System.Security.PermissionSet"></xref> and the specified <xref href="System.Security.PermissionSet"></xref>.
   overload: System.Security.PermissionSet.Union*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1254,8 +1254,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

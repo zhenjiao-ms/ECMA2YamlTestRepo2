@@ -51,7 +51,7 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
   - System.Runtime.Remoting.Messaging.InternalMessageWrapper.WrappedMessage
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,7 +78,7 @@ items:
       description: A message that acts as an outgoing method call on a remote object.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -104,7 +104,7 @@ items:
       description: A <xref href="System.Int32"></xref> that represents the number of arguments passed to a method.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.ArgCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -130,7 +130,7 @@ items:
       description: An array of type <xref href="System.Object"></xref> that represents the arguments passed to a method.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.Args*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -147,16 +147,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets the exception thrown during the method call, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method did not throw an exception.
+  summary: Gets the exception thrown during the method call, or `null` if the method did not throw an exception.
   remarks: The method belongs to a remote object.
   syntax:
     content: public virtual Exception Exception { get; set; }
     return:
       type: System.Exception
-      description: The <xref href="System.Exception"></xref> thrown during the method call, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the method did not throw an exception.
+      description: The <xref href="System.Exception"></xref> thrown during the method call, or `null` if the method did not throw an exception.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.Exception*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,7 +186,7 @@ items:
       description: The method argument as an object.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.GetArg*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -216,7 +216,7 @@ items:
       description: The name of the method argument.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.GetArgName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,7 +233,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameter or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the specified argument marked as a `ref` parameter or an `out` parameter.
   remarks: The method belongs to a remote object.
   syntax:
     content: public virtual object GetOutArg (int argNum);
@@ -243,10 +243,10 @@ items:
       description: The index of the requested argument.
     return:
       type: System.Object
-      description: The specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameter or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+      description: The specified argument marked as a `ref` parameter or an `out` parameter.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.GetOutArg*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,7 +263,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Returns the name of the specified argument marked as a <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameter or an <xref uid="langword_csharp_out" name="out" href=""></xref> parameter.
+  summary: Returns the name of the specified argument marked as a `ref` parameter or an `out` parameter.
   remarks: The method belongs to a remote object.
   syntax:
     content: public virtual string GetOutArgName (int index);
@@ -273,10 +273,10 @@ items:
       description: The index of the requested argument.
     return:
       type: System.String
-      description: The argument name, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the current method is not implemented.
+      description: The argument name, or `null` if the current method is not implemented.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.GetOutArgName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,10 +299,10 @@ items:
     content: public virtual bool HasVarArgs { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method can accept a variable number of arguments; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method can accept a variable number of arguments; otherwise, `false`.'
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.HasVarArgs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -328,7 +328,7 @@ items:
       description: The <xref href="System.Runtime.Remoting.Messaging.LogicalCallContext"></xref> for the current method call.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.LogicalCallContext*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -354,7 +354,7 @@ items:
       description: The <xref href="System.Reflection.MethodBase"></xref> of the called method.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.MethodBase*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,7 +380,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the name of the invoked method.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.MethodName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -406,7 +406,7 @@ items:
       description: A <xref href="System.Object"></xref> that contains the method signature.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.MethodSignature*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -423,16 +423,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets the number of arguments in the method call that are marked as <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameters or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+  summary: Gets the number of arguments in the method call that are marked as `ref` parameters or `out` parameters.
   remarks: The method belongs to a remote object.
   syntax:
     content: public virtual int OutArgCount { get; }
     return:
       type: System.Int32
-      description: A <xref href="System.Int32"></xref> that represents the number of arguments in the method call that are marked as <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameters or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+      description: A <xref href="System.Int32"></xref> that represents the number of arguments in the method call that are marked as `ref` parameters or `out` parameters.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.OutArgCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -449,16 +449,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: Gets an array of arguments in the method call that are marked as <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameters or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+  summary: Gets an array of arguments in the method call that are marked as `ref` parameters or `out` parameters.
   remarks: The method belongs to a remote object.
   syntax:
     content: public virtual object[] OutArgs { get; }
     return:
       type: System.Object[]
-      description: An array of type <xref href="System.Object"></xref> that represents the arguments in the method call that are marked as <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameters or <xref uid="langword_csharp_out" name="out" href=""></xref> parameters.
+      description: An array of type <xref href="System.Object"></xref> that represents the arguments in the method call that are marked as `ref` parameters or `out` parameters.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.OutArgs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -484,7 +484,7 @@ items:
       description: An <xref href="System.Collections.IDictionary"></xref> interface that represents a collection of the remoting message's properties.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -510,7 +510,7 @@ items:
       description: A <xref href="System.Object"></xref> that represents the return value of the method call.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.ReturnValue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -535,7 +535,7 @@ items:
       description: A <xref href="System.String"></xref> that contains the full type name of the remote object on which the method call is being made.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.TypeName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -560,7 +560,7 @@ items:
       description: The URI of a remote object.
   overload: System.Runtime.Remoting.Messaging.MethodReturnMessageWrapper.Uri*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -602,8 +602,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

@@ -64,7 +64,7 @@ items:
   - System.Web.SiteMapProvider.SiteMapResolve
   - System.Web.StaticSiteMapProvider.GetChildNodes(System.Web.SiteMapNode)
   - System.Web.StaticSiteMapProvider.GetParentNode(System.Web.SiteMapNode)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,7 +87,7 @@ items:
     parameters: []
   overload: System.Web.XmlSiteMapProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,14 +119,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>node</code> or <code>parentNode</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>node</code> or <code>parentNode</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The current <xref href="System.Web.XmlSiteMapProvider"></xref> is not the provider associated with <code>node</code>.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "A node with the same URL or key is already registered with the <xref href=\"System.Web.XmlSiteMapProvider\"></xref>. - or -  \n  \n A duplicate site map node has been encountered programmatically, such as when linking two site map providers.  \n  \n \\- or -  \n  \n <code>node</code> is the root node of the <xref href=\"System.Web.XmlSiteMapProvider\"></xref>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -161,14 +161,14 @@ items:
     description: The <xref:System.Web.SiteMapNode.Provider*> property of the <code>parentNode</code> does not reference the current provider.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>parentNode</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>parentNode</code> is `null`.
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: <code>providerName</code> cannot be resolved.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The site map file used by <code>providerName</code> is already in use within the provider hierarchy.  \n  \n -or-  \n  \n The root node returned by <code>providerName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n The root node returned by <code>providerName</code> has a URL or key that is already registered with the parent <xref href=\"System.Web.XmlSiteMapProvider\"></xref>."
-  platform:
+    description: "The site map file used by <code>providerName</code> is already in use within the provider hierarchy.  \n  \n -or-  \n  \n The root node returned by <code>providerName</code> is `null`.  \n  \n -or-  \n  \n The root node returned by <code>providerName</code> has a URL or key that is already registered with the parent <xref href=\"System.Web.XmlSiteMapProvider\"></xref>."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,23 +199,23 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=\"System.Web.XmlSiteMapProvider\"></xref> was not initialized properly.  \n  \n \\- or -  \n  \n A <xref uid=\"langword_csharp_siteMapFile\" name=\"siteMapFile\" href=\"\"></xref> is parsed for a <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref> that is not unique.  \n  \n \\- or -  \n  \n The file specified by the <xref uid=\"langword_csharp_siteMapFile\" name=\"siteMapFile\" href=\"\"></xref> does not have the file name extension .sitemap.  \n  \n \\- or -  \n  \n The file specified by the <xref uid=\"langword_csharp_siteMapFile\" name=\"siteMapFile\" href=\"\"></xref> does not exist.  \n  \n \\- or -  \n  \n A provider configured in the <xref uid=\"langword_csharp_provider\" name=\"provider\" href=\"\"></xref> of a <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref> returns a null root node."
+    description: "The <xref href=\"System.Web.XmlSiteMapProvider\"></xref> was not initialized properly.  \n  \n \\- or -  \n  \n A `siteMapFile` is parsed for a `&lt;siteMapNode&gt;` that is not unique.  \n  \n \\- or -  \n  \n The file specified by the `siteMapFile` does not have the file name extension .sitemap.  \n  \n \\- or -  \n  \n The file specified by the `siteMapFile` does not exist.  \n  \n \\- or -  \n  \n A provider configured in the `provider` of a `&lt;siteMapNode&gt;` returns a null root node."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <xref uid="langword_csharp_siteMapFile" name="siteMapFile" href=""></xref> is specified but the path lies outside the current directory structure for the application.
+    description: The `siteMapFile` is specified but the path lies outside the current directory structure for the application.
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "There is an error loading the configuration file.  \n  \n \\- or -  \n  \n The top element of the configuration file is not <xref uid=\"langword_csharp_named &lt;siteMap&gt;\" name=\"named &lt;siteMap&gt;\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n More than one top node exists in the configuration file.  \n  \n \\- or -  \n  \n A child of the <xref uid=\"langword_csharp_&lt;siteMap&gt;\" name=\"&lt;siteMap&gt;\" href=\"\"></xref> has a name other than <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An unexpected attribute is parsed for the <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n Sub-elements are nested beneath a <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref> where the <xref uid=\"langword_csharp_provider\" name=\"provider\" href=\"\"></xref> is set.  \n  \n \\- or -  \n  \n The <xref uid=\"langword_csharp_roles\" name=\"roles\" href=\"\"></xref> of the <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref> contain characters that are not valid.  \n  \n \\- or -  \n  \n A <xref uid=\"langword_csharp_url\" name=\"url\" href=\"\"></xref> is parsed for a <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref> that is not unique.  \n  \n \\- or -  \n  \n A <xref href=\"System.Web.SiteMapNode\"></xref> was encountered with a duplicate value for <xref:System.Web.SiteMapNode.Key*>.  \n  \n \\- or -  \n  \n The <xref:System.Web.SiteMapNode.ResourceKey*> or <xref:System.Web.SiteMapNode.Title*> was specified on a <xref href=\"System.Web.SiteMapNode\"></xref> or a <xref uid=\"langword_csharp_custom\" name=\"custom\" href=\"\"></xref> attribute defined for the node contained an explicit resource expression.  \n  \n \\- or -  \n  \n An explicit resource expression was applied either to the <xref:System.Web.SiteMapNode.Title*> or <xref:System.Web.SiteMapNode.Description*> or to a <xref uid=\"langword_csharp_custom\" name=\"custom\" href=\"\"></xref> attribute of a <xref href=\"System.Web.SiteMapNode\"></xref> but the explicit information was not valid.  \n  \n \\- or -  \n  \n An error occurred while parsing the <xref:System.Web.SiteMapNode.Url*> of a <xref href=\"System.Web.SiteMapNode\"></xref>."
+    description: "There is an error loading the configuration file.  \n  \n \\- or -  \n  \n The top element of the configuration file is not `named &lt;siteMap&gt;`.  \n  \n \\- or -  \n  \n More than one top node exists in the configuration file.  \n  \n \\- or -  \n  \n A child of the `&lt;siteMap&gt;` has a name other than `&lt;siteMapNode&gt;`.  \n  \n \\- or -  \n  \n An unexpected attribute is parsed for the `&lt;siteMapNode&gt;`.  \n  \n \\- or -  \n  \n Sub-elements are nested beneath a `&lt;siteMapNode&gt;` where the `provider` is set.  \n  \n \\- or -  \n  \n The `roles` of the `&lt;siteMapNode&gt;` contain characters that are not valid.  \n  \n \\- or -  \n  \n A `url` is parsed for a `&lt;siteMapNode&gt;` that is not unique.  \n  \n \\- or -  \n  \n A <xref href=\"System.Web.SiteMapNode\"></xref> was encountered with a duplicate value for <xref:System.Web.SiteMapNode.Key*>.  \n  \n \\- or -  \n  \n The <xref:System.Web.SiteMapNode.ResourceKey*> or <xref:System.Web.SiteMapNode.Title*> was specified on a <xref href=\"System.Web.SiteMapNode\"></xref> or a `custom` attribute defined for the node contained an explicit resource expression.  \n  \n \\- or -  \n  \n An explicit resource expression was applied either to the <xref:System.Web.SiteMapNode.Title*> or <xref:System.Web.SiteMapNode.Description*> or to a `custom` attribute of a <xref href=\"System.Web.SiteMapNode\"></xref> but the explicit information was not valid.  \n  \n \\- or -  \n  \n An error occurred while parsing the <xref:System.Web.SiteMapNode.Url*> of a <xref href=\"System.Web.SiteMapNode\"></xref>."
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: A named provider cannot be found in the current site map providers collection.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: A <xref uid="langword_csharp_&lt;siteMapNode&gt;" name="&lt;siteMapNode&gt;" href=""></xref> referencing a site map file contains an empty string for the <xref uid="langword_csharp_siteMapFile" name="siteMapFile" href=""></xref>.
+    description: A `&lt;siteMapNode&gt;` referencing a site map file contains an empty string for the `siteMapFile`.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "A <xref uid=\"langword_csharp_siteMapFile\" name=\"siteMapFile\" href=\"\"></xref> of a <xref uid=\"langword_csharp_&lt;siteMapNode&gt;\" name=\"&lt;siteMapNode&gt;\" href=\"\"></xref> uses a physical path.  \n  \n \\- or -  \n  \n An error occurred while attempting to parse the virtual path to the file specified in the <xref uid=\"langword_csharp_siteMapFile\" name=\"siteMapFile\" href=\"\"></xref>."
-  platform:
+    description: "A `siteMapFile` of a `&lt;siteMapNode&gt;` uses a physical path.  \n  \n \\- or -  \n  \n An error occurred while attempting to parse the virtual path to the file specified in the `siteMapFile`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -239,7 +239,7 @@ items:
     parameters: []
   overload: System.Web.XmlSiteMapProvider.Clear*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,7 +263,7 @@ items:
     parameters: []
   overload: System.Web.XmlSiteMapProvider.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -287,10 +287,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Web.XmlSiteMapProvider.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,7 +323,7 @@ items:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: A child provider linked to the current site map provider returned a node that is not valid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -350,13 +350,13 @@ items:
       description: A lookup key with which to search for a <xref href="System.Web.SiteMapNode"></xref>.
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the page identified by <code>key</code>; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if security trimming is enabled and the node cannot be shown to the current user or the node is not found by <code>key</code> in the node collection.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the page identified by <code>key</code>; otherwise, `null`, if security trimming is enabled and the node cannot be shown to the current user or the node is not found by <code>key</code> in the node collection.
   overload: System.Web.XmlSiteMapProvider.FindSiteMapNodeFromKey*
   exceptions:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
     description: A child provider linked to the current site map provider returned a node that is not valid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -383,7 +383,7 @@ items:
       description: A <xref href="System.Web.SiteMapNode"></xref> that represents the top-level node in the current site map data structure.
   overload: System.Web.XmlSiteMapProvider.GetRootNodeCore*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -420,8 +420,8 @@ items:
     description: The <xref href="System.Web.XmlSiteMapProvider"></xref> is initialized more than once.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "A <xref href=\"System.Web.SiteMapNode\"></xref> used a physical path to reference a site map file.  \n  \n \\- or -  \n  \n An error occurred while attempting to parse the virtual path supplied for the <xref uid=\"langword_csharp_siteMapFile\" name=\"siteMapFile\" href=\"\"></xref> attribute."
-  platform:
+    description: "A <xref href=\"System.Web.SiteMapNode\"></xref> used a physical path to reference a site map file.  \n  \n \\- or -  \n  \n An error occurred while attempting to parse the virtual path supplied for the `siteMapFile` attribute."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -452,8 +452,8 @@ items:
     description: "<code>node</code> is the root node of the site map provider that owns it.  \n  \n \\- or -  \n  \n <code>node</code> is not managed by the provider or by a provider in the chain of parent providers for this provider."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>node</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>node</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -488,8 +488,8 @@ items:
     description: <code>providerName</code> is not a registered child provider of the current site map provider.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>providerName</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>providerName</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,10 +512,10 @@ items:
     content: public override System.Web.SiteMapNode RootNode { get; }
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the root node of the site map; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if security trimming is enabled and the root node is not accessible to the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the root node of the site map; otherwise, `null`, if security trimming is enabled and the root node is not accessible to the current user.
   overload: System.Web.XmlSiteMapProvider.RootNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -162,7 +162,7 @@ items:
   - System.Web.UI.HtmlTextWriter.WriteStyleAttribute(System.String,System.String)
   - System.Web.UI.HtmlTextWriter.WriteStyleAttribute(System.String,System.String,System.Boolean)
   - System.Web.UI.HtmlTextWriter.WriteUrlEncodedString(System.String,System.Boolean)
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,7 +191,7 @@ items:
       description: A <xref href="System.IO.TextWriter"></xref> instance that renders the XHTML content.
   overload: System.Web.UI.XhtmlTextWriter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,7 +223,7 @@ items:
       description: The string used to render a line indentation.
   overload: System.Web.UI.XhtmlTextWriter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,7 +253,7 @@ items:
       description: The attribute to add.
   overload: System.Web.UI.XhtmlTextWriter.AddRecognizedAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
       description: A <xref href="System.Collections.Hashtable"></xref> object containing common attributes.
   overload: System.Web.UI.XhtmlTextWriter.CommonAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -305,7 +305,7 @@ items:
       description: A <xref href="System.Collections.Hashtable"></xref> object containing element-specific attributes.
   overload: System.Web.UI.XhtmlTextWriter.ElementSpecificAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -322,7 +322,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Checks an XHTML attribute to ensure that it can be rendered in the opening tag of a <xref uid="langword_csharp_&lt;form&gt;" name="&lt;form&gt;" href=""></xref> element.
+  summary: Checks an XHTML attribute to ensure that it can be rendered in the opening tag of a `&lt;form&gt;` element.
   remarks: This method is useful to conditionally render an attribute depending on whether it is supported by the XHTML document type of the requesting device.
   example:
   - "The following code example is part of a larger example that creates a custom <xref:System.Web.UI.WebControls.Label> control and an adapter that renders the content of the control as XHTML.  \n  \n This code example demonstrates how to create a Boolean variable named `attTest` and set it to the return value that results from calling the IsValidFormAttribute method with the parameter value \"style\". If the IsValidFormAttribute method returns `true`, the styles that are associated with the control are rendered using the <xref:System.Web.UI.HtmlTextWriter.EnterStyle%2A?displayProperty=fullName> and <xref:System.Web.UI.HtmlTextWriter.ExitStyle%2A?displayProperty=fullName> methods. If the `attTest` value is `false`, the styles are not rendered. Instead, the page displays the text for the control, a `<br/>` element that is rendered by the <xref:System.Web.UI.XhtmlTextWriter.WriteBreak%2A> method, and a text string informing the user that the XHTML content of the control has rendered conditionally.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.UI.XhtmlTextWriter> class.  \n  \n [!code-cs[System.Web.UI.XhtmlTextWriter_Sample1#3](~/add/codesnippet/csharp/m-system.web.ui.xhtmltex_1_1.cs)]\n [!code-vb[System.Web.UI.XhtmlTextWriter_Sample1#3](~/add/codesnippet/visualbasic/m-system.web.ui.xhtmltex_1_1.vb)]"
@@ -334,10 +334,10 @@ items:
       description: The attribute name to check.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the attribute can be applied to a <xref uid="langword_csharp_&lt;form&gt;" name="&lt;form&gt;" href=""></xref> element; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the attribute can be applied to a `&lt;form&gt;` element; otherwise, `false`.'
   overload: System.Web.UI.XhtmlTextWriter.IsValidFormAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -372,10 +372,10 @@ items:
       description: The <xref href="System.Web.UI.HtmlTextWriterAttribute"></xref> enumeration value associated with the XHTML attribute.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the attribute is rendered to the page; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the attribute is rendered to the page; otherwise, `false`.'
   overload: System.Web.UI.XhtmlTextWriter.OnAttributeRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -410,10 +410,10 @@ items:
       description: The <xref href="System.Web.UI.HtmlTextWriterStyle"></xref> enumeration value associated with the XHTML style attribute.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the style attribute is rendered; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the style attribute is rendered; otherwise, `false`.'
   overload: System.Web.UI.XhtmlTextWriter.OnStyleAttributeRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -442,7 +442,7 @@ items:
       description: The attribute to remove from the specified XHTML element.
   overload: System.Web.UI.XhtmlTextWriter.RemoveRecognizedAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -469,7 +469,7 @@ items:
       description: One of the <xref href="System.Web.UI.XhtmlMobileDocType"></xref> enumeration values.
   overload: System.Web.UI.XhtmlTextWriter.SetDocType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -495,7 +495,7 @@ items:
       description: A <xref href="System.Collections.Hashtable"></xref> of elements containing a collection of <xref:System.Web.UI.XhtmlTextWriter.CommonAttributes*> that are not rendered.
   overload: System.Web.UI.XhtmlTextWriter.SuppressCommonAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -512,7 +512,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: Writes a <xref uid="langword_csharp_&lt;br/&gt;" name="&lt;br/&gt;" href=""></xref> element to the XHTML output stream.
+  summary: Writes a `&lt;br/&gt;` element to the XHTML output stream.
   remarks: ''
   example:
   - "The following code example demonstrates how to override the inherited <xref:System.Web.UI.HtmlTextWriter.BeginRender%2A?displayProperty=fullName> method to write a text string with the <xref:System.Web.UI.HtmlTextWriter.Write%2A?displayProperty=fullName> method and a `<br/>` element with the WriteBreak method.  \n  \n [!code-vb[system.web.ui.xhtmltextwriter_sample2#4](~/add/codesnippet/visualbasic/m-system.web.ui.xhtmltex_3_1.vb)]\n [!code-cs[system.web.ui.xhtmltextwriter_sample2#4](~/add/codesnippet/csharp/m-system.web.ui.xhtmltex_3_1.cs)]"
@@ -521,7 +521,7 @@ items:
     parameters: []
   overload: System.Web.UI.XhtmlTextWriter.WriteBreak*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

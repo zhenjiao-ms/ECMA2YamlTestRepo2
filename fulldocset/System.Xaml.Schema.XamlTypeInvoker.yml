@@ -35,7 +35,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.#ctor
   id: '#ctor'
@@ -56,7 +56,7 @@ items:
     parameters: []
   overload: System.Xaml.Schema.XamlTypeInvoker.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.#ctor(System.Xaml.XamlType)
   id: '#ctor(System.Xaml.XamlType)'
@@ -82,8 +82,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>type</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>type</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.AddToCollection(System.Object,System.Object)
   id: AddToCollection(System.Object,System.Object)
@@ -115,11 +115,11 @@ items:
     description: "Invoked this method on a <xref href=\"System.Xaml.Schema.XamlTypeInvoker\"></xref> that is based on an unknown <xref href=\"System.Xaml.XamlType\"></xref>.  \n  \n **-or-**  \n  \n Invoked this method on a <xref href=\"System.Xaml.Schema.XamlTypeInvoker\"></xref> where the relevant type is not a collection."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>instance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>instance</code> is `null`.
   - type: System.Xaml.XamlSchemaException
     commentId: T:System.Xaml.XamlSchemaException
-    description: '&lt;xref:System.Xaml.Schema.XamlTypeInvoker.GetAddMethod%2A?displayProperty=fullName&gt; for this <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref> returns <xref uid="langword_csharp_null" name="null" href=""></xref>.'
-  platform:
+    description: '&lt;xref:System.Xaml.Schema.XamlTypeInvoker.GetAddMethod%2A?displayProperty=fullName&gt; for this <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref> returns `null`.'
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.AddToDictionary(System.Object,System.Object,System.Object)
   id: AddToDictionary(System.Object,System.Object,System.Object)
@@ -154,11 +154,11 @@ items:
     description: "Invoked this method on a <xref href=\"System.Xaml.Schema.XamlTypeInvoker\"></xref> that is based on an unknown <xref href=\"System.Xaml.XamlType\"></xref>.  \n  \n **-or-**  \n  \n Invoked this method on a <xref href=\"System.Xaml.Schema.XamlTypeInvoker\"></xref> where the relevant type is not a dictionary."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>instance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>instance</code> is `null`.
   - type: System.Xaml.XamlSchemaException
     commentId: T:System.Xaml.XamlSchemaException
-    description: '&lt;xref:System.Xaml.Schema.XamlTypeInvoker.GetAddMethod%2A?displayProperty=fullName&gt; for this <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref> returns <xref uid="langword_csharp_null" name="null" href=""></xref>.'
-  platform:
+    description: '&lt;xref:System.Xaml.Schema.XamlTypeInvoker.GetAddMethod%2A?displayProperty=fullName&gt; for this <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref> returns `null`.'
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.CreateInstance(System.Object[])
   id: CreateInstance(System.Object[])
@@ -178,7 +178,7 @@ items:
     parameters:
     - id: arguments
       type: System.Object[]
-      description: An array of objects that supply the <xref uid="langword_csharp_x:ConstructorArgs" name="x:ConstructorArgs" href=""></xref> for the instance. May be <xref uid="langword_csharp_null" name="null" href=""></xref> for types that do not require or use <xref uid="langword_csharp_x:ConstructorArgs" name="x:ConstructorArgs" href=""></xref>.
+      description: An array of objects that supply the `x:ConstructorArgs` for the instance. May be `null` for types that do not require or use `x:ConstructorArgs`.
     return:
       type: System.Object
       description: The created instance based on the construction-initiated <xref href="System.Xaml.XamlType"></xref> for this <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref>.
@@ -187,7 +187,7 @@ items:
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
     description: Could not resolve a constructor.
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.GetAddMethod(System.Xaml.XamlType)
   id: GetAddMethod(System.Xaml.XamlType)
@@ -201,23 +201,23 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml.Schema
-  summary: Returns the relevant <xref uid="langword_csharp_Add" name="Add" href=""></xref> method for a <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref> that is relevant to a collection or dictionary.
+  summary: Returns the relevant `Add` method for a <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref> that is relevant to a collection or dictionary.
   remarks: "This method should return `null` for cases where the <xref:System.Xaml.XamlType> for this <xref:System.Xaml.Schema.XamlTypeInvoker> is not a writeable collection or dictionary. Specifically, should return `null` for cases where <xref:System.Xaml.XamlType.LookupCollectionKind%2A?displayProperty=fullName> returns `None`.  \n  \n> [!IMPORTANT]\n>  If you are not accessing a fully trusted XAML type system, this method has the potential to report false <xref:System.Reflection.MethodInfo> information to callers."
   syntax:
     content: public virtual System.Reflection.MethodInfo GetAddMethod (System.Xaml.XamlType contentType);
     parameters:
     - id: contentType
       type: System.Xaml.XamlType
-      description: <xref href="System.Xaml.XamlType"></xref> for the item type that is used by the <xref uid="langword_csharp_Add" name="Add" href=""></xref> method.
+      description: <xref href="System.Xaml.XamlType"></xref> for the item type that is used by the `Add` method.
     return:
       type: System.Reflection.MethodInfo
-      description: CLR <xref href="System.Reflection.MethodInfo"></xref> information for the <xref uid="langword_csharp_Add" name="Add" href=""></xref> method, or null.
+      description: CLR <xref href="System.Reflection.MethodInfo"></xref> information for the `Add` method, or null.
   overload: System.Xaml.Schema.XamlTypeInvoker.GetAddMethod*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>contentType</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>contentType</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.GetEnumeratorMethod
   id: GetEnumeratorMethod
@@ -238,10 +238,10 @@ items:
     parameters: []
     return:
       type: System.Reflection.MethodInfo
-      description: <xref href="System.Reflection.MethodInfo"></xref> for an enumerator method, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: <xref href="System.Reflection.MethodInfo"></xref> for an enumerator method, or `null`.
   overload: System.Xaml.Schema.XamlTypeInvoker.GetEnumeratorMethod*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.GetItems(System.Object)
   id: GetItems(System.Object)
@@ -264,7 +264,7 @@ items:
       description: An instance of the type specified by the <xref href="System.Xaml.XamlType"></xref> used for constructing this <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref>.
     return:
       type: System.Collections.IEnumerator
-      description: An <xref href="System.Collections.IEnumerator"></xref> object, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.IEnumerator"></xref> object, or `null`.
   overload: System.Xaml.Schema.XamlTypeInvoker.GetItems*
   exceptions:
   - type: System.NotSupportedException
@@ -272,8 +272,8 @@ items:
     description: "Invoked this method on a <xref href=\"System.Xaml.Schema.XamlTypeInvoker\"></xref> that is based on an unknown <xref href=\"System.Xaml.XamlType\"></xref>.  \n  \n **-or-**  \n  \n Invoked this method on a <xref href=\"System.Xaml.Schema.XamlTypeInvoker\"></xref> where the relevant type is not a collection or dictionary."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>instance</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>instance</code> is `null`.
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.SetMarkupExtensionHandler
   id: SetMarkupExtensionHandler
@@ -296,7 +296,7 @@ items:
       description: A handler implementation that handles this case.
   overload: System.Xaml.Schema.XamlTypeInvoker.SetMarkupExtensionHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.SetTypeConverterHandler
   id: SetTypeConverterHandler
@@ -319,7 +319,7 @@ items:
       description: A handler implementation that handles this case.
   overload: System.Xaml.Schema.XamlTypeInvoker.SetTypeConverterHandler*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Xaml.Schema.XamlTypeInvoker.UnknownInvoker
   id: UnknownInvoker
@@ -342,7 +342,7 @@ items:
       description: A static value that represents an unknown, not fully implemented <xref href="System.Xaml.Schema.XamlTypeInvoker"></xref>.
   overload: System.Xaml.Schema.XamlTypeInvoker.UnknownInvoker*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object
@@ -411,8 +411,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object

@@ -44,7 +44,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -76,7 +76,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>port</code> is not between <xref href="System.Net.IPEndPoint.MinPort"></xref> and <xref href="System.Net.IPEndPoint.MaxPort"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,8 +107,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>localEP</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>localEP</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,11 +142,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>localaddr</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>localaddr</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>port</code> is not between <xref href="System.Net.IPEndPoint.MinPort"></xref> and <xref href="System.Net.IPEndPoint.MaxPort"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -178,7 +178,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The listener has not been started with a call to <xref:System.Net.Sockets.TcpListener.Start*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -213,7 +213,7 @@ items:
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
     description: Use the &lt;xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=fullName&gt; property to obtain the specific error code. When you have obtained this code, you can refer to the Windows Sockets version 2 API error code documentation in MSDN for a detailed description of the error.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,10 +236,10 @@ items:
     content: protected bool Active { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <xref href="System.Net.Sockets.TcpListener"></xref> is actively listening; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <xref href="System.Net.Sockets.TcpListener"></xref> is actively listening; otherwise, `false`.'
   overload: System.Net.Sockets.TcpListener.Active*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -269,7 +269,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The AllowNatTraversal method was called after calling the <xref:System.Net.Sockets.TcpListener.Start*> method
-  platform:
+  version:
   - netframework-40
 - uid: System.Net.Sockets.TcpListener.BeginAcceptSocket(System.AsyncCallback,System.Object)
   id: BeginAcceptSocket(System.AsyncCallback,System.Object)
@@ -307,7 +307,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Net.Sockets.Socket"></xref> has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -348,7 +348,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Net.Sockets.Socket"></xref> has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,7 +385,7 @@ items:
     description: The underlying <xref href="System.Net.Sockets.Socket"></xref> has been closed.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>asyncResult</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>asyncResult</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>asyncResult</code> parameter was not created by a call to the <xref:System.Net.Sockets.TcpListener.BeginAcceptSocket*> method.
@@ -395,7 +395,7 @@ items:
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
     description: An error occurred while attempting to access the <xref href="System.Net.Sockets.Socket"></xref>. See the Remarks section for more information.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -427,7 +427,7 @@ items:
       description: "A <xref href=\"System.Net.Sockets.TcpClient\"></xref>.  \n  \n The <xref href=\"System.Net.Sockets.TcpClient\"></xref> used to send and receive data."
   overload: System.Net.Sockets.TcpListener.EndAcceptTcpClient*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -452,7 +452,7 @@ items:
     content: public bool ExclusiveAddressUse { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Net.Sockets.TcpListener"></xref> allows only one <xref href="System.Net.Sockets.TcpListener"></xref> to listen to a specific port; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. . The default is <xref uid="langword_csharp_true" name="true" href=""></xref> for Windows Server 2003 and Windows XP Service Pack 2 and later, and <xref uid="langword_csharp_false" name="false" href=""></xref> for all other versions.
+      description: '`true` if the <xref href="System.Net.Sockets.TcpListener"></xref> allows only one <xref href="System.Net.Sockets.TcpListener"></xref> to listen to a specific port; otherwise, `false`. . The default is `true` for Windows Server 2003 and Windows XP Service Pack 2 and later, and `false` for all other versions.'
   overload: System.Net.Sockets.TcpListener.ExclusiveAddressUse*
   exceptions:
   - type: System.InvalidOperationException
@@ -464,7 +464,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The underlying <xref href="System.Net.Sockets.Socket"></xref> has been closed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -492,7 +492,7 @@ items:
       description: The <xref href="System.Net.EndPoint"></xref> to which the <xref href="System.Net.Sockets.Socket"></xref> is bound.
   overload: System.Net.Sockets.TcpListener.LocalEndpoint*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,13 +518,13 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if connections are pending; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if connections are pending; otherwise, `false`.'
   overload: System.Net.Sockets.TcpListener.Pending*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The listener has not been started with a call to <xref:System.Net.Sockets.TcpListener.Start*>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -552,7 +552,7 @@ items:
       description: The underlying <xref href="System.Net.Sockets.Socket"></xref>.
   overload: System.Net.Sockets.TcpListener.Server*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -581,7 +581,7 @@ items:
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
     description: Use the &lt;xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=fullName&gt; property to obtain the specific error code. When you have obtained this code, you can refer to the Windows Sockets version 2 API error code documentation in MSDN for a detailed description of the error.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -619,7 +619,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The underlying <xref href="System.Net.Sockets.Socket"></xref> is null.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -648,7 +648,7 @@ items:
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
     description: Use the &lt;xref:System.Net.Sockets.SocketException.ErrorCode%2A?displayProperty=fullName&gt; property to obtain the specific error code. When you have obtained this code, you can refer to the Windows Sockets version 2 API error code documentation in MSDN for a detailed description of the error.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

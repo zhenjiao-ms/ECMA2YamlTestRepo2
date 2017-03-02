@@ -21,7 +21,7 @@ items:
   syntax:
     content: public interface IDataEnvironment
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -48,13 +48,13 @@ items:
       description: The parent window for the connection dialog.
     - id: initialConnection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: The connection, if any, to edit. To create a new connection, `initialConnection` should be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The connection, if any, to edit. To create a new connection, `initialConnection` should be `null`.
     return:
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: A new or edited <xref href="System.ComponentModel.Design.Data.DesignerDataConnection"></xref> object, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the user canceled.
+      description: A new or edited <xref href="System.ComponentModel.Design.Data.DesignerDataConnection"></xref> object, or `null` if the user canceled.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.BuildConnection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -90,10 +90,10 @@ items:
       description: The initial value of the query or <xref href="System.String"></xref> to create a new query.
     return:
       type: System.String
-      description: A string containing the SQL query, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the user canceled.
+      description: A string containing the SQL query, or `null` if the user canceled.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.BuildQuery*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -126,10 +126,10 @@ items:
       description: The name of the new connection configuration entry.
     return:
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: A <xref href="System.ComponentModel.Design.Data.DesignerDataConnection"></xref> object containing the saved connection data with the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.Name*> property set to <code>name</code>, and the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.IsConfigured*> property set to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A <xref href="System.ComponentModel.Design.Data.DesignerDataConnection"></xref> object containing the saved connection data with the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.Name*> property set to <code>name</code>, and the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.IsConfigured*> property set to `true`.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.ConfigureConnection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,7 +155,7 @@ items:
       description: A collection of <xref href="System.ComponentModel.Design.Data.DesignerDataConnection"></xref> objects representing the data connections available in the current design session.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.Connections*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -184,7 +184,7 @@ items:
       description: A <xref href="System.CodeDom.CodeExpression"></xref> object containing the source code required to retrieve a connection string from the application's configuration file.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.GetCodeExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -211,10 +211,10 @@ items:
       description: The data connection for which to return schema information.
     return:
       type: System.ComponentModel.Design.Data.IDesignerDataSchema
-      description: An <xref href="System.ComponentModel.Design.Data.IDesignerDataSchema"></xref> object containing the schema information for the specified data connection, or <xref uid="langword_csharp_null" name="null" href=""></xref> if no schema information is available.
+      description: An <xref href="System.ComponentModel.Design.Data.IDesignerDataSchema"></xref> object containing the schema information for the specified data connection, or `null` if no schema information is available.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.GetConnectionSchema*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -244,7 +244,7 @@ items:
       description: A <xref href="System.Data.Common.DbConnection"></xref> object that can be used at design time.
   overload: System.ComponentModel.Design.Data.IDataEnvironment.GetDesignTimeConnection*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

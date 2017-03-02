@@ -19,7 +19,7 @@ items:
   nameWithType: SamlAdvice
   fullName: System.IdentityModel.Tokens.SamlAdvice
   type: Class
-  summary: Represents the <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> element within a SAML assertion that contains additional information provided by the SAML authority.
+  summary: Represents the `&lt;saml:Advice&gt;` element within a SAML assertion that contains additional information provided by the SAML authority.
   remarks: The `<saml:Advice>` element within a SAML assertion is an extension point for SAML tokens. One example of how to use the SamlAdvice class is to provide supporting information about the SAML authority issuing the SAML assertion. This supporting information can be in the form of a SAML assertion or a reference to a SAML assertion, which are represented by the <xref:System.IdentityModel.Tokens.SamlAdvice.Assertions%2A> and <xref:System.IdentityModel.Tokens.SamlAdvice.AssertionIdReferences%2A> properties, respectively.
   syntax:
     content: public class SamlAdvice
@@ -34,7 +34,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -57,7 +57,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SamlAdvice.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -85,8 +85,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>assertions</code> contains a <xref uid="langword_csharp_null" name="null" href=""></xref> element.
-  platform:
+    description: <code>assertions</code> contains a `null` element.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -114,8 +114,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>references</code> contains a <xref uid="langword_csharp_null" name="null" href=""></xref> element.
-  platform:
+    description: <code>references</code> contains a `null` element.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -146,8 +146,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>references</code> contains a <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> element.  \n  \n -or-  \n  \n <code>assertions</code> contains a <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> element."
-  platform:
+    description: "<code>references</code> contains a `null` element.  \n  \n -or-  \n  \n <code>assertions</code> contains a `null` element."
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -172,7 +172,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IList%601&gt; of type <xref href="System.String"></xref> that contains a collection of references to SAML assertions that provide additional information on a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.AssertionIdReferences*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -197,7 +197,7 @@ items:
       description: An &lt;xref:System.Collections.Generic.IList%601&gt; of type <xref href="System.IdentityModel.Tokens.SamlAssertion"></xref> that contains SAML assertions that provides additional information for a SAML assertion.
   overload: System.IdentityModel.Tokens.SamlAdvice.Assertions*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -219,10 +219,10 @@ items:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the properties of this instance are read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the properties of this instance are read-only; otherwise, `false`. The default is `false`.'
   overload: System.IdentityModel.Tokens.SamlAdvice.IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -245,7 +245,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Tokens.SamlAdvice.MakeReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -261,31 +261,31 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Reads the <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> XML element using the specified XML reader.
+  summary: Reads the `&lt;saml:Advice&gt;` XML element using the specified XML reader.
   syntax:
     content: public virtual void ReadXml (System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver);
     parameters:
     - id: reader
       type: System.Xml.XmlDictionaryReader
-      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> XML element.
+      description: An <xref href="System.Xml.XmlDictionaryReader"></xref> to read the `&lt;saml:Advice&gt;` XML element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
       description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of reading XML elements in the SAML assertion that are defined in the SAML specification.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that can read a <xref uid="langword_csharp_KeyInfo" name="KeyInfo" href=""></xref> clause.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that can read a `KeyInfo` clause.
     - id: outOfBandTokenResolver
       type: System.IdentityModel.Selectors.SecurityTokenResolver
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature for SAML assertions that contain this <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> XML element.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenResolver"></xref> that determines the security token that created the digital signature for SAML assertions that contain this `&lt;saml:Advice&gt;` XML element.
   overload: System.IdentityModel.Tokens.SamlAdvice.ReadXml*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>reader</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>samlSerializer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>"
+    description: "<code>reader</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`"
   - type: System.IdentityModel.Tokens.SecurityTokenException
     commentId: T:System.IdentityModel.Tokens.SecurityTokenException
-    description: The <xref uid="langword_csharp_&lt;saml:Advice&gt; " name="&lt;saml:Advice&gt; " href=""></xref>element does not conform to the XML schema for the <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> element.
-  platform:
+    description: The `&lt;saml:Advice&gt; `element does not conform to the XML schema for the `&lt;saml:Advice&gt;` element.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -301,25 +301,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: Writes this <xref href="System.IdentityModel.Tokens.SamlAdvice"></xref> into the specified XML writer as an <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> element.
+  summary: Writes this <xref href="System.IdentityModel.Tokens.SamlAdvice"></xref> into the specified XML writer as an `&lt;saml:Advice&gt;` element.
   syntax:
     content: public virtual void WriteXml (System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer);
     parameters:
     - id: writer
       type: System.Xml.XmlDictionaryWriter
-      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> element.
+      description: A <xref href="System.Xml.XmlDictionaryWriter"></xref> to write the `&lt;saml:Advice&gt;` element.
     - id: samlSerializer
       type: System.IdentityModel.Tokens.SamlSerializer
-      description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing the <xref uid="langword_csharp_&lt;saml:Advice&gt;" name="&lt;saml:Advice&gt;" href=""></xref> element and its child elements and attributes that are defined in the SAML specification.
+      description: A <xref href="System.IdentityModel.Tokens.SamlSerializer"></xref> that is capable of writing the `&lt;saml:Advice&gt;` element and its child elements and attributes that are defined in the SAML specification.
     - id: keyInfoSerializer
       type: System.IdentityModel.Selectors.SecurityTokenSerializer
-      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing <xref uid="langword_csharp_KeyInfo" name="KeyInfo" href=""></xref> clauses.
+      description: A <xref href="System.IdentityModel.Selectors.SecurityTokenSerializer"></xref> that is capable of writing `KeyInfo` clauses.
   overload: System.IdentityModel.Tokens.SamlAdvice.WriteXml*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>writer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>  \n  \n -or-  \n  \n <code>samlSerializer</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>"
-  platform:
+    description: "<code>writer</code> is `null`  \n  \n -or-  \n  \n <code>samlSerializer</code> is `null`"
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

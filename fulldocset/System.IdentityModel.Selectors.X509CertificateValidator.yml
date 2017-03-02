@@ -36,7 +36,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -63,7 +63,7 @@ items:
     parameters: []
   overload: System.IdentityModel.Selectors.X509CertificateValidator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -88,7 +88,7 @@ items:
       description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that validates the X.509 certificate using a trust chain.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.ChainTrust*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -111,7 +111,7 @@ items:
     parameters:
     - id: useMachineContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use the machine context; <xref uid="langword_csharp_false" name="false" href=""></xref> to use the current user context.
+      description: '`true` to use the machine context; `false` to use the current user context.'
     - id: chainPolicy
       type: System.Security.Cryptography.X509Certificates.X509ChainPolicy
       description: An <xref href="System.Security.Cryptography.X509Certificates.X509ChainPolicy"></xref> that specifies the policy used to build and verify the trust chain.
@@ -120,7 +120,7 @@ items:
       description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that validates the X.509 certificate using a trust chain.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.CreateChainTrustValidator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -136,23 +136,23 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: Gets a validator that verifies the certificate is in the <xref uid="langword_csharp_TrustedPeople" name="TrustedPeople" href=""></xref> certificate store or by specifying the context and chain policy that is used to build a certificate trust chain. The certificate is trusted if it passes either verification method.
+  summary: Gets a validator that verifies the certificate is in the `TrustedPeople` certificate store or by specifying the context and chain policy that is used to build a certificate trust chain. The certificate is trusted if it passes either verification method.
   remarks: "Use the CreatePeerOrChainTrustValidator method instead of the <xref:System.IdentityModel.Selectors.X509CertificateValidator.PeerOrChainTrust%2A> property to specify the context or to set chain policy. Chain policy can be used to specify the Enhanced Key Usage (EKU) for which the chain should be validated, or specify revocation checking.  \n  \n The value of this static property can be supplied as a parameter to one of the constructors for the <xref:System.IdentityModel.Selectors.X509SecurityTokenAuthenticator> class."
   syntax:
     content: public static System.IdentityModel.Selectors.X509CertificateValidator CreatePeerOrChainTrustValidator (bool useMachineContext, System.Security.Cryptography.X509Certificates.X509ChainPolicy chainPolicy);
     parameters:
     - id: useMachineContext
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use the machine context; <xref uid="langword_csharp_false" name="false" href=""></xref> to use the current user context.
+      description: '`true` to use the machine context; `false` to use the current user context.'
     - id: chainPolicy
       type: System.Security.Cryptography.X509Certificates.X509ChainPolicy
       description: An <xref href="System.Security.Cryptography.X509Certificates.X509ChainPolicy"></xref> that specifies the policy used to build the trust chain.
     return:
       type: System.IdentityModel.Selectors.X509CertificateValidator
-      description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that verifies the certificate is in the <xref uid="langword_csharp_TrustedPeople" name="TrustedPeople" href=""></xref> certificate store or by building a certificate trust chain.
+      description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that verifies the certificate is in the `TrustedPeople` certificate store or by building a certificate trust chain.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.CreatePeerOrChainTrustValidator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -177,7 +177,7 @@ items:
       description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that performs no validation on the X.509 certificate.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.None*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -193,16 +193,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: Gets a validator that verifies the certificate is in the <xref uid="langword_csharp_TrustedPeople" name="TrustedPeople" href=""></xref> certificate store or by building a certificate trust chain. The certificate is trusted if it passes either verification method.
+  summary: Gets a validator that verifies the certificate is in the `TrustedPeople` certificate store or by building a certificate trust chain. The certificate is trusted if it passes either verification method.
   remarks: The value of this static property can be supplied as a parameter to one of the constructors for the <xref:System.IdentityModel.Selectors.X509SecurityTokenAuthenticator> class.
   syntax:
     content: public static System.IdentityModel.Selectors.X509CertificateValidator PeerOrChainTrust { get; }
     return:
       type: System.IdentityModel.Selectors.X509CertificateValidator
-      description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that verifies the certificate is in the <xref uid="langword_csharp_TrustedPeople" name="TrustedPeople" href=""></xref> certificate store or by building a certificate trust chain.
+      description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that verifies the certificate is in the `TrustedPeople` certificate store or by building a certificate trust chain.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.PeerOrChainTrust*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -218,16 +218,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: Gets a validator that verifies the certificate is in the <xref uid="langword_csharp_TrustedPeople" name="TrustedPeople" href=""></xref> certificate store
+  summary: Gets a validator that verifies the certificate is in the `TrustedPeople` certificate store
   remarks: The value of this static property can be supplied as a parameter to one of the constructors for the <xref:System.IdentityModel.Selectors.X509SecurityTokenAuthenticator> class.
   syntax:
     content: public static System.IdentityModel.Selectors.X509CertificateValidator PeerTrust { get; }
     return:
       type: System.IdentityModel.Selectors.X509CertificateValidator
-      description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that verifies the certificate is in the <xref uid="langword_csharp_TrustedPeople" name="TrustedPeople" href=""></xref> certificate store.
+      description: A <xref href="System.IdentityModel.Selectors.X509CertificateValidator"></xref> that verifies the certificate is in the `TrustedPeople` certificate store.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.PeerTrust*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -257,7 +257,7 @@ items:
       description: The <xref href="System.Security.Cryptography.X509Certificates.X509Certificate2"></xref> that represents the X.509 certificate to validate.
   overload: System.IdentityModel.Selectors.X509CertificateValidator.Validate*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

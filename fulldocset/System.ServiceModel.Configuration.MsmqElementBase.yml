@@ -84,7 +84,7 @@ items:
   - System.ServiceModel.Configuration.TransportElement.ManualAddressing
   - System.ServiceModel.Configuration.TransportElement.MaxBufferPoolSize
   - System.ServiceModel.Configuration.TransportElement.MaxReceivedMessageSize
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -106,7 +106,7 @@ items:
     parameters: []
   overload: System.ServiceModel.Configuration.MsmqElementBase.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -131,7 +131,7 @@ items:
       description: A binding element that contains the settings to be applied.
   overload: System.ServiceModel.Configuration.MsmqElementBase.ApplyConfiguration*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -156,7 +156,7 @@ items:
       description: The <xref href="System.ServiceModel.Configuration.ServiceModelExtensionElement"></xref> that contains the values to be copied.
   overload: System.ServiceModel.Configuration.MsmqElementBase.CopyFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -178,10 +178,10 @@ items:
     content: public Uri CustomDeadLetterQueue { get; set; }
     return:
       type: System.Uri
-      description: The <xref href="System.Uri"></xref> that contains the location of the per-application dead-letter queue. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The <xref href="System.Uri"></xref> that contains the location of the per-application dead-letter queue. The default value is `null`.
   overload: System.ServiceModel.Configuration.MsmqElementBase.CustomDeadLetterQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -206,7 +206,7 @@ items:
       description: A <xref href="System.ServiceModel.DeadLetterQueue"></xref> enumeration value that indicates the type of dead-letter queue to use.
   overload: System.ServiceModel.Configuration.MsmqElementBase.DeadLetterQueue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -228,10 +228,10 @@ items:
     content: public bool Durable { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the messages processed by this binding are durable; <xref uid="langword_csharp_false" name="false" href=""></xref> if they are volatile. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if the messages processed by this binding are durable; `false` if they are volatile. The default is `true`.'
   overload: System.ServiceModel.Configuration.MsmqElementBase.Durable*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -253,10 +253,10 @@ items:
     content: public bool ExactlyOnce { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if messages processed by this binding will be received exactly once; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` if messages processed by this binding will be received exactly once; otherwise, `false`. The default is `true`.'
   overload: System.ServiceModel.Configuration.MsmqElementBase.ExactlyOnce*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -281,7 +281,7 @@ items:
       description: A binding element that contains the settings to be used to initialize this binding element.
   overload: System.ServiceModel.Configuration.MsmqElementBase.InitializeFrom*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -306,7 +306,7 @@ items:
       description: An integer that indicates the maximum number of retry cycles to attempt delivery of messages to the application. The default value is 2.
   overload: System.ServiceModel.Configuration.MsmqElementBase.MaxRetryCycles*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -330,7 +330,7 @@ items:
       description: An <xref href="System.ServiceModel.Configuration.MsmqTransportSecurityElement"></xref> instance that encapsulates the transport security settings for a binding.
   overload: System.ServiceModel.Configuration.MsmqElementBase.MsmqTransportSecurity*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -354,7 +354,7 @@ items:
       description: A <xref href="System.Configuration.ConfigurationPropertyCollection"></xref> instance that contains a collection of <xref href="System.Configuration.ConfigurationProperty"></xref> objects that can be attributes or <xref href="System.Configuration.ConfigurationElement"></xref> objects of this binding configuration element.
   overload: System.ServiceModel.Configuration.MsmqElementBase.Properties*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -376,10 +376,10 @@ items:
     content: public bool ReceiveContextEnabled { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if receive context for processing messages in queues is enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if receive context for processing messages in queues is enabled; otherwise, `false`.'
   overload: System.ServiceModel.Configuration.MsmqElementBase.ReceiveContextEnabled*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.ServiceModel.Configuration.MsmqElementBase.ReceiveErrorHandling
   id: ReceiveErrorHandling
@@ -402,7 +402,7 @@ items:
       description: A <xref href="System.ServiceModel.ReceiveErrorHandling"></xref> value that specifies how poison and nondispatchable messages are handled.
   overload: System.ServiceModel.Configuration.MsmqElementBase.ReceiveErrorHandling*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -427,7 +427,7 @@ items:
       description: A 32-bit signed integer that specifies the maximum number of times that the queue manager should attempt to send a message before transferring it to the retry queue.
   overload: System.ServiceModel.Configuration.MsmqElementBase.ReceiveRetryCount*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -452,7 +452,7 @@ items:
       description: The <xref href="System.TimeSpan"></xref> that specifies the interval of time to wait before starting the next cycle of delivery attempts to the receiving application. The default value is "00:10:00".
   overload: System.ServiceModel.Configuration.MsmqElementBase.RetryCycleDelay*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -477,7 +477,7 @@ items:
       description: The <xref href="System.TimeSpan"></xref> that indicates how long the messages can be in the queue before they expire. The default value is one day (01:00:00:00).
   overload: System.ServiceModel.Configuration.MsmqElementBase.TimeToLive*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -499,10 +499,10 @@ items:
     content: public bool UseMsmqTracing { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if messages processed by this binding should be traced; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if messages processed by this binding should be traced; otherwise, `false`. The default is `false`.'
   overload: System.ServiceModel.Configuration.MsmqElementBase.UseMsmqTracing*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -524,10 +524,10 @@ items:
     content: public bool UseSourceJournal { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if copies of messages processed by this binding should be stored in the source journal queue; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if copies of messages processed by this binding should be stored in the source journal queue; otherwise, `false`. The default is `false`.'
   overload: System.ServiceModel.Configuration.MsmqElementBase.UseSourceJournal*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -555,7 +555,7 @@ items:
       description: A connection time-out when used with queued channels.
   overload: System.ServiceModel.Configuration.MsmqElementBase.ValidityDuration*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.ServiceModel.Configuration.TransportElement

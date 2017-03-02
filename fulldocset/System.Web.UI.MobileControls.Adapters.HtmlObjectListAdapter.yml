@@ -84,7 +84,7 @@ items:
   - System.Web.UI.MobileControls.Adapters.HtmlControlAdapter.RequiresFormTag
   - System.Web.UI.MobileControls.Adapters.HtmlControlAdapter.SaveAdapterState
   - System.Web.UI.MobileControls.Adapters.HtmlControlAdapter.SecondaryUIMode
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,7 +107,7 @@ items:
     parameters: []
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -157,7 +157,7 @@ items:
       description: A strongly typed reference to the associated control.
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.Control*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,10 +180,10 @@ items:
     parameters:
     - id: doDataBind
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, the instantiated templates bind to available data (which usually happens on the first request). If <xref uid="langword_csharp_false" name="false" href=""></xref>, the templates do not bind to data, and instead rely on view state to fill them in (which usually happens on subsequent postbacks).
+      description: If `true`, the instantiated templates bind to available data (which usually happens on the first request). If `false`, the templates do not bind to data, and instead rely on view state to fill them in (which usually happens on subsequent postbacks).
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.CreateTemplatedUI*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -200,7 +200,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the event was handled. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if the event was handled. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: This method is called by a control when it receives a postback event notification, to check whether the event is adapter-specific. For more information, see <xref:System.Web.UI.MobileControls.Adapters.ControlAdapter.HandlePostBackEvent%2A?displayProperty=fullName>.
   syntax:
     content: public override bool HandlePostBackEvent (string eventArgument);
@@ -210,13 +210,13 @@ items:
       description: Name of the event.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the event was handled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the event was handled; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.HandlePostBackEvent*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: The postback data is invalid. This exception can be caused by data binding the <xref href="System.Web.UI.MobileControls.ObjectList"></xref> in the <xref:System.Web.UI.MobileControls.MobileControl.OnLoad*> event method without first checking the <xref:System.Web.UI.Page.IsPostBack*> property.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,16 +233,16 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a command. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a command. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: protected bool HasCommands ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a command; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a command; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.HasCommands*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,16 +259,16 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: protected bool HasDefaultCommand ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.HasDefaultCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -285,16 +285,16 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if a <xref uid="langword_csharp_Details" name="Details" href=""></xref> view of an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control exists. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if a `Details` view of an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control exists. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: protected bool HasItemDetails ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a <xref uid="langword_csharp_Details" name="Details" href=""></xref> view of an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> exists; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a `Details` view of an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> exists; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.HasItemDetails*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -320,7 +320,7 @@ items:
       description: An object (defined by <xref href="System.EventArgs"></xref>) that contains event data.
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.OnInit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -337,16 +337,16 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Returns <xref uid="langword_csharp_true" name="true" href=""></xref> if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command and no other commands. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns `true` if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command and no other commands. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   syntax:
     content: protected bool OnlyHasDefaultCommand ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command and no other commands; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if an <xref href="System.Web.UI.MobileControls.ObjectList"></xref> control contains a default command and no other commands; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.OnlyHasDefaultCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -372,7 +372,7 @@ items:
       description: An object (defined by <xref href="System.EventArgs"></xref>) that contains event data.
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.OnPreRender*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -398,7 +398,7 @@ items:
       description: The text writer to receive output.
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.Render*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -427,7 +427,7 @@ items:
       description: The specified item.
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.RenderItemDetails*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -453,7 +453,7 @@ items:
       description: The text writer.
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.RenderItemsList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -470,17 +470,17 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.UI.MobileControls.Adapters
-  summary: Returns a <xref uid="langword_csharp_Boolean" name="Boolean" href=""></xref> that indicates whether the list must be rendered as a table. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
+  summary: Returns a `Boolean` that indicates whether the list must be rendered as a table. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site.
   remarks: "This method can be overridden in order to change the manner in which the list view is rendered.  \n  \n> [!NOTE]\n>  Even if the ShouldRenderAsTable method returns `true`, the target device might not support tables, in which case the list view will not be rendered as a table.  \n  \n The ShouldRenderAsTable method returns a `Boolean` that indicates whether the specified table will fit on the target device screen, whereas the <xref:System.Web.Configuration.HttpCapabilitiesBase.Tables%2A> property of the <xref:System.Web.Mobile.MobileCapabilities> class returns a `Boolean` that indicates whether the device supports tables at all."
   syntax:
     content: protected virtual bool ShouldRenderAsTable ();
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the list must be rendered as a table; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the list must be rendered as a table; otherwise, `false`.'
   overload: System.Web.UI.MobileControls.Adapters.HtmlObjectListAdapter.ShouldRenderAsTable*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -504,7 +504,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -528,7 +528,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

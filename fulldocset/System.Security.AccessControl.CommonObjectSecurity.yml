@@ -79,7 +79,7 @@ items:
   - System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm(System.String,System.Security.AccessControl.AccessControlSections)
   - System.Security.AccessControl.ObjectSecurity.WriteLock
   - System.Security.AccessControl.ObjectSecurity.WriteUnlock
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -102,10 +102,10 @@ items:
     parameters:
     - id: isContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new object is a container object.
+      description: '`true` if the new object is a container object.'
   overload: System.Security.AccessControl.CommonObjectSecurity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -132,7 +132,7 @@ items:
       description: The access rule to add.
   overload: System.Security.AccessControl.CommonObjectSecurity.AddAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -159,7 +159,7 @@ items:
       description: The audit rule to add.
   overload: System.Security.AccessControl.CommonObjectSecurity.AddAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,10 +182,10 @@ items:
     parameters:
     - id: includeExplicit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include access rules explicitly set for the object.
+      description: '`true` to include access rules explicitly set for the object.'
     - id: includeInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include inherited access rules.
+      description: '`true` to include inherited access rules.'
     - id: targetType
       type: System.Type
       description: Specifies whether the security identifier for which to retrieve access rules is of type T:System.Security.Principal.SecurityIdentifier or type T:System.Security.Principal.NTAccount. The value of this parameter must be a type that can be translated to  the <xref href="System.Security.Principal.SecurityIdentifier"></xref> type.
@@ -194,7 +194,7 @@ items:
       description: The collection of access rules associated with the specified <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
   overload: System.Security.AccessControl.CommonObjectSecurity.GetAccessRules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,10 +217,10 @@ items:
     parameters:
     - id: includeExplicit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include audit rules explicitly set for the object.
+      description: '`true` to include audit rules explicitly set for the object.'
     - id: includeInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include inherited audit rules.
+      description: '`true` to include inherited audit rules.'
     - id: targetType
       type: System.Type
       description: The security identifier for which to retrieve audit rules. This must be an object that can be cast as a <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
@@ -229,7 +229,7 @@ items:
       description: The collection of audit rules associated with the specified <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
   overload: System.Security.AccessControl.CommonObjectSecurity.GetAuditRules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -259,13 +259,13 @@ items:
       description: The access rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.CommonObjectSecurity.ModifyAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -294,13 +294,13 @@ items:
       description: The audit rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.CommonObjectSecurity.ModifyAudit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -327,10 +327,10 @@ items:
       description: The access rule to remove.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rule was successfully removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rule was successfully removed; otherwise, `false`.'
   overload: System.Security.AccessControl.CommonObjectSecurity.RemoveAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -357,7 +357,7 @@ items:
       description: The access rule to remove.
   overload: System.Security.AccessControl.CommonObjectSecurity.RemoveAccessRuleAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -384,7 +384,7 @@ items:
       description: The access rule to remove.
   overload: System.Security.AccessControl.CommonObjectSecurity.RemoveAccessRuleSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,10 +411,10 @@ items:
       description: The audit rule to remove.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the audit rule was successfully removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the audit rule was successfully removed; otherwise, `false`.'
   overload: System.Security.AccessControl.CommonObjectSecurity.RemoveAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,7 +440,7 @@ items:
       description: The audit rule to remove.
   overload: System.Security.AccessControl.CommonObjectSecurity.RemoveAuditRuleAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -466,7 +466,7 @@ items:
       description: The audit rule to remove.
   overload: System.Security.AccessControl.CommonObjectSecurity.RemoveAuditRuleSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -493,7 +493,7 @@ items:
       description: The access rule to reset.
   overload: System.Security.AccessControl.CommonObjectSecurity.ResetAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -520,7 +520,7 @@ items:
       description: The access rule to set.
   overload: System.Security.AccessControl.CommonObjectSecurity.SetAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -546,7 +546,7 @@ items:
       description: The audit rule to set.
   overload: System.Security.AccessControl.CommonObjectSecurity.SetAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -59,7 +59,7 @@ items:
       description: An <xref href="System.ComponentModel.Design.IDesignerHost"></xref> that represents the current designer environment.
     - id: name
       type: System.String
-      description: The name of the theme or style sheet theme that the <xref href="System.Web.UI.ThemeProvider"></xref> represents. This parameter can be <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The name of the theme or style sheet theme that the <xref href="System.Web.UI.ThemeProvider"></xref> represents. This parameter can be `null`.
     - id: themeDefinition
       type: System.String
       description: Theme information passed to the &lt;xref:System.Web.UI.DesignTimeTemplateParser.ParseTheme%28System.ComponentModel.Design.IDesignerHost%2CSystem.String%2CSystem.String%29?displayProperty=fullName&gt; method. These are the raw, concatenated contents of the theme.
@@ -71,7 +71,7 @@ items:
       description: The absolute path of the file that contains the theme and control skin information for the named theme.
   overload: System.Web.UI.ThemeProvider.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -96,7 +96,7 @@ items:
       description: A hash code for the string passed as the theme definition to the class constructor.
   overload: System.Web.UI.ThemeProvider.ContentHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -119,10 +119,10 @@ items:
     content: public System.Collections.ICollection CssFiles { get; }
     return:
       type: System.Collections.ICollection
-      description: An <xref href="System.Collections.ICollection"></xref> of strings that identify the CSS files associated with the theme or style sheet theme. This property might return <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An <xref href="System.Collections.ICollection"></xref> of strings that identify the CSS files associated with the theme or style sheet theme. This property might return `null`.
   overload: System.Web.UI.ThemeProvider.CssFiles*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -147,7 +147,7 @@ items:
       description: An <xref href="System.ComponentModel.Design.IDesignerHost"></xref> that represents the current designer environment.
   overload: System.Web.UI.ThemeProvider.DesignerHost*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -174,10 +174,10 @@ items:
       description: The control to apply a theme and control skin to.
     return:
       type: System.Web.UI.SkinBuilder
-      description: A <xref href="System.Web.UI.SkinBuilder"></xref> instance, if one is defined for the specified control type; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Web.UI.SkinBuilder"></xref> instance, if one is defined for the specified control type; otherwise, `null`.
   overload: System.Web.UI.ThemeProvider.GetSkinBuilder*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,7 +206,7 @@ items:
       description: An <xref href="System.Collections.IDictionary"></xref> that contains a list of one or more <xref href="System.Web.UI.ControlBuilder"></xref> objects associated with the <xref href="System.Type"></xref> passed to the method. This list is populated with <xref href="System.Collections.DictionaryEntry"></xref> objects where the <xref:System.Web.UI.Control.SkinID*> is a <xref:System.Collections.DictionaryEntry.Key*>, and its associated <xref href="System.Web.UI.SkinBuilder"></xref> is the <xref:System.Collections.DictionaryEntry.Value*>.
   overload: System.Web.UI.ThemeProvider.GetSkinControlBuildersForControlType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,7 +236,7 @@ items:
       description: An <xref href="System.Collections.ICollection"></xref> of skin identifiers, if control skins are defined for the specified <xref href="System.Type"></xref>. If no control skins are associated with the type, an empty <xref href="System.Collections.ICollection"></xref> is returned.
   overload: System.Web.UI.ThemeProvider.GetSkinsForControl*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
       description: The name of the theme or style sheet theme that the <xref href="System.Web.UI.ThemeProvider"></xref> instance represents.
   overload: System.Web.UI.ThemeProvider.ThemeName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -292,8 +292,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

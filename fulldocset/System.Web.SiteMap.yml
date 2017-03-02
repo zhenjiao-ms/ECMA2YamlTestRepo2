@@ -32,7 +32,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -57,7 +57,7 @@ items:
     content: public static System.Web.SiteMapNode CurrentNode { get; }
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> instance that represents the currently requested page; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if no representative node exists in the site map information.
+      description: A <xref href="System.Web.SiteMapNode"></xref> instance that represents the currently requested page; otherwise, `null`, if no representative node exists in the site map information.
   overload: System.Web.SiteMap.CurrentNode*
   exceptions:
   - type: System.InvalidOperationException
@@ -69,7 +69,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The feature is supported only when running in Low trust or higher.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -94,10 +94,10 @@ items:
     content: public static bool Enabled { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a site map provider is configured and enabled; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a site map provider is configured and enabled; otherwise, `false`.'
   overload: System.Web.SiteMap.Enabled*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,7 +134,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The feature is supported only when running in Low trust or higher.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -171,7 +171,7 @@ items:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The feature is supported only when running in Low trust or higher.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -196,19 +196,19 @@ items:
     content: public static System.Web.SiteMapNode RootNode { get; }
     return:
       type: System.Web.SiteMapNode
-      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the top-level page of the site's navigation structure; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>, if security trimming is enabled and the node cannot be returned to the current user.
+      description: A <xref href="System.Web.SiteMapNode"></xref> that represents the top-level page of the site's navigation structure; otherwise, `null`, if security trimming is enabled and the node cannot be returned to the current user.
   overload: System.Web.SiteMap.RootNode*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The site map feature is not enabled.  \n  \n \\- or -  \n  \n The RootNode resolves to <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, which occurs if security trimming is enabled and the root node is not visible to the current user."
+    description: "The site map feature is not enabled.  \n  \n \\- or -  \n  \n The RootNode resolves to `null`, which occurs if security trimming is enabled and the root node is not visible to the current user."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: The default provider specified in the configuration does not exist.
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: The feature is supported only when running in Low trust or higher.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,7 +235,7 @@ items:
       type: System.Web.SiteMapResolveEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

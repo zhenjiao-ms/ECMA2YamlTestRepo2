@@ -93,7 +93,7 @@ items:
   - System.Xml.XmlNode.System#Collections#IEnumerable#GetEnumerator
   - System.Xml.XmlNode.System#ICloneable#Clone
   - System.Xml.XmlNode.Value
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,7 +129,7 @@ items:
       description: The parent XML document.
   overload: System.Xml.XmlElement.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -157,7 +157,7 @@ items:
       description: <xref href="System.Xml.XmlAttributeCollection"></xref> containing the list of attributes for this node.
   overload: System.Xml.XmlElement.Attributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -183,13 +183,13 @@ items:
     parameters:
     - id: deep
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to recursively clone the subtree under the specified node; <xref uid="langword_csharp_false" name="false" href=""></xref> to clone only the node itself (and its attributes if the node is an <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref>).
+      description: '`true` to recursively clone the subtree under the specified node; `false` to clone only the node itself (and its attributes if the node is an `XmlElement`).'
     return:
       type: System.Xml.XmlNode
       description: The cloned node.
   overload: System.Xml.XmlElement.CloneNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,13 +215,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The name of the attribute to retrieve. This is a qualified name. It is matched against the <xref uid="langword_csharp_Name" name="Name" href=""></xref> property of the matching node.
+      description: The name of the attribute to retrieve. This is a qualified name. It is matched against the `Name` property of the matching node.
     return:
       type: System.String
       description: The value of the specified attribute. An empty string is returned if a matching attribute is not found or if the attribute does not have a specified or default value.
   overload: System.Xml.XmlElement.GetAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -253,7 +253,7 @@ items:
       description: The value of the specified attribute. An empty string is returned if a matching attribute is not found or if the attribute does not have a specified or default value.
   overload: System.Xml.XmlElement.GetAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -270,7 +270,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Returns the <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> with the specified name.
+  summary: Returns the `XmlAttribute` with the specified name.
   remarks: ''
   example:
   - "The following example checks to see if the element has the specified attribute.  \n  \n [!code-cpp[Classic WebData XmlElement.GetAttributeNode Example#1](~/add/codesnippet/cpp/m-system.xml.xmlelement._5_1.cpp)]\n [!code-cs[Classic WebData XmlElement.GetAttributeNode Example#1](~/add/codesnippet/csharp/m-system.xml.xmlelement._5_1.cs)]\n [!code-vb[Classic WebData XmlElement.GetAttributeNode Example#1](~/add/codesnippet/visualbasic/m-system.xml.xmlelement._5_1.vb)]"
@@ -279,13 +279,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The name of the attribute to retrieve. This is a qualified name. It is matched against the <xref uid="langword_csharp_Name" name="Name" href=""></xref> property of the matching node.
+      description: The name of the attribute to retrieve. This is a qualified name. It is matched against the `Name` property of the matching node.
     return:
       type: System.Xml.XmlAttribute
-      description: The specified <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> or <xref uid="langword_csharp_null" name="null" href=""></xref> if a matching attribute was not found.
+      description: The specified `XmlAttribute` or `null` if a matching attribute was not found.
   overload: System.Xml.XmlElement.GetAttributeNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -314,10 +314,10 @@ items:
       description: The namespace URI of the attribute.
     return:
       type: System.Xml.XmlAttribute
-      description: The specified <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> or <xref uid="langword_csharp_null" name="null" href=""></xref> if a matching attribute was not found.
+      description: The specified `XmlAttribute` or `null` if a matching attribute was not found.
   overload: System.Xml.XmlElement.GetAttributeNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,13 +343,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The name tag to match. This is a qualified name. It is matched against the <xref uid="langword_csharp_Name" name="Name" href=""></xref> property of the matching node. The asterisk (*) is a special value that matches all tags.
+      description: The name tag to match. This is a qualified name. It is matched against the `Name` property of the matching node. The asterisk (*) is a special value that matches all tags.
     return:
       type: System.Xml.XmlNodeList
       description: An <xref href="System.Xml.XmlNodeList"></xref> containing a list of all matching nodes. The list is empty if there are no matching nodes.
   overload: System.Xml.XmlElement.GetElementsByTagName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -382,7 +382,7 @@ items:
       description: An <xref href="System.Xml.XmlNodeList"></xref> containing a list of all matching nodes. The list is empty if there are no matching nodes.
   overload: System.Xml.XmlElement.GetElementsByTagName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,13 +408,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The name of the attribute to find. This is a qualified name. It is matched against the <xref uid="langword_csharp_Name" name="Name" href=""></xref> property of the matching node.
+      description: The name of the attribute to find. This is a qualified name. It is matched against the `Name` property of the matching node.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current node has the specified attribute; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current node has the specified attribute; otherwise, `false`.'
   overload: System.Xml.XmlElement.HasAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -443,10 +443,10 @@ items:
       description: The namespace URI of the attribute to find.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current node has the specified attribute; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current node has the specified attribute; otherwise, `false`.'
   overload: System.Xml.XmlElement.HasAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -463,7 +463,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets a <xref uid="langword_csharp_boolean" name="boolean" href=""></xref> value indicating whether the current node has any attributes.
+  summary: Gets a `boolean` value indicating whether the current node has any attributes.
   remarks: This property is a Microsoft extension to the Document Object Model (DOM).
   example:
   - "The following example removes all attributes from the root element.  \n  \n [!code-cpp[Classic WebData XmlElement.HasAttributes Example#1](~/add/codesnippet/cpp/p-system.xml.xmlelement._5_1.cpp)]\n [!code-vb[Classic WebData XmlElement.HasAttributes Example#1](~/add/codesnippet/visualbasic/p-system.xml.xmlelement._5_1.vb)]\n [!code-cs[Classic WebData XmlElement.HasAttributes Example#1](~/add/codesnippet/csharp/p-system.xml.xmlelement._5_1.cs)]"
@@ -471,10 +471,10 @@ items:
     content: public virtual bool HasAttributes { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current node has attributes; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current node has attributes; otherwise, `false`.'
   overload: System.Xml.XmlElement.HasAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -502,7 +502,7 @@ items:
       description: The concatenated values of the node and all its children.
   overload: System.Xml.XmlElement.InnerText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -533,7 +533,7 @@ items:
   - type: System.Xml.XmlException
     commentId: T:System.Xml.XmlException
     description: The XML specified when setting this property is not well-formed.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -558,10 +558,10 @@ items:
     content: public bool IsEmpty { get; set; }
     return:
       type: System.Boolean
-      description: "Returns <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref> if the element is to be serialized in the short tag format \"&lt;item/&gt;\"; <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> for the long format \"&lt;item&gt;&lt;/item&gt;\".  \n  \n When setting this property, if set to <xref uid=\"langword_csharp_true\" name=\"true\" href=\"\"></xref>, the children of the element are removed and the element is serialized in the short tag format. If set to <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref>, the value of the property is changed (regardless of whether or not the element has content); if the element is empty, it is serialized in the long format.  \n  \n This property is a Microsoft extension to the Document Object Model (DOM)."
+      description: "Returns `true` if the element is to be serialized in the short tag format \"&lt;item/&gt;\"; `false` for the long format \"&lt;item&gt;&lt;/item&gt;\".  \n  \n When setting this property, if set to `true`, the children of the element are removed and the element is serialized in the short tag format. If set to `false`, the value of the property is changed (regardless of whether or not the element has content); if the element is empty, it is serialized in the long format.  \n  \n This property is a Microsoft extension to the Document Object Model (DOM)."
   overload: System.Xml.XmlElement.IsEmpty*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -586,10 +586,10 @@ items:
     content: public override string LocalName { get; }
     return:
       type: System.String
-      description: The name of the current node with the prefix removed. For example, <xref uid="langword_csharp_LocalName" name="LocalName" href=""></xref> is book for the element &lt;bk:book&gt;.
+      description: The name of the current node with the prefix removed. For example, `LocalName` is book for the element &lt;bk:book&gt;.
   overload: System.Xml.XmlElement.LocalName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -614,10 +614,10 @@ items:
     content: public override string Name { get; }
     return:
       type: System.String
-      description: The qualified name of the node. For <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref> nodes, this is the tag name of the element.
+      description: The qualified name of the node. For `XmlElement` nodes, this is the tag name of the element.
   overload: System.Xml.XmlElement.Name*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -645,7 +645,7 @@ items:
       description: The namespace URI of this node. If there is no namespace URI, this property returns String.Empty.
   overload: System.Xml.XmlElement.NamespaceURI*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -667,10 +667,10 @@ items:
     content: public override System.Xml.XmlNode NextSibling { get; }
     return:
       type: System.Xml.XmlNode
-      description: The <xref uid="langword_csharp_XmlNode" name="XmlNode" href=""></xref> immediately following this element.
+      description: The `XmlNode` immediately following this element.
   overload: System.Xml.XmlElement.NextSibling*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -692,10 +692,10 @@ items:
     content: public override System.Xml.XmlNodeType NodeType { get; }
     return:
       type: System.Xml.XmlNodeType
-      description: The node type. For <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref> nodes, this value is XmlNodeType.Element.
+      description: The node type. For `XmlElement` nodes, this value is XmlNodeType.Element.
   overload: System.Xml.XmlElement.NodeType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -720,10 +720,10 @@ items:
     content: public override System.Xml.XmlDocument OwnerDocument { get; }
     return:
       type: System.Xml.XmlDocument
-      description: The <xref uid="langword_csharp_XmlDocument" name="XmlDocument" href=""></xref> to which this element belongs.
+      description: The `XmlDocument` to which this element belongs.
   overload: System.Xml.XmlElement.OwnerDocument*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -745,10 +745,10 @@ items:
     content: public override System.Xml.XmlNode ParentNode { get; }
     return:
       type: System.Xml.XmlNode
-      description: The <xref uid="langword_csharp_XmlNode" name="XmlNode" href=""></xref> that is the parent of the current node. If a node has just been created and not yet added to the tree, or if it has been removed from the tree, the parent is <xref uid="langword_csharp_null" name="null" href=""></xref>. For all other nodes, the value returned depends on the <xref:System.Xml.XmlNode.NodeType*> of the node. The following table describes the possible return values for the <xref uid="langword_csharp_ParentNode" name="ParentNode" href=""></xref> property.
+      description: The `XmlNode` that is the parent of the current node. If a node has just been created and not yet added to the tree, or if it has been removed from the tree, the parent is `null`. For all other nodes, the value returned depends on the <xref:System.Xml.XmlNode.NodeType*> of the node. The following table describes the possible return values for the `ParentNode` property.
   overload: System.Xml.XmlElement.ParentNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -781,8 +781,8 @@ items:
     description: This node is read-only
   - type: System.Xml.XmlException
     commentId: T:System.Xml.XmlException
-    description: "The specified prefix contains an invalid character.  \n  \n The specified prefix is malformed.  \n  \n The namespaceURI of this node is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n The specified prefix is \"xml\" and the namespaceURI of this node is different from http://www.w3.org/XML/1998/namespace."
-  platform:
+    description: "The specified prefix contains an invalid character.  \n  \n The specified prefix is malformed.  \n  \n The namespaceURI of this node is `null`.  \n  \n The specified prefix is \"xml\" and the namespaceURI of this node is different from http://www.w3.org/XML/1998/namespace."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -808,7 +808,7 @@ items:
     parameters: []
   overload: System.Xml.XmlElement.RemoveAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -834,7 +834,7 @@ items:
     parameters: []
   overload: System.Xml.XmlElement.RemoveAllAttributes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -860,13 +860,13 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: The name of the attribute to remove.This is a qualified name. It is matched against the <xref uid="langword_csharp_Name" name="Name" href=""></xref> property of the matching node.
+      description: The name of the attribute to remove.This is a qualified name. It is matched against the `Name` property of the matching node.
   overload: System.Xml.XmlElement.RemoveAttribute*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The node is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -901,7 +901,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The node is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -930,10 +930,10 @@ items:
       description: The index of the node to remove. The first node has index 0.
     return:
       type: System.Xml.XmlNode
-      description: The attribute node removed or <xref uid="langword_csharp_null" name="null" href=""></xref> if there is no node at the given index.
+      description: The attribute node removed or `null` if there is no node at the given index.
   overload: System.Xml.XmlElement.RemoveAttributeAt*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -956,16 +956,16 @@ items:
     parameters:
     - id: oldAttr
       type: System.Xml.XmlAttribute
-      description: The <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> node to remove. If the removed attribute has a default value, it is immediately replaced.
+      description: The `XmlAttribute` node to remove. If the removed attribute has a default value, it is immediately replaced.
     return:
       type: System.Xml.XmlAttribute
-      description: The removed <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> or <xref uid="langword_csharp_null" name="null" href=""></xref> if <code>oldAttr</code> is not an attribute node of the <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref>.
+      description: The removed `XmlAttribute` or `null` if <code>oldAttr</code> is not an attribute node of the `XmlElement`.
   overload: System.Xml.XmlElement.RemoveAttributeNode*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: This node is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -997,13 +997,13 @@ items:
       description: The namespace URI of the attribute.
     return:
       type: System.Xml.XmlAttribute
-      description: The removed <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> or <xref uid="langword_csharp_null" name="null" href=""></xref> if the <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref> does not have a matching attribute node.
+      description: The removed `XmlAttribute` or `null` if the `XmlElement` does not have a matching attribute node.
   overload: System.Xml.XmlElement.RemoveAttributeNode*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: This node is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1029,7 +1029,7 @@ items:
       description: An <xref href="System.Xml.Schema.IXmlSchemaInfo"></xref> object containing the post schema validation infoset of this node.
   overload: System.Xml.XmlElement.SchemaInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1065,7 +1065,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The node is read-only.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1100,7 +1100,7 @@ items:
       description: The attribute value.
   overload: System.Xml.XmlElement.SetAttribute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1124,10 +1124,10 @@ items:
     parameters:
     - id: newAttr
       type: System.Xml.XmlAttribute
-      description: The <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> node to add to the attribute collection for this element.
+      description: The `XmlAttribute` node to add to the attribute collection for this element.
     return:
       type: System.Xml.XmlAttribute
-      description: If the attribute replaces an existing attribute with the same name, the old <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> is returned; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: If the attribute replaces an existing attribute with the same name, the old `XmlAttribute` is returned; otherwise, `null` is returned.
   overload: System.Xml.XmlElement.SetAttributeNode*
   exceptions:
   - type: System.ArgumentException
@@ -1135,8 +1135,8 @@ items:
     description: The <code>newAttr</code> was created from a different document than the one that created this node. Or this node is read-only.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: The <code>newAttr</code> is already an attribute of another <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref> object. You must explicitly clone <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> nodes to re-use them in other <xref uid="langword_csharp_XmlElement" name="XmlElement" href=""></xref> objects.
-  platform:
+    description: The <code>newAttr</code> is already an attribute of another `XmlElement` object. You must explicitly clone `XmlAttribute` nodes to re-use them in other `XmlElement` objects.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1168,10 +1168,10 @@ items:
       description: The namespace URI of the attribute.
     return:
       type: System.Xml.XmlAttribute
-      description: The <xref uid="langword_csharp_XmlAttribute" name="XmlAttribute" href=""></xref> to add.
+      description: The `XmlAttribute` to add.
   overload: System.Xml.XmlElement.SetAttributeNode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1197,10 +1197,10 @@ items:
     parameters:
     - id: w
       type: System.Xml.XmlWriter
-      description: The <xref uid="langword_csharp_XmlWriter" name="XmlWriter" href=""></xref> to which you want to save.
+      description: The `XmlWriter` to which you want to save.
   overload: System.Xml.XmlElement.WriteContentTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1226,10 +1226,10 @@ items:
     parameters:
     - id: w
       type: System.Xml.XmlWriter
-      description: The <xref uid="langword_csharp_XmlWriter" name="XmlWriter" href=""></xref> to which you want to save.
+      description: The `XmlWriter` to which you want to save.
   overload: System.Xml.XmlElement.WriteTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

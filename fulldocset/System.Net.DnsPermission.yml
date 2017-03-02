@@ -42,7 +42,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -74,7 +74,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>state</code> is not a valid <xref href="System.Security.Permissions.PermissionState"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -103,7 +103,7 @@ items:
       description: A new instance of the <xref href="System.Net.DnsPermission"></xref> class that is an identical copy of the current instance.
   overload: System.Net.DnsPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -134,11 +134,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>securityElement</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>securityElement</code> is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>securityElement</code> is not a <xref href="System.Net.DnsPermission"></xref> element.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,13 +167,13 @@ items:
       description: The <xref href="System.Net.DnsPermission"></xref> instance to intersect with the current instance.
     return:
       type: System.Security.IPermission
-      description: A <xref href="System.Net.DnsPermission"></xref> instance that represents the intersection of the current <xref href="System.Net.DnsPermission"></xref> instance with the specified <xref href="System.Net.DnsPermission"></xref> instance, or <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty. If both the current instance and <code>target</code> are unrestricted, this method returns a new <xref href="System.Net.DnsPermission"></xref> instance that is unrestricted; otherwise, it returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Net.DnsPermission"></xref> instance that represents the intersection of the current <xref href="System.Net.DnsPermission"></xref> instance with the specified <xref href="System.Net.DnsPermission"></xref> instance, or `null` if the intersection is empty. If both the current instance and <code>target</code> are unrestricted, this method returns a new <xref href="System.Net.DnsPermission"></xref> instance that is unrestricted; otherwise, it returns `null`.
   overload: System.Net.DnsPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is neither a <xref href="System.Net.DnsPermission"></xref> nor <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>target</code> is neither a <xref href="System.Net.DnsPermission"></xref> nor `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -202,13 +202,13 @@ items:
       description: The second <xref href="System.Net.DnsPermission"></xref> instance to be tested for the subset relationship.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> if the current instance is unrestricted and <code>target</code> is either <xref uid="langword_csharp_null" name="null" href=""></xref> or unrestricted; otherwise, <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`false` if the current instance is unrestricted and <code>target</code> is either `null` or unrestricted; otherwise, `true`.'
   overload: System.Net.DnsPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is neither a <xref href="System.Net.DnsPermission"></xref> nor <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>target</code> is neither a <xref href="System.Net.DnsPermission"></xref> nor `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,10 +234,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Net.DnsPermission"></xref> instance was created with <xref href="System.Security.Permissions.PermissionState"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Net.DnsPermission"></xref> instance was created with <xref href="System.Security.Permissions.PermissionState"></xref>; otherwise, `false`.'
   overload: System.Net.DnsPermission.IsUnrestricted*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -266,7 +266,7 @@ items:
       description: A <xref href="System.Security.SecurityElement"></xref> instance that contains an XML-encoded representation of the security object, including state information.
   overload: System.Net.DnsPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -295,13 +295,13 @@ items:
       description: The <xref href="System.Net.DnsPermission"></xref> instance to combine with the current instance.
     return:
       type: System.Security.IPermission
-      description: A <xref href="System.Net.DnsPermission"></xref> instance that represents the union of the current <xref href="System.Net.DnsPermission"></xref> instance with the specified <xref href="System.Net.DnsPermission"></xref> instance. If <code>target</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>, this method returns a copy of the current instance. If the current instance or <code>target</code> is unrestricted, this method returns a <xref href="System.Net.DnsPermission"></xref> instance that is unrestricted; otherwise, it returns a <xref href="System.Net.DnsPermission"></xref> instance that is restricted.
+      description: A <xref href="System.Net.DnsPermission"></xref> instance that represents the union of the current <xref href="System.Net.DnsPermission"></xref> instance with the specified <xref href="System.Net.DnsPermission"></xref> instance. If <code>target</code> is `null`, this method returns a copy of the current instance. If the current instance or <code>target</code> is unrestricted, this method returns a <xref href="System.Net.DnsPermission"></xref> instance that is unrestricted; otherwise, it returns a <xref href="System.Net.DnsPermission"></xref> instance that is restricted.
   overload: System.Net.DnsPermission.Union*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>target</code> is neither a <xref href="System.Net.DnsPermission"></xref> nor <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>target</code> is neither a <xref href="System.Net.DnsPermission"></xref> nor `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

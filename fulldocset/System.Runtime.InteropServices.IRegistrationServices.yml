@@ -27,7 +27,7 @@ items:
 
       public interface IRegistrationServices
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -53,7 +53,7 @@ items:
       description: The GUID of the COM category that contains the managed classes.
   overload: System.Runtime.InteropServices.IRegistrationServices.GetManagedCategoryGuid*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -82,7 +82,7 @@ items:
       description: The ProgID for the specified type.
   overload: System.Runtime.InteropServices.IRegistrationServices.GetProgIdForType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,7 +111,7 @@ items:
       description: A <xref href="System.Type"></xref> array containing a list of classes in <code>assembly</code>.
   overload: System.Runtime.InteropServices.IRegistrationServices.GetRegistrableTypesInAssembly*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -141,16 +141,16 @@ items:
       description: An <xref href="System.Runtime.InteropServices.AssemblyRegistrationFlags"></xref> value indicating any special settings needed when registering `assembly`.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>assembly</code> contains types that were successfully registered; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref> if the assembly contains no eligible types.
+      description: '`true` if <code>assembly</code> contains types that were successfully registered; otherwise `false` if the assembly contains no eligible types.'
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assembly</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assembly</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n A method marked with <xref href=\"System.Runtime.InteropServices.ComRegisterFunctionAttribute\"></xref> is not <xref uid=\"langword_csharp_static\" name=\"static\" href=\"\"></xref>.  \n  \n -or-  \n  \n There is more than one method marked with <xref href=\"System.Runtime.InteropServices.ComRegisterFunctionAttribute\"></xref> at a given level of the hierarchy.  \n  \n -or-  \n  \n The signature of the method marked with <xref href=\"System.Runtime.InteropServices.ComRegisterFunctionAttribute\"></xref> is not valid."
-  platform:
+    description: "The full name of <code>assembly</code> is `null`.  \n  \n -or-  \n  \n A method marked with <xref href=\"System.Runtime.InteropServices.ComRegisterFunctionAttribute\"></xref> is not `static`.  \n  \n -or-  \n  \n There is more than one method marked with <xref href=\"System.Runtime.InteropServices.ComRegisterFunctionAttribute\"></xref> at a given level of the hierarchy.  \n  \n -or-  \n  \n The signature of the method marked with <xref href=\"System.Runtime.InteropServices.ComRegisterFunctionAttribute\"></xref> is not valid."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,7 +180,7 @@ items:
       description: GUID used to register the specified type.
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -206,10 +206,10 @@ items:
       description: The type to determine if it is a COM type.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified type is a COM type; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified type is a COM type; otherwise `false`.'
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRepresentsComType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,10 +235,10 @@ items:
       description: The type to check for COM registration requirements.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the type must be registered for use from COM; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the type must be registered for use from COM; otherwise `false`.'
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRequiresRegistration*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -265,16 +265,16 @@ items:
       description: The assembly to be unregistered.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>assembly</code> contains types that were successfully unregistered; otherwise <xref uid="langword_csharp_false" name="false" href=""></xref> if the assembly contains no eligible types.
+      description: '`true` if <code>assembly</code> contains types that were successfully unregistered; otherwise `false` if the assembly contains no eligible types.'
   overload: System.Runtime.InteropServices.IRegistrationServices.UnregisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>assembly</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>assembly</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n -or-  \n  \n A method marked with <xref href=\"System.Runtime.InteropServices.ComUnregisterFunctionAttribute\"></xref> is not <xref uid=\"langword_csharp_static\" name=\"static\" href=\"\"></xref>.  \n  \n -or-  \n  \n There is more than one method marked with <xref href=\"System.Runtime.InteropServices.ComUnregisterFunctionAttribute\"></xref> at a given level of the hierarchy.  \n  \n -or-  \n  \n The signature of the method marked with <xref href=\"System.Runtime.InteropServices.ComUnregisterFunctionAttribute\"></xref> is not valid."
-  platform:
+    description: "The full name of <code>assembly</code> is `null`.  \n  \n -or-  \n  \n A method marked with <xref href=\"System.Runtime.InteropServices.ComUnregisterFunctionAttribute\"></xref> is not `static`.  \n  \n -or-  \n  \n There is more than one method marked with <xref href=\"System.Runtime.InteropServices.ComUnregisterFunctionAttribute\"></xref> at a given level of the hierarchy.  \n  \n -or-  \n  \n The signature of the method marked with <xref href=\"System.Runtime.InteropServices.ComUnregisterFunctionAttribute\"></xref> is not valid."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,8 +331,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

@@ -91,7 +91,7 @@ items:
   - System.IComparable<System.TimeSpan>
   - System.IEquatable<System.TimeSpan>
   - System.IFormattable
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -120,7 +120,7 @@ items:
       description: A time period expressed in 100-nanosecond units.
   overload: System.TimeSpan.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,7 +158,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The parameters specify a <xref href="System.TimeSpan"></xref> value less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -199,7 +199,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The parameters specify a <xref href="System.TimeSpan"></xref> value less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The parameters specify a <xref href="System.TimeSpan"></xref> value less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -278,7 +278,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting <xref href="System.TimeSpan"></xref> is less than <xref href="System.TimeSpan"></xref> or greater than <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -313,7 +313,7 @@ items:
       description: "One of the following values.  \n  \n|Value|Description|  \n|-----------|-----------------|  \n|-1|<code>t1</code> is shorter than <code>t2</code>.|  \n|0|<code>t1</code> is equal to <code>t2</code>.|  \n|1|<code>t1</code> is longer than <code>t2</code>.|"
   overload: System.TimeSpan.Compare*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -339,16 +339,16 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: An object to compare, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: An object to compare, or `null`.
     return:
       type: System.Int32
-      description: "One of the following values.  \n  \n|Value|Description|  \n|-----------|-----------------|  \n|-1|This instance is shorter than <code>value</code>.|  \n|0|This instance is equal to <code>value</code>.|  \n|1|This instance is longer than <code>value</code>.<br /><br /> -or-<br /><br /><code>value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.|"
+      description: "One of the following values.  \n  \n|Value|Description|  \n|-----------|-----------------|  \n|-1|This instance is shorter than <code>value</code>.|  \n|0|This instance is equal to <code>value</code>.|  \n|1|This instance is longer than <code>value</code>.<br /><br /> -or-<br /><br /><code>value</code> is `null`.|"
   overload: System.TimeSpan.CompareTo*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is not a <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,7 +380,7 @@ items:
       description: "A signed number indicating the relative values of this instance and <code>value</code>.  \n  \n|Value|Description|  \n|-----------|-----------------|  \n|A negative integer|This instance is shorter than <code>value</code>.|  \n|Zero|This instance is equal to <code>value</code>.|  \n|A positive integer|This instance is longer than <code>value</code>.|"
   overload: System.TimeSpan.CompareTo*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -408,7 +408,7 @@ items:
       description: The day component of this instance. The return value can be positive or negative.
   overload: System.TimeSpan.Days*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,7 +440,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The value of this instance is <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -469,10 +469,10 @@ items:
       description: An object to compare with this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>value</code> is a <xref href="System.TimeSpan"></xref> object that represents the same time interval as the current <xref href="System.TimeSpan"></xref> structure; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>value</code> is a <xref href="System.TimeSpan"></xref> object that represents the same time interval as the current <xref href="System.TimeSpan"></xref> structure; otherwise, `false`.'
   overload: System.TimeSpan.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -501,10 +501,10 @@ items:
       description: An object to compare with this instance.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>obj</code> represents the same time interval as this instance; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>obj</code> represents the same time interval as this instance; otherwise, `false`.'
   overload: System.TimeSpan.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -536,10 +536,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the values of <code>t1</code> and <code>t2</code> are equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the values of <code>t1</code> and <code>t2</code> are equal; otherwise, `false`.'
   overload: System.TimeSpan.Equals*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -577,7 +577,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is equal to <xref href="System.Double.NaN"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -615,7 +615,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is equal to <xref href="System.Double.NaN"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -653,7 +653,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is equal to <xref href="System.Double.NaN"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -691,7 +691,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is equal to <xref href="System.Double.NaN"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -729,7 +729,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: <code>value</code> is equal to <xref href="System.Double.NaN"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -761,7 +761,7 @@ items:
       description: An object that represents <code>value</code>.
   overload: System.TimeSpan.FromTicks*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -790,7 +790,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.TimeSpan.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -818,7 +818,7 @@ items:
       description: The hour component of the current <xref href="System.TimeSpan"></xref> structure. The return value ranges from -23 through 23.
   overload: System.TimeSpan.Hours*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -845,7 +845,7 @@ items:
       type: System.TimeSpan
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -873,7 +873,7 @@ items:
       description: The millisecond component of the current <xref href="System.TimeSpan"></xref> structure. The return value ranges from -999 through 999.
   overload: System.TimeSpan.Milliseconds*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -901,7 +901,7 @@ items:
       description: The minute component of the current <xref href="System.TimeSpan"></xref> structure. The return value ranges from -59 through 59.
   overload: System.TimeSpan.Minutes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -928,7 +928,7 @@ items:
       type: System.TimeSpan
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -960,7 +960,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The negated value of this instance cannot be represented by a <xref href="System.TimeSpan"></xref>; that is, the value of this instance is <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -996,7 +996,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The resulting <xref href="System.TimeSpan"></xref> is less than <xref href="System.TimeSpan"></xref> or greater than <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1028,10 +1028,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the values of <code>t1</code> and <code>t2</code> are equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the values of <code>t1</code> and <code>t2</code> are equal; otherwise, `false`.'
   overload: System.TimeSpan.op_Equality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1063,10 +1063,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>t1</code> is greater than the value of <code>t2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of <code>t1</code> is greater than the value of <code>t2</code>; otherwise, `false`.'
   overload: System.TimeSpan.op_GreaterThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1098,10 +1098,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>t1</code> is greater than or equal to the value of <code>t2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of <code>t1</code> is greater than or equal to the value of <code>t2</code>; otherwise, `false`.'
   overload: System.TimeSpan.op_GreaterThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1133,10 +1133,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the values of <code>t1</code> and <code>t2</code> are not equal; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the values of <code>t1</code> and <code>t2</code> are not equal; otherwise, `false`.'
   overload: System.TimeSpan.op_Inequality*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1168,10 +1168,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>t1</code> is less than the value of <code>t2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of <code>t1</code> is less than the value of <code>t2</code>; otherwise, `false`.'
   overload: System.TimeSpan.op_LessThan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1203,10 +1203,10 @@ items:
       description: The second time interval to compare.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the value of <code>t1</code> is less than or equal to the value of <code>t2</code>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the value of <code>t1</code> is less than or equal to the value of <code>t2</code>; otherwise, `false`.'
   overload: System.TimeSpan.op_LessThanOrEqual*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1244,7 +1244,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.TimeSpan"></xref> or greater than <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1279,7 +1279,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The negated value of this instance cannot be represented by a <xref href="System.TimeSpan"></xref>; that is, the value of this instance is <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1311,7 +1311,7 @@ items:
       description: The time interval specified by <code>t</code>.
   overload: System.TimeSpan.op_UnaryPlus*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1345,14 +1345,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>s</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>s</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>s</code> has an invalid format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>s</code> represents a number that is less than <xref href=\"System.TimeSpan\"></xref> or greater than <xref href=\"System.TimeSpan\"></xref>.  \n  \n -or-  \n  \n At least one of the days, hours, minutes, or seconds components is outside its valid range."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1389,14 +1389,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>input</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>input</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>input</code> has an invalid format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>input</code> represents a number that is less than <xref href=\"System.TimeSpan\"></xref> or greater than <xref href=\"System.TimeSpan\"></xref>.  \n  \n -or-  \n  \n At least one of the days, hours, minutes, or seconds components in <code>input</code> is outside its valid range."
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.ParseExact(System.String,System.String,System.IFormatProvider)
   id: ParseExact(System.String,System.String,System.IFormatProvider)
@@ -1433,14 +1433,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>input</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>input</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>input</code> has an invalid format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>input</code> represents a number that is less than <xref href=\"System.TimeSpan\"></xref> or greater than <xref href=\"System.TimeSpan\"></xref>.  \n  \n -or-  \n  \n At least one of the days, hours, minutes, or seconds components in <code>input</code> is outside its valid range."
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.ParseExact(System.String,System.String[],System.IFormatProvider)
   id: ParseExact(System.String,System.String[],System.IFormatProvider)
@@ -1477,14 +1477,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>input</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>input</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>input</code> has an invalid format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>input</code> represents a number that is less than <xref href=\"System.TimeSpan\"></xref> or greater than <xref href=\"System.TimeSpan\"></xref>.  \n  \n -or-  \n  \n At least one of the days, hours, minutes, or seconds components in <code>input</code> is outside its valid range."
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.ParseExact(System.String,System.String,System.IFormatProvider,System.Globalization.TimeSpanStyles)
   id: ParseExact(System.String,System.String,System.IFormatProvider,System.Globalization.TimeSpanStyles)
@@ -1527,14 +1527,14 @@ items:
     description: <code>styles</code> is an invalid <xref href="System.Globalization.TimeSpanStyles"></xref> value.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>input</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>input</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>input</code> has an invalid format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>input</code> represents a number that is less than <xref href=\"System.TimeSpan\"></xref> or greater than <xref href=\"System.TimeSpan\"></xref>.  \n  \n -or-  \n  \n At least one of the days, hours, minutes, or seconds components in <code>input</code> is outside its valid range."
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.ParseExact(System.String,System.String[],System.IFormatProvider,System.Globalization.TimeSpanStyles)
   id: ParseExact(System.String,System.String[],System.IFormatProvider,System.Globalization.TimeSpanStyles)
@@ -1577,14 +1577,14 @@ items:
     description: <code>styles</code> is an invalid <xref href="System.Globalization.TimeSpanStyles"></xref> value.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>input</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>input</code> is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: <code>input</code> has an invalid format.
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: "<code>input</code> represents a number that is less than <xref href=\"System.TimeSpan\"></xref> or greater than <xref href=\"System.TimeSpan\"></xref>.  \n  \n -or-  \n  \n At least one of the days, hours, minutes, or seconds components in <code>input</code> is outside its valid range."
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.Seconds
   id: Seconds
@@ -1609,7 +1609,7 @@ items:
       description: The second component of the current <xref href="System.TimeSpan"></xref> structure. The return value ranges from -59 through 59.
   overload: System.TimeSpan.Seconds*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1644,7 +1644,7 @@ items:
   - type: System.OverflowException
     commentId: T:System.OverflowException
     description: The return value is less than <xref href="System.TimeSpan"></xref> or greater than <xref href="System.TimeSpan"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1672,7 +1672,7 @@ items:
       description: The number of ticks contained in this instance.
   overload: System.TimeSpan.Ticks*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1699,7 +1699,7 @@ items:
       type: System.Int64
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1726,7 +1726,7 @@ items:
       type: System.Int64
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1753,7 +1753,7 @@ items:
       type: System.Int64
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1780,7 +1780,7 @@ items:
       type: System.Int64
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1807,7 +1807,7 @@ items:
       type: System.Int64
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1836,7 +1836,7 @@ items:
       description: The string representation of the current <xref href="System.TimeSpan"></xref> value.
   overload: System.TimeSpan.ToString*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1871,7 +1871,7 @@ items:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: The <code>format</code> parameter is not recognized or is not supported.
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.ToString(System.String,System.IFormatProvider)
   id: ToString(System.String,System.IFormatProvider)
@@ -1906,7 +1906,7 @@ items:
   - type: System.FormatException
     commentId: T:System.FormatException
     description: The <code>format</code> parameter is not recognized or is not supported.
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.TotalDays
   id: TotalDays
@@ -1931,7 +1931,7 @@ items:
       description: The total number of days represented by this instance.
   overload: System.TimeSpan.TotalDays*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1959,7 +1959,7 @@ items:
       description: The total number of hours represented by this instance.
   overload: System.TimeSpan.TotalHours*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1987,7 +1987,7 @@ items:
       description: The total number of milliseconds represented by this instance.
   overload: System.TimeSpan.TotalMilliseconds*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2015,7 +2015,7 @@ items:
       description: The total number of minutes represented by this instance.
   overload: System.TimeSpan.TotalMinutes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2043,7 +2043,7 @@ items:
       description: The total number of seconds represented by this instance.
   overload: System.TimeSpan.TotalSeconds*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2075,10 +2075,10 @@ items:
       description: When this method returns, contains an object that represents the time interval specified by `s`, or <xref href="System.TimeSpan"></xref> if the conversion failed. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>s</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. This operation returns <xref uid="langword_csharp_false" name="false" href=""></xref> if the <code>s</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or <xref href="System.String.Empty"></xref>, has an invalid format, represents a time interval that is less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>, or has at least one days, hours, minutes, or seconds component outside its valid range.
+      description: '`true` if <code>s</code> was converted successfully; otherwise, `false`. This operation returns `false` if the <code>s</code> parameter is `null` or <xref href="System.String.Empty"></xref>, has an invalid format, represents a time interval that is less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>, or has at least one days, hours, minutes, or seconds component outside its valid range.'
   overload: System.TimeSpan.TryParse*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2113,10 +2113,10 @@ items:
       description: When this method returns, contains an object that represents the time interval specified by `input`, or <xref href="System.TimeSpan"></xref> if the conversion failed. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>input</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. This operation returns <xref uid="langword_csharp_false" name="false" href=""></xref> if the <code>input</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref> or <xref href="System.String.Empty"></xref>, has an invalid format, represents a time interval that is less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>, or has at least one days, hours, minutes, or seconds component outside its valid range.
+      description: '`true` if <code>input</code> was converted successfully; otherwise, `false`. This operation returns `false` if the <code>input</code> parameter is `null` or <xref href="System.String.Empty"></xref>, has an invalid format, represents a time interval that is less than <xref href="System.TimeSpan.MinValue"></xref> or greater than <xref href="System.TimeSpan.MaxValue"></xref>, or has at least one days, hours, minutes, or seconds component outside its valid range.'
   overload: System.TimeSpan.TryParse*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.TryParseExact(System.String,System.String,System.IFormatProvider,System.TimeSpan@)
   id: TryParseExact(System.String,System.String,System.IFormatProvider,System.TimeSpan@)
@@ -2151,10 +2151,10 @@ items:
       description: When this method returns, contains an object that represents the time interval specified by `input`, or <xref href="System.TimeSpan"></xref> if the conversion failed. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>input</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>input</code> was converted successfully; otherwise, `false`.'
   overload: System.TimeSpan.TryParseExact*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.TryParseExact(System.String,System.String[],System.IFormatProvider,System.TimeSpan@)
   id: TryParseExact(System.String,System.String[],System.IFormatProvider,System.TimeSpan@)
@@ -2189,10 +2189,10 @@ items:
       description: When this method returns, contains an object that represents the time interval specified by `input`, or <xref href="System.TimeSpan"></xref> if the conversion failed. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>input</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>input</code> was converted successfully; otherwise, `false`.'
   overload: System.TimeSpan.TryParseExact*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.TryParseExact(System.String,System.String,System.IFormatProvider,System.Globalization.TimeSpanStyles,System.TimeSpan@)
   id: TryParseExact(System.String,System.String,System.IFormatProvider,System.Globalization.TimeSpanStyles,System.TimeSpan@)
@@ -2230,10 +2230,10 @@ items:
       description: When this method returns, contains an object that represents the time interval specified by `input`, or <xref href="System.TimeSpan"></xref> if the conversion failed. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>input</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>input</code> was converted successfully; otherwise, `false`.'
   overload: System.TimeSpan.TryParseExact*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.TryParseExact(System.String,System.String[],System.IFormatProvider,System.Globalization.TimeSpanStyles,System.TimeSpan@)
   id: TryParseExact(System.String,System.String[],System.IFormatProvider,System.Globalization.TimeSpanStyles,System.TimeSpan@)
@@ -2271,10 +2271,10 @@ items:
       description: When this method returns, contains an object that represents the time interval specified by `input`, or <xref href="System.TimeSpan"></xref> if the conversion failed. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if <code>input</code> was converted successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if <code>input</code> was converted successfully; otherwise, `false`.'
   overload: System.TimeSpan.TryParseExact*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.TimeSpan.Zero
   id: Zero
@@ -2298,7 +2298,7 @@ items:
       type: System.TimeSpan
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -2628,8 +2628,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

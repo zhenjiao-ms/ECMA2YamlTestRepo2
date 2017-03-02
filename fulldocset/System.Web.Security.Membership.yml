@@ -63,7 +63,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -91,7 +91,7 @@ items:
       description: The name of the application.
   overload: System.Web.Security.Membership.ApplicationName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -129,7 +129,7 @@ items:
   - type: System.Web.Security.MembershipCreateUserException
     commentId: T:System.Web.Security.MembershipCreateUserException
     description: The user was not created. Check the <xref:System.Web.Security.MembershipCreateUserException.StatusCode*> property for a <xref:System.Web.Security.MembershipCreateStatus> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,7 +170,7 @@ items:
   - type: System.Web.Security.MembershipCreateUserException
     commentId: T:System.Web.Security.MembershipCreateUserException
     description: The user was not created. Check the <xref:System.Web.Security.MembershipCreateUserException.StatusCode*> property for a <xref:System.Web.Security.MembershipCreateStatus> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,10 +217,10 @@ items:
       description: A <xref:System.Web.Security.MembershipCreateStatus> indicating that the user was created successfully or the reason that creation failed.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns `null`.
   overload: System.Web.Security.Membership.CreateUser*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -268,10 +268,10 @@ items:
       description: A <xref:System.Web.Security.MembershipCreateStatus> indicating that the user was created successfully or the reason creation failed.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns `null`.
   overload: System.Web.Security.Membership.CreateUser*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -300,7 +300,7 @@ items:
       description: The name of the user to delete.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user was deleted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user was deleted; otherwise, `false`.'
   overload: System.Web.Security.Membership.DeleteUser*
   exceptions:
   - type: System.ArgumentException
@@ -308,8 +308,8 @@ items:
     description: <code>username</code> is an empty string or contains a comma (,).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null." name="null." href=""></xref>
-  platform:
+    description: <code>username</code> is `null.`
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -338,10 +338,10 @@ items:
       description: The name of the user to delete.
     - id: deleteAllRelatedData
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to delete data related to the user from the database; <xref uid="langword_csharp_false" name="false" href=""></xref> to leave data related to the user in the database.
+      description: '`true` to delete data related to the user from the database; `false` to leave data related to the user in the database.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the user was deleted; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the user was deleted; otherwise, `false`.'
   overload: System.Web.Security.Membership.DeleteUser*
   exceptions:
   - type: System.ArgumentException
@@ -349,8 +349,8 @@ items:
     description: <code>username</code> is an empty string or contains a comma (,).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -375,10 +375,10 @@ items:
     content: public static bool EnablePasswordReset { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership provider supports password reset; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the membership provider supports password reset; otherwise, `false`.'
   overload: System.Web.Security.Membership.EnablePasswordReset*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -403,10 +403,10 @@ items:
     content: public static bool EnablePasswordRetrieval { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the membership provider supports password retrieval; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the membership provider supports password retrieval; otherwise, `false`.'
   overload: System.Web.Security.Membership.EnablePasswordRetrieval*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -438,7 +438,7 @@ items:
       description: "A <xref:System.Web.Security.MembershipUserCollection> that contains all users that match the <code>emailToMatch</code> parameter.  \n  \n Leading and trailing spaces are trimmed from the <code>emailToMatch</code> parameter value."
   overload: System.Web.Security.Membership.FindUsersByEmail*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -482,7 +482,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>pageIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>pageSize</code> is less than 1."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,8 +519,8 @@ items:
     description: <code>usernameToMatch</code> is an empty string.
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>usernameToMatch</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -566,8 +566,8 @@ items:
     description: "<code>usernameToMatch</code> is an empty string.  \n  \n -or-  \n  \n <code>pageIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>pageSize</code> is less than 1."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>usernameToMatch</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>usernameToMatch</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -605,7 +605,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>length</code> is less than 1 or greater than 128 -or-  \n  \n <code>numberOfNonAlphanumericCharacters</code> is less than 0 or greater than <code>length</code>."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -634,7 +634,7 @@ items:
       description: A <xref:System.Web.Security.MembershipUserCollection> of <xref:System.Web.Security.MembershipUser> objects representing all of the users in the database.
   overload: System.Web.Security.Membership.GetAllUsers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -669,13 +669,13 @@ items:
       description: The total number of users.
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: A <xref:System.Web.Security.MembershipUserCollection> of <xref:System.Web.Security.MembershipUser> objects representing all the users in the database for the configured <xref uid="langword_csharp_applicationName" name="applicationName" href=""></xref>.
+      description: A <xref:System.Web.Security.MembershipUserCollection> of <xref:System.Web.Security.MembershipUser> objects representing all the users in the database for the configured `applicationName`.
   overload: System.Web.Security.Membership.GetAllUsers*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>pageIndex</code> is less than zero.  \n  \n -or-  \n  \n <code>pageSize</code> is less than 1."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -704,7 +704,7 @@ items:
       description: The number of users currently accessing an application.
   overload: System.Web.Security.Membership.GetNumberOfUsersOnline*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -736,7 +736,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: No membership user is currently logged in.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -762,7 +762,7 @@ items:
     parameters:
     - id: userIsOnline
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, updates the last-activity date/time stamp for the specified user.
+      description: If `true`, updates the last-activity date/time stamp for the specified user.
     return:
       type: System.Web.Security.MembershipUser
       description: A <xref:System.Web.Security.MembershipUser> object representing the current logged-on user.
@@ -771,7 +771,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: No membership user is currently logged in.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -803,8 +803,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>providerUserKey</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>providerUserKey</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -833,7 +833,7 @@ items:
       description: The name of the user to retrieve.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object representing the specified user. If the <code>username</code> parameter does not correspond to an existing user, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref:System.Web.Security.MembershipUser> object representing the specified user. If the <code>username</code> parameter does not correspond to an existing user, this method returns `null`.
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentException
@@ -841,8 +841,8 @@ items:
     description: <code>username</code> contains a comma (,).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -869,7 +869,7 @@ items:
       description: The unique user identifier from the membership data source for the user.
     - id: userIsOnline
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, updates the last-activity date/time stamp for the specified user.
+      description: If `true`, updates the last-activity date/time stamp for the specified user.
     return:
       type: System.Web.Security.MembershipUser
       description: A <xref:System.Web.Security.MembershipUser> object representing the user associated with the specified unique identifier.
@@ -877,8 +877,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>providerUserKey</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>providerUserKey</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -907,10 +907,10 @@ items:
       description: The name of the user to retrieve.
     - id: userIsOnline
       type: System.Boolean
-      description: If <xref uid="langword_csharp_true" name="true" href=""></xref>, updates the last-activity date/time stamp for the specified user.
+      description: If `true`, updates the last-activity date/time stamp for the specified user.
     return:
       type: System.Web.Security.MembershipUser
-      description: A <xref:System.Web.Security.MembershipUser> object representing the specified user. If the <code>username</code> parameter does not correspond to an existing user, this method returns <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref:System.Web.Security.MembershipUser> object representing the specified user. If the <code>username</code> parameter does not correspond to an existing user, this method returns `null`.
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentException
@@ -918,8 +918,8 @@ items:
     description: <code>username</code> contains a comma (,).
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>username</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>username</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -948,10 +948,10 @@ items:
       description: The e-mail address to search for.
     return:
       type: System.String
-      description: The user name where the e-mail address for the user matches the specified e-mail address. If no match is found, <xref uid="langword_csharp_null" name="null" href=""></xref> is returned.
+      description: The user name where the e-mail address for the user matches the specified e-mail address. If no match is found, `null` is returned.
   overload: System.Web.Security.Membership.GetUserNameByEmail*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -977,7 +977,7 @@ items:
       description: The identifier of the algorithm used to hash passwords, or blank to use the default hash algorithm.
   overload: System.Web.Security.Membership.HashAlgorithmType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1005,7 +1005,7 @@ items:
       description: The number of invalid password or password-answer attempts allowed before the membership user is locked out.
   overload: System.Web.Security.Membership.MaxInvalidPasswordAttempts*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1033,7 +1033,7 @@ items:
       description: The minimum number of special characters that must be present in a valid password.
   overload: System.Web.Security.Membership.MinRequiredNonAlphanumericCharacters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1061,7 +1061,7 @@ items:
       description: The minimum length required for a password.
   overload: System.Web.Security.Membership.MinRequiredPasswordLength*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1089,7 +1089,7 @@ items:
       description: The time window, in minutes, during which consecutive failed attempts to provide a valid password or password answer are tracked. The default is 10 minutes. If the interval between the current failed attempt and the last failed attempt is greater than the PasswordAttemptWindow property setting, each failed attempt is treated as if it were the first failed attempt.
   overload: System.Web.Security.Membership.PasswordAttemptWindow*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1117,7 +1117,7 @@ items:
       description: A regular expression used to evaluate a password.
   overload: System.Web.Security.Membership.PasswordStrengthRegularExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1145,7 +1145,7 @@ items:
       description: The default membership provider for the application exposed using the <xref:System.Web.Security.MembershipProvider> abstract base class.
   overload: System.Web.Security.Membership.Provider*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1173,7 +1173,7 @@ items:
       description: A <xref:System.Web.Security.MembershipProviderCollection> of the membership providers configured for the ASP.NET application.
   overload: System.Web.Security.Membership.Providers*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1198,10 +1198,10 @@ items:
     content: public static bool RequiresQuestionAndAnswer { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if a password answer is required for password reset and retrieval; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if a password answer is required for password reset and retrieval; otherwise, `false`.'
   overload: System.Web.Security.Membership.RequiresQuestionAndAnswer*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1232,8 +1232,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>user</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>user</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1261,7 +1261,7 @@ items:
       description: The number of minutes after the last-activity date/time stamp for a user during which the user is considered online.
   overload: System.Web.Security.Membership.UserIsOnlineTimeWindow*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1293,10 +1293,10 @@ items:
       description: The password for the specified user.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the supplied user name and password are valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the supplied user name and password are valid; otherwise, `false`.'
   overload: System.Web.Security.Membership.ValidateUser*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1323,7 +1323,7 @@ items:
       type: System.Web.Security.MembershipValidatePasswordEventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

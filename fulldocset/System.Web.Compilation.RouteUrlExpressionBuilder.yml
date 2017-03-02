@@ -39,7 +39,7 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
   - System.Web.Compilation.ExpressionBuilder.ParseExpression(System.String,System.Type,System.Web.Compilation.ExpressionBuilderContext)
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.#ctor
   id: '#ctor'
@@ -59,7 +59,7 @@ items:
     parameters: []
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.EvaluateExpression(System.Object,System.Web.UI.BoundPropertyEntry,System.Object,System.Web.Compilation.ExpressionBuilderContext)
   id: EvaluateExpression(System.Object,System.Web.UI.BoundPropertyEntry,System.Object,System.Web.Compilation.ExpressionBuilderContext)
@@ -95,7 +95,7 @@ items:
       description: The URL that corresponds to the specified URL parameter values and to the selected route. The route is selected by matching route URL patterns to the specified list of parameters. In case more than one route matches a specified list of parameters, a route name can also be specified to indicate which route to select.
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.EvaluateExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.GetCodeExpression(System.Web.UI.BoundPropertyEntry,System.Object,System.Web.Compilation.ExpressionBuilderContext)
   id: GetCodeExpression(System.Web.UI.BoundPropertyEntry,System.Object,System.Web.Compilation.ExpressionBuilderContext)
@@ -128,7 +128,7 @@ items:
       description: A <xref href="System.CodeDom.CodeExpression"></xref> instance that is used in the property assignment.
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.GetCodeExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.GetRouteUrl(System.Web.UI.Control,System.String)
   id: GetRouteUrl(System.Web.UI.Control,System.String)
@@ -160,11 +160,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>control</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>control</code> parameter is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The method was unable to parse the expression that was specified in markup. For more information, see <xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>.
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.SupportsEvaluate
   id: SupportsEvaluate
@@ -184,10 +184,10 @@ items:
     content: public override bool SupportsEvaluate { get; }
     return:
       type: System.Boolean
-      description: Always <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: Always `true`.
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.SupportsEvaluate*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression(System.String,System.Web.Routing.RouteValueDictionary,System.String@)
   id: TryParseRouteExpression(System.String,System.Web.Routing.RouteValueDictionary,System.String@)
@@ -217,10 +217,10 @@ items:
       description: When this method returns, contains a string that represents the name of the route, if `expression` contains a route key named `RouteName`. This parameter is passed uninitialized.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if parsing was successful; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if parsing was successful; otherwise, `false`.'
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Web.Compilation.ExpressionBuilder

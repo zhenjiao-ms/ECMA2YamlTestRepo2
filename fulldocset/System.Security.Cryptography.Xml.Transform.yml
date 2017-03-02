@@ -23,7 +23,7 @@ items:
   nameWithType: Transform
   fullName: System.Security.Cryptography.Xml.Transform
   type: Class
-  summary: Represents the abstract base class from which all <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> elements that can be used in an XML digital signature derive.
+  summary: Represents the abstract base class from which all `&lt;Transform&gt;` elements that can be used in an XML digital signature derive.
   remarks: "When performing XML signing and verification, the <`Transform`> element describes how the signer transformed the data object that was signed.  The verifier of a document then uses the <`Transform`> element to transform the signed data in the same manner.  If the verifier cannot transform the signed data in the same manner, the document cannot be verified.  \n  \n Use a class that derives from the Transform class whenever you need to add one or more transform objects to an encrypted XML document or to a signed XML document.  \n  \n For more information about the `<Transform>` element, see the XMLDSIG specification, which is available from the World Wide Web Consortium (W3C) at www.w3.org/TR/xmldsig-core/, or the XML encryption specification, which is available from the W3C at www.w3.org/TR/xmlenc-core/."
   syntax:
     content: public abstract class Transform
@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -61,7 +61,7 @@ items:
     parameters: []
   overload: System.Security.Cryptography.Xml.Transform.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -87,7 +87,7 @@ items:
       description: The URI that identifies the algorithm performed by the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.Algorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -113,7 +113,7 @@ items:
       description: An <xref href="System.Xml.XmlElement"></xref> object that represents the document context under which the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object is running.
   overload: System.Security.Cryptography.Xml.Transform.Context*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: The digest associated with a <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.GetDigestedOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -159,7 +159,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: When overridden in a derived class, returns an XML representation of the parameters of the <xref href="System.Security.Cryptography.Xml.Transform"></xref> object that are suitable to be included as subelements of an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: When overridden in a derived class, returns an XML representation of the parameters of the <xref href="System.Security.Cryptography.Xml.Transform"></xref> object that are suitable to be included as subelements of an XMLDSIG `&lt;Transform&gt;` element.
   remarks: ''
   example:
   - "If a <xref:System.Security.Cryptography.Xml.Transform> object represents an XPath transform using the XPath expression `self::text()`,a call to GetInnerXml results in an <xref:System.Xml.XmlNodeList> object that represents the following XML element:  \n  \n```  \n<XPath>   \n  self::text()   \n</XPath>  \n```  \n  \n This element corresponds to the transform-specific content of the `<Transform>` element as defined in Section 4.3.3.4 of the XMLDSIG specification. For the above XPath transform, the entire `<Transform>` element is as follows:  \n  \n```  \n<Transform Algorithm=\"http://www.w3.org/TR/1999/REC-xpath-19991116\">   \n  <XPath>   \n    self::text()   \n  </XPath>   \n</Transform>  \n```"
@@ -168,10 +168,10 @@ items:
     parameters: []
     return:
       type: System.Xml.XmlNodeList
-      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object in an XMLDSIG <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+      description: A list of the XML nodes that represent the transform-specific content needed to describe the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object in an XMLDSIG `&lt;Transform&gt;` element.
   overload: System.Security.Cryptography.Xml.Transform.GetInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -197,7 +197,7 @@ items:
       description: The output of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.GetOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -227,7 +227,7 @@ items:
       description: The output of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object as an object of the specified type.
   overload: System.Security.Cryptography.Xml.Transform.GetOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -254,7 +254,7 @@ items:
       description: The XML representation of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.GetXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,7 +280,7 @@ items:
       description: An array of valid input types for the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object; you can pass only objects of one of these types to the <xref:System.Security.Cryptography.Xml.Transform.LoadInput*> method of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.InputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -297,7 +297,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Xml
-  summary: When overridden in a derived class, parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object to match the <xref uid="langword_csharp_&lt;Transform&gt;" name="&lt;Transform&gt;" href=""></xref> element.
+  summary: When overridden in a derived class, parses the specified <xref href="System.Xml.XmlNodeList"></xref> object as transform-specific content of a `&lt;Transform&gt;` element and configures the internal state of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object to match the `&lt;Transform&gt;` element.
   remarks: This method is used to process subelements of a `<Transform>` element.
   syntax:
     content: public abstract void LoadInnerXml (System.Xml.XmlNodeList nodeList);
@@ -307,7 +307,7 @@ items:
       description: An <xref href="System.Xml.XmlNodeList"></xref> object that specifies transform-specific content for the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.LoadInnerXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -334,7 +334,7 @@ items:
       description: The input to load into the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.LoadInput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -360,7 +360,7 @@ items:
       description: An array of valid output types for the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object; only objects of one of these types are returned from the <xref:System.Security.Cryptography.Xml.Transform.GetOutput*> methods of the current <xref href="System.Security.Cryptography.Xml.Transform"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.OutputTypes*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,8 +388,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The PropagatedNamespaces property was set to <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: The PropagatedNamespaces property was set to `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -415,7 +415,7 @@ items:
       description: The current <xref href="System.Xml.XmlResolver"></xref> object. This property defaults to an <xref href="System.Xml.XmlSecureResolver"></xref> object.
   overload: System.Security.Cryptography.Xml.Transform.Resolver*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -469,8 +469,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte
@@ -531,8 +531,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type

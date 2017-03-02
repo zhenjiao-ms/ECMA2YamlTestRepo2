@@ -30,7 +30,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -47,7 +47,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: Gets or sets a value that indicates whether simultaneously pressing the <xref href="System.ConsoleModifiers"></xref> modifier key and the <xref href="System.ConsoleKey"></xref> console key (Ctrl+C) or the Ctrl+Break keys terminates the current process. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>, which terminates the current process.
+  summary: Gets or sets a value that indicates whether simultaneously pressing the <xref href="System.ConsoleModifiers"></xref> modifier key and the <xref href="System.ConsoleKey"></xref> console key (Ctrl+C) or the Ctrl+Break keys terminates the current process. The default is `false`, which terminates the current process.
   remarks: "The Cancel property is automatically initialized to `false` when the handler for the <xref:System.Console.CancelKeyPress> event is invoked. The value of the Cancel property when the event handler finishes determines whether the current process resumes or terminates.  \n  \n In a set operation after Ctrl+C is pressed, specify `true` to indicate that the current process should resume when the event handler concludes, or `false` to indicate that the current process should terminate."
   example:
   - "The following example demonstrates how to use the Cancel property to handle an event.  \n  \n [!code-cs[console.cancelkeypress#1](~/add/codesnippet/csharp/p-system.consolecancelev_0_1.cs)]\n [!code-cpp[console.cancelkeypress#1](~/add/codesnippet/cpp/p-system.consolecancelev_0_1.cpp)]\n [!code-vb[console.cancelkeypress#1](~/add/codesnippet/visualbasic/p-system.consolecancelev_0_1.vb)]"
@@ -55,10 +55,10 @@ items:
     content: public bool Cancel { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current process should resume when the event handler concludes; <xref uid="langword_csharp_false" name="false" href=""></xref> if the current process should terminate. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>; the current process terminates when the event handler returns. If <xref uid="langword_csharp_true" name="true" href=""></xref>, the current process continues.
+      description: '`true` if the current process should resume when the event handler concludes; `false` if the current process should terminate. The default value is `false`; the current process terminates when the event handler returns. If `true`, the current process continues.'
   overload: System.ConsoleCancelEventArgs.Cancel*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -86,7 +86,7 @@ items:
       description: One of the enumeration values that specifies the key combination that interrupted the current process. There is no default value.
   overload: System.ConsoleCancelEventArgs.SpecialKey*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

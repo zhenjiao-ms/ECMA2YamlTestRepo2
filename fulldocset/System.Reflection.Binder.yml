@@ -38,7 +38,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -62,7 +62,7 @@ items:
     parameters: []
   overload: System.Reflection.Binder.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -95,7 +95,7 @@ items:
       description: The field value used to locate a matching field.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref href=\"System.Globalization.CultureInfo\"></xref> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, the <xref href=\"System.Globalization.CultureInfo\"></xref> for the current thread is used.  \n  \n Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a <xref uid=\"langword_csharp_String\" name=\"String\" href=\"\"></xref> that represents 1000 to a <xref uid=\"langword_csharp_Double\" name=\"Double\" href=\"\"></xref> value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
+      description: "An instance of <xref href=\"System.Globalization.CultureInfo\"></xref> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is `null`, the <xref href=\"System.Globalization.CultureInfo\"></xref> for the current thread is used.  \n  \n Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a `String` that represents 1000 to a `Double` value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
     return:
       type: System.Reflection.FieldInfo
       description: The matching field.
@@ -109,8 +109,8 @@ items:
     description: For the default binder, <code>bindingAttr</code> includes <xref href="System.Reflection.BindingFlags"></xref>, and <code>match</code> contains no fields that can accept <code>value</code>.
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=\"System.Reflection.BindingFlags\"></xref>, and <code>match</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty array.  \n  \n -or-  \n  \n <code>bindingAttr</code> includes <xref href=\"System.Reflection.BindingFlags\"></xref>, and <code>value</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
-  platform:
+    description: "For the default binder, <code>bindingAttr</code> includes <xref href=\"System.Reflection.BindingFlags\"></xref>, and <code>match</code> is `null` or an empty array.  \n  \n -or-  \n  \n <code>bindingAttr</code> includes <xref href=\"System.Reflection.BindingFlags\"></xref>, and <code>value</code> is `null`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -146,13 +146,13 @@ items:
       description: An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified. The default binder implementation does not use this parameter.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref href=\"System.Globalization.CultureInfo\"></xref> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, the <xref href=\"System.Globalization.CultureInfo\"></xref> for the current thread is used.  \n  \n Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a <xref uid=\"langword_csharp_String\" name=\"String\" href=\"\"></xref> that represents 1000 to a <xref uid=\"langword_csharp_Double\" name=\"Double\" href=\"\"></xref> value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
+      description: "An instance of <xref href=\"System.Globalization.CultureInfo\"></xref> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is `null`, the <xref href=\"System.Globalization.CultureInfo\"></xref> for the current thread is used.  \n  \n Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a `String` that represents 1000 to a `Double` value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
     - id: names
       type: System.String[]
-      description: The parameter names, if parameter names are to be considered when matching, or <xref uid="langword_csharp_null" name="null" href=""></xref> if arguments are to be treated as purely positional. For example, parameter names must be used if arguments are not supplied in positional order.
+      description: The parameter names, if parameter names are to be considered when matching, or `null` if arguments are to be treated as purely positional. For example, parameter names must be used if arguments are not supplied in positional order.
     - id: state
       type: System.Object
-      description: After the method returns, `state` contains a binder-provided object that keeps track of argument reordering. The binder creates this object, and the binder is the sole consumer of this object. If `state` is not <xref uid="langword_csharp_null" name="null" href=""></xref> when <xref uid="langword_csharp_BindToMethod" name="BindToMethod" href=""></xref> returns, you must pass `state` to the <xref:System.Reflection.Binder.ReorderArgumentArray*> method if you want to restore `args` to its original order, for example, so that you can retrieve the values of <xref uid="langword_csharp_ref" name="ref" href=""></xref> parameters (<xref uid="langword_csharp_ByRef" name="ByRef" href=""></xref> parameters in Visual Basic).
+      description: After the method returns, `state` contains a binder-provided object that keeps track of argument reordering. The binder creates this object, and the binder is the sole consumer of this object. If `state` is not `null` when `BindToMethod` returns, you must pass `state` to the <xref:System.Reflection.Binder.ReorderArgumentArray*> method if you want to restore `args` to its original order, for example, so that you can retrieve the values of `ref` parameters (`ByRef` parameters in Visual Basic).
     return:
       type: System.Reflection.MethodBase
       description: The matching method.
@@ -166,8 +166,8 @@ items:
     description: For the default binder, <code>match</code> contains no methods that can accept the arguments supplied in <code>args</code>.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: For the default binder, <code>match</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty array.
-  platform:
+    description: For the default binder, <code>match</code> is `null` or an empty array.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -184,26 +184,26 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Changes the type of the given <xref uid="langword_csharp_Object" name="Object" href=""></xref> to the given <xref uid="langword_csharp_Type" name="Type" href=""></xref>.
+  summary: Changes the type of the given `Object` to the given `Type`.
   remarks: "Reflection models the accessibility rules of the common type system. For example, if the caller is in the same assembly, the caller does not need special permissions for internal members. Otherwise, the caller needs <xref:System.Security.Permissions.ReflectionPermission>. This is consistent with lookup of members that are protected, private, and so on.  \n  \n The general principle is that `ChangeType` should perform only widening coercions, which never lose data. An example of a widening coercion is coercing a value that is a 32-bit signed integer to a value that is a 64-bit signed integer. This is distinguished from a narrowing coercion, which may lose data. An example of a narrowing coercion is coercing a 64-bit signed integer to a 32-bit signed integer.  \n  \n The following table lists the coercions performed by the default `ChangeType`.  \n  \n|Source type|Target type|  \n|-----------------|-----------------|  \n|Any type|Its base type.|  \n|Any type|The interface it implements.|  \n|Char|UInt16, UInt32, Int32, UInt64, Int64, Single, Double|  \n|Byte|Char, UInt16, Int16, UInt32, Int32, UInt64, Int64, Single, Double|  \n|SByte|Int16, Int32, Int64, Single, Double|  \n|UInt16|UInt32, Int32, UInt64, Int64, Single, Double|  \n|Int16|Int32, Int64, Single, Double|  \n|UInt32|UInt64, Int64, Single, Double|  \n|Int32|Int64, Single, Double|  \n|UInt64|Single, Double|  \n|Int64|Single, Double|  \n|Single|Double|  \n|Non-reference|By-reference.|"
   syntax:
     content: public abstract object ChangeType (object value, Type type, System.Globalization.CultureInfo culture);
     parameters:
     - id: value
       type: System.Object
-      description: The object to change into a new <xref uid="langword_csharp_Type" name="Type" href=""></xref>.
+      description: The object to change into a new `Type`.
     - id: type
       type: System.Type
-      description: The new <xref uid="langword_csharp_Type" name="Type" href=""></xref> that `value` will become.
+      description: The new `Type` that `value` will become.
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref href=\"System.Globalization.CultureInfo\"></xref> that is used to control the coercion of data types. If `culture` is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, the <xref href=\"System.Globalization.CultureInfo\"></xref> for the current thread is used.  \n  \n Note   For example, this parameter is necessary to convert a <xref uid=\"langword_csharp_String\" name=\"String\" href=\"\"></xref> that represents 1000 to a <xref uid=\"langword_csharp_Double\" name=\"Double\" href=\"\"></xref> value, because 1000 is represented differently by different cultures."
+      description: "An instance of <xref href=\"System.Globalization.CultureInfo\"></xref> that is used to control the coercion of data types. If `culture` is `null`, the <xref href=\"System.Globalization.CultureInfo\"></xref> for the current thread is used.  \n  \n Note   For example, this parameter is necessary to convert a `String` that represents 1000 to a `Double` value, because 1000 is represented differently by different cultures."
     return:
       type: System.Object
       description: An object that contains the given value as the new type.
   overload: System.Reflection.Binder.ChangeType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -220,7 +220,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: Upon returning from <xref:System.Reflection.Binder.BindToMethod*>, restores the <code>args</code> argument to what it was when it came from <xref uid="langword_csharp_BindToMethod" name="BindToMethod" href=""></xref>.
+  summary: Upon returning from <xref:System.Reflection.Binder.BindToMethod*>, restores the <code>args</code> argument to what it was when it came from `BindToMethod`.
   remarks: The common language runtime calls this method if `state` is not `null` after a return from `BindToMethod`.
   syntax:
     content: public abstract void ReorderArgumentArray (ref object[] args, object state);
@@ -233,7 +233,7 @@ items:
       description: A binder-provided object that keeps track of argument reordering.
   overload: System.Reflection.Binder.ReorderArgumentArray*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -269,7 +269,7 @@ items:
       description: An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified.
     return:
       type: System.Reflection.MethodBase
-      description: The matching method, if found; otherwise, <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The matching method, if found; otherwise, `null`.
   overload: System.Reflection.Binder.SelectMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
@@ -277,8 +277,8 @@ items:
     description: For the default binder, <code>match</code> contains multiple methods that are equally good matches for the parameter types described by <code>types</code>. For example, the array in <code>types</code> contains a <xref href="System.Type"></xref> object for `MyClass` and the array in <code>match</code> contains a method that takes a base class of `MyClass` and a method that takes an interface that `MyClass` implements.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty array.  \n  \n -or-  \n  \n An element of <code>types</code> derives from <xref href=\"System.Type\"></xref>, but is not of type <xref uid=\"langword_csharp_RuntimeType\" name=\"RuntimeType\" href=\"\"></xref>."
-  platform:
+    description: "For the default binder, <code>match</code> is `null` or an empty array.  \n  \n -or-  \n  \n An element of <code>types</code> derives from <xref href=\"System.Type\"></xref>, but is not of type `RuntimeType`."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -325,8 +325,8 @@ items:
     description: For the default binder, <code>match</code> contains multiple properties that are equally good matches for <code>returnType</code> and <code>indexes</code>.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: For the default binder, <code>match</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or an empty array.
-  platform:
+    description: For the default binder, <code>match</code> is `null` or an empty array.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -392,8 +392,8 @@ references:
 - uid: System.Reflection.FieldInfo[]
   parent: System.Reflection
   isExternal: false
-  name: FieldInfo
-  nameWithType: FieldInfo
+  name: FieldInfo[]
+  nameWithType: FieldInfo[]
   fullName: System.Reflection.FieldInfo[]
   spec.csharp:
   - uid: System.Reflection.FieldInfo
@@ -424,8 +424,8 @@ references:
 - uid: System.Reflection.MethodBase[]
   parent: System.Reflection
   isExternal: false
-  name: MethodBase
-  nameWithType: MethodBase
+  name: MethodBase[]
+  nameWithType: MethodBase[]
   fullName: System.Reflection.MethodBase[]
   spec.csharp:
   - uid: System.Reflection.MethodBase
@@ -438,8 +438,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -452,8 +452,8 @@ references:
 - uid: System.Reflection.ParameterModifier[]
   parent: System.Reflection
   isExternal: false
-  name: ParameterModifier
-  nameWithType: ParameterModifier
+  name: ParameterModifier[]
+  nameWithType: ParameterModifier[]
   fullName: System.Reflection.ParameterModifier[]
   spec.csharp:
   - uid: System.Reflection.ParameterModifier
@@ -466,8 +466,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -504,8 +504,8 @@ references:
 - uid: System.Type[]
   parent: System
   isExternal: false
-  name: Type
-  nameWithType: Type
+  name: Type[]
+  nameWithType: Type[]
   fullName: System.Type[]
   spec.csharp:
   - uid: System.Type
@@ -530,8 +530,8 @@ references:
 - uid: System.Reflection.PropertyInfo[]
   parent: System.Reflection
   isExternal: false
-  name: PropertyInfo
-  nameWithType: PropertyInfo
+  name: PropertyInfo[]
+  nameWithType: PropertyInfo[]
   fullName: System.Reflection.PropertyInfo[]
   spec.csharp:
   - uid: System.Reflection.PropertyInfo

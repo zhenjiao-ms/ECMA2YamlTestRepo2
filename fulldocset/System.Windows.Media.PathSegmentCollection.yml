@@ -109,7 +109,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -131,7 +131,7 @@ items:
     parameters: []
   overload: System.Windows.Media.PathSegmentCollection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -158,8 +158,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>collection</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>collection</code> is `null`.
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -184,7 +184,7 @@ items:
       description: The number of <xref href="System.Windows.Media.PathSegment"></xref> objects that the collection is initially capable of storing.
   overload: System.Windows.Media.PathSegmentCollection.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -212,11 +212,11 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> is read-only.  \n  \n \\- or -  \n  \n The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -242,7 +242,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The <xref href="System.Windows.Media.PathSegmentCollection"></xref> is read-only.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -265,10 +265,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Media.PathSegmentCollection
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property will be <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property was <xref uid="langword_csharp_true." name="true." href=""></xref>
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property will be `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property was `true.`
   overload: System.Windows.Media.PathSegmentCollection.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -292,7 +292,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.CloneCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -315,10 +315,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Media.PathSegmentCollection
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property will be <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property was <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property will be `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property was `true`.
   overload: System.Windows.Media.PathSegmentCollection.CloneCurrentValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -342,7 +342,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.CloneCurrentValueCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -367,10 +367,10 @@ items:
       description: The <xref href="System.Windows.Media.PathSegment"></xref> to search for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Windows.Media.PathSegment"></xref> is contained within the collection; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <xref href="System.Windows.Media.PathSegment"></xref> is contained within the collection; otherwise, `false`.'
   overload: System.Windows.Media.PathSegmentCollection.Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -400,14 +400,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>array</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>array</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is less than zero.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>array</code> is multidimensional.  \n  \n -or-  \n  \n The number of items in the source <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> is greater than the available space from <code>index</code> to the end of the destination <code>array</code>."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -431,7 +431,7 @@ items:
       description: The number of path segments contained in the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
   overload: System.Windows.Media.PathSegmentCollection.Count*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -455,7 +455,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.CreateInstanceCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -482,7 +482,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.FreezeCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -506,7 +506,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.GetAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -530,7 +530,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.GetCurrentValueAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -556,7 +556,7 @@ items:
       description: An <xref:System.Windows.Media.PathSegmentCollection.Enumerator> that can iterate through the collection.
   overload: System.Windows.Media.PathSegmentCollection.GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -584,7 +584,7 @@ items:
       description: The index of the specified <xref href="System.Windows.Media.PathSegment"></xref>.
   overload: System.Windows.Media.PathSegmentCollection.IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -615,14 +615,14 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is not a valid index in the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> is read-only.  \n  \n \\- or -  \n  \n The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -653,14 +653,14 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: <code>value</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>value</code> is `null`.
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>index</code> is not a valid index in the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> is read-only.  \n  \n \\- or -  \n  \n The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -685,13 +685,13 @@ items:
       description: The item to remove from this collection.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Windows.Media.PathSegment"></xref> is removed from the collection; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the specified <xref href="System.Windows.Media.PathSegment"></xref> is removed from the collection; otherwise, `false`.'
   overload: System.Windows.Media.PathSegmentCollection.Remove*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: "The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> is read-only.  \n  \n \\- or -  \n  \n The <xref href=\"System.Windows.Media.PathSegmentCollection\"></xref> has a fixed size."
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -716,7 +716,7 @@ items:
       description: The index of the item to remove.
   overload: System.Windows.Media.PathSegmentCollection.RemoveAt*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -740,7 +740,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#Generic#ICollection<System#Windows#Media#PathSegment>#IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -765,7 +765,7 @@ items:
       description: To be added.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#Generic#IEnumerable<System#Windows#Media#PathSegment>#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -795,7 +795,7 @@ items:
       description: The first position in the specified <xref href="System.Array"></xref> to receive the copied contents.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#ICollection#CopyTo*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -818,10 +818,10 @@ items:
     content: bool System.Collections.ICollection.IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if access to the <xref href="System.Windows.Media.PathSegmentCollection"></xref> is synchronized (thread safe); otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if access to the <xref href="System.Windows.Media.PathSegmentCollection"></xref> is synchronized (thread safe); otherwise, `false`.'
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#ICollection#IsSynchronized*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -847,7 +847,7 @@ items:
       description: An object that can be used to synchronize access to the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#ICollection#SyncRoot*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -874,7 +874,7 @@ items:
       description: An <xref href="System.Collections.IEnumerator"></xref> object that can be used to iterate through the collection.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -904,7 +904,7 @@ items:
       description: The position into which the new element was inserted.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#Add*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -931,10 +931,10 @@ items:
       description: The <xref href="System.Object"></xref> to locate in the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Object"></xref> is found in the <xref href="System.Windows.Media.PathSegmentCollection"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Object"></xref> is found in the <xref href="System.Windows.Media.PathSegmentCollection"></xref>; otherwise, `false`.'
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#Contains*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -964,7 +964,7 @@ items:
       description: The index of <code>value</code> if found in the list; otherwise, -1.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#IndexOf*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -994,7 +994,7 @@ items:
       description: The <xref href="System.Object"></xref> to insert into the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#Insert*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1017,10 +1017,10 @@ items:
     content: bool System.Collections.IList.IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Windows.Media.PathSegmentCollection"></xref> has a fixed size; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Windows.Media.PathSegmentCollection"></xref> has a fixed size; otherwise, `false`.'
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#IsFixedSize*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1043,10 +1043,10 @@ items:
     content: bool System.Collections.IList.IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Windows.Media.PathSegmentCollection"></xref> is read-only; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the <xref href="System.Windows.Media.PathSegmentCollection"></xref> is read-only; otherwise, `false`.'
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#IsReadOnly*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1076,7 +1076,7 @@ items:
       description: The element at the specified index.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#Item*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1103,7 +1103,7 @@ items:
       description: The <xref href="System.Object"></xref> to remove from the <xref href="System.Windows.Media.PathSegmentCollection"></xref>.
   overload: System.Windows.Media.PathSegmentCollection.System#Collections#IList#Remove*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -1255,8 +1255,8 @@ references:
 - uid: System.Windows.Media.PathSegment[]
   parent: System.Windows.Media
   isExternal: false
-  name: PathSegment
-  nameWithType: PathSegment
+  name: PathSegment[]
+  nameWithType: PathSegment[]
   fullName: System.Windows.Media.PathSegment[]
   spec.csharp:
   - uid: System.Windows.Media.PathSegment

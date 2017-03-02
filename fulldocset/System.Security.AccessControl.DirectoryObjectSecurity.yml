@@ -82,7 +82,7 @@ items:
   - System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm(System.String,System.Security.AccessControl.AccessControlSections)
   - System.Security.AccessControl.ObjectSecurity.WriteLock
   - System.Security.AccessControl.ObjectSecurity.WriteUnlock
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
     parameters: []
   overload: System.Security.AccessControl.DirectoryObjectSecurity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -131,7 +131,7 @@ items:
       description: The security descriptor to be associated with the new <xref href="System.Security.AccessControl.DirectoryObjectSecurity"></xref>object.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -181,7 +181,7 @@ items:
       description: The <xref href="System.Security.AccessControl.AccessRule"></xref> object that this method creates.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.AccessRuleFactory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -208,7 +208,7 @@ items:
       description: The access rule to add.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.AddAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,7 +235,7 @@ items:
       description: The audit rule to add.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.AddAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -264,7 +264,7 @@ items:
       description: The access mask of this rule. The access mask is a 32-bit collection of anonymous bits, the meaning of which is defined by the individual integrators.
     - id: isInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this rule is inherited from a parent container.
+      description: '`true` if this rule is inherited from a parent container.'
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
       description: Specifies the inheritance properties of the audit rule.
@@ -285,7 +285,7 @@ items:
       description: The <xref href="System.Security.AccessControl.AuditRule"></xref> object that this method creates.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.AuditRuleFactory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -308,10 +308,10 @@ items:
     parameters:
     - id: includeExplicit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include access rules explicitly set for the object.
+      description: '`true` to include access rules explicitly set for the object.'
     - id: includeInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include inherited access rules.
+      description: '`true` to include inherited access rules.'
     - id: targetType
       type: System.Type
       description: The security identifier for which to retrieve access rules. This must be an object that can be cast as a <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
@@ -320,7 +320,7 @@ items:
       description: The collection of access rules associated with the specified <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.GetAccessRules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -343,10 +343,10 @@ items:
     parameters:
     - id: includeExplicit
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include audit rules explicitly set for the object.
+      description: '`true` to include audit rules explicitly set for the object.'
     - id: includeInherited
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to include inherited audit rules.
+      description: '`true` to include inherited audit rules.'
     - id: targetType
       type: System.Type
       description: The security identifier for which to retrieve audit rules. This must be an object that can be cast as a <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
@@ -355,7 +355,7 @@ items:
       description: The collection of audit rules associated with the specified <xref href="System.Security.Principal.SecurityIdentifier"></xref> object.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.GetAuditRules*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -384,13 +384,13 @@ items:
       description: The access rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the DACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the DACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.DirectoryObjectSecurity.ModifyAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -419,13 +419,13 @@ items:
       description: The audit rule to modify.
     - id: modified
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the SACL is successfully modified; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the SACL is successfully modified; otherwise, `false`.'
   overload: System.Security.AccessControl.DirectoryObjectSecurity.ModifyAudit*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -452,10 +452,10 @@ items:
       description: The access rule to remove.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the access rule was successfully removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the access rule was successfully removed; otherwise, `false`.'
   overload: System.Security.AccessControl.DirectoryObjectSecurity.RemoveAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -481,7 +481,7 @@ items:
       description: The access rule to remove.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.RemoveAccessRuleAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -507,7 +507,7 @@ items:
       description: The access rule to remove.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.RemoveAccessRuleSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -534,10 +534,10 @@ items:
       description: The audit rule to remove.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the audit rule was successfully removed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the audit rule was successfully removed; otherwise, `false`.'
   overload: System.Security.AccessControl.DirectoryObjectSecurity.RemoveAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -563,7 +563,7 @@ items:
       description: The audit rule to remove.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.RemoveAuditRuleAll*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -589,7 +589,7 @@ items:
       description: The audit rule to remove.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.RemoveAuditRuleSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -615,7 +615,7 @@ items:
       description: The access rule to reset.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.ResetAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -641,7 +641,7 @@ items:
       description: The access rule to set.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.SetAccessRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -667,7 +667,7 @@ items:
       description: The audit rule to set.
   overload: System.Security.AccessControl.DirectoryObjectSecurity.SetAuditRule*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

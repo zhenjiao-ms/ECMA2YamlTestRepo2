@@ -45,7 +45,7 @@ items:
   - System.Security.CodeAccessPermission.RevertDeny
   - System.Security.CodeAccessPermission.RevertPermitOnly
   - System.Security.CodeAccessPermission.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -77,7 +77,7 @@ items:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The <code>state</code> parameter is not a valid value of <xref href="System.Security.Permissions.PermissionState"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -108,14 +108,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>site</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>site</code> parameter is `null`.
   - type: System.FormatException
     commentId: T:System.FormatException
     description: The length of the <code>site</code> parameter is zero.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The URL, directory, or site portion of the <code>site</code> parameter is not valid.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,7 +142,7 @@ items:
       description: A copy of the current permission.
   overload: System.Security.Permissions.UrlIdentityPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -170,11 +170,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>esd</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>esd</code> parameter is `null`.
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>esd</code> parameter is not a valid permission element.  \n  \n -or-  \n  \n The <code>esd</code> parameter's version number is not valid."
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -201,13 +201,13 @@ items:
       description: A permission to intersect with the current permission. It must be of the same type as the current permission.
     return:
       type: System.Security.IPermission
-      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty.
+      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission is `null` if the intersection is empty.
   overload: System.Security.Permissions.UrlIdentityPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is not of the same type as the current permission.  \n  \n -or-  \n  \n The Url property is not a valid URL."
-  platform:
+    description: "The <code>target</code> parameter is not `null` and is not of the same type as the current permission.  \n  \n -or-  \n  \n The Url property is not a valid URL."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -234,13 +234,13 @@ items:
       description: A permission that is to be tested for the subset relationship. This permission must be of the same type as the current permission.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is a subset of the specified permission; otherwise, `false`.'
   overload: System.Security.Permissions.UrlIdentityPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is not of the same type as the current permission.  \n  \n -or-  \n  \n The Url property is not a valid URL."
-  platform:
+    description: "The <code>target</code> parameter is not `null` and is not of the same type as the current permission.  \n  \n -or-  \n  \n The Url property is not a valid URL."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -266,7 +266,7 @@ items:
       description: An XML encoding of the permission, including any state information.
   overload: System.Security.Permissions.UrlIdentityPermission.ToXml*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -298,8 +298,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> and is not of the same type as the current permission.  \n  \n -or-  \n  \n The <xref:System.Security.Permissions.UrlIdentityPermission.Url*> property is not a valid URL.  \n  \n -or-  \n  \n The two permissions are not equal and one is not a subset of the other."
-  platform:
+    description: "The <code>target</code> parameter is not `null` and is not of the same type as the current permission.  \n  \n -or-  \n  \n The <xref:System.Security.Permissions.UrlIdentityPermission.Url*> property is not a valid URL.  \n  \n -or-  \n  \n The two permissions are not equal and one is not a subset of the other."
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -328,7 +328,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The URL cannot be retrieved because it has an ambiguous identity.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

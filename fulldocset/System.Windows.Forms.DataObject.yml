@@ -71,7 +71,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,7 +97,7 @@ items:
     parameters: []
   overload: System.Windows.Forms.DataObject.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -126,7 +126,7 @@ items:
       description: The data to store.
   overload: System.Windows.Forms.DataObject.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -158,7 +158,7 @@ items:
       description: The data to store.
   overload: System.Windows.Forms.DataObject.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,10 +182,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data object contains audio data; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data object contains audio data; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.ContainsAudio*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -209,10 +209,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data object contains a file drop list; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data object contains a file drop list; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.ContainsFileDropList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -236,10 +236,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data object contains image data; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data object contains image data; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.ContainsImage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -263,10 +263,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data object contains text data; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data object contains text data; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.ContainsText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -293,13 +293,13 @@ items:
       description: One of the <xref href="System.Windows.Forms.TextDataFormat"></xref> values.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data object contains text data in the specified format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data object contains text data in the specified format; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.ContainsText*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
     description: <code>format</code> is not a valid <xref href="System.Windows.Forms.TextDataFormat"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,10 +323,10 @@ items:
     parameters: []
     return:
       type: System.IO.Stream
-      description: A <xref href="System.IO.Stream"></xref> containing audio data or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data object does not contain any data in the <xref href="System.Windows.Forms.DataFormats.WaveAudio"></xref> format.
+      description: A <xref href="System.IO.Stream"></xref> containing audio data or `null` if the data object does not contain any data in the <xref href="System.Windows.Forms.DataFormats.WaveAudio"></xref> format.
   overload: System.Windows.Forms.DataObject.GetAudioStream*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -355,10 +355,10 @@ items:
       description: The format of the data to retrieve. See <xref href="System.Windows.Forms.DataFormats"></xref> for predefined formats.
     return:
       type: System.Object
-      description: The data associated with the specified format, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The data associated with the specified format, or `null`.
   overload: System.Windows.Forms.DataObject.GetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -387,10 +387,10 @@ items:
       description: A <xref href="System.Type"></xref> representing the format of the data to retrieve.
     return:
       type: System.Object
-      description: The data associated with the specified format, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The data associated with the specified format, or `null`.
   overload: System.Windows.Forms.DataObject.GetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -419,13 +419,13 @@ items:
       description: The format of the data to retrieve. See <xref href="System.Windows.Forms.DataFormats"></xref> for predefined formats.
     - id: autoConvert
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to the convert data to the specified format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to the convert data to the specified format; otherwise, `false`.'
     return:
       type: System.Object
-      description: The data associated with the specified format, or <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: The data associated with the specified format, or `null`.
   overload: System.Windows.Forms.DataObject.GetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -454,10 +454,10 @@ items:
       description: The format to check for. See <xref href="System.Windows.Forms.DataFormats"></xref> for predefined formats.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data stored in this <xref href="System.Windows.Forms.DataObject"></xref> is associated with, or can be converted to, the specified format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if data stored in this <xref href="System.Windows.Forms.DataObject"></xref> is associated with, or can be converted to, the specified format; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.GetDataPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -486,10 +486,10 @@ items:
       description: A <xref href="System.Type"></xref> representing the format to check for.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if data stored in this <xref href="System.Windows.Forms.DataObject"></xref> is associated with, or can be converted to, the specified format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if data stored in this <xref href="System.Windows.Forms.DataObject"></xref> is associated with, or can be converted to, the specified format; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.GetDataPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -518,13 +518,13 @@ items:
       description: The format to check for. See <xref href="System.Windows.Forms.DataFormats"></xref> for predefined formats.
     - id: autoConvert
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to determine whether data stored in this <xref href="System.Windows.Forms.DataObject"></xref> can be converted to the specified format; <xref uid="langword_csharp_false" name="false" href=""></xref> to check whether the data is in the specified format.
+      description: '`true` to determine whether data stored in this <xref href="System.Windows.Forms.DataObject"></xref> can be converted to the specified format; `false` to check whether the data is in the specified format.'
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the data is in, or can be converted to, the specified format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the data is in, or can be converted to, the specified format; otherwise, `false`.'
   overload: System.Windows.Forms.DataObject.GetDataPresent*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -548,10 +548,10 @@ items:
     parameters: []
     return:
       type: System.Collections.Specialized.StringCollection
-      description: A <xref href="System.Collections.Specialized.StringCollection"></xref> containing file names or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data object does not contain any data that is in the <xref href="System.Windows.Forms.DataFormats.FileDrop"></xref> format or can be converted to that format.
+      description: A <xref href="System.Collections.Specialized.StringCollection"></xref> containing file names or `null` if the data object does not contain any data that is in the <xref href="System.Windows.Forms.DataFormats.FileDrop"></xref> format or can be converted to that format.
   overload: System.Windows.Forms.DataObject.GetFileDropList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -580,7 +580,7 @@ items:
       description: An array of type <xref href="System.String"></xref>, containing a list of all formats that are supported by the data stored in this object.
   overload: System.Windows.Forms.DataObject.GetFormats*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -606,13 +606,13 @@ items:
     parameters:
     - id: autoConvert
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to retrieve all formats that data stored in this <xref href="System.Windows.Forms.DataObject"></xref> is associated with, or can be converted to; <xref uid="langword_csharp_false" name="false" href=""></xref> to retrieve only native data formats.
+      description: '`true` to retrieve all formats that data stored in this <xref href="System.Windows.Forms.DataObject"></xref> is associated with, or can be converted to; `false` to retrieve only native data formats.'
     return:
       type: System.String[]
       description: An array of type <xref href="System.String"></xref>, containing a list of all formats that are supported by the data stored in this object.
   overload: System.Windows.Forms.DataObject.GetFormats*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -636,10 +636,10 @@ items:
     parameters: []
     return:
       type: System.Drawing.Image
-      description: An <xref href="System.Drawing.Image"></xref> representing the image data in the data object or <xref uid="langword_csharp_null" name="null" href=""></xref> if the data object does not contain any data that is in the <xref href="System.Windows.Forms.DataFormats.Bitmap"></xref> format or can be converted to that format.
+      description: An <xref href="System.Drawing.Image"></xref> representing the image data in the data object or `null` if the data object does not contain any data that is in the <xref href="System.Windows.Forms.DataFormats.Bitmap"></xref> format or can be converted to that format.
   overload: System.Windows.Forms.DataObject.GetImage*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -666,7 +666,7 @@ items:
       description: The text data in the data object or <xref href="System.String"></xref> if the data object does not contain data in the <xref href="System.Windows.Forms.TextDataFormat"></xref> format.
   overload: System.Windows.Forms.DataObject.GetText*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -699,7 +699,7 @@ items:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
     description: <code>format</code> is not a valid <xref href="System.Windows.Forms.TextDataFormat"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -728,8 +728,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>audioBytes</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>audioBytes</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -758,8 +758,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>audioStream</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>audioStream</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -788,7 +788,7 @@ items:
       description: The data to store.
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -820,7 +820,7 @@ items:
       description: The data to store.
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -852,7 +852,7 @@ items:
       description: The data to store.
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -881,13 +881,13 @@ items:
       description: The format associated with the data. See <xref href="System.Windows.Forms.DataFormats"></xref> for predefined formats.
     - id: autoConvert
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to allow the data to be converted to another format; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to allow the data to be converted to another format; otherwise, `false`.'
     - id: data
       type: System.Object
       description: The data to store.
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -916,8 +916,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>filePaths</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>filePaths</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -946,8 +946,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>image</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
-  platform:
+    description: <code>image</code> is `null`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -976,8 +976,8 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>textData</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or <xref href="System.String"></xref>.
-  platform:
+    description: <code>textData</code> is `null` or <xref href="System.String"></xref>.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1009,11 +1009,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>textData</code> is <xref uid="langword_csharp_null" name="null" href=""></xref> or <xref href="System.String.Empty"></xref>.
+    description: <code>textData</code> is `null` or <xref href="System.String.Empty"></xref>.
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
     description: <code>format</code> is not a valid <xref href="System.Windows.Forms.TextDataFormat"></xref> value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1053,7 +1053,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The advisory connection was created.  \n  \n </td></tr><tr><td> E_NOTIMPL  \n  \n </td><td> This method is not implemented on the data object.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> There is an invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED  \n  \n </td><td> The data object does not support change notification.  \n  \n </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#DAdvise*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1081,7 +1081,7 @@ items:
       description: A DWORD token that specifies the connection to remove. Use the value returned by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise*> when the connection was originally established.
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#DUnadvise*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1106,13 +1106,13 @@ items:
     parameters:
     - id: enumAdvise
       type: System.Runtime.InteropServices.ComTypes.IEnumSTATDATA
-      description: When this method returns, contains an <xref href="System.Runtime.InteropServices.ComTypes.IEnumSTATDATA"></xref> that receives the interface pointer to the new enumerator object. If the implementation sets `enumAdvise` to <xref uid="langword_csharp_null" name="null" href=""></xref>, there are no connections to advisory sinks at this time. This parameter is passed uninitialized.
+      description: When this method returns, contains an <xref href="System.Runtime.InteropServices.ComTypes.IEnumSTATDATA"></xref> that receives the interface pointer to the new enumerator object. If the implementation sets `enumAdvise` to `null`, there are no connections to advisory sinks at this time. This parameter is passed uninitialized.
     return:
       type: System.Int32
       description: "This method supports the standard return value E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The enumerator object is successfully instantiated or there are no connections.  \n  \n </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED  \n  \n </td><td> This object does not support advisory notifications.  \n  \n </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#EnumDAdvise*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1143,7 +1143,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The enumerator object was successfully created.  \n  \n </td></tr><tr><td> E_NOTIMPL  \n  \n </td><td> The direction specified by the <code>direction</code> parameter is not supported.  \n  \n </td></tr><tr><td> OLE_S_USEREG  \n  \n </td><td> Requests that OLE enumerate the formats from the registry.  \n  \n </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#EnumFormatEtc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1171,13 +1171,13 @@ items:
       description: A pointer to a <xref href="System.Runtime.InteropServices.ComTypes.FORMATETC"></xref> structure, passed by reference, that defines the format, medium, and target device that the caller would like to use to retrieve data in a subsequent call such as <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>. The <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref> member is not significant in this case and should be ignored.
     - id: pformatetcOut
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: When this method returns, contains a pointer to a <xref href="System.Runtime.InteropServices.ComTypes.FORMATETC"></xref> structure that contains the most general information possible for a specific rendering, making it canonically equivalent to `formatetIn`. The caller must allocate this structure and the <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc*> method must fill in the data. To retrieve data in a subsequent call such as <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>, the caller uses the supplied value of `formatOut`, unless the value supplied is <xref uid="langword_csharp_null" name="null" href=""></xref>. This value is <xref uid="langword_csharp_null" name="null" href=""></xref> if the method returns <xref uid="langword_csharp_DATA_S_SAMEFORMATETC" name="DATA_S_SAMEFORMATETC" href=""></xref>. The <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref> member is not significant in this case and should be ignored. This parameter is passed uninitialized.
+      description: When this method returns, contains a pointer to a <xref href="System.Runtime.InteropServices.ComTypes.FORMATETC"></xref> structure that contains the most general information possible for a specific rendering, making it canonically equivalent to `formatetIn`. The caller must allocate this structure and the <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc*> method must fill in the data. To retrieve data in a subsequent call such as <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>, the caller uses the supplied value of `formatOut`, unless the value supplied is `null`. This value is `null` if the method returns `DATA_S_SAMEFORMATETC`. The <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref> member is not significant in this case and should be ignored. This parameter is passed uninitialized.
     return:
       type: System.Int32
-      description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The returned <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC\"></xref> structure is different from the one that was passed.  \n  \n </td></tr><tr><td> DATA_S_SAMEFORMATETC  \n  \n </td><td> The <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC\"></xref> structures are the same and <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> is returned in the <code>formatOut</code> parameter.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> There is an invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> OLE_E_NOTRUNNING  \n  \n </td><td> The application is not running.  \n  \n </td></tr></tbody></table>"
+      description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> The returned <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC\"></xref> structure is different from the one that was passed.  \n  \n </td></tr><tr><td> DATA_S_SAMEFORMATETC  \n  \n </td><td> The <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC\"></xref> structures are the same and `null` is returned in the <code>formatOut</code> parameter.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> There is an invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> OLE_E_NOTRUNNING  \n  \n </td><td> The application is not running.  \n  \n </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetCanonicalFormatEtc*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1205,13 +1205,13 @@ items:
       description: A pointer to a <xref href="System.Runtime.InteropServices.ComTypes.FORMATETC"></xref> structure, passed by reference, that defines the format, medium, and target device to use when passing the data. It is possible to specify more than one medium by using the Boolean OR operator, allowing the method to choose the best medium among those specified.
     - id: medium
       type: System.Runtime.InteropServices.ComTypes.STGMEDIUM
-      description: When this method returns, contains a pointer to the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure that indicates the storage medium containing the returned data through its <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member, and the responsibility for releasing the medium through the value of its <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member. If <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> is <xref uid="langword_csharp_null" name="null" href=""></xref>, the receiver of the medium is responsible for releasing it; otherwise, <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> points to the <xref uid="langword_csharp_IUnknown" name="IUnknown" href=""></xref> interface on the appropriate object so its <xref uid="langword_csharp_Release" name="Release" href=""></xref> method can be called. The medium must be allocated and filled in by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>. This parameter is passed uninitialized.
+      description: When this method returns, contains a pointer to the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure that indicates the storage medium containing the returned data through its <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member, and the responsibility for releasing the medium through the value of its <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> member. If <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> is `null`, the receiver of the medium is responsible for releasing it; otherwise, <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> points to the `IUnknown` interface on the appropriate object so its `Release` method can be called. The medium must be allocated and filled in by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>. This parameter is passed uninitialized.
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetData*
   exceptions:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
     description: There is not enough memory to perform this operation.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1239,10 +1239,10 @@ items:
       description: 'A pointer to a <xref href="System.Runtime.InteropServices.ComTypes.FORMATETC"></xref> structure, passed by reference, that defines the format, medium, and target device to use when passing the data. Only one medium can be specified in <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref>, and only the following <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref> values are valid: <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref>, <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref>, <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref>, or <xref href="System.Runtime.InteropServices.ComTypes.TYMED"></xref>.'
     - id: medium
       type: System.Runtime.InteropServices.ComTypes.STGMEDIUM
-      description: A <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref>, passed by reference, that defines the storage medium containing the data being transferred. The medium must be allocated by the caller and filled in by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere*>. The caller must also free the medium. The implementation of this method must always supply a value of <xref uid="langword_csharp_null" name="null" href=""></xref> for the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM.pUnkForRelease"></xref> member of the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure that this parameter points to.
+      description: A <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref>, passed by reference, that defines the storage medium containing the data being transferred. The medium must be allocated by the caller and filled in by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere*>. The caller must also free the medium. The implementation of this method must always supply a value of `null` for the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM.pUnkForRelease"></xref> member of the <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure that this parameter points to.
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetDataHere*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1273,7 +1273,7 @@ items:
       description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:  \n  \n <table><thead><tr><th> Value  \n  \n </th><th> Description  \n  \n </th></tr></thead><tbody><tr><td> S_OK  \n  \n </td><td> A subsequent call to <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> would probably be successful.  \n  \n </td></tr><tr><td> DV_E_LINDEX  \n  \n </td><td> An invalid value for <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.lindex\"></xref>; currently, only -1 is supported.  \n  \n </td></tr><tr><td> DV_E_FORMATETC  \n  \n </td><td> An invalid value for the <code>pFormatetc</code> parameter.  \n  \n </td></tr><tr><td> DV_E_TYMED  \n  \n </td><td> An invalid <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.tymed\"></xref> value.  \n  \n </td></tr><tr><td> DV_E_DVASPECT  \n  \n </td><td> An invalid <xref href=\"System.Runtime.InteropServices.ComTypes.FORMATETC.dwAspect\"></xref> value.  \n  \n </td></tr><tr><td> OLE_E_NOTRUNNING  \n  \n </td><td> The application is not running.  \n  \n </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#QueryGetData*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1304,13 +1304,13 @@ items:
       description: A <xref href="System.Runtime.InteropServices.ComTypes.STGMEDIUM"></xref> structure, passed by reference, that defines the storage medium in which the data is being passed.
     - id: fRelease
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to specify that the data object called, which implements <xref:System.Runtime.InteropServices.ComTypes.IDataObject.SetData*>, owns the storage medium after the call returns. This means that the data object must free the medium after it has been used by calling the <xref uid="langword_csharp_ReleaseStgMedium" name="ReleaseStgMedium" href=""></xref> function. <xref uid="langword_csharp_false" name="false" href=""></xref> to specify that the caller retains ownership of the storage medium, and the data object called uses the storage medium for the duration of the call only.
+      description: '`true` to specify that the data object called, which implements <xref:System.Runtime.InteropServices.ComTypes.IDataObject.SetData*>, owns the storage medium after the call returns. This means that the data object must free the medium after it has been used by calling the `ReleaseStgMedium` function. `false` to specify that the caller retains ownership of the storage medium, and the data object called uses the storage medium for the duration of the call only.'
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#SetData*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
     description: This method does not support the type of the underlying data object.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1484,8 +1484,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
@@ -1534,8 +1534,8 @@ references:
 - uid: System.Byte[]
   parent: System
   isExternal: false
-  name: Byte
-  nameWithType: Byte
+  name: Byte[]
+  nameWithType: Byte[]
   fullName: System.Byte[]
   spec.csharp:
   - uid: System.Byte

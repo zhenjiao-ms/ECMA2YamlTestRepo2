@@ -25,7 +25,7 @@ items:
       public interface IPermission : System.Security.ISecurityEncodable
   implements:
   - System.Security.ISecurityEncodable
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -54,7 +54,7 @@ items:
       description: A copy of the current permission.
   overload: System.Security.IPermission.Copy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,7 +78,7 @@ items:
     parameters: []
   overload: System.Security.IPermission.Demand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,13 +107,13 @@ items:
       description: A permission to intersect with the current permission. It must be of the same type as the current permission.
     return:
       type: System.Security.IPermission
-      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid="langword_csharp_null" name="null" href=""></xref> if the intersection is empty.
+      description: A new permission that represents the intersection of the current permission and the specified permission. This new permission is `null` if the intersection is empty.
   overload: System.Security.IPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>target</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref> and is not an instance of the same class as the current permission.
-  platform:
+    description: The <code>target</code> parameter is not `null` and is not an instance of the same class as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -142,13 +142,13 @@ items:
       description: A permission that is to be tested for the subset relationship. This permission must be of the same type as the current permission.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current permission is a subset of the specified permission; otherwise, `false`.'
   overload: System.Security.IPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>target</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref> and is not of the same type as the current permission.
-  platform:
+    description: The <code>target</code> parameter is not `null` and is not of the same type as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,8 +182,8 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: The <code>target</code> parameter is not <xref uid="langword_csharp_null" name="null" href=""></xref> and is not of the same type as the current permission.
-  platform:
+    description: The <code>target</code> parameter is not `null` and is not of the same type as the current permission.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

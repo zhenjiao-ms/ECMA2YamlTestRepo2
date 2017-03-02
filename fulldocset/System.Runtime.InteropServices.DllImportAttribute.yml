@@ -81,7 +81,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -110,7 +110,7 @@ items:
       description: The name of the DLL that contains the unmanaged method. This can include an assembly display name, if the DLL is included in an assembly.
   overload: System.Runtime.InteropServices.DllImportAttribute.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -137,7 +137,7 @@ items:
       type: System.Boolean
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -164,7 +164,7 @@ items:
       type: System.Runtime.InteropServices.CallingConvention
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -191,7 +191,7 @@ items:
       type: System.Runtime.InteropServices.CharSet
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -218,7 +218,7 @@ items:
       type: System.String
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -245,7 +245,7 @@ items:
       type: System.Boolean
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -262,7 +262,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: Indicates whether unmanaged methods that have <xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> or <xref uid="langword_csharp_retval" name="retval" href=""></xref> return values are directly translated or whether <xref uid="langword_csharp_HRESULT" name="HRESULT" href=""></xref> or <xref uid="langword_csharp_retval" name="retval" href=""></xref> return values are automatically converted to exceptions.
+  summary: Indicates whether unmanaged methods that have `HRESULT` or `retval` return values are directly translated or whether `HRESULT` or `retval` return values are automatically converted to exceptions.
   remarks: "Set the PreserveSig field to `true` to directly translate unmanaged signatures with `HRESULT` or `retval` values; set it to `false` to automatically convert `HRESULT` or `retval` values to exceptions. By default, the PreserveSig field is `true`.  \n  \n When `true`, the resulting method signature returns an integer value that contains the `HRESULT` value.  In this case, you must manually inspect the return value and respond accordingly in your application.  \n  \n When you set the PreserveSig field to `false`, the resulting method signature contains a void return type instead of an integer (`HRESULT`) return type.  When the unmanaged method produces an `HRESULT`, the runtime automatically ignores a return value of `S_OK` (or 0) and does not throw an exception.  For `HRESULT`s other than `S_OK`, the runtime automatically throws an exception that corresponds to the `HRESULT`.  Note that the <xref:System.Runtime.InteropServices.DllImportAttribute> attribute only performs this conversion to methods that return an `HRESULT`.  \n  \n You might decide to change the default error reporting behavior from `HRESULT`s to exceptions in cases where exceptions better fit the error reporting structure of your application.  \n  \n This field is similar to the <xref:System.Runtime.InteropServices.PreserveSigAttribute>; however, in contrast to the PreserveSig field, the default value for the attribute is `false`.  \n  \n In some cases, Visual Basic developers use the <xref:System.Runtime.InteropServices.DllImportAttribute>, instead of using the `Declare` statement, to define a DLL function in managed code. Setting the PreserveSig field is one of those cases."
   example:
   - "The following code example uses the <xref:System.Runtime.InteropServices.DllImportAttribute> to import the unmanaged `SHAutoComplete` function once with the PreserveSig field set to `true` and again with the PreserveSig field set to `false`.  This code example causes the `SHAutoComplete` function to generate any errors with an exception one time and an `HRESULT` the next.  \n  \n [!code-cs[Runtime.InteropServices.PreserveSigAttribute#1](~/add/codesnippet/csharp/f-system.runtime.interop_0_1.cs)]\n [!code-vb[Runtime.InteropServices.PreserveSigAttribute#1](~/add/codesnippet/visualbasic/f-system.runtime.interop_0_1.vb)]"
@@ -272,7 +272,7 @@ items:
       type: System.Boolean
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -289,7 +289,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: Indicates whether the callee calls the <xref uid="langword_csharp_SetLastError" name="SetLastError" href=""></xref> Win32 API function before returning from the attributed method.
+  summary: Indicates whether the callee calls the `SetLastError` Win32 API function before returning from the attributed method.
   remarks: "`true` to indicate that the callee will call `SetLastError`; otherwise, `false`. The default is `false`.  \n  \n The runtime marshaler calls `GetLastError` and caches the value returned to prevent it from being overwritten by other API calls. You can retrieve the error code by calling <xref:System.Runtime.InteropServices.Marshal.GetLastWin32Error%2A>."
   example:
   - "In some cases, Visual Basic developers use the <xref:System.Runtime.InteropServices.DllImportAttribute>, instead of using the `Declare` statement, to define a DLL function in managed code. Setting the SetLastError field is one of those cases.  \n  \n [!code-cpp[System.Runtime.InteropServices.DllImportAttribute#5](~/add/codesnippet/cpp/f-system.runtime.interop_1_1.cpp)]\n [!code-vb[System.Runtime.InteropServices.DllImportAttribute#5](~/add/codesnippet/visualbasic/f-system.runtime.interop_1_1.vb)]\n [!code-cs[System.Runtime.InteropServices.DllImportAttribute#5](~/add/codesnippet/csharp/f-system.runtime.interop_1_1.cs)]"
@@ -299,7 +299,7 @@ items:
       type: System.Boolean
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,7 +326,7 @@ items:
       type: System.Boolean
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -352,7 +352,7 @@ items:
       description: The name of the DLL file that contains the entry point.
   overload: System.Runtime.InteropServices.DllImportAttribute.Value*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

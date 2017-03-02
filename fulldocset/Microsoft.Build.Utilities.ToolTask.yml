@@ -80,7 +80,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -105,7 +105,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Utilities.ToolTask.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -133,7 +133,7 @@ items:
       description: The <xref href="System.Resources.ResourceManager"></xref> for task resources.
   overload: Microsoft.Build.Utilities.ToolTask.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -164,7 +164,7 @@ items:
       description: The Help keyword to use for messages raised by the task.
   overload: Microsoft.Build.Utilities.ToolTask.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -189,10 +189,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method was successfule; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method was successfule; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.ToolTask.CallHostObjectToExecute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -217,7 +217,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Utilities.ToolTask.Cancel*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.DeleteTempFile(System.String)
   id: DeleteTempFile(System.String)
@@ -243,7 +243,7 @@ items:
       description: The name of the temporary file to delete.
   overload: Microsoft.Build.Utilities.ToolTask.DeleteTempFile*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -271,7 +271,7 @@ items:
       description: True when command line echo is off.
   overload: Microsoft.Build.Utilities.ToolTask.EchoOff*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.EnvironmentOverride
   id: EnvironmentOverride
@@ -298,7 +298,7 @@ items:
       description: Returns a set of environment variables. Each dictionary key is the name of the environment variable to override and the dictionary value is the value to set for that environment variable. The default implementation of EnvironmentOverride returns null.
   overload: Microsoft.Build.Utilities.ToolTask.EnvironmentOverride*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,7 +326,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.EnvironmentVariables*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.Execute
   id: Execute
@@ -348,10 +348,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the task runs successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the task runs successfully; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.ToolTask.Execute*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -388,7 +388,7 @@ items:
       description: The returned exit code of the executable file. If the task logged errors, but the executable returned an exit code of 0, this method returns -1.
   overload: Microsoft.Build.Utilities.ToolTask.ExecuteTool*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -415,7 +415,7 @@ items:
       description: The returned exit code of the executable file. If the task logged errors, but the executable returned an exit code of 0, this method returns -1.
   overload: Microsoft.Build.Utilities.ToolTask.ExitCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -446,7 +446,7 @@ items:
       description: A string value containing the command line arguments to pass directly to the executable file.
   overload: Microsoft.Build.Utilities.ToolTask.GenerateCommandLineCommands*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -477,7 +477,7 @@ items:
       description: The fully qualified path to the executable file.
   overload: Microsoft.Build.Utilities.ToolTask.GenerateFullPathToTool*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -506,7 +506,7 @@ items:
       description: a string value containing the command line arguments to add to the response (.rsp) file before running the executable file.
   overload: Microsoft.Build.Utilities.ToolTask.GenerateResponseFileCommands*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -543,7 +543,7 @@ items:
       description: The information required to start the process.
   overload: Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.GetResponseFileSwitch(System.String)
   id: GetResponseFileSwitch(System.String)
@@ -572,7 +572,7 @@ items:
       description: The command line switch used by the executable file to specifiy a response (.rsp) file.
   overload: Microsoft.Build.Utilities.ToolTask.GetResponseFileSwitch*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -598,10 +598,10 @@ items:
     parameters: []
     return:
       type: System.String
-      description: The directory in which to run the executable file, or a null reference (<xref uid="langword_csharp_Nothing" name="Nothing" href=""></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the executable file should be run in the current directory.
+      description: The directory in which to run the executable file, or a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the executable file should be run in the current directory.
   overload: Microsoft.Build.Utilities.ToolTask.GetWorkingDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -627,10 +627,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the method runs successfully; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the method runs successfully; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.ToolTask.HandleTaskExecutionErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -657,7 +657,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.HasLoggedErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.InitializeHostObject
@@ -683,7 +683,7 @@ items:
       description: The <xref href="Microsoft.Build.Utilities.HostObjectInitializationStatus"></xref> of the host object.
   overload: Microsoft.Build.Utilities.ToolTask.InitializeHostObject*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -714,7 +714,7 @@ items:
       description: A value of <xref href="Microsoft.Build.Framework.MessageImportance"></xref> that indicates the importance level with which to log the message.
   overload: Microsoft.Build.Utilities.ToolTask.LogEventsFromTextOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -745,7 +745,7 @@ items:
       description: The path to the executable file.
   overload: Microsoft.Build.Utilities.ToolTask.LogPathToTool*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -772,7 +772,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.LogStandardErrorAsError*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.LogToolCommand(System.String)
   id: LogToolCommand(System.String)
@@ -797,7 +797,7 @@ items:
       description: A descriptive message to provide loggers, usually the command line and switches.
   overload: Microsoft.Build.Utilities.ToolTask.LogToolCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -825,7 +825,7 @@ items:
       description: The <xref href="System.Text.Encoding"></xref> of the response file.
   overload: Microsoft.Build.Utilities.ToolTask.ResponseFileEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -851,10 +851,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to skip task execution; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` to skip task execution; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.ToolTask.SkipTaskExecution*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -882,7 +882,7 @@ items:
       description: The <xref href="System.Text.Encoding"></xref> of the response file.
   overload: Microsoft.Build.Utilities.ToolTask.StandardErrorEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -909,7 +909,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.StandardErrorImportance*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.StandardErrorImportanceToUse
@@ -934,7 +934,7 @@ items:
       description: Returns the actual importance at which standard error messages will be logged.
   overload: Microsoft.Build.Utilities.ToolTask.StandardErrorImportanceToUse*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.StandardErrorLoggingImportance
   id: StandardErrorLoggingImportance
@@ -958,7 +958,7 @@ items:
       description: The <xref href="Microsoft.Build.Framework.MessageImportance"></xref> with which to log errors.
   overload: Microsoft.Build.Utilities.ToolTask.StandardErrorLoggingImportance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -986,7 +986,7 @@ items:
       description: The <xref href="System.Text.Encoding"></xref> of the response file.
   overload: Microsoft.Build.Utilities.ToolTask.StandardOutputEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1013,7 +1013,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.StandardOutputImportance*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.StandardOutputImportanceToUse
@@ -1038,7 +1038,7 @@ items:
       description: Returns the actual importance at which standard out messages will be logged.
   overload: Microsoft.Build.Utilities.ToolTask.StandardOutputImportanceToUse*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.StandardOutputLoggingImportance
   id: StandardOutputLoggingImportance
@@ -1062,7 +1062,7 @@ items:
       description: The <xref href="Microsoft.Build.Framework.MessageImportance"></xref> with which to log errors.
   overload: Microsoft.Build.Utilities.ToolTask.StandardOutputLoggingImportance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1089,7 +1089,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.TaskProcessTerminationTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.Timeout
   id: Timeout
@@ -1113,7 +1113,7 @@ items:
       description: The time-out length, in milliseconds.
   overload: Microsoft.Build.Utilities.ToolTask.Timeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1140,7 +1140,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.ToolCanceled*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.ToolExe
   id: ToolExe
@@ -1164,7 +1164,7 @@ items:
       description: To be added.
   overload: Microsoft.Build.Utilities.ToolTask.ToolExe*
   exceptions: []
-  platform:
+  version:
   - netframework-35
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.ToolName
@@ -1192,7 +1192,7 @@ items:
       description: The name of the executable file to run.
   overload: Microsoft.Build.Utilities.ToolTask.ToolName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1219,7 +1219,7 @@ items:
       description: The path of the file to run.
   overload: Microsoft.Build.Utilities.ToolTask.ToolPath*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1246,7 +1246,7 @@ items:
       description: If true, the tool task will create a batch file for the command-line and execute that using the command-processor. If false the tool task will execute the command directly.
   overload: Microsoft.Build.Utilities.ToolTask.UseCommandProcessor*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Utilities.ToolTask.ValidateParameters
   id: ValidateParameters
@@ -1268,10 +1268,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if all task parameters are valid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if all task parameters are valid; otherwise, `false`.'
   overload: Microsoft.Build.Utilities.ToolTask.ValidateParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -1298,7 +1298,7 @@ items:
       description: True when the task will yield the node during tool execution.
   overload: Microsoft.Build.Utilities.ToolTask.YieldDuringToolExecution*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 references:
 - uid: Microsoft.Build.Utilities.Task
@@ -1385,8 +1385,8 @@ references:
 - uid: System.String[]
   parent: System
   isExternal: false
-  name: String
-  nameWithType: String
+  name: String[]
+  nameWithType: String[]
   fullName: System.String[]
   spec.csharp:
   - uid: System.String

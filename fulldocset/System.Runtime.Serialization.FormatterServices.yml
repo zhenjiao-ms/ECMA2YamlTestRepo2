@@ -35,7 +35,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -52,7 +52,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: Determines whether the specified <xref href="System.Type"></xref> can be deserialized with the <xref href="System.Runtime.Serialization.Formatters.TypeFilterLevel"></xref> property set to <xref uid="langword_csharp_Low" name="Low" href=""></xref>.
+  summary: Determines whether the specified <xref href="System.Type"></xref> can be deserialized with the <xref href="System.Runtime.Serialization.Formatters.TypeFilterLevel"></xref> property set to `Low`.
   remarks: "Use this method to determine whether a specified type can be deserialized when the <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> property is set to `Low`.  \n  \n .NET Framework remoting provides two levels of automatic deserialization, <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> and <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel>. <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> helps protect against deserialization attacks by deserializing only the types associated with the most basic remoting functionality. The <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> deserialization level supports automatic deserialization of all types that remoting supports in all situations. For more information about the.NET Framework remoting types that <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> and <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> support, see [&#91;\\<topic://cpconAutomaticDeserializationInNETRemoting>&#93;](http://msdn.microsoft.com/en-us/313a0e88-5b2b-4a17-8391-0ddf9f7a787b)."
   example:
   - "This example shows how to use the <xref:System.Runtime.Serialization.FormatterServices> class to serialize or deserialize an object where the base class does not implement <xref:System.Runtime.Serialization.ISerializable> but the derived class does.  \n  \n [!code-cs[FormatterServices#1](~/add/codesnippet/csharp/5d6cca2d-3ebb-424b-bf84-_1.cs)]\n [!code-cpp[FormatterServices#1](~/add/codesnippet/cpp/5d6cca2d-3ebb-424b-bf84-_1.cpp)]"
@@ -69,8 +69,8 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: The <code>t</code> parameter is an advanced type and cannot be deserialized when the <xref href="System.Runtime.Serialization.Formatters.TypeFilterLevel"></xref> property is set to <xref uid="langword_csharp_Low" name="Low" href=""></xref>.
-  platform:
+    description: The <code>t</code> parameter is an advanced type and cannot be deserialized when the <xref href="System.Runtime.Serialization.Formatters.TypeFilterLevel"></xref> property is set to `Low`.
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,11 +107,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>obj</code> or <code>members</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n An element of <code>members</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>obj</code> or <code>members</code> parameter is `null`.  \n  \n An element of <code>members</code> is `null`."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: An element of <code>members</code> does not represent a field.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -143,14 +143,14 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>type</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>type</code> parameter is `null`.
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
     description: The <code>type</code> parameter is not a valid common language runtime type.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -184,11 +184,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>type</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>type</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -223,11 +223,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>type</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>type</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -256,7 +256,7 @@ items:
       description: An <xref href="System.Runtime.Serialization.ISerializationSurrogate"></xref> for the specified <code>innerSurrogate</code>.
   overload: System.Runtime.Serialization.FormatterServices.GetSurrogateForCyclicalReference*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -290,11 +290,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>assem</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>assem</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -326,11 +326,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: The <code>type</code> parameter is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: The <code>type</code> parameter is `null`.
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -370,7 +370,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>obj</code>, <code>members</code>, or <code>data</code> parameter is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n An element of <code>members</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
+    description: "The <code>obj</code>, <code>members</code>, or <code>data</code> parameter is `null`.  \n  \n An element of <code>members</code> is `null`."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: The length of <code>members</code> does not match the length of <code>data</code>.
@@ -380,7 +380,7 @@ items:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
     description: The caller does not have the required permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -440,8 +440,8 @@ references:
 - uid: System.Object[]
   parent: System
   isExternal: false
-  name: Object
-  nameWithType: Object
+  name: Object[]
+  nameWithType: Object[]
   fullName: System.Object[]
   spec.csharp:
   - uid: System.Object
@@ -454,8 +454,8 @@ references:
 - uid: System.Reflection.MemberInfo[]
   parent: System.Reflection
   isExternal: false
-  name: MemberInfo
-  nameWithType: MemberInfo
+  name: MemberInfo[]
+  nameWithType: MemberInfo[]
   fullName: System.Reflection.MemberInfo[]
   spec.csharp:
   - uid: System.Reflection.MemberInfo

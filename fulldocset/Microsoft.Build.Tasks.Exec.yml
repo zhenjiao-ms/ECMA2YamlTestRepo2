@@ -89,7 +89,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -113,7 +113,7 @@ items:
     parameters: []
   overload: Microsoft.Build.Tasks.Exec.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -140,7 +140,7 @@ items:
       description: Command line builder to add arguments to.
   overload: Microsoft.Build.Tasks.Exec.AddCommandLineCommands*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -167,7 +167,7 @@ items:
       description: The command to run.
   overload: Microsoft.Build.Tasks.Exec.Command*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
       description: A regular expression to spot error lines in the tool output.
   overload: Microsoft.Build.Tasks.Exec.CustomErrorRegularExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.Exec.CustomWarningRegularExpression
   id: CustomWarningRegularExpression
@@ -218,7 +218,7 @@ items:
       description: A regular expression to spot warning lines in the tool output.
   overload: Microsoft.Build.Tasks.Exec.CustomWarningRegularExpression*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.Exec.ExecuteTool(System.String,System.String,System.String)
   id: ExecuteTool(System.String,System.String,System.String)
@@ -252,7 +252,7 @@ items:
       description: The exit code that the tool returns.
   overload: Microsoft.Build.Tasks.Exec.ExecuteTool*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -279,7 +279,7 @@ items:
       description: The full path to the system tool cmd.exe.
   overload: Microsoft.Build.Tasks.Exec.GenerateFullPathToTool*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -307,7 +307,7 @@ items:
       description: The working directory to use for the tool process.
   overload: Microsoft.Build.Tasks.Exec.GetWorkingDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -332,10 +332,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if exit code was ignored; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if exit code was ignored; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.Exec.HandleTaskExecutionErrors*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -353,15 +353,15 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Gets or sets a Boolean value that indicates whether the `Exec` task should ignore the exit code provided by the executed command (<xref uid="langword_csharp_true" name="true" href=""></xref>) or should return <xref uid="langword_csharp_false" name="false" href=""></xref> if the executed command returns a non-zero exit code (<xref uid="langword_csharp_false" name="false" href=""></xref>).
+  summary: Gets or sets a Boolean value that indicates whether the `Exec` task should ignore the exit code provided by the executed command (`true`) or should return `false` if the executed command returns a non-zero exit code (`false`).
   syntax:
     content: public bool IgnoreExitCode { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the `Exec` task should ignore the exit code provided by the executed command; <xref uid="langword_csharp_false" name="false" href=""></xref> if the `Exec` task should return <xref uid="langword_csharp_false" name="false" href=""></xref> if the executed command returns a non-zero exit code.
+      description: '`true` if the `Exec` task should ignore the exit code provided by the executed command; `false` if the `Exec` task should return `false` if the executed command returns a non-zero exit code.'
   overload: Microsoft.Build.Tasks.Exec.IgnoreExitCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -385,10 +385,10 @@ items:
     content: public bool IgnoreStandardErrorWarningFormat { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the `Exec` task should ignore the standard error and warning format and should log errors and warnings as regular messages; <xref uid="langword_csharp_false" name="false" href=""></xref> if the `Exec` task should log the errors and warnings that match the standard error and warning format.
+      description: '`true` if the `Exec` task should ignore the standard error and warning format and should log errors and warnings as regular messages; `false` if the `Exec` task should log the errors and warnings that match the standard error and warning format.'
   overload: Microsoft.Build.Tasks.Exec.IgnoreStandardErrorWarningFormat*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.Exec.LogEventsFromTextOutput(System.String,Microsoft.Build.Framework.MessageImportance)
   id: LogEventsFromTextOutput(System.String,Microsoft.Build.Framework.MessageImportance)
@@ -403,7 +403,7 @@ items:
   - Microsoft.Build.Tasks
   - Microsoft.Build.Tasks.v4.0
   namespace: Microsoft.Build.Tasks
-  summary: Logs the specified single line of text as an error or warning if the single line matched custom or standard error and warning formats or as a regular message if <xref:Microsoft.Build.Tasks.Exec.IgnoreStandardErrorWarningFormat*> is set to <xref uid="langword_csharp_true" name="true" href=""></xref> and no custom format matched.
+  summary: Logs the specified single line of text as an error or warning if the single line matched custom or standard error and warning formats or as a regular message if <xref:Microsoft.Build.Tasks.Exec.IgnoreStandardErrorWarningFormat*> is set to `true` and no custom format matched.
   syntax:
     content: protected override void LogEventsFromTextOutput (string singleLine, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
@@ -415,7 +415,7 @@ items:
       description: The importance to log the message with.
   overload: Microsoft.Build.Tasks.Exec.LogEventsFromTextOutput*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: Microsoft.Build.Tasks.Exec.LogPathToTool(System.String,System.String)
   id: LogPathToTool(System.String,System.String)
@@ -442,7 +442,7 @@ items:
       description: The current directory where the tool is run.
   overload: Microsoft.Build.Tasks.Exec.LogPathToTool*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -469,7 +469,7 @@ items:
       description: Specify an empty string. This parameter is not used.
   overload: Microsoft.Build.Tasks.Exec.LogToolCommand*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -496,7 +496,7 @@ items:
       description: The output items from the task.
   overload: Microsoft.Build.Tasks.Exec.Outputs*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -522,7 +522,7 @@ items:
       description: The encoding of the captured task standard error stream.
   overload: Microsoft.Build.Tasks.Exec.StandardErrorEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -548,7 +548,7 @@ items:
       description: The importance to log ordinary messages with in the standard error stream.
   overload: Microsoft.Build.Tasks.Exec.StandardErrorLoggingImportance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -574,7 +574,7 @@ items:
       description: The encoding of the captured task standard output stream.
   overload: Microsoft.Build.Tasks.Exec.StandardOutputEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -600,7 +600,7 @@ items:
       description: The importance to log ordinary messages with in the standard out stream.
   overload: Microsoft.Build.Tasks.Exec.StandardOutputLoggingImportance*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -626,7 +626,7 @@ items:
       description: The encoding of the captured task standard error stream that is visible to the project.
   overload: Microsoft.Build.Tasks.Exec.StdErrEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -652,7 +652,7 @@ items:
       description: The encoding of the captured task standard output stream that is visible to the project.
   overload: Microsoft.Build.Tasks.Exec.StdOutEncoding*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -678,7 +678,7 @@ items:
       description: The name of the tool (cmd.exe).
   overload: Microsoft.Build.Tasks.Exec.ToolName*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -702,10 +702,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if task execution should proceed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if task execution should proceed; otherwise, `false`.'
   overload: Microsoft.Build.Tasks.Exec.ValidateParameters*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -731,7 +731,7 @@ items:
       description: The directory in which the command will run.
   overload: Microsoft.Build.Tasks.Exec.WorkingDirectory*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -863,8 +863,8 @@ references:
 - uid: Microsoft.Build.Framework.ITaskItem[]
   parent: Microsoft.Build.Framework
   isExternal: false
-  name: ITaskItem
-  nameWithType: ITaskItem
+  name: ITaskItem[]
+  nameWithType: ITaskItem[]
   fullName: Microsoft.Build.Framework.ITaskItem[]
   spec.csharp:
   - uid: Microsoft.Build.Framework.ITaskItem

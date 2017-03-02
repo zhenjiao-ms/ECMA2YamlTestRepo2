@@ -45,7 +45,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -69,16 +69,16 @@ items:
     parameters:
     - id: invalidHandleValue
       type: System.IntPtr
-      description: The value of an invalid handle (usually 0 or -1).  Your implementation of <xref:System.Runtime.InteropServices.SafeHandle.IsInvalid*> should return <xref uid="langword_csharp_true" name="true" href=""></xref> for this value.
+      description: The value of an invalid handle (usually 0 or -1).  Your implementation of <xref:System.Runtime.InteropServices.SafeHandle.IsInvalid*> should return `true` for this value.
     - id: ownsHandle
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to reliably let <xref href="System.Runtime.InteropServices.SafeHandle"></xref> release the handle during the finalization phase; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref> (not recommended).
+      description: '`true` to reliably let <xref href="System.Runtime.InteropServices.SafeHandle"></xref> release the handle during the finalization phase; otherwise, `false` (not recommended).'
   overload: System.Runtime.InteropServices.SafeHandle.#ctor*
   exceptions:
   - type: System.TypeLoadException
     commentId: T:System.TypeLoadException
     description: The derived class resides in an assembly without unmanaged code access permission.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -102,7 +102,7 @@ items:
     parameters: []
   overload: System.Runtime.InteropServices.SafeHandle.Close*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -126,10 +126,10 @@ items:
     parameters:
     - id: success
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the reference counter was successfully incremented; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the reference counter was successfully incremented; otherwise, `false`.'
   overload: System.Runtime.InteropServices.SafeHandle.DangerousAddRef*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -153,10 +153,10 @@ items:
     parameters: []
     return:
       type: System.IntPtr
-      description: An <xref uid="langword_csharp_IntPtr" name="IntPtr" href=""></xref> representing the value of the <xref href="System.Runtime.InteropServices.SafeHandle.handle"></xref> field. If the handle has been marked invalid with <xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid*>, this method still returns the original handle value, which can be a stale value.
+      description: An `IntPtr` representing the value of the <xref href="System.Runtime.InteropServices.SafeHandle.handle"></xref> field. If the handle has been marked invalid with <xref:System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid*>, this method still returns the original handle value, which can be a stale value.
   overload: System.Runtime.InteropServices.SafeHandle.DangerousGetHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -180,7 +180,7 @@ items:
     parameters: []
   overload: System.Runtime.InteropServices.SafeHandle.DangerousRelease*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -204,7 +204,7 @@ items:
     parameters: []
   overload: System.Runtime.InteropServices.SafeHandle.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -228,10 +228,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> for a normal dispose operation; <xref uid="langword_csharp_false" name="false" href=""></xref> to finalize the handle.
+      description: '`true` for a normal dispose operation; `false` to finalize the handle.'
   overload: System.Runtime.InteropServices.SafeHandle.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -255,7 +255,7 @@ items:
     parameters: []
   overload: System.Runtime.InteropServices.SafeHandle.Finalize*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -280,7 +280,7 @@ items:
       type: System.IntPtr
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -303,10 +303,10 @@ items:
     content: public bool IsClosed { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle is closed; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the handle is closed; otherwise, `false`.'
   overload: System.Runtime.InteropServices.SafeHandle.IsClosed*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -331,10 +331,10 @@ items:
     content: public abstract bool IsInvalid { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle value is invalid; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the handle value is invalid; otherwise, `false`.'
   overload: System.Runtime.InteropServices.SafeHandle.IsInvalid*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -360,10 +360,10 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the handle is released successfully; otherwise, in the event of a catastrophic failure,<xref uid="langword_csharp_ false" name=" false" href=""></xref>. In this case, it generates a [releaseHandleFailed](~/add/includes/ajax-current-ext-md.md) Managed Debugging Assistant.
+      description: '`true` if the handle is released successfully; otherwise, in the event of a catastrophic failure,` false`. In this case, it generates a [releaseHandleFailed](~/add/includes/ajax-current-ext-md.md) Managed Debugging Assistant.'
   overload: System.Runtime.InteropServices.SafeHandle.ReleaseHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -390,7 +390,7 @@ items:
       description: The pre-existing handle to use.
   overload: System.Runtime.InteropServices.SafeHandle.SetHandle*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -414,7 +414,7 @@ items:
     parameters: []
   overload: System.Runtime.InteropServices.SafeHandle.SetHandleAsInvalid*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

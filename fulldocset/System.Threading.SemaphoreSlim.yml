@@ -46,7 +46,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.#ctor(System.Int32)
   id: '#ctor(System.Int32)'
@@ -73,7 +73,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>initialCount</code> is less than 0.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.#ctor(System.Int32,System.Int32)
   id: '#ctor(System.Int32,System.Int32)'
@@ -102,7 +102,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>initialCount</code> is less than 0, or <code>initialCount</code> is greater than <code>maxCount</code>, or <code>maxCount</code> is equal to or less than 0.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.AvailableWaitHandle
   id: AvailableWaitHandle
@@ -128,7 +128,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.SemaphoreSlim"></xref> has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.CurrentCount
   id: CurrentCount
@@ -151,7 +151,7 @@ items:
       description: The number of remaining threads that can enter the semaphore.
   overload: System.Threading.SemaphoreSlim.CurrentCount*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Dispose
   id: Dispose
@@ -172,7 +172,7 @@ items:
     parameters: []
   overload: System.Threading.SemaphoreSlim.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -193,10 +193,10 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to release both managed and unmanaged resources; <xref uid="langword_csharp_false" name="false" href=""></xref> to release only unmanaged resources.
+      description: '`true` to release both managed and unmanaged resources; `false` to release only unmanaged resources.'
   overload: System.Threading.SemaphoreSlim.Dispose*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Release
   id: Release
@@ -226,7 +226,7 @@ items:
   - type: System.Threading.SemaphoreFullException
     commentId: T:System.Threading.SemaphoreFullException
     description: The <xref href="System.Threading.SemaphoreSlim"></xref> has already reached its maximum size.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Release(System.Int32)
   id: Release(System.Int32)
@@ -262,7 +262,7 @@ items:
   - type: System.Threading.SemaphoreFullException
     commentId: T:System.Threading.SemaphoreFullException
     description: The <xref href="System.Threading.SemaphoreSlim"></xref> has already reached its maximum size.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Wait
   id: Wait
@@ -286,7 +286,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The current instance has already been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Wait(System.Int32)
   id: Wait(System.Int32)
@@ -310,13 +310,13 @@ items:
       description: The number of milliseconds to wait, or <xref href="System.Threading.Timeout.Infinite"></xref>(~/add/includes/ajax-current-ext-md.md) to wait indefinitely.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, `false`.'
   overload: System.Threading.SemaphoreSlim.Wait*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: <code>millisecondsTimeout</code> is a negative number other than -1, which represents an infinite time-out.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Wait(System.Threading.CancellationToken)
   id: Wait(System.Threading.CancellationToken)
@@ -346,7 +346,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: "The current instance has already been disposed.  \n  \n -or-  \n  \n The <xref href=\"System.Threading.CancellationTokenSource\"></xref> that created<code> cancellationToken</code> has already been disposed."
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Wait(System.TimeSpan)
   id: Wait(System.TimeSpan)
@@ -370,7 +370,7 @@ items:
       description: A <xref href="System.TimeSpan"></xref> that represents the number of milliseconds to wait, or a <xref href="System.TimeSpan"></xref> that represents -1 milliseconds to wait indefinitely.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, `false`.'
   overload: System.Threading.SemaphoreSlim.Wait*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -379,7 +379,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The semaphoreSlim instance has been disposed<code>.</code>
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Wait(System.Int32,System.Threading.CancellationToken)
   id: Wait(System.Int32,System.Threading.CancellationToken)
@@ -406,7 +406,7 @@ items:
       description: The <xref href="System.Threading.CancellationToken"></xref> to observe.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, `false`.'
   overload: System.Threading.SemaphoreSlim.Wait*
   exceptions:
   - type: System.OperationCanceledException
@@ -418,7 +418,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: The <xref href="System.Threading.SemaphoreSlim"></xref> instance has been disposed, or the <xref href="System.Threading.CancellationTokenSource"></xref> that created <code>cancellationToken</code> has been disposed.
-  platform:
+  version:
   - netframework-40
 - uid: System.Threading.SemaphoreSlim.Wait(System.TimeSpan,System.Threading.CancellationToken)
   id: Wait(System.TimeSpan,System.Threading.CancellationToken)
@@ -445,7 +445,7 @@ items:
       description: The <xref href="System.Threading.CancellationToken"></xref> to observe.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current thread successfully entered the <xref href="System.Threading.SemaphoreSlim"></xref>; otherwise, `false`.'
   overload: System.Threading.SemaphoreSlim.Wait*
   exceptions:
   - type: System.OperationCanceledException
@@ -457,7 +457,7 @@ items:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
     description: "The semaphoreSlim instance has been disposed<code>.</code><code>-or-</code>  \n  \n The <xref href=\"System.Threading.CancellationTokenSource\"></xref> that created <code>cancellationToken</code> has already been disposed."
-  platform:
+  version:
   - netframework-40
 references:
 - uid: System.Object

@@ -21,7 +21,7 @@ items:
   nameWithType: HtmlTableCell
   fullName: System.Web.UI.HtmlControls.HtmlTableCell
   type: Class
-  summary: Represents the <xref uid="langword_csharp_&lt;td&gt;" name="&lt;td&gt;" href=""></xref> and <xref uid="langword_csharp_&lt;th&gt;" name="&lt;th&gt;" href=""></xref> HTML elements in an <xref href="System.Web.UI.HtmlControls.HtmlTableRow"></xref> object.
+  summary: Represents the `&lt;td&gt;` and `&lt;th&gt;` HTML elements in an <xref href="System.Web.UI.HtmlControls.HtmlTableRow"></xref> object.
   remarks: "The `<td>` element represents a data cell in a table, while the `<th>` element represents a table heading cell. Use the HtmlTableCell class to programmatically control the `<td>` and `<th>` HTML elements in an <xref:System.Web.UI.HtmlControls.HtmlTableRow> object.  \n  \n The HtmlTableCell class allows you to customize the appearance of a cell in a table by specifying the background color, the border color, the height, and the width. These attributes are set using the <xref:System.Web.UI.HtmlControls.HtmlTableCell.BgColor%2A>, <xref:System.Web.UI.HtmlControls.HtmlTableCell.BorderColor%2A>, <xref:System.Web.UI.HtmlControls.HtmlTableCell.Height%2A>, and <xref:System.Web.UI.HtmlControls.HtmlTableCell.Width%2A> properties.  \n  \n You can control how the content of a cell is displayed by specifying the vertical and horizontal alignment of the contents. You can also specify whether the content automatically continues on the next line when the end of the cell is reached. The horizontal alignment is controlled by the <xref:System.Web.UI.HtmlControls.HtmlTableCell.Align%2A> property, while the <xref:System.Web.UI.HtmlControls.HtmlTableCell.VAlign%2A> property controls the vertical alignment. The <xref:System.Web.UI.HtmlControls.HtmlTableCell.NoWrap%2A> property indicates whether text wrapping is disabled.  \n  \n By using the <xref:System.Web.UI.HtmlControls.HtmlTableCell.ColSpan%2A> or the <xref:System.Web.UI.HtmlControls.HtmlTableCell.RowSpan%2A> property, you can control the number of columns or rows that a cell occupies. For example, you can create a cell that occupies two columns in a table by setting the <xref:System.Web.UI.HtmlControls.HtmlTableCell.ColSpan%2A> property to `2`.  \n  \n For a list of initial property values for an instance of HtmlTableCell, see the <xref:System.Web.UI.HtmlControls.HtmlTableCell.%23ctor%2A> constructor.  \n  \n> [!CAUTION]\n>  This control can be used to display user input, which might include malicious client script. Check any information that is sent from a client for executable script, SQL statements, or other code before displaying it in your application. ASP.NET provides an input request validation feature to block script and HTML in user input. Validation server controls are also provided to assess user input. For more information, see [Validation Server Control Syntax](http://msdn.microsoft.com/en-us/96d2c59e-693c-4079-9b53-b3ff0d9e9133)."
   example:
   - "The following code example demonstrates how to use an HtmlTableCell to modify the contents of a cell in a table. Note that the <xref:System.Web.UI.HtmlControls.HtmlTable.Rows%2A> collection of an <xref:System.Web.UI.HtmlControls.HtmlTable> control contains a collection of the rows (<xref:System.Web.UI.HtmlControls.HtmlTableRow> objects) in the table. The <xref:System.Web.UI.HtmlControls.HtmlTableRow.Cells%2A> collection of an <xref:System.Web.UI.HtmlControls.HtmlTableRow> object is a collection of the cells (HtmlTableCell objects) in a row.  \n  \n [!code-vb[HtmlTblCell#1](~/add/codesnippet/visualbasic/t-system.web.ui.htmlcont_19_1.aspx)]\n [!code-cs[HtmlTblCell#1](~/add/codesnippet/csharp/t-system.web.ui.htmlcont_19_1.aspx)]"
@@ -160,7 +160,7 @@ items:
   - System.Web.UI.HtmlControls.HtmlControl.System#Web#UI#IAttributeAccessor#SetAttribute(System.String,System.String)
   - System.Web.UI.HtmlControls.HtmlControl.TagName
   - System.Web.UI.HtmlControls.HtmlControl.ViewStateIgnoresCase
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -186,7 +186,7 @@ items:
     parameters: []
   overload: System.Web.UI.HtmlControls.HtmlTableCell.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -215,7 +215,7 @@ items:
       description: The element name of the tag.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -243,7 +243,7 @@ items:
       description: The horizontal alignment of the content in the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>. The default value is <xref href="System.String.Empty"></xref>, which indicates that this property is not set.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.Align*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -271,7 +271,7 @@ items:
       description: The background color of the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.BgColor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -299,7 +299,7 @@ items:
       description: The border color of the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.BorderColor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -324,10 +324,10 @@ items:
     content: public int ColSpan { get; set; }
     return:
       type: System.Int32
-      description: The number of columns occupied by the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>. The default value is <xref uid="langword_csharp_-1" name="-1" href=""></xref>, which indicates that this property is not set.
+      description: The number of columns occupied by the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>. The default value is `-1`, which indicates that this property is not set.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.ColSpan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -355,7 +355,7 @@ items:
       description: The height (in pixels) of the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>. The default value is <xref href="System.String.Empty"></xref>, which indicates that this property is not set.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.Height*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -380,10 +380,10 @@ items:
     content: public bool NoWrap { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the text does not automatically wrap in the cell; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the text does not automatically wrap in the cell; otherwise, `false`. The default value is `false`.'
   overload: System.Web.UI.HtmlControls.HtmlTableCell.NoWrap*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -410,7 +410,7 @@ items:
       description: The <xref href="System.Web.UI.HtmlTextWriter"></xref> that receives the rendered content.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.RenderEndTag*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -435,10 +435,10 @@ items:
     content: public int RowSpan { get; set; }
     return:
       type: System.Int32
-      description: The number of rows occupied by a cell represented by an instance of the <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref> class. The default value is <xref uid="langword_csharp_-1" name="-1" href=""></xref>, which indicates that this property is not set.
+      description: The number of rows occupied by a cell represented by an instance of the <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref> class. The default value is `-1`, which indicates that this property is not set.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.RowSpan*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -466,7 +466,7 @@ items:
       description: The vertical alignment for the content of a cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>. The default value is <xref href="System.String.Empty"></xref>, which indicates that this property is not set.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.VAlign*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -494,7 +494,7 @@ items:
       description: The width (in pixels) of the cell represented by an instance of <xref href="System.Web.UI.HtmlControls.HtmlTableCell"></xref>. The default value is <xref href="System.String.Empty"></xref>, which indicates that this property is not set.
   overload: System.Web.UI.HtmlControls.HtmlTableCell.Width*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

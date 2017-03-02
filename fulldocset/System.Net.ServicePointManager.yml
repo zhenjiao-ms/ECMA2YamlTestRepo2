@@ -44,7 +44,7 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -72,7 +72,7 @@ items:
       description: An object that implements the <xref href="System.Net.ICertificatePolicy"></xref> interface.
   overload: System.Net.ServicePointManager.CertificatePolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -97,10 +97,10 @@ items:
     content: public static bool CheckCertificateRevocationList { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the certificate revocation list is checked; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the certificate revocation list is checked; otherwise, `false`.'
   overload: System.Net.ServicePointManager.CheckCertificateRevocationList*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -125,13 +125,13 @@ items:
     content: public static int DefaultConnectionLimit { get; set; }
     return:
       type: System.Int32
-      description: The maximum number of concurrent connections allowed by a <xref href="System.Net.ServicePoint"></xref> object. The default value is 2. When an app is running as an ASP.NET host, it is not possible to alter the value of this property through the config file if the autoConfig property is set to <xref uid="langword_csharp_true" name="true" href=""></xref>. However, you can change the value programmatically when the autoConfig property is <xref uid="langword_csharp_true" name="true" href=""></xref>. Set your preferred value once, when the AppDomain loads.
+      description: The maximum number of concurrent connections allowed by a <xref href="System.Net.ServicePoint"></xref> object. The default value is 2. When an app is running as an ASP.NET host, it is not possible to alter the value of this property through the config file if the autoConfig property is set to `true`. However, you can change the value programmatically when the autoConfig property is `true`. Set your preferred value once, when the AppDomain loads.
   overload: System.Net.ServicePointManager.DefaultConnectionLimit*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: DefaultConnectionLimit is less than or equal to 0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -155,7 +155,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -182,7 +182,7 @@ items:
       type: System.Int32
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -210,7 +210,7 @@ items:
       description: The time-out value, in milliseconds. A value of -1 indicates an infinite time-out period. The default value is 120,000 milliseconds (two minutes).
   overload: System.Net.ServicePointManager.DnsRefreshTimeout*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -235,10 +235,10 @@ items:
     content: public static bool EnableDnsRoundRobin { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_false" name="false" href=""></xref> if a DNS resolution always returns the first IP address for a particular host; otherwise <xref uid="langword_csharp_true" name="true" href=""></xref>. The default is <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`false` if a DNS resolution always returns the first IP address for a particular host; otherwise `true`. The default is `false`.'
   overload: System.Net.ServicePointManager.EnableDnsRoundRobin*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -264,7 +264,7 @@ items:
       description: The encryption policy to use for this <xref href="System.Net.ServicePointManager"></xref> instance.
   overload: System.Net.ServicePointManager.EncryptionPolicy*
   exceptions: []
-  platform:
+  version:
   - netframework-40
 - uid: System.Net.ServicePointManager.Expect100Continue
   id: Expect100Continue
@@ -286,10 +286,10 @@ items:
     content: public static bool Expect100Continue { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to enable 100-Continue behavior. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` to enable 100-Continue behavior. The default value is `true`.'
   overload: System.Net.ServicePointManager.Expect100Continue*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -321,11 +321,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>address</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>address</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The maximum number of <xref href="System.Net.ServicePoint"></xref> objects defined in <xref:System.Net.ServicePointManager.MaxServicePoints*> has been reached.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -366,7 +366,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The maximum number of <xref href="System.Net.ServicePoint"></xref> objects defined in <xref:System.Net.ServicePointManager.MaxServicePoints*> has been reached.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -401,11 +401,11 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: <code>address</code> is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+    description: <code>address</code> is `null`.
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The maximum number of <xref href="System.Net.ServicePoint"></xref> objects defined in <xref:System.Net.ServicePointManager.MaxServicePoints*> has been reached.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -436,7 +436,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: MaxServicePointIdleTime is less than <xref href="System.Threading.Timeout.Infinite"></xref> or greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -467,7 +467,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: MaxServicePoints is less than 0 or greater than <xref href="System.Int32.MaxValue"></xref>.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -496,7 +496,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: The value specified to set the property is not a valid <xref href="System.Net.SecurityProtocolType"></xref> enumeration value.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -519,10 +519,10 @@ items:
     content: public static System.Net.Security.RemoteCertificateValidationCallback ServerCertificateValidationCallback { get; set; }
     return:
       type: System.Net.Security.RemoteCertificateValidationCallback
-      description: A <xref href="System.Net.Security.RemoteCertificateValidationCallback"></xref>. The default value is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A <xref href="System.Net.Security.RemoteCertificateValidationCallback"></xref>. The default value is `null`.
   overload: System.Net.ServicePointManager.ServerCertificateValidationCallback*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -558,7 +558,7 @@ items:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: The value specified for <code>keepAliveTime</code> or <code>keepAliveInterval</code> parameter is less than or equal to 0.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -583,10 +583,10 @@ items:
     content: public static bool UseNagleAlgorithm { get; set; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to use the Nagle algorithm; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>. The default value is <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: '`true` to use the Nagle algorithm; otherwise, `false`. The default value is `true`.'
   overload: System.Net.ServicePointManager.UseNagleAlgorithm*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

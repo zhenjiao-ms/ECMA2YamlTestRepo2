@@ -66,7 +66,7 @@ items:
   - System.Windows.Threading.DispatcherObject.CheckAccess
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -89,7 +89,7 @@ items:
     parameters: []
   overload: System.Windows.Freezable.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -110,10 +110,10 @@ items:
     content: public bool CanFreeze { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the current object can be made unmodifiable or is already unmodifiable; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if the current object can be made unmodifiable or is already unmodifiable; otherwise, `false`.'
   overload: System.Windows.Freezable.CanFreeze*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -137,7 +137,7 @@ items:
       type: System.EventHandler
       description: To be added.
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -160,10 +160,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_true." name="true." href=""></xref>
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is `true.`
   overload: System.Windows.Freezable.Clone*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -189,7 +189,7 @@ items:
       description: The object to clone.
   overload: System.Windows.Freezable.CloneCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -212,10 +212,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_false" name="false" href=""></xref> even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid="langword_csharp_true." name="true." href=""></xref>
+      description: A modifiable clone of the current object. The cloned object's <xref:System.Windows.Freezable.IsFrozen*> property is `false` even if the source's <xref:System.Windows.Freezable.IsFrozen*> property is `true.`
   overload: System.Windows.Freezable.CloneCurrentValue*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -241,7 +241,7 @@ items:
       description: The <xref href="System.Windows.Freezable"></xref> to be cloned.
   overload: System.Windows.Freezable.CloneCurrentValueCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -267,7 +267,7 @@ items:
       description: The new instance.
   overload: System.Windows.Freezable.CreateInstance*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -295,7 +295,7 @@ items:
       description: The new instance.
   overload: System.Windows.Freezable.CreateInstanceCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -311,7 +311,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows
-  summary: Makes the current object unmodifiable and sets its <xref:System.Windows.Freezable.IsFrozen*> property to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+  summary: Makes the current object unmodifiable and sets its <xref:System.Windows.Freezable.IsFrozen*> property to `true`.
   remarks: To avoid the possibility of an <xref:System.InvalidOperationException> when calling this method, check the <xref:System.Windows.Freezable.CanFreeze%2A> property to determine whether the <xref:System.Windows.Freezable> can be made unmodifiable before calling this method.
   syntax:
     content: public void Freeze ();
@@ -321,7 +321,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Windows.Freezable"></xref> cannot be made unmodifiable.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -337,26 +337,26 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows
-  summary: If the <code>isChecking</code> parameter is <xref uid="langword_csharp_true" name="true" href=""></xref>, this method indicates whether the specified <xref href="System.Windows.Freezable"></xref> can be made unmodifiable. If the <code>isChecking</code> parameter is <xref uid="langword_csharp_false" name="false" href=""></xref>, this method attempts to make the specified <xref href="System.Windows.Freezable"></xref> unmodifiable and indicates whether the operation succeeded.
+  summary: If the <code>isChecking</code> parameter is `true`, this method indicates whether the specified <xref href="System.Windows.Freezable"></xref> can be made unmodifiable. If the <code>isChecking</code> parameter is `false`, this method attempts to make the specified <xref href="System.Windows.Freezable"></xref> unmodifiable and indicates whether the operation succeeded.
   remarks: "Do not call this method unless you are deriving from <xref:System.Windows.Freezable> and overriding the <xref:System.Windows.Freezable.FreezeCore%2A> method.  This method may be used in the <xref:System.Windows.Freezable.FreezeCore%2A> method to freeze class data members that are themselves <xref:System.Windows.Freezable> objects.  \n  \n It is alright to call this method again on a <xref:System.Windows.Freezable> object that is already frozen (unmodifiable)."
   syntax:
     content: protected static bool Freeze (System.Windows.Freezable freezable, bool isChecking);
     parameters:
     - id: freezable
       type: System.Windows.Freezable
-      description: The object to check or make unmodifiable. If `isChecking` is <xref uid="langword_csharp_true" name="true" href=""></xref>, the object is checked to determine whether it can be made unmodifiable. If `isChecking` is <xref uid="langword_csharp_false" name="false" href=""></xref>, the object is made unmodifiable, if possible.
+      description: The object to check or make unmodifiable. If `isChecking` is `true`, the object is checked to determine whether it can be made unmodifiable. If `isChecking` is `false`, the object is made unmodifiable, if possible.
     - id: isChecking
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to return an indication of whether the object can be frozen (without actually freezing it); <xref uid="langword_csharp_false" name="false" href=""></xref> to actually freeze the object.
+      description: '`true` to return an indication of whether the object can be frozen (without actually freezing it); `false` to actually freeze the object.'
     return:
       type: System.Boolean
-      description: If <code>isChecking</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Windows.Freezable"></xref> can be made unmodifiable, or <xref uid="langword_csharp_false" name="false" href=""></xref> if it cannot be made unmodifiable. If <code>isChecking</code> is <xref uid="langword_csharp_false" name="false" href=""></xref>, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the specified <xref href="System.Windows.Freezable"></xref> is now unmodifiable, or <xref uid="langword_csharp_false" name="false" href=""></xref> if it cannot be made unmodifiable.
+      description: If <code>isChecking</code> is `true`, this method returns `true` if the specified <xref href="System.Windows.Freezable"></xref> can be made unmodifiable, or `false` if it cannot be made unmodifiable. If <code>isChecking</code> is `false`, this method returns `true` if the specified <xref href="System.Windows.Freezable"></xref> is now unmodifiable, or `false` if it cannot be made unmodifiable.
   overload: System.Windows.Freezable.Freeze*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: When <code>isChecking</code> is <xref uid="langword_csharp_false" name="false" href=""></xref>, the attempt to make <code>freezable</code> unmodifiable was unsuccessful; the object is now in an unknown state (it might be partially frozen).
-  platform:
+    description: When <code>isChecking</code> is `false`, the attempt to make <code>freezable</code> unmodifiable was unsuccessful; the object is now in an unknown state (it might be partially frozen).
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -379,13 +379,13 @@ items:
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> to return an indication of whether the object can be frozen (without actually freezing it); <xref uid="langword_csharp_false" name="false" href=""></xref> to actually freeze the object.
+      description: '`true` to return an indication of whether the object can be frozen (without actually freezing it); `false` to actually freeze the object.'
     return:
       type: System.Boolean
-      description: If <code>isChecking</code> is <xref uid="langword_csharp_true" name="true" href=""></xref>, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the <xref href="System.Windows.Freezable"></xref> can be made unmodifiable, or <xref uid="langword_csharp_false" name="false" href=""></xref> if it cannot be made unmodifiable. If <code>isChecking</code> is <xref uid="langword_csharp_false" name="false" href=""></xref>, this method returns <xref uid="langword_csharp_true" name="true" href=""></xref> if the if the specified <xref href="System.Windows.Freezable"></xref> is now unmodifiable, or <xref uid="langword_csharp_false" name="false" href=""></xref> if it cannot be made unmodifiable.
+      description: If <code>isChecking</code> is `true`, this method returns `true` if the <xref href="System.Windows.Freezable"></xref> can be made unmodifiable, or `false` if it cannot be made unmodifiable. If <code>isChecking</code> is `false`, this method returns `true` if the if the specified <xref href="System.Windows.Freezable"></xref> is now unmodifiable, or `false` if it cannot be made unmodifiable.
   overload: System.Windows.Freezable.FreezeCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -408,13 +408,13 @@ items:
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: A frozen copy of the <xref href="System.Windows.Freezable"></xref>. The copy's <xref:System.Windows.Freezable.IsFrozen*> property is set to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A frozen copy of the <xref href="System.Windows.Freezable"></xref>. The copy's <xref:System.Windows.Freezable.IsFrozen*> property is set to `true`.
   overload: System.Windows.Freezable.GetAsFrozen*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Windows.Freezable"></xref> cannot be frozen because it contains expressions or animated properties.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -440,7 +440,7 @@ items:
       description: The instance to copy.
   overload: System.Windows.Freezable.GetAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -463,10 +463,10 @@ items:
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: A frozen copy of the <xref href="System.Windows.Freezable"></xref>. The copy's <xref:System.Windows.Freezable.IsFrozen*> property is set to <xref uid="langword_csharp_true" name="true" href=""></xref>.
+      description: A frozen copy of the <xref href="System.Windows.Freezable"></xref>. The copy's <xref:System.Windows.Freezable.IsFrozen*> property is set to `true`.
   overload: System.Windows.Freezable.GetCurrentValueAsFrozen*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -492,7 +492,7 @@ items:
       description: The <xref href="System.Windows.Freezable"></xref> to copy and freeze.
   overload: System.Windows.Freezable.GetCurrentValueAsFrozenCore*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -514,10 +514,10 @@ items:
     content: public bool IsFrozen { get; }
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the object is frozen and cannot be modified; <xref uid="langword_csharp_false" name="false" href=""></xref> if the object can be modified.
+      description: '`true` if the object is frozen and cannot be modified; `false` if the object can be modified.'
   overload: System.Windows.Freezable.IsFrozen*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -540,7 +540,7 @@ items:
     parameters: []
   overload: System.Windows.Freezable.OnChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -569,7 +569,7 @@ items:
       description: The current value of the data member.
   overload: System.Windows.Freezable.OnFreezablePropertyChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -600,7 +600,7 @@ items:
       description: The property that changed.
   overload: System.Windows.Freezable.OnFreezablePropertyChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -626,7 +626,7 @@ items:
       description: Event data that contains information about which property changed, and its old and new values.
   overload: System.Windows.Freezable.OnPropertyChanged*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -648,7 +648,7 @@ items:
     parameters: []
   overload: System.Windows.Freezable.ReadPreamble*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -670,7 +670,7 @@ items:
     parameters: []
   overload: System.Windows.Freezable.WritePostscript*
   exceptions: []
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40
@@ -696,7 +696,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: The <xref href="System.Windows.Freezable"></xref> instance is frozen and cannot have its members written to.
-  platform:
+  version:
   - netframework-30
   - netframework-35
   - netframework-40

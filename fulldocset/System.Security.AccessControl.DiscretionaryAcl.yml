@@ -55,7 +55,7 @@ items:
   - System.Security.AccessControl.GenericAcl.SyncRoot
   - System.Security.AccessControl.GenericAcl.System#Collections#ICollection#CopyTo(System.Array,System.Int32)
   - System.Security.AccessControl.GenericAcl.System#Collections#IEnumerable#GetEnumerator
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -78,16 +78,16 @@ items:
     parameters:
     - id: isContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a container.
+      description: '`true` if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a container.'
     - id: isDS
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a directory object Access Control List (ACL).
+      description: '`true` if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a directory object Access Control List (ACL).'
     - id: capacity
       type: System.Int32
       description: The number of Access Control Entries (ACEs) this <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object can contain. This number is to be used only as a hint.
   overload: System.Security.AccessControl.DiscretionaryAcl.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -111,16 +111,16 @@ items:
     parameters:
     - id: isContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a container.
+      description: '`true` if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a container.'
     - id: isDS
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a directory object Access Control List (ACL).
+      description: '`true` if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a directory object Access Control List (ACL).'
     - id: rawAcl
       type: System.Security.AccessControl.RawAcl
-      description: The underlying <xref href="System.Security.AccessControl.RawAcl"></xref> object for the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object. Specify <xref uid="langword_csharp_null" name="null" href=""></xref> to create an empty ACL.
+      description: The underlying <xref href="System.Security.AccessControl.RawAcl"></xref> object for the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object. Specify `null` to create an empty ACL.
   overload: System.Security.AccessControl.DiscretionaryAcl.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -143,10 +143,10 @@ items:
     parameters:
     - id: isContainer
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a container.
+      description: '`true` if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a container.'
     - id: isDS
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a directory object Access Control List (ACL).
+      description: '`true` if the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object is a directory object Access Control List (ACL).'
     - id: revision
       type: System.Byte
       description: The revision level of the new <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object.
@@ -155,7 +155,7 @@ items:
       description: The number of Access Control Entries (ACEs) this <xref href="System.Security.AccessControl.DiscretionaryAcl"></xref> object can contain. This number is to be used only as a hint.
   overload: System.Security.AccessControl.DiscretionaryAcl.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -194,7 +194,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the new ACE.
   overload: System.Security.AccessControl.DiscretionaryAcl.AddAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -233,7 +233,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the new ACE.
     - id: objectFlags
       type: System.Security.AccessControl.ObjectAceFlags
-      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-<xref uid="langword_csharp_null" name="null" href=""></xref> values.
+      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-`null` values.
     - id: objectType
       type: System.Guid
       description: The identity of the class of objects to which the new ACE applies.
@@ -242,7 +242,7 @@ items:
       description: The identity of the class of child objects which can inherit the new ACE.
   overload: System.Security.AccessControl.DiscretionaryAcl.AddAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -281,10 +281,10 @@ items:
       description: Flags that specify the inheritance propagation properties for the rule to be removed.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method successfully removes the specified access; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method successfully removes the specified access; otherwise, `false`.'
   overload: System.Security.AccessControl.DiscretionaryAcl.RemoveAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -323,7 +323,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the access control rule to be removed.
     - id: objectFlags
       type: System.Security.AccessControl.ObjectAceFlags
-      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-<xref uid="langword_csharp_null" name="null" href=""></xref> values.
+      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-`null` values.
     - id: objectType
       type: System.Guid
       description: The identity of the class of objects to which the removed access control rule applies.
@@ -332,10 +332,10 @@ items:
       description: The identity of the class of child objects which can inherit the removed access control rule.
     return:
       type: System.Boolean
-      description: <xref uid="langword_csharp_true" name="true" href=""></xref> if this method successfully removes the specified access; otherwise, <xref uid="langword_csharp_false" name="false" href=""></xref>.
+      description: '`true` if this method successfully removes the specified access; otherwise, `false`.'
   overload: System.Security.AccessControl.DiscretionaryAcl.RemoveAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -373,7 +373,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the ACE to be removed.
   overload: System.Security.AccessControl.DiscretionaryAcl.RemoveAccessSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -411,7 +411,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the ACE to be removed.
     - id: objectFlags
       type: System.Security.AccessControl.ObjectAceFlags
-      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-<xref uid="langword_csharp_null" name="null" href=""></xref> values.
+      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-`null` values.
     - id: objectType
       type: System.Guid
       description: The identity of the class of objects to which the removed ACE applies.
@@ -420,7 +420,7 @@ items:
       description: The identity of the class of child objects which can inherit the removed ACE.
   overload: System.Security.AccessControl.DiscretionaryAcl.RemoveAccessSpecific*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -459,7 +459,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the new ACE.
   overload: System.Security.AccessControl.DiscretionaryAcl.SetAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -498,7 +498,7 @@ items:
       description: Flags that specify the inheritance propagation properties for the new ACE.
     - id: objectFlags
       type: System.Security.AccessControl.ObjectAceFlags
-      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-<xref uid="langword_csharp_null" name="null" href=""></xref> values.
+      description: Flags that specify if the `objectType` and `inheritedObjectType` parameters contain non-`null` values.
     - id: objectType
       type: System.Guid
       description: The identity of the class of objects to which the new ACE applies.
@@ -507,7 +507,7 @@ items:
       description: The identity of the class of child objects which can inherit the new ACE.
   overload: System.Security.AccessControl.DiscretionaryAcl.SetAccess*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35

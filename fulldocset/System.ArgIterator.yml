@@ -26,7 +26,7 @@ items:
   - System.Object
   - System.ValueType
   implements: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -53,7 +53,7 @@ items:
       description: An argument list consisting of mandatory and optional arguments.
   overload: System.ArgIterator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -80,10 +80,10 @@ items:
       description: An argument list consisting of mandatory and optional arguments.
     - id: ptr
       type: System.Void*
-      description: A pointer to the argument in `arglist` to access first, or the first mandatory argument in `arglist` if `ptr` is <xref uid="langword_csharp_null" name="null" href=""></xref>.
+      description: A pointer to the argument in `arglist` to access first, or the first mandatory argument in `arglist` if `ptr` is `null`.
   overload: System.ArgIterator.#ctor*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -107,7 +107,7 @@ items:
     parameters: []
   overload: System.ArgIterator.End*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -139,7 +139,7 @@ items:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
     description: This method is not supported.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -165,7 +165,7 @@ items:
       description: A 32-bit signed integer hash code.
   overload: System.ArgIterator.GetHashCode*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -195,7 +195,7 @@ items:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: An attempt was made to read beyond the end of the list.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -231,7 +231,7 @@ items:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: The pointer to the remaining arguments is zero.
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -258,7 +258,7 @@ items:
       description: The type of the next argument.
   overload: System.ArgIterator.GetNextArgType*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -284,7 +284,7 @@ items:
       description: The number of remaining arguments.
   overload: System.ArgIterator.GetRemainingCount*
   exceptions: []
-  platform:
+  version:
   - netframework-20
   - netframework-30
   - netframework-35
@@ -329,6 +329,20 @@ references:
   name: ArgIterator(RuntimeArgumentHandle,Void*)
   nameWithType: ArgIterator.ArgIterator(RuntimeArgumentHandle,Void*)
   fullName: System.ArgIterator.ArgIterator(RuntimeArgumentHandle,Void*)
+- uid: System.Void*
+  parent: System
+  isExternal: false
+  name: Void*
+  nameWithType: Void*
+  fullName: System.Void*
+  spec.csharp:
+  - uid: System.Void
+    name: Void
+    nameWithType: Void
+    fullName: Void
+  - name: '*'
+    nameWithType: '*'
+    fullName: '*'
 - uid: System.ArgIterator.End
   parent: System.ArgIterator
   isExternal: false

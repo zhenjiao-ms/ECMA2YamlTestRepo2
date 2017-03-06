@@ -1,6 +1,7 @@
 <Type Name="BodyWriter" FullName="System.ServiceModel.Channels.BodyWriter">
   <TypeSignature Language="C#" Value="public abstract class BodyWriter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit BodyWriter extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:System.ServiceModel.Channels.BodyWriter" />
   <AssemblyInfo>
     <AssemblyName>System.ServiceModel</AssemblyName>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -11,14 +12,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Represents the writer of the message body.</summary>
+    <summary>To be added.</summary>
     <remarks>To be added.</remarks>
-    <threadsafe />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected BodyWriter (bool isBuffered);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(bool isBuffered) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.#ctor(System.Boolean)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.ServiceModel</AssemblyName>
@@ -30,14 +31,40 @@
       </Parameters>
       <Docs>
         <param name="isBuffered">To be added.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.ServiceModel.Channels.BodyWriter" /> class that explicitly indicates whether to buffer.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="BeginWriteBodyContents">
+      <MemberSignature Language="C#" Value="public IAsyncResult BeginWriteBodyContents (System.Xml.XmlDictionaryWriter writer, AsyncCallback callback, object state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IAsyncResult BeginWriteBodyContents(class System.Xml.XmlDictionaryWriter writer, class System.AsyncCallback callback, object state) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.BeginWriteBodyContents(System.Xml.XmlDictionaryWriter,System.AsyncCallback,System.Object)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IAsyncResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="writer" Type="System.Xml.XmlDictionaryWriter" />
+        <Parameter Name="callback" Type="System.AsyncCallback" />
+        <Parameter Name="state" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="writer">To be added.</param>
+        <param name="callback">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateBufferedCopy">
       <MemberSignature Language="C#" Value="public System.ServiceModel.Channels.BodyWriter CreateBufferedCopy (int maxBufferSize);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.ServiceModel.Channels.BodyWriter CreateBufferedCopy(int32 maxBufferSize) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.CreateBufferedCopy(System.Int32)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.ServiceModel</AssemblyName>
@@ -52,39 +79,81 @@
       </Parameters>
       <Docs>
         <param name="maxBufferSize">To be added.</param>
-        <summary>Creates a buffered copy of the body.</summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="EndWriteBodyContents">
+      <MemberSignature Language="C#" Value="public void EndWriteBodyContents (IAsyncResult result);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndWriteBodyContents(class System.IAsyncResult result) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.EndWriteBodyContents(System.IAsyncResult)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="result" Type="System.IAsyncResult" />
+      </Parameters>
+      <Docs>
+        <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsBuffered">
       <MemberSignature Language="C#" Value="public bool IsBuffered { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsBuffered" />
+      <MemberSignature Language="DocId" Value="P:System.ServiceModel.Channels.BodyWriter.IsBuffered" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.ServiceModel</AssemblyName>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a value that indicates whether the write method can be called multiple times.</summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="OnBeginWriteBodyContents">
+      <MemberSignature Language="C#" Value="protected virtual IAsyncResult OnBeginWriteBodyContents (System.Xml.XmlDictionaryWriter writer, AsyncCallback callback, object state);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.IAsyncResult OnBeginWriteBodyContents(class System.Xml.XmlDictionaryWriter writer, class System.AsyncCallback callback, object state) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.OnBeginWriteBodyContents(System.Xml.XmlDictionaryWriter,System.AsyncCallback,System.Object)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IAsyncResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="writer" Type="System.Xml.XmlDictionaryWriter" />
+        <Parameter Name="callback" Type="System.AsyncCallback" />
+        <Parameter Name="state" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="writer">To be added.</param>
+        <param name="callback">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCreateBufferedCopy">
       <MemberSignature Language="C#" Value="protected virtual System.ServiceModel.Channels.BodyWriter OnCreateBufferedCopy (int maxBufferSize);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.ServiceModel.Channels.BodyWriter OnCreateBufferedCopy(int32 maxBufferSize) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.OnCreateBufferedCopy(System.Int32)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.ServiceModel</AssemblyName>
@@ -99,15 +168,36 @@
       </Parameters>
       <Docs>
         <param name="maxBufferSize">To be added.</param>
-        <summary>Provides an extensibility point when the body contents are written.</summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <threadsafe />
+      </Docs>
+    </Member>
+    <Member MemberName="OnEndWriteBodyContents">
+      <MemberSignature Language="C#" Value="protected virtual void OnEndWriteBodyContents (IAsyncResult result);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEndWriteBodyContents(class System.IAsyncResult result) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.OnEndWriteBodyContents(System.IAsyncResult)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.ServiceModel</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="result" Type="System.IAsyncResult" />
+      </Parameters>
+      <Docs>
+        <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnWriteBodyContents">
       <MemberSignature Language="C#" Value="protected abstract void OnWriteBodyContents (System.Xml.XmlDictionaryWriter writer);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnWriteBodyContents(class System.Xml.XmlDictionaryWriter writer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.OnWriteBodyContents(System.Xml.XmlDictionaryWriter)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.ServiceModel</AssemblyName>
@@ -122,14 +212,14 @@
       </Parameters>
       <Docs>
         <param name="writer">To be added.</param>
-        <summary>When implemented, provides an extensibility point when the body contents are written.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="WriteBodyContents">
       <MemberSignature Language="C#" Value="public void WriteBodyContents (System.Xml.XmlDictionaryWriter writer);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteBodyContents(class System.Xml.XmlDictionaryWriter writer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.ServiceModel.Channels.BodyWriter.WriteBodyContents(System.Xml.XmlDictionaryWriter)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.ServiceModel</AssemblyName>
@@ -144,9 +234,8 @@
       </Parameters>
       <Docs>
         <param name="writer">To be added.</param>
-        <summary>Writes out the contents of the message body.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
   </Members>

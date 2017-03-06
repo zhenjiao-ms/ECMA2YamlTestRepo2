@@ -1,6 +1,7 @@
 <Type Name="VariableReference&lt;T&gt;" FullName="System.Activities.Expressions.VariableReference&lt;T&gt;">
-  <TypeSignature Language="C#" Value="public sealed class VariableReference&lt;T&gt; : System.Activities.CodeActivity&lt;System.Activities.Location&lt;T&gt;&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit VariableReference`1&lt;T&gt; extends System.Activities.CodeActivity`1&lt;class System.Activities.Location`1&lt;!T&gt;&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class VariableReference&lt;T&gt; : System.Activities.Expressions.EnvironmentLocationReference&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit VariableReference`1&lt;T&gt; extends System.Activities.Expressions.EnvironmentLocationReference`1&lt;!T&gt;" />
+  <TypeSignature Language="DocId" Value="T:System.Activities.Expressions.VariableReference`1" />
   <AssemblyInfo>
     <AssemblyName>System.Activities</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -9,9 +10,9 @@
     <TypeParameter Name="T" />
   </TypeParameters>
   <Base>
-    <BaseTypeName>System.Activities.CodeActivity&lt;System.Activities.Location&lt;T&gt;&gt;</BaseTypeName>
+    <BaseTypeName>System.Activities.Expressions.EnvironmentLocationReference&lt;T&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TResult">System.Activities.Location&lt;T&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="T">T</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -24,16 +25,12 @@
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public VariableReference ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Activities.Expressions.VariableReference`1.#ctor" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -43,6 +40,7 @@
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public VariableReference (System.Activities.Variable variable);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Activities.Variable variable) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Activities.Expressions.VariableReference`1.#ctor(System.Activities.Variable)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -60,6 +58,7 @@
     <Member MemberName="CacheMetadata">
       <MemberSignature Language="C#" Value="protected override void CacheMetadata (System.Activities.CodeActivityMetadata metadata);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CacheMetadata(valuetype System.Activities.CodeActivityMetadata metadata) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Activities.Expressions.VariableReference`1.CacheMetadata(System.Activities.CodeActivityMetadata)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -77,30 +76,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Execute">
-      <MemberSignature Language="C#" Value="protected override System.Activities.Location&lt;T&gt; Execute (System.Activities.CodeActivityContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Activities.Location`1&lt;!T&gt; Execute(class System.Activities.CodeActivityContext context) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="LocationReference">
+      <MemberSignature Language="C#" Value="public override System.Activities.LocationReference LocationReference { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.LocationReference LocationReference" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.Expressions.VariableReference`1.LocationReference" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Activities.Location&lt;T&gt;</ReturnType>
+        <ReturnType>System.Activities.LocationReference</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="context" Type="System.Activities.CodeActivityContext" />
-      </Parameters>
       <Docs>
-        <param name="context">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Activities.Expressions.VariableReference`1.ToString" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -119,19 +116,12 @@
     <Member MemberName="Variable">
       <MemberSignature Language="C#" Value="public System.Activities.Variable Variable { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.Variable Variable" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.Expressions.VariableReference`1.Variable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Activities.Variable</ReturnType>
       </ReturnValue>

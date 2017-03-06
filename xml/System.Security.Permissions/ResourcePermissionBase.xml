@@ -1,6 +1,7 @@
 <Type Name="ResourcePermissionBase" FullName="System.Security.Permissions.ResourcePermissionBase">
   <TypeSignature Language="C#" Value="public abstract class ResourcePermissionBase : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract serializable beforefieldinit ResourcePermissionBase extends System.Security.CodeAccessPermission implements class System.Security.Permissions.IUnrestrictedPermission" />
+  <TypeSignature Language="DocId" Value="T:System.Security.Permissions.ResourcePermissionBase" />
   <AssemblyInfo>
     <AssemblyName>System</AssemblyName>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
@@ -15,33 +16,14 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>Allows control of code access security permissions.</summary>
-    <remarks>
-      <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  The ResourcePermissionBase class compares strings using ordinal sort rules and ignores the case of the strings being compared.  
-  
-   
-  
-## Examples  
- The following example inherits from the ResourcePermissionBase class. 4 kinds of constructors are implemented. The example also provides an implementation of a class called `MailslotPermissionEntry`. The <xref:System.Security.Permissions.ResourcePermissionBase.PermissionAccessType%2A> property is then privately set to the type of `MailslotPermissionEntry`. The <xref:System.Security.Permissions.ResourcePermissionBase.TagNames%2A> property is set privately to "Name" and "Machine".  
-  
- [!code-cpp[ResourcePermissionBase#1](~/add/codesnippet/cpp/t-system.security.permis_0_1.cpp)]
- [!code-vb[ResourcePermissionBase#1](~/add/codesnippet/visualbasic/t-system.security.permis_0_1.vb)]
- [!code-cs[ResourcePermissionBase#1](~/add/codesnippet/csharp/t-system.security.permis_0_1.cs)]  
-  
- ]]></format>
-    </remarks>
-    <permission cref="T:System.Security.Permissions.SecurityPermission">for the right to control evidence. Security action: <see cref="T:System.Security.Permissions.SecurityAction" />. Associated enumeration: <see cref="T:System.Security.Permissions.SecurityPermissionFlag" />.</permission>
-    <threadsafe />
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected ResourcePermissionBase ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.#ctor" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -50,14 +32,14 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>Initializes a new instance of the <see cref="T:System.Security.Permissions.ResourcePermissionBase" /> class.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected ResourcePermissionBase (System.Security.Permissions.PermissionState state);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype System.Security.Permissions.PermissionState state) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.#ctor(System.Security.Permissions.PermissionState)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -68,16 +50,15 @@
         <Parameter Name="state" Type="System.Security.Permissions.PermissionState" />
       </Parameters>
       <Docs>
-        <param name="state">One of the <see cref="T:System.Security.Permissions.PermissionState" /> values.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Security.Permissions.ResourcePermissionBase" /> class with the specified level of access to resources at creation.</summary>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException">The <paramref name="state" /> parameter is not a valid value of <see cref="T:System.Security.Permissions.PermissionState" />.</exception>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="AddPermissionAccess">
       <MemberSignature Language="C#" Value="protected void AddPermissionAccess (System.Security.Permissions.ResourcePermissionBaseEntry entry);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void AddPermissionAccess(class System.Security.Permissions.ResourcePermissionBaseEntry entry) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.AddPermissionAccess(System.Security.Permissions.ResourcePermissionBaseEntry)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -91,32 +72,15 @@
         <Parameter Name="entry" Type="System.Security.Permissions.ResourcePermissionBaseEntry" />
       </Parameters>
       <Docs>
-        <param name="entry">The <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> to add.</param>
-        <summary>Adds a permission entry to the permission.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Examples  
- The following example shows the use of the AddPermissionAccess method to add a permission access entry during class initialization. This code example is part of a larger example provided for the <xref:System.Security.Permissions.ResourcePermissionBase> class.  
-  
- [!code-cpp[ResourcePermissionBase#2](~/add/codesnippet/cpp/dfef5eb6-165b-4033-bd02-_1.cpp)]
- [!code-vb[ResourcePermissionBase#2](~/add/codesnippet/visualbasic/dfef5eb6-165b-4033-bd02-_1.vb)]
- [!code-cs[ResourcePermissionBase#2](~/add/codesnippet/csharp/dfef5eb6-165b-4033-bd02-_1.cs)]  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentNullException">The specified <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.InvalidOperationException">The number of elements in the &lt;xref:System.Security.Permissions.ResourcePermissionBaseEntry.PermissionAccessPath%2A?displayProperty=fullName&gt; property is not equal to the number of elements in the &lt;xref:System.Security.Permissions.ResourcePermissionBase.TagNames%2A?displayProperty=fullName&gt; property.  
-  
- -or-  
-  
- The <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> is already included in the permission.</exception>
-        <threadsafe />
+        <param name="entry">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Any">
       <MemberSignature Language="C#" Value="public const string Any;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string Any" />
+      <MemberSignature Language="DocId" Value="F:System.Security.Permissions.ResourcePermissionBase.Any" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -127,21 +91,14 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Specifies the character to be used to represent the any wildcard character.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The value of this field is "*".  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Clear">
       <MemberSignature Language="C#" Value="protected void Clear ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Clear() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.Clear" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -153,14 +110,14 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Clears the permission of the added permission entries.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="Copy">
       <MemberSignature Language="C#" Value="public override System.Security.IPermission Copy ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.IPermission Copy() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.Copy" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -172,22 +129,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Creates and returns an identical copy of the current permission object.</summary>
-        <returns>A copy of the current permission object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- A copy of the permission object represents the same access to resources as the original permission object.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromXml">
       <MemberSignature Language="C#" Value="public override void FromXml (System.Security.SecurityElement securityElement);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void FromXml(class System.Security.SecurityElement securityElement) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.FromXml(System.Security.SecurityElement)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -201,21 +151,15 @@
         <Parameter Name="securityElement" Type="System.Security.SecurityElement" />
       </Parameters>
       <Docs>
-        <param name="securityElement">The XML encoding to use to reconstruct the security object.</param>
-        <summary>Reconstructs a security object with a specified state from an XML encoding.</summary>
+        <param name="securityElement">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentException">The <paramref name="securityElement" /> parameter is not a valid permission element.  
-  
- -or-  
-  
- The version number of the <paramref name="securityElement" /> parameter is not supported.</exception>
-        <exception cref="T:System.ArgumentNullException">The <paramref name="securityElement" /> parameter is <see langword="null" />.</exception>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="GetPermissionEntries">
       <MemberSignature Language="C#" Value="protected System.Security.Permissions.ResourcePermissionBaseEntry[] GetPermissionEntries ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Security.Permissions.ResourcePermissionBaseEntry[] GetPermissionEntries() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.GetPermissionEntries" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -227,22 +171,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Returns an array of the <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> objects added to this permission.</summary>
-        <returns>An array of <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> objects that were added to this permission.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- Use <xref:System.Security.Permissions.ResourcePermissionBase.AddPermissionAccess%2A> and <xref:System.Security.Permissions.ResourcePermissionBase.RemovePermissionAccess%2A> to add and remove permission entries to this permission.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Intersect">
       <MemberSignature Language="C#" Value="public override System.Security.IPermission Intersect (System.Security.IPermission target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.IPermission Intersect(class System.Security.IPermission target) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.Intersect(System.Security.IPermission)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -256,24 +193,16 @@
         <Parameter Name="target" Type="System.Security.IPermission" />
       </Parameters>
       <Docs>
-        <param name="target">A permission object of the same type as the current permission object.</param>
-        <summary>Creates and returns a permission object that is the intersection of the current permission object and a target permission object.</summary>
-        <returns>A new permission object that represents the intersection of the current object and the specified target. This object is <see langword="null" /> if the intersection is empty.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The intersection of two permission objects is a permission that describes the set of operations they both hold in common. Specifically, it represents the minimum permissions required for a demand to pass both permissions.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">The target permission object is not of the same type as the current permission object.</exception>
-        <threadsafe />
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSubsetOf">
       <MemberSignature Language="C#" Value="public override bool IsSubsetOf (System.Security.IPermission target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsSubsetOf(class System.Security.IPermission target) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.IsSubsetOf(System.Security.IPermission)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -287,26 +216,16 @@
         <Parameter Name="target" Type="System.Security.IPermission" />
       </Parameters>
       <Docs>
-        <param name="target">A permission object that is to be tested for the subset relationship.</param>
-        <summary>Determines whether the current permission object is a subset of the specified permission.</summary>
-        <returns>
-          <see langword="true" /> if the current permission object is a subset of the specified permission object; otherwise, <see langword="false" />.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The current permission object is a subset of the specified permission object if the current permission object specifies a set of operations that is wholly contained by the specified permission object. For example, a permission that represents access to C:\Example.txt is a subset of a permission that represents access to C:\\. If this method returns `true`, the current permission object represents no more access to the protected resource than does the specified permission object.  
-  
- This method always returns `false` when the specified permission object is of a different type than that of the current permission object.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsUnrestricted">
       <MemberSignature Language="C#" Value="public bool IsUnrestricted ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsUnrestricted() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.IsUnrestricted" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -318,23 +237,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets a value indicating whether the permission is unrestricted.</summary>
-        <returns>
-          <see langword="true" /> if permission is unrestricted; otherwise, <see langword="false" />.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- An unrestricted permission object represents access to any and all resources protected by the permission.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Local">
       <MemberSignature Language="C#" Value="public const string Local;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string Local" />
+      <MemberSignature Language="DocId" Value="F:System.Security.Permissions.ResourcePermissionBase.Local" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -345,47 +256,33 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Specifies the character to be used to represent a local reference.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The value of this field is ".".  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PermissionAccessType">
       <MemberSignature Language="C#" Value="protected Type PermissionAccessType { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Type PermissionAccessType" />
+      <MemberSignature Language="DocId" Value="P:System.Security.Permissions.ResourcePermissionBase.PermissionAccessType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets an enumeration value that describes the types of access that you are giving the resource.</summary>
-        <value>An enumeration value that is derived from <see cref="T:System.Type" /> and describes the types of access that you are giving the resource.</value>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">The property value is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException">The property value is not an enumeration value.</exception>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="RemovePermissionAccess">
       <MemberSignature Language="C#" Value="protected void RemovePermissionAccess (System.Security.Permissions.ResourcePermissionBaseEntry entry);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RemovePermissionAccess(class System.Security.Permissions.ResourcePermissionBaseEntry entry) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.RemovePermissionAccess(System.Security.Permissions.ResourcePermissionBaseEntry)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -399,47 +296,34 @@
         <Parameter Name="entry" Type="System.Security.Permissions.ResourcePermissionBaseEntry" />
       </Parameters>
       <Docs>
-        <param name="entry">The <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> to remove.</param>
-        <summary>Removes a permission entry from the permission.</summary>
+        <param name="entry">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">The specified <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> is <see langword="null" />.</exception>
-        <exception cref="T:System.InvalidOperationException">The number of elements in the &lt;xref:System.Security.Permissions.ResourcePermissionBaseEntry.PermissionAccessPath%2A?displayProperty=fullName&gt; property is not equal to the number of elements in the &lt;xref:System.Security.Permissions.ResourcePermissionBase.TagNames%2A?displayProperty=fullName&gt; property.  
-  
- -or-  
-  
- The <see cref="T:System.Security.Permissions.ResourcePermissionBaseEntry" /> is not in the permission.</exception>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="TagNames">
       <MemberSignature Language="C#" Value="protected string[] TagNames { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string[] TagNames" />
+      <MemberSignature Language="DocId" Value="P:System.Security.Permissions.ResourcePermissionBase.TagNames" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets or sets an array of strings that identify the resource you are protecting.</summary>
-        <value>An array of strings that identify the resource you are trying to protect.</value>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
-        <exception cref="T:System.ArgumentNullException">The property value is <see langword="null" />.</exception>
-        <exception cref="T:System.ArgumentException">The length of the array is 0.</exception>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="ToXml">
       <MemberSignature Language="C#" Value="public override System.Security.SecurityElement ToXml ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.SecurityElement ToXml() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.ToXml" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -451,15 +335,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Creates and returns an XML encoding of the security object and its current state.</summary>
-        <returns>An XML encoding of the security object, including any state information.</returns>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="Union">
       <MemberSignature Language="C#" Value="public override System.Security.IPermission Union (System.Security.IPermission target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Security.IPermission Union(class System.Security.IPermission target) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Security.Permissions.ResourcePermissionBase.Union(System.Security.IPermission)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System</AssemblyName>
@@ -473,19 +357,10 @@
         <Parameter Name="target" Type="System.Security.IPermission" />
       </Parameters>
       <Docs>
-        <param name="target">A permission object to combine with the current permission object. It must be of the same type as the current permission object.</param>
-        <summary>Creates a permission object that combines the current permission object and the target permission object.</summary>
-        <returns>A new permission object that represents the union of the current permission object and the specified permission object.</returns>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- The result of a call to Union is a permission that represents all the operations represented by both the current permission object and the specified permission object. Any demand that passes either permission passes their union.  
-  
- ]]></format>
-        </remarks>
-        <exception cref="T:System.ArgumentException">The <paramref name="target" /> permission object is not of the same type as the current permission object.</exception>
-        <threadsafe />
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

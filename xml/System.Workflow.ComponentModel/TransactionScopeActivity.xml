@@ -1,6 +1,7 @@
 <Type Name="TransactionScopeActivity" FullName="System.Workflow.ComponentModel.TransactionScopeActivity">
   <TypeSignature Language="C#" Value="public sealed class TransactionScopeActivity : System.Workflow.ComponentModel.CompositeActivity, System.Workflow.ComponentModel.IActivityEventListener&lt;System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TransactionScopeActivity extends System.Workflow.ComponentModel.CompositeActivity implements class System.Workflow.ComponentModel.IActivityEventListener`1&lt;class System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs&gt;" />
+  <TypeSignature Language="DocId" Value="T:System.Workflow.ComponentModel.TransactionScopeActivity" />
   <AssemblyInfo>
     <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -25,35 +26,21 @@
       <AttributeName>System.Drawing.ToolboxBitmap(typeof(System.Workflow.ComponentModel.TransactionScopeActivity), "Resources.Sequence.png")</AttributeName>
     </Attribute>
     <Attribute>
+      <AttributeName>System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")</AttributeName>
+    </Attribute>
+    <Attribute>
       <AttributeName>System.Workflow.ComponentModel.PersistOnClose</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>A section of workflow which demarcates a transaction boundary. A new <see cref="T:System.Transactions.Transaction" /> is started when this <see cref="T:System.Workflow.ComponentModel.Activity" /> begins executing and the transaction commits when the <see cref="T:System.Workflow.ComponentModel.Activity" /> closes successfully. This class cannot be inherited.</summary>
-    <remarks>
-      <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
-  
-> [!NOTE]
->  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]  
-  
- A TransactionScopeActivity cannot be nested in another TransactionScopeActivity.  
-  
- The workflow instance is always persisted when a TransactionScopeActivity completes its execution successfully.  
-  
- A TransactionScopeActivity cannot have a <xref:System.Workflow.ComponentModel.FaultHandlersActivity>.  
-  
- A TransactionScopeActivity cannot have a <xref:System.Workflow.ComponentModel.CancellationHandlerActivity>.  
-  
- ]]></format>
-    </remarks>
-    <threadsafe />
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public TransactionScopeActivity ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.#ctor" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -62,14 +49,14 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>Initializes a new instance of the <see cref="T:System.Workflow.ComponentModel.TransactionScopeActivity" /> class.</summary>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public TransactionScopeActivity (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.#ctor(System.String)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -80,15 +67,15 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">The user-defined name of the activity.</param>
-        <summary>Initializes a new instance of the <see cref="T:System.Workflow.ComponentModel.TransactionScopeActivity" /> class using the name of the activity.</summary>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
     <Member MemberName="Cancel">
       <MemberSignature Language="C#" Value="protected override System.Workflow.ComponentModel.ActivityExecutionStatus Cancel (System.Workflow.ComponentModel.ActivityExecutionContext executionContext);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance valuetype System.Workflow.ComponentModel.ActivityExecutionStatus Cancel(class System.Workflow.ComponentModel.ActivityExecutionContext executionContext) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.Cancel(System.Workflow.ComponentModel.ActivityExecutionContext)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -111,6 +98,7 @@
     <Member MemberName="Execute">
       <MemberSignature Language="C#" Value="protected override System.Workflow.ComponentModel.ActivityExecutionStatus Execute (System.Workflow.ComponentModel.ActivityExecutionContext executionContext);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance valuetype System.Workflow.ComponentModel.ActivityExecutionStatus Execute(class System.Workflow.ComponentModel.ActivityExecutionContext executionContext) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.Execute(System.Workflow.ComponentModel.ActivityExecutionContext)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -133,6 +121,7 @@
     <Member MemberName="OnActivityChangeRemove">
       <MemberSignature Language="C#" Value="protected override void OnActivityChangeRemove (System.Workflow.ComponentModel.ActivityExecutionContext executionContext, System.Workflow.ComponentModel.Activity removedActivity);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void OnActivityChangeRemove(class System.Workflow.ComponentModel.ActivityExecutionContext executionContext, class System.Workflow.ComponentModel.Activity removedActivity) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.OnActivityChangeRemove(System.Workflow.ComponentModel.ActivityExecutionContext,System.Workflow.ComponentModel.Activity)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -156,6 +145,7 @@
     <Member MemberName="OnWorkflowChangesCompleted">
       <MemberSignature Language="C#" Value="protected override void OnWorkflowChangesCompleted (System.Workflow.ComponentModel.ActivityExecutionContext executionContext);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void OnWorkflowChangesCompleted(class System.Workflow.ComponentModel.ActivityExecutionContext executionContext) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.OnWorkflowChangesCompleted(System.Workflow.ComponentModel.ActivityExecutionContext)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -177,6 +167,7 @@
     <Member MemberName="System.Workflow.ComponentModel.IActivityEventListener&lt;System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs&gt;.OnEvent">
       <MemberSignature Language="C#" Value="void IActivityEventListener&lt;ActivityExecutionStatusChangedEventArgs&gt;.OnEvent (object sender, System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs e);" />
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void System.Workflow.ComponentModel.IActivityEventListener&lt;System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs&gt;.OnEvent(object sender, class System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs e) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Workflow.ComponentModel.TransactionScopeActivity.System#Workflow#ComponentModel#IActivityEventListener&lt;System#Workflow#ComponentModel#ActivityExecutionStatusChangedEventArgs&gt;#OnEvent(System.Object,System.Workflow.ComponentModel.ActivityExecutionStatusChangedEventArgs)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -200,6 +191,7 @@
     <Member MemberName="TransactionOptions">
       <MemberSignature Language="C#" Value="public System.Workflow.ComponentModel.WorkflowTransactionOptions TransactionOptions { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Workflow.ComponentModel.WorkflowTransactionOptions TransactionOptions" />
+      <MemberSignature Language="DocId" Value="P:System.Workflow.ComponentModel.TransactionScopeActivity.TransactionOptions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Workflow.ComponentModel</AssemblyName>
@@ -221,10 +213,9 @@
         <ReturnType>System.Workflow.ComponentModel.WorkflowTransactionOptions</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the <see cref="T:System.Workflow.ComponentModel.WorkflowTransactionOptions" /> associated with this instance.</summary>
-        <value>The <see cref="T:System.Workflow.ComponentModel.WorkflowTransactionOptions" /> associated with this instance.</value>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
-        <threadsafe />
       </Docs>
     </Member>
   </Members>

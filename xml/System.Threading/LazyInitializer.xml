@@ -1,6 +1,7 @@
 <Type Name="LazyInitializer" FullName="System.Threading.LazyInitializer">
   <TypeSignature Language="C#" Value="public static class LazyInitializer" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit LazyInitializer extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:System.Threading.LazyInitializer" />
   <AssemblyInfo>
     <AssemblyName>mscorlib</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -10,43 +11,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Provides lazy initialization routines.</summary>
-    <remarks>
-      <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- These routines avoid needing to allocate a dedicated, lazy-initialization instance, instead using references to ensure targets have been initialized as they are accessed.  
-  
-   
-  
-## Examples  
- The following example demonstrates how to use EnsureInitialized to lazily initialize a value using a Boolean value to track whether initialization has already happened and an object to use as the mutual exclusion lock.  
-  
-```vb#  
-Dim _data As ExpensiveData = Nothing  
-Dim _dataInitialized As Boolean = False  
-Dim _dataLock As Object = Nothing  
-'    ...  
-Dim name = LazyInitializer.EnsureInitialized(_data, _dataInitialized, _dataLock)  
-```  
-  
-```c#  
-ExpensiveData _data = null;  
-                     bool _dataInitialized = false;  
-                     object _dataLock = new object();  
-                  //  ...  
-  
-                    ExpensiveData dataToUse = LazyInitializer.EnsureInitialized(ref _data, ref _dataInitialized, ref _dataLock);  
-```  
-  
- ]]></format>
-    </remarks>
-    <threadsafe />
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="EnsureInitialized&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static T EnsureInitialized&lt;T&gt; (ref T target) where T : class;" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T EnsureInitialized&lt;class T&gt;(!!T target) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Threading.LazyInitializer.EnsureInitialized``1(``0@)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -76,6 +48,7 @@ ExpensiveData _data = null;
     <Member MemberName="EnsureInitialized&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static T EnsureInitialized&lt;T&gt; (ref T target, Func&lt;T&gt; valueFactory) where T : class;" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T EnsureInitialized&lt;class T&gt;(!!T target, class System.Func`1&lt;!!T&gt; valueFactory) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Threading.LazyInitializer.EnsureInitialized``1(``0@,System.Func{``0})" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -107,6 +80,7 @@ ExpensiveData _data = null;
     <Member MemberName="EnsureInitialized&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static T EnsureInitialized&lt;T&gt; (ref T target, ref bool initialized, ref object syncLock);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T EnsureInitialized&lt;T&gt;(!!T target, bool initialized, object syncLock) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Threading.LazyInitializer.EnsureInitialized``1(``0@,System.Boolean@,System.Object@)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>
@@ -136,6 +110,7 @@ ExpensiveData _data = null;
     <Member MemberName="EnsureInitialized&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static T EnsureInitialized&lt;T&gt; (ref T target, ref bool initialized, ref object syncLock, Func&lt;T&gt; valueFactory);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T EnsureInitialized&lt;T&gt;(!!T target, bool initialized, object syncLock, class System.Func`1&lt;!!T&gt; valueFactory) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Threading.LazyInitializer.EnsureInitialized``1(``0@,System.Boolean@,System.Object@,System.Func{``0})" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>mscorlib</AssemblyName>

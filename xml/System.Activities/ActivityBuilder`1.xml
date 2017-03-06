@@ -1,6 +1,7 @@
 <Type Name="ActivityBuilder&lt;TResult&gt;" FullName="System.Activities.ActivityBuilder&lt;TResult&gt;">
   <TypeSignature Language="C#" Value="public sealed class ActivityBuilder&lt;TResult&gt; : System.Activities.Debugger.IDebuggableWorkflowTree" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ActivityBuilder`1&lt;TResult&gt; extends System.Object implements class System.Activities.Debugger.IDebuggableWorkflowTree" />
+  <TypeSignature Language="DocId" Value="T:System.Activities.ActivityBuilder`1" />
   <AssemblyInfo>
     <AssemblyName>System.Activities</AssemblyName>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -30,16 +31,12 @@
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ActivityBuilder ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Activities.ActivityBuilder`1.#ctor" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -49,6 +46,7 @@
     <Member MemberName="Attributes">
       <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.Collection&lt;Attribute&gt; Attributes { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.Collection`1&lt;class System.Attribute&gt; Attributes" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.ActivityBuilder`1.Attributes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -71,6 +69,7 @@
     <Member MemberName="Constraints">
       <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.Collection&lt;System.Activities.Validation.Constraint&gt; Constraints { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.Collection`1&lt;class System.Activities.Validation.Constraint&gt; Constraints" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.ActivityBuilder`1.Constraints" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -96,6 +95,7 @@
     <Member MemberName="Implementation">
       <MemberSignature Language="C#" Value="public System.Activities.Activity Implementation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Activities.Activity Implementation" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.ActivityBuilder`1.Implementation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -111,12 +111,6 @@
         <Attribute>
           <AttributeName>System.Windows.Markup.DependsOn("Constraints")</AttributeName>
         </Attribute>
-        <Attribute>
-          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Activities.Activity</ReturnType>
@@ -127,9 +121,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public string Name { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+    <Member MemberName="ImplementationVersion">
+      <MemberSignature Language="C#" Value="public Version ImplementationVersion { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Version ImplementationVersion" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.ActivityBuilder`1.ImplementationVersion" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -137,12 +132,33 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>get: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+          <AttributeName>System.ComponentModel.DefaultValue(null)</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>set: System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
+          <AttributeName>System.ComponentModel.TypeConverter(typeof(System.Activities.XamlIntegration.ImplementationVersionConverter))</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Windows.Markup.DependsOn("Name")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Version</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.ActivityBuilder`1.Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>System.Activities</AssemblyName>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -155,6 +171,7 @@
     <Member MemberName="Properties">
       <MemberSignature Language="C#" Value="public System.Collections.ObjectModel.KeyedCollection&lt;string,System.Activities.DynamicActivityProperty&gt; Properties { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.ObjectModel.KeyedCollection`2&lt;string, class System.Activities.DynamicActivityProperty&gt; Properties" />
+      <MemberSignature Language="DocId" Value="P:System.Activities.ActivityBuilder`1.Properties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
@@ -180,16 +197,12 @@
     <Member MemberName="System.Activities.Debugger.IDebuggableWorkflowTree.GetWorkflowRoot">
       <MemberSignature Language="C#" Value="System.Activities.Activity IDebuggableWorkflowTree.GetWorkflowRoot ();" />
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Activities.Activity System.Activities.Debugger.IDebuggableWorkflowTree.GetWorkflowRoot() cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Activities.ActivityBuilder`1.System#Activities#Debugger#IDebuggableWorkflowTree#GetWorkflowRoot" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Activities</AssemblyName>
         <AssemblyVersion>4.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.TargetedPatchingOptOut("Performance critical to inline this type of method across NGen image boundaries")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Activities.Activity</ReturnType>
       </ReturnValue>

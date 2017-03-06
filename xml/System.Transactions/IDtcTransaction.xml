@@ -1,6 +1,7 @@
 <Type Name="IDtcTransaction" FullName="System.Transactions.IDtcTransaction">
   <TypeSignature Language="C#" Value="public interface IDtcTransaction" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IDtcTransaction" />
+  <TypeSignature Language="DocId" Value="T:System.Transactions.IDtcTransaction" />
   <AssemblyInfo>
     <AssemblyName>System.Transactions</AssemblyName>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
@@ -16,21 +17,14 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>Describes a DTC transaction.</summary>
-    <remarks>
-      <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- You should not implement this interface, as it is used only by the <xref:System.Transactions.TransactionInterop> class internally to represent the unmanaged version of the <xref:System.EnterpriseServices.ITransaction> interface of the <xref:System.EnterpriseServices> namespace.  
-  
- ]]></format>
-    </remarks>
-    <threadsafe />
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="Abort">
       <MemberSignature Language="C#" Value="public void Abort (IntPtr reason, int retaining, int async);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Abort(native int reason, int32 retaining, int32 async) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Transactions.IDtcTransaction.Abort(System.IntPtr,System.Int32,System.Int32)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Transactions</AssemblyName>
@@ -46,24 +40,17 @@
         <Parameter Name="async" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="reason">An optional &lt;xref:System.EnterpriseServices.BOID&gt; that indicates why the transaction is being aborted. This parameter can be <see langword="null" />, indicating that no reason for the abort is provided.</param>
-        <param name="retaining">This value must be <see langword="false" />.</param>
-        <param name="async">When `async` is <see langword="true" />, an asynchronous abort is performed and the caller must use <see langword="ITransactionOutcomeEvents" /> to learn about the outcome of the transaction.</param>
-        <summary>Aborts a transaction.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- You should not implement any method of this interface, as it is used only by the <xref:System.Transactions.TransactionInterop> class internally to represent the unmanaged version of the <xref:System.EnterpriseServices.ITransaction> interface of the <xref:System.EnterpriseServices> namespace.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <param name="reason">To be added.</param>
+        <param name="retaining">To be added.</param>
+        <param name="async">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Commit">
       <MemberSignature Language="C#" Value="public void Commit (int retaining, int commitType, int reserved);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Commit(int32 retaining, int32 commitType, int32 reserved) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Transactions.IDtcTransaction.Commit(System.Int32,System.Int32,System.Int32)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Transactions</AssemblyName>
@@ -79,26 +66,17 @@
         <Parameter Name="reserved" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="retaining">This value must be <see langword="false" />.</param>
-        <param name="commitType">A value taken from the OLE DB enumeration <see langword="XACTTC" />.</param>
-        <param name="reserved">This value must be zero.</param>
-        <summary>Commits a transaction.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- For values of `commitType`, see `ITransaction::Commit` in the OLE DB Programmers Reference.  
-  
- You should not implement any method of this interface, as it is used only by the <xref:System.Transactions.TransactionInterop> class internally to represent the unmanaged version of the <xref:System.EnterpriseServices.ITransaction> interface of the <xref:System.EnterpriseServices> namespace.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <param name="retaining">To be added.</param>
+        <param name="commitType">To be added.</param>
+        <param name="reserved">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetTransactionInfo">
       <MemberSignature Language="C#" Value="public void GetTransactionInfo (IntPtr transactionInformation);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetTransactionInfo(native int transactionInformation) cil managed" />
+      <MemberSignature Language="DocId" Value="M:System.Transactions.IDtcTransaction.GetTransactionInfo(System.IntPtr)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>System.Transactions</AssemblyName>
@@ -112,17 +90,9 @@
         <Parameter Name="transactionInformation" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="transactionInformation">Pointer to the caller-allocated &lt;xref:System.EnterpriseServices.XACTTRANSINFO&gt; structure that will receive information about the transaction. This value must not be <see langword="null" />.</param>
-        <summary>Retrieves information about a transaction.</summary>
-        <remarks>
-          <format type="text/markdown"><![CDATA[  
-  
-## Remarks  
- You should not implement any method of this interface, as it is used only by the <xref:System.Transactions.TransactionInterop> class internally to represent the unmanaged version of the <xref:System.EnterpriseServices.ITransaction> interface of the <xref:System.EnterpriseServices> namespace.  
-  
- ]]></format>
-        </remarks>
-        <threadsafe />
+        <param name="transactionInformation">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>
